@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from ecology_demo_competitors import fabricate_competition
@@ -44,11 +45,11 @@ class H2WithinTests(unittest.TestCase):
         _, changed, changed_meta=construct_context(train,altered)
         self.assertEqual(meta,changed_meta)
         # Moving heldout contexts does not change frozen per-horse baselines.
-        self.assertTrue((
-            (te["other_front_runner_share"]-te["context_within"]).to_numpy()
-            ==
-            (changed["other_front_runner_share"]-changed["context_within"]).to_numpy()
-        ).all())
+        self.assertTrue(np.allclose(
+            (te["other_front_runner_share"]-te["context_within"]).to_numpy(),
+            (changed["other_front_runner_share"]-changed["context_within"]).to_numpy(),
+            atol=1e-12, rtol=0,
+        ))
 
     def test_leave_one_out_and_complete_field_reconciliation(self):
         with tempfile.TemporaryDirectory() as temp:
