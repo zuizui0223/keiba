@@ -93,3 +93,21 @@ no suitable complete repeated-start panel.
 
 Data rights must be independently checked:
 [ecological data-source feasibility](ecology-data-source-feasibility.md).
+
+
+## DNF / incomplete speed amendment (2026-10-12)
+
+The `ecology_h2_absolute_speed.py` model **no longer requires every
+confirmed starter to have an observed finishing time**.
+A complete starter roster with sufficient historical pre-race features
+is retained; nonfinishers remain in every competitor exposure, while
+the speed response is defined only among actual timed finishers.
+This reduces whole-race complete-case deletion but still leaves
+speed-outcome selection and pre-race history coverage biases.
+
+The model records an `outcome_selection_audit` and scientific
+`HOLD_POTENTIALLY_INFORMATIVE_SPEED_MISSINGNESS` when eligible
+speed outcomes are missing. Do not interpret the regression as
+an all-starter performance effect without a documented selection
+model and sensitivity analysis. See
+[H2 missing-outcome and informative selection](ecology-h2-outcome-selection.md).
