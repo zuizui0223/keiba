@@ -19,6 +19,7 @@ Read:
 - [Versioned raw-speed horse+race FE falsification audit](docs/ecology-h2-absolute-stress-audit.md)
 - [Data-source licensing and longitudinal field-coverage audit](docs/ecology-data-source-feasibility.md)
 - [Why nonfinishers and missing speeds require a selection audit](docs/ecology-h2-outcome-selection.md)
+- [Completion and speed as different H2 biological outcomes](docs/ecology-h2-two-part.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
@@ -216,3 +217,46 @@ python scripts/ecology_hk_preflight.py \
 
 The output status is **HOLD_SOURCE_RIGHTS_AND_OBSCURED_DATES** until
 external provenance and study-use permissions are established.
+
+
+## October 13: completion and performance are distinct ecological outcomes
+
+The experimental H2 pathway now contains a **two-part observational
+sensitivity model** rather than treating nonfinishing as a zero-speed
+performance:
+
+1. Binomial completion among ALL confirmed race starters, using
+   previous horse ability, previous running style and previous rival
+   composition. Compare baseline with a horse-style × rival-style
+   interaction on later race dates. Sparse DNF events cause explicit HOLD.
+2. Individual raw speed conditional on observed finishing times, with
+   horse/race fixed effects and the previously introduced loss-to-
+   observation warning. A DNF does **not** have a full-distance speed.
+
+Both stages remain **exploratory**, fitted independently rather than a
+joint likelihood, and cannot attribute injuries or nonfinishing to
+social competition. Reproduce exclusively on invented horse IDs:
+
+~~~bash
+python scripts/ecology_demo_completion.py --output tmp/fictional-with-DNF.csv --days 100 --horses 48 --runners 12 --seed 512 --loss random
+python scripts/ecology_h2_two_part.py --input tmp/fictional-with-DNF.csv --output tmp/h2-two-part.json --permit-synthetic-demo
+~~~
+
+A synthetic QA run created 1,200 fictional horse starts and 26
+artificial DNF records; this is an **implementation result, not a
+biological observation**. See the
+[full two-part definition](docs/ecology-h2-two-part.md).
+
+### Data suitability has a new within-condition gate
+
+The offline Hong Kong CSV preflight now also reports whether the same
+horse has **at least two starts in each of two ground conditions
+within the same venue, surface, distance and class**. A general
+"many records + mixed ground" count is insufficient: if every poor
+ground race is a higher class, H1 environment effects cannot be
+identified separately. It flags repeated nominally obscured dates
+without inventing an ordering.
+
+**Actual racing data access is still HOLD** until provider permissions,
+source coding and chronology are verified; neither H1 nor H2 is supported
+by the fictional results.
