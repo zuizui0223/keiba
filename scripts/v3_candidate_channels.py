@@ -320,8 +320,7 @@ def main() -> int:
         result = run_audit(args.history, args.frozen_dir, args.quality_map, races)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(
-            json.dumps(result, ensure_ascii=False, indent=2) + '
-', encoding='utf-8'
+            json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
         )
         print(json.dumps(result['summary'], ensure_ascii=False))
     except (ValueError, KeyError, TypeError, OSError, json.JSONDecodeError) as error:
