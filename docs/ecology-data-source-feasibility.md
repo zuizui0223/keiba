@@ -1,0 +1,54 @@
+# Feasibility audit: obtaining legal longitudinal animal race performance data
+
+Review date: **2026-10-12**. No external archive has been ingested
+into this repo. Links below are **candidates**, not permissions.
+
+## Data decision: choose a rights-cleared horse×race source before fitting
+
+The actual H1/H2 research model requires repeat starts for stable
+`horse_id`, race date, track/going, distance, individual performance,
+historical early-running position, and all rivals per race, with
+terms allowing the intended research and publication. Mere download
+access does **not** imply redistribution or commercial permission.
+
+| Candidate | What seems available | Rights/compatibility check | Current decision |
+| --- | --- | --- | --- |
+| [Existing 2026-10-12 Kyoto analysis branch](https://github.com/zuizui0223/keiba/tree/analysis/kyoto-20261012) | 7 races, 95 starters, historical aggregate course counts, odds snapshots; not full individual starts across environments | No longitudinal horse×race exposure panel; race snapshots not enough | **H1/H2 HOLD** |
+| [Kaggle JRA日本中央競馬会 dataset](https://www.kaggle.com/datasets/takamotoki/jra-horse-racing-dataset) and [usage README](https://github.com/evanfadhil/japan_horse_racing_analysis) | 4 CSV categories described: race results, corner passage order, laptimes, odds (scraped from netkeiba; older historical archive) | Source/CSV reuse terms and any netkeiba redistribution rights **not verified**; an MIT license for analysis code does not license the underlying source dataset | **CANDIDATE—RIGHTS HOLD** |
+| [HK/SG historical racing archive](https://github.com/eprochasson/horserace_data) | Hong Kong/Singapore `performances`, `races`, `horses`, `sectional_times` CSV.gz; some historical record tables do not join 1:1 and may lack dates/races for earlier years | README says scraped from HKJC/SGTC, root has **no LICENSE file** (reviewed GitHub contents). Public GitHub alone does not establish permission to reproduce original results or provide a rights-cleared derived dataset | **CANDIDATE—RIGHTS HOLD** |
+| [Huggy French race sample](https://huggingface.co/datasets/huggy-engine/horse-racing-database-fr) | Sample explicitly lists CC BY 4.0, `courses.csv` (~931 races) and `rapports.csv`; parent vendor advertises larger multi-year commercial collection | Current freely listed files are race-level and payouts, **not** the complete horse×race performance panel/positions needed for H2; attribution and source-chain checks remain necessary | **NOT SUFFICIENT FOR H1/H2** |
+| [HKJC Guru historical results export](https://data.hkjc.guru/data/hkjc/hkjc_race_results) | Rich horse-level profiles and sectional times, paid archive | Site explicitly states redistribution of raw exports is not permitted. Evaluate research usage terms separately before payment, do not add proprietary exports to public GitHub | **RIGHTS / ACCESS HOLD** |
+| [TrapStats greyhound CC BY sample](https://trapstats.co.uk/en/data) / [Zenodo CC BY greyhound research data](https://zenodo.org/records/19842376) | Runner×race records with track, going, finish, sometimes sectional/bend positions; a potentially relevant *other species* methodological comparison | Species is greyhound, not Thoroughbred; cannot be used as direct evidence about racehorses. Underlying source rights and full-file scope should be checked | **OPTIONAL CROSS-SPECIES METHODS, NOT HORSE EVIDENCE** |
+
+## Minimum rights checklist before any authorized raw data enters pipeline
+
+1. Confirm whether research use is allowed and whether derived
+   coefficient tables/figures can be published; obtain written permission
+   if raw results are contractually restricted.
+2. Record original publisher, source URL, archived version/DOI, date of
+   access, original license or written approval, and restrictions on
+   redistribution and machine-learning analysis.
+3. Use race date/time and official record version for provenance. Verify
+   each derived pre-race variable was knowable before the target start.
+4. Confirm individual identity across different courses and years,
+   correct status of scratches/disqualifications/dead heats, and handling
+   of same-time/tied finishing ranks.
+5. Quantify how many horses have repeated starts under varying going
+   **and** changing rival contexts. Small selected subsets can bias
+   interaction estimates.
+6. Keep source bulk files local/private if redistribution prohibited;
+   publish only code, synthetic tests, permitted derived metrics and
+   attribution.
+
+## Recommendation
+
+**First** seek permission or independently rights-clear a complete
+longitudinal equine dataset with early-race sectional/position information;
+the existing Kaggle JRA archive and HK/SG performance+sectionals are
+worth screening, but have unresolved upstream conditions.
+
+**Do not** treat a public scraper, a code repository's permissive license
+or a free commercial preview as an explicit dataset license.
+
+Until then, a substantial, reproducible **ecological research code base**
+exists, but zero real-race H1/H2 biological claims are justified.
