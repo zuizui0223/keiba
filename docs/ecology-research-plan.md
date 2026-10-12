@@ -87,3 +87,44 @@ Betting/odds optimization from analysis/kyoto-20261012 and PR #1 remains a separ
 - M2: establish source/license, assemble historical *longitudinal* horse–race panel, audit coverage.
 - M3: fit M0/M1 and perform time-forward checks; report supported, inconclusive or rejected hypotheses.
 - M4: test M2 competitive-context interaction after obtaining historical pre-race running-style indicators.
+
+
+## Implemented computational progression (2026-10-12)
+
+The code on this research branch now provides:
+
+1. `scripts/ecology_panel.py`: rights/provenance/clock validation, full-roster
+   audits and strict prior-calendar-date construction of own running-style
+   history and leave-one-out competitor composition. Produces a machine-readable
+   `HOLD_*` gate when repeated observations or data rights are lacking.
+2. `scripts/ecology_h1_pilot.py`: **exploratory, not confirmatory** race-relative
+   standardized speed, mixed-model M0 random horse intercept vs M1 random
+   horse intercept + within-horse ground-response slope, separated from
+   between-horse exposure frequency. Horse exposure means are derived from
+   training dates only, followed by forward-date evaluation and paired race
+   bootstrap of prediction-error differences. No valid random-slope
+   confidence interval or race- and horse-clustered inferential p-value
+   is claimed.
+3. `scripts/ecology_demo_data.py`: deliberately fabricated longitudinal
+   records for testing implementation. Synthetic data cannot support H1/H2.
+4. `tests/test_ecology_*.py` + GitHub Actions: guardrails for future leakage,
+   duplicates, roster completeness, time split and a strictly labelled
+   synthetic model smoke run.
+
+**Methodological boundary:** standard random regression on race-centred
+performance is susceptible to within-race dependence, nonrandom entry,
+class/age/fitness variation, and jockey interactions. It is an operational
+preliminary check and does not satisfy the prespecified H1 inference
+criteria above. The next confirmatory version should use a crossed
+horse/race/jockey hierarchical structure (or an appropriately adjusted
+race-relative model), assess horse-by-going overlap conditional on class
+and venue, and estimate uncertainty for heterogeneous within-horse
+responses through simulation or a suitable bootstrap/Bayesian model.
+The pilot contains no H2 fitted inference yet.
+
+**Source terms, verified on 2026-10-12:** JRA-VAN Article 7:
+https://jra-van.jp/info/rule.html ; JRA-VAN developer statement on
+data redistribution, 2026-07-06:
+https://developer.jra-van.jp/t/topic/899.
+Use any restricted real records only under appropriate permission;
+never commit those source files by default.
