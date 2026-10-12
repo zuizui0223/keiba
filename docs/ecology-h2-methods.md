@@ -247,3 +247,22 @@ animal model estimates or selection coefficients.
    training/validation splits, uncertainty and multiplicity rules.
 5. A holdout independent of the case used to settle model design, then
    a biological claim only if defensible sensitivity and uncertainty remain.
+
+
+## Outcome alert: standardized speed is not a focal social response
+
+For H2, `z_ir = (v_ir - mean_r(v))/sd_r(v)` can vary when another
+horse's speed changes even if `v_ir` is held fixed. Therefore a
+nonzero rival-context association on `z_ir` may be **mathematical
+relative-performance coupling**, not a behavioral social reaction.
+
+The experimental H2 primary alternative is
+`scripts/ecology_h2_absolute_speed.py`, modeling focal **raw m/s**
+conditional on crossed horse and race fixed effects, with two-way
+descriptive uncertainty and time-forward contrasts. The zero-effect
+null and deliberately confounded null are reported in
+[the versioned absolute-speed audit](ecology-h2-absolute-stress-audit.md).
+
+This correction reduces a specific inference risk; it does not
+demonstrate causation, ecological selection or a valid social animal
+model. Full details: [absolute-speed method](ecology-h2-absolute-outcome.md).
