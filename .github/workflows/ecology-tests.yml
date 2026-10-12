@@ -48,3 +48,7 @@ jobs:
           python scripts/ecology_h2_absolute_speed.py --input tmp/fake-competitors.csv --output tmp/h2-raw-speed.json --surface turf --permit-synthetic-demo
           python scripts/ecology_h2_absolute_stress.py --output tmp/h2-raw-speed-stress.json --seeds 512 911
           python -c "import json; x=json.load(open('tmp/h2-raw-speed.json')); y=json.load(open('tmp/h2-raw-speed-stress.json')); assert x['status']=='SYNTHETIC_ABSOLUTE_SPEED_H2_DEMO_ONLY'; assert y['status']=='SYNTHETIC_ABSOLUTE_SPEED_STRESS_ONLY'; assert x['relative_outcome_avoided_in_training'] and len(y['trials'])==6"
+      - name: Nonfinishing and missing-speed sensitivity (fictional cases)
+        run: |
+          python scripts/ecology_h2_outcome_loss_stress.py --output tmp/h2-outcome-loss-stress.json --seed 512
+          python -c "import json; x=json.load(open('tmp/h2-outcome-loss-stress.json')); assert x['status']=='SYNTHETIC_MISSINGNESS_FALSIFICATION_ONLY'; assert x['scenarios']['none']['nonfinisher_count']==0; assert x['scenarios']['speed_dependent']['nonfinisher_count']>0; assert x['no_empirical_horse_claims']"
