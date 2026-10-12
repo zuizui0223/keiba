@@ -13,7 +13,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from ecology_panel import REQUIRED, load_panel, lagged_features
-from ecology_h1_pilot import relative_performance, run, split_dates
+from ecology_h1_pilot import relative_performance, run, split_dates, within_between_from_training
 
 
 def make_synthetic_panel(days=26, n=12, seed=88):
@@ -81,6 +81,21 @@ class H1PilotTests(unittest.TestCase):
             self.assertLess(train["date"].max(), test["date"].min())
             with self.assertRaisesRegex(ValueError, "synthetic"):
                 run(path, "turf")
+
+    def test_between_exposure_uses_training_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = make_csv(tmp, make_synthetic_panel())
+            df = relative_performance(lagged_features(load_panel(path))).dropna(subset=["prior_strength"])
+        train, test, _ = split_dates(df)
+        tr, te, formula, _ = within_between_from_training(train, test)
+        alternate = test.copy()
+        alternate["poor"] = 1 - alternate["poor"]
+        _, te_alt, _, _ = within_between_from_training(train, alternate)
+        # Held-out conditions are known pre-race; horse baselines may not learn them.
+        base = te["poor"] - te["within_poor"]
+        base_alt = te_alt["poor"] - te_alt["within_poor"]
+        self.assertTrue((base.to_numpy() == base_alt.to_numpy()).all())
+        self.assertIn("within_poor", formula)
 
     def test_fit_only_marked_synthetic_demo(self):
         with tempfile.TemporaryDirectory() as tmp:
