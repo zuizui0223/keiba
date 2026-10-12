@@ -81,6 +81,26 @@ class HKPreflightTests(unittest.TestCase):
             "horse_by_stratum_both_environment_and_rival_overlap",
             counts["stratified_support"])
 
+    def test_one_off_going_is_not_a_replicated_individual_reaction_norm(self):
+        with tempfile.TemporaryDirectory() as temp:
+            races,runs=make_kaggle_shaped(Path(temp))
+            with races.open(encoding="utf-8",newline="") as fd:
+                rows=list(csv.DictReader(fd))
+            # Every horse has at MOST one race under "YIELDING".
+            for i,row in enumerate(rows):
+                row["going"]="YIELDING" if i==1 else "GOOD"
+            with races.open("w",encoding="utf-8",newline="") as fd:
+                w=csv.DictWriter(fd,fieldnames=sorted(RACE_COLUMNS))
+                w.writeheader();w.writerows(rows)
+            report=preflight(races,runs)
+        self.assertGreater(
+            report["counts"]["horses_with_2plus_distinct_raw_going_labels"],0)
+        self.assertEqual(
+            report["counts"]["horses_with_environment_overlap_within_same_venue_surface_distance_class"],0)
+        self.assertNotIn(
+            "horse_by_stratum_2plus_starts_in_2plus_going_labels",
+            report["counts"]["stratified_support"])
+
     def test_same_obscured_date_starts_are_flagged_not_assumed_ordered(self):
         with tempfile.TemporaryDirectory() as temp:
             races,runs=make_kaggle_shaped(Path(temp))
