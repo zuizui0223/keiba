@@ -58,6 +58,43 @@ class HKPreflightTests(unittest.TestCase):
         self.assertTrue(report["no_automatic_going_ordinal_map"])
         self.assertEqual(report["raw_going_label_race_counts"]["YIELDING"],6)
 
+    def test_stratified_going_overlap_not_inferred_from_confounding_classes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            races,runs=make_kaggle_shaped(Path(temp))
+            with races.open(encoding="utf-8",newline="") as fd:
+                rec=list(csv.DictReader(fd))
+            # Every "GOOD" race is class 3; every "YIELDING" is class 4.
+            # The horses see both conditions *globally*, but never within
+            # the same class and therefore have no estimable within-stratum
+            # going comparison.
+            for row in rec:
+                row["race_class"]="3" if row["going"]=="GOOD" else "4"
+            with races.open("w",encoding="utf-8",newline="") as fd:
+                writer=csv.DictWriter(fd,fieldnames=sorted(RACE_COLUMNS))
+                writer.writeheader();writer.writerows(rec)
+            report=preflight(races,runs)
+        counts=report["counts"]
+        self.assertGreater(counts["horses_with_2plus_distinct_raw_going_labels"],0)
+        self.assertEqual(
+            counts["horses_with_environment_overlap_within_same_venue_surface_distance_class"],0)
+        self.assertNotIn(
+            "horse_by_stratum_both_environment_and_rival_overlap",
+            counts["stratified_support"])
+
+    def test_same_obscured_date_starts_are_flagged_not_assumed_ordered(self):
+        with tempfile.TemporaryDirectory() as temp:
+            races,runs=make_kaggle_shaped(Path(temp))
+            with races.open(encoding="utf-8",newline="") as fd:
+                rec=list(csv.DictReader(fd))
+            rec[1]["date"]=rec[0]["date"]
+            with races.open("w",encoding="utf-8",newline="") as fd:
+                writer=csv.DictWriter(fd,fieldnames=sorted(RACE_COLUMNS))
+                writer.writeheader();writer.writerows(rec)
+            report=preflight(races,runs)
+        self.assertGreater(report["counts"]["horse_races_sharing_same_obscured_date"],0)
+        self.assertFalse(report["real_race_dates_verified"])
+        self.assertFalse(report["race_start_time_known"])
+
     def test_missing_finish_times_not_zero_imputed(self):
         with tempfile.TemporaryDirectory() as temp:
             races,runs=make_kaggle_shaped(Path(temp))
