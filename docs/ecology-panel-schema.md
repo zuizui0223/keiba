@@ -87,3 +87,24 @@ H1 smoke-model requires complete official-finish-time rosters; this is a
 possible source of selection bias. The model *never* treats missing time as 0.
 The conservative 30-horse cross-going and 15-day readiness threshold is an
 engineering threshold, **not** a power calculation or biological finding.
+
+
+## Confirmed entrants vs postrace missing outcomes
+
+The *entry roster* must include all horses which **actually started**,
+including `did_not_finish` with null `finishing_position` and
+`finish_time_s`. A horse withdrawn before the start is not a
+competitor; it must be removed rather than encoded as a starter DNF.
+If a horse did finish but the source omits individual time, preserve
+`finished` and set the time to null rather than inventing a speed.
+
+Only the H2 raw-speed pipeline has been revised to keep otherwise
+complete races with some missing speeds and at least four timed
+finishers; it keeps nonfinishers in the *pre-race rival denominator*
+but not in the observed speed regression. The older H1 and relative
+z-speed pilot still have stricter complete-time filtering.
+
+For H2, inspect `outcome_selection_audit`:
+any missing eligible time means inference for all starters is on
+**HOLD** due potentially informative selection. See
+[missing outcome/selection design](ecology-h2-outcome-selection.md).
