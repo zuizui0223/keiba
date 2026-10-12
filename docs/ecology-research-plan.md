@@ -162,3 +162,27 @@ A preregistered ecological claim requires an independent real cohort,
 rival-composition variation per individual, class/venue/jockey/going
 checks, opponent selection sensitivity, a suitable multiway
 uncertainty method and substantive effect plausibility.
+
+
+## Additional within-individual competition test and null contrasts
+
+H2 has now been split into (a) **within-horse contextual response**
+and (b) **between-horse nonrandom participation (assortment)**.
+The methodological references are van de Pol & Wright (2009),
+https://doi.org/10.1016/j.anbehav.2008.11.006, and
+Martin & Jaeggi (2022), https://doi.org/10.1111/jeb.13900.
+
+`scripts/ecology_h2_within_between.py` is an exploratory horse fixed-
+intercept model using strictly historical style profiles, past opponent
+ability, context deviations relative to horse-specific training means,
+binary going and trait×going adjustment. It reports horse×race two-way
+clustered **nominal** uncertainty and compares leave-one-out versus
+full-field front-running composition. It cannot resolve time-varying
+trainer, jockey, class and nonrandom entry biases.
+
+`scripts/ecology_h2_falsification.py` supplies synthetic null, planted-effect
+and *confounded null* with assortative entry and individual going response.
+Observed failure on a null case must be interpreted as **a warning**;
+a pass on a planted effect is not biological evidence. Implementation
+checks can operate with wholly synthetic datasets, whereas the actual
+Kyoto one-day historical card remains **HOLD for H1 and H2**.
