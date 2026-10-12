@@ -58,8 +58,11 @@ def matrix(train: pd.DataFrame, test: pd.DataFrame, interaction: bool):
     by race FE. We intentionally omit the rival main effect because the
     full-field context is perfectly decomposable into horse/race means.
     """
+    # With complete roster, the leave-one-out mean rival ability equals
+    # race mean ability minus focal ability/(field_size-1); it is linearly
+    # dependent on race FE + own ability when field size is fixed. Drop it.
     numeric=[
-        "c_prior_strength_score","c_other_prior_strength_mean",
+        "c_prior_strength_score",
         "c_prior_front_runner_score", "style_x_poor_going",
     ]
     if interaction:
@@ -104,7 +107,6 @@ def fit(train: pd.DataFrame, test: pd.DataFrame, interaction: bool):
     # All test race IDs are unseen; a future race-specific intercept has
     # zero dummy coding, and disappears after within-race centering.
     raw_pred=x1@ols.params
-    series=pd.Series(raw_pred,index=test.index)
     # Use positional alignment, not the original frame indices.
     predicted=pd.DataFrame({
         "race_id":test["race_id"].to_numpy(),
@@ -119,6 +121,7 @@ def fit(train: pd.DataFrame, test: pd.DataFrame, interaction: bool):
         "horse_and_race_effects_both_controlled":True,
         "race_context_main_effect_omitted_as_collinear":True,
         "ground_main_effect_absorbed_by_race_intercepts":True,
+        "rival_average_ability_main_effect_absorbed_by_race_FE_plus_own_ability":True,
         "horse_style_x_ground_competing_effect_adjusted":True,
         "unseen_test_horse_starts":unseen,
         "numerical_rank":rank,
@@ -175,6 +178,16 @@ def run(path:Path,surface="turf",permit_synthetic_demo=False,test_fraction=0.2)-
                             test_centered.groupby("race_id")["speed_mps"].transform("mean"))
         # Reuse race-block scoring, but record its actual units correctly.
         metrics=score(test_centered,p0,p1,bootstrap=500,seed=20261012)
+        # The shared scoring utility is labelled for z-speed. Convert its
+        # three metric keys into the physical m/s unit actually passed in.
+        for original,physical in (
+            ("m0_rmse_race_relative_speed_z","m0_rmse_within_race_mps"),
+            ("m1_rmse_race_relative_speed_z","m1_rmse_within_race_mps"),
+            ("m0_minus_m1_rmse_positive_means_m1_better",
+             "m0_minus_m1_rmse_gain_mps"),
+        ):
+            metrics[physical]=metrics.pop(original)
+        metrics["metric_units"]="m/s within-race speed deviation"
         versions[key]={"preprocessing":meta,"M0":base,"M1":full,
                        "future_within_race_speed_mps_test":metrics}
     return {
