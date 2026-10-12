@@ -4,7 +4,15 @@
   "sources": [
     "https://www.jra.go.jp/keiba/program/2026/",
     "https://www.jra.go.jp/keiba/program/2026/pdf/listed.pdf",
-    "https://www.jra.go.jp/keiba/overseas/historia/2025.html"
+    "https://www.jra.go.jp/keiba/overseas/historia/2025.html",
+    "https://www.jra.go.jp/keiba/program/2026/pdf/jusyo_1.pdf",
+    "https://www.jra.go.jp/keiba/program/2026/pdf/bangumi/hanshin2.pdf",
+    "https://www.jra.go.jp/datafile/ranking/jyusyo/2026/01.html",
+    "https://www.jra.go.jp/datafile/ranking/jyusyo/2026/04.html",
+    "https://www.jra.go.jp/datafile/ranking/jyusyo/2026/05.html",
+    "https://www.jra.go.jp/datafile/seiseki/summer/2026.html",
+    "https://www.jra.go.jp/keiba/tokubetsu/",
+    "https://www.jra.go.jp/keiba/calendar2025/2025/12/1220.html"
   ],
   "tiers": {
     "1351TS": "GII",
@@ -23,7 +31,33 @@
     "東風S": "L",
     "福島牝馬S": "GIII",
     "睦月S": "OP",
-    "洛陽S": "L"
+    "洛陽S": "L",
+    "MBSスワン": "GII",
+    "NHKマイル": "GI",
+    "しらさぎS": "GIII",
+    "オーシャンS": "GIII",
+    "スプリンター": "GI",
+    "セントウルS": "GII",
+    "チャーチルC": "GIII",
+    "ポインセチア": "OP",
+    "マイラーズC": "GII",
+    "マイルCS": "GI",
+    "ユニコーンS": "GIII",
+    "ローズS": "GII",
+    "ヴィクトリア": "GI",
+    "京成杯": "GIII",
+    "京成杯AH": "GIII",
+    "六甲S": "L",
+    "北九州記念": "GIII",
+    "安土城S": "L",
+    "安田記念": "GI",
+    "忘れな草賞": "L",
+    "東京新聞杯": "GIII",
+    "若駒S": "L",
+    "関屋記念": "GIII",
+    "阪神JF": "GI",
+    "高松宮記念": "GI",
+    "鳳雛S": "L"
   },
-  "rule_note": "Q accepts a Listed win, or a top-three finish in GI/GII/GIII. OP without Listed status does not qualify."
+  "rule_note": "Q accepts a Listed win, or a top-three finish in GI/GII/GIII. OP without Listed status does not qualify. Names are normalized to the abbreviations used in the JRA horse-profile tables."
 }
