@@ -258,6 +258,19 @@ def audit(rows: list[dict], features: list[dict]) -> dict:
         and f["finish_status"] == "finished"
         for f in features
     )
+    # H2 needs within-horse exposure to different *competitor compositions*.
+    # Many races with the same opponent mix do not identify this interaction.
+    h2_contexts = defaultdict(list)
+    for f in features:
+        if (f["finish_status"] == "finished"
+                and f["prior_front_runner_score"] is not None
+                and f["other_front_runner_share"] is not None
+                and f["other_prior_strength_mean"] is not None):
+            h2_contexts[f["horse_id"]].append(f["other_front_runner_share"])
+    h2_horses_varied = sum(
+        len(v) >= 4 and len({round(x, 6) for x in v}) >= 2
+        for v in h2_contexts.values()
+    )
     licenses = Counter(r["source_license"] for r in rows)
     synthetic = "synthetic" in licenses
     license_hold = any(s in ("unknown", "uncleared", "restricted") for s in licenses)
@@ -282,6 +295,11 @@ def audit(rows: list[dict], features: list[dict]) -> dict:
         "horses_with_2plus_timed_starts_in_each_good_vs_non_good": len(eligible),
         "race_count_by_ground_binary": dict(by_going_races),
         "h2_rows_with_historical_style_and_opponent_strength": h2,
+        "h2_horses_with_4plus_races_and_2plus_distinct_opponent_style_contexts": h2_horses_varied,
+        "h2_context_identifiability": (
+            "PRELIMINARY_CONTEXT_OVERLAP" if h2_horses_varied >= 30
+            else "HOLD_NO_REPEATED_WITHIN_HORSE_CONTEXT_VARIATION"
+        ),
         "source_license_counts": dict(licenses),
         "ready_gate_is_not_statistical_power_or_hypothesis_support": True,
         "notes": [
@@ -290,6 +308,7 @@ def audit(rows: list[dict], features: list[dict]) -> dict:
             "Going is grouped as 良 vs 非良; no equal spacing among the four Japanese categories.",
             "H1 needs additional age/class/jockey/entry-selection adjustment before confirmatory inference.",
             "H2 historical style scores are proxies, not observed causal interference.",
+            "H2 repeated context variation is necessary but insufficient; competitor selection remains confounded.",
             "Horse-by-day block prevents leakage from races on the target calendar date.",
         ],
     }
