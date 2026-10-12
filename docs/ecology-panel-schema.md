@@ -30,7 +30,7 @@ Unit of observation: **one horse per official race start**. Never collapse horse
 | finish_status | enum | finished / did_not_finish / withdrawn / excluded / other |
 | source_url | string | Authorized record provenance |
 | source_observed_at_jst | ISO-8601/null | When data was retrieved |
-| earliest_feature_available_jst | ISO-8601/null | Crucial for backtesting pre-race availability |
+| feature_available_at_jst | ISO-8601/null | Crucial for backtesting pre-race availability |
 | source_license | string/null | Reuse rights; never presume redistribution permitted |
 
 ## Constraints and checks
@@ -47,3 +47,39 @@ Unit of observation: **one horse per official race start**. Never collapse horse
 ## Existing files as pilot provenance
 
 The existing analysis/kyoto-20261012 branch has approximately 95 starters across one Kyoto race card (6–12R), and stores per-horse course-level aggregates with sourced snapshots. It is useful to bootstrap identities/source procedures, **not sufficient to estimate environmental reaction norms**.
+
+
+## Implemented v0 CSV contract (2026-10-12)
+
+The first executable auditor is `scripts/ecology_panel.py`. It uses precisely
+these required columns (unimplemented additional fields above remain valuable
+for the full research design):
+
+`race_id,horse_id,race_date_jst,race_start_jst,venue,course_surface,course_distance_m,track_going,class_pre,jockey_id,field_size,finish_status,finishing_position,finish_time_s,source_url,source_license,feature_available_at_jst`
+
+Optional current column: `first_call_position`; also accepts
+`age_at_start` and `prior_rest_days`. For `track_going` it currently
+recognizes exactly `良`, `稍重`, `重`, `不良`. All race predictors and
+their latest relevant availability time must precede `race_start_jst`.
+`finish_status` is `finished`, `did_not_finish` or `pending`.
+`finish_time_s` and `finishing_position` are postrace *outcomes*,
+not permitted pre-race predictors.
+
+`source_license` should say `synthetic` only for knowingly fabricated
+records. `unknown`, `uncleared`, and `restricted` force a rights HOLD.
+A provider data contract must be checked independently; an arbitrary string
+here is not a real legal authorization.
+
+The auditor requires unique horse×race keys, consistent within-race
+metadata, no duplicate horse racing on the same day and explicit missingness.
+A full roster is required to compute competition-composition predictors.
+`first_call_position` is **postrace** data and is incorporated only from
+previous calendar dates. Features are not constructed using any outcomes from
+the target day. The `--features` output carries a
+`lagged_feature_rule` watermark and must not be mistaken for observed
+causal interactions.
+
+H1 smoke-model requires complete official-finish-time rosters; this is a
+possible source of selection bias. The model *never* treats missing time as 0.
+The conservative 30-horse cross-going and 15-day readiness threshold is an
+engineering threshold, **not** a power calculation or biological finding.
