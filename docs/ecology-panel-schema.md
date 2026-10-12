@@ -73,6 +73,10 @@ here is not a real legal authorization.
 The auditor requires unique horse×race keys, consistent within-race
 metadata, no duplicate horse racing on the same day and explicit missingness.
 A full roster is required to compute competition-composition predictors.
+ For H2, repeated starts **against different opposing fields** are a separate
+ identification requirement: many repeats with the same opponents are not
+ informative. The auditor calculates a within-horse composition-variation
+ count and flags a conservative context-overlap HOLD when absent.
 `first_call_position` is **postrace** data and is incorporated only from
 previous calendar dates. Features are not constructed using any outcomes from
 the target day. The `--features` output carries a
