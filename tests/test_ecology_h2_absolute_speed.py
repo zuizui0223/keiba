@@ -50,6 +50,77 @@ class H2AbsoluteSpeedTests(unittest.TestCase):
         # Opponents' contemporaneous speeds enter the rival-centred z score.
         self.assertNotAlmostEqual(float(key(raw0)["y"]),float(key(raw1)["y"]))
 
+    def test_nonfinisher_is_still_a_rival_but_not_zero_speed(self):
+        changed=[dict(v) for v in self.fake]
+        race_id="FAKE-COMP-R0045"
+        nonfinish=next(r for r in changed if r["race_id"]==race_id)
+        nonfinish["finish_status"]="did_not_finish"
+        nonfinish["finishing_position"]=""
+        nonfinish["finish_time_s"]=""
+        with tempfile.TemporaryDirectory() as tmp:
+            baseline=lagged_features(load_panel(panel(tmp,self.fake)))
+            edited=lagged_features(load_panel(panel(tmp,changed)))
+        rb={r["horse_id"]:r for r in baseline if r["race_id"]==race_id}
+        re={r["horse_id"]:r for r in edited if r["race_id"]==race_id}
+        for horse in rb:
+            self.assertEqual(rb[horse]["other_front_runner_share"],
+                             re[horse]["other_front_runner_share"])
+        frame=frame_with_individual_speed(edited,"turf")
+        self.assertEqual(int((frame["race_id"]==race_id).sum()),11)
+        self.assertNotIn(nonfinish["horse_id"],
+                         set(frame.loc[frame["race_id"]==race_id,"horse_id"]))
+        audit=frame.attrs["selection_audit"]
+        self.assertEqual(audit["nonfinisher_starts_in_retained_races"],1)
+        self.assertEqual(audit["observed_speed_loss_count"],1)
+        self.assertGreater(audit["races_with_some_missing_focal_speeds"],0)
+        self.assertFalse(audit["unobserved_speed_is_zero"])
+        self.assertEqual(audit["missingness_status"],
+                         "OBSERVATIONAL_SELECTION_RISK_UNRESOLVED")
+        # The regression remains runnable and propagates an explicit hold
+        # on interpreting population ecology from observed finishers alone.
+        with tempfile.TemporaryDirectory() as tmp:
+            report=run(panel(tmp,changed),permit_synthetic_demo=True)
+        self.assertEqual(report["empirical_missingness_decision"],
+                         "HOLD_POTENTIALLY_INFORMATIVE_SPEED_MISSINGNESS")
+        self.assertEqual(report["outcome_selection_audit"]["nonfinisher_starts_in_retained_races"],1)
+
+    def test_one_missing_result_time_does_not_drop_twelve_horse_race(self):
+        changed=[dict(v) for v in self.fake]
+        selected=next(r for r in changed if r["race_id"]=="FAKE-COMP-R0045")
+        selected["finish_time_s"]=""
+        with tempfile.TemporaryDirectory() as tmp:
+            feats=lagged_features(load_panel(panel(tmp,changed)))
+        frame=frame_with_individual_speed(feats,"turf")
+        self.assertEqual(int((frame["race_id"]=="FAKE-COMP-R0045").sum()),11)
+        self.assertEqual(frame.attrs["selection_audit"]["finished_but_missing_time_starts"],1)
+
+    def test_incomplete_entry_roster_must_not_look_like_no_rivals(self):
+        reduced=[dict(v) for v in self.fake]
+        chosen=next(r for r in reduced if r["race_id"]=="FAKE-COMP-R0045")
+        reduced.remove(chosen)
+        with tempfile.TemporaryDirectory() as tmp:
+            enriched=lagged_features(load_panel(panel(tmp,reduced)))
+        frame=frame_with_individual_speed(enriched,"turf")
+        self.assertNotIn("FAKE-COMP-R0045",set(frame["race_id"]))
+        self.assertGreater(frame.attrs["selection_audit"]["excluded_races_by_reason"]["incomplete_entry_roster"],0)
+
+    def test_ground_condition_dependent_nonfinishing_is_recorded(self):
+        altered=[dict(v) for v in self.fake]
+        # Artificial informative loss occurs only in non-good going.
+        for day in (41,43,45,47,49):
+            day_race=f"FAKE-COMP-R{day:04d}"
+            target=next(r for r in altered if r["race_id"]==day_race)
+            target["finish_status"]="did_not_finish"
+            target["finishing_position"]=""
+            target["finish_time_s"]=""
+        with tempfile.TemporaryDirectory() as tmp:
+            feats=lagged_features(load_panel(panel(tmp,altered)))
+        report=frame_with_individual_speed(feats,"turf").attrs["selection_audit"]
+        by=report["timed_fraction_by_going"]
+        self.assertLess(by["非良"]["timed_outcome_fraction"],
+                        by["良"]["timed_outcome_fraction"])
+        self.assertEqual(report["nonfinisher_starts_in_retained_races"],5)
+
     def test_uses_raw_mps_training_with_crossed_race_and_horse_effects(self):
         with tempfile.TemporaryDirectory() as tmp:
             report=run(panel(tmp,self.fake),permit_synthetic_demo=True)
