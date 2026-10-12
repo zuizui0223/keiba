@@ -92,6 +92,9 @@ def construct_context(
         frame["style_x_context_within"] = (
             frame["horse_style_trait"] * frame["context_within"]
         )
+        # Rival composition may covary with going. Without this control,
+        # a horse-style × ground-response effect (H1) could look like H2.
+        frame["style_x_poor_going"] = frame["horse_style_trait"] * frame["poor"]
         for col in BASE_FEATURES:
             frame["c_" + col] = frame[col] - offsets[col]
         prepared.append(frame)
@@ -116,6 +119,7 @@ def build_matrix(
     numeric = [
         "c_prior_strength_score", "c_other_prior_strength_mean",
         "c_prior_front_runner_score", "context_within",
+        "poor", "style_x_poor_going",
     ]
     if interaction:
         numeric.append("style_x_context_within")
@@ -158,12 +162,14 @@ def _fit_ols(
     pred = _race_center_predict(x_test @ ols.params, test)
     result = {
         "formula": "y ~ previous ability + opponent previous ability + recent style "
-                   "+ within-horse opponent context + horse fixed intercepts"
+                   "+ within-horse opponent context + horse fixed intercepts "
+                   "+ poor going + frozen horse style × poor going"
                    + (" + frozen horse style × within context" if interaction else ""),
         "training_ols_r_squared": float(ols.rsquared),
         "unseen_test_horse_start_rows": unseen,
         "train_parameters": len(names),
         "within_horse_context_use": True,
+        "ground_by_style_competing_interaction_controlled": True,
     }
     if interaction:
         index = names.index("style_x_context_within")
@@ -290,6 +296,8 @@ def run(
         "confounding_and_limitations": [
             "Horse fixed effects remove time-invariant horse differences but not "
             "time-varying selective entry, jockey assignments, class, tactics or fitness.",
+            "Binary going and horse-style×going are included as competing explanations; "
+            "complex race-day weather, surface and venue interactions remain unadjusted.",
             "Compositional share of rivals and focal style are mathematically coupled; "
             "full-field exposure sensitivity probes but does not eliminate the coupling.",
             "Two-way cluster uncertainty approximates race and horse dependence; "
