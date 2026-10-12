@@ -21,10 +21,11 @@ Python標準ライブラリのみを使用します。Python 3.12.14で確認し
 
 ```bash
 python scripts/analyze.py --as-of 2026-10-12T12:44:35+09:00
+python scripts/calculate_plans.py --as-of 2026-10-12T12:54:11+09:00
 python -m unittest discover -s tests -v
 ```
 
-入力は `data/2026-10-12/kyoto_06.json`〜`kyoto_12.json`、出力は `reports/2026-10-12/report.md` と `analysis.json` です。recommendations.mdはその計算結果を踏まえた定性判断の記録で、自動ランキングの出力ではありません。
+入力は `data/2026-10-12/kyoto_06.json`〜`kyoto_12.json`、出力は `reports/2026-10-12/report.md` と `analysis.json` です。recommendations.mdはその計算結果を踏まえた定性判断の記録で、自動ランキングの出力ではありません。calculate_plans.pyは保存した追加オッズを反映して、1点・3点・4点案の収支を[plan-calculations.json](reports/2026-10-12/plan-calculations.json)に出力します。
 
 別の時刻で候補の有効性とオッズの古さを計算する例：
 

@@ -1,0 +1,305 @@
+{
+  "analysis_at_jst": "2026-10-12T12:54:11+09:00",
+  "selection_method": "manual_qualitative_selection_not_model_probability",
+  "source_manifest": [
+    {
+      "file": "kyoto_06.json",
+      "sha256": "f72272fb195b89a44f9385a1ace989d199f202629a6038146cb73a09da3f159c"
+    },
+    {
+      "file": "kyoto_07.json",
+      "sha256": "b386e14f0e1a6663889fbd0bb5a76b8210b43201f180f07ebd4358f01a3430e2"
+    },
+    {
+      "file": "kyoto_08.json",
+      "sha256": "5632c72dd7619902d59d20020ea0f123e9ab7d455f7e7857d91afb5fe39e55ef"
+    },
+    {
+      "file": "kyoto_09.json",
+      "sha256": "e383968fdc1027983293abc7bb2ca8581d57ca83b41606eee0e260b4a5ba1e8d"
+    },
+    {
+      "file": "kyoto_10.json",
+      "sha256": "e281486619c3512f6d2233de7ea4b80a10178c6d27e9f0f6cfc2b9959065f2cf"
+    },
+    {
+      "file": "kyoto_11.json",
+      "sha256": "869e721434b49b769dd6a4dea8ab38eaf190f251e6a9c19a316bd684dcc38505"
+    },
+    {
+      "file": "kyoto_12.json",
+      "sha256": "a620ac492092c5376212437672e617c785cd1c471adb9fcd03aae9106871887c"
+    },
+    {
+      "file": "reports/2026-10-12/odds-checkpoint.json",
+      "sha256": "0c3b47df6be8d45a7f4b018af115a25ecb6392af1ee6cf1314754f80b56fa8fe"
+    }
+  ],
+  "plans": {
+    "one_ticket": {
+      "ticket_count": 1,
+      "stake_yen": 100,
+      "tickets": [
+        {
+          "race": 11,
+          "horses": [
+            9,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.0,
+          "odds_high": 9.5,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 30.18,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 900,
+          "only_this_hit_net_yen": 800,
+          "break_even_hit_probability": 0.1111111111111111,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        }
+      ],
+      "race_scenarios": [
+        {
+          "race": 11,
+          "stake_yen": 100,
+          "common_axes": [
+            9,
+            14
+          ],
+          "distinct_top3_sets_enumerated": 816,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 900,
+          "max_low_return_scenario_yen": 900,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        }
+      ],
+      "purchase_executed": false
+    },
+    "three_tickets": {
+      "ticket_count": 3,
+      "stake_yen": 300,
+      "tickets": [
+        {
+          "race": 10,
+          "horses": [
+            2,
+            4
+          ],
+          "stake_yen": 100,
+          "odds_low": 7.2,
+          "odds_high": 8.5,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "quote_age_minutes": 23.18,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 720,
+          "only_this_hit_net_yen": 420,
+          "break_even_hit_probability": 0.1388888888888889,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            9,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.0,
+          "odds_high": 9.5,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 30.18,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 900,
+          "only_this_hit_net_yen": 600,
+          "break_even_hit_probability": 0.1111111111111111,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 12,
+          "horses": [
+            1,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 6.5,
+          "odds_high": 6.9,
+          "updated_at_jst": "2026-10-12T12:42:00+09:00",
+          "quote_age_minutes": 12.18,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 650,
+          "only_this_hit_net_yen": 350,
+          "break_even_hit_probability": 0.15384615384615385,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=0"
+        }
+      ],
+      "race_scenarios": [
+        {
+          "race": 10,
+          "stake_yen": 100,
+          "common_axes": [
+            2,
+            4
+          ],
+          "distinct_top3_sets_enumerated": 120,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 720,
+          "max_low_return_scenario_yen": 720,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 11,
+          "stake_yen": 100,
+          "common_axes": [
+            9,
+            14
+          ],
+          "distinct_top3_sets_enumerated": 816,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 900,
+          "max_low_return_scenario_yen": 900,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 12,
+          "stake_yen": 100,
+          "common_axes": [
+            1,
+            14
+          ],
+          "distinct_top3_sets_enumerated": 560,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 650,
+          "max_low_return_scenario_yen": 650,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        }
+      ],
+      "purchase_executed": false
+    },
+    "four_tickets": {
+      "ticket_count": 4,
+      "stake_yen": 400,
+      "tickets": [
+        {
+          "race": 10,
+          "horses": [
+            2,
+            4
+          ],
+          "stake_yen": 100,
+          "odds_low": 7.2,
+          "odds_high": 8.5,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "quote_age_minutes": 23.18,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 720,
+          "only_this_hit_net_yen": 320,
+          "break_even_hit_probability": 0.1388888888888889,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            9,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.0,
+          "odds_high": 9.5,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 30.18,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 900,
+          "only_this_hit_net_yen": 500,
+          "break_even_hit_probability": 0.1111111111111111,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 12,
+          "horses": [
+            1,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 6.5,
+          "odds_high": 6.9,
+          "updated_at_jst": "2026-10-12T12:42:00+09:00",
+          "quote_age_minutes": 12.18,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 650,
+          "only_this_hit_net_yen": 250,
+          "break_even_hit_probability": 0.15384615384615385,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=0"
+        },
+        {
+          "race": 12,
+          "horses": [
+            6,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.3,
+          "odds_high": 9.8,
+          "updated_at_jst": "2026-10-12T12:42:00+09:00",
+          "quote_age_minutes": 12.18,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 930,
+          "only_this_hit_net_yen": 530,
+          "break_even_hit_probability": 0.10752688172043011,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=0"
+        }
+      ],
+      "race_scenarios": [
+        {
+          "race": 10,
+          "stake_yen": 100,
+          "common_axes": [
+            2,
+            4
+          ],
+          "distinct_top3_sets_enumerated": 120,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 720,
+          "max_low_return_scenario_yen": 720,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 11,
+          "stake_yen": 100,
+          "common_axes": [
+            9,
+            14
+          ],
+          "distinct_top3_sets_enumerated": 816,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 900,
+          "max_low_return_scenario_yen": 900,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 12,
+          "stake_yen": 200,
+          "common_axes": [
+            14
+          ],
+          "distinct_top3_sets_enumerated": 560,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 650,
+          "max_low_return_scenario_yen": 1580,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        }
+      ],
+      "purchase_executed": false
+    }
+  },
+  "limits": [
+    "中間オッズ下限を固定した条件付き収支。最終払戻を保証しない。",
+    "実績率や1/オッズを今日の的中確率と解釈しない。",
+    "発走2分前以降は新規候補から除外。実購入なし。"
+  ]
+}
