@@ -32,3 +32,9 @@ jobs:
           python scripts/ecology_panel.py --input tmp/fabricated.csv --audit tmp/readiness.json --features tmp/lagged.csv
           python scripts/ecology_h1_pilot.py --input tmp/fabricated.csv --output tmp/h1.json --surface turf --permit-synthetic-demo
           python -c "import json; a=json.load(open('tmp/readiness.json')); b=json.load(open('tmp/h1.json')); assert a['status']=='SYNTHETIC_ONLY'; assert b['status']=='SYNTHETIC_SMOKE_ONLY'; assert b['within_between']['individual_exposure_baseline_computed_from_training_only']"
+      - name: End-to-end H2 changing-field simulation (never actual results)
+        run: |
+          python scripts/ecology_demo_competitors.py --output tmp/fake-competitors.csv --days 65 --horses 36 --runners 12 --seed 512
+          python scripts/ecology_panel.py --input tmp/fake-competitors.csv --audit tmp/h2-readiness.json --features tmp/h2-lagged.csv
+          python scripts/ecology_h2_pilot.py --input tmp/fake-competitors.csv --output tmp/h2-demo.json --surface turf --permit-synthetic-demo
+          python -c "import json; a=json.load(open('tmp/h2-readiness.json')); b=json.load(open('tmp/h2-demo.json')); assert a['status']=='SYNTHETIC_ONLY'; assert b['status']=='SYNTHETIC_H2_SMOKE_ONLY'; assert b['h2_overlap']['training_horses_with_4plus_distinct_context_exposures']>=8; assert b['m0']['converged'] and b['m1']['converged']"
