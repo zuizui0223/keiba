@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "scope": "Race names appearing among rated top-three performances in the frozen last-four starts for Kyoto R7-R12 development data.",
+  "sources": [
+    "https://www.jra.go.jp/keiba/program/2026/",
+    "https://www.jra.go.jp/keiba/program/2026/pdf/listed.pdf",
+    "https://www.jra.go.jp/keiba/overseas/historia/2025.html"
+  ],
+  "tiers": {
+    "1351TS": "GII",
+    "NZT": "GII",
+    "シンザン記念": "GIII",
+    "ダービーCT": "GIII",
+    "パラダイスS": "L",
+    "ファルコンS": "GIII",
+    "愛知杯": "GIII",
+    "京王杯SC": "GII",
+    "阪急杯": "GIII",
+    "朱鷺S": "L",
+    "谷川岳S": "L",
+    "中京記念": "GIII",
+    "朝日杯FS": "GI",
+    "東風S": "L",
+    "福島牝馬S": "GIII",
+    "睦月S": "OP",
+    "洛陽S": "L"
+  },
+  "rule_note": "Q accepts a Listed win, or a top-three finish in GI/GII/GIII. OP without Listed status does not qualify."
+}
