@@ -1,0 +1,1303 @@
+{
+  "race_id": "2608040507",
+  "created_at_utc": "2026-10-12T04:16:16.487657+00:00",
+  "input_path": "data/2026-10-12/r7_markets.json",
+  "input_sha256": "a49208efc28868e4690f6d7c88a747a39fcf026c114470a30f94aea07ff1ace1",
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "solver": "scipy.optimize.linprog(method=highs)",
+  "objective": "maximize minimum gross return / total purchase across all 16P3 outcomes",
+  "outcome_count": 3360,
+  "available_ticket_count": 1119,
+  "available_market_sizes": {
+    "win": 16,
+    "place": 16,
+    "frame": 36,
+    "quinella": 120,
+    "wide": 120,
+    "exacta": 240,
+    "trio": 284,
+    "trifecta": 287
+  },
+  "full_market_sizes": {
+    "win": 16,
+    "place": 16,
+    "frame": 36,
+    "quinella": 120,
+    "wide": 120,
+    "exacta": 240,
+    "trio": 560,
+    "trifecta": 3360
+  },
+  "maximin_gross_return_multiplier": 0.8827647899016192,
+  "maximin_net_return_fraction": -0.11723521009838078,
+  "nonzero_ticket_count_tolerance_1e_8": 113,
+  "selected_tickets": [
+    {
+      "type": "frame",
+      "selection": [
+        6,
+        8
+      ],
+      "odds_low": 6.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.13580996767717218
+    },
+    {
+      "type": "frame",
+      "selection": [
+        1,
+        6
+      ],
+      "odds_low": 10.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.08827647899016192
+    },
+    {
+      "type": "frame",
+      "selection": [
+        1,
+        8
+      ],
+      "odds_low": 11.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.08025134453651084
+    },
+    {
+      "type": "win",
+      "selection": [
+        9
+      ],
+      "odds_low": 11.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.07743550788610695
+    },
+    {
+      "type": "frame",
+      "selection": [
+        3,
+        6
+      ],
+      "odds_low": 14.1,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.06260743190791626
+    },
+    {
+      "type": "win",
+      "selection": [
+        10
+      ],
+      "odds_low": 15.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.055519798107020076
+    },
+    {
+      "type": "frame",
+      "selection": [
+        3,
+        8
+      ],
+      "odds_low": 16.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.05317860180130236
+    },
+    {
+      "type": "frame",
+      "selection": [
+        1,
+        3
+      ],
+      "odds_low": 22.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.039060388933699966
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        11,
+        12
+      ],
+      "odds_low": 27.7,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.03186876497839781
+    },
+    {
+      "type": "frame",
+      "selection": [
+        4,
+        6
+      ],
+      "odds_low": 32.1,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.027500460744598727
+    },
+    {
+      "type": "frame",
+      "selection": [
+        1,
+        4
+      ],
+      "odds_low": 44.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.019660685743911343
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        15,
+        16
+      ],
+      "odds_low": 47.3,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.018663103380583915
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        15,
+        9
+      ],
+      "odds_low": 51.2,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.017241499802766
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        12,
+        9
+      ],
+      "odds_low": 52.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.016976245959646523
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        15,
+        10
+      ],
+      "odds_low": 52.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.016719030111773094
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        2,
+        9
+      ],
+      "odds_low": 54.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.016347496109289244
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        12,
+        10
+      ],
+      "odds_low": 54.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.016197519080763657
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        11,
+        9
+      ],
+      "odds_low": 57.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.015379177524418416
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        2,
+        10
+      ],
+      "odds_low": 63.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.014012139522247924
+    },
+    {
+      "type": "frame",
+      "selection": [
+        3,
+        4
+      ],
+      "odds_low": 63.2,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.013967797308569924
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        11,
+        10
+      ],
+      "odds_low": 79.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.011090009923387205
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        7,
+        15
+      ],
+      "odds_low": 83.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.010635720360260472
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        5,
+        9
+      ],
+      "odds_low": 83.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.010559387439014585
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        5,
+        10
+      ],
+      "odds_low": 106.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.008281095590071477
+    },
+    {
+      "type": "frame",
+      "selection": [
+        2,
+        3
+      ],
+      "odds_low": 108.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "weight": 0.008151106093274416
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        4,
+        12
+      ],
+      "odds_low": 111.1,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.00794567767688226
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        2,
+        4
+      ],
+      "odds_low": 125.5,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.007033982389654337
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        16,
+        9
+      ],
+      "odds_low": 155.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.005666012772154167
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        4,
+        15
+      ],
+      "odds_low": 156.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.005658748653215508
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        1,
+        2
+      ],
+      "odds_low": 168.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.005254552320842971
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        4,
+        11
+      ],
+      "odds_low": 183.1,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0048212167662567956
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        4,
+        7
+      ],
+      "odds_low": 201.5,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.004380966699263619
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        7,
+        9
+      ],
+      "odds_low": 205.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.004299877203612368
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        16,
+        10
+      ],
+      "odds_low": 206.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.004268688539176108
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        4,
+        16
+      ],
+      "odds_low": 212.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.004163984858026506
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        4,
+        9
+      ],
+      "odds_low": 221.7,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.003981798781694268
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        12,
+        13
+      ],
+      "odds_low": 245.4,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.003597248532606435
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        7,
+        16
+      ],
+      "odds_low": 289.8,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.003046117287445201
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        7,
+        10
+      ],
+      "odds_low": 317.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00277686313275124
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        13,
+        15
+      ],
+      "odds_low": 326.5,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0027037206428839793
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        15,
+        8
+      ],
+      "odds_low": 339.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0026017235187197735
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        2,
+        14
+      ],
+      "odds_low": 354.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.002493685847179715
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        14,
+        15
+      ],
+      "odds_low": 357.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.002472730503926104
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        6,
+        9
+      ],
+      "odds_low": 373.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.002364126378954524
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        11,
+        13
+      ],
+      "odds_low": 394.9,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.002235413496838742
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        2,
+        3
+      ],
+      "odds_low": 483.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0018246481808632063
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        4,
+        10
+      ],
+      "odds_low": 483.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0018246481808632063
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        5,
+        14
+      ],
+      "odds_low": 540.1,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0016344469355704854
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        2,
+        13
+      ],
+      "odds_low": 540.2,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.001634144372272527
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        8,
+        9
+      ],
+      "odds_low": 550.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0016024047738275899
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        12,
+        3
+      ],
+      "odds_low": 550.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0016024047738275899
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        8,
+        15
+      ],
+      "odds_low": 567.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0015547107958816823
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        3,
+        11
+      ],
+      "odds_low": 571.9,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0015435649412513014
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        5,
+        6
+      ],
+      "odds_low": 579.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.001523058643722602
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        7,
+        8
+      ],
+      "odds_low": 579.7,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0015227959115087445
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        6,
+        5
+      ],
+      "odds_low": 662.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0013326763132572755
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        1,
+        9
+      ],
+      "odds_low": 687.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00128495602605767
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        8,
+        16
+      ],
+      "odds_low": 694.4,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0012712626582684608
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        12,
+        14
+      ],
+      "odds_low": 695.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0012692520343660953
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        11,
+        14
+      ],
+      "odds_low": 706.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0012503750565178743
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        1,
+        4
+      ],
+      "odds_low": 730.5,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0012084391374423261
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        7,
+        13
+      ],
+      "odds_low": 743.4,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0011874694510379596
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        13,
+        16
+      ],
+      "odds_low": 766.0,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0011524344515686936
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        2
+      ],
+      "odds_low": 783.7,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0011264065202266419
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        5,
+        13
+      ],
+      "odds_low": 806.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.001094698400175619
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        15,
+        3
+      ],
+      "odds_low": 806.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0010946984001756186
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        1,
+        10
+      ],
+      "odds_low": 943.1,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0009360245890166676
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        7,
+        3
+      ],
+      "odds_low": 943.1,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0009360245890166676
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        2
+      ],
+      "odds_low": 943.1,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0009360245890166676
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        5
+      ],
+      "odds_low": 959.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0009201217322301639
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        9
+      ],
+      "odds_low": 959.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0009201217322301639
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        12
+      ],
+      "odds_low": 976.2,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0009042868161254038
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        12
+      ],
+      "odds_low": 993.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0008884508755048503
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        8,
+        10
+      ],
+      "odds_low": 993.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0008884508755048502
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        9
+      ],
+      "odds_low": 993.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0008884508755048502
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        7,
+        14
+      ],
+      "odds_low": 1071.1,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0008241665483163283
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        15
+      ],
+      "odds_low": 1112.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0007932112408137471
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        9
+      ],
+      "odds_low": 1135.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0007773553979408412
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        10
+      ],
+      "odds_low": 1183.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0007456413463144013
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        6,
+        10
+      ],
+      "odds_low": 1294.1,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.000682145730547577
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        1,
+        13
+      ],
+      "odds_low": 1330.4,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0006635333658310427
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        10
+      ],
+      "odds_low": 1545.7,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0005711100406945849
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        8,
+        3
+      ],
+      "odds_low": 1589.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0005552329013784635
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        10
+      ],
+      "odds_low": 1686.2,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0005235231822450595
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        8,
+        13
+      ],
+      "odds_low": 1780.1,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0004959074152584795
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        8,
+        4
+      ],
+      "odds_low": 1795.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0004917909693045232
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        8,
+        14
+      ],
+      "odds_low": 1886.4,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.0004679626748842341
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        16,
+        3
+      ],
+      "odds_low": 1987.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00044420308453762354
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        8
+      ],
+      "odds_low": 2061.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0004283186753525566
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        4,
+        3
+      ],
+      "odds_low": 2061.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0004283186753525566
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        4,
+        8
+      ],
+      "odds_low": 2061.0,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0004283186753525566
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        4,
+        14
+      ],
+      "odds_low": 2140.2,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0004124683627238666
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        7
+      ],
+      "odds_low": 2318.6,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00038073181657104254
+    },
+    {
+      "type": "quinella",
+      "selection": [
+        3,
+        14
+      ],
+      "odds_low": 2384.7,
+      "updated_at_jst": "2026-10-12T12:42:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040507?ninki=1",
+      "weight": 0.00037017855071984704
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        16,
+        14
+      ],
+      "odds_low": 2419.4,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00036486930226569363
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        16
+      ],
+      "odds_low": 2649.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0003331439315803529
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        16
+      ],
+      "odds_low": 2649.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0003331439315803529
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        4,
+        13
+      ],
+      "odds_low": 2782.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0003172787944871578
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        4
+      ],
+      "odds_low": 2782.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0003172787944871578
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        4
+      ],
+      "odds_low": 2928.7,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0003014186464648545
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        1
+      ],
+      "odds_low": 2928.7,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0003014186464648545
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        1,
+        14
+      ],
+      "odds_low": 3091.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0002855457835683711
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        1,
+        3
+      ],
+      "odds_low": 3273.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00026968649066740573
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        1
+      ],
+      "odds_low": 3273.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00026968649066740573
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        14
+      ],
+      "odds_low": 3273.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00026968649066740573
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        4
+      ],
+      "odds_low": 3273.3,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.0002696864906674056
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        13
+      ],
+      "odds_low": 3477.9,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00025382121104736166
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        3
+      ],
+      "odds_low": 5564.7,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00015863654642687283
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        6,
+        13
+      ],
+      "odds_low": 6955.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00012691060552368083
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        6,
+        14
+      ],
+      "odds_low": 6955.8,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00012691060552368083
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        13,
+        6
+      ],
+      "odds_low": 7949.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 0.00011104658027569271
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        3,
+        13
+      ],
+      "odds_low": 9274.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 9.51819278561237e-05
+    },
+    {
+      "type": "exacta",
+      "selection": [
+        14,
+        6
+      ],
+      "odds_low": 9274.5,
+      "updated_at_jst": "2026-10-12T13:03:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040507?ninki=1",
+      "weight": 9.51819278561237e-05
+    }
+  ],
+  "verification": {
+    "weight_sum_minus_one": 6.661338147750939e-16,
+    "min_weight": -0.0,
+    "max_primal_coverage_violation": 2.220446049250313e-15,
+    "minimum_recomputed_return": 0.882764789901617,
+    "maximum_recomputed_return": 0.8827647899016214,
+    "dual_weight_sum_minus_one": 8.881784197001252e-16,
+    "min_dual_weight": 0.0,
+    "dual_upper_bound": 0.8827647899016193,
+    "max_dual_constraint_violation": 1.4876988529977098e-14,
+    "primal_dual_gap": 1.1102230246251565e-16,
+    "binding_outcome_count_tolerance_1e_7": 3360
+  },
+  "assumptions": [
+    "通常の同着なし上位3着、取消・返還なし。",
+    "複勝とワイドは表示下限オッズを全的中結果に固定。",
+    "枠連は馬番1・2が1枠、3・4が2枠、以降同様で15・16が8枠。",
+    "購入比率は非負連続値。100円単位、予算、自己購入によるオッズ影響を未反映。",
+    "市場の更新時刻は混在し、中間オッズは購入時に固定されない。",
+    "3連複・3連単は部分取得。取得済み券に限定した最適値であり、全券種全組合せの最適値ではない。",
+    "結果確率は設定していない。期待利益の最大化、的中予測ではない。"
+  ],
+  "reproduction_command": "python -B scripts/r7_coverage_lp.py --input data/2026-10-12/r7_markets.json --output reports/2026-10-12/r7-coverage-lp.json"
+}

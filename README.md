@@ -17,7 +17,27 @@
 
 ## 再現
 
-Python標準ライブラリのみを使用します。Python 3.12.14で確認しました。
+基本分析と券種間の価格比較はPython標準ライブラリのみを使用します。Python 3.12.14で確認しました。
+
+## 7R：全8券種・京都実績・騎手との相性
+
+- [具体的な買い方と判断根拠](reports/2026-10-12/r7-all-bets.md)
+- [取得1,119券の中間オッズと更新時刻](data/2026-10-12/r7_markets.json)
+- [同じ的中条件を買う価格比較](reports/2026-10-12/r7-price-comparison.json)
+- [全3,360結果をカバーする配分計算](reports/2026-10-12/r7-coverage-lp.json)
+- [馬と今回の騎手のコンビ履歴](reports/2026-10-12/r7-partnership-evidence.json)
+- [騎手の京都ダート1,900m成績と集計期間](reports/2026-10-12/r7-jockey-evidence.json)
+
+取得券の保存オッズを固定し、連続金額で全結果の最低払戻を最大化すると、購入額の88.28%でした。これは的中予測・期待利益の最適化ではありません。3連複と3連単は部分取得で、時刻も混在しています。100円単位の購入配分や実際の変動払戻を保証する計算ではありません。
+
+```bash
+python scripts/compare_r7_markets.py
+python -B scripts/r7_coverage_lp.py
+```
+
+後者のみNumPyとSciPyが必要です。NumPy 2.3.5、SciPy 1.17.0で計算し、全結果の払戻と主問題・双対問題の差を検証しました。
+
+### 基本分析の再現
 
 ```bash
 python scripts/analyze.py --as-of 2026-10-12T12:44:35+09:00

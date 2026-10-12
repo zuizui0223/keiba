@@ -1,0 +1,140 @@
+{
+  "race_id": "2608040507",
+  "date": "2026-10-12",
+  "venue": "京都",
+  "surface": "dirt",
+  "distance_m": 1900,
+  "scope": "騎手が全馬に騎乗した同コース成績。今回の馬とのコンビ成績ではない。",
+  "primary_reference": {
+    "url": "https://www.keibadata.com/courses/kyoto/dirt/1900",
+    "period_start": "2023-10-04",
+    "period_end": "2026-10-04",
+    "source_last_updated": "2026-10-05",
+    "web_refs": [
+      "turn138view0",
+      "turn136view0"
+    ],
+    "period_evidence": "同ページ42行に2023年10月4日〜2026年10月4日と明記。",
+    "statistics_evidence": "同ページ296/299/300行の松山・西村・田口行。"
+  },
+  "jockeys": [
+    {
+      "horse_number": 15,
+      "name": "北村友一",
+      "record": null,
+      "rides": null,
+      "win_rate_pct": null,
+      "top3_rate_pct": null,
+      "win_return_pct": null,
+      "place_return_pct": null,
+      "source_url": null,
+      "status": "same_period_unverified"
+    },
+    {
+      "horse_number": 2,
+      "name": "池添謙一",
+      "record": null,
+      "rides": null,
+      "win_rate_pct": null,
+      "top3_rate_pct": null,
+      "win_return_pct": null,
+      "place_return_pct": null,
+      "source_url": null,
+      "status": "same_period_unverified"
+    },
+    {
+      "horse_number": 5,
+      "name": "角田大和",
+      "record": null,
+      "rides": null,
+      "win_rate_pct": null,
+      "top3_rate_pct": null,
+      "win_return_pct": null,
+      "place_return_pct": null,
+      "source_url": null,
+      "status": "same_period_unverified"
+    },
+    {
+      "horse_number": 12,
+      "name": "西村淳也",
+      "record": [
+        6,
+        5,
+        3,
+        25
+      ],
+      "rides": 39,
+      "win_rate_pct": 15.4,
+      "top3_rate_pct": 35.9,
+      "win_return_pct": 82.3,
+      "place_return_pct": 91.8,
+      "source_url": "https://www.keibadata.com/courses/kyoto/dirt/1900",
+      "status": "confirmed_same_period"
+    },
+    {
+      "horse_number": 9,
+      "name": "松山弘平",
+      "record": [
+        8,
+        8,
+        4,
+        22
+      ],
+      "rides": 42,
+      "win_rate_pct": 19.0,
+      "top3_rate_pct": 47.6,
+      "win_return_pct": 89.5,
+      "place_return_pct": 94.0,
+      "source_url": "https://www.keibadata.com/courses/kyoto/dirt/1900",
+      "status": "confirmed_same_period"
+    },
+    {
+      "horse_number": 11,
+      "name": "鮫島良太",
+      "record": null,
+      "rides": null,
+      "win_rate_pct": null,
+      "top3_rate_pct": null,
+      "win_return_pct": null,
+      "place_return_pct": null,
+      "source_url": null,
+      "status": "same_period_unverified"
+    },
+    {
+      "horse_number": 7,
+      "name": "田口貫太",
+      "record": [
+        5,
+        7,
+        5,
+        51
+      ],
+      "rides": 68,
+      "win_rate_pct": 7.4,
+      "top3_rate_pct": 25.0,
+      "win_return_pct": 144.9,
+      "place_return_pct": 105.1,
+      "source_url": "https://www.keibadata.com/courses/kyoto/dirt/1900",
+      "status": "confirmed_same_period"
+    }
+  ],
+  "notes": [
+    "京都ダ1900mの同一明示期間で数値取得できた対象は松山弘平、西村淳也、田口貫太の3騎手。残り4名は同期間未確認で0成績ではない。",
+    "残り40名の表示は動的展開のため検索取得では読めず。",
+    "松山は確認できた3名の中で勝率・複勝率が高いが、7名全体の順位としない。",
+    "田口の回収率は過去の配当を含む標本値で、今日の期待値や利益の保証ではない。",
+    "騎乗馬の人気・能力・クラスを調整していない。騎手の純粋な技量または今回の的中確率ではない。"
+  ],
+  "excluded_sources": [
+    {
+      "url": "https://race.netkeiba.com/race/data_list.html?cid=2&mode=courseanalysis&race_id=202608040507",
+      "reason": "過去3年間の表記だが厳密な集計終期が不明。無料表示は最初3頭の騎手のみ。今回の同期間比較に混ぜない。",
+      "web_ref": "turn128view0"
+    },
+    {
+      "url": "https://keiba-course.com/course/kyoto-dirt-1900/",
+      "reason": "固定期間2023-01-01〜2025-12-31。現行参考期間とは異なるため比較表に混ぜない。",
+      "web_ref": "turn136view1"
+    }
+  ]
+}
