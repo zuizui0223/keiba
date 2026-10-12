@@ -186,3 +186,26 @@ Observed failure on a null case must be interpreted as **a warning**;
 a pass on a planted effect is not biological evidence. Implementation
 checks can operate with wholly synthetic datasets, whereas the actual
 Kyoto one-day historical card remains **HOLD for H1 and H2**.
+
+
+## Outcome-dependence correction for H2 (2026-10-12)
+
+An important failure mode was identified: race-relative z-speed changes
+mechanically when opponents' finish times change, even if the focal horse
+is unchanged. Therefore, **H2 biological interpretations must not be
+based solely on within-race z-scored speed or rank**.
+
+`scripts/ecology_h2_absolute_speed.py` fits focal **raw individual
+speed (m/s)** with crossed horse and race fixed intercepts and
+style×going controls, restricting the competitor-context question to
+an identifiable focal style×within-horse contextual interaction.
+A held-out race has an unknown race intercept; prediction is evaluated
+on *within-race raw speed contrasts* rather than the misleading
+race-relative z denominator. Both leave-one-out and whole-field
+context definitions are retained.
+
+A versioned fictional null/planted/confounded stress check is recorded
+in [the absolute-speed synthetic audit](ecology-h2-absolute-stress-audit.md).
+The new method is **exploratory only**, not a causal solution to
+nonrandom entry, race performance censoring, or changing jockey/fitness.
+Read [outcome methods](ecology-h2-absolute-outcome.md).
