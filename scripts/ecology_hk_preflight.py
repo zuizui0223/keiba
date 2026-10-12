@@ -167,11 +167,20 @@ def preflight(races_csv: Path, runs_csv: Path) -> dict:
         if len(entries)<4:
             continue
         # Unknown/empty going is NOT a level with measurable condition.
-        levels={race_index[e["race_id"]]["going"] for e in entries}
-        levels.discard("")
+        going_counts_in_stratum=Counter(
+            race_index[e["race_id"]]["going"] for e in entries
+            if race_index[e["race_id"]]["going"]
+        )
+        levels=set(going_counts_in_stratum)
         if len(levels)>=2:
-            horses_cross_going_in_any_stratum.add(horse)
             stratum_support["horse_by_stratum_4plus_with_2plus_going_labels"]+=1
+        # Require >1 repeated start in at least two environments.
+        # A 3:1 exposure imbalance provides weak cross-environment
+        # within-horse support and must NOT pass the preregistered H1 gate.
+        replicated_going=sum(n>=2 for n in going_counts_in_stratum.values())>=2
+        if replicated_going:
+            horses_cross_going_in_any_stratum.add(horse)
+            stratum_support["horse_by_stratum_2plus_starts_in_2plus_going_labels"]+=1
         rival_sets={
             frozenset(r["horse_id"] for r in by_race[e["race_id"]]
                       if r["horse_id"]!=horse)
@@ -180,7 +189,7 @@ def preflight(races_csv: Path, runs_csv: Path) -> dict:
         if len(rival_sets)>=2:
             horses_repeated_rival_context_in_any_stratum.add(horse)
             stratum_support["horse_by_stratum_4plus_with_2plus_opposing_rosters"]+=1
-        if len(levels)>=2 and len(rival_sets)>=2:
+        if replicated_going and len(rival_sets)>=2:
             stratum_support["horse_by_stratum_both_environment_and_rival_overlap"]+=1
 
     missing_dates=sum(not r["date"] for r in races)
