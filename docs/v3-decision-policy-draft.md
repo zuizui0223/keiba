@@ -1,6 +1,6 @@
 # v3 decision-policy draft after the 12R forward-test failure
 
-Status: post-result design draft, **not validated**.
+Status: post-result design draft, **not validated**. The data-completeness gate is implemented and currently fails closed on the frozen 2026-10-12 inputs.
 
 ## 1. Data-completeness gate before ranking
 
@@ -77,3 +77,27 @@ For each frozen version:
 - compare against the market baseline.
 
 Only after multiple independent races should a version be called improved.
+
+
+## Implementation status (2026-10-13)
+
+Implemented:
+- `scripts/audit_recent_history.py` validates structured recent-run history before ranking.
+- `tests/test_recent_history_gate.py` covers missing runs, stale source checks, lightly raced horses, future dates, and race-level fail-closed behavior.
+- Local TDD verification: 6 tests passed after an initial import failure before implementation.
+- `reports/2026-10-12/v3-recent-history-gate-audit.json` records the current migration state.
+
+Current frozen-input audit:
+- Kyoto 7R-12R: 6 races, 83 runners.
+- PASS: 0.
+- DATA_HOLD: 83.
+- All 83 currently lack the new structured fields `career_starts`, `history_checked_at_jst`, and `recent_runs`.
+
+This does **not** mean the old JSON is unusable as a historical record. It means v3 will not use it for a new ranking decision until recent-history data has been structurally refreshed.
+
+Next migration requirement:
+1. add `career_starts`;
+2. store the latest 3 runs, or every career run when fewer than 3 starts exist;
+3. include date, class, surface, distance, finish, beaten margin and source URL for each run;
+4. record `history_checked_at_jst` at refresh time;
+5. pass the data gate before ranking.
