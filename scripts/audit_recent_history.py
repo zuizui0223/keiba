@@ -34,12 +34,30 @@ def validate_horse_history(horse, race_date, as_of, min_recent_runs=3,
         except (TypeError, ValueError):
             reasons.append('invalid_history_checked_at')
 
+    source_url = horse.get('history_source_url')
+    if not isinstance(source_url, str) or not source_url.startswith(('http://', 'https://')):
+        reasons.append('missing_history_source_url')
+
+    source_latest = horse.get('source_latest_run_date')
+
     career_starts = horse.get('career_starts')
     if type(career_starts) is not int or career_starts < 0:
         reasons.append('invalid_or_missing_career_starts')
         required_runs = min_recent_runs
     else:
         required_runs = min(min_recent_runs, career_starts)
+
+    source_latest_day = None
+    if type(career_starts) is int and career_starts > 0:
+        if not source_latest:
+            reasons.append('missing_source_latest_run_date')
+        else:
+            try:
+                source_latest_day = date.fromisoformat(str(source_latest))
+                if source_latest_day >= date.fromisoformat(race_date):
+                    reasons.append('future_source_latest_run_date')
+            except ValueError:
+                reasons.append('invalid_source_latest_run_date')
 
     runs = horse.get('recent_runs')
     if runs is None:
@@ -79,6 +97,8 @@ def validate_horse_history(horse, race_date, as_of, min_recent_runs=3,
 
     if parsed_dates and parsed_dates != sorted(parsed_dates, reverse=True):
         reasons.append('recent_runs_not_newest_first')
+    if source_latest_day is not None and parsed_dates and parsed_dates[0] != source_latest_day:
+        reasons.append('latest_run_mismatch')
 
     reasons = sorted(set(reasons))
     return {
