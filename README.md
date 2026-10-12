@@ -14,11 +14,12 @@ Read:
 - [Ecological research design: hypotheses, alternatives, models, falsification criteria](docs/ecology-research-plan.md)
 - [Longitudinal horse–race panel specification and leakage checks](docs/ecology-panel-schema.md)
 - [Actual Kyoto 2026-10-12 archive: explicit H1/H2 data-gap audit](docs/ecology-archive-gap-audit.md)
+- [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
 
 - Present on the separate experimental branch [analysis/kyoto-20261012](https://github.com/zuizui0223/keiba/tree/analysis/kyoto-20261012): a single Kyoto race-day card with descriptive horse histories, source/time-stamped odds snapshots, market-comparison scripts and reproducibility checks.
-- **Not yet present on this research branch**: multi-year horse–race panel, official finish-time outcome table, pre-race opponent-behavior history, fitted random-slope models, or out-of-time validation.
+- **Not yet present from actual races**: a licensed multi-year horse–race panel, complete official finish times, validated historical running-style profiles, or independently replicated effects. **Artificial test data** can run both H1 and H2 exploratory models with chronological evaluation.
 - One-day win/place/third summaries cannot establish reaction norms, adaptive specialization, animal personality, natural selection, competition causality, or expected wagering returns.
 
 ## Research vs decision support
@@ -65,10 +66,41 @@ rosters are available, a horse random intercept, and optionally a horse random
 training dates only; train/test races are chronologically separated. It omits
 several confounder adjustments (jockey, age, class changes, selective race entry),
 cannot establish physiological plasticity, and reports no validated ecological
-effect. H2 and confirmatory causal analyses are not yet fitted.
+effect. An exploratory H2 interaction pilot is implemented separately; confirmatory causal analyses are not yet fitted.
 
 **Data rights:** JRA-VAN's standard Article 7 is restrictive about public
 redistribution. Do not add real licensed extracts to this repository before
 obtaining appropriate permissions:
 https://jra-van.jp/info/rule.html and
 https://developer.jra-van.jp/t/topic/899.
+
+
+## H2: changing-competitor-field exploratory model (fabricated only)
+
+A second **independent** demo constructs new rivals across dates and fits
+an own-style × historical-other-front-runner-composition interaction:
+
+```bash
+python scripts/ecology_demo_competitors.py --output tmp/competitors-FAKE.csv --days 65 --horses 36 --runners 12
+python scripts/ecology_panel.py --input tmp/competitors-FAKE.csv --audit tmp/h2-audit.json --features tmp/h2-lagged.csv
+python scripts/ecology_h2_pilot.py --input tmp/competitors-FAKE.csv --output tmp/h2-pilot.json --surface turf --permit-synthetic-demo
+```
+
+The two competing models contain identical baseline historical form and
+opponent-strength predictors, with the interaction term added only in H2.
+Horse intercepts are partially pooled, train/test is date-ordered, and all
+feature centering learns from training dates only. Both models are compared
+using future race-relative speed prediction errors.
+
+**Never interpret these simulated coefficients as findings about real horses.**
+The dynamic-field generator deliberately inserts a known interaction to
+exercise the code. The model lacks a robust causal identification strategy,
+horse/race crossed uncertainty, and a formal source-licensed data cohort.
+Read [H2 methods](docs/ecology-h2-methods.md) before interpreting outputs.
+
+Previously known science must be distinguished from our proposal:
+Spence et al. (2012), DOI
+[10.1098/rsbl.2011.1120](https://doi.org/10.1098/rsbl.2011.1120),
+reported pacing and aerodynamic drafting associations from
+44,803 tracked runners across 3,357 races. Merely observing a competitive
+effect or front-runner performance is **not** an original ecological discovery.
