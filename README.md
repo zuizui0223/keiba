@@ -104,3 +104,29 @@ Spence et al. (2012), DOI
 reported pacing and aerodynamic drafting associations from
 44,803 tracked runners across 3,357 races. Merely observing a competitive
 effect or front-runner performance is **not** an original ecological discovery.
+
+
+## Ecological social-interaction falsification tests (research branch)
+
+The next-level pilot treats changing opponents as a repeated **social
+environment** rather than another betting odds feature.
+
+- [Within-horse rival context, fixed effects and two-way clustered SE](scripts/ecology_h2_within_between.py)
+- [Three fabricated mechanisms: null, planted interaction, confounded null](scripts/ecology_h2_falsification.py)
+- [Methodological limits, real-data prerequisites and published ecological theory](docs/ecology-h2-methods.md)
+
+Reproduce the strictly synthetic falsification pipeline:
+
+```bash
+python scripts/ecology_demo_competitors.py --output tmp/competitors-FAKE.csv --days 65 --horses 36 --runners 12
+python scripts/ecology_h2_within_between.py --input tmp/competitors-FAKE.csv --output tmp/h2-within.json --permit-synthetic-demo
+python scripts/ecology_h2_falsification.py --output tmp/h2-stress.json --seeds 512 911
+```
+
+**This is not a full social animal model**: see van de Pol & Wright (2009,
+https://doi.org/10.1016/j.anbehav.2008.11.006) and Martin & Jaeggi
+(2022, https://doi.org/10.1111/jeb.13900). The current pipeline does
+not estimate heritability, fitness, social selection or causal social
+plasticity. Its null and confounded-null scenarios are checks for
+software/design weakness, not actual observations. Real results remain
+unavailable until authorized multi-year racing records are assembled.
