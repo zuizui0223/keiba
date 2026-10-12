@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-12",
+  "checked_at_jst": "2026-10-12T13:41:10+09:00",
+  "threshold_pct": 20,
+  "no_purchase_executed": true,
+  "notes": [
+    "取得した中間表示の更新時刻は市場・ページで異なる。確認時刻の最新価格とは限らず最終払戻は固定されない。",
+    "指定比較基準は既存data/2026-10-12/kyoto_09.json・kyoto_10.jsonと一致。",
+    "10Rは単複ページより新しい13:38出馬表に掲載された単勝値を採用し、取得元を明記。"
+  ],
+  "races": [
+    {
+      "race": 9,
+      "race_id": "2608040509",
+      "start_jst": "2026-10-12T14:35:00+09:00",
+      "win_odds": {
+        "updated_at_jst": "2026-10-12T13:32:00+09:00",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040509",
+        "source_ref": "turn172view0",
+        "quotes": [
+          {
+            "number": 4,
+            "name": "ソルチェリア",
+            "odds": 5.4
+          },
+          {
+            "number": 10,
+            "name": "ニホンピロデヴィン",
+            "odds": 4.7
+          },
+          {
+            "number": 3,
+            "name": "クロノスバレット",
+            "odds": 9.3
+          }
+        ]
+      },
+      "wide": {
+        "updated_at_jst": "2026-10-12T13:31:00+09:00",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040509?ninki=0",
+        "source_ref": "turn172view1",
+        "quotes": [
+          {
+            "horses": [
+              4,
+              10
+            ],
+            "odds_low": 3.1,
+            "odds_high": 3.4,
+            "baseline_low": 3.3,
+            "baseline_high": 3.6,
+            "baseline_updated_at_jst": "2026-10-12T11:53:00+09:00",
+            "low_change_pct": -6.060606060606055,
+            "important_change": false
+          },
+          {
+            "horses": [
+              3,
+              4
+            ],
+            "odds_low": 5.7,
+            "odds_high": 6.4,
+            "baseline_low": 5.5,
+            "baseline_high": 6.2,
+            "baseline_updated_at_jst": "2026-10-12T11:53:00+09:00",
+            "low_change_pct": 3.6363636363636376,
+            "important_change": false
+          }
+        ]
+      },
+      "cancellation_check": {
+        "status": "no_cancellation_displayed",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040509",
+        "source_ref": "turn170view0",
+        "entry_updated_at_jst": "2026-10-12T13:16:00+09:00",
+        "notes": "出馬表に取消表示なし。13:32単複ページも全12頭に数値表示、****なし。発走直前までの保証ではない。"
+      }
+    },
+    {
+      "race": 10,
+      "race_id": "2608040510",
+      "start_jst": "2026-10-12T15:10:00+09:00",
+      "win_odds": {
+        "updated_at_jst": "2026-10-12T13:38:00+09:00",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040510",
+        "source_ref": "turn170view1",
+        "quotes": [
+          {
+            "number": 2,
+            "name": "カムアップローゼス",
+            "odds": 4.1
+          },
+          {
+            "number": 5,
+            "name": "アクセス",
+            "odds": 2.6
+          },
+          {
+            "number": 4,
+            "name": "エリカアンディーヴ",
+            "odds": 10.3
+          }
+        ]
+      },
+      "wide": {
+        "updated_at_jst": "2026-10-12T13:34:00+09:00",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+        "source_ref": "turn169view3",
+        "quotes": [
+          {
+            "horses": [
+              2,
+              5
+            ],
+            "odds_low": 2.5,
+            "odds_high": 2.9,
+            "baseline_low": 2.6,
+            "baseline_high": 3,
+            "baseline_updated_at_jst": "2026-10-12T12:31:00+09:00",
+            "low_change_pct": -3.8461538461538547,
+            "important_change": false
+          },
+          {
+            "horses": [
+              2,
+              4
+            ],
+            "odds_low": 7.3,
+            "odds_high": 8.6,
+            "baseline_low": 7.2,
+            "baseline_high": 8.5,
+            "baseline_updated_at_jst": "2026-10-12T12:31:00+09:00",
+            "low_change_pct": 1.388888888888884,
+            "important_change": false
+          }
+        ]
+      },
+      "older_win_snapshot": {
+        "updated_at_jst": "2026-10-12T13:22:00+09:00",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040510?ninki=1",
+        "source_ref": "turn169view2",
+        "quotes": [
+          {
+            "number": 2,
+            "odds": 4.4
+          },
+          {
+            "number": 5,
+            "odds": 2.5
+          },
+          {
+            "number": 4,
+            "odds": 10.2
+          }
+        ]
+      },
+      "cancellation_check": {
+        "status": "no_cancellation_displayed",
+        "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040510",
+        "source_ref": "turn170view1",
+        "entry_updated_at_jst": "2026-10-12T13:38:00+09:00",
+        "notes": "出馬表に取消表示なし。全10頭に数値表示。発走直前までの保証ではない。"
+      }
+    }
+  ],
+  "important_changes": []
+}

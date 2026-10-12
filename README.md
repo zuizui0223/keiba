@@ -57,6 +57,22 @@ python -B scripts/r7_coverage_lp.py
 
 後者のみNumPyとSciPyが必要です。NumPy 2.3.5、SciPy 1.17.0で計算し、全結果の払戻と主問題・双対問題の差を検証しました。
 
+## 8R：13:44更新の全券種比較
+
+- [8Rの具体的な買い方・全11頭の見立て・騎手との相性](reports/2026-10-12/r8-all-bets.md)
+- [全8券種838券・13:44更新値と公開HTMLのSHA256](data/2026-10-12/r8_markets_latest.json)
+- [全990結果の払戻最適化・同一条件の券種比較・100円刻み配分](reports/2026-10-12/r8-coverage-latest.json)
+- [馬と今回騎手の全履歴](reports/2026-10-12/r8-partnership-evidence.json)
+- [騎手の京都芝2000m同期間集計](reports/2026-10-12/r8-jockey-evidence.json)
+
+馬連5–11を個別の第一候補とし、3連複5–9–11を任意の追加候補にしています。価格監視で枠連1–8の包含優位と旧馬単配分の優位が消えた点を反映しました。オッズだけで正の期待値や的中確率は主張しません。後続レースの少点数案との重ね買いは前提にしません。
+
+```bash
+python -B scripts/r8_coverage_lp.py --input data/2026-10-12/r8_markets_latest.json --output reports/2026-10-12/r8-coverage-latest.json
+```
+
+前の価格は別snapshotに保存しています。13:44の8R入力は全市場が同じ表示更新時刻ですが、購入時にオッズが固定されるわけではありません。3連単は400/990通りの部分取得です。
+
 ### 基本分析の再現
 
 ```bash
