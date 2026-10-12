@@ -14,6 +14,7 @@ access does **not** imply redistribution or commercial permission.
 | Candidate | What seems available | Rights/compatibility check | Current decision |
 | --- | --- | --- | --- |
 | [Existing 2026-10-12 Kyoto analysis branch](https://github.com/zuizui0223/keiba/tree/analysis/kyoto-20261012) | 7 races, 95 starters, historical aggregate course counts, odds snapshots; not full individual starts across environments | No longitudinal horse×race exposure panel; race snapshots not enough | **H1/H2 HOLD** |
+| [Kaggle Hong Kong Horse Racing](https://www.kaggle.com/datasets/gdaley/hkracing) | `races.csv` plus `runs.csv`: stable horse and race IDs, ground conditions, distance, individual finishing time and first-sectional position, with repeated starts across races. Publisher describes dates as deliberately obscured | Dataset page claims **CC0**, but original HKJC/source-chain rights and obligations have not been independently verified. Obscured dates also prevent official-season/clock verification. Run our new **aggregate-only** `scripts/ecology_hk_preflight.py` on locally and lawfully obtained files; it refuses to promote this to the empirical H1/H2 pipeline | **TOP COMPATIBILITY CANDIDATE—PROVENANCE/TIMELINE HOLD** |
 | [Kaggle JRA日本中央競馬会 dataset](https://www.kaggle.com/datasets/takamotoki/jra-horse-racing-dataset) and [usage README](https://github.com/evanfadhil/japan_horse_racing_analysis) | 4 CSV categories described: race results, corner passage order, laptimes, odds (scraped from netkeiba; older historical archive) | Source/CSV reuse terms and any netkeiba redistribution rights **not verified**; an MIT license for analysis code does not license the underlying source dataset | **CANDIDATE—RIGHTS HOLD** |
 | [HK/SG historical racing archive](https://github.com/eprochasson/horserace_data) | Hong Kong/Singapore `performances`, `races`, `horses`, `sectional_times` CSV.gz; some historical record tables do not join 1:1 and may lack dates/races for earlier years | README says scraped from HKJC/SGTC, root has **no LICENSE file** (reviewed GitHub contents). Public GitHub alone does not establish permission to reproduce original results or provide a rights-cleared derived dataset | **CANDIDATE—RIGHTS HOLD** |
 | [Huggy French race sample](https://huggingface.co/datasets/huggy-engine/horse-racing-database-fr) | Sample explicitly lists CC BY 4.0, `courses.csv` (~931 races) and `rapports.csv`; parent vendor advertises larger multi-year commercial collection | Current freely listed files are race-level and payouts, **not** the complete horse×race performance panel/positions needed for H2; attribution and source-chain checks remain necessary | **NOT SUFFICIENT FOR H1/H2** |
@@ -52,3 +53,39 @@ or a free commercial preview as an explicit dataset license.
 
 Until then, a substantial, reproducible **ecological research code base**
 exists, but zero real-race H1/H2 biological claims are justified.
+
+
+## New offline HK screen: turn a promising dataset into measurable readiness
+
+The 2019 public Kaggle listing for
+[Horse Racing in HK](https://www.kaggle.com/datasets/gdaley/hkracing)
+describes `races.csv` / `runs.csv`, including `horse_id`,
+`race_id`, `position_sec1`, `finish_time`, `going`, `distance`,
+and stable horse-level metadata. The uploader marks the page **CC0**,
+but this is not independent verification of the original provider's
+rights to redistribute the records. Race dates have deliberately
+been changed; they must not be re-labelled as official calendar time.
+
+The following offline-only command screens schema compatibility,
+joining, repeated individual starts, changing opponent sets, first
+section measurement availability and missing finish times. It does
+**not** scrape, download, reproduce individual rows, guess dates or
+run the ecological model.
+
+```bash
+python scripts/ecology_hk_preflight.py \
+  --races /private/hk/races.csv \
+  --runs /private/hk/runs.csv \
+  --audit tmp/hk-compatibility.json
+```
+
+Output will explicitly say `HOLD_SOURCE_RIGHTS_AND_OBSCURED_DATES`.
+The full rights/timeline gate must be cleared independently before
+any source data are published or analysis is represented as a
+dated historical test. The local input files must remain outside
+GitHub. A separate source-to-Japan-going mapping is scientifically
+unresolved and will not be guessed automatically.
+
+**Most promising path now:** source/rights review followed by this
+preflight, then a carefully versioned data harmonization step.
+No factual dataset has yet been ingested into the repo.
