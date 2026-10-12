@@ -241,3 +241,32 @@ features remain necessary for identification.
 
 See [full H2 missing-outcome note](ecology-h2-outcome-selection.md)
 and [data-source feasibility](ecology-data-source-feasibility.md).
+
+
+## H2 extension: explicit completion and conditional performance (2026-10-13)
+
+The two-part exploratory design is in
+[scripts/ecology_h2_two_part.py](../scripts/ecology_h2_two_part.py),
+with detailed [methods](ecology-h2-two-part.md):
+
+- **Part A:** race completion among all starters
+  (finished versus did_not_finish), modeled with ridge-regularized
+  binomial GLM using only pre-race histories; baseline versus
+  previous focal style × previous rival style composition, evaluated
+  by chronological log loss and Brier score. Does not estimate the
+  cause of DNF. Sparse DNF events trigger an explicit HOLD.
+- **Part B:** raw individual speed only for timed finishers,
+  with horse and race fixed effects, loss-to-observation reporting,
+  and no fictitious numeric speeds for nonfinishers.
+
+These stages have **different estimands** and are not jointly
+estimated; stage A is not a correction automatically debiasing stage B.
+Any causal claim needs independent validation, comprehensive
+competition/ground/class/jockey confounder coverage and biological
+interpretation of noncompletion categories.
+
+Data onboarding now requires *within comparable environment-stratum*
+overlap: 2+ starts in at least two going labels for the same horse,
+venue, surface, distance, class, plus changing rival sets. An
+unstratified count of repeated starts may conceal complete
+environment/class confounding.
