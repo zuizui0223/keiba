@@ -209,3 +209,35 @@ in [the absolute-speed synthetic audit](ecology-h2-absolute-stress-audit.md).
 The new method is **exploratory only**, not a causal solution to
 nonrandom entry, race performance censoring, or changing jockey/fitness.
 Read [outcome methods](ecology-h2-absolute-outcome.md).
+
+
+## Selection, missing speed and real-data onboarding (2026-10-12)
+
+The H2 raw-speed model now retains all confirmed starters as rivals even
+when some horses do not finish; it records an explicit postrace speed
+selection diagnostic. Former complete-**outcome**-roster exclusion
+was an unnecessary, potentially biased selection. A complete
+**pre-race starter roster** and sufficient historical pre-race
+features remain necessary for identification.
+
+- Regression response is defined only for horses with observed
+  positive finish times; missing speed is **not** zero and
+  unrecorded finishing times are not automatically imputed.
+- A speed-selection report stratifies retention by going, focal
+  style and competitor composition. Any missing eligible speed
+  triggers a scientific **HOLD** on interpreting the coefficient as
+  an all-starter effect.
+- A synthetic stress uses both outcome-independent and
+  **deliberately outcome/ground-dependent** noncompletion to
+  inspect sensitivity; this does not identify real missingness.
+- Missingness discussion: Dumelle et al. 2025, *Ecological Monographs*,
+  https://doi.org/10.1002/ecm.70037.
+- Data-source screening: published Kaggle Hong Kong horse×race
+  data are promising for H1/H2 by column names, but have **obscured
+  dates** and a source-redistribution rights gap. A new offline,
+  aggregate-only schema/overlap auditor is in
+  `scripts/ecology_hk_preflight.py`; no actual records have
+  been acquired or fitted.
+
+See [full H2 missing-outcome note](ecology-h2-outcome-selection.md)
+and [data-source feasibility](ecology-data-source-feasibility.md).
