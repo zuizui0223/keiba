@@ -1,0 +1,943 @@
+{
+  "created_at_utc": "2026-10-12T04:41:47.289843+00:00",
+  "script_sha256": "d93eba4a0e8ce6acbd26213a2d0ea598830144e2dc09bd6859cb8fe4d2bb478c",
+  "unit_yen": 100,
+  "budget_limit_yen": 1000,
+  "method": "Exhaust every positive integer split a+b=N for N=2,...,10. Compare both conditional exacta returns against an equal-budget single quinella using exact decimal arithmetic.",
+  "scope": "Efficiency for the specified identical target event at saved quotes, not a calibrated expected-value estimate or globally best bet.",
+  "assumptions": [
+    "No dead heats, withdrawals or refunds.",
+    "Displayed odds frozen for calculation only; actual JRA final odds can change.",
+    "Gross payouts include returned stake. No tax effects or self-impact modeled.",
+    "Both constructions return zero outside the specified unordered top-two event."
+  ],
+  "cases": [
+    {
+      "race": 8,
+      "target_unordered_top_two": [
+        5,
+        11
+      ],
+      "quinella_odds": 11.6,
+      "exacta_selections": [
+        [
+          11,
+          5
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "exacta_odds": [
+        22.1,
+        26.4
+      ],
+      "continuous_equal_return_synthetic_odds": 12.029690721649484,
+      "same_update_time": true,
+      "smallest_strict_improvement": {
+        "total_yen": 900,
+        "direct_quinella_payout_yen": 10440,
+        "best_split": {
+          "units": [
+            5,
+            4
+          ],
+          "stakes_yen": [
+            500,
+            400
+          ],
+          "payouts_yen": [
+            11050,
+            10560
+          ],
+          "minimum_payout_yen": 10560,
+          "strictly_beats_direct_in_both_orders": true,
+          "gains_yen": [
+            610,
+            120
+          ]
+        },
+        "all_splits_checked": 8,
+        "any_strictly_better_split": true
+      },
+      "lower_budgets_exhaustively_rejected": [
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800
+      ],
+      "all_budgets_through_1000": [
+        {
+          "total_yen": 200,
+          "direct_quinella_payout_yen": 2320,
+          "best_split": {
+            "units": [
+              1,
+              1
+            ],
+            "stakes_yen": [
+              100,
+              100
+            ],
+            "payouts_yen": [
+              2210,
+              2640
+            ],
+            "minimum_payout_yen": 2210,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -110,
+              320
+            ]
+          },
+          "all_splits_checked": 1,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 300,
+          "direct_quinella_payout_yen": 3480,
+          "best_split": {
+            "units": [
+              2,
+              1
+            ],
+            "stakes_yen": [
+              200,
+              100
+            ],
+            "payouts_yen": [
+              4420,
+              2640
+            ],
+            "minimum_payout_yen": 2640,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              940,
+              -840
+            ]
+          },
+          "all_splits_checked": 2,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 400,
+          "direct_quinella_payout_yen": 4640,
+          "best_split": {
+            "units": [
+              2,
+              2
+            ],
+            "stakes_yen": [
+              200,
+              200
+            ],
+            "payouts_yen": [
+              4420,
+              5280
+            ],
+            "minimum_payout_yen": 4420,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -220,
+              640
+            ]
+          },
+          "all_splits_checked": 3,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 500,
+          "direct_quinella_payout_yen": 5800,
+          "best_split": {
+            "units": [
+              3,
+              2
+            ],
+            "stakes_yen": [
+              300,
+              200
+            ],
+            "payouts_yen": [
+              6630,
+              5280
+            ],
+            "minimum_payout_yen": 5280,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              830,
+              -520
+            ]
+          },
+          "all_splits_checked": 4,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 600,
+          "direct_quinella_payout_yen": 6960,
+          "best_split": {
+            "units": [
+              3,
+              3
+            ],
+            "stakes_yen": [
+              300,
+              300
+            ],
+            "payouts_yen": [
+              6630,
+              7920
+            ],
+            "minimum_payout_yen": 6630,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -330,
+              960
+            ]
+          },
+          "all_splits_checked": 5,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 700,
+          "direct_quinella_payout_yen": 8120,
+          "best_split": {
+            "units": [
+              4,
+              3
+            ],
+            "stakes_yen": [
+              400,
+              300
+            ],
+            "payouts_yen": [
+              8840,
+              7920
+            ],
+            "minimum_payout_yen": 7920,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              720,
+              -200
+            ]
+          },
+          "all_splits_checked": 6,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 800,
+          "direct_quinella_payout_yen": 9280,
+          "best_split": {
+            "units": [
+              4,
+              4
+            ],
+            "stakes_yen": [
+              400,
+              400
+            ],
+            "payouts_yen": [
+              8840,
+              10560
+            ],
+            "minimum_payout_yen": 8840,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -440,
+              1280
+            ]
+          },
+          "all_splits_checked": 7,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 900,
+          "direct_quinella_payout_yen": 10440,
+          "best_split": {
+            "units": [
+              5,
+              4
+            ],
+            "stakes_yen": [
+              500,
+              400
+            ],
+            "payouts_yen": [
+              11050,
+              10560
+            ],
+            "minimum_payout_yen": 10560,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              610,
+              120
+            ]
+          },
+          "all_splits_checked": 8,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 1000,
+          "direct_quinella_payout_yen": 11600,
+          "best_split": {
+            "units": [
+              5,
+              5
+            ],
+            "stakes_yen": [
+              500,
+              500
+            ],
+            "payouts_yen": [
+              11050,
+              13200
+            ],
+            "minimum_payout_yen": 11050,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -550,
+              1600
+            ]
+          },
+          "all_splits_checked": 9,
+          "any_strictly_better_split": false
+        }
+      ],
+      "sources": [
+        {
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040508?ninki=1",
+          "updated_at_jst": "2026-10-12T13:26:00+09:00",
+          "observed_at_jst": "2026-10-12T13:27:01.995077+09:00",
+          "snapshot_path": "data/2026-10-12/remaining-snapshots/r8_ur.json",
+          "snapshot_sha256": "838598603d979da5aab18adf14e49719adcc02b00f85c77a5bb04e4b3216da8e",
+          "html_sha256": "a1fb41a96d1828c58ada695515292262c420a6ea143ab71dbc08cc94d1be0b93"
+        },
+        {
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040508?ninki=1",
+          "updated_at_jst": "2026-10-12T13:26:00+09:00",
+          "observed_at_jst": "2026-10-12T13:27:02.118729+09:00",
+          "snapshot_path": "data/2026-10-12/remaining-snapshots/r8_ut.json",
+          "snapshot_sha256": "cdaea3148b20a26b9b089fd70791b05ef37683ea536ec43ea2a80b23ec1e0481",
+          "html_sha256": "de5e561f8fee5d52878acc78af991dcd858bbeea9c537c58a65bf8485487a96f"
+        }
+      ]
+    },
+    {
+      "race": 11,
+      "target_unordered_top_two": [
+        9,
+        14
+      ],
+      "quinella_odds": 33.8,
+      "exacta_selections": [
+        [
+          9,
+          14
+        ],
+        [
+          14,
+          9
+        ]
+      ],
+      "exacta_odds": [
+        57.3,
+        94.1
+      ],
+      "continuous_equal_return_synthetic_odds": 35.613804491413475,
+      "same_update_time": true,
+      "smallest_strict_improvement": {
+        "total_yen": 500,
+        "direct_quinella_payout_yen": 16900,
+        "best_split": {
+          "units": [
+            3,
+            2
+          ],
+          "stakes_yen": [
+            300,
+            200
+          ],
+          "payouts_yen": [
+            17190,
+            18820
+          ],
+          "minimum_payout_yen": 17190,
+          "strictly_beats_direct_in_both_orders": true,
+          "gains_yen": [
+            290,
+            1920
+          ]
+        },
+        "all_splits_checked": 4,
+        "any_strictly_better_split": true
+      },
+      "lower_budgets_exhaustively_rejected": [
+        200,
+        300,
+        400
+      ],
+      "all_budgets_through_1000": [
+        {
+          "total_yen": 200,
+          "direct_quinella_payout_yen": 6760,
+          "best_split": {
+            "units": [
+              1,
+              1
+            ],
+            "stakes_yen": [
+              100,
+              100
+            ],
+            "payouts_yen": [
+              5730,
+              9410
+            ],
+            "minimum_payout_yen": 5730,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -1030,
+              2650
+            ]
+          },
+          "all_splits_checked": 1,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 300,
+          "direct_quinella_payout_yen": 10140,
+          "best_split": {
+            "units": [
+              2,
+              1
+            ],
+            "stakes_yen": [
+              200,
+              100
+            ],
+            "payouts_yen": [
+              11460,
+              9410
+            ],
+            "minimum_payout_yen": 9410,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              1320,
+              -730
+            ]
+          },
+          "all_splits_checked": 2,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 400,
+          "direct_quinella_payout_yen": 13520,
+          "best_split": {
+            "units": [
+              2,
+              2
+            ],
+            "stakes_yen": [
+              200,
+              200
+            ],
+            "payouts_yen": [
+              11460,
+              18820
+            ],
+            "minimum_payout_yen": 11460,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -2060,
+              5300
+            ]
+          },
+          "all_splits_checked": 3,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 500,
+          "direct_quinella_payout_yen": 16900,
+          "best_split": {
+            "units": [
+              3,
+              2
+            ],
+            "stakes_yen": [
+              300,
+              200
+            ],
+            "payouts_yen": [
+              17190,
+              18820
+            ],
+            "minimum_payout_yen": 17190,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              290,
+              1920
+            ]
+          },
+          "all_splits_checked": 4,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 600,
+          "direct_quinella_payout_yen": 20280,
+          "best_split": {
+            "units": [
+              4,
+              2
+            ],
+            "stakes_yen": [
+              400,
+              200
+            ],
+            "payouts_yen": [
+              22920,
+              18820
+            ],
+            "minimum_payout_yen": 18820,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              2640,
+              -1460
+            ]
+          },
+          "all_splits_checked": 5,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 700,
+          "direct_quinella_payout_yen": 23660,
+          "best_split": {
+            "units": [
+              4,
+              3
+            ],
+            "stakes_yen": [
+              400,
+              300
+            ],
+            "payouts_yen": [
+              22920,
+              28230
+            ],
+            "minimum_payout_yen": 22920,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -740,
+              4570
+            ]
+          },
+          "all_splits_checked": 6,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 800,
+          "direct_quinella_payout_yen": 27040,
+          "best_split": {
+            "units": [
+              5,
+              3
+            ],
+            "stakes_yen": [
+              500,
+              300
+            ],
+            "payouts_yen": [
+              28650,
+              28230
+            ],
+            "minimum_payout_yen": 28230,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              1610,
+              1190
+            ]
+          },
+          "all_splits_checked": 7,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 900,
+          "direct_quinella_payout_yen": 30420,
+          "best_split": {
+            "units": [
+              5,
+              4
+            ],
+            "stakes_yen": [
+              500,
+              400
+            ],
+            "payouts_yen": [
+              28650,
+              37640
+            ],
+            "minimum_payout_yen": 28650,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              -1770,
+              7220
+            ]
+          },
+          "all_splits_checked": 8,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 1000,
+          "direct_quinella_payout_yen": 33800,
+          "best_split": {
+            "units": [
+              6,
+              4
+            ],
+            "stakes_yen": [
+              600,
+              400
+            ],
+            "payouts_yen": [
+              34380,
+              37640
+            ],
+            "minimum_payout_yen": 34380,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              580,
+              3840
+            ]
+          },
+          "all_splits_checked": 9,
+          "any_strictly_better_split": true
+        }
+      ],
+      "sources": [
+        {
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040511?ninki=1",
+          "updated_at_jst": "2026-10-12T13:26:00+09:00",
+          "observed_at_jst": "2026-10-12T13:27:26.221869+09:00",
+          "snapshot_path": "data/2026-10-12/remaining-snapshots/r11_ur.json",
+          "snapshot_sha256": "9efe6a9087bb055c537474559525b09c3f23d344e04c97a2f537ba42103be924",
+          "html_sha256": "246a387d9a8e341eee46d1231eeb7649a00cfa7dd82513ccec01fe57f7fbb13d"
+        },
+        {
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040511?ninki=1",
+          "updated_at_jst": "2026-10-12T13:26:00+09:00",
+          "observed_at_jst": "2026-10-12T13:27:26.012253+09:00",
+          "snapshot_path": "data/2026-10-12/remaining-snapshots/r11_ut.json",
+          "snapshot_sha256": "e1f2f58e65cf8b73d8396933175975cf64759b5c6fcb6f4affe644e04b3688e0",
+          "html_sha256": "cdd79001385049589f17daa9a5bdda096016495e0c6b3a67b15c5b06f804e847"
+        }
+      ]
+    },
+    {
+      "race": 12,
+      "target_unordered_top_two": [
+        1,
+        14
+      ],
+      "quinella_odds": 16.1,
+      "exacta_selections": [
+        [
+          14,
+          1
+        ],
+        [
+          1,
+          14
+        ]
+      ],
+      "exacta_odds": [
+        35.2,
+        37.2
+      ],
+      "continuous_equal_return_synthetic_odds": 18.08618784530387,
+      "same_update_time": true,
+      "smallest_strict_improvement": {
+        "total_yen": 200,
+        "direct_quinella_payout_yen": 3220,
+        "best_split": {
+          "units": [
+            1,
+            1
+          ],
+          "stakes_yen": [
+            100,
+            100
+          ],
+          "payouts_yen": [
+            3520,
+            3720
+          ],
+          "minimum_payout_yen": 3520,
+          "strictly_beats_direct_in_both_orders": true,
+          "gains_yen": [
+            300,
+            500
+          ]
+        },
+        "all_splits_checked": 1,
+        "any_strictly_better_split": true
+      },
+      "lower_budgets_exhaustively_rejected": [],
+      "all_budgets_through_1000": [
+        {
+          "total_yen": 200,
+          "direct_quinella_payout_yen": 3220,
+          "best_split": {
+            "units": [
+              1,
+              1
+            ],
+            "stakes_yen": [
+              100,
+              100
+            ],
+            "payouts_yen": [
+              3520,
+              3720
+            ],
+            "minimum_payout_yen": 3520,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              300,
+              500
+            ]
+          },
+          "all_splits_checked": 1,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 300,
+          "direct_quinella_payout_yen": 4830,
+          "best_split": {
+            "units": [
+              2,
+              1
+            ],
+            "stakes_yen": [
+              200,
+              100
+            ],
+            "payouts_yen": [
+              7040,
+              3720
+            ],
+            "minimum_payout_yen": 3720,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              2210,
+              -1110
+            ]
+          },
+          "all_splits_checked": 2,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 400,
+          "direct_quinella_payout_yen": 6440,
+          "best_split": {
+            "units": [
+              2,
+              2
+            ],
+            "stakes_yen": [
+              200,
+              200
+            ],
+            "payouts_yen": [
+              7040,
+              7440
+            ],
+            "minimum_payout_yen": 7040,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              600,
+              1000
+            ]
+          },
+          "all_splits_checked": 3,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 500,
+          "direct_quinella_payout_yen": 8050,
+          "best_split": {
+            "units": [
+              3,
+              2
+            ],
+            "stakes_yen": [
+              300,
+              200
+            ],
+            "payouts_yen": [
+              10560,
+              7440
+            ],
+            "minimum_payout_yen": 7440,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              2510,
+              -610
+            ]
+          },
+          "all_splits_checked": 4,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 600,
+          "direct_quinella_payout_yen": 9660,
+          "best_split": {
+            "units": [
+              3,
+              3
+            ],
+            "stakes_yen": [
+              300,
+              300
+            ],
+            "payouts_yen": [
+              10560,
+              11160
+            ],
+            "minimum_payout_yen": 10560,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              900,
+              1500
+            ]
+          },
+          "all_splits_checked": 5,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 700,
+          "direct_quinella_payout_yen": 11270,
+          "best_split": {
+            "units": [
+              4,
+              3
+            ],
+            "stakes_yen": [
+              400,
+              300
+            ],
+            "payouts_yen": [
+              14080,
+              11160
+            ],
+            "minimum_payout_yen": 11160,
+            "strictly_beats_direct_in_both_orders": false,
+            "gains_yen": [
+              2810,
+              -110
+            ]
+          },
+          "all_splits_checked": 6,
+          "any_strictly_better_split": false
+        },
+        {
+          "total_yen": 800,
+          "direct_quinella_payout_yen": 12880,
+          "best_split": {
+            "units": [
+              4,
+              4
+            ],
+            "stakes_yen": [
+              400,
+              400
+            ],
+            "payouts_yen": [
+              14080,
+              14880
+            ],
+            "minimum_payout_yen": 14080,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              1200,
+              2000
+            ]
+          },
+          "all_splits_checked": 7,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 900,
+          "direct_quinella_payout_yen": 14490,
+          "best_split": {
+            "units": [
+              5,
+              4
+            ],
+            "stakes_yen": [
+              500,
+              400
+            ],
+            "payouts_yen": [
+              17600,
+              14880
+            ],
+            "minimum_payout_yen": 14880,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              3110,
+              390
+            ]
+          },
+          "all_splits_checked": 8,
+          "any_strictly_better_split": true
+        },
+        {
+          "total_yen": 1000,
+          "direct_quinella_payout_yen": 16100,
+          "best_split": {
+            "units": [
+              5,
+              5
+            ],
+            "stakes_yen": [
+              500,
+              500
+            ],
+            "payouts_yen": [
+              17600,
+              18600
+            ],
+            "minimum_payout_yen": 17600,
+            "strictly_beats_direct_in_both_orders": true,
+            "gains_yen": [
+              1500,
+              2500
+            ]
+          },
+          "all_splits_checked": 9,
+          "any_strictly_better_split": true
+        }
+      ],
+      "sources": [
+        {
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040512?ninki=1",
+          "updated_at_jst": "2026-10-12T13:27:00+09:00",
+          "observed_at_jst": "2026-10-12T13:27:33.625380+09:00",
+          "snapshot_path": "data/2026-10-12/remaining-snapshots/r12_ur.json",
+          "snapshot_sha256": "7a9b82a223e829dcb42ca9b5b04b54f74e609ea420ce88e8c1813a5197f35a49",
+          "html_sha256": "7215e127e947ce5210027604136a2a22fc67a8777036753e42e33f198313ff91"
+        },
+        {
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/ut/2608040512?ninki=1",
+          "updated_at_jst": "2026-10-12T13:27:00+09:00",
+          "observed_at_jst": "2026-10-12T13:27:33.534464+09:00",
+          "snapshot_path": "data/2026-10-12/remaining-snapshots/r12_ut.json",
+          "snapshot_sha256": "c2f05232965b499adadf5dbc4d636d53c705fd9637ec2bdd2fba1e22de5fa0c5",
+          "html_sha256": "743e66411fc39b421091e69464f6cc84fc5837f56b4c0154867326d768f0d9e0"
+        }
+      ]
+    }
+  ]
+}

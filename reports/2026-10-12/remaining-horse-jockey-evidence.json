@@ -1,0 +1,899 @@
+{
+  "created_at_jst": "2026-10-12T13:42:36+09:00",
+  "scope": "2026-10-12 Kyoto R8-R12 before race",
+  "records_definition": [
+    "win",
+    "second",
+    "third",
+    "other"
+  ],
+  "calibrated_probabilities": false,
+  "races": {
+    "8": {
+      "horse_jockey_evidence": [
+        {
+          "number": 11,
+          "name": "ベルシュヴァル",
+          "jockey": "松山弘平",
+          "all_venue_current_jockey_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "notes": "前走阪神2400mの同級2着。京都2000mは未勝利10着で、京都巧者評価ではない。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102376/"
+        },
+        {
+          "number": 5,
+          "name": "ウィズクィーン",
+          "jockey": "北村友一",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "notes": "京都2000mの勝利と同級3着を評価。約半年ぶり、北村は初騎乗。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103417/"
+        },
+        {
+          "number": 9,
+          "name": "レゼルフォート",
+          "jockey": "西村淳也",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "全場2000mは1勝・2着1回。初京都・昇級・約5か月ぶり。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106935/"
+        },
+        {
+          "number": 1,
+          "name": "エレガンシア",
+          "jockey": "富田暁",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "8月23日中京2000mでは11に0.1秒先着。富田との2戦は小倉1800mで7着・6着。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022103705/"
+        },
+        {
+          "number": 3,
+          "name": "ストロベリーツリー",
+          "jockey": "吉村誠之助",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "初京都、約10か月ぶり。今回の騎手も初。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106887/"
+        }
+      ],
+      "course_stats_source_url": "https://www.umameshi.com/info/keibajou/kyoto-t2000.html",
+      "course_stats_period": "2023年1回京都開催以降、2026年10月5日更新の掲載集計。最終対象レース日は別記されていない",
+      "course_jockey_records": [
+        {
+          "jockey": "松山弘平",
+          "record": [
+            4,
+            13,
+            11,
+            50
+          ],
+          "starts": 78,
+          "top3_rate": 0.358974358974359
+        },
+        {
+          "jockey": "北村友一",
+          "record": [
+            8,
+            4,
+            2,
+            32
+          ],
+          "starts": 46,
+          "top3_rate": 0.30434782608695654
+        },
+        {
+          "jockey": "西村淳也",
+          "record": [
+            7,
+            18,
+            7,
+            46
+          ],
+          "starts": 78,
+          "top3_rate": 0.41025641025641024
+        },
+        {
+          "jockey": "坂井瑠星",
+          "record": [
+            10,
+            5,
+            7,
+            43
+          ],
+          "starts": 65,
+          "top3_rate": 0.3384615384615385
+        },
+        {
+          "jockey": "吉村誠之助",
+          "record": [
+            5,
+            3,
+            3,
+            48
+          ],
+          "starts": 59,
+          "top3_rate": 0.1864406779661017
+        }
+      ]
+    },
+    "9": {
+      "horse_jockey_evidence": [
+        {
+          "number": 4,
+          "name": "ソルチェリア",
+          "jockey": "幸英明",
+          "all_venue_current_jockey_record": [
+            1,
+            1,
+            0,
+            3
+          ],
+          "kyoto_same_distance_record": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "notes": "同騎手で京都1800mを勝利、前走鳥取特別2着。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102075/"
+        },
+        {
+          "number": 10,
+          "name": "ニホンピロデヴィン",
+          "jockey": "田口貫太",
+          "all_venue_current_jockey_record": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "kyoto_same_distance_record": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "notes": "田口との京都ダ1800mは1戦1勝、0.7秒差勝ち。約4か月半ぶり。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022104214/"
+        },
+        {
+          "number": 12,
+          "name": "テイエムサンレーヴ",
+          "jockey": "鮫島良太",
+          "all_venue_current_jockey_record": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "notes": "京都1800m2戦2勝。約9か月ぶり・昇級・初古馬対戦。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102576/"
+        },
+        {
+          "number": 5,
+          "name": "ゼンエスポワール",
+          "jockey": "横山典弘",
+          "all_venue_current_jockey_record": [
+            1,
+            3,
+            0,
+            3
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "notes": "横山典との京都1800mで2着2回。除外1回は出走に数えない。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110135/"
+        },
+        {
+          "number": 3,
+          "name": "クロノスバレット",
+          "jockey": "松山弘平",
+          "all_venue_current_jockey_record": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "notes": "松山と近3走3・4・2着。ただし京都1800mは2戦とも着外。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110123/"
+        },
+        {
+          "number": 6,
+          "name": "マシン",
+          "jockey": "坂井瑠星",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "notes": "前走鳥取特別3着、4とは0.3秒差。坂井は初騎乗。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105387/"
+        }
+      ],
+      "course_stats_source_url": "https://www.umameshi.com/info/keibajou/kyoto-d1800.html",
+      "course_stats_period": "2023年1回京都開催以降、2026年10月5日更新の掲載集計。最終対象レース日は別記されていない",
+      "course_jockey_records": [
+        {
+          "jockey": "松山弘平",
+          "record": [
+            33,
+            22,
+            22,
+            102
+          ],
+          "starts": 179,
+          "top3_rate": 0.4301675977653631
+        },
+        {
+          "jockey": "幸英明",
+          "record": [
+            18,
+            22,
+            23,
+            153
+          ],
+          "starts": 216,
+          "top3_rate": 0.2916666666666667
+        },
+        {
+          "jockey": "横山典弘",
+          "record": [
+            6,
+            2,
+            4,
+            35
+          ],
+          "starts": 47,
+          "top3_rate": 0.2553191489361702
+        },
+        {
+          "jockey": "坂井瑠星",
+          "record": [
+            34,
+            20,
+            13,
+            94
+          ],
+          "starts": 161,
+          "top3_rate": 0.4161490683229814
+        },
+        {
+          "jockey": "田口貫太",
+          "record": [
+            13,
+            22,
+            25,
+            209
+          ],
+          "starts": 269,
+          "top3_rate": 0.22304832713754646
+        },
+        {
+          "jockey": "鮫島良太",
+          "record": [
+            2,
+            4,
+            4,
+            16
+          ],
+          "starts": 26,
+          "top3_rate": 0.38461538461538464
+        }
+      ]
+    },
+    "10": {
+      "horse_jockey_evidence": [
+        {
+          "number": 2,
+          "name": "カムアップローゼス",
+          "jockey": "西村淳也",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "京都新聞杯で5に先着、函館1800mを勝利。京都1800mと西村とのコンビは未経験。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023104386/"
+        },
+        {
+          "number": 4,
+          "name": "エリカアンディーヴ",
+          "jockey": "原優介",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "notes": "京都1800m2勝、京都芝の条件戦3戦すべて連対。原は初騎乗。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110060/"
+        },
+        {
+          "number": 5,
+          "name": "アクセス",
+          "jockey": "北村友一",
+          "all_venue_current_jockey_record": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "近2走2着・1着。北村で京都2000m新馬勝ち。昇級初戦。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023100947/"
+        },
+        {
+          "number": 9,
+          "name": "ミリタリータトゥー",
+          "jockey": "西塚洸二",
+          "all_venue_current_jockey_record": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "全3戦とも西塚、すべて1800m。ローズS5着、京都は初。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023101180/"
+        },
+        {
+          "number": 7,
+          "name": "キシダンチョウ",
+          "jockey": "高杉吏麒",
+          "all_venue_current_jockey_record": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "notes": "高杉で京都1800mあやめ賞3着。10との先行争いが課題。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106960/"
+        },
+        {
+          "number": 10,
+          "name": "ホウオウトランプ",
+          "jockey": "松山弘平",
+          "all_venue_current_jockey_record": null,
+          "kyoto_same_distance_record": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "notes": "京都1800m1勝・3着1回。ただし、その騎手は坂井と団野。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021105886/"
+        }
+      ],
+      "course_stats_source_url": "https://www.umameshi.com/info/keibajou/kyoto-t1800.html",
+      "course_stats_period": "2023年1回京都開催以降、2026年10月5日更新の掲載集計。最終対象レース日は別記されていない",
+      "course_jockey_records": [
+        {
+          "jockey": "西村淳也",
+          "record": [
+            6,
+            14,
+            10,
+            29
+          ],
+          "starts": 59,
+          "top3_rate": 0.5084745762711864
+        },
+        {
+          "jockey": "北村友一",
+          "record": [
+            8,
+            6,
+            6,
+            27
+          ],
+          "starts": 47,
+          "top3_rate": 0.425531914893617
+        },
+        {
+          "jockey": "西塚洸二",
+          "record": [
+            6,
+            0,
+            0,
+            11
+          ],
+          "starts": 17,
+          "top3_rate": 0.35294117647058826
+        },
+        {
+          "jockey": "高杉吏麒",
+          "record": [
+            2,
+            2,
+            3,
+            32
+          ],
+          "starts": 39,
+          "top3_rate": 0.1794871794871795
+        },
+        {
+          "jockey": "松山弘平",
+          "record": [
+            8,
+            12,
+            7,
+            38
+          ],
+          "starts": 65,
+          "top3_rate": 0.4153846153846154
+        }
+      ]
+    },
+    "11": {
+      "horse_jockey_evidence": [
+        {
+          "number": 9,
+          "name": "オフトレイル",
+          "jockey": "菅原明良",
+          "all_venue_current_jockey_record": [
+            1,
+            1,
+            0,
+            3
+          ],
+          "kyoto_same_distance_record": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "notes": "昨年スワンSを今回のコンビで勝利。同コース3戦すべて3着以内。58kg、休養明け。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021110031/"
+        },
+        {
+          "number": 14,
+          "name": "ワイドラトゥール",
+          "jockey": "北村友一",
+          "all_venue_current_jockey_record": [
+            3,
+            1,
+            0,
+            8
+          ],
+          "kyoto_same_distance_record": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "notes": "京都1400mの4戦はすべて北村で2勝・2着1回。前年スワンS2着。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021104434/"
+        },
+        {
+          "number": 1,
+          "name": "ダイヤモンドノット",
+          "jockey": "横山武史",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "notes": "全場1400m4戦3勝2着1回。横山武は初騎乗。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105685/"
+        },
+        {
+          "number": 13,
+          "name": "マイネルチケット",
+          "jockey": "津村明秀",
+          "all_venue_current_jockey_record": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "津村で前走1400mパラダイスS勝ち。京都2着2回は1600m。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106768/"
+        },
+        {
+          "number": 17,
+          "name": "ミニトランザット",
+          "jockey": "西村淳也",
+          "all_venue_current_jockey_record": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "京都芝3勝。西村で石清水S勝ち、1400mは初。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022105230/"
+        },
+        {
+          "number": 18,
+          "name": "エリカエクスプレス",
+          "jockey": "武豊",
+          "all_venue_current_jockey_record": [
+            0,
+            1,
+            0,
+            4
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "武豊と京都2000m秋華賞2着。1400mの適性は今回初めて確認する条件。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022103205/"
+        }
+      ],
+      "course_stats_source_url": "https://umanity.jp/racedata/race_newsdet.php?nid=11879675",
+      "course_stats_period": "2023年4月23日〜2026年10月3日、京都芝1400m外の88レース",
+      "course_jockey_records": [
+        {
+          "jockey": "菅原明良",
+          "record": [
+            1,
+            1,
+            0,
+            4
+          ],
+          "starts": 6,
+          "top3_rate": 0.3333333333333333
+        },
+        {
+          "jockey": "北村友一",
+          "record": [
+            4,
+            5,
+            3,
+            23
+          ],
+          "starts": 35,
+          "top3_rate": 0.34285714285714286
+        },
+        {
+          "jockey": "横山武史",
+          "record": [
+            0,
+            0,
+            1,
+            3
+          ],
+          "starts": 4,
+          "top3_rate": 0.25
+        },
+        {
+          "jockey": "津村明秀",
+          "record": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "starts": 3,
+          "top3_rate": 0.3333333333333333
+        },
+        {
+          "jockey": "西村淳也",
+          "record": [
+            4,
+            3,
+            6,
+            29
+          ],
+          "starts": 42,
+          "top3_rate": 0.30952380952380953
+        },
+        {
+          "jockey": "武豊",
+          "record": [
+            4,
+            8,
+            4,
+            15
+          ],
+          "starts": 31,
+          "top3_rate": 0.5161290322580645
+        },
+        {
+          "jockey": "松山弘平",
+          "record": [
+            5,
+            6,
+            4,
+            22
+          ],
+          "starts": 37,
+          "top3_rate": 0.40540540540540543
+        }
+      ]
+    },
+    "12": {
+      "horse_jockey_evidence": [
+        {
+          "number": 14,
+          "name": "ビスケットアソート",
+          "jockey": "富田暁",
+          "all_venue_current_jockey_record": [
+            1,
+            3,
+            1,
+            1
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            3,
+            0,
+            0
+          ],
+          "notes": "京都1200m3戦はすべて富田で未勝利2着。昇級後は阪神で連続3着。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517/"
+        },
+        {
+          "number": 1,
+          "name": "ダイヤモンド",
+          "jockey": "吉村誠之助",
+          "all_venue_current_jockey_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "notes": "前走同コンビで阪神ダ1200m同級2着、時計差0.0秒。京都ダートは初。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040512"
+        },
+        {
+          "number": 6,
+          "name": "メリフルアス",
+          "jockey": "斎藤新",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "notes": "京都ダ1200m4戦は4・3・3・1着。昇級・約5か月ぶり・斎藤は初。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040512"
+        },
+        {
+          "number": 16,
+          "name": "カネコメファミリー",
+          "jockey": "松山弘平",
+          "all_venue_current_jockey_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "notes": "松山で阪神ダ1200m同級2着。京都ダ1200mは4着・5着。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040512"
+        },
+        {
+          "number": 3,
+          "name": "ウェルカムソング",
+          "jockey": "河原田菜々",
+          "all_venue_current_jockey_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_same_distance_record": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "notes": "京都ダ1200mは2・8・9着。近走芝から戻るが今回のコンビは初。",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040512"
+        }
+      ],
+      "course_stats_source_url": "https://www.umameshi.com/info/keibajou/kyoto-d1200.html",
+      "course_stats_period": "2023年1回京都開催以降、2026年10月5日更新の掲載集計。最終対象レース日は別記されていない",
+      "course_jockey_records": [
+        {
+          "jockey": "富田暁",
+          "record": [
+            1,
+            4,
+            4,
+            20
+          ],
+          "starts": 29,
+          "top3_rate": 0.3103448275862069
+        },
+        {
+          "jockey": "吉村誠之助",
+          "record": [
+            7,
+            6,
+            9,
+            78
+          ],
+          "starts": 100,
+          "top3_rate": 0.22
+        },
+        {
+          "jockey": "斎藤新",
+          "record": [
+            1,
+            3,
+            0,
+            22
+          ],
+          "starts": 26,
+          "top3_rate": 0.15384615384615385
+        },
+        {
+          "jockey": "松山弘平",
+          "record": [
+            16,
+            16,
+            10,
+            54
+          ],
+          "starts": 96,
+          "top3_rate": 0.4375
+        },
+        {
+          "jockey": "河原田菜々",
+          "record": [
+            0,
+            0,
+            1,
+            28
+          ],
+          "starts": 29,
+          "top3_rate": 0.034482758620689655
+        },
+        {
+          "jockey": "武豊",
+          "record": [
+            7,
+            10,
+            6,
+            37
+          ],
+          "starts": 60,
+          "top3_rate": 0.38333333333333336
+        }
+      ]
+    }
+  }
+}

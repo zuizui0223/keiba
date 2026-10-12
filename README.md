@@ -2,7 +2,27 @@
 
 京都競馬の過去実績と中間オッズを、出典・時刻付きで比較するための分析リポジトリです。
 
-## 2026年10月12日：7R以降の買い方案
+## 2026年10月12日：8〜12Rの全8券種（主要候補を13:41〜13:42再確認）
+
+**実績を加味した1点は11Rワイド9–14。価格比較では9R枠連4–7、10R枠連2–5を確認。**
+
+- [各レースの買い方・京都と騎手の実績・100円単位の配分](reports/2026-10-12/remaining-guide.md)
+- [主要候補の13:41〜13:42再確認記録](reports/2026-10-12/remaining-final-price-check.json)
+- [30ページの取得オッズと時刻](data/2026-10-12/remaining-snapshots/)
+- [844件の同条件比較・全結果をカバーする配分計算](reports/2026-10-12/remaining-market-analysis.json)
+- [馬単を両順買う100円単位の比較](reports/2026-10-12/remaining-integer-comparisons.json)
+- [馬と騎手の組み合わせ・騎手の京都コース成績](reports/2026-10-12/remaining-horse-jockey-evidence.json)
+
+保存した中間価格での比較です。馬の選択は定性判断で、検証済み的中確率や市場全体の確実な利益を主張しません。全8券種を比較していますが、3連単と一部3連複は部分取得です。表の買い目は代替案であり、全点を同時購入する提案ではありません。
+
+```bash
+python -B scripts/analyze_remaining_markets.py
+python -B scripts/compare_remaining_integer_stakes.py
+```
+
+前者はNumPy・SciPy、後者はPython標準ライブラリを使用します。
+
+## 2026年10月12日：初回の7R以降の買い方案（12時台の保存値）
 
 **1点なら11Rワイド9–14。複数なら10R 2–4、11R 9–14、12R 1–14を各100円、計300円。**
 
@@ -13,7 +33,7 @@
 - [計算結果・入力SHA-256・根拠URL](reports/2026-10-12/analysis.json)
 - [分析範囲と扱い方](docs/analysis-design.md)
 
-全頭比較は6〜12Rを保存していますが、上記の新規推奨は7R以降です。比較レポートの「優先候補6点」は検討用の広い候補で、最新の絞った買い方はrecommendations.mdを参照してください。
+全頭比較は6〜12Rを保存していますが、上記は12時台に作成した記録です。8R以降の追加分析は冒頭のremaining-guide.mdを参照してください。
 
 ## 再現
 

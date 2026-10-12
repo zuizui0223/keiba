@@ -1,0 +1,3393 @@
+{
+  "race": 9,
+  "page_code": "sf",
+  "url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040509?ninki=1",
+  "observed_at_jst": "2026-10-12T13:27:09.416263+09:00",
+  "updated_at_jst": "2026-10-12T13:26:00+09:00",
+  "html_sha256": "60ae862970b16f0a048b033f3f3113d39e170fe60bf61abe66aecc1ad4450000",
+  "quotes": {
+    "trio": [
+      {
+        "selection": [
+          4,
+          10,
+          12
+        ],
+        "odds_low": 11.8,
+        "odds_high": 11.8,
+        "popularity": 1
+      },
+      {
+        "selection": [
+          5,
+          10,
+          12
+        ],
+        "odds_low": 18.8,
+        "odds_high": 18.8,
+        "popularity": 2
+      },
+      {
+        "selection": [
+          3,
+          4,
+          12
+        ],
+        "odds_low": 19.6,
+        "odds_high": 19.6,
+        "popularity": 3
+      },
+      {
+        "selection": [
+          4,
+          5,
+          10
+        ],
+        "odds_low": 20.3,
+        "odds_high": 20.3,
+        "popularity": 4
+      },
+      {
+        "selection": [
+          3,
+          4,
+          10
+        ],
+        "odds_low": 21.2,
+        "odds_high": 21.2,
+        "popularity": 5
+      },
+      {
+        "selection": [
+          3,
+          10,
+          12
+        ],
+        "odds_low": 21.6,
+        "odds_high": 21.6,
+        "popularity": 6
+      },
+      {
+        "selection": [
+          4,
+          5,
+          12
+        ],
+        "odds_low": 21.8,
+        "odds_high": 21.8,
+        "popularity": 7
+      },
+      {
+        "selection": [
+          3,
+          4,
+          5
+        ],
+        "odds_low": 28.4,
+        "odds_high": 28.4,
+        "popularity": 8
+      },
+      {
+        "selection": [
+          4,
+          6,
+          12
+        ],
+        "odds_low": 31.3,
+        "odds_high": 31.3,
+        "popularity": 9
+      },
+      {
+        "selection": [
+          3,
+          5,
+          10
+        ],
+        "odds_low": 33.7,
+        "odds_high": 33.7,
+        "popularity": 10
+      },
+      {
+        "selection": [
+          4,
+          6,
+          10
+        ],
+        "odds_low": 35.2,
+        "odds_high": 35.2,
+        "popularity": 11
+      },
+      {
+        "selection": [
+          3,
+          5,
+          12
+        ],
+        "odds_low": 35.9,
+        "odds_high": 35.9,
+        "popularity": 12
+      },
+      {
+        "selection": [
+          3,
+          4,
+          6
+        ],
+        "odds_low": 38.6,
+        "odds_high": 38.6,
+        "popularity": 13
+      },
+      {
+        "selection": [
+          6,
+          10,
+          12
+        ],
+        "odds_low": 40.5,
+        "odds_high": 40.5,
+        "popularity": 14
+      },
+      {
+        "selection": [
+          1,
+          10,
+          12
+        ],
+        "odds_low": 46.8,
+        "odds_high": 46.8,
+        "popularity": 15
+      },
+      {
+        "selection": [
+          1,
+          4,
+          12
+        ],
+        "odds_low": 48.2,
+        "odds_high": 48.2,
+        "popularity": 16
+      },
+      {
+        "selection": [
+          4,
+          5,
+          6
+        ],
+        "odds_low": 49.9,
+        "odds_high": 49.9,
+        "popularity": 17
+      },
+      {
+        "selection": [
+          4,
+          7,
+          10
+        ],
+        "odds_low": 52.9,
+        "odds_high": 52.9,
+        "popularity": 18
+      },
+      {
+        "selection": [
+          3,
+          6,
+          12
+        ],
+        "odds_low": 53.8,
+        "odds_high": 53.8,
+        "popularity": 19
+      },
+      {
+        "selection": [
+          7,
+          10,
+          12
+        ],
+        "odds_low": 55.8,
+        "odds_high": 55.8,
+        "popularity": 20
+      },
+      {
+        "selection": [
+          3,
+          6,
+          10
+        ],
+        "odds_low": 58.1,
+        "odds_high": 58.1,
+        "popularity": 21
+      },
+      {
+        "selection": [
+          4,
+          7,
+          12
+        ],
+        "odds_low": 61.3,
+        "odds_high": 61.3,
+        "popularity": 22
+      },
+      {
+        "selection": [
+          5,
+          6,
+          12
+        ],
+        "odds_low": 65.3,
+        "odds_high": 65.3,
+        "popularity": 23
+      },
+      {
+        "selection": [
+          1,
+          4,
+          10
+        ],
+        "odds_low": 66.9,
+        "odds_high": 66.9,
+        "popularity": 24
+      },
+      {
+        "selection": [
+          1,
+          5,
+          12
+        ],
+        "odds_low": 71.8,
+        "odds_high": 71.8,
+        "popularity": 25
+      },
+      {
+        "selection": [
+          5,
+          6,
+          10
+        ],
+        "odds_low": 73.3,
+        "odds_high": 73.3,
+        "popularity": 26
+      },
+      {
+        "selection": [
+          3,
+          4,
+          7
+        ],
+        "odds_low": 76.1,
+        "odds_high": 76.1,
+        "popularity": 27
+      },
+      {
+        "selection": [
+          1,
+          3,
+          4
+        ],
+        "odds_low": 78.2,
+        "odds_high": 78.2,
+        "popularity": 28
+      },
+      {
+        "selection": [
+          1,
+          3,
+          12
+        ],
+        "odds_low": 78.5,
+        "odds_high": 78.5,
+        "popularity": 29
+      },
+      {
+        "selection": [
+          3,
+          5,
+          6
+        ],
+        "odds_low": 79.9,
+        "odds_high": 79.9,
+        "popularity": 30
+      },
+      {
+        "selection": [
+          3,
+          7,
+          10
+        ],
+        "odds_low": 82.0,
+        "odds_high": 82.0,
+        "popularity": 31
+      },
+      {
+        "selection": [
+          2,
+          4,
+          10
+        ],
+        "odds_low": 82.9,
+        "odds_high": 82.9,
+        "popularity": 32
+      },
+      {
+        "selection": [
+          5,
+          7,
+          10
+        ],
+        "odds_low": 86.1,
+        "odds_high": 86.1,
+        "popularity": 33
+      },
+      {
+        "selection": [
+          2,
+          4,
+          12
+        ],
+        "odds_low": 89.6,
+        "odds_high": 89.6,
+        "popularity": 34
+      },
+      {
+        "selection": [
+          1,
+          3,
+          10
+        ],
+        "odds_low": 89.7,
+        "odds_high": 89.7,
+        "popularity": 35
+      },
+      {
+        "selection": [
+          10,
+          11,
+          12
+        ],
+        "odds_low": 90.8,
+        "odds_high": 90.8,
+        "popularity": 36
+      },
+      {
+        "selection": [
+          4,
+          11,
+          12
+        ],
+        "odds_low": 94.4,
+        "odds_high": 94.4,
+        "popularity": 37
+      },
+      {
+        "selection": [
+          2,
+          3,
+          4
+        ],
+        "odds_low": 95.0,
+        "odds_high": 95.0,
+        "popularity": 38
+      },
+      {
+        "selection": [
+          1,
+          5,
+          10
+        ],
+        "odds_low": 96.9,
+        "odds_high": 96.9,
+        "popularity": 39
+      },
+      {
+        "selection": [
+          2,
+          4,
+          5
+        ],
+        "odds_low": 98.1,
+        "odds_high": 98.1,
+        "popularity": 40
+      },
+      {
+        "selection": [
+          3,
+          7,
+          12
+        ],
+        "odds_low": 100.9,
+        "odds_high": 100.9,
+        "popularity": 41
+      },
+      {
+        "selection": [
+          1,
+          4,
+          5
+        ],
+        "odds_low": 102.4,
+        "odds_high": 102.4,
+        "popularity": 42
+      },
+      {
+        "selection": [
+          2,
+          10,
+          12
+        ],
+        "odds_low": 110.0,
+        "odds_high": 110.0,
+        "popularity": 43
+      },
+      {
+        "selection": [
+          5,
+          7,
+          12
+        ],
+        "odds_low": 110.4,
+        "odds_high": 110.4,
+        "popularity": 44
+      },
+      {
+        "selection": [
+          4,
+          5,
+          7
+        ],
+        "odds_low": 120.3,
+        "odds_high": 120.3,
+        "popularity": 45
+      },
+      {
+        "selection": [
+          1,
+          6,
+          12
+        ],
+        "odds_low": 123.3,
+        "odds_high": 123.3,
+        "popularity": 46
+      },
+      {
+        "selection": [
+          2,
+          5,
+          10
+        ],
+        "odds_low": 127.9,
+        "odds_high": 127.9,
+        "popularity": 47
+      },
+      {
+        "selection": [
+          4,
+          10,
+          11
+        ],
+        "odds_low": 129.6,
+        "odds_high": 129.6,
+        "popularity": 48
+      },
+      {
+        "selection": [
+          1,
+          4,
+          6
+        ],
+        "odds_low": 130.4,
+        "odds_high": 130.4,
+        "popularity": 49
+      },
+      {
+        "selection": [
+          2,
+          4,
+          6
+        ],
+        "odds_low": 134.5,
+        "odds_high": 134.5,
+        "popularity": 50
+      },
+      {
+        "selection": [
+          1,
+          3,
+          5
+        ],
+        "odds_low": 134.6,
+        "odds_high": 134.6,
+        "popularity": 51
+      },
+      {
+        "selection": [
+          5,
+          11,
+          12
+        ],
+        "odds_low": 142.9,
+        "odds_high": 142.9,
+        "popularity": 52
+      },
+      {
+        "selection": [
+          1,
+          6,
+          10
+        ],
+        "odds_low": 146.4,
+        "odds_high": 146.4,
+        "popularity": 53
+      },
+      {
+        "selection": [
+          1,
+          3,
+          6
+        ],
+        "odds_low": 149.8,
+        "odds_high": 149.8,
+        "popularity": 54
+      },
+      {
+        "selection": [
+          4,
+          6,
+          7
+        ],
+        "odds_low": 151.1,
+        "odds_high": 151.1,
+        "popularity": 55
+      },
+      {
+        "selection": [
+          2,
+          5,
+          12
+        ],
+        "odds_low": 156.4,
+        "odds_high": 156.4,
+        "popularity": 56
+      },
+      {
+        "selection": [
+          3,
+          11,
+          12
+        ],
+        "odds_low": 158.9,
+        "odds_high": 158.9,
+        "popularity": 57
+      },
+      {
+        "selection": [
+          2,
+          3,
+          10
+        ],
+        "odds_low": 160.7,
+        "odds_high": 160.7,
+        "popularity": 58
+      },
+      {
+        "selection": [
+          6,
+          7,
+          12
+        ],
+        "odds_low": 162.4,
+        "odds_high": 162.4,
+        "popularity": 59
+      },
+      {
+        "selection": [
+          3,
+          5,
+          7
+        ],
+        "odds_low": 165.8,
+        "odds_high": 165.8,
+        "popularity": 60
+      },
+      {
+        "selection": [
+          4,
+          5,
+          11
+        ],
+        "odds_low": 168.4,
+        "odds_high": 168.4,
+        "popularity": 61
+      },
+      {
+        "selection": [
+          2,
+          3,
+          12
+        ],
+        "odds_low": 172.1,
+        "odds_high": 172.1,
+        "popularity": 62
+      },
+      {
+        "selection": [
+          1,
+          7,
+          12
+        ],
+        "odds_low": 178.8,
+        "odds_high": 178.8,
+        "popularity": 63
+      },
+      {
+        "selection": [
+          2,
+          3,
+          5
+        ],
+        "odds_low": 186.6,
+        "odds_high": 186.6,
+        "popularity": 64
+      },
+      {
+        "selection": [
+          6,
+          7,
+          10
+        ],
+        "odds_low": 188.9,
+        "odds_high": 188.9,
+        "popularity": 65
+      },
+      {
+        "selection": [
+          3,
+          4,
+          11
+        ],
+        "odds_low": 196.8,
+        "odds_high": 196.8,
+        "popularity": 66
+      },
+      {
+        "selection": [
+          3,
+          6,
+          7
+        ],
+        "odds_low": 206.9,
+        "odds_high": 206.9,
+        "popularity": 67
+      },
+      {
+        "selection": [
+          5,
+          10,
+          11
+        ],
+        "odds_low": 207.8,
+        "odds_high": 207.8,
+        "popularity": 68
+      },
+      {
+        "selection": [
+          1,
+          5,
+          6
+        ],
+        "odds_low": 220.1,
+        "odds_high": 220.1,
+        "popularity": 69
+      },
+      {
+        "selection": [
+          2,
+          4,
+          7
+        ],
+        "odds_low": 227.1,
+        "odds_high": 227.1,
+        "popularity": 70
+      },
+      {
+        "selection": [
+          1,
+          4,
+          7
+        ],
+        "odds_low": 231.0,
+        "odds_high": 231.0,
+        "popularity": 71
+      },
+      {
+        "selection": [
+          1,
+          11,
+          12
+        ],
+        "odds_low": 233.0,
+        "odds_high": 233.0,
+        "popularity": 72
+      },
+      {
+        "selection": [
+          6,
+          11,
+          12
+        ],
+        "odds_low": 236.7,
+        "odds_high": 236.7,
+        "popularity": 73
+      },
+      {
+        "selection": [
+          2,
+          6,
+          10
+        ],
+        "odds_low": 244.4,
+        "odds_high": 244.4,
+        "popularity": 74
+      },
+      {
+        "selection": [
+          3,
+          10,
+          11
+        ],
+        "odds_low": 246.6,
+        "odds_high": 246.6,
+        "popularity": 75
+      },
+      {
+        "selection": [
+          5,
+          6,
+          7
+        ],
+        "odds_low": 252.2,
+        "odds_high": 252.2,
+        "popularity": 76
+      },
+      {
+        "selection": [
+          2,
+          3,
+          6
+        ],
+        "odds_low": 252.8,
+        "odds_high": 252.8,
+        "popularity": 77
+      },
+      {
+        "selection": [
+          1,
+          7,
+          10
+        ],
+        "odds_low": 258.5,
+        "odds_high": 258.5,
+        "popularity": 78
+      },
+      {
+        "selection": [
+          2,
+          6,
+          12
+        ],
+        "odds_low": 263.8,
+        "odds_high": 263.8,
+        "popularity": 79
+      },
+      {
+        "selection": [
+          7,
+          11,
+          12
+        ],
+        "odds_low": 263.8,
+        "odds_high": 263.8,
+        "popularity": 80
+      },
+      {
+        "selection": [
+          2,
+          5,
+          6
+        ],
+        "odds_low": 290.4,
+        "odds_high": 290.4,
+        "popularity": 81
+      },
+      {
+        "selection": [
+          1,
+          3,
+          7
+        ],
+        "odds_low": 292.4,
+        "odds_high": 292.4,
+        "popularity": 82
+      },
+      {
+        "selection": [
+          4,
+          6,
+          11
+        ],
+        "odds_low": 302.4,
+        "odds_high": 302.4,
+        "popularity": 83
+      },
+      {
+        "selection": [
+          3,
+          5,
+          11
+        ],
+        "odds_low": 309.4,
+        "odds_high": 309.4,
+        "popularity": 84
+      },
+      {
+        "selection": [
+          1,
+          2,
+          4
+        ],
+        "odds_low": 321.3,
+        "odds_high": 321.3,
+        "popularity": 85
+      },
+      {
+        "selection": [
+          1,
+          2,
+          3
+        ],
+        "odds_low": 322.6,
+        "odds_high": 322.6,
+        "popularity": 86
+      },
+      {
+        "selection": [
+          1,
+          2,
+          10
+        ],
+        "odds_low": 347.7,
+        "odds_high": 347.7,
+        "popularity": 87
+      },
+      {
+        "selection": [
+          2,
+          7,
+          10
+        ],
+        "odds_low": 359.1,
+        "odds_high": 359.1,
+        "popularity": 88
+      },
+      {
+        "selection": [
+          1,
+          2,
+          12
+        ],
+        "odds_low": 375.7,
+        "odds_high": 375.7,
+        "popularity": 89
+      },
+      {
+        "selection": [
+          8,
+          10,
+          12
+        ],
+        "odds_low": 398.5,
+        "odds_high": 398.5,
+        "popularity": 90
+      },
+      {
+        "selection": [
+          4,
+          8,
+          12
+        ],
+        "odds_low": 400.6,
+        "odds_high": 400.6,
+        "popularity": 91
+      },
+      {
+        "selection": [
+          4,
+          8,
+          10
+        ],
+        "odds_low": 412.4,
+        "odds_high": 412.4,
+        "popularity": 92
+      },
+      {
+        "selection": [
+          2,
+          4,
+          11
+        ],
+        "odds_low": 415.7,
+        "odds_high": 415.7,
+        "popularity": 93
+      },
+      {
+        "selection": [
+          6,
+          10,
+          11
+        ],
+        "odds_low": 430.2,
+        "odds_high": 430.2,
+        "popularity": 94
+      },
+      {
+        "selection": [
+          4,
+          7,
+          11
+        ],
+        "odds_low": 432.6,
+        "odds_high": 432.6,
+        "popularity": 95
+      },
+      {
+        "selection": [
+          1,
+          5,
+          7
+        ],
+        "odds_low": 448.3,
+        "odds_high": 448.3,
+        "popularity": 96
+      },
+      {
+        "selection": [
+          1,
+          2,
+          5
+        ],
+        "odds_low": 466.7,
+        "odds_high": 466.7,
+        "popularity": 97
+      },
+      {
+        "selection": [
+          1,
+          6,
+          7
+        ],
+        "odds_low": 475.3,
+        "odds_high": 475.3,
+        "popularity": 98
+      },
+      {
+        "selection": [
+          5,
+          6,
+          11
+        ],
+        "odds_low": 476.8,
+        "odds_high": 476.8,
+        "popularity": 99
+      },
+      {
+        "selection": [
+          7,
+          10,
+          11
+        ],
+        "odds_low": 482.7,
+        "odds_high": 482.7,
+        "popularity": 100
+      },
+      {
+        "selection": [
+          2,
+          7,
+          12
+        ],
+        "odds_low": 490.4,
+        "odds_high": 490.4,
+        "popularity": 101
+      },
+      {
+        "selection": [
+          2,
+          10,
+          11
+        ],
+        "odds_low": 503.2,
+        "odds_high": 503.2,
+        "popularity": 102
+      },
+      {
+        "selection": [
+          2,
+          5,
+          7
+        ],
+        "odds_low": 517.6,
+        "odds_high": 517.6,
+        "popularity": 103
+      },
+      {
+        "selection": [
+          3,
+          6,
+          11
+        ],
+        "odds_low": 525.5,
+        "odds_high": 525.5,
+        "popularity": 104
+      },
+      {
+        "selection": [
+          1,
+          2,
+          6
+        ],
+        "odds_low": 529.1,
+        "odds_high": 529.1,
+        "popularity": 105
+      },
+      {
+        "selection": [
+          2,
+          3,
+          7
+        ],
+        "odds_low": 531.8,
+        "odds_high": 531.8,
+        "popularity": 106
+      },
+      {
+        "selection": [
+          1,
+          4,
+          11
+        ],
+        "odds_low": 536.5,
+        "odds_high": 536.5,
+        "popularity": 107
+      },
+      {
+        "selection": [
+          1,
+          10,
+          11
+        ],
+        "odds_low": 536.5,
+        "odds_high": 536.5,
+        "popularity": 108
+      },
+      {
+        "selection": [
+          5,
+          8,
+          10
+        ],
+        "odds_low": 583.1,
+        "odds_high": 583.1,
+        "popularity": 109
+      },
+      {
+        "selection": [
+          2,
+          5,
+          11
+        ],
+        "odds_low": 589.8,
+        "odds_high": 589.8,
+        "popularity": 110
+      },
+      {
+        "selection": [
+          3,
+          4,
+          8
+        ],
+        "odds_low": 610.8,
+        "odds_high": 610.8,
+        "popularity": 111
+      },
+      {
+        "selection": [
+          2,
+          11,
+          12
+        ],
+        "odds_low": 620.7,
+        "odds_high": 620.7,
+        "popularity": 112
+      },
+      {
+        "selection": [
+          4,
+          5,
+          8
+        ],
+        "odds_low": 629.5,
+        "odds_high": 629.5,
+        "popularity": 113
+      },
+      {
+        "selection": [
+          5,
+          7,
+          11
+        ],
+        "odds_low": 636.0,
+        "odds_high": 636.0,
+        "popularity": 114
+      },
+      {
+        "selection": [
+          3,
+          5,
+          8
+        ],
+        "odds_low": 678.0,
+        "odds_high": 678.0,
+        "popularity": 115
+      },
+      {
+        "selection": [
+          3,
+          8,
+          12
+        ],
+        "odds_low": 685.5,
+        "odds_high": 685.5,
+        "popularity": 116
+      },
+      {
+        "selection": [
+          5,
+          8,
+          12
+        ],
+        "odds_low": 712.4,
+        "odds_high": 712.4,
+        "popularity": 117
+      },
+      {
+        "selection": [
+          3,
+          8,
+          10
+        ],
+        "odds_low": 731.0,
+        "odds_high": 731.0,
+        "popularity": 118
+      },
+      {
+        "selection": [
+          2,
+          6,
+          7
+        ],
+        "odds_low": 746.9,
+        "odds_high": 746.9,
+        "popularity": 119
+      },
+      {
+        "selection": [
+          3,
+          7,
+          11
+        ],
+        "odds_low": 782.9,
+        "odds_high": 782.9,
+        "popularity": 120
+      },
+      {
+        "selection": [
+          4,
+          9,
+          12
+        ],
+        "odds_low": 805.4,
+        "odds_high": 805.4,
+        "popularity": 121
+      },
+      {
+        "selection": [
+          9,
+          10,
+          12
+        ],
+        "odds_low": 811.8,
+        "odds_high": 811.8,
+        "popularity": 122
+      },
+      {
+        "selection": [
+          1,
+          3,
+          11
+        ],
+        "odds_low": 856.9,
+        "odds_high": 856.9,
+        "popularity": 123
+      },
+      {
+        "selection": [
+          4,
+          6,
+          8
+        ],
+        "odds_low": 873.9,
+        "odds_high": 873.9,
+        "popularity": 124
+      },
+      {
+        "selection": [
+          2,
+          3,
+          11
+        ],
+        "odds_low": 886.4,
+        "odds_high": 886.4,
+        "popularity": 125
+      },
+      {
+        "selection": [
+          4,
+          9,
+          10
+        ],
+        "odds_low": 940.5,
+        "odds_high": 940.5,
+        "popularity": 126
+      },
+      {
+        "selection": [
+          1,
+          5,
+          11
+        ],
+        "odds_low": 964.0,
+        "odds_high": 964.0,
+        "popularity": 127
+      },
+      {
+        "selection": [
+          1,
+          4,
+          8
+        ],
+        "odds_low": 1011.4,
+        "odds_high": 1011.4,
+        "popularity": 128
+      },
+      {
+        "selection": [
+          1,
+          2,
+          7
+        ],
+        "odds_low": 1035.2,
+        "odds_high": 1035.2,
+        "popularity": 129
+      },
+      {
+        "selection": [
+          7,
+          8,
+          10
+        ],
+        "odds_low": 1042.2,
+        "odds_high": 1042.2,
+        "popularity": 130
+      },
+      {
+        "selection": [
+          2,
+          4,
+          8
+        ],
+        "odds_low": 1060.1,
+        "odds_high": 1060.1,
+        "popularity": 131
+      },
+      {
+        "selection": [
+          6,
+          7,
+          11
+        ],
+        "odds_low": 1117.7,
+        "odds_high": 1117.7,
+        "popularity": 132
+      },
+      {
+        "selection": [
+          6,
+          8,
+          12
+        ],
+        "odds_low": 1177.4,
+        "odds_high": 1177.4,
+        "popularity": 133
+      },
+      {
+        "selection": [
+          7,
+          8,
+          12
+        ],
+        "odds_low": 1186.5,
+        "odds_high": 1186.5,
+        "popularity": 134
+      },
+      {
+        "selection": [
+          2,
+          8,
+          12
+        ],
+        "odds_low": 1191.1,
+        "odds_high": 1191.1,
+        "popularity": 135
+      },
+      {
+        "selection": [
+          1,
+          6,
+          11
+        ],
+        "odds_low": 1200.3,
+        "odds_high": 1200.3,
+        "popularity": 136
+      },
+      {
+        "selection": [
+          4,
+          5,
+          9
+        ],
+        "odds_low": 1200.3,
+        "odds_high": 1200.3,
+        "popularity": 137
+      },
+      {
+        "selection": [
+          3,
+          6,
+          8
+        ],
+        "odds_low": 1219.3,
+        "odds_high": 1219.3,
+        "popularity": 138
+      },
+      {
+        "selection": [
+          4,
+          8,
+          11
+        ],
+        "odds_low": 1254.0,
+        "odds_high": 1254.0,
+        "popularity": 139
+      },
+      {
+        "selection": [
+          2,
+          6,
+          11
+        ],
+        "odds_low": 1280.0,
+        "odds_high": 1280.0,
+        "popularity": 140
+      },
+      {
+        "selection": [
+          4,
+          7,
+          8
+        ],
+        "odds_low": 1285.4,
+        "odds_high": 1285.4,
+        "popularity": 141
+      },
+      {
+        "selection": [
+          2,
+          7,
+          11
+        ],
+        "odds_low": 1290.7,
+        "odds_high": 1290.7,
+        "popularity": 142
+      },
+      {
+        "selection": [
+          5,
+          6,
+          8
+        ],
+        "odds_low": 1290.7,
+        "odds_high": 1290.7,
+        "popularity": 143
+      },
+      {
+        "selection": [
+          6,
+          8,
+          10
+        ],
+        "odds_low": 1318.3,
+        "odds_high": 1318.3,
+        "popularity": 144
+      },
+      {
+        "selection": [
+          1,
+          3,
+          8
+        ],
+        "odds_low": 1329.7,
+        "odds_high": 1329.7,
+        "popularity": 145
+      },
+      {
+        "selection": [
+          2,
+          8,
+          10
+        ],
+        "odds_low": 1329.7,
+        "odds_high": 1329.7,
+        "popularity": 146
+      },
+      {
+        "selection": [
+          3,
+          4,
+          9
+        ],
+        "odds_low": 1341.2,
+        "odds_high": 1341.2,
+        "popularity": 147
+      },
+      {
+        "selection": [
+          1,
+          7,
+          11
+        ],
+        "odds_low": 1353.0,
+        "odds_high": 1353.0,
+        "popularity": 148
+      },
+      {
+        "selection": [
+          1,
+          8,
+          12
+        ],
+        "odds_low": 1383.3,
+        "odds_high": 1383.3,
+        "popularity": 149
+      },
+      {
+        "selection": [
+          2,
+          5,
+          8
+        ],
+        "odds_low": 1389.6,
+        "odds_high": 1389.6,
+        "popularity": 150
+      },
+      {
+        "selection": [
+          5,
+          9,
+          10
+        ],
+        "odds_low": 1415.1,
+        "odds_high": 1415.1,
+        "popularity": 151
+      },
+      {
+        "selection": [
+          3,
+          9,
+          12
+        ],
+        "odds_low": 1428.2,
+        "odds_high": 1428.2,
+        "popularity": 152
+      },
+      {
+        "selection": [
+          3,
+          7,
+          8
+        ],
+        "odds_low": 1504.8,
+        "odds_high": 1504.8,
+        "popularity": 153
+      },
+      {
+        "selection": [
+          5,
+          9,
+          12
+        ],
+        "odds_low": 1512.2,
+        "odds_high": 1512.2,
+        "popularity": 154
+      },
+      {
+        "selection": [
+          2,
+          3,
+          8
+        ],
+        "odds_low": 1519.6,
+        "odds_high": 1519.6,
+        "popularity": 155
+      },
+      {
+        "selection": [
+          1,
+          5,
+          8
+        ],
+        "odds_low": 1542.4,
+        "odds_high": 1542.4,
+        "popularity": 156
+      },
+      {
+        "selection": [
+          1,
+          8,
+          10
+        ],
+        "odds_low": 1582.0,
+        "odds_high": 1582.0,
+        "popularity": 157
+      },
+      {
+        "selection": [
+          5,
+          7,
+          8
+        ],
+        "odds_low": 1632.2,
+        "odds_high": 1632.2,
+        "popularity": 158
+      },
+      {
+        "selection": [
+          3,
+          6,
+          9
+        ],
+        "odds_low": 1649.7,
+        "odds_high": 1649.7,
+        "popularity": 159
+      },
+      {
+        "selection": [
+          4,
+          6,
+          9
+        ],
+        "odds_low": 1649.7,
+        "odds_high": 1649.7,
+        "popularity": 160
+      },
+      {
+        "selection": [
+          1,
+          2,
+          11
+        ],
+        "odds_low": 1793.5,
+        "odds_high": 1793.5,
+        "popularity": 161
+      },
+      {
+        "selection": [
+          3,
+          9,
+          10
+        ],
+        "odds_low": 1793.5,
+        "odds_high": 1793.5,
+        "popularity": 162
+      },
+      {
+        "selection": [
+          6,
+          9,
+          12
+        ],
+        "odds_low": 1836.2,
+        "odds_high": 1836.2,
+        "popularity": 163
+      },
+      {
+        "selection": [
+          1,
+          6,
+          8
+        ],
+        "odds_low": 1869.6,
+        "odds_high": 1869.6,
+        "popularity": 164
+      },
+      {
+        "selection": [
+          8,
+          11,
+          12
+        ],
+        "odds_low": 1869.6,
+        "odds_high": 1869.6,
+        "popularity": 165
+      },
+      {
+        "selection": [
+          3,
+          5,
+          9
+        ],
+        "odds_low": 1881.0,
+        "odds_high": 1881.0,
+        "popularity": 166
+      },
+      {
+        "selection": [
+          8,
+          10,
+          11
+        ],
+        "odds_low": 1904.3,
+        "odds_high": 1904.3,
+        "popularity": 167
+      },
+      {
+        "selection": [
+          2,
+          4,
+          9
+        ],
+        "odds_low": 1990.3,
+        "odds_high": 1990.3,
+        "popularity": 168
+      },
+      {
+        "selection": [
+          1,
+          4,
+          9
+        ],
+        "odds_low": 2029.5,
+        "odds_high": 2029.5,
+        "popularity": 169
+      },
+      {
+        "selection": [
+          5,
+          6,
+          9
+        ],
+        "odds_low": 2157.3,
+        "odds_high": 2157.3,
+        "popularity": 170
+      },
+      {
+        "selection": [
+          1,
+          5,
+          9
+        ],
+        "odds_low": 2203.5,
+        "odds_high": 2203.5,
+        "popularity": 171
+      },
+      {
+        "selection": [
+          1,
+          7,
+          8
+        ],
+        "odds_low": 2251.8,
+        "odds_high": 2251.8,
+        "popularity": 172
+      },
+      {
+        "selection": [
+          5,
+          8,
+          11
+        ],
+        "odds_low": 2268.3,
+        "odds_high": 2268.3,
+        "popularity": 173
+      },
+      {
+        "selection": [
+          2,
+          6,
+          8
+        ],
+        "odds_low": 2319.5,
+        "odds_high": 2319.5,
+        "popularity": 174
+      },
+      {
+        "selection": [
+          4,
+          7,
+          9
+        ],
+        "odds_low": 2373.0,
+        "odds_high": 2373.0,
+        "popularity": 175
+      },
+      {
+        "selection": [
+          2,
+          5,
+          9
+        ],
+        "odds_low": 2429.1,
+        "odds_high": 2429.1,
+        "popularity": 176
+      },
+      {
+        "selection": [
+          6,
+          7,
+          8
+        ],
+        "odds_low": 2429.1,
+        "odds_high": 2429.1,
+        "popularity": 177
+      },
+      {
+        "selection": [
+          5,
+          7,
+          9
+        ],
+        "odds_low": 2487.8,
+        "odds_high": 2487.8,
+        "popularity": 178
+      },
+      {
+        "selection": [
+          1,
+          2,
+          9
+        ],
+        "odds_low": 2508.1,
+        "odds_high": 2508.1,
+        "popularity": 179
+      },
+      {
+        "selection": [
+          2,
+          3,
+          9
+        ],
+        "odds_low": 2508.1,
+        "odds_high": 2508.1,
+        "popularity": 180
+      },
+      {
+        "selection": [
+          1,
+          9,
+          12
+        ],
+        "odds_low": 2528.6,
+        "odds_high": 2528.6,
+        "popularity": 181
+      },
+      {
+        "selection": [
+          2,
+          9,
+          10
+        ],
+        "odds_low": 2549.5,
+        "odds_high": 2549.5,
+        "popularity": 182
+      },
+      {
+        "selection": [
+          7,
+          9,
+          10
+        ],
+        "odds_low": 2549.5,
+        "odds_high": 2549.5,
+        "popularity": 183
+      },
+      {
+        "selection": [
+          2,
+          7,
+          8
+        ],
+        "odds_low": 2570.8,
+        "odds_high": 2570.8,
+        "popularity": 184
+      },
+      {
+        "selection": [
+          1,
+          3,
+          9
+        ],
+        "odds_low": 2614.3,
+        "odds_high": 2614.3,
+        "popularity": 185
+      },
+      {
+        "selection": [
+          2,
+          6,
+          9
+        ],
+        "odds_low": 2614.3,
+        "odds_high": 2614.3,
+        "popularity": 186
+      },
+      {
+        "selection": [
+          2,
+          9,
+          12
+        ],
+        "odds_low": 2636.7,
+        "odds_high": 2636.7,
+        "popularity": 187
+      },
+      {
+        "selection": [
+          7,
+          8,
+          11
+        ],
+        "odds_low": 2659.4,
+        "odds_high": 2659.4,
+        "popularity": 188
+      },
+      {
+        "selection": [
+          3,
+          8,
+          11
+        ],
+        "odds_low": 2682.5,
+        "odds_high": 2682.5,
+        "popularity": 189
+      },
+      {
+        "selection": [
+          6,
+          9,
+          10
+        ],
+        "odds_low": 2682.5,
+        "odds_high": 2682.5,
+        "popularity": 190
+      },
+      {
+        "selection": [
+          1,
+          6,
+          9
+        ],
+        "odds_low": 2883.1,
+        "odds_high": 2883.1,
+        "popularity": 191
+      },
+      {
+        "selection": [
+          1,
+          9,
+          10
+        ],
+        "odds_low": 2883.1,
+        "odds_high": 2883.1,
+        "popularity": 192
+      },
+      {
+        "selection": [
+          1,
+          2,
+          8
+        ],
+        "odds_low": 2910.3,
+        "odds_high": 2910.3,
+        "popularity": 193
+      },
+      {
+        "selection": [
+          4,
+          9,
+          11
+        ],
+        "odds_low": 2938.0,
+        "odds_high": 2938.0,
+        "popularity": 194
+      },
+      {
+        "selection": [
+          7,
+          9,
+          12
+        ],
+        "odds_low": 3116.1,
+        "odds_high": 3116.1,
+        "popularity": 195
+      },
+      {
+        "selection": [
+          9,
+          11,
+          12
+        ],
+        "odds_low": 3545.9,
+        "odds_high": 3545.9,
+        "popularity": 196
+      },
+      {
+        "selection": [
+          8,
+          9,
+          10
+        ],
+        "odds_low": 3587.1,
+        "odds_high": 3587.1,
+        "popularity": 197
+      },
+      {
+        "selection": [
+          2,
+          8,
+          11
+        ],
+        "odds_low": 3672.5,
+        "odds_high": 3672.5,
+        "popularity": 198
+      },
+      {
+        "selection": [
+          3,
+          7,
+          9
+        ],
+        "odds_low": 3808.6,
+        "odds_high": 3808.6,
+        "popularity": 199
+      },
+      {
+        "selection": [
+          9,
+          10,
+          11
+        ],
+        "odds_low": 3856.2,
+        "odds_high": 3856.2,
+        "popularity": 200
+      },
+      {
+        "selection": [
+          4,
+          8,
+          9
+        ],
+        "odds_low": 3905.0,
+        "odds_high": 3905.0,
+        "popularity": 201
+      },
+      {
+        "selection": [
+          1,
+          7,
+          9
+        ],
+        "odds_low": 3955.0,
+        "odds_high": 3955.0,
+        "popularity": 202
+      },
+      {
+        "selection": [
+          2,
+          7,
+          9
+        ],
+        "odds_low": 3955.0,
+        "odds_high": 3955.0,
+        "popularity": 203
+      },
+      {
+        "selection": [
+          2,
+          8,
+          9
+        ],
+        "odds_low": 3955.0,
+        "odds_high": 3955.0,
+        "popularity": 204
+      },
+      {
+        "selection": [
+          6,
+          8,
+          11
+        ],
+        "odds_low": 4006.4,
+        "odds_high": 4006.4,
+        "popularity": 205
+      },
+      {
+        "selection": [
+          3,
+          8,
+          9
+        ],
+        "odds_low": 4284.6,
+        "odds_high": 4284.6,
+        "popularity": 206
+      },
+      {
+        "selection": [
+          1,
+          8,
+          11
+        ],
+        "odds_low": 4470.9,
+        "odds_high": 4470.9,
+        "popularity": 207
+      },
+      {
+        "selection": [
+          7,
+          9,
+          11
+        ],
+        "odds_low": 4674.1,
+        "odds_high": 4674.1,
+        "popularity": 208
+      },
+      {
+        "selection": [
+          2,
+          9,
+          11
+        ],
+        "odds_low": 4820.2,
+        "odds_high": 4820.2,
+        "popularity": 209
+      },
+      {
+        "selection": [
+          5,
+          9,
+          11
+        ],
+        "odds_low": 4975.7,
+        "odds_high": 4975.7,
+        "popularity": 210
+      },
+      {
+        "selection": [
+          6,
+          7,
+          9
+        ],
+        "odds_low": 5318.9,
+        "odds_high": 5318.9,
+        "popularity": 211
+      },
+      {
+        "selection": [
+          5,
+          8,
+          9
+        ],
+        "odds_low": 5412.2,
+        "odds_high": 5412.2,
+        "popularity": 212
+      },
+      {
+        "selection": [
+          8,
+          9,
+          12
+        ],
+        "odds_low": 5609.0,
+        "odds_high": 5609.0,
+        "popularity": 213
+      },
+      {
+        "selection": [
+          3,
+          9,
+          11
+        ],
+        "odds_low": 5932.6,
+        "odds_high": 5932.6,
+        "popularity": 214
+      },
+      {
+        "selection": [
+          1,
+          8,
+          9
+        ],
+        "odds_low": 6563.7,
+        "odds_high": 6563.7,
+        "popularity": 215
+      },
+      {
+        "selection": [
+          6,
+          9,
+          11
+        ],
+        "odds_low": 6563.7,
+        "odds_high": 6563.7,
+        "popularity": 216
+      },
+      {
+        "selection": [
+          1,
+          9,
+          11
+        ],
+        "odds_low": 7174.3,
+        "odds_high": 7174.3,
+        "popularity": 217
+      },
+      {
+        "selection": [
+          7,
+          8,
+          9
+        ],
+        "odds_low": 7174.3,
+        "odds_high": 7174.3,
+        "popularity": 218
+      },
+      {
+        "selection": [
+          6,
+          8,
+          9
+        ],
+        "odds_low": 7345.1,
+        "odds_high": 7345.1,
+        "popularity": 219
+      },
+      {
+        "selection": [
+          8,
+          9,
+          11
+        ],
+        "odds_low": 9951.5,
+        "odds_high": 9951.5,
+        "popularity": 220
+      }
+    ]
+  },
+  "horses": [],
+  "missing": [],
+  "tables": [
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "1",
+        "4 - 10 - 12",
+        "11.8"
+      ],
+      [
+        "2",
+        "5 - 10 - 12",
+        "18.8"
+      ],
+      [
+        "3",
+        "3 - 4 - 12",
+        "19.6"
+      ],
+      [
+        "4",
+        "4 - 5 - 10",
+        "20.3"
+      ],
+      [
+        "5",
+        "3 - 4 - 10",
+        "21.2"
+      ],
+      [
+        "6",
+        "3 - 10 - 12",
+        "21.6"
+      ],
+      [
+        "7",
+        "4 - 5 - 12",
+        "21.8"
+      ],
+      [
+        "8",
+        "3 - 4 - 5",
+        "28.4"
+      ],
+      [
+        "9",
+        "4 - 6 - 12",
+        "31.3"
+      ],
+      [
+        "10",
+        "3 - 5 - 10",
+        "33.7"
+      ],
+      [
+        "11",
+        "4 - 6 - 10",
+        "35.2"
+      ],
+      [
+        "12",
+        "3 - 5 - 12",
+        "35.9"
+      ],
+      [
+        "13",
+        "3 - 4 - 6",
+        "38.6"
+      ],
+      [
+        "14",
+        "6 - 10 - 12",
+        "40.5"
+      ],
+      [
+        "15",
+        "1 - 10 - 12",
+        "46.8"
+      ],
+      [
+        "16",
+        "1 - 4 - 12",
+        "48.2"
+      ],
+      [
+        "17",
+        "4 - 5 - 6",
+        "49.9"
+      ],
+      [
+        "18",
+        "4 - 7 - 10",
+        "52.9"
+      ],
+      [
+        "19",
+        "3 - 6 - 12",
+        "53.8"
+      ],
+      [
+        "20",
+        "7 - 10 - 12",
+        "55.8"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "21",
+        "3 - 6 - 10",
+        "58.1"
+      ],
+      [
+        "22",
+        "4 - 7 - 12",
+        "61.3"
+      ],
+      [
+        "23",
+        "5 - 6 - 12",
+        "65.3"
+      ],
+      [
+        "24",
+        "1 - 4 - 10",
+        "66.9"
+      ],
+      [
+        "25",
+        "1 - 5 - 12",
+        "71.8"
+      ],
+      [
+        "26",
+        "5 - 6 - 10",
+        "73.3"
+      ],
+      [
+        "27",
+        "3 - 4 - 7",
+        "76.1"
+      ],
+      [
+        "28",
+        "1 - 3 - 4",
+        "78.2"
+      ],
+      [
+        "29",
+        "1 - 3 - 12",
+        "78.5"
+      ],
+      [
+        "30",
+        "3 - 5 - 6",
+        "79.9"
+      ],
+      [
+        "31",
+        "3 - 7 - 10",
+        "82.0"
+      ],
+      [
+        "32",
+        "2 - 4 - 10",
+        "82.9"
+      ],
+      [
+        "33",
+        "5 - 7 - 10",
+        "86.1"
+      ],
+      [
+        "34",
+        "2 - 4 - 12",
+        "89.6"
+      ],
+      [
+        "35",
+        "1 - 3 - 10",
+        "89.7"
+      ],
+      [
+        "36",
+        "10 - 11 - 12",
+        "90.8"
+      ],
+      [
+        "37",
+        "4 - 11 - 12",
+        "94.4"
+      ],
+      [
+        "38",
+        "2 - 3 - 4",
+        "95.0"
+      ],
+      [
+        "39",
+        "1 - 5 - 10",
+        "96.9"
+      ],
+      [
+        "40",
+        "2 - 4 - 5",
+        "98.1"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "41",
+        "3 - 7 - 12",
+        "100.9"
+      ],
+      [
+        "42",
+        "1 - 4 - 5",
+        "102.4"
+      ],
+      [
+        "43",
+        "2 - 10 - 12",
+        "110.0"
+      ],
+      [
+        "44",
+        "5 - 7 - 12",
+        "110.4"
+      ],
+      [
+        "45",
+        "4 - 5 - 7",
+        "120.3"
+      ],
+      [
+        "46",
+        "1 - 6 - 12",
+        "123.3"
+      ],
+      [
+        "47",
+        "2 - 5 - 10",
+        "127.9"
+      ],
+      [
+        "48",
+        "4 - 10 - 11",
+        "129.6"
+      ],
+      [
+        "49",
+        "1 - 4 - 6",
+        "130.4"
+      ],
+      [
+        "50",
+        "2 - 4 - 6",
+        "134.5"
+      ],
+      [
+        "51",
+        "1 - 3 - 5",
+        "134.6"
+      ],
+      [
+        "52",
+        "5 - 11 - 12",
+        "142.9"
+      ],
+      [
+        "53",
+        "1 - 6 - 10",
+        "146.4"
+      ],
+      [
+        "54",
+        "1 - 3 - 6",
+        "149.8"
+      ],
+      [
+        "55",
+        "4 - 6 - 7",
+        "151.1"
+      ],
+      [
+        "56",
+        "2 - 5 - 12",
+        "156.4"
+      ],
+      [
+        "57",
+        "3 - 11 - 12",
+        "158.9"
+      ],
+      [
+        "58",
+        "2 - 3 - 10",
+        "160.7"
+      ],
+      [
+        "59",
+        "6 - 7 - 12",
+        "162.4"
+      ],
+      [
+        "60",
+        "3 - 5 - 7",
+        "165.8"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "61",
+        "4 - 5 - 11",
+        "168.4"
+      ],
+      [
+        "62",
+        "2 - 3 - 12",
+        "172.1"
+      ],
+      [
+        "63",
+        "1 - 7 - 12",
+        "178.8"
+      ],
+      [
+        "64",
+        "2 - 3 - 5",
+        "186.6"
+      ],
+      [
+        "65",
+        "6 - 7 - 10",
+        "188.9"
+      ],
+      [
+        "66",
+        "3 - 4 - 11",
+        "196.8"
+      ],
+      [
+        "67",
+        "3 - 6 - 7",
+        "206.9"
+      ],
+      [
+        "68",
+        "5 - 10 - 11",
+        "207.8"
+      ],
+      [
+        "69",
+        "1 - 5 - 6",
+        "220.1"
+      ],
+      [
+        "70",
+        "2 - 4 - 7",
+        "227.1"
+      ],
+      [
+        "71",
+        "1 - 4 - 7",
+        "231.0"
+      ],
+      [
+        "72",
+        "1 - 11 - 12",
+        "233.0"
+      ],
+      [
+        "73",
+        "6 - 11 - 12",
+        "236.7"
+      ],
+      [
+        "74",
+        "2 - 6 - 10",
+        "244.4"
+      ],
+      [
+        "75",
+        "3 - 10 - 11",
+        "246.6"
+      ],
+      [
+        "76",
+        "5 - 6 - 7",
+        "252.2"
+      ],
+      [
+        "77",
+        "2 - 3 - 6",
+        "252.8"
+      ],
+      [
+        "78",
+        "1 - 7 - 10",
+        "258.5"
+      ],
+      [
+        "79",
+        "2 - 6 - 12",
+        "263.8"
+      ],
+      [
+        "80",
+        "7 - 11 - 12",
+        "263.8"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "81",
+        "2 - 5 - 6",
+        "290.4"
+      ],
+      [
+        "82",
+        "1 - 3 - 7",
+        "292.4"
+      ],
+      [
+        "83",
+        "4 - 6 - 11",
+        "302.4"
+      ],
+      [
+        "84",
+        "3 - 5 - 11",
+        "309.4"
+      ],
+      [
+        "85",
+        "1 - 2 - 4",
+        "321.3"
+      ],
+      [
+        "86",
+        "1 - 2 - 3",
+        "322.6"
+      ],
+      [
+        "87",
+        "1 - 2 - 10",
+        "347.7"
+      ],
+      [
+        "88",
+        "2 - 7 - 10",
+        "359.1"
+      ],
+      [
+        "89",
+        "1 - 2 - 12",
+        "375.7"
+      ],
+      [
+        "90",
+        "8 - 10 - 12",
+        "398.5"
+      ],
+      [
+        "91",
+        "4 - 8 - 12",
+        "400.6"
+      ],
+      [
+        "92",
+        "4 - 8 - 10",
+        "412.4"
+      ],
+      [
+        "93",
+        "2 - 4 - 11",
+        "415.7"
+      ],
+      [
+        "94",
+        "6 - 10 - 11",
+        "430.2"
+      ],
+      [
+        "95",
+        "4 - 7 - 11",
+        "432.6"
+      ],
+      [
+        "96",
+        "1 - 5 - 7",
+        "448.3"
+      ],
+      [
+        "97",
+        "1 - 2 - 5",
+        "466.7"
+      ],
+      [
+        "98",
+        "1 - 6 - 7",
+        "475.3"
+      ],
+      [
+        "99",
+        "5 - 6 - 11",
+        "476.8"
+      ],
+      [
+        "100",
+        "7 - 10 - 11",
+        "482.7"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "101",
+        "2 - 7 - 12",
+        "490.4"
+      ],
+      [
+        "102",
+        "2 - 10 - 11",
+        "503.2"
+      ],
+      [
+        "103",
+        "2 - 5 - 7",
+        "517.6"
+      ],
+      [
+        "104",
+        "3 - 6 - 11",
+        "525.5"
+      ],
+      [
+        "105",
+        "1 - 2 - 6",
+        "529.1"
+      ],
+      [
+        "106",
+        "2 - 3 - 7",
+        "531.8"
+      ],
+      [
+        "107",
+        "1 - 4 - 11",
+        "536.5"
+      ],
+      [
+        "108",
+        "1 - 10 - 11",
+        "536.5"
+      ],
+      [
+        "109",
+        "5 - 8 - 10",
+        "583.1"
+      ],
+      [
+        "110",
+        "2 - 5 - 11",
+        "589.8"
+      ],
+      [
+        "111",
+        "3 - 4 - 8",
+        "610.8"
+      ],
+      [
+        "112",
+        "2 - 11 - 12",
+        "620.7"
+      ],
+      [
+        "113",
+        "4 - 5 - 8",
+        "629.5"
+      ],
+      [
+        "114",
+        "5 - 7 - 11",
+        "636.0"
+      ],
+      [
+        "115",
+        "3 - 5 - 8",
+        "678.0"
+      ],
+      [
+        "116",
+        "3 - 8 - 12",
+        "685.5"
+      ],
+      [
+        "117",
+        "5 - 8 - 12",
+        "712.4"
+      ],
+      [
+        "118",
+        "3 - 8 - 10",
+        "731.0"
+      ],
+      [
+        "119",
+        "2 - 6 - 7",
+        "746.9"
+      ],
+      [
+        "120",
+        "3 - 7 - 11",
+        "782.9"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "121",
+        "4 - 9 - 12",
+        "805.4"
+      ],
+      [
+        "122",
+        "9 - 10 - 12",
+        "811.8"
+      ],
+      [
+        "123",
+        "1 - 3 - 11",
+        "856.9"
+      ],
+      [
+        "124",
+        "4 - 6 - 8",
+        "873.9"
+      ],
+      [
+        "125",
+        "2 - 3 - 11",
+        "886.4"
+      ],
+      [
+        "126",
+        "4 - 9 - 10",
+        "940.5"
+      ],
+      [
+        "127",
+        "1 - 5 - 11",
+        "964.0"
+      ],
+      [
+        "128",
+        "1 - 4 - 8",
+        "1011.4"
+      ],
+      [
+        "129",
+        "1 - 2 - 7",
+        "1035.2"
+      ],
+      [
+        "130",
+        "7 - 8 - 10",
+        "1042.2"
+      ],
+      [
+        "131",
+        "2 - 4 - 8",
+        "1060.1"
+      ],
+      [
+        "132",
+        "6 - 7 - 11",
+        "1117.7"
+      ],
+      [
+        "133",
+        "6 - 8 - 12",
+        "1177.4"
+      ],
+      [
+        "134",
+        "7 - 8 - 12",
+        "1186.5"
+      ],
+      [
+        "135",
+        "2 - 8 - 12",
+        "1191.1"
+      ],
+      [
+        "136",
+        "1 - 6 - 11",
+        "1200.3"
+      ],
+      [
+        "137",
+        "4 - 5 - 9",
+        "1200.3"
+      ],
+      [
+        "138",
+        "3 - 6 - 8",
+        "1219.3"
+      ],
+      [
+        "139",
+        "4 - 8 - 11",
+        "1254.0"
+      ],
+      [
+        "140",
+        "2 - 6 - 11",
+        "1280.0"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "141",
+        "4 - 7 - 8",
+        "1285.4"
+      ],
+      [
+        "142",
+        "2 - 7 - 11",
+        "1290.7"
+      ],
+      [
+        "143",
+        "5 - 6 - 8",
+        "1290.7"
+      ],
+      [
+        "144",
+        "6 - 8 - 10",
+        "1318.3"
+      ],
+      [
+        "145",
+        "1 - 3 - 8",
+        "1329.7"
+      ],
+      [
+        "146",
+        "2 - 8 - 10",
+        "1329.7"
+      ],
+      [
+        "147",
+        "3 - 4 - 9",
+        "1341.2"
+      ],
+      [
+        "148",
+        "1 - 7 - 11",
+        "1353.0"
+      ],
+      [
+        "149",
+        "1 - 8 - 12",
+        "1383.3"
+      ],
+      [
+        "150",
+        "2 - 5 - 8",
+        "1389.6"
+      ],
+      [
+        "151",
+        "5 - 9 - 10",
+        "1415.1"
+      ],
+      [
+        "152",
+        "3 - 9 - 12",
+        "1428.2"
+      ],
+      [
+        "153",
+        "3 - 7 - 8",
+        "1504.8"
+      ],
+      [
+        "154",
+        "5 - 9 - 12",
+        "1512.2"
+      ],
+      [
+        "155",
+        "2 - 3 - 8",
+        "1519.6"
+      ],
+      [
+        "156",
+        "1 - 5 - 8",
+        "1542.4"
+      ],
+      [
+        "157",
+        "1 - 8 - 10",
+        "1582.0"
+      ],
+      [
+        "158",
+        "5 - 7 - 8",
+        "1632.2"
+      ],
+      [
+        "159",
+        "3 - 6 - 9",
+        "1649.7"
+      ],
+      [
+        "160",
+        "4 - 6 - 9",
+        "1649.7"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "161",
+        "1 - 2 - 11",
+        "1793.5"
+      ],
+      [
+        "162",
+        "3 - 9 - 10",
+        "1793.5"
+      ],
+      [
+        "163",
+        "6 - 9 - 12",
+        "1836.2"
+      ],
+      [
+        "164",
+        "1 - 6 - 8",
+        "1869.6"
+      ],
+      [
+        "165",
+        "8 - 11 - 12",
+        "1869.6"
+      ],
+      [
+        "166",
+        "3 - 5 - 9",
+        "1881.0"
+      ],
+      [
+        "167",
+        "8 - 10 - 11",
+        "1904.3"
+      ],
+      [
+        "168",
+        "2 - 4 - 9",
+        "1990.3"
+      ],
+      [
+        "169",
+        "1 - 4 - 9",
+        "2029.5"
+      ],
+      [
+        "170",
+        "5 - 6 - 9",
+        "2157.3"
+      ],
+      [
+        "171",
+        "1 - 5 - 9",
+        "2203.5"
+      ],
+      [
+        "172",
+        "1 - 7 - 8",
+        "2251.8"
+      ],
+      [
+        "173",
+        "5 - 8 - 11",
+        "2268.3"
+      ],
+      [
+        "174",
+        "2 - 6 - 8",
+        "2319.5"
+      ],
+      [
+        "175",
+        "4 - 7 - 9",
+        "2373.0"
+      ],
+      [
+        "176",
+        "2 - 5 - 9",
+        "2429.1"
+      ],
+      [
+        "177",
+        "6 - 7 - 8",
+        "2429.1"
+      ],
+      [
+        "178",
+        "5 - 7 - 9",
+        "2487.8"
+      ],
+      [
+        "179",
+        "1 - 2 - 9",
+        "2508.1"
+      ],
+      [
+        "180",
+        "2 - 3 - 9",
+        "2508.1"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "181",
+        "1 - 9 - 12",
+        "2528.6"
+      ],
+      [
+        "182",
+        "2 - 9 - 10",
+        "2549.5"
+      ],
+      [
+        "183",
+        "7 - 9 - 10",
+        "2549.5"
+      ],
+      [
+        "184",
+        "2 - 7 - 8",
+        "2570.8"
+      ],
+      [
+        "185",
+        "1 - 3 - 9",
+        "2614.3"
+      ],
+      [
+        "186",
+        "2 - 6 - 9",
+        "2614.3"
+      ],
+      [
+        "187",
+        "2 - 9 - 12",
+        "2636.7"
+      ],
+      [
+        "188",
+        "7 - 8 - 11",
+        "2659.4"
+      ],
+      [
+        "189",
+        "3 - 8 - 11",
+        "2682.5"
+      ],
+      [
+        "190",
+        "6 - 9 - 10",
+        "2682.5"
+      ],
+      [
+        "191",
+        "1 - 6 - 9",
+        "2883.1"
+      ],
+      [
+        "192",
+        "1 - 9 - 10",
+        "2883.1"
+      ],
+      [
+        "193",
+        "1 - 2 - 8",
+        "2910.3"
+      ],
+      [
+        "194",
+        "4 - 9 - 11",
+        "2938.0"
+      ],
+      [
+        "195",
+        "7 - 9 - 12",
+        "3116.1"
+      ],
+      [
+        "196",
+        "9 - 11 - 12",
+        "3545.9"
+      ],
+      [
+        "197",
+        "8 - 9 - 10",
+        "3587.1"
+      ],
+      [
+        "198",
+        "2 - 8 - 11",
+        "3672.5"
+      ],
+      [
+        "199",
+        "3 - 7 - 9",
+        "3808.6"
+      ],
+      [
+        "200",
+        "9 - 10 - 11",
+        "3856.2"
+      ]
+    ],
+    [
+      [
+        "人気",
+        "馬番",
+        "オッズ"
+      ],
+      [
+        "201",
+        "4 - 8 - 9",
+        "3905.0"
+      ],
+      [
+        "202",
+        "1 - 7 - 9",
+        "3955.0"
+      ],
+      [
+        "203",
+        "2 - 7 - 9",
+        "3955.0"
+      ],
+      [
+        "204",
+        "2 - 8 - 9",
+        "3955.0"
+      ],
+      [
+        "205",
+        "6 - 8 - 11",
+        "4006.4"
+      ],
+      [
+        "206",
+        "3 - 8 - 9",
+        "4284.6"
+      ],
+      [
+        "207",
+        "1 - 8 - 11",
+        "4470.9"
+      ],
+      [
+        "208",
+        "7 - 9 - 11",
+        "4674.1"
+      ],
+      [
+        "209",
+        "2 - 9 - 11",
+        "4820.2"
+      ],
+      [
+        "210",
+        "5 - 9 - 11",
+        "4975.7"
+      ],
+      [
+        "211",
+        "6 - 7 - 9",
+        "5318.9"
+      ],
+      [
+        "212",
+        "5 - 8 - 9",
+        "5412.2"
+      ],
+      [
+        "213",
+        "8 - 9 - 12",
+        "5609.0"
+      ],
+      [
+        "214",
+        "3 - 9 - 11",
+        "5932.6"
+      ],
+      [
+        "215",
+        "1 - 8 - 9",
+        "6563.7"
+      ],
+      [
+        "216",
+        "6 - 9 - 11",
+        "6563.7"
+      ],
+      [
+        "217",
+        "1 - 9 - 11",
+        "7174.3"
+      ],
+      [
+        "218",
+        "7 - 8 - 9",
+        "7174.3"
+      ],
+      [
+        "219",
+        "6 - 8 - 9",
+        "7345.1"
+      ],
+      [
+        "220",
+        "8 - 9 - 11",
+        "9951.5"
+      ]
+    ]
+  ]
+}
