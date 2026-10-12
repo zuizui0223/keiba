@@ -38,3 +38,8 @@ jobs:
           python scripts/ecology_panel.py --input tmp/fake-competitors.csv --audit tmp/h2-readiness.json --features tmp/h2-lagged.csv
           python scripts/ecology_h2_pilot.py --input tmp/fake-competitors.csv --output tmp/h2-demo.json --surface turf --permit-synthetic-demo
           python -c "import json; a=json.load(open('tmp/h2-readiness.json')); b=json.load(open('tmp/h2-demo.json')); assert a['status']=='SYNTHETIC_ONLY'; assert b['status']=='SYNTHETIC_H2_SMOKE_ONLY'; assert b['h2_overlap']['training_horses_with_4plus_distinct_context_exposures']>=8; assert b['m0']['converged'] and b['m1']['converged']"
+      - name: H2 within-horse model and negative-control stress suite (fabricated only)
+        run: |
+          python scripts/ecology_h2_within_between.py --input tmp/fake-competitors.csv --output tmp/h2-within.json --surface turf --permit-synthetic-demo
+          python scripts/ecology_h2_falsification.py --output tmp/h2-null-stress.json --seeds 512 911 --days 65 --horses 36 --runners 12
+          python -c "import json; p=json.load(open('tmp/h2-within.json')); n=json.load(open('tmp/h2-null-stress.json')); assert p['status']=='SYNTHETIC_H2_WITHIN_HORSE_DEMO_ONLY'; assert n['status']=='SYNTHETIC_DESIGN_STRESS_ONLY'; assert len(n['runs'])==6"
