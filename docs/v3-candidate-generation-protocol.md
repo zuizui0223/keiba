@@ -1,6 +1,6 @@
 # v3.0 candidate-generation protocol
 
-Status: **frozen after the 2026-10-12 Kyoto R7-R12 post-race audit and before any future evaluation race**.
+Status: **development-frozen after the 2026-10-12 Kyoto R7-R12 post-race audit. Prospective holdout has NOT started.** The full mechanical audit produced 64/83 candidates (77.1%), so this v3.0 specification is retained as a reproducible development baseline rather than activated for future evaluation. A narrower v3.1 is proposed separately and must be explicitly frozen before any holdout race.
 
 This protocol was designed after observing R7-R12, so those races are **development / in-sample diagnostics only**. They must not be used as prospective evidence that v3 works.
 
