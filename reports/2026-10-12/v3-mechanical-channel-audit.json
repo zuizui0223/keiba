@@ -1,0 +1,1869 @@
+{
+  "schema_version": 1,
+  "method": "v3_frozen_candidate_channels",
+  "uses_target_race_results": false,
+  "target_date": "2026-10-12",
+  "inputs": {
+    "normalized_history_sha": "c60f09fc8e84500579482a1d2f1390862403325c",
+    "quality_tier_map_sha": "d3610633cb1b61880c5698a6f756f2aa4a1dc369",
+    "frozen_race_shas": {
+      "7": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
+      "8": "40b8626ece484ef6631d4bd97aaf89f26eedec09",
+      "9": "71f6fd82a3c8f44d99ce66354ae077e998b6a238",
+      "10": "4b8c098eedb478ebd6a9e3e874aa6b692adcfe9a",
+      "11": "72180071976ffb9efe81cf6b4a6dfdb2aa458bd0",
+      "12": "3b9194da50df0ead111d179dac609e3c61d3a1c2"
+    }
+  },
+  "races": {
+    "7": {
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1900,
+        "class_rank": 1
+      },
+      "field_size": 16,
+      "candidate_count": 11,
+      "candidate_fraction": 0.6875,
+      "sets": {
+        "M": [
+          2,
+          11,
+          12,
+          15
+        ],
+        "C": [
+          1,
+          2,
+          5,
+          8,
+          9,
+          11,
+          15
+        ],
+        "U": [
+          16
+        ],
+        "Q": [],
+        "K": [
+          2,
+          3,
+          7,
+          8,
+          9,
+          12
+        ],
+        "union": [
+          1,
+          2,
+          3,
+          5,
+          7,
+          8,
+          9,
+          11,
+          12,
+          15,
+          16
+        ]
+      },
+      "horses": [
+        {
+          "number": 1,
+          "name": "ロックウイズユー",
+          "frozen_win_odds": 43.9,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 2,
+          "name": "アレンスター",
+          "frozen_win_odds": 5.8,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 3,
+          "name": "マジックブルー",
+          "frozen_win_odds": 67.1,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 2,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 4,
+          "name": "ハンドフル",
+          "frozen_win_odds": 9.6,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue",
+            "first_exact_distance",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 5,
+          "name": "ゴールドコット",
+          "frozen_win_odds": 11,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 6,
+          "name": "タイセイサーブル",
+          "frozen_win_odds": 34.6,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue",
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 7,
+          "name": "ドメイン",
+          "frozen_win_odds": 17.8,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 8,
+          "name": "エアフォースワン",
+          "frozen_win_odds": 64,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 2,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 9,
+          "name": "エイユーファイヤー",
+          "frozen_win_odds": 11.3,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 2,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 10,
+          "name": "エクストラプッシュ",
+          "frozen_win_odds": 17.5,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 11,
+          "name": "カイラーサ",
+          "frozen_win_odds": 4.1,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 12,
+          "name": "ダイシンレアレア",
+          "frozen_win_odds": 7.6,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 3,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 13,
+          "name": "リオンサーガ",
+          "frozen_win_odds": 77.3,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 14,
+          "name": "セルリアンゲーゲン",
+          "frozen_win_odds": 65.5,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "first_exact_distance",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 15,
+          "name": "ジーティーアメリカ",
+          "frozen_win_odds": 6.7,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 16,
+          "name": "タニセンゴールド",
+          "frozen_win_odds": 18.9,
+          "M": false,
+          "C": false,
+          "U": true,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": []
+        }
+      ],
+      "unknown_quality_tiers": []
+    },
+    "8": {
+      "target": {
+        "surface": "芝",
+        "distance_m": 2000,
+        "class_rank": 1
+      },
+      "field_size": 11,
+      "candidate_count": 8,
+      "candidate_fraction": 0.7272727272727273,
+      "sets": {
+        "M": [
+          5,
+          9,
+          11
+        ],
+        "C": [
+          1,
+          2,
+          4,
+          5,
+          8,
+          11
+        ],
+        "U": [
+          9
+        ],
+        "Q": [],
+        "K": [
+          5,
+          7
+        ],
+        "union": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          11
+        ]
+      },
+      "horses": [
+        {
+          "number": 1,
+          "name": "エレガンシア",
+          "frozen_win_odds": 5.7,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 2,
+          "name": "ヴィーナスバブル",
+          "frozen_win_odds": 28.5,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 3,
+          "name": "ストロベリーツリー",
+          "frozen_win_odds": 7.7,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "first_run_at_venue",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 4,
+          "name": "テレプシコーラ",
+          "frozen_win_odds": 14.2,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 5,
+          "name": "ウィズクィーン",
+          "frozen_win_odds": 5,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": [
+            "忘れな草賞",
+            "若駒S"
+          ]
+        },
+        {
+          "number": 6,
+          "name": "カドーダムール",
+          "frozen_win_odds": 10.3,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue",
+            "first_exact_distance",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 7,
+          "name": "レーヌマロン",
+          "frozen_win_odds": 27.5,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 8,
+          "name": "リトルスカーレット",
+          "frozen_win_odds": 17,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 9,
+          "name": "レゼルフォート",
+          "frozen_win_odds": 4.7,
+          "M": true,
+          "C": false,
+          "U": true,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "class_rise",
+            "first_run_at_venue",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 10,
+          "name": "スリラーナイト",
+          "frozen_win_odds": 18.3,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 11,
+          "name": "ベルシュヴァル",
+          "frozen_win_odds": 5.3,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        }
+      ],
+      "unknown_quality_tiers": [
+        "忘れな草賞",
+        "若駒S"
+      ]
+    },
+    "9": {
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 2
+      },
+      "field_size": 12,
+      "candidate_count": 10,
+      "candidate_fraction": 0.8333333333333334,
+      "sets": {
+        "M": [
+          4,
+          10,
+          12
+        ],
+        "C": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          10,
+          11
+        ],
+        "U": [
+          12
+        ],
+        "Q": [],
+        "K": [
+          4,
+          5,
+          10,
+          12
+        ],
+        "union": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          10,
+          11,
+          12
+        ]
+      },
+      "horses": [
+        {
+          "number": 1,
+          "name": "イプシロンナンバー",
+          "frozen_win_odds": 13.4,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "first_run_at_venue"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 2,
+          "name": "ロードソルスティス",
+          "frozen_win_odds": 22.5,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 3,
+          "name": "クロノスバレット",
+          "frozen_win_odds": 9.6,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 4,
+          "name": "ソルチェリア",
+          "frozen_win_odds": 6.4,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": [
+            "ユニコーンS",
+            "鳳雛S"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "ゼンエスポワール",
+          "frozen_win_odds": 6.7,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 2,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 6,
+          "name": "マシン",
+          "frozen_win_odds": 15.1,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 7,
+          "name": "トゥーザムーン",
+          "frozen_win_odds": 17.5,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 8,
+          "name": "シグムンド",
+          "frozen_win_odds": 61.7,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "class_rise",
+            "first_run_at_venue",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 9,
+          "name": "サザンウォリアー",
+          "frozen_win_odds": 117.2,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 10,
+          "name": "ニホンピロデヴィン",
+          "frozen_win_odds": 4.7,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "layoff_gt_120d"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 11,
+          "name": "レッドボブ",
+          "frozen_win_odds": 24,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 12,
+          "name": "テイエムサンレーヴ",
+          "frozen_win_odds": 3.1,
+          "M": true,
+          "C": false,
+          "U": true,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 2,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "class_rise"
+          ],
+          "unknown_quality_tiers": [
+            "ポインセチア"
+          ]
+        }
+      ],
+      "unknown_quality_tiers": [
+        "ポインセチア",
+        "ユニコーンS",
+        "鳳雛S"
+      ]
+    },
+    "10": {
+      "target": {
+        "surface": "芝",
+        "distance_m": 1800,
+        "class_rank": 2
+      },
+      "field_size": 10,
+      "candidate_count": 7,
+      "candidate_fraction": 0.7,
+      "sets": {
+        "M": [
+          2,
+          5,
+          9
+        ],
+        "C": [
+          6,
+          10
+        ],
+        "U": [
+          5,
+          7
+        ],
+        "Q": [],
+        "K": [
+          4,
+          10
+        ],
+        "union": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10
+        ]
+      },
+      "horses": [
+        {
+          "number": 1,
+          "name": "アンヘリータス",
+          "frozen_win_odds": 62.4,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_exact_distance",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": [
+            "阪神JF"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "カムアップローゼス",
+          "frozen_win_odds": 4.3,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 3,
+          "name": "ハイディージェン",
+          "frozen_win_odds": 49.6,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 4,
+          "name": "エリカアンディーヴ",
+          "frozen_win_odds": 9.9,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 2,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 5,
+          "name": "アクセス",
+          "frozen_win_odds": 2.5,
+          "M": true,
+          "C": false,
+          "U": true,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": [
+            "京成杯"
+          ]
+        },
+        {
+          "number": 6,
+          "name": "ウインリベラシオン",
+          "frozen_win_odds": 17.3,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 7,
+          "name": "キシダンチョウ",
+          "frozen_win_odds": 7.7,
+          "M": false,
+          "C": false,
+          "U": true,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 8,
+          "name": "キーウェーブ",
+          "frozen_win_odds": 87.7,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 9,
+          "name": "ミリタリータトゥー",
+          "frozen_win_odds": 5.1,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue",
+            "body_weight_change_ge_10kg"
+          ],
+          "unknown_quality_tiers": [
+            "ローズS"
+          ]
+        },
+        {
+          "number": 10,
+          "name": "ホウオウトランプ",
+          "frozen_win_odds": 9.8,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "body_weight_change_ge_10kg"
+          ],
+          "unknown_quality_tiers": []
+        }
+      ],
+      "unknown_quality_tiers": [
+        "ローズS",
+        "京成杯",
+        "阪神JF"
+      ]
+    },
+    "11": {
+      "target": {
+        "surface": "芝",
+        "distance_m": 1400,
+        "class_rank": 6
+      },
+      "field_size": 18,
+      "candidate_count": 16,
+      "candidate_fraction": 0.8888888888888888,
+      "sets": {
+        "M": [
+          1,
+          9,
+          13,
+          15,
+          18
+        ],
+        "C": [
+          11,
+          13
+        ],
+        "U": [],
+        "Q": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          10,
+          11,
+          12,
+          13,
+          16,
+          17
+        ],
+        "K": [
+          2,
+          4,
+          5,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17
+        ],
+        "union": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ]
+      },
+      "horses": [
+        {
+          "number": 1,
+          "name": "ダイヤモンドノット",
+          "frozen_win_odds": 6,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": [
+            "NHKマイル",
+            "セントウルS"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "ショウナンザナドゥ",
+          "frozen_win_odds": 19.2,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": [
+            "六甲S"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "レイベリング",
+          "frozen_win_odds": 89.7,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": [
+            "安土城S"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "スズハローム",
+          "frozen_win_odds": 17.1,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 2,
+          "K_top3": 3,
+          "uncertainty_flags": [
+            "layoff_gt_120d"
+          ],
+          "unknown_quality_tiers": [
+            "安田記念"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "ビッグシーザー",
+          "frozen_win_odds": 53.8,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 3,
+          "K_top3": 4,
+          "uncertainty_flags": [
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": [
+            "オーシャンS",
+            "セントウルS",
+            "高松宮記念"
+          ]
+        },
+        {
+          "number": 6,
+          "name": "ウインマーベル",
+          "frozen_win_odds": 19.8,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "layoff_gt_120d"
+          ],
+          "unknown_quality_tiers": [
+            "MBSスワン",
+            "マイルCS",
+            "安田記念"
+          ]
+        },
+        {
+          "number": 7,
+          "name": "ネオトキオ",
+          "frozen_win_odds": 121.5,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_run_at_venue"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 8,
+          "name": "サンダーストラック",
+          "frozen_win_odds": 28.3,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_exact_distance",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": [
+            "NHKマイル",
+            "チャーチルC",
+            "関屋記念"
+          ]
+        },
+        {
+          "number": 9,
+          "name": "オフトレイル",
+          "frozen_win_odds": 4.6,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 3,
+          "K_top3": 6,
+          "uncertainty_flags": [
+            "layoff_gt_120d"
+          ],
+          "unknown_quality_tiers": [
+            "マイラーズC",
+            "マイルCS",
+            "安田記念",
+            "東京新聞杯"
+          ]
+        },
+        {
+          "number": 10,
+          "name": "ララマセラシオン",
+          "frozen_win_odds": 26.4,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 2,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "class_rise",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": [
+            "高松宮記念"
+          ]
+        },
+        {
+          "number": 11,
+          "name": "レザベーション",
+          "frozen_win_odds": 32.5,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": true,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": [
+            "NHKマイル",
+            "京成杯AH"
+          ]
+        },
+        {
+          "number": 12,
+          "name": "アイサンサン",
+          "frozen_win_odds": 13.7,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 3,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": [
+            "スプリンター",
+            "ヴィクトリア"
+          ]
+        },
+        {
+          "number": 13,
+          "name": "マイネルチケット",
+          "frozen_win_odds": 8.6,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 14,
+          "name": "ワイドラトゥール",
+          "frozen_win_odds": 23.4,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 2,
+          "K_top3": 3,
+          "uncertainty_flags": [
+            "layoff_gt_120d"
+          ],
+          "unknown_quality_tiers": [
+            "マイルCS",
+            "ヴィクトリア"
+          ]
+        },
+        {
+          "number": 15,
+          "name": "ジョイフルニュース",
+          "frozen_win_odds": 8.3,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "class_rise",
+            "first_run_at_venue",
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 16,
+          "name": "ランフォーヴァウ",
+          "frozen_win_odds": 55.9,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 2,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": [
+            "北九州記念"
+          ]
+        },
+        {
+          "number": 17,
+          "name": "ミニトランザット",
+          "frozen_win_odds": 16.9,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": true,
+          "K": true,
+          "union": true,
+          "K_wins": 3,
+          "K_top3": 3,
+          "uncertainty_flags": [
+            "class_rise",
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": [
+            "しらさぎS"
+          ]
+        },
+        {
+          "number": 18,
+          "name": "エリカエクスプレス",
+          "frozen_win_odds": 7.1,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_exact_distance"
+          ],
+          "unknown_quality_tiers": [
+            "ヴィクトリア"
+          ]
+        }
+      ],
+      "unknown_quality_tiers": [
+        "MBSスワン",
+        "NHKマイル",
+        "しらさぎS",
+        "オーシャンS",
+        "スプリンター",
+        "セントウルS",
+        "チャーチルC",
+        "マイラーズC",
+        "マイルCS",
+        "ヴィクトリア",
+        "京成杯AH",
+        "六甲S",
+        "北九州記念",
+        "安土城S",
+        "安田記念",
+        "東京新聞杯",
+        "関屋記念",
+        "高松宮記念"
+      ]
+    },
+    "12": {
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1200,
+        "class_rank": 1
+      },
+      "field_size": 16,
+      "candidate_count": 12,
+      "candidate_fraction": 0.75,
+      "sets": {
+        "M": [
+          3,
+          8,
+          9,
+          16
+        ],
+        "C": [
+          1,
+          2,
+          8,
+          9,
+          12,
+          14,
+          15,
+          16
+        ],
+        "U": [
+          10
+        ],
+        "Q": [],
+        "K": [
+          6,
+          13,
+          14
+        ],
+        "union": [
+          1,
+          2,
+          3,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      "horses": [
+        {
+          "number": 1,
+          "name": "ダイヤモンド",
+          "frozen_win_odds": 8.4,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 2,
+          "name": "レネネト",
+          "frozen_win_odds": 53,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 3,
+          "name": "ウェルカムソング",
+          "frozen_win_odds": 4.6,
+          "M": true,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 4,
+          "name": "キープライジング",
+          "frozen_win_odds": 34.1,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 5,
+          "name": "ジャレッド",
+          "frozen_win_odds": 40,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "first_run_at_venue",
+            "body_weight_change_ge_10kg"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 6,
+          "name": "メリフルアス",
+          "frozen_win_odds": 14,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 3,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "class_rise",
+            "body_weight_change_ge_10kg",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 7,
+          "name": "メイショウアイナ",
+          "frozen_win_odds": 89.7,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "first_exact_distance",
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 8,
+          "name": "ザングウィル",
+          "frozen_win_odds": 8,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 9,
+          "name": "トゥインクルアップ",
+          "frozen_win_odds": 8,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 1,
+          "uncertainty_flags": [
+            "layoff_gt_120d",
+            "body_weight_change_ge_10kg"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 10,
+          "name": "ビービーシナジー",
+          "frozen_win_odds": 12.3,
+          "M": false,
+          "C": false,
+          "U": true,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "class_rise"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 11,
+          "name": "テーオーミリカン",
+          "frozen_win_odds": 85.6,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": false,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "body_weight_change_ge_10kg"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 12,
+          "name": "ベラジオリン",
+          "frozen_win_odds": 17.3,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [
+            "body_weight_change_ge_10kg"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 13,
+          "name": "ラッキーバック",
+          "frozen_win_odds": 20.1,
+          "M": false,
+          "C": false,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 1,
+          "K_top3": 2,
+          "uncertainty_flags": [
+            "first_jockey_ride"
+          ],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 14,
+          "name": "ビスケットアソート",
+          "frozen_win_odds": 8.6,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": true,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 3,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 15,
+          "name": "マダムイグレイン",
+          "frozen_win_odds": 15.5,
+          "M": false,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 1,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        },
+        {
+          "number": 16,
+          "name": "カネコメファミリー",
+          "frozen_win_odds": 7.6,
+          "M": true,
+          "C": true,
+          "U": false,
+          "Q": false,
+          "K": false,
+          "union": true,
+          "K_wins": 0,
+          "K_top3": 0,
+          "uncertainty_flags": [],
+          "unknown_quality_tiers": []
+        }
+      ],
+      "unknown_quality_tiers": []
+    }
+  },
+  "summary": {
+    "starter_count": 83,
+    "candidate_count": 64,
+    "candidate_fraction": 0.7710843373493976,
+    "channel_memberships_nonexclusive": {
+      "M": 22,
+      "C": 34,
+      "U": 6,
+      "Q": 11,
+      "K": 27
+    },
+    "unknown_quality_tiers": [
+      "MBSスワン",
+      "NHKマイル",
+      "しらさぎS",
+      "オーシャンS",
+      "スプリンター",
+      "セントウルS",
+      "チャーチルC",
+      "ポインセチア",
+      "マイラーズC",
+      "マイルCS",
+      "ユニコーンS",
+      "ローズS",
+      "ヴィクトリア",
+      "京成杯",
+      "京成杯AH",
+      "六甲S",
+      "北九州記念",
+      "安土城S",
+      "安田記念",
+      "忘れな草賞",
+      "東京新聞杯",
+      "若駒S",
+      "関屋記念",
+      "阪神JF",
+      "高松宮記念",
+      "鳳雛S"
+    ]
+  }
+}
