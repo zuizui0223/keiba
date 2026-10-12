@@ -86,7 +86,7 @@ Betting/odds optimization from analysis/kyoto-20261012 and PR #1 remains a separ
 - M1: freeze ecological questions, data dictionary, prior literature and exclusion rules.
 - M2: establish source/license, assemble historical *longitudinal* horse–race panel, audit coverage.
 - M3: fit M0/M1 and perform time-forward checks; report supported, inconclusive or rejected hypotheses.
-- M4: test M2 competitive-context interaction after obtaining historical pre-race running-style indicators.
+- M4: assess H2 with pre-race running-style indicators and repeated changing opponent composition. A synthetic exploratory interaction pipeline is implemented; **empirical validation remains HOLD pending longitudinal licensed data**.
 
 
 ## Implemented computational progression (2026-10-12)
@@ -128,3 +128,37 @@ data redistribution, 2026-07-06:
 https://developer.jra-van.jp/t/topic/899.
 Use any restricted real records only under appropriate permission;
 never commit those source files by default.
+
+
+## H2 novelty and existing biological literature
+
+**Established before this repository**: Spence, Thurman, Maher & Wilson
+(2012), *Speed, pacing strategy and aerodynamic drafting in Thoroughbred
+horse racing*, *Biology Letters* 8:678–681, DOI:
+https://doi.org/10.1098/rsbl.2011.1120, analyzed 44,803 tracked runners in
+3,357 races. The authors explicitly discuss front-running/chasing roles,
+pacing and aerodynamic drafting. It is **not novel** to say competitors
+influence racing tactics or that individual pace phenotypes vary.
+
+The proposed narrower H2 test concerns **within-individual
+between-race changes in competitor-style composition**, calculated strictly
+from pre-race historical profiles and evaluated after controlling for
+prior ability and opponent quality, with date-heldout replication. A distinct
+H2 effect is still **only a hypothesis**; data availability and selection
+bias may ultimately prevent its identification.
+
+New exploratory code:
+- `scripts/ecology_demo_competitors.py`: fabricated horses rotating through
+  fictional race fields, with an inserted interaction parameter.
+- `scripts/ecology_h2_pilot.py`: baseline vs own-style × rivals'-historical-
+  front-running interaction, horse random intercept, frozen predictor means,
+  and later-date error evaluation.
+- `tests/test_ecology_h2_pilot.py`: turnover, incomplete rosters, predictor
+  scaling, mixed source rejection and correct sign in a specifically
+  fabricated effect scenario.
+
+The `H2` software demo has **no causal standard errors or inference**.
+A preregistered ecological claim requires an independent real cohort,
+rival-composition variation per individual, class/venue/jockey/going
+checks, opponent selection sensitivity, a suitable multiway
+uncertainty method and substantive effect plausibility.
