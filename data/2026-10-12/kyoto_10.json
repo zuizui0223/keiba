@@ -1,0 +1,345 @@
+{
+  "race": 10,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "race_id": "2608040510",
+  "start_jst": "2026-10-12T15:10:00+09:00",
+  "surface": "turf",
+  "distance_m": 1800,
+  "class": "2勝クラス",
+  "odds_observed_at_jst": "2026-10-12T12:38:19+09:00",
+  "odds_updated_at_jst": "2026-10-12T12:18:00+09:00",
+  "sources": [
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040510?ninki=1",
+      "kind": "win_odds",
+      "updated_at_jst": "2026-10-12T12:18:00+09:00"
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+      "kind": "course",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://www.jbis.or.jp/race/20261012/108/10/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+      "kind": "wide_odds",
+      "updated_at_jst": "2026-10-12T12:31:00+09:00"
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023104386/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110060/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023100947/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106224/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106960/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021105886/",
+      "kind": "history",
+      "updated_at_jst": null
+    }
+  ],
+  "horses": [
+    {
+      "number": 1,
+      "name": "アンヘリータス",
+      "win_odds": 62.4,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都芝通算0-0-0-1。同距離の全履歴確認は未実施でnull。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "カムアップローゼス",
+      "win_odds": 4.3,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mark": "◎",
+      "notes": [
+        "京都芝は2026/05/09京都新聞杯2200m6着0.5秒差のみ。京都芝1800mは未出走。京都ダートの勝利は芝成績に混ぜない。",
+        "同京都新聞杯で5アクセスに先着。前走神戸新聞杯9着0.7秒差、6月函館1800m勝利から距離短縮を評価。京都1800m適性の実証はない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023104386/",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "ハイディージェン",
+      "win_odds": 49.6,
+      "kyoto_record": [
+        0,
+        1,
+        0,
+        7
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都芝通算0-1-0-7。同距離の全履歴確認は未実施でnull。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "エリカアンディーヴ",
+      "win_odds": 9.9,
+      "kyoto_record": [
+        2,
+        1,
+        0,
+        1
+      ],
+      "kyoto_distance_record": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "mark": "▲",
+      "notes": [
+        "京都芝1800mは2024/12/08新馬1着0.1秒差勝ち、2025/02/09きさらぎ賞6着1.4秒差、2026/04/26・1勝クラス1着0.1秒差勝ち。",
+        "京都芝2200mは2025/11/02・1勝クラス2着0.1秒差。京都条件戦での好走を評価。",
+        "前走新潟7着0.9秒差。得意コースへの戻りに期待するが、2勝クラスでの実績はこれから。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2022110060/",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "アクセス",
+      "win_odds": 2.5,
+      "kyoto_record": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mark": "○",
+      "notes": [
+        "京都芝は2025/11/16・2000m新馬1着0.5秒差勝ち、2026/05/09京都新聞杯2200m10着1.0秒差。京都芝1800mは未出走。",
+        "近2走中京2000m2着0.1秒差、阪神1800m1着0.2秒差。前走3-2から上がり33.7秒。昇級初戦・単勝2.5倍の価格を留保。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023100947/",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "ウインリベラシオン",
+      "win_odds": 17.3,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "mark": "",
+      "notes": [
+        "京都1800mは2024/10/06新馬12着1.5秒差、2026/05/23・1勝クラス6着0.6秒差。ほか京都芝2000m2戦とも着外。",
+        "前走阪神三木特別勝利は評価できるが休養明け。京都適性から上位6頭には入れない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2022106224/",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "キシダンチョウ",
+      "win_odds": 7.7,
+      "kyoto_record": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "mark": "☆",
+      "notes": [
+        "京都唯一の出走は2026/04/25あやめ賞芝1800m3着0.2秒差、通過4-6。",
+        "近2走新潟1800mは逃げて3着、1着。今回は10など同型がいて単独逃げの再現性を留保。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023106960/",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "キーウェーブ",
+      "win_odds": 87.7,
+      "kyoto_record": [
+        1,
+        0,
+        1,
+        6
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都芝通算1-0-1-6。同距離の全履歴確認は未実施でnull。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "ミリタリータトゥー",
+      "win_odds": 5.1,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mark": "△",
+      "notes": [
+        "確認した全3戦は小倉1800m未勝利・1勝クラス勝利、阪神1800mローズS5着1.0秒差。京都は未出走。",
+        "前走12-12から上がり34.2秒。今回54kgと差し展開が魅力。京都経験の不足を留保。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "ホウオウトランプ",
+      "win_odds": 9.8,
+      "kyoto_record": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "kyoto_distance_record": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "mark": "△",
+      "notes": [
+        "京都芝1800mは2026/01/25・1勝クラス1着0.1秒差勝ち、02/15春日特別3着0.7秒差。どちらも通過1-1。京都芝の着外2戦は1400m・1600m。",
+        "前走新潟1800mは逃げて11着1.6秒差。京都同距離実績は拾うが、7などとの先行争いを留保。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2021105886/",
+        "https://www.jbis.or.jp/race/20261012/108/10/"
+      ]
+    }
+  ],
+  "tickets": [
+    {
+      "type": "wide",
+      "horses": [
+        2,
+        5
+      ],
+      "odds_low": 2.6,
+      "odds_high": 3.0,
+      "updated_at_jst": "2026-10-12T12:31:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+      "priority": false
+    },
+    {
+      "type": "wide",
+      "horses": [
+        2,
+        4
+      ],
+      "odds_low": 7.2,
+      "odds_high": 8.5,
+      "updated_at_jst": "2026-10-12T12:31:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+      "priority": true
+    }
+  ],
+  "data_notes": [
+    "単勝馬番順は12:09、人気順は12:18更新。後者を採用。ワイド人気順は12:31更新。",
+    "勝率をモデル化していない。印と買い目は成績・条件・価格からの主観的判断。"
+  ]
+}

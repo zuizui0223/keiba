@@ -1,0 +1,246 @@
+{
+  "race": 6,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "race_id": "2608040506",
+  "start_jst": "2026-10-12T12:55:00+09:00",
+  "surface": "turf",
+  "distance_m": 1200,
+  "class": "2歳新馬",
+  "odds_observed_at_jst": "2026-10-12T12:35:59+09:00",
+  "odds_updated_at_jst": "2026-10-12T12:30:00+09:00",
+  "sources": [
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+      "kind": "win_odds",
+      "updated_at_jst": "2026-10-12T12:30:00+09:00"
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1",
+      "kind": "wide_odds",
+      "updated_at_jst": "2026-10-12T12:30:00+09:00"
+    },
+    {
+      "url": "https://www.jbis.or.jp/race/20261012/108/06/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://news.netkeiba.com/?no=344989&pid=news_view",
+      "kind": "history",
+      "updated_at_jst": "2026-10-08T19:00:00+09:00"
+    }
+  ],
+  "horses": [
+    {
+      "number": 1,
+      "name": "コパノアクション",
+      "win_odds": 51.7,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "プリティランサー",
+      "win_odds": 10.4,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "ベニーバローズ",
+      "win_odds": 7.6,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "オノイチコマチ",
+      "win_odds": 31.6,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "エクセレントワード",
+      "win_odds": 19,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "カレンラヴュー",
+      "win_odds": 44.4,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "クールガモーン",
+      "win_odds": 6.9,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "▲",
+      "notes": [
+        "父タワーオブロンドン。実戦能力は未確認。",
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "ルーチェドンナ",
+      "win_odds": 7.1,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "○",
+      "notes": [
+        "父モーリス、母父ロードカナロア。実戦能力は未確認。",
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "エクセルブリーズ",
+      "win_odds": 12.9,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "ナムラレーヴ",
+      "win_odds": 54.9,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "クラストムーン",
+      "win_odds": 4.4,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "△",
+      "notes": [
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "メイショウギフト",
+      "win_odds": 3.4,
+      "kyoto_record": null,
+      "kyoto_distance_record": null,
+      "mark": "◎",
+      "notes": [
+        "2026年10月8日19時公開のnetkeiba新馬紹介で調教の動きが良いと評価。",
+        "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+        "https://www.jbis.or.jp/race/20261012/108/06/",
+        "https://news.netkeiba.com/?no=344989&pid=news_view"
+      ]
+    }
+  ],
+  "tickets": [
+    {
+      "type": "wide",
+      "horses": [
+        8,
+        12
+      ],
+      "odds_low": 5.9,
+      "odds_high": 6.5,
+      "updated_at_jst": "2026-10-12T12:30:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1",
+      "priority": false
+    },
+    {
+      "type": "wide",
+      "horses": [
+        7,
+        12
+      ],
+      "odds_low": 5,
+      "odds_high": 5.5,
+      "updated_at_jst": "2026-10-12T12:30:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1",
+      "priority": false
+    }
+  ]
+}
