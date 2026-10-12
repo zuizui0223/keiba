@@ -24,6 +24,8 @@ class RecentHistoryGateTests(unittest.TestCase):
             'name': 'テストホース',
             'career_starts': 3,
             'history_checked_at_jst': '2026-10-12T10:00:00+09:00',
+            'history_source_url': 'https://example.test/horse/1',
+            'source_latest_run_date': '2026-09-19',
             'recent_runs': [
                 self.run,
                 {**self.run, 'date': '2026-08-20', 'finish': 1, 'source_url': 'https://example.test/race/2'},
@@ -63,6 +65,19 @@ class RecentHistoryGateTests(unittest.TestCase):
         out = validate_horse_history(self.horse(recent_runs=runs), self.race_date, self.as_of)
         self.assertEqual(out['status'], 'DATA_HOLD')
         self.assertIn('future_run_date', out['reasons'])
+
+    def test_latest_run_must_match_source_latest_date(self):
+        horse = self.horse(source_latest_run_date='2026-10-01')
+        out = validate_horse_history(horse, self.race_date, self.as_of)
+        self.assertEqual(out['status'], 'DATA_HOLD')
+        self.assertIn('latest_run_mismatch', out['reasons'])
+
+    def test_missing_history_source_url_is_data_hold(self):
+        horse = self.horse()
+        del horse['history_source_url']
+        out = validate_horse_history(horse, self.race_date, self.as_of)
+        self.assertEqual(out['status'], 'DATA_HOLD')
+        self.assertIn('missing_history_source_url', out['reasons'])
 
     def test_race_holds_if_any_runner_fails(self):
         good = self.horse()
