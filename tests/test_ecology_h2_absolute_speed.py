@@ -12,6 +12,7 @@ from ecology_demo_competitors import fabricate_competition
 from ecology_panel import REQUIRED, load_panel, lagged_features
 from ecology_h2_pilot import competition_frame
 from ecology_h2_absolute_speed import frame_with_individual_speed, run
+from ecology_h2_absolute_stress import stress
 
 
 def panel(temp,rows):
@@ -66,6 +67,20 @@ class H2AbsoluteSpeedTests(unittest.TestCase):
                              "m/s within-race speed deviation")
             self.assertTrue(np.isfinite(
                 result["M1"]["beta_raw_speed_mps_per_style_context_product"]))
+
+    def test_null_and_confounding_checks_report_holds_not_biological_claims(self):
+        trials=stress(seeds=(512,))
+        self.assertEqual(trials["status"],"SYNTHETIC_ABSOLUTE_SPEED_STRESS_ONLY")
+        self.assertEqual(len(trials["trials"]),3)
+        self.assertEqual(set(trials["summary"]),{
+            "null_random_entry","planted_opponent_interaction","confounded_null"
+        })
+        for row in trials["trials"]:
+            self.assertIn(row["status"],(
+                "SYNTHETIC_ABSOLUTE_MODEL_STRESS_ONLY",
+                "HOLD_DESIGN_OR_COVARIANCE",
+            ))
+        self.assertIn("engineering/design test",trials["interpretation"])
 
     def test_cannot_run_synthetic_panel_without_explicit_demo(self):
         with tempfile.TemporaryDirectory() as tmp:
