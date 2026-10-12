@@ -89,7 +89,7 @@ class H2WithinTests(unittest.TestCase):
             check_rights(rows,True)
         with self.assertRaisesRegex(ValueError,"synthetic"):
             check_rights([{"source_license":"synthetic"}],False)
-        with self.assertRaisesRegex(ValueError,"restricted"):
+        with self.assertRaisesRegex(ValueError,"HOLD_RIGHTS"):
             check_rights([{"source_license":"restricted"}],True)
 
 
