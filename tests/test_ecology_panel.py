@@ -61,6 +61,15 @@ class PanelTests(unittest.TestCase):
         self.assertEqual(result["status"], "SYNTHETIC_ONLY")
         self.assertTrue(result["ready_gate_is_not_statistical_power_or_hypothesis_support"])
 
+    def test_many_races_with_unchanged_opponent_composition_do_not_identify_h2(self):
+        # Everyone meets exactly the same three opponents every day.
+        with tempfile.TemporaryDirectory() as tmp:
+            loaded = load_panel(write_rows(tmp, fixture(days=12)))
+        report = audit(loaded, lagged_features(loaded))
+        self.assertGreater(report["h2_rows_with_historical_style_and_opponent_strength"], 0)
+        self.assertEqual(report["h2_horses_with_4plus_races_and_2plus_distinct_opponent_style_contexts"], 0)
+        self.assertEqual(report["h2_context_identifiability"], "HOLD_NO_REPEATED_WITHIN_HORSE_CONTEXT_VARIATION")
+
     def test_no_lookahead_and_leave_one_out(self):
         with tempfile.TemporaryDirectory() as tmp:
             rows = load_panel(write_rows(tmp, fixture()))
