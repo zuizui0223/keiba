@@ -74,5 +74,31 @@ class RecentHistoryGateTests(unittest.TestCase):
         self.assertEqual(out['failed_horses'], [2])
 
 
+class RecentHistoryGateCliTests(unittest.TestCase):
+    def test_cli_returns_nonzero_when_any_race_is_data_hold(self):
+        import json
+        from pathlib import Path
+        import subprocess
+        import sys
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            race = {
+                'race': 12,
+                'race_id': '2608040512',
+                'date': '2026-10-12',
+                'horses': [{'number': 1, 'name': '欠測馬'}],
+            }
+            (base / 'kyoto_12.json').write_text(json.dumps(race, ensure_ascii=False), encoding='utf-8')
+            run = subprocess.run(
+                [sys.executable, 'scripts/audit_recent_history.py', '--data-dir', str(base),
+                 '--as-of', '2026-10-12T16:00:00+09:00'],
+                cwd='/tmp/keiba_v3', capture_output=True, text=True,
+            )
+            self.assertEqual(run.returncode, 2)
+            self.assertIn('DATA_HOLD', run.stdout)
+
+
 if __name__ == '__main__':
     unittest.main()
