@@ -26,3 +26,9 @@ jobs:
         run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'statsmodels>=0.14,<0.15'
       - name: Validate temporal provenance and research gates
         run: python -m unittest discover -s tests -p 'test_ecology_*.py' -v
+      - name: End-to-end synthetic pipeline (no empirical claims)
+        run: |
+          python scripts/ecology_demo_data.py --output tmp/fabricated.csv --days 26 --horses 16
+          python scripts/ecology_panel.py --input tmp/fabricated.csv --audit tmp/readiness.json --features tmp/lagged.csv
+          python scripts/ecology_h1_pilot.py --input tmp/fabricated.csv --output tmp/h1.json --surface turf --permit-synthetic-demo
+          python -c "import json; a=json.load(open('tmp/readiness.json')); b=json.load(open('tmp/h1.json')); assert a['status']=='SYNTHETIC_ONLY'; assert b['status']=='SYNTHETIC_SMOKE_ONLY'; assert b['within_between']['individual_exposure_baseline_computed_from_training_only']"
