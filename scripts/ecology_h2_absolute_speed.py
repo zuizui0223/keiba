@@ -15,13 +15,14 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from collections import Counter, defaultdict
 
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
 from ecology_h1_pilot import score, split_dates
-from ecology_h2_pilot import competition_frame, horse_context_support
+from ecology_h2_pilot import horse_context_support
 from ecology_h2_within_between import (
     add_total_field_fraction, check_rights, construct_context, _assortment
 )
@@ -29,25 +30,158 @@ from ecology_panel import load_panel, audit, lagged_features
 
 
 def frame_with_individual_speed(enriched: list[dict], surface: str) -> pd.DataFrame:
-    """Only race-complete records, matched to official individual times."""
-    df=competition_frame(enriched, surface)
-    speeds=[]
-    for r in enriched:
-        if r["finish_status"] == "finished" and r["finish_time_s"] is not None:
-            speeds.append({
-                "race_id":r["race_id"],"horse_id":r["horse_id"],
-                "speed_mps":r["course_distance_m"]/r["finish_time_s"],
+    """Keep full competitor rosters even when some entrants do not finish.
+
+    The H2 outcome is observed focal speed among timed finishers, conditional
+    on selection. Nonfinishers count as actual rivals and as outcome missingness,
+    NEVER as zero velocity. A race is dropped for missing PRE-race predictors,
+    missing/partial entry roster, pending official result, or <4 timed finishers.
+    A complete finishing-time roster is NOT a requirement.
+    """
+    if surface not in ("turf", "dirt"):
+        raise ValueError("unknown surface")
+    by_race = defaultdict(list)
+    for row in enriched:
+        if row["course_surface"] == surface:
+            by_race[row["race_id"]].append(row)
+    if not by_race:
+        raise ValueError("HOLD_NO_RACE_ON_SURFACE")
+
+    necessary = (
+        "prior_front_runner_score", "other_front_runner_share",
+        "prior_strength_score", "other_prior_strength_mean",
+    )
+    data = []
+    inclusion = []
+    excluded = Counter()
+    candidate = 0
+    complete_race_count = 0
+    partial_outcome_races = 0
+
+    for race_id, group in by_race.items():
+        candidate += len(group)
+        # All announced/confirmed runners are needed for unbiased
+        # pre-race opponent composition, regardless of their later result.
+        if len(group) < 4 or len(group) != group[0]["field_size"]:
+            excluded["incomplete_entry_roster"] += 1
+            continue
+        complete_race_count += 1
+        if any(row["finish_status"] == "pending" for row in group):
+            excluded["pending_official_outcome"] += 1
+            continue
+        if any(any(row[k] is None for k in necessary) for row in group):
+            excluded["incomplete_pre_race_history"] += 1
+            continue
+
+        timed = [
+            r for r in group
+            if r["finish_status"] == "finished"
+            and r["finish_time_s"] is not None
+        ]
+        if len(timed) < 4:
+            excluded["fewer_than_four_timed_finishers"] += 1
+            continue
+        if len(timed) < len(group):
+            partial_outcome_races += 1
+
+        # Only use actually observed individual speed for the regression,
+        # while keeping nonfinishers in the entry denominator / profiles.
+        speeds = np.asarray(
+            [r["course_distance_m"] / r["finish_time_s"] for r in timed],
+            dtype=float,
+        )
+        if not np.isfinite(speeds).all():
+            raise ValueError("nonfinite individual speed")
+        sd = float(np.std(speeds, ddof=0))
+        if sd <= 0.01:
+            excluded["negligible_within_race_speed_variation"] += 1
+            continue
+
+        for row in group:
+            obs = (row["finish_status"] == "finished"
+                   and row["finish_time_s"] is not None)
+            inclusion.append({
+                "race_id": race_id,
+                "horse_id": row["horse_id"],
+                "going": "良" if row["track_going"] == "良" else "非良",
+                "front_style": ("front" if row["prior_front_runner_score"] >= 0.7
+                                else "nonfront"),
+                "rival_front_context": (
+                    "higher" if row["other_front_runner_share"] >= 1/3
+                    else "lower"
+                ),
+                "timed_outcome_observed": obs,
+                "nonfinish": row["finish_status"] == "did_not_finish",
+                "finished_no_time": (
+                    row["finish_status"] == "finished"
+                    and row["finish_time_s"] is None
+                ),
             })
-    if not speeds:
-        raise ValueError("HOLD_NO_INDIVIDUAL_SPEEDS")
-    speed=pd.DataFrame(speeds)
-    result=df.merge(speed,on=["race_id","horse_id"],validate="one_to_one")
-    if len(result) != len(df):
-        raise ValueError("HOLD_SPEED_MERGE")
-    if not np.isfinite(result["speed_mps"]).all():
-        raise ValueError("nonfinite individual speed")
+
+        for row in timed:
+            speed = row["course_distance_m"] / row["finish_time_s"]
+            # Legacy z-score retained solely as an arithmetic-coupling
+            # diagnostic. The H2 regression fits raw individual speed.
+            data.append({
+                "horse_id": row["horse_id"], "race_id": race_id,
+                "date": row["race_date_jst"], "venue": row["venue"],
+                "surface": row["course_surface"],
+                "distance_m": row["course_distance_m"],
+                "poor": int(row["track_going"] != "良"),
+                "prior_front_runner_score": row["prior_front_runner_score"],
+                "other_front_runner_share": row["other_front_runner_share"],
+                "prior_strength_score": row["prior_strength_score"],
+                "other_prior_strength_mean": row["other_prior_strength_mean"],
+                "speed_mps": float(speed),
+                "y": float((speed - speeds.mean()) / sd),
+            })
+    if not data:
+        raise ValueError("HOLD_NO_ELIGIBLE_TIMED_FINISHERS")
+
+    selection = pd.DataFrame(inclusion)
+    def rate_by(groupby: str) -> dict:
+        out = {}
+        for key, group in selection.groupby(groupby):
+            out[str(key)] = {
+                "entrant_starts": int(len(group)),
+                "timed_starts": int(group["timed_outcome_observed"].sum()),
+                "timed_outcome_fraction": float(group["timed_outcome_observed"].mean()),
+                "did_not_finish": int(group["nonfinish"].sum()),
+            }
+        return out
+    loss = int((~selection["timed_outcome_observed"]).sum())
+    diag = {
+        "candidate_entrant_rows_on_surface": candidate,
+        "candidate_races": len(by_race),
+        "races_with_full_entry_roster": complete_race_count,
+        "races_retained_at_least_four_timed_finishers": int(len(set(d["race_id"] for d in data))),
+        "eligible_entrant_starts_including_nonfinishers": int(len(inclusion)),
+        "regression_observed_timed_starts": len(data),
+        "nonfinisher_starts_in_retained_races": int(selection["nonfinish"].sum()),
+        "finished_but_missing_time_starts": int(selection["finished_no_time"].sum()),
+        "races_with_some_missing_focal_speeds": partial_outcome_races,
+        "observed_speed_loss_count": loss,
+        "observed_speed_loss_fraction": float(loss / len(selection)),
+        "excluded_races_by_reason": dict(excluded),
+        "timed_fraction_by_going": rate_by("going"),
+        "timed_fraction_by_prior_style": rate_by("front_style"),
+        "timed_fraction_by_rival_style_context": rate_by("rival_front_context"),
+        "unobserved_speed_is_zero": False,
+        "interpretation": (
+            "Missing speed includes nonfinishers and finished horses without "
+            "verified individual times. Rates describe selection, not an "
+            "estimated missing-data mechanism or causal effects."
+        ),
+        "missingness_status": (
+            "OBSERVATIONAL_SELECTION_RISK_UNRESOLVED" if loss
+            else "NO_OBSERVED_OUTCOME_LOSS_IN_ELIGIBLE_RACES"
+        ),
+    }
+    result = pd.DataFrame(data).sort_values(
+        ["date", "race_id", "horse_id"]).reset_index(drop=True)
     if float(result["speed_mps"].std()) <= 1e-6:
         raise ValueError("HOLD_NO_SPEED_VARIATION")
+    result.attrs["selection_audit"] = diag
     return result
 
 
@@ -154,7 +288,9 @@ def run(path:Path,surface="turf",permit_synthetic_demo=False,test_fraction=0.2)-
     diag=audit(rows,enriched)
     if not synthetic and diag["status"]!="DESIGN_READY_NOT_EVIDENCE":
         raise ValueError("HOLD_AUDIT:"+diag["status"])
-    frame=add_total_field_fraction(frame_with_individual_speed(enriched,surface))
+    raw_frame=frame_with_individual_speed(enriched,surface)
+    selection_audit=raw_frame.attrs["selection_audit"]
+    frame=add_total_field_fraction(raw_frame)
     train0,test0,cutoff=split_dates(frame,test_fraction)
     support=horse_context_support(train0)
     if support<(8 if synthetic else 30):
@@ -201,6 +337,12 @@ def run(path:Path,surface="turf",permit_synthetic_demo=False,test_fraction=0.2)-
         "train_max_date":str(train0["date"].max()),
         "future_first_date":str(cutoff),
         "support_horses_with_repeated_rival_contexts":support,
+        "outcome_selection_audit":selection_audit,
+        "empirical_missingness_decision": (
+            "HOLD_POTENTIALLY_INFORMATIVE_SPEED_MISSINGNESS"
+            if selection_audit["observed_speed_loss_count"]
+            else "NO_RECORDED_SPEED_LOSS_NOT_PROOF_OF_UNBIASED_COHORT"
+        ),
         "models":versions,
         "limitations":[
             "Crossed horse/race fixed effects prevent treating contemporaneous "
@@ -213,8 +355,9 @@ def run(path:Path,surface="turf",permit_synthetic_demo=False,test_fraction=0.2)-
             "a confidence interval for causal animal social plasticity.",
             "Heldout prediction uses within-race raw SPEED contrasts (m/s); "
             "this differs from the model fit outcome (absolute m/s).",
-            "A cohort excluding incomplete or nonfinishing races can "
-            "condition on post-treatment performance and bias results.",
+            "The full pre-race roster includes nonfinishers as competitive "
+            "exposures, but speed regression conditions on timed finishers; "
+            "informative missing focal outcomes may bias results.",
             "No actual licensed horse race histories or fitness phenotypes used.",
         ],
     }
