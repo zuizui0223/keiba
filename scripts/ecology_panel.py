@@ -273,13 +273,15 @@ def audit(rows: list[dict], features: list[dict]) -> dict:
     )
     licenses = Counter(r["source_license"] for r in rows)
     synthetic = "synthetic" in licenses
+    mixed_sources = synthetic and len(licenses) > 1
     license_hold = any(s in ("unknown", "uncleared", "restricted") for s in licenses)
     design = (
         len(eligible) >= 30 and len({r["race_date_jst"] for r in rows}) >= 15
         and by_going_races["良"] >= 10 and by_going_races["非良"] >= 10
         and full == len(by_race) and observed >= 200
     )
-    status = ("SYNTHETIC_ONLY" if synthetic else
+    status = ("HOLD_MIXED_SYNTHETIC_AND_REAL" if mixed_sources else
+              "SYNTHETIC_ONLY" if synthetic else
               "HOLD_RIGHTS" if license_hold else
               "DESIGN_READY_NOT_EVIDENCE" if design else "HOLD_INSUFFICIENT_LONGITUDINAL_SUPPORT")
     return {
