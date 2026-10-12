@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-12",
+  "venue": "京都",
+  "status": "partial_official_results",
+  "races": {
+    "7": {
+      "positions": [
+        2,
+        15,
+        9
+      ],
+      "complete_top3": true,
+      "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604050720261012%2F84"
+    },
+    "8": {
+      "positions": [
+        9,
+        1,
+        7
+      ],
+      "complete_top3": true,
+      "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604050820261012%2F39"
+    },
+    "9": {
+      "positions": [
+        4,
+        3,
+        12
+      ],
+      "complete_top3": true,
+      "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604050920261012%2FEE"
+    },
+    "10": {
+      "positions": [
+        5,
+        2
+      ],
+      "complete_top3": false,
+      "source_url": "https://own.jra.jp/JRADB/accessS.html?CNAME=pw01sde0108202604051020261012%2FE3",
+      "note": "1着・2着まで本文取得で確認。3着は未記入のためTop3 recall計算から除外。"
+    }
+  }
+}
