@@ -145,6 +145,44 @@ def preflight(races_csv: Path, runs_csv: Path) -> dict:
             if optional_rank(row["position_sec1"]) is not None:
                 early_observed+=1
 
+    # Design overlap must exist WITHIN comparable race strata. The global
+    # counts above can dramatically overstate within-horse identifiability.
+    strata=defaultdict(list)
+    same_obscured_date=0
+    earliest_known=0
+    horse_date_seen=set()
+    for horse_id,records in by_horse.items():
+        for row in records:
+            rac=race_index[row["race_id"]]
+            label=(rac["venue"],rac["surface"],rac["distance"],rac["race_class"])
+            strata[(horse_id,label)].append(row)
+            hd=(horse_id,rac["date"])
+            if hd in horse_date_seen:
+                same_obscured_date+=1
+            horse_date_seen.add(hd)
+    horses_cross_going_in_any_stratum=set()
+    horses_repeated_rival_context_in_any_stratum=set()
+    stratum_support=Counter()
+    for (horse,label),entries in strata.items():
+        if len(entries)<4:
+            continue
+        # Unknown/empty going is NOT a level with measurable condition.
+        levels={race_index[e["race_id"]]["going"] for e in entries}
+        levels.discard("")
+        if len(levels)>=2:
+            horses_cross_going_in_any_stratum.add(horse)
+            stratum_support["horse_by_stratum_4plus_with_2plus_going_labels"]+=1
+        rival_sets={
+            frozenset(r["horse_id"] for r in by_race[e["race_id"]]
+                      if r["horse_id"]!=horse)
+            for e in entries
+        }
+        if len(rival_sets)>=2:
+            horses_repeated_rival_context_in_any_stratum.add(horse)
+            stratum_support["horse_by_stratum_4plus_with_2plus_opposing_rosters"]+=1
+        if len(levels)>=2 and len(rival_sets)>=2:
+            stratum_support["horse_by_stratum_both_environment_and_rival_overlap"]+=1
+
     missing_dates=sum(not r["date"] for r in races)
     # Timeline/order is only within the obscured source representation.
     # Never invent a clock hour or claim verified pre-race timestamps.
@@ -183,6 +221,10 @@ def preflight(races_csv: Path, runs_csv: Path) -> dict:
             "run_rows_with_first_section_position":early,
             "horse_start_rows_with_3plus_prior_early_positions":history_rows_at_least_3,
             "missing_obscured_date_entries":missing_dates,
+            "horse_races_sharing_same_obscured_date":same_obscured_date,
+            "horses_with_environment_overlap_within_same_venue_surface_distance_class":len(horses_cross_going_in_any_stratum),
+            "horses_with_rival_roster_changes_within_same_venue_surface_distance_class":len(horses_repeated_rival_context_in_any_stratum),
+            "stratified_support":dict(stratum_support),
         },
         "raw_going_label_race_counts":dict(going_counts),
         "raw_surface_label_race_counts":dict(surfaces),
@@ -193,6 +235,8 @@ def preflight(races_csv: Path, runs_csv: Path) -> dict:
             "Publisher CC0 label does not settle original source rights and distributor contract obligations.",
             "A full horse×race history may be present, but no real-data H1/H2 analysis was executed.",
             "Counts of changing opponent sets are necessary but cannot establish a social competition effect.",
+            "Stratum overlap holds venue, surface, distance, and race class constant; support counts do not imply causal identification.",
+            "Repeated starts on one obfuscated date cannot be chronologically resolved without independently verified race times.",
             "Early position and observed finish times are POST-race outputs only; use strictly prior starts to build predictor histories.",
             "Going labels are unharmonized; no assumption that category spacing is equal or means wet/dry is made.",
             "Raw/individual records are never printed or exported by this tool.",
