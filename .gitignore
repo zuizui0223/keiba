@@ -1,0 +1,14 @@
+# Local research outputs / possibly licensed source exports (never commit).
+tmp/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.env
+.env.*
+data/raw/
+data/licensed/
+data/restricted/
+*.parquet
