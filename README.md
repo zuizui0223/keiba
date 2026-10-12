@@ -14,6 +14,8 @@ Read:
 - [Ecological research design: hypotheses, alternatives, models, falsification criteria](docs/ecology-research-plan.md)
 - [Longitudinal horse–race panel specification and leakage checks](docs/ecology-panel-schema.md)
 - [Actual Kyoto 2026-10-12 archive: explicit H1/H2 data-gap audit](docs/ecology-archive-gap-audit.md)
+- [Versioned H2 null and confounded-null simulation audit](docs/ecology-h2-simulation-audit.md)
+- [Data-source licensing and longitudinal field-coverage audit](docs/ecology-data-source-feasibility.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
