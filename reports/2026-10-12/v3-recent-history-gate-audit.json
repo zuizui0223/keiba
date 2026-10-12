@@ -1,0 +1,66 @@
+{
+  "audited_at_jst": "2026-10-13T02:54:00+09:00",
+  "branch": "analysis/kyoto-20261012",
+  "scope": "Kyoto 7R-12R frozen pre-race JSON inputs",
+  "policy": "docs/v3-decision-policy-draft.md + scripts/audit_recent_history.py",
+  "status": "DATA_HOLD",
+  "totals": {
+    "races": 6,
+    "horses": 83,
+    "pass": 0,
+    "hold": 83
+  },
+  "required_structured_fields": [
+    "career_starts",
+    "history_checked_at_jst",
+    "recent_runs"
+  ],
+  "races": [
+    {
+      "race": 7,
+      "horses": 16,
+      "pass": 0,
+      "hold": 16
+    },
+    {
+      "race": 8,
+      "horses": 11,
+      "pass": 0,
+      "hold": 11
+    },
+    {
+      "race": 9,
+      "horses": 12,
+      "pass": 0,
+      "hold": 12
+    },
+    {
+      "race": 10,
+      "horses": 10,
+      "pass": 0,
+      "hold": 10
+    },
+    {
+      "race": 11,
+      "horses": 18,
+      "pass": 0,
+      "hold": 18
+    },
+    {
+      "race": 12,
+      "horses": 16,
+      "pass": 0,
+      "hold": 16
+    }
+  ],
+  "interpretation": [
+    "All frozen race JSONs lack the new structured recent-run completeness fields.",
+    "Under v3, these inputs are descriptive historical artifacts but are not eligible for ranking or live decision output until recent-run history is structurally completed and freshly checked.",
+    "This is intentional fail-closed behavior introduced after 12R exposed a missing newer same-class run in a horse note."
+  ],
+  "next_required_work": [
+    "Populate career_starts and the latest three runs (or all career starts when fewer than three) for every runner.",
+    "Record history_checked_at_jst from the source refresh.",
+    "Re-run the gate before any future ranking model."
+  ]
+}
