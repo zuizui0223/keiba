@@ -73,9 +73,29 @@ def horse_exposure_support(frame: pd.DataFrame) -> int:
     return int(((grouped[0] >= 2) & (grouped[1] >= 2)).sum())
 
 
-def fit_with_fallback(frame: pd.DataFrame, random_formula: str):
+def within_between_from_training(training: pd.DataFrame, test: pd.DataFrame):
+    """Decompose within-horse ground contrasts without leaking held-out exposures.
+
+    Group means and the global fallback must come from the training period.
+    This decomposition does NOT by itself solve nonrandom race entry.
+    """
+    exposure_mean = training.groupby("horse_id")["poor"].mean()
+    grand_mean = float(training["poor"].mean())
+    result = []
+    for data in (training, test):
+        frame = data.copy()
+        historic_mean = frame["horse_id"].map(exposure_mean).fillna(grand_mean)
+        frame["within_poor"] = frame["poor"] - historic_mean
+        frame["between_poor"] = historic_mean - grand_mean
+        result.append(frame)
+    include_between = bool(result[0]["between_poor"].var() > 1e-10)
+    formula = "y ~ prior_strength + within_poor" + (" + between_poor" if include_between else "")
+    return result[0], result[1], formula, include_between
+
+
+def fit_with_fallback(frame: pd.DataFrame, random_formula: str, fixed_formula: str):
     model = smf.mixedlm(
-        "y ~ prior_strength + poor", data=frame,
+        fixed_formula, data=frame,
         groups=frame["horse_id"], re_formula=random_formula
     )
     errors = []
@@ -100,7 +120,7 @@ def conditional_predict(result, frame: pd.DataFrame, include_slope: bool) -> np.
             values.append(base)
         else:
             a = np.asarray(coefficients, dtype=float)
-            values.append(base + a[0] + (a[1] * row["poor"] if include_slope else 0.0))
+            values.append(base + a[0] + (a[1] * row["within_poor"] if include_slope else 0.0))
     temp = frame[["race_id"]].copy()
     temp["prediction"] = values
     # Only known entrant roster is needed for the predicted relative-race centering.
@@ -163,8 +183,9 @@ def run(path: Path, surface: str, permit_synthetic_demo=False, test_fraction=0.2
     required = 4 if only_synthetic else 30
     if support < required:
         raise ValueError(f"training horses with >=2 starts in each going group: {support} < {required}")
-    m0, opt0 = fit_with_fallback(train, "1")
-    m1, opt1 = fit_with_fallback(train, "1+poor")
+    train, test, formula, include_between = within_between_from_training(train, test)
+    m0, opt0 = fit_with_fallback(train, "1", formula)
+    m1, opt1 = fit_with_fallback(train, "1+within_poor", formula)
     pr0 = conditional_predict(m0, test, include_slope=False)
     pr1 = conditional_predict(m1, test, include_slope=True)
     metrics = score(test, pr0, pr1)
@@ -175,8 +196,14 @@ def run(path: Path, surface: str, permit_synthetic_demo=False, test_fraction=0.2
         "split": {"train_max_date": str(train["date"].max()), "test_start_date": str(test_start),
                   "test_max_date": str(test["date"].max()), "train_rows": len(train),
                   "test_rows": len(test), "train_cross_going_horses": support},
+        "within_between": {
+            "fixed_effects_formula": formula,
+            "between_exposure_included": include_between,
+            "individual_exposure_baseline_computed_from_training_only": True,
+            "random_slope_on_within_horse_going": True,
+        },
         "m0": {"random": "horse intercept", "converged": bool(m0.converged), "optimizer": opt0, "loglik": float(m0.llf)},
-        "m1": {"random": "horse intercept + going slope", "converged": bool(m1.converged),
+        "m1": {"random": "horse intercept + within-horse going slope", "converged": bool(m1.converged),
                "optimizer": opt1, "loglik": float(m1.llf),
                "among_horse_slope_sd_point_estimate": float(np.sqrt(max(0, m1.cov_re.iloc[1, 1]))),
                "slope_uncertainty_estimated": False},
@@ -187,6 +214,7 @@ def run(path: Path, surface: str, permit_synthetic_demo=False, test_fraction=0.2
             "This simple pilot lacks confirmatory class/jockey/age, nonrandom entry and clustered uncertainty modelling.",
             "Random-slope variance estimate has no valid confidence interval or boundary-aware test here.",
             "Chronological evaluation includes historical prior results known before each held-out start.",
+            "Horse exposure means used for within-between decomposition are learned on training dates only.",
             "Never report H1 supported/unsupported based solely on this pilot; preregister confirmatory analyses.",
         ],
     }
