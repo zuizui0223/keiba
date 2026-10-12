@@ -52,3 +52,8 @@ jobs:
         run: |
           python scripts/ecology_h2_outcome_loss_stress.py --output tmp/h2-outcome-loss-stress.json --seed 512
           python -c "import json; x=json.load(open('tmp/h2-outcome-loss-stress.json')); assert x['status']=='SYNTHETIC_MISSINGNESS_FALSIFICATION_ONLY'; assert x['scenarios']['none']['nonfinisher_count']==0; assert x['scenarios']['speed_dependent']['nonfinisher_count']>0; assert x['no_empirical_horse_claims']"
+      - name: Two-part competition outcome (finish versus speed) and HK schema preflight
+        run: |
+          python scripts/ecology_demo_completion.py --output tmp/fictional-with-DNF.csv --days 100 --horses 48 --runners 12 --seed 512 --loss random
+          python scripts/ecology_h2_two_part.py --input tmp/fictional-with-DNF.csv --output tmp/h2-two-part.json --surface turf --permit-synthetic-demo
+          python -c "import json; p=json.load(open('tmp/h2-two-part.json')); assert p['status']=='SYNTHETIC_TWO_PART_H2_DEMO_ONLY'; assert p['date_split']['training_DNF']>=12 and p['date_split']['future_DNF']>=3; assert p['part_B_speed_conditional_on_timed_finish']['never_impute_a_nonfinisher_full_distance_speed']"
