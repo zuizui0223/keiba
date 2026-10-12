@@ -5,7 +5,7 @@
   "target_date": "2026-10-12",
   "inputs": {
     "normalized_history_sha": "c60f09fc8e84500579482a1d2f1390862403325c",
-    "quality_tier_map_sha": "d3610633cb1b61880c5698a6f756f2aa4a1dc369",
+    "quality_tier_map_sha": "a06e33dd396369b9556136b7e12cc4568afde41b",
     "frozen_race_shas": {
       "7": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
       "8": "40b8626ece484ef6631d4bd97aaf89f26eedec09",
@@ -457,10 +457,7 @@
             "body_weight_change_ge_10kg",
             "first_jockey_ride"
           ],
-          "unknown_quality_tiers": [
-            "忘れな草賞",
-            "若駒S"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 6,
@@ -567,10 +564,7 @@
           "unknown_quality_tiers": []
         }
       ],
-      "unknown_quality_tiers": [
-        "忘れな草賞",
-        "若駒S"
-      ]
+      "unknown_quality_tiers": []
     },
     "9": {
       "target": {
@@ -685,10 +679,7 @@
           "K_wins": 1,
           "K_top3": 2,
           "uncertainty_flags": [],
-          "unknown_quality_tiers": [
-            "ユニコーンS",
-            "鳳雛S"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 5,
@@ -824,16 +815,10 @@
             "layoff_gt_120d",
             "class_rise"
           ],
-          "unknown_quality_tiers": [
-            "ポインセチア"
-          ]
+          "unknown_quality_tiers": []
         }
       ],
-      "unknown_quality_tiers": [
-        "ポインセチア",
-        "ユニコーンS",
-        "鳳雛S"
-      ]
+      "unknown_quality_tiers": []
     },
     "10": {
       "target": {
@@ -890,9 +875,7 @@
             "first_exact_distance",
             "first_jockey_ride"
           ],
-          "unknown_quality_tiers": [
-            "阪神JF"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 2,
@@ -958,9 +941,7 @@
           "uncertainty_flags": [
             "class_rise"
           ],
-          "unknown_quality_tiers": [
-            "京成杯"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 6,
@@ -1029,9 +1010,7 @@
             "first_run_at_venue",
             "body_weight_change_ge_10kg"
           ],
-          "unknown_quality_tiers": [
-            "ローズS"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 10,
@@ -1051,11 +1030,7 @@
           "unknown_quality_tiers": []
         }
       ],
-      "unknown_quality_tiers": [
-        "ローズS",
-        "京成杯",
-        "阪神JF"
-      ]
+      "unknown_quality_tiers": []
     },
     "11": {
       "target": {
@@ -1075,8 +1050,12 @@
           18
         ],
         "C": [
+          1,
+          6,
+          9,
           11,
-          13
+          13,
+          18
         ],
         "U": [],
         "Q": [
@@ -1129,7 +1108,7 @@
           "name": "ダイヤモンドノット",
           "frozen_win_odds": 6,
           "M": true,
-          "C": false,
+          "C": true,
           "U": false,
           "Q": true,
           "K": false,
@@ -1139,10 +1118,7 @@
           "uncertainty_flags": [
             "first_jockey_ride"
           ],
-          "unknown_quality_tiers": [
-            "NHKマイル",
-            "セントウルS"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 2,
@@ -1159,9 +1135,7 @@
           "uncertainty_flags": [
             "class_rise"
           ],
-          "unknown_quality_tiers": [
-            "六甲S"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 3,
@@ -1177,11 +1151,10 @@
           "K_top3": 1,
           "uncertainty_flags": [
             "layoff_gt_120d",
+            "class_rise",
             "first_jockey_ride"
           ],
-          "unknown_quality_tiers": [
-            "安土城S"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 4,
@@ -1198,9 +1171,7 @@
           "uncertainty_flags": [
             "layoff_gt_120d"
           ],
-          "unknown_quality_tiers": [
-            "安田記念"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 5,
@@ -1217,18 +1188,14 @@
           "uncertainty_flags": [
             "first_exact_distance"
           ],
-          "unknown_quality_tiers": [
-            "オーシャンS",
-            "セントウルS",
-            "高松宮記念"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 6,
           "name": "ウインマーベル",
           "frozen_win_odds": 19.8,
           "M": false,
-          "C": false,
+          "C": true,
           "U": false,
           "Q": true,
           "K": false,
@@ -1238,11 +1205,7 @@
           "uncertainty_flags": [
             "layoff_gt_120d"
           ],
-          "unknown_quality_tiers": [
-            "MBSスワン",
-            "マイルCS",
-            "安田記念"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 7,
@@ -1274,22 +1237,19 @@
           "K_wins": 1,
           "K_top3": 1,
           "uncertainty_flags": [
+            "class_rise",
             "first_exact_distance",
             "body_weight_change_ge_10kg",
             "first_jockey_ride"
           ],
-          "unknown_quality_tiers": [
-            "NHKマイル",
-            "チャーチルC",
-            "関屋記念"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 9,
           "name": "オフトレイル",
           "frozen_win_odds": 4.6,
           "M": true,
-          "C": false,
+          "C": true,
           "U": false,
           "Q": false,
           "K": true,
@@ -1299,12 +1259,7 @@
           "uncertainty_flags": [
             "layoff_gt_120d"
           ],
-          "unknown_quality_tiers": [
-            "マイラーズC",
-            "マイルCS",
-            "安田記念",
-            "東京新聞杯"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 10,
@@ -1322,9 +1277,7 @@
             "class_rise",
             "first_jockey_ride"
           ],
-          "unknown_quality_tiers": [
-            "高松宮記念"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 11,
@@ -1339,12 +1292,10 @@
           "K_wins": 0,
           "K_top3": 1,
           "uncertainty_flags": [
+            "class_rise",
             "first_exact_distance"
           ],
-          "unknown_quality_tiers": [
-            "NHKマイル",
-            "京成杯AH"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 12,
@@ -1359,10 +1310,7 @@
           "K_wins": 1,
           "K_top3": 3,
           "uncertainty_flags": [],
-          "unknown_quality_tiers": [
-            "スプリンター",
-            "ヴィクトリア"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 13,
@@ -1396,10 +1344,7 @@
           "uncertainty_flags": [
             "layoff_gt_120d"
           ],
-          "unknown_quality_tiers": [
-            "マイルCS",
-            "ヴィクトリア"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 15,
@@ -1436,9 +1381,7 @@
           "uncertainty_flags": [
             "class_rise"
           ],
-          "unknown_quality_tiers": [
-            "北九州記念"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 17,
@@ -1456,16 +1399,14 @@
             "class_rise",
             "first_exact_distance"
           ],
-          "unknown_quality_tiers": [
-            "しらさぎS"
-          ]
+          "unknown_quality_tiers": []
         },
         {
           "number": 18,
           "name": "エリカエクスプレス",
           "frozen_win_odds": 7.1,
           "M": true,
-          "C": false,
+          "C": true,
           "U": false,
           "Q": false,
           "K": false,
@@ -1475,31 +1416,10 @@
           "uncertainty_flags": [
             "first_exact_distance"
           ],
-          "unknown_quality_tiers": [
-            "ヴィクトリア"
-          ]
+          "unknown_quality_tiers": []
         }
       ],
-      "unknown_quality_tiers": [
-        "MBSスワン",
-        "NHKマイル",
-        "しらさぎS",
-        "オーシャンS",
-        "スプリンター",
-        "セントウルS",
-        "チャーチルC",
-        "マイラーズC",
-        "マイルCS",
-        "ヴィクトリア",
-        "京成杯AH",
-        "六甲S",
-        "北九州記念",
-        "安土城S",
-        "安田記念",
-        "東京新聞杯",
-        "関屋記念",
-        "高松宮記念"
-      ]
+      "unknown_quality_tiers": []
     },
     "12": {
       "target": {
@@ -1832,38 +1752,11 @@
     "candidate_fraction": 0.7710843373493976,
     "channel_memberships_nonexclusive": {
       "M": 22,
-      "C": 34,
+      "C": 38,
       "U": 6,
       "Q": 11,
       "K": 27
     },
-    "unknown_quality_tiers": [
-      "MBSスワン",
-      "NHKマイル",
-      "しらさぎS",
-      "オーシャンS",
-      "スプリンター",
-      "セントウルS",
-      "チャーチルC",
-      "ポインセチア",
-      "マイラーズC",
-      "マイルCS",
-      "ユニコーンS",
-      "ローズS",
-      "ヴィクトリア",
-      "京成杯",
-      "京成杯AH",
-      "六甲S",
-      "北九州記念",
-      "安土城S",
-      "安田記念",
-      "忘れな草賞",
-      "東京新聞杯",
-      "若駒S",
-      "関屋記念",
-      "阪神JF",
-      "高松宮記念",
-      "鳳雛S"
-    ]
+    "unknown_quality_tiers": []
   }
 }
