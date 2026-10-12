@@ -1,0 +1,52 @@
+{
+  "race": 12,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "name": "3歳以上1勝クラス",
+  "surface": "dirt",
+  "distance_m": 1200,
+  "start_jst": "2026-10-12T16:30:00+09:00",
+  "result_confirmed_source": "JRA",
+  "result_source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604051220261012/4D",
+  "going": "良",
+  "top5": [
+    {"finish":1,"number":10,"name":"ビービーシナジー","jockey":"武豊","weight_kg":57.0,"body_weight_kg":498,"body_weight_change_kg":-6,"final_popularity":7,"final_win_odds":12.2},
+    {"finish":2,"number":12,"name":"ベラジオリン","jockey":"西村淳也","weight_kg":55.0,"body_weight_kg":434,"body_weight_change_kg":12,"final_popularity":11,"final_win_odds":18.5},
+    {"finish":3,"number":9,"name":"トゥインクルアップ","jockey":"小林美駒","weight_kg":54.0,"body_weight_kg":496,"body_weight_change_kg":16,"final_popularity":8,"final_win_odds":12.3},
+    {"finish":4,"number":15,"name":"マダムイグレイン","jockey":"田山旺佑","weight_kg":55.0,"body_weight_kg":502,"body_weight_change_kg":6,"final_popularity":6,"final_win_odds":9.0},
+    {"finish":5,"number":1,"name":"ダイヤモンド","jockey":"吉村誠之助","weight_kg":58.0,"body_weight_kg":522,"body_weight_change_kg":-4,"final_popularity":4,"final_win_odds":7.4}
+  ],
+  "payouts_yen_per_100": {
+    "win_10":1220,
+    "quinella_10_12":7350,
+    "wide_10_12":2160,
+    "wide_9_10":3880,
+    "wide_9_12":6560,
+    "exacta_10_12":13460,
+    "trio_9_10_12":60280,
+    "trifecta_10_12_9":378450
+  },
+  "pre_result_freezes": {
+    "old_top3":[14,1,6],
+    "old_broad_set":[14,1,6,3,9,16],
+    "v2_top3":[16,1,14],
+    "v2_broad_set":[16,1,14,3,9,6],
+    "v2_frozen_at_jst":"2026-10-12T16:05:00+09:00"
+  },
+  "forward_validation": {
+    "actual_top3":[10,12,9],
+    "old_top3_recall":0,
+    "v2_top3_recall":0,
+    "old_broad_top3_recall":1,
+    "v2_broad_top3_recall":1,
+    "winner_in_old_broad_set":false,
+    "winner_in_v2_broad_set":false,
+    "runner_up_in_old_broad_set":false,
+    "runner_up_in_v2_broad_set":false,
+    "third_in_old_broad_set":true,
+    "third_in_v2_broad_set":true,
+    "actual_top3_final_popularity":[7,11,8],
+    "market_top6_top3_recall":0
+  },
+  "note":"JRA result page confirmed top five and payouts when captured. Full 16-horse order was not required for the frozen Top3/broad-set forward validation."
+}
