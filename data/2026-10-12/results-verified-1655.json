@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-12",
+  "venue": "京都",
+  "verified_at_jst": "2026-10-12T16:55:48+09:00",
+  "races": {
+    "7": {
+      "positions": [
+        2,
+        15,
+        9
+      ],
+      "complete_top3": true,
+      "source_type": "JRA_official",
+      "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604050720261012%2F84"
+    },
+    "8": {
+      "positions": [
+        9,
+        1,
+        7
+      ],
+      "complete_top3": true,
+      "source_type": "JRA_official",
+      "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604050820261012%2F39"
+    },
+    "9": {
+      "positions": [
+        4,
+        3,
+        12
+      ],
+      "complete_top3": true,
+      "source_type": "JRA_official",
+      "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0108202604050920261012%2FEE"
+    },
+    "10": {
+      "positions": [
+        5,
+        2
+      ],
+      "complete_top3": false,
+      "source_type": "JRA_official_partial",
+      "source_url": "https://own.jra.jp/JRADB/accessS.html?CNAME=pw01sde0108202604051020261012%2FE3",
+      "note": "1着・2着まで取得本文で確認。3着は本入力では未保存。"
+    },
+    "11": {
+      "positions": [
+        1,
+        4,
+        9
+      ],
+      "complete_top3": true,
+      "source_type": "secondary_result_pending_JRA_page_retrieval",
+      "source_url": "https://race.sp.netkeiba.com/?pid=race_result&race_id=202608040511&rf=special",
+      "note": "netkeiba結果本文で1-4-9、払戻を確認。JRA当該結果本文は本取得時点で検索取得できていないため、公式確認レベルとは分離。"
+    },
+    "12": {
+      "positions": [],
+      "complete_top3": false,
+      "source_type": "not_confirmed",
+      "source_url": "https://www.keibalab.jp/db/race/202610120812/raceresult.html",
+      "note": "16:55時点の取得本文は『確定していません』。"
+    }
+  }
+}
