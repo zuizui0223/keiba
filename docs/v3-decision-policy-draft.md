@@ -84,14 +84,14 @@ Only after multiple independent races should a version be called improved.
 Implemented:
 - `scripts/audit_recent_history.py` validates structured recent-run history before ranking.
 - `tests/test_recent_history_gate.py` covers missing runs, stale source checks, lightly raced horses, future dates, and race-level fail-closed behavior.
-- Local TDD verification: 6 tests passed after an initial import failure before implementation.
+- Local TDD verification: 9 focused tests pass. The TDD history includes the expected RED states before implementation: missing module, DATA_HOLD CLI returning 0, and latest-run/source mismatches not being detected.
 - `reports/2026-10-12/v3-recent-history-gate-audit.json` records the current migration state.
 
 Current frozen-input audit:
 - Kyoto 7R-12R: 6 races, 83 runners.
 - PASS: 0.
 - DATA_HOLD: 83.
-- All 83 currently lack the new structured fields `career_starts`, `history_checked_at_jst`, and `recent_runs`.
+- All 83 currently predate the new structured schema and lack the fields required to PASS: `career_starts`, `history_checked_at_jst`, `history_source_url`, `source_latest_run_date`, and `recent_runs`.
 
 This does **not** mean the old JSON is unusable as a historical record. It means v3 will not use it for a new ranking decision until recent-history data has been structurally refreshed.
 
