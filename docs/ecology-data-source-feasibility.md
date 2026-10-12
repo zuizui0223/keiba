@@ -89,3 +89,29 @@ unresolved and will not be guessed automatically.
 **Most promising path now:** source/rights review followed by this
 preflight, then a carefully versioned data harmonization step.
 No factual dataset has yet been ingested into the repo.
+
+
+## 2026-10-13 preflight revision: conditional overlap rather than mere size
+
+[scripts/ecology_hk_preflight.py](../scripts/ecology_hk_preflight.py)
+now distinguishes:
+
+- Horse repeated starts globally, including varying raw going labels.
+- Within-horse repeated starts under **2+ observations in each of two
+  different ground labels**, while holding venue, surface, exact
+  distance and race class constant.
+- Distinct opponent sets within the same race stratum, with at least
+  4 starts (a necessary support screen, not identification).
+- Starts recorded on the same **obscured** calendar date which cannot
+  be ordered without verified race clock information.
+
+An artificial counterexample in the CI tests assigns all GOOD
+races to one class and all YIELDING races to another. The preflight
+correctly refuses to count this as same-stratum environmental
+replication, despite global within-horse variation.
+
+The Kaggle dataset's reported 1997–2005 period and obscured date
+labels must not be treated as an authoritative racing calendar. This
+preflight has **not** been run against the actual Kaggle CSVs.
+Upstream rights remain unverified, so no record-level data were copied
+into the public repository.
