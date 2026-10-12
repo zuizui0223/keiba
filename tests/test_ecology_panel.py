@@ -141,6 +141,15 @@ class PanelTests(unittest.TestCase):
         self.assertIsNone(parsed[0]["finish_time_s"])
         self.assertEqual(audit(parsed, lagged_features(parsed))["finishers_with_individual_times"], 19)
 
+    def test_mixed_synthetic_real_sources_fail_closed(self):
+        rows = fixture()
+        rows[0]["source_license"] = "research-approved"
+        rows[0]["source_url"] = "https://example.org/authorized-copy"
+        with tempfile.TemporaryDirectory() as tmp:
+            parsed = load_panel(write_rows(tmp, rows))
+        self.assertEqual(audit(parsed, lagged_features(parsed))["status"],
+                         "HOLD_MIXED_SYNTHETIC_AND_REAL")
+
     def test_uncleared_data_rights_hold(self):
         rows = fixture()
         for row in rows:
