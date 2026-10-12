@@ -18,6 +18,7 @@ Read:
 - [Why race-standardized speed can mimic social interactions](docs/ecology-h2-absolute-outcome.md)
 - [Versioned raw-speed horse+race FE falsification audit](docs/ecology-h2-absolute-stress-audit.md)
 - [Data-source licensing and longitudinal field-coverage audit](docs/ecology-data-source-feasibility.md)
+- [Why nonfinishers and missing speeds require a selection audit](docs/ecology-h2-outcome-selection.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
@@ -160,3 +161,58 @@ z-speed, and **0/2** using raw speed plus horse/race effects.
 These are merely six illustrative fictional datasets per model and
 **not** validated false-positive rates, statistical power, or
 observations from real horses. See [frozen audit and complete limitations](docs/ecology-h2-absolute-stress-audit.md).
+
+
+## 2026-10-12 update: whole entrant exposure, observed speed selection
+
+The raw-speed H2 model has been corrected to retain **every confirmed
+starting horse as a rival**, even if that horse later does not finish.
+The speed regression uses only positive observed individual finishing
+times and does **not** impute nonfinishers as 0 m/s. Previously, one
+unobserved time could remove an entire race. New audits separate:
+
+- Full **starting field** completeness from available **past style/
+  ability history** and available **postrace speed**.
+- Nonfinishers versus horses reported as finished without a usable time.
+- Timed-outcome fractions by track going, focal pre-race running style,
+  and pre-race rival style composition.
+
+The model now writes `outcome_selection_audit` and, if any otherwise
+eligible horse's speed is unobserved, explicitly records
+`HOLD_POTENTIALLY_INFORMATIVE_SPEED_MISSINGNESS`. This is a *warning*,
+not an automated correction for informative censoring or a new
+biological finding.
+
+Reproduce the missing-outcome stress, on fake horses only:
+
+```bash
+python scripts/ecology_h2_outcome_loss_stress.py \
+  --output tmp/h2-outcome-loss-stress.json --seed 512
+```
+
+Methods and outstanding bias: [H2 starter/outcome selection](docs/ecology-h2-outcome-selection.md).
+
+## Route to actual longitudinal data: offline compatibility screen
+
+The Kaggle
+[Horse Racing in HK](https://www.kaggle.com/datasets/gdaley/hkracing)
+publisher lists horse IDs, race IDs, first sectional position, ground
+condition and individual times in `races.csv`/`runs.csv`, potentially
+enabling long-term ecological contrasts. Its race dates are expressly
+**obscured**, and the claimed CC0 label does not independently confirm
+rights from the originating race-results provider.
+
+`ecology_hk_preflight.py` can inspect lawfully obtained **local**
+CSV files and emit aggregate join/overlap/coverage statistics. It does
+not download, republish horse rows, guess source timestamps, relabel
+ground types or feed a fitted H1/H2 model.
+
+```bash
+python scripts/ecology_hk_preflight.py \
+  --races /private/hk/races.csv \
+  --runs /private/hk/runs.csv \
+  --audit tmp/hk-readiness.json
+```
+
+The output status is **HOLD_SOURCE_RIGHTS_AND_OBSCURED_DATES** until
+external provenance and study-use permissions are established.
