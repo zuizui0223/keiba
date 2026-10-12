@@ -15,6 +15,8 @@ Read:
 - [Longitudinal horse–race panel specification and leakage checks](docs/ecology-panel-schema.md)
 - [Actual Kyoto 2026-10-12 archive: explicit H1/H2 data-gap audit](docs/ecology-archive-gap-audit.md)
 - [Versioned H2 null and confounded-null simulation audit](docs/ecology-h2-simulation-audit.md)
+- [Why race-standardized speed can mimic social interactions](docs/ecology-h2-absolute-outcome.md)
+- [Versioned raw-speed horse+race FE falsification audit](docs/ecology-h2-absolute-stress-audit.md)
 - [Data-source licensing and longitudinal field-coverage audit](docs/ecology-data-source-feasibility.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
@@ -132,3 +134,29 @@ not estimate heritability, fitness, social selection or causal social
 plasticity. Its null and confounded-null scenarios are checks for
 software/design weakness, not actual observations. Real results remain
 unavailable until authorized multi-year racing records are assembled.
+
+
+## H2 primary outcome safeguard: raw individual speed
+
+**Important identification improvement.** The previously implemented
+race-centred z-speed response can change if an opponent changes speed,
+even while the focal horse's speed remains fixed. This creates a
+mathematical rival effect in the outcome, not necessarily social plasticity.
+
+The more defensible **exploratory primary H2 model** now fits focal
+individual speed (m/s) with **crossed horse and race fixed effects**,
+style×going controls and focal style×within-horse rival-context interaction.
+Comparison with the old z-speed model is a mandatory sensitivity check.
+
+```bash
+python scripts/ecology_h2_absolute_speed.py --input tmp/competitors-FAKE.csv --output tmp/h2-absolute.json --permit-synthetic-demo
+python scripts/ecology_h2_absolute_stress.py --output tmp/h2-absolute-stress.json --seeds 512 911
+```
+
+In a two-seed-per-scenario **synthetic-only** stress audit, the
+deliberately confounded zero-effect case produced a nominal zero-
+excluding interaction interval in **1/2** leave-one-out runs using
+z-speed, and **0/2** using raw speed plus horse/race effects.
+These are merely six illustrative fictional datasets per model and
+**not** validated false-positive rates, statistical power, or
+observations from real horses. See [frozen audit and complete limitations](docs/ecology-h2-absolute-stress-audit.md).
