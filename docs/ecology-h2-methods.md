@@ -153,3 +153,97 @@ as exploratory.
 contains seven races on one date. It is not capable of establishing
 within-individual shifts in rival composition. See
 [Kyoto archive gap audit](ecology-archive-gap-audit.md).
+
+
+## Stronger longitudinal within/between pilot (October 12, 2026)
+
+`scripts/ecology_h2_within_between.py` adds a **horse fixed-intercept**
+sensitivity beyond the previous mixed-model pilot:
+
+```text
+y_ir = α_i + βA A_ir + βO O_ir + βS S_ir
+       + βW (F_ir - mean_train(F_i))
+       + γ (mean_train(S_i) - mean_train(S))
+           × (F_ir - mean_train(F_i))
+       + βG Going_ir + βSG (mean_train(S_i)-mean_train(S)) × Going_ir
+       + error_ir
+```
+
+- `α_i` removes stable horse-level performance differences in the **training**
+  panel. Individual historical style traits and competitor composition
+  baselines are fitted exclusively from earlier training dates and frozen
+  during future-date evaluation. This is **not an instrument or causal
+  identification** for the remaining time-varying selection.
+- `F_ir` is compared both as the *other entrants only* fraction and the
+  *full field* fraction. Their potentially different coefficients explicitly
+  probe the compositional coupling between a focal horse's own label and its
+  leave-one-out rival share.
+- `Going_ir` and its interaction with focal style test a competing
+  **horse-style×track-condition** explanation. More complete adjustment
+  for class, course, jockey, weather, fitness and entry remains necessary.
+- Approximate descriptive uncertainty is clustered on horse **and race**.
+  Nominal 95% intervals and race-block held-out RMSE changes must **not**
+  be mistaken for credible intervals for causal social plasticity.
+- Between-individual assortment is reported as a **descriptive association**
+  between training-period mean focal style and mean encountered competitor
+  style. A horse fixed intercept absorbs time-constant exposure means; the
+  model does not estimate causal assortative assignment or fitness.
+- This pilot uses relative race-centred z-speed, not winning probability.
+  It excludes races with incomplete official finishing-time rosters,
+  introducing a potential selection filter.
+
+## Falsification design and negative-control generators
+
+`scripts/ecology_h2_falsification.py` executes three deterministic
+**wholly fabricated** mechanisms, via `ecology_demo_competitors.py`:
+
+| Scenario | Rival-effect planted | Other mechanism |
+| --- | --- | --- |
+| null_random_entry | 0 | randomized horse participation |
+| planted_opponent_interaction | −0.9 generator speed-scale parameter | same randomized participation |
+| confounded_null | 0 | assortative (nonrandom) field entry + style-dependent ground performance |
+
+These parameters define a *fabricated data-generating process* and are
+**not numerically comparable** to the fitted interaction coefficient on
+the race-relative z-speed scale. Single synthetic null draws may show a
+nonzero fitted coefficient. A nominal interval excluding zero in a
+confounded null indicates vulnerability to model/design artifacts, **not
+evidence of a competitive mechanism**. The default two seeds and three
+scenarios give just six software design probes, not stable estimates of
+power, false-positive rates or calibrated uncertainty.
+
+The pipeline deliberately records missing within-horse overlap as `HOLD`
+instead of calling the hypothesis rejected. All simulated labels have
+`source_license=synthetic`. Actual published racing history is still absent.
+
+## Ecological-theory anchor: social plasticity vs assortment
+
+- **van de Pol & Wright (2009)**, *A simple method for distinguishing within-
+  versus between-subject effects using mixed models*, *Animal Behaviour*
+  77:753–758, DOI https://doi.org/10.1016/j.anbehav.2008.11.006.
+- **Martin & Jaeggi (2022)**, *Social animal models for quantifying plasticity,
+  assortment, and selection on interacting phenotypes*, *Journal of
+  Evolutionary Biology* 35:520–538, DOI https://doi.org/10.1111/jeb.13900.
+
+The 2022 paper estimates **social reaction norms** and explicitly separates
+within-individual responsiveness from nonrandom assortment. Its full
+measurement-error and social-genetic approach is **NOT implemented** in
+this repository. Genetic relatedness, heritability, selection and
+fitness are not available here. Consequently we call the outputs
+*exploratory individual-context associations*, rather than social
+animal model estimates or selection coefficients.
+
+### Next genuine empirical milestones
+
+1. Legally authorized repeated horse×race records across multiple seasons,
+   many courses and varied rival lineups, including ground and first-call
+   tracking, with verified release terms.
+2. Explicit overlap tables by course/distance/class/going/jockey, race
+   entry propensity, and environment-dependent selective withdrawal.
+3. Model direct competing explanations, including field-strength selection,
+   field-size, within-horse front-position changes, race-level shocks,
+   interactions with going, and changing training/jockey decisions.
+4. In advance, freeze exposure threshold (currently 0.7), outcome definition,
+   training/validation splits, uncertainty and multiplicity rules.
+5. A holdout independent of the case used to settle model design, then
+   a biological claim only if defensible sensitivity and uncertainty remain.
