@@ -1,0 +1,89 @@
+# Ecological research plan: racehorse individual × environment × competition
+
+Status: **research proposal, not empirical support** (2026-10-12).
+This is a biological research track independent of betting-market optimisation. No causal claims, validated fitted model, or ecological finding is made here.
+
+## Central question
+
+競走馬の競走パフォーマンスは、一貫した個体差だけで説明できるのか。それとも、同じ個体の環境応答（reaction norms）と競争相手の構成によって系統的に変化するのか。
+
+### Ecological interpretation and limitations
+
+- **Individual ecology / phenotypic plasticity**: quantify among-horse heterogeneity in environment–performance slopes rather than only average ability. An individual regression slope in observational competition data is *context-dependent performance*, not automatically physiological plasticity or adaptation.
+- **Biotic interactions / competitive context**: test whether a horse's pre-race running-style history interacts with pre-race competitor composition. Direct dominance/interference cannot be inferred from order of finish alone.
+- **Performance niches** (exploratory): compare conditional performance breadth with peak performance in observed race conditions. Entry/placement is selective, so this is not a realized ecological niche in the wild.
+- Races are highly managed and nonrandomly assigned. Racing results do not identify natural selection, evolutionary adaptation, or horse personality without additional evidence.
+
+## Confirmatory hypotheses (freeze before viewing new outcomes)
+
+**H1: heterogeneous environmental reaction norms.**
+Within horse and conditional on surface, distance, class, venue, year/season and jockey, response to ground condition differs among horses (variance of horse-specific ground-effect slopes > 0).
+
+- Null: all horse-specific slopes are exchangeable with zero among-horse slope variance after adjustment.
+- Competing explanation: apparent interactions arise from differential race entry, class changes, fitness/layoffs, jockey assignment or different conditions being experienced at different ages.
+- Identification check: horses must be repeatedly observed under distinguishable ground conditions with overlap in distances/classes; quantify within-horse support before fitting. Results for unsupported extrapolations are HOLD.
+- Success requires an interpretable slope-variance estimate with uncertainty **and** pre-registered time-forward improvement over the no-slope model. Statistical evidence alone is not sufficient to call a new ecological mechanism.
+
+**H2: competitive-context dependence.**
+Pre-race running-style profile of a horse interacts with the proportion of other entrants previously observed as early leaders. Test, for example, whether historical front-runners fare relatively worse when several other front-runners are entered, after accounting for opponents' pre-race strength and race conditions.
+
+- Null: no horse-style × competitors'-style interaction.
+- Alternative explanations: stronger fields, jockey strategy, post-entry horse selection, course geometry and ground condition.
+- Define running style exclusively using *prior* races; do not use pace, positions, or sectionals from the target race as predictors. If only actual race pace is available, analyze it descriptively, not as a leakage-free pre-race predictor.
+- Include a negative-control interaction or a permutation within plausible pre-race strata, and do not equate a correlational interaction with a behavioral mechanism.
+
+**H3: specialization vs generalism (exploratory).**
+After entry selection and unequal sample size are addressed, horses with more peaked conditional performance curves may have stronger performance in preferred conditions but lower consistency across environments. Do not label this an adaptive trade-off based on a negative correlation alone.
+
+## Data requirements
+
+**Grain: one row per horse–race start**, indexed by stable horse_id and race_id, with source URLs, source license, collection timestamp and availability cutoff.
+
+| Layer | Minimum fields | Status in existing repository |
+| --- | --- | --- |
+| Individual | horse_id, age, sex, pre-race starts, previous outcomes | partial: horse names and selected course aggregates; no complete repeated-start panel |
+| Environment | race date, track, turf/dirt, distance, ground condition, weather, course geometry | partial: track, surface, distance, date for one Kyoto card; weather and ground labels not consistently present |
+| Competitive context | entrants, field size, gate, carried weight, jockey, pre-race style, opponent pre-race performance | partial: field size, horse number, some historical jockey data; style/ability series absent |
+| Response | official placing, individual finishing time, race-time comparison, withdrawals/nonfinishers | partial: selected retrospective narrative, not a consistent historical outcome table |
+| Provenance | public data source, observed_at, feature_available_at, source terms | partial: existing timestamp/source conventions provide a useful template |
+
+Do **not** derive individual time-series observations by expanding a horse's aggregate Kyoto record [win, second, third, other]. Those summaries contain no race-specific exposures, times, or contemporaneous competitors. Archived 2026-10-12 odds snapshots are market metadata, **not** an ecological performance panel.
+
+Suggested source assessment: JRA official race results (historical lookup); JRA-VAN Data Lab historical structured feeds where permitted. Inspect access terms, attribution and redistribution limits before collecting or committing any licensed data. Avoid committing restricted raw records.
+
+## Analyses
+
+1. **Cohort definition**: specify date range, eligible flat races, surfaces, distance classes, standard exclusions (nonfinishers/invalid time handled transparently). Record sample counts, repeated-start counts, exposure overlap, missingness and loss to follow-up. Use several years and multiple racecourses; do not rely on a single race-day card.
+2. **Response**: primary observed speed (distance / individual finishing time), with flexible distance, surface/track, class and calendar adjustments; race-level random effects for common shocks. Secondary normalized relative rank or time-behind-winner for within-race comparisons. Neither is fitness in the evolutionary sense.
+3. **M0 (individual heterogeneity)**: horse random intercept + race random intercept + jockey effect (where estimable), adjusted for age, class, distance, surface, venue and season.
+4. **M1 (reaction norms)**: add a horse random slope for ground condition (possibly separate for turf/dirt), and horse intercept–slope covariance; use partial pooling. Examine within-horse variation; environmental main effects and race fixed intercepts cannot be simultaneously identified when the environment is shared within each race.
+5. **M2 (competitive composition)**: on a race-relative performance outcome, add pre-race horse-style × pre-race front-runner share among *other* entrants; adjust for pre-race opponent strength and field size, using only past data.
+6. **Variance decomposition**: quantify horse intercept, individual environment slope, jockey, race and residual uncertainty, acknowledging dependence on chosen scale. Do not call the components genetic heritability or adaptive fitness.
+7. **Temporal evaluation**: rolling forward held-out race dates, with training features recomputed strictly as of each start date. Report log score/MAE as appropriate, uncertainty calibration and effect stability; include cold-start horses separately. Never randomly split horse-race rows when future records leak into past feature history.
+8. **Robustness**: separate turf and dirt, stratify by distance/class and venue; rerun with age and rest intervals, historical opponent strength and entry propensity adjustment where possible; report multiplicity/exploratory status.
+
+### Decision rules
+
+- H1 supported **only if** the repeat-exposure diagnostic passes, slope heterogeneity is distinguishable from the preregistered null with uncertainty, time-forward prediction improves under the chosen score, and sensitivity checks do not overturn interpretation.
+- H2 supported **only if** the preregistered interaction is stable in unseen race dates and survives opponent-strength and cohort-selection sensitivity. Otherwise report inconclusive or unsupported, not “ecological competition proved.”
+- No inference until panel data, feature cutoffs, official outcomes and a reproducible pipeline exist.
+
+## Deliverables and boundaries
+
+Research-focused outputs: response curves with horse-level partial pooling intervals; individual intercept–slope covariance; variation partitioning with uncertainty; competition-context interaction; tests against ecological null hypotheses; readable limitations.
+
+Betting/odds optimization from analysis/kyoto-20261012 and PR #1 remains a separate application. Do not use odds improvements, wager ROI or one-day hit rates as evidence that H1/H2 hold.
+
+## Prior literature (not a novelty claim)
+
+- Dingemanse et al. (2010), *Behavioural reaction norms: animal personality meets individual plasticity*. Trends in Ecology & Evolution. DOI: 10.1016/j.tree.2009.07.013.
+- van de Pol (2012), *Quantifying individual variation in reaction norms: how study design affects the accuracy, precision and power of random regression models*. Methods in Ecology and Evolution. DOI: 10.1111/j.2041-210X.2011.00160.x.
+- Maeda et al. (2012), *Influence of Track Surface Condition on Racing Times of Thoroughbred Racehorses in Flat Races*. Journal of Equine Veterinary Science. DOI: 10.1016/j.jevs.2012.02.012.
+- Oda et al. (2024), *Assessing the predictability of racing performance of Thoroughbreds using mixed-effects model*. Journal of Animal Breeding and Genetics. DOI: 10.1111/jbg.12822. Individual ability and venue/distance models are not by themselves a new contribution; genuine novelty of H1/H2 needs a formal literature review.
+
+## Near-term milestones
+
+- M1: freeze ecological questions, data dictionary, prior literature and exclusion rules.
+- M2: establish source/license, assemble historical *longitudinal* horse–race panel, audit coverage.
+- M3: fit M0/M1 and perform time-forward checks; report supported, inconclusive or rejected hypotheses.
+- M4: test M2 competitive-context interaction after obtaining historical pre-race running-style indicators.
