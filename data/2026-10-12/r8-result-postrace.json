@@ -1,0 +1,120 @@
+{
+  "race": 8,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "surface": "turf",
+  "distance_m": 2000,
+  "source_url": "https://sports.yahoo.co.jp/keiba/race/result/2608040508",
+  "going": "良",
+  "finish_time": "1:57.5",
+  "results": [
+    {
+      "finish": 1,
+      "number": 9,
+      "name": "レゼルフォート",
+      "final_win_odds": 4.9,
+      "market_rank": 2,
+      "market_finish_residual": 1,
+      "final3f_sec": 34.6
+    },
+    {
+      "finish": 2,
+      "number": 1,
+      "name": "エレガンシア",
+      "final_win_odds": 13.7,
+      "market_rank": 6,
+      "market_finish_residual": 4,
+      "final3f_sec": 35.3
+    },
+    {
+      "finish": 3,
+      "number": 7,
+      "name": "レーヌマロン",
+      "final_win_odds": 34.7,
+      "market_rank": 10,
+      "market_finish_residual": 7,
+      "final3f_sec": 34.5
+    },
+    {
+      "finish": 4,
+      "number": 2,
+      "name": "ヴィーナスバブル",
+      "final_win_odds": 33.4,
+      "market_rank": 9,
+      "market_finish_residual": 5,
+      "final3f_sec": 35.3
+    },
+    {
+      "finish": 5,
+      "number": 8,
+      "name": "リトルスカーレット",
+      "final_win_odds": 45.4,
+      "market_rank": 11,
+      "market_finish_residual": 6,
+      "final3f_sec": 35.1
+    },
+    {
+      "finish": 6,
+      "number": 5,
+      "name": "ウィズクィーン",
+      "final_win_odds": 5.4,
+      "market_rank": 3,
+      "market_finish_residual": -3,
+      "final3f_sec": 35.2
+    },
+    {
+      "finish": 7,
+      "number": 3,
+      "name": "ストロベリーツリー",
+      "final_win_odds": 5.7,
+      "market_rank": 4,
+      "market_finish_residual": -3,
+      "final3f_sec": 36
+    },
+    {
+      "finish": 8,
+      "number": 6,
+      "name": "カドーダムール",
+      "final_win_odds": 6.2,
+      "market_rank": 5,
+      "market_finish_residual": -3,
+      "final3f_sec": 35.2
+    },
+    {
+      "finish": 9,
+      "number": 11,
+      "name": "ベルシュヴァル",
+      "final_win_odds": 3.9,
+      "market_rank": 1,
+      "market_finish_residual": -8,
+      "final3f_sec": 36
+    },
+    {
+      "finish": 10,
+      "number": 4,
+      "name": "テレプシコーラ",
+      "final_win_odds": 16.7,
+      "market_rank": 8,
+      "market_finish_residual": -2,
+      "final3f_sec": 35.5
+    },
+    {
+      "finish": 11,
+      "number": 10,
+      "name": "スリラーナイト",
+      "final_win_odds": 16.1,
+      "market_rank": 7,
+      "market_finish_residual": -4,
+      "final3f_sec": 36
+    }
+  ],
+  "payouts_yen_per_100": {
+    "win_9": 490,
+    "quinella_1_9": 3010,
+    "wide_1_9": 1020,
+    "wide_7_9": 1810,
+    "wide_1_7": 4930,
+    "trio_1_7_9": 17540,
+    "trifecta_9_1_7": 65660
+  }
+}
