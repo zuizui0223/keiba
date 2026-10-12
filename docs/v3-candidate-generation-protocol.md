@@ -48,6 +48,8 @@ Use at most 5 horses for M:
 M_count = min(5, M_count)
 ```
 
+If multiple horses are tied at the M cutoff, include all horses tied at that cutoff even if this expands M above the nominal count or above 5; record the tie expansion.
+
 If the available market quote is stale or cannot be timestamp-validated, M is marked unavailable rather than silently substituted with a later/final market.
 
 ### C — recent same-class / adjacent-distance form
@@ -83,12 +85,14 @@ Include if, within the last four starts:
 
 This channel captures transferable class/finishing ability even when exact-distance history is sparse.
 
-### K — course-distance specialist
+### K — course / adjacent-distance specialist
 
-Include if pre-race history at the same venue, surface, and exact distance satisfies either:
+Include if pre-race history at the same venue and surface, using races within ±20% of the target distance, satisfies either:
 
 - at least 2 wins; or
-- at least 2 starts and top-three rate >= 50%.
+- at least 2 top-three finishes.
+
+Exact-distance performance should still be reported separately. The wider band is used only to avoid treating nearby distances as unrelated when the venue/surface evidence is repeated.
 
 K is a candidate-generation channel only. It must not automatically outrank recent same-class form.
 
