@@ -13,6 +13,7 @@ This repository is being developed as a reproducible observational research prog
 Read:
 - [Ecological research design: hypotheses, alternatives, models, falsification criteria](docs/ecology-research-plan.md)
 - [Longitudinal horse–race panel specification and leakage checks](docs/ecology-panel-schema.md)
+- [Actual Kyoto 2026-10-12 archive: explicit H1/H2 data-gap audit](docs/ecology-archive-gap-audit.md)
 
 ## Current evidence / not yet done
 
