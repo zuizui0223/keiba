@@ -132,7 +132,8 @@ def main():
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(text, encoding='utf-8')
     print(text, end='')
+    return 0 if out['status'] == 'PASS' else 2
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())
