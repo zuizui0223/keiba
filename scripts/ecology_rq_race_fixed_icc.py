@@ -42,6 +42,13 @@ def race_fixed_reml(rows: list[dict], min_race_telemetry: int = 4) -> dict:
     Input is original HORSES-ID/time data prepared in memory. Output
     never materializes identities or raw timing observations.
     """
+    if not rows:
+        return {
+            "status":"HOLD_NO_ORIGINAL_FIRST_SECTION_ROWS_IN_THIS_MARKER_STRATUM",
+            "source_rows":0,
+            "minimum_positive_GPS_horses_per_race":min_race_telemetry,
+            "no_original_horse_names_IDs_or_raw_segment_times_exported":True,
+        }
     relative, quality=prepare(rows,min_race_telemetry=min_race_telemetry)
     race_members=defaultdict(list)
     actual_by_day_id={
