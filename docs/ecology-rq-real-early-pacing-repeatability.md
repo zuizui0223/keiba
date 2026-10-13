@@ -135,6 +135,51 @@ betting model, not a blinded external cohort**, and the
 fixed shrinkage rule has not been independently calibrated.
 Uncertainty for the RMSE gain is not estimated here.
 
+## Post-hoc field-coverage robustness (at least SIX positive GPS horses)
+
+A **second, more restrictive selection after seeing the original
+result** repeated the exact same original 12 dates but excluded
+race groups with fewer than six positive first-section GPS times.
+This is an **exploratory post-hoc sensitivity**, not an
+independent hypothesis test or a replication with new horses.
+
+Independently executed with the 12-source-date workflow:
+[GitHub Actions #38349061899](https://github.com/zuizui0223/keiba/actions/runs/38349061899).
+
+| Data/signal comparison | Main threshold >=4 GPS horses | Sensitivity >=6 GPS horses |
+| --- | ---: | ---: |
+| Retained original races | 74 | **55** |
+| Horse×race positive GPS observations | 523 | **436** |
+| Repeated official IDs in distance+first-marker strata | 99 | **75** |
+| Equal-stratum pair cross-product (distance/marker) | +0.051925 s² | **+0.057802 s²** |
+| Shuffled within-race ID reference mean | +0.001735 s² | **+0.000054 s²** |
+| Repeated official IDs ALSO matched on race class | 50 | **37** |
+| Equal-stratum pair cross-product (plus class) | +0.035633 s² | **+0.040590 s²** |
+| Shuffled class-matched reference mean | +0.001136 s² | **−0.000083 s²** |
+
+The descriptive positive concordance **did not disappear**
+when excluding smaller observed GPS fields; however, this
+subset was chosen after first observing a positive pattern,
+so it cannot be called confirmatory replication.
+
+### Temporal check after stricter field coverage
+
+Using the same date split (train through 2026-08-22,
+later dates from 2026-08-28):
+
+| Condition and later held-out source rows | Null zero-relative-timing RMSE | Past-ID-profile RMSE | Reduction |
+| --- | ---: | ---: | ---: |
+| Distance + marker, 49 later rows | 0.338765 s | 0.286904 s | **0.051861 s** |
+| Plus broad class, 18 later rows | 0.295268 s | 0.259955 s | **0.035313 s** |
+
+This is a **retrospective timing-persistence outcome**:
+even the target is relative to the *postrace observed*
+GPS subset, so these numbers cannot be interpreted as
+pre-race bets, causal social responses or absolute pace
+predictions. Selection and measurement coverage differ
+between the >=4 and >=6 filters. Multiple comparisons
+and the time-split choice remain exploratory.
+
 ## Interpretation
 
 **Supported as a limited descriptive data claim:** original
