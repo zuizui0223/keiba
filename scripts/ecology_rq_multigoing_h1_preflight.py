@@ -129,8 +129,11 @@ def first_section_table(raw: bytes, date_iso: str) -> dict[tuple[int, str], dict
 
 def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
                   race_selection: tuple[int,...] | None = None,
-                  locked_config: dict | None = None):
+                  locked_config: dict | None = None,
+                  venue: str = VENUE):
     if locked_config is None:
+        if venue != VENUE:
+            raise ValueError("HOLD_INCORRECT_VENUE_WITHOUT_LOCKED_COHORT")
         if day not in SELECTED:
             raise ValueError("HOLD_DAY_NOT_IN_LOCKED_EXPOSURE_SAMPLE")
         config = SELECTED[day]
@@ -138,21 +141,32 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
         # A separately versioned calendar cohort, not an arbitrary URL:
         # original files remain restricted to the explicit allowlist.
         from ecology_rq_thoroughbred_sectional_audit import APPROVED
-        if (day[:5] != "2026-" or
-                set(locked_config) != {"source", "ground_expected", "races"} or
-                locked_config["source"] != day.replace("-", "") + "-cairns" or
-                locked_config["source"] not in APPROVED or
-                locked_config["ground_expected"] not in {"Good", "Soft", "Heavy"} or
-                tuple(locked_config["races"]) != ALL_EIGHT_RACES):
+        fields_ok=set(locked_config)=={"source","ground_expected","races"}
+        day_key=day.replace("-","")
+        canonical_cannon=(
+            venue==VENUE and
+            locked_config.get("source")==day_key+"-cairns" and
+            locked_config.get("ground_expected") in {"Good","Soft","Heavy"} and
+            tuple(locked_config.get("races",()))==ALL_EIGHT_RACES
+        )
+        canonical_eagle=(
+            venue=="Eagle Farm" and
+            locked_config.get("source")==day_key+"-eagle-farm" and
+            locked_config.get("ground_expected")=="SOURCE_RACE_LEVEL" and
+            tuple(locked_config.get("races",()))==tuple(range(1,7))
+        )
+        if (day[:5]!="2026-" or not fields_ok
+                or locked_config.get("source") not in APPROVED
+                or not (canonical_cannon or canonical_eagle)):
             raise ValueError("HOLD_UNAPPROVED_EXTERNAL_COHORT_CONFIGURATION")
-        config = locked_config
+        config=locked_config
     selected = tuple(race_selection) if race_selection is not None else config["races"]
     if selected not in (config["races"], ALL_EIGHT_RACES):
         raise ValueError("HOLD_UNAPPROVED_RACE_SELECTION")
     if len(selected) > MAX_RACES_PER_DAY:
         raise ValueError("HOLD_TOO_MANY_RACES_PER_DATE")
     meeting_xml, _, meeting_sha = soap("GetMeetingsForDate", {"meetingDate": day})
-    meeting_id, _ = identified_meeting(meeting_xml, day, VENUE)
+    meeting_id, _ = identified_meeting(meeting_xml, day, venue)
     race_xml, _, race_sha = soap(
         "GetRacesForMeeting", {"meetingId": meeting_id}
     )
@@ -228,12 +242,15 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
             and row["class"] != "UNKNOWN"
         )
     good = [row for row in all_candidates if row["eligible"]]
-    inconsistent = sum(
+    page_ground_known=config["ground_expected"]!="SOURCE_RACE_LEVEL"
+    inconsistent = (sum(
         race["ground"] != config["ground_expected"]
         for race in races.values()
-    )
+    ) if page_ground_known else 0)
     info = {
-        "day": day, "venue": VENUE,
+        "day": day, "venue": venue,
+        "meeting_page_ground_rating_independently_verified":page_ground_known,
+        "source_race_level_TrackRating_always_used":True,
         "requested_race_numbers": list(selected),
         "official_race_numbers_available": sorted(races),
         "missing_official_race_numbers": sorted(set(selected) - set(races)),
