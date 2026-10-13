@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Generate broad v3 horse candidates from audited recent-run history.
 
-This module does not rank horses, use odds, or select betting tickets.
+This module builds a broad candidate pool. It may use saved win odds only as a
+market-support signal; it does not convert odds to probabilities, rank candidates,
+or select betting tickets.
 """
 from datetime import date
 
@@ -16,12 +18,15 @@ def _margin_is_close(run, threshold=0.5):
     return text in {'ハナ', 'アタマ', 'クビ', '同着'}
 
 
-def _horse_features(race, horse):
+def _horse_features(race, horse, market_rank=None):
     surface = race['surface']
     distance = race['distance_m']
     runs = horse['recent_runs']
     positive = []
     uncertainty = []
+
+    if market_rank is not None and market_rank <= 4:
+        positive.append('market_top4')
 
     similar = [
         run for run in runs
@@ -32,11 +37,15 @@ def _horse_features(race, horse):
     if any(run['finish'] <= 3 and _margin_is_close(run) for run in similar):
         positive.append('recent_similar_distance_close_finish')
 
-    if horse['career_starts'] <= 6 and runs:
+    if horse['career_starts'] <= 8 and runs:
         latest = runs[0]
         if (latest['surface'] == surface and latest['finish'] == 1
                 and abs(latest['distance_m'] - distance) <= 400):
             positive.append('lightly_raced_latest_win')
+        if (latest['surface'] == surface and latest['finish'] <= 4
+                and abs(latest['distance_m'] - distance) <= 400
+                and _margin_is_close(latest, threshold=0.6)):
+            positive.append('lightly_raced_latest_close_form')
 
     if runs:
         latest = runs[0]
@@ -52,6 +61,7 @@ def _horse_features(race, horse):
     return {
         'number': horse['number'],
         'name': horse.get('name'),
+        'market_rank': market_rank,
         'candidate': bool(positive),
         'positive_signals': sorted(set(positive)),
         'uncertainty_flags': sorted(set(uncertainty)),
@@ -70,7 +80,17 @@ def generate_candidates(race, as_of):
             'data_audit': audit,
         }
 
-    rows = [_horse_features(race, horse) for horse in race['horses']]
+    market_horses = [
+        horse for horse in race['horses']
+        if isinstance(horse.get('win_odds'), (int, float)) and horse['win_odds'] >= 1
+    ]
+    market_horses.sort(key=lambda horse: (horse['win_odds'], horse['number']))
+    market_ranks = {horse['number']: index + 1 for index, horse in enumerate(market_horses)}
+
+    rows = [
+        _horse_features(race, horse, market_ranks.get(horse['number']))
+        for horse in race['horses']
+    ]
     return {
         'race': race.get('race'),
         'race_id': race.get('race_id'),
@@ -78,6 +98,7 @@ def generate_candidates(race, as_of):
         'candidates': [row['number'] for row in rows if row['candidate']],
         'horse_features': rows,
         'ranking_produced': False,
-        'odds_used': False,
+        'odds_used': bool(market_ranks),
+        'odds_role': 'market_support_signal_only',
         'ticket_selection_performed': False,
     }
