@@ -1,0 +1,67 @@
+{
+  "created_at_jst": "2026-10-13T10:17:11+09:00",
+  "mode": "RETROSPECTIVE_DIAGNOSTIC_NOT_VALIDATION",
+  "input": "data/2026-10-12/v3/kyoto_07.json",
+  "input_sha": "dfc4bf0ee63161dc3e1608709a0921cae92cf0ec",
+  "script": "scripts/build_v3_candidate_union.py",
+  "parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5
+  },
+  "candidate_numbers": [
+    2,
+    4,
+    5,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16
+  ],
+  "candidate_count": 10,
+  "field_size": 16,
+  "coverage_fraction": 0.625,
+  "official_top3": [
+    2,
+    15,
+    9
+  ],
+  "retrospective_top3_recall": 1,
+  "strong_reason_tier": {
+    "definition": "reason_count >= 2",
+    "candidate_numbers": [
+      2,
+      4,
+      5,
+      10,
+      11,
+      12,
+      15,
+      16
+    ],
+    "candidate_count": 8,
+    "retrospective_top3_recall": 0.6666666666666666
+  },
+  "top3_reason_trace": {
+    "2": [
+      "market_top_n",
+      "recent_similar_distance_win"
+    ],
+    "9": [
+      "recent_same_class_close"
+    ],
+    "15": [
+      "market_top_n",
+      "recent_same_class_close"
+    ]
+  },
+  "interpretation": [
+    "The fixed v3 union retrospectively contains all official Top3.",
+    "The stronger reason-count tier misses third-place runner 9.",
+    "This is post-result diagnosis only; no parameters are tuned on this result."
+  ]
+}
