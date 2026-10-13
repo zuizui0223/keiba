@@ -29,6 +29,7 @@
 - [v3.1 holdout運用手順](docs/v31-holdout-operations.md)
 - [次のholdout候補（10/17京都、#1候補はR7 13:15）](docs/v31-next-holdout-plan.md)
 - [freeze / score / ledger wrapper](scripts/v31_holdout.py) / [テスト](tests/test_v31_holdout.py)
+- [JRA snapshot→race-input/odds前処理](scripts/v31_prepare_snapshot.py) / [テスト](tests/test_v31_prepare_snapshot.py)
 - [v3.1判定スクリプト](scripts/v31_candidate_channels.py) / [11テスト](tests/test_v31_candidate_channels.py)
 - [v3.1機械判定（結果未使用）](reports/2026-10-12/v31-mechanical-channel-audit.json)
 - [v3.1開発データ照合](reports/2026-10-12/v31-development-evaluation.json)
