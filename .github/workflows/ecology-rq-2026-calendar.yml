@@ -15,6 +15,8 @@ on:
       - 'tests/test_ecology_rq_race_fixed_icc.py'
       - 'scripts/ecology_rq_covariate_icc.py'
       - 'tests/test_ecology_rq_covariate_icc.py'
+      - 'scripts/ecology_rq_role_missingness_audit.py'
+      - 'tests/test_ecology_rq_role_missingness_audit.py'
       - 'tests/test_ecology_rq_2026_calendar_overlap.py'
       - 'docs/ecology-rq-2026-calendar-cohort-lock.md'
       - '.github/workflows/ecology-rq-2026-calendar.yml'
@@ -42,7 +44,7 @@ jobs:
       - name: Read first-party original HORSES ID and GPS for exactly 12 dates
         run: |
           python scripts/ecology_rq_2026_calendar_overlap.py --output tmp/cannon-park-2026-12-source-days-aggregate.json
-          python -c "import json; a=json.load(open('tmp/cannon-park-2026-12-source-days-aggregate.json')); assert a['status'] in ('REAL_EQUINE_2026_CALENDAR_SOURCE_OVERLAP_NOT_H1_H2_EFFECT','HOLD_FEWER_THAN_TWO_ORIGINAL_SOURCE_DATES'); assert len(a['temporal_cohort']['calendar_dates_requested'])==12; assert len(a['temporal_cohort']['new_source_dates'])==7; assert a['no_raw_runner_names_IDs_or_source_telemetry_output']; assert a['ground_effect_or_random_slope_variance_fitted']==False; assert a['competitor_context_H2_fitted']==False; assert a['exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2']['not_H1_or_H2_or_causal_or_heritability']; assert a['exploratory_official_Weight_Jockey_Trainer_adjusted_ICC_NOT_H1_or_H2']['modeled_row_overlap_identical_for_all_models']"
+          python -c "import json; a=json.load(open('tmp/cannon-park-2026-12-source-days-aggregate.json')); assert a['status'] in ('REAL_EQUINE_2026_CALENDAR_SOURCE_OVERLAP_NOT_H1_H2_EFFECT','HOLD_FEWER_THAN_TWO_ORIGINAL_SOURCE_DATES'); assert len(a['temporal_cohort']['calendar_dates_requested'])==12; assert len(a['temporal_cohort']['new_source_dates'])==7; assert a['no_raw_runner_names_IDs_or_source_telemetry_output']; assert a['ground_effect_or_random_slope_variance_fitted']==False; assert a['competitor_context_H2_fitted']==False; assert a['exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2']['not_H1_or_H2_or_causal_or_heritability']; assert a['exploratory_official_Weight_Jockey_Trainer_adjusted_ICC_NOT_H1_or_H2']['modeled_row_overlap_identical_for_all_models']; assert a['original_covariate_documentation_missingness_within_race_GPS_audit']['no_original_horse_jockey_trainer_IDs_names_or_individual_rows_exported']"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
