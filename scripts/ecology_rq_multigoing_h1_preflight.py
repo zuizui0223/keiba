@@ -127,10 +127,24 @@ def first_section_table(raw: bytes, date_iso: str) -> dict[tuple[int, str], dict
 
 
 def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
-                  race_selection: tuple[int,...] | None = None):
-    if day not in SELECTED:
-        raise ValueError("HOLD_DAY_NOT_IN_LOCKED_EXPOSURE_SAMPLE")
-    config = SELECTED[day]
+                  race_selection: tuple[int,...] | None = None,
+                  locked_config: dict | None = None):
+    if locked_config is None:
+        if day not in SELECTED:
+            raise ValueError("HOLD_DAY_NOT_IN_LOCKED_EXPOSURE_SAMPLE")
+        config = SELECTED[day]
+    else:
+        # A separately versioned calendar cohort, not an arbitrary URL:
+        # original files remain restricted to the explicit allowlist.
+        from ecology_rq_thoroughbred_sectional_audit import APPROVED
+        if (day[:5] != "2026-" or
+                set(locked_config) != {"source", "ground_expected", "races"} or
+                locked_config["source"] != day.replace("-", "") + "-cairns" or
+                locked_config["source"] not in APPROVED or
+                locked_config["ground_expected"] not in {"Good", "Soft", "Heavy"} or
+                tuple(locked_config["races"]) != ALL_EIGHT_RACES):
+            raise ValueError("HOLD_UNAPPROVED_EXTERNAL_COHORT_CONFIGURATION")
+        config = locked_config
     selected = tuple(race_selection) if race_selection is not None else config["races"]
     if selected not in (config["races"], ALL_EIGHT_RACES):
         raise ValueError("HOLD_UNAPPROVED_RACE_SELECTION")
