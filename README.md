@@ -4,6 +4,63 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## New 2026-10-13 real-horse conditional mixed-model ICC (exploratory)
+
+A **Gaussian random horse intercept with exact race
+fixed effects**, fitted by within-race orthonormal
+contrasts (restricted likelihood) to the
+**original absolute first GPS sectional seconds**
+rather than the race-relative peer outcome,
+produced an **observational conditional ICC point
+estimate of 0.431738** (523 original horse×race
+observations, 74 races, 269 unique HORSES IDs,
+139 repeated in 2+ races).
+
+When only races with >=6 valid timed GPS
+horses were kept, the point estimate was
+**0.419445** (436 observations, 55 races).
+Deleting one entire 2026 source meeting
+at a time gave ICC estimates **0.390814–0.499262**;
+this is **NOT** a confidence interval.
+
+Under **99 within-race HORSES-ID shuffles**,
+the shuffled ICC averaged **0.016736**,
+compared with the original **0.431738**.
+This is a computational negative-control
+reference, **not** a randomized causal test.
+
+Segment-marker stratification yielded
+**0.547296** for first marker 150m (209 source
+observations) and **0.418787** for 250m
+(226 observations). Subsets at markers
+100m/200m did not meet the source
+repeatability gate. Different marker/route
+cohorts and heteroskedasticity can create
+different ICCs; pooled values should not
+be treated as a universal equine parameter.
+
+The result adds **model-based evidence
+consistent with repeatable individual
+variation**, but **not** a validated
+population-level ICC confidence interval,
+biological personality/heritability,
+causal response, ground H1 reaction
+slope or H2 social competition effect.
+Jockey/rider, weight, age, training,
+nominations, GPS dropout and date-clustered
+uncertainty remain unresolved.
+
+See [exact REML model, source hashes,
+99 shuffled-identity negative controls,
+marker-specific robustness and HOLD gates](docs/ecology-rq-real-horse-race-adjusted-icc.md).
+Reproduce via the locked 12-date aggregated
+original-source pipeline:
+
+~~~bash
+python scripts/ecology_rq_2026_calendar_overlap.py \
+  --output tmp/rq-conditional-ICC-and-negative-controls.json
+~~~
+
 ## Evidence update: exploratory real Thoroughbred individuality (2026-10-13)
 
 From the **original Racing Queensland numeric HORSES IDs**
@@ -76,6 +133,7 @@ Read:
 - [Official Thoroughbred sectional CSV: two independently audited race meetings](docs/ecology-rq-thoroughbred-source-audit.md)
 - [Official HORSES internal ID recurrence: two Cannon Park dates, source-verified](docs/ecology-rq-two-date-official-id-recurrence.md)
 - [First exploratory real-horse result: repeatable relative early sectional timing](docs/ecology-rq-real-early-pacing-repeatability.md)
+- [Race-adjusted mixed-model ICC 0.432 on absolute first GPS time (exploratory, model-dependent)](docs/ecology-rq-real-horse-race-adjusted-icc.md)
 - [Original 20-race Good/Soft/Heavy real-horse H1 identifiability audit](docs/ecology-rq-real-h1-multigoing-feasibility.md)
 - [Exploratory 38-race expansion: why ground-reaction norms remain unidentified](docs/ecology-rq-real-h1-multigoing-expanded-audit.md)
 - [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
