@@ -88,14 +88,19 @@ class TwoDateHorseIdTests(unittest.TestCase):
     def test_fixed_source_race_count_per_day_and_going_label(self):
         output,_=one_date("2026-08-29",request_fn=fake_req,gps_fn=fake_gps)
         self.assertEqual(output["selected_race_count"],4)
+        self.assertEqual(output["official_selected_race_numbers_missing_from_API"],[])
+        self.assertTrue(output["not_extrapolating_missing_race_IDs"])
         self.assertEqual(output["syntactically_matched_positive_gps"],4)
         self.assertEqual(output["official_with_no_unique_gps_match"],0)
         self.assertEqual(output["official_selected_race_metadata_groups"]["ground_labels"],{"Good":4})
 
     def test_missing_official_race_id_and_excess_requested_races_are_holds(self):
         root=ET.fromstring(b'<Races><Race Id="123"><RaceNumber>1</RaceNumber></Race></Races>')
-        with self.assertRaisesRegex(ValueError,"HOLD_INCOMPLETE_SELECTED_OFFICIAL_RACE_SET"):
+        with self.assertRaisesRegex(ValueError,"HOLD_NO_SELECTED_RACE"):
             extract_selected_races(root,(2,3,4,5))
+        partial, n=extract_selected_races(root,(1,2,3,4))
+        self.assertEqual(set(partial),{1})
+        self.assertEqual(n,1)
         with self.assertRaisesRegex(ValueError,"HOLD_NON_ALLOWLISTED"):
             one_date("2025-01-01",request_fn=fake_req,gps_fn=fake_gps)
 
