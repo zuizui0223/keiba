@@ -154,3 +154,32 @@ has already been obtained or joined.
 **No horse biological discovery, prediction accuracy claim, bet advice,
 causal competition effect or evolutionary adaptation is established by
 this structural source audit.**
+
+
+## Subsequent progress: official original-source ID chain VERIFIED (2026-10-13)
+
+The previous "no actual HORSES ID crosswalk" statement above
+describes the original **first-stage source audit**, before the
+subsequent bounded API work. It has now been superseded for
+**source-level identity feasibility only**.
+
+- One actual 2026-10-11 Cannon Park official race: 11/11 named
+  GPS rows matched a unique numeric internal HORSES ID from the
+  official `GetHorsesForRace` XML, with positive GPS telemetry.
+- A second date, 2026-08-29, at the same track: **two** genuine
+  internal IDs recurred with matching names and positive GPS on both
+  dates, when comparing three available earlier and four later
+  selected official race IDs.
+- The public API omitted race 5 from the selected earlier meeting.
+  This was recorded as source incompleteness, not repaired by guessed IDs.
+- The sampled races on both dates all had `Good` conditions;
+  a reaction norm under variable going is not identified.
+- Official detail schema has no horse result finish time or
+  placement field in the tested methods. True starter/finish state
+  remains unknown, so source-level matches are **not a complete
+  official results panel**.
+
+Full independently verified steps, hashes and strict exclusions:
+[two-date original HORSES-ID recurrence audit](ecology-rq-two-date-official-id-recurrence.md)
+and [run #38333318382](https://github.com/zuizui0223/keiba/actions/runs/38333318382).
+**No real ecological H1/H2 effect coefficient has been inferred.**
