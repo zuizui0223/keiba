@@ -611,3 +611,65 @@ Results are a **model-dependence sensitivity**,
 not a new independent confirmation of
 innate animal personality, H1, H2, natural
 selection, adapted behavior or horse genotype.
+
+
+## New real-data falsification of strong source-adjusted ICC claims (2026-10-13)
+
+The 2026 12-date original HORSES-ID/GPS sample
+provides useful but restricted **source-
+conditional individual consistency**.
+Two new tests were performed to avoid
+overinterpreting a point estimate from
+the role/weight-complete 279-row cohort.
+
+1. **Source-field documentation
+   completeness vs already observed GPS
+   timing, within the *same race*.**
+   Sixty-eight original fields included
+   both source complete and incomplete
+   jockey/trainer/weight rows (491 positive
+   GPS horse records). The equal-race
+   mean complete−incomplete first interval
+   was **−0.02355 seconds**, compared with
+   499 within-original-race shuffled
+   completeness-label values (two-sided
+   descriptive fraction **0.416**). The
+   result does NOT identify the
+   missingness mechanism among horses
+   without GPS or real finish times,
+   nor certify MCAR/MAR for any sample.
+   See [source selection audit](ecology-rq-source-role-missingness-vs-early-gps.md).
+
+2. **One meeting-day deletion in the 279-row
+   complete-source adjustment cohort.**
+   All 11 leave-one-date-out fitted cohorts
+   were numerically identifiable. Original
+   race-FE only ICC ranged **0.429–0.551**,
+   full Weight/Jockey/Trainer fixed-effect
+   adjusted ICC **0.385–0.577**; the full
+   minus baseline change ranged
+   **−0.079 to +0.034**, negative on
+   8 of 11 source-date deletions and
+   positive on 3. Thus adjusting for
+   the three original source variables
+   is **NOT a stable, isolated causal
+   explanation** for the horse variance.
+   The effective source universe
+   only contains 11 original meeting
+   date clusters (one entire date
+   lost all original adjusted records),
+   and source availability is
+   associated with race and going
+   conditions. These ranges are
+   **NOT** uncertainty intervals.
+
+[Original source-adjusted ICC/identification
+limitations](ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md).
+This work does not establish an H1
+environment random slope, H2 social effect,
+horse genetic personality, adaptation,
+or true population-wide repeatability.
+The needed next data are confirmed starters,
+actual jockey assignments, horse age,
+fully observed results, stronger trainer
+crossovers and an independent date/track cohort.
