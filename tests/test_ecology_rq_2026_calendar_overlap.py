@@ -112,6 +112,28 @@ class Calendar2026Tests(unittest.TestCase):
             out["support"]["same_official_distance_first_section_marker_and_class"][
                 "horse_IDs_with_2plus_independent_dates_each_Good_and_wet"],0)
 
+    def test_race_level_soft_during_heavy_meeting_keeps_source_and_correct_going(self):
+        def mixed_ground_soap(op, params):
+            root,url,sha=stub_soap(op,params)
+            if op=="GetRacesForMeeting" and params["meetingId"]==str(
+                62000+list(COHORT).index("2026-03-12")
+            ):
+                # The original index page said Heavy, but one official
+                # race can have the more precise Soft TrackRating.
+                node=root.find("./Race")
+                node.find("TrackRating").text="Soft 7"
+            return root,url,sha
+        out=compare(soap=mixed_ground_soap,gps=stub_gps)
+        self.assertEqual(out["temporal_cohort"]["source_dates_HOLD"],[])
+        self.assertEqual(
+            out["temporal_cohort"]["source_dates_using_race_rating_different_from_meeting_page"],
+            ["2026-03-12"],
+        )
+        day=out["date_scoped_source_manifest"]["2026-03-12"]
+        self.assertEqual(day["official_race_ground_labels"],{"Soft":1,"Heavy":7})
+        self.assertTrue(day["race_level_ground_was_used_not_page_rating"])
+        self.assertEqual(day["candidate_ID_linked_positive_first_GPS_rows"],8)
+
     def test_unreachable_meeting_is_hold_not_zero_animal_response(self):
         def req(op,params):
             return stub_soap(op,params,fail_day="2026-04-04")
