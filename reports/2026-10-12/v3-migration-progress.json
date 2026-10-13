@@ -1,5 +1,5 @@
 {
-  "updated_at_jst": "2026-10-13T10:13:53+09:00",
+  "updated_at_jst": "2026-10-13T10:17:11+09:00",
   "scope": "v3 structured recent-history migration",
   "original_frozen_inputs": {
     "races": 6,
@@ -47,19 +47,25 @@
       "pass": 11,
       "hold": 0,
       "validation": "independent reproduction of current recent-history gate rules"
+    },
+    "7R": {
+      "path": "data/2026-10-12/v3/kyoto_07.json",
+      "file_sha": "dfc4bf0ee63161dc3e1608709a0921cae92cf0ec",
+      "horses": 16,
+      "pass": 16,
+      "hold": 0,
+      "validation": "independent reproduction of current recent-history gate rules"
     }
   },
   "totals": {
-    "migrated_races": 5,
-    "migrated_horses": 67,
-    "pass": 67,
+    "migrated_races": 6,
+    "migrated_horses": 83,
+    "pass": 83,
     "hold": 0
   },
   "remaining": {
-    "races": [
-      7
-    ],
-    "horses": 16
+    "races": [],
+    "horses": 0
   },
   "schema_changes": {
     "margin": "Each run must have numeric beaten_margin_s, official beaten_margin_text, or explicit beaten_margin_missing_reason.",
@@ -70,5 +76,7 @@
     "The original frozen pre-race files are intentionally unchanged.",
     "Career-start counts for a small number of horses were derived from current totals by removing the target race and are annotated in the derived files.",
     "This migration makes inputs structurally eligible; it does not validate predictive accuracy."
-  ]
+  ],
+  "status": "MIGRATION_COMPLETE_STRUCTURAL_ONLY",
+  "note": "All 83 runners in Kyoto 7R-12R now have v3 structured recent-history derived inputs. This establishes data-gate eligibility only and is not predictive validation."
 }
