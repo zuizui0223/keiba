@@ -122,6 +122,8 @@ class V31RealPipelineTests(unittest.TestCase):
             r = self.run_script(
                 "v31_holdout.py", "register", "--ledger", base / "ledger-in.json",
                 "--freeze", base / "freeze.json", "--score", base / "score.json",
+                "--result", base / "result.json",
+                "--attempt-ledger", base / "attempts.json",
                 "--output", base / "ledger.json",
             )
             self.assertEqual(r.returncode, 0, r.stderr)
@@ -138,6 +140,31 @@ class V31RealPipelineTests(unittest.TestCase):
             decision = json.loads(r.stdout)
             self.assertEqual(decision["decision"]["status"], "INCOMPLETE")
             self.assertEqual(decision["technical_evaluability"]["freeze_success_rate"], 1.0)
+
+    def test_register_rejects_tampered_score_even_if_race_ids_match(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            self.setup_case(base)
+            self.score_case(base)
+            data = json.loads((base / "score.json").read_text(encoding="utf-8"))
+            data["union_top3_hits"] = 0
+            (base / "score.json").write_text(json.dumps(data), encoding="utf-8")
+            (base / "ledger-in.json").write_text(
+                json.dumps({"schema_version": 1, "version": "v3.1",
+                            "target_races": 20, "entries": []}), encoding="utf-8"
+            )
+            r = self.run_script(
+                "v31_holdout.py", "register",
+                "--ledger", base / "ledger-in.json",
+                "--freeze", base / "freeze.json",
+                "--result", base / "result.json",
+                "--score", base / "score.json",
+                "--attempt-ledger", base / "attempts.json",
+                "--output", base / "ledger.json",
+            )
+            self.assertNotEqual(r.returncode, 0)
+            self.assertIn("score_union_hits_mismatch", r.stderr)
+            self.assertFalse((base / "ledger.json").exists())
 
     def test_postrace_validation_accepts_real_pipeline(self):
         with tempfile.TemporaryDirectory() as td:
