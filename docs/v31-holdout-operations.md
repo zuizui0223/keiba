@@ -131,6 +131,43 @@ The wrapper refuses to freeze when:
 
 New quality-tier names may be appended only from an official source. Unknown tiers block Q1 for that race rather than being guessed.
 
+## Record every eligible attempt
+
+Before moving to the next eligible race, append exactly one event to `docs/v31-holdout-attempt-ledger.json`.
+
+Valid freeze example:
+
+```json
+{
+  "race_id": "YYYY-MM-DD-KYOTO-RR",
+  "scheduled_start_jst": "YYYY-MM-DDTHH:MM:SS+09:00",
+  "status": "FROZEN",
+  "freeze_sha256": "<sha256 of freeze.json>"
+}
+```
+
+Pre-result data failure example:
+
+```json
+{
+  "race_id": "YYYY-MM-DD-KYOTO-RR",
+  "scheduled_start_jst": "YYYY-MM-DDTHH:MM:SS+09:00",
+  "status": "PRE_RESULT_DATA_FAILURE",
+  "failure_reason": "missing_profile"
+}
+```
+
+Register with:
+
+```bash
+python -B scripts/v31_attempt_ledger.py register \
+  --ledger docs/v31-holdout-attempt-ledger.json \
+  --event /tmp/v31-attempt-event.json \
+  --output /tmp/v31-holdout-attempt-ledger.json
+```
+
+Review then replace the repository attempt ledger in a separate commit. Duplicate race IDs and chronological backfills are rejected.
+
 ## Post-result scoring
 
 Store only the observed top three in the minimal result file:
@@ -174,15 +211,17 @@ After exactly 20 scored eligible races, run:
 ```bash
 python -B scripts/v31_evaluate_holdout.py \
   --ledger docs/v31-holdout-ledger.json \
+  --attempt-ledger docs/v31-holdout-attempt-ledger.json \
   --contract docs/v31-holdout-decision-contract.json
 ```
 
 The evaluator performs the preregistered one-sided exact stratified random-addition rescue test. It also checks the overall candidate-fraction ceiling.
 
-Formal `PROMOTE` requires both:
+Formal `PROMOTE` requires all three:
 
 - exact one-sided p <= 0.05;
-- overall candidate fraction <= 0.65.
+- overall candidate fraction <= 0.65;
+- freeze success rate >= 0.80 through the 20th scored FROZEN race.
 
 Before 20 scored races the evaluator returns `INCOMPLETE`; interim statistics cannot trigger promotion or threshold changes.
 
