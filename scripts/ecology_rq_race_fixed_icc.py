@@ -278,6 +278,16 @@ def analyze(rows:list[dict])->dict:
         "status":"EXPLORATORY_REAL_THOROUGHBRED_RACE_FE_HORSE_RE_ICC_DIAGNOSTIC",
         "all_races_at_least_four_timed_horses":race_fixed_reml(rows,4),
         "races_at_least_six_timed_horses":race_fixed_reml(rows,6),
+        # Pre-specified first GPS distance marker strata. Unequal
+        # source segment lengths make Gaussian residual variance
+        # heteroskedastic, an important sensitivity of pooled ICC.
+        "first_section_marker_sensitivity": {
+            str(marker):race_fixed_reml(
+                [r for r in rows
+                 if float(r["first_marker_m"])==marker],4
+            )
+            for marker in (100.0,150.0,200.0,250.0)
+        },
         "leave_one_date_out_four_GPS_minimum":delete_date_sensitivity(rows,4),
         "within_race_horse_ID_shuffle_reference":source_race_identity_shuffle_reference(
             rows,permutations=99,minimum_per_race=4
