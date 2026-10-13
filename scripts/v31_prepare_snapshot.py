@@ -29,6 +29,11 @@ def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
+def git_blob_sha(path: Path) -> str:
+    data = path.read_bytes()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+
+
 def parse_aware_iso(value: str, label: str) -> datetime:
     try:
         dt = datetime.fromisoformat(value)
@@ -227,6 +232,7 @@ def prepare(capture: dict, observed_at_jst: str) -> tuple[dict, dict, dict]:
         "scratched_or_excluded_numbers": scratched,
         "profiles": profile_meta,
         "uses_target_race_results": False,
+        "preparer_git_blob_sha": git_blob_sha(Path(__file__)),
     }
     return race_input, odds, meta
 
