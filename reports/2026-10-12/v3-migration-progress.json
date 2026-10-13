@@ -1,0 +1,40 @@
+{
+  "updated_at_jst": "2026-10-13T09:55:15+09:00",
+  "scope": "v3 structured recent-history migration",
+  "original_frozen_inputs": {
+    "races": 6,
+    "horses": 83,
+    "pass": 0,
+    "hold": 83
+  },
+  "migrated": {
+    "12R": {
+      "path": "data/2026-10-12/v3/kyoto_12.json",
+      "file_sha": "fdf2a08c32df561f1c6e4803f5885eff296caa6b",
+      "horses": 16,
+      "pass": 16,
+      "hold": 0,
+      "validation": "independent JS reproduction of scripts/audit_recent_history.py rules"
+    }
+  },
+  "remaining": {
+    "races": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "horses": 67
+  },
+  "schema_changes": {
+    "margin": "A run may provide numeric beaten_margin_s or official beaten_margin_text; at least one is required.",
+    "latest_sync": "recent_runs[0].date must equal source_latest_run_date",
+    "fail_closed": "DATA_HOLD blocks ranking"
+  },
+  "caveats": [
+    "The original frozen pre-race files are intentionally unchanged.",
+    "Career-start counts for a small number of horses were derived from current totals by removing the target race and are annotated in the derived file.",
+    "This migration makes inputs structurally eligible; it does not validate predictive accuracy."
+  ]
+}
