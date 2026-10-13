@@ -56,6 +56,7 @@ def collect_cannon(*, soap=request_xml, gps=fetch_official,
                     details["official_race_numbers_available"]
                 ),
                 "race_level_ground_used": True,
+                "original_source_SHA256_only": details["source_hashes"],
             }
         except (ValueError, OSError, TimeoutError) as exc:
             if on_source_error == "raise":
@@ -225,6 +226,17 @@ def compare(*, soap=request_xml, gps=fetch_official,
         "Cannon_source_dates_on_HOLD": missing_c,
         "Eagle_source_dates_on_HOLD": missing_e,
         "source_cross_venue_overlap": support,
+        "original_source_SHA256_by_locked_date_and_track_ONLY":{
+            "Cannon Park":{
+                day:info.get("original_source_SHA256_only")
+                for day,info in cannon_manifest.items()
+            },
+            "Eagle Farm":{
+                day:info.get("source_sha256")
+                for day,info in eagle_manifest.items()
+            },
+        },
+        "fingerprints_are_not_independent_validation_of_final_results":True,
         "same_operator_individual_ID_does_not_validate_actual_starter": True,
         "not_identified": [
             "Identical biological GPS interval definition across venues",
