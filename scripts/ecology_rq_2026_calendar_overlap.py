@@ -23,6 +23,7 @@ from ecology_rq_multigoing_h1_preflight import (
 )
 from ecology_rq_single_race_id_probe import request_xml
 from ecology_rq_thoroughbred_sectional_audit import fetch_official
+from ecology_rq_early_pace_repeatability import analyze as early_pace_persistence
 
 
 # Locked BEFORE inspecting the seven additional dates' individual ID overlaps.
@@ -217,6 +218,12 @@ def compare(
             manifest[day] = safe_failure(exc)
 
     support = overlap_support(data)
+    # Secondary, fully exploratory data-supported question: are named
+    # official horses consistently faster/slower in FIRST GPS segment
+    # relative to their contemporaneous *timed-GPS* race counterparts?
+    # Distinct from H1 environmental slopes and H2 social interactions.
+    # Output aggregate-only, with a race-conditioned permutation reference.
+    early_pace = early_pace_persistence(data, permutations=299)
     acceptable = {
         "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
         "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE",
@@ -253,6 +260,8 @@ def compare(
         },
         "date_scoped_source_manifest": manifest,
         "support": support,
+        "exploratory_early_pace_ID_persistence_NOT_H1_or_H2": early_pace,
+        "individual_pace_repeatability_analysed_only_as_race_relative_first_interval": True,
         "actual_confirmed_starter_and_finish_status_verified": False,
         "official_full_race_individual_finish_times_verified": False,
         "ground_effect_or_random_slope_variance_fitted": False,
@@ -288,6 +297,7 @@ def main() -> None:
         "hold_days": result["temporal_cohort"]["source_dates_HOLD"],
         "race_going_divergent_days": result["temporal_cohort"]["source_dates_using_race_rating_different_from_meeting_page"],
         "support": result["support"],
+        "individual_pace_persistence": result["exploratory_early_pace_ID_persistence_NOT_H1_or_H2"],
     }, ensure_ascii=False))
 
 
