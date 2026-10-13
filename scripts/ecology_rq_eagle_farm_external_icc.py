@@ -52,6 +52,57 @@ EXPECTED_ORIGINAL_FILES={
     d: d.replace("-","")+"-eagle-farm" for d in DATES
 }
 
+# FROZEN ORIGINAL CANNON PARK 2026 12-date source-marker support,
+# independently recorded BEFORE this new Eagle Farm outcome was seen.
+# See docs/ecology-rq-real-horse-race-adjusted-icc.md (not a paired design).
+CANNON_MARKER_SOURCE_SUPPORT={
+    "100.0":{"positive_GPS_rows":32,"original_races":4,
+             "ICC_estimable":False},
+    "150.0":{"positive_GPS_rows":209,"original_races":29,
+             "ICC_estimable":True},
+    "200.0":{"positive_GPS_rows":56,"original_races":8,
+             "ICC_estimable":False},
+    "250.0":{"positive_GPS_rows":226,"original_races":33,
+             "ICC_estimable":True},
+}
+
+
+def cross_venue_marker_identifiability(fitted:dict)->dict:
+    """Cannot compare pooled ICCs if source interval measurements differ."""
+    eagle=fitted.get("first_section_marker_sensitivity",{})
+    statuses={
+        "EXPLORATORY_RACE_ADJUSTED_GAUSSIAN_ICC_POINT_ONLY",
+        "EXPLORATORY_RACE_ADJUSTED_ICC_AT_ZERO_BOUNDARY",
+    }
+    rows={}
+    comparable=[]
+    for marker,ref in CANNON_MARKER_SOURCE_SUPPORT.items():
+        cross=eagle.get(marker,{})
+        eagle_status=cross.get("status","HOLD_NO_EAGLE_SOURCE_MODEL")
+        passed=ref["ICC_estimable"] and eagle_status in statuses
+        rows[marker]={
+            "original_Cannon_source_positive_GPS_rows":ref["positive_GPS_rows"],
+            "original_Cannon_source_races":ref["original_races"],
+            "original_Cannon_ICC_numeric_gate_passed":ref["ICC_estimable"],
+            "Eagle_original_positive_GPS_rows":int(cross.get("source_rows",0)),
+            "Eagle_original_numeric_ICC_status":eagle_status,
+            "identical_first_section_marker_model_estimable_at_both_venues":passed,
+        }
+        if passed:
+            comparable.append(marker)
+    return {
+        "status":(
+            "EXPLORATORY_SAME_FIRST_MARKER_VENUE_ICC_COMPARABLE"
+            if comparable else
+            "HOLD_NO_SHARED_FIRST_SECTION_MARKER_WITH_ESTIMABLE_ICC"
+        ),
+        "original_source_markers_screened":rows,
+        "first_markers_with_estimable_ICC_at_both_venues":comparable,
+        "pooled_Cannon_vs_Eagle_ICC_can_establish_universal_horse_trait":False,
+        "original_marker_distribution_mismatch_is_a_source_bias":True,
+    }
+
+
 
 def validate_source_lock()->None:
     from ecology_rq_thoroughbred_sectional_audit import APPROVED
@@ -196,6 +247,8 @@ def compare(*,soap=request_xml,gps=fetch_official,
         "original_source_per_date":manifest,
         "independent_venue_original_ID_support":identity,
         "conditional_ICC_at_Eagle_Farm_existing_race_FE_implementation":baseline,
+        "different_venue_same_first_GPS_marker_ICC_identifiability":
+            cross_venue_marker_identifiability(baseline),
         "documented_source_weight_jockey_trainer_adjustment":adjustment,
         "historical_Cannon_Park_source_ICC_reference_ONLY_not_a_paired_model":{
             "race_FE_absolute_first_segment_seconds":
@@ -272,6 +325,8 @@ def main()->None:
         },
         "source_adjusted_ICC_stability":
             adj.get("date_deletion_same_source_baseline_vs_nuisance_stability"),
+        "cross_venue_same_first_section_marker_ICC_gate":
+            x["different_venue_same_first_GPS_marker_ICC_identifiability"],
     },ensure_ascii=False))
 
 
