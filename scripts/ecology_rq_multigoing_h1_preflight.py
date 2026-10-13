@@ -26,6 +26,7 @@ from ecology_rq_thoroughbred_sectional_audit import (
     duration_s, fetch_official, finite_number, parse as parse_sections,
 )
 from ecology_rq_official_id_crosswalk import canon_name, sections_in_memory
+from ecology_rq_covariate_icc import official_covariates
 
 
 SELECTED = {
@@ -174,12 +175,17 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
         name for name, rr in name_race_ids.items() if len(rr) > 1
     }
     all_candidates = []
+    official_covariate_field_coverage=Counter()
     for number, race in races.items():
         horses_xml, _, _ = soap(
             "GetHorsesForRace", {"raceId": race["id"]}
         )
         horses, shape = horse_candidates(horses_xml)
+        role_by_hid,role_source_audit=official_covariates(horses_xml)
+        official_covariate_field_coverage.update(role_source_audit["counts"])
         ids = [h["horse_id"] for h in horses]
+        if set(ids) != set(role_by_hid):
+            raise ValueError("HOLD_COVARIATE_ROSTER_DOES_NOT_MATCH_HORSES_ID_SET")
         names = [canon_name(h["horse_name"]) for h in horses]
         if not horses or len(set(ids)) != len(ids) or len(set(names)) != len(names):
             raise ValueError("HOLD_INVALID_OFFICIAL_RACE_HORSE_IDENTITIES")
@@ -188,9 +194,16 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
             raise ValueError("HOLD_DUPLICATE_GPS_RACE_HORSE_NAME")
         for horse, norm_name in zip(horses, names):
             measurement = first.get((number, norm_name))
+            attributes=role_by_hid[horse["horse_id"]]
             all_candidates.append({
                 "horse_id": horse["horse_id"],
                 "horse_name": norm_name,
+                # These are documented attributes of the RQ HORSES
+                # entrant list, not proof of final actual jockey/
+                # trainer/weight or finished horse outcome.
+                "weight_kg":attributes["weight_kg"],
+                "jockey_license_id":attributes["jockey_license_id"],
+                "trainer_license_id":attributes["trainer_license_id"],
                 "day": day, "race_number": number,
                 "ground": race["ground"],
                 "expected_ground": config["ground_expected"],
@@ -251,6 +264,13 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
             not r["gps_first_positive"] for r in all_candidates
         ),
         "eligible_official_ID_matched_first_section_rows": len(good),
+        "official_entrant_covariate_field_coverage":dict(official_covariate_field_coverage),
+        "matched_positive_GPS_with_complete_weight_jockey_trainer":
+            sum(bool(r["weight_kg"] is not None and
+                     r["jockey_license_id"] and r["trainer_license_id"])
+                for r in good),
+        "horse_age_not_available_on_source_HORSES_roster":True,
+        "covariate_values_not_validated_as_actual_postrace_riders_or_weights":True,
         "source_hashes": {
             "meeting_xml_sha256": meeting_sha,
             "race_xml_sha256": race_sha,
