@@ -79,6 +79,7 @@ def unique_numbers(rows: list[dict], label: str) -> list[int]:
 def freeze(args) -> int:
     race_input = read_json(args.race_input)
     odds = read_json(args.odds)
+    source_meta = read_json(args.source_meta)
     quality = read_json(args.quality_map)
     manifest = read_json(args.manifest)
 
@@ -98,6 +99,17 @@ def freeze(args) -> int:
         raise ValueError('ineligible_class_below_1win')
     if race_input.get('age_scope') == '2yo':
         raise ValueError('ineligible_2yo_only')
+
+    expected_preparer = manifest.get('frozen_blobs', {}).get('snapshot_preparer')
+    actual_preparer = source_meta.get('preparer_git_blob_sha')
+    if not expected_preparer or actual_preparer != expected_preparer:
+        raise ValueError(f'snapshot_preparer_sha_mismatch:{actual_preparer}')
+    if source_meta.get('race_id') != race_input.get('race_id'):
+        raise ValueError('source_meta_race_id_mismatch')
+    if source_meta.get('observed_at_jst') != odds.get('observed_at_jst'):
+        raise ValueError('source_meta_observed_at_mismatch')
+    if source_meta.get('uses_target_race_results') is not False:
+        raise ValueError('invalid_source_meta')
 
     expected_classifier = manifest.get('frozen_blobs', {}).get('classifier')
     actual_classifier = git_blob_sha(args.classifier)
@@ -125,6 +137,9 @@ def freeze(args) -> int:
     odds_nums = unique_numbers(frozen_horses, 'odds')
     if set(race_nums) != set(odds_nums):
         raise ValueError('horse_number_set_mismatch')
+    meta_nums = [int(value) for value in source_meta.get('active_horse_numbers', [])]
+    if sorted(meta_nums) != sorted(race_nums):
+        raise ValueError('source_meta_horse_number_set_mismatch')
 
     target = race_input['target']
     classifier = load_classifier(args.classifier)
@@ -163,6 +178,7 @@ def freeze(args) -> int:
             'manifest_sha256': sha256_file(args.manifest),
             'race_input_sha256': sha256_file(args.race_input),
             'odds_input_sha256': sha256_file(args.odds),
+            'source_capture_meta_sha256': sha256_file(args.source_meta),
             'quality_map_sha256': sha256_file(args.quality_map),
         },
     }
@@ -314,6 +330,7 @@ def main() -> int:
     p = sub.add_parser('freeze')
     p.add_argument('--race-input', type=Path, required=True)
     p.add_argument('--odds', type=Path, required=True)
+    p.add_argument('--source-meta', type=Path, required=True)
     p.add_argument('--quality-map', type=Path, required=True)
     p.add_argument('--manifest', type=Path, required=True)
     p.add_argument('--classifier', type=Path, required=True)
