@@ -1,0 +1,42 @@
+name: "Ecological original Thoroughbred 2026 calendar overlap"
+
+# Bounded research-source audit, NOT a hypothesis/causal H1 test.
+# Fixed 12 2026 Cannon Park meeting dates and only race numbers 1-8.
+# The new seven dates were selected and committed in the cohort lock
+# BEFORE their individual HORSES IDs and GPS records were analysed.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_2026_calendar_overlap.py'
+      - 'scripts/ecology_rq_multigoing_h1_preflight.py'
+      - 'tests/test_ecology_rq_2026_calendar_overlap.py'
+      - 'docs/ecology-rq-2026-calendar-cohort-lock.md'
+      - '.github/workflows/ecology-rq-2026-calendar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-2026-calendar-support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic class-confounding, frozen source selection, missing source HOLD
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_2026_calendar_overlap.py' -v
+      - name: Read first-party original HORSES ID and GPS for exactly 12 dates
+        run: |
+          python scripts/ecology_rq_2026_calendar_overlap.py --output tmp/cannon-park-2026-12-source-days-aggregate.json
+          python -c "import json; a=json.load(open('tmp/cannon-park-2026-12-source-days-aggregate.json')); assert a['status'] in ('REAL_EQUINE_2026_CALENDAR_SOURCE_OVERLAP_NOT_H1_H2_EFFECT','HOLD_FEWER_THAN_TWO_ORIGINAL_SOURCE_DATES'); assert len(a['temporal_cohort']['calendar_dates_requested'])==12; assert len(a['temporal_cohort']['new_source_dates'])==7; assert not a['no_raw_runner_names_IDs_or_source_telemetry_output']==False; assert a['ground_effect_or_random_slope_variance_fitted']==False; assert a['competitor_context_H2_fitted']==False"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rq-2026-calendar-12-meetings-aggregate-no-runner-records
+          path: tmp/cannon-park-2026-12-source-days-aggregate.json
+          retention-days: 30
