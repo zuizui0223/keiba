@@ -12,6 +12,7 @@ SCRIPT = ROOT / "scripts" / "v31_verify_freeze.py"
 FIXTURE_PATHS = [
     "docs/v31-holdout-freeze.json",
     "docs/v31-holdout-ledger.json",
+    "docs/v31-holdout-attempt-ledger.json",
     "docs/v31-candidate-generation-protocol.md",
     "docs/v31-holdout-operations.md",
     "scripts/v31_candidate_channels.py",
@@ -83,6 +84,18 @@ class V31FreezeIntegrityTests(unittest.TestCase):
             run = self.run_verify(root)
             self.assertNotEqual(run.returncode, 0)
             self.assertIn("quality_baseline_changed:NZT", run.stderr)
+
+    def test_attempt_ledger_manifest_pointer_is_rejected_when_changed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.copy_fixture(root)
+            path = root / "docs/v31-holdout-attempt-ledger.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["manifest_blob_sha"] = "0" * 40
+            path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            run = self.run_verify(root)
+            self.assertNotEqual(run.returncode, 0)
+            self.assertIn("attempt_ledger_manifest_mismatch", run.stderr)
 
     def test_ledger_manifest_pointer_is_rejected_when_changed(self):
         with tempfile.TemporaryDirectory() as td:
