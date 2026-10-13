@@ -365,3 +365,42 @@ individual age have not been independently
 verified. No robust confidence interval or
 prospective test supports a strong biological
 conclusion at this stage.
+
+
+## New second-track source limitation: Eagle Farm independent-venue cohort
+
+See [Eagle Farm original 12-date source and conditional
+ICC audit](ecology-rq-eagle-farm-real-icc-cross-site-audit.md).
+The same original Racing Queensland statistical model
+fitted an exploratory **Eagle Farm ICC=0.452894**
+(382 source rows/51 races). However, comparing
+Cannon Park's ICC≈0.432 with Eagle Farm's≈0.453
+as though both reflect exactly the same biological
+first-distance interval is **not warranted**.
+
+Cannon Park: first markers **150m and 250m**
+sufficient for numeric separate models.
+Eagle Farm: first marker **200m** sufficiently
+repeated; it contains zero 150m and zero
+250m first-marker rows in the frozen cohort.
+Cannon Park's 200m subset fails the same
+repeatability support threshold. Hence
+**matched-marker cross-site ICC remains HOLD**.
+The first-segment durations encode different
+acceleration windows, and site-specific
+rider/class/sensor selection differs.
+
+More importantly, although the original
+Eagle sample has 391 positive GPS records
+and 48 repeatedly observed official IDs,
+source-complete registered rider/trainer/
+weight records and >=4 complete records per
+race produce just 108 GPS records with
+**3 repeating HORSES IDs**. Those
+fixed-nuisance-adjusted ICC values must be
+suppressed; they are not evidence of a
+nearly heritable or innate racehorse ability.
+Our model now requires an identifiable
+same-record baseline and >=20 repeated
+original HORSES IDs before reporting such
+a nuisance-adjusted variance fraction.
