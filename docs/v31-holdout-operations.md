@@ -22,6 +22,44 @@ holdout/v31/NNN/
 
 `freeze.json` is immutable after post time. Results are always written to the separate `result.json` and `score.json`.
 
+## Build race-input and odds from one captured JRA snapshot
+
+Use `scripts/v31_prepare_snapshot.py` to turn one saved JRA card page plus the active runners' JRA profile pages into deterministic inputs.
+
+The capture JSON has this shape:
+
+```json
+{
+  "race": {
+    "race_id": "YYYY-MM-DD-KYOTO-RR",
+    "date": "YYYY-MM-DD",
+    "venue": "京都",
+    "race_number": 7,
+    "age_scope": "3yo+",
+    "scheduled_start_jst": "YYYY-MM-DDTHH:MM:SS+09:00",
+    "target": {"surface": "ダ", "distance_m": 1800, "class_rank": 1}
+  },
+  "card": {
+    "url": "official JRA race-card URL",
+    "text": "captured UTF-8 page text"
+  },
+  "profiles": {
+    "1": {"url": "official JRA horse URL", "text": "captured UTF-8 profile text"}
+  }
+}
+```
+
+Then:
+
+```bash
+python -B scripts/v31_prepare_snapshot.py \
+  --capture holdout/v31/001/capture.json \
+  --observed-at-jst YYYY-MM-DDTHH:MM:SS+09:00 \
+  --output-dir holdout/v31/001
+```
+
+It writes `race-input.json`, `odds.json`, and `source-capture-meta.json`. Profile rows dated on or after the target date are removed automatically, so a profile fetched after results later exist cannot leak the target result into historical features. Cancelled/excluded horses are removed from the active runner set. The card-text and profile-text SHA-256 values are recorded in the metadata.
+
 ## race-input.json
 
 Required top-level fields:
