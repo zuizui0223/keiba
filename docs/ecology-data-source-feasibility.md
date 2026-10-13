@@ -13,7 +13,7 @@ access does **not** imply redistribution or commercial permission.
 
 | Candidate | What seems available | Rights/compatibility check | Current decision |
 | --- | --- | --- | --- |
-| [Racing Queensland official Thoroughbred sectionals and SOAP API](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals) | **Verified original horse data:** 2 dated official sectional CSVs audited (197 horse-labelled rows, 162 with positive timing, 35 all-zero); API WSDL/PDF describes GetHorsesForRace internal horse IDs | **HOLD:** no verified crosswalk between CSV names and official HORSES IDs, source zero-telemetry rows are not proven DNFs/withdrawals, header race duration is not a certified per-horse finish time, and whole-field results/longitudinal exposures unverified. [Frozen audit](ecology-rq-thoroughbred-source-audit.md) | **REAL HORSE SECTIONAL SOURCE CONFIRMED—LONGITUDINAL ID/OUTCOME JOIN HOLD** |
+| [Racing Queensland original Thoroughbred sectionals and SOAP API](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals) | **Verified actual multi-date numeric HORSES IDs:** across 5 Cannon Park dates spanning Good/Soft/Heavy, 38 official races in expanded scope, 280 positive-GPS ID-linked measurements, 65 IDs on 2+ dates, 37 IDs recorded on both Good and wet ground. [Independent original 20-race audit](ecology-rq-real-h1-multigoing-feasibility.md) and [38-race extension](ecology-rq-real-h1-multigoing-expanded-audit.md) | **HOLD:** no verified full official starter/finisher roster or certified individual finish time; 17 same-distance/section source IDs reduce to **2** if race class matched, and **zero** repeated twice under both conditions. H2 rival completeness unavailable. Original public source rights/attribution still apply; raw original runner rows not committed | **REAL EQUINE REPEATED ID AND GROUND OVERLAP VERIFIED—H1/H2 EFFECTS HOLD** |
 | [Australian Racing Open Data (PandaVision) Queensland greyhound GPS](https://github.com/brucem1967/au-racing-open-data) | Verified pinned ODC-BY file: 25,679 greyhound 50m sectionals and early positions. Dog names recur, track/date/box observed. [Frozen real-data benchmark](ecology-real-greyhound-method-benchmark.md) | Attribution explicitly provided; Racing Queensland public open-data permissions corroborated. **Species is greyhound, not horse**; no stable biological ID guarantee, no certified complete race fields, and no track going or official full-distance horse outcomes | **REAL CROSS-SPECIES METHODS PILOT ONLY—NO HORSE H1/H2** |
 | [Existing 2026-10-12 Kyoto analysis branch](https://github.com/zuizui0223/keiba/tree/analysis/kyoto-20261012) | 7 races, 95 starters, historical aggregate course counts, odds snapshots; not full individual starts across environments | No longitudinal horse×race exposure panel; race snapshots not enough | **H1/H2 HOLD** |
 | [Kaggle Hong Kong Horse Racing](https://www.kaggle.com/datasets/gdaley/hkracing) | `races.csv` plus `runs.csv`: stable horse and race IDs, ground conditions, distance, individual finishing time and first-sectional position, with repeated starts across races. Publisher describes dates as deliberately obscured | Dataset page claims **CC0**, but original HKJC/source-chain rights and obligations have not been independently verified. Obscured dates also prevent official-season/clock verification. Run our new **aggregate-only** `scripts/ecology_hk_preflight.py` on locally and lawfully obtained files; it refuses to promote this to the empirical H1/H2 pipeline | **TOP COMPATIBILITY CANDIDATE—PROVENANCE/TIMELINE HOLD** |
@@ -189,3 +189,29 @@ does not provide verified horse-specific finishing times/placements,
 and section-time zeros cannot be classified as DNF. Biological H1/H2
 analyses therefore remain HOLD. Attribution/terms: Racing Queensland official
 open-data program; no republishing raw records from the source.
+
+
+## Source-ready but not inference-ready: Good/Soft/Heavy same-horse evidence (2026-10-13)
+
+Original source `HORSES` IDs were linked to
+published positive first-interval GPS in Cannon Park
+races from two Good, two Soft, and one Heavy
+meeting date. The preserved **20-race**
+data-readiness audit identified 20 source IDs
+crossing Good/non-Good; its explicitly
+post-result **38-race** extension identified 37.
+
+At the physically and procedurally stronger
+source comparison level, only 17 shared both
+a measured first segment marker and official
+race distance, 2 also agreed on original
+race class, and **zero** had >=2 starts in
+each of Good and wet in the same class/
+distance/marker stratum.
+
+See the [versioned 20-race audit](ecology-rq-real-h1-multigoing-feasibility.md)
+and [follow-up audit](ecology-rq-real-h1-multigoing-expanded-audit.md)
+for dates, event selection, source hashes,
+selection bias and explicit HOLD. Neither
+result demonstrates phenotypic plasticity
+or an evolutionary response.
