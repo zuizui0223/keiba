@@ -40,7 +40,7 @@ class FixtureMixin:
         (base/'quality.json').write_text(json.dumps({'tiers': {'A賞':'GIII','NEW賞':'L'}}, ensure_ascii=False))
         race = {
             'race_id':'2026-10-18-KYOTO-07',
-            'date':'2026-10-18','venue':'京都','race_number':7,
+            'date':'2026-10-18','venue':'京都','race_number':7,'age_scope':'3yo+',
             'scheduled_start_jst':'2026-10-18T13:25:00+09:00',
             'target':{'surface':'ダ','distance_m':1800,'class_rank':1},
             'horses':[
@@ -110,6 +110,20 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
             r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('ineligible_venue',r.stderr)
+
+    def test_freeze_rejects_two_year_old_only_race(self):
+        with tempfile.TemporaryDirectory() as td:
+            b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['age_scope']='2yo'; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            self.assertNotEqual(r.returncode,0)
+            self.assertIn('ineligible_2yo_only',r.stderr)
+
+    def test_freeze_rejects_class_below_one_win(self):
+        with tempfile.TemporaryDirectory() as td:
+            b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['target']['class_rank']=0; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            self.assertNotEqual(r.returncode,0)
+            self.assertIn('ineligible_class_below_1win',r.stderr)
 
     def test_freeze_rejects_target_result_keys(self):
         with tempfile.TemporaryDirectory() as td:
