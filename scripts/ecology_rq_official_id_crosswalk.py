@@ -21,7 +21,9 @@ import json
 from pathlib import Path
 import unicodedata
 
-from ecology_rq_thoroughbred_sectional_audit import parse, finite_number, duration_s
+from ecology_rq_thoroughbred_sectional_audit import (
+    parse, finite_number, duration_s, vendor_header_date,
+)
 
 
 REQUIRED = (
@@ -53,12 +55,13 @@ def sections_in_memory(raw: bytes) -> list[dict]:
         day, race, packed = [x.strip() for x in cells]
         tokens=[t.strip() for t in packed.split(";")]
         if day=="Date" and race=="RaceNumber":
-            d=datetime.strptime(tokens[0][:10],"%d/%m/%Y").date().isoformat()
-            current=d
+            current,_=vendor_header_date(tokens)
             continue
         if current is None:
             raise ValueError("HOLD_RACE_HEADER_ABSENT")
         d=datetime.strptime(day,"%d/%m/%Y").date().isoformat()
+        if d != current:
+            raise ValueError("HOLD_VENDOR_HEADER_RACE_DATE_MISMATCH")
         name=tokens[0]
         n=int(race)
         triples=[tokens[i:i+3] for i in range(2,len(tokens),3)]
