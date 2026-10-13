@@ -94,6 +94,19 @@ class MultiGoingTests(unittest.TestCase):
         self.assertNotIn('"101"',serialized)
         self.assertNotIn("Filler",serialized)
 
+    def test_coverage_extension_is_labelled_posthoc_and_missing_races_not_invented(self):
+        result=comparison(soap=fake_req,gps=gps_fake,scope="extended_eight")
+        self.assertEqual(result["race_selection_scope"],"extended_eight")
+        self.assertFalse(result["design_frozen_before_statistical_effect_testing"])
+        self.assertTrue(result["exploratory_full_race_expansion_following_initial_design_audit"])
+        self.assertEqual(result["race_number_selection_per_date"]["2026-05-15"],
+                         list(range(1,9)))
+        self.assertEqual(result["per_date"]["2026-05-15"]["missing_official_race_numbers"],
+                         [4,5,6,7])
+        self.assertEqual(result["within_horse_support"]["recurrent_ids_with_both_Good_and_non_Good"],2)
+        with self.assertRaisesRegex(ValueError,"HOLD_UNAPPROVED_EXPOSURE_SCOPE"):
+            comparison(soap=fake_req,gps=gps_fake,scope="ad_hoc")
+
     def test_class_confounded_going_is_not_strictly_identifiable(self):
         def request(op,params):
             return fake_req(op,params,class_confounded=True)
