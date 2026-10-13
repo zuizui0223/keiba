@@ -30,6 +30,7 @@
 - [v3.1自動運用スケジュール（10/15前処理→10/17 freeze→score/register）](docs/v31-automation-schedule.md)
 - [次のholdout候補（10/17京都、#1候補はR7 13:15）](docs/v31-next-holdout-plan.md)
 - [freeze / score / ledger wrapper](scripts/v31_holdout.py) / [テスト](tests/test_v31_holdout.py)
+- [freeze契約の独立検証](scripts/v31_verify_freeze.py) / [integrityテスト](tests/test_v31_freeze_integrity.py)
 - [JRA snapshot→race-input/odds前処理](scripts/v31_prepare_snapshot.py) / [テスト](tests/test_v31_prepare_snapshot.py)
 - [v3.1判定スクリプト](scripts/v31_candidate_channels.py) / [11テスト](tests/test_v31_candidate_channels.py)
 - [v3.1機械判定（結果未使用）](reports/2026-10-12/v31-mechanical-channel-audit.json)
