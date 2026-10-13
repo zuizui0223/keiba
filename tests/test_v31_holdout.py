@@ -70,6 +70,20 @@ class FixtureMixin:
     def run_cmd(self, *args):
         return subprocess.run([sys.executable, str(SCRIPT), *map(str,args)], text=True, capture_output=True)
 
+    def make_attempt_ledger(self, base: Path, freeze: Path):
+        frozen = json.loads(freeze.read_text(encoding='utf-8'))
+        entry = {
+            'attempt_index': 1,
+            'race_id': frozen['race_id'],
+            'scheduled_start_jst': frozen['scheduled_start_jst'],
+            'status': 'FROZEN',
+            'freeze_sha256': hashlib.sha256(freeze.read_bytes()).hexdigest(),
+        }
+        (base/'attempt-ledger.json').write_text(
+            json.dumps({'version': 'v3.1', 'entries': [entry]}, ensure_ascii=False),
+            encoding='utf-8',
+        )
+
 
 class V31HoldoutTests(FixtureMixin, unittest.TestCase):
     def test_freeze_writes_result_free_record(self):
@@ -199,7 +213,10 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
             (b/'result.json').write_text(json.dumps({'race_id':'2026-10-18-KYOTO-07','top3':[2,3,1]},ensure_ascii=False))
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
             self.assertEqual(r.returncode,0,r.stderr)
-            r=self.run_cmd('register','--ledger',ledger,'--freeze',freeze,'--score',score,'--output',out)
+            self.make_attempt_ledger(b, freeze)
+            r=self.run_cmd('register','--ledger',ledger,'--freeze',freeze,
+                           '--result',b/'result.json','--score',score,
+                           '--attempt-ledger',b/'attempt-ledger.json','--output',out)
             self.assertEqual(r.returncode,0,r.stderr)
             data=json.loads(out.read_text())
             self.assertEqual(data['entries'][0]['holdout_index'],1)
@@ -218,7 +235,10 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
             self.assertEqual(r.returncode,0,r.stderr)
             ledger.write_text(json.dumps({'schema_version':1,'version':'v3.1','target_races':20,'entries':[{'holdout_index':1,'race_id':'2026-10-18-KYOTO-07','scheduled_start_jst':'2026-10-18T13:25:00+09:00','field_size':3,'candidate_count':2,'union_top3_hits':2,'M_top3_hits':1,'winner_in_union':True,'non_M_top3_rescues':[]}]},ensure_ascii=False))
-            r=self.run_cmd('register','--ledger',ledger,'--freeze',freeze,'--score',score,'--output',out)
+            self.make_attempt_ledger(b, freeze)
+            r=self.run_cmd('register','--ledger',ledger,'--freeze',freeze,
+                           '--result',b/'result.json','--score',score,
+                           '--attempt-ledger',b/'attempt-ledger.json','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('duplicate_holdout_race',r.stderr)
 
@@ -231,7 +251,10 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
             self.assertEqual(r.returncode,0,r.stderr)
             ledger.write_text(json.dumps({'schema_version':1,'version':'v3.1','target_races':20,'entries':[{'holdout_index':1,'race_id':'later','scheduled_start_jst':'2026-10-18T14:00:00+09:00','field_size':3,'candidate_count':2,'union_top3_hits':2,'M_top3_hits':1,'winner_in_union':True,'non_M_top3_rescues':[]}]},ensure_ascii=False))
-            r=self.run_cmd('register','--ledger',ledger,'--freeze',freeze,'--score',score,'--output',out)
+            self.make_attempt_ledger(b, freeze)
+            r=self.run_cmd('register','--ledger',ledger,'--freeze',freeze,
+                           '--result',b/'result.json','--score',score,
+                           '--attempt-ledger',b/'attempt-ledger.json','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('holdout_backfill_forbidden',r.stderr)
 
