@@ -104,6 +104,13 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
             self.assertNotEqual(r.returncode,0)
             self.assertIn('freeze_not_prerace',r.stderr)
 
+    def test_freeze_rejects_non_kyoto_venue(self):
+        with tempfile.TemporaryDirectory() as td:
+            b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['venue']='東京'; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            self.assertNotEqual(r.returncode,0)
+            self.assertIn('ineligible_venue',r.stderr)
+
     def test_freeze_rejects_target_result_keys(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['top3']=[1,2,3]; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
