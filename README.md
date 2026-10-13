@@ -22,6 +22,7 @@ Read:
 - [Completion and speed as different H2 biological outcomes](docs/ecology-h2-two-part.md)
 - [First real-data test in a separate racing species: Queensland greyhound GPS records](docs/ecology-real-greyhound-method-benchmark.md)
 - [Official Thoroughbred sectional CSV: two independently audited race meetings](docs/ecology-rq-thoroughbred-source-audit.md)
+- [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
@@ -351,3 +352,21 @@ status and individual finish times have **not yet been confirmed**.
 Consequently **no actual equine environmental or social-effect
 coefficient has been estimated**. See [source identity and telemetry
 audit](docs/ecology-rq-thoroughbred-source-audit.md).
+
+
+### Conservative official horse-ID crosswalk
+
+The new `scripts/ecology_rq_official_id_crosswalk.py` checks one
+locally supplied **verified official race roster** against the
+independently validated official sectionals, without downloading
+or publishing raw horse records. It refuses to guess identifiers
+from a CSV horse name or an unnamed integer field, and marks
+ambiguous same-day repeat names as unresolved. Its output remains
+**HOLD_OFFICIAL_EQUIVALENCE_AND_LONGITUDINAL_VALIDATION**, even when
+a name matches syntactically, because the official roster and
+longitudinal biological identity must be validated separately.
+
+[Required source fields, synthetic tests and usage](docs/ecology-rq-official-id-crosswalk.md).
+**No real Racing Queensland horse-ID crosswalk has been completed
+yet**; the official API and sectional CSV have not been shown to
+resolve a unique repeated horse panel.
