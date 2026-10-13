@@ -21,6 +21,8 @@ FROZEN_PATHS = {
     "evaluator": "scripts/v31_evaluate_holdout.py",
     "evaluator_tests": "tests/test_v31_evaluate_holdout.py",
     "decision_contract": "docs/v31-holdout-decision-contract.json",
+    "attempt_ledger_tool": "scripts/v31_attempt_ledger.py",
+    "attempt_ledger_tests": "tests/test_v31_attempt_ledger.py",
 }
 
 
@@ -36,10 +38,12 @@ def git_blob_sha(path: Path) -> str:
 def verify_repo(root: Path) -> dict:
     manifest_path = root / "docs/v31-holdout-freeze.json"
     ledger_path = root / "docs/v31-holdout-ledger.json"
+    attempt_ledger_path = root / "docs/v31-holdout-attempt-ledger.json"
     quality_path = root / "data/2026-10-12/v3-quality-tier-map.json"
 
     manifest = read_json(manifest_path)
     ledger = read_json(ledger_path)
+    attempt_ledger = read_json(attempt_ledger_path)
     quality = read_json(quality_path)
 
     if manifest.get("status") != "frozen_for_prospective_holdout":
@@ -68,8 +72,12 @@ def verify_repo(root: Path) -> dict:
     manifest_blob = git_blob_sha(manifest_path)
     if ledger.get("manifest_blob_sha") != manifest_blob:
         raise ValueError("ledger_manifest_mismatch")
+    if attempt_ledger.get("manifest_blob_sha") != manifest_blob:
+        raise ValueError("attempt_ledger_manifest_mismatch")
     if ledger.get("version") != manifest.get("version"):
         raise ValueError("ledger_version_mismatch")
+    if attempt_ledger.get("version") != manifest.get("version"):
+        raise ValueError("attempt_ledger_version_mismatch")
     if int(ledger.get("target_races", -1)) != int(manifest.get("holdout_target_races", -2)):
         raise ValueError("ledger_target_races_mismatch")
 
