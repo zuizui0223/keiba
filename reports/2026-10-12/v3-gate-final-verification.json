@@ -1,0 +1,62 @@
+{
+  "verified_at_jst": "2026-10-13T10:19:54+09:00",
+  "method": "Independent reproduction of current scripts/audit_recent_history.py rules against all derived v3 race JSONs fetched from GitHub.",
+  "total_horses": 83,
+  "pass": 83,
+  "hold": 0,
+  "races": [
+    {
+      "race": 7,
+      "path": "data/2026-10-12/v3/kyoto_07.json",
+      "blob_sha": "dfc4bf0ee63161dc3e1608709a0921cae92cf0ec",
+      "horses": 16,
+      "pass": 16,
+      "hold": 0
+    },
+    {
+      "race": 8,
+      "path": "data/2026-10-12/v3/kyoto_08.json",
+      "blob_sha": "316f174197b6ef4f752b81940dcda0b78557fccb",
+      "horses": 11,
+      "pass": 11,
+      "hold": 0
+    },
+    {
+      "race": 9,
+      "path": "data/2026-10-12/v3/kyoto_09.json",
+      "blob_sha": "93dab9ee8fb83ba340d48444ae490aad849b2fc6",
+      "horses": 12,
+      "pass": 12,
+      "hold": 0
+    },
+    {
+      "race": 10,
+      "path": "data/2026-10-12/v3/kyoto_10.json",
+      "blob_sha": "528531911d1fd96895d78f4360c605d33fc144f5",
+      "horses": 10,
+      "pass": 10,
+      "hold": 0
+    },
+    {
+      "race": 11,
+      "path": "data/2026-10-12/v3/kyoto_11.json",
+      "blob_sha": "50d3930691dfe765b0cb6f2535d973d93dba524e",
+      "horses": 18,
+      "pass": 18,
+      "hold": 0
+    },
+    {
+      "race": 12,
+      "path": "data/2026-10-12/v3/kyoto_12.json",
+      "blob_sha": "fdf2a08c32df561f1c6e4803f5885eff296caa6b",
+      "horses": 16,
+      "pass": 16,
+      "hold": 0
+    }
+  ],
+  "scope_limitations": [
+    "This verifies structural eligibility and freshness metadata rules, not truth of every external horse-history row.",
+    "The original frozen pre-race JSONs remain unchanged.",
+    "Candidate-union predictive quality is not validated by 2026-10-12 because its rules were designed after seeing those results."
+  ]
+}
