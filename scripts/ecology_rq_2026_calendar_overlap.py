@@ -180,19 +180,19 @@ def compare(
                 locked_config=cfg,
                 race_selection=LOCKED_RACE_NUMBERS,
             )
-            if audit["ground_disagreeing_with_page"]:
-                # Hold the entire source date; different official
-                # race ground labels need resolution prior to pooling.
-                manifest[day] = {
-                    "status": "HOLD_MEETING_RACE_GROUND_DISAGREEMENT",
-                    "ground_label_expected": ground,
-                    "official_race_labels": audit["actual_official_ground_labels"],
-                    "source_hashes": audit["source_hashes"],
-                    "eligible_rows_excluded_not_automatically_zero": len(candidates),
-                }
-                continue
+            mixed_going = bool(audit["ground_disagreeing_with_page"])
+            # The meeting-page rating may differ from the OFFICIAL
+            # RACE-LEVEL rating for individual races. Keep per-race
+            # original TrackRating instead of forcing the page label
+            # onto all competitors, and record these divergences.
             manifest[day] = {
-                "status": "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
+                "status": (
+                    "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE"
+                    if mixed_going else "SOURCE_DATE_READ_AND_ID_GPS_MATCHED"
+                ),
+                "number_of_races_with_different_rating_from_meeting_page":
+                    audit["ground_disagreeing_with_page"],
+                "race_level_ground_was_used_not_page_rating": True,
                 "meeting_page_ground": ground,
                 "official_races_returned": len(audit["official_race_numbers_available"]),
                 "official_race_numbers_missing_from_requested_1_to_8":
@@ -217,9 +217,17 @@ def compare(
             manifest[day] = safe_failure(exc)
 
     support = overlap_support(data)
+    acceptable = {
+        "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
+        "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE",
+    }
     included = [
         d for d, info in manifest.items()
-        if info["status"] == "SOURCE_DATE_READ_AND_ID_GPS_MATCHED"
+        if info["status"] in acceptable
+    ]
+    race_ground_divergent_dates = [
+        d for d, info in manifest.items()
+        if info["status"] == "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE"
     ]
     excluded = sorted(set(LOCKED_DATES)-set(included))
     if len(included) < 2:
@@ -238,6 +246,8 @@ def compare(
             "race_numbers_requested_per_meeting": list(LOCKED_RACE_NUMBERS),
             "new_source_dates": list(NEW_DATES),
             "source_dates_successful": included,
+            "source_dates_using_race_rating_different_from_meeting_page":
+                race_ground_divergent_dates,
             "source_dates_HOLD": excluded,
             "all_missing_requested_race_IDs_are_recorded_not_guessed": True,
         },
@@ -276,6 +286,7 @@ def main() -> None:
         "status": result["status"],
         "successful_days": len(result["temporal_cohort"]["source_dates_successful"]),
         "hold_days": result["temporal_cohort"]["source_dates_HOLD"],
+        "race_going_divergent_days": result["temporal_cohort"]["source_dates_using_race_rating_different_from_meeting_page"],
         "support": result["support"],
     }, ensure_ascii=False))
 
