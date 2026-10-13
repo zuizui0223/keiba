@@ -3,8 +3,8 @@
   "version": "v3.1",
   "venue": "京都",
   "target_races": 20,
-  "manifest_blob_sha": "f66f93c197204987d5231dadbf2f71ba568a9de2",
-  "manifest_created_at_jst": "2026-10-13T14:11:50+09:00",
+  "manifest_blob_sha": "92c57b41a979b57b870710f5fd17f3000aefd61e",
+  "manifest_created_at_jst": "2026-10-13T17:07:24+09:00",
   "status": "collecting",
   "entries": [],
   "summary": {
