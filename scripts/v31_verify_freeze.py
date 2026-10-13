@@ -23,6 +23,8 @@ FROZEN_PATHS = {
     "decision_contract": "docs/v31-holdout-decision-contract.json",
     "attempt_ledger_tool": "scripts/v31_attempt_ledger.py",
     "attempt_ledger_tests": "tests/test_v31_attempt_ledger.py",
+    "postrace_validator": "scripts/v31_validate_postrace.py",
+    "pipeline_integration_tests": "tests/test_v31_pipeline_integration.py",
 }
 
 
