@@ -95,6 +95,10 @@ class Calendar2026Tests(unittest.TestCase):
         self.assertEqual(strict["horse_IDs_with_2plus_independent_dates_each_Good_and_wet"],2)
         self.assertFalse(out["actual_confirmed_starter_and_finish_status_verified"])
         self.assertFalse(out["ground_effect_or_random_slope_variance_fitted"])
+        self.assertEqual(out["exploratory_early_pace_ID_persistence_NOT_H1_or_H2"]["status"],
+                         "HOLD_INSUFFICIENT_POSITIVE_GPS_RACES_OR_DATES_FOR_PERSISTENCE")
+        self.assertFalse(out["exploratory_early_pace_ID_persistence_NOT_H1_or_H2"]["independent_real_horse_effect_supported_H1"])
+        self.assertTrue(out["individual_pace_repeatability_analysed_only_as_race_relative_first_interval"])
         dump=json.dumps(out)
         self.assertNotIn("RepeatA",dump)
         self.assertNotIn('"101"',dump)
