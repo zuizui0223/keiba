@@ -23,7 +23,9 @@ import xml.etree.ElementTree as ET
 from ecology_rq_thoroughbred_sectional_audit import (
     APPROVED, fetch_official, parse as parse_sectionals,
 )
-from ecology_rq_official_id_crosswalk import audit as audit_crosswalk, canon_name
+from ecology_rq_official_id_crosswalk import (
+    audit as audit_crosswalk, canon_name, sections_in_memory
+)
 
 
 HOST = "www.racingqueensland.com.au"
@@ -97,6 +99,7 @@ def request_xml(op: str, params: dict[str, str]) -> tuple[ET.Element, str, str]:
         "GetRacesForMeeting": {"meetingId"},
         "GetHorsesForRace": {"raceId"},
         "GetHorseDetailsInRace": {"raceId", "horseId"},
+        "GetRaceDetails": {"raceId"},
     }
     if op not in allowed or set(params) != allowed[op]:
         raise ValueError("HOLD_UNAPPROVED_SOAP_OPERATION_OR_PARAMETERS")
@@ -194,12 +197,68 @@ def candidate_gps_join(
     } for h in horses]
     # Existing fail-closed crosswalk blocks names reused on the
     # same meeting day in another race heading.
-    return audit_crosswalk(raw, roster)
+    all_rows = sections_in_memory(raw)
+    # Coverage must be reported only for the selected race, not for the
+    # entire meeting-wide CSV that the source publisher downloaded.
+    focal = [
+        r for r in all_rows
+        if r["race_date"] == race_date and r["race_number"] == race_number
+    ]
+    names = [canon_name(h["horse_name"]) for h in horses]
+    if len(set(names)) != len(names):
+        raise ValueError("HOLD_DUPLICATE_OFFICIAL_NAMES_IN_SELECTED_RACE")
+    by_day = defaultdict(set)
+    for row in all_rows:
+        by_day[(row["race_date"],row["name_normalized"])].add(
+            row["race_number"]
+        )
+    ambiguous = {
+        name for name in names
+        if len(by_day[(race_date,name)]) != 1
+    }
+    gps_names = [r["name_normalized"] for r in focal]
+    if len(set(gps_names)) != len(gps_names):
+        raise ValueError("HOLD_DUPLICATE_GPS_NAME_IN_SELECTED_RACE")
+    matched = set(names) & set(gps_names) - ambiguous
+    positive = {
+        r["name_normalized"] for r in focal if r["gps_positive"]
+    }
+    zero = {
+        r["name_normalized"] for r in focal if r["gps_all_zero"]
+    }
+    result = audit_crosswalk(raw, roster)
+    result["one_race_exact_name_coverage"] = {
+        "official_horse_id_records": len(horses),
+        "official_distinct_horse_ids": len(ids),
+        "gps_horse_rows_in_selected_race": len(focal),
+        "provisional_name_matches_excluding_same_day_ambiguity": len(matched),
+        "provisional_matched_with_positive_GPS": len(matched & positive),
+        "provisional_matched_with_zero_GPS": len(matched & zero),
+        "official_names_not_in_selected_GPS": len(set(names) - set(gps_names)),
+        "selected_GPS_names_absent_from_official_API": len(set(gps_names) - set(names)),
+        "official_names_reused_in_other_same_day_GPS_races": len(ambiguous),
+        "verified_individual_time_available": False,
+        "verified_official_start_or_finish_status": False,
+        "verified_individual_stable_across_different_dates": False,
+        "name_match_is_causal_or_ecological_evidence": False,
+    }
+    return result
+
+
+def safe_xml_tree(root: ET.Element) -> dict:
+    """Only structural tag names / counts for one detail response."""
+    tags = Counter(local(e.tag) for e in root.iter())
+    return {
+        "root_element": local(root.tag),
+        "distinct_element_names": sorted(tags),
+        "node_count": sum(tags.values()),
+        "no_values_or_individual_identifiers": True,
+    }
 
 
 def run_single_day(
     day: str, *, gps_raw: bytes | None = None,
-    request_fn=request_xml,
+    request_fn=request_xml, inspect_details: bool = False,
 ) -> dict:
     if day not in ALLOWED:
         raise ValueError("HOLD_NOT_ALLOWLISTED_RESEARCH_DATE")
@@ -259,6 +318,30 @@ def run_single_day(
             "Race/horse IDs are never published in output, only counts and SHA256.",
         ],
     }
+    if inspect_details and horses:
+        # Exactly one horse-detail endpoint and one race-detail endpoint.
+        # Do NOT serialize URLs with a HORSES numeric Id query parameter.
+        details = {}
+        for label, operation, params in [
+            ("race_result_structure", "GetRaceDetails", {"raceId": rid}),
+            ("one_horse_detail_structure", "GetHorseDetailsInRace",
+             {"raceId": rid, "horseId": horses[0]["horse_id"]}),
+        ]:
+            try:
+                detail_xml, _, detail_sha = request_fn(operation, params)
+                details[label] = {
+                    "response_sha256": detail_sha,
+                    "schema": safe_xml_tree(detail_xml),
+                    "operation": operation,
+                    "raw_horse_values_saved": False,
+                }
+            except (ValueError, OSError) as err:
+                details[label] = {
+                    "status": "HOLD_RESULT_DETAIL_SCHEMA_UNRESOLVED",
+                    "error_type": type(err).__name__,
+                    "operation": operation,
+                }
+        result["detail_schema_audit"] = details
     if not horses:
         result["crosswalk"] = {
             "status": "HOLD_HORSE_SCHEMA_UNRESOLVED",
@@ -288,8 +371,10 @@ def main() -> None:
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--date", choices=sorted(ALLOWED), default="2026-10-11")
     cli.add_argument("--output", type=Path, required=True)
+    cli.add_argument("--inspect-one-detail", action="store_true",
+                     help="Inspect field names for ONE race and ONE horse")
     args = cli.parse_args()
-    report = run_single_day(args.date)
+    report = run_single_day(args.date, inspect_details=args.inspect_one_detail)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n",
@@ -301,6 +386,8 @@ def main() -> None:
         "schema": {key: value["schema"] for key, value in report["api"].items()},
         "crosswalk_counts": counts,
         "crosswalk_status": report.get("crosswalk", {}).get("status"),
+        "one_race_exact_name_coverage": report.get("crosswalk", {}).get("one_race_exact_name_coverage"),
+        "detail_schema_audit": report.get("detail_schema_audit"),
     }, ensure_ascii=False))
 
 
