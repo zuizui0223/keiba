@@ -27,7 +27,7 @@ class V3CandidateGenerationTests(unittest.TestCase):
                  'finish':5,'beaten_margin_s':0.7,'source_url':'https://example.test/r3'},
             ]
         return {
-            'number':number, 'name':f'H{number}', 'career_starts':career_starts,
+            'number':number, 'name':f'H{number}', 'career_starts':career_starts, 'win_odds': float(number),
             'history_checked_at_jst':'2026-10-12T09:00:00+09:00',
             'history_source_url':f'https://example.test/h{number}',
             'source_latest_run_date':runs[0]['date'] if runs else None,
@@ -71,6 +71,38 @@ class V3CandidateGenerationTests(unittest.TestCase):
         self.assertTrue(row['candidate'])
         self.assertIn('lightly_raced_latest_win', row['positive_signals'])
         self.assertNotIn('recent_similar_distance_win', row['positive_signals'])
+
+    def test_market_top_four_is_candidate_signal(self):
+        self.race['horses'] = [self.horse(number=i, runs=[
+            {'date':'2026-09-20','class':'1勝クラス','surface':'turf','distance_m':1800,
+             'finish':8,'beaten_margin_s':1.2,'source_url':'https://example.test/r1'},
+            {'date':'2026-08-20','class':'1勝クラス','surface':'turf','distance_m':1800,
+             'finish':8,'beaten_margin_s':1.2,'source_url':'https://example.test/r2'},
+            {'date':'2026-07-20','class':'1勝クラス','surface':'turf','distance_m':1800,
+             'finish':8,'beaten_margin_s':1.2,'source_url':'https://example.test/r3'},
+        ]) for i in range(1, 7)]
+        out = generate_candidates(self.race, self.as_of)
+        row = next(r for r in out['horse_features'] if r['number'] == 4)
+        self.assertTrue(row['candidate'])
+        self.assertIn('market_top4', row['positive_signals'])
+        self.assertEqual(row['market_rank'], 4)
+
+    def test_lightly_raced_latest_close_fourth_is_candidate(self):
+        h1 = self.horse(number=1)
+        h2 = self.horse(number=6, career_starts=7, runs=[
+            {'date':'2026-09-20','class':'1勝クラス','surface':'dirt','distance_m':1000,
+             'finish':4,'beaten_margin_s':0.6,'source_url':'https://example.test/r1'},
+            {'date':'2026-08-20','class':'1勝クラス','surface':'dirt','distance_m':1200,
+             'finish':7,'beaten_margin_s':1.0,'source_url':'https://example.test/r2'},
+            {'date':'2026-07-20','class':'1勝クラス','surface':'dirt','distance_m':1200,
+             'finish':8,'beaten_margin_s':1.2,'source_url':'https://example.test/r3'},
+        ])
+        h2['win_odds'] = 20.0
+        self.race['horses'] = [h1, h2]
+        out = generate_candidates(self.race, self.as_of)
+        row = next(r for r in out['horse_features'] if r['number'] == 6)
+        self.assertTrue(row['candidate'])
+        self.assertIn('lightly_raced_latest_close_form', row['positive_signals'])
 
     def test_layoff_is_uncertainty_not_exclusion(self):
         h = self.horse(runs=[
