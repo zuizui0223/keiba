@@ -50,7 +50,9 @@ class RQSectionalTests(unittest.TestCase):
 """).encode("utf-8")
         self.assertEqual(parse(raw)["race_counts"]["source_dates"],["2026-04-09"])
         wrong=raw.replace(b"2026-04-09 Ladbrokes",b"2026-09-04 Ladbrokes")
-        with self.assertRaisesRegex(ValueError,"HOLD_VENDOR_HEADER_DATE_CONFLICTS_WITH_VENUE_ISO"):
+        # An alternative month/day parse remains syntactically possible,
+        # but the actual DD/MM runner date must then disagree and block it.
+        with self.assertRaisesRegex(ValueError,"HOLD_RUN_DATE_DISAGREES_WITH_HEADER"):
             parse(wrong)
 
     def test_invalid_vendor_header_and_runner_dates_never_coerce(self):
