@@ -1,0 +1,177 @@
+{
+  "created_at_jst": "2026-10-13T10:17:11+09:00",
+  "mode": "RETROSPECTIVE_DIAGNOSTIC_NOT_VALIDATION",
+  "scope": "Kyoto 7R-12R, 2026-10-12",
+  "fixed_parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5
+  },
+  "totals": {
+    "field_slots": 83,
+    "official_top3_slots": 18
+  },
+  "baselines": {
+    "market_top5": {
+      "selected": 30,
+      "coverage": 0.3614457831325301,
+      "hits": 13,
+      "recall": 0.7222222222222222
+    },
+    "v3_union": {
+      "selected": 54,
+      "coverage": 0.6506024096385542,
+      "hits": 17,
+      "recall": 0.9444444444444444
+    },
+    "reason_count_ge_2": {
+      "selected": 31,
+      "coverage": 0.37349397590361444,
+      "hits": 12,
+      "recall": 0.6666666666666666
+    }
+  },
+  "by_race": [
+    {
+      "race": 7,
+      "field": 16,
+      "market_top5": {
+        "selected": 5,
+        "hits": 2
+      },
+      "v3_union": {
+        "selected": 10,
+        "hits": 3
+      },
+      "reason_count_ge_2": {
+        "selected": 8,
+        "hits": 2
+      },
+      "top3": [
+        2,
+        15,
+        9
+      ]
+    },
+    {
+      "race": 8,
+      "field": 11,
+      "market_top5": {
+        "selected": 5,
+        "hits": 2
+      },
+      "v3_union": {
+        "selected": 6,
+        "hits": 2
+      },
+      "reason_count_ge_2": {
+        "selected": 4,
+        "hits": 1
+      },
+      "top3": [
+        9,
+        1,
+        7
+      ]
+    },
+    {
+      "race": 9,
+      "field": 12,
+      "market_top5": {
+        "selected": 5,
+        "hits": 3
+      },
+      "v3_union": {
+        "selected": 9,
+        "hits": 3
+      },
+      "reason_count_ge_2": {
+        "selected": 4,
+        "hits": 3
+      },
+      "top3": [
+        4,
+        3,
+        12
+      ]
+    },
+    {
+      "race": 10,
+      "field": 10,
+      "market_top5": {
+        "selected": 5,
+        "hits": 3
+      },
+      "v3_union": {
+        "selected": 7,
+        "hits": 3
+      },
+      "reason_count_ge_2": {
+        "selected": 5,
+        "hits": 3
+      },
+      "top3": [
+        5,
+        2,
+        9
+      ]
+    },
+    {
+      "race": 11,
+      "field": 18,
+      "market_top5": {
+        "selected": 5,
+        "hits": 2
+      },
+      "v3_union": {
+        "selected": 11,
+        "hits": 3
+      },
+      "reason_count_ge_2": {
+        "selected": 4,
+        "hits": 1
+      },
+      "top3": [
+        1,
+        4,
+        9
+      ]
+    },
+    {
+      "race": 12,
+      "field": 16,
+      "market_top5": {
+        "selected": 5,
+        "hits": 1
+      },
+      "v3_union": {
+        "selected": 11,
+        "hits": 3
+      },
+      "reason_count_ge_2": {
+        "selected": 6,
+        "hits": 2
+      },
+      "top3": [
+        10,
+        12,
+        9
+      ]
+    }
+  ],
+  "interpretation": [
+    "The broad v3 union improves retrospective recall mainly by selecting many more horses: 65.1% field coverage versus 36.1% for market Top5.",
+    "At nearly equal selectivity, reason_count>=2 covers 37.3% of runners but recalls 66.7% of Top3 slots, below the market Top5 baseline at 72.2%.",
+    "Therefore the current v3 rules do not demonstrate information gain over the market at comparable candidate-set size.",
+    "No thresholds are tuned on 2026-10-12. The fixed rules should be frozen and tested on independent future races."
+  ],
+  "key_counterexample": {
+    "race": 8,
+    "horse": 7,
+    "name": "レーヌマロン",
+    "actual_finish": 3,
+    "v3_union_reasons": [],
+    "note": "The only official Top3 slot missed by the broad union across these six retrospective races."
+  }
+}
