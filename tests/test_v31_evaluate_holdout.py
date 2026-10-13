@@ -58,7 +58,8 @@ class V31EvaluationTests(unittest.TestCase):
             }]
         }
         run, out = self.run_eval(ledger, {
-            "version":"v3.1","target_races":1,"alpha":0.05,"max_candidate_fraction":0.65
+            "version":"v3.1","target_races":1,"alpha":0.05,"max_candidate_fraction":0.65,
+            "min_freeze_success_rate":0.80
         })
         self.assertEqual(run.returncode, 0, run.stderr)
         self.assertAlmostEqual(out["random_addition"]["p_value_one_sided"], 0.25)
@@ -191,7 +192,8 @@ class V31EvaluationTests(unittest.TestCase):
             "M_top3_hits":2,"union_top3_hits":3,"winner_in_union":True
         }]}
         run,out=self.run_eval(ledger, {
-            "version":"v3.1","target_races":1,"alpha":0.05,"max_candidate_fraction":0.65
+            "version":"v3.1","target_races":1,"alpha":0.05,"max_candidate_fraction":0.65,
+            "min_freeze_success_rate":0.80
         })
         self.assertNotEqual(run.returncode,0)
         self.assertIn("invalid_candidate_nesting",run.stderr)
