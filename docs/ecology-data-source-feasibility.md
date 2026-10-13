@@ -178,8 +178,14 @@ the official API specification, but not linked to CSV rows.
 
 **Access to observed horse sectionals is confirmed**, but the full
 research-grade horse×start×environment×competitor panel remains
-**HOLD**. The next milestone is a one-race field-level crosswalk to
-the SOAP horse ID and official result roster, without assuming names,
-unverified numbered columns, or section-time zeros are reliable IDs
-or completion statuses. Attribution/terms: Racing Queensland official
+**HOLD**. **Updated original-data progress**: a one-race name-to-HORSES-ID
+comparison was completed at 11/11 exact source matches; and a
+two-date selected-race pilot recovered **two** repeated genuine
+numeric HORSES IDs with positive GPS on both dates. See
+[verified repeat-ID audit](ecology-rq-two-date-official-id-recurrence.md).
+The **official result/starter** crosswalk is still missing: its
+API horse list may include same-day double nominations, its metadata
+does not provide verified horse-specific finishing times/placements,
+and section-time zeros cannot be classified as DNF. Biological H1/H2
+analyses therefore remain HOLD. Attribution/terms: Racing Queensland official
 open-data program; no republishing raw records from the source.
