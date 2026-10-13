@@ -21,6 +21,7 @@ Read:
 - [Why nonfinishers and missing speeds require a selection audit](docs/ecology-h2-outcome-selection.md)
 - [Completion and speed as different H2 biological outcomes](docs/ecology-h2-two-part.md)
 - [First real-data test in a separate racing species: Queensland greyhound GPS records](docs/ecology-real-greyhound-method-benchmark.md)
+- [Official Thoroughbred sectional CSV: two independently audited race meetings](docs/ecology-rq-thoroughbred-source-audit.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
@@ -302,9 +303,51 @@ python scripts/ecology_greyhound_open_pilot.py \
 The script downloads ODC-BY source values for local analysis but
 publishes **aggregate JSON only**, not runner-level records.
 
-**Target equine empirical source:** Racing Queensland's official
-[open-data programme](https://www.racingqueensland.com.au/about/reports-and-data/open-data)
-lists public thoroughbred race results/sectionals. The availability
-of stable historical horse IDs, per-horse sectional/finish times,
-and valid full starter rosters still needs endpoint-level verification.
-See [source feasibility](docs/ecology-data-source-feasibility.md).
+**Actual Thoroughbred sectional source now verified:** Racing Queensland's
+official downloadable horse GPS sectional CSVs for 2026-10-10 Eagle Farm
+and 2026-10-11 Cannon Park were independently retrieved and audited.
+See [the frozen horse source audit](docs/ecology-rq-thoroughbred-source-audit.md).
+They provide dated per-named-horse sectional intervals but **not**
+verified stable `HORSES` IDs, certified individual finish times, actual
+starters/DNF status or complete competitor histories. Thus genuine
+equine observations exist, but H1/H2 ecological model results remain
+**HOLD**, pending a conservative official ID/results crosswalk.
+
+The official [Open Data Web Services](https://www.racingqueensland.com.au/rq-open-data-web-services.pdf)
+document describes `GetHorsesForRace` and an internal horse ID,
+not yet joined to sectional CSV horse names. This is not proof that
+a long-term horse-level panel has been assembled.
+
+
+## 2026-10-13: two verified official horse sectional files
+
+[Official published Thoroughbred sectional measurements](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals)
+were accessed for exactly two historical dates. A new standard-library parser,
+`scripts/ecology_rq_thoroughbred_sectional_audit.py`, reads the
+unusual semicolon-packed rows, checks the race headers and timestamps,
+and reports **aggregate-only** counts.
+
+GitHub Actions [source audit run #38330158633](https://github.com/zuizui0223/keiba/actions/runs/38330158633)
+successfully retrieved and hashed 197 horse-labelled CSV rows across
+18 race-header blocks; 162 had some positive sectional telemetry and
+35 had all-zero values. **These are not 35 confirmed nonfinishers.**
+Indeed five horse *names* appeared on the same date in two separate
+race headers, with zero telemetry in one and positive telemetry in
+another. No automatic DNF or shared biological identity is inferred.
+
+~~~bash
+python scripts/ecology_rq_thoroughbred_sectional_audit.py \
+  --fetch-official 20261011-cairns \
+  --audit tmp/cairns-official-sectionals-audit.json
+python scripts/ecology_rq_thoroughbred_sectional_audit.py \
+  --fetch-official 20261010-eagle-farm \
+  --audit tmp/eagle-farm-official-sectionals-audit.json
+~~~
+
+The source publisher is Racing Queensland (subject to its original
+terms); raw horse-level files are not copied to this repository. The
+sectional numeric signal's units, official horse IDs, full starter
+status and individual finish times have **not yet been confirmed**.
+Consequently **no actual equine environmental or social-effect
+coefficient has been estimated**. See [source identity and telemetry
+audit](docs/ecology-rq-thoroughbred-source-audit.md).
