@@ -28,8 +28,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_ecology_rq_single_race_id_probe.py' -v
       - name: One real RQ meeting/race chain, no runner-level artifacts
         run: |
-          python scripts/ecology_rq_single_race_id_probe.py --date 2026-10-11 --output tmp/rq-single-race-id-aggregate.json
-          python -c "import json; a=json.load(open('tmp/rq-single-race-id-aggregate.json')); assert a['status']=='HOLD_RQ_OFFICIAL_ID_CROSSWALK_NOT_COMPLETE'; assert not a['any_raw_names_or_horse_ids_output']; assert not a['H1_real_horse_effect_supported']; assert a['api']['meeting']['meeting_id_found_and_validated']; assert a['api']['race']['race_id_found_and_validated']"
+          python scripts/ecology_rq_single_race_id_probe.py --date 2026-10-11 --inspect-one-detail --output tmp/rq-single-race-id-aggregate.json
+          python -c "import json; a=json.load(open('tmp/rq-single-race-id-aggregate.json')); assert a['status']=='HOLD_RQ_OFFICIAL_ID_CROSSWALK_NOT_COMPLETE'; assert not a['any_raw_names_or_horse_ids_output']; assert not a['H1_real_horse_effect_supported']; assert a['api']['meeting']['meeting_id_found_and_validated']; assert a['api']['race']['race_id_found_and_validated']; assert a['crosswalk']['one_race_exact_name_coverage']['official_horse_id_records']==11; assert a['crosswalk']['one_race_exact_name_coverage']['provisional_name_matches_excluding_same_day_ambiguity']==11"
       - uses: actions/upload-artifact@v4
         with:
           name: official-single-race-id-audit-aggregate-only
