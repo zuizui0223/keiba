@@ -253,3 +253,42 @@ still **exploratory source selection / model
 dependence diagnostics**, not a licensed
 complete-panel solution or a supported H1/H2
 ecological effect.
+
+
+## Independent (different racecourse) source examination: Eagle Farm 2026
+
+An [Eagle Farm 12-date original-source
+cohort](ecology-rq-eagle-farm-2026-independent-track-lock.md)
+was fixed before looking at the new track's original
+HORSES ID recurrence and first sectional outcomes.
+[First successful Eagle Farm original-data and
+source-quality audit](ecology-rq-eagle-farm-real-icc-cross-site-audit.md):
+
+- 391 officially ID-linked positive first-GPS candidates,
+  339 distinct HORSES IDs; 48 recurring on multiple dates.
+- Fitted race-fixed ICC sample of 382 positive source
+  records in 51 races; **ICC 0.452894**.
+- Different source track and GPS first-marker composition:
+  **NO shared marker with estimable ICC at both Eagle Farm
+  and Cannon Park**. Numerical similarity of pooled
+  0.453 and 0.432 is not scientifically a matched
+  cross-course trait replication.
+- Original source Weight/Jockey/Trainer fields complete
+  plus >=4 similarly documented timed racehorses:
+  **108/391** retained, 21 races, 10 dates, only
+  **3 repeated HORSES IDs**; the source-adjusted ICC
+  numerical point estimate was correctly suppressed
+  as **HOLD** under a stricter random-effect
+  identifiability gate.
+- Official original data access and provenance
+  independently verified; raw IDs/names/horse sectionals
+  are not republished. Same data publisher and possibly
+  overlapping animal cohorts do not give a statistically
+  independent causal replication.
+
+Official sources: Racing Queensland [Thoroughbred
+Sectionals](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals)
+and [Open Data](https://www.racingqueensland.com.au/about/reports-and-data/open-data).
+Neither venue yields H1 wet-ground reaction slopes or
+H2 confirmed-competitor social effects from the existing
+partial sources.
