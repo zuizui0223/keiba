@@ -84,6 +84,10 @@ def freeze(args) -> int:
 
     if manifest.get('status') != 'frozen_for_prospective_holdout':
         raise ValueError('manifest_not_frozen')
+    expected_wrapper = manifest.get('frozen_blobs', {}).get('holdout_wrapper')
+    actual_wrapper = git_blob_sha(Path(__file__))
+    if not expected_wrapper or actual_wrapper != expected_wrapper:
+        raise ValueError(f'holdout_wrapper_sha_mismatch:{actual_wrapper}')
     check_no_target_results(race_input)
 
     expected_classifier = manifest.get('frozen_blobs', {}).get('classifier')
