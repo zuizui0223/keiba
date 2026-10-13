@@ -57,6 +57,20 @@ class RepeatabilityTests(unittest.TestCase):
         self.assertTrue(report["target_uses_contemporaneous_other_timed_runners_after_race"])
         self.assertTrue(report["not_a_real_time_prediction_or_causal_inference"])
 
+    def test_six_timings_per_race_sensitivity_and_insufficient_fields_hold(self):
+        invented_sample=invented()
+        result=analyze(invented_sample,permutations=79,min_race_telemetry=6)
+        self.assertEqual(result["status"],
+                         "REAL_EQUINE_EARLY_PACE_REPRODUCIBILITY_EXPLORATORY_NOT_H1_H2")
+        self.assertEqual(result["minimum_race_positive_GPS_peer_coverage"],6)
+        self.assertEqual(result["data_readiness"]["positive_first_section_rows_retained"],144)
+        self.assertLess(
+            result["distance_first_marker_consistent"]["permutation"]["fraction_null_at_least_observed"],.05)
+        stricter=analyze(invented_sample,permutations=79,min_race_telemetry=7)
+        self.assertEqual(stricter["status"],
+                         "HOLD_INSUFFICIENT_POSITIVE_GPS_RACES_OR_DATES_FOR_PERSISTENCE")
+        self.assertEqual(stricter["minimum_race_positive_GPS_peer_coverage"],7)
+
     def test_race_class_matching_can_eliminate_between_class_persistence(self):
         frame,_=prepare(invented(class_change=True))
         p=pairs(frame,strict_class=True)
