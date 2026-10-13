@@ -160,6 +160,70 @@ have zero true effect). If a whole nuisance category
 is unidentifiable, the model returns **HOLD** instead
 of fitting arbitrary dummy coefficients.
 
+## Source-date deletion: adjustment direction is not stable
+
+A newly added original-data audit re-fit the **same**
+race-FE baseline and the weight+jockey+trainer
+fixed-nuisance HORSES-ID model after omitting
+each of the **11 source meeting dates retained
+by the 279-record complete-case analysis**.
+
+Independent source/CI:
+[GitHub Actions #38403918184](https://github.com/zuizui0223/keiba/actions/runs/38403918184).
+Script:
+[\`ecology_rq_covariate_icc.py\`](../scripts/ecology_rq_covariate_icc.py),
+method \`leave_one_meeting_out_adjusted_ICC\`.
+
+| Leave-one-source-day-out diagnostic | Range across 11 repeated fits |
+| --- | ---: |
+| Original source-race FE + HORSES random intercept ICC | **0.429248–0.550929** |
+| Plus source Weight/Jockey/Trainer licence nuisance fixed terms | **0.385163–0.576600** |
+| Full adjustment minus same-remaining-source baseline | **−0.078886 to +0.033979** |
+
+All 11 source/date-deletion matched pairs
+returned numerically identifiable models.
+**Eight** repetitions had a lower horse ICC
+after full nuisance adjustment; **three**
+had a higher ICC.
+
+Hence the original 279-row comparison,
+\`0.503005 → 0.487447\`, **must NOT be
+presented as a robust reduction in
+horse-associated variance due to jockey,
+trainer or weight**. Even its **direction
+can change depending on which original
+meeting day is excluded**. The true
+biological decomposition remains
+underidentified due to source selection,
+near-stable trainer/horse pairings
+and missing age/true race status.
+
+This range is **NOT** a 95% confidence
+or Bayesian credible interval. Only 11
+source date clusters contribute to this
+conditional analysis; accurate inference
+requires a defensible source/date
+dependence model and much more
+independent replication.
+
+### Relation to observed source completeness
+
+A separate new
+[68-original-race mixed-source metadata
+completeness audit](ecology-rq-source-role-missingness-vs-early-gps.md)
+found an equal-race mean observed
+complete-minus-incomplete first-GPS
+timing contrast **−0.02355 seconds**
+with a 499-shuffle within-race metadata
+label-reference fraction **0.416**.
+This is not evidence of a prominent
+difference in the *already measured*
+timings by role-completeness group,
+but **not** evidence that source
+roles or GPS/true finishing outcomes
+are MCAR. The severe date/ground
+coverage attrition remains.
+
 ## Estimation and reproducibility
 
 [\`scripts/ecology_rq_covariate_icc.py\`](../scripts/ecology_rq_covariate_icc.py)
