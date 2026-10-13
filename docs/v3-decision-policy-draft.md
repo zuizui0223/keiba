@@ -126,3 +126,44 @@ Its 12R retrospective diagnostic is:
 `reports/2026-10-12/v3-candidate-union-r12-diagnostic.json`.
 
 With the frozen default parameters, the union selected 11/16 runners and retrospectively contained all official Top3. This is **not validation** because the rules were designed after seeing 12R. The important negative result is that the candidate set is too broad to count as a useful ranking system yet. No further threshold tuning should be done on 2026-10-12 results.
+
+
+## Full migration completion and freeze (2026-10-13)
+
+All Kyoto 7R-12R runners from 2026-10-12 have now been migrated into derived v3 inputs:
+- 6 races
+- 83 runners
+- PASS: 83
+- DATA_HOLD: 0
+
+The fresh all-race verification is saved at:
+`reports/2026-10-12/v3-gate-final-verification.json`.
+
+The original frozen pre-race JSONs remain unchanged.
+
+### Retrospective candidate-set comparison
+
+Using the fixed v3 candidate-union parameters across all six races:
+
+| candidate rule | selected / 83 | field coverage | Top3 hits / 18 | Top3 recall |
+|---|---:|---:|---:|---:|
+| market Top5 | 30 | 36.1% | 13 | 72.2% |
+| v3 broad union | 54 | 65.1% | 17 | 94.4% |
+| v3 reason_count >= 2 | 31 | 37.3% | 12 | 66.7% |
+
+This is stored in `reports/2026-10-12/v3-candidate-union-cross-race.json`.
+
+The broad union's higher recall comes with much wider coverage. At almost the same coverage as market Top5, the `reason_count >= 2` tier has lower retrospective recall. Therefore there is currently **no evidence that v3 adds predictive information over the market at comparable selectivity**.
+
+The only Top3 slot missed by the broad union was 8R third-place runner 7 レーヌマロン. No rule or threshold is added to capture that horse after the fact.
+
+### Frozen next-test version
+
+`configs/v3-freeze-20261013.json` freezes:
+- implementation blob SHAs;
+- data-gate rules;
+- candidate-union parameters;
+- evaluation metrics;
+- prohibition on further tuning with 2026-10-12 results.
+
+The next legitimate performance test must use races from a different future race day. Until then, v3 remains **not validated**.
