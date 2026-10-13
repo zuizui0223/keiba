@@ -140,6 +140,22 @@ class CovariateSourceAndAdjustmentTests(unittest.TestCase):
         m2=adjusted_race_icc(shifted,"weight")
         self.assertAlmostEqual(m["conditional_ICC_point"],m2["conditional_ICC_point"],places=5)
 
+    def test_stable_trainer_only_effect_can_masquerade_as_horse_intercept(self):
+        # A fabricated case with ZERO intrinsic horse intercept variance:
+        # all repeatability is due to fixed trainer allocations. The
+        # nuisance-adjusted estimator should reduce false horse variance.
+        generated=invented(horse_var=0.,rider_var=0.,trainer_var=.65,
+                           weight_slope=0.,seed=977)
+        common=compare(generated)["models"]
+        baseline=common["same_rows_unadjusted_race_HORSES"][
+            "conditional_observational_ICC_point_estimate"]
+        after=common["weight_jockey_trainer_license"]["conditional_ICC_point"]
+        self.assertGreater(baseline,.4)
+        self.assertLess(after,.3)
+        self.assertGreater(baseline-after,.2)
+        # Even this success is model calibration on MADE-UP animals;
+        # it says nothing about trainer causality in actual Thoroughbreds.
+
     def test_missing_documented_role_reduces_common_source_sample(self):
         data=copy.deepcopy(self.data)
         data[0]["jockey_license_id"]=None
