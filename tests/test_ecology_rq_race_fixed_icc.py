@@ -12,7 +12,8 @@ import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from ecology_rq_race_fixed_icc import (
-    race_fixed_reml, delete_date_sensitivity, analyze
+    race_fixed_reml, delete_date_sensitivity, analyze,
+    source_race_identity_shuffle_reference
 )
 
 
@@ -93,6 +94,19 @@ class ExactRaceFixedICC(unittest.TestCase):
                 moved[index]["horse_name"]=name
         f=race_fixed_reml(moved,4)
         self.assertLess(f["conditional_observational_ICC_point_estimate"],.3)
+
+    def test_actual_race_identity_shuffle_negative_control_is_only_exploratory(self):
+        result=source_race_identity_shuffle_reference(
+            self.positive,permutations=59,seed=20261013)
+        self.assertEqual(result["status"],
+                         "EXPLORATORY_RACE_CONDITIONED_HORSE_ID_REASSIGNMENT_REFERENCE")
+        self.assertEqual(result["valid_within_race_identity_shuffle_models"],59)
+        self.assertGreater(result["original_conditional_ICC"],.5)
+        self.assertLess(result["shuffle_reference_mean_conditional_ICC"],.25)
+        self.assertLess(result["fraction_shuffled_ICC_at_least_original"],.05)
+        self.assertTrue(result["this_fraction_is_not_confirmatory_p_value"])
+        import json
+        self.assertNotIn("INVENTED-HORSE",json.dumps(result))
 
     def test_insufficient_repeated_source_ids_results_in_hold(self):
         unique=copy.deepcopy(self.positive)
