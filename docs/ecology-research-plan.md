@@ -560,3 +560,54 @@ https://doi.org/10.1111/j.1469-185X.2010.00141.x.
 matched environmental repeated exposures
 and historical full opponent rosters with
 verified result measurements exist.
+
+
+## 2026-10-13: documented Weight, Jockey and Trainer adjustment
+
+The official RQ `GetHorsesForRace` source
+returns a registered numerical riding weight,
+original `Jockey/@Id` and `Trainer/@Id`
+license IDs. A new source-verified parser and
+race-orthonormal REML nuisance projection
+[`ecology_rq_covariate_icc.py`](../scripts/ecology_rq_covariate_icc.py)
+now compares **exactly the same 279 positive
+first-GPS HORSES-ID records** on race-fixed
+random horse intercept models with nested
+source covariates:
+
+| Fixed nuisances beyond original race FE | Conditional ICC (same 279 source rows) |
+| --- | ---: |
+| None | 0.503005 |
+| Riding weight | 0.509202 |
+| Weight + jockey licence ID | 0.513500 |
+| Weight + jockey + trainer licence IDs | **0.487447** |
+
+The 279-record complete-source stratum is
+much more selected than the original 523-record
+race-FE sample and 548 original positive-GPS
+source rows: valid registered Weight/Jockey/
+Trainer fields existed together in only 337
+original rows, and >=4 fully documented GPS
+rows/race gave 279. **Good kept 47.8%, Soft
+56.9%, Heavy 45.9%** of initial source
+GPS records, and 2026-04-04 had 21 original
+positive records but zero retained after
+complete-field race filtering.
+
+The source documents **45 observed horses
+with multiple jockey licence IDs but only
+1 with multiple trainer licences**, so
+stable horse/trainer combinations make
+their separate attribution confounded.
+The source API does not provide reliable
+horse age, independently certified actual
+riders/finishers, official horse-specific
+finish times, or true source GPS selection
+mechanisms.
+
+See [original source/completeness/model
+audit](ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md).
+Results are a **model-dependence sensitivity**,
+not a new independent confirmation of
+innate animal personality, H1, H2, natural
+selection, adapted behavior or horse genotype.
