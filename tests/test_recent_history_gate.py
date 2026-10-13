@@ -112,6 +112,16 @@ class RecentHistoryGateTests(unittest.TestCase):
         self.assertEqual(out['status'], 'DATA_HOLD')
         self.assertIn('missing_run_margin', out['reasons'])
 
+    def test_obstacle_recent_run_is_valid_history_surface(self):
+        run = dict(self.run)
+        run['surface'] = 'obstacle'
+        run['distance_m'] = 2880
+        run.pop('beaten_margin_s')
+        run['beaten_margin_missing_reason'] = 'source_does_not_publish_margin'
+        horse = self.horse(career_starts=1, recent_runs=[run])
+        out = validate_horse_history(horse, self.race_date, self.as_of)
+        self.assertEqual(out['status'], 'PASS')
+
     def test_race_holds_if_any_runner_fails(self):
         good = self.horse()
         bad = self.horse(number=2, name='欠測馬')
