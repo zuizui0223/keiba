@@ -26,6 +26,7 @@ from ecology_rq_thoroughbred_sectional_audit import fetch_official
 from ecology_rq_early_pace_repeatability import analyze as early_pace_persistence
 from ecology_rq_race_fixed_icc import analyze as race_fixed_conditional_icc
 from ecology_rq_covariate_icc import compare as documented_nuisance_icc
+from ecology_rq_role_missingness_audit import audit as role_missingness_audit
 
 
 # Locked BEFORE inspecting the seven additional dates' individual ID overlaps.
@@ -246,6 +247,13 @@ def compare(
     # cohort preserves comparability among nuisance-adjusted models.
     # Do NOT invent actual-rider status, horse ages or finish outcomes.
     nuisance_adjustment = documented_nuisance_icc(data,minimum_GPS=4)
+    # This audit uses the original 548 positive GPS source candidates,
+    # comparing FIRST-GPS timing within the same race between horses with
+    # vs without all three source role/weight fields. It is NOT a test
+    # of missing *outcome* times or DNF, and does not cure selection bias.
+    covariate_documentation_selectivity = role_missingness_audit(
+        data, min_race_telemetry=4,permutations=499,seed=20261013
+    )
     acceptable = {
         "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
         "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE",
@@ -287,6 +295,8 @@ def compare(
         "exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2":conditional_icc,
         "exploratory_official_Weight_Jockey_Trainer_adjusted_ICC_NOT_H1_or_H2":
             nuisance_adjustment,
+        "original_covariate_documentation_missingness_within_race_GPS_audit":
+            covariate_documentation_selectivity,
         "conditional_ICC_uses_absolute_first_interval_with_race_fixed_intercepts":True,
         "individual_pace_repeatability_analysed_only_as_race_relative_first_interval": True,
         "actual_confirmed_starter_and_finish_status_verified": False,
@@ -328,6 +338,7 @@ def main() -> None:
         "persistence_six_GPS_sensitivity": result["exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2"],
         "race_fixed_absolute_first_section_ICC": result["exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2"],
         "original_weight_jockey_trainer_ICC": result["exploratory_official_Weight_Jockey_Trainer_adjusted_ICC_NOT_H1_or_H2"],
+        "role_documentation_timing_selection": result["original_covariate_documentation_missingness_within_race_GPS_audit"],
     }, ensure_ascii=False))
 
 
