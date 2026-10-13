@@ -92,7 +92,11 @@ def validate_horse_history(horse, race_date, as_of, min_recent_runs=3,
         has_seconds = 'beaten_margin_s' in run
         has_text = (isinstance(run.get('beaten_margin_text'), str)
                     and bool(run['beaten_margin_text'].strip()))
-        if not has_seconds and not has_text:
+        has_missing_reason = (
+            isinstance(run.get('beaten_margin_missing_reason'), str)
+            and bool(run['beaten_margin_missing_reason'].strip())
+        )
+        if not has_seconds and not has_text and not has_missing_reason:
             reasons.append('missing_run_margin')
         if has_seconds:
             margin = run['beaten_margin_s']
