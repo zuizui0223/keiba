@@ -7,7 +7,7 @@
   "frozen_blobs": {
     "protocol": "cf818576d718f186e568604d42e7060aac39aa34",
     "classifier": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
-    "tests": "fd6f4cef161f9cab008b4b9a2bea60a1dff1fcbe",
+    "tests": "fd6f4c448f2e59d9e4b58b12886221d6cdb0f672",
     "holdout_wrapper": "4d60ac82b058d45f3c8f8d31a7d8417fd33e1687",
     "holdout_tests": "f15d07bce14bfeaa98d8dcfadec7252d6831ab42",
     "operations": "3e33262037172076744391cd21de660a4826caa6",
@@ -80,7 +80,7 @@
   },
   "holdout_start_rule": "The first eligible Kyoto race whose valid source capture, odds snapshot and pre-result freeze all satisfy the frozen contract after created_at_jst is holdout race 1. Every subsequent eligible Kyoto race must be attempted chronologically and recorded in the attempt ledger until 20 scored FROZEN races are accumulated.",
   "change_control": "Any threshold or rescue-logic change creates v3.2 or later and starts a new holdout window.",
-  "created_at_jst": "2026-10-13T14:09:15+09:00",
+  "created_at_jst": "2026-10-13T14:11:50+09:00",
   "integrity_note": "The frozen snapshot preparer records source-page hashes. The frozen holdout wrapper verifies preparer/classifier/wrapper SHAs, baseline quality tiers, race identity, active horse-number set, eligibility, and the 15-25 minute pre-post market window. Every eligible race is additionally recorded in the attempt ledger as FROZEN or PRE_RESULT_DATA_FAILURE. The formal evaluator requires the scored race sequence to match the first FROZEN attempts and applies p<=0.05, candidate fraction<=0.65, and freeze success rate>=0.80.",
   "eligibility": {
     "venue": "京都",
@@ -111,5 +111,6 @@
     "min_freeze_success_rate": 0.8,
     "early_stopping": false,
     "interim_formal_decision": false
-  }
+  },
+  "integrity_correction": "Corrected the candidate-channel test blob SHA before any holdout race was attempted; no scientific threshold, eligibility, or decision rule changed."
 }
