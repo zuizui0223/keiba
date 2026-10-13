@@ -1,0 +1,1032 @@
+{
+  "race": 7,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "race_id": "2608040507",
+  "start_jst": "2026-10-12T13:25:00+09:00",
+  "surface": "dirt",
+  "distance_m": 1900,
+  "class": "3歳以上1勝クラス",
+  "odds_observed_at_jst": "2026-10-12T12:35:59+09:00",
+  "odds_updated_at_jst": "2026-10-12T12:29:00+09:00",
+  "sources": [
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+      "kind": "win_odds",
+      "updated_at_jst": "2026-10-12T12:29:00+09:00"
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1",
+      "kind": "wide_odds",
+      "updated_at_jst": "2026-10-12T12:29:00+09:00"
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+      "kind": "course",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://www.jbis.or.jp/race/20261012/108/07/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106175/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105445/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023104476/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106566/",
+      "kind": "history",
+      "updated_at_jst": null
+    },
+    {
+      "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022104654/",
+      "kind": "history",
+      "updated_at_jst": null
+    }
+  ],
+  "horses": [
+    {
+      "number": 1,
+      "name": "ロックウイズユー",
+      "win_odds": 43.9,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート6戦で3着以内なし。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 17,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2022103143/",
+      "source_latest_run_date": "2026-08-15",
+      "recent_runs": [
+        {
+          "date": "2026-08-15",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 8,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2022103143/"
+        },
+        {
+          "date": "2026-08-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 4,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2022103143/"
+        },
+        {
+          "date": "2026-05-23",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 6,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2022103143/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 2,
+      "name": "アレンスター",
+      "win_odds": 5.8,
+      "kyoto_record": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "kyoto_distance_record": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "mark": "○",
+      "notes": [
+        "京都ダート2戦で1勝・2着1回。2026年2月7日京都ダ1800m新馬1着、2着に1.4秒差。",
+        "2026年2月15日京都ダ1900m・1勝クラス2着、0.8秒差。",
+        "2026年4月5日中山ダ1800m・1勝クラス14着、2.4秒差以来、約6か月ぶり。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023106175/"
+      ],
+      "career_starts": 3,
+      "history_source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud102023106175%2FC3",
+      "source_latest_run_date": "2026-04-05",
+      "recent_runs": [
+        {
+          "date": "2026-04-05",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 14,
+          "beaten_margin_s": 2.4,
+          "source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud102023106175%2FC3"
+        },
+        {
+          "date": "2026-02-15",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 2,
+          "beaten_margin_s": 0.8,
+          "source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud102023106175%2FC3"
+        },
+        {
+          "date": "2026-02-07",
+          "class": "3歳新馬",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud102023106175%2FC3"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 3,
+      "name": "マジックブルー",
+      "win_odds": 67.1,
+      "kyoto_record": [
+        0,
+        2,
+        0,
+        6
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート8戦で2着2回。近3走7着・10着・7着で、過去の京都連対だけで中心視しない。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 16,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2021103682/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 7,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2021103682/"
+        },
+        {
+          "date": "2026-08-30",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 10,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2021103682/"
+        },
+        {
+          "date": "2026-04-04",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 7,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2021103682/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 4,
+      "name": "ハンドフル",
+      "win_odds": 9.6,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート0戦。京都不振ではなく未経験。",
+        "2026年8月21日名古屋ダ2000m1着、9月1日同距離2着0.1秒差。地方の成績を中央の能力比較へ直接転用しない。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 11,
+      "career_starts_scope": "JRA_and_NAR_pre_target",
+      "history_source_url": "https://www.jbis.or.jp/horse/0001369837/record/",
+      "source_latest_run_date": "2026-09-01",
+      "recent_runs": [
+        {
+          "date": "2026-09-01",
+          "class": "地方B1b",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 2,
+          "beaten_margin_s": 0.1,
+          "source_url": "https://www.jbis.or.jp/horse/0001369837/record/"
+        },
+        {
+          "date": "2026-08-21",
+          "class": "地方1a",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://www.jbis.or.jp/horse/0001369837/record/"
+        },
+        {
+          "date": "2026-07-15",
+          "class": "地方重賞",
+          "surface": "dirt",
+          "distance_m": 1700,
+          "finish": 3,
+          "beaten_margin_s": 1.2,
+          "source_url": "https://www.jbis.or.jp/horse/0001369837/record/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 5,
+      "name": "ゴールドコット",
+      "win_odds": 11,
+      "kyoto_record": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "mark": "▲",
+      "notes": [
+        "2026年5月16日京都ダ1800m未勝利1着、0.1秒差勝ち。5月10日京都ダ1900m未勝利5着、0.6秒差。",
+        "2026年9月21日阪神ダ2000m・1勝クラス3着、0.6秒差。休養明け好走から今回2走目。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/"
+      ],
+      "career_starts": 4,
+      "history_source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 3,
+          "beaten_margin_s": 0.6,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/"
+        },
+        {
+          "date": "2026-05-16",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/"
+        },
+        {
+          "date": "2026-05-10",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 5,
+          "beaten_margin_s": 0.6,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 6,
+      "name": "タイセイサーブル",
+      "win_odds": 34.6,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート0戦。京都適性は未確認。近3走はいずれも13着以下。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 6,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/2023104674",
+      "source_latest_run_date": "2026-09-06",
+      "recent_runs": [
+        {
+          "date": "2026-09-06",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 15,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/2023104674"
+        },
+        {
+          "date": "2026-08-15",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 13,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/2023104674"
+        },
+        {
+          "date": "2026-05-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 13,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/2023104674"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 7,
+      "name": "ドメイン",
+      "win_odds": 17.8,
+      "kyoto_record": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "kyoto_distance_record": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "mark": "☆",
+      "notes": [
+        "2026年1月10日京都ダ1900m未勝利3着、0.1秒差。1月25日同条件未勝利1着、0.1秒差勝ち。",
+        "2026年4月25日京都ダ1800m・1勝クラス9着、1.5秒差。9月21日阪神ダ2000m・1勝クラス5着、1.2秒差。",
+        "京都同1900mの好走は未勝利での実績。昇級後の能力比較は別途必要。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023105445/"
+      ],
+      "career_starts": 9,
+      "history_source_url": "https://www.keibalab.jp/db/horse/2023105445/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 5,
+          "beaten_margin_s": 1.2,
+          "source_url": "https://www.keibalab.jp/db/horse/2023105445/"
+        },
+        {
+          "date": "2026-09-06",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 11,
+          "beaten_margin_s": 2.1,
+          "source_url": "https://www.keibalab.jp/db/horse/2023105445/"
+        },
+        {
+          "date": "2026-08-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 5,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://www.keibalab.jp/db/horse/2023105445/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 8,
+      "name": "エアフォースワン",
+      "win_odds": 64,
+      "kyoto_record": [
+        0,
+        0,
+        2,
+        1
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート3戦で3着2回。過去の京都好走歴はあるが直近3走7着・4着・8着。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 33,
+      "history_source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2019103506/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 8,
+          "beaten_margin_s": 1,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2019103506/"
+        },
+        {
+          "date": "2026-08-22",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 4,
+          "beaten_margin_s": 1.5,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2019103506/"
+        },
+        {
+          "date": "2026-08-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 7,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2019103506/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 9,
+      "name": "エイユーファイヤー",
+      "win_odds": 11.3,
+      "kyoto_record": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "kyoto_distance_record": null,
+      "mark": "△",
+      "notes": [
+        "2026年1月11日京都ダ1800m・1勝クラス2着、0.1秒差。2025年2月10日京都ダ1800m未勝利3着、0.3秒差。",
+        "2026年9月21日阪神ダ2000m・1勝クラス4着、0.6秒差。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/"
+      ],
+      "career_starts": 20,
+      "history_source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 4,
+          "beaten_margin_s": 0.6,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/"
+        },
+        {
+          "date": "2026-09-06",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 7,
+          "beaten_margin_s": 0.9,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/"
+        },
+        {
+          "date": "2026-08-08",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 5,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 10,
+      "name": "エクストラプッシュ",
+      "win_odds": 17.5,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート3戦で3着以内なし。",
+        "2026年9月19日中山ダ2400m・1勝クラス2着、タイム差なし。8月2日中京ダ1900mは13着、2.3秒差。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 11,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2023105329/",
+      "source_latest_run_date": "2026-09-19",
+      "recent_runs": [
+        {
+          "date": "2026-09-19",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2400,
+          "finish": 2,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023105329/"
+        },
+        {
+          "date": "2026-08-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 13,
+          "beaten_margin_s": 2.3,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023105329/"
+        },
+        {
+          "date": "2026-05-17",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 2100,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023105329/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 11,
+      "name": "カイラーサ",
+      "win_odds": 4.1,
+      "kyoto_record": [
+        1,
+        0,
+        0,
+        3
+      ],
+      "kyoto_distance_record": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "mark": "",
+      "notes": [
+        "2026年5月10日京都ダ1900m未勝利1着、0.2秒差勝ち。5月24日同距離・1勝クラス11着、2.3秒差。1月10日同距離未勝利14着、3.8秒差。",
+        "2026年8月2日中京ダ1900m・1勝クラス2着、0.2秒差から9月21日阪神ダ2000m13着、4.6秒差。",
+        "京都に勝ち鞍があっても近走の振れ幅が大きく、人気に対して過信しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2023104476/"
+      ],
+      "career_starts": 7,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2023104476/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 13,
+          "beaten_margin_s": 4.6,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023104476/"
+        },
+        {
+          "date": "2026-08-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 2,
+          "beaten_margin_s": 0.2,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023104476/"
+        },
+        {
+          "date": "2026-05-24",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 11,
+          "beaten_margin_s": 2.3,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023104476/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 12,
+      "name": "ダイシンレアレア",
+      "win_odds": 7.6,
+      "kyoto_record": [
+        0,
+        2,
+        1,
+        4
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "mark": "△",
+      "notes": [
+        "京都ダートの2着2回・3着1回はいずれもダ1800m未勝利。",
+        "2026年1月18日京都ダ1900m・1勝クラス7着、0.8秒差。",
+        "直近3走はダ2400mで3着・2着・2着。今回500m短縮で、近走の安定を同距離適性とは区別する。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2022106566/"
+      ],
+      "career_starts": 20,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2022106566/",
+      "source_latest_run_date": "2026-08-23",
+      "recent_runs": [
+        {
+          "date": "2026-08-23",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2400,
+          "finish": 2,
+          "beaten_margin_s": 0.1,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2022106566/"
+        },
+        {
+          "date": "2026-07-12",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2400,
+          "finish": 2,
+          "beaten_margin_s": 0.5,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2022106566/"
+        },
+        {
+          "date": "2026-04-18",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2400,
+          "finish": 3,
+          "beaten_margin_s": 1.7,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2022106566/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 13,
+      "name": "リオンサーガ",
+      "win_odds": 77.3,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート3戦で3着以内なし。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 7,
+      "history_source_url": "https://www.keibalab.jp/db/horse/2023101586/",
+      "source_latest_run_date": "2026-09-19",
+      "recent_runs": [
+        {
+          "date": "2026-09-19",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2400,
+          "finish": 7,
+          "beaten_margin_s": 0.8,
+          "source_url": "https://www.keibalab.jp/db/horse/2023101586/"
+        },
+        {
+          "date": "2026-05-24",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 14,
+          "beaten_margin_s": 2.6,
+          "source_url": "https://www.keibalab.jp/db/horse/2023101586/"
+        },
+        {
+          "date": "2026-05-02",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 2100,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://www.keibalab.jp/db/horse/2023101586/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 14,
+      "name": "セルリアンゲーゲン",
+      "win_odds": 65.5,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート0戦。京都芝の出走とダート適性を混同しない。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 12,
+      "career_starts_scope": "JRA_and_NAR_pre_target",
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2021107022/",
+      "source_latest_run_date": "2026-05-23",
+      "recent_runs": [
+        {
+          "date": "2026-05-23",
+          "class": "1勝クラス",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 14,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2021107022/"
+        },
+        {
+          "date": "2026-03-25",
+          "class": "地方C14",
+          "surface": "dirt",
+          "distance_m": 1500,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2021107022/"
+        },
+        {
+          "date": "2026-03-09",
+          "class": "地方C23",
+          "surface": "dirt",
+          "distance_m": 1500,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2021107022/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 15,
+      "name": "ジーティーアメリカ",
+      "win_odds": 6.7,
+      "kyoto_record": [
+        0,
+        0,
+        1,
+        4
+      ],
+      "kyoto_distance_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mark": "◎",
+      "notes": [
+        "京都ダートは5戦で3着1回。全戦績に京都ダ1900m出走なし。",
+        "2026年2月15日京都ダ1800m・1勝クラス3着、1.2秒差。4月26日同条件4着、1.3秒差。",
+        "2026年9月21日阪神ダ2000m・1勝クラス2着、0.3秒差。今回出走するゴールドコット・エイユーファイヤーに先着。京都巧者ではなく近走内容を重視した評価。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/",
+        "https://sports.yahoo.co.jp/keiba/directory/horse/2022104654/"
+      ],
+      "career_starts": 15,
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022104654/",
+      "source_latest_run_date": "2026-09-21",
+      "recent_runs": [
+        {
+          "date": "2026-09-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 2,
+          "beaten_margin_s": 0.3,
+          "source_url": "https://db.netkeiba.com/horse/result/2022104654/"
+        },
+        {
+          "date": "2026-06-20",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 14,
+          "beaten_margin_s": 3.8,
+          "source_url": "https://db.netkeiba.com/horse/result/2022104654/"
+        },
+        {
+          "date": "2026-04-26",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 4,
+          "beaten_margin_s": 1.3,
+          "source_url": "https://db.netkeiba.com/horse/result/2022104654/"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    },
+    {
+      "number": 16,
+      "name": "タニセンゴールド",
+      "win_odds": 18.9,
+      "kyoto_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "kyoto_distance_record": null,
+      "mark": "",
+      "notes": [
+        "京都ダート2戦で3着以内なし。",
+        "2026年8月8日中京ダ1900m未勝利1着、0.1秒差勝ち。今回昇級初戦。",
+        "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+      ],
+      "evidence_urls": [
+        "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+        "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+        "https://www.jbis.or.jp/race/20261012/108/07/"
+      ],
+      "career_starts": 4,
+      "history_source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104057%2F93",
+      "source_latest_run_date": "2026-08-08",
+      "recent_runs": [
+        {
+          "date": "2026-08-08",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104057%2F93"
+        },
+        {
+          "date": "2026-06-13",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 3,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104057%2F93"
+        },
+        {
+          "date": "2026-05-31",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 4,
+          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_history",
+          "source_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104057%2F93"
+        }
+      ],
+      "history_checked_at_jst": "2026-10-13T10:17:11+09:00"
+    }
+  ],
+  "tickets": [
+    {
+      "type": "wide",
+      "horses": [
+        2,
+        15
+      ],
+      "odds_low": 6.2,
+      "odds_high": 6.8,
+      "updated_at_jst": "2026-10-12T12:29:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1",
+      "priority": false
+    },
+    {
+      "type": "wide",
+      "horses": [
+        5,
+        15
+      ],
+      "odds_low": 7.2,
+      "odds_high": 7.8,
+      "updated_at_jst": "2026-10-12T12:29:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1",
+      "priority": false
+    }
+  ],
+  "v3_history_migration": {
+    "derived_from": "data/2026-10-12/kyoto_07.json",
+    "derived_from_blob_sha": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
+    "checked_at_jst": "2026-10-13T10:17:11+09:00",
+    "policy": "docs/v3-decision-policy-draft.md",
+    "note": "Historical pre-race marks remain unchanged. JRA, NAR and local races are retained when they are truly the most recent starts."
+  }
+}
