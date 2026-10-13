@@ -104,7 +104,7 @@ class ExternalSiteLockTests(unittest.TestCase):
         self.assertEqual(ids["distinct_original_IDs_after_name_identity_screen"],24)
         self.assertEqual(ids["horse_IDs_in_2plus_source_dates"],24)
         self.assertEqual(ids["HORSES_IDs_with_4plus_source_starts"],24)
-        self.assertFalse(ids["not_confirmed_complete_entrant_or_finisher_population"])
+        self.assertTrue(ids["not_confirmed_complete_entrant_or_finisher_population"])
 
     def test_external_original_source_model_runs_but_no_h1_or_h2(self):
         result=compare(soap=fake_soap,gps=fake_gps,on_source_error="raise")
