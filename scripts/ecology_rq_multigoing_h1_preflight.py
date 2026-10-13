@@ -46,8 +46,9 @@ SELECTED = {
     },
 }
 VENUE = "Ladbrokes Cannon Park"
-MAX_RACES_PER_DAY = 4
+MAX_RACES_PER_DAY = 8
 MAX_DAYS = 5
+ALL_EIGHT_RACES = tuple(range(1, 9))
 
 
 def ground_class(label: str | None) -> str:
@@ -125,11 +126,14 @@ def first_section_table(raw: bytes, date_iso: str) -> dict[tuple[int, str], dict
     return table
 
 
-def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official):
+def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
+                  race_selection: tuple[int,...] | None = None):
     if day not in SELECTED:
         raise ValueError("HOLD_DAY_NOT_IN_LOCKED_EXPOSURE_SAMPLE")
     config = SELECTED[day]
-    selected = config["races"]
+    selected = tuple(race_selection) if race_selection is not None else config["races"]
+    if selected not in (config["races"], ALL_EIGHT_RACES):
+        raise ValueError("HOLD_UNAPPROVED_RACE_SELECTION")
     if len(selected) > MAX_RACES_PER_DAY:
         raise ValueError("HOLD_TOO_MANY_RACES_PER_DATE")
     meeting_xml, _, meeting_sha = soap("GetMeetingsForDate", {"meetingDate": day})
@@ -244,13 +248,21 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official):
     return info, good
 
 
-def comparison(*, soap=request_xml, gps=fetch_official):
+def comparison(*, soap=request_xml, gps=fetch_official,
+               scope: str = "focused_four"):
+    if scope not in ("focused_four", "extended_eight"):
+        raise ValueError("HOLD_UNAPPROVED_EXPOSURE_SCOPE")
     if len(SELECTED) != MAX_DAYS:
         raise ValueError("HOLD_UNFROZEN_COHORT_SIZE")
     days = {}
     rows = []
+    selection = {
+        day: (cfg["races"] if scope == "focused_four" else ALL_EIGHT_RACES)
+        for day, cfg in SELECTED.items()
+    }
     for day in SELECTED:
-        info, selected = audit_one_day(day, soap=soap, gps=gps)
+        info, selected = audit_one_day(
+            day, soap=soap, gps=gps, race_selection=selection[day])
         days[day] = info
         rows += selected
     per_id = defaultdict(list)
@@ -360,10 +372,12 @@ def comparison(*, soap=request_xml, gps=fetch_official):
     return {
         "status": "REAL_EQUINE_MULTIGOING_FEASIBILITY_NOT_H1_H2_EVIDENCE",
         "source_publisher": "Racing Queensland original HORSES IDs and GPS",
-        "design_frozen_before_statistical_effect_testing": True,
+        "design_frozen_before_statistical_effect_testing": scope == "focused_four",
+        "race_selection_scope": scope,
+        "exploratory_full_race_expansion_following_initial_design_audit": scope == "extended_eight",
         "selected_dates": list(SELECTED),
         "race_number_selection_per_date": {
-            day: list(cfg["races"]) for day, cfg in SELECTED.items()
+            day: list(selection[day]) for day in SELECTED
         },
         "going_categories_from_official_API_not_numeric_assumed": True,
         "source_ground_metadata_conflicts": unknown_counts,
@@ -381,7 +395,8 @@ def comparison(*, soap=request_xml, gps=fetch_official):
             "True horse finish times and official early-running order are not available from this source pairing.",
             "Non-good includes Soft and Heavy only for simple overlap screens; their effects need separate biologically meaningful estimates.",
             "Exact distance, first-section measurement marker and race class are required for strict within-horse support.",
-            "Selected five dates and four race numbers each are a purposive technical pilot, not a representative temporal or ecological sample.",
+            "Five dates and four preselected race numbers each in the original focused pilot; exploratory follow-on includes numbers 1-8 after inspecting design overlap.",
+            "Neither the focused pilot nor subsequent eight-race expansion is a random ecological population sample or preregistered effect test.",
             "Even repeated ground contrasts can reflect selective nomination, course/weather/class/jockey and developmental changes.",
             "No published individual horse identities, names, sectional source rows, or derived performance predictions.",
         ],
@@ -391,8 +406,9 @@ def comparison(*, soap=request_xml, gps=fetch_official):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--scope", choices=("focused_four", "extended_eight"), default="focused_four")
     args = p.parse_args()
-    out = comparison()
+    out = comparison(scope=args.scope)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(out, ensure_ascii=False, indent=2) + "\n",
@@ -400,6 +416,7 @@ def main():
     )
     print(json.dumps({
         "status": out["status"],
+        "scope":out["race_selection_scope"],
         "going": out["overall_ground_labels_of_eligible_rows"],
         "source_ground_metadata_conflicts": out["source_ground_metadata_conflicts"],
         "support": out["within_horse_support"],
