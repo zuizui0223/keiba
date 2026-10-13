@@ -105,6 +105,16 @@ class OfficialIDCrosswalkTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,"HOLD_NONSTARTER_FINISH_STATUS"):
                 official_roster_rows(store_roster(temp,rows))
 
+    def test_real_vendor_mmdd_header_crosswalk_uses_verified_iso_date(self):
+        from ecology_rq_official_id_crosswalk import sections_in_memory
+        raw = ("""Date,RaceNumber,2/16/2026 12:00:00 AM;2026-02-16 Ladbrokes Cannon Park;Test race;00:00:57.263;CRNS_950m_TRACK
+16/02/2026,1,Fictional Horse;1;150;18.50;00:00:10.33;350;18.6;00:00:10.55
+""").encode("utf-8")
+        rows=sections_in_memory(raw)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]["race_date"],"2026-02-16")
+        self.assertTrue(rows[0]["gps_positive"])
+
     def test_no_invented_fuzzy_name_matches(self):
         rows=roster()
         rows[0]["horse_name"]="AlphaHorse"  # no space, must remain unmatched
