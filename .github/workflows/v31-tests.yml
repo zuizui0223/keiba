@@ -1,0 +1,35 @@
+name: v3.1 holdout tests
+
+on:
+  pull_request:
+    paths:
+      - "scripts/v31_candidate_channels.py"
+      - "scripts/v31_holdout.py"
+      - "tests/test_v31_candidate_channels.py"
+      - "tests/test_v31_holdout.py"
+      - "docs/v31-candidate-generation-protocol.md"
+      - "docs/v31-holdout-freeze.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/v31_candidate_channels.py"
+      - "scripts/v31_holdout.py"
+      - "tests/test_v31_candidate_channels.py"
+      - "tests/test_v31_holdout.py"
+
+permissions:
+  contents: read
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run v3.1 unit tests
+        run: |
+          python -m unittest tests.test_v31_candidate_channels tests.test_v31_holdout -v
