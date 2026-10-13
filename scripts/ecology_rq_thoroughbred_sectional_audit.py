@@ -55,6 +55,18 @@ APPROVED = {
     "20260409-cairns": "20260409_Ladbrokes_Cannon_Park_T.csv",
     "20260723-cairns": "20260723_Ladbrokes_Cannon_Park_T.csv",
     "20260828-cairns": "20260828_Ladbrokes_Cannon_Park_T.csv",
+    "20260103-eagle-farm": "20260103_Eagle_Farm_T.csv",
+    "20260214-eagle-farm": "20260214_Eagle_Farm_T.csv",
+    "20260307-eagle-farm": "20260307_Eagle_Farm_T.csv",
+    "20260418-eagle-farm": "20260418_Eagle_Farm_T.csv",
+    "20260502-eagle-farm": "20260502_Eagle_Farm_T.csv",
+    "20260613-eagle-farm": "20260613_Eagle_Farm_T.csv",
+    "20260725-eagle-farm": "20260725_Eagle_Farm_T.csv",
+    "20260808-eagle-farm": "20260808_Eagle_Farm_T.csv",
+    "20260829-eagle-farm": "20260829_Eagle_Farm_T.csv",
+    "20260919-eagle-farm": "20260919_Eagle_Farm_T.csv",
+    "20261003-eagle-farm": "20261003_Eagle_Farm_T.csv",
+    "20261010-eagle-farm": "20261010_Eagle_Farm_T.csv",
 }
 MAX_BYTES = 1_800_000
 DURATION = re.compile(r"^(?P<hours>\d{2}):(?P<minutes>[0-5]\d):(?P<seconds>[0-5]\d(?:\.\d{1,3})?)$")
