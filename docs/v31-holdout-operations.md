@@ -221,11 +221,15 @@ backdating the freeze.
 python -B scripts/v31_holdout.py register \
   --ledger docs/v31-holdout-ledger.json \
   --freeze holdout/v31/001/freeze.json \
+  --result holdout/v31/001/result.json \
   --score holdout/v31/001/score.json \
+  --attempt-ledger docs/v31-holdout-attempt-ledger.json \
   --output /tmp/v31-holdout-ledger.json
 ```
 
 Review the generated ledger, then replace `docs/v31-holdout-ledger.json` in a separate commit.
+
+The register command performs mandatory independent post-race validation of the immutable freeze, official-result input, score arithmetic, SHA-256 file references, and the corresponding pre-registered FROZEN attempt. It refuses registration if any value or hash differs; running the validator separately is useful for diagnostics but is not a substitute for this gate.
 
 The register command rejects duplicate race IDs, chronological backfilling and entries beyond the 20-race target.
 
