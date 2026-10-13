@@ -25,6 +25,7 @@ from ecology_rq_single_race_id_probe import request_xml
 from ecology_rq_thoroughbred_sectional_audit import fetch_official
 from ecology_rq_early_pace_repeatability import analyze as early_pace_persistence
 from ecology_rq_race_fixed_icc import analyze as race_fixed_conditional_icc
+from ecology_rq_covariate_icc import compare as documented_nuisance_icc
 
 
 # Locked BEFORE inspecting the seven additional dates' individual ID overlaps.
@@ -209,6 +210,11 @@ def compare(
                     audit["candidate_rows_with_same_day_duplicate_gps_name"],
                 "official_IDs_listed_in_multiple_races_same_day":
                     audit["official_ids_listed_more_than_once_on_date"],
+                "official_entrant_covariate_coverage":
+                    audit["official_entrant_covariate_field_coverage"],
+                "GPS_matched_positive_with_all_documented_nuisance_fields":
+                    audit["matched_positive_GPS_with_complete_weight_jockey_trainer"],
+                "horse_age_still_NOT_available_from_HORSES_API":True,
                 "source_hashes": audit["source_hashes"],
                 "all_horse_names_ids_raw_intervals_withheld": True,
             }
@@ -235,6 +241,11 @@ def compare(
     # estimate with exact fixed race-intercept elimination. Never fit
     # an H1 ground random slope or H2 competition interaction here.
     conditional_icc = race_fixed_conditional_icc(data)
+    # Same original HORSES/first-GPS records, with Weight and licensed
+    # Jockey/Trainer from GetHorsesForRace. Separate common complete-case
+    # cohort preserves comparability among nuisance-adjusted models.
+    # Do NOT invent actual-rider status, horse ages or finish outcomes.
+    nuisance_adjustment = documented_nuisance_icc(data,minimum_GPS=4)
     acceptable = {
         "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
         "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE",
@@ -274,6 +285,8 @@ def compare(
         "exploratory_early_pace_ID_persistence_NOT_H1_or_H2": early_pace,
         "exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2": early_pace_six,
         "exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2":conditional_icc,
+        "exploratory_official_Weight_Jockey_Trainer_adjusted_ICC_NOT_H1_or_H2":
+            nuisance_adjustment,
         "conditional_ICC_uses_absolute_first_interval_with_race_fixed_intercepts":True,
         "individual_pace_repeatability_analysed_only_as_race_relative_first_interval": True,
         "actual_confirmed_starter_and_finish_status_verified": False,
@@ -314,6 +327,7 @@ def main() -> None:
         "individual_pace_persistence": result["exploratory_early_pace_ID_persistence_NOT_H1_or_H2"],
         "persistence_six_GPS_sensitivity": result["exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2"],
         "race_fixed_absolute_first_section_ICC": result["exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2"],
+        "original_weight_jockey_trainer_ICC": result["exploratory_official_Weight_Jockey_Trainer_adjusted_ICC_NOT_H1_or_H2"],
     }, ensure_ascii=False))
 
 
