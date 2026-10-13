@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from v31_prepare_snapshot import prepare
+from v31_prepare_snapshot import prepare, git_blob_sha
 
 CARD = """\
 |  | 1 | アルファ  **4.2**(2番人気)  500kg(+4)  owner | 牡3/鹿  57.0kg  武 豊 | 2026年9月1日  阪神  1勝クラス  2着  12頭1番2番人気  武 豊  57.0kg  1800ダ  1:52.0  良  496kg  3F 37.0  ベータ(0.2) | 2026年7月1日  京都  未勝利  1着  10頭1番1番人気  武 豊  57.0kg  1800ダ  1:53.0  良  492kg  3F 37.5  ガンマ(0.1) |  |  |
@@ -46,6 +46,14 @@ class PrepareSnapshotTests(unittest.TestCase):
                 "3": {"url": "https://jra/horse3", "text": "unused"},
             },
         }
+
+    def test_preparer_git_blob_sha_uses_canonical_nul_delimiter(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "blob"
+            p.write_bytes(b"abc")
+            expected = hashlib.sha1(b"blob 3\0abc").hexdigest()
+            self.assertEqual(git_blob_sha(p), expected)
 
     def test_builds_race_input_odds_and_meta(self):
         race, odds, meta = prepare(self.fixture(), "2026-10-17T12:55:00+09:00")
