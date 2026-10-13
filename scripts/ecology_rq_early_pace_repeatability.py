@@ -107,7 +107,8 @@ def pairs(rows: list[dict], *, strict_class: bool) -> dict:
     per_horse_stratum = []
     horses = set()
     obs_pairs = 0
-    for (hid, *_), items in groups.items():
+    for key, items in groups.items():
+        hid=key[0]
         days = {v["day"] for v in items}
         if len(days) < 2 or len(days) != len(items):
             continue
@@ -246,6 +247,15 @@ def heldout_early_pace(
 
 def analyze(rows: list[dict], permutations: int = 299) -> dict:
     eligible, q=prepare(rows)
+    if len(eligible) < 20 or len({r["day"] for r in eligible}) < 6:
+        return {
+            "status":"HOLD_INSUFFICIENT_POSITIVE_GPS_RACES_OR_DATES_FOR_PERSISTENCE",
+            "data_readiness":q,
+            "not_yet_standard_ICC_or_random_slope_variance":True,
+            "independent_real_horse_effect_supported_H1":False,
+            "independent_real_horse_effect_supported_H2":False,
+            "no_individual_IDs_or_outcomes_exported":True,
+        }
     clean_ids = defaultdict(set)
     for row in eligible:
         clean_ids[row["horse_id"]].add(row["horse_name"])
