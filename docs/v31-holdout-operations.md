@@ -167,6 +167,25 @@ Review the generated ledger, then replace `docs/v31-holdout-ledger.json` in a se
 
 The register command rejects duplicate race IDs, chronological backfilling and entries beyond the 20-race target.
 
+## Formal evaluation after race 20
+
+After exactly 20 scored eligible races, run:
+
+```bash
+python -B scripts/v31_evaluate_holdout.py \
+  --ledger docs/v31-holdout-ledger.json \
+  --contract docs/v31-holdout-decision-contract.json
+```
+
+The evaluator performs the preregistered one-sided exact stratified random-addition rescue test. It also checks the overall candidate-fraction ceiling.
+
+Formal `PROMOTE` requires both:
+
+- exact one-sided p <= 0.05;
+- overall candidate fraction <= 0.65.
+
+Before 20 scored races the evaluator returns `INCOMPLETE`; interim statistics cannot trigger promotion or threshold changes.
+
 ## No tuning during holdout
 
 Do not modify M/C1/U/Q1/K1 thresholds or the class-aware rescue rule during the 20 eligible races.
