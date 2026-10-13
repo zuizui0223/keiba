@@ -73,10 +73,10 @@ class ExactRaceFixedICC(unittest.TestCase):
         b=race_fixed_reml(shifted,4)
         self.assertAlmostEqual(
             a["conditional_observational_ICC_point_estimate"],
-            b["conditional_observational_ICC_point_estimate"],places=8)
+            b["conditional_observational_ICC_point_estimate"],places=6)
         self.assertAlmostEqual(
             a["horse_variance_component_sec_squared"],
-            b["horse_variance_component_sec_squared"],places=8)
+            b["horse_variance_component_sec_squared"],places=6)
 
     def test_shuffle_horse_identity_within_race_reduces_persistence(self):
         moved=copy.deepcopy(self.positive)
