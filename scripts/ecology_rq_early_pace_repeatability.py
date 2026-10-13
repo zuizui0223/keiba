@@ -245,12 +245,16 @@ def heldout_early_pace(
     }
 
 
-def analyze(rows: list[dict], permutations: int = 299) -> dict:
-    eligible, q=prepare(rows)
+def analyze(
+    rows: list[dict], permutations: int = 299,
+    min_race_telemetry: int = 4,
+) -> dict:
+    eligible, q=prepare(rows,min_race_telemetry=min_race_telemetry)
     if len(eligible) < 20 or len({r["day"] for r in eligible}) < 6:
         return {
             "status":"HOLD_INSUFFICIENT_POSITIVE_GPS_RACES_OR_DATES_FOR_PERSISTENCE",
             "data_readiness":q,
+            "minimum_race_positive_GPS_peer_coverage":min_race_telemetry,
             "not_yet_standard_ICC_or_random_slope_variance":True,
             "independent_real_horse_effect_supported_H1":False,
             "independent_real_horse_effect_supported_H2":False,
@@ -269,6 +273,7 @@ def analyze(rows: list[dict], permutations: int = 299) -> dict:
         "measured_target":"seconds to first official GPS marker MINUS mean seconds of other timed GPS horses in race",
         "quantity":"race-relative FIRST SECTION timing persistence, not absolute focal speed",
         "data_readiness":q,
+        "minimum_race_positive_GPS_peer_coverage":min_race_telemetry,
         "distance_first_marker_consistent": {
             "pair_product":pairs(eligible,strict_class=False),
             "permutation":randomization_reference(
