@@ -135,6 +135,13 @@ class ExactRaceFixedICC(unittest.TestCase):
                          "EXPLORATORY_REAL_THOROUGHBRED_RACE_FE_HORSE_RE_ICC_DIAGNOSTIC")
         self.assertTrue(r["not_H1_or_H2_or_causal_or_heritability"])
         self.assertTrue(r["requires_confirmed_starter_roster_true_individual_results_and_jockey_weight_adjustment"])
+        markers=r["first_section_marker_sensitivity"]
+        self.assertEqual(set(markers),{"100.0","150.0","200.0","250.0"})
+        self.assertAlmostEqual(markers["150.0"]["conditional_observational_ICC_point_estimate"],
+                               r["all_races_at_least_four_timed_horses"]["conditional_observational_ICC_point_estimate"],
+                               places=8)
+        self.assertEqual(markers["250.0"]["status"],
+                         "HOLD_NO_ORIGINAL_FIRST_SECTION_ROWS_IN_THIS_MARKER_STRATUM")
         import json
         result=json.dumps(r)
         self.assertNotIn("INVENTED-HORSE",result)
