@@ -62,9 +62,9 @@ def official_covariates(root) -> tuple[dict[str,dict],dict]:
             raise ValueError("HOLD_AMBIGUOUS_LICENSE_ELEMENT")
         jid=attr(rider[0],"Id") if rider else None
         tid=attr(trainer[0],"Id") if trainer else None
-        if jid and not jid.isdecimal():
+        if jid and (not jid.isdecimal() or int(jid)==0):
             jid=None
-        if tid and not tid.isdecimal():
+        if tid and (not tid.isdecimal() or int(tid)==0):
             tid=None
         raw=value(node,"Weight")
         kg=None
@@ -97,7 +97,15 @@ def official_covariates(root) -> tuple[dict[str,dict],dict]:
 def _complete_sample(rows:list[dict], min_gps:int=4):
     selected=[]
     reasons=Counter()
+    by_ground_candidates=Counter()
+    by_ground_complete=Counter()
+    by_date_candidates=Counter()
+    by_date_complete=Counter()
     for r in rows:
+        ground=str(r.get("ground") or "UNKNOWN")
+        day=str(r.get("day") or "UNKNOWN")
+        by_ground_candidates[ground]+=1
+        by_date_candidates[day]+=1
         try:
             kg=float(r.get("weight_kg"))
         except (ValueError,TypeError):
@@ -113,6 +121,8 @@ def _complete_sample(rows:list[dict], min_gps:int=4):
             reasons["missing_trainer_licence"]+=1
             continue
         selected.append(r)
+        by_ground_complete[ground]+=1
+        by_date_complete[day]+=1
     if not selected:
         return [],{"status":"HOLD_NO_COMPLETE_OFFICIAL_ROLE_AND_WEIGHT_SOURCE_ROWS",
                     "source_candidates":len(rows),"row_exclusions":dict(reasons)}
@@ -120,6 +130,20 @@ def _complete_sample(rows:list[dict], min_gps:int=4):
     valid={(r["day"],r["race_number"],r["horse_id"]) for r in relative}
     trimmed=[r for r in selected
              if (r["day"],r["race_number"],r["horse_id"]) in valid]
+    by_ground_kept=Counter(str(r.get("ground") or "UNKNOWN") for r in trimmed)
+    by_date_kept=Counter(str(r.get("day") or "UNKNOWN") for r in trimmed)
+    # Source attrition can differ substantially between going categories
+    # and dates, so baseline ICC changes after filtering are NOT an
+    # inferential comparison with the full source population.
+    def attrition_rates(counts,total,after_field):
+        return {str(label):{
+            "source_positive_first_GPS_rows":count,
+            "all_three_documented_covariate_rows":int(total[label]),
+            "after_fully_documented_race_min4_rows":int(after_field[label]),
+            "fraction_of_source_rows_remaining":(
+                float(after_field[label]/count) if count else None
+            ),
+        } for label,count in sorted(counts.items())}
     return trimmed,{
         "status":"SOURCE_NUISANCE_COMPLETE_CASE_COHORT_ONLY",
         "source_candidates":len(rows),
@@ -129,6 +153,14 @@ def _complete_sample(rows:list[dict], min_gps:int=4):
             quality["races_with_at_least_requested_minimum_positive_first_intervals"],
         "valid_complete_case_rows_after_field_filter":len(trimmed),
         "original_positive_GPS_rows_excluded_after_nuisance_gate":len(rows)-len(trimmed),
+        "coverage_by_official_race_ground":attrition_rates(
+            by_ground_candidates,by_ground_complete,by_ground_kept
+        ),
+        "coverage_by_original_meeting_date":attrition_rates(
+            by_date_candidates,by_date_complete,by_date_kept
+        ),
+        "remaining_fraction_of_original_positive_first_section_records":
+            float(len(trimmed)/len(rows)),
         "selection_on_source_availability_not_welfare_or_true_finish":True,
     }
 
@@ -314,9 +346,16 @@ def compare(rows:list[dict], minimum_GPS:int=4)->dict:
         "weight_plus_jockey_license":adjusted_race_icc(complete,"weight_jockey"),
         "weight_jockey_trainer_license":adjusted_race_icc(complete,"weight_jockey_trainer"),
     }
+    base_icc=base.get("conditional_observational_ICC_point_estimate")
+    adjusted_icc=models["weight_jockey_trainer_license"].get("conditional_ICC_point")
+    source_delta=(float(adjusted_icc-base_icc)
+                  if base_icc is not None and adjusted_icc is not None else None)
     return {
         "status":"ORIGINAL_HORSE_SOURCE_EXPLORATORY_COVARIATE_ADJUSTMENT_ONLY",
         "source_gate":gate,
+        "same_source_cohort_full_adjustment_minus_unadjusted_ICC_point":
+            source_delta,
+        "delta_is_not_caused_by_nuisance_variables_or_significance":True,
         "modeled_row_overlap_identical_for_all_models":True,
         "source_real_horse_covariate_support": {
             "distinct_jockey_licences":len({r["jockey_license_id"] for r in complete}),
