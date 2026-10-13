@@ -1,0 +1,59 @@
+name: "Ecology: Eagle Farm out-of-venue ICC sensitivity"
+
+# Different racecourse, same source operator. This is exploratory
+# cross-site model transfer, never independent horse ecology validation.
+# Dated original file cohort was COMMITTED before any ID/timing fit.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'docs/ecology-rq-eagle-farm-2026-independent-track-lock.md'
+      - 'scripts/ecology_rq_eagle_farm_external_icc.py'
+      - 'tests/test_ecology_rq_eagle_farm_external_icc.py'
+      - 'scripts/ecology_rq_multigoing_h1_preflight.py'
+      - '.github/workflows/ecology-rq-eagle-farm-external.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  official-external-racecourse-repeatability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Gaussian original HORSES-ID source model
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Check locked-source and alternate racecourse only on fabricated HORSES
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_eagle_farm_external_icc.py' -v
+      - name: Recalculate original Eagle Farm 12-date source aggregate
+        run: |
+          python scripts/ecology_rq_eagle_farm_external_icc.py --output tmp/eagle-farm-2026-12-meetings-cross-track-ICC.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("tmp/eagle-farm-2026-12-meetings-cross-track-ICC.json")
+          z=json.loads(p.read_text())
+          assert z["status"]=="EAGLE_FARM_DIFFERENT_VENUE_OBSERVATIONAL_ICC_FEASIBILITY_HOLD_H1_H2"
+          assert len(z["locked_source_design"]["original_dates_requested"])==12
+          assert z["public_raw_horse_rider_trainer_ids_or_original_times_exported"] is False
+          assert z["ecological_H1_ground_reaction_norm_var_supported"] is False
+          assert z["ecological_H2_competitor_social_interaction_supported"] is False
+          print("MODEL_DECISION",z["conditional_ICC_at_Eagle_Farm_existing_race_FE_implementation"].get(
+                "all_races_at_least_four_timed_horses",{}).get("status","HOLD"))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rq-eagle-farm-independent-venue-aggregate-only
+          path: tmp/eagle-farm-2026-12-meetings-cross-track-ICC.json
+          retention-days: 30
