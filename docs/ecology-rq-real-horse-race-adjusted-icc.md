@@ -133,6 +133,82 @@ This is a *stability range*, **NOT** a jackknife
 standard error, a 95% interval, or independent
 replication at other racecourses.
 
+## Within-original-race identity-shuffle negative control
+
+A second original-source execution,
+[GitHub Actions run #38350844476](https://github.com/zuizui0223/keiba/actions/runs/38350844476),
+held every race's absolute first-section times,
+measurement lengths, field sizes and horse
+**membership** fixed, while reassigning
+which original horse ID was attached to
+each recorded duration **within that race**
+over 99 seeded permutations.
+
+| Model statistic | Actual original IDs | Mean shuffled-ID reference |
+| --- | ---: | ---: |
+| Conditional race-fixed ICC point estimate | **0.431738** | **0.016736** |
+
+The shuffled-identity reference's 5th,
+50th and 95th percentiles were
+**0, 0 and 0.069348**. Only 0 of 99
+shuffled ICC values equalled/exceeded the
+observed value, giving an exploratory
+\`(1+0)/(99+1) = 0.01\` reference
+fraction.
+
+The reference is **not an experimental
+randomization or a valid confirmatory p
+value**. Race entries and GPS tracking
+are not random, and the permutation
+only tests sensitivity to the factual
+association between ID labels and
+recorded early timings. Nonetheless,
+the original ICC is not simply a
+race-average arithmetic artefact.
+
+## First-distance-marker heterogeneity sensitivity
+
+**Additional post-hoc exploratory
+sensitivity** on original data:
+[run #38350965597](https://github.com/zuizui0223/keiba/actions/runs/38350965597).
+Restrict the same race-FE Gaussian model to
+races whose original first GPS distance
+marker is exactly 100m, 150m, 200m or 250m,
+respectively. Do **not** impute a zero
+variance when the subset lacks repeated
+horse-ID information.
+
+| First original GPS marker | Timed positive source rows | Original races | Repeated official IDs | Conditional ICC |
+| --- | ---: | ---: | ---: | ---: |
+| 100m | 32 | 4 | 6 | **HOLD: insufficient repeat IDs/races** |
+| 150m | 209 | 29 | 48 | **0.547296** |
+| 200m | 56 | 8 | 8 | **HOLD: insufficient repeat IDs/races** |
+| 250m | 226 | 33 | 67 | **0.418787** |
+
+These source strata generally correspond to
+different race distances and fields.
+A higher ICC for 150m than for 250m
+does **NOT** prove marker length itself
+alters biological consistency: entrants,
+source category, season, carried weight,
+rider allocation, training and residual
+sensor variance may differ between
+the groups. A pooled Gaussian model
+assumes a common error variance, so
+the differing conditional ICCs warn
+against treating 0.432 as an
+unqualified species-wide parameter.
+The 100m and 200m groups genuinely
+lack the predeclared numeric support,
+so estimating an ICC for them
+would be scientifically unjustified.
+
+Both robustness analyses were run
+**after** inspecting the original
+positive repeatability results and
+are explicitly not independent
+confirmatory replications.
+
 ## Software falsification and auditability
 
 [\`tests/test_ecology_rq_race_fixed_icc.py\`](../tests/test_ecology_rq_race_fixed_icc.py)
@@ -257,5 +333,7 @@ python scripts/ecology_rq_2026_calendar_overlap.py \
   --output tmp/rq-2026-calendar-with-conditional-ICC.json
 ~~~
 
-Public automated execution:
-[GitHub Actions 38350388785](https://github.com/zuizui0223/keiba/actions/runs/38350388785).
+Public automated executions:
+[original race-FE model 38350388785](https://github.com/zuizui0223/keiba/actions/runs/38350388785),
+[within-race ID-shuffle 38350844476](https://github.com/zuizui0223/keiba/actions/runs/38350844476)
+and [marker-stratified run 38350965597](https://github.com/zuizui0223/keiba/actions/runs/38350965597).
