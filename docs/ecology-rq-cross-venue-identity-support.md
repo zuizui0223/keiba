@@ -78,6 +78,67 @@ independent sensor/vendor replication. Read the official
 [Racing Queensland Sectionals](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals)
 and [Open Data conditions](https://www.racingqueensland.com.au/about/reports-and-data/open-data).
 
+## Verified original-source result: two linked horses, zero matched race contexts
+
+The first end-to-end original public RQ read of both **previously
+frozen 12-date** cohorts succeeded (24 out of 24 dates audited).
+Independent real-source [GitHub Actions run #38421064924](https://github.com/zuizui0223/keiba/actions/runs/38421064924)
+reported:
+
+| Cross-venue source screen | Verified value |
+| --- | ---: |
+| Cannon Park positive GPS records linked to original HORSES IDs | **548** |
+| Eagle Farm positive GPS records linked to original HORSES IDs | **391** |
+| Distinct original HORSES IDs in Cannon Park | **280** |
+| Distinct original HORSES IDs in Eagle Farm | **339** |
+| Distinct numeric official HORSES IDs in both sites | **2** |
+| Same official ID but conflicting normalized source name across the two sites | **0** |
+| Same official ID recorded at both distant sites on the exact same calendar day | **0** |
+| Safely recurring IDs with positive original GPS at both venues | **2** |
+| Those shared IDs with any identical first measured GPS segment marker | **1** |
+| Same shared ID with identical first marker AND race distance | **0** |
+| Same shared ID with identical marker, distance AND original Class | **0** |
+| Same shared ID with 2+ distinct original meeting dates in BOTH sites | **0** |
+
+An independent implementation of the same locked
+race/identity filters also produced two safely recurring
+numeric official HORSES IDs, no common marker+distance+class
+strata and 24 successful source dates. The research
+branch was subsequently consolidated to **one maintained
+source-of-truth implementation**,
+\`scripts/ecology_rq_cross_venue_identity_support.py\`,
+to avoid maintaining duplicate screens. That canonical
+script also records **SHA-256 fingerprints** of both
+venues' original official source responses in its
+aggregate JSON without publishing individual animal
+identities or records.
+
+This finding is about **population/measurement overlap**.
+Although both source-conditioned venue-specific Gaussian
+race-FE horse ICC point estimates were positive
+(Cannon Park 0.431738; Eagle Farm 0.452894),
+the positive ICC models refer to **largely different
+sets of horses and disjoint well-supported first
+GPS interval marker cohorts**. Therefore the
+similar-looking pooled ICC values are **NOT a
+within-animal test of course-specific ecological
+reaction or replication of a universal individual
+trait**.
+
+Nor does a count of two shared original IDs
+establish how often the same horse travels
+between tracks in the population: the
+cohorts were small, purposively chosen source
+subsets, nominatees are not guaranteed
+actual starters, and GPS telemetry may be
+missing in a nonrandom way. Source-record
+absence is not a zero biological probability.
+
+**Scientific decision: direct, source-matched
+within-horse cross-venue comparison HOLD.**
+This is a valid negative *feasibility result*,
+not evidence for no environmental plasticity.
+
 ## Exact gates and interpretation
 
 1. The existing date-specific SOAP GetMeetingsForDate,
@@ -138,7 +199,11 @@ Official aggregate-only action:
     python -m unittest discover -s tests -p 'test_ecology_rq_cross_venue_identity_support.py' -v
     python scripts/ecology_rq_cross_venue_identity_support.py --output tmp/rq-cross-venue-horse-ID-support.json
 
-Once the real 24-date coverage is verified, document the actual
-aggregated overlap in this file and PR #2. If this overlap fails,
-identify a next independent cohort or a **documented** common
-first-GPS measurement rather than forcing model significance.
+The actual 24-date cohort yielded **two original-ID matches
+but zero first-marker+official-distance source strata**.
+Future scientifically defensible work needs a documented
+common first-sectional measurement definition, consistent
+race distance/classes, representative repeated animal-ID
+coverage, complete starter/finish data, and independent
+time/venue replication. Do not force model significance
+or retroactively change the locked date selection.
