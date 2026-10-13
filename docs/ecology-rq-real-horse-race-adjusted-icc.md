@@ -337,3 +337,31 @@ Public automated executions:
 [original race-FE model 38350388785](https://github.com/zuizui0223/keiba/actions/runs/38350388785),
 [within-race ID-shuffle 38350844476](https://github.com/zuizui0223/keiba/actions/runs/38350844476)
 and [marker-stratified run 38350965597](https://github.com/zuizui0223/keiba/actions/runs/38350965597).
+
+
+## Follow-up: official Weight/Jockey/Trainer licence source adjustment
+
+The original `ICC = 0.431738` is **NOT** claimed to be
+rider/trainer/weight-adjusted. A subsequent
+[same-source-covariate sensitivity](ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md)
+verified the official `GetHorsesForRace` fields,
+then retained only **279** of 548 positive original
+HORSES-ID/GPS rows after attrition and minimum field
+coverage. On those **same 279 rows**, race-only
+ICC was **0.503005**, versus **0.487447** when
+riding weight and common jockey/trainer licence
+fixed nuisance effects were projected out.
+
+The change is modest, **but is not causal**.
+The much lower source coverage, especially on
+Heavy/Good dates, and near-nesting of trainer
+under horse identity must not be confused with
+biological individual variance. Of these 279
+records, 45 original horse IDs experienced
+more than one jockey licence ID, but only
+one changed trainer licence. Actual jockey
+on a final officially declared starter and
+individual age have not been independently
+verified. No robust confidence interval or
+prospective test supports a strong biological
+conclusion at this stage.
