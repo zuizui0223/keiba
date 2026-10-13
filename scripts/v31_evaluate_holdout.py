@@ -39,13 +39,39 @@ def convolve(a: dict[int, float], b: dict[int, float]) -> dict[int, float]:
     return out
 
 
-def evaluate(ledger: dict, contract: dict) -> dict:
+def _attempt_prefix_for_scored(attempt_ledger: dict, scored_entries: list[dict]) -> list[dict]:
+    frozen_seen = []
+    prefix = []
+    target = len(scored_entries)
+    if target == 0:
+        return []
+    for entry in attempt_ledger.get("entries", []):
+        status = entry.get("status")
+        if status not in {"FROZEN", "PRE_RESULT_DATA_FAILURE"}:
+            raise ValueError("invalid_attempt_status")
+        prefix.append(entry)
+        if status == "FROZEN":
+            frozen_seen.append(entry.get("race_id"))
+            if len(frozen_seen) == target:
+                break
+    if len(frozen_seen) < target:
+        raise ValueError("attempt_ledger_missing_frozen_races")
+    scored_ids = [entry.get("race_id") for entry in scored_entries]
+    if frozen_seen != scored_ids:
+        raise ValueError("scored_frozen_sequence_mismatch")
+    return prefix
+
+
+def evaluate(ledger: dict, attempt_ledger: dict, contract: dict) -> dict:
     if ledger.get("version") != contract.get("version"):
         raise ValueError("version_mismatch")
+    if attempt_ledger.get("version") != contract.get("version"):
+        raise ValueError("attempt_version_mismatch")
     target_races = int(contract["target_races"])
     entries = list(ledger.get("entries", []))
     if len(entries) > target_races:
         raise ValueError("ledger_over_target")
+    attempt_prefix = _attempt_prefix_for_scored(attempt_ledger, entries)
 
     total_field = 0
     total_m = 0
@@ -104,6 +130,21 @@ def evaluate(ledger: dict, contract: dict) -> dict:
             "expected_additional_hits_random": expected,
         })
 
+    frozen_attempts = sum(entry.get("status") == "FROZEN" for entry in attempt_prefix)
+    failed_attempts = sum(
+        entry.get("status") == "PRE_RESULT_DATA_FAILURE" for entry in attempt_prefix
+    )
+    eligible_attempts = len(attempt_prefix)
+    freeze_success_rate = (
+        frozen_attempts / eligible_attempts if eligible_attempts else None
+    )
+    technical_evaluability = {
+        "eligible_attempts_through_last_scored_race": eligible_attempts,
+        "frozen_attempts": frozen_attempts,
+        "pre_result_data_failures": failed_attempts,
+        "freeze_success_rate": freeze_success_rate,
+    }
+
     observed_extra_total = total_union_hits - total_m_hits
     p_value = sum(
         probability for rescued, probability in distribution.items()
@@ -153,17 +194,21 @@ def evaluate(ledger: dict, contract: dict) -> dict:
     else:
         alpha = float(contract["alpha"])
         ceiling = float(contract["max_candidate_fraction"])
+        freeze_floor = float(contract["min_freeze_success_rate"])
         reasons = []
         if p_value > alpha:
             reasons.append("random_addition_p_above_alpha")
         if candidate_fraction is None or candidate_fraction > ceiling:
             reasons.append("candidate_fraction_above_ceiling")
+        if freeze_success_rate is None or freeze_success_rate < freeze_floor:
+            reasons.append("freeze_success_rate_below_floor")
         decision = {
             "status": "PROMOTE" if not reasons else "NO_PROMOTION",
             "formal": True,
             "reasons": reasons,
             "alpha": alpha,
             "max_candidate_fraction": ceiling,
+            "min_freeze_success_rate": freeze_floor,
         }
 
     return {
@@ -172,6 +217,7 @@ def evaluate(ledger: dict, contract: dict) -> dict:
         "contract": contract,
         "observed": observed,
         "random_addition": random_addition,
+        "technical_evaluability": technical_evaluability,
         "per_race": per_race,
         "decision": decision,
     }
@@ -180,10 +226,13 @@ def evaluate(ledger: dict, contract: dict) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ledger", type=Path, required=True)
+    parser.add_argument("--attempt-ledger", type=Path, required=True)
     parser.add_argument("--contract", type=Path, required=True)
     args = parser.parse_args()
     try:
-        result = evaluate(read_json(args.ledger), read_json(args.contract))
+        result = evaluate(
+            read_json(args.ledger), read_json(args.attempt_ledger), read_json(args.contract)
+        )
         print(json.dumps(result, ensure_ascii=False, sort_keys=True))
     except (ValueError, KeyError, TypeError, OSError, json.JSONDecodeError) as exc:
         print(str(exc), file=sys.stderr)
