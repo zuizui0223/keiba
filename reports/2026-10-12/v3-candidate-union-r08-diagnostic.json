@@ -1,0 +1,57 @@
+{
+  "created_at_jst": "2026-10-13T10:13:53+09:00",
+  "mode": "RETROSPECTIVE_DIAGNOSTIC_NOT_VALIDATION",
+  "input": "data/2026-10-12/v3/kyoto_08.json",
+  "input_sha": "316f174197b6ef4f752b81940dcda0b78557fccb",
+  "script": "scripts/build_v3_candidate_union.py",
+  "parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5
+  },
+  "candidate_numbers": [
+    1,
+    2,
+    3,
+    5,
+    9,
+    11
+  ],
+  "candidate_count": 6,
+  "field_size": 11,
+  "coverage_fraction": 0.5454545454545454,
+  "official_top3": [
+    9,
+    1,
+    7
+  ],
+  "retrospective_top3_recall": 0.6666666666666666,
+  "strong_reason_tier": {
+    "definition": "reason_count >= 2",
+    "candidate_numbers": [
+      3,
+      5,
+      9,
+      11
+    ],
+    "candidate_count": 4,
+    "retrospective_top3_recall": 0.3333333333333333
+  },
+  "top3_reason_trace": {
+    "1": [
+      "market_top_n"
+    ],
+    "7": [],
+    "9": [
+      "market_top_n",
+      "recent_similar_distance_win",
+      "lightly_raced_recent_win"
+    ]
+  },
+  "interpretation": [
+    "The fixed v3 union misses official third-place runner 7 completely.",
+    "No threshold or reason rule is changed after observing this miss.",
+    "This is an important counterexample: the recall-oriented union is not guaranteed to cover longshot placers without one of its explicit evidence patterns."
+  ]
+}
