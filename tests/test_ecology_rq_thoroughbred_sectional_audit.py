@@ -67,7 +67,13 @@ class RQSectionalTests(unittest.TestCase):
     def test_cannot_fetch_unapproved_urls(self):
         with self.assertRaisesRegex(ValueError,"HOLD_NON_ALLOWLISTED"):
             official_url("https://evil.example.com/filename.csv")
-        self.assertEqual(len(APPROVED),3)
+        self.assertEqual(len(APPROVED),6)
+        self.assertIn("20260515_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260515-cairns"))
+        self.assertIn("20260529_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260529-cairns"))
+        self.assertIn("20260822_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260822-cairns"))
         self.assertIn("20260829_Ladbrokes_Cannon_Park_T.csv",
                       official_url("20260829-cairns"))
         self.assertIn("20261011_Ladbrokes_Cannon_Park_T.csv",
