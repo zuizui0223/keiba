@@ -10,6 +10,8 @@ on:
       - "tests/test_v31_candidate_channels.py"
       - "tests/test_v31_holdout.py"
       - "tests/test_v31_prepare_snapshot.py"
+      - "tests/test_v31_freeze_integrity.py"
+      - "scripts/v31_verify_freeze.py"
       - "docs/v31-candidate-generation-protocol.md"
       - "docs/v31-holdout-freeze.json"
   push:
@@ -37,4 +39,4 @@ jobs:
           python-version: "3.12"
       - name: Run v3.1 unit tests
         run: |
-          python -m unittest tests.test_v31_candidate_channels tests.test_v31_holdout tests.test_v31_prepare_snapshot -v
+          python -m unittest tests.test_v31_candidate_channels tests.test_v31_holdout tests.test_v31_prepare_snapshot tests.test_v31_freeze_integrity -v
