@@ -152,7 +152,7 @@ class RecentHistoryGateCliTests(unittest.TestCase):
             run = subprocess.run(
                 [sys.executable, 'scripts/audit_recent_history.py', '--data-dir', str(base),
                  '--as-of', '2026-10-12T16:00:00+09:00'],
-                cwd='/tmp/keiba_v3', capture_output=True, text=True,
+                cwd=Path(__file__).resolve().parents[1], capture_output=True, text=True,
             )
             self.assertEqual(run.returncode, 2)
             self.assertIn('DATA_HOLD', run.stdout)
