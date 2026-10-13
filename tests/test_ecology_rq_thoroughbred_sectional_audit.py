@@ -67,7 +67,23 @@ class RQSectionalTests(unittest.TestCase):
     def test_cannot_fetch_unapproved_urls(self):
         with self.assertRaisesRegex(ValueError,"HOLD_NON_ALLOWLISTED"):
             official_url("https://evil.example.com/filename.csv")
-        self.assertEqual(len(APPROVED),6)
+        # 5 fixed original Cannon Park cohorts + 7 locked 2026
+        # calendar additions, plus one separate Eagle Farm comparator.
+        self.assertEqual(len(APPROVED),13)
+        self.assertIn("20260216_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260216-cairns"))
+        self.assertIn("20260312_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260312-cairns"))
+        self.assertIn("20260326_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260326-cairns"))
+        self.assertIn("20260404_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260404-cairns"))
+        self.assertIn("20260409_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260409-cairns"))
+        self.assertIn("20260723_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260723-cairns"))
+        self.assertIn("20260828_Ladbrokes_Cannon_Park_T.csv",
+                      official_url("20260828-cairns"))
         self.assertIn("20260515_Ladbrokes_Cannon_Park_T.csv",
                       official_url("20260515-cairns"))
         self.assertIn("20260529_Ladbrokes_Cannon_Park_T.csv",
