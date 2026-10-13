@@ -4,6 +4,74 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## 2026-10-13 second racecourse: Eagle Farm source-ID ICC, but marker comparison HOLD
+
+**One new real-data milestone with a substantive limitation:**
+The original RQ SOAP HORSES-ID/early-GPS source joined **391**
+Eagle Farm horse-labelled positive first-section records
+across **12 different 2026 meeting dates** in a
+[cohort locked before its new animal outcomes were inspected](docs/ecology-rq-eagle-farm-2026-independent-track-lock.md).
+**48 HORSES IDs recurred across original dates**.
+
+Using EXACTLY the same race-fixed Gaussian
+horse random-intercept variance model as Cannon Park:
+- Eagle Farm: 382 timed candidate observations in 51 races,
+  45 repeated HORSES IDs, **conditional ICC 0.452894**.
+  With >=6 positive GPS horses/race: ICC **0.441609**
+  (342 observations, 42 races).
+- Across 12 leave-one-meeting-day-out fits:
+  **0.331549–0.563767**. This is **not** a confidence
+  interval.
+- Race-conditioned 99 horse-ID shuffles: mean
+  **ICC 0.045556**, an observational null reference,
+  **not** causal randomization.
+- Historical Cannon Park (different venue,
+  same publisher) pooled ICC was **0.431738**.
+
+**CRITICAL: no original GPS first-distance marker
+has an estimable individual ICC at BOTH tracks.**
+Cannon Park's numerically supported 150m and
+250m cohorts have **0 observations at Eagle Farm**;
+Eagle Farm's 200m cohort has numeric **ICC 0.528346**,
+but Cannon's 200m cohort had only 56 source rows and
+failed the model-repeatability gate. The cross-site
+same-segment scientific decision therefore is
+**HOLD_NO_SHARED_FIRST_SECTION_MARKER_WITH_ESTIMABLE_ICC**.
+The proximity of pooled 0.432/0.453 does not
+demonstrate a universal horse behavior trait.
+
+**IMPORTANT source-completeness limitation:** Only
+108 of Eagle Farm's original 391 matched GPS
+candidate rows survive complete Weight/Jockey/Trainer
+fields plus >=4 complete horses/race. Those
+108 rows contain **only 3 repeatedly observed HORSES
+IDs**, much less than the 20-ID support gate.
+Any superficially high fixed-nuisance adjusted
+ICC is scientifically unidentifiable here.
+The code now **suppresses those numeric adjusted
+models and records HOLD**, instead of mistaking
+a numerical optimizer output for animal variation.
+
+The findings are source-conditional and exploratory.
+No confirmed actual starter/finisher roster,
+individual certified finish time, biological age,
+heritable personality, environmental random-slope
+H1 or competitive-context H2 has been established.
+
+See [independent-track real-data
+audit and interpretation](docs/ecology-rq-eagle-farm-real-icc-cross-site-audit.md),
+[Eagle Farm locked cohort](docs/ecology-rq-eagle-farm-2026-independent-track-lock.md),
+and [first-party CI run](https://github.com/zuizui0223/keiba/actions/runs/38412116293).
+The matching-marker gate and adjustment support
+tests are in
+\`scripts/ecology_rq_eagle_farm_external_icc.py\`
+and \`scripts/ecology_rq_covariate_icc.py\`.
+
+~~~bash
+python scripts/ecology_rq_eagle_farm_external_icc.py \
+  --output tmp/independent-eagle-farm-source-ICC.json
+~~~
+
 ## New 2026-10-13 selection and source-day stability tests
 
 **The source-conditioned horse variance signal remains exploratory.**
@@ -235,6 +303,8 @@ Read:
 - [First exploratory real-horse result: repeatable relative early sectional timing](docs/ecology-rq-real-early-pacing-repeatability.md)
 - [Race-adjusted mixed-model ICC 0.432 on absolute first GPS time (exploratory, model-dependent)](docs/ecology-rq-real-horse-race-adjusted-icc.md)
 - [Official riding Weight, Jockey & Trainer licence adjustment: same-source cohort and missingness](docs/ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md)
+- [Eagle Farm different-track source ICC and original first-section marker compatibility HOLD](docs/ecology-rq-eagle-farm-real-icc-cross-site-audit.md)
+- [Eagle Farm dated twelve-meeting source cohort locked before animal ID inspection](docs/ecology-rq-eagle-farm-2026-independent-track-lock.md)
 - [Real race-controlled documentation missingness vs first GPS timing: 68 mixed fields](docs/ecology-rq-source-role-missingness-vs-early-gps.md)
 - [Original 20-race Good/Soft/Heavy real-horse H1 identifiability audit](docs/ecology-rq-real-h1-multigoing-feasibility.md)
 - [Exploratory 38-race expansion: why ground-reaction norms remain unidentified](docs/ecology-rq-real-h1-multigoing-expanded-audit.md)
