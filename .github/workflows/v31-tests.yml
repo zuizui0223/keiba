@@ -36,6 +36,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Run v3.1 holdout tests first
+        run: |
+          python -m unittest tests.test_v31_holdout -v
       - name: Verify frozen v3.1 contract
         run: |
           python scripts/v31_verify_freeze.py --repo-root .
