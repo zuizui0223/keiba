@@ -375,3 +375,56 @@ same-ID repeat starts under unlike ground conditions and varying
 opponent lineups, conditional on course/distance/class and confirmed
 results. A source-level cross-date ID match is not an evolved
 environmental preference or social response.
+
+
+## First REAL cross-going equine overlap and falsification of overconfident inference (2026-10-13)
+
+Original source: Racing Queensland SOAP numeric HORSES IDs
+and dated first-section GPS records for the same
+Cannon Park venue. The five selected dates comprise:
+2026-05-15 Heavy; 2026-05-29 Soft; 2026-08-22 Soft;
+2026-08-29 Good; 2026-10-11 Good. Ground is
+categorical, not an equally spaced ordinal score.
+
+Source-hash-verified [focused cohort](ecology-rq-real-h1-multigoing-feasibility.md):
+20 race numbers, 143 official-ID-positive-GPS rows,
+20 repeated horse IDs crossing Good and wet, 10 at
+a matching race distance+first-section marker,
+1 also matching original race class, **0** with
+2+ independent first-section measurements in both
+environment groups under the same class/distance/marker.
+
+[Explicitly exploratory full-race coverage follow-up](ecology-rq-real-h1-multigoing-expanded-audit.md):
+38 official race IDs (two original SOAP race numbers
+not returned), 280 linked positive-GPS observations,
+65 recurring IDs across dates, 37 with both Good
+and non-Good records, 17 matching distance+marker,
+2 matching original class as well, and still **0**
+meeting the original 2+ each-ground strict
+replication gate.
+
+This is a **valid research-design finding** that class,
+distance and entrant selection severely limit H1
+identifiability even in genuine longitudinal horse
+records. It is NOT a negative biological test of
+whether individual animals vary in track response.
+`Class` can be broad, so age/weight/rail/jockey
+conditions can further reduce comparability.
+
+Do not publish a claim that wet tracks make the
+animals faster/slower using the exploratory
+17-ID difference: the naive non-Good minus Good
+first-section mean was negative, but this is
+observational class/entry confounding, not evidence
+of environment-dependent adaptive performance.
+The project deliberately fitted **neither** H1
+random-slope variance **nor** H2 rival interaction
+to these actual horse records.
+
+Evidence required next: a preselected larger
+cohort with verified all-starter/finish outcomes,
+stable IDs across repeated seasons, within-horse
+ground and opponent-context overlap under
+credible controls for class/distance/age/weight,
+race/jockey selection, correctly time-lagged
+features and independent temporal validation.
