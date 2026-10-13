@@ -12,6 +12,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from ecology_rq_eagle_farm_external_icc import (
     VENUE,DATES,RACE_NUMBERS,EXPECTED_ORIGINAL_FILES,
     validate_source_lock,collect,identity_overlap,compare,
+    cross_venue_marker_identifiability,
 )
 from ecology_rq_multigoing_h1_preflight import audit_one_day
 from ecology_rq_single_race_id_probe import parse_xml
@@ -120,11 +121,50 @@ class ExternalSiteLockTests(unittest.TestCase):
         self.assertFalse(result["ecological_H1_ground_reaction_norm_var_supported"])
         self.assertFalse(result["ecological_H2_competitor_social_interaction_supported"])
         self.assertTrue(icc["not_H1_or_H2_or_causal_or_heritability"])
+        gate=result["different_venue_same_first_GPS_marker_ICC_identifiability"]
+        self.assertIn(gate["status"],{
+            "HOLD_NO_SHARED_FIRST_SECTION_MARKER_WITH_ESTIMABLE_ICC",
+            "EXPLORATORY_SAME_FIRST_MARKER_VENUE_ICC_COMPARABLE",
+        })
+        self.assertFalse(
+            gate["pooled_Cannon_vs_Eagle_ICC_can_establish_universal_horse_trait"])
         self.assertFalse(result["actual_starter_DNF_and_individual_official_finish_verified"])
         s=json.dumps(result)
         self.assertNotIn("FAKE-EAGLE-HORSE",s)
         self.assertNotIn('"90100"',s)
         self.assertNotIn('"40000"',s)
+
+    def test_cross_venue_marker_mismatch_blocks_universal_icc_claim(self):
+        # Cannon can estimate 150m and 250m source marker ICC, but not
+        # 100m or 200m. Eagle has ONLY a valid 200m model here.
+        fake={
+            "first_section_marker_sensitivity":{
+                "200.0":{
+                    "status":"EXPLORATORY_RACE_ADJUSTED_GAUSSIAN_ICC_POINT_ONLY",
+                    "source_rows":300,
+                },
+                "100.0":{"status":"HOLD_INSUFFICIENT_REPEATED_HORSES_OR_RACES_FOR_ICC",
+                         "source_rows":30},
+            }
+        }
+        gate=cross_venue_marker_identifiability(fake)
+        self.assertEqual(gate["status"],
+                         "HOLD_NO_SHARED_FIRST_SECTION_MARKER_WITH_ESTIMABLE_ICC")
+        self.assertEqual(gate["first_markers_with_estimable_ICC_at_both_venues"],[])
+        self.assertFalse(gate["pooled_Cannon_vs_Eagle_ICC_can_establish_universal_horse_trait"])
+        self.assertFalse(gate["original_source_markers_screened"]["200.0"][
+            "identical_first_section_marker_model_estimable_at_both_venues"])
+        # Only if Eagle also has supported 150m source data does an
+        # identical-marker *numeric* comparison become possible; even
+        # that does not prove site effects or heritability.
+        fake["first_section_marker_sensitivity"]["150.0"]={
+            "status":"EXPLORATORY_RACE_ADJUSTED_GAUSSIAN_ICC_POINT_ONLY",
+            "source_rows":220,
+        }
+        allowed=cross_venue_marker_identifiability(fake)
+        self.assertEqual(allowed["first_markers_with_estimable_ICC_at_both_venues"],
+                         ["150.0"])
+        self.assertFalse(allowed["pooled_Cannon_vs_Eagle_ICC_can_establish_universal_horse_trait"])
 
     def test_wrong_venue_or_disallowed_filename_fails_closed(self):
         with self.assertRaisesRegex(ValueError,"HOLD_INCORRECT_VENUE_WITHOUT_LOCKED"):
