@@ -39,7 +39,9 @@ Select the top quarter by timestamped pre-race win odds:
 - maximum nominal count: 5
 - include every horse tied at the cutoff
 
-A stale or unvalidated market snapshot is not silently replaced with a later or final market. M must be marked unavailable if a valid pre-race snapshot cannot be established.
+A stale or unvalidated market snapshot is not silently replaced with a later or final market.
+
+For the prospective holdout, both the odds observation timestamp and the freeze timestamp must fall **15 to 25 minutes before the scheduled post time, inclusive**. This fixed observation window is part of the frozen design. A snapshot outside that window is rejected; a later/final market is never substituted after the fact. If a technically valid snapshot cannot be obtained inside the window, the race is recorded as a pre-result data failure and does not enter the scored denominator.
 
 ## C1 — latest same-class adjacent-distance form
 
@@ -149,6 +151,8 @@ Changes to any C1/U/Q1/K1/M threshold or rescue logic create a new version (v3.2
 ## Prospective holdout
 
 Evaluate the next **20 eligible races** without threshold tuning.
+
+Eligibility is applied chronologically to **every** qualifying Kyoto race, not one race per day. A single race day may therefore contribute multiple holdout races. Once an eligible race reaches its fixed 15-25 minute observation window, it must be attempted; it cannot be skipped because another race that day was already frozen or because its eventual prediction looks inconvenient.
 
 An eligible race must be run at **Kyoto**. v3.1's K1 channel is explicitly Kyoto-specific, so Tokyo, Hanshin, Nakayama and other venues are not part of this holdout and must not be counted. The holdout wrapper rejects non-Kyoto inputs.
 
