@@ -37,6 +37,13 @@ APPROVED = {
     "20260515-cairns": "20260515_Ladbrokes_Cannon_Park_T.csv",
     "20260529-cairns": "20260529_Ladbrokes_Cannon_Park_T.csv",
     "20260822-cairns": "20260822_Ladbrokes_Cannon_Park_T.csv",
+    "20260216-cairns": "20260216_Ladbrokes_Cannon_Park_T.csv",
+    "20260312-cairns": "20260312_Ladbrokes_Cannon_Park_T.csv",
+    "20260326-cairns": "20260326_Ladbrokes_Cannon_Park_T.csv",
+    "20260404-cairns": "20260404_Ladbrokes_Cannon_Park_T.csv",
+    "20260409-cairns": "20260409_Ladbrokes_Cannon_Park_T.csv",
+    "20260723-cairns": "20260723_Ladbrokes_Cannon_Park_T.csv",
+    "20260828-cairns": "20260828_Ladbrokes_Cannon_Park_T.csv",
 }
 MAX_BYTES = 1_800_000
 DURATION = re.compile(r"^(?P<hours>\d{2}):(?P<minutes>[0-5]\d):(?P<seconds>[0-5]\d(?:\.\d{1,3})?)$")
