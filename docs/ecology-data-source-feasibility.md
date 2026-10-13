@@ -13,6 +13,8 @@ access does **not** imply redistribution or commercial permission.
 
 | Candidate | What seems available | Rights/compatibility check | Current decision |
 | --- | --- | --- | --- |
+| [Racing Queensland official thoroughbred open data](https://www.racingqueensland.com.au/about/reports-and-data/open-data) | Official public thoroughbred meeting/race information with race results, sectionals/position maps listed in its data catalogue, and SOAP web services such as GetHorsesForRace and GetHorseDetailsInRace | Racing Queensland states public website/web-service information is free for use without copyright restriction, with accuracy and commercial-use caveats. **Not yet verified:** whether these methods expose a stable horse ID and individual elapsed time per historical start, full actual starter rosters, and programmatic chronology at useful depth | **PRIORITY EQUINE SOURCE—FIELD-LEVEL VERIFICATION PENDING** |
+| [Australian Racing Open Data (PandaVision) Queensland greyhound GPS](https://github.com/brucem1967/au-racing-open-data) | Verified pinned ODC-BY file: 25,679 greyhound 50m sectionals and early positions. Dog names recur, track/date/box observed. [Frozen real-data benchmark](ecology-real-greyhound-method-benchmark.md) | Attribution explicitly provided; Racing Queensland public open-data permissions corroborated. **Species is greyhound, not horse**; no stable biological ID guarantee, no certified complete race fields, and no track going or official full-distance horse outcomes | **REAL CROSS-SPECIES METHODS PILOT ONLY—NO HORSE H1/H2** |
 | [Existing 2026-10-12 Kyoto analysis branch](https://github.com/zuizui0223/keiba/tree/analysis/kyoto-20261012) | 7 races, 95 starters, historical aggregate course counts, odds snapshots; not full individual starts across environments | No longitudinal horse×race exposure panel; race snapshots not enough | **H1/H2 HOLD** |
 | [Kaggle Hong Kong Horse Racing](https://www.kaggle.com/datasets/gdaley/hkracing) | `races.csv` plus `runs.csv`: stable horse and race IDs, ground conditions, distance, individual finishing time and first-sectional position, with repeated starts across races. Publisher describes dates as deliberately obscured | Dataset page claims **CC0**, but original HKJC/source-chain rights and obligations have not been independently verified. Obscured dates also prevent official-season/clock verification. Run our new **aggregate-only** `scripts/ecology_hk_preflight.py` on locally and lawfully obtained files; it refuses to promote this to the empirical H1/H2 pipeline | **TOP COMPATIBILITY CANDIDATE—PROVENANCE/TIMELINE HOLD** |
 | [Kaggle JRA日本中央競馬会 dataset](https://www.kaggle.com/datasets/takamotoki/jra-horse-racing-dataset) and [usage README](https://github.com/evanfadhil/japan_horse_racing_analysis) | 4 CSV categories described: race results, corner passage order, laptimes, odds (scraped from netkeiba; older historical archive) | Source/CSV reuse terms and any netkeiba redistribution rights **not verified**; an MIT license for analysis code does not license the underlying source dataset | **CANDIDATE—RIGHTS HOLD** |
@@ -115,3 +117,40 @@ labels must not be treated as an authoritative racing calendar. This
 preflight has **not** been run against the actual Kaggle CSVs.
 Upstream rights remain unverified, so no record-level data were copied
 into the public repository.
+
+
+## Verified cross-species methodological proof, 2026-10-13
+
+A real racing-animal GPS dataset has now been processed, *without
+claiming that it contains horses*. Frozen data revision and the
+first 50m repeated-exposure summary:
+[Queensland greyhound analysis](ecology-real-greyhound-method-benchmark.md).
+The raw data are not mirrored or committed in this repository; the
+source states **ODC-BY 1.0**. [Racing Queensland's public open data
+page](https://www.racingqueensland.com.au/about/reports-and-data/open-data)
+is additional upstream rights context, but its explicit access,
+accuracy and commercial terms continue to apply.
+
+### Focused next-equine acquisition priority
+
+**Official Racing Queensland (thoroughbred)** is the highest-value
+access route to inspect: the operator's official open-data catalogue
+lists race results, position maps and sectionals, with SOAP interfaces
+for dates, races and horses (see
+[Meetings.asmx](https://www.racingqueensland.com.au/OpenDataWebServices/Meetings.asmx)).
+No individual result payload has yet been checked or ingested.
+Before calling it an H1/H2 data source, verify in a *small,
+documented sample*: stable horse identity; real local dates; actual
+starter versus non-starter; horse-specific elapsed times and
+first-sectional positions; track going, distance, class and venue;
+enough historical depth to see the same horses under distinct
+environments and rival rosters.
+
+If these are absent in public SOAP fields, a manual export from
+explicitly open race/sectional CSV or PDF may be required, and must
+pass the same provenance and anti-leakage checks. The project must
+not synthesize missing horse IDs or longitudinal start records.
+
+**Species boundary:** the licensed greyhound test provides a
+pragmatic *methods* calibration, but not an empirical test of
+Thoroughbred individual reaction norms or social plasticity.
