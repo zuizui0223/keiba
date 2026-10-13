@@ -80,6 +80,13 @@ class CovariateSourceAndAdjustmentTests(unittest.TestCase):
         self.assertNotIn("Invented Rider",str(summary))
         self.assertNotIn("Fake Horse",str(summary))
 
+    def test_zero_license_id_is_not_a_real_jockey_or_trainer(self):
+        data=b'<Horses><Horse Id="912"><Weight>58.5</Weight><Jockey Id="0"/><Trainer Id="0"/></Horse></Horses>'
+        decoded,s=official_covariates(ET.fromstring(data))
+        self.assertIsNone(decoded["912"]["jockey_license_id"])
+        self.assertIsNone(decoded["912"]["trainer_license_id"])
+        self.assertEqual(s["counts"]["all_three_documented_and_valid"],0)
+
     def test_duplicate_official_horse_ids_refused(self):
         data=b'<Horses><Horse Id="1"><Weight>59</Weight></Horse><Horse Id="1"><Weight>58</Weight></Horse></Horses>'
         with self.assertRaisesRegex(ValueError,"HOLD_MISSING_OR_DUPLICATE"):
@@ -90,6 +97,13 @@ class CovariateSourceAndAdjustmentTests(unittest.TestCase):
         self.assertEqual(result["status"],
                          "ORIGINAL_HORSE_SOURCE_EXPLORATORY_COVARIATE_ADJUSTMENT_ONLY")
         self.assertTrue(result["modeled_row_overlap_identical_for_all_models"])
+        self.assertAlmostEqual(
+            result["same_source_cohort_full_adjustment_minus_unadjusted_ICC_point"],
+            result["models"]["weight_jockey_trainer_license"]["conditional_ICC_point"]
+            - result["models"]["same_rows_unadjusted_race_HORSES"]["conditional_observational_ICC_point_estimate"],
+            places=8
+        )
+        self.assertTrue(result["delta_is_not_caused_by_nuisance_variables_or_significance"])
         self.assertEqual(result["source_gate"]["valid_complete_case_rows_after_field_filter"],len(self.data))
         self.assertFalse(result["source_real_horse_covariate_support"]["source_carries_age_or_birthdate"])
         self.assertEqual(result["models"]["weight_jockey_trainer_license"]["nuisance_mode"],
@@ -136,6 +150,10 @@ class CovariateSourceAndAdjustmentTests(unittest.TestCase):
         self.assertEqual(outcome["source_gate"]["source_candidates"],len(data))
         self.assertTrue(outcome["modeled_row_overlap_identical_for_all_models"])
         self.assertLess(outcome["source_gate"]["valid_complete_case_rows_after_field_filter"],len(data))
+        self.assertIn("Good",outcome["source_gate"]["coverage_by_official_race_ground"])
+        by=outcome["source_gate"]["coverage_by_original_meeting_date"]
+        self.assertEqual(len(by),12)
+        self.assertTrue(outcome["source_gate"]["remaining_fraction_of_original_positive_first_section_records"]<1)
 
     def test_sparse_jockey_trainer_levels_cannot_be_assumed_zero(self):
         data=copy.deepcopy(self.data)
