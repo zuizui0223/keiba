@@ -119,19 +119,20 @@ class V3CandidateGenerationTests(unittest.TestCase):
         self.assertTrue(row['candidate'])
         self.assertIn('layoff_gt_90d', row['uncertainty_flags'])
 
-    def test_no_positive_signal_is_not_candidate(self):
-        h = self.horse(runs=[
+    def test_no_positive_signal_outside_market_top_four_is_not_candidate(self):
+        bad_runs = [
             {'date':'2026-09-20','class':'1勝クラス','surface':'turf','distance_m':1800,
              'finish':8,'beaten_margin_s':1.2,'source_url':'https://example.test/r1'},
             {'date':'2026-08-20','class':'1勝クラス','surface':'dirt','distance_m':1800,
              'finish':7,'beaten_margin_s':1.0,'source_url':'https://example.test/r2'},
             {'date':'2026-07-20','class':'1勝クラス','surface':'dirt','distance_m':1800,
              'finish':6,'beaten_margin_s':0.9,'source_url':'https://example.test/r3'},
-        ])
-        self.race['horses'] = [h]
+        ]
+        self.race['horses'] = [self.horse(number=i, runs=bad_runs) for i in range(1, 6)]
         out = generate_candidates(self.race, self.as_of)
-        self.assertEqual(out['candidates'], [])
-        self.assertFalse(out['horse_features'][0]['candidate'])
+        row = next(r for r in out['horse_features'] if r['number'] == 5)
+        self.assertFalse(row['candidate'])
+        self.assertNotIn(5, out['candidates'])
 
     def test_data_hold_returns_no_candidates(self):
         h = self.horse()
