@@ -20,6 +20,7 @@ Read:
 - [Data-source licensing and longitudinal field-coverage audit](docs/ecology-data-source-feasibility.md)
 - [Why nonfinishers and missing speeds require a selection audit](docs/ecology-h2-outcome-selection.md)
 - [Completion and speed as different H2 biological outcomes](docs/ecology-h2-two-part.md)
+- [First real-data test in a separate racing species: Queensland greyhound GPS records](docs/ecology-real-greyhound-method-benchmark.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
 ## Current evidence / not yet done
@@ -257,6 +258,53 @@ ground race is a higher class, H1 environment effects cannot be
 identified separately. It flags repeated nominally obscured dates
 without inventing an ordering.
 
-**Actual racing data access is still HOLD** until provider permissions,
-source coding and chronology are verified; neither H1 nor H2 is supported
-by the fictional results.
+**Actual Thoroughbred horse data access is still HOLD.** A separate,
+properly attributed *real greyhound* benchmark now checks repeated
+start-box exposure and early split timing; it neither tests horse H1/H2
+nor supplies complete rival fields for causal competition analysis.
+
+
+## First real animal-data benchmark (not racehorse evidence)
+
+Unlike the synthetic H1/H2 demonstrations, the new
+[Queensland greyhound repeat-exposure benchmark](docs/ecology-real-greyhound-method-benchmark.md)
+was **independently reproduced on genuinely published GPS running data**
+in [GitHub Actions run #38325379268](https://github.com/zuizui0223/keiba/actions/runs/38325379268).
+
+The pinned 2026-10-12 public ODC-BY source from **Australian Racing Open
+Data (PandaVision)** contains 25,679 published runs over 6,021
+date × venue × race labels. A dog name is *not necessarily a unique
+stable biological identifier*.
+
+Exploratory individual-name × venue contrast: 2,302 strata each with
+>=2 starts from boxes 1–4 and >=2 from boxes 5–8. Mean first-50m
+split at outer boxes minus inner boxes = **+0.01097 seconds**,
+descriptive name-cluster-resampling interval
+**[+0.00823, +0.01340] seconds** (1,000 draws).
+
+This is **not an effect of natural selection, not causal lane geometry,
+not physiological plasticity, and NOT A HORSE RESEARCH RESULT**.
+The straight-track venue also shows a positive association, timing
+and start-box choices are not randomized, and race class/distance/
+weather may be confounded. The source contains incomplete/variable
+GPS coverage, with no certified full opponent rosters, so true
+horse-style × rival-composition H2 cannot be inferred.
+
+Reproduce exactly the pinned open-data version, with its Git blob
+verification and mandated attribution:
+
+~~~bash
+python scripts/ecology_greyhound_open_pilot.py \
+  --fetch-pinned --require-pinned \
+  --output tmp/greyhound-audit-20261012.json
+~~~
+
+The script downloads ODC-BY source values for local analysis but
+publishes **aggregate JSON only**, not runner-level records.
+
+**Target equine empirical source:** Racing Queensland's official
+[open-data programme](https://www.racingqueensland.com.au/about/reports-and-data/open-data)
+lists public thoroughbred race results/sectionals. The availability
+of stable historical horse IDs, per-horse sectional/finish times,
+and valid full starter rosters still needs endpoint-level verification.
+See [source feasibility](docs/ecology-data-source-feasibility.md).
