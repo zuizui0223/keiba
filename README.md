@@ -4,6 +4,56 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## First original-source Weight/Jockey/Trainer-adjusted horse ICC
+
+The official Racing Queensland `GetHorsesForRace` response
+documents `Weight` and original `Jockey/@Id`/
+`Trainer/@Id` licence identifiers. These have now been
+parsed without fuzzy names or guessed individual ages and
+compared in a **same-source-cohort** race fixed-effects /
+Gaussian random HORSES-ID model.
+
+Original 548 positive first-GPS+HORSES-ID records:
+**337** contained complete original weight/rider/trainer
+attributes; only **279** remained after requiring >=4
+attribute-complete timed horses in the same race
+(54 races, 11 dates, 164 HORSES IDs).
+
+In precisely those same 279 observations:
+- race-FE + horse random intercept ICC **0.503005**
+- + published registered riding weight ICC **0.509202**
+- + jockey original licence fixed nuisance ICC **0.513500**
+- + trainer original licence fixed nuisance ICC **0.487447**
+
+**This is NOT evidence that jockey or trainer are
+unimportant**: there are 148 source observations
+missing numeric jockey licences, 63 further
+missing trainer licences, and only 1 horse in
+the final cohort has multiple different
+trainer licences. The attrition from the
+original positive GPS cohort is **49.1%**,
+varying by original race TrackRating:
+Good retained **47.8%**, Soft **56.9%**,
+Heavy **45.9%**. At least one original
+source meeting lost all observations
+under the required complete-field gate.
+
+The original **0.432** was fit to a
+*different 523-record source population* and
+cannot be compared directly with the complete
+279-record fit. The matching-cohort ICC
+shift **0.503 → 0.487** is a *descriptive
+model dependence*, not a causal share,
+calibrated interval, or an adjusted
+intrinsic-horse genetic variance.
+
+[Original-data numerical/source audit and
+model specification](docs/ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md).
+The scientific claims for age-controlled
+individual personality, ground-response H1,
+social context H2, fitness and heritability
+remain **HOLD**.
+
 ## New 2026-10-13 real-horse conditional mixed-model ICC (exploratory)
 
 A **Gaussian random horse intercept with exact race
@@ -134,6 +184,7 @@ Read:
 - [Official HORSES internal ID recurrence: two Cannon Park dates, source-verified](docs/ecology-rq-two-date-official-id-recurrence.md)
 - [First exploratory real-horse result: repeatable relative early sectional timing](docs/ecology-rq-real-early-pacing-repeatability.md)
 - [Race-adjusted mixed-model ICC 0.432 on absolute first GPS time (exploratory, model-dependent)](docs/ecology-rq-real-horse-race-adjusted-icc.md)
+- [Official riding Weight, Jockey & Trainer licence adjustment: same-source cohort and missingness](docs/ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md)
 - [Original 20-race Good/Soft/Heavy real-horse H1 identifiability audit](docs/ecology-rq-real-h1-multigoing-feasibility.md)
 - [Exploratory 38-race expansion: why ground-reaction norms remain unidentified](docs/ecology-rq-real-h1-multigoing-expanded-audit.md)
 - [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
