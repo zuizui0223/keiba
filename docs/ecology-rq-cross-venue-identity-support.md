@@ -1,6 +1,43 @@
 # Cross-venue official HORSES-ID overlap: a measurement/individuality gate
 
 **2026-10-14; source audit extension to draft PR #2.**
+
+
+## Verified 24-date original-source aggregate (2026-10-14)
+
+The first original official-source execution completed successfully:
+[GitHub Actions run #38421064924](https://github.com/zuizui0223/keiba/actions/runs/38421064924).
+This is the parallel source-ID-overlap implementation
+(scripts/ecology_rq_cannon_eagle_id_overlap.py), not a new sample
+chosen after looking at this result.
+
+| Locked source metric | Cannon Park | Eagle Farm |
+| --- | ---: | ---: |
+| Original source meeting dates successfully audited | 12 / 12 | 12 / 12 |
+| Eligible positive first-GPS source records | 548 | 391 |
+| Distinct numeric official HORSES IDs | 280 | 339 |
+
+Across both tracks, 617 unique official IDs were observed, and **2
+IDs appeared in both venue cohorts**, with consistent names and no
+same-calendar-date two-venue conflict. These counts were computed
+in memory from each venue's original-source positive-GPS records,
+not from a guessed name-only join. Of the two cross-venue shared IDs:
+
+- **1** had at least one identical first-GPS measurement marker;
+- **0** had both identical first marker AND official race distance;
+- **0** had identical marker, distance AND official source class;
+- **0** had two independent source dates on **each** track.
+
+The narrow data conclusion is that very few IDs overlap and the
+paired, properly matched-interval sample does **not** support a
+cross-track within-individual comparison. This is NOT evidence
+that biological repeatability is zero, or proof that site,
+horse genotype, fitness, training or competition determines pace.
+The previously estimated separately pooled track ICCs
+(0.431738 / 0.452894) remain model- and measurement-conditioned;
+do not report their similarity as a direct same-trait replication.
+
+
 This document specifies an exploratory **data-feasibility** check.
 It reports no cross-venue biological effect and does not reinterpret the
 earlier Cannon Park / Eagle Farm ICC point estimates as replication.
