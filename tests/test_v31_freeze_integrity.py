@@ -20,6 +20,9 @@ FIXTURE_PATHS = [
     "tests/test_v31_holdout.py",
     "scripts/v31_prepare_snapshot.py",
     "tests/test_v31_prepare_snapshot.py",
+    "scripts/v31_evaluate_holdout.py",
+    "tests/test_v31_evaluate_holdout.py",
+    "docs/v31-holdout-decision-contract.json",
     "data/2026-10-12/v3-quality-tier-map.json",
 ]
 
@@ -56,6 +59,18 @@ class V31FreezeIntegrityTests(unittest.TestCase):
             run = self.run_verify(root)
             self.assertNotEqual(run.returncode, 0)
             self.assertIn("frozen_blob_mismatch:holdout_wrapper", run.stderr)
+
+    def test_mutated_decision_contract_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.copy_fixture(root)
+            path = root / "docs/v31-holdout-decision-contract.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["primary_test"]["alpha"] = 0.1
+            path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            run = self.run_verify(root)
+            self.assertNotEqual(run.returncode, 0)
+            self.assertIn("frozen_blob_mismatch:decision_contract", run.stderr)
 
     def test_changed_quality_baseline_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:
