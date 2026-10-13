@@ -19,11 +19,16 @@ permissions:
 jobs:
   exploratory-eight-race-stratum-coverage:
     runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install shared original-source numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
       - name: Test explicit focused vs exploratory coverage, including confounded classes
         run: python -m unittest discover -s tests -p 'test_ecology_rq_multigoing_h1_preflight.py' -v
       - name: Fetch ONLY five selected dates, up to eight official races on each
