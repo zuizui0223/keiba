@@ -83,7 +83,7 @@ def validate_horse_history(horse, race_date, as_of, min_recent_runs=3,
                 reasons.append('future_run_date')
         except ValueError:
             reasons.append('invalid_run_date')
-        if run['surface'] not in ('turf', 'dirt'):
+        if run['surface'] not in ('turf', 'dirt', 'obstacle'):
             reasons.append('invalid_run_surface')
         if type(run['distance_m']) is not int or run['distance_m'] <= 0:
             reasons.append('invalid_run_distance')
