@@ -30,19 +30,25 @@
     },
     "10R": {
       "path": "data/2026-10-12/v3/kyoto_10.json",
-      "file_sha": "528531911d1fd96895d78f4360c605d33fc144f5",
+      "history_sidecar": "data/2026-10-12/v3/history_10.json",
+      "file_sha": "f00a8b682d0fc73314c28a3fb80d79603261fbb5",
+      "sidecar_sha": "a2fd99cb2f5990393708c64b9fe82b2be9b4232d",
       "horses": 10,
       "pass": 10,
       "hold": 0,
-      "validation": "independent reproduction of current recent-history gate rules"
+      "frozen_prediction_mismatches": 0,
+      "sidecar_mismatches": 0
     },
     "9R": {
       "path": "data/2026-10-12/v3/kyoto_09.json",
-      "file_sha": "93dab9ee8fb83ba340d48444ae490aad849b2fc6",
+      "history_sidecar": "data/2026-10-12/v3/history_09.json",
+      "file_sha": "f5824096f547917531d9aad99ae9e8e90f536df7",
+      "sidecar_sha": "c1b923254a7f1063d3322c29fe486e43faf0e4b1",
       "horses": 12,
       "pass": 12,
       "hold": 0,
-      "validation": "independent reproduction of current recent-history gate rules"
+      "frozen_prediction_mismatches": 0,
+      "sidecar_mismatches": 0
     },
     "8R": {
       "path": "data/2026-10-12/v3/kyoto_08.json",
@@ -70,11 +76,9 @@
   "remaining": {
     "races": [
       7,
-      8,
-      9,
-      10
+      8
     ],
-    "horses": 49
+    "horses": 27
   },
   "schema_changes": {
     "margin": "Each run must have numeric beaten_margin_s, official beaten_margin_text, or explicit beaten_margin_missing_reason.",
@@ -89,9 +93,9 @@
   "status": "MIGRATION_COMPLETE_STRUCTURAL_ONLY",
   "note": "All 83 runners in Kyoto 7R-12R now have v3 structured recent-history derived inputs. This establishes data-gate eligibility only and is not predictive validation.",
   "migrated_totals": {
-    "races": 2,
-    "horses": 34,
-    "pass": 34,
+    "races": 4,
+    "horses": 56,
+    "pass": 56,
     "hold": 0
   }
 }
