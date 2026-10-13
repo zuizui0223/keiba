@@ -16,6 +16,9 @@ class V31EvaluationTests(unittest.TestCase):
             ledger_path = base / "ledger.json"
             attempt_path = base / "attempts.json"
             contract_path = base / "contract.json"
+            ledger = json.loads(json.dumps(ledger))
+            for i, entry in enumerate(ledger.get("entries", []), start=1):
+                entry.setdefault("race_id", f"r{i}")
             ledger_path.write_text(json.dumps(ledger), encoding="utf-8")
             if contract is None:
                 contract = {
@@ -145,7 +148,7 @@ class V31EvaluationTests(unittest.TestCase):
         attempts=[]
         frozen_i=0
         for i in range(25):
-            if i in {4,9,14,19,24}:
+            if i in {3,7,11,15,19}:
                 attempts.append({
                     "attempt_index":i+1,"race_id":f"fail{i+1}",
                     "scheduled_start_jst":f"2026-11-{i+1:02d}T10:00:00+09:00",
