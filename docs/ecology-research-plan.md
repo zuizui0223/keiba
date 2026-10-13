@@ -503,3 +503,60 @@ controls, and only then consider a
 scientifically supported population-level
 individual-behavior claim. H1/H2 remain
 separate, unanswered hypotheses.
+
+
+## Adjusted within-horse repeatability of ABSOLUTE first GPS interval (2026-10-13)
+
+A Gaussian `first GPS section seconds ~ fixed race + random HORSES ID`
+model was implemented by eliminating all source-race intercepts with
+Helmert contrasts and profiling the Gaussian REML variance
+components. This is **not** an H1 environment random-slope
+or H2 opponent interaction model. Its conditional ICC is
+`variance(horse)/(variance(horse)+residual variance)`.
+
+Source-based original data:
+- 523 positive first GPS records, 74 race fields with
+  >=4 timed horses, and 269 numeric source HORSES IDs
+  (139 observed more than once).
+- Horse random-intercept variance 0.0403995 sec²;
+  residual variance 0.0531745 sec²; conditional
+  **ICC = 0.431738**.
+- Same model at >=6 valid GPS horses/race:
+  **ICC = 0.419445** (436 rows in 55 fields).
+- Delete one entire source date at a time:
+  **ICC 0.390814–0.499262**, a source stability
+  range and **NOT** a model-based or clustered
+  95% confidence interval.
+- Within-race shuffled original HORSES labels,
+  99 repeats: mean reference **ICC = 0.016736**.
+  This is **not** a causal treatment randomization
+  or a confirmatory test, but a useful negative control.
+- 150m original section marker alone:
+  **ICC 0.547296** on 209 rows/29 races;
+  250m marker: **ICC 0.418787** on
+  226 rows/33 races. Original 100m/200m
+  marker cohorts **HOLD** for too few repeat
+  IDs/dates. The marker difference may reflect
+  different racing populations/sensors/variance,
+  not a biological marker-length effect.
+
+This is the first in-repo genuinely source-backed
+conditional mixed-model variance decomposition.
+It tests a narrower exploratory *individual
+consistency in early section timing* question,
+not adaptation, genetic heritability or
+a horse-by-ground reaction norm. Model residual
+homoscedasticity, date dependence, actual-starter
+status, and horse-specific jockey/weight/age
+covariates are not established. No valid
+effect-size uncertainty or independent prospective
+holdout cohort has yet been calibrated.
+
+[Verified real-data numerical audit,
+identifiability math and interpretation limits](ecology-rq-real-horse-race-adjusted-icc.md).
+Method context: Nakagawa & Schielzeth 2010,
+https://doi.org/10.1111/j.1469-185X.2010.00141.x.
+**Keep H1 and H2 on HOLD** until genuinely
+matched environmental repeated exposures
+and historical full opponent rosters with
+verified result measurements exist.
