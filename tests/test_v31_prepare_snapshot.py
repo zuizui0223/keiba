@@ -57,6 +57,7 @@ class PrepareSnapshotTests(unittest.TestCase):
         )
         self.assertEqual(meta["scratched_or_excluded_numbers"], [3])
         self.assertFalse(meta["uses_target_race_results"])
+        self.assertRegex(meta["preparer_git_blob_sha"], r"^[0-9a-f]{40}$")
 
     def test_filters_target_date_result_from_profile(self):
         race, _, _ = prepare(self.fixture(), "2026-10-17T12:55:00+09:00")
