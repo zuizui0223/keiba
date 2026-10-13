@@ -1,5 +1,5 @@
 {
-  "updated_at_jst": "2026-10-13T10:04:26+09:00",
+  "updated_at_jst": "2026-10-13T10:07:39+09:00",
   "scope": "v3 structured recent-history migration",
   "original_frozen_inputs": {
     "races": 6,
@@ -23,22 +23,29 @@
       "pass": 16,
       "hold": 0,
       "validation": "independent reproduction of current recent-history gate rules"
+    },
+    "10R": {
+      "path": "data/2026-10-12/v3/kyoto_10.json",
+      "file_sha": "528531911d1fd96895d78f4360c605d33fc144f5",
+      "horses": 10,
+      "pass": 10,
+      "hold": 0,
+      "validation": "independent reproduction of current recent-history gate rules"
     }
   },
   "totals": {
-    "migrated_races": 2,
-    "migrated_horses": 34,
-    "pass": 34,
+    "migrated_races": 3,
+    "migrated_horses": 44,
+    "pass": 44,
     "hold": 0
   },
   "remaining": {
     "races": [
       7,
       8,
-      9,
-      10
+      9
     ],
-    "horses": 49
+    "horses": 39
   },
   "schema_changes": {
     "margin": "Each run must have numeric beaten_margin_s, official beaten_margin_text, or explicit beaten_margin_missing_reason.",
