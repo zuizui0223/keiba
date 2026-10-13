@@ -5,17 +5,19 @@
   "holdout_target_races": 20,
   "development_data": "2026-10-12 Kyoto R7-R12 only; not prospective evidence",
   "frozen_blobs": {
-    "protocol": "e4890240757a7118319ab1c5cf684ddbf066f6a0",
+    "protocol": "cf818576d718f186e568604d42e7060aac39aa34",
     "classifier": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
-    "tests": "fd6f4c448f2e59d9e4b58b12886221d6cdb0f672",
+    "tests": "fd6f4cef161f9cab008b4b9a2bea60a1dff1fcbe",
     "holdout_wrapper": "4d60ac82b058d45f3c8f8d31a7d8417fd33e1687",
     "holdout_tests": "f15d07bce14bfeaa98d8dcfadec7252d6831ab42",
-    "operations": "5ae2e8174d82b6a8668518488609a023673a4c36",
+    "operations": "3e33262037172076744391cd21de660a4826caa6",
     "snapshot_preparer": "b3c0a7efd4702218b1d53eb94fda70f9d30560a1",
     "snapshot_preparer_tests": "db5f4cef161f9cab008b4b9a2bea60a1dff1fcbe",
-    "evaluator": "425d773b0835519fb82cc870053609b4fdebc06e",
-    "evaluator_tests": "9a951e62a7c7b03580fe8ec60bb695dc9b0b705a",
-    "decision_contract": "95f3c769574411372b12ae36aeec4b69a76a2082"
+    "evaluator": "942b6fd1a1a14751da76c97056a8914d5e098ac3",
+    "evaluator_tests": "c596ee97a9bf4ba169739c4fcd4730507c08f4e1",
+    "decision_contract": "70c102e0bdcd59a721404df1f09438ba97fa0ee7",
+    "attempt_ledger_tool": "c2380d353ce646fc09ec473e75bfc691a704c29f",
+    "attempt_ledger_tests": "5033112a1457e8b6d35f55d6173ffe15c98c5f33"
   },
   "metadata_inputs": {
     "quality_tier_map_baseline": "a06e33dd396369b9556136b7e12cc4568afde41b",
@@ -76,10 +78,10 @@
     "top3_slots": 18,
     "warning": "in-sample development diagnostic only"
   },
-  "holdout_start_rule": "The first eligible Kyoto race whose valid source capture, odds snapshot and pre-result freeze all satisfy the fixed 15-25 minute pre-post window after created_at_jst is holdout race 1. Every subsequent eligible Kyoto race is attempted in chronological order until 20 scored races are accumulated; do not backfill or skip an eligible race because another race that day was already counted.",
+  "holdout_start_rule": "The first eligible Kyoto race whose valid source capture, odds snapshot and pre-result freeze all satisfy the frozen contract after created_at_jst is holdout race 1. Every subsequent eligible Kyoto race must be attempted chronologically and recorded in the attempt ledger until 20 scored FROZEN races are accumulated.",
   "change_control": "Any threshold or rescue-logic change creates v3.2 or later and starts a new holdout window.",
-  "created_at_jst": "2026-10-13T13:54:30+09:00",
-  "integrity_note": "The frozen snapshot preparer records its Git blob SHA and source-page hashes. The frozen holdout wrapper verifies the preparer SHA, wrapper SHA, classifier SHA, baseline quality tiers, race ID, active horse-number set, Kyoto/flat/class/age eligibility, and that both odds observation and freeze occur 15-25 minutes before scheduled post. The frozen evaluator and decision contract define the only formal 20-race promotion rule.",
+  "created_at_jst": "2026-10-13T14:09:15+09:00",
+  "integrity_note": "The frozen snapshot preparer records source-page hashes. The frozen holdout wrapper verifies preparer/classifier/wrapper SHAs, baseline quality tiers, race identity, active horse-number set, eligibility, and the 15-25 minute pre-post market window. Every eligible race is additionally recorded in the attempt ledger as FROZEN or PRE_RESULT_DATA_FAILURE. The formal evaluator requires the scored race sequence to match the first FROZEN attempts and applies p<=0.05, candidate fraction<=0.65, and freeze success rate>=0.80.",
   "eligibility": {
     "venue": "京都",
     "flat_surfaces": [
@@ -101,10 +103,12 @@
   "formal_evaluation": {
     "contract_path": "docs/v31-holdout-decision-contract.json",
     "evaluator_path": "scripts/v31_evaluate_holdout.py",
+    "attempt_ledger_path": "docs/v31-holdout-attempt-ledger.json",
     "formal_timepoint_races": 20,
     "primary_test": "one-sided exact stratified random-addition rescue test",
     "primary_alpha": 0.05,
     "max_candidate_fraction": 0.65,
+    "min_freeze_success_rate": 0.8,
     "early_stopping": false,
     "interim_formal_decision": false
   }
