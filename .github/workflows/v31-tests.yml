@@ -36,6 +36,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify frozen v3.1 contract
+        run: |
+          python scripts/v31_verify_freeze.py --repo-root .
       - name: Run repository unit tests
         run: |
           python -m unittest discover -s tests -v
