@@ -123,6 +123,10 @@ def freeze(args) -> int:
     odds_observed = parse_aware_iso(odds['observed_at_jst'], 'odds_observed_at_jst')
     if observed >= scheduled or odds_observed >= scheduled:
         raise ValueError('freeze_not_prerace')
+    freeze_minutes_before = (scheduled - observed).total_seconds() / 60.0
+    odds_minutes_before = (scheduled - odds_observed).total_seconds() / 60.0
+    if not (15.0 <= freeze_minutes_before <= 25.0 and 15.0 <= odds_minutes_before <= 25.0):
+        raise ValueError('freeze_outside_odds_window')
     if odds_observed > observed:
         raise ValueError('odds_observed_after_freeze')
     manifest_created = manifest.get('created_at_jst')
