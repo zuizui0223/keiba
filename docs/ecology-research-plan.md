@@ -346,3 +346,32 @@ Contradictory or nonunique official IDs, same-day repeated horse
 names, and data-zero rows are explicitly held, never guessed.
 Synthetic tests run in CI. **No actual historical HORSES-ID crosswalk
 has been verified and no real equine H1/H2 has been fitted.**
+
+
+## Result of the actual original-source ID verification (2026-10-13)
+
+The earlier ID-crosswalk proposal has now been tested against the
+genuine Racing Queensland SOAP API and original GPS files, first for
+one race and then for a deliberately small two-date subset at the
+same venue. The former produced **11/11 exact official-ID/name/GPS
+matches** at 2026-10-11 Cannon Park Race 1. The latter found **two
+source-level numeric HORSES ID recurrences across 2026-08-29 and
+2026-10-11**, both with positive GPS telemetry on both dates.
+Reproduction: [two-date verified audit](ecology-rq-two-date-official-id-recurrence.md).
+
+This supplies actual equine IDs over more than one date, but **not**
+a complete longitudinal dataset for H1/H2:
+- Both dates' selected races were `Good`, providing **no within-horse
+  contrasting ground exposures**.
+- October's sampled races even contained one ID in two same-day
+  official race lists, showing the API list cannot be assumed to
+  represent one confirmed starter per race.
+- The SOAP detail methods do not provide individual certified finishing
+  times/placings, and the GPS CSV zeros are not DNFs.
+- The omitted August race number 5 was not guessed or imputed.
+
+The next *biological* milestone is to find sufficient verified
+same-ID repeat starts under unlike ground conditions and varying
+opponent lineups, conditional on course/distance/class and confirmed
+results. A source-level cross-date ID match is not an evolved
+environmental preference or social response.
