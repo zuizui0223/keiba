@@ -190,6 +190,31 @@ python -B scripts/v31_holdout.py score \
 
 This calculates union and M-only top-three recall, winner recall, misses and non-M rescues without changing the pre-result freeze.
 
+## Independent post-result reconciliation (required)
+
+Before adding a scored race to the official score ledger, independently
+recompute its score from the frozen candidate flags and official result, and
+verify that a matching eligible attempt was already recorded as FROZEN:
+
+```bash
+python -B scripts/v31_validate_postrace.py \
+  --freeze holdout/v31/001/freeze.json \
+  --result holdout/v31/001/result.json \
+  --score holdout/v31/001/score.json \
+  --attempt-ledger docs/v31-holdout-attempt-ledger.json
+```
+
+The validator must print `"valid": true` and exit with status 0. It checks
+freeze/result/attempt hashes, timestamps, membership and rescue arithmetic.
+**Do not register a score if reconciliation fails.** Diagnose discrepancies
+without rewriting the original pre-result freeze.
+
+A declared freeze timestamp alone does not independently prove that the
+prediction was made on time. Verify that the GitHub commit containing the
+freeze was published before the actual race start. If that cannot be
+independently established, record a data-integrity failure rather than
+backdating the freeze.
+
 ## Register in the 20-race ledger
 
 ```bash
