@@ -329,6 +329,70 @@ def adjusted_race_icc(rows:list[dict],mode:str)->dict:
     }
 
 
+def leave_one_meeting_out_adjusted_ICC(complete:list[dict])->dict:
+    """Same original source-complete cohort, deleting ONE meeting date.
+
+    Each re-fit uses identical held-in rows for unadjusted race-FE horse
+    ICC and fully weight+jockey+trainer adjusted ICC. The label support
+    and Gaussian residual assumptions can change when a meeting is
+    deleted; this is an observational stability analysis, *not* a
+    confidence interval or a jackknife variance estimate.
+    """
+    days=sorted({r["day"] for r in complete})
+    if len(days)<8:
+        return {
+            "status":"HOLD_TOO_FEW_COMPLETE_SOURCE_DATES_FOR_JACKKNIFE_SCREEN",
+            "source_days":len(days),
+            "no_original_identifiers_exported":True,
+        }
+    baseline=[]
+    fully=[]
+    delta=[]
+    hold_reasons=Counter()
+    for day in days:
+        kept=[r for r in complete if r["day"]!=day]
+        main=race_fixed_reml(kept,4)
+        full=adjusted_race_icc(kept,"weight_jockey_trainer")
+        x=main.get("conditional_observational_ICC_point_estimate")
+        y=full.get("conditional_ICC_point")
+        if x is None or y is None:
+            hold_reasons[(main["status"] if x is None else full["status"])]+=1
+            continue
+        baseline.append(float(x))
+        fully.append(float(y))
+        delta.append(float(y-x))
+    n=len(baseline)
+    if n<len(days)-2:
+        return {
+            "status":"HOLD_UNSTABLE_DATE_DELETION_MODEL_IDENTIFIABILITY",
+            "source_days":len(days),
+            "successful_identical_cohort_model_pairs":n,
+            "date_deletion_model_HOLD_counts":dict(hold_reasons),
+            "not_a_95_percent_confidence_interval":True,
+            "no_original_identifiers_exported":True,
+        }
+    return {
+        "status":"EXPLORATORY_DATE_DELETION_NUISANCE_ICC_STABILITY_NOT_CI",
+        "source_complete_case_dates":len(days),
+        "same_sample_baseline_and_adjusted_in_each_leave_one_date_out_fit":True,
+        "source_dates_with_both_model_ICCs":n,
+        "source_date_model_HOLD_counts":dict(hold_reasons),
+        "unadjusted_conditional_ICC_min":min(baseline),
+        "unadjusted_conditional_ICC_max":max(baseline),
+        "weight_jockey_trainer_conditional_ICC_min":min(fully),
+        "weight_jockey_trainer_conditional_ICC_max":max(fully),
+        "full_minus_baseline_conditional_ICC_min":min(delta),
+        "full_minus_baseline_conditional_ICC_max":max(delta),
+        "date_deletion_fits_with_lower_ICC_after_full_adjustment":
+            sum(x<0 for x in delta),
+        "date_deletion_fits_with_higher_ICC_after_full_adjustment":
+            sum(x>0 for x in delta),
+        "not_a_95_percent_confidence_interval":True,
+        "not_a_prospective_validation_or_causal_attribution":True,
+        "no_original_identifiers_exported":True,
+    }
+
+
 def compare(rows:list[dict], minimum_GPS:int=4)->dict:
     complete,gate=_complete_sample(rows,minimum_GPS)
     if not complete:
@@ -350,8 +414,10 @@ def compare(rows:list[dict], minimum_GPS:int=4)->dict:
     adjusted_icc=models["weight_jockey_trainer_license"].get("conditional_ICC_point")
     source_delta=(float(adjusted_icc-base_icc)
                   if base_icc is not None and adjusted_icc is not None else None)
+    date_stability=leave_one_meeting_out_adjusted_ICC(complete)
     return {
         "status":"ORIGINAL_HORSE_SOURCE_EXPLORATORY_COVARIATE_ADJUSTMENT_ONLY",
+        "date_deletion_same_source_baseline_vs_nuisance_stability":date_stability,
         "source_gate":gate,
         "same_source_cohort_full_adjustment_minus_unadjusted_ICC_point":
             source_delta,
