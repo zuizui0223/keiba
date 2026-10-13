@@ -86,7 +86,10 @@ def prepare(rows: list[dict], min_race_telemetry: int = 4) -> tuple[list[dict], 
     return result, {
         "all_races_with_eligible_positive_GPS": len(by_race),
         "races_with_at_least_4_positive_first_intervals":
-            sum(k>=min_race_telemetry for k,v in distribution.items() for _ in range(v)),
+            sum(v for k,v in distribution.items() if k>=4),
+        "races_with_at_least_requested_minimum_positive_first_intervals":
+            sum(v for k,v in distribution.items() if k>=min_race_telemetry),
+        "requested_minimum_positive_GPS_horses_per_race":min_race_telemetry,
         "positive_first_section_rows_retained": len(result),
         "races_by_positive_GPS_row_count": dict(sorted(distribution.items())),
         "individual_absent_GPS_or_zero_time_NOT_assumed_DNF": True,
