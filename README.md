@@ -23,8 +23,62 @@ Read:
 - [First real-data test in a separate racing species: Queensland greyhound GPS records](docs/ecology-real-greyhound-method-benchmark.md)
 - [Official Thoroughbred sectional CSV: two independently audited race meetings](docs/ecology-rq-thoroughbred-source-audit.md)
 - [Official HORSES internal ID recurrence: two Cannon Park dates, source-verified](docs/ecology-rq-two-date-official-id-recurrence.md)
+- [Original 20-race Good/Soft/Heavy real-horse H1 identifiability audit](docs/ecology-rq-real-h1-multigoing-feasibility.md)
+- [Exploratory 38-race expansion: why ground-reaction norms remain unidentified](docs/ecology-rq-real-h1-multigoing-expanded-audit.md)
 - [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
+
+## Real Thoroughbred observation/identifiability (2026-10-13)
+
+**Real official horses now confirmed:** in five separate
+Ladbrokes Cannon Park meetings spanning Good, Soft and Heavy
+ground, the original `HORSES` IDs have been linked
+to first-positive-section GPS observations using conservative
+same-day duplicate/identity controls.
+
+The first, preserved fixed sample (20 official race numbers)
+yielded 143 linked observations; 26 IDs repeated across
+meeting dates and 20 IDs were seen in both Good and non-Good.
+After matching race distance and the first-section marker,
+10 IDs were comparable; with original race class also
+matched, only 1 remained. **None** provided >=2 Good
+and >=2 non-Good measures within the same strict stratum.
+
+An explicitly labelled **exploratory post-hoc extension**
+to the same five dates, requesting race numbers 1–8,
+recovered **38 official race IDs**, 280 positive-GPS
+ID-linked observations, **65** repeatedly observed numeric
+HORSES IDs, and **37** with Good and Soft/Heavy observations.
+Only **17** were comparable at the same race distance/first
+marker; **2** when class was also matched; **0** reached
+the original >=2 Good and >=2 wet within-stratum gate.
+Even those "matched class" cases can differ in age/weight
+restrictions, jockey and course preparation. A simple
+wet-minus-Good difference is not a causal/environmental
+reaction norm.
+
+Therefore **a real animal ID and an environmental
+contrast now exist, but H1 random-slope variance is
+still NOT estimable at the required support; H2 also
+remains scientifically HOLD** because official finish
+outcomes, confirmed starters and historical rival
+phenotypes are unavailable in the joined source.
+See [fixed 20-race audit](docs/ecology-rq-real-h1-multigoing-feasibility.md),
+[38-race sensitivity](docs/ecology-rq-real-h1-multigoing-expanded-audit.md),
+and [source-level ID limitations](docs/ecology-rq-two-date-official-id-recurrence.md).
+
+Reproduce **aggregate-only**, with no raw horse files committed:
+
+~~~bash
+python scripts/ecology_rq_multigoing_h1_preflight.py \
+  --scope focused_four --output tmp/rq-H1-fixed.json
+
+python scripts/ecology_rq_multigoing_h1_preflight.py \
+  --scope extended_eight --output tmp/rq-H1-expanded.json
+~~~
+
+Original open-data publisher: Racing Queensland; no
+JRA-VAN/NAR betting data were used for these audits.
 
 ## Current evidence / not yet done
 
