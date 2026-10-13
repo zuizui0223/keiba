@@ -19,8 +19,8 @@
     "rationale": "Pre-outcome ceiling to prevent a trivial recall gain from expanding toward the whole field. v3.1 development coverage was 0.5904; 0.65 is a fixed prospective ceiling with limited headroom."
   },
   "formal_decision_rule": {
-    "PROMOTE": "After exactly 20 scored eligible races, one-sided exact random-addition p <= 0.05 AND overall candidate fraction <= 0.65.",
-    "NO_PROMOTION": "After exactly 20 scored eligible races, fail either the statistical evidence gate or the candidate-fraction gate.",
+    "PROMOTE": "After exactly 20 scored eligible races, one-sided exact random-addition p <= 0.05 AND overall candidate fraction <= 0.65 AND freeze success rate >= 0.80.",
+    "NO_PROMOTION": "After exactly 20 scored eligible races, fail any of the statistical evidence, candidate-fraction, or technical-evaluability gates.",
     "INCOMPLETE": "Before 20 scored eligible races. Interim statistics are descriptive only and cannot trigger promotion or threshold changes."
   },
   "secondary_descriptive_metrics": [
@@ -35,6 +35,14 @@
   ],
   "multiplicity": "No secondary metric is confirmatory. No multiplicity-adjusted secondary hypothesis testing is preregistered.",
   "no_tuning_rule": "Do not change M/C1/U/Q1/K1 thresholds, rescue logic, market observation window, eligibility, alpha, or candidate-fraction ceiling during the 20-race holdout.",
-  "data_failure_rule": "Pre-result technical/data failures are recorded separately and do not enter the scored denominator; performance is never a reason to mark a race non-evaluable.",
-  "claim_ceiling": "A PROMOTE decision supports candidate-generation usefulness relative to same-size random expansion of M at Kyoto under this holdout population. It does not establish calibrated probabilities, positive expected betting value, or generalization outside Kyoto."
+  "data_failure_rule": "Every chronologically eligible race must be recorded in the attempt ledger as FROZEN or PRE_RESULT_DATA_FAILURE. Pre-result technical/data failures do not enter the scored performance denominator, but they do enter the technical-evaluability denominator. Performance is never a reason to mark a race non-evaluable.",
+  "claim_ceiling": "A PROMOTE decision supports candidate-generation usefulness relative to same-size random expansion of M at Kyoto under this holdout population. It does not establish calibrated probabilities, positive expected betting value, or generalization outside Kyoto.",
+  "min_freeze_success_rate": 0.8,
+  "technical_evaluability_gate": {
+    "metric": "freeze_success_rate among all chronologically eligible attempts through the 20th scored FROZEN race",
+    "min_freeze_success_rate": 0.8,
+    "numerator": "valid FROZEN attempts",
+    "denominator": "all eligible attempts, including PRE_RESULT_DATA_FAILURE, through the 20th scored freeze",
+    "rationale": "Pre-outcome gate to prevent selective retention of only races with convenient/complete data."
+  }
 }
