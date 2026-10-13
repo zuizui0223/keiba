@@ -66,6 +66,14 @@ class SingleRaceIdentityProbeTests(unittest.TestCase):
         self.assertEqual(counts["matched_all_zero_gps"],1)
         self.assertEqual(counts["matched_positive_gps"],1)
         self.assertEqual(counts["match_official_start_unknown"],2)
+        one = report["crosswalk"]["one_race_exact_name_coverage"]
+        self.assertEqual(one["official_horse_id_records"],2)
+        self.assertEqual(one["gps_horse_rows_in_selected_race"],2)
+        self.assertEqual(one["provisional_name_matches_excluding_same_day_ambiguity"],2)
+        self.assertEqual(one["provisional_matched_with_positive_GPS"],1)
+        self.assertEqual(one["provisional_matched_with_zero_GPS"],1)
+        self.assertEqual(one["official_names_not_in_selected_GPS"],0)
+        self.assertFalse(one["verified_individual_stable_across_different_dates"])
         import json
         output = json.dumps(report)
         self.assertNotIn("Alpha Horse", output)
@@ -82,6 +90,31 @@ class SingleRaceIdentityProbeTests(unittest.TestCase):
         self.assertEqual(shape["rows"],2)
         with self.assertRaisesRegex(ValueError,"HOLD_NOT_EXACTLY_ONE_OFFICIAL_RACE"):
             identified_race(parse_xml(RACES),8)
+
+    def test_one_race_and_one_horse_detail_schema_have_no_identity_values(self):
+        race_detail = b"<RaceDetails><Race Id='123451'><Result>EXAMPLE-SECRET</Result><FinishTime>01:00.00</FinishTime></Race></RaceDetails>"
+        horse_detail = b"<HorseDetails><Horse Id='9001'><Name>Alpha Horse</Name><HorseID>9001</HorseID><Status>UNKNOWN</Status></Horse></HorseDetails>"
+        def stub(op, params):
+            if op == "GetRaceDetails":
+                self.assertEqual(params,{"raceId":"123451"})
+                return parse_xml(race_detail), "https://www.racingqueensland.com.au/stub", "c"*64
+            if op == "GetHorseDetailsInRace":
+                self.assertEqual(params,{"raceId":"123451","horseId":"9001"})
+                return parse_xml(horse_detail), "https://www.racingqueensland.com.au/stub", "d"*64
+            return stub_call(op,params)
+        r=run_single_day("2026-10-11",gps_raw=GPS,request_fn=stub,
+                         inspect_details=True)
+        self.assertEqual(set(r["detail_schema_audit"]),{
+            "race_result_structure","one_horse_detail_structure"
+        })
+        import json
+        summary=json.dumps(r)
+        self.assertIn("FinishTime",summary)
+        self.assertIn("HorseID",summary)
+        self.assertNotIn("EXAMPLE-SECRET",summary)
+        self.assertNotIn("Alpha Horse",summary)
+        self.assertNotIn("9001",summary)
+        self.assertNotIn("123451",summary)
 
     def test_missing_race_id_and_ambiguous_races_fail_closed(self):
         bad = RACES.replace(b'Id="123451"',b'Number="123451"')
@@ -114,6 +147,9 @@ class SingleRaceIdentityProbeTests(unittest.TestCase):
                                   {"horse_id":"9002","horse_name":"Beta Horse"}],dup)
         self.assertEqual(out["counts"]["blocked_same_day_duplicate_name"],2)
         self.assertEqual(out["counts"]["unique_syntactic_official_name_matches"],1)
+        self.assertEqual(
+            out["one_race_exact_name_coverage"]["provisional_name_matches_excluding_same_day_ambiguity"],1
+        )
         self.assertEqual(out["status"],"HOLD_OFFICIAL_EQUIVALENCE_AND_LONGITUDINAL_VALIDATION")
 
     def test_reject_external_date_and_disallow_xml_entity_definitions(self):
