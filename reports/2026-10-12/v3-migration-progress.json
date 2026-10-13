@@ -1,5 +1,5 @@
 {
-  "updated_at_jst": "2026-10-13T10:46:01+09:00",
+  "updated_at_jst": "2026-10-13T13:17:00+09:00",
   "scope": "v3 structured recent-history migration",
   "original_frozen_inputs": {
     "races": 6,
@@ -93,7 +93,7 @@
     "Career-start counts for a small number of horses were derived from current totals by removing the target race and are annotated in the derived files.",
     "This migration makes inputs structurally eligible; it does not validate predictive accuracy."
   ],
-  "status": "MIGRATION_COMPLETE_STRUCTURAL_GATE_PASS",
+  "status": "MIGRATION_VERIFIED_STRUCTURAL_GATE_PASS",
   "note": "All 83 runners in Kyoto 7R-12R now have v3 structured recent-history derived inputs. This establishes data-gate eligibility only and is not predictive validation.",
   "migrated_totals": {
     "races": 6,
@@ -104,8 +104,40 @@
     "sidecar_mismatches": 0
   },
   "final_validation": {
-    "method": "Independent re-evaluation of GitHub-fetched base, sidecar, and derived JSON for all six races using the audit_recent_history.py rule set.",
-    "result": "83/83 PASS; frozen mark/notes mismatches 0; sidecar mismatches 0.",
-    "note": "Structural eligibility does not establish predictive accuracy. v3 remains unvalidated until frozen on future races and tested out-of-sample."
+    "method": "Fresh independent re-evaluation of GitHub-fetched base, sidecar, and derived JSON for all six races using the current audit_recent_history.py rules.",
+    "result": "83/83 PASS; HOLD 0; frozen mark/notes mismatches 0; sidecar mismatches 0.",
+    "per_race": [
+      {
+        "race": 7,
+        "pass": 16,
+        "hold": 0
+      },
+      {
+        "race": 8,
+        "pass": 11,
+        "hold": 0
+      },
+      {
+        "race": 9,
+        "pass": 12,
+        "hold": 0
+      },
+      {
+        "race": 10,
+        "pass": 10,
+        "hold": 0
+      },
+      {
+        "race": 11,
+        "pass": 18,
+        "hold": 0
+      },
+      {
+        "race": 12,
+        "pass": 16,
+        "hold": 0
+      }
+    ],
+    "note": "Structural eligibility only. Predictive improvement remains unvalidated and must be tested on future frozen races."
   }
 }
