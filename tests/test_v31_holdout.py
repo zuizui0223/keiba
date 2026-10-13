@@ -142,15 +142,15 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
 
     def test_freeze_rejects_odds_snapshot_too_early(self):
         with tempfile.TemporaryDirectory() as td:
-            b=Path(td); classifier=self.make_fixture(b); odds=json.loads((b/'odds.json').read_text()); odds['observed_at_jst']='2026-10-18T12:25:00+09:00'; (b/'odds.json').write_text(json.dumps(odds,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T12:25:00+09:00','--output',out)
+            b=Path(td); classifier=self.make_fixture(b); odds=json.loads((b/'odds.json').read_text()); odds['observed_at_jst']='2026-10-18T12:25:00+09:00'; (b/'odds.json').write_text(json.dumps(odds,ensure_ascii=False)); meta=json.loads((b/'source-meta.json').read_text()); meta['observed_at_jst']='2026-10-18T12:25:00+09:00'; (b/'source-meta.json').write_text(json.dumps(meta,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T12:25:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('freeze_outside_odds_window',r.stderr)
 
     def test_freeze_rejects_odds_snapshot_too_late(self):
         with tempfile.TemporaryDirectory() as td:
-            b=Path(td); classifier=self.make_fixture(b); odds=json.loads((b/'odds.json').read_text()); odds['observed_at_jst']='2026-10-18T13:20:00+09:00'; (b/'odds.json').write_text(json.dumps(odds,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:20:00+09:00','--output',out)
+            b=Path(td); classifier=self.make_fixture(b); odds=json.loads((b/'odds.json').read_text()); odds['observed_at_jst']='2026-10-18T13:20:00+09:00'; (b/'odds.json').write_text(json.dumps(odds,ensure_ascii=False)); meta=json.loads((b/'source-meta.json').read_text()); meta['observed_at_jst']='2026-10-18T13:20:00+09:00'; (b/'source-meta.json').write_text(json.dumps(meta,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:20:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('freeze_outside_odds_window',r.stderr)
 
