@@ -6,8 +6,10 @@ on:
       - ".github/workflows/v31-tests.yml"
       - "scripts/v31_candidate_channels.py"
       - "scripts/v31_holdout.py"
+      - "scripts/v31_prepare_snapshot.py"
       - "tests/test_v31_candidate_channels.py"
       - "tests/test_v31_holdout.py"
+      - "tests/test_v31_prepare_snapshot.py"
       - "docs/v31-candidate-generation-protocol.md"
       - "docs/v31-holdout-freeze.json"
   push:
@@ -16,8 +18,10 @@ on:
     paths:
       - "scripts/v31_candidate_channels.py"
       - "scripts/v31_holdout.py"
+      - "scripts/v31_prepare_snapshot.py"
       - "tests/test_v31_candidate_channels.py"
       - "tests/test_v31_holdout.py"
+      - "tests/test_v31_prepare_snapshot.py"
 
 permissions:
   contents: read
@@ -33,4 +37,4 @@ jobs:
           python-version: "3.12"
       - name: Run v3.1 unit tests
         run: |
-          python -m unittest tests.test_v31_candidate_channels tests.test_v31_holdout -v
+          python -m unittest tests.test_v31_candidate_channels tests.test_v31_holdout tests.test_v31_prepare_snapshot -v
