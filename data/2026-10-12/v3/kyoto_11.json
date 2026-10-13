@@ -105,40 +105,39 @@
         "https://www.jbis.or.jp/race/20261012/108/11/",
         "https://sports.yahoo.co.jp/keiba/directory/horse/2023105685/"
       ],
-      "career_starts": 9,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2023105685/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
+      "career_starts": 8,
       "source_latest_run_date": "2026-09-06",
       "recent_runs": [
         {
           "date": "2026-09-06",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1200,
           "finish": 8,
           "beaten_margin_s": 0.8,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2023105685/"
         },
         {
           "date": "2026-05-10",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 5,
           "beaten_margin_s": 0.5,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2023105685/"
         },
         {
           "date": "2026-03-21",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2023105685/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2023105685/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 2,
@@ -163,39 +162,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 16,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2022105071/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-08-22",
       "recent_runs": [
         {
           "date": "2026-08-22",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105071/"
         },
         {
           "date": "2026-06-14",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 2,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105071/"
         },
         {
           "date": "2026-05-24",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1800,
           "finish": 13,
-          "beaten_margin_s": 0.4,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "beaten_margin_s": 2.7,
+          "source_url": "https://db.netkeiba.com/horse/result/2022105071/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022105071/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 3,
@@ -218,41 +216,39 @@
         "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
-      "career_starts": 25,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2020110155",
-      "career_starts_note": "Current page showed 26 starts after the target race; pre-race count derived as 25.",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
+      "career_starts": 26,
       "source_latest_run_date": "2026-05-31",
       "recent_runs": [
         {
           "date": "2026-05-31",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 6,
           "beaten_margin_s": 0.7,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020110155/"
         },
         {
           "date": "2026-05-02",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 17,
           "beaten_margin_s": 1.2,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020110155/"
         },
         {
           "date": "2026-02-21",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 8,
           "beaten_margin_s": 0.9,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020110155/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2020110155/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 4,
@@ -277,39 +273,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 22,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2020105018/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-06-07",
       "recent_runs": [
         {
           "date": "2026-06-07",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 17,
           "beaten_margin_s": 1.8,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020105018/"
         },
         {
           "date": "2026-04-04",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020105018/"
         },
         {
           "date": "2026-02-14",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020105018/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2020105018/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 5,
@@ -338,39 +333,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 24,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2020100896/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-09-06",
       "recent_runs": [
         {
           "date": "2026-09-06",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1200,
           "finish": 13,
           "beaten_margin_s": 1.8,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020100896/"
         },
         {
           "date": "2026-08-02",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1000,
           "finish": 4,
           "beaten_margin_s": 0.7,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2020100896/"
         },
         {
           "date": "2026-03-29",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1200,
           "finish": 11,
-          "beaten_margin_s": 0.4,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "beaten_margin_s": 1.1,
+          "source_url": "https://db.netkeiba.com/horse/result/2020100896/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2020100896/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 6,
@@ -401,39 +395,38 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2019100213/"
       ],
       "career_starts": 30,
-      "career_starts_source_url": "https://www.winkeiba.jp/data/horse?PedigreeNum=2019100213",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2025-11-23",
       "recent_runs": [
         {
           "date": "2025-11-23",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 18,
           "beaten_margin_s": 1.9,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2019100213/"
         },
         {
           "date": "2025-10-13",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 4,
           "beaten_margin_s": 0.1,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2019100213/"
         },
         {
           "date": "2025-06-08",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 5,
           "beaten_margin_s": 0.4,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2019100213/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2019100213/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 7,
@@ -462,39 +455,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 35,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2020101301/",
-      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2020101301/",
       "source_latest_run_date": "2026-07-20",
       "recent_runs": [
         {
           "date": "2026-07-20",
-          "class": "地方A2B1",
+          "class": "A2B1",
           "surface": "dirt",
           "distance_m": 1400,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://db.sp.netkeiba.com/horse/result/2020101301/"
+          "source_url": "https://db.netkeiba.com/horse/result/2020101301/"
         },
         {
           "date": "2026-07-02",
-          "class": "地方A2B1",
+          "class": "OP",
           "surface": "dirt",
           "distance_m": 1400,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://db.sp.netkeiba.com/horse/result/2020101301/"
+          "source_url": "https://db.netkeiba.com/horse/result/2020101301/"
         },
         {
           "date": "2026-05-21",
-          "class": "地方A2B1",
+          "class": "A2B1",
           "surface": "dirt",
           "distance_m": 1200,
           "finish": 7,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
-          "source_url": "https://db.sp.netkeiba.com/horse/result/2020101301/"
+          "beaten_margin_s": 1,
+          "source_url": "https://db.netkeiba.com/horse/result/2020101301/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2020101301/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 8,
@@ -522,41 +514,39 @@
         "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
-      "career_starts": 5,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2023107053/",
-      "career_starts_note": "Current page showed 6 starts after the target race; pre-race count derived as 5.",
-      "history_source_url": "https://db.sp.netkeiba.com/horse/2023107053/",
+      "career_starts": 6,
       "source_latest_run_date": "2026-07-26",
       "recent_runs": [
         {
           "date": "2026-07-26",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 9,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
-          "source_url": "https://db.sp.netkeiba.com/horse/2023107053/"
+          "beaten_margin_s": 3.1,
+          "source_url": "https://db.netkeiba.com/horse/result/2023107053/"
         },
         {
           "date": "2026-05-10",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 7,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
-          "source_url": "https://db.sp.netkeiba.com/horse/2023107053/"
+          "beaten_margin_s": 0.6,
+          "source_url": "https://db.netkeiba.com/horse/result/2023107053/"
         },
         {
           "date": "2026-04-04",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 12,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
-          "source_url": "https://db.sp.netkeiba.com/horse/2023107053/"
+          "beaten_margin_s": 1.7,
+          "source_url": "https://db.netkeiba.com/horse/result/2023107053/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2023107053/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 9,
@@ -587,39 +577,38 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2021110031/"
       ],
       "career_starts": 19,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2021110031/",
-      "history_source_url": "https://race.sp.netkeiba.com/modal/horse.html?horse_id=2021110031&race_id=202608040511",
       "source_latest_run_date": "2026-06-07",
       "recent_runs": [
         {
           "date": "2026-06-07",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 6,
           "beaten_margin_s": 0.2,
-          "source_url": "https://race.sp.netkeiba.com/modal/horse.html?horse_id=2021110031&race_id=202608040511"
+          "source_url": "https://db.netkeiba.com/horse/result/2021110031/"
         },
         {
           "date": "2026-04-26",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 5,
           "beaten_margin_s": 0.2,
-          "source_url": "https://race.sp.netkeiba.com/modal/horse.html?horse_id=2021110031&race_id=202608040511"
+          "source_url": "https://db.netkeiba.com/horse/result/2021110031/"
         },
         {
           "date": "2026-02-10",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 10,
           "beaten_margin_s": 0.4,
-          "source_url": "https://race.sp.netkeiba.com/modal/horse.html?horse_id=2021110031&race_id=202608040511"
+          "source_url": "https://db.netkeiba.com/horse/result/2021110031/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2021110031/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 10,
@@ -649,39 +638,38 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2021100935/"
       ],
       "career_starts": 16,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/2021100935/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-08-22",
       "recent_runs": [
         {
           "date": "2026-08-22",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 3,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2021100935/"
         },
         {
           "date": "2026-05-02",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 13,
           "beaten_margin_s": 0.8,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2021100935/"
         },
         {
           "date": "2026-03-29",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1200,
           "finish": 16,
           "beaten_margin_s": 1.9,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2021100935/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2021100935/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 11,
@@ -710,39 +698,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 8,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2023103268/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-09-05",
       "recent_runs": [
         {
           "date": "2026-09-05",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 11,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "beaten_margin_s": 0.7,
+          "source_url": "https://db.netkeiba.com/horse/result/2023103268/"
         },
         {
           "date": "2026-05-10",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 6,
           "beaten_margin_s": 0.5,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2023103268/"
         },
         {
           "date": "2026-04-11",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2023103268/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2023103268/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 12,
@@ -767,39 +754,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 14,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2022103875/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-09-27",
       "recent_runs": [
         {
           "date": "2026-09-27",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1200,
           "finish": 11,
           "beaten_margin_s": 0.6,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022103875/"
         },
         {
           "date": "2026-05-17",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 13,
           "beaten_margin_s": 0.9,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022103875/"
         },
         {
           "date": "2026-03-22",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022103875/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022103875/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 13,
@@ -829,13 +815,11 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2022106768/"
       ],
       "career_starts": 14,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2022106768/",
-      "history_source_url": "https://db.netkeiba.com/horse/result/2022106768/",
       "source_latest_run_date": "2026-06-14",
       "recent_runs": [
         {
           "date": "2026-06-14",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 1,
@@ -844,24 +828,25 @@
         },
         {
           "date": "2026-05-02",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 3,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
+          "beaten_margin_s": 0.3,
           "source_url": "https://db.netkeiba.com/horse/result/2022106768/"
         },
         {
           "date": "2026-02-21",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 9,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
+          "beaten_margin_s": 1,
           "source_url": "https://db.netkeiba.com/horse/result/2022106768/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022106768/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 14,
@@ -891,39 +876,38 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2021104434/"
       ],
       "career_starts": 17,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2021104434/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-05-17",
       "recent_runs": [
         {
           "date": "2026-05-17",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 15,
           "beaten_margin_s": 1.1,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2021104434/"
         },
         {
           "date": "2026-05-02",
-          "class": "GII",
+          "class": "G2",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 7,
           "beaten_margin_s": 0.6,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2021104434/"
         },
         {
           "date": "2026-03-22",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 4,
           "beaten_margin_s": 0.2,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2021104434/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2021104434/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 15,
@@ -952,27 +936,25 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 8,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2022105369/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-04-19",
       "recent_runs": [
         {
           "date": "2026-04-19",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1800,
           "finish": 2,
           "beaten_margin_s": 0.2,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105369/"
         },
         {
           "date": "2026-03-15",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 2,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "beaten_margin_s": 0,
+          "source_url": "https://db.netkeiba.com/horse/result/2022105369/"
         },
         {
           "date": "2025-12-28",
@@ -981,10 +963,11 @@
           "distance_m": 1600,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105369/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022105369/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 16,
@@ -1009,39 +992,38 @@
         "https://www.jbis.or.jp/race/20261012/108/11/"
       ],
       "career_starts": 13,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2022105291/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
       "source_latest_run_date": "2026-08-22",
       "recent_runs": [
         {
           "date": "2026-08-22",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
           "distance_m": 1400,
           "finish": 16,
           "beaten_margin_s": 0.8,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105291/"
         },
         {
           "date": "2026-07-05",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1200,
           "finish": 8,
           "beaten_margin_s": 0.9,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105291/"
         },
         {
           "date": "2026-05-10",
-          "class": "Listed",
+          "class": "L",
           "surface": "turf",
-          "distance_m": 1400,
+          "distance_m": 1600,
           "finish": 1,
           "beaten_margin_s": 0,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105291/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022105291/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 17,
@@ -1071,39 +1053,38 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2022105230/"
       ],
       "career_starts": 12,
-      "career_starts_source_url": "https://db.sp.netkeiba.com/horse/result/2022105230/",
-      "history_source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC",
-      "source_latest_run_date": "2026-08-16",
+      "source_latest_run_date": "2026-06-21",
       "recent_runs": [
         {
-          "date": "2026-08-16",
-          "class": "GIII",
-          "surface": "turf",
-          "distance_m": 1600,
-          "finish": 2,
-          "beaten_margin_s": 0.1,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
-        },
-        {
           "date": "2026-06-21",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 6,
           "beaten_margin_s": 0.2,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105230/"
         },
         {
           "date": "2026-04-04",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 4,
           "beaten_margin_s": 0.1,
-          "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604051120261012%2FDC"
+          "source_url": "https://db.netkeiba.com/horse/result/2022105230/"
+        },
+        {
+          "date": "2026-02-10",
+          "class": "3勝クラス",
+          "surface": "turf",
+          "distance_m": 1600,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.netkeiba.com/horse/result/2022105230/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022105230/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     },
     {
       "number": 18,
@@ -1133,13 +1114,11 @@
         "https://sports.yahoo.co.jp/keiba/directory/horse/2022103205/"
       ],
       "career_starts": 10,
-      "career_starts_source_url": "https://db.netkeiba.com/horse/result/2022103205/",
-      "history_source_url": "https://db.netkeiba.com/horse/result/2022103205/",
       "source_latest_run_date": "2026-08-02",
       "recent_runs": [
         {
           "date": "2026-08-02",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1800,
           "finish": 4,
@@ -1148,24 +1127,25 @@
         },
         {
           "date": "2026-05-17",
-          "class": "GI",
+          "class": "G1",
           "surface": "turf",
           "distance_m": 1600,
           "finish": 4,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
+          "beaten_margin_s": 0.5,
           "source_url": "https://db.netkeiba.com/horse/result/2022103205/"
         },
         {
           "date": "2026-03-07",
-          "class": "GIII",
+          "class": "G3",
           "surface": "turf",
           "distance_m": 1800,
           "finish": 4,
-          "beaten_margin_missing_reason": "source_does_not_publish_margin_in_retrieved_card",
+          "beaten_margin_s": 0.2,
           "source_url": "https://db.netkeiba.com/horse/result/2022103205/"
         }
       ],
-      "history_checked_at_jst": "2026-10-13T10:04:26+09:00"
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022103205/",
+      "history_checked_at_jst": "2026-10-13T10:34:31+09:00"
     }
   ],
   "tickets": [
@@ -1214,8 +1194,10 @@
   "v3_history_migration": {
     "derived_from": "data/2026-10-12/kyoto_11.json",
     "derived_from_blob_sha": "72180071976ffb9efe81cf6b4a6dfdb2aa458bd0",
-    "checked_at_jst": "2026-10-13T10:04:26+09:00",
+    "history_sidecar": "data/2026-10-12/v3/history_11.json",
+    "history_sidecar_blob_sha": "7119c1a219731f6ce033794bd042daeb0c0854bf",
+    "checked_at_jst": "2026-10-13T10:34:31+09:00",
     "policy": "docs/v3-decision-policy-draft.md",
-    "note": "Historical pre-race marks remain unchanged; structured recent-history fields were added after the race for data-quality migration only."
+    "note": "Frozen prediction fields are preserved; only structured recent-history fields are added."
   }
 }
