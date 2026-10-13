@@ -30,7 +30,7 @@ class FixtureMixin:
             'status': 'frozen_for_prospective_holdout',
             'created_at_jst': '2026-10-13T09:51:48+09:00',
             'holdout_target_races': 20,
-            'frozen_blobs': {'classifier': classifier_sha},
+            'frozen_blobs': {'classifier': classifier_sha, 'holdout_wrapper': git_blob_sha(SCRIPT.read_bytes())},
             'metadata_inputs': {
                 'quality_tier_baseline': {'A賞': 'GIII'},
                 'quality_tier_policy': 'append-only'
@@ -82,6 +82,13 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
             r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('classifier_sha_mismatch',r.stderr)
+
+    def test_freeze_rejects_wrapper_sha_mismatch(self):
+        with tempfile.TemporaryDirectory() as td:
+            b=Path(td); classifier=self.make_fixture(b); manifest=json.loads((b/'manifest.json').read_text()); manifest['frozen_blobs']['holdout_wrapper']='0'*40; (b/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            self.assertNotEqual(r.returncode,0)
+            self.assertIn('holdout_wrapper_sha_mismatch',r.stderr)
 
     def test_freeze_rejects_changed_baseline_quality_tier(self):
         with tempfile.TemporaryDirectory() as td:
