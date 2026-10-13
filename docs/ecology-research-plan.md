@@ -270,3 +270,37 @@ overlap: 2+ starts in at least two going labels for the same horse,
 venue, surface, distance, class, plus changing rival sets. An
 unstratified count of repeated starts may conceal complete
 environment/class confounding.
+
+
+## First reproducible real racing-animal data test (2026-10-13)
+
+To prevent indefinite reliance on invented effects, the project
+performed a **real-data technical/descriptive test in Queensland
+GREYHOUNDS, not Thoroughbred horses**. This analogue was chosen
+because the public dataset's ODC-BY attribution and Racing
+Queensland open-data origin could be documented and a fixed Git
+blob independently verified.
+
+- 25,679 real dog–run GPS records, 6,021 date × venue × race keys,
+  3,603 dog **names**.
+- 2,302 dog-name × venue strata with >=2 observations in both inner
+  versus outer starting box groups.
+- Exploratory outer-minus-inner first-50m split contrast: +0.01097 s,
+  descriptive name-cluster 95% resampling interval
+  [+0.00823, +0.01340] s. **Not a causal CI or preregistered test**.
+- Similar direction in early versus late descriptive time subsets,
+  but no external prediction test; the straight-course positive
+  contrast and assignment confounding undermine a simple
+  turn-geometry explanation.
+- No complete official opponent-roster guarantee, dog names not
+  proven stable IDs, track/class and start design not fully adjusted.
+  This analysis **does not** estimate H1 individual slope variance,
+  H2 causal interactions, evolutionary fitness or any horse effect.
+
+Reproduction and full limitations:
+[real greyhound benchmark](ecology-real-greyhound-method-benchmark.md).
+The target remains actual horse data from an authorized source with
+stable horse ID, real chronological start dates, all competitors and
+environment-specific repeated outcomes. The official Racing Queensland
+thoroughbred open-data catalogue is the next field-level source to
+verify. Horse H1/H2 remain **HOLD**.
