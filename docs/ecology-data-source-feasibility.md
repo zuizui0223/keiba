@@ -215,3 +215,41 @@ for dates, event selection, source hashes,
 selection bias and explicit HOLD. Neither
 result demonstrates phenotypic plasticity
 or an evolutionary response.
+
+
+## New official nuisance-variable feasibility result (2026-10-13)
+
+The original public SOAP `GetHorsesForRace`
+interface specifically documents `Weight`,
+`Jockey/@Id` and `Trainer/@Id`.
+[Actual Weight/Jockey/Trainer coverage and
+same-record model comparisons](ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md)
+were independently rerun on 12 source dates:
+
+- 548 original stable-HORSES-ID/positive-first-GPS rows;
+  **337** have every documented role and weight
+  value; after >=4 such GPS records in an
+  individual race, **279** survive (54 races).
+- Retained original-source fractions are
+  **47.8% Good, 56.9% Soft and 45.9% Heavy**.
+  The 2026-04-04 original meeting drops out
+  entirely on covariate-plus-race selection.
+- On the *same 279 observations*, Gaussian
+  race-FE horse ICC is 0.503 without these
+  nuisances and 0.487 with all three.
+- **One recorded horse changed trainer licence,
+  45 changed registered jockey licence**;
+  most trainer-ID and horse-ID effects are
+  not independently assignable and the source
+  may list nominations rather than actual
+  ride assignments.
+- No verified HORSES biological age, complete
+  official result/finisher roster, or credible
+  ecological reaction-norm/competition effect
+  estimate is available through this study.
+
+The new original-source audit and model are
+still **exploratory source selection / model
+dependence diagnostics**, not a licensed
+complete-panel solution or a supported H1/H2
+ecological effect.
