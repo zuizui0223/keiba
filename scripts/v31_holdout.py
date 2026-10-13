@@ -281,6 +281,12 @@ def _ledger_summary(entries: list[dict]) -> dict:
 
 
 def register(args) -> int:
+    from v31_validate_postrace import validate as validate_postrace
+
+    # Registration must never trust score.json merely because its race_id matches.
+    # Independently reconcile the immutable freeze, source result, score and
+    # the previously recorded FROZEN attempt before modifying the score ledger.
+    validate_postrace(args.freeze, args.result, args.score, args.attempt_ledger)
     ledger = read_json(args.ledger)
     frozen = read_json(args.freeze)
     scored = read_json(args.score)
@@ -349,7 +355,9 @@ def main() -> int:
     p = sub.add_parser('register')
     p.add_argument('--ledger', type=Path, required=True)
     p.add_argument('--freeze', type=Path, required=True)
+    p.add_argument('--result', type=Path, required=True)
     p.add_argument('--score', type=Path, required=True)
+    p.add_argument('--attempt-ledger', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
 
     args = parser.parse_args()
