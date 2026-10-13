@@ -91,6 +91,13 @@ def freeze(args) -> int:
     check_no_target_results(race_input)
     if race_input.get('venue') != '京都':
         raise ValueError('ineligible_venue')
+    target_meta = race_input.get('target', {})
+    if target_meta.get('surface') not in {'芝', 'ダ'}:
+        raise ValueError('ineligible_nonflat_surface')
+    if int(target_meta.get('class_rank', -1)) < 1:
+        raise ValueError('ineligible_class_below_1win')
+    if race_input.get('age_scope') == '2yo':
+        raise ValueError('ineligible_2yo_only')
 
     expected_classifier = manifest.get('frozen_blobs', {}).get('classifier')
     actual_classifier = git_blob_sha(args.classifier)
