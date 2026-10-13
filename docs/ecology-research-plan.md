@@ -304,3 +304,32 @@ stable horse ID, real chronological start dates, all competitors and
 environment-specific repeated outcomes. The official Racing Queensland
 thoroughbred open-data catalogue is the next field-level source to
 verify. Horse H1/H2 remain **HOLD**.
+
+
+## 2026-10-13: first independently reproduced original Thoroughbred telemetry audit
+
+**New factual input:** Racing Queensland official downloadable
+Thoroughbred sectional CSVs for 2026-10-10 Eagle Farm and 2026-10-11
+Cannon Park were retrieved by a bounded, versioned workflow and
+recalculated independently. Across **18 source race headers and 197
+horse-labelled section strings, 162** had positive timing telemetry
+and **35** contained only zeros. Five repeated horse names on the
+same meeting date appeared in separate race headers with mixed zero
+and positive measurements; no stable individual or DNF interpretation
+has been inferred from those rows.
+
+[Official-source audit and hashes](ecology-rq-thoroughbred-source-audit.md)
+documents the semicolon-packed per-section distance/signal/time schema,
+the race-level header timestamp, and the independent GitHub Actions
+execution. The source is **really Thoroughbred** (unlike the earlier
+greyhound analogue), but lacks a verified link between sectional names
+and official `HORSES` horse IDs, certified individual finish times,
+and complete starter/competitor histories.
+
+**Inference gate still not passed:** H1 heterogeneous environmental
+reaction norms and H2 social competition context remain scientifically
+unidentified. Next perform **one official race** linked source-ID
+validation: `GetRacesForMeeting` → `GetHorsesForRace` → matching
+sectional row / official result, with explicit ambiguity and zero-data
+rejections. Only after proving a stable repeated horse ID and
+history-complete starters may real horse models be considered.
