@@ -213,6 +213,32 @@ class CovariateSourceAndAdjustmentTests(unittest.TestCase):
         self.assertEqual(check["status"],"HOLD_INSUFFICIENT_JOCKEY_LEVEL_SUPPORT")
         self.assertNotIn("conditional_ICC_point",check)
 
+    def test_no_repeated_horses_cannot_produce_spurious_large_adjusted_icc(self):
+        # Deliberately invent independent single-start "horses", but
+        # share some source Jockey and Trainer licence identifiers.
+        # Such a dataset MUST NOT publish a numeric horse ICC, even
+        # if the nuisance SVD optimizer could otherwise return one.
+        sample=[]
+        for index,row in enumerate(self.data):
+            new=dict(row)
+            new["horse_id"]=f"SINGLE-START-ONLY-{index}"
+            new["horse_name"]=f"Fictional Unique Name {index}"
+            sample.append(new)
+        gate=compare(sample)
+        self.assertEqual(gate["status"],
+                         "HOLD_SOURCE_COMPLETE_CASE_RANDOM_HORSE_INTERCEPT_UNIDENTIFIABLE")
+        self.assertEqual(gate["source_repeated_horse_support"][
+            "repeated_HORSES_IDs_with_2plus_observations"],0)
+        self.assertEqual(gate["models"]["weight_jockey_trainer_license"]["status"],
+                         "HOLD_SHARED_SOURCE_BASELINE_UNIDENTIFIABLE")
+        self.assertTrue(gate["adjusted_ICC_not_reported_when_original_source_baseline_HOLD"])
+        self.assertNotIn("conditional_ICC_point",
+                         gate["models"]["weight_jockey_trainer_license"])
+        direct=adjusted_race_icc(sample,"weight_jockey_trainer")
+        self.assertEqual(direct["status"],
+                         "HOLD_TOO_FEW_REPEATED_HORSES_OR_SOURCE_DATES_FOR_NUISANCE_ICC")
+        self.assertTrue(direct["point_estimate_suppressed_not_imputed_zero"])
+
     def test_all_source_covariates_absent_is_explicit_HOLD(self):
         data=copy.deepcopy(self.data)
         for r in data:
