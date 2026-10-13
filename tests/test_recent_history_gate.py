@@ -79,6 +79,22 @@ class RecentHistoryGateTests(unittest.TestCase):
         self.assertEqual(out['status'], 'DATA_HOLD')
         self.assertIn('missing_history_source_url', out['reasons'])
 
+    def test_official_text_margin_passes_without_seconds(self):
+        run = dict(self.run)
+        run.pop('beaten_margin_s')
+        run['beaten_margin_text'] = 'アタマ'
+        horse = self.horse(career_starts=1, recent_runs=[run])
+        out = validate_horse_history(horse, self.race_date, self.as_of)
+        self.assertEqual(out['status'], 'PASS')
+
+    def test_missing_both_margin_forms_is_data_hold(self):
+        run = dict(self.run)
+        run.pop('beaten_margin_s')
+        horse = self.horse(career_starts=1, recent_runs=[run])
+        out = validate_horse_history(horse, self.race_date, self.as_of)
+        self.assertEqual(out['status'], 'DATA_HOLD')
+        self.assertIn('missing_run_margin', out['reasons'])
+
     def test_race_holds_if_any_runner_fails(self):
         good = self.horse()
         bad = self.horse(number=2, name='欠測馬')
