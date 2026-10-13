@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "development_only": true,
+  "prospective_claim": false,
+  "classifier_audit_sha": "0499632325684721b26689d2988cfd337995f57b",
+  "summary": {
+    "starter_count": 83,
+    "union_candidate_count": 49,
+    "union_candidate_fraction": 0.5903614457831325,
+    "top3_slots": 18,
+    "union_top3_hits": 18,
+    "union_top3_recall": 1,
+    "M_candidate_count": 22,
+    "M_top3_hits": 11,
+    "M_top3_recall": 0.6111111111111112,
+    "added_candidates_over_M": 27,
+    "additional_top3_hits_over_M": 7,
+    "added_candidates_per_additional_top3_hit": 3.857142857142857
+  },
+  "per_race": {
+    "7": {
+      "field": 16,
+      "candidates": 8,
+      "candidate_fraction": 0.5,
+      "actual_top3": [
+        2,
+        15,
+        9
+      ],
+      "union_hits": [
+        2,
+        15,
+        9
+      ],
+      "M_hits": [
+        2,
+        15
+      ],
+      "recall": 1,
+      "misses": []
+    },
+    "8": {
+      "field": 11,
+      "candidates": 7,
+      "candidate_fraction": 0.6363636363636364,
+      "actual_top3": [
+        9,
+        1,
+        7
+      ],
+      "union_hits": [
+        9,
+        1,
+        7
+      ],
+      "M_hits": [
+        9
+      ],
+      "recall": 1,
+      "misses": []
+    },
+    "9": {
+      "field": 12,
+      "candidates": 7,
+      "candidate_fraction": 0.5833333333333334,
+      "actual_top3": [
+        4,
+        3,
+        12
+      ],
+      "union_hits": [
+        4,
+        3,
+        12
+      ],
+      "M_hits": [
+        4,
+        12
+      ],
+      "recall": 1,
+      "misses": []
+    },
+    "10": {
+      "field": 10,
+      "candidates": 7,
+      "candidate_fraction": 0.7,
+      "actual_top3": [
+        5,
+        2,
+        9
+      ],
+      "union_hits": [
+        5,
+        2,
+        9
+      ],
+      "M_hits": [
+        5,
+        2,
+        9
+      ],
+      "recall": 1,
+      "misses": []
+    },
+    "11": {
+      "field": 18,
+      "candidates": 9,
+      "candidate_fraction": 0.5,
+      "actual_top3": [
+        1,
+        4,
+        9
+      ],
+      "union_hits": [
+        1,
+        4,
+        9
+      ],
+      "M_hits": [
+        1,
+        9
+      ],
+      "recall": 1,
+      "misses": []
+    },
+    "12": {
+      "field": 16,
+      "candidates": 11,
+      "candidate_fraction": 0.6875,
+      "actual_top3": [
+        10,
+        12,
+        9
+      ],
+      "union_hits": [
+        10,
+        12,
+        9
+      ],
+      "M_hits": [
+        9
+      ],
+      "recall": 1,
+      "misses": []
+    }
+  },
+  "non_M_top3_rescues": [
+    {
+      "race": 7,
+      "number": 9,
+      "channels": [
+        "C1"
+      ]
+    },
+    {
+      "race": 8,
+      "number": 1,
+      "channels": [
+        "C1"
+      ]
+    },
+    {
+      "race": 8,
+      "number": 7,
+      "channels": [
+        "K1",
+        "rescue"
+      ]
+    },
+    {
+      "race": 9,
+      "number": 3,
+      "channels": [
+        "C1"
+      ]
+    },
+    {
+      "race": 11,
+      "number": 4,
+      "channels": [
+        "Q1",
+        "K1",
+        "rescue"
+      ]
+    },
+    {
+      "race": 12,
+      "number": 10,
+      "channels": [
+        "U"
+      ]
+    },
+    {
+      "race": 12,
+      "number": 12,
+      "channels": [
+        "C1"
+      ]
+    }
+  ],
+  "warning": "All R7-R12 outcomes were already known while v3.1 was designed. These metrics are development diagnostics, not prospective evidence."
+}
