@@ -71,6 +71,23 @@ class RQSectionalTests(unittest.TestCase):
         self.assertIn("20261011_Ladbrokes_Cannon_Park_T.csv",
                       official_url("20261011-cairns"))
 
+    def test_same_day_horse_name_zero_in_one_race_and_positive_in_another(self):
+        raw = ("""Date,RaceNumber,11/10/2026 12:00:00 AM;FAKE VENUE;Race One;00:00:55.000;FAKE
+11/10/2026,1,Example Horse;3;150;0;00:00:00.000;350;0;00:00:00.000
+Date,RaceNumber,11/10/2026 12:00:00 AM;FAKE VENUE;Race Two;00:00:56.000;FAKE
+11/10/2026,2,Example Horse;3;150;18.3;00:00:10.33;350;19.2;00:00:10.83
+""").encode("utf-8")
+        report = parse(raw)
+        self.assertEqual(report["race_counts"]["horse_names_repeated_in_different_races_same_day"],1)
+        self.assertEqual(report["race_counts"]["same_day_repeated_names_both_zero_and_nonzero_telemetry"],1)
+        self.assertFalse(report["telemetry_zero_means_dnf"])
+
+    def test_race_numbers_do_not_silently_join_wrong_header(self):
+        bad = fictional().replace(b"\n11/10/2026,1,Animal Beta",
+                                  b"\n11/10/2026,2,Animal Beta")
+        with self.assertRaisesRegex(ValueError,"HOLD_RACE_NUMBER_TO_HEADER"):
+            parse(bad)
+
     def test_little_variation_does_not_become_h1_or_h2_support(self):
         r=parse(fictional())
         self.assertEqual(r["status"],
