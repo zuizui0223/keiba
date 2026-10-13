@@ -146,6 +146,9 @@ Changes to any C1/U/Q1/K1/M threshold or rescue logic create a new version (v3.2
 
 Evaluate the next **20 eligible races** without threshold tuning.
 
+An eligible race must be run at **Kyoto**. v3.1's K1 channel is explicitly Kyoto-specific, so Tokyo, Hanshin, Nakayama and other venues are not part of this holdout and must not be counted. The holdout wrapper rejects non-Kyoto inputs.
+
+
 An eligible race requires enough pre-race data to run M/C1/U/Q1/K1 as specified. Data-integrity failure may mark a race non-evaluable, but performance is never a reason to exclude a race.
 
 For each holdout race save before post time:
