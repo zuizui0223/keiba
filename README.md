@@ -4,6 +4,39 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## 2026-10-14: Same original horse across Cannon Park and Eagle Farm?
+
+The two previously locked 2026 venue cohorts were joined **by the
+original numeric HORSES ID**, not by matching horse names or by a
+modelled prediction. The bounded source audit independently read
+**12 Cannon Park dates + 12 Eagle Farm dates**, with 548 and
+391 original positive-GPS source records respectively.
+
+Only **two original HORSES IDs** had positive source GPS at
+both venues under conservative identity guards.
+**One** of those had any identical first GPS marker at both
+venues; **zero** had both an identical first marker and
+the same official race distance/class. **Zero** IDs had
+2+ dated measurements at each venue.
+
+**Ecological interpretation:** The similar pooled race-FE
+ICC point estimates (Cannon 0.432 and Eagle 0.453)
+reflect mostly different observed animals and different
+first-GPS interval measurement contexts. It would be
+**incorrect** to describe them as a repeated-measures
+test of the same horses' response to different tracks,
+a universal behavior trait, an H1 environmental reaction
+norm or an H2 social competition effect.
+
+The restricted-source audit is documented in
+[official cross-venue identity/measurement overlap](docs/ecology-rq-cross-venue-identity-support.md),
+with [source-backed independent GitHub Actions
+execution](https://github.com/zuizui0223/keiba/actions/runs/38421064924).
+The current canonical code is
+`scripts/ecology_rq_cross_venue_identity_support.py`,
+using only the prelocked original 24 meeting dates.
+**All biological cross-venue effect claims remain HOLD.**
+
 ## 2026-10-13 second racecourse: Eagle Farm source-ID ICC, but marker comparison HOLD
 
 **One new real-data milestone with a substantive limitation:**
