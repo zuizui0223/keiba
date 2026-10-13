@@ -1,7 +1,6 @@
 # Ecological research plan: racehorse individual × environment × competition
 
-Status: **research proposal, not empirical support** (2026-10-12).
-This is a biological research track independent of betting-market optimisation. No causal claims, validated fitted model, or ecological finding is made here.
+Status: **H1 environment-reaction and H2 social-interaction hypotheses remain untested/unsupported in real horses** (2026-10-13). This is a biological research track independent of betting-market optimisation. A separate secondary **exploratory source-backed repeatability signal in relative early-section timing** is now documented, not a causal effect or a preregistered adjusted ICC.
 
 ## Central question
 
@@ -428,3 +427,79 @@ ground and opponent-context overlap under
 credible controls for class/distance/age/weight,
 race/jockey selection, correctly time-lagged
 features and independent temporal validation.
+
+
+## 2026-10-13: a separate, source-backed secondary ecological finding
+
+After finding that the strict Good/wet H1 matched-class
+replication threshold remained zero even with 12
+official meetings, we tested a *different, explicitly
+exploratory question*: is an individual horse's
+early performance **relative to its contemporaneous
+timed-GPS competitors** consistent across independent
+racing dates?
+
+For this, original Racing Queensland `HORSES`
+identifiers, original first GPS section duration,
+distance, section marker, race class and the
+12-source-date calendar were reused. Excluded
+incomplete first-section measurements, ambiguous
+same-day identities, and race groups with fewer
+than 4 valid timed-GPS horses. Result: 523
+horse×race observations over 74 races.
+
+- Repeated individual ID/first-marker/race-distance:
+  99 IDs, 209 different-date pairs, equal-stratum
+  mean within-ID cross-product **+0.051925 s²**.
+  Within-race ID-label permutations (299) averaged
+  **+0.001735 s²**.
+- Also matching original race class:
+  50 IDs, 81 different-date pairs, observed mean
+  cross-product **+0.035633 s²**, shuffled mean
+  **+0.001136 s²**.
+- Later-date retrospective persistence:
+  first-matched 54 observations RMSE 0.333181
+  → 0.287796 s; with class matching 20
+  observations RMSE 0.282634 → 0.256963 s,
+  based on earlier horse-profile shrinkage fixed
+  before the future outcomes.
+
+[Complete data/methods/source audit](ecology-rq-real-early-pacing-repeatability.md)
+and [successful original-source independent CI
+run](https://github.com/zuizui0223/keiba/actions/runs/38348581714)
+freeze the computation and its limitations.
+
+The measurement is **focal first-section seconds
+minus the other timed horses' mean seconds in
+the SAME race**, not absolute velocity; it can
+change with opponent ability or incomplete GPS
+coverage even without a focal biological
+change. There are no certified true-starter/
+finisher statuses, and jockey, weight, age,
+trainer and selective field composition have
+not been fully adjusted. The pseudo-permutation
+null is exploratory and *not* a valid biological
+randomization experiment or confirmatory
+p-value. This project has NOT fitted adjusted
+ICC, reaction-norm variance or H2 causal
+competitor-effects to the real data.
+
+Conceptual reference: Nakagawa & Schielzeth
+(2010), https://doi.org/10.1111/j.1469-185X.2010.00141.x,
+recommends hierarchical variance partition
+and valid uncertainty methods for biological
+individual repeatability. This project should
+treat the present repeatable relative pacing
+signal as a **candidate ecological observation
+for a follow-up confirmatory study**, not as
+proof of heritable strategy or adaptation.
+
+Next use a verified official all-starter and
+individual result/age/rider/weight panel,
+add a joint crossed horse×race adjusted
+repeatability analysis, predefine new
+evaluation dates and appropriate negative
+controls, and only then consider a
+scientifically supported population-level
+individual-behavior claim. H1/H2 remain
+separate, unanswered hypotheses.
