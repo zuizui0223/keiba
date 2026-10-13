@@ -12,7 +12,10 @@
     "holdout_tests": "f15d07bce14bfeaa98d8dcfadec7252d6831ab42",
     "operations": "df355a6af3ebcb145aa93a68f489a22b2e85c4a4",
     "snapshot_preparer": "b3c0a7efd4702218b1d53eb94fda70f9d30560a1",
-    "snapshot_preparer_tests": "db5f4cef161f9cab008b4b9a2bea60a1dff1fcbe"
+    "snapshot_preparer_tests": "db5f4cef161f9cab008b4b9a2bea60a1dff1fcbe",
+    "evaluator": "425d773b0835519fb82cc870053609b4fdebc06e",
+    "evaluator_tests": "9a951e62a7c7b03580fe8ec60bb695dc9b0b705a",
+    "decision_contract": "95f3c769574411372b12ae36aeec4b69a76a2082"
   },
   "metadata_inputs": {
     "quality_tier_map_baseline": "a06e33dd396369b9556136b7e12cc4568afde41b",
@@ -94,5 +97,13 @@
     "min": 15,
     "max": 25,
     "inclusive": true
+  },
+  "formal_evaluation": {
+    "contract_path": "docs/v31-holdout-decision-contract.json",
+    "evaluator_path": "scripts/v31_evaluate_holdout.py",
+    "formal_timepoint_races": 20,
+    "primary_alpha": 0.05,
+    "max_candidate_fraction": 0.65,
+    "early_stopping": false
   }
 }
