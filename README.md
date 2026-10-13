@@ -4,6 +4,56 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## New 2026-10-13 selection and source-day stability tests
+
+**The source-conditioned horse variance signal remains exploratory.**
+The official `Weight`, `Jockey/@Id` and `Trainer/@Id`
+complete-case sample has 279 horse×race observations,
+**49.1% fewer than the original 548 positive-GPS
+candidate records**. Its observed first-GPS
+measurement selection was explicitly tested:
+
+- In 68 original races with >=4 timed-GPS
+  horses and a mixture of complete and
+  incomplete role/weight records
+  (**491 observations**), the equal-race
+  mean first-GPS timing contrast was
+  **−0.02355 seconds** (documentation-complete
+  minus documentation-incomplete).
+- 499 source-metadata-label shuffles *within
+  each race* gave a two-sided algorithmic
+  reference fraction **0.416**. This is
+  **not** a calibrated missingness p value;
+  it does NOT prove source outcome data are
+  MCAR or validate unobserved racehorses'
+  GPS/finishing times.
+
+**Source-date stability gave a bigger warning.**
+In the 11 original meeting dates represented
+by the 279 complete-case rows, deleting
+one entire source meeting at a time produced
+ICC **0.429–0.551** (race-FE baseline)
+and **0.385–0.577** (fully source-role
+adjusted). The *difference* between adjusted
+and baseline ICC ranged **−0.0789 to
++0.0340**, lowering ICC in 8 of 11
+refits but **raising it in 3**.
+
+Therefore the initial same-record adjustment
+`0.503 → 0.487` is **NOT** a
+date-stable reduction that can safely be
+attributed to jockey/trainer/weight,
+and stable horse–trainer assignments remain
+a major identity confounder. These are
+stability ranges, **not 95% confidence
+intervals** or prospective tests.
+
+Full original-data evidence:
+[Weight/Jockey/Trainer adjusted ICC and
+date-deletion caveats](docs/ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md),
+[source-metadata missingness and timing
+negative control](docs/ecology-rq-source-role-missingness-vs-early-gps.md).
+
 ## First original-source Weight/Jockey/Trainer-adjusted horse ICC
 
 The official Racing Queensland `GetHorsesForRace` response
@@ -185,6 +235,7 @@ Read:
 - [First exploratory real-horse result: repeatable relative early sectional timing](docs/ecology-rq-real-early-pacing-repeatability.md)
 - [Race-adjusted mixed-model ICC 0.432 on absolute first GPS time (exploratory, model-dependent)](docs/ecology-rq-real-horse-race-adjusted-icc.md)
 - [Official riding Weight, Jockey & Trainer licence adjustment: same-source cohort and missingness](docs/ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md)
+- [Real race-controlled documentation missingness vs first GPS timing: 68 mixed fields](docs/ecology-rq-source-role-missingness-vs-early-gps.md)
 - [Original 20-race Good/Soft/Heavy real-horse H1 identifiability audit](docs/ecology-rq-real-h1-multigoing-feasibility.md)
 - [Exploratory 38-race expansion: why ground-reaction norms remain unidentified](docs/ecology-rq-real-h1-multigoing-expanded-audit.md)
 - [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
