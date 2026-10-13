@@ -27,7 +27,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 import math
-import warnings
+import random
 
 import numpy as np
 from scipy.linalg import eigh, helmert
@@ -199,12 +199,89 @@ def delete_date_sensitivity(rows:list[dict],
     }
 
 
+def source_race_identity_shuffle_reference(
+    rows:list[dict], permutations:int=99, seed:int=20261013,
+    minimum_per_race:int=4,
+)->dict:
+    """Exploratory label-exchange benchmark, not a valid causal randomization.
+
+    Keep each REAL race's absolute section times, distance, timing marker
+    and number of observed GPS records intact. Reassign horse ID + name
+    LABELS only to the originally observed horses WITHIN each race.
+    Under genuinely exchangeable labels the stable-individual intercept
+    should collapse; source selection and other unobserved variables
+    make exchangeability biologically untrue.
+    """
+    if permutations < 50 or permutations > 500:
+        raise ValueError("HOLD_IDENTITY_SHUFFLE_COUNT_OUTSIDE_GUARD")
+    eligible,_=prepare(rows,min_race_telemetry=minimum_per_race)
+    if not eligible:
+        return {"status":"HOLD_NO_RACE_FIELDS_FOR_PERMUTATION"}
+    included={(r["day"],r["race_number"],r["horse_id"]) for r in eligible}
+    observations=[dict(row) for row in rows if
+                  (row["day"],row["race_number"],row["horse_id"]) in included]
+    base=race_fixed_reml(observations,min_race_telemetry=minimum_per_race)
+    observed=base.get("conditional_observational_ICC_point_estimate")
+    if observed is None:
+        return {
+            "status":"HOLD_ORIGINAL_GAUSSIAN_ICC_NOT_IDENTIFIABLE",
+            "base_status":base["status"],
+            "no_original_horse_IDs_exported":True,
+        }
+    by_race=defaultdict(list)
+    for i,r in enumerate(observations):
+        by_race[(r["day"],r["race_number"])].append(i)
+    rng=random.Random(seed)
+    samples=[]
+    held=0
+    for _ in range(permutations):
+        shuffled=[dict(x) for x in observations]
+        for positions in by_race.values():
+            labels=[(shuffled[i]["horse_id"],shuffled[i]["horse_name"])
+                    for i in positions]
+            rng.shuffle(labels)
+            for i,(ident,name) in zip(positions,labels):
+                shuffled[i]["horse_id"]=ident
+                shuffled[i]["horse_name"]=name
+        result=race_fixed_reml(shuffled,min_race_telemetry=minimum_per_race)
+        point=result.get("conditional_observational_ICC_point_estimate")
+        if point is None:
+            held+=1
+        else:
+            samples.append(float(point))
+    if len(samples) < permutations-5:
+        return {"status":"HOLD_SHUFFLED_MODELS_HAVE_TOO_MANY_NUMERIC_HOLDS",
+                "valid_shuffle_fits":len(samples),
+                "requested_shuffle_fits":permutations,
+                "no_original_horse_IDs_exported":True}
+    samples.sort()
+    return {
+        "status":"EXPLORATORY_RACE_CONDITIONED_HORSE_ID_REASSIGNMENT_REFERENCE",
+        "original_conditional_ICC":float(observed),
+        "valid_within_race_identity_shuffle_models":len(samples),
+        "shuffle_models_with_HOLD":held,
+        "minimum_positive_GPS_horses_per_race":minimum_per_race,
+        "shuffle_reference_mean_conditional_ICC":sum(samples)/len(samples),
+        "shuffle_reference_quantiles_05_50_95_conditional_ICC":[
+            samples[int((len(samples)-1)*p)] for p in (.05,.5,.95)],
+        "fraction_shuffled_ICC_at_least_original":
+            (1+sum(s>=observed for s in samples))/(len(samples)+1),
+        "shuffle_horse_ID_names_in_original_race_only":True,
+        "shuffle_does_not_make_true_race_entry_exchangeable":True,
+        "this_fraction_is_not_confirmatory_p_value":True,
+        "no_original_horse_IDs_exported":True,
+    }
+
+
 def analyze(rows:list[dict])->dict:
     return {
         "status":"EXPLORATORY_REAL_THOROUGHBRED_RACE_FE_HORSE_RE_ICC_DIAGNOSTIC",
         "all_races_at_least_four_timed_horses":race_fixed_reml(rows,4),
         "races_at_least_six_timed_horses":race_fixed_reml(rows,6),
         "leave_one_date_out_four_GPS_minimum":delete_date_sensitivity(rows,4),
+        "within_race_horse_ID_shuffle_reference":source_race_identity_shuffle_reference(
+            rows,permutations=99,minimum_per_race=4
+        ),
         "not_H1_or_H2_or_causal_or_heritability":True,
         "requires_confirmed_starter_roster_true_individual_results_and_jockey_weight_adjustment":True,
         "publisher":"Racing Queensland official source",
