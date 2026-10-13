@@ -32,6 +32,7 @@ Required top-level fields:
   "date": "YYYY-MM-DD",
   "venue": "京都",
   "race_number": 7,
+  "age_scope": "3yo+",
   "scheduled_start_jst": "YYYY-MM-DDTHH:MM:SS+09:00",
   "target": {
     "surface": "芝 or ダ",
@@ -75,6 +76,7 @@ python -B scripts/v31_holdout.py freeze \
 The wrapper refuses to freeze when:
 
 - venue is not Kyoto;
+- the race is maiden/newcomer class, obstacle/non-flat, or 2-year-old-only;
 - post time has already arrived;
 - target-result fields are present;
 - horse sets differ between history and odds;
