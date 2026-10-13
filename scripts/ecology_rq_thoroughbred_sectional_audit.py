@@ -33,6 +33,7 @@ ROOT = f"https://{HOST}/RacingFile.ashx"
 APPROVED = {
     "20261011-cairns": "20261011_Ladbrokes_Cannon_Park_T.csv",
     "20261010-eagle-farm": "20261010_Eagle_Farm_T.csv",
+    "20260829-cairns": "20260829_Ladbrokes_Cannon_Park_T.csv",
 }
 MAX_BYTES = 1_800_000
 DURATION = re.compile(r"^(?P<hours>\d{2}):(?P<minutes>[0-5]\d):(?P<seconds>[0-5]\d(?:\.\d{1,3})?)$")
