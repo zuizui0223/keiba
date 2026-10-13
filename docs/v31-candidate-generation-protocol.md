@@ -83,6 +83,8 @@ Open races that are not Listed do not qualify.
 
 Unknown quality tier blocks Q1 for that race and must be reported; do not guess the tier.
 
+The quality-tier map may be extended during holdout only for a newly encountered race name, using an official published tier. This is metadata completion, not model tuning. Existing mappings cannot be changed after their race has entered the holdout unless a documented source correction is required; any correction must be logged separately.
+
 ## K1 — Kyoto near-distance specialist with win evidence
 
 Using complete pre-race history at Kyoto, same surface, and ±20% target distance:
