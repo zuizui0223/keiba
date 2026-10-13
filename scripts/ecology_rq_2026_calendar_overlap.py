@@ -224,6 +224,12 @@ def compare(
     # Distinct from H1 environmental slopes and H2 social interactions.
     # Output aggregate-only, with a race-conditioned permutation reference.
     early_pace = early_pace_persistence(data, permutations=299)
+    # A SECONDARY post-hoc coverage sensitivity only: excluding GPS
+    # fields with fewer than six positive first intervals changes
+    # the observed cohort and may substantially weaken findings.
+    early_pace_six = early_pace_persistence(
+        data, permutations=199, min_race_telemetry=6
+    )
     acceptable = {
         "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
         "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE",
@@ -261,6 +267,7 @@ def compare(
         "date_scoped_source_manifest": manifest,
         "support": support,
         "exploratory_early_pace_ID_persistence_NOT_H1_or_H2": early_pace,
+        "exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2": early_pace_six,
         "individual_pace_repeatability_analysed_only_as_race_relative_first_interval": True,
         "actual_confirmed_starter_and_finish_status_verified": False,
         "official_full_race_individual_finish_times_verified": False,
@@ -298,6 +305,7 @@ def main() -> None:
         "race_going_divergent_days": result["temporal_cohort"]["source_dates_using_race_rating_different_from_meeting_page"],
         "support": result["support"],
         "individual_pace_persistence": result["exploratory_early_pace_ID_persistence_NOT_H1_or_H2"],
+        "persistence_six_GPS_sensitivity": result["exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2"],
     }, ensure_ascii=False))
 
 
