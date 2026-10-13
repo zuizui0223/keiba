@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Artificial layout tests (no historical racing results)
-        run: python -m unittest discover -s tests -p 'test_ecology_rq_thoroughbred_sectional_audit.py' -v
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_*.py' -v
       - name: Read only two official published horse GPS sectional files
         run: |
           python scripts/ecology_rq_thoroughbred_sectional_audit.py --fetch-official 20261011-cairns --audit tmp/rq-cairns-20261011-aggregate.json
