@@ -148,6 +148,8 @@ Evaluate the next **20 eligible races** without threshold tuning.
 
 An eligible race must be run at **Kyoto**. v3.1's K1 channel is explicitly Kyoto-specific, so Tokyo, Hanshin, Nakayama and other venues are not part of this holdout and must not be counted. The holdout wrapper rejects non-Kyoto inputs.
 
+To keep the prospective population aligned with the six development races, an eligible race must also be a **flat turf/dirt race at 1-win class or higher and must not be restricted to 2-year-olds**. Maiden, newcomer, obstacle and 2-year-old-only races do not enter the 20-race denominator.
+
 
 An eligible race requires enough pre-race data to run M/C1/U/Q1/K1 as specified. Data-integrity failure may mark a race non-evaluable, but performance is never a reason to exclude a race.
 
