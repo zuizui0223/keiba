@@ -268,8 +268,26 @@ def adjusted_race_icc(rows:list[dict],mode:str)->dict:
     by_race=defaultdict(list)
     for row in rows:
         by_race[(row["day"],row["race_number"])].append(row)
-    if len(by_race)<12 or len(rows)<80 or len({r["horse_id"] for r in rows})<30:
-        return {"status":"HOLD_INSUFFICIENT_DATE_RACE_AND_HORSE_SUPPORT"}
+    counts=Counter(r["horse_id"] for r in rows)
+    repeated_ids=sum(v>=2 for v in counts.values())
+    n_source_dates=len({r["day"] for r in rows})
+    if (len(by_race)<12 or len(rows)<80 or len(counts)<30
+            or repeated_ids<20 or n_source_dates<8):
+        # Correct a key biological-identifiability trap: with few
+        # repeated HORSES IDs, fixed rider/trainer contrasts can produce
+        # a large numeric variance ratio WITHOUT evidence of stable
+        # individual variance. A successfully optimized number is not
+        # an identifiable horse component.
+        return {
+            "status":"HOLD_TOO_FEW_REPEATED_HORSES_OR_SOURCE_DATES_FOR_NUISANCE_ICC",
+            "source_rows":len(rows),
+            "source_races":len(by_race),
+            "source_date_clusters":n_source_dates,
+            "distinct_original_HORSES_IDs":len(counts),
+            "HORSES_IDs_observed_2plus_times":repeated_ids,
+            "point_estimate_suppressed_not_imputed_zero":True,
+            "original_animal_and_licence_IDs_not_exported":True,
+        }
     IDs=list(dict.fromkeys(r["horse_id"] for r in rows))
     index={hid:i for i,hid in enumerate(IDs)}
     labels,_info=_nuisance_basis(rows,mode)
@@ -404,6 +422,41 @@ def compare(rows:list[dict], minimum_GPS:int=4)->dict:
     # Baseline on precisely the same complete-case rows as adjusted
     # models, no inappropriate ICC comparisons across different horses.
     base=race_fixed_reml(complete,minimum_GPS)
+    source_counts=Counter(r["horse_id"] for r in complete)
+    source_feasibility={
+        "complete_source_observations":len(complete),
+        "observed_original_races":len({
+            (r["day"],r["race_number"]) for r in complete
+        }),
+        "observed_original_meeting_dates":len({r["day"] for r in complete}),
+        "different_original_HORSES_IDs":len(source_counts),
+        "repeated_HORSES_IDs_with_2plus_observations":sum(
+            n>=2 for n in source_counts.values()
+        ),
+        "minimum_repeated_HORSES_IDs_for_nuisance_ICC_point":20,
+        "minimum_independent_source_dates_for_nuisance_ICC_point":8,
+        "source_candidate_rows_not_guaranteed_actual_starters":True,
+    }
+    if base.get("conditional_observational_ICC_point_estimate") is None:
+        return {
+            "status":"HOLD_SOURCE_COMPLETE_CASE_RANDOM_HORSE_INTERCEPT_UNIDENTIFIABLE",
+            "source_gate":gate,
+            "source_repeated_horse_support":source_feasibility,
+            "models":{
+                "same_rows_unadjusted_race_HORSES":base,
+                "weight_within_race":{"status":"HOLD_SHARED_SOURCE_BASELINE_UNIDENTIFIABLE"},
+                "weight_plus_jockey_license":{"status":"HOLD_SHARED_SOURCE_BASELINE_UNIDENTIFIABLE"},
+                "weight_jockey_trainer_license":{
+                    "status":"HOLD_SHARED_SOURCE_BASELINE_UNIDENTIFIABLE",
+                    "numeric_ICC_suppressed_not_assumed_zero":True,
+                },
+            },
+            "modeled_row_overlap_identical_for_all_models":True,
+            "adjusted_ICC_not_reported_when_original_source_baseline_HOLD":True,
+            "same_source_cohort_full_adjustment_minus_unadjusted_ICC_point":None,
+            "no_horse_jockey_trainer_IDs_exported":True,
+            "no_race_horse_betting_scores_or_individual_predictions":True,
+        }
     models={
         "same_rows_unadjusted_race_HORSES":base,
         "weight_within_race":adjusted_race_icc(complete,"weight"),
@@ -417,6 +470,7 @@ def compare(rows:list[dict], minimum_GPS:int=4)->dict:
     date_stability=leave_one_meeting_out_adjusted_ICC(complete)
     return {
         "status":"ORIGINAL_HORSE_SOURCE_EXPLORATORY_COVARIATE_ADJUSTMENT_ONLY",
+        "source_repeated_horse_support":source_feasibility,
         "date_deletion_same_source_baseline_vs_nuisance_stability":date_stability,
         "source_gate":gate,
         "same_source_cohort_full_adjustment_minus_unadjusted_ICC_point":
