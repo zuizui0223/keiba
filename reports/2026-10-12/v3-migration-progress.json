@@ -1,5 +1,5 @@
 {
-  "updated_at_jst": "2026-10-13T10:17:11+09:00",
+  "updated_at_jst": "2026-10-13T10:34:31+09:00",
   "scope": "v3 structured recent-history migration",
   "original_frozen_inputs": {
     "races": 6,
@@ -10,11 +10,15 @@
   "migrated": {
     "11R": {
       "path": "data/2026-10-12/v3/kyoto_11.json",
-      "file_sha": "50d3930691dfe765b0cb6f2535d973d93dba524e",
+      "history_sidecar": "data/2026-10-12/v3/history_11.json",
+      "file_sha": "39288d8cd9816e9201f16355502644b9b7776647",
+      "sidecar_sha": "7119c1a219731f6ce033794bd042daeb0c0854bf",
       "horses": 18,
       "pass": 18,
       "hold": 0,
-      "validation": "independent reproduction of current recent-history gate rules"
+      "frozen_prediction_mismatches": 0,
+      "sidecar_mismatches": 0,
+      "validation": "independent gate-rule reproduction against GitHub-fetched derived JSON"
     },
     "12R": {
       "path": "data/2026-10-12/v3/kyoto_12.json",
@@ -64,8 +68,13 @@
     "hold": 0
   },
   "remaining": {
-    "races": [],
-    "horses": 0
+    "races": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "horses": 49
   },
   "schema_changes": {
     "margin": "Each run must have numeric beaten_margin_s, official beaten_margin_text, or explicit beaten_margin_missing_reason.",
@@ -78,5 +87,11 @@
     "This migration makes inputs structurally eligible; it does not validate predictive accuracy."
   ],
   "status": "MIGRATION_COMPLETE_STRUCTURAL_ONLY",
-  "note": "All 83 runners in Kyoto 7R-12R now have v3 structured recent-history derived inputs. This establishes data-gate eligibility only and is not predictive validation."
+  "note": "All 83 runners in Kyoto 7R-12R now have v3 structured recent-history derived inputs. This establishes data-gate eligibility only and is not predictive validation.",
+  "migrated_totals": {
+    "races": 2,
+    "horses": 34,
+    "pass": 34,
+    "hold": 0
+  }
 }
