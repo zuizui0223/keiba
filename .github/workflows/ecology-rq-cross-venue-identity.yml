@@ -1,0 +1,64 @@
+name: "Ecology: original horse ID overlap across locked tracks"
+
+# Pure data-support audit: never fit a new H1/H2 or use source for betting.
+# Reuses exactly the two PREVIOUSLY locked 12-date source cohorts.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_cross_venue_identity_support.py'
+      - 'tests/test_ecology_rq_cross_venue_identity_support.py'
+      - 'docs/ecology-rq-cross-venue-identity-support.md'
+      - '.github/workflows/ecology-rq-cross-venue-identity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  same-original-horse-across-venues-source-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies of frozen original ID parsers
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Synthetic-only falsification of false cross-venue ID matches
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_cross_venue_identity_support.py' -v
+      - name: Read original official 24 locked meeting sources and export counts only
+        run: |
+          python scripts/ecology_rq_cross_venue_identity_support.py --output tmp/official-cross-venue-id-overlap-aggregate.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("tmp/official-cross-venue-id-overlap-aggregate.json").read_text())
+          assert len(data["design"]["Cannon_dates_original_previously_locked"])==12
+          assert len(data["design"]["Eagle_dates_original_previously_locked"])==12
+          assert 0 <= data["Cannon_source_dates_audited"] <= 12
+          assert 0 <= data["Eagle_source_dates_audited"] <= 12
+          assert data["source_cross_venue_overlap"]["no_raw_horse_names_ids_licences_or_times_exported"] is True
+          assert data["no_raw_individual_data_or_predictions_exported"] is True
+          assert data["status"] in (
+              "SOURCE_COHORT_INCOMPLETE_HOLD_CROSS_VENUE_INFERENCE",
+              "EXPLORATORY_SOURCE_ID_CROSS_VENUE_AUDIT_NOT_H1_H2",
+          )
+          print("SOURCE_STATUS",data["status"])
+          print("CANNON_AUDITED_DAYS",data["Cannon_source_dates_audited"])
+          print("EAGLE_AUDITED_DAYS",data["Eagle_source_dates_audited"])
+          print("CROSS_VENUE_STATUS",data["source_cross_venue_overlap"]["status"])
+          print("CROSS_VENUE_SHARED_VALID_IDS",data["source_cross_venue_overlap"]["valid_named_original_HORSES_IDs_recorded_at_both_venues"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rq-original-cross-venue-official-ID-counts-only
+          path: tmp/official-cross-venue-id-overlap-aggregate.json
+          retention-days: 30
