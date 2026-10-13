@@ -14,7 +14,7 @@
 - [12Rで結果前に凍結したv2予測](reports/2026-10-12/v2-prerace-12r-1605.md)
 - [12R公式結果スナップショット](data/2026-10-12/r12-result-postrace.json)
 - [12R v2前向き検証：改善未確認と残差分析](reports/2026-10-12/r12-v2-forward-validation.md)
-- [v3.0候補生成プロトコル（次の20レースでholdout評価）](docs/v3-candidate-generation-protocol.md)
+- [v3.0候補生成プロトコル（開発版・prospective検証には使用しない）](docs/v3-candidate-generation-protocol.md)
 - [R7〜R12を使ったv3開発監査](reports/2026-10-12/v3-candidate-channel-development-audit.md)
 - [v3開発指標JSON](reports/2026-10-12/v3-development-metrics.json)
 - [83頭のv3.0完全機械判定](reports/2026-10-12/v3-mechanical-channel-audit.json)
@@ -36,6 +36,7 @@
 - [freeze / score / ledger wrapper](scripts/v31_holdout.py) / [テスト](tests/test_v31_holdout.py)
 - [freeze契約の独立検証](scripts/v31_verify_freeze.py) / [integrityテスト](tests/test_v31_freeze_integrity.py)
 - [JRA snapshot→race-input/odds前処理](scripts/v31_prepare_snapshot.py) / [テスト](tests/test_v31_prepare_snapshot.py)
+- [独立した結果後の改変・SHA・計算照合](scripts/v31_validate_postrace.py) / [実分類器による全工程の通しテスト](tests/test_v31_pipeline_integration.py)
 - [v3.1判定スクリプト](scripts/v31_candidate_channels.py) / [11テスト](tests/test_v31_candidate_channels.py)
 - [v3.1機械判定（結果未使用）](reports/2026-10-12/v31-mechanical-channel-audit.json)
 - [v3.1開発データ照合](reports/2026-10-12/v31-development-evaluation.json)
@@ -46,7 +47,7 @@
 
 12Rでは、結果前16:05に凍結したv2 Top3 `16,1,14` に対し、確定上位は `10,12,9`。旧Top3もv2 Top3も実Top3 recall 0/3、広い候補集合も1/3で、v2の改善はこの1レースでは確認できませんでした。実Top3は7・11・8番人気で市場Top6も0/3だったため、v3では市場baselineだけでなく、昇級直前勝ち・少キャリアの上方不確実性・隣接短距離の改善を独立候補チャネルにします。
 
-R7〜R12の開発データでは、凍結pre-race win oddsだけのMチャネルは22/83頭を候補にしてTop3 11/18（61.1%）、旧qualitative marksは38/83頭で15/18（83.3%）。全83頭のJRA全履歴を機械判定するとv3.0は18/18を拾う一方、候補が64/83頭（77.1%）まで膨らみました。v3.1はCを直近1走へ限定し、K/Qを強化、GII/GIではQ1∩K1のみを救済にして49/83頭（59.0%）まで縮約しました。R7〜R12での18/18は設計に使ったin-sample結果であり予測精度の証拠ではありません。v3.1は2026-10-13 14:11:50 JSTに、classifier・snapshot preparer・holdout wrapper・exact evaluator・attempt ledger契約まで含めて最終sealしました。holdout対象は**京都の平地・1勝クラス以上・2歳限定以外**に固定し、このseal後のeligible raceを時系列で全件attemptします。現在はscore ledger 0/20、attempt ledger 0件です。各eligible raceはfreeze成功ならFROZEN、事前データの技術的失敗ならPRE_RESULT_DATA_FAILUREとしてattempt ledgerに残し、成功したレースだけをscoreします。20/20到達時のPROMOTEには、同数ランダム追加に対する片側exact p≤0.05、全候補率≤0.65、20件目のFROZENまでのfreeze成功率≥0.80の**3条件すべて**が必要です。途中成績では正式判定しません。次の開催予定では10/17京都7R（13:15、3歳以上1勝クラス・ダ1800m）が最初の候補ですが、現行出馬表と時刻付きオッズを確認するまではfreezeしません。
+R7〜R12の開発データでは、凍結pre-race win oddsだけのMチャネルは22/83頭を候補にしてTop3 11/18（61.1%）、旧qualitative marksは38/83頭で15/18（83.3%）。全83頭のJRA全履歴を機械判定するとv3.0は18/18を拾う一方、候補が64/83頭（77.1%）まで膨らみました。v3.1はCを直近1走へ限定し、K/Qを強化、GII/GIではQ1∩K1のみを救済にして49/83頭（59.0%）まで縮約しました。R7〜R12での18/18は設計に使ったin-sample結果であり予測精度の証拠ではありません。v3.1は2026-10-13 17:07:24 JSTに、全工程の通しテストで発見したsnapshot preparerのGit blob SHA計算バグを修正し、最終sealを更新しました。科学的閾値や正式判定条件は変更していません。classifier・snapshot preparer・holdout wrapper・exact evaluator・attempt ledger契約に加え、独立した結果後照合ツールもSHA固定しています。holdout対象は**京都の平地・1勝クラス以上・2歳限定以外**に固定し、このseal後のeligible raceを時系列で全件attemptします。現在はscore ledger 0/20、attempt ledger 0件です。各eligible raceはfreeze成功ならFROZEN、事前データの技術的失敗ならPRE_RESULT_DATA_FAILUREとしてattempt ledgerに残し、成功したレースだけをscoreします。20/20到達時のPROMOTEには、同数ランダム追加に対する片側exact p≤0.05、全候補率≤0.65、20件目のFROZENまでのfreeze成功率≥0.80の**3条件すべて**が必要です。途中成績では正式判定しません。次の開催予定では10/17京都7R（13:15、3歳以上1勝クラス・ダ1800m）が最初の候補ですが、現行出馬表と時刻付きオッズを確認するまではfreezeしません。
 
 ## 2026年10月12日：8〜12Rの全8券種（主要候補を13:41〜13:42再確認）
 
