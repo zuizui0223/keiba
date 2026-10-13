@@ -30,7 +30,7 @@ class FixtureMixin:
             'status': 'frozen_for_prospective_holdout',
             'created_at_jst': '2026-10-13T09:51:48+09:00',
             'holdout_target_races': 20,
-            'frozen_blobs': {'classifier': classifier_sha, 'holdout_wrapper': git_blob_sha(SCRIPT.read_bytes())},
+            'frozen_blobs': {'classifier': classifier_sha, 'holdout_wrapper': git_blob_sha(SCRIPT.read_bytes()), 'snapshot_preparer': 'a'*40},
             'metadata_inputs': {
                 'quality_tier_baseline': {'A賞': 'GIII'},
                 'quality_tier_policy': 'append-only'
@@ -57,6 +57,14 @@ class FixtureMixin:
             ]
         }
         (base/'odds.json').write_text(json.dumps(odds, ensure_ascii=False))
+        source_meta = {
+            'race_id':'2026-10-18-KYOTO-07',
+            'observed_at_jst':'2026-10-18T13:00:00+09:00',
+            'active_horse_numbers':[1,2,3],
+            'uses_target_race_results':False,
+            'preparer_git_blob_sha':'a'*40
+        }
+        (base/'source-meta.json').write_text(json.dumps(source_meta, ensure_ascii=False))
         return classifier
 
     def run_cmd(self, *args):
@@ -67,7 +75,7 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
     def test_freeze_writes_result_free_record(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertEqual(r.returncode,0,r.stderr)
             data=json.loads(out.read_text())
             self.assertEqual(data['race_id'],'2026-10-18-KYOTO-07')
@@ -79,63 +87,70 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
     def test_freeze_rejects_classifier_sha_mismatch(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); classifier.write_text(classifier.read_text()+'# changed\n'); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('classifier_sha_mismatch',r.stderr)
 
     def test_freeze_rejects_wrapper_sha_mismatch(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); manifest=json.loads((b/'manifest.json').read_text()); manifest['frozen_blobs']['holdout_wrapper']='0'*40; (b/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('holdout_wrapper_sha_mismatch',r.stderr)
+
+    def test_freeze_rejects_snapshot_preparer_sha_mismatch(self):
+        with tempfile.TemporaryDirectory() as td:
+            b=Path(td); classifier=self.make_fixture(b); meta=json.loads((b/'source-meta.json').read_text()); meta['preparer_git_blob_sha']='b'*40; (b/'source-meta.json').write_text(json.dumps(meta,ensure_ascii=False)); out=b/'freeze.json'
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            self.assertNotEqual(r.returncode,0)
+            self.assertIn('snapshot_preparer_sha_mismatch',r.stderr)
 
     def test_freeze_rejects_changed_baseline_quality_tier(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); (b/'quality.json').write_text(json.dumps({'tiers':{'A賞':'GII'}},ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('quality_baseline_changed:A賞',r.stderr)
 
     def test_freeze_rejects_observation_at_or_after_post(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:25:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:25:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('freeze_not_prerace',r.stderr)
 
     def test_freeze_rejects_non_kyoto_venue(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['venue']='東京'; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('ineligible_venue',r.stderr)
 
     def test_freeze_rejects_two_year_old_only_race(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['age_scope']='2yo'; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('ineligible_2yo_only',r.stderr)
 
     def test_freeze_rejects_class_below_one_win(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['target']['class_rank']=0; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('ineligible_class_below_1win',r.stderr)
 
     def test_freeze_rejects_target_result_keys(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); race=json.loads((b/'race.json').read_text()); race['top3']=[1,2,3]; (b/'race.json').write_text(json.dumps(race,ensure_ascii=False)); out=b/'freeze.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',out)
             self.assertNotEqual(r.returncode,0)
             self.assertIn('forbidden_target_result_key:top3',r.stderr)
 
     def test_score_is_separate_and_computes_metrics(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); freeze=b/'freeze.json'; score=b/'score.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
             self.assertEqual(r.returncode,0,r.stderr)
             (b/'result.json').write_text(json.dumps({'race_id':'2026-10-18-KYOTO-07','top3':[2,3,1]},ensure_ascii=False))
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
@@ -152,7 +167,7 @@ class V31HoldoutTests(FixtureMixin, unittest.TestCase):
     def test_score_rejects_race_id_mismatch(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); freeze=b/'freeze.json'; score=b/'score.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
             self.assertEqual(r.returncode,0,r.stderr)
             (b/'result.json').write_text(json.dumps({'race_id':'wrong','top3':[2,3,1]},ensure_ascii=False))
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
@@ -165,7 +180,7 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); freeze=b/'freeze.json'; score=b/'score.json'; ledger=b/'ledger.json'; out=b/'ledger2.json'
             ledger.write_text(json.dumps({'schema_version':1,'version':'v3.1','target_races':20,'entries':[]},ensure_ascii=False))
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
             self.assertEqual(r.returncode,0,r.stderr)
             (b/'result.json').write_text(json.dumps({'race_id':'2026-10-18-KYOTO-07','top3':[2,3,1]},ensure_ascii=False))
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
@@ -183,7 +198,7 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
     def test_register_rejects_duplicate_race(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); freeze=b/'freeze.json'; score=b/'score.json'; ledger=b/'ledger.json'; out=b/'ledger2.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
             self.assertEqual(r.returncode,0,r.stderr)
             (b/'result.json').write_text(json.dumps({'race_id':'2026-10-18-KYOTO-07','top3':[2,3,1]},ensure_ascii=False))
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
@@ -196,7 +211,7 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
     def test_register_rejects_backfill_before_last_race(self):
         with tempfile.TemporaryDirectory() as td:
             b=Path(td); classifier=self.make_fixture(b); freeze=b/'freeze.json'; score=b/'score.json'; ledger=b/'ledger.json'; out=b/'ledger2.json'
-            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
+            r=self.run_cmd('freeze','--race-input',b/'race.json','--odds',b/'odds.json','--source-meta',b/'source-meta.json','--quality-map',b/'quality.json','--manifest',b/'manifest.json','--classifier',classifier,'--observed-at-jst','2026-10-18T13:05:00+09:00','--output',freeze)
             self.assertEqual(r.returncode,0,r.stderr)
             (b/'result.json').write_text(json.dumps({'race_id':'2026-10-18-KYOTO-07','top3':[2,3,1]},ensure_ascii=False))
             r=self.run_cmd('score','--freeze',freeze,'--result',b/'result.json','--output',score)
