@@ -64,11 +64,11 @@ def extract_selected_races(root, target: tuple[int,...]):
             "official_distance":value(race,"Distance"),
             "class":value(race,"Class"),
         }
-    if set(found)!=set(target):
-        raise ValueError(
-            f"HOLD_INCOMPLETE_SELECTED_OFFICIAL_RACE_SET:"
-            f"expected={len(target)},observed={len(found)}"
-        )
+    # Never invent a race that is absent from the public endpoint.
+    # The discrepancy is returned in the audit; continue ONLY with
+    # races that have verified numeric official Ids.
+    if not found:
+        raise ValueError("HOLD_NO_SELECTED_RACE_WITH_OFFICIAL_ID")
     return found, len(candidates)
 
 
@@ -112,6 +112,8 @@ def one_date(
     gps,blocked,readiness=gps_index(raw,day)
     rows=[]
     for number in numbers:
+        if number not in races:
+            continue
         official_horse_xml,_,hhash=request_fn(
             "GetHorsesForRace",{"raceId":races[number]["race_id"]})
         candidates,shape=horse_candidates(official_horse_xml)
@@ -150,6 +152,9 @@ def one_date(
         "day":day,
         "venue":cfg["venue"],
         "selected_race_count":len(races),
+        "requested_race_count":len(numbers),
+        "official_selected_race_numbers_missing_from_API":sorted(set(numbers)-set(races)),
+        "not_extrapolating_missing_race_IDs":True,
         "all_official_races_in_meeting":all_races_n,
         "source_sha256":{
             "meeting_xml":meeting_hash,
@@ -158,12 +163,12 @@ def one_date(
         },
         "official_selected_race_metadata_groups":{
             "ground_labels":dict(Counter(
-                races[number]["ground"] or "MISSING" for number in numbers)),
+                races[number]["ground"] or "MISSING" for number in races)),
             "distances":dict(Counter(
                 races[number]["official_distance"] or "MISSING"
-                for number in numbers)),
+                for number in races)),
             "classes":dict(Counter(
-                races[number]["class"] or "MISSING" for number in numbers)),
+                races[number]["class"] or "MISSING" for number in races)),
         },
         "official_horse_rows_selected":len(rows),
         "distinct_official_horse_ids_in_selected_races":len(occurrence),
@@ -223,7 +228,7 @@ def compare(
         "competitor_interactions_identifiable_after_two_dates":False,
         "limits":[
             "Repeated official numeric HORSES ID across dates is source-level ID stability, not a completed ecological repeated-exposure panel.",
-            "Only four deliberately selected races per date, so all-starter completeness and selection are not established.",
+            "Up to four deliberately selected races per date; missing official race IDs remain explicitly unanalysed.",
             "Some official horse lists can include nominated/scratched horses; all-zero GPS is not a DNF or zero speed.",
             "No official individual certified elapsed race time, first-call position, or complete contemporary opponent phenotypes are joined.",
             "No stable variation across two going conditions or controlled class/distance cohorts has been demonstrated.",
