@@ -1,0 +1,37 @@
+name: "Ecological horse multigoing expanded sensitivity"
+
+# Deliberately labelled AFTER-the-fact source coverage extension.
+# Five fixed original RQ dates, race numbers 1-8 only.
+# No horse-specific outcomes/IDs saved; not an H1 hypothesis test.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_multigoing_h1_preflight.py'
+      - 'tests/test_ecology_rq_multigoing_h1_preflight.py'
+      - '.github/workflows/ecology-rq-multigoing-expanded.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exploratory-eight-race-stratum-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test explicit focused vs exploratory coverage, including confounded classes
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_multigoing_h1_preflight.py' -v
+      - name: Fetch ONLY five selected dates, up to eight official races on each
+        run: |
+          python scripts/ecology_rq_multigoing_h1_preflight.py --scope extended_eight --output tmp/rq-five-date-eight-race-ecological-overlap.json
+          python -c "import json; d=json.load(open('tmp/rq-five-date-eight-race-ecological-overlap.json')); assert d['status']=='REAL_EQUINE_MULTIGOING_FEASIBILITY_NOT_H1_H2_EVIDENCE'; assert d['race_selection_scope']=='extended_eight'; assert d['exploratory_full_race_expansion_following_initial_design_audit']; assert not d['data_row_horse_ID_or_name_output']; assert not d['fit_random_slope_H1']; assert not d['fit_social_competition_H2']; assert d['within_horse_support']['gps_positive_source_rows']>30"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rq-five-day-all-eight-horse-overlap-aggregates-only
+          path: tmp/rq-five-date-eight-race-ecological-overlap.json
+          retention-days: 30
