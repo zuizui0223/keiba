@@ -139,6 +139,23 @@ class V31RealPipelineTests(unittest.TestCase):
             self.assertEqual(decision["decision"]["status"], "INCOMPLETE")
             self.assertEqual(decision["technical_evaluability"]["freeze_success_rate"], 1.0)
 
+    def test_postrace_validation_accepts_real_pipeline(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            self.setup_case(base)
+            self.score_case(base)
+            r = self.run_script(
+                "v31_validate_postrace.py",
+                "--freeze", base / "freeze.json",
+                "--result", base / "result.json",
+                "--score", base / "score.json",
+                "--attempt-ledger", base / "attempts.json",
+            )
+            self.assertEqual(r.returncode, 0, r.stderr)
+            valid = json.loads(r.stdout)
+            self.assertTrue(valid["valid"])
+            self.assertEqual(valid["union_top3_hits"], 3)
+
     def test_postrace_validation_rejects_tampered_score(self):
         with tempfile.TemporaryDirectory() as td:
             base = Path(td)
