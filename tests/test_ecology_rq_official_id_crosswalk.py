@@ -82,9 +82,8 @@ class OfficialIDCrosswalkTests(unittest.TestCase):
 
     def test_same_race_same_name_multiple_official_ids_is_not_auto_resolved(self):
         records=roster()
-        records[0]["horse_name"]="Gamma Horse"
         records.append({
-            **records[0],"official_horse_id":"DIFFERENT-GAMMA",
+            **records[0],"official_horse_id":"DIFFERENT-ALPHA",
         })
         with tempfile.TemporaryDirectory() as temp:
             official=official_roster_rows(store_roster(temp,records))
