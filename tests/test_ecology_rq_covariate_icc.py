@@ -11,6 +11,7 @@ import xml.etree.ElementTree as ET
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from ecology_rq_covariate_icc import (
     official_covariates,compare,adjusted_race_icc,_complete_sample,
+    leave_one_meeting_out_adjusted_ICC,
 )
 from ecology_rq_race_fixed_icc import race_fixed_reml
 
@@ -122,6 +123,38 @@ class CovariateSourceAndAdjustmentTests(unittest.TestCase):
         self.assertGreater(result["source_real_horse_covariate_support"]["HORSES_IDs_with_multiple_jockey_licences"],0)
         self.assertNotIn("FAKE-HORSE",str(result))
         self.assertNotIn("Synthetic Name",str(result))
+
+    def test_date_deletion_reports_true_model_stability_not_false_95pct_ci(self):
+        result=compare(self.data)
+        diag=result["date_deletion_same_source_baseline_vs_nuisance_stability"]
+        self.assertEqual(
+            diag["status"],
+            "EXPLORATORY_DATE_DELETION_NUISANCE_ICC_STABILITY_NOT_CI",
+        )
+        self.assertEqual(diag["source_complete_case_dates"],12)
+        self.assertEqual(diag["source_dates_with_both_model_ICCs"],12)
+        self.assertTrue(diag["same_sample_baseline_and_adjusted_in_each_leave_one_date_out_fit"])
+        self.assertTrue(diag["not_a_95_percent_confidence_interval"])
+        self.assertLessEqual(diag["unadjusted_conditional_ICC_min"],
+                             diag["unadjusted_conditional_ICC_max"])
+        self.assertLessEqual(diag["weight_jockey_trainer_conditional_ICC_min"],
+                             diag["weight_jockey_trainer_conditional_ICC_max"])
+        self.assertEqual(
+            diag["date_deletion_fits_with_lower_ICC_after_full_adjustment"]+
+            diag["date_deletion_fits_with_higher_ICC_after_full_adjustment"],12)
+        import json
+        serialized=json.dumps(diag)
+        self.assertNotIn("FAKE-HORSE",serialized)
+        self.assertNotIn("2000",serialized)
+
+    def test_date_deletion_on_few_dates_must_hold(self):
+        fewer=[r for r in self.data if r["day"]<"2026-03-06"]
+        diag=leave_one_meeting_out_adjusted_ICC(fewer)
+        self.assertEqual(
+            diag["status"],
+            "HOLD_TOO_FEW_COMPLETE_SOURCE_DATES_FOR_JACKKNIFE_SCREEN",
+        )
+        self.assertNotIn("weight_jockey_trainer_conditional_ICC_min",diag)
 
     def test_weight_adjustment_and_race_common_offset(self):
         data=invented(horse_var=0,rider_var=0,trainer_var=0,weight_slope=.8)
