@@ -101,3 +101,28 @@ Next migration requirement:
 3. include date, class, surface, distance, finish, beaten margin and source URL for each run;
 4. record `history_checked_at_jst` at refresh time;
 5. pass the data gate before ranking.
+
+
+## 12R migration and candidate-union status (2026-10-13)
+
+Structured-history migration is complete for Kyoto 12R in:
+`data/2026-10-12/v3/kyoto_12.json`.
+
+Independent reproduction of the data-gate rules returned:
+- PASS: 16/16
+- DATA_HOLD: 0/16
+
+The original frozen `data/2026-10-12/kyoto_12.json` remains unchanged.
+
+The margin schema now accepts either:
+- numeric `beaten_margin_s`, or
+- official text `beaten_margin_text` such as `アタマ` / `クビ`.
+
+A first candidate-union implementation is in:
+- `scripts/build_v3_candidate_union.py`
+- `tests/test_v3_candidate_union.py`
+
+Its 12R retrospective diagnostic is:
+`reports/2026-10-12/v3-candidate-union-r12-diagnostic.json`.
+
+With the frozen default parameters, the union selected 11/16 runners and retrospectively contained all official Top3. This is **not validation** because the rules were designed after seeing 12R. The important negative result is that the candidate set is too broad to count as a useful ranking system yet. No further threshold tuning should be done on 2026-10-12 results.
