@@ -1,0 +1,37 @@
+name: Ecological horse sectionals: official data schema audit
+
+# One-time, tightly allowlisted official meeting files. This is NOT
+# racehorse H1/H2 fitting and never publishes runner-level data.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_thoroughbred_sectional_audit.py'
+      - 'tests/test_ecology_rq_thoroughbred_sectional_audit.py'
+      - '.github/workflows/ecology-horse-sectionals-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-official-horse-sectionals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Artificial layout tests (no historical racing results)
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_thoroughbred_sectional_audit.py' -v
+      - name: Read only two official published horse GPS sectional files
+        run: |
+          python scripts/ecology_rq_thoroughbred_sectional_audit.py --fetch-official 20261011-cairns --audit tmp/rq-cairns-20261011-aggregate.json
+          python scripts/ecology_rq_thoroughbred_sectional_audit.py --fetch-official 20261010-eagle-farm --audit tmp/rq-eagle-farm-20261010-aggregate.json
+          python -c "import json; a=json.load(open('tmp/rq-cairns-20261011-aggregate.json')); b=json.load(open('tmp/rq-eagle-farm-20261010-aggregate.json')); assert a['race_counts']['race_headers']==8; assert b['race_counts']['race_headers']>=5; assert not a['telemetry_zero_means_dnf']; assert not b['has_verified_individual_finish_time']; assert not a['has_stable_horse_id']; assert not b['has_position_at_sections']; assert a['race_counts']['horse_rows']>30"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: official-thoroughbred-gps-structure-aggregate-only
+          path: tmp/rq-*-aggregate.json
+          retention-days: 30
