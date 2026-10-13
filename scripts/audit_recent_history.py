@@ -5,8 +5,8 @@ from datetime import date, datetime, timedelta
 import json
 from pathlib import Path
 
-REQUIRED_RUN_FIELDS = {
-    'date', 'class', 'surface', 'distance_m', 'finish', 'beaten_margin_s', 'source_url'
+CORE_RUN_FIELDS = {
+    'date', 'class', 'surface', 'distance_m', 'finish', 'source_url'
 }
 
 
@@ -73,7 +73,7 @@ def validate_horse_history(horse, race_date, as_of, min_recent_runs=3,
     parsed_dates = []
     race_day = date.fromisoformat(race_date)
     for run in runs:
-        if not isinstance(run, dict) or not REQUIRED_RUN_FIELDS.issubset(run):
+        if not isinstance(run, dict) or not CORE_RUN_FIELDS.issubset(run):
             reasons.append('incomplete_recent_run_fields')
             continue
         try:
@@ -89,9 +89,15 @@ def validate_horse_history(horse, race_date, as_of, min_recent_runs=3,
             reasons.append('invalid_run_distance')
         if type(run['finish']) is not int or run['finish'] <= 0:
             reasons.append('invalid_run_finish')
-        margin = run['beaten_margin_s']
-        if not isinstance(margin, (int, float)) or margin < 0:
-            reasons.append('invalid_run_margin')
+        has_seconds = 'beaten_margin_s' in run
+        has_text = (isinstance(run.get('beaten_margin_text'), str)
+                    and bool(run['beaten_margin_text'].strip()))
+        if not has_seconds and not has_text:
+            reasons.append('missing_run_margin')
+        if has_seconds:
+            margin = run['beaten_margin_s']
+            if not isinstance(margin, (int, float)) or margin < 0:
+                reasons.append('invalid_run_margin')
         if not isinstance(run['source_url'], str) or not run['source_url'].startswith(('http://', 'https://')):
             reasons.append('invalid_run_source')
 
