@@ -25,6 +25,9 @@
 - [再現スクリプト](scripts/v3_candidate_channels.py) / [テスト](tests/test_v3_candidate_channels.py)
 - [v3.1 holdout用プロトコル](docs/v31-candidate-generation-protocol.md)
 - [v3.1 freeze manifest](docs/v31-holdout-freeze.json)
+- [v3.1 holdout ledger（20レース、現在0/20）](docs/v31-holdout-ledger.json)
+- [v3.1 holdout運用手順](docs/v31-holdout-operations.md)
+- [freeze / score / ledger wrapper](scripts/v31_holdout.py) / [テスト](tests/test_v31_holdout.py)
 - [v3.1判定スクリプト](scripts/v31_candidate_channels.py) / [11テスト](tests/test_v31_candidate_channels.py)
 - [v3.1機械判定（結果未使用）](reports/2026-10-12/v31-mechanical-channel-audit.json)
 - [v3.1開発データ照合](reports/2026-10-12/v31-development-evaluation.json)
@@ -35,7 +38,7 @@
 
 12Rでは、結果前16:05に凍結したv2 Top3 `16,1,14` に対し、確定上位は `10,12,9`。旧Top3もv2 Top3も実Top3 recall 0/3、広い候補集合も1/3で、v2の改善はこの1レースでは確認できませんでした。実Top3は7・11・8番人気で市場Top6も0/3だったため、v3では市場baselineだけでなく、昇級直前勝ち・少キャリアの上方不確実性・隣接短距離の改善を独立候補チャネルにします。
 
-R7〜R12の開発データでは、凍結pre-race win oddsだけのMチャネルは22/83頭を候補にしてTop3 11/18（61.1%）、旧qualitative marksは38/83頭で15/18（83.3%）。全83頭のJRA全履歴を機械判定するとv3.0は18/18を拾う一方、候補が64/83頭（77.1%）まで膨らみました。v3.1はCを直近1走へ限定し、K/Qを強化、GII/GIではQ1∩K1のみを救済にして49/83頭（59.0%）まで縮約しました。R7〜R12での18/18は設計に使ったin-sample結果であり予測精度の証拠ではありません。v3.1はfreeze manifestで固定済みで、**manifest作成後に初めて判定するeligible raceをholdout #1**として20レースを閾値変更なしで評価します。
+R7〜R12の開発データでは、凍結pre-race win oddsだけのMチャネルは22/83頭を候補にしてTop3 11/18（61.1%）、旧qualitative marksは38/83頭で15/18（83.3%）。全83頭のJRA全履歴を機械判定するとv3.0は18/18を拾う一方、候補が64/83頭（77.1%）まで膨らみました。v3.1はCを直近1走へ限定し、K/Qを強化、GII/GIではQ1∩K1のみを救済にして49/83頭（59.0%）まで縮約しました。R7〜R12での18/18は設計に使ったin-sample結果であり予測精度の証拠ではありません。v3.1は2026-10-13 10:09 JSTに最終sealし、京都限定の20レースholdoutを開始できる状態です。**このseal後に初めて結果前freezeを作るeligible京都レースをholdout #1**とし、閾値変更なしで評価します。現在のledgerは0/20です。
 
 ## 2026年10月12日：8〜12Rの全8券種（主要候補を13:41〜13:42再確認）
 
