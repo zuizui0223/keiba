@@ -11,6 +11,8 @@ on:
     paths:
       - 'scripts/ecology_rq_2026_calendar_overlap.py'
       - 'scripts/ecology_rq_multigoing_h1_preflight.py'
+      - 'scripts/ecology_rq_race_fixed_icc.py'
+      - 'tests/test_ecology_rq_race_fixed_icc.py'
       - 'tests/test_ecology_rq_2026_calendar_overlap.py'
       - 'docs/ecology-rq-2026-calendar-cohort-lock.md'
       - '.github/workflows/ecology-rq-2026-calendar.yml'
@@ -23,17 +25,22 @@ jobs:
   source-locked-2026-calendar-support:
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install Gaussian RE variance components dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
       - name: Synthetic class-confounding, frozen source selection, missing source HOLD
         run: python -m unittest discover -s tests -p 'test_ecology_rq_2026_calendar_overlap.py' -v
       - name: Read first-party original HORSES ID and GPS for exactly 12 dates
         run: |
           python scripts/ecology_rq_2026_calendar_overlap.py --output tmp/cannon-park-2026-12-source-days-aggregate.json
-          python -c "import json; a=json.load(open('tmp/cannon-park-2026-12-source-days-aggregate.json')); assert a['status'] in ('REAL_EQUINE_2026_CALENDAR_SOURCE_OVERLAP_NOT_H1_H2_EFFECT','HOLD_FEWER_THAN_TWO_ORIGINAL_SOURCE_DATES'); assert len(a['temporal_cohort']['calendar_dates_requested'])==12; assert len(a['temporal_cohort']['new_source_dates'])==7; assert not a['no_raw_runner_names_IDs_or_source_telemetry_output']==False; assert a['ground_effect_or_random_slope_variance_fitted']==False; assert a['competitor_context_H2_fitted']==False"
+          python -c "import json; a=json.load(open('tmp/cannon-park-2026-12-source-days-aggregate.json')); assert a['status'] in ('REAL_EQUINE_2026_CALENDAR_SOURCE_OVERLAP_NOT_H1_H2_EFFECT','HOLD_FEWER_THAN_TWO_ORIGINAL_SOURCE_DATES'); assert len(a['temporal_cohort']['calendar_dates_requested'])==12; assert len(a['temporal_cohort']['new_source_dates'])==7; assert a['no_raw_runner_names_IDs_or_source_telemetry_output']; assert a['ground_effect_or_random_slope_variance_fitted']==False; assert a['competitor_context_H2_fitted']==False; assert a['exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2']['not_H1_or_H2_or_causal_or_heritability']"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
