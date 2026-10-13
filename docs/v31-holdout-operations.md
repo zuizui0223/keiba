@@ -15,6 +15,7 @@ For holdout index `NNN`:
 holdout/v31/NNN/
   race-input.json
   odds.json
+  source-capture-meta.json
   freeze.json
   result.json
   score.json
@@ -104,6 +105,7 @@ The observation timestamp must be before post time and no later than the freeze 
 python -B scripts/v31_holdout.py freeze \
   --race-input holdout/v31/001/race-input.json \
   --odds holdout/v31/001/odds.json \
+  --source-meta holdout/v31/001/source-capture-meta.json \
   --quality-map data/2026-10-12/v3-quality-tier-map.json \
   --manifest docs/v31-holdout-freeze.json \
   --classifier scripts/v31_candidate_channels.py \
@@ -120,6 +122,8 @@ The wrapper refuses to freeze when:
 - horse sets differ between history and odds;
 - classifier Git blob SHA differs from the manifest;
 - wrapper Git blob SHA differs from the manifest;
+- source metadata does not report the frozen snapshot-preparer Git blob SHA;
+- source metadata race ID, observation time, or active horse-number set does not match the generated inputs;
 - an existing baseline quality tier has changed.
 
 New quality-tier names may be appended only from an official source. Unknown tiers block Q1 for that race rather than being guessed.
