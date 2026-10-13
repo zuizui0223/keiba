@@ -24,6 +24,7 @@ from ecology_rq_multigoing_h1_preflight import (
 from ecology_rq_single_race_id_probe import request_xml
 from ecology_rq_thoroughbred_sectional_audit import fetch_official
 from ecology_rq_early_pace_repeatability import analyze as early_pace_persistence
+from ecology_rq_race_fixed_icc import analyze as race_fixed_conditional_icc
 
 
 # Locked BEFORE inspecting the seven additional dates' individual ID overlaps.
@@ -230,6 +231,10 @@ def compare(
     early_pace_six = early_pace_persistence(
         data, permutations=199, min_race_telemetry=6
     )
+    # Source-backed absolute first-interval GAUSSIAN mixed-model POINT
+    # estimate with exact fixed race-intercept elimination. Never fit
+    # an H1 ground random slope or H2 competition interaction here.
+    conditional_icc = race_fixed_conditional_icc(data)
     acceptable = {
         "SOURCE_DATE_READ_AND_ID_GPS_MATCHED",
         "SOURCE_DATE_READ_RACE_LEVEL_GROUND_DIFFERS_FROM_PAGE",
@@ -268,6 +273,8 @@ def compare(
         "support": support,
         "exploratory_early_pace_ID_persistence_NOT_H1_or_H2": early_pace,
         "exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2": early_pace_six,
+        "exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2":conditional_icc,
+        "conditional_ICC_uses_absolute_first_interval_with_race_fixed_intercepts":True,
         "individual_pace_repeatability_analysed_only_as_race_relative_first_interval": True,
         "actual_confirmed_starter_and_finish_status_verified": False,
         "official_full_race_individual_finish_times_verified": False,
@@ -306,6 +313,7 @@ def main() -> None:
         "support": result["support"],
         "individual_pace_persistence": result["exploratory_early_pace_ID_persistence_NOT_H1_or_H2"],
         "persistence_six_GPS_sensitivity": result["exploratory_six_positive_GPS_per_race_sensitivity_NOT_H1_or_H2"],
+        "race_fixed_absolute_first_section_ICC": result["exploratory_race_fixed_Gaussian_horse_ICC_point_NOT_H1_or_H2"],
     }, ensure_ascii=False))
 
 
