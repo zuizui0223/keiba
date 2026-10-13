@@ -2,7 +2,59 @@
 
 **研究の中心：競走馬の個体差・環境反応規範・競争相手の構成が、相対的な競走成績をどう変えるか。**
 
-This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The ecological hypotheses are currently **proposed, not empirically supported**.
+This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
+
+## Evidence update: exploratory real Thoroughbred individuality (2026-10-13)
+
+From the **original Racing Queensland numeric HORSES IDs**
+and 12 original Cannon Park meeting dates, 523 source
+horse×race first GPS intervals were eligible in 74
+races with >=4 positive GPS readings. Horse identity
+recurred over different dates.
+
+**New, narrower result: early race-relative time differs
+consistently among recorded individuals in this
+observational sample.** Among 99 HORSES IDs with repeated
+early GPS readings at the same official race distance
+and first distance marker, the equal-stratum mean
+within-horse pair product was **+0.051925 s²** compared
+with **+0.001735 s²** across 299 within-race identity
+shuffles. Matching the original broad race class as
+well retained 50 IDs and a mean pair product
+**+0.035633 s²** versus a shuffled mean **+0.001136 s²**.
+
+A past-identity historical profile improved later-date
+retrospective relative-time RMSE from **0.3332 to
+0.2878 seconds** in 54 held-out records, and from
+**0.2826 to 0.2570 seconds** among 20 class-matched
+records. **These are exploratory descriptive
+associations, not corrected causal p-values, true
+random-intercept ICC, a blinded independent cohort or
+evidence of evolved behavioral personality.**
+
+This response explicitly depends on observed *other
+horses' contemporaneous first-section times*; it is
+**relative early pacing consistency**, not absolute
+locomotor speed nor causal social behavior. Source
+starter status, missing telemetry, age, jockey, race
+selection and training effects remain potentially
+confounded. **H1 heterogeneous Good/Soft/Heavy
+reaction norms and H2 competitor-interaction effects
+remain scientifically HOLD.**
+
+See the [complete frozen real-source result,
+method and limitations](docs/ecology-rq-real-early-pacing-repeatability.md).
+Reproduce the 12-date aggregator with the same
+source-time-ordered, within-race-permutation benchmark:
+
+~~~bash
+python scripts/ecology_rq_2026_calendar_overlap.py \
+  --output tmp/cannon-park-2026-12-dates.json
+~~~
+
+Reference for standard adjusted repeatability methodology:
+Nakagawa & Schielzeth (2010),
+https://doi.org/10.1111/j.1469-185X.2010.00141.x.
 
 ## Research questions
 
@@ -23,6 +75,7 @@ Read:
 - [First real-data test in a separate racing species: Queensland greyhound GPS records](docs/ecology-real-greyhound-method-benchmark.md)
 - [Official Thoroughbred sectional CSV: two independently audited race meetings](docs/ecology-rq-thoroughbred-source-audit.md)
 - [Official HORSES internal ID recurrence: two Cannon Park dates, source-verified](docs/ecology-rq-two-date-official-id-recurrence.md)
+- [First exploratory real-horse result: repeatable relative early sectional timing](docs/ecology-rq-real-early-pacing-repeatability.md)
 - [Original 20-race Good/Soft/Heavy real-horse H1 identifiability audit](docs/ecology-rq-real-h1-multigoing-feasibility.md)
 - [Exploratory 38-race expansion: why ground-reaction norms remain unidentified](docs/ecology-rq-real-h1-multigoing-expanded-audit.md)
 - [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
