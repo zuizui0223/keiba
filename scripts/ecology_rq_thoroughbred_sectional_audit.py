@@ -47,7 +47,8 @@ APPROVED = {
 }
 MAX_BYTES = 1_800_000
 DURATION = re.compile(r"^(?P<hours>\d{2}):(?P<minutes>[0-5]\d):(?P<seconds>[0-5]\d(?:\.\d{1,3})?)$")
-HEADER_TIME = re.compile(r"^\d\d/\d\d/\d{4} 12:00:00 AM$")
+HEADER_TIME = re.compile(r"^\d{1,2}/\d{1,2}/\d{4} 12:00:00 AM$")
+ISO_DATE = re.compile(r"(?<!\d)(20\d\d-\d\d-\d\d)(?!\d)")
 RACE_DATE = re.compile(r"^\d\d/\d\d/\d{4}$")
 
 
@@ -89,6 +90,40 @@ def finite_number(text: str) -> float | None:
     return value if math.isfinite(value) else None
 
 
+def vendor_header_date(tokens: list[str]) -> tuple[str, str]:
+    """Reconcile ambiguous US/D-M vendor header against original ISO venue label.
+
+    Some genuine first-party CSVs use an unpadded US-looking header
+    (2/16/2026), whereas runner rows consistently use DD/MM/YYYY.
+    A dated ISO marker in the vendor venue string settles the ambiguity.
+    Without an ISO marker we only accept the DD/MM parse provisionally;
+    every runner date must still match it (handled by parse).
+    """
+    if len(tokens) != 5 or not HEADER_TIME.fullmatch(tokens[0]):
+        raise ValueError("HOLD_UNEXPECTED_VENDOR_RACE_HEADER_TIME")
+    date_token=tokens[0].split(" ",1)[0]
+    possibilities={}
+    for fmt in ("%d/%m/%Y","%m/%d/%Y"):
+        try:
+            dt=datetime.strptime(date_token,fmt).date().isoformat()
+            possibilities[fmt]=dt
+        except ValueError:
+            pass
+    if not possibilities:
+        raise ValueError("HOLD_VENDOR_HEADER_DATE_UNPARSEABLE")
+    m=ISO_DATE.search(tokens[1])
+    if m:
+        expected=m.group(1)
+        if expected not in possibilities.values():
+            raise ValueError("HOLD_VENDOR_HEADER_DATE_CONFLICTS_WITH_VENUE_ISO")
+        return expected,"confirmed_by_vendor_ISO_venue_label"
+    if "%d/%m/%Y" in possibilities:
+        return possibilities["%d/%m/%Y"],"DDMM_provisional_no_ISO_confirmation"
+    # Unambiguous US format but no venue ISO marker: runner DDMM must
+    # independently match, normally impossible if day > 12.
+    return possibilities["%m/%d/%Y"],"MMDD_provisional_no_ISO_confirmation"
+
+
 def parse(raw: bytes, declared_source: str = "local") -> dict:
     if len(raw) > MAX_BYTES:
         raise ValueError("HOLD_INPUT_EXCEEDS_SIZE_LIMIT")
@@ -113,10 +148,8 @@ def parse(raw: bytes, declared_source: str = "local") -> dict:
         if a == "Date" and b == "RaceNumber":
             if len(tokens) != 5 or not HEADER_TIME.fullmatch(tokens[0]):
                 raise ValueError(f"HOLD_UNEXPECTED_RACE_HEADER_LINE_{lineno}")
-            try:
-                day = datetime.strptime(tokens[0][:10], "%d/%m/%Y").date().isoformat()
-            except ValueError as e:
-                raise ValueError("HOLD_INVALID_SOURCE_HEADER_DATE") from e
+            day, date_provenance = vendor_header_date(tokens)
+            errors["vendor_header_date_" + date_provenance] += 1
             if not tokens[1] or not tokens[2] or not tokens[4]:
                 raise ValueError("HOLD_RACE_HEADER_MISSING_LABEL")
             key = (day, tokens[1], tokens[2])
@@ -230,6 +263,8 @@ def parse(raw: bytes, declared_source: str = "local") -> dict:
         "has_position_at_sections": False,
         "telemetry_zero_means_dnf": False,
         "unverified_index_assumed_cloth": False,
+        "variable_vendor_US_vs_DDMM_header_format_reconciled": True,
+        "vendor_header_date_uses_original_ISO_label_if_present": True,
         "race_header_time_not_individual_horse_time": True,
         "race_counts": {
             "race_headers": len(races),
