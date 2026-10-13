@@ -3,6 +3,7 @@ name: v3.1 holdout tests
 on:
   pull_request:
     paths:
+      - ".github/workflows/v31-tests.yml"
       - "scripts/v31_candidate_channels.py"
       - "scripts/v31_holdout.py"
       - "tests/test_v31_candidate_channels.py"
