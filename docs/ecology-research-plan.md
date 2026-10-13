@@ -333,3 +333,16 @@ validation: `GetRacesForMeeting` → `GetHorsesForRace` → matching
 sectional row / official result, with explicit ambiguity and zero-data
 rejections. Only after proving a stable repeated horse ID and
 history-complete starters may real horse models be considered.
+
+
+## Official horse-ID crosswalk: code ready, actual join still HOLD
+
+The project now includes an offline,
+[fail-closed official Racing Queensland HORSES-ID crosswalk](ecology-rq-official-id-crosswalk.md)
+which compares a private verified race-result/starter snapshot with
+the already audited sectional CSV. One-to-one race name and date
+matching is necessary but not evidence of stable biological identity.
+Contradictory or nonunique official IDs, same-day repeated horse
+names, and data-zero rows are explicitly held, never guessed.
+Synthetic tests run in CI. **No actual historical HORSES-ID crosswalk
+has been verified and no real equine H1/H2 has been fitted.**
