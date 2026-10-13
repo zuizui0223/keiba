@@ -3,8 +3,8 @@
   "version": "v3.1",
   "venue": "京都",
   "target_races": 20,
-  "manifest_blob_sha": "2daffe75fdf5752fadecb2e7cba573991e19c104",
-  "manifest_created_at_jst": "2026-10-13T10:09:00+09:00",
+  "manifest_blob_sha": "d64eabd9bbbabe340eaa24e6aa3d47cb8aa83bb9",
+  "manifest_created_at_jst": "2026-10-13T10:13:06+09:00",
   "status": "collecting",
   "entries": [],
   "summary": {
@@ -26,5 +26,14 @@
       "U": 0,
       "rescue": 0
     }
+  },
+  "eligibility": {
+    "venue": "京都",
+    "min_class_rank": 1,
+    "exclude_2yo_only": true,
+    "flat_surfaces": [
+      "芝",
+      "ダ"
+    ]
   }
 }
