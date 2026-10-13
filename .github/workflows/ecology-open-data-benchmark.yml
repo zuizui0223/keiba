@@ -1,0 +1,36 @@
+name: Ecological open-data analogue (greyhounds)
+
+# Real, cited racing GREYHOUND records are processed only as a methods
+# benchmark. Never interpret outputs as Thoroughbred horse findings.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_greyhound_open_pilot.py'
+      - 'tests/test_ecology_greyhound_open_pilot.py'
+      - '.github/workflows/ecology-open-data-benchmark.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-pinned-real-analogue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the benchmark logic using only invented records
+        run: python -m unittest discover -s tests -p 'test_ecology_greyhound_open_pilot.py' -v
+      - name: Evaluate precisely version-pinned public ODC-BY data
+        run: |
+          python scripts/ecology_greyhound_open_pilot.py --fetch-pinned --require-pinned --output tmp/greyhound_pinned_2026-10-12.json --bootstrap 1000
+          python -c "import json; r=json.load(open('tmp/greyhound_pinned_2026-10-12.json')); assert r['status']=='REAL_GREYHOUND_OBSERVATIONAL_BENCHMARK_NOT_HORSE_EVIDENCE'; assert r['source']['matches_pinned_source']; assert r['data_quality']['rows']==25679; assert r['data_quality']['distinct_source_races']==6021; assert r['full']['dog_venue_strata']>1000"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pinned-greyhound-ecology-aggregate-only
+          path: tmp/greyhound_pinned_2026-10-12.json
+          retention-days: 30
