@@ -1,0 +1,38 @@
+name: "Ecological real horse multigoing support audit"
+
+# Purposefully tiny REAL Thoroughbred design pilot:
+# 5 specific Cannon Park days: Heavy 9, Soft 5, Soft 6, Good, Good.
+# Up to 4 specific race numbers (1,2,3,8) per date, no bulk history crawl.
+# Outputs aggregate counts and source hashes ONLY, not horse-level records.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_multigoing_h1_preflight.py'
+      - 'tests/test_ecology_rq_multigoing_h1_preflight.py'
+      - '.github/workflows/ecology-rq-multigoing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  five-fixed-meeting-source-overlap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic counterexamples for class confounding and pseudo-IDs
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_multigoing_h1_preflight.py' -v
+      - name: Original published horse ID and first GPS interval, aggregate feasibility
+        run: |
+          python scripts/ecology_rq_multigoing_h1_preflight.py --output tmp/rq-horse-multigoing-original-aggregate.json
+          python -c "import json; a=json.load(open('tmp/rq-horse-multigoing-original-aggregate.json')); assert a['status']=='REAL_EQUINE_MULTIGOING_FEASIBILITY_NOT_H1_H2_EVIDENCE'; assert len(a['selected_dates'])==5; assert not a['data_row_horse_ID_or_name_output']; assert not a['fit_random_slope_H1']; assert not a['fit_social_competition_H2']; assert a['within_horse_support']['gps_positive_source_rows']>30"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cannon-park-five-day-ground-overlap-aggregates-only
+          path: tmp/rq-horse-multigoing-original-aggregate.json
+          retention-days: 30
