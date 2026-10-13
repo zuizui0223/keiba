@@ -161,6 +161,13 @@ To keep the prospective population aligned with the six development races, an el
 
 An eligible race requires enough pre-race data to run M/C1/U/Q1/K1 as specified. Data-integrity failure may mark a race non-evaluable, but performance is never a reason to exclude a race.
 
+Every chronologically eligible race must also be written to `docs/v31-holdout-attempt-ledger.json` as exactly one of:
+
+- `FROZEN`: a valid pre-result freeze was created inside the fixed observation window;
+- `PRE_RESULT_DATA_FAILURE`: the race was eligible but could not be validly frozen for a pre-result technical/data reason, with an explicit failure reason.
+
+A failed attempt cannot be silently skipped. The scored performance ledger contains only FROZEN races after official results are available; the attempt ledger preserves the denominator needed to audit technical evaluability.
+
 For each holdout race save before post time:
 
 - target metadata;
@@ -194,10 +201,13 @@ The formal comparison point is after 20 scored eligible races. The confirmatory 
 
 The primary test is a one-sided exact stratified random-addition rescue test. Within each race it conditions on field size, M size, the number of actual top-three finishers outside M, and the exact number of non-M horses added by v3.1. It asks whether the observed number of additional top-three rescues across 20 races exceeds what would be expected if the same number of non-M horses had been added uniformly at random within each race. Race-specific hypergeometric distributions are convolved exactly.
 
-Formal promotion requires **both**:
+Formal promotion requires **all three**:
 
-- one-sided exact p <= 0.05; and
-- overall union candidate fraction <= 0.65.
+- one-sided exact p <= 0.05;
+- overall union candidate fraction <= 0.65; and
+- freeze success rate >= 0.80 among all chronologically eligible attempts through the 20th scored FROZEN race.
+
+The freeze-success denominator includes `PRE_RESULT_DATA_FAILURE` attempts. This prevents a favourable result from being obtained by retaining only races with convenient or complete pre-race data.
 
 There is no early promotion, no early stopping for efficacy, and no threshold tuning based on interim holdout results. Interim values are descriptive only.
 
