@@ -5,11 +5,11 @@
   "holdout_target_races": 20,
   "development_data": "2026-10-12 Kyoto R7-R12 only; not prospective evidence",
   "frozen_blobs": {
-    "protocol": "2be6c248ff34b334ad3614387549d58667537369",
+    "protocol": "f2d90c82f1e31ec1f7ee7791a0741f6091487b9a",
     "classifier": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
     "tests": "fd6f4c448f2e59d9e4b58b12886221d6cdb0f672",
-    "holdout_wrapper": "ce21ae6c6d5899bc0e7028a72a90b8414a0f3041",
-    "holdout_tests": "a5a3cde276a281ef0c40ebee73a45c826bbc79d5"
+    "holdout_wrapper": "7ff72ec7deabfacbe87a26d7eca77b1379c0987a",
+    "holdout_tests": "121c177f4bbb7a57a821c8585372a5d6f9ae3341"
   },
   "metadata_inputs": {
     "quality_tier_map_baseline": "a06e33dd396369b9556136b7e12cc4568afde41b",
@@ -70,8 +70,13 @@
     "top3_slots": 18,
     "warning": "in-sample development diagnostic only"
   },
-  "holdout_start_rule": "The first eligible race whose pre-result freeze is created after created_at_jst is holdout race 1. Do not backfill earlier races.",
+  "holdout_start_rule": "The first eligible Kyoto race whose pre-result freeze is created after created_at_jst is holdout race 1. Do not backfill earlier races.",
   "change_control": "Any threshold or rescue-logic change creates v3.2 or later and starts a new holdout window.",
-  "created_at_jst": "2026-10-13T10:06:51+09:00",
-  "integrity_note": "The holdout wrapper verifies its own Git blob SHA, the classifier Git blob SHA, and every baseline quality-tier mapping before creating a pre-result freeze."
+  "created_at_jst": "2026-10-13T10:09:00+09:00",
+  "integrity_note": "The holdout wrapper verifies its own Git blob SHA, the classifier Git blob SHA, and every baseline quality-tier mapping before creating a pre-result freeze.",
+  "eligibility": {
+    "venue": "京都",
+    "target_races": 20,
+    "non_kyoto_counted": false
+  }
 }
