@@ -58,6 +58,42 @@ interval for all these original source rows. These counts
 depend on the source-gating order and should **not**
 be treated as proven independent missingness causes.
 
+### Actual ground and meeting-date selection (independent re-run)
+
+[Original source/data-readiness GitHub Actions
+#38366972678](https://github.com/zuizui0223/keiba/actions/runs/38366972678)
+recomputed the original 12-date source with the
+new **race-level going and original-day** missing
+covariate coverage breakdown:
+
+| Original race TrackRating group | Positive source GPS+ID observations | Fully documented weight/jockey/trainer and >=4 complete peers | Retained fraction |
+| --- | ---: | ---: | ---: |
+| Good | 182 | 87 | **47.8%** |
+| Soft | 218 | 124 | **56.9%** |
+| Heavy | 148 | 68 | **45.9%** |
+| **Total** | **548** | **279** | **50.9%** |
+
+**All source dates were actually re-fetched**, but not
+all enter this complete-case source cohort: on
+2026-04-04, **21** original positive GPS+
+ID-linked records were observed, only **5**
+had all the published role/weight fields,
+and **0** survived the within-race minimum
+of four covariate-complete peers. The
+11-date complete-case model therefore does
+not test the original same 12-date collection.
+
+Retention differs across original race going
+categories and much more dramatically by
+meeting date. This **does not prove** missingness
+depends on the unobserved outcome, but it
+demonstrates that complete-case selection
+changes environmental coverage. Without
+a principled selection model, do **not**
+interpret the changes between ICC values
+as the causal shares attributable to
+Weight, Jockey or Trainer.
+
 The resulting 279 observations come from **54 races,
 11 distinct source dates, 164 original HORSES IDs**,
 and 71 HORSES IDs with >=2 timed positive GPS records.
@@ -187,9 +223,11 @@ python scripts/ecology_rq_2026_calendar_overlap.py \
   --output tmp/rq-original-2026-adjusted-horse-ICC-aggregates.json
 ~~~
 
-Independent first original-source run:
-[GitHub Actions #38366370065](https://github.com/zuizui0223/keiba/actions/runs/38366370065)
-(12 source dates, above numerical results).
+Independently reproduced original-source runs:
+[initial numeric ICC adjustment #38366370065](https://github.com/zuizui0223/keiba/actions/runs/38366370065)
+and [ground/date-selective source missingness #38366972678](https://github.com/zuizui0223/keiba/actions/runs/38366972678).
+Both aggregate artifacts contain no original horse, jockey
+or trainer identity values.
 The [standard research test workflow](https://github.com/zuizui0223/keiba/actions)
 also checks the wholly fictional design and
 source-rights/identity HOLD safeguards.
