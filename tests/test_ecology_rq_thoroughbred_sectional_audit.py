@@ -36,6 +36,30 @@ class RQSectionalTests(unittest.TestCase):
         self.assertEqual(r["races_by_race_header"][0]["positive_telemetry_rows"],2)
         self.assertFalse(r["raw_file_republished"])
 
+    def test_source_header_uses_mmdd_in_february_and_runner_uses_ddmm(self):
+        raw = ("""Date,RaceNumber,2/16/2026 12:00:00 AM;Ladbrokes Cannon Park-Professional-2026-02-16;Test race;00:00:57.263;CRNS_950m_TRACK
+16/02/2026,1,Fictional Horse;3;150;19.38;00:00:10.50;350;19.69;00:00:10.33
+""").encode("utf-8")
+        result=parse(raw)
+        self.assertEqual(result["race_counts"]["source_dates"],["2026-02-16"])
+        self.assertEqual(result["quality"]["vendor_header_date_confirmed_by_vendor_ISO_venue_label"],1)
+
+    def test_ambiguous_single_digit_source_header_has_iso_resolution(self):
+        raw = ("""Date,RaceNumber,9/04/2026 12:00:00 AM;2026-04-09 Ladbrokes Cannon Park QLD - Professional;Test race;00:00:57.263;CRNS_950m_TRACK
+09/04/2026,1,Fictional Horse;3;150;19.38;00:00:10.50;350;19.69;00:00:10.33
+""").encode("utf-8")
+        self.assertEqual(parse(raw)["race_counts"]["source_dates"],["2026-04-09"])
+        wrong=raw.replace(b"2026-04-09 Ladbrokes",b"2026-09-04 Ladbrokes")
+        with self.assertRaisesRegex(ValueError,"HOLD_VENDOR_HEADER_DATE_CONFLICTS_WITH_VENUE_ISO"):
+            parse(wrong)
+
+    def test_invalid_vendor_header_and_runner_dates_never_coerce(self):
+        raw = ("""Date,RaceNumber,2/16/2026 12:00:00 AM;Ladbrokes Cannon Park-Professional-2026-02-16;Test race;00:00:57.263;CRNS_950m_TRACK
+17/02/2026,1,Fictional Horse;3;150;19.38;00:00:10.50;350;19.69;00:00:10.33
+""").encode("utf-8")
+        with self.assertRaisesRegex(ValueError,"race date|DATE|date",):
+            parse(raw)
+
     def test_missing_telemetry_is_not_speed_zero(self):
         raw=fictional().replace(
             b"350;19.69;00:00:10.33",b"350;19.69;00:00:00.000")
