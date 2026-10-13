@@ -199,7 +199,7 @@ def compare(*,soap=request_xml,gps=fetch_official,
         "documented_source_weight_jockey_trainer_adjustment":adjustment,
         "historical_Cannon_Park_source_ICC_reference_ONLY_not_a_paired_model":{
             "race_FE_absolute_first_segment_seconds":
-                0.431737650729946,
+                0.431738,
             "original_horse_source_rows":523,
             "races":74,
             "source_date_count":12,
@@ -234,6 +234,13 @@ def main()->None:
     args.output.write_text(json.dumps(x,ensure_ascii=False,indent=2)+"\n",
                            encoding="utf-8")
     diag=x["conditional_ICC_at_Eagle_Farm_existing_race_FE_implementation"]
+    adj=x["documented_source_weight_jockey_trainer_adjustment"]
+    models=adj.get("models",{})
+    def model_point(key):
+        return models.get(key,{}).get(
+            "conditional_ICC_point",
+            models.get(key,{}).get("conditional_observational_ICC_point_estimate")
+        )
     print(json.dumps({
         "status":x["status"],
         "source_dates_verified":len(
@@ -241,14 +248,30 @@ def main()->None:
         "source_dates_HOLD":
             x["locked_source_design"]["source_dates_on_HOLD"],
         "identity_support":x["independent_venue_original_ID_support"],
-        "original_race_FE_ICC_model_status":
-            diag.get("all_races_at_least_four_timed_horses",diag).get("status"),
-        "original_race_FE_ICC_point":
-            diag.get("all_races_at_least_four_timed_horses",diag).get(
-                "conditional_observational_ICC_point_estimate"),
-        "complete_role_source_adjustment_status":
-            x["documented_source_weight_jockey_trainer_adjustment"].get(
-                "status"),
+        "original_race_FE_ICC_model":
+            diag.get("all_races_at_least_four_timed_horses",diag),
+        "six_positive_GPS_race_ICC":
+            diag.get("races_at_least_six_timed_horses"),
+        "first_section_marker_model_status": {
+            m:{"status":v.get("status"),
+               "source_rows":v.get("source_rows",0),
+               "source_races":v.get("original_races",0),
+               "point":v.get("conditional_observational_ICC_point_estimate")}
+            for m,v in diag.get("first_section_marker_sensitivity",{}).items()
+        },
+        "meeting_date_deletion_range":
+            diag.get("leave_one_date_out_four_GPS_minimum"),
+        "within_race_identity_shuffle_reference":
+            diag.get("within_race_horse_ID_shuffle_reference"),
+        "source_covariate_complete_case_gate":adj.get("source_gate"),
+        "same_eligible_source_rows_adjusted_ICC_points":{
+            "baseline":model_point("same_rows_unadjusted_race_HORSES"),
+            "weight_only":model_point("weight_within_race"),
+            "weight_jockey":model_point("weight_plus_jockey_license"),
+            "weight_jockey_trainer":model_point("weight_jockey_trainer_license"),
+        },
+        "source_adjusted_ICC_stability":
+            adj.get("date_deletion_same_source_baseline_vs_nuisance_stability"),
     },ensure_ascii=False))
 
 
