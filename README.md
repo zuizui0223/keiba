@@ -22,6 +22,7 @@ Read:
 - [Completion and speed as different H2 biological outcomes](docs/ecology-h2-two-part.md)
 - [First real-data test in a separate racing species: Queensland greyhound GPS records](docs/ecology-real-greyhound-method-benchmark.md)
 - [Official Thoroughbred sectional CSV: two independently audited race meetings](docs/ecology-rq-thoroughbred-source-audit.md)
+- [Official HORSES internal ID recurrence: two Cannon Park dates, source-verified](docs/ecology-rq-two-date-official-id-recurrence.md)
 - [Fail-closed official HORSES-ID to sectional name crosswalk protocol](docs/ecology-rq-official-id-crosswalk.md)
 - [H2 methods, negative controls, scope and interpretability](docs/ecology-h2-methods.md)
 
@@ -367,6 +368,39 @@ a name matches syntactically, because the official roster and
 longitudinal biological identity must be validated separately.
 
 [Required source fields, synthetic tests and usage](docs/ecology-rq-official-id-crosswalk.md).
-**No real Racing Queensland horse-ID crosswalk has been completed
-yet**; the official API and sectional CSV have not been shown to
-resolve a unique repeated horse panel.
+**Updated 2026-10-13:** the official API and the original GPS CSV
+have now been compared for one actual race (**11/11** exact name matches
+with original HORSES Ids) and for two same-venue dates (**2** source-
+level recurring internal HORSES IDs with positive GPS each date).
+These are source-verifiable individual-history feasibility checks, but
+the verified actual-starter roster, official individual finish-time
+join and environment-conditional repeated population panel remain
+**HOLD**. See the [reproducible two-date identity audit](docs/ecology-rq-two-date-official-id-recurrence.md).
+
+
+## Official equine ID recurrence has now passed a small real-data gate
+
+The **verified original-source** comparison of Cannon Park
+(2026-08-29 and 2026-10-11) found **two** official internal HORSES IDs
+with the same exact horse name across these dates and positive original
+GPS timing on both days. A bounded small-race audit produced this
+count without committing any horse-level records; see
+[GitHub Actions source-ID recurrence run #38333318382](https://github.com/zuizui0223/keiba/actions/runs/38333318382)
+and the [frozen proof and caveats](docs/ecology-rq-two-date-official-id-recurrence.md).
+
+Both sets of selected official races were rated **Good**; this
+source-backed linkage is *not* an H1 ground reaction-norm result.
+It also does not prove full actual-starter rosters, historical
+opponent behaviors or H2 social plasticity. Racing Queensland SOAP
+`GetRaceDetails` and `GetHorseDetailsInRace` schema checks
+revealed only race metadata and a horse's name/jockey/trainer/weight,
+not certified individual result times or placings. The missing
+result/track-contrast pieces remain the scientific priority.
+
+~~~bash
+python scripts/ecology_rq_two_date_horse_id_repeat.py \
+  --output tmp/rq-two-date-id-recurrence.json
+~~~
+
+The JSON contains aggregate counts and source hashes only; **no names,
+numeric HORSES IDs, or bulk original GPS source rows are published**.
