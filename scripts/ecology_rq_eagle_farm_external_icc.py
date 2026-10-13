@@ -317,6 +317,8 @@ def main()->None:
         "within_race_identity_shuffle_reference":
             diag.get("within_race_horse_ID_shuffle_reference"),
         "source_covariate_complete_case_gate":adj.get("source_gate"),
+        "source_covariate_repeated_HORSES_ID_feasibility":
+            adj.get("source_repeated_horse_support"),
         "same_eligible_source_rows_adjusted_ICC_points":{
             "baseline":model_point("same_rows_unadjusted_race_HORSES"),
             "weight_only":model_point("weight_within_race"),
