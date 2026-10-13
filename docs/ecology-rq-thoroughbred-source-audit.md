@@ -128,6 +128,13 @@ speed from zero, and publishes aggregate JSON only.
 
 ## Next study step (not yet done)
 
+The offline identity-checking code
+[`scripts/ecology_rq_official_id_crosswalk.py`](../scripts/ecology_rq_official_id_crosswalk.py)
+and its [conservative input specification](ecology-rq-official-id-crosswalk.md)
+are now implemented and validated using **fabricated** official rosters.
+The code does **not** assert that a real official horse roster export
+has already been obtained or joined.
+
 1. Take **one** archived official horse race and compare the
    `GetHorsesForRace` list (internal IDs) and the public racing-results
    roster against every named GPS row; explicitly flag one-to-many,
