@@ -190,7 +190,16 @@ After every race report cumulatively, without changing rules:
 8. market rank of every miss;
 9. residual type for every miss.
 
-The formal comparison point is after 20 eligible races.
+The formal comparison point is after 20 scored eligible races. The confirmatory decision rule is frozen separately in `docs/v31-holdout-decision-contract.json`.
+
+The primary test is a one-sided exact stratified random-addition rescue test. Within each race it conditions on field size, M size, the number of actual top-three finishers outside M, and the exact number of non-M horses added by v3.1. It asks whether the observed number of additional top-three rescues across 20 races exceeds what would be expected if the same number of non-M horses had been added uniformly at random within each race. Race-specific hypergeometric distributions are convolved exactly.
+
+Formal promotion requires **both**:
+
+- one-sided exact p <= 0.05; and
+- overall union candidate fraction <= 0.65.
+
+There is no early promotion, no early stopping for efficacy, and no threshold tuning based on interim holdout results. Interim values are descriptive only.
 
 ## Development reference only
 
