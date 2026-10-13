@@ -673,3 +673,55 @@ The needed next data are confirmed starters,
 actual jockey assignments, horse age,
 fully observed results, stronger trainer
 crossovers and an independent date/track cohort.
+
+
+## 2026-10-13: first different-racecourse source-ID ICC and failure of same-segment replication
+
+A new source cohort of 12 Eagle Farm 2026 meetings was
+[committed before inspecting its horse-ID or early-GPS
+outcomes](ecology-rq-eagle-farm-2026-independent-track-lock.md)
+and analyzed from original Racing Queensland SOAP+GPS,
+using the same race-FE Gaussian HORSES random-intercept
+variance decomposition previously run at Cannon Park.
+
+Original source IDs/first positive GPS: 391 candidate records,
+339 IDs, 48 IDs recurring over dates. The race >=4-timed cohort
+has **382 observations, 51 races and 45 repeated HORSES IDs**;
+Eagle Farm conditional ICC point **0.452894**. A
+>=6-timed source sensitivity returned **0.441609**.
+The same operator's Cannon Park 12-date original cohort
+had conditional ICC **0.431738**. Eagle Farm leave-one-date
+range was **0.331549–0.563767** (not a confidence interval).
+
+**However, direct cross-venue repeatability on the SAME first-GPS
+distance marker remains HOLD**. Original Cannon Park numeric
+150m and 250m models cannot be evaluated at Eagle Farm because
+that cohort has zero such rows. Eagle Farm's 200m segment has
+a numeric ICC (~0.5283), while Cannon Park 200m did not have
+adequate repeated-source support. Therefore the two pooled ICC
+point values are DIFFERENT measurement mixtures and cannot
+be compared as effect sizes of a universal racehorse trait.
+
+The source-recorded registered Weight/Jockey/Trainer analysis
+is even more restricted at Eagle Farm: 179/391 original
+source rows have every field; only 108 survive within-race
+complete peer coverage (21 races, 10 dates), with
+**only THREE repeated numeric HORSES IDs**. We discovered
+that a high point estimate could be produced after projecting
+many nuisance licences despite near-absent repeated
+individual source information. The algorithm has been corrected:
+if its same-cohort race-FE baseline cannot identify a
+HORSES random variance or <20 original IDs recur,
+all nuisance-adjusted ICC point estimates are **HOLD**
+rather than published, even if a numerical
+optimizer converges.
+
+This is a **methodological falsification of an overstrong
+generalization**, not evidence against biological
+individuality. See the [original Eagle Farm venue audit](ecology-rq-eagle-farm-real-icc-cross-site-audit.md),
+[software tests and source limitations](../scripts/ecology_rq_eagle_farm_external_icc.py),
+and [official CI](https://github.com/zuizui0223/keiba/actions/runs/38412116293).
+Original race starters, age, definitive riders, outcomes,
+and H1/H2 remain HOLD. A next truly comparable test must
+use the same first-sectional measurement distance in
+both venues, with adequate repeated official HORSES IDs.
