@@ -12,6 +12,8 @@ on:
       - 'scripts/ecology_rq_eagle_farm_external_icc.py'
       - 'tests/test_ecology_rq_eagle_farm_external_icc.py'
       - 'scripts/ecology_rq_multigoing_h1_preflight.py'
+      - 'scripts/ecology_rq_covariate_icc.py'
+      - 'tests/test_ecology_rq_covariate_icc.py'
       - '.github/workflows/ecology-rq-eagle-farm-external.yml'
   workflow_dispatch:
 
@@ -50,6 +52,9 @@ jobs:
           assert z["ecological_H2_competitor_social_interaction_supported"] is False
           print("MODEL_DECISION",z["conditional_ICC_at_Eagle_Farm_existing_race_FE_implementation"].get(
                 "all_races_at_least_four_timed_horses",{}).get("status","HOLD"))
+          if z["documented_source_weight_jockey_trainer_adjustment"]["status"].startswith("HOLD"):
+              assert z["documented_source_weight_jockey_trainer_adjustment"]["models"]["weight_jockey_trainer_license"].get("conditional_ICC_point") is None
+          print("COMPARABLE_MARKER_GATE",z["different_venue_same_first_GPS_marker_ICC_identifiability"]["status"])
           PY
       - uses: actions/upload-artifact@v4
         if: always()
