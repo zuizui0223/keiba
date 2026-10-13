@@ -5,7 +5,7 @@ The v3.1 holdout is Kyoto-only and contains 20 eligible races.
 Freeze manifest: `docs/v31-holdout-freeze.json`  
 Ledger: `docs/v31-holdout-ledger.json`
 
-The first eligible Kyoto race frozen after the manifest's `created_at_jst` is holdout #1.
+The first eligible Kyoto race frozen after the manifest's `created_at_jst` is holdout #1. Every subsequent eligible Kyoto race is attempted in chronological order until 20 scored races are accumulated; a single race day may contribute multiple holdout entries.
 
 ## Directory convention
 
@@ -97,7 +97,9 @@ Target-race result fields such as `top3`, `winner`, `results` or `payouts` are f
 }
 ```
 
-The observation timestamp must be before post time and no later than the freeze timestamp. Horse numbers must exactly match the race input.
+The odds observation timestamp and the freeze timestamp must both be **15 to 25 minutes before the scheduled post time, inclusive**. The odds observation must not be later than the freeze timestamp. Horse numbers must exactly match the race input.
+
+Do not reuse an earlier morning/noon snapshot for a later race, and do not substitute a later/final market if the fixed window was missed.
 
 ## Pre-result freeze
 
@@ -118,6 +120,7 @@ The wrapper refuses to freeze when:
 - venue is not Kyoto;
 - the race is maiden/newcomer class, obstacle/non-flat, or 2-year-old-only;
 - post time has already arrived;
+- the odds observation or freeze timestamp is outside the fixed 15-25 minute pre-post window;
 - target-result fields are present;
 - horse sets differ between history and odds;
 - classifier Git blob SHA differs from the manifest;
