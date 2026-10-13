@@ -89,6 +89,8 @@ def freeze(args) -> int:
     if not expected_wrapper or actual_wrapper != expected_wrapper:
         raise ValueError(f'holdout_wrapper_sha_mismatch:{actual_wrapper}')
     check_no_target_results(race_input)
+    if race_input.get('venue') != '京都':
+        raise ValueError('ineligible_venue')
 
     expected_classifier = manifest.get('frozen_blobs', {}).get('classifier')
     actual_classifier = git_blob_sha(args.classifier)
