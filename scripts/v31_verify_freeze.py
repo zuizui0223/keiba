@@ -18,6 +18,9 @@ FROZEN_PATHS = {
     "operations": "docs/v31-holdout-operations.md",
     "snapshot_preparer": "scripts/v31_prepare_snapshot.py",
     "snapshot_preparer_tests": "tests/test_v31_prepare_snapshot.py",
+    "evaluator": "scripts/v31_evaluate_holdout.py",
+    "evaluator_tests": "tests/test_v31_evaluate_holdout.py",
+    "decision_contract": "docs/v31-holdout-decision-contract.json",
 }
 
 
