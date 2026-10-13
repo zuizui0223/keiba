@@ -28,6 +28,7 @@
 - [v3.1 holdout ledger（20レース、現在0/20）](docs/v31-holdout-ledger.json)
 - [v3.1 formal decision contract（20レース時点のみ）](docs/v31-holdout-decision-contract.json)
 - [v3.1 exact holdout evaluator](scripts/v31_evaluate_holdout.py) / [テスト](tests/test_v31_evaluate_holdout.py)
+- [v3.1 residual audit protocol（formal decisionとは分離）](docs/v31-residual-audit-protocol.md)
 - [v3.1 holdout運用手順](docs/v31-holdout-operations.md)
 - [v3.1自動運用スケジュール（10/15前処理→10/17 freeze→score/register）](docs/v31-automation-schedule.md)
 - [次のholdout候補（10/17京都、#1候補はR7 13:15）](docs/v31-next-holdout-plan.md)
