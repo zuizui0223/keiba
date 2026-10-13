@@ -50,3 +50,25 @@ On a future race set, before results:
 4. do not modify the generator after seeing results;
 5. score winner capture, Recall@3, candidate-set size, field share, and Top-3 hits per candidate slot;
 6. only call the generator improved if it beats the baseline across multiple independent races without simply expanding coverage.
+
+
+## Forward-freeze implementation
+
+Added:
+- `scripts/freeze_v3_forward_test.py`
+- `tests/test_freeze_v3_forward_test.py`
+
+The freeze manifest:
+- rejects freezes at or after race-start minus 2 minutes;
+- rejects any `DATA_HOLD` input;
+- records the migrated data blob SHA and candidate-generator blob SHA;
+- records the candidate set and saved market Top-4 baseline;
+- sets `result_attached=false` and does not perform ranking or ticket selection.
+
+Focused TDD verification for this component: 3 tests pass after the expected RED import failure before implementation.
+
+### Anti-replay check
+
+The post-race-migrated Kyoto 12R data was intentionally tested against a hypothetical 2026-10-12 16:00 freeze. All 16 histories have `history_checked_at_jst` on 2026-10-13, so the data gate returns `future_history_check` and blocks the freeze.
+
+This is desired behavior: post-result data repair cannot be presented later as if it had been available before the race.
