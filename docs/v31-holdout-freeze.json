@@ -5,12 +5,12 @@
   "holdout_target_races": 20,
   "development_data": "2026-10-12 Kyoto R7-R12 only; not prospective evidence",
   "frozen_blobs": {
-    "protocol": "b4d82d2110aaab4bb881cefc6bc2032e6beb3007",
+    "protocol": "21d70b7358d03dc4063aaca220f7ff22d6171961",
     "classifier": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
     "tests": "fd6f4c448f2e59d9e4b58b12886221d6cdb0f672",
-    "holdout_wrapper": "483b56bb258eca83c0bb8026dcb8ff4b02140dd5",
-    "holdout_tests": "8f6e6ce104d0add794ec859a4cd2b063affa9a14",
-    "operations": "53b7bd6d048b47c03cb118b3b11c38b82ce91cc6",
+    "holdout_wrapper": "4d60ac82b058d45f3c8f8d31a7d8417fd33e1687",
+    "holdout_tests": "f15d07bce14bfeaa98d8dcfadec7252d6831ab42",
+    "operations": "df355a6af3ebcb145aa93a68f489a22b2e85c4a4",
     "snapshot_preparer": "b3c0a7efd4702218b1d53eb94fda70f9d30560a1",
     "snapshot_preparer_tests": "db5f4cef161f9cab008b4b9a2bea60a1dff1fcbe"
   },
@@ -73,10 +73,10 @@
     "top3_slots": 18,
     "warning": "in-sample development diagnostic only"
   },
-  "holdout_start_rule": "The first eligible Kyoto flat race at 1-win class or higher, not restricted to 2-year-olds, whose source capture is processed and pre-result freeze is created after created_at_jst is holdout race 1. Do not backfill earlier races.",
+  "holdout_start_rule": "The first eligible Kyoto race whose valid source capture, odds snapshot and pre-result freeze all satisfy the fixed 15-25 minute pre-post window after created_at_jst is holdout race 1. Every subsequent eligible Kyoto race is attempted in chronological order until 20 scored races are accumulated; do not backfill or skip an eligible race because another race that day was already counted.",
   "change_control": "Any threshold or rescue-logic change creates v3.2 or later and starts a new holdout window.",
-  "created_at_jst": "2026-10-13T10:38:07+09:00",
-  "integrity_note": "The frozen snapshot preparer records its Git blob SHA and source-page hashes. The frozen holdout wrapper verifies the preparer SHA, wrapper SHA, classifier SHA, baseline quality tiers, race ID, observation time, active horse-number set, Kyoto/flat/class/age eligibility, and pre-post timing before creating a freeze.",
+  "created_at_jst": "2026-10-13T12:16:31+09:00",
+  "integrity_note": "The frozen snapshot preparer records its Git blob SHA and source-page hashes. The frozen holdout wrapper verifies the preparer SHA, wrapper SHA, classifier SHA, baseline quality tiers, race ID, active horse-number set, Kyoto/flat/class/age eligibility, and that both odds observation and freeze occur 15-25 minutes before scheduled post.",
   "eligibility": {
     "venue": "京都",
     "flat_surfaces": [
@@ -89,5 +89,10 @@
     "exclude_obstacle": true,
     "target_races": 20,
     "noneligible_races_counted": false
+  },
+  "market_observation_window_minutes_before_post": {
+    "min": 15,
+    "max": 25,
+    "inclusive": true
   }
 }
