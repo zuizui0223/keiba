@@ -185,6 +185,27 @@ def parse(raw: bytes, declared_source: str = "local") -> dict:
         race["partial_zero_rows"] += int(partially_missing)
     if not races or not entries:
         raise ValueError("HOLD_NO_PARSED_RACES_OR_HORSES")
+    # The vendor header lacks an explicit RaceNumber value, so ensure
+    # one race-number block maps to one race heading and vice versa.
+    by_heading = defaultdict(set)
+    by_number = defaultdict(set)
+    by_day_name = defaultdict(list)
+    for entry in entries:
+        by_heading[entry["header"]].add(entry["race_number"])
+        by_number[(entry["day"], entry["race_number"])].add(entry["header"])
+        by_day_name[(entry["day"], entry["horse_name"])].append(entry)
+    if any(len(nums) != 1 for nums in by_heading.values()) or any(
+        len(headers) != 1 for headers in by_number.values()
+    ):
+        raise ValueError("HOLD_RACE_NUMBER_TO_HEADER_NOT_ONE_TO_ONE")
+    duplicate_day_names = [
+        items for items in by_day_name.values() if len(items) > 1
+    ]
+    conflicting_telemetry_day_names = sum(
+        any(e["all_zero_telemetry"] for e in group)
+        and any(not e["all_zero_telemetry"] for e in group)
+        for group in duplicate_day_names
+    )
     # Some vendors publish route codes rather than full race distances, and
     # values 0 can mean no tracker, not necessarily a nonfinisher.
     return {
@@ -204,6 +225,8 @@ def parse(raw: bytes, declared_source: str = "local") -> dict:
             "horse_rows": len(entries),
             "different_horse_names": len(set(e["horse_name"] for e in entries)),
             "source_dates": sorted(set(e["day"] for e in entries)),
+            "horse_names_repeated_in_different_races_same_day": len(duplicate_day_names),
+            "same_day_repeated_names_both_zero_and_nonzero_telemetry": conflicting_telemetry_day_names,
             "unverified_races_with_positive_telemetry": sum(
                 r["telemetry_rows"] > 0 for r in races.values()
             ),
@@ -223,6 +246,7 @@ def parse(raw: bytes, declared_source: str = "local") -> dict:
             "An all-zero sectional string cannot be classified as DNF, scratch, actual starter, or sensor failure without an independent official result.",
             "Header time is a race-level reference, not an individual horse finish time.",
             "CSV horse name is not a documented stable HORSES internal horse_id.",
+            "Repeated same-day horse names and mixed telemetry status across races make the zero=nonfinisher inference especially unsafe.",
             "No chronological lag features, performance reaction norms, or contemporary opponent characteristics are derived.",
             "Race code last marker is not assumed to match officially scheduled race distance.",
         ],
