@@ -106,7 +106,7 @@ class MarketShadowTests(unittest.TestCase):
         result["top3"]=[1,1,5]
         p,x=self.run_case(freeze,result)
         self.assertNotEqual(p.returncode,0)
-        self.assertIn("invalid_top3",p.stderr)
+        self.assertIn("duplicate_top3",p.stderr)
 
     def test_shadow_does_not_write_into_inputs(self):
         freeze,result=sample()
