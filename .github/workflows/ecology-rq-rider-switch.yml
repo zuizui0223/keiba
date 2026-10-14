@@ -10,6 +10,9 @@ on:
     paths:
       - 'scripts/ecology_rq_rider_switch_consistency.py'
       - 'tests/test_ecology_rq_rider_switch_consistency.py'
+      - 'scripts/ecology_rq_rider_forward_check.py'
+      - 'tests/test_ecology_rq_rider_forward_check.py'
+      - 'docs/ecology-rq-rider-change-forward-validation-lock.md'
       - 'docs/ecology-rq-rider-switch-persistence-design.md'
       - '.github/workflows/ecology-rq-rider-switch.yml'
   workflow_dispatch:
@@ -34,6 +37,8 @@ jobs:
         run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
       - name: Source-privacy and causal-HOLD falsification on fictional horses
         run: python -m unittest discover -s tests -p 'test_ecology_rq_rider_switch_consistency.py' -v
+      - name: Check fictional strictly past-only horse-profile source gates
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_rider_forward_check.py' -v
       - name: Recalculate twelve prelocked original RQ sources; anonymous aggregates only
         run: |
           python scripts/ecology_rq_rider_switch_consistency.py \
@@ -61,6 +66,15 @@ jobs:
               print("SWITCHED_SOURCE_PAIR_COUNT",p["within_horse_cross_date_pairs"])
               print("SWITCHED_PAIR_MEAN_SEC_SQUARED",p.get("equal_horse_stratum_mean_pair_product_seconds_squared","HOLD"))
               print("NULL_STATUS",z["changed_declared_jockey_within_race_outcome_shuffle_reference"]["status"])
+              forward=z["fixed_shrinkage_strictly_earlier_horse_profile_when_new_declared_jockey"]
+              assert forward["no_original_IDs_licence_IDs_timing_predictions_or_history_exported"]
+              assert forward["not_H1_H2_heritability_actual_final_riders_or_wagering"]
+              cohort=forward["contexts"]["same_original_distance_and_first_GPS_marker"]["source_cohorts"]["new_documented_rider"]
+              print("FORWARD_DOCUMENTED_NEW_RIDER_SOURCE_GATE",cohort["status"])
+              print("FORWARD_SOURCE_HORSE_COUNT",cohort["original_animal_IDs_with_out_of_date_predictions"])
+              print("FORWARD_FUTURE_TIMED_ROWS",cohort["out_of_date_matched_source_rows_scored"])
+              print("FORWARD_HORSE_EQUAL_RMSE_REDUCTION_SEC",cohort.get(
+                  "equal_horse_weighted_RMSE_reduction_seconds_positive_if_persistent","HOLD"))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
