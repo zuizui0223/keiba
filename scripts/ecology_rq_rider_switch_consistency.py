@@ -417,6 +417,8 @@ def analyze(rows:list[dict],*,min_race_telemetry:int=4,
     # source/date missingness HOLD remains managed by main(), and
     # source IDs/current rider values NEVER enter returned summaries.
     chronological_forward=analyze_forward(timed)
+    from ecology_rq_forward_alternative_history import audit_other_horse_baselines
+    other_horse_history= audit_other_horse_baselines(timed)
     # Extra strict original Class is secondary; avoid fitting another
     # null reference without a specific validated decision need.
     return {
@@ -432,6 +434,8 @@ def analyze(rows:list[dict],*,min_race_telemetry:int=4,
             rider_switch_influence_audit(timed),
         "fixed_shrinkage_strictly_earlier_horse_profile_when_new_declared_jockey":
             chronological_forward,
+        "fixed_context_role_and_other_horse_past_only_benchmarks":
+            other_horse_history,
         "minimum_distinct_HORSES_IDs_for_numeric_pair_stat":MIN_IDS,
         "minimum_horse_strata_for_numeric_pair_stat":MIN_STRATA,
         "minimum_distinct_source_meeting_dates":MIN_SOURCE_DATES,
