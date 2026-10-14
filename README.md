@@ -40,6 +40,10 @@
 - [v3.1判定スクリプト](scripts/v31_candidate_channels.py) / [11テスト](tests/test_v31_candidate_channels.py)
 - [v3.1機械判定（結果未使用）](reports/2026-10-12/v31-mechanical-channel-audit.json)
 - [v3.1開発データ照合](reports/2026-10-12/v31-development-evaluation.json)
+- [v3.1 vs 同候補数の市場人気順（副次評価プロトコル）](docs/v31-equal-market-shadow-protocol.md) / [比較スクリプト](scripts/v31_equal_market_shadow.py) / [テスト](tests/test_v31_equal_market_shadow.py)
+- [R7〜R12の同候補数市場比較・再現用JSON](reports/2026-10-12/v31-equal-market-development.json)
+
+開発データR7〜R12では、v3.1の候補49/83頭でTop3 18/18に対し、まったく同じ49頭を各レースの凍結時点の単勝人気順で選ぶだけでも17/18を捕捉しました。v3.1の市場順位に対する純増はR8⑦の1頭のみです。これはin-sampleの診断であり、未来への優位性を示しません。未来20レースでも同候補数の市場人気順を副次的に比較しますが、事前に固定した正式PROMOTE条件は変更しません。
 
 事前フォーカスは9→1→13→14、確定上位は1→4→9→8。本線ワイド1–9は的中したが、評価は的中可否ではなく残差の種類で行います。4スズハロームは同距離履歴の未解消と上がり性能の特徴量欠落、8サンダーストラックは1600→1400の距離移植性、14ワイドラトゥールは市場順位11位に対し事前フォーカス4位だったモデル固有の過大評価として分離しました。
 
