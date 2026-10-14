@@ -4,6 +4,68 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## 2026-10-14: Third-track exact-marker repeatability audit — scientifically HOLD
+
+The official first-party Racing Queensland Doomben
+Turf sectional CSV index provides early intervals
+starting at **150m and 200m**: candidate identical
+first-marker comparisons to Cannon Park (150m)
+and Eagle Farm (200m). To avoid selecting favorable
+results, the **earliest and latest original Doomben
+CSV meeting per month** were source-locked before
+reading original 2026 horse IDs or ICCs:
+**19 original meeting dates, races 1–6 per date**.
+
+[Real original-source GitHub Actions #38499396097](https://github.com/zuizui0223/keiba/actions/runs/38499396097)
+successfully processed **18/19 dates**,
+linking **617** positive first-GPS HORSES-ID
+observations, 541 distinct official IDs,
+and 65 IDs repeated on >=2 dates
+*irrespective of section marker*.
+
+**The critical result is a negative
+data-identifiability decision, NOT zero animal
+repeatability:**
+
+- **150m:** 177 original rows in 24
+  race fields, but only **9** official
+  HORSES IDs observed on 2+ different
+  dates at that exact first marker.
+- **200m:** 205 original positive marker
+  records (193 after minimum race GPS
+  filter), with only **9** IDs repeated
+  on 2+ dates at that marker.
+- The pre-existing race-FE horse Gaussian
+  ICC requires >=20 repeated IDs:
+  **both marker-matched ICCs return
+  HOLD**, NOT zero.
+- 2026-08-26 is a documented upstream
+  **GetRacesForMeeting source failure**:
+  the official RQ web service returned a
+  SQL text-truncation error, not a valid
+  race-ID XML roster. We did not guess
+  missing race IDs or replace the fixed
+  source date.
+
+Thus Cannon Park ICC 0.432 and Eagle
+Farm ICC 0.453 remain **separate,
+marker-heterogeneous observational
+model estimates**, NOT a reproduced
+same-individual, same-interval biological
+trait. A third venue with some 150m/200m
+measurement records is **not** sufficient:
+it must have enough *repeated same-ID
+animals within each measurement condition*.
+
+[Full Doomben method and frozen
+source failure/support audit](docs/ecology-rq-doomben-third-venue-original-marker-audit.md);
+[source-date inclusion locked before this
+fit](docs/ecology-rq-doomben-2026-third-venue-calendar-lock.md).
+
+**H1 wet-ground random slope, H2
+social context interaction, heritability,
+adaptation and wagering claims remain HOLD.**
+
 ## 2026-10-14: Does early relative pacing persist with another declared jockey?
 
 **New exploratory REAL horse-ID source observation:** in the already locked
