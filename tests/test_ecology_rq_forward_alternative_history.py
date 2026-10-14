@@ -214,21 +214,33 @@ class HorseVsOtherHorsesPastOnlyTests(unittest.TestCase):
         }
         self.assertEqual(by_key(baseline),by_key(missing))
 
-    def test_stricter_matching_original_class_can_withhold_support(self):
+    def test_stricter_class_restarts_novel_rider_history_in_new_context(self):
         raw=fake_annual_races()
         source_days=sorted({r["day"] for r in raw})
         for r in raw:
             r["class"]=("FAKE Class early" if r["day"]in source_days[:6]
                         else "FAKE Class late")
         panel,_=source_timed_panel(raw)
+        from ecology_rq_forward_alternative_history import matched_source_rows_private
+        strict_rows,_=matched_source_rows_private(panel,strict_class=True)
+        broad_rows,_=matched_source_rows_private(panel,strict_class=False)
+        first_new_class_date=source_days[6]
+        # On the first day of a NEW Class, no animal has same-Class
+        # past observations. Broad context DOES have older dates.
+        self.assertEqual(sum(r["day"]==first_new_class_date
+                             for r in strict_rows),0)
+        self.assertGreater(sum(r["day"]==first_new_class_date
+                               for r in broad_rows),0)
         z=audit_other_horse_baselines(panel)
-        strict=z["contexts"]["also_same_original_race_Class"][
-            "source_readiness_counts_only"]
-        broad=z["contexts"]["same_official_distance_and_exact_GPS_marker"][
-            "source_readiness_counts_only"]
-        self.assertLess(strict[
-            "new_documented_jockey_future_rows_prior_to_alternative_baseline_gate"],
-            broad["new_documented_jockey_future_rows_prior_to_alternative_baseline_gate"])
+        strict=z["contexts"]["also_same_original_race_Class"]
+        broad=z["contexts"]["same_official_distance_and_exact_GPS_marker"]
+        self.assertTrue(strict["source_race_Class_also_matched"])
+        self.assertFalse(broad["source_race_Class_also_matched"])
+        # The eligible rider-novel cohorts are REDEFINED WITHIN Class.
+        # They are not necessarily nested by count. Never claim that a
+        # strict-Class improvement is a same-animal causal sensitivity.
+        self.assertTrue(z[
+            "all_comparisons_matched_future_observations_not_subgroup_causality"])
 
 
 if __name__=="__main__":
