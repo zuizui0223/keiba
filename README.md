@@ -1,5 +1,44 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-14: strictly earlier horse records predict later timing with new documented rider
+
+A fresh, **12/12 official-date** Cannon Park source re-read passed
+a newly frozen exploratory **chronological, past-only** data gate.
+For **36 numeric HORSES IDs / 46 later GPS-timed horse records**
+with an original `Jockey/@Id` not previously documented for
+that horse within the identical original race-distance and first-GPS
+marker context, the equal-horse RMSE of the later
+**race-relative first-sectional timing** changed from
+**0.297676 seconds** (zero horse profile) to **0.255809 seconds**
+(fixed n/(n+2) shrunken historical horse profile), an error
+reduction of **0.041867 seconds or approximately 14.1%**.
+
+This is a positive *retrospective out-of-time* repeatability
+observation, **not** independent source validation or pre-race
+wagering. The evaluation target is defined using the realized
+post-race GPS-timed peers; the official licence is a
+source-nominated rider, **not a verified final jockey**.
+
+Stricter same-Class comparisons also gave positive reduction
+(20 original IDs / 22 later records; +0.049712 seconds),
+but the sample exactly meets the minimum support gate. The
+main same-declared-trainer subgroup (29 IDs / 39 later
+records) showed +0.043919 seconds. These *different*
+subsamples do **not** identify a jockey or trainer cause.
+
+The original 543-candidate current source snapshot is still
+**five records smaller** than the historical 548-record
+candidate cohort; earlier RQ horse-roster SOAP hashes were not
+saved, so the reason is unresolved. Individual intrinsic
+personality, genetics, adaptation, environmental H1
+reaction norms and competitive-interaction H2 remain
+**unsupported**.
+
+See the [real-source forward-only validation results](docs/ecology-rq-rider-change-forward-validation-results.md),
+[pre-result analysis lock](docs/ecology-rq-rider-change-forward-validation-lock.md),
+[successful official-source execution](https://github.com/zuizui0223/keiba/actions/runs/38501390778),
+and [192-test ecological QA](https://github.com/zuizui0223/keiba/actions/runs/38501390724).
+
 **研究の中心：競走馬の個体差・環境反応規範・競争相手の構成が、相対的な競走成績をどう変えるか。**
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
