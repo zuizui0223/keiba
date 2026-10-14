@@ -1,0 +1,114 @@
+{
+  "schema": "racing-queensland-original-horse-source-fingerprint-v1",
+  "source_publisher": "Racing Queensland",
+  "source_snapshot_run_id": 38501390778,
+  "snapshot_original_commit": "8e790d20dded66dee52859e12260b4790f3e6e7a",
+  "snapshot_timestamp_UTC": "2026-10-14T02:32:47Z",
+  "source_cohort": "Cannon Park 2026 12 fixed original source meeting dates, official race numbers 1-8 when API returned",
+  "method": "SHA256 of original raw GetMeetingsForDate/GetRacesForMeeting/GPS file and SHA256 of sorted '<race-id>:<individual original GetHorsesForRace raw XML SHA256>\\n' lines",
+  "snapshot_does_not_retain_raw_HORSES_XML_or_IDs": true,
+  "baseline_is_NOT_from_original_548_row_run": true,
+  "earlier_source_548_roster_digests_unavailable": true,
+  "snapshot_earlier_548_vs_later_543_changed_records_not_resolved": true,
+  "per_date": {
+    "2026-02-16": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 41,
+      "meeting_XML_SHA256": "8995cbe35fbf26f8908cfbfdd0aafb8ff79d1e1024b468712486b701cab90ecf",
+      "race_XML_SHA256": "bc75dcc28197fea43484b52df75bc2396f92963b50f863fd90fef7096c46004e",
+      "gps_CSV_SHA256": "96a9454cbe86646a10f3cdbe0938fdd4c566a5197a4f6a48b225cb3ac20aee4e",
+      "combined_original_GetHorsesForRace_roster_SHA256": "04c1cd28214b7445a23891da1b26eb5d312f0c9eef88ee9999d3716f1a89c501",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-03-12": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 5,
+      "meeting_XML_SHA256": "5b125d3d29677ff2751726d0f66f707f930332ff8a17082acf21b2207ce14c6a",
+      "race_XML_SHA256": "b80bd2bbf0ce787b5b653e0d79d74b90fc92e16043fa5e26bfd494d944595681",
+      "gps_CSV_SHA256": "1cd675c778aff45854a87b654a4cc260e6dbe1646596cff7f8a3a4d8d66c090f",
+      "combined_original_GetHorsesForRace_roster_SHA256": "d61fd5934196f78ec560630448074b0edece1c0065781e2b975f17366c1c3d6f",
+      "number_of_original_HORSES_roster_responses_hashed": 7
+    },
+    "2026-03-26": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 34,
+      "meeting_XML_SHA256": "2918fdcc3e1c1ebaf86060229f28d8877501101293efff0b7df3bf246dbb897e",
+      "race_XML_SHA256": "fae82e79bfb4801fd73593f68b76f251acebd772e448cb738227de1830776eea",
+      "gps_CSV_SHA256": "ec7c459afa1b0143d3342c95b70df0e5982a7ae870722fcf00278a5dd466e918",
+      "combined_original_GetHorsesForRace_roster_SHA256": "fc0cfbf3f76366f126fc2d7efec08c774027550c70e4e19583c4eaa927196d69",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-04-04": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 21,
+      "meeting_XML_SHA256": "a4d4694a1dd60e71cce755e971b2583500697704c20b297e6fba55ac3378f8b5",
+      "race_XML_SHA256": "eebbe239a3bd6c6dbda1eb20e08bcef93ec345b6faf08fdcf8bf3acf32bbf269",
+      "gps_CSV_SHA256": "0c759b51d55ed08ec4b3623cd2ecc0a26c6a89d1efe55ddaaf2219e85cb83125",
+      "combined_original_GetHorsesForRace_roster_SHA256": "1b3bbb9384672f707badd9b36611f6ba8d08e66eaf08fbe486d97a27afec5a73",
+      "number_of_original_HORSES_roster_responses_hashed": 5
+    },
+    "2026-04-09": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 50,
+      "meeting_XML_SHA256": "360b147134d449eb529ef17ef3d86158b070799335ea835e2914c1b1ec744389",
+      "race_XML_SHA256": "aa48ec258677280ab362277edc2c875f70b8b5685e0a7ba6c5cda40b186d91e1",
+      "gps_CSV_SHA256": "beff4d4f6cfceb654a131b9bc943435316960e2c7001b364b2bc4d798126560a",
+      "combined_original_GetHorsesForRace_roster_SHA256": "882204827c84489c75d55e0a19fc31b0ae7d76d9f7ad088ea954df188e8a464a",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-05-15": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 45,
+      "meeting_XML_SHA256": "30a5581988c6fdcf1ea0580c46083c61165e313a01883fdf657537ab4ceae351",
+      "race_XML_SHA256": "2bb3fad133ce0a8d098abb846f6eb3386275d2c0255692f1780dc4f8986947a2",
+      "gps_CSV_SHA256": "66dd026f960c6b972529044f234ebc4feb6d751b8d4412ef71bd4eafba60c3dd",
+      "combined_original_GetHorsesForRace_roster_SHA256": "6b915d34c4e9646ae7038007bd905d00bbd1ae3c1c1ce6f7169ad851b9b8cd9d",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-05-29": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 51,
+      "meeting_XML_SHA256": "fa9739549c125bbab8c40b66c9361865388e3d5ee0203cd57f669a596ccabca4",
+      "race_XML_SHA256": "a5f079ae2c7312259b3e8bb53811b7eb61635d6e86de09c6aca9429973282458",
+      "gps_CSV_SHA256": "55aa99c03fd1e3d3230aadf259cc284618c79bcd106d1ffb9ca8639603cd28cc",
+      "combined_original_GetHorsesForRace_roster_SHA256": "7e6b35311dd2830a72914bf1a448a972fff1895e8b5f63d6b22778ede8e72c78",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-07-23": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 49,
+      "meeting_XML_SHA256": "77600e1c937f9e7d867c719f1071b335fb95540dc23a61574d4e0c998b399de2",
+      "race_XML_SHA256": "ceaa28eb5a227412492adc6be322d3c1d1c59017bd76b4a00fa7f75ebe839257",
+      "gps_CSV_SHA256": "b73c273b81d3f33e958a01103e0c11b4fdedcf8fe7c012f5ed6b86deb580bbfc",
+      "combined_original_GetHorsesForRace_roster_SHA256": "ab333fa7bf03f722cdcd9964fdb877e88ea5a6602dfccb791c7dca475a4ac984",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-08-22": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 67,
+      "meeting_XML_SHA256": "db755d144e2e2cfb311dd7be7c98bc82dde9a76b93171b318c11f5e3819bd7d1",
+      "race_XML_SHA256": "8207232081676f7fb560f05d7f5449f52841bf3eff6bfcf5737a9a81ecae4b5e",
+      "gps_CSV_SHA256": "7dac7df85e06738733a4976888317e17c0f5b0ab5c84187379c66f0aec7093cd",
+      "combined_original_GetHorsesForRace_roster_SHA256": "3d775dcd0b679823595d39eb1dcdb53db8005f96e8a466a7104c3056acac1842",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-08-28": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 64,
+      "meeting_XML_SHA256": "5327fd84b85252f2e702373000aad2d7cf6f148a8e4f66b0eda440e2afb5c3ae",
+      "race_XML_SHA256": "d5ee2c3d9544812477f20de2131b45dae4ec810881ca1855f14a635631d5c20f",
+      "gps_CSV_SHA256": "c9d7e226bfa2ad9b11b14a32ad9e8c10f81196e96211ae24b7af1dc3d866fbdf",
+      "combined_original_GetHorsesForRace_roster_SHA256": "f39076cfb70a8feb1ef8c4ddd0ea777c40820cb94e4fbb867b6cb8648cf6a175",
+      "number_of_original_HORSES_roster_responses_hashed": 8
+    },
+    "2026-08-29": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 64,
+      "meeting_XML_SHA256": "c091187765acca1ef87d54f62defb426e075fb78c47751683194e482f9d8763e",
+      "race_XML_SHA256": "2010e15499a135065b2fa74301323f67280a846fd6df6dbfa475c340f8bff56a",
+      "gps_CSV_SHA256": "6d5fdf8b9608fcd0f9adc17f341cec70a2dc4f3c525e2327d194989039817569",
+      "combined_original_GetHorsesForRace_roster_SHA256": "93995fb93dd56cf17daf0d7c3c76c1e776446ed8755b15d48935f23600d8bcbe",
+      "number_of_original_HORSES_roster_responses_hashed": 7
+    },
+    "2026-10-11": {
+      "verified_positive_first_GPS_HORSES_ID_matches": 52,
+      "meeting_XML_SHA256": "a8754a9caae7ac35accf47c865fa50d4229efe4759c4b83eaeda7cd406b04697",
+      "race_XML_SHA256": "6408a4ccc6402d6f9463c08200c808a7881c7b2c4906fc0d8430844862658f63",
+      "gps_CSV_SHA256": "2d24b5a01edf3fe8a6594b04557cbb6ad89f7ed8eebd87f64aa4face9ec0db84",
+      "combined_original_GetHorsesForRace_roster_SHA256": "9c4a269b56da3a05502122c0fe68ba08ef0543024844aba571247b63f8c6f6e0",
+      "number_of_original_HORSES_roster_responses_hashed": 7
+    }
+  },
+  "date_count": 12,
+  "source_positive_ID_GPS_total": 543,
+  "no_horse_names_original_numeric_IDs_or_individual_outcomes": true
+}
