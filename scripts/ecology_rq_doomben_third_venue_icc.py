@@ -131,6 +131,32 @@ def collect(*, soap=request_xml, gps=fetch_official,
     return rows,manifest
 
 
+def marker_support(rows:list[dict],marker:float)->dict:
+    """Bounded anonymous original HORSES-ID recurrence positivity screen.
+
+    A large number of original GPS source rows is not equivalent to
+    repeated measurements of individual biological subjects.
+    """
+    sample=[r for r in rows if abs(float(r["first_marker_m"])-marker)<1e-6]
+    by_id={}
+    races=set()
+    for r in sample:
+        by_id.setdefault(r["horse_id"],set()).add(r["day"])
+        races.add((r["day"],r["race_number"]))
+    repeated=[n for n in by_id.values() if len(n)>=2]
+    return {
+        "first_section_marker_m":marker,
+        "original_positive_first_GPS_source_rows":len(sample),
+        "source_races":len(races),
+        "source_distinct_dates":len({r["day"] for r in sample}),
+        "distinct_internal_HORSES_IDs":len(by_id),
+        "HORSES_IDs_seen_at_least_twice_on_distinct_dates":len(repeated),
+        "source_repetition_threshold_of_existing_Gaussian_ICC":20,
+        "source_repeated_id_threshold_passed":len(repeated)>=20,
+        "no_original_identity_or_individual_time_exported":True,
+    }
+
+
 def _marker_model(rows:list[dict],marker:float)->dict:
     sample=[r for r in rows if abs(float(r["first_marker_m"])-marker)<1e-6]
     # For no source rows return HOLD, not a fabricated 0 ICC.
@@ -194,6 +220,10 @@ def evaluate(*,soap=request_xml,gps=fetch_official,
         "150.0":_marker_model(eligible,150.),
         "200.0":_marker_model(eligible,200.),
     }
+    source_marker_repeat_support={
+        "150.0":marker_support(eligible,150.),
+        "200.0":marker_support(eligible,200.),
+    }
     if len(successes)==len(DATES):
         status="DOOMBEN_THIRD_VENUE_ORIGINAL_SOURCE_MARKER_PILOT_NO_H1_H2"
     else:
@@ -219,6 +249,8 @@ def evaluate(*,soap=request_xml,gps=fetch_official,
         "source_manifest":manifest,
         "original_numeric_HORSES_ID_source_support":ident,
         "first_marker_150_and_200_original_race_FE_ICC":selected_models,
+        "first_marker_150_and_200_repeat_ID_identifiability":
+            source_marker_repeat_support,
         "Cannon_Eagle_reference_marker_compatibility":
             match_cannon_eagle(selected_models),
         "first_GPS_time_is_early_section_NOT_official_finish_time":True,
@@ -247,7 +279,16 @@ def main():
         "successful_original_source_days":len(
             obj["source_lock"]["dates_successfully_original_source_audited"]),
         "source_HOLD_dates":obj["source_lock"]["dates_source_HOLD"],
+        "source_HOLD_reasons_by_date":{
+            day:{
+                "status":obj["source_manifest"][day]["status"],
+                "error_code":obj["source_manifest"][day].get("error_code"),
+                "error_type":obj["source_manifest"][day].get("error_type"),
+            } for day in obj["source_lock"]["dates_source_HOLD"]
+        },
         "source_support":obj["original_numeric_HORSES_ID_source_support"],
+        "marker_repeat_ID_support":obj[
+            "first_marker_150_and_200_repeat_ID_identifiability"],
         "marker_compatibility":obj["Cannon_Eagle_reference_marker_compatibility"],
     },ensure_ascii=False))
 
