@@ -781,3 +781,89 @@ or genetic individuality.
 This is a real model-identifiability
 and data-provenance gate, not
 negative evidence about H1/H2.
+
+
+## 2026-10-14: model-conditional Gaussian ICC variability and source comparability
+
+The real-source, Gaussian race-FE / random HORSES-ID ICC had been
+reported on the Cannon Park and Eagle Farm original 12-date
+cohorts, but **not accompanied by a validated population-level
+uncertainty estimate**. A conditional parametric simulation
+was subsequently designed **after the positive ICCs were known**.
+It retains each venue's source ID × race incidence, source
+positive first GPS coverage, observed original
+race-fixed-effect projection and fitted Gaussian variance
+components, then generates and refits 299 parametric
+Gaussian responses from the model. An additional 199
+responses impose a zero horse intercept component as
+a narrow model-based negative control.
+
+[Original-source executable and quantitative
+results](ecology-rq-real-icc-source-conditional-sampling.md) /
+[post-hoc model conditions](ecology-rq-icc-conditional-simulation-protocol.md) /
+[reproduced paired site jobs
+#38501941730](https://github.com/zuizui0223/keiba/actions/runs/38501941730).
+
+Original-source refit, 12/12 meeting dates on each venue:
+
+- **Cannon**: ICC point **0.430147**,
+  fitted-Gaussian ICC estimator 2.5th–97.5th
+  quantiles **0.313683–0.528432**.
+- **Eagle**: ICC point **0.453332**,
+  same conditional quantiles **0.166828–0.708244**.
+- Marker-specific sensitivity:
+  Cannon 150m ICC 0.539528 (conditional
+  0.321931–0.684309), Cannon 250m
+  0.418787 (0.248634–0.600394),
+  Eagle 200m 0.527731
+  (0.200194–0.786889).
+- **No identical first GPS distance marker
+  supplies independently identifiable
+  source horse ICC across both venues**.
+  Doomben 150m and 200m source marker
+  cohorts also fail strict recurring-ID support.
+- Source historical roster/GPS data are
+  mutable: previous points 0.431738 and
+  0.452894 differ slightly from fresh
+  re-reads. Source hashes are necessary
+  for scientific reproducibility.
+
+The model-conditional simulated quantiles
+are **not a validated 95% confidence interval**:
+the true data-generating process, source
+missingness/nomination selection,
+trainer/rider assignments, different early
+GPS section markers, and correlated date-level
+shifts have not been calibrated. Under a
+narrow Gaussian zero-horse-effect simulation,
+reestimated ICCs were generally near zero,
+but this does not produce a causal or
+source-population p-value for real
+racehorses.
+
+### Decision
+
+Evidence remains **consistent with an
+exploratory, model-dependent HORSES-ID
+association in early first GPS segment
+duration**, but precision and measurement
+identity differ across venues. It is
+scientifically incorrect to call similar
+pooled Cannon/Eagle ICCs a
+replicated **same-trait** biological
+individual repeatability result,
+or to call a parametric sampling
+quantile a robust confidence interval.
+
+H1 ground-response random-slope variance,
+H2 causal rivalry context,
+phenotypic plasticity, personality,
+genetic heritability, adaptation and
+betting profit continue to be **HOLD**.
+For a genuine reproducible biological
+effect, prioritize real official result/
+actual-starter source joins, complete
+first-marker-compatible repeated IDs,
+independent source operator/sensor
+calibration and source-date/
+horse-cluster uncertainty.
