@@ -4,6 +4,44 @@
 
 This repository is being developed as a reproducible observational research program at the intersection of **individual ecology, phenotypic plasticity, competitive interactions and equine performance science**. The causal/environmental H1 and competition H2 hypotheses are **proposed and not empirically supported**. A separate, narrower **exploratory real-horse finding on individual consistency of race-relative early timing** has now been reproduced, with substantial selection and measurement limitations (see below).
 
+## 2026-10-14: Does early relative pacing persist with another declared jockey?
+
+**New exploratory REAL horse-ID source observation:** in the already locked
+12-date Cannon Park 2026 cohort, the same official HORSES ID had
+matched original race distance and first GPS marker but **a different
+source-declared Jockey/@Id** in **36 horses, 38 animal-by-marker strata,
+72 different-date observation pairs**. The equally weighted within-horse
+pair-product of original race-relative first-GPS timing deviations was
+**+0.063583 seconds²**, versus a mean of **+0.001996 seconds²** under
+199 seeded *within-race outcome reassignments*. This is not an
+exchangeable randomized experiment, a confirmatory p-value, or
+a causal estimate of changing riders. The **actual postrace jockey**,
+finishing state, rider selection, trainer/horse confounding and
+true biological personality remain unverified.
+
+**Important source snapshot limitation:** this run had **543** original
+GPS-positive ID matches (519 after the >=4 timed-peers gate);
+the earlier official Cannon analysis had **548** (523 after gate).
+Earlier meeting/race/GPS files had the same hashes, but earlier
+original GetHorsesForRace rider/animal roster response hashes were
+**not archived**, so the five-record difference cannot be assigned
+a verified biological or data-provider cause. A subsequent source
+retry obtained only **3 of 12 dates** and was correctly marked
+**scientifically HOLD**, despite the successful CI process.
+Never treat absent source responses as zero animal effects.
+
+A **post-hoc leave-one-meeting-date and anonymous leave-one-horse
+influence audit** now runs under exactly the same sample/measurement
+support gates. Its synthetic/QA tests passed; a genuine numerical
+date/horse sensitivity range is **not established** until the
+original 12-source-date read succeeds completely.
+
+See the [rider-change real-source observational audit](docs/ecology-rq-real-rider-switch-persistence-audit.md),
+[date/horse deletion criteria](docs/ecology-rq-rider-switch-influence-design.md),
+and [first official 12-date real data run](https://github.com/zuizui0223/keiba/actions/runs/38492841107).
+Environmental H1/H2, horse intrinsic personality, genetics and
+wagering effects remain unsupported.
+
 ## 2026-10-14: Same original horse across Cannon Park and Eagle Farm?
 
 The two previously locked 2026 venue cohorts were joined **by the
