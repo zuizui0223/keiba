@@ -99,6 +99,13 @@ class DoombenThirdTrackTests(unittest.TestCase):
         self.assertEqual(len(outcome["source_lock"]["dates_successfully_original_source_audited"]),19)
         self.assertEqual(outcome["original_numeric_HORSES_ID_source_support"][
             "original_ID_matched_positive_first_GPS_candidate_rows"],19*6*8)
+        for source_date in DATES:
+            snap=outcome["source_manifest"][source_date]
+            self.assertEqual(snap["official_horse_rosters_hashed"],6)
+            self.assertEqual(len(snap[
+                "official_HORSES_roster_XML_sha256_combined_without_IDs"]),64)
+            self.assertTrue(snap[
+                "roster_snapshot_source_hashes_are_needed_to_identify_edition_changes"])
         self.assertEqual(outcome["original_numeric_HORSES_ID_source_support"][
             "horse_IDs_in_2plus_source_dates"],48)
         models=outcome["first_marker_150_and_200_original_race_FE_ICC"]
