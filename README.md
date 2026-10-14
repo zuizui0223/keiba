@@ -1,5 +1,57 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-14: how uncertain are the original horse ICCs under the Gaussian model?
+
+A post-hoc, **model-conditional sampling sensitivity** was completed
+on **both previously source-locked racecourses** using the exact
+original Racing Queensland race×horse ID observation design.
+All **12/12 source dates** were fetched for both Cannon Park
+and Eagle Farm, with 299 fitted-Gaussian and 199
+zero-horse-variance Gaussian simulations per venue.
+
+| Original site | Fresh source race-FE horse ICC point | Conditional Gaussian re-estimated ICC 2.5–97.5% quantiles |
+| --- | ---: | ---: |
+| Cannon Park | **0.430147** | **0.313683–0.528432** |
+| Eagle Farm | **0.453332** | **0.166828–0.708244** |
+
+These are **NOT validated population 95% confidence intervals**.
+They are distributions of re-estimated ICC points when the
+fitted Gaussian horse/random-effect model, observed horse×race
+coverage, and constant error variance are assumed literally
+true. Actual source dropout, nonrandom race entry, shared
+trainers, age/weight/jockey confounding and meeting-date
+dependence are **not corrected**. Eagle's broader interval
+shows materially weaker conditional source precision despite
+a numerically similar point estimate.
+
+The original GPS section marker is **NOT the same measured
+first-segment trait** between the tracks. On the latest source
+snapshot, marker-specific ICC and conditional model quantiles
+were Cannon 150m **0.539528** (0.321931–0.684309),
+Cannon 250m **0.418787** (0.248634–0.600394),
+and Eagle 200m **0.527731** (0.200194–0.786889).
+Eagle 100m and other nonidentified cross-track matched-marker
+cohorts remain **HOLD**; Doomben 150/200m also lacks
+the necessary recurring horse IDs.
+
+**Data snapshot warning:** fresh ICC values differ slightly
+from previous source reports (0.431738 Cannon, 0.452894
+Eagle). Per-original-meeting source hashes are retained;
+changes in data-provider historic entrant lists must
+never be interpreted as animal biology.
+
+[Reproducible original-source simulation and scientific
+limitations](docs/ecology-rq-real-icc-source-conditional-sampling.md),
+[post-hoc source-design protocol](docs/ecology-rq-icc-conditional-simulation-protocol.md),
+and [successful paired GitHub Actions source audit
+#38501941730](https://github.com/zuizui0223/keiba/actions/runs/38501941730).
+
+This is *additional uncertainty information*, not
+a H1 random environmental slope, H2 social interaction,
+heritable animal personality, natural selection,
+or population-wide horse-specific biological finding.
+
+
 ## 2026-10-14: strictly earlier horse records predict later timing with new documented rider
 
 A fresh, **12/12 official-date** Cannon Park source re-read passed
