@@ -1,0 +1,113 @@
+{
+  "created_at_jst": "2026-10-14T21:11:00+09:00",
+  "scope": "Retrospective diagnostic on migrated Kyoto 7R-12R",
+  "validation_status": "NOT_VALIDATION_SAME_DAY_RULE_DESIGN",
+  "candidate_rule": {
+    "market_top_n": 5,
+    "additions": [
+      "recent_near_distance_win",
+      "recent_same_class_good",
+      "lightly_raced_latest_good",
+      "kyoto_distance_top3"
+    ]
+  },
+  "market_top5": {
+    "mean_candidate_fraction": 0.37899831649831656,
+    "mean_top3_recall": 0.7222222222222222,
+    "total_candidates": 30,
+    "total_top3_hits": 13,
+    "top3_hits_per_candidate": 0.43333333333333335,
+    "full_top3_recall_races": 2,
+    "winner_recall_races": 5
+  },
+  "broad_union": {
+    "mean_candidate_fraction": 0.6948442760942761,
+    "mean_top3_recall": 0.8888888888888888,
+    "total_candidates": 58,
+    "total_top3_hits": 16,
+    "top3_hits_per_candidate": 0.27586206896551724,
+    "full_top3_recall_races": 4,
+    "winner_recall_races": 6
+  },
+  "incremental": {
+    "added_candidates": 28,
+    "added_top3_hits": 3,
+    "top3_hits_per_added_candidate": 0.10714285714285714,
+    "extra_top3_horses": [
+      {
+        "race": 11,
+        "horse": 4,
+        "reason": "recent_near_distance_win"
+      },
+      {
+        "race": 12,
+        "horse": 10,
+        "reasons": [
+          "recent_near_distance_win",
+          "lightly_raced_latest_good"
+        ]
+      },
+      {
+        "race": 12,
+        "horse": 12,
+        "reason": "recent_same_class_good"
+      }
+    ]
+  },
+  "per_race": [
+    {
+      "race": 7,
+      "field": 16,
+      "market_top5_hits": 2,
+      "union_hits": 2,
+      "union_candidates": 10,
+      "incremental_hits": 0
+    },
+    {
+      "race": 8,
+      "field": 11,
+      "market_top5_hits": 2,
+      "union_hits": 2,
+      "union_candidates": 6,
+      "incremental_hits": 0
+    },
+    {
+      "race": 9,
+      "field": 12,
+      "market_top5_hits": 3,
+      "union_hits": 3,
+      "union_candidates": 10,
+      "incremental_hits": 0
+    },
+    {
+      "race": 10,
+      "field": 10,
+      "market_top5_hits": 3,
+      "union_hits": 3,
+      "union_candidates": 7,
+      "incremental_hits": 0
+    },
+    {
+      "race": 11,
+      "field": 18,
+      "market_top5_hits": 2,
+      "union_hits": 3,
+      "union_candidates": 14,
+      "incremental_hits": 1
+    },
+    {
+      "race": 12,
+      "field": 16,
+      "market_top5_hits": 1,
+      "union_hits": 3,
+      "union_candidates": 11,
+      "incremental_hits": 2
+    }
+  ],
+  "interpretation": [
+    "The broad union recovers three additional top-three horses, including the 12R winner and runner-up, but nearly doubles candidate coverage.",
+    "Top-three hits per candidate fall from 43.3% for market Top5 to 27.6% for the broad union.",
+    "The same 2026-10-12 races informed rule design, so these figures are diagnostic only and cannot validate predictive improvement.",
+    "Future evaluation must compare against the market at fixed k or matched candidate fraction."
+  ]
+}
