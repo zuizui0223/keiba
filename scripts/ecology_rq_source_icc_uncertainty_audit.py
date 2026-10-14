@@ -178,6 +178,7 @@ def main():
                 "status":v.get("status"),
                 "observed_ICC":v.get("observed_original_race_FE_conditional_ICC"),
                 "fitted_sampling":v.get("fitted_Gaussian_model_parametric_sampling"),
+                "Gaussian_zero_horse_component_reference":v.get("zero_horse_component_Gaussian_null_simulation"),
             } for k,v in marker.items()
         },
     },ensure_ascii=False))
