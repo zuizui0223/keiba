@@ -105,11 +105,43 @@ re-fetches exactly the known source days and compares all four original
 response types, returning HOLD rather than treating a failed request
 as an absence of racehorses.
 
-The first full 12-day replay returned
-HOLD_SOME_ORIGINAL_SOURCE_DATES_NOT_RETRIEVED; its frozen fixture
-verification succeeded. Source replay needs independent
-error-code triage before claiming a new byte-identical
-live-source reproduction.
+A first attempted 12-date re-fetch in
+[run 38564794644](https://github.com/zuizui0223/keiba/actions/runs/38564794644)
+could not reconcile any source dates, although the original archive
+was correctly verified. No observed racehorse rows were inferred
+as missing or zero from that failed fetch. The cause of the
+one-time access failure is not independently proven.
+
+After adding a **safe, name/ID-free validation-code
+diagnostic**, the later fully independent
+[run 38565084313](https://github.com/zuizui0223/keiba/actions/runs/38565084313)
+successfully validated the permanent fingerprint manifest against
+the archived genuine October 14 source JSON **and replayed all 12
+original dates**.
+
+| Exact re-fetched original component | Dates byte-identical to October 14 archive |
+| --- | ---: |
+| GetMeetingsForDate XML | **12/12** |
+| GetRacesForMeeting XML | **12/12** |
+| Original sectionals GPS CSV | **12/12** |
+| GetHorsesForRace original XML combined roster SHA256 | **12/12** |
+| Source-linked HORSES ID × first-positive-GPS candidate count | **12/12** |
+
+The 543-row **October 14 source snapshot is now
+independently replayable** with four original source
+fingerprint components and the same matched-candidate
+counts. This does NOT reconstruct the earlier October 13
+HORSES XML and does NOT identify why that older run
+reported five more joinable candidates. It also
+does not verify final starter/finisher status or
+biological environmental responses.
+
+This source snapshot check is not a population-
+representative repeatability model or a valid
+replication of the conditional ICC at the same
+data, fixed-source-code and model selection
+conditions. Its value is **data provenance
+and version-control reliability**.
 
 ## Reproduce without publishing original runner records
 
