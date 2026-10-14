@@ -81,7 +81,36 @@ def source_timed_panel(rows: list[dict], min_gps: int = 4):
             "jockey_id":_numeric_id(original.get("jockey_license_id")),
             "trainer_id":_numeric_id(original.get("trainer_license_id")),
         })
+    by_date=defaultdict(lambda:{"GPS_records":0,"with_numeric_Jockey_ID":0})
+    by_source_going=defaultdict(lambda:{"GPS_records":0,"with_numeric_Jockey_ID":0})
+    for r in timed:
+        date_counter=by_date[r["day"]]
+        original=by_key[(r["day"],r["race_number"],r["horse_id"])]
+        going=str(original.get("ground") or "UNKNOWN")
+        ground_counter=by_source_going[going]
+        for counter in (date_counter,ground_counter):
+            counter["GPS_records"]+=1
+            counter["with_numeric_Jockey_ID"]+=int(r["jockey_id"] is not None)
     return timed,{
+        "numeric_Jockey_ID_coverage_by_original_meeting_date":{
+            day:{
+                **counts,
+                "observed_source_coverage_fraction":(
+                    counts["with_numeric_Jockey_ID"]/counts["GPS_records"]
+                    if counts["GPS_records"] else None
+                ),
+            } for day,counts in sorted(by_date.items())
+        },
+        "numeric_Jockey_ID_coverage_by_official_source_going":{
+            going:{
+                **counts,
+                "observed_source_coverage_fraction":(
+                    counts["with_numeric_Jockey_ID"]/counts["GPS_records"]
+                    if counts["GPS_records"] else None
+                ),
+            } for going,counts in sorted(by_source_going.items())
+        },
+        "coverage_is_conditional_on_positive_GPS_not_all_actual_starters":True,
         "source_GPS_positive_rows_before_race_minimum":len(rows),
         "source_races_after_positive_GPS_field_gate":
             q["races_with_at_least_requested_minimum_positive_first_intervals"],
@@ -181,6 +210,122 @@ def summarize_pairs(pairs:list[dict],mode:str):
     return stats
 
 
+def rider_switch_influence_audit(timed:list[dict])->dict:
+    """Post-hoc original date and animal deletion, with original peers fixed.
+
+    This measures influence on the SAME source-defined, relative first-GPS
+    outcome, not robustness to changes in the definition of competitor peers.
+    All identifiers stay in local memory.  Never output per-animal results.
+    """
+    source_pairs=pair_records(timed,strict_class=False)
+    observed=summarize_pairs(source_pairs,"switched")
+    if observed["status"]!="EXPLORATORY_OBSERVATIONAL_PAIR_PRODUCT_ONLY":
+        return {
+            "status":"HOLD_PRIMARY_SWITCHED_RIDER_PAIR_SUPPORT_INSUFFICIENT",
+            "primary_support_counts_only":observed,
+            "no_original_HORSES_or_rider_identifiers_exported":True,
+            "not_a_confidence_interval_or_independent_cohort":True,
+        }
+
+    original=observed["equal_horse_stratum_mean_pair_product_seconds_squared"]
+    dates=sorted({r["day"] for r in timed})
+    dates_with_pairs={day for p in source_pairs if p["switched"] for day in p["days"]}
+    source_date_refits={}
+    date_values=[]
+    date_hold=0
+    for dropped in dates:
+        remaining=[p for p in source_pairs if dropped not in p["days"]]
+        stat=summarize_pairs(remaining,"switched")
+        row={
+            "status":stat["status"],
+            "original_HORSES_IDs":stat["distinct_official_HORSES_IDs"],
+            "original_horse_by_marker_distance_strata":
+                stat["horse_by_matching_distance_marker_class_strata"],
+            "remaining_cross_date_source_pairs":
+                stat["within_horse_cross_date_pairs"],
+            "removed_meeting_had_an_original_changed_rider_pair":
+                dropped in dates_with_pairs,
+        }
+        if stat["status"]=="EXPLORATORY_OBSERVATIONAL_PAIR_PRODUCT_ONLY":
+            point=stat["equal_horse_stratum_mean_pair_product_seconds_squared"]
+            row["mean_pair_product_seconds_squared"]=point
+            date_values.append(point)
+        else:
+            date_hold+=1
+        source_date_refits[dropped]=row
+
+    contributors={p["horse_id"] for p in source_pairs if p["switched"]}
+    id_values=[]
+    id_hold=0
+    for removed in contributors:
+        # IMPORTANT: filter only this horse's *pair* records.  Recomputing
+        # leave-one-horse-out GPS peer means would change every other
+        # horse's outcome mechanically, confounding influence with redefinition.
+        remaining=[p for p in source_pairs if p["horse_id"]!=removed]
+        stat=summarize_pairs(remaining,"switched")
+        if stat["status"]=="EXPLORATORY_OBSERVATIONAL_PAIR_PRODUCT_ONLY":
+            id_values.append(stat["equal_horse_stratum_mean_pair_product_seconds_squared"])
+        else:
+            id_hold+=1
+
+    def counts(vals,holds,total):
+        summary={
+            "number_of_deletions_attempted":total,
+            "numeric_refits_meeting_original_support_gate":len(vals),
+            "refits_on_HOLD":holds,
+            "positive_refits":sum(x>0 for x in vals),
+            "zero_refits":sum(x==0 for x in vals),
+            "negative_refits":sum(x<0 for x in vals),
+            "status":(
+                "EXPLORATORY_ALL_DELETIONS_IDENTIFIABLE_NOT_CONFIDENCE_INTERVAL"
+                if len(vals)==total and holds==0
+                else "HOLD_AT_LEAST_ONE_DELETION_INSUFFICIENT_SUPPORT"
+            ),
+            "not_a_confidence_interval_or_p_value":True,
+        }
+        if vals and len(vals)==total and holds==0:
+            summary.update({
+                "minimum_refitted_pair_product_seconds_squared":min(vals),
+                "maximum_refitted_pair_product_seconds_squared":max(vals),
+                "maximum_absolute_change_vs_original_pair_product_seconds_squared":
+                    max(abs(x-original) for x in vals),
+            })
+        return summary
+
+    date_result=counts(date_values,date_hold,len(dates))
+    date_result["source_date_keyed_anonymous_support"]=source_date_refits
+    date_result["deletions_without_any_original_changed_rider_pairs"]=sum(
+        d not in dates_with_pairs for d in dates
+    )
+    id_result=counts(id_values,id_hold,len(contributors))
+    id_result["only_aggregate_deletion_range_not_any_original_HORSES_ID"]=True
+    return {
+        "status":"POST_HOC_SOURCE_CONDITIONAL_INFLUENCE_DIAGNOSTIC_ONLY",
+        "original_switch_rider_pair_product_seconds_squared":original,
+        "date_deletion":date_result,
+        "horse_ID_deletion_ANON_AGGREGATES_ONLY":id_result,
+        "same_GPS_peer_reference_kept_fixed_after_horse_deletion":True,
+        "not_actual_jockey_switch_or_intrinsic_personality_or_H1_H2":True,
+        "not_an_independent_replication_or_confidence_interval":True,
+        "no_original_HORSES_or_rider_identifiers_exported":True,
+    }
+
+
+def safe_original_source_error_category(exc:Exception)->dict:
+    """Never save raw URLs, original race IDs, XML or exception messages."""
+    from urllib.error import HTTPError
+    code=int(exc.code) if isinstance(exc,HTTPError) and exc.code is not None else None
+    if code is not None and not 100<=code<=599:
+        code=None
+    return {
+        "source_error_http_status_if_available":code,
+        "source_http_rate_limited_429":code==429,
+        "source_http_upstream_5xx":bool(code is not None and 500<=code<600),
+        "raw_error_url_and_source_response_NOT_recorded":True,
+        "source_unavailable_is_not_zero_animal_response":True,
+    }
+
+
 def _one_pair_set(timed:list[dict], strict_class:bool)->dict:
     pairs=pair_records(timed, strict_class=strict_class)
     stats={mode:summarize_pairs(pairs,mode) for mode in MODES}
@@ -278,6 +423,8 @@ def analyze(rows:list[dict],*,min_race_telemetry:int=4,
         "same_official_race_distance_and_exact_first_GPS_marker":broad,
         "also_same_original_race_Class":strict,
         "changed_declared_jockey_within_race_outcome_shuffle_reference":reference,
+        "post_hoc_leave_one_original_meeting_and_anonymous_animal_influence":
+            rider_switch_influence_audit(timed),
         "minimum_distinct_HORSES_IDs_for_numeric_pair_stat":MIN_IDS,
         "minimum_horse_strata_for_numeric_pair_stat":MIN_STRATA,
         "minimum_distinct_source_meeting_dates":MIN_SOURCE_DATES,
@@ -344,7 +491,10 @@ def main():
             }
             data.extend(rows)
         except (ValueError,OSError,TimeoutError) as exc:
-            manifest[day]=safe_failure(exc)
+            manifest[day]={
+                **safe_failure(exc),
+                **safe_original_source_error_category(exc),
+            }
 
     result=analyze(data) if data else {
         "status":"HOLD_NO_ORIGINAL_FIRST_GPS_SOURCE_COHORT",
