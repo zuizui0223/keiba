@@ -15,6 +15,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from datetime import date
+import hashlib
 import argparse
 import json
 from pathlib import Path
@@ -306,9 +307,21 @@ def main():
     data=[]
     manifest={}
     for day,(ground,source) in COHORT.items():
+        # Capture original GetHorsesForRace SOAP SHA256s independently
+        # of previously hashed meeting, race and GPS source responses.
+        # Do NOT emit horse IDs, names or individual XML.
+        horse_roster_hashes={}
+        def traced_soap(op,params):
+            root,url,sha=request_xml(op,params)
+            if op=="GetHorsesForRace":
+                race_id=str(params["raceId"])
+                if race_id in horse_roster_hashes:
+                    raise ValueError("HOLD_DUPLICATE_ORIGINAL_HORSE_ROSTER_REQUEST")
+                horse_roster_hashes[race_id]=sha
+            return root,url,sha
         try:
             audit,rows=audit_one_day(
-                day,soap=request_xml,gps=fetch_official,
+                day,soap=traced_soap,gps=fetch_official,
                 locked_config={
                     "source":source,
                     "ground_expected":ground,
@@ -320,6 +333,14 @@ def main():
                 "status":"SOURCE_ORIGINAL_ID_GPS_AND_DECLARED_RIDER_AUDITED",
                 "first_GPS_matched_original_source_rows":len(rows),
                 "original_source_SHA256":audit["source_hashes"],
+                "original_HORSES_roster_XML_sha256_aggregate":hashlib.sha256(
+                    "".join(
+                        f"{race}:{digest}\n"
+                        for race,digest in sorted(horse_roster_hashes.items())
+                    ).encode("ascii")
+                ).hexdigest(),
+                "official_original_HORSES_roster_races_hashed":
+                    len(horse_roster_hashes),
             }
             data.extend(rows)
         except (ValueError,OSError,TimeoutError) as exc:
@@ -340,6 +361,27 @@ def main():
             "effect_not_reported_from_incomplete_source_cohort":True,
             "raw_animal_name_id_licence_or_interval_not_published":True,
         }
+    # Earlier official Cannon cohort count was 548 (run #38411913010).
+    # Per-race HORSES roster fingerprints were NOT captured in that run,
+    # so a new count cannot retroactively prove why original matches differ.
+    prior_source_candidate_rows=548
+    current_source_candidate_rows=sum(
+        m.get("first_GPS_matched_original_source_rows",0)
+        for m in manifest.values()
+    )
+    result["source_snapshot_candidate_count_audit"]= {
+        "prior_locked_original_Cannon_candidate_rows":prior_source_candidate_rows,
+        "now_original_Cannon_candidate_rows":(
+            current_source_candidate_rows if not failures else None
+        ),
+        "source_candidate_count_difference_now_minus_previous":(
+            current_source_candidate_rows-prior_source_candidate_rows
+            if not failures else None
+        ),
+        "previous_runs_had_no_original_HORSES_roster_per_race_SHA256":True,
+        "cause_of_different_matched_source_ID_GPS_candidate_count_unverified":True,
+        "never_treat_source_join_changes_as_biological_response":True,
+    }
     result["source_manifest_original_SHA256_no_individuals"]=manifest
     result["all_twelve_original_source_dates_requested"]=list(COHORT)
     result["no_original_horse_jockey_trainer_names_IDs_or_times_emitted"]=True
