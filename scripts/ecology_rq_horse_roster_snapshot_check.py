@@ -211,6 +211,18 @@ def compare_live_to_baseline(
     }
 
 
+def safe_original_source_error_code(exc:Exception)->str:
+    """Allow ONLY finite, non-identifying source-validation error codes."""
+    prefix=str(exc).split(":",1)[0]
+    if isinstance(exc,ValueError) and re.fullmatch(r"HOLD_[A-Z0-9_]{3,100}",prefix):
+        return prefix
+    if isinstance(exc,TimeoutError):
+        return "HOLD_ORIGINAL_SOURCE_TIMEOUT"
+    if isinstance(exc,OSError):
+        return "HOLD_ORIGINAL_SOURCE_NETWORK_IO"
+    return "HOLD_SOURCE_FAILURE_UNCLASSIFIED"
+
+
 def fetch_live(
     *, scope:str="affected_five_plus_control",
     soap=request_xml,
@@ -265,11 +277,8 @@ def fetch_live(
             # may contain original names or internal numeric IDs.
             observed[day]={
                 "status":"HOLD_UNRECONCILED_OFFICIAL_SOURCE_DATE",
-                "error_category":(
-                    type(error).__name__
-                    if type(error).__name__ in {"ValueError","OSError","TimeoutError"}
-                    else "SOURCE_FAILURE"
-                ),
+                "error_category":type(error).__name__,
+                "anonymous_HOLD_validation_code":safe_original_source_error_code(error),
                 "unretrieved_is_not_zero_horses":True,
             }
     return observed
