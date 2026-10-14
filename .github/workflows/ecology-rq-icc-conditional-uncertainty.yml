@@ -1,0 +1,80 @@
+name: "Ecology: conditional source-design horse ICC uncertainty"
+
+# RETROSPECTIVE model-based sampling sensitivity only:
+# two previously date-locked original Thoroughbred racecourses.
+# These are NOT independent horse experiments, valid population CIs,
+# causal ground response H1 or competitor-context H2 tests.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_icc_parametric_uncertainty.py'
+      - 'scripts/ecology_rq_source_icc_uncertainty_audit.py'
+      - 'tests/test_ecology_rq_icc_parametric_uncertainty.py'
+      - 'tests/test_ecology_rq_source_icc_uncertainty_audit.py'
+      - 'docs/ecology-rq-icc-conditional-simulation-protocol.md'
+      - '.github/workflows/ecology-rq-icc-conditional-uncertainty.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-parametric-uncertainty:
+    strategy:
+      fail-fast: false
+      matrix:
+        venue: [cannon, eagle]
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      VENUE: ${{ matrix.venue }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact Gaussian REML source-design dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Fictitious Gaussian model and source-HOLD falsification tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_rq_icc_parametric_uncertainty.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_rq_source_icc_uncertainty_audit.py' -v
+      - name: Only original source-frozen Racing Queensland files; aggregate result only
+        run: |
+          python scripts/ecology_rq_source_icc_uncertainty_audit.py --venue "$VENUE" --draws 299 --null-draws 199 --output "tmp/rq-$VENUE-model-conditional-uncertainty.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          venue=os.environ["VENUE"]
+          x=json.loads(Path(f"tmp/rq-{venue}-model-conditional-uncertainty.json").read_text())
+          assert len(x["original_dates_requested"])==12
+          assert x["no_original_horse_rider_trainer_IDs_names_or_GPS_values_exported"]
+          assert x["not_a_robust_population_95pct_ICC_confidence_interval"]
+          if x["status"].startswith("SOURCE_"):
+              assert x["source_site_marker_mismatch_precludes_interpreting_pooled_Cannon_Eagle_as_same_trait"]
+          assert not x["H1_random_ground_slopes_estimated"]
+          assert not x["H2_causal_social_interaction_estimated"]
+          assert x["status"] in (
+            "SOURCE_CONDITIONAL_GAUSSIAN_UNCERTAINTY_AUDITED_NOT_BIOLOGICAL_REPLICATION",
+            "HOLD_INCOMPLETE_LOCKED_VENUE_SOURCE_COHORT",
+            "HOLD_NO_SOURCE_LINKED_ORIGINAL_HORSES_ID_GPS_OBSERVATIONS",
+          )
+          print("SCIENTIFIC_STATUS",x["status"])
+          print("SOURCE_DATES_OK",x["source_dates_fully_audited"])
+          if x["status"].startswith("SOURCE_"):
+              q=x["pooled_first_section_source_model_conditional_sampling"]
+              print("GAUSSIAN_SOURCE_MODEL_STATUS",q["status"])
+              print("NUMERIC_SOURCE_ICC",q.get("observed_original_race_FE_conditional_ICC"))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rq-${{ matrix.venue }}-conditional-gaussian-icc-aggregate
+          path: tmp/rq-${{ matrix.venue }}-model-conditional-uncertainty.json
+          retention-days: 30
