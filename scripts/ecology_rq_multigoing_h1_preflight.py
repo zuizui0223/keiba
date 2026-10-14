@@ -155,9 +155,15 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
             locked_config.get("ground_expected")=="SOURCE_RACE_LEVEL" and
             tuple(locked_config.get("races",()))==tuple(range(1,7))
         )
+        canonical_doomben=(
+            venue=="Doomben" and
+            locked_config.get("source")==day_key+"-doomben" and
+            locked_config.get("ground_expected")=="SOURCE_RACE_LEVEL" and
+            tuple(locked_config.get("races",()))==tuple(range(1,7))
+        )
         if (day[:5]!="2026-" or not fields_ok
                 or locked_config.get("source") not in APPROVED
-                or not (canonical_cannon or canonical_eagle)):
+                or not (canonical_cannon or canonical_eagle or canonical_doomben)):
             raise ValueError("HOLD_UNAPPROVED_EXTERNAL_COHORT_CONFIGURATION")
         config=locked_config
     selected = tuple(race_selection) if race_selection is not None else config["races"]
