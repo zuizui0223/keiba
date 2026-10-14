@@ -12,6 +12,9 @@ on:
       - 'tests/test_ecology_rq_rider_switch_consistency.py'
       - 'scripts/ecology_rq_rider_forward_check.py'
       - 'tests/test_ecology_rq_rider_forward_check.py'
+      - 'scripts/ecology_rq_forward_alternative_history.py'
+      - 'tests/test_ecology_rq_forward_alternative_history.py'
+      - 'docs/ecology-rq-forward-alternative-history-lock.md'
       - 'docs/ecology-rq-rider-change-forward-validation-lock.md'
       - 'docs/ecology-rq-rider-switch-persistence-design.md'
       - '.github/workflows/ecology-rq-rider-switch.yml'
@@ -39,6 +42,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_ecology_rq_rider_switch_consistency.py' -v
       - name: Check fictional strictly past-only horse-profile source gates
         run: python -m unittest discover -s tests -p 'test_ecology_rq_rider_forward_check.py' -v
+      - name: Test fictional horse versus trainer/rider/context historical alternatives
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_forward_alternative_history.py' -v
       - name: Recalculate twelve prelocked original RQ sources; anonymous aggregates only
         run: |
           python scripts/ecology_rq_rider_switch_consistency.py \
@@ -75,6 +80,15 @@ jobs:
               print("FORWARD_FUTURE_TIMED_ROWS",cohort["out_of_date_matched_source_rows_scored"])
               print("FORWARD_HORSE_EQUAL_RMSE_REDUCTION_SEC",cohort.get(
                   "equal_horse_weighted_RMSE_reduction_seconds_positive_if_persistent","HOLD"))
+              alternative=z["fixed_context_role_and_other_horse_past_only_benchmarks"]
+              assert alternative["no_original_horse_rider_trainer_ID_or_row_level_output"]
+              assert alternative["strictly_earlier_date_train_then_update"]
+              group=alternative["contexts"]["same_official_distance_and_exact_GPS_marker"]["identical_scored_future_records"]
+              for label,record in group.items():
+                  print("OTHER_HORSE_CONTROL",label,record["status"],
+                        "HORSES",record["distinct_original_HORSES_IDs"],
+                        "FUTURE_ROWS",record["matched_chronological_future_source_rows"],
+                        "PEER_MINUS_HORSE_RMSE",record.get("past_other_horse_minus_focal_horse_RMSE_sec","HOLD"))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
