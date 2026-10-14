@@ -412,6 +412,11 @@ def analyze(rows:list[dict],*,min_race_telemetry:int=4,
     reference=rider_label_shuffled_time_reference(
         timed,strict_class=False,permutations=permutations
     )
+    from ecology_rq_rider_forward_check import analyze_forward
+    # Entirely past-only, fixed n/(n+2) horse profile.  Existing
+    # source/date missingness HOLD remains managed by main(), and
+    # source IDs/current rider values NEVER enter returned summaries.
+    chronological_forward=analyze_forward(timed)
     # Extra strict original Class is secondary; avoid fitting another
     # null reference without a specific validated decision need.
     return {
@@ -425,6 +430,8 @@ def analyze(rows:list[dict],*,min_race_telemetry:int=4,
         "changed_declared_jockey_within_race_outcome_shuffle_reference":reference,
         "post_hoc_leave_one_original_meeting_and_anonymous_animal_influence":
             rider_switch_influence_audit(timed),
+        "fixed_shrinkage_strictly_earlier_horse_profile_when_new_declared_jockey":
+            chronological_forward,
         "minimum_distinct_HORSES_IDs_for_numeric_pair_stat":MIN_IDS,
         "minimum_horse_strata_for_numeric_pair_stat":MIN_STRATA,
         "minimum_distinct_source_meeting_dates":MIN_SOURCE_DATES,
