@@ -109,6 +109,10 @@ class DoombenThirdTrackTests(unittest.TestCase):
             self.assertEqual(v["original_races"],19*3)
         self.assertEqual(outcome["Cannon_Eagle_reference_marker_compatibility"][
             "matched_marker_numeric_comparisons_supported"],2)
+        for value in outcome["first_marker_150_and_200_repeat_ID_identifiability"].values():
+            self.assertEqual(value["HORSES_IDs_seen_at_least_twice_on_distinct_dates"],24)
+            self.assertTrue(value["source_repeated_id_threshold_passed"])
+            self.assertEqual(value["source_distinct_dates"],19)
         self.assertFalse(outcome["H1_ground_reaction_norm_variance_estimated"])
         self.assertFalse(outcome["H2_social_context_response_estimated"])
         self.assertTrue(outcome["raw_original_horse_names_IDs_or_individual_interval_exported"] is False)
@@ -126,6 +130,9 @@ class DoombenThirdTrackTests(unittest.TestCase):
                          "HOLD_INSUFFICIENT_REPEATED_HORSES_OR_RACES_FOR_ICC")
         self.assertEqual(out["Cannon_Eagle_reference_marker_compatibility"][
             "matched_marker_numeric_comparisons_supported"],0)
+        for value in out["first_marker_150_and_200_repeat_ID_identifiability"].values():
+            self.assertEqual(value["HORSES_IDs_seen_at_least_twice_on_distinct_dates"],0)
+            self.assertFalse(value["source_repeated_id_threshold_passed"])
         self.assertEqual(out["Cannon_Eagle_reference_marker_compatibility"][
             "status"],"HOLD_NO_SHARED_SOURCE_MARKER_WITH_NUMERIC_HORSE_ICC")
 
@@ -139,6 +146,8 @@ class DoombenThirdTrackTests(unittest.TestCase):
         self.assertEqual(out["source_lock"]["dates_source_HOLD"],["2026-05-16"])
         self.assertTrue(out["source_manifest"]["2026-05-16"][
             "not_counted_as_zero_participation"])
+        self.assertEqual(out["source_manifest"]["2026-05-16"]["error_type"],
+                         "TimeoutError")
 
     def test_source_key_cannot_be_substituted_by_other_track(self):
         with self.assertRaisesRegex(ValueError,"HOLD_UNAPPROVED_EXTERNAL_COHORT"):
