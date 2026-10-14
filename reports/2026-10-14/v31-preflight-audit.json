@@ -1,0 +1,146 @@
+{
+  "audit_date": "2026-10-14",
+  "audit_as_of_jst": "2026-10-14T11:23:00+09:00",
+  "scope": "v3.1 prospective holdout preflight and retrospective migration provenance",
+  "inspected_head_sha": "d5dfccc9d4f9544e598c38cf47a7110a4ff39fd9",
+  "integrity": {
+    "manifest_path": "docs/v31-holdout-freeze.json",
+    "manifest_blob_sha": "783000b048daeec5206625685ed29da41a26a3bf",
+    "pinned_files_compared": 15,
+    "pinned_files_matching": 15,
+    "pinned_file_mismatches": [],
+    "quality_tier_baseline_count": 43,
+    "quality_tier_matching": 43,
+    "quality_tier_mismatches": [],
+    "quality_tier_map_blob_sha": "a06e33dd396369b9556136b7e12cc4568afde41b",
+    "ledgers_manifest_sha_consistent": true,
+    "scored_ledger_entries": 0,
+    "eligible_attempt_ledger_entries": 0,
+    "model_files_changed": false
+  },
+  "migration": {
+    "historical_races": 6,
+    "historical_horses": 83,
+    "structurally_valid_at_recorded_audit": 83,
+    "frozen_original_prediction_field_mismatches": 0,
+    "history_sidecar_mismatches": 0,
+    "post_target_date_run_rows": 0,
+    "history_checked_after_target_post": 83,
+    "historical_pre_result_freeze_provenance_confirmed": 0,
+    "verified_zero_career_start_exception": {
+      "race": 8,
+      "number": 6,
+      "name": "カドーダムール",
+      "career_starts": 0,
+      "recent_runs": [],
+      "source_latest_run_date": null
+    },
+    "qualification": "Post-result backfill suitable for development audit only; not evidence that the constructed feature rows were available for a real-time pre-race prediction."
+  },
+  "as_of_freshness": {
+    "max_check_age_hours": 24,
+    "fresh_horses": 0,
+    "stale_horses": 83,
+    "per_race": [
+      {
+        "race": 7,
+        "horses": 16,
+        "stale": 16,
+        "checked_at_jst": "2026-10-13T10:46:01+09:00"
+      },
+      {
+        "race": 8,
+        "horses": 11,
+        "stale": 11,
+        "checked_at_jst": "2026-10-13T10:46:01+09:00"
+      },
+      {
+        "race": 9,
+        "horses": 12,
+        "stale": 12,
+        "checked_at_jst": "2026-10-13T10:34:31+09:00"
+      },
+      {
+        "race": 10,
+        "horses": 10,
+        "stale": 10,
+        "checked_at_jst": "2026-10-13T10:34:31+09:00"
+      },
+      {
+        "race": 11,
+        "horses": 18,
+        "stale": 18,
+        "checked_at_jst": "2026-10-13T10:34:31+09:00"
+      },
+      {
+        "race": 12,
+        "horses": 16,
+        "stale": 16,
+        "checked_at_jst": "2026-10-13T09:55:15+09:00"
+      }
+    ],
+    "interpretation": "This old day-specific historical input must not be recycled as current input for the 2026-10-17 holdout. Structural PASS and live freshness PASS are different questions."
+  },
+  "next_programme": {
+    "date": "2026-10-17",
+    "venue": "京都",
+    "status": "PLANNED_PROGRAMME_NOT_CURRENT_CARD",
+    "official_url": "https://www.jra.go.jp/keiba/calendar2026/2026/10/1017.html",
+    "current_card_usually_published": "2026-10-15 around 16:00 JST (JRA general guidance)",
+    "eligible_on_programme": [
+      {
+        "race": 7,
+        "post_jst": "13:15",
+        "fixed_prepost_window_jst": "12:50-13:00"
+      },
+      {
+        "race": 8,
+        "post_jst": "13:45",
+        "fixed_prepost_window_jst": "13:20-13:30"
+      },
+      {
+        "race": 10,
+        "post_jst": "14:50",
+        "fixed_prepost_window_jst": "14:25-14:35"
+      },
+      {
+        "race": 11,
+        "post_jst": "15:30",
+        "fixed_prepost_window_jst": "15:05-15:15"
+      },
+      {
+        "race": 12,
+        "post_jst": "16:15",
+        "fixed_prepost_window_jst": "15:50-16:00"
+      }
+    ],
+    "excluded_on_programme": "Kyoto R9 2yo-only; Kyoto R1-R6 other ineligible classes/obstacle/newcomer.",
+    "caveat": "Check Thursday's JRA current card and Saturday changes before declaring eligibility. No prospective freeze has been created yet."
+  },
+  "formal_holdout": {
+    "version": "v3.1",
+    "scored_races": 0,
+    "target_races": 20,
+    "prospective_prediction_validated": false,
+    "frozen_promotion_gates": {
+      "one_sided_exact_p_at_most": 0.05,
+      "overall_union_candidate_fraction_at_most": 0.65,
+      "freeze_success_rate_at_least": 0.8
+    },
+    "pre_race_inputs_required": [
+      "JRA current card and exact active runner roster",
+      "complete pre-race horse profiles/histories",
+      "real win odds with verified timestamp 15-25 minutes prepost",
+      "immutable freeze committed before actual post",
+      "FROZEN or PRE_RESULT_DATA_FAILURE entry for each eligible race"
+    ]
+  },
+  "audit_limitations": [
+    "Independent read-only GitHub connector comparison; no full repository Python test suite executed in this audit.",
+    "Historical horse-profile sources were not independently re-scraped; sidecar equality is not confirmation of underlying external truth.",
+    "Container GitHub DNS resolution unavailable, so code was not cloned for a local full-suite run.",
+    "No live race-day price/roster captured or horse prediction scored at this stage.",
+    "No purchases or payment actions performed."
+  ],
+  "assessment": "FROZEN_CONTRACT_INTACT_AWAIT_LIVE_FUTURE_RACE_DATA"
+}
