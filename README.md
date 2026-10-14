@@ -1,5 +1,51 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-14: does the focal horse's history outperform other horses' earlier records?
+
+A new **post-hoc, strictly past-only original-source contrast**
+adds direct alternative historical baselines to the prior positive
+source-recorded horse-ID pacing persistence result.
+Using exactly the original 12 Cannon Park official source dates,
+a "newly documented source Jockey/@Id" future cohort,
+and identical official race distance/first GPS marker:
+
+| Past-only alternative benchmark with identical scored future rows | Distinct focal IDs, future records | Horse-own-history equal-ID-weighted RMSE | Earlier OTHER-horse reference RMSE |
+| --- | --- | ---: | ---: |
+| Matched original distance + first-GPS marker (all other horses, exclude focal) | **36 IDs / 46 records** | **0.255809 s** | **0.303195 s** |
+| Same source trainer + matched context, other horses only | **23 / 31** | **0.223217 s** | **0.293963 s** |
+| Same source jockey + matched context, other horses only | **32 / 39** | **0.246934 s** | **0.301783 s** |
+
+The first paired source subset shows a
+**+0.047386-second lower RMSE using the focal horse's own
+prior race-relative first-GPS timing** than using prior
+OTHER horses' matched-context timing. Both predictions
+are based only on earlier dated source observations, using
+the same fixed historical n/(n+2) shrinkage.
+
+An original Class-matched sensitivity remained positive
+(20 IDs/22 future records; own 0.320113 vs other 0.386706 s),
+but sat precisely on the minimum support gate; its
+same-Class trainer and jockey comparator subsets remained
+**HOLD** (only 9 and 13 focal IDs). Class changes the
+novel-jockey evaluation context, so the strict set is
+**not necessarily nested** within the broad set.
+
+These observational source comparisons challenge a
+*generic source-context-only history* explanation.
+They DO NOT separate intrinsic horse personality from
+stable training, selective entries, source GPS measurement,
+fitness/age, actual postrace jockey, or source roster drift.
+The target uses the realized postrace GPS peer field,
+**not a pre-race speed prediction or betting model**.
+No H1 ground reaction norms, H2 competitor effects,
+heritability or adaptation are established.
+
+Method/design:
+[fixed alternative-history protocol](docs/ecology-rq-forward-alternative-history-lock.md);
+[real anonymous source analysis](docs/ecology-rq-forward-other-horse-comparator-results.md);
+[successful full original-data CI](https://github.com/zuizui0223/keiba/actions/runs/38563275612);
+[221-test QA](https://github.com/zuizui0223/keiba/actions/runs/38563275573).
+
 ## 2026-10-14: how uncertain are the original horse ICCs under the Gaussian model?
 
 A post-hoc, **model-conditional sampling sensitivity** was completed
