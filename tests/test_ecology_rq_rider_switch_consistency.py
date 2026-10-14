@@ -196,5 +196,110 @@ class RiderChangeSourceConsistencyTests(unittest.TestCase):
         self.assertTrue(short["no_original_horse_rider_trainer_identifiers_exported"])
 
 
+    def test_source_date_and_going_rider_coverage_is_aggregate_only(self):
+        timed,coverage=source_timed_panel(synthetic_races())
+        self.assertEqual(len(timed),320)
+        dates=coverage["numeric_Jockey_ID_coverage_by_original_meeting_date"]
+        self.assertEqual(len(dates),10)
+        self.assertTrue(all(x["GPS_records"]==32 for x in dates.values()))
+        self.assertTrue(all(x["with_numeric_Jockey_ID"]==32 for x in dates.values()))
+        self.assertTrue(all(x["observed_source_coverage_fraction"]==1.
+                            for x in dates.values()))
+        self.assertEqual(sum(x["GPS_records"] for x in coverage[
+            "numeric_Jockey_ID_coverage_by_official_source_going"].values()),320)
+        self.assertTrue(coverage[
+            "coverage_is_conditional_on_positive_GPS_not_all_actual_starters"])
+        dumped=json.dumps(coverage)
+        self.assertNotIn("INVENTED-HORSE",dumped)
+        self.assertNotIn("FAKE-NAME",dumped)
+
+    def test_positive_planted_horse_repeatability_survives_every_source_date_drop(self):
+        result=analyze(synthetic_races(),permutations=59)
+        influence=result[
+            "post_hoc_leave_one_original_meeting_and_anonymous_animal_influence"]
+        self.assertEqual(influence["status"],
+                         "POST_HOC_SOURCE_CONDITIONAL_INFLUENCE_DIAGNOSTIC_ONLY")
+        date_a=influence["date_deletion"]
+        self.assertEqual(date_a["number_of_deletions_attempted"],10)
+        self.assertEqual(date_a["refits_on_HOLD"],0)
+        self.assertEqual(date_a["positive_refits"],10)
+        self.assertGreater(date_a["minimum_refitted_pair_product_seconds_squared"],0)
+        self.assertTrue(date_a["not_a_confidence_interval_or_p_value"])
+        self.assertEqual(len(date_a["source_date_keyed_anonymous_support"]),10)
+        identity=influence["horse_ID_deletion_ANON_AGGREGATES_ONLY"]
+        self.assertEqual(identity["number_of_deletions_attempted"],32)
+        self.assertEqual(identity["numeric_refits_meeting_original_support_gate"],32)
+        self.assertEqual(identity["positive_refits"],32)
+        self.assertGreater(identity["minimum_refitted_pair_product_seconds_squared"],0)
+        self.assertTrue(influence[
+            "same_GPS_peer_reference_kept_fixed_after_horse_deletion"])
+        self.assertTrue(identity[
+            "only_aggregate_deletion_range_not_any_original_HORSES_ID"])
+        dumped=json.dumps(influence)
+        for forbidden in ("INVENTED-HORSE","FAKE-NAME","FICTIONAL Class",
+                          '"jockey_id"','"trainer_id"'):
+            self.assertNotIn(forbidden,dumped)
+
+    def test_influence_drops_below_support_not_interpreted_as_zero(self):
+        rows=synthetic_races(horses=32,days=10)
+        days=sorted({r["day"] for r in rows})
+        for r in rows:
+            index=int(r["horse_id"].rsplit("-",1)[1])
+            dayindex=days.index(r["day"])
+            if index<22:
+                if dayindex not in (0,1):
+                    r["jockey_license_id"]=None
+                else:
+                    r["jockey_license_id"]=str(20000+index*10+dayindex)
+            else:
+                if dayindex<2:
+                    r["jockey_license_id"]=None
+        result=analyze(rows,permutations=59)
+        influence=result[
+            "post_hoc_leave_one_original_meeting_and_anonymous_animal_influence"]
+        self.assertEqual(influence["status"],
+                         "POST_HOC_SOURCE_CONDITIONAL_INFLUENCE_DIAGNOSTIC_ONLY")
+        by_date=influence["date_deletion"]
+        self.assertEqual(by_date["status"],
+                         "HOLD_AT_LEAST_ONE_DELETION_INSUFFICIENT_SUPPORT")
+        self.assertGreaterEqual(by_date["refits_on_HOLD"],2)
+        self.assertNotIn("minimum_refitted_pair_product_seconds_squared",by_date)
+        self.assertNotIn("maximum_refitted_pair_product_seconds_squared",by_date)
+        day0=by_date["source_date_keyed_anonymous_support"][days[0]]
+        self.assertEqual(day0["status"],
+                         "HOLD_INSUFFICIENT_WITHIN_ID_CROSS_DATE_RIDER_PAIR_SUPPORT")
+        self.assertNotIn("mean_pair_product_seconds_squared",day0)
+        self.assertGreater(by_date["numeric_refits_meeting_original_support_gate"],0)
+
+    def test_when_main_rider_pair_support_fails_influence_fails_closed(self):
+        result=analyze(synthetic_races(horses=16),permutations=59)
+        influence=result[
+            "post_hoc_leave_one_original_meeting_and_anonymous_animal_influence"]
+        self.assertEqual(influence["status"],
+                         "HOLD_PRIMARY_SWITCHED_RIDER_PAIR_SUPPORT_INSUFFICIENT")
+        self.assertNotIn("date_deletion",influence)
+        self.assertNotIn("horse_ID_deletion_ANON_AGGREGATES_ONLY",influence)
+        self.assertTrue(influence["not_a_confidence_interval_or_independent_cohort"])
+
+    def test_source_HTTP_error_diagnostics_expose_only_status_not_URL(self):
+        from urllib.error import HTTPError
+        from ecology_rq_rider_switch_consistency import safe_original_source_error_category
+        example=HTTPError("https://example.invalid/?id=SECRET-FAKE-HORSE",
+                          429,"SECRET-RESPONSE-TEXT",None,None)
+        result=safe_original_source_error_category(example)
+        self.assertEqual(result["source_error_http_status_if_available"],429)
+        self.assertTrue(result["source_http_rate_limited_429"])
+        self.assertFalse(result["source_http_upstream_5xx"])
+        self.assertNotIn("SECRET",json.dumps(result))
+        self.assertTrue(result["source_unavailable_is_not_zero_animal_response"])
+        server=safe_original_source_error_category(HTTPError(
+            "https://example.invalid/?id=SECRET",503,"",None,None))
+        self.assertTrue(server["source_http_upstream_5xx"])
+        self.assertFalse(server["source_http_rate_limited_429"])
+        timeout=safe_original_source_error_category(TimeoutError("SECRET URL"))
+        self.assertIsNone(timeout["source_error_http_status_if_available"])
+
+
+
 if __name__=="__main__":
     unittest.main()
