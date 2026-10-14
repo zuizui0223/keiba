@@ -63,12 +63,19 @@ jobs:
           assert r['no_animal_rider_trainer_identifiers_or_raw_GPS_written']
           assert r['old_20261013_GetHorsesForRace_XML_was_NOT_fingerprinted']
           assert r['archived_fixture_validation']['verified_original_days']==12
-          assert r['status'] in (
-              'SOURCE_SNAPSHOT_REPLAY_MATCHES_20261014_FOUR_ORIGINAL_COMPONENTS',
-              'HOLD_RQ_SOURCE_ROSTER_OR_OTHER_ORIGINAL_RESPONSE_DRIFTED',
-              'HOLD_RQ_ORIGINAL_BYTES_STABLE_BUT_MATCHING_RULE_CHANGED',
-              'HOLD_SOME_ORIGINAL_SOURCE_DATES_NOT_RETRIEVED',
-          )
+          # Source drift is not a biological result, but it MUST NOT
+          # quietly pass an independent source-reproducibility sentinel.
+          # The JSON report is still uploaded when this test fails.
+          assert r['status']=='SOURCE_SNAPSHOT_REPLAY_MATCHES_20261014_FOUR_ORIGINAL_COMPONENTS'
+          c=r['source_component_status_counts']
+          assert c['dates_fully_matching_frozen_source_and_count']==12
+          for key in (
+              'meeting_XML_SHA256_matching',
+              'race_XML_SHA256_matching',
+              'gps_CSV_SHA256_matching',
+              'combined_original_GetHorsesForRace_roster_SHA256_matching',
+          ):
+              assert c[key]==12
           PY
       - uses: actions/upload-artifact@v4
         if: always()
