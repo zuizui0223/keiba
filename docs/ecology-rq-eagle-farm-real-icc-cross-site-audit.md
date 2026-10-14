@@ -226,3 +226,34 @@ python scripts/ecology_rq_eagle_farm_external_icc.py \
 No source horse names, horse/rider/trainer licence
 numbers, GPS runner rows, or individual predictions
 are written to any public repo asset.
+
+
+## New source-format follow-up: Doomben attempted the first-marker bridge (2026-10-14)
+
+A **third original Racing Queensland racecourse,
+Doomben**, was chosen because a *pre-lock source
+format screen* had shown original 150m
+and 200m initial GPS marker categories.
+A fixed 19-date/6-races-per-date
+cohort was committed before inspecting
+animal IDs or fitted ICCs.
+
+The [original independent
+Doomben audit](ecology-rq-doomben-third-venue-original-marker-audit.md)
+found **only nine** HORSES IDs
+observed on separate dates at the
+exact 150m marker, and **nine**
+at the exact 200m marker. Despite
+177 and 205 original positive
+marker records, respectively, neither
+cohort meets the existing >=20
+repeated-ID requirement.
+
+Therefore **the Doomben 150m
+comparison with Cannon Park 150m,
+and the Doomben 200m comparison
+with Eagle Farm 200m, both remain HOLD**.
+This result reinforces the importance
+of individual repeat exposures and
+measurement compatibility, not a
+biological zero or site effect.
