@@ -81,8 +81,15 @@ statistics enter the archived JSON.
 | HORSES IDs seen 4+ source dates/starts | **2** |
 | 150m first-interval candidates | **177** |
 | 150m original races | **24** |
-| 200m first-interval candidates included by existing >=4-source-GPS-race model | **193** |
-| 200m original races included by existing model | **27** |
+| 150m distinct official HORSES IDs | **166** |
+| 150m IDs recorded on 2+ source dates | **9** |
+| 150m source meeting dates represented | **14** |
+| 200m positive first-interval source candidates | **205** |
+| 200m distinct official HORSES IDs | **195** |
+| 200m IDs recorded on 2+ source dates | **9** |
+| 200m source meeting dates represented | **14** |
+| 200m candidates retained in >=4-timed-horse fields | **193** |
+| 200m original races retained in model | **27** |
 | Numerically supported ICC at either 150m or 200m | **NO: both HOLD** |
 | Matched-marker numeric ICC bridge to either previous venue | **0** |
 
@@ -91,9 +98,15 @@ The full original Doomben first-marker frequency includes
 250m, 260m and 270m. Although individual
 HORSES IDs recur across dates in the
 *pooled* original sample, there were
-**too few repeated IDs within either
-identical 150m or 200m measurement
-stratum to pass the existing ICC threshold**.
+**only NINE** repeated original HORSES IDs
+at each of the **exact 150m** and **200m**
+first-marker strata across at least two dates,
+below the existing **20-ID support gate**.
+This is the specific quantitative reason the
+ICC models return HOLD: 177 source 150m
+records and 205 source 200m records are
+mostly one-off individuals, not longitudinal
+replication of the same animals.
 The source collector never returns an
 ICC=0 fallback if repeat support is absent.
 
@@ -118,6 +131,17 @@ it does not imply zero racehorses,
 zero starts, zero variance, or a
 legitimate scientific exclusion of
 unfavorable outcomes.
+
+The original aggregate error code for 2026-08-26
+was `HOLD_NO_OFFICIAL_SELECTED_RACES`,
+rather than a loss of GPS horse
+recordings. A separate read-only
+inspection of the official SOAP
+`GetRacesForMeeting` endpoint showed
+that it returned a text database
+string/binary truncation error instead
+of the expected XML race list.
+No missing race was invented.
 
 The full locked 19-date source cohort
 is therefore **PARTIAL/HOLD**.
@@ -181,3 +205,28 @@ replace the original API failure.
 Source support counts are
 **feasibility diagnostics, not
 a hypothesis test**.
+
+
+## Snapshot reproducibility improvement
+
+In addition to the original Meeting, Race
+and GPS CSV SHA-256 hashes, the audit
+now computes a **combined anonymous hash
+of every GetHorsesForRace original
+roster XML response**, grouped by
+original meeting date, plus the number
+of original rosters hashed. This
+prevents a future discrepancy from
+being silently attributed to changed
+animal biology if the upstream RQ
+historical entrant list changes while
+the GPS CSV remains byte-identical.
+No numeric horse ID, race ID or
+roster payload is exported.
+
+The identity source may be updated by
+the provider after the original event:
+a cryptographic source fingerprint
+provides repeatability of the **data
+snapshot**, not evidence of valid
+official starter or finisher status.
