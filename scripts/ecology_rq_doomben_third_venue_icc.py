@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import hashlib
 import json
 from pathlib import Path
 
@@ -88,6 +89,15 @@ def collect(*, soap=request_xml, gps=fetch_official,
     manifest={}
     rows=[]
     for day in DATES:
+        original_horse_roster_shas={}
+        def verified_hashing_soap(operation,params):
+            xml,url,digest=soap(operation,params)
+            if operation=="GetHorsesForRace":
+                race_identifier=str(params["raceId"])
+                if race_identifier in original_horse_roster_shas:
+                    raise ValueError("HOLD_DUPLICATE_HORSES_API_ROSTER_REQUEST")
+                original_horse_roster_shas[race_identifier]=digest
+            return xml,url,digest
         cfg={
             "source":FILES[day],
             "ground_expected":"SOURCE_RACE_LEVEL",
@@ -96,7 +106,7 @@ def collect(*, soap=request_xml, gps=fetch_official,
         try:
             audit,candidates=audit_one_day(
                 day,
-                soap=soap,gps=gps,
+                soap=verified_hashing_soap,gps=gps,
                 locked_config=cfg,
                 race_selection=RACE_NUMBERS,
                 venue=VENUE,
@@ -121,6 +131,14 @@ def collect(*, soap=request_xml, gps=fetch_official,
                 "same_day_name_repeated_source_rows_blocked":
                     audit["candidate_rows_with_same_day_duplicate_gps_name"],
                 "original_source_sha256_only":audit["source_hashes"],
+                "official_horse_rosters_hashed":len(original_horse_roster_shas),
+                "official_HORSES_roster_XML_sha256_combined_without_IDs":hashlib.sha256(
+                    "".join(
+                        f"{rid}:{sha}\n" for rid,sha in
+                        sorted(original_horse_roster_shas.items())
+                    ).encode("ascii")
+                ).hexdigest(),
+                "roster_snapshot_source_hashes_are_needed_to_identify_edition_changes":True,
                 "no_individual_source_data_exported":True,
             }
             rows.extend(candidates)
