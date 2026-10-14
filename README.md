@@ -31,14 +31,22 @@ retry obtained only **3 of 12 dates** and was correctly marked
 Never treat absent source responses as zero animal effects.
 
 A **post-hoc leave-one-meeting-date and anonymous leave-one-horse
-influence audit** now runs under exactly the same sample/measurement
-support gates. Its synthetic/QA tests passed; a genuine numerical
-date/horse sensitivity range is **not established** until the
-original 12-source-date read succeeds completely.
+influence audit** has now independently re-read **all 12 source dates**,
+and all 176 synthetic/QA tests passed. The original changed-rider
+mean pair product remained **+0.063583 sec²**. All **12/12** single
+meeting-date deletions stayed numerically supported and positive
+(range **+0.045540 to +0.080127 sec²**), as did all **36/36**
+anonymous single-animal deletions (**+0.049043 to +0.067635 sec²**).
+These ranges are **NOT 95% uncertainty intervals**, independent
+new cohorts or evidence of causal/innate horse personality.
+The earlier incomplete 3/12-source retry was an availability HOLD,
+not an empirical negative result. The difference between the
+original 548 and new 543 candidate matches remains unresolved.
 
 See the [rider-change real-source observational audit](docs/ecology-rq-real-rider-switch-persistence-audit.md),
 [date/horse deletion criteria](docs/ecology-rq-rider-switch-influence-design.md),
-and [first official 12-date real data run](https://github.com/zuizui0223/keiba/actions/runs/38492841107).
+[full 12/12 official source sensitivity re-run](https://github.com/zuizui0223/keiba/actions/runs/38498881524),
+and [first original rider-change run](https://github.com/zuizui0223/keiba/actions/runs/38492841107).
 Environmental H1/H2, horse intrinsic personality, genetics and
 wagering effects remain unsupported.
 
