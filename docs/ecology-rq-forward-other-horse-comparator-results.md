@@ -67,7 +67,17 @@ at least four positive GPS peers; 378 timed rows had a
 valid source Jockey/@Id. The older 548-source-candidate
 version remains a separate historical source snapshot
 with missing old roster-XML digests, so its change mechanism
-cannot be proved from this analysis.
+cannot be proved from this analysis. An additional
+[independent immutable-source snapshot audit](https://github.com/zuizui0223/keiba/actions/runs/38563462303)
+verified that **all 12 previously archived meeting XML, race
+XML, and GPS CSV SHA256 digests match between 548 and
+543 source versions**, but one matched horse-ID/GPS candidate
+was lost on each of five original dates. Older per-race
+HORSES roster XML digests were never saved. Hence
+**roster revision versus alternative joining/code behavior
+remains unresolved**: do not credit the difference to
+biological variation or claim identity-level longitudinal
+snapshots were immutable.
 
 ### Primary: matched distance and first GPS marker (no Class restriction)
 
