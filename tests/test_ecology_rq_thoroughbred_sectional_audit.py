@@ -95,7 +95,13 @@ class RQSectionalTests(unittest.TestCase):
             official_url("https://evil.example.com/filename.csv")
         # 5 fixed original Cannon Park cohorts + 7 locked 2026
         # calendar additions, plus one separate Eagle Farm comparator.
-        self.assertEqual(len(APPROVED),24)
+        # 12 Cannon Park + 12 Eagle Farm + 19 Doomben dated
+        # original official files: never accept guessed URLs.
+        self.assertEqual(len(APPROVED),43)
+        self.assertIn("20260114_Doomben_T.csv",
+                      official_url("20260114-doomben"))
+        self.assertIn("20261005_Doomben_T.csv",
+                      official_url("20261005-doomben"))
         self.assertIn("20260216_Ladbrokes_Cannon_Park_T.csv",
                       official_url("20260216-cairns"))
         self.assertIn("20260312_Ladbrokes_Cannon_Park_T.csv",
