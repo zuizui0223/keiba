@@ -140,6 +140,20 @@ class SourceRecheckTests(unittest.TestCase):
         self.assertTrue(out["per_date_anonymous_comparison"][mod.DAYS[0]][
             "unretrieved_is_not_zero_horses"])
 
+    def test_only_allowlisted_error_code_can_be_emitted_without_horse_names(self):
+        self.assertEqual(
+            mod.safe_original_source_error_code(
+                ValueError("HOLD_UNAPPROVED_EXTERNAL_COHORT_CONFIGURATION: HORSE PRIVATE 001")),
+            "HOLD_UNAPPROVED_EXTERNAL_COHORT_CONFIGURATION")
+        self.assertEqual(
+            mod.safe_original_source_error_code(
+                ValueError("HOLD_source invalid HORSE NAME")),
+            "HOLD_SOURCE_FAILURE_UNCLASSIFIED")
+        self.assertEqual(
+            mod.safe_original_source_error_code(
+                TimeoutError("horses in private query")),
+            "HOLD_ORIGINAL_SOURCE_TIMEOUT")
+
     def test_only_locked_dates_permitted_and_missing_live_status_refused(self):
         base=artificial_frozen_manifest()
         with self.assertRaisesRegex(ValueError,"HOLD_REPLAY_SCOPE"):
