@@ -1,5 +1,49 @@
 # keiba — ecological individuality & competitive context
 
+
+## 2026-10-14: independent original-source fingerprint audit — 548 vs 543 records
+
+The original public Racing Queensland Cannon Park 12-date analyses had
+548 source HORSES-ID×first-positive-GPS candidates in the
+2026-10-13 aggregate, but a later 2026-10-14 original-source
+rider-switch audit had **543**.
+
+The two independently archived original-source aggregate JSON files
+were fetched and compared **per date**. Each of five original dates
+(2026-02-16, 03-26, 04-09, 08-28, 10-11) lost **one** linked
+candidate; the other seven date counts were unchanged.
+All **12/12 source SHA-256 fingerprints** for each of the
+original **meeting XML, race XML and GPS CSV** were byte-identical
+in the two historical archives. Thus the five-row difference is
+**not explained by any of these three primary source files**.
+
+The older archive did **not** hash raw GetHorsesForRace original
+horse-nomination response XML; those horse-source responses and
+the code/identity-joining logic cannot be conclusively separated
+as explanations of the missing five matches. Treat the discrepancy
+as **HOLD_SOURCE_VERSION_OR_JOIN_LOGIC**, not a biological result.
+
+The newer 543-record edition is now **permanently pinned** with
+12 original day-specific Meeting XML / Race XML / GPS CSV /
+HORSES-roster combined SHA-256 values and anonymized positive
+GPS join counts. A second original-source replay
+[run 38565084313](https://github.com/zuizui0223/keiba/actions/runs/38565084313)
+independently validated the permanent pin and confirmed that all
+12 original dates matched all **four** actual source fingerprints
+and the number of linked HORSES-ID/GPS candidates.
+
+**This verifies the reproducibility of the later source edition,
+not the older 548-run original HORSES roster**, and
+does not upgrade horse ICC source-conditional values into
+an evolution, heritability, ground H1 or competition H2 conclusion.
+
+[Full 12-date evidence and scientific interpretation
+limitations](docs/ecology-rq-cannon-original-source-drift-20261014.md) /
+[previous-vs-later archive comparison](https://github.com/zuizui0223/keiba/actions/runs/38563462303) /
+[permanent anonymous original-source SHA pin](docs/evidence/rq-cannon-original-source-fingerprints-20261014.json) /
+[replay audit script](scripts/ecology_rq_horse_roster_snapshot_check.py).
+
+
 ## 2026-10-14: does the focal horse's history outperform other horses' earlier records?
 
 A new **post-hoc, strictly past-only original-source contrast**
