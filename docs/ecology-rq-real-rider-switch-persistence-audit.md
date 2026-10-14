@@ -97,6 +97,95 @@ used exactly the prior 548-record Cannon cohort**, and do not
 interpret source candidate changes as changes in true starts,
 DNF, population size or behavior.
 
+## New same-source influence checks: all 12 dates and all 36 horses
+
+After [the post-hoc deletion design was committed](ecology-rq-rider-switch-influence-design.md),
+the new code performed all individual source-day and anonymous animal
+influence calculations on a **fresh, complete 12/12 official-source read**:
+[GitHub Actions #38498881524](https://github.com/zuizui0223/keiba/actions/runs/38498881524).
+All 176 synthetic/QA tests passed in
+[research CI #38498881472](https://github.com/zuizui0223/keiba/actions/runs/38498881472).
+
+The identical source-conditional 543-candidate cohort was recovered
+(519 first-GPS rows from 74 races after the >=4 timed GPS peer threshold,
+378 rows with documented numeric Jockey/@Id).
+The original changed-declared-jockey indicator remained
+**36 HORSES IDs, 38 strata, 72 across-date pairs** and
+**+0.0635832314 seconds squared**.
+
+| Post-hoc deletion, preserving the already observed race-relative peer baseline | Result |
+| --- | ---: |
+| Original meeting-date deletions attempted | **12** |
+| Date deletions still passing the same >=20-ID and remaining source support gates | **12/12** |
+| Positive date-deletion mean pair products | **12/12** |
+| Date-deletion minimum and maximum | **+0.045540 to +0.080127 sec²** |
+| Original contributing HORSES-ID deletions attempted | **36** |
+| Anonymous ID deletions passing the original source-support gates | **36/36** |
+| Positive horse-deletion mean pair products | **36/36** |
+| Anonymous horse-deletion minimum and maximum | **+0.049043 to +0.067635 sec²** |
+
+**Largest sensitivity among dated sources:** Omitting the
+2026-08-22 original meeting gave **+0.045540 sec²**;
+omitting 2026-05-29 gave **+0.080127 sec²**.
+Both retained positive descriptive results and passed the original
+numeric support gate. These are the extrema after deleting a single
+date, NOT a 95% confidence interval, independent sample validation
+or causal experiment.
+
+**Biological scope:** The signal was not carried solely by any one
+original horse ID or any one meeting date in this observed cohort.
+The removal of a horse's pair contributions keeps other horses'
+contemporaneous GPS-peer reference fixed, specifically to avoid
+changing other horses' dependent variables by definition.
+No deleted individual's ID, date-specific individual trajectory
+or pair-product contribution was exported.
+
+### Rider documentation differs by source going
+
+Among the **519 positive-GPS timed observations**,
+valid numeric Jockey/@Id was present in **378 (72.8%)**.
+The aggregate observed-source coverage by original race rating was:
+
+| TrackRating | Timed rows | Numeric Jockey/@Id documented | Fraction |
+| --- | ---: | ---: | ---: |
+| Good | 180 | 120 | **66.7%** |
+| Soft | 206 | 154 | **74.8%** |
+| Heavy | 133 | 104 | **78.2%** |
+
+This illustrates nonuniform source-rider documentation.
+It is **conditional on observed positive GPS timing**, NOT
+the completeness of true starters, and does not identify MCAR/MAR/MNAR
+or biological differences among the missing horses.
+The cross-rider analysis therefore remains a selected subset.
+
+### Source availability and provenance: fail-closed, then full re-fetch
+
+An intermediate official-source re-fetch
+[run #38493337639](https://github.com/zuizui0223/keiba/actions/runs/38493337639)
+succeeded in **3/12 dates only**; the other 9 dates raised
+HTTP errors/timeouts. The script correctly reported
+`HOLD_SOURCE_DATES_UNAVAILABLE_FOR_RIDER_SWITCH_INFERENCE`
+with no partial biological estimate, even though the workflow
+process finished green. This is a source-availability HOLD, not a zero
+effect or a biological source-free result.
+
+The later full re-fetch #38498881524 recovered **12/12** original
+dates and the same positive 36-horse source-conditioned outcome.
+For the three dates successfully read in BOTH of those recent runs
+(2026-05-29, 2026-08-28 and 2026-08-29), the newly archived
+**per-date aggregate original HORSES roster XML SHA256**, plus
+meeting/race/GPS SHA256 and candidate row counts, all matched
+exactly across runs. That demonstrates *recent partial source
+snapshot reproducibility*, not retroactive verification of the
+older 548-candidate original cohort: its horse-roster digests
+were never captured.
+
+The earlier **548 vs 543 candidate** discrepancy and the distinction
+between documented nominated and actual postrace rider identity remain
+unresolved. Thus even this successful all-deletions sensitivity
+does **not** establish stable intrinsic animal personality, a jockey
+cause, genetics, ecological ground responses H1 or competition H2.
+
 ## Biological inference boundary
 
 The source-linked 36-horse repeated-rider-ID subgroup provides
