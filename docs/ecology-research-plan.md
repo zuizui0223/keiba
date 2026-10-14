@@ -725,3 +725,59 @@ Original race starters, age, definitive riders, outcomes,
 and H1/H2 remain HOLD. A next truly comparable test must
 use the same first-sectional measurement distance in
 both venues, with adequate repeated official HORSES IDs.
+
+
+## 2026-10-14 third venue: a genuine marker-matched source design cannot yet identify horse ICC
+
+The external Eagle Farm site yielded pooled original
+race-adjusted ICC 0.452894, but no exact first GPS
+measurement marker had numerical ICC support in
+**both** Cannon Park and Eagle Farm. Further,
+the original cross-venue identity check found
+two shared HORSES IDs, zero with a matched
+first interval marker+official race distance.
+
+A separately locked **19-date Doomben source**
+was then audited with original official RQ
+HORSES IDs, six original race numbers per
+date and positive first GPS interval records,
+explicitly to test whether one racecourse
+could bridge **150m Cannon and 200m Eagle**
+measurement cohorts.
+
+[Original source and support audit](ecology-rq-doomben-third-venue-original-marker-audit.md)
+and [original GitHub source execution](https://github.com/zuizui0223/keiba/actions/runs/38499396097)
+give **18 completed dates / 19 planned**,
+**617** source records, 541 original numeric
+animal IDs and 65 with repetition across
+dates irrespective of initial segment distance.
+
+Within exact 150m first markers, there were
+**177** records but only **9** original IDs
+with observations on 2+ dates. Within 200m
+first markers, there were **205** original
+observations, again only **9** repeated IDs.
+Both fail the prior >=20 source-repeat gate
+for Gaussian race-fixed horse ICC. The
+cross-venue same-marker ICC test remains
+**HOLD, not a numerical zero**.
+
+One source date, 2026-08-26, had its
+official meeting and GPS CSV present,
+but the first-party \`GetRacesForMeeting\`
+API returned a backend string-truncation
+error instead of race IDs. We recorded
+this as missing source metadata and
+did not reconstruct arbitrary IDs.
+
+**Biological conclusion:** the
+existing pooled source-level
+individual ICC signals are
+compatible with sustained original
+horse-ID associations but do **not**
+establish a replicated identical
+first-section biological trait
+or genetic individuality.
+This is a real model-identifiability
+and data-provenance gate, not
+negative evidence about H1/H2.
