@@ -1,0 +1,392 @@
+{
+  "schema_version": 1,
+  "scope": "Kyoto 2026-10-12 R7-R12",
+  "comparison": "v3.1 union vs same cardinality frozen pre-race win-odds rank",
+  "confirmatory": false,
+  "development_only": true,
+  "prospective_claim": false,
+  "note": "Rules and v3.1 candidate channels were designed after seeing these race outcomes. Do not interpret this development recall as predictive performance.",
+  "inputs": {
+    "v31_audit_sha": "0499632325684721b26689d2988cfd337995f57b",
+    "shadow_script_sha": "ba6badbe3a365a9ed57618f4748a591a29b1779e",
+    "frozen_input_shas": {
+      "7": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
+      "8": "40b8626ece484ef6631d4bd97aaf89f26eedec09",
+      "9": "71f6fd82a3c8f44d99ce66354ae077e998b6a238",
+      "10": "4b8c098eedb478ebd6a9e3e874aa6b692adcfe9a",
+      "11": "72180071976ffb9efe81cf6b4a6dfdb2aa458bd0",
+      "12": "3b9194da50df0ead111d179dac609e3c61d3a1c2"
+    },
+    "result_snapshot_shas": {
+      "7": "86a3bb9c9c58a3e582d347b3c4e3724e383c29db",
+      "8": "0f9b1577be4dfc7b04b01ea8fc69a43b24d9a6ef",
+      "9": "398c2c6d89b087d5d8b651b42f114b132e1935fa",
+      "10": "717d92856f28b94aac0f5c0aeb177176e024d23a",
+      "11": "bca09ec5cd4b1f9e2f015319544907ac613b634a",
+      "12": "4465e0df5efb9c67e80ac5dcff988a304e4dd83e"
+    }
+  },
+  "summary": {
+    "races": 6,
+    "starters": 83,
+    "top3_slots": 18,
+    "candidates_v31": 49,
+    "candidates_equal_market": 49,
+    "v31_top3_hits": 18,
+    "equal_market_top3_hits": 17,
+    "M_only_top3_hits": 11,
+    "v31_top3_recall": 1,
+    "equal_market_top3_recall": 0.9444444444444444,
+    "M_only_recall": 0.6111111111111112,
+    "v31_minus_equal_market": 1,
+    "v31_race_wins": 1,
+    "market_race_wins": 0,
+    "tie_races": 5
+  },
+  "races": [
+    {
+      "race": 7,
+      "field_size": 16,
+      "k": 8,
+      "actual_top3": [
+        2,
+        15,
+        9
+      ],
+      "v31_candidates": [
+        2,
+        5,
+        7,
+        9,
+        11,
+        12,
+        15,
+        16
+      ],
+      "market_same_size_candidates": [
+        11,
+        2,
+        15,
+        12,
+        4,
+        5,
+        9,
+        10
+      ],
+      "v31_top3_hits": [
+        2,
+        15,
+        9
+      ],
+      "market_same_size_top3_hits": [
+        2,
+        15,
+        9
+      ],
+      "M_only_top3_hits": [
+        2,
+        15
+      ],
+      "v31_unique_top3": [],
+      "market_unique_top3": [],
+      "boundary_tie": {
+        "cutoff_win_odds": 17.5,
+        "tied_horses": [
+          10
+        ],
+        "slots_filled_from_ties": 1,
+        "min_hits": 3,
+        "max_hits": 3
+      },
+      "equal_market_beat": false,
+      "v31_beat": false
+    },
+    {
+      "race": 8,
+      "field_size": 11,
+      "k": 7,
+      "actual_top3": [
+        9,
+        1,
+        7
+      ],
+      "v31_candidates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "market_same_size_candidates": [
+        9,
+        5,
+        11,
+        1,
+        3,
+        6,
+        4
+      ],
+      "v31_top3_hits": [
+        9,
+        1,
+        7
+      ],
+      "market_same_size_top3_hits": [
+        9,
+        1
+      ],
+      "M_only_top3_hits": [
+        9
+      ],
+      "v31_unique_top3": [
+        7
+      ],
+      "market_unique_top3": [],
+      "boundary_tie": {
+        "cutoff_win_odds": 14.2,
+        "tied_horses": [
+          4
+        ],
+        "slots_filled_from_ties": 1,
+        "min_hits": 2,
+        "max_hits": 2
+      },
+      "equal_market_beat": false,
+      "v31_beat": true
+    },
+    {
+      "race": 9,
+      "field_size": 12,
+      "k": 7,
+      "actual_top3": [
+        4,
+        3,
+        12
+      ],
+      "v31_candidates": [
+        3,
+        4,
+        6,
+        7,
+        10,
+        11,
+        12
+      ],
+      "market_same_size_candidates": [
+        12,
+        10,
+        4,
+        5,
+        3,
+        1,
+        6
+      ],
+      "v31_top3_hits": [
+        4,
+        3,
+        12
+      ],
+      "market_same_size_top3_hits": [
+        4,
+        3,
+        12
+      ],
+      "M_only_top3_hits": [
+        4,
+        12
+      ],
+      "v31_unique_top3": [],
+      "market_unique_top3": [],
+      "boundary_tie": {
+        "cutoff_win_odds": 15.1,
+        "tied_horses": [
+          6
+        ],
+        "slots_filled_from_ties": 1,
+        "min_hits": 3,
+        "max_hits": 3
+      },
+      "equal_market_beat": false,
+      "v31_beat": false
+    },
+    {
+      "race": 10,
+      "field_size": 10,
+      "k": 7,
+      "actual_top3": [
+        5,
+        2,
+        9
+      ],
+      "v31_candidates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "market_same_size_candidates": [
+        5,
+        2,
+        9,
+        7,
+        10,
+        4,
+        6
+      ],
+      "v31_top3_hits": [
+        5,
+        2,
+        9
+      ],
+      "market_same_size_top3_hits": [
+        5,
+        2,
+        9
+      ],
+      "M_only_top3_hits": [
+        5,
+        2,
+        9
+      ],
+      "v31_unique_top3": [],
+      "market_unique_top3": [],
+      "boundary_tie": {
+        "cutoff_win_odds": 17.3,
+        "tied_horses": [
+          6
+        ],
+        "slots_filled_from_ties": 1,
+        "min_hits": 3,
+        "max_hits": 3
+      },
+      "equal_market_beat": false,
+      "v31_beat": false
+    },
+    {
+      "race": 11,
+      "field_size": 18,
+      "k": 9,
+      "actual_top3": [
+        1,
+        4,
+        9
+      ],
+      "v31_candidates": [
+        1,
+        2,
+        4,
+        9,
+        12,
+        13,
+        15,
+        16,
+        18
+      ],
+      "market_same_size_candidates": [
+        9,
+        1,
+        18,
+        15,
+        13,
+        12,
+        17,
+        4,
+        2
+      ],
+      "v31_top3_hits": [
+        1,
+        4,
+        9
+      ],
+      "market_same_size_top3_hits": [
+        1,
+        4,
+        9
+      ],
+      "M_only_top3_hits": [
+        1,
+        9
+      ],
+      "v31_unique_top3": [],
+      "market_unique_top3": [],
+      "boundary_tie": {
+        "cutoff_win_odds": 19.2,
+        "tied_horses": [
+          2
+        ],
+        "slots_filled_from_ties": 1,
+        "min_hits": 3,
+        "max_hits": 3
+      },
+      "equal_market_beat": false,
+      "v31_beat": false
+    },
+    {
+      "race": 12,
+      "field_size": 16,
+      "k": 11,
+      "actual_top3": [
+        10,
+        12,
+        9
+      ],
+      "v31_candidates": [
+        1,
+        3,
+        6,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "market_same_size_candidates": [
+        3,
+        16,
+        8,
+        9,
+        1,
+        14,
+        10,
+        6,
+        15,
+        12,
+        13
+      ],
+      "v31_top3_hits": [
+        10,
+        12,
+        9
+      ],
+      "market_same_size_top3_hits": [
+        10,
+        12,
+        9
+      ],
+      "M_only_top3_hits": [
+        9
+      ],
+      "v31_unique_top3": [],
+      "market_unique_top3": [],
+      "boundary_tie": {
+        "cutoff_win_odds": 20.1,
+        "tied_horses": [
+          13
+        ],
+        "slots_filled_from_ties": 1,
+        "min_hits": 3,
+        "max_hits": 3
+      },
+      "equal_market_beat": false,
+      "v31_beat": false
+    }
+  ]
+}
