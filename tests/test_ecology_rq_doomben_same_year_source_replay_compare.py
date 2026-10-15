@@ -120,8 +120,8 @@ class SameYearOriginalSourceReplayAudit(unittest.TestCase):
         self.assertFalse(comparison[
             "same_source_population_supported_across_two_runs"])
         dump=json.dumps(z)
-        for forbidden in ("FAKE-HORSE","REAL-RUNNER","original_horse_name",
-                          "original_individual_time"):
+        for forbidden in ("FAKE-HORSE","REAL-RUNNER",
+                          '"horse_name":','"horse_id":','"individual_GPS_time":'):
             self.assertNotIn(forbidden,dump)
 
     def test_shared_source_roster_drift_is_detected_not_named_biology(self):
