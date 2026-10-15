@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from http.client import HTTPException
 import hashlib
 import json
 from pathlib import Path
@@ -137,10 +138,19 @@ def collect(
                 "individual_HORSES_ID_and_GPS_measurements_withheld":True,
             }
             observations.extend(rows)
-        except (ValueError,TimeoutError,OSError) as e:
+        except (ValueError,TimeoutError,OSError,HTTPException) as e:
             if on_error=="raise":
                 raise
-            manifest[day]=safe_failure(e)
+            # The upstream SOAP server sometimes terminates a chunked
+            # HTTP body (http.client.IncompleteRead), even when its
+            # original GPS CSV exists. NEVER parse partial XML, infer
+            # zero racehorses, or treat this as biological absence.
+            failure=safe_failure(e)
+            if isinstance(e,HTTPException):
+                failure["error_code"]="HOLD_INCOMPLETE_OR_TRUNCATED_OFFICIAL_HTTP_RESPONSE"
+                failure["error_type"]=type(e).__name__
+                failure["original_API_response_may_be_truncated"]=True
+            manifest[day]=failure
     return observations,manifest
 
 
