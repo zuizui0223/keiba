@@ -1,5 +1,47 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-15: same original HORSES IDs, STRICT 2025→2026 history test
+
+**Important negative exploratory source result:** A previously locked
+year-forward timing evaluation was run using **only original Doomben
+2025** HORSES-ID positive first-GPS histories to score the **same
+horse** in independent-source 2026 dates. On **26** identities and
+**27** 2026 observations with exactly matching original 150m first
+marker and official race distance, the original horse's own
+historical timing RMSE was **0.386131 seconds**, worse than
+both a zero-relative-history baseline (**0.368844 seconds**) and
+OTHER horses' same-source-context 2025 historical mean
+(**0.368906 seconds**).
+
+This **does not** prove that individuals lack stable biology,
+change personality year to year, or lose an adaptive trait.
+The source-selection and mixed original race Class differ; an
+additional Class match leaves **only 6** animals.
+Original 200m bridge support was **13 IDs / 14 observations**
+(and only 3 Class-matched IDs), all below the
+**unchanged pre-scoring 20-ID numerical support gate** and
+thus explicit **HOLD**. Four of the original 42 source
+meeting dates remained API/source HOLD; none was filled
+with synthetic individual records.
+
+**Scientific conclusion:** the within-2026 Cannon Park
+horse-specific historical timing advantage does **not**
+automatically transfer to a different original
+venue's *2025→2026* repeated-ID cohort. The
+earlier Doomben 150m ICC 0.654 (2025 only)
+versus 0.180 (pooled 2025/26) is a contrast
+of different source populations, **not**
+a direct biological annual decline.
+
+[Pre-scoring data/design lock](docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md),
+[verified real-source negative and three HOLD findings](docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md),
+[GitHub Actions original source 38677957462](https://github.com/zuizui0223/keiba/actions/runs/38677957462).
+The core H1 ground-reaction and H2 social competition
+hypotheses remain **HOLD**. No horse identities,
+per-horse predictions, raw GPS data or betting
+advice have been published.
+
+
 ## 2026-10-15: same first GPS marker in Doomben across 2025/2026
 
 The existing original-source 2026 Doomben third-track study had
