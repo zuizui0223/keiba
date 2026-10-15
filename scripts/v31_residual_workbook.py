@@ -49,10 +49,12 @@ def market_ranks(horses: list[dict]) -> dict[int, int | None]:
     }
 
 
-def workbook(freeze_path: Path, result_path: Path, score_path: Path,
-             attempt_path: Path, race_input_path: Path,
+def workbook(freeze_path: Path, result_path: Path, result_capture_path: Path,
+             score_path: Path, attempt_path: Path, race_input_path: Path,
              source_meta_path: Path) -> dict:
-    verified = validate_postrace(freeze_path, result_path, score_path, attempt_path)
+    verified = validate_postrace(
+        freeze_path, result_path, result_capture_path, score_path, attempt_path
+    )
     frozen = read_json(freeze_path)
     race_input = read_json(race_input_path)
     source_meta = read_json(source_meta_path)
@@ -148,7 +150,7 @@ def workbook(freeze_path: Path, result_path: Path, score_path: Path,
             "official_target_race_result_and_sectionals",
             "postrace_comments_as_supplementary_context",
         ],
-        "result_source_attestation": "NOT_VERIFIED_BY_WORKBOOK_GENERATOR",
+        "result_source_attestation": "VERIFIED_OFFICIAL_JRA_CAPTURE",
         "coverage": {
             "field_size": len(frozen_horses),
             "union_candidate_count": len(union),
@@ -163,6 +165,8 @@ def workbook(freeze_path: Path, result_path: Path, score_path: Path,
             "race_input_sha256": sha256_file(race_input_path),
             "source_capture_meta_sha256": sha256_file(source_meta_path),
             "result_input_sha256": sha256_file(result_path),
+            "result_capture_sha256": sha256_file(result_capture_path),
+            "result_source_text_sha256": verified["result_source_text_sha256"],
             "formal_score_sha256": sha256_file(score_path),
         },
         "misses": misses,
@@ -178,14 +182,14 @@ def workbook(freeze_path: Path, result_path: Path, score_path: Path,
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    for key in ("freeze", "result", "score", "attempt-ledger",
+    for key in ("freeze", "result", "result-capture", "score", "attempt-ledger",
                 "race-input", "source-meta", "output"):
         parser.add_argument("--" + key, type=Path, required=True)
     args = parser.parse_args()
     try:
         report = workbook(
-            args.freeze, args.result, args.score, args.attempt_ledger,
-            args.race_input, args.source_meta,
+            args.freeze, args.result, args.result_capture, args.score,
+            args.attempt_ledger, args.race_input, args.source_meta,
         )
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(
