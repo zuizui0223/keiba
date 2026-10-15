@@ -623,6 +623,41 @@ social competition
 and heritability
 remain untested.
 
+## Figure captions and source-backed display
+
+**Figure 1. Conditional advantage and non-transfer of individual
+pacing history in different source cohorts.** RMSE (seconds) is
+weighted equally across source-identified horse IDs and is
+calculated on identical scored future records *within* each
+panel. Panel A: historical source Cannon Park 2026 earlier dates
+to later dates, 36 original horse IDs/46 future observations.
+Panel B: Doomben fixed 2025 original histories predicting 2026
+positive-GPS observations, 26 original horse IDs/27 future
+observations. Lower RMSE indicates more accurate prediction
+of the focal horse's race-relative first-GPS duration
+for the specified source-conditional target. No source
+Class or genuine rider/horse annual effect was randomized;
+the panels differ in course, timing window, population
+and source observation availability. Their RMSE
+difference does **not** identify a causal year, age
+or context effect. In Doomben, Class-matching allowed
+only six shared horse IDs and four previously locked
+source dates were unavailable. Figure provenance:
+[generated figure CI and SVG artifact](https://github.com/zuizui0223/keiba/actions/runs/38679488650);
+[anonymized pinned evidence](evidence/rq-racehorse-temporal-generalization-20261015.json);
+[deterministic figure generator](../scripts/ecology_rq_manuscript_temporal_figure.py).
+
+**Figure 2, planned:** historical source provenance
+and missingness/eligibility flow for the 543-current vs
+548-older original Cannon candidate matches and Doomben
+38/42 successfully sourced dates. Do not imply a
+biological disappearance of source records.
+
+**Figure 3, planned:** within-Cannon positive source-date
+and horse-ID deletion ranges versus Doomben
+year-forward influence checks. Graph as sensitivity
+ranges, **never** 95% confidence intervals.
+
 ## References
 
 Bell AM, Hankison SJ, Laskowski KL (2009).
