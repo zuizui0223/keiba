@@ -45,12 +45,19 @@ def _dt(value: str) -> datetime:
     return t
 
 
-def validate(freeze_path: Path, result_path: Path, score_path: Path,
-             attempts_path: Path) -> dict:
+def validate(freeze_path: Path, result_path: Path, result_capture_path: Path,
+             score_path: Path, attempts_path: Path) -> dict:
+    from v31_prepare_result import prepare as prepare_result
+
     frozen = load(freeze_path)
     result = load(result_path)
+    result_capture = load(result_capture_path)
     score = load(score_path)
     attempts = load(attempts_path)
+
+    regenerated = prepare_result(result_capture)
+    if regenerated != result:
+        raise ValueError("result_source_mismatch")
 
     require(frozen.get("uses_target_race_results") is False, "invalid_prerace_freeze")
     race_id = frozen.get("race_id")
@@ -61,6 +68,8 @@ def validate(freeze_path: Path, result_path: Path, score_path: Path,
                  "score_version_mismatch")
 
     post = _dt(frozen["scheduled_start_jst"])
+    result_observed = _dt(result["source"]["observed_at_jst"])
+    require(result_observed >= post, "result_capture_before_post")
     obs = _dt(frozen["freeze_observed_at_jst"])
     market_obs = _dt(frozen["odds_observed_at_jst"])
     require(market_obs <= obs < post, "invalid_freeze_chronology")
@@ -147,6 +156,8 @@ def validate(freeze_path: Path, result_path: Path, score_path: Path,
         "race_id": race_id,
         "freeze_sha256": freeze_hash,
         "score_sha256": sha256(score_path),
+        "result_capture_sha256": sha256(result_capture_path),
+        "result_source_text_sha256": result["source"]["text_sha256"],
         "top3": top3,
         "union_top3_hits": len(hit_union),
         "M_top3_hits": len(hit_m),
@@ -155,11 +166,13 @@ def validate(freeze_path: Path, result_path: Path, score_path: Path,
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    for arg in ("freeze", "result", "score", "attempt-ledger"):
+    for arg in ("freeze", "result", "result-capture", "score", "attempt-ledger"):
         parser.add_argument("--" + arg, type=Path, required=True)
     args = parser.parse_args()
     try:
-        outcome = validate(args.freeze, args.result, args.score, args.attempt_ledger)
+        outcome = validate(
+            args.freeze, args.result, args.result_capture, args.score, args.attempt_ledger
+        )
         print(json.dumps(outcome, ensure_ascii=False, sort_keys=True))
         return 0
     except (ValueError, KeyError, TypeError, OSError, json.JSONDecodeError) as exc:
