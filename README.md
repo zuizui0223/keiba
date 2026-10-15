@@ -35,10 +35,19 @@ identify ground-response H1 or social competition H2.
 [2025 calendar source lock](docs/ecology-rq-doomben-2025-marker-calendar-lock.md)
 and [real first-GPS same-marker repeatability/source
 audit](docs/ecology-rq-doomben-2025-2026-exact-marker-source-results.md).
-The program additionally audits whether *original HORSES
-IDs themselves* reappear across 2025/2026 at exactly
-the same first GPS marker, race distance and Class,
-without publishing any identifiers.
+**Original year-shared identities are now audited:** exactly
+**101** source HORSES IDs were observed in both years;
+**27/17** at matching 150m/200m first markers,
+**27/16** also with the same original race
+distance, but only **6/4** with the same
+race Class as well. At neither marker does
+any HORSES ID have 2+ independent
+observed dates in EACH year (**0/0**).
+This source-design shortfall prevents
+treating changing annual ICC ratios as
+within-horse ecological year responses.
+All numerical IDs and raw timings
+remain private to source-memory processing.
 
 
 
