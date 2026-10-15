@@ -31,10 +31,15 @@ other horses' histories in 2026, with RMSE 0.386 s versus
 0.369 s in 26 matched horses and 27 later recordings.
 The latter result changed sign under one individual/date
 deletion, while a common source-Class requirement retained
-only six horses. The cohorts, historical updating rules
-and source selection differed; there is no identified
-time-decay, aging, intrinsic personality, H1 environment
-response or H2 social mechanism. Horse-ID-associated
+only six horses. An independently checked original source ID/date audit
+subsequently found **zero horses** with at least two
+distinct observed dates in 2025 AND at least one
+observed date in 2026 at the same 150-m initial
+GPS marker and race distance: the 23 within-2025
+and 26 year-forward scored horses were disjoint.
+The contrasts therefore cannot identify
+time-decay, aging, intrinsic personality,
+H1 environment response or H2 social mechanism. Horse-ID-associated
 historical performance can be predictively useful within
 a selected source context, but its transfer and even
 numerical estimability depend on observational support.
@@ -342,6 +347,26 @@ This checks source availability,
 not an experimentally randomized
 source-missingness mechanism.
 
+### 2.7. Same-individual temporal support gate
+
+An additional pre-scoring-locked but explicitly
+post-hoc audit used the same 42 original Doomben
+dates to ask whether **the same horse and exact
+150-m marker/distance** was scored in BOTH the
+within-2025 and 2025-trained/2026-heldout
+predictive evaluation. A separate, outcome-blind
+method used only the original HORSES ID and
+source observation dates, marker, distance and
+optional Class; no GPS outcome value was
+accessed for its incidence calculations.
+The predeclared gate required at least
+20 shared original horse IDs and
+20 scored observations in each horizon,
+plus sufficient separate meeting dates.
+An absent matched population returns HOLD,
+not an estimated temporal effect.
+[Methods/source provenance](ecology-rq-doomben-matched-individual-timescale-overlap-lock.md).
+
 ## 3. Results
 
 ### 3.1. Source-conditional horse-ID repeatability
@@ -614,6 +639,49 @@ source evidence](evidence/rq-doomben-same-year-rerun-availability-20261015.json)
 and [source
 replay CI](https://github.com/zuizui0223/keiba/actions/runs/38697999341).
 
+### 3.5. The two temporal prediction populations are fully disjoint
+
+An original 38/42-date Doomben re-fetch included
+**1,277** numeric HORSES-ID/positive initial
+GPS source candidate records, **977** unique
+original IDs and **228** original IDs observed
+on multiple dates when markers/distances were
+pooled. No horse ID was rejected for
+inconsistent names.
+
+At the **exact initial 150-m marker and
+official race distance**, the independently
+computed **outcome-blind ID/date incidence**
+was:
+
+| Fixed source repetition rule | Without Class | Also exact Class |
+| --- | ---: | ---: |
+| At least two different observed dates in 2025 | **23** | 17 |
+| At least one date in each of 2025 and 2026 | **26** | 6 |
+| **At least two 2025 dates AND one 2026 date, same individual and context** | **0** | **0** |
+| At least two dates in BOTH calendar years | **0** | **0** |
+
+The actual two scored source populations
+likewise contained **23 within-2025
+horses and 26 2025-trained/2026-scored
+horses but zero original HORSES IDs in
+their intersection**, even before matching
+context. Both strict and broad comparisons
+therefore returned the predeclared
+**scientific HOLD** without computing an
+unsupported paired-horizon RMSE contrast.
+
+This is a **source repetition/identifiability
+failure**: the two observed positive and
+negative scores describe different animals,
+not a within-animal change across years.
+The independent source-incidence calculation
+did not use prediction error or GPS timings.
+[Original-source overlap analysis
+and interpretation](ecology-rq-doomben-matched-timescale-overlap-real-results.md)
+([verified first official data run
+#38703717378](https://github.com/zuizui0223/keiba/actions/runs/38703717378)).
+
 ## 4. Discussion
 
 ### 4.1. Predictive individuality is a conditional property of the observed system
@@ -717,6 +785,22 @@ tell us whether the
 horse itself altered
 its behavior across
 months or years.
+
+More fundamentally, the direct Doomben
+source-incidence test showed **zero
+eligible same-HORSES-ID animals**
+with an exact 150-m marker/distance
+history measured at least twice in
+2025 and at least once in 2026.
+The two historical-score groups
+are **disjoint, not the same animals
+followed at two horizons**.
+The contrast between their group-level
+RMSE values therefore cannot be
+interpreted as within-animal change,
+independently of whether its
+individual numerical scores have been
+computationally reproduced.
 
 This pattern instead
 separates two ecological
@@ -899,7 +983,15 @@ reproducible for one
 source snapshot, not
 independent of source
 availability.
-The contrast
+The same-venue Doomben source
+lacks even a single original horse
+ID observed on >=2 dates in 2025
+and again in 2026 with identical
+150-m first marker and race distance.
+The sign contrast arises from
+**different animal populations**,
+not an experimentally observed
+within-horse change. The contrast
 cautions against
 conflating observed
 individual-associated
@@ -957,11 +1049,18 @@ Evidence: [independent source
 comparison](https://github.com/zuizui0223/keiba/actions/runs/38697999341);
 [source and inference audit](ecology-rq-doomben-within-year-source-replay-results.md).
 
-**Figure 2, planned:** historical source provenance
-and missingness/eligibility flow for the 543-current vs
-548-older original Cannon candidate matches and Doomben
-38/42 successfully sourced dates. Do not imply a
-biological disappearance of source records.
+**Figure 2, planned:** exact source ID/marker/distance
+temporal-support diagram. Within Doomben 2025,
+23 source horse IDs had >=2 original dates;
+26 different source horse IDs were observed
+in both years, but **zero IDs** met both
+observation requirements in the same
+150-m marker/distance context.
+Label these animal populations as disjoint,
+with four inaccessible source dates and
+no causal age/temporal-decay conclusion.
+A separate panel can present 543-current
+vs 548-older original Cannon source editions.
 
 **Figure 3, planned:** within-Cannon positive source-date
 and horse-ID deletion ranges versus Doomben
