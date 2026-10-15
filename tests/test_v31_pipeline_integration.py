@@ -21,6 +21,19 @@ CARD = """\
 |  | 5 | 取消馬  **50.0**(5番人気)  440kg(+0) owner | 牡4/鹿 57.0kg 騎手 | 取消 |  |  |  |
 """
 
+RESULT_TEXT = """\
+# レース結果2026年10月18日（日曜）4回京都7日 7レース
+
+発走時刻：**13時25分**
+
+| 着順 | 枠 | 馬 番 | 馬名 | 性齢 | 負担 重量 | 騎手名 | タイム |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 |  | 4 | デルタ | 牡3 | 57.0 | 田口 貫太 | 1:52.0 |
+| 2 |  | 1 | アルファ | 牡4 | 57.0 | 武 豊 | 1:52.1 |
+| 3 |  | 2 | ベータ | 牝4 | 56.0 | 西村 淳也 | 1:52.3 |
+| 4 |  | 3 | ガンマ | 牡5 | 58.0 | 幸 英明 | 1:52.5 |
+"""
+
 def profile(name, finish, age_class="3歳上1勝クラス"):
     return (
         f"| 2026年9月1日 | 阪神 | {age_class} | ダ1800 | 良 | 16 | 3 | "
@@ -98,8 +111,21 @@ class V31RealPipelineTests(unittest.TestCase):
         return frozen
 
     def score_case(self, base):
-        result = {"race_id": "2026-10-18-KYOTO-07", "top3": [4, 1, 2]}
-        (base / "result.json").write_text(json.dumps(result), encoding="utf-8")
+        result_capture = {
+            "race_id": "2026-10-18-KYOTO-07",
+            "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=example",
+            "observed_at_jst": "2026-10-18T13:35:00+09:00",
+            "text": RESULT_TEXT,
+        }
+        (base / "result-capture.json").write_text(
+            json.dumps(result_capture, ensure_ascii=False), encoding="utf-8"
+        )
+        r = self.run_script(
+            "v31_prepare_result.py",
+            "--capture", base / "result-capture.json",
+            "--output", base / "result.json",
+        )
+        self.assertEqual(r.returncode, 0, r.stderr)
         r = self.run_script(
             "v31_holdout.py", "score", "--freeze", base / "freeze.json",
             "--result", base / "result.json", "--output", base / "score.json",
@@ -158,6 +184,7 @@ class V31RealPipelineTests(unittest.TestCase):
                 "--ledger", base / "ledger-in.json",
                 "--freeze", base / "freeze.json",
                 "--result", base / "result.json",
+                "--result-capture", base / "result-capture.json",
                 "--score", base / "score.json",
                 "--attempt-ledger", base / "attempts.json",
                 "--output", base / "ledger.json",
@@ -175,6 +202,7 @@ class V31RealPipelineTests(unittest.TestCase):
                 "v31_validate_postrace.py",
                 "--freeze", base / "freeze.json",
                 "--result", base / "result.json",
+                "--result-capture", base / "result-capture.json",
                 "--score", base / "score.json",
                 "--attempt-ledger", base / "attempts.json",
             )
@@ -195,11 +223,35 @@ class V31RealPipelineTests(unittest.TestCase):
                 "v31_validate_postrace.py",
                 "--freeze", base / "freeze.json",
                 "--result", base / "result.json",
+                "--result-capture", base / "result-capture.json",
                 "--score", base / "score.json",
                 "--attempt-ledger", base / "attempts.json",
             )
             self.assertNotEqual(r.returncode, 0)
             self.assertIn("score_union_hits_mismatch", r.stderr)
+
+    def test_postrace_validation_rejects_tampered_result_capture(self):
+        with tempfile.TemporaryDirectory() as td:
+            base = Path(td)
+            self.setup_case(base)
+            self.score_case(base)
+            capture = json.loads((base / "result-capture.json").read_text(encoding="utf-8"))
+            capture["text"] = capture["text"].replace(
+                "| 1 |  | 4 | デルタ", "| 1 |  | 3 | ガンマ"
+            )
+            (base / "result-capture.json").write_text(
+                json.dumps(capture, ensure_ascii=False), encoding="utf-8"
+            )
+            r = self.run_script(
+                "v31_validate_postrace.py",
+                "--freeze", base / "freeze.json",
+                "--result", base / "result.json",
+                "--result-capture", base / "result-capture.json",
+                "--score", base / "score.json",
+                "--attempt-ledger", base / "attempts.json",
+            )
+            self.assertNotEqual(r.returncode, 0)
+            self.assertIn("result_source_mismatch", r.stderr)
 
     def test_postrace_validation_rejects_wrong_attempt_hash(self):
         with tempfile.TemporaryDirectory() as td:
@@ -213,6 +265,7 @@ class V31RealPipelineTests(unittest.TestCase):
                 "v31_validate_postrace.py",
                 "--freeze", base / "freeze.json",
                 "--result", base / "result.json",
+                "--result-capture", base / "result-capture.json",
                 "--score", base / "score.json",
                 "--attempt-ledger", base / "attempts.json",
             )
