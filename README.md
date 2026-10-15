@@ -1,5 +1,60 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-15: decisive same-horse identifiability check — common animals = ZERO
+
+**Newest empirical result:** the apparently positive 2025 within-year
+Doomben original-horse history (23 HORSES IDs, 24 later records)
+and the unfavorable 2025-history→2026 Doomben score
+(26 HORSES IDs, 27 later records) are **wholly disjoint original
+horse ID populations**. The precise original-source 150-m
+first-GPS marker plus identical official race distance
+yielded **zero** numeric HORSES IDs entering BOTH
+horizon evaluations.
+
+A separate outcome-blind audit computed original
+ID/date incidence **without any GPS timing/prediction
+values**. There were 23 horses with >=2 observed 2025
+dates, 26 horses with >=1 date in each year,
+but **0 horses with >=2 dates in 2025 AND
+>=1 observed date in 2026** under the same 150-m
+marker and official distance. Adding exact
+Class gave 17, 6 and **0**. Not one ID had
+2+ date repetitions in EACH year under those
+same measurement constraints.
+
+This does **NOT** mean the original horse
+population lacks repeated individuals:
+the fixed source returned 977 distinct original
+HORSES IDs, with 228 repeatedly observed on
+two or more dates when marker/distance/years
+were pooled. It means the prior TWO TEMPORAL
+SCORE GROUPS HAVE NO INDIVIDUALS IN COMMON.
+
+The original 23+19 previously locked 2025/2026
+source dates were read in two independently
+executed 38/42-date RQ source runs. They returned
+the **exact same anonymous JSON SHA256 and all
+original date-source fingerprints**, confirming
+the zero overlap for that source edition.
+The four unavailable original dates and actual
+starter/rider/age uncertainty remain HOLD.
+
+**Scientific gate: no same-horse longitudinal
+time-horizon contrast can be fitted.**
+The numerically favorable within-2025 source
+score and nonfavorable 2025→2026 score cannot
+be converted into causal disappearance of
+individuality, age effects or individual
+behavioral plasticity. H1 animal×going and H2
+rival interactions still remain unsupported.
+
+Read the [first-party reproducible zero-overlap
+audit](docs/ecology-rq-doomben-matched-timescale-overlap-real-results.md),
+[permanent anonymous SHA-matched evidence](docs/evidence/rq-doomben-identical-horse-timescale-overlap-20261015.json),
+[Figure 2 — source animal overlap](https://github.com/zuizui0223/keiba/actions/runs/38705465632),
+and [full manuscript with corrected ecological
+inference](docs/ecology-racehorse-individuality-manuscript-v1.md).
+
 ## 2026-10-15: Doomben same-year positive signal is source-availability dependent
 
 The **frozen** Doomben same-venue, *separately within 2025 and
