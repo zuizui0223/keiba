@@ -1,0 +1,49 @@
+name: "Ecology: render source-backed temporal generalization figure"
+
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'docs/evidence/rq-racehorse-temporal-generalization-20261015.json'
+      - 'scripts/ecology_rq_manuscript_temporal_figure.py'
+      - 'tests/test_ecology_rq_manuscript_temporal_figure.py'
+      - 'docs/ecology-racehorse-individuality-manuscript-v1.md'
+      - '.github/workflows/ecology-rq-manuscript-figure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  aggregate-only-figure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate frozen manuscript evidence against falsification tests
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_manuscript_temporal_figure.py' -v
+      - name: Produce manuscript figure only from approved aggregate source
+        run: |
+          python scripts/ecology_rq_manuscript_temporal_figure.py \
+            --output tmp/rq-context-limited-individuality.svg
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          txt=Path("tmp/rq-context-limited-individuality.svg").read_text()
+          root=ET.fromstring(txt)
+          assert root.tag.endswith("svg")
+          assert "Cannon Park" in txt and "Doomben" in txt
+          assert "do NOT estimate temporal decay" in txt
+          assert "0.256" in txt and "0.386" in txt
+          assert 'horse_id=' not in txt and 'jockey_license_id' not in txt
+          print("FIGURE_STATUS aggregate-only; cross-cohort temporal effect NOT estimated")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-source-conditional-two-cohort-figure
+          path: tmp/rq-context-limited-individuality.svg
+          retention-days: 30
