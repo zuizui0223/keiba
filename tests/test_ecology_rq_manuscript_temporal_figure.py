@@ -114,7 +114,7 @@ class ManuscriptAggregateEvidenceTests(unittest.TestCase):
         self.assertIn("26 leave-one-horse",manuscript)
         self.assertIn("ten leave-one-2026-date",manuscript)
         self.assertIn("does not identify a temporal",manuscript)
-        self.assertIn("38679488650",manuscript)
+        self.assertIn("38679786636",manuscript)
         self.assertIn("rq-racehorse-temporal-generalization-20261015.json",manuscript)
 
     def test_figure_generator_only_requires_aggregate_safe_source(self):
