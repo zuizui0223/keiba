@@ -131,26 +131,98 @@ contexts. No independent all-starter
 population ICC or causal source/year
 comparison is estimated.
 
-## Next source-identity reconciliation
+## Actual original HORSES IDs shared across BOTH source years
 
-The next narrow question is whether
-the *same official numeric HORSES IDs*
-have a **positive first-GPS 150m or 200m
-measurement in both 2025 and 2026**,
-and whether their original official race
-distance and broad Class also agree.
-This is a different and much stricter
-criterion than merely fitting a pooled
-random-intercept variance across many
-largely distinct animals. Such an audit
-must output anonymized COUNTS ONLY, not
-original ID lists or signed effects for
-tiny paired contexts.
+After the earlier 2025/2026 source-level
+numeric ICC feasibility fit, we reran
+the same 23+19 original locked dates
+with a separately unit-tested
+**cross-year HORSES-ID and first-marker/
+distance/Class overlap gate**.
 
-The source code and tests now support
-this additional gate in
-[`scripts/ecology_rq_doomben_2025_marker_extension.py`](../scripts/ecology_rq_doomben_2025_marker_extension.py).
-Any source failure remains HOLD.
+Independently executed:
+[GitHub Actions #38675223586](https://github.com/zuizui0223/keiba/actions/runs/38675223586).
+The same 38 dates succeeded, and the
+same four source dates remained HOLD.
+No original numeric IDs, animal names
+or per-horse GPS records were written.
+
+| Original equine source-ID support | Verified |
+| --- | ---: |
+| Different HORSES IDs in successful 2025 source dates | **537** |
+| Different HORSES IDs in successful 2026 source dates | **541** |
+| The exact same numeric HORSES ID appearing in BOTH years | **101** |
+
+Crucially, **within the same recorded
+initial marker**, the year-spanning
+contexts become much narrower:
+
+| Same original HORSES ID with observations in both years | 150m marker | 200m marker |
+| --- | ---: | ---: |
+| At least one positive first-GPS interval in each year at the same marker | **27** | **17** |
+| Same marker **and identical official race distance** in each year | **27** | **16** |
+| Same marker, race distance **and original race Class** | **6** | **4** |
+| At least **two distinct original dates in EACH year** at that exact marker | **0** | **0** |
+
+**Interpretation:** The combined-source
+150m/200m ICC gates pass because many
+more repeated ID records accumulate
+across two different annual source
+populations. But **zero horses** have
+the more demanding 2+ source dates
+*within both years* at either marker
+in this intentionally sampled cohort.
+Even broad original Class agreement
+leaves only 6 and 4 horses.
+
+This makes a within-individual change
+in early pacing *between calendar years*
+very weakly identified. The
+2025-only 150m ICC **0.654** and
+two-year pooled 150m ICC **0.180**
+are **different source population
+variance ratios**, not a measured
+personality change of the same
+horses. Likewise, numerical fit at
+200m from the combined years is
+**not** a matched-individual causal
+replication of Eagle Farm's 200m
+source ICC.
+
+**No valid p-value, 95% population
+confidence interval, genetically
+determined repeatability, fitness,
+adaptation, source-year effect, H1
+random environmental slopes or H2
+competitive-context effect** is
+justified by these counts.
+The missing actual final starters,
+complete race context, age and
+source sensor calibration still
+matter.
+
+## Further source-year interpretation gate
+
+The stricter **same original-ID
+across 2025 and 2026** gate is now
+empirically computed above. It shows
+only 6/4 broad class+distance-matched
+cross-year animals and **zero** with
+two source dates in *both* years at
+the same original 150m/200m marker.
+
+Further scientific progress requires
+more representative and complete
+original race/starter history with
+verified elapsed sectional semantics,
+effective GPS sensor coverage and
+a documented repeated-animal design.
+Do **not** turn a numeric pooled
+random-intercept variance ratio into
+a cross-year biological effect
+by guessing unobserved earlier
+races, class assignments or DNF.
+Any original API failure remains HOLD.
 
 ## Reproduce
 
