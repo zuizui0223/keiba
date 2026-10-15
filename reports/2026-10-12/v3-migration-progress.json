@@ -1,7 +1,7 @@
 {
   "updated_at_jst": "2026-10-15T11:53:00+09:00",
   "scope": "v3 structured recent-history migration",
-  "status": "COMPLETE_FOR_KYOTO_7R_TO_12R",
+  "status": "MIGRATION_COMPLETE_CANDIDATE_FROZEN_RANKING_FEATURES_READY",
   "original_frozen_inputs": {
     "races": 6,
     "horses": 83,
@@ -89,5 +89,23 @@
     "margin_rule": "numeric beaten_margin_s OR official beaten_margin_text OR explicit beaten_margin_missing_reason",
     "fail_closed": "DATA_HOLD blocks ranking"
   },
-  "next_stage": "candidate-generation and uncertainty features may now be computed on the derived v3 inputs; predictive improvement remains unvalidated until a future out-of-sample race set."
+  "next_stage": "Freeze a ranking/pruning method before future races and evaluate it out-of-sample against market baselines; do not tune further on 2026-10-12.",
+  "candidate_layer": {
+    "path": "scripts/generate_v3_candidates.py",
+    "retrospective_diagnostic": "reports/2026-10-12/v3-candidate-diagnostic.json",
+    "candidate_slots": 49,
+    "winners_captured": "6/6",
+    "top3_captured": "16/18",
+    "validated_out_of_sample": false,
+    "role": "broad_screen_only"
+  },
+  "ranking_feature_layer": {
+    "path": "scripts/v3_ranking_features.py",
+    "feature_table": "reports/2026-10-12/v3-ranking-features.json",
+    "rows": 49,
+    "ranking_produced": false,
+    "target_fields_used": false,
+    "official_results_joined": false,
+    "ticket_selection_performed": false
+  }
 }
