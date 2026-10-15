@@ -1,5 +1,37 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-15: manuscript v1 and figure — individual history is conditionally predictive
+
+A full [English ecological manuscript draft](docs/ecology-racehorse-individuality-manuscript-v1.md)
+now reports **both** the favorable source-linked
+Cannon Park within-2026 result and the nonconfirming
+Doomben 2025→2026 same-HORSES-ID evaluation,
+with the precise sampling/causal limits.
+
+- **Within 2026, Cannon Park:** 36 horse IDs / 46
+  later records; historical focal-horse RMSE
+  **0.255809 s** versus prior OTHER-horses
+  matched-context RMSE **0.303195 s**.
+- **Year-forward Doomben:** 26 IDs / 27
+  source-positive 2026 records; historical
+  focal-horse RMSE **0.386131 s** versus
+  prior OTHER-horses matched-context
+  **0.368906 s**. Single-ID deletion reverses
+  the ranking once of 26 and single-2026-date
+  deletion once of ten. The exact source
+  Class-matched cohort has only six IDs and HOLD.
+- These are **two different observational cohorts**;
+  they do **not** estimate a causal annual
+  decay in intrinsic animal personality or
+  H1/H2 environmental/social interactions.
+
+A [reproducible two-cohort aggregate-only Figure 1](https://github.com/zuizui0223/keiba/actions/runs/38679488650)
+uses a permanently frozen
+[source evidence manifest](docs/evidence/rq-racehorse-temporal-generalization-20261015.json)
+and an [audited standard-library SVG generator](scripts/ecology_rq_manuscript_temporal_figure.py).
+It publishes no original animal-level data.
+This is a **working manuscript, not a submitted paper**.
+
 ## 2026-10-15: same original HORSES IDs, STRICT 2025→2026 history test
 
 **Important negative exploratory source result:** A previously locked
