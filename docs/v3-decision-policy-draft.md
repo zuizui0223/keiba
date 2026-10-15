@@ -167,3 +167,52 @@ The only Top3 slot missed by the broad union was 8R third-place runner 7 レー�
 - prohibition on further tuning with 2026-10-12 results.
 
 The next legitimate performance test must use races from a different future race day. Until then, v3 remains **not validated**.
+
+
+## Implementation status update (2026-10-15)
+
+### Data migration
+
+- Kyoto 7R–12R structured-history migration is complete: **83/83 runners PASS, 0 HOLD**.
+- Original frozen pre-race JSON files are unchanged.
+- For every runner, frozen `mark` and `notes` match the original inputs; sidecar/derived-history mismatches are zero.
+- Source-latest-run synchronization and fail-closed DATA_HOLD remain mandatory.
+
+### Broad candidate layer
+
+Canonical implementation: `scripts/generate_v3_candidates.py`.
+
+Retrospective diagnostic only:
+- v3 union: 49 candidate slots, winners 6/6, Top3 16/18.
+- old marked candidates: 38 slots, winners 5/6, Top3 15/18.
+- market Top4: 24 slots, winners 5/6, Top3 12/18.
+
+The union improves retrospective coverage but is less efficient per candidate slot. It is therefore frozen as a **broad screening layer**, not a ranking model. Do not tune it further on the October 12 races.
+
+### Ranking-feature layer
+
+`scripts/v3_ranking_features.py` now extracts descriptive candidate features without producing a score or predicted rank.
+
+The frozen feature table is:
+`reports/2026-10-12/v3-ranking-features.json`
+
+It contains **49 candidate rows** and explicitly records:
+- `ranking_produced=false`
+- `target_fields_used=false`
+- `official_results_joined=false`
+- `ticket_selection_performed=false`
+
+Features include market rank, career starts, days since latest run, recent wins/Top3, similar-distance form, same-class form, candidate-signal count and uncertainty flags.
+
+### Validation boundary
+
+The October 12 races were used to diagnose and design v3, so they are not out-of-sample validation.
+
+The next legitimate validation must:
+1. freeze the candidate generator and feature definitions before a future race set;
+2. create any ranking/pruning rule without using those future outcomes;
+3. compare against market baselines on multiple independent races;
+4. track both recall and selectivity/candidate count;
+5. evaluate ticket selection separately from horse ranking.
+
+A container-level fresh test run of the exact GitHub branch could not be completed in the current environment because raw.githubusercontent.com DNS resolution failed. Local TDD runs were used during implementation, and GitHub-fetched data were independently recomputed for the 83-runner gate and candidate diagnostics.
