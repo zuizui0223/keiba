@@ -1049,18 +1049,36 @@ Evidence: [independent source
 comparison](https://github.com/zuizui0223/keiba/actions/runs/38697999341);
 [source and inference audit](ecology-rq-doomben-within-year-source-replay-results.md).
 
-**Figure 2, planned:** exact source ID/marker/distance
-temporal-support diagram. Within Doomben 2025,
-23 source horse IDs had >=2 original dates;
-26 different source horse IDs were observed
-in both years, but **zero IDs** met both
-observation requirements in the same
-150-m marker/distance context.
-Label these animal populations as disjoint,
-with four inaccessible source dates and
-no causal age/temporal-decay conclusion.
-A separate panel can present 543-current
-vs 548-older original Cannon source editions.
+**Figure 2. Nonoverlapping original-source horse-ID sampling
+populations prohibit an individual time-horizon effect.**
+Under the first 150-m GPS marker and exact original
+race distance at Doomben, 23 individual source
+HORSES IDs had two or more distinct source dates
+within 2025, and 26 IDs had at least one source
+date in each of 2025 and 2026. The intersection
+of these eligibility sets was **zero IDs**.
+The same-Class screen also returned zero
+between its 17 within-2025 repeats and six
+year-shared horses. These are **disjoint
+source-observable eligibility sets, not
+experimental year treatment groups**.
+Across original first GPS markers,
+977 unique source IDs were observed and 228
+had at least two source dates, but
+matching marker, distance and exposure
+was not available across both horizons.
+Only 38/42 locked source dates were
+accessible. The figure depicts
+source support, not an inferred
+biological absence of personality or
+an age-related behavioral response.
+Two original source-run anonymous aggregates
+were fully SHA256 identical.
+Figure code: [anonymous deterministic
+Figure 2 generator](../scripts/ecology_rq_manuscript_source_overlap_figure.py);
+[full scientific HOLD audit](ecology-rq-doomben-matched-timescale-overlap-real-results.md);
+[verified SVG and CI
+#38705465632](https://github.com/zuizui0223/keiba/actions/runs/38705465632).
 
 **Figure 3, planned:** within-Cannon positive source-date
 and horse-ID deletion ranges versus Doomben
@@ -1103,23 +1121,26 @@ https://www.racingqueensland.com.au/rq-open-data-web-services.pdf
 
 ## Reproducibility and claim-audit materials
 
-- docs/ecology-racehorse-individuality-manuscript-outline.md
-- docs/ecology-rq-rider-change-forward-validation-results.md
-- docs/ecology-rq-forward-other-horse-comparator-results.md
-- docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md
-- docs/ecology-rq-doomben-within-year-history-design-lock.md
-- docs/ecology-rq-doomben-within-year-source-replay-results.md
-- GitHub Actions source-complete within-year rerun 38697629972
-- GitHub Actions source replay consistency execution 38697999341
-- docs/ecology-rq-doomben-within-year-history-design-lock.md
-- docs/ecology-rq-doomben-within-year-source-replay-results.md
-- scripts/ecology_rq_doomben_same_year_source_replay_compare.py
-- GitHub Actions source-run comparison 38697999341
-- docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md
-- docs/ecology-rq-cannon-original-source-drift-20261014.md
-- docs/ecology-rq-real-icc-source-conditional-sampling.md
-- GitHub Actions original source execution 38563275612
-- GitHub Actions year-forward source execution 38678720302
+The following are aggregate-only and code/source-provenance
+records; none includes individual HORSES IDs,
+jockey/trainer licence IDs, named race performances
+or individual telemetry.
+
+- [Complete pre-submission claim map](ecology-racehorse-individuality-manuscript-outline.md)
+- [Within-2026 Cannon forward score](ecology-rq-rider-change-forward-validation-results.md)
+- [Focal-horse versus other-horses source context](ecology-rq-forward-other-horse-comparator-results.md)
+- [2025→2026 Doomben held-out source score](ecology-rq-doomben-2025-to-2026-year-forward-results.md)
+- [Original Doomben within-year fixed sample and source availability](ecology-rq-doomben-within-year-source-replay-results.md)
+- [Critical same-HORSES-ID two-timescale overlap audit](ecology-rq-doomben-matched-timescale-overlap-real-results.md)
+- [Pinned anonymous 2-run exact zero source overlap](evidence/rq-doomben-identical-horse-timescale-overlap-20261015.json)
+- [Figure 2 source renderer](../scripts/ecology_rq_manuscript_source_overlap_figure.py)
+- [Racing Queensland official assigned versus postrace fields](ecology-rq-official-soap-vs-final-starters-jockey-data-scope.md)
+- [Historical Cannon source snapshot changes](ecology-rq-cannon-original-source-drift-20261014.md)
+- [Parametric Gaussian ICC limitations](ecology-rq-real-icc-source-conditional-sampling.md)
+- [Official same-horse time-horizon incidence run A](https://github.com/zuizui0223/keiba/actions/runs/38703717378)
+- [Official same-horse time-horizon incidence run B](https://github.com/zuizui0223/keiba/actions/runs/38703784178)
+- [Full scientific source-positive forward cohort run](https://github.com/zuizui0223/keiba/actions/runs/38563275612)
+- [Year-forward original source cohort run](https://github.com/zuizui0223/keiba/actions/runs/38678720302)
 
 **Manuscript status:** coherent full first draft,
 not approved for journal submission.
