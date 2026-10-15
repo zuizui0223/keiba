@@ -69,3 +69,13 @@ No current race counts yet.
 The holdout begins only when the first post-seal eligible Kyoto race receives a valid pre-result freeze and a matching `FROZEN` attempt before post time. An eligible race that cannot be frozen for a pre-result data/technical reason must instead enter the attempt ledger as `PRE_RESULT_DATA_FAILURE`.
 
 No result-driven backfill or threshold change is allowed.
+
+## Publication-stage check added on 2026-10-15
+
+**Source:** JRA official race-card publication FAQ: https://jra.jp/faq/pop02/2_2.html
+
+A Thursday release after 16:00 normally **does not have horse/frame numbers**; numbers are normally assigned after 10:00 Friday. Thus today's 17:00 task is limited to card/profiles/horse-ID caching as actually available, not number-keyed finalized inputs or live odds. A separate **Friday 2026-10-16 around 13:00 JST** check is now scheduled to reconcile official horse IDs and newly published horse numbers for the Saturday eligible races. Saturday race-day tasks retain their fixed 15–25-minute actual-odds window and must independently recheck scratches.
+
+**Read-only integrity spot check (2026-10-15):** all 19 listed `frozen_blobs` and the baseline quality-tier-map blob were compared to the current GitHub branch: **20 of 20 exact Git blob SHA matches, 0 mismatches**. Manifest Git blob: `af6e9bc7cda9f92efb65838a34999f0f97fcad52`. This spot check does not replace running the full frozen verifier in the future execution environment.
+
+**Ledger count remains 0/20**; no prospective freeze or scored result was created in this readiness step. No automatic wagering or paid browsing was performed.
