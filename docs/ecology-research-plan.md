@@ -867,3 +867,53 @@ first-marker-compatible repeated IDs,
 independent source operator/sensor
 calibration and source-date/
 horse-cluster uncertainty.
+
+
+## Genuine first-section marker feasibility at a third venue (2026-10-15)
+
+The previously locked 2026 Doomben 19-date source audit
+could **not** estimate ICC at exactly the original 150m
+or 200m first GPS section marker: only **9** recurring
+numeric HORSES IDs at either marker.
+
+A separate [23-date 2025 Doomben calendar lock](ecology-rq-doomben-2025-marker-calendar-lock.md)
+was committed before collecting the newly included 2025
+horse IDs/first-interval times. It selects original public
+2025 turf sectionals: first and last published source CSV
+per month (one in March), 1–6 official race numbers.
+This is **post-hoc design expansion** following positive
+Cannon/Eagle ICCs, NOT an independent biological
+hypothesis preregistration.
+
+Independent first-party original-source data reads
+[38674631028](https://github.com/zuizui0223/keiba/actions/runs/38674631028)
+and [38674654236](https://github.com/zuizui0223/keiba/actions/runs/38674654236)
+showed 38 of 42 total 2025–2026 source dates
+successfully audited, original ID/first-GPS
+candidates **660** in 2025 and **1277** in the
+pooled 2025/2026 source. At exact 150m,
+repeated IDs **25 (2025)** and **60 (pooled)**,
+with Gaussian race-FE ICC **0.654** and **0.180**,
+respectively. At 200m, **19** repeated IDs and
+numeric HOLD in 2025 alone, versus **42** and
+ICC **0.412** after pooling across source years.
+
+**The strong 150m discrepancy makes a universal
+individual early-pace trait parameter especially
+uncertain**. It may reflect different entrants,
+training, timing technology, source dropout,
+jockeys and changing original race cohorts,
+not any year-induced change in horse biology.
+Even common first GPS markers across venue
+source cohorts do NOT imply cross-vendor
+calibration, exact common animals, genetically
+based personality, causal track geometry or
+adaptation.
+
+[Original 2025/2026 Doomben source and exact
+marker results](ecology-rq-doomben-2025-2026-exact-marker-source-results.md).
+The follow-up code is also prepared to audit
+**same numeric original horse identities across
+years at matching marker/distance/Class**, not
+just pooled between-horse variance. H1 and
+H2 remain HOLD.
