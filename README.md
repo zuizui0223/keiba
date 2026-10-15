@@ -25,16 +25,21 @@ meeting dates remained API/source HOLD; none was filled
 with synthetic individual records.
 
 **Scientific conclusion:** the within-2026 Cannon Park
-horse-specific historical timing advantage does **not**
-automatically transfer to a different original
-venue's *2025→2026* repeated-ID cohort. The
+horse-specific historical timing advantage did
+**not** automatically transfer to the full
+Doomben *2025→2026* source cohort. However,
+deleting one among 26 horses or 10 scored
+2026 dates reversed the relative model ranking
+in **1 of 26** and **1 of 10** checks,
+respectively. No robust claim of within-horse
+annual behavioral decline is justified. The
 earlier Doomben 150m ICC 0.654 (2025 only)
 versus 0.180 (pooled 2025/26) is a contrast
 of different source populations, **not**
 a direct biological annual decline.
 
 [Pre-scoring data/design lock](docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md),
-[verified real-source negative and three HOLD findings](docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md),
+[verified real-source negative result, influence sensitivity and three HOLD findings](docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md),
 [GitHub Actions original source 38677957462](https://github.com/zuizui0223/keiba/actions/runs/38677957462).
 The core H1 ground-reaction and H2 social competition
 hypotheses remain **HOLD**. No horse identities,
