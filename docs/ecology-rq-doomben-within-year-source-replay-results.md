@@ -86,12 +86,29 @@ The same four preexisting dates remained unavailable:
 
 The two new executions agreed on the original
 2025/150m exact-distance numerical comparison:
-**23 source HORSES IDs**, **23 later GPS rows**,
+**23 source HORSES IDs**, **24 later GPS rows**,
 OWN historical RMSE **0.211065 s**, OTHER-horse
 historical RMSE **0.240692 s**,
 and zero-profile RMSE **0.239390 s**.
 The OTHER-minus-OWN improvement was
 **+0.029627 s**, descriptively positive.
+
+The two source-complete run artifacts were checked
+independently after download: their **anonymous
+JSON bytes have the same SHA256**
+(`8d6617440a30abbcc8075a5287d6d68ad7d0527e82a384f105a19f0b925dacc8`).
+All 38 successful original meeting
+source manifests and all eight
+marker/year/Class scoring aggregates
+match across the two runs. This is
+strong **computational and source-snapshot
+reproducibility**, not independent
+biological cohort replication.
+The source-specific **23 IDs generated
+24 scored later GPS records**, not 23.
+[Both source-complete replay SHA256 values
+and source counts are permanently pinned
+as anonymous evidence](evidence/rq-doomben-same-year-rerun-availability-20261015.json).
 
 This **does reproduce a source-conditional numerical
 result**, but the *same source cohort and observation
