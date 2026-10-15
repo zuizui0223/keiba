@@ -230,3 +230,35 @@ a cryptographic source fingerprint
 provides repeatability of the **data
 snapshot**, not evidence of valid
 official starter or finisher status.
+
+
+## 2026-10-15 separately locked Doomben 2025 source extension
+
+The original 2026-only Doomben 150m and 200m
+repeat-ID samples each had only nine repeated
+original HORSES IDs and therefore both models
+were on numerical HOLD.
+
+A [new 23-original-source-date, earliest/latest
+CSV-per-month 2025 follow-up](ecology-rq-doomben-2025-marker-calendar-lock.md),
+committed before looking at its new original HORSES
+IDs and first-GPS outcomes, returned a combined
+**38/42-date** source cohort (four dates HOLD).
+At 150m/200m, its cross-year repeated-ID counts
+were **60/42** and conditional ICC point estimates
+**0.180/0.412**, respectively. The **2025-only**
+150m ICC was **0.654** on 25 repeatedly recorded
+source IDs, whereas the 2025-only 200m ID
+repetition count of 19 kept it on HOLD.
+
+These are **post-hoc observed-source conditional
+Gaussian model values**, not evidence of a
+universal cross-track stable trait or animal
+reaction to racecourse geometry. The 150m
+ICC changed substantially with sample year
+composition, and original animal identities,
+measurement calibrations, racing classes and
+source missingness remain critical confounders.
+
+See the [verified two-year original Doomben
+marker/source audit](ecology-rq-doomben-2025-2026-exact-marker-source-results.md).
