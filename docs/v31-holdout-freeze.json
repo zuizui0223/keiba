@@ -8,9 +8,9 @@
     "protocol": "cf818576d718f186e568604d42e7060aac39aa34",
     "classifier": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
     "tests": "fd6f4c448f2e59d9e4b58b12886221d6cdb0f672",
-    "holdout_wrapper": "d864546d2ad30c94b45028ec6295cf2eda2691d3",
-    "holdout_tests": "0277f3cd4cb5613f716335d90ddbe866ce308e96",
-    "operations": "1d892805aec9989171072b1e49310f1f479b180b",
+    "holdout_wrapper": "e508ede3a6fcc8b8d204efbc704db6080a406256",
+    "holdout_tests": "f788406ed10ce7119a8700799f1a6d5f67b49dc8",
+    "operations": "fc74d0e2b30ad2a7d63bba437dc28ef906c32dea",
     "snapshot_preparer": "df14694fb0a177d3a6c1d244a3fe6ffc89a09ffa",
     "snapshot_preparer_tests": "b9819c64373149967d2c11ce75047b3741d8515d",
     "evaluator": "942b6fd1a1a14751da76c97056a8914d5e098ac3",
@@ -18,8 +18,12 @@
     "decision_contract": "70c102e0bdcd59a721404df1f09438ba97fa0ee7",
     "attempt_ledger_tool": "c2380d353ce646fc09ec473e75bfc691a704c29f",
     "attempt_ledger_tests": "5033112a1457e8b6d35f55d6173ffe15c98c5f33",
-    "postrace_validator": "fa73d28433a7ea0ce32cc661e3803e434bdfc603",
-    "pipeline_integration_tests": "88aa879188dd8f3bc1448fd6addb729b8e4d6b3e"
+    "postrace_validator": "5b7110bc132ae5e382c2d9e2abaad851f7190dba",
+    "pipeline_integration_tests": "5974051040fe1917739bb035ec53b925b62542c0",
+    "result_preparer": "fedf3b2544c6cdea8891d9757da130e36b391cde",
+    "result_preparer_tests": "5e265382048c50b521ba95ad10ef86dfe63fae53",
+    "freeze_verifier": "54a2e35d5c46803a9fc7163180737d402d42c905",
+    "freeze_verifier_tests": "f8aa06a0723efd34c667c9c07f6fe9801214506a"
   },
   "metadata_inputs": {
     "quality_tier_map_baseline": "a06e33dd396369b9556136b7e12cc4568afde41b",
@@ -82,7 +86,7 @@
   },
   "holdout_start_rule": "The first eligible Kyoto race whose valid source capture, odds snapshot and pre-result freeze all satisfy the frozen contract after created_at_jst is holdout race 1. Every subsequent eligible Kyoto race must be attempted chronologically and recorded in the attempt ledger until 20 scored FROZEN races are accumulated.",
   "change_control": "Any threshold or rescue-logic change creates v3.2 or later and starts a new holdout window.",
-  "created_at_jst": "2026-10-13T22:20:51+09:00",
+  "created_at_jst": "2026-10-15T12:10:50+09:00",
   "integrity_note": "The frozen snapshot preparer records source-page hashes. The frozen holdout wrapper verifies preparer/classifier/wrapper SHAs, baseline quality tiers, race identity, active horse-number set, eligibility, and the 15-25 minute pre-post market window. Every eligible race is additionally recorded in the attempt ledger as FROZEN or PRE_RESULT_DATA_FAILURE. The formal evaluator requires the scored race sequence to match the first FROZEN attempts and applies p<=0.05, candidate fraction<=0.65, and freeze success rate>=0.80.",
   "eligibility": {
     "venue": "京都",
@@ -116,6 +120,7 @@
   },
   "integrity_correction": "Corrected the candidate-channel test blob SHA before any holdout race was attempted; no scientific threshold, eligibility, or decision rule changed.",
   "source_sha_correction": "Before any prospective holdout race, a real end-to-end test found the frozen snapshot preparer generated an invalid Git blob hash (literal backslash-zero instead of NUL). The one-line hashing fix and regression test were applied; no candidate-generation thresholds or formal decision gates changed.",
-  "postrace_integrity": "Before accepting a score into the holdout ledger, scripts/v31_holdout.py register MUST receive --freeze, --result, --score and --attempt-ledger and invoke the independent scripts/v31_validate_postrace.py validator. This recomputes candidate/recall arithmetic and validates the hashes, score/result race identity, and prior FROZEN attempt. No score may be registered without it; the race-result source must independently be verified as JRA official.",
-  "integrity_correction_2": "Pre-holdout defensive fix: make independent post-race validation mandatory inside ledger registration instead of a voluntary separate command. No v3.1 candidate thresholds, odds window, eligibility or formal evaluation thresholds changed."
+  "postrace_integrity": "Before accepting a score into the holdout ledger, scripts/v31_holdout.py register MUST receive --freeze, --result, --result-capture, --score and --attempt-ledger and invoke scripts/v31_validate_postrace.py. The validator re-parses the raw official JRA result capture through the frozen result preparer, requires exact reproduction of result.json, checks result timing/source hashes, recomputes candidate/recall arithmetic, and validates the prior FROZEN attempt. No score may be registered without this gate.",
+  "integrity_correction_2": "Pre-holdout defensive fix: make independent post-race validation mandatory inside ledger registration instead of a voluntary separate command. No v3.1 candidate thresholds, odds window, eligibility or formal evaluation thresholds changed.",
+  "result_source_provenance": "Pre-holdout defensive hardening: official target results are no longer entered as manual top-three numbers. scripts/v31_prepare_result.py accepts only official JRA result-page captures whose date, Kyoto venue and race number match race_id; formal registration re-parses the raw capture and verifies its SHA-backed result provenance. No candidate-generation, market-window, eligibility or formal decision thresholds changed."
 }
