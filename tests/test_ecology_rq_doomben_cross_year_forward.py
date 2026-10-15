@@ -51,7 +51,7 @@ def fictional_year_rows(*,marker=150.,shared_horses=32,flip=False,
 
 class CrossYearHistoryTests(unittest.TestCase):
     def test_locked_2025_predicts_repeated_IDs_in_2026_more_than_other_horses(self):
-        fake=f if False else fictional_year_rows()
+        fake=fictional_year_rows()
         relative,readiness=prepare(fake,min_race_telemetry=4)
         scored,cover=_scored_rows_private(relative,150.,False)
         self.assertEqual(cover["cross_year_horses_scored_against_identical_other_history"],32)
