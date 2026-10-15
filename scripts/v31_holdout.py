@@ -292,6 +292,7 @@ def register(args) -> int:
     ledger = read_json(args.ledger)
     frozen = read_json(args.freeze)
     scored = read_json(args.score)
+    result_capture = read_json(args.result_capture)
     if scored.get('race_id') != frozen.get('race_id'):
         raise ValueError('race_id_mismatch')
     if ledger.get('version') != frozen.get('holdout_version'):
@@ -324,6 +325,10 @@ def register(args) -> int:
         'misses': list(scored.get('misses', [])),
         'non_M_top3_rescues': list(scored.get('non_M_top3_rescues', [])),
         'prerace_freeze_sha256': scored.get('integrity', {}).get('prerace_freeze_sha256'),
+        'result_sha256': sha256_file(args.result),
+        'result_capture_sha256': sha256_file(args.result_capture),
+        'attempt_ledger_sha256': sha256_file(args.attempt_ledger),
+        'result_source_url': result_capture.get('source_url'),
         'score_sha256': sha256_file(args.score),
     }
     entries.append(entry)
