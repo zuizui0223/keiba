@@ -38,9 +38,17 @@ the evaluations; four locked Doomben source dates were unavailable,
 and matching Class left only six animals. Thus these findings show
 *within-source individual-history predictability alongside limited
 transfer between distinct observed cohorts*, not a causal decline
-in behavioural stability with age or season. A distinction between
-observational individual signatures and their external generalization
-is essential before inferring stable intrinsic personality.
+in behavioural stability with age or season. An additional Doomben
+same-year 2025 analysis offered a small own-history improvement
+only in one original-source execution; an otherwise identical
+rerun lost the required minimum animal support because a different
+historical meeting's HTTP source response was truncated, despite
+all 36 mutually retrieved source snapshots having matching
+SHA-256 fingerprints. Thus even whether a numerical same-year
+estimate can be reported depended on transient record availability.
+A distinction between observational individual signatures, source
+support and their external generalization is essential before inferring
+stable intrinsic personality.
 
 **Keywords:** repeatability; individual variation; behavioural ecology;
 longitudinal prediction; telemetry; horse; measurement selection;
@@ -412,6 +420,85 @@ proof of consistent failure.
 Four previously fixed source
 dates could not be retrieved.
 
+### 3.4. Same-venue within-year control and its source-replay failure
+
+To separate site from the source-year
+horizon as far as the available records
+permit, we conducted a supplementary
+analysis using exactly the **same
+previously locked Doomben 2025 and 2026
+meeting cohorts** and the same 150m/200m
+GPS markers. Each calendar year supplied
+its *own strictly earlier* HORSES-ID or
+other-horses' same-context first-GPS
+relative-timing history. No 2025
+records entered 2026's within-year
+historical profiles, or vice versa.
+
+In one original-source execution,
+the 2025 first-150m, same-distance
+cohort just met the fixed support
+criterion (**21 source IDs and 21 later
+records**). The focal horse's historical
+profile reduced RMSE to **0.214881 s**,
+compared with **0.243186 s** for
+OTHER-horse history (difference
+**+0.028304 s**, positive favouring
+focal identity). This apparent
+advantage was marginal in population
+support and did not qualify as a
+preregistered confirmation.
+
+Crucially, a second independent source
+execution using the **same original
+date, animal and marker selection
+rules** supported only **17 HORSES IDs
+and 18 later records**, which is
+**below the previously frozen 20-ID
+and 20-row thresholds**. Under the
+predeclared scientific reporting rule,
+this result is **HOLD**, not a zero
+or negative effect. Neither original
+2026 within-year 150m nor 200m
+comparison had sufficient IDs,
+and Class-matched contexts were also
+unsupported.
+
+A third, aggregate-only source
+provenance audit independently
+compared the two execution artifacts.
+All **36** meetings successfully
+retrieved by *both* had identical
+meeting/race/GPS and combined
+horse-roster SHA256 fingerprints,
+and matching original horse-source
+counts. Different source meetings
+(**2025-03-19** versus
+**2025-07-12**) returned incomplete
+or truncated HTTP responses in
+opposite runs. This upstream
+source-availability contrast alone
+changed whether the marginal 2025
+numerical result passed the support
+threshold. We therefore classify the
+positive same-year 2025 contrast as
+**not reliably replicated**, and
+do not use it to support a
+biological time-scale or aging
+effect.
+
+Details:
+[within-year source-replay audit](ecology-rq-doomben-within-year-source-replay-results.md),
+[the original locked protocol](ecology-rq-doomben-within-year-history-design-lock.md),
+and the
+[source-fingerprint GitHub Actions run](https://github.com/zuizui0223/keiba/actions/runs/38697999341).
+This source-quality finding is
+separate from the previously
+selected 2025→2026 prediction
+result, and no direct within-animal
+temporal decay parameter can be
+estimated from this contrast.
+
 ## 4. Discussion
 
 ### 4.1. Predictive individuality is a conditional property of the observed system
@@ -548,6 +635,27 @@ entry are not randomized;
 missing GPS records
 cannot be coded as
 zero pace or nonfinishers.
+
+Even public original-source availability
+can be unstable across repeated retrievals:
+the same Doomben within-year code yielded
+a marginal 2025 numerical own-history
+advantage in one source run and a HOLD in
+another. The 36 overlapping original
+source snapshots were byte-fingerprint
+concordant; an incomplete or truncated
+HTTP response for a different 2025
+meeting in each run changed the
+eligible HORSES-ID count.
+A numerical result conditional on the
+retrieved source subset must therefore
+not be mistaken for replication
+of the same biological cohort.
+An immutable lawful source cache,
+documented original roster response
+hashes and prespecified completeness
+requirements are prerequisites for
+a stronger external prediction test.
 
 Moreover, an absolute
 first sectional time
@@ -720,6 +828,9 @@ https://www.racingqueensland.com.au/rq-open-data-web-services.pdf
 - docs/ecology-rq-rider-change-forward-validation-results.md
 - docs/ecology-rq-forward-other-horse-comparator-results.md
 - docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md
+- docs/ecology-rq-doomben-within-year-history-design-lock.md
+- docs/ecology-rq-doomben-within-year-source-replay-results.md
+- GitHub Actions source replay consistency execution 38697999341
 - docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md
 - docs/ecology-rq-cannon-original-source-drift-20261014.md
 - docs/ecology-rq-real-icc-source-conditional-sampling.md
