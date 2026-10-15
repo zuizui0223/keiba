@@ -157,6 +157,38 @@ class SameYearOriginalSourceReplayAudit(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"HOLD_NUMERIC_SCORE_WITHOUT"):
             compare(a,b,a_sha256="a"*64,b_sha256="b"*64)
 
+    def test_pinned_public_aggregate_keeps_both_real_source_gate_states(self):
+        evidence_path=Path(__file__).resolve().parents[1]/"docs"/"evidence"/(
+            "rq-doomben-same-year-rerun-availability-20261015.json")
+        real=json.loads(evidence_path.read_text(encoding="utf-8"))
+        runA,runB=real["replays"]
+        self.assertEqual(runA["github_run_id"],38696624349)
+        self.assertEqual(runB["github_run_id"],38696711022)
+        self.assertEqual(runA["within_2025_first_150m_same_distance"][
+            "distinct_horse_ids"],21)
+        self.assertEqual(runB["within_2025_first_150m_same_distance"][
+            "distinct_horse_ids"],17)
+        self.assertEqual(runA["within_2025_first_150m_same_distance"]["status"],NUMERIC_OK)
+        self.assertEqual(runB["within_2025_first_150m_same_distance"]["status"],HOLD)
+        self.assertIsNone(runB["within_2025_first_150m_same_distance"][
+            "other_minus_own_seconds"])
+        self.assertAlmostEqual(runA["within_2025_first_150m_same_distance"][
+            "RMSE_seconds"]["other"]-runA["within_2025_first_150m_same_distance"][
+            "RMSE_seconds"]["own"],
+            runA["within_2025_first_150m_same_distance"][
+                "other_minus_own_seconds"],places=12)
+        self.assertEqual(real["same_date_source_comparability"][
+            "both_successful_original_dates"],36)
+        self.assertEqual(real["source_available_and_scientific_hold"]["status"],
+            "HOLD_DOOMBEN_WITHIN_YEAR_SCORE_NOT_ROBUST_TO_SOURCE_AVAILABILITY")
+        self.assertTrue(real["source_available_and_scientific_hold"][
+            "single_successful_numeric_estimate_cannot_be_called_replicated"])
+        public=json.dumps(real)
+        self.assertNotIn('"horse_name":',public)
+        self.assertNotIn('"horse_id":',public)
+        self.assertNotIn('"jockey_license_id":',public)
+        self.assertNotIn('"first_section_sec":',public)
+
     def test_shared_source_incomplete_digest_cannot_be_called_equal(self):
         a=invented_source_report()
         b=copy.deepcopy(a)
