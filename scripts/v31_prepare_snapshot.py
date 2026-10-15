@@ -14,6 +14,7 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 def read_json(path: Path) -> dict:
@@ -42,6 +43,18 @@ def parse_aware_iso(value: str, label: str) -> datetime:
     if dt.tzinfo is None or dt.utcoffset() is None:
         raise ValueError(f"naive_datetime:{label}")
     return dt
+
+
+def validate_jra_source_url(value: str | None, expected_path: str, label: str) -> None:
+    if not isinstance(value, str):
+        raise ValueError(label)
+    parsed = urlparse(value)
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname not in {"www.jra.go.jp", "jra.go.jp"}
+        or not parsed.path.startswith(expected_path)
+    ):
+        raise ValueError(label)
 
 
 def class_rank(text: str | None) -> int | None:
@@ -185,6 +198,7 @@ def prepare(capture: dict, observed_at_jst: str) -> tuple[dict, dict, dict]:
     if observed >= scheduled:
         raise ValueError("snapshot_not_prerace")
     card = capture["card"]
+    validate_jra_source_url(card.get("url"), "/JRADB/accessD.html", "non_jra_card_source")
     card_horses, scratched = parse_card(card["text"])
     profiles = capture.get("profiles", {})
     normalized = []
@@ -194,6 +208,10 @@ def prepare(capture: dict, observed_at_jst: str) -> tuple[dict, dict, dict]:
         if key not in profiles:
             raise ValueError(f"missing_profile:{horse['number']}")
         profile = profiles[key]
+        validate_jra_source_url(
+            profile.get("url"), "/JRADB/accessU.html",
+            f"non_jra_profile_source:{horse['number']}",
+        )
         history = parse_profile(profile["text"], race["date"])
         row = {k: v for k, v in horse.items() if k != "current_win_odds"}
         row["career_starts_before_target"] = len(history)
