@@ -17,6 +17,7 @@ holdout/v31/NNN/
   odds.json
   source-capture-meta.json
   freeze.json
+  result-capture.json
   result.json
   score.json
 ```
@@ -168,18 +169,32 @@ python -B scripts/v31_attempt_ledger.py register \
 
 Review then replace the repository attempt ledger in a separate commit. Duplicate race IDs and chronological backfills are rejected.
 
-## Post-result scoring
+## Post-result source capture and scoring
 
-Store only the observed top three in the minimal result file:
+Do not type the top three manually.
+
+Capture the official JRA result page text into `result-capture.json`:
 
 ```json
 {
   "race_id": "YYYY-MM-DD-KYOTO-RR",
-  "top3": [10, 12, 9]
+  "source_url": "https://www.jra.go.jp/JRADB/accessS.html?...",
+  "observed_at_jst": "YYYY-MM-DDTHH:MM:SS+09:00",
+  "text": "captured UTF-8 official JRA result page"
 }
 ```
 
-Then:
+Generate the deterministic result file:
+
+```bash
+python -B scripts/v31_prepare_result.py \
+  --capture holdout/v31/001/result-capture.json \
+  --output holdout/v31/001/result.json
+```
+
+The result preparer rejects non-JRA result URLs, page date/race-number mismatches and incomplete or duplicate top-three rows. `result.json` stores the parsed top three plus the JRA URL, observation time and SHA-256 of the captured source text.
+
+Then score:
 
 ```bash
 python -B scripts/v31_holdout.py score \
@@ -188,32 +203,24 @@ python -B scripts/v31_holdout.py score \
   --output holdout/v31/001/score.json
 ```
 
-This calculates union and M-only top-three recall, winner recall, misses and non-M rescues without changing the pre-result freeze.
+Scoring calculates union and M-only top-three recall, winner recall, misses and non-M rescues without changing the pre-result freeze.
 
 ## Independent post-result reconciliation (required)
 
-Before adding a scored race to the official score ledger, independently
-recompute its score from the frozen candidate flags and official result, and
-verify that a matching eligible attempt was already recorded as FROZEN:
+Before adding a scored race to the official score ledger, re-parse the raw official JRA capture and independently recompute the score arithmetic:
 
 ```bash
 python -B scripts/v31_validate_postrace.py \
   --freeze holdout/v31/001/freeze.json \
   --result holdout/v31/001/result.json \
+  --result-capture holdout/v31/001/result-capture.json \
   --score holdout/v31/001/score.json \
   --attempt-ledger docs/v31-holdout-attempt-ledger.json
 ```
 
-The validator must print `"valid": true` and exit with status 0. It checks
-freeze/result/attempt hashes, timestamps, membership and rescue arithmetic.
-**Do not register a score if reconciliation fails.** Diagnose discrepancies
-without rewriting the original pre-result freeze.
+The validator must print `"valid": true` and exit with status 0. It re-parses the JRA capture, requires it to reproduce `result.json` exactly, verifies result timing/source hashes, and checks freeze/result/attempt hashes plus membership and rescue arithmetic. Do not register a score if reconciliation fails.
 
-A declared freeze timestamp alone does not independently prove that the
-prediction was made on time. Verify that the GitHub commit containing the
-freeze was published before the actual race start. If that cannot be
-independently established, record a data-integrity failure rather than
-backdating the freeze.
+A declared freeze timestamp alone does not independently prove that the prediction was made on time. Verify that the GitHub commit containing the freeze was published before the actual race start. If that cannot be independently established, record a data-integrity failure rather than backdating the freeze.
 
 ## Register in the 20-race ledger
 
@@ -222,6 +229,7 @@ python -B scripts/v31_holdout.py register \
   --ledger docs/v31-holdout-ledger.json \
   --freeze holdout/v31/001/freeze.json \
   --result holdout/v31/001/result.json \
+  --result-capture holdout/v31/001/result-capture.json \
   --score holdout/v31/001/score.json \
   --attempt-ledger docs/v31-holdout-attempt-ledger.json \
   --output /tmp/v31-holdout-ledger.json
@@ -229,7 +237,7 @@ python -B scripts/v31_holdout.py register \
 
 Review the generated ledger, then replace `docs/v31-holdout-ledger.json` in a separate commit.
 
-The register command performs mandatory independent post-race validation of the immutable freeze, official-result input, score arithmetic, SHA-256 file references, and the corresponding pre-registered FROZEN attempt. It refuses registration if any value or hash differs; running the validator separately is useful for diagnostics but is not a substitute for this gate.
+The register command invokes the independent validator itself. It refuses registration if the raw JRA capture, deterministic result, immutable freeze, formal score or matching FROZEN attempt disagree.
 
 The register command rejects duplicate race IDs, chronological backfilling and entries beyond the 20-race target.
 
