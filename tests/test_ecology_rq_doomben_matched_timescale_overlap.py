@@ -19,7 +19,8 @@ sys.path.insert(0,str(ROOT/"tests"))
 from ecology_rq_early_pace_repeatability import prepare
 from ecology_rq_doomben_matched_timescale_overlap import (
     FIXED_MARKER, MIN_MATCHED_HORSE_IDS,
-    PRIMARY_STATUS, paired_timescale_support, evaluate,
+    PRIMARY_STATUS, paired_timescale_support,
+    independent_original_exposure_overlap, evaluate,
 )
 from test_ecology_rq_doomben_within_year_history import (
     fictional_annual_records
@@ -130,6 +131,52 @@ class SameHorsesAcrossTwoPredictionHorizons(unittest.TestCase):
     def test_unapproved_source_marker_does_not_expand_after_outcomes(self):
         with self.assertRaisesRegex(ValueError,"HOLD_UNAPPROVED_POSTHOC_GPS_FIRST_MARKER"):
             paired_timescale_support(self.fake_relative,marker=200.)
+
+    def test_independent_original_ID_date_incidence_without_predicted_outcomes(self):
+        s=independent_original_exposure_overlap(self.fake_relative)
+        self.assertEqual(s["status"],
+            "DIRECT_SOURCE_ID_DATE_EXPOSURE_COUNTS_ONLY_NO_PREDICTION")
+        self.assertEqual(s[
+            "source_horse_IDs_2plus_distinct_dates_in_2025_same_context"],32)
+        self.assertEqual(s[
+            "source_horse_IDs_1plus_date_each_of_2025_2026_same_context"],32)
+        self.assertEqual(s[
+            "source_horse_IDs_2plus_dates_2025_and_1plus_2026_same_context"],32)
+        self.assertEqual(s[
+            "source_horse_IDs_2plus_dates_IN_EACH_year_same_context"],32)
+        self.assertEqual(s["horse_context_strata_2plus_dates_IN_EACH_year"],32)
+        self.assertTrue(s["no_first_GPS_timings_or_individual_IDs_exported"])
+        self.assertNotIn("FAKE-ANIMAL",json.dumps(s))
+
+    def test_independent_exposure_counts_unchanged_by_any_time_outcome(self):
+        earlier=independent_original_exposure_overlap(self.fake_relative)
+        shifted=copy.deepcopy(self.fake_relative)
+        for row in shifted:
+            row["relative_early_section_sec"]+=1234.
+        later=independent_original_exposure_overlap(shifted)
+        self.assertEqual(earlier,later)
+
+    def test_direct_context_incidence_detects_class_bridge_loss(self):
+        changed=copy.deepcopy(self.fake_source)
+        for r in changed:
+            if r["day"].startswith("2026-"):
+                r["class"]="SYNTH CLASS B"
+        relative,_=prepare(changed)
+        broad=independent_original_exposure_overlap(relative,strict_class=False)
+        strict=independent_original_exposure_overlap(relative,strict_class=True)
+        self.assertEqual(broad[
+            "source_horse_IDs_2plus_dates_2025_and_1plus_2026_same_context"],32)
+        self.assertEqual(strict[
+            "source_horse_IDs_2plus_dates_2025_and_1plus_2026_same_context"],0)
+        self.assertEqual(strict[
+            "source_horse_IDs_1plus_date_each_of_2025_2026_same_context"],0)
+
+    def test_direct_duplicate_date_guard_refuses_doubled_same_horse(self):
+        duplicated=self.fake_relative+[copy.deepcopy(self.fake_relative[0])]
+        with self.assertRaisesRegex(
+            ValueError,"HOLD_DUPLICATE_SAME_HORSE_DATE_FOR_DIRECT_OVERLAP"
+        ):
+            independent_original_exposure_overlap(duplicated)
 
     def test_source_adapter_locks_exact_42_original_dates_and_avoids_IDs(self):
         q=evaluate(soap=fake_soap,gps=fake_gps,
