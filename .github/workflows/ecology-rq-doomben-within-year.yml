@@ -1,0 +1,75 @@
+name: "Ecology: original Doomben 2025 and 2026 within-year history comparators"
+
+# Post-hoc within-Doomben temporal horizon diagnostic. Reuse EXACTLY
+# previously locked 23 original 2025 dates and 19 original 2026 dates.
+# No horse-level data exported, no H1/H2, no year-causal claims.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'docs/ecology-rq-doomben-within-year-history-design-lock.md'
+      - 'scripts/ecology_rq_doomben_within_year_history.py'
+      - 'tests/test_ecology_rq_doomben_within_year_history.py'
+      - '.github/workflows/ecology-rq-doomben-within-year.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-doomben-same-year:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing source parsing and numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Synthetic-only genuine-individual signal and null source-HOLD falsification
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_doomben_within_year_history.py' -v
+      - name: Read only original previously prelocked Doomben 2025 and 2026 dates
+        run: |
+          python scripts/ecology_rq_doomben_within_year_history.py \
+            --output tmp/doomben-original-within-year-history-aggregates.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('tmp/doomben-original-within-year-history-aggregates.json').read_text())
+          assert d["original_venue"]=="Doomben"
+          assert d["original_source_calendar"]["fixed_2025_date_count"]==23
+          assert d["original_source_calendar"]["fixed_2026_date_count"]==19
+          assert d["cannon_study_had_DIFFERENT_source_rider_eligibility"]
+          assert d["crossyear_2025_to_2026_study_evaluated_DIFFERENT_observations"]
+          assert d["no_individual_horse_names_IDs_role_IDs_section_times_or_predictions_exported"]
+          assert set(d["comparisons_by_year_marker_context"])=={
+              f"{y}_{m}m_same_distance"+suffix
+              for y in ("2025","2026") for m in (150,200)
+              for suffix in ("","_and_Class")
+          }
+          for k,c in d["comparisons_by_year_marker_context"].items():
+              assert c["comparison_population"]["focal_horse_excluded_from_other_history"]
+              assert c["no_2025_or_2026_crossyear_combination_for_training"]
+              assert c["relative_first_GPS_target_requires_observed_postrace_peers"]
+              if c["status"].startswith("HOLD_"):
+                  assert "equal_horse_RMSE_seconds" not in c
+              else:
+                  assert c["status"]=="EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY"
+                  assert "equal_horse_RMSE_seconds" in c
+              print("SOURCE_COMPARISON",k,c["status"],
+                    "HORSES",c["comparison_population"]["scored_anonymous_distinct_original_HORSES_IDs"],
+                    "FUTURE_ROWS",c["comparison_population"]["scored_anonymous_original_future_rows"],
+                    "RMSE",c.get("equal_horse_RMSE_seconds","HOLD"))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: doomben-within-year-source-anonymous-horse-profile-results
+          path: tmp/doomben-original-within-year-history-aggregates.json
+          retention-days: 30
