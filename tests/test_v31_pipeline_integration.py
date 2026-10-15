@@ -59,9 +59,9 @@ class V31RealPipelineTests(unittest.TestCase):
                 "scheduled_start_jst": "2026-10-18T13:25:00+09:00",
                 "target": {"surface": "ダ", "distance_m": 1800, "class_rank": 1},
             },
-            "card": {"url": "https://www.jra.go.jp/example-card", "text": CARD},
+            "card": {"url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=fixture-card", "text": CARD},
             "profiles": {
-                str(n): {"url": f"https://www.jra.go.jp/example-horse-{n}",
+                str(n): {"url": f"https://www.jra.go.jp/JRADB/accessU.html?CNAME=fixture-horse-{n}",
                          "text": profile(n, 1 if n == 4 else 2,
                                          "3歳未勝利" if n == 4 else "3歳上1勝クラス")}
                 for n in range(1, 5)
