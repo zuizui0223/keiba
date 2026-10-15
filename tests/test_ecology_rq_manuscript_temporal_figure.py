@@ -116,6 +116,14 @@ class ManuscriptAggregateEvidenceTests(unittest.TestCase):
         self.assertIn("does not identify a temporal",manuscript)
         self.assertIn("38679786636",manuscript)
         self.assertIn("rq-racehorse-temporal-generalization-20261015.json",manuscript)
+        self.assertEqual(manuscript.count("### 3.4."),1)
+        self.assertIn("23 HORSES IDs and 24 later records",manuscript)
+        self.assertIn("0.029627 s",manuscript)
+        self.assertIn("0.028304 s",manuscript)
+        self.assertIn("different original 2025",manuscript)
+        self.assertIn("source-availability invariant",manuscript)
+        self.assertIn("38697999341",manuscript)
+
 
     def test_figure_generator_only_requires_aggregate_safe_source(self):
         source=EVIDENCE.read_text(encoding="utf-8")
