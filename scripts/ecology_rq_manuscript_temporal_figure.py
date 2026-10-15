@@ -74,9 +74,9 @@ def svg_figure(evidence:dict)->str:
     """Two separated source cohort panels, same RMSE axis, not paired years."""
     panels=[
         (evidence["within_year_cannon"],"A  Within 2026",
-         "Cannon Park | preceding dates to later dates"),
+         "Cannon Park | newly documented rider ID subset"),
         (evidence["year_forward_doomben"],"B  2025 → 2026",
-         "Doomben | preceding-year records to held-out year"),
+         "Doomben | fixed 2025 history to held-out 2026"),
     ]
     out=[
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="725" viewBox="0 0 1200 725" role="img" aria-labelledby="title desc">',
