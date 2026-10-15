@@ -286,7 +286,9 @@ def register(args) -> int:
     # Registration must never trust score.json merely because its race_id matches.
     # Independently reconcile the immutable freeze, source result, score and
     # the previously recorded FROZEN attempt before modifying the score ledger.
-    validate_postrace(args.freeze, args.result, args.score, args.attempt_ledger)
+    validate_postrace(
+        args.freeze, args.result, args.result_capture, args.score, args.attempt_ledger
+    )
     ledger = read_json(args.ledger)
     frozen = read_json(args.freeze)
     scored = read_json(args.score)
@@ -356,6 +358,7 @@ def main() -> int:
     p.add_argument('--ledger', type=Path, required=True)
     p.add_argument('--freeze', type=Path, required=True)
     p.add_argument('--result', type=Path, required=True)
+    p.add_argument('--result-capture', type=Path, required=True)
     p.add_argument('--score', type=Path, required=True)
     p.add_argument('--attempt-ledger', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
