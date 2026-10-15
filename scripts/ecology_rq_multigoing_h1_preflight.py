@@ -161,7 +161,11 @@ def audit_one_day(day: str, *, soap=request_xml, gps=fetch_official,
             locked_config.get("ground_expected")=="SOURCE_RACE_LEVEL" and
             tuple(locked_config.get("races",()))==tuple(range(1,7))
         )
-        if (day[:5]!="2026-" or not fields_ok
+        allowed_source_year=(
+            day.startswith("2026-") or
+            (canonical_doomben and day.startswith("2025-"))
+        )
+        if (not allowed_source_year or not fields_ok
                 or locked_config.get("source") not in APPROVED
                 or not (canonical_cannon or canonical_eagle or canonical_doomben)):
             raise ValueError("HOLD_UNAPPROVED_EXTERNAL_COHORT_CONFIGURATION")
