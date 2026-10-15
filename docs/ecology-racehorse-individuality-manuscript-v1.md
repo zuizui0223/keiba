@@ -643,7 +643,7 @@ difference does **not** identify a causal year, age
 or context effect. In Doomben, Class-matching allowed
 only six shared horse IDs and four previously locked
 source dates were unavailable. Figure provenance:
-[generated figure CI and SVG artifact](https://github.com/zuizui0223/keiba/actions/runs/38679488650);
+[generated figure CI and SVG artifact](https://github.com/zuizui0223/keiba/actions/runs/38679786636);
 [anonymized pinned evidence](evidence/rq-racehorse-temporal-generalization-20261015.json);
 [deterministic figure generator](../scripts/ecology_rq_manuscript_temporal_figure.py).
 
