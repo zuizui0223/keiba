@@ -149,6 +149,7 @@ class V31RealPipelineTests(unittest.TestCase):
                 "v31_holdout.py", "register", "--ledger", base / "ledger-in.json",
                 "--freeze", base / "freeze.json", "--score", base / "score.json",
                 "--result", base / "result.json",
+                "--result-capture", base / "result-capture.json",
                 "--attempt-ledger", base / "attempts.json",
                 "--output", base / "ledger.json",
             )
