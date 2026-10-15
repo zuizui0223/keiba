@@ -1,6 +1,6 @@
 # keiba — ecological individuality & competitive context
 
-## 2026-10-15: independent Doomben same-year reruns overturn a borderline positive claim
+## 2026-10-15: Doomben same-year positive signal is source-availability dependent
 
 The **frozen** Doomben same-venue, *separately within 2025 and
 within 2026* historical own-versus-other horse-profile study
@@ -20,6 +20,22 @@ replicated and the scientific status is **HOLD**.
 All 2026 same-year contexts and source-Class-matched
 2025 contexts also remain HOLD for inadequate
 matched within-year histories.
+
+Two **later** read-only source reruns obtained both
+critical 2025 meeting dates and each recovered
+**23 HORSES IDs, 23 later observations** and
+an exploratory historical own-vs-other
+RMSE advantage of **+0.029627 seconds**
+([run #38697565949](https://github.com/zuizui0223/keiba/actions/runs/38697565949);
+[run #38697629972](https://github.com/zuizui0223/keiba/actions/runs/38697629972)).
+This reproduces a *conditional numerical signal*
+when more original source dates are accessible.
+It is **not independent biological replication**
+or a demonstration of age-related personality
+persistence: the same original horse population
+and measurement pipeline were sampled, and
+transient HTTP truncation still changes the
+scientific eligibility gate.
 
 [An independent aggregate-only comparison of the
 two workflow artifacts](https://github.com/zuizui0223/keiba/actions/runs/38697999341)
