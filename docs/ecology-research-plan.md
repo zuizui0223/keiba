@@ -917,3 +917,37 @@ The follow-up code is also prepared to audit
 years at matching marker/distance/Class**, not
 just pooled between-horse variance. H1 and
 H2 remain HOLD.
+
+
+## Exact source-HORSES ID cross-year context, not just a pooled ICC (2026-10-15)
+
+The [independent date-locked original-source rerun
+#38675223586](https://github.com/zuizui0223/keiba/actions/runs/38675223586)
+followed up the mixed Doomben 150m/200m ICC
+sensitivity with actual original numeric source
+HORSES ID continuity from 2025 to 2026.
+
+**101 IDs** were observed in both original source
+years; **27** of them had positive 150m first
+GPS records in both years and **17** had positive
+200m first GPS records in both years.
+Adding exactly matched scheduled race distance
+gave 27 and 16, respectively; original Class
+agreement reduced them to **6 and 4** source IDs.
+**Zero at either marker** had two independent
+source meeting dates *in each source year*.
+
+The 2025-only Doomben 150m ICC (0.654)
+versus combined 2025/2026 ICC (0.180)
+thus cannot be attributed to an individual
+horse's response to year/aging/training:
+the selected original animal population
+and event/measurement contexts differ, and
+no strong within-individual cross-year
+repeat replication was established.
+
+The source identity-matching gate, hashes,
+two-year mixed source/partial API failures
+and biological/H1/H2 HOLDs are documented
+in [the Doomben 2025/2026 original-data
+audit](ecology-rq-doomben-2025-2026-exact-marker-source-results.md).
