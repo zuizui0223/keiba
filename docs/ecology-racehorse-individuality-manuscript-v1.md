@@ -504,6 +504,28 @@ source-conditional evidence;
 the second remains unresolved
 mechanistically.
 
+The [meta-analysis of behavioural repeatability by Bell,
+Hankison & Laskowski (2009)](https://doi.org/10.1016/j.anbehav.2008.12.022)
+found that the length of the interval between
+observations can modify apparent repeatability,
+with the direction of its initial analysis
+sensitive to two unusually influential
+studies. This provides biological motivation
+for explicit time-horizon tests, not evidence
+that a one-year period caused a change in
+these particular horses. More fundamentally,
+[Dingemanse & Dochtermann (2013)](https://doi.org/10.1111/1365-2656.12013)
+distinguish individual differences in reaction-norm
+intercepts from context variation and
+**pseudo-repeatability** arising when observed
+conditions covary with individual identity.
+Here, every conditional ICC and source-identified
+prediction advantage could still incorporate
+nonrandom training, selection, race Class or
+GPS sensing. Neither temporal transfer failure
+nor an ICC contrast alone establishes a
+within-horse change in behaviour or physiology.
+
 ### 4.3. Measurement selection and incomplete exposure histories matter
 
 Only GPS-positive,
