@@ -1,0 +1,1199 @@
+{
+  "created_at_jst": "2026-10-15T11:53:00+09:00",
+  "status": "FEATURES_ONLY_NO_RANKING",
+  "generator": "scripts/v3_ranking_features.py",
+  "candidate_generator": "scripts/generate_v3_candidates.py",
+  "races": {
+    "7": {
+      "race_id": "2608040507",
+      "field_size": 16,
+      "candidate_count": 9,
+      "rows": [
+        {
+          "number": 11,
+          "name": "カイラーサ",
+          "market_rank": 1,
+          "career_starts": 7,
+          "days_since_latest_run": 21,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0.2,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.2,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 100,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 2,
+          "name": "アレンスター",
+          "market_rank": 2,
+          "career_starts": 3,
+          "days_since_latest_run": 190,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.8,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 100,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 15,
+          "name": "ジーティーアメリカ",
+          "market_rank": 3,
+          "career_starts": 15,
+          "days_since_latest_run": 21,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0.3,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 100,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 12,
+          "name": "ダイシンレアレア",
+          "market_rank": 4,
+          "career_starts": 20,
+          "days_since_latest_run": 50,
+          "recent_wins": 0,
+          "recent_top3": 3,
+          "best_similar_finish": null,
+          "best_similar_margin_s": null,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.1,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 500,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "ハンドフル",
+          "market_rank": 5,
+          "career_starts": 11,
+          "days_since_latest_run": 41,
+          "recent_wins": 1,
+          "recent_top3": 3,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 100,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 5,
+          "name": "ゴールドコット",
+          "market_rank": 6,
+          "career_starts": 4,
+          "days_since_latest_run": 21,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 0.6,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 100,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 10,
+          "name": "エクストラプッシュ",
+          "market_rank": 8,
+          "career_starts": 11,
+          "days_since_latest_run": 23,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 500,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m"
+          ]
+        },
+        {
+          "number": 16,
+          "name": "タニセンゴールド",
+          "market_rank": 10,
+          "career_starts": 4,
+          "days_since_latest_run": 65,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 4,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 13,
+          "name": "リオンサーガ",
+          "market_rank": 16,
+          "career_starts": 7,
+          "days_since_latest_run": 23,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 7,
+          "best_same_class_margin_s": 0.8,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 500,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m"
+          ]
+        }
+      ]
+    },
+    "8": {
+      "race_id": "2608040508",
+      "field_size": 11,
+      "candidate_count": 5,
+      "rows": [
+        {
+          "number": 9,
+          "name": "レゼルフォート",
+          "market_rank": 1,
+          "career_starts": 3,
+          "days_since_latest_run": 148,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 5,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "ウィズクィーン",
+          "market_rank": 2,
+          "career_starts": 6,
+          "days_since_latest_run": 183,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 3,
+          "best_similar_margin_s": 0.3,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 0.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 11,
+          "name": "ベルシュヴァル",
+          "market_rank": 3,
+          "career_starts": 7,
+          "days_since_latest_run": 23,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 4,
+          "best_similar_margin_s": 0.4,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.1,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 400,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m"
+          ]
+        },
+        {
+          "number": 1,
+          "name": "エレガンシア",
+          "market_rank": 4,
+          "career_starts": 16,
+          "days_since_latest_run": 50,
+          "recent_wins": 0,
+          "recent_top3": 0,
+          "best_similar_finish": 6,
+          "best_similar_margin_s": 0.3,
+          "best_same_class_finish": 6,
+          "best_same_class_margin_s": 0.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 3,
+          "name": "ストロベリーツリー",
+          "market_rank": 5,
+          "career_starts": 3,
+          "days_since_latest_run": 303,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 5,
+          "best_same_class_margin_s": 1,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        }
+      ]
+    },
+    "9": {
+      "race_id": "2608040509",
+      "field_size": 12,
+      "candidate_count": 7,
+      "rows": [
+        {
+          "number": 12,
+          "name": "テイエムサンレーヴ",
+          "market_rank": 1,
+          "career_starts": 3,
+          "days_since_latest_run": 280,
+          "recent_wins": 2,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 5,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 10,
+          "name": "ニホンピロデヴィン",
+          "market_rank": 2,
+          "career_starts": 11,
+          "days_since_latest_run": 134,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.2,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "ソルチェリア",
+          "market_rank": 3,
+          "career_starts": 8,
+          "days_since_latest_run": 22,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0.6,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.6,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 5,
+          "name": "ゼンエスポワール",
+          "market_rank": 4,
+          "career_starts": 12,
+          "days_since_latest_run": 22,
+          "recent_wins": 0,
+          "recent_top3": 2,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0.2,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.2,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 3,
+          "name": "クロノスバレット",
+          "market_rank": 5,
+          "career_starts": 14,
+          "days_since_latest_run": 37,
+          "recent_wins": 0,
+          "recent_top3": 2,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 6,
+          "name": "マシン",
+          "market_rank": 7,
+          "career_starts": 8,
+          "days_since_latest_run": 22,
+          "recent_wins": 2,
+          "recent_top3": 3,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 0.9,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 2,
+          "name": "ロードソルスティス",
+          "market_rank": 9,
+          "career_starts": 9,
+          "days_since_latest_run": 15,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 1.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        }
+      ]
+    },
+    "10": {
+      "race_id": "2608040510",
+      "field_size": 10,
+      "candidate_count": 6,
+      "rows": [
+        {
+          "number": 5,
+          "name": "アクセス",
+          "market_rank": 1,
+          "career_starts": 4,
+          "days_since_latest_run": 30,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 5,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 2,
+          "name": "カムアップローゼス",
+          "market_rank": 2,
+          "career_starts": 11,
+          "days_since_latest_run": 21,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 600,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m"
+          ]
+        },
+        {
+          "number": 9,
+          "name": "ミリタリータトゥー",
+          "market_rank": 3,
+          "career_starts": 3,
+          "days_since_latest_run": 29,
+          "recent_wins": 2,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 7,
+          "name": "キシダンチョウ",
+          "market_rank": 4,
+          "career_starts": 5,
+          "days_since_latest_run": 57,
+          "recent_wins": 1,
+          "recent_top3": 3,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 5,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 4,
+          "name": "エリカアンディーヴ",
+          "market_rank": 6,
+          "career_starts": 8,
+          "days_since_latest_run": 72,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 7,
+          "best_same_class_margin_s": 0.9,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 6,
+          "name": "ウインリベラシオン",
+          "market_rank": 7,
+          "career_starts": 14,
+          "days_since_latest_run": 127,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 1,
+          "best_same_class_margin_s": 0,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        }
+      ]
+    },
+    "11": {
+      "race_id": "2608040511",
+      "field_size": 18,
+      "candidate_count": 12,
+      "rows": [
+        {
+          "number": 9,
+          "name": "オフトレイル",
+          "market_rank": 1,
+          "career_starts": 19,
+          "days_since_latest_run": 127,
+          "recent_wins": 0,
+          "recent_top3": 0,
+          "best_similar_finish": 5,
+          "best_similar_margin_s": 0.2,
+          "best_same_class_finish": 5,
+          "best_same_class_margin_s": 0.2,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 1,
+          "name": "ダイヤモンドノット",
+          "market_rank": 2,
+          "career_starts": 8,
+          "days_since_latest_run": 36,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 8,
+          "best_same_class_margin_s": 0.8,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 18,
+          "name": "エリカエクスプレス",
+          "market_rank": 3,
+          "career_starts": 10,
+          "days_since_latest_run": 71,
+          "recent_wins": 0,
+          "recent_top3": 0,
+          "best_similar_finish": 4,
+          "best_similar_margin_s": 0.5,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 400,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m"
+          ]
+        },
+        {
+          "number": 15,
+          "name": "ジョイフルニュース",
+          "market_rank": 4,
+          "career_starts": 8,
+          "days_since_latest_run": 176,
+          "recent_wins": 1,
+          "recent_top3": 3,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 400,
+          "candidate_signal_count": 4,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "market_top4",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 2,
+          "uncertainty_flags": [
+            "latest_distance_shift_gt_300m",
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 13,
+          "name": "マイネルチケット",
+          "market_rank": 5,
+          "career_starts": 14,
+          "days_since_latest_run": 120,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 0.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 12,
+          "name": "アイサンサン",
+          "market_rank": 6,
+          "career_starts": 14,
+          "days_since_latest_run": 15,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 17,
+          "name": "ミニトランザット",
+          "market_rank": 7,
+          "career_starts": 12,
+          "days_since_latest_run": 113,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 4,
+          "name": "スズハローム",
+          "market_rank": 8,
+          "career_starts": 22,
+          "days_since_latest_run": 127,
+          "recent_wins": 2,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "ショウナンザナドゥ",
+          "market_rank": 9,
+          "career_starts": 16,
+          "days_since_latest_run": 51,
+          "recent_wins": 1,
+          "recent_top3": 2,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 10,
+          "name": "ララマセラシオン",
+          "market_rank": 12,
+          "career_starts": 16,
+          "days_since_latest_run": 51,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 3,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 13,
+          "best_same_class_margin_s": 0.8,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 11,
+          "name": "レザベーション",
+          "market_rank": 14,
+          "career_starts": 8,
+          "days_since_latest_run": 37,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 1,
+          "best_same_class_margin_s": 0,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 16,
+          "name": "ランフォーヴァウ",
+          "market_rank": 16,
+          "career_starts": 13,
+          "days_since_latest_run": 51,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        }
+      ]
+    },
+    "12": {
+      "race_id": "2608040512",
+      "field_size": 16,
+      "candidate_count": 10,
+      "rows": [
+        {
+          "number": 3,
+          "name": "ウェルカムソング",
+          "market_rank": 1,
+          "career_starts": 7,
+          "days_since_latest_run": 64,
+          "recent_wins": 0,
+          "recent_top3": 0,
+          "best_similar_finish": 9,
+          "best_similar_margin_s": 1,
+          "best_same_class_finish": 4,
+          "best_same_class_margin_s": 0.1,
+          "latest_surface_match": false,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "market_top4"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "latest_surface_switch"
+          ]
+        },
+        {
+          "number": 16,
+          "name": "カネコメファミリー",
+          "market_rank": 2,
+          "career_starts": 21,
+          "days_since_latest_run": 100,
+          "recent_wins": 0,
+          "recent_top3": 2,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 8,
+          "name": "ザングウィル",
+          "market_rank": 3,
+          "career_starts": 25,
+          "days_since_latest_run": 58,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 9,
+          "name": "トゥインクルアップ",
+          "market_rank": 4,
+          "career_starts": 9,
+          "days_since_latest_run": 352,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 0.3,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 0.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 2,
+          "candidate_signals": [
+            "market_top4",
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 1,
+          "name": "ダイヤモンド",
+          "market_rank": 5,
+          "career_starts": 14,
+          "days_since_latest_run": 23,
+          "recent_wins": 0,
+          "recent_top3": 2,
+          "best_similar_finish": 2,
+          "best_similar_margin_s": 2.9,
+          "best_same_class_finish": 2,
+          "best_same_class_margin_s": 2.9,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 14,
+          "name": "ビスケットアソート",
+          "market_rank": 6,
+          "career_starts": 8,
+          "days_since_latest_run": 30,
+          "recent_wins": 1,
+          "recent_top3": 3,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 0.5,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 3,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 10,
+          "name": "ビービーシナジー",
+          "market_rank": 7,
+          "career_starts": 3,
+          "days_since_latest_run": 71,
+          "recent_wins": 1,
+          "recent_top3": 1,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 4,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        },
+        {
+          "number": 6,
+          "name": "メリフルアス",
+          "market_rank": 8,
+          "career_starts": 7,
+          "days_since_latest_run": 142,
+          "recent_wins": 1,
+          "recent_top3": 3,
+          "best_similar_finish": 1,
+          "best_similar_margin_s": 0,
+          "best_same_class_finish": null,
+          "best_same_class_margin_s": null,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 0,
+          "candidate_signal_count": 4,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form",
+            "lightly_raced_latest_win",
+            "recent_similar_distance_close_finish",
+            "recent_similar_distance_win"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 12,
+          "name": "ベラジオリン",
+          "market_rank": 10,
+          "career_starts": 7,
+          "days_since_latest_run": 100,
+          "recent_wins": 0,
+          "recent_top3": 0,
+          "best_similar_finish": 4,
+          "best_similar_margin_s": 0.5,
+          "best_same_class_finish": 4,
+          "best_same_class_margin_s": 0.5,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "lightly_raced_latest_close_form"
+          ],
+          "uncertainty_flag_count": 1,
+          "uncertainty_flags": [
+            "layoff_gt_90d"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "レネネト",
+          "market_rank": 14,
+          "career_starts": 8,
+          "days_since_latest_run": 78,
+          "recent_wins": 0,
+          "recent_top3": 1,
+          "best_similar_finish": 3,
+          "best_similar_margin_s": 0.3,
+          "best_same_class_finish": 3,
+          "best_same_class_margin_s": 0.3,
+          "latest_surface_match": true,
+          "latest_distance_delta_m": 200,
+          "candidate_signal_count": 1,
+          "candidate_signals": [
+            "recent_similar_distance_close_finish"
+          ],
+          "uncertainty_flag_count": 0,
+          "uncertainty_flags": []
+        }
+      ]
+    }
+  },
+  "total_candidate_rows": 49,
+  "guards": {
+    "ranking_produced": false,
+    "target_fields_used": false,
+    "official_results_joined": false,
+    "ticket_selection_performed": false
+  }
+}
