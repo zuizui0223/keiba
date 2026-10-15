@@ -951,3 +951,57 @@ two-year mixed source/partial API failures
 and biological/H1/H2 HOLDs are documented
 in [the Doomben 2025/2026 original-data
 audit](ecology-rq-doomben-2025-2026-exact-marker-source-results.md).
+
+
+## October 15: source-locked same-HORSES-ID year-forward negative result
+
+A separate after-the-earlier-ICC exploratory Doomben
+analysis tested **2025-only original HORSES-ID
+first-section history against 2026 heldout source
+records**. The original 23 selected 2025 and 19
+selected 2026 meeting dates and race numbers 1–6
+were not changed. The scoring and minimum 20
+cross-year source-IDs were archived
+**before inspecting this new 2026 heldout score**,
+but the scientific idea followed earlier
+positive/variable pooled source results and
+is not an independent preregistration.
+
+At original **150m first marker and the same official
+race distance**, **26** original same-HORSES IDs
+were represented in **27** 2026 scored source rows.
+Equal-HORSES-ID-weighted RMSE:
+- zero source relative-timing baseline: **0.368844 s**;
+- original 2025 OTHER-HORSES matched source-context
+  history: **0.368906 s**;
+- the focal horse's **own 2025** history:
+  **0.386131 s**, hence **no positive transfer benefit**.
+
+Exact race Class matching only left **6** IDs;
+200m matching had **13** IDs, and 200m plus
+original Class **3**. All three returned
+**HOLD**, preserving the original 20-ID threshold.
+Original 2025/26 upstream source held out
+four dates, not zero response records.
+
+This new negative outcome is an important limit
+on claiming **universal temporal stable behavior**.
+It is not evidence that a horse's intrinsic
+personality disappeared, that individuals
+changed with age or ground, nor that social
+competition caused instability. Source
+participation, class, rider/trainer,
+sensor tracking and race-relative peer
+reference changed. A single selected
+external venue-year negative comparison
+cannot establish a causal ecological
+heterogeneity parameter.
+
+Full [cross-year source results](ecology-rq-doomben-2025-to-2026-year-forward-results.md),
+[locked computation](ecology-rq-doomben-cross-year-own-vs-other-history-lock.md).
+The manuscript claim must distinguish
+**within-selected-cohort retrospective
+persistence** from **cross-year
+context portability**; neither
+identifies environmental H1 random slopes
+or opponent interaction H2.
