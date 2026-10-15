@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "venue": "京都",
+  "observed_at_jst": "2026-10-15T16:11:07+09:00",
+  "stage": "thursday_preparation_only",
+  "counts_as_holdout_attempt": false,
+  "uses_target_race_results": false,
+  "horse_numbers_available": false,
+  "live_win_odds_available": false,
+  "note": "Official Thursday JRA cards are published without horse/frame numbers and without live win odds. Runner identities are paired to the race-table horse-name order; the final extra profile link on each page is the course-record horse and is excluded.",
+  "races": {
+    "7": {
+      "scheduled_start_jst": "2026-10-17T13:15:00+09:00",
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 1
+      },
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060720261017/EC",
+      "runners": [
+        [
+          "アミラル",
+          "002023104682",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104682/AA"
+        ],
+        [
+          "キタノサワヤカ",
+          "002022102501",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022102501/1C"
+        ],
+        [
+          "ゲレイロ",
+          "002023104669",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104669/AF"
+        ],
+        [
+          "ココロヅヨサ",
+          "002023105041",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105041/C0"
+        ],
+        [
+          "スコーピオンイメル",
+          "002022104496",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022104496/98"
+        ],
+        [
+          "ゼンカイナダル",
+          "002023100267",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100267/49"
+        ],
+        [
+          "ディニテ",
+          "002022105695",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022105695/76"
+        ],
+        [
+          "ピエナオルフェ",
+          "002021101155",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021101155/F9"
+        ],
+        [
+          "ビズロード",
+          "002023100235",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100235/33"
+        ],
+        [
+          "ビービーバザーク",
+          "002022102397",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022102397/FC"
+        ]
+      ]
+    },
+    "8": {
+      "scheduled_start_jst": "2026-10-17T13:45:00+09:00",
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1400,
+        "class_rank": 2
+      },
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060820261017/A1",
+      "runners": [
+        [
+          "アンムート",
+          "002024106482",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024106482/B2"
+        ],
+        [
+          "カレンハウ",
+          "002024105815",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024105815/70"
+        ],
+        [
+          "ノヴァーリス",
+          "002024107104",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024107104/74"
+        ],
+        [
+          "メモリーブック",
+          "002024102574",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024102574/FD"
+        ],
+        [
+          "リエーヴェ",
+          "002024109107",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024109107/AB"
+        ],
+        [
+          "リュウトウコヤク",
+          "002024107248",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024107248/B1"
+        ],
+        [
+          "ロンドンガーズ",
+          "002024100445",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024100445/31"
+        ]
+      ]
+    },
+    "10": {
+      "scheduled_start_jst": "2026-10-17T14:50:00+09:00",
+      "target": {
+        "surface": "芝",
+        "distance_m": 2200,
+        "class_rank": 2
+      },
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061020261017/4B",
+      "runners": [
+        [
+          "アットアブラスト",
+          "002020101323",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020101323/B9"
+        ],
+        [
+          "アメジストブラック",
+          "002019105051",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002019105051/AD"
+        ],
+        [
+          "アルベリック",
+          "002021101554",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021101554/4A"
+        ],
+        [
+          "エアビッグマム",
+          "002022105250",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022105250/33"
+        ],
+        [
+          "エイシンビーコン",
+          "002023105513",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105513/6B"
+        ],
+        [
+          "セイキュート",
+          "002022104850",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022104850/6A"
+        ],
+        [
+          "チェルヴァーラ",
+          "002023107106",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023107106/CE"
+        ],
+        [
+          "トリニティ",
+          "002023103492",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023103492/69"
+        ],
+        [
+          "メイショウナルカミ",
+          "002023106560",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023106560/51"
+        ]
+      ]
+    },
+    "11": {
+      "scheduled_start_jst": "2026-10-17T15:30:00+09:00",
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 3
+      },
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061120261017/00",
+      "runners": [
+        [
+          "ウィンターダフネ",
+          "002020103246",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020103246/DF"
+        ],
+        [
+          "エアトベーレ",
+          "002023100964",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100964/47"
+        ],
+        [
+          "エリカサファイア",
+          "002021103732",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021103732/84"
+        ],
+        [
+          "エルフストラック",
+          "002021105616",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105616/DD"
+        ],
+        [
+          "エンセリオ",
+          "002021100300",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021100300/DD"
+        ],
+        [
+          "キャットテイル",
+          "002022101678",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022101678/F3"
+        ],
+        [
+          "コンドゥイア",
+          "002022100201",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022100201/AB"
+        ],
+        [
+          "サイモンブーケ",
+          "002020102317",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020102317/64"
+        ],
+        [
+          "ジューンエオス",
+          "002022110069",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022110069/0F"
+        ],
+        [
+          "スマートケープ",
+          "002020102187",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020102187/72"
+        ],
+        [
+          "プリンセッサ",
+          "002022102138",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022102138/AD"
+        ],
+        [
+          "マジックローズ",
+          "002022100622",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022100622/02"
+        ],
+        [
+          "メイショウオーロラ",
+          "002020101209",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020101209/1A"
+        ],
+        [
+          "メイショウコマチ",
+          "002023102243",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102243/3B"
+        ],
+        [
+          "モモンウールー",
+          "002021105984",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105984/FA"
+        ]
+      ]
+    },
+    "12": {
+      "scheduled_start_jst": "2026-10-17T16:15:00+09:00",
+      "target": {
+        "surface": "芝",
+        "distance_m": 1400,
+        "class_rank": 1
+      },
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061220261017/B5",
+      "runners": [
+        [
+          "アイスヴィレッジ",
+          "002022103702",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022103702/E0"
+        ],
+        [
+          "アラビアンジョイ",
+          "002023102939",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102939/34"
+        ],
+        [
+          "ヴァージル",
+          "002022106912",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022106912/1F"
+        ],
+        [
+          "ウォーターエアリー",
+          "002022100404",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022100404/66"
+        ],
+        [
+          "カルロット",
+          "002023105339",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105339/DB"
+        ],
+        [
+          "キシャール",
+          "002023100685",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100685/47"
+        ],
+        [
+          "ギルトエッジ",
+          "002021104537",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021104537/50"
+        ],
+        [
+          "グランドオーパス",
+          "002023104373",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104373/7A"
+        ],
+        [
+          "サリュエ",
+          "002021101650",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021101650/AF"
+        ],
+        [
+          "タイガーロード",
+          "002023102989",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102989/84"
+        ],
+        [
+          "タナブイハチターボ",
+          "002023103861",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023103861/8A"
+        ],
+        [
+          "ファニーバニー",
+          "002023105277",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105277/04"
+        ],
+        [
+          "フルールジェンヌ",
+          "002023103247",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023103247/F6"
+        ],
+        [
+          "フロンティエール",
+          "002022105012",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022105012/77"
+        ],
+        [
+          "ペプチドブッドレア",
+          "002023105720",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105720/84"
+        ],
+        [
+          "ホーリーステップ",
+          "002023102145",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102145/F0"
+        ],
+        [
+          "マイティキングダム",
+          "002023101501",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023101501/B9"
+        ],
+        [
+          "ムーンライトダイヤ",
+          "002023101844",
+          "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023101844/E5"
+        ]
+      ]
+    }
+  }
+}
