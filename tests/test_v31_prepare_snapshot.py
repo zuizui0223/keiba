@@ -39,11 +39,11 @@ class PrepareSnapshotTests(unittest.TestCase):
                 "scheduled_start_jst": "2026-10-17T13:15:00+09:00",
                 "target": {"surface": "ダ", "distance_m": 1800, "class_rank": 1},
             },
-            "card": {"url": "https://jra/card", "text": CARD},
+            "card": {"url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=fixture-card", "text": CARD},
             "profiles": {
-                "1": {"url": "https://jra/horse1", "text": PROFILE1},
-                "2": {"url": "https://jra/horse2", "text": PROFILE2},
-                "3": {"url": "https://jra/horse3", "text": "unused"},
+                "1": {"url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=fixture-horse1", "text": PROFILE1},
+                "2": {"url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=fixture-horse2", "text": PROFILE2},
+                "3": {"url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=fixture-horse3", "text": "unused"},
             },
         }
 
@@ -80,6 +80,18 @@ class PrepareSnapshotTests(unittest.TestCase):
         self.assertEqual(latest["race_name"], "1勝クラス")
         self.assertEqual(latest["class_rank"], 1)
         self.assertEqual(latest["margin_sec"], 0.2)
+
+    def test_non_jra_card_source_fails(self):
+        capture = self.fixture()
+        capture["card"]["url"] = "https://example.com/card"
+        with self.assertRaisesRegex(ValueError, "non_jra_card_source"):
+            prepare(capture, "2026-10-17T12:55:00+09:00")
+
+    def test_non_jra_profile_source_fails(self):
+        capture = self.fixture()
+        capture["profiles"]["2"]["url"] = "https://example.com/horse2"
+        with self.assertRaisesRegex(ValueError, "non_jra_profile_source:2"):
+            prepare(capture, "2026-10-17T12:55:00+09:00")
 
     def test_missing_profile_for_active_horse_fails(self):
         capture = self.fixture()
