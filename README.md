@@ -1,5 +1,47 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-15: same first GPS marker in Doomben across 2025/2026
+
+The existing original-source 2026 Doomben third-track study had
+**only nine** repeat HORSES IDs at each exact 150m and 200m first
+GPS marker, below the numerical ICC support gate. An explicitly
+**post-hoc, source-calendar-selected 2025** extension fixes
+the first/last original Doomben sectional CSV per 2025
+month (23 dates) *before* reading the new 2025 HORSES IDs
+or timing outcomes; it preserves the 19 old 2026 source dates.
+
+Two independent first-party executions
+([run 38674631028](https://github.com/zuizui0223/keiba/actions/runs/38674631028),
+[run 38674654236](https://github.com/zuizui0223/keiba/actions/runs/38674654236))
+linked real numeric HORSES IDs and positive first-section timing
+for **38/42 requested original dates**; four API/source dates
+remain explicit HOLD. In the 2025-only source cohort:
+**25** IDs repeated at 150m (model-dependent conditional
+race-FE horse ICC **0.654**) and **19** at 200m
+(**HOLD**, short of the 20-ID engineering gate).
+Combining 2025 and 2026, **60** IDs repeated at
+150m (ICC **0.180**) and **42** at 200m (ICC **0.412**).
+
+The large 150m ICC change between source periods is **not
+a biological horse change or a year effect**. The observation
+cohort, other horses, nominal race conditions, source
+availability and sensor-error distribution differ.
+Numbers remain Gaussian model-dependent, post-hoc
+and vulnerable to source selection. They do **not**
+establish the same genetic/behavioral trait across
+Cannon Park, Eagle Farm and Doomben, and do not
+identify ground-response H1 or social competition H2.
+
+[2025 calendar source lock](docs/ecology-rq-doomben-2025-marker-calendar-lock.md)
+and [real first-GPS same-marker repeatability/source
+audit](docs/ecology-rq-doomben-2025-2026-exact-marker-source-results.md).
+The program additionally audits whether *original HORSES
+IDs themselves* reappear across 2025/2026 at exactly
+the same first GPS marker, race distance and Class,
+without publishing any identifiers.
+
+
+
 
 ## 2026-10-14: independent original-source fingerprint audit — 548 vs 543 records
 
