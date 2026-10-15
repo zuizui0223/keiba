@@ -101,6 +101,21 @@ class ManuscriptAggregateEvidenceTests(unittest.TestCase):
                 "h1_ground_reaction_norm_fitted",True
             ))
 
+    def test_full_paper_keeps_both_aggregate_signs_and_holds(self):
+        manuscript=(EVIDENCE.parents[2]/"docs"/
+                    "ecology-racehorse-individuality-manuscript-v1.md"
+                   ).read_text(encoding="utf-8")
+        self.assertIn("0.255809",manuscript)
+        self.assertIn("0.303195",manuscript)
+        self.assertIn("0.386131",manuscript)
+        self.assertIn("0.368906",manuscript)
+        self.assertIn("−0.017225",manuscript)
+        self.assertIn("26 leave-one-horse",manuscript)
+        self.assertIn("ten leave-one-2026-date",manuscript)
+        self.assertIn("does not identify a temporal",manuscript)
+        self.assertIn("38679488650",manuscript)
+        self.assertIn("rq-racehorse-temporal-generalization-20261015.json",manuscript)
+
     def test_figure_generator_only_requires_aggregate_safe_source(self):
         source=EVIDENCE.read_text(encoding="utf-8")
         self.assertNotIn("horse_name",source)
