@@ -185,6 +185,77 @@ def summarize(
     }
 
 
+def cross_year_id_overlap(raw_rows:list[dict])->dict:
+    """Actual numeric HORSES IDs recurring in BOTH source years, anonymous.
+
+    Critically separates a pooled across-years random-effect ICC from
+    truly followed same original HORSES IDs. All comparisons operate
+    only on already-eligible unique ID / positive first GPS source
+    records; no horse IDs or segment times are published.
+    """
+    good,_=identity_overlap(raw_rows)
+    y25={r["horse_id"] for r in good if r["day"][:4]=="2025"}
+    y26={r["horse_id"] for r in good if r["day"][:4]=="2026"}
+    if not y25 or not y26:
+        return {
+            "status":"HOLD_ONE_OR_BOTH_ORIGINAL_SOURCE_YEARS_EMPTY",
+            "source_years_with_positive_ID_GPS":[
+                x for x,original in ((2025,y25),(2026,y26)) if original
+            ],
+            "not_proof_of_zero_real_horse_cross_year_overlap":True,
+            "no_original_IDs_or_animal_timings_exported":True,
+        }
+    shared=y25&y26
+    markers={}
+    for marker in FIRST_MARKERS:
+        rows=[r for r in good if abs(float(r["first_marker_m"])-marker)<1e-6]
+        history={}
+        for r in rows:
+            by_year=history.setdefault(r["horse_id"],{2025:[],2026:[]})
+            by_year[int(r["day"][:4])].append(r)
+        bridge={
+            hid:yrs for hid,yrs in history.items()
+            if yrs[2025] and yrs[2026]
+        }
+        at_same_distance=set()
+        at_same_distance_class=set()
+        repeated_dates_both=set()
+        for horse,by_year in bridge.items():
+            old,new=by_year[2025],by_year[2026]
+            old_dist={r["distance"] for r in old}
+            new_dist={r["distance"] for r in new}
+            if old_dist&new_dist:
+                at_same_distance.add(horse)
+            old_context={(r["distance"],r["class"]) for r in old}
+            new_context={(r["distance"],r["class"]) for r in new}
+            if old_context&new_context:
+                at_same_distance_class.add(horse)
+            if (len({r["day"] for r in old})>=2
+                    and len({r["day"] for r in new})>=2):
+                repeated_dates_both.add(horse)
+        markers[str(marker)]={
+            "original_HORSES_IDs_with_this_marker_on_2025_and_2026_dates":
+                len(bridge),
+            "source_IDs_with_same_marker_and_same_official_race_distance_both_years":
+                len(at_same_distance),
+            "source_IDs_with_same_marker_distance_and_original_Class_both_years":
+                len(at_same_distance_class),
+            "source_IDs_with_2plus_different_dates_in_EACH_year_same_marker":
+                len(repeated_dates_both),
+            "marker_matching_is_not_source_sensor_calibration_or_causal_trait_replication":
+                True,
+        }
+    return {
+        "status":"EXPLORATORY_SAME_ORIGINAL_HORSES_ID_ACROSS_2025_2026_SOURCES",
+        "unique_source_HORSES_IDs_observed_2025":len(y25),
+        "unique_source_HORSES_IDs_observed_2026":len(y26),
+        "same_original_numeric_IDs_appearing_in_both_2025_and_2026":len(shared),
+        "marker_exact_and_race_context_cross_year_recurrence":markers,
+        "horse_ID_stability_refers_to_original_RQ_nominations_and_GPS_not_heritable_phenotype":True,
+        "no_original_IDs_or_animal_timings_exported":True,
+    }
+
+
 def evaluate(*,soap=request_xml,gps=fetch_official,
              on_error:str="record_HOLD")->dict:
     rows,manifest=collect(soap=soap,gps=gps,on_error=on_error)
@@ -200,6 +271,7 @@ def evaluate(*,soap=request_xml,gps=fetch_official,
     failed=sorted(set(LOCKED_DATES)-set(success))
     a=summarize(source_2025,period_label="separately_selected_2025_source_year")
     b=summarize(rows,period_label="exploratory_combined_2025_2026_same_venue")
+    recurring=cross_year_id_overlap(rows)
     return {
         "status":(
             "POSTHOC_DOOMBEN_2025_2026_FIRST_MARKER_SOURCE_FEASIBILITY_PARTIAL_HOLD"
@@ -222,6 +294,8 @@ def evaluate(*,soap=request_xml,gps=fetch_official,
         "per_original_date_source_fingerprints_and_anonymous_coverage":manifest,
         "2025_ONLY_first_marker_source_models":a,
         "2025_AND_2026_first_marker_source_models":b,
+        "same_original_HORSES_IDs_crossing_2025_and_2026_after_identity_gate":
+            recurring,
         "missing_original_dates_are_not_zero_effects":True,
         "no_source_HORSES_ID_names_rider_trainer_licences_or_raw_GPS_published":True,
         "no_official_true_starter_finisher_or_certified_full_race_time_verified":True,
@@ -273,6 +347,9 @@ def main()->None:
         "original_dates_successfully_audited":len(result["locked_source_design"]["source_dates_successfully_audited"]),
         "original_dates_HOLD":result["locked_source_design"]["source_dates_on_HOLD"],
         "period_support":compact,
+        "cross_year_source_ID_support":result[
+            "same_original_HORSES_IDs_crossing_2025_and_2026_after_identity_gate"
+        ],
     },ensure_ascii=False))
 
 
