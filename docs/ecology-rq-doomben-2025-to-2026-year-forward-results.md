@@ -102,6 +102,55 @@ sampling and the 2026 outcome groups were selected by race
 participation, positive sensor availability and original ID
 availability, with no independently verified starters/finishers.
 
+## Explicit post-hoc 1-horse and 1-future-date deletion diagnostic
+
+The first locked forward-score comparison gave a negative
+OTHER-minus-OWN RMSE gain of **−0.017225 s** on
+26 actual source HORSES IDs, 27 2026 GPS observations.
+A subsequent exploratory **post-result** sensitivity
+was added WITHOUT altering any of the original source
+dates, markers, fixed historical shrinkage, time split
+or ≥20-ID/≥20-future-row support thresholds.
+
+Independent source-run:
+[GitHub Actions #38678720302](https://github.com/zuizui0223/keiba/actions/runs/38678720302),
+which also passed 8 entirely fictional source/year tests.
+
+| Refit after excluding one unit | Valid original source refits | OTHER minus OWN RMSE gain range | Other-horse historical mean better | Own-horse historical mean better |
+| --- | ---: | ---: | ---: | ---: |
+| Remove ONE of 26 original HORSES IDs | **26/26** | **−0.027772 to +0.007524 s** | **25** | **1** |
+| Remove ONE of 10 scored original 2026 dates | **10/10** | **−0.031433 to +0.014650 s** | **9** | **1** |
+
+In the majority of perturbations the
+historical horse-specific score remains
+worse than the generic other-horse source
+reference. However, the **sign changes**
+when one particular source ID or 2026
+meeting date is omitted. Individual names,
+numeric HORSES IDs, sources and exact
+source GPS/score rows are not exposed.
+
+These min–max values are **NOT a
+confidence interval, a jackknife error,
+evidence of independent replication,
+or a causal statistical test**.
+Only 26 horses and 10 future
+source dates contribute. This finding
+further limits any statement of a
+strong stable population-wide negative
+cross-year effect.
+
+**Refined scientific decision:** In the
+full selected sample the same-horse 2025
+history offered no 2026 RMSE advantage.
+That non-advantage was common across
+single-unit sensitivity checks, but
+not universal across all such checks.
+We cannot conclude a true annual
+loss of behavioral individuality.
+The source Class matched
+sample remains HOLD at only 6 horses.
+
 ## Other source conditions: explicitly HOLD, not zero improvement
 
 | Matched condition | Original HORSES IDs | 2026 records | Scientific scoring status |
@@ -170,10 +219,12 @@ Class matching, exclusively earlier 2025 training,
 and conservative original ID matching.
 
 CI:
-[Doomben 2025→2026 real original-source run
+[Original 2025→2026 source score
 38677957462](https://github.com/zuizui0223/keiba/actions/runs/38677957462),
+[additional real-data ID/date deletion sensitivity
+38678720302](https://github.com/zuizui0223/keiba/actions/runs/38678720302),
 [GitHub main research suite 245 checks
-38677957345](https://github.com/zuizui0223/keiba/actions/runs/38677957345).
+38678724530](https://github.com/zuizui0223/keiba/actions/runs/38678724530).
 
 ~~~bash
 python -m unittest discover -s tests \
