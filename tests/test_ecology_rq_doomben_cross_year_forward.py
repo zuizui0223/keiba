@@ -68,6 +68,14 @@ class CrossYearHistoryTests(unittest.TestCase):
         self.assertLess(rmse["historical_focal_HORSES_ID"],
                         rmse["historical_OTHER_HORSES_same_marker_and_distance"])
         self.assertTrue(result["no_confidence_interval_or_causal_p_value"])
+        influence=result["posthoc_leave_one_horse_and_one_2026_date_out_influence"]
+        by_id=influence["one_original_HORSES_ID"]
+        self.assertEqual(by_id["attempted_deletions"],32)
+        self.assertEqual(by_id["numerically_and_source_supported_deletions"],32)
+        self.assertTrue(by_id["not_an_uncertainty_interval"])
+        self.assertLessEqual(by_id["OTHER_minus_OWN_RMSE_gain_min_sec"],
+                             by_id["OTHER_minus_OWN_RMSE_gain_max_sec"])
+        self.assertEqual(influence["one_2026_source_date"]["attempted_deletions"],4)
         self.assertNotIn("FAKE-HORSE-ID",json.dumps(result))
 
     def test_synthetic_year_reversal_can_make_own_history_worse(self):
@@ -78,6 +86,12 @@ class CrossYearHistoryTests(unittest.TestCase):
         rmse=r["equal_original_HORSES_ID_weighted_2026_RMSE_seconds"]
         self.assertLess(rmse["OTHER_minus_OWN_RMSE_gain_positive_own_better"],0)
         self.assertLess(rmse["ZERO_minus_OWN_RMSE_gain_positive_own_better"],0)
+        influence=r["posthoc_leave_one_horse_and_one_2026_date_out_influence"]
+        self.assertEqual(influence["one_original_HORSES_ID"]["attempted_deletions"],32)
+        self.assertGreater(
+            influence["one_original_HORSES_ID"]["deletions_where_other_horses_history_better"],
+            0
+        )
         # Explicitly allow failure of the biological-persistence hypothesis.
 
     def test_twenty_horses_gate_cannot_approve_sparse_200m_sample(self):
