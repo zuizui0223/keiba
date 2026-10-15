@@ -1005,3 +1005,48 @@ persistence** from **cross-year
 context portability**; neither
 identifies environmental H1 random slopes
 or opponent interaction H2.
+
+
+### 2025→2026 Doomben negative result: post-hoc individual/date influence
+
+The [real cross-year source scoring run
+38677957462](https://github.com/zuizui0223/keiba/actions/runs/38677957462)
+found that original 2025 HORSES-ID history
+**did not** improve 2026 race-relative first
+150m sectional time at the exact same
+original race distance in 26 matched
+original horse IDs/27 later observations.
+A separate, **post-result** sensitivity
+calculated the original comparator RMSE
+gain on the *same source* after
+deleting each horse ID or 2026
+evaluation date, keeping all original
+shrinkage, source dates and sample
+thresholds unchanged.
+
+- Delete one of 26 official IDs:
+  **25/26 negative** OTHER-minus-OWN
+  RMSE gains, **1/26 positive**;
+  gain range **−0.027772 to +0.007524 s**.
+- Delete one of 10 scored 2026 dates:
+  **9/10 negative, 1/10 positive**;
+  range **−0.031433 to +0.014650 s**.
+- No Class-matched 150m or
+  200m score passed the pre-frozen
+  20-ID support gate.
+- Full results in [2025→2026
+  Doomben source audit](ecology-rq-doomben-2025-to-2026-year-forward-results.md)
+  and [independent GitHub Actions
+  38678720302](https://github.com/zuizui0223/keiba/actions/runs/38678720302).
+
+The full sampled-cohort result is
+genuinely negative for individual
+history transport, but its **sign
+does change under a single-unit
+perturbation**, so no stable
+generalizable biological loss
+of individuality can be asserted.
+These are not confidence intervals.
+H1 environmental reaction slopes
+and H2 opponent-context effects
+remain HOLD.
