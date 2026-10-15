@@ -111,6 +111,25 @@ race; ambiguous source identities and all-zero/invalid
 sectional durations were discarded rather than interpreted
 as confirmed nonstarters or did-not-finish outcomes.
 
+Racing Queensland's official Open Data Web Services
+Protocol & Interface Specification (v1.0,
+sections 4.15–4.16, printed pp. 27–28)
+describes GetHorsesForRace and GetHorseDetailsInRace
+responses as a horse ID and name, source Weight,
+assigned Jockey/@Id and Trainer/@Id, with
+no structured final verified starter flag,
+actual postrace rider-change record, certified
+focal finish time or positive-GPS measurement
+denominator in these TWO SOAP schemas.
+Other first-party products MAY supply results,
+scratchings and jockey changes but were not
+independently reconciled in this analysis.
+Thus the source assigned-Jockey identifiers
+used here are not a validated intervention
+on actual jockey identity. See
+[source-schema validation and provenance
+boundary](ecology-rq-official-soap-vs-final-starters-jockey-data-scope.md).
+
 Cannon Park: twelve previously fixed 2026 meeting dates,
 official races 1–8 as available. A refreshed complete
 12-date source snapshot contained 543 numeric-HORSES-ID /
