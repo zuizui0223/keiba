@@ -1,50 +1,77 @@
 # v3 broad-candidate retrospective diagnostic
 
 **Status: retrospective diagnostic, not validation.**  
-The v3 candidate rules were designed after observing the 2026-10-12 outcomes, so these races cannot validate predictive improvement.
+The v3 rules were designed after observing the 2026-10-12 failures. These races are training/diagnostic evidence and cannot validate predictive improvement.
+
+Canonical generator: `scripts/generate_v3_candidates.py`.
 
 ## Aggregate
 
-| Metric | v3 union | Market Top5 |
-|---|---:|---:|
-| Candidate slots | 57 | 30 |
-| Mean candidates / race | 9.5 | 5 |
-| Winners captured | 6/6 | 5/6 |
-| Top3 captured | 16/18 | 13/18 |
-| Top3 recall | 88.9% | 72.2% |
-| Top3 hits / candidate slot | 28.1% | 43.3% |
+| Metric | v3 union | Old marked candidates | Market Top4 |
+|---|---:|---:|---:|
+| Candidate slots | 49 | 38 | 24 |
+| Mean candidates / race | 8.17 | 6.33 | 4.00 |
+| Winners captured | **6/6** | 5/6 | 5/6 |
+| Top3 captured | **16/18** | 15/18 | 12/18 |
+| Top3 recall | **88.9%** | 83.3% | 66.7% |
+| Top3 hits / candidate slot | 32.7% | 39.5% | **50.0%** |
 
-The union screen catches three additional Top3 finishers and the 12R winner that market Top5 missed, but it nearly doubles the candidate count. **Coverage improved; efficiency did not.**
+The v3 union has the highest coverage, including the 12R upset winner, but it uses 49 runner-slots. Market Top4 is much more selective.
+
+**Conclusion: coverage improved retrospectively; selection efficiency did not.**
 
 ## Race-level result
 
-- 7R: 11 candidates, Top3 3/3.
-- 8R: 9 candidates, Top3 2/3; missed 7 レーヌマロン.
-- 9R: 10 candidates, Top3 3/3.
-- 10R: 7 candidates, Top3 3/3.
-- 11R: 9 candidates, Top3 2/3; missed 4 スズハローム.
-- 12R: 11 candidates, Top3 3/3.
+| R | Field | v3 candidates | Top3 recall | Missed |
+|---|---:|---:|---:|---|
+| 7R | 16 | 9 | 2/3 | 9 |
+| 8R | 11 | 5 | 2/3 | 7 |
+| 9R | 12 | 7 | 3/3 | — |
+| 10R | 10 | 6 | 3/3 | — |
+| 11R | 18 | 12 | 3/3 | — |
+| 12R | 16 | 10 | 3/3 | — |
+
+Total: **49 candidates, 16/18 Top3, 6/6 winners**.
+
+## What the union actually does
+
+A horse can enter through any of these pre-result signals:
+
+- market Top4;
+- win within ±200m of today's distance on the same surface;
+- close Top3 within ±200m on the same surface;
+- lightly raced horse with a latest win or close form within a wider distance window.
+
+Layoff/surface/distance changes are stored as uncertainty flags rather than automatic exclusions.
+
+No probabilities are produced. No ticket is selected.
 
 ## Missed cases
 
+### 7R 9 エイユーファイヤー
+
+The canonical union missed the eventual third-place horse. This is a reminder that even a broad 9/16 screen is incomplete.
+
 ### 8R 7 レーヌマロン
 
-Latest three structured runs before the race were 1-win turf 1800m 9th (+1.0), 1-win turf 2000m 7th (+1.1), and 1-win dirt 1800m 11th (+2.9). No current v3 union criterion fires.
+Latest structured runs were 1-win turf1800 9th (+1.0), 1-win turf2000 7th (+1.1), and 1-win dirt1800 11th (+2.9). No current v3 positive rule fires.
 
-**Do not add a bespoke rule just to capture this result.** The evidence available before the race did not make this an obvious systematic omission.
+Adding a custom condition after the result would be overfitting.
 
-### 11R 4 スズハローム
+## Why not widen it further now
 
-Latest three were G1 turf1600 17th (+1.8), G3 turf1600 1st, and Listed turf1600 1st. The present union has no “recent high-class win at adjacent distance” criterion.
+The current screen already covers **59% of runner-slots (49/83)**. Adding rules to chase the remaining two Top3 misses would make the screen even less selective.
 
-That may be a useful hypothesis for a future feature, but adding it now because the horse finished second would be retrospective overfitting.
+Therefore the next problem is not “catch every horse.” It is:
+
+> given a broad candidate set, can a frozen ranking/pruning layer beat the market baseline on future races?
 
 ## Decision
 
-The broad union is useful as a **screening layer only**. It should feed a separate ranking/pruning model.
+1. Freeze the current `generate_v3_candidates.py` rules.
+2. Do not tune thresholds further on the October 12 races.
+3. Treat 7R–12R only as diagnostic/training evidence.
+4. Build ranking features separately from candidate generation and separately from ticket pricing.
+5. Evaluate the ranking/pruning layer on a future race set, tracking both recall and candidate count/efficiency.
 
-Next step:
-1. freeze the broad-candidate feature extractor;
-2. build ranking features without using 10/12 results as validation;
-3. evaluate on future races against market baselines;
-4. score both recall and candidate-set size/efficiency.
+The matching machine-readable record is `v3-candidate-diagnostic.json`.
