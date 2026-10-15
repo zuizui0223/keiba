@@ -9,6 +9,11 @@ on:
       - "docs/v31-candidate-generation-protocol.md"
       - "docs/v31-holdout-freeze.json"
       - "docs/v31-holdout-ledger.json"
+      - "docs/v31-holdout-attempt-ledger.json"
+      - "docs/v31-holdout-decision-contract.json"
+      - "docs/v31-residual-audit-protocol.md"
+      - "holdout/v31/**"
+      - "reports/v31-holdout-final-evaluation.json"
       - "docs/v31-holdout-operations.md"
       - "data/2026-10-12/v3-quality-tier-map.json"
   push:
@@ -21,6 +26,11 @@ on:
       - "docs/v31-candidate-generation-protocol.md"
       - "docs/v31-holdout-freeze.json"
       - "docs/v31-holdout-ledger.json"
+      - "docs/v31-holdout-attempt-ledger.json"
+      - "docs/v31-holdout-decision-contract.json"
+      - "docs/v31-residual-audit-protocol.md"
+      - "holdout/v31/**"
+      - "reports/v31-holdout-final-evaluation.json"
       - "docs/v31-holdout-operations.md"
       - "data/2026-10-12/v3-quality-tier-map.json"
 
