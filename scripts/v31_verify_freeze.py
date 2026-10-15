@@ -25,6 +25,10 @@ FROZEN_PATHS = {
     "attempt_ledger_tests": "tests/test_v31_attempt_ledger.py",
     "postrace_validator": "scripts/v31_validate_postrace.py",
     "pipeline_integration_tests": "tests/test_v31_pipeline_integration.py",
+    "result_preparer": "scripts/v31_prepare_result.py",
+    "result_preparer_tests": "tests/test_v31_prepare_result.py",
+    "freeze_verifier": "scripts/v31_verify_freeze.py",
+    "freeze_verifier_tests": "tests/test_v31_freeze_integrity.py",
 }
 
 
