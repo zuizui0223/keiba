@@ -9,6 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
+sys.path.insert(0, str(SCRIPTS))
+from v31_prepare_result import prepare as prepare_result
 
 
 def save(path: Path, obj: dict):
@@ -86,9 +88,24 @@ class ResidualAuditTests(unittest.TestCase):
                 "source_capture_meta_sha256":file_sha(directory/"source-meta.json"),
             },
         })
-        save(directory/"result.json", {
-            "race_id":race_id,"top3":result_top3,
-        })
+        result_rows = "\n".join(
+            f"| {rank} |  | {number} | 馬{number} | 牡4 | 57.0 | 騎手 | 1:52.{rank} |"
+            for rank, number in enumerate(result_top3, start=1)
+        )
+        result_capture = {
+            "race_id": race_id,
+            "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=residual-fixture",
+            "observed_at_jst": "2026-10-18T13:35:00+09:00",
+            "text": (
+                "# レース結果2026年10月18日（日曜）4回京都7日 7レース\n\n"
+                "発走時刻：**13時25分**\n\n"
+                "| 着順 | 枠 | 馬 番 | 馬名 | 性齢 | 負担 重量 | 騎手名 | タイム |\n"
+                "| --- | --- | --- | --- | --- | --- | --- | --- |\n"
+                + result_rows + "\n"
+            ),
+        }
+        save(directory/"result-capture.json", result_capture)
+        save(directory/"result.json", prepare_result(result_capture))
         run = self.run_script(
             "v31_holdout.py","score","--freeze",directory/"freeze.json",
             "--result",directory/"result.json","--output",directory/"score.json",
@@ -108,6 +125,7 @@ class ResidualAuditTests(unittest.TestCase):
             "v31_residual_workbook.py",
             "--freeze",directory/"freeze.json",
             "--result",directory/"result.json",
+            "--result-capture",directory/"result-capture.json",
             "--score",directory/"score.json",
             "--attempt-ledger",directory/"attempts.json",
             "--race-input",directory/"race-input.json",
