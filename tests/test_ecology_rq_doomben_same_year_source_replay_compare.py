@@ -189,6 +189,34 @@ class SameYearOriginalSourceReplayAudit(unittest.TestCase):
         self.assertNotIn('"jockey_license_id":',public)
         self.assertNotIn('"first_section_sec":',public)
 
+    def test_two_source_complete_real_reruns_same_23_horses_and_24_future_rows(self):
+        pinned=Path(__file__).resolve().parents[1]/"docs"/"evidence"/(
+            "rq-doomben-same-year-rerun-availability-20261015.json")
+        r=json.loads(pinned.read_text(encoding="utf-8"))
+        complete=r["source_complete_matched_replays"]
+        one,two=complete["source_replay_C"],complete["source_replay_D"]
+        self.assertEqual(one["github_run_id"],38697565949)
+        self.assertEqual(two["github_run_id"],38697629972)
+        self.assertEqual(one["original_source_dates_successful"],38)
+        self.assertEqual(two["original_source_dates_successful"],38)
+        self.assertEqual(one["anonymized_aggregate_sha256"],
+                         two["anonymized_aggregate_sha256"])
+        self.assertTrue(complete["all_38_successful_original_source_manifest_entries_equal"])
+        self.assertTrue(complete["all_8_scoring_comparison_aggregates_equal"])
+        primary=complete["within_year_2025_150m_same_distance"]
+        self.assertEqual(primary["status"],NUMERIC_OK)
+        self.assertEqual(primary["distinct_horse_ids"],23)
+        self.assertEqual(primary["future_rows"],24)
+        self.assertAlmostEqual(
+            primary["equal_horse_RMSE_seconds"]["other"]-
+            primary["equal_horse_RMSE_seconds"]["own"],
+            primary["OTHER_minus_OWN_gain_seconds"],places=12)
+        self.assertTrue(primary["OTHER_minus_OWN_gain_seconds"]>0)
+        limits=complete["scientific_interpretation"]
+        self.assertFalse(limits["independent_animal_population_or_experiment"])
+        self.assertFalse(limits["source_availability_invariant_under_all_reruns"])
+        self.assertFalse(limits["stable_intrinsic_personality_or_yearly_decay_identified"])
+
     def test_shared_source_incomplete_digest_cannot_be_called_equal(self):
         a=invented_source_report()
         b=copy.deepcopy(a)
