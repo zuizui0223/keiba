@@ -6,8 +6,8 @@ This schedule is operational metadata only. It does not change the frozen v3.1 s
 
 | JST | Stage | Target | Repository effect |
 |---|---|---|---|
-| 2026-10-15 17:00 | pre-processing | all currently eligible Kyoto races | cache current JRA cards and pre-race horse histories; no target result |
-| Every Thursday 17:30 | weekly planner | next Kyoto meeting while score ledger < 20 | verify integrity, discover eligible races, prepare source captures, and schedule exact race-day freeze/scoring/fail-safe tasks without duplicates |
+| 2026-10-15 17:00 | pre-processing | all currently eligible Kyoto races | cache official JRA runner identities and pre-race histories; no inferred numbers or target result |
+| 2026-10-16 around 13:00 | numbered-card reconciliation | Kyoto R7/R8/R10/R11/R12 | match newly assigned official JRA horse numbers with Thursday horse IDs; no live odds or freeze |\n| Every Thursday 17:30 | weekly planner | next Kyoto meeting while score ledger < 20 | verify integrity, discover eligible races, prepare source captures, and schedule exact race-day freeze/scoring/fail-safe tasks without duplicates |
 | 2026-10-17 12:55 | pre-result freeze | R7, scheduled 13:15 | freeze inside the fixed 15–25 minute window; register FROZEN or PRE_RESULT_DATA_FAILURE attempt |
 | 2026-10-17 13:25 | pre-result freeze | R8, scheduled 13:45 | same |
 | 2026-10-17 14:30 | pre-result freeze | R10, scheduled 14:50 | same |
@@ -116,3 +116,13 @@ See:
 - `scripts/v31_holdout.py`
 - `scripts/v31_attempt_ledger.py`
 - `scripts/v31_evaluate_holdout.py`
+
+## Thursday / Friday publication boundary (operational correction, 2026-10-15)
+
+JRA officially explains that on Thursday shortly after 16:00 the race card is generally published **without horse or frame numbers**, and that numbers are generally attached after 10:00 on the preceding Friday. Source: https://jra.jp/faq/pop02/2_2.html
+
+This means the Thursday 17:00 stage may cache declared horses by official JRA horse identity/profile URL and their pre-race histories, but **must not** fabricate horse numbers, assign temporary frame numbers, synthesize win odds, or claim a final horse-number key match. The frozen snapshot preparer requires numbered runners and actual win odds; it therefore remains reserved for the valid race-day observation window.
+
+A one-time Friday numbered-card check is scheduled for 2026-10-16 approximately 13:00 JST. It must reconcile official horse number ↔ JRA horse ID, identity, active runner roster and race class, and keep caches preparatory only. Missing official numbered cards or inaccessible text means preparation failure, not an invented PASS.
+
+Race-day freeze tasks are unchanged. Each still requires a **new** timestamped actual win-odds capture and matching official active runner set 15–25 minutes before its start. No code, classifier, manifest, frozen threshold or formal decision contract is modified by this operational correction.
