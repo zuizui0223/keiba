@@ -7,6 +7,9 @@ on:
     paths:
       - 'docs/evidence/rq-racehorse-temporal-generalization-20261015.json'
       - 'scripts/ecology_rq_manuscript_temporal_figure.py'
+      - 'docs/evidence/rq-doomben-identical-horse-timescale-overlap-20261015.json'
+      - 'scripts/ecology_rq_manuscript_source_overlap_figure.py'
+      - 'tests/test_ecology_rq_manuscript_source_overlap_figure.py'
       - 'tests/test_ecology_rq_manuscript_temporal_figure.py'
       - 'docs/ecology-racehorse-individuality-manuscript-v1.md'
       - '.github/workflows/ecology-rq-manuscript-figure.yml'
@@ -42,8 +45,30 @@ jobs:
           assert 'horse_id=' not in txt and 'jockey_license_id' not in txt
           print("FIGURE_STATUS aggregate-only; cross-cohort temporal effect NOT estimated")
           PY
+      - name: Validate new outcome-blind same-HORSES-ID intersection figure
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_manuscript_source_overlap_figure.py' -v
+      - name: Render original-source sample support without animal identifiers
+        run: |
+          python scripts/ecology_rq_manuscript_source_overlap_figure.py \
+            --output tmp/rq-doomben-matched-ID-time-horizon-overlap.svg
+          python - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          q=Path("tmp/rq-doomben-matched-ID-time-horizon-overlap.svg").read_text()
+          assert ET.fromstring(q).tag.endswith("svg")
+          assert "23" in q and "26" in q and "shared horses" in q
+          assert "Scientific decision: HOLD" in q
+          assert "NOT aging or loss of personality" in q
+          assert "horse_id=" not in q and "jockey_license_id" not in q
+          print("SOURCE_INTERSECTION figure from two SHA-identical original Doomben source aggregate runs")
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: manuscript-source-conditional-two-cohort-figure
           path: tmp/rq-context-limited-individuality.svg
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-doomben-common-source-horse-overlap
+          path: tmp/rq-doomben-matched-ID-time-horizon-overlap.svg
           retention-days: 30
