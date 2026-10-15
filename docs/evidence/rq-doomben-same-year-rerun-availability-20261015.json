@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-15.1",
+  "version": "2026-10-15.2",
   "origin": "Previously executed public GitHub Actions original Racing Queensland Doomben aggregate-only source runs",
   "source_original_calendar": {
     "2025_locked_days": 23,
@@ -114,6 +114,51 @@
     "2026_200m_same_distance_and_Class": {
       "A_IDs": 6,
       "B_IDs": 6
+    }
+  },
+  "source_complete_matched_replays": {
+    "source_replay_C": {
+      "github_run_id": 38697565949,
+      "anonymized_aggregate_sha256": "8d6617440a30abbcc8075a5287d6d68ad7d0527e82a384f105a19f0b925dacc8",
+      "original_source_dates_successful": 38,
+      "source_HOLD_dates": [
+        "2025-01-22",
+        "2025-05-28",
+        "2025-08-27",
+        "2026-08-26"
+      ]
+    },
+    "source_replay_D": {
+      "github_run_id": 38697629972,
+      "anonymized_aggregate_sha256": "8d6617440a30abbcc8075a5287d6d68ad7d0527e82a384f105a19f0b925dacc8",
+      "original_source_dates_successful": 38,
+      "source_HOLD_dates": [
+        "2025-01-22",
+        "2025-05-28",
+        "2025-08-27",
+        "2026-08-26"
+      ]
+    },
+    "all_38_successful_original_source_manifest_entries_equal": true,
+    "all_8_scoring_comparison_aggregates_equal": true,
+    "within_year_2025_150m_same_distance": {
+      "status": "EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY",
+      "distinct_horse_ids": 23,
+      "future_rows": 24,
+      "equal_horse_RMSE_seconds": {
+        "zero": 0.23939042295167864,
+        "own": 0.2110649524967905,
+        "other": 0.24069150510963605
+      },
+      "OTHER_minus_OWN_gain_seconds": 0.029626552612845553,
+      "minimum_20_horses_source_gate_passed": true
+    },
+    "scientific_interpretation": {
+      "source_conditional_numerical_positive_recomputed_on_identical_source_snapshot": true,
+      "independent_animal_population_or_experiment": false,
+      "source_availability_invariant_under_all_reruns": false,
+      "stable_intrinsic_personality_or_yearly_decay_identified": false,
+      "year_forward_2025_to_2026_different_horses_context_not_paired_within_year": true
     }
   }
 }
