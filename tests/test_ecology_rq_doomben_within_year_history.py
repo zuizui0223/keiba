@@ -115,18 +115,24 @@ class SameCourseWithinYear(unittest.TestCase):
             "HOLD_TOO_FEW_WITHIN_YEAR_REPEATED_HORSES_FUTURE_ROWS_OR_DATES")
         self.assertNotIn("equal_horse_RMSE_seconds",s)
 
-    def test_source_class_change_restarts_history_and_can_hold(self):
+    def test_source_class_change_restarts_history_not_assumed_nested_HOLD(self):
         data,_=prepare(fictional_annual_records(changing_class=True))
         broad=scoring_summary(data,year="2025",marker=150.,strict_class=False)
         strict=scoring_summary(data,year="2025",marker=150.,strict_class=True)
         self.assertEqual(broad["status"],
             "EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY")
+        # After a class change, the first new-Class date has no matching
+        # horse history, but there are enough later new-Class dates that
+        # strict-Class scoring still meets the predeclared support gate.
         self.assertEqual(strict["status"],
-            "HOLD_TOO_FEW_WITHIN_YEAR_REPEATED_HORSES_FUTURE_ROWS_OR_DATES")
+            "EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY")
         self.assertEqual(strict["comparison_population"][
             "distinct_future_original_meeting_dates_scored"],6)
-        # six dates meets 6 but 32 contexts meets 20, so support might succeed,
-        # if so check explicit class reset instead of requiring arbitrary HOLD.
+        self.assertEqual(broad["comparison_population"][
+            "distinct_future_original_meeting_dates_scored"],7)
+        self.assertLess(strict["comparison_population"][
+            "scored_anonymous_original_future_rows"],
+            broad["comparison_population"]["scored_anonymous_original_future_rows"])
 
     def test_2025_and_2026_are_never_combined_into_one_historical_profile(self):
         data,_=prepare(fictional_annual_records(year_2026_marker=200.))
