@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "stage": "thursday_jra_card_recheck_not_a_holdout_attempt",
+  "target_date": "2026-10-17",
+  "checked_date_jst": "2026-10-15",
+  "venue": "京都",
+  "source_branch": "analysis/kyoto-20261012",
+  "source_prep_path": "docs/v31-prep-2026-10-17-thursday.json",
+  "source_prep_blob_sha": "b79466bbce1bf23d648d10935b2a8c1026b6ce9f",
+  "freeze_manifest_blob_sha": "af6e9bc7cda9f92efb65838a34999f0f97fcad52",
+  "freeze_integrity": "PASS_19_of_19",
+  "runner_count": 59,
+  "formal_horse_numbers_available": false,
+  "frame_numbers_available": false,
+  "actual_win_odds_available": false,
+  "results_referenced": false,
+  "ledger_registered": false,
+  "freeze_created": false,
+  "note": "Official pre-race table only. Course-record profile link is never a runner. 8R is 2yo OP turf; original Thursday target metadata is incorrect and must never be interpreted as eligible. Saturday must independently capture fresh JRA cards, profiles and actual odds before freeze.",
+  "races": {
+    "7": {
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060720261017/EC",
+      "race_name": "3歳以上1勝クラス",
+      "start_at_jst": "2026-10-17T13:15:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 1
+      },
+      "eligible_for_v31_holdout": true,
+      "excluded_reason": null,
+      "runner_count": 10,
+      "added_runner_names": [],
+      "removed_runner_names": [],
+      "identity_or_profile_url_mismatch_count": 0,
+      "verified_runner_profiles": 10,
+      "course_record_horse_id_excluded": "002021105700",
+      "saved_condition_corrections": [],
+      "history_cache_path": "docs/v31-prep-history-2026-10-17/R7.json",
+      "official_card_valid": true
+    },
+    "8": {
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060820261017/A1",
+      "race_name": "もみじステークス",
+      "start_at_jst": "2026-10-17T13:45:00+09:00",
+      "official_conditions": {
+        "age_scope": "2歳",
+        "surface": "芝",
+        "distance_m": 1400,
+        "class_rank": 4
+      },
+      "eligible_for_v31_holdout": false,
+      "excluded_reason": "exclude_2yo_only",
+      "runner_count": 7,
+      "added_runner_names": [],
+      "removed_runner_names": [],
+      "identity_or_profile_url_mismatch_count": 0,
+      "verified_runner_profiles": 7,
+      "course_record_horse_id_excluded": "002004103323",
+      "saved_condition_corrections": [
+        {
+          "field": "target.surface",
+          "saved": "ダ",
+          "official": "芝"
+        },
+        {
+          "field": "target.class_rank",
+          "saved": 2,
+          "official": 4
+        }
+      ],
+      "history_cache_path": "docs/v31-prep-history-2026-10-17/R8.json",
+      "official_card_valid": true
+    },
+    "10": {
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061020261017/4B",
+      "race_name": "清滝特別",
+      "start_at_jst": "2026-10-17T14:50:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "芝",
+        "distance_m": 2200,
+        "class_rank": 2
+      },
+      "eligible_for_v31_holdout": true,
+      "excluded_reason": null,
+      "runner_count": 9,
+      "added_runner_names": [],
+      "removed_runner_names": [],
+      "identity_or_profile_url_mismatch_count": 0,
+      "verified_runner_profiles": 9,
+      "course_record_horse_id_excluded": "002015104868",
+      "saved_condition_corrections": [],
+      "history_cache_path": "docs/v31-prep-history-2026-10-17/R10.json",
+      "official_card_valid": true
+    },
+    "11": {
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061120261017/00",
+      "race_name": "トルマリンステークス",
+      "start_at_jst": "2026-10-17T15:30:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 3
+      },
+      "eligible_for_v31_holdout": true,
+      "excluded_reason": null,
+      "runner_count": 15,
+      "added_runner_names": [],
+      "removed_runner_names": [],
+      "identity_or_profile_url_mismatch_count": 0,
+      "verified_runner_profiles": 15,
+      "course_record_horse_id_excluded": "002021105700",
+      "saved_condition_corrections": [],
+      "history_cache_path": "docs/v31-prep-history-2026-10-17/R11.json",
+      "official_card_valid": true
+    },
+    "12": {
+      "card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061220261017/B5",
+      "race_name": "3歳以上1勝クラス",
+      "start_at_jst": "2026-10-17T16:15:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "芝",
+        "distance_m": 1400,
+        "class_rank": 1
+      },
+      "eligible_for_v31_holdout": true,
+      "excluded_reason": null,
+      "runner_count": 18,
+      "added_runner_names": [],
+      "removed_runner_names": [],
+      "identity_or_profile_url_mismatch_count": 0,
+      "verified_runner_profiles": 18,
+      "course_record_horse_id_excluded": "002021110031",
+      "saved_condition_corrections": [],
+      "history_cache_path": "docs/v31-prep-history-2026-10-17/R12.json",
+      "official_card_valid": true
+    }
+  }
+}
