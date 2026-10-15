@@ -11,19 +11,31 @@ class RankingFeatureTests(unittest.TestCase):
             "race":12,"date":"2026-10-12","surface":"dirt",
             "distance_m":1200,"class":"1勝クラス","horses":[
                 {"number":1,"name":"A","win_odds":2.0,"career_starts":5,
-                 "source_latest_run_date":"2026-09-20","recent_runs":[
-                    {"date":"2026-09-20","class":"1勝クラス","surface":"dirt","distance_m":1200,"finish":2,"beaten_margin_s":0.2,"source_url":"x"},
-                    {"date":"2026-08-20","class":"1勝クラス","surface":"dirt","distance_m":1400,"finish":1,"beaten_margin_s":0.0,"source_url":"x"},
-                    {"date":"2026-07-20","class":"未勝利","surface":"dirt","distance_m":1200,"finish":1,"beaten_margin_s":0.0,"source_url":"x"}]},
+                 "source_latest_run_date":"2026-09-20","history_checked_at_jst":"2026-10-12T09:00:00+09:00","history_source_url":"https://example.test/h1","recent_runs":[
+                    {"date":"2026-09-20","class":"1勝クラス","surface":"dirt","distance_m":1200,"finish":2,"beaten_margin_s":0.2,"source_url":"https://example.test/run"},
+                    {"date":"2026-08-20","class":"1勝クラス","surface":"dirt","distance_m":1400,"finish":1,"beaten_margin_s":0.0,"source_url":"https://example.test/run"},
+                    {"date":"2026-07-20","class":"未勝利","surface":"dirt","distance_m":1200,"finish":1,"beaten_margin_s":0.0,"source_url":"https://example.test/run"}]},
                 {"number":2,"name":"B","win_odds":50.0,"career_starts":12,
-                 "source_latest_run_date":"2026-06-01","recent_runs":[
-                    {"date":"2026-06-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"x"},
-                    {"date":"2026-05-01","class":"1勝クラス","surface":"turf","distance_m":1600,"finish":8,"beaten_margin_s":1.0,"source_url":"x"},
-                    {"date":"2026-04-01","class":"1勝クラス","surface":"turf","distance_m":1600,"finish":10,"beaten_margin_s":1.5,"source_url":"x"}]},
-                {"number":3,"name":"C","win_odds":3.0,"career_starts":10,"source_latest_run_date":"2026-09-01","recent_runs":[{"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"x"}]},
-                {"number":4,"name":"D","win_odds":4.0,"career_starts":10,"source_latest_run_date":"2026-09-01","recent_runs":[{"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"x"}]},
-                {"number":5,"name":"E","win_odds":5.0,"career_starts":10,"source_latest_run_date":"2026-09-01","recent_runs":[{"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"x"}]},
-                {"number":6,"name":"F","win_odds":6.0,"career_starts":10,"source_latest_run_date":"2026-09-01","recent_runs":[{"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"x"}]}
+                 "source_latest_run_date":"2026-06-01","history_checked_at_jst":"2026-10-12T09:00:00+09:00","history_source_url":"https://example.test/h2","recent_runs":[
+                    {"date":"2026-06-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"https://example.test/run"},
+                    {"date":"2026-05-01","class":"1勝クラス","surface":"turf","distance_m":1600,"finish":8,"beaten_margin_s":1.0,"source_url":"https://example.test/run"},
+                    {"date":"2026-04-01","class":"1勝クラス","surface":"turf","distance_m":1600,"finish":10,"beaten_margin_s":1.5,"source_url":"https://example.test/run"}]},
+                {"number":3,"name":"C","win_odds":3.0,"career_starts":10,"source_latest_run_date":"2026-09-01","history_checked_at_jst":"2026-10-12T09:00:00+09:00","history_source_url":"https://example.test/history","recent_runs":[
+                    {"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"https://example.test/r1"},
+                    {"date":"2026-08-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":8,"beaten_margin_s":1.0,"source_url":"https://example.test/r2"},
+                    {"date":"2026-07-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":10,"beaten_margin_s":1.5,"source_url":"https://example.test/r3"}]},
+                {"number":4,"name":"D","win_odds":4.0,"career_starts":10,"source_latest_run_date":"2026-09-01","history_checked_at_jst":"2026-10-12T09:00:00+09:00","history_source_url":"https://example.test/history","recent_runs":[
+                    {"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"https://example.test/r1"},
+                    {"date":"2026-08-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":8,"beaten_margin_s":1.0,"source_url":"https://example.test/r2"},
+                    {"date":"2026-07-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":10,"beaten_margin_s":1.5,"source_url":"https://example.test/r3"}]},
+                {"number":5,"name":"E","win_odds":5.0,"career_starts":10,"source_latest_run_date":"2026-09-01","history_checked_at_jst":"2026-10-12T09:00:00+09:00","history_source_url":"https://example.test/history","recent_runs":[
+                    {"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"https://example.test/r1"},
+                    {"date":"2026-08-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":8,"beaten_margin_s":1.0,"source_url":"https://example.test/r2"},
+                    {"date":"2026-07-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":10,"beaten_margin_s":1.5,"source_url":"https://example.test/r3"}]},
+                {"number":6,"name":"F","win_odds":6.0,"career_starts":10,"source_latest_run_date":"2026-09-01","history_checked_at_jst":"2026-10-12T09:00:00+09:00","history_source_url":"https://example.test/history","recent_runs":[
+                    {"date":"2026-09-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":9,"beaten_margin_s":1.2,"source_url":"https://example.test/r1"},
+                    {"date":"2026-08-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":8,"beaten_margin_s":1.0,"source_url":"https://example.test/r2"},
+                    {"date":"2026-07-01","class":"1勝クラス","surface":"turf","distance_m":1800,"finish":10,"beaten_margin_s":1.5,"source_url":"https://example.test/r3"}]}
             ]
         }
 
