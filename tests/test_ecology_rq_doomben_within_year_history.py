@@ -15,6 +15,7 @@ sys.path.insert(0,str(ROOT/"tests"))
 from ecology_rq_early_pace_repeatability import prepare
 from ecology_rq_doomben_within_year_history import (
     analyze,score_private,scoring_summary,evaluate,
+    original_date_deletion_support_sensitivity,
 )
 from ecology_rq_doomben_2025_marker_extension import LOCKED_DATES
 from test_ecology_rq_doomben_2025_marker_extension import fake_soap,fake_gps
@@ -105,6 +106,35 @@ class SameCourseWithinYear(unittest.TestCase):
         self.assertEqual(out["comparison_population"][
             "scored_anonymous_distinct_original_HORSES_IDs"],16)
         self.assertNotIn("equal_horse_RMSE_seconds",out)
+
+    def test_source_date_deletion_reveals_borderline_positive_result_is_fragile(self):
+        # 7 fictional dates -> 6 different post-history evaluation dates:
+        # exactly meets the previously locked 6-date support requirement.
+        # Removing ANY original date makes it fail (only 5 dated
+        # future comparisons), without changing the effect or scoring rule.
+        data,_=prepare(fictional_annual_records(source_days=7))
+        original=scoring_summary(
+            data,year="2025",marker=150.,strict_class=False)
+        self.assertEqual(
+            original["status"],
+            "EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY")
+        diagnostic=original_date_deletion_support_sensitivity(
+            data,year="2025",marker=150.,strict_class=False,
+            baseline=original)
+        self.assertEqual(diagnostic["original_source_dates_with_positive_GPS_for_marker"],7)
+        self.assertEqual(diagnostic["delete_one_original_date_refits_attempted"],7)
+        self.assertEqual(diagnostic["refits_returning_HOLD_after_one_date_missing"],7)
+        self.assertEqual(diagnostic["refits_passing_PREVIOUSLY_FROZEN_minimum_support"],0)
+        self.assertNotIn("valid_refit_OTHER_minus_OWN_gain_min_sec",diagnostic)
+        self.assertTrue(diagnostic["not_an_independent_prospective_validation"])
+
+    def test_unsupported_source_data_is_not_rescored_for_positive_signal(self):
+        data,_=prepare(fictional_annual_records(ids=16))
+        d=original_date_deletion_support_sensitivity(
+            data,year="2025",marker=150.,strict_class=False)
+        self.assertEqual(
+            d["status"],"HOLD_ORIGINAL_YEAR_MARKER_CONTEXT_ALREADY_UNSUPPORTED")
+        self.assertFalse(d["recalculation_on_unsupported_original_data"])
 
     def test_too_few_original_future_dates_HOLD(self):
         data,_=prepare(fictional_annual_records(source_days=4))
