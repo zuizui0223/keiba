@@ -124,6 +124,23 @@ class DoombenYearExtensionTests(unittest.TestCase):
         self.assertEqual(result["2025_ONLY_first_marker_source_models"][
             "source_id_linkage"]["original_ID_matched_positive_first_GPS_candidate_rows"],220)
 
+    def test_truncated_official_chunked_XML_is_a_source_HOLD_not_zero(self):
+        from http.client import IncompleteRead
+        def transient_upstream_failure(op,params):
+            if op=="GetMeetingsForDate" and params["meetingDate"]=="2025-03-19":
+                raise IncompleteRead(b"<Meetings>",9)
+            return fake_soap(op,params)
+        result=evaluate(soap=transient_upstream_failure,gps=fake_gps)
+        missed=result["per_original_date_source_fingerprints_and_anonymous_coverage"]["2025-03-19"]
+        self.assertEqual(missed["status"],"HOLD_DATE_SOURCE_NOT_RECONCILED")
+        self.assertEqual(
+            missed["error_code"],
+            "HOLD_INCOMPLETE_OR_TRUNCATED_OFFICIAL_HTTP_RESPONSE")
+        self.assertTrue(missed["not_counted_as_zero_participation"])
+        self.assertIn("2025-03-19",result["locked_source_design"]["source_dates_on_HOLD"])
+        self.assertEqual(result["2025_ONLY_first_marker_source_models"][
+            "source_id_linkage"]["original_ID_matched_positive_first_GPS_candidate_rows"],220)
+
     def test_changed_original_name_under_same_numeric_id_is_blocked(self):
         def changed_soap(op,params):
             return fake_soap(op,params,name_changed_year=True)
