@@ -1,0 +1,66 @@
+name: "Ecology Doomben two-run within-year source agreement audit"
+
+# Compares two IMMUTABLE, independently executed original-source
+# aggregate-only GitHub Actions artifacts. No new horse records fetched.
+# Source-availability changes may flip a borderline 20-ID support gate.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_doomben_same_year_source_replay_compare.py'
+      - 'tests/test_ecology_rq_doomben_same_year_source_replay_compare.py'
+      - '.github/workflows/ecology-rq-doomben-within-year-agreement.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-independent-source-availability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify invented source-availability counterexamples
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_doomben_same_year_source_replay_compare.py' -v
+      - name: Download ONLY original aggregate run A (pinned immutable run)
+        run: |
+          mkdir -p tmp/official-A
+          gh run download 38696624349 --name doomben-within-year-source-anonymous-horse-profile-results --dir tmp/official-A
+      - name: Download ONLY original aggregate run B (pinned immutable run)
+        run: |
+          mkdir -p tmp/official-B
+          gh run download 38696711022 --name doomben-2025-2026-separate-within-year-history-safe-aggregate --dir tmp/official-B
+      - name: Compare original source hashes, available dates and locked scientific gates
+        run: |
+          A=$(find tmp/official-A -type f -name '*.json')
+          B=$(find tmp/official-B -type f -name '*.json')
+          test "$(find tmp/official-A -type f -name '*.json' | wc -l)" -eq 1
+          test "$(find tmp/official-B -type f -name '*.json' | wc -l)" -eq 1
+          python scripts/ecology_rq_doomben_same_year_source_replay_compare.py \
+            --runA "$A" --runB "$B" --output tmp/doomben-within-year-source-agreement.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('tmp/doomben-within-year-source-agreement.json').read_text())
+          assert x['status']=='HOLD_DOOMBEN_WITHIN_YEAR_SCORE_NOT_ROBUST_TO_SOURCE_AVAILABILITY'
+          cell=x['original_year_marker_class_context_gate_sensitivity']['2025_150m_same_distance']
+          assert cell['runA_original_HORSES_IDs']==21
+          assert cell['runB_original_HORSES_IDs']==17
+          assert not cell['same_source_population_supported_across_two_runs']
+          assert x['source_missing_date_not_zero_horse_or_neglected_result']
+          assert x['no_original_horse_names_IDs_licence_GPS_row_or_predictions_exported']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: doomben-within-year-two-source-runs-agreement-anonymous-only
+          path: tmp/doomben-within-year-source-agreement.json
+          retention-days: 30
