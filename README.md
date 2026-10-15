@@ -25,7 +25,7 @@ with the precise sampling/causal limits.
   decay in intrinsic animal personality or
   H1/H2 environmental/social interactions.
 
-A [reproducible two-cohort aggregate-only Figure 1](https://github.com/zuizui0223/keiba/actions/runs/38679488650)
+A [reproducible two-cohort aggregate-only Figure 1](https://github.com/zuizui0223/keiba/actions/runs/38679786636)
 uses a permanently frozen
 [source evidence manifest](docs/evidence/rq-racehorse-temporal-generalization-20261015.json)
 and an [audited standard-library SVG generator](scripts/ecology_rq_manuscript_temporal_figure.py).
