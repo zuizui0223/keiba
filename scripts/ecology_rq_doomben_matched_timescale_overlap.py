@@ -51,6 +51,74 @@ def _same_horse_measurement_context(row:dict, *,strict_class:bool)->tuple:
     return (row["horse_id"], source_context(row,strict_class))
 
 
+def independent_original_exposure_overlap(
+    relative:list[dict],*,marker:float=FIXED_MARKER,
+    strict_class:bool=False
+)->dict:
+    """Pure DATE/ID incidence counts, independent of BOTH scoring routines.
+
+    Post-result independent check of the previously observed zero
+    overlap between the two scored cohorts. It uses NO outcome values:
+    only original source horse IDs, date/year, original first marker,
+    official distance and optionally Class.
+    """
+    if marker!=FIXED_MARKER:
+        raise ValueError("HOLD_UNAPPROVED_DIRECT_SOURCE_OVERLAP_MARKER")
+    dates_by_context=defaultdict(
+        lambda: {"2025":set(),"2026":set()}
+    )
+    for r in relative:
+        if abs(float(r["first_section_marker"])-marker)>1e-6:
+            continue
+        year=r["day"][:4]
+        if year not in ("2025","2026"):
+            raise ValueError("HOLD_ORIGINAL_SOURCE_YEAR_NOT_2025_OR_2026")
+        key=(r["horse_id"],source_context(r,strict_class))
+        if r["day"] in dates_by_context[key][year]:
+            raise ValueError("HOLD_DUPLICATE_SAME_HORSE_DATE_FOR_DIRECT_OVERLAP")
+        dates_by_context[key][year].add(r["day"])
+
+    has_two_in_2025=set()
+    has_one_both=set()
+    has_2025_two_2026_one=set()
+    has_two_both=set()
+    contexts_2025_two_2026_one=0
+    contexts_two_both=0
+    for (horse,ctx),years in dates_by_context.items():
+        n25=len(years["2025"])
+        n26=len(years["2026"])
+        if n25>=2:
+            has_two_in_2025.add(horse)
+        if n25>=1 and n26>=1:
+            has_one_both.add(horse)
+        if n25>=2 and n26>=1:
+            has_2025_two_2026_one.add(horse)
+            contexts_2025_two_2026_one+=1
+        if n25>=2 and n26>=2:
+            has_two_both.add(horse)
+            contexts_two_both+=1
+    return {
+        "status":"DIRECT_SOURCE_ID_DATE_EXPOSURE_COUNTS_ONLY_NO_PREDICTION",
+        "exact_150m_original_marker":int(marker),
+        "exact_source_Class_required":strict_class,
+        "source_horse_IDs_2plus_distinct_dates_in_2025_same_context":
+            len(has_two_in_2025),
+        "source_horse_IDs_1plus_date_each_of_2025_2026_same_context":
+            len(has_one_both),
+        "source_horse_IDs_2plus_dates_2025_and_1plus_2026_same_context":
+            len(has_2025_two_2026_one),
+        "horse_context_strata_2plus_2025_and_1plus_2026":
+            contexts_2025_two_2026_one,
+        "source_horse_IDs_2plus_dates_IN_EACH_year_same_context":
+            len(has_two_both),
+        "horse_context_strata_2plus_dates_IN_EACH_year":
+            contexts_two_both,
+        "no_first_GPS_timings_or_individual_IDs_exported":True,
+        "not_a_within_individual_year_decay_or_biological_hypothesis_test":True,
+        "source_only_support_does_not_force_positive_or_negative_RMSE":True,
+    }
+
+
 def _safe_rmse_by_horse(rows:list[dict], actual:str, pred:str)->float:
     by_horse=defaultdict(list)
     for row in rows:
@@ -215,6 +283,14 @@ def evaluate(*,soap=request_xml,gps=fetch_official,
         "also_same_original_race_Class_support":paired_timescale_support(
             relative,marker=FIXED_MARKER,strict_class=True
         ),
+        "independent_pre_score_direct_same_horse_original_incidence":
+            independent_original_exposure_overlap(
+                relative,marker=FIXED_MARKER,strict_class=False
+            ),
+        "independent_pre_score_exact_Class_incidence":
+            independent_original_exposure_overlap(
+                relative,marker=FIXED_MARKER,strict_class=True
+            ),
         "study_WAS_POSTHOC_after_both_original_favorable_unfavorable_results":True,
         "not_a_source_independent_biological_replication":True,
         "NOT_ageing_H1_H2_heritability_personality_or_wagering":True,
@@ -238,6 +314,12 @@ def main():
         "original_source_HOLD_dates":report["original_source_dates_HOLD"],
         "matched_150m_exact_distance":report["exact_150m_marker_distance_overlap"],
         "also_same_Class":report["also_same_original_race_Class_support"],
+        "direct_incidence":report[
+            "independent_pre_score_direct_same_horse_original_incidence"
+        ],
+        "direct_Class_incidence":report[
+            "independent_pre_score_exact_Class_incidence"
+        ],
         "no_animal_identifiers_output":True,
     },ensure_ascii=False))
 
