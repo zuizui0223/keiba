@@ -32,8 +32,13 @@ This is **not** a validated population confidence interval.
 Eagle Farm also gives a positive source-conditional pooled ICC
 about 0.453, but uses different GPS marker distributions;
 the two numbers are NOT matched-trait cross-site replication.
-Doomben does not meet the repeated-animal source threshold
-for a marker-specific ICC.
+Doomben **2026 alone** did not meet the repeat-ID threshold
+for a marker-specific ICC. After adding prelocked 2025
+source dates, 150m and 200m pooled ICCs were estimable:
+the 150m conditional estimate was **0.654 in 2025 alone**
+and **0.180 with 2026 added**, reflecting changed
+observational source populations, not a proven
+within-horse developmental change.
 
 ### Evidence B — changed documented rider, same horse/context
 
@@ -69,6 +74,43 @@ respective matched subset*. These different subsets
 are not causal contrasts. The stricter Class-matched
 comparison (20 IDs/22 records) lies at the exact
 minimum support boundary and is secondary.
+
+### Evidence E — locked 2025→2026 same-horse cross-year test does NOT reproduce advantage
+
+A subsequently locked computation evaluated genuinely same
+original `HORSES` IDs at Doomben across years, rather
+than interpreting changing pooled source ICCs as
+within-individual change. The original 2025-only
+history was kept fixed; the original 2026 positive
+timing records were held out. Exactly matching
+150m marker and original race distance produced
+**26 identified horses and 27 scored 2026 rows**:
+equal-ID-weighted RMSE was **0.386131 s** for own
+2025 source history, compared with **0.368844 s**
+for a zero-relative-time baseline and **0.368906 s**
+for OTHER horses' matched 2025 histories.
+Hence horse-own source history was **not
+superior** for this selected year-forward cohort.
+
+The stricter exact race Class criterion retained
+just **6** horse IDs; 200m same-distance only
+**13** (Class-matched **3**), all **HOLD**
+under the pre-scoring 20-ID minimum. Four
+upstream source dates were unavailable and
+not imputed. This is **not proof of
+individual aging, disappearance of personality
+or a causal year effect**, but it falsifies
+a strong *universal temporal transfer*
+interpretation of the Cannon same-year
+positive source result.
+
+Full [original source analysis and preserved
+negative result](ecology-rq-doomben-2025-to-2026-year-forward-results.md);
+[locked source scoring definitions](ecology-rq-doomben-cross-year-own-vs-other-history-lock.md).
+The main paper claim must therefore remain
+**study-context conditional** and explicitly
+discuss non-transfer to this limited
+new venue-year cohort.
 
 ## Crucial source edition boundary
 
@@ -142,11 +184,21 @@ timing profile reduced equal-horse-weighted
 prediction error relative to both a zero
 individual-history baseline and the historical
 profile of other horses under the same
-measurement context. These findings indicate
-that source-linked individual history carries
-information about subsequent race-relative
-early pacing beyond a generic race-context
-average. However, the data do not isolate
+measurement context. These findings indicate that source-linked
+individual history carries information
+about subsequent race-relative early pacing
+**within this original Cannon Park cohort**.
+However, a separate retrospective Doomben
+2025→2026 same-HORSES-ID evaluation did **not**
+transfer that positive horse-specific historical
+advantage: on 26 repeated horses and 27 held-out
+records, own-horse history RMSE (0.3861 seconds)
+was larger than the matched OTHER-horse 2025
+history RMSE (0.3689 seconds). Context,
+race Class and selection differ across the
+comparison; stricter class matching did not
+have sufficient repeated-horse support.
+The current data also do not isolate
 intrinsic behavioral personality from training,
 selection, actual rider assignment or sensor
 coverage. Cross-venue measurements lack a
@@ -170,6 +222,11 @@ of stable intrinsic temperament.
   rider/trainer missingness.
 - Table 2: same-Class and role-specific matched
   benchmarks, with insufficient groups marked HOLD.
+- Figure 4: 2025→2026 source-locked same-HORSES-ID
+  Doomben non-transfer result, with 200m and
+  Class-matched contexts marked as HOLD.
+  Do not treat pooled ICC year differences
+  as same-horse annual shifts.
 
 ## Required independent validation before stronger claims
 
@@ -198,3 +255,6 @@ are produced.
 - docs/ecology-rq-forward-other-horse-comparator-results.md
 - docs/ecology-rq-cannon-original-source-drift-20261014.md
 - docs/evidence/rq-cannon-original-source-fingerprints-20261014.json
+
+- docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md
+- docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md
