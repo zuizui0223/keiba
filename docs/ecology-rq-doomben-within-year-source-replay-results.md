@@ -1,6 +1,6 @@
 # Doomben within-year horse-history result: original source availability reverses the inference gate
 
-**Final scientific status (15 October 2026): HOLD — not a replicated biological effect.**
+**Scientific status (15 October 2026): exploratory numerical within-2025 gain on source-complete reruns, but HOLD for cross-snapshot biological confirmation.**
 This is an observational read-only Racing Queensland (RQ) source
 reproducibility audit, **not** a test of age-related behavioral decline,
 heritability, environmental reaction-norm H1, social-competition H2,
@@ -69,6 +69,42 @@ The numerical eligibility difference is driven by
 **intermittent source availability on the nonshared dates**,
 not evidence of a biological 2025–26 effect.
 
+## Two further original-source replays with both key 2025 dates
+
+The same frozen 23-date 2025 / 19-date 2026 original
+Racing Queensland cohort was retrieved **two more
+times**, without selecting new race dates, horses,
+GPS markers, Class groups or historical shrinkage:
+
+- [Official original-data run #38697565949](https://github.com/zuizui0223/keiba/actions/runs/38697565949).
+- [Independent original-data run #38697629972](https://github.com/zuizui0223/keiba/actions/runs/38697629972).
+
+Unlike the first two source executions, **both
+returned 2025-03-19 and 2025-07-12 successfully**.
+The same four preexisting dates remained unavailable:
+2025-01-22, 2025-05-28, 2025-08-27 and 2026-08-26.
+
+The two new executions agreed on the original
+2025/150m exact-distance numerical comparison:
+**23 source HORSES IDs**, **23 later GPS rows**,
+OWN historical RMSE **0.211065 s**, OTHER-horse
+historical RMSE **0.240692 s**,
+and zero-profile RMSE **0.239390 s**.
+The OTHER-minus-OWN improvement was
+**+0.029627 s**, descriptively positive.
+
+This **does reproduce a source-conditional numerical
+result**, but the *same source cohort and observation
+protocol* has a known failure mode in which one
+incomplete/truncated original HTTP response
+changes the sample and pushes the score below
+the previously frozen 20-ID/20-row gate.
+These are NOT independent biological cohorts,
+nor a preregistered proof of a stable population
+trait or year-to-year age-related behavioral
+response. Cross-snapshot source availability
+still limits what can be claimed.
+
 ## Biological and source-conditional scoring results
 
 | Prelocked marker/year/context | Run A identities / later rows | Run A | Run B identities / later rows | Run B |
@@ -90,16 +126,27 @@ In the one supported Run A context only:
   **0.214881 s**.
 - OTHER minus OWN RMSE gain: **+0.028304 s**.
 
-**The positive numerical contrast does NOT survive independent
-source replay as an estimable contrast.** The second run has
-insufficient original horses and future rows under the exact
-same locked threshold and must not be treated as either
-a zero or a negative own-history effect.
+**The initial two-run comparison did NOT support
+a consistently estimable positive result**: the
+second run has insufficient original horses
+and future rows under exactly the same locked
+threshold. In the two later runs which obtained
+both critical original 2025 dates, the positive
+source-conditional numerical comparison was
+replicated at 23 IDs and +0.029627 s. This
+does not remove the data-availability vulnerability,
+and the unsupported second run must not be
+treated as a zero or negative biological effect.
 
-As a result, the single numerical same-year 2025 gain
-may be retained in versioned exploratory audit logs but
-**must not be promoted as a verified positive ecology result**
-or included as a robust manuscript headline.
+As a result, the two supported numerical same-year
+2025 source snapshots (21-ID +0.028304 s and
+23-ID +0.029627 s) may be retained as positive,
+*source-conditional* exploratory findings, but
+**cannot be promoted to a confirmed, source-availability-
+invariant biological effect** or an annual personality
+decline. Their different target samples also prevent
+treating the pair as an independent replication of
+the same exact horse observations.
 
 The 2025→2026 prior-year source evaluation was a separate
 previously fixed sample: 26 shared IDs / 27 later
