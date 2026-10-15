@@ -241,6 +241,8 @@ The register command invokes the independent validator itself. It refuses regist
 
 The register command rejects duplicate race IDs, chronological backfilling and entries beyond the 20-race target.
 
+Each accepted score-ledger entry also stores SHA-256 provenance for `freeze.json`, `result.json`, the raw official `result-capture.json`, `score.json`, and the attempt ledger used at registration, plus the official result source URL. These fields are audit evidence only and do not change formal scoring.
+
 ## Formal evaluation after race 20
 
 After exactly 20 scored eligible races, run:
