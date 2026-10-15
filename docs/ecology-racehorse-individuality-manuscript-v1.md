@@ -517,6 +517,33 @@ comparison had sufficient IDs,
 and Class-matched contexts were also
 unsupported.
 
+Two later original-source reruns,
+without modifying any earlier
+study date, marker, race ID or
+history rule, successfully
+obtained both of the transiently
+unavailable 2025 dates.
+Each yielded **23 distinct
+HORSES IDs and 23 later GPS
+observations**, with a
+historical own-horse RMSE
+of **0.211065 s** versus
+**0.240692 s** for other-horse
+history (OTHER−OWN **+0.029627 s**).
+This is a reproducible
+*source-complete observational
+number*, not independent
+biological replication: all
+four executions sample from
+the same original racing
+population, and an incomplete
+HTTP response can still push
+the eligible subset beneath
+the fixed numerical threshold.
+The 2026 within-year sample
+and all Class-matched contexts
+remained below the criterion.
+
 A third, aggregate-only source
 provenance audit independently
 compared the two execution artifacts.
@@ -1031,6 +1058,7 @@ https://www.racingqueensland.com.au/rq-open-data-web-services.pdf
 - docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md
 - docs/ecology-rq-doomben-within-year-history-design-lock.md
 - docs/ecology-rq-doomben-within-year-source-replay-results.md
+- GitHub Actions source-complete within-year rerun 38697629972
 - GitHub Actions source replay consistency execution 38697999341
 - docs/ecology-rq-doomben-within-year-history-design-lock.md
 - docs/ecology-rq-doomben-within-year-source-replay-results.md
