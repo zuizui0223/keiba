@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "stage": "thursday_history_cache_only_not_freeze",
+  "checked_on_jst": "2026-10-15",
+  "target_date": "2026-10-17",
+  "race_number": 8,
+  "eligible_for_v31_holdout": false,
+  "reason_ineligible": "2yo_only_excluded_by_manifest",
+  "official_conditions": {
+    "race_name": "もみじステークス",
+    "age_scope": "2歳",
+    "surface": "芝",
+    "distance_m": 1400,
+    "class_rank": 4
+  },
+  "race_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060820261017/A1",
+  "original_prep_blob_sha": "b79466bbce1bf23d648d10935b2a8c1026b6ce9f",
+  "freeze_manifest_blob_sha": "af6e9bc7cda9f92efb65838a34999f0f97fcad52",
+  "results_referenced": false,
+  "counts_as_holdout_attempt": false,
+  "horse_numbers_populated": false,
+  "actual_odds_populated": false,
+  "source_type": "official_JRA_accessU_profile",
+  "runner_count": 7,
+  "pre_target_history_row_count": 14,
+  "history_column_schema": [
+    "date_jst",
+    "venue",
+    "race_name",
+    "course",
+    "going",
+    "field_size",
+    "popularity",
+    "finish",
+    "jockey",
+    "carried_weight_kg",
+    "horse_weight_kg",
+    "time",
+    "rating",
+    "winner_or_runner_up"
+  ],
+  "profile_cache_note": "Only dated historical career race table rows before target date. Two-year-old-only race ineligible regardless of these historical records.",
+  "horses": [
+    {
+      "name": "アンムート",
+      "jra_horse_id": "002024106482",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024106482/B2",
+      "pre_target_history_count": 2,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-08-08",
+          "venue": "新潟",
+          "race_name": "ダリア賞",
+          "course": "芝1400",
+          "going": "良",
+          "field_size": "9",
+          "popularity": "2",
+          "finish": "2",
+          "jockey": "坂井 瑠星",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "434",
+          "time": "1:20.8",
+          "rating": "100",
+          "winner_or_runner_up": "ルークウォーム"
+        },
+        {
+          "date_jst": "2026-06-27",
+          "venue": "福島",
+          "race_name": "2歳新馬",
+          "course": "芝1200",
+          "going": "良",
+          "field_size": "11",
+          "popularity": "1",
+          "finish": "1",
+          "jockey": "坂井 瑠星",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "426",
+          "time": "1:09.3",
+          "rating": "",
+          "winner_or_runner_up": "(エーアイクワイ)"
+        }
+      ]
+    },
+    {
+      "name": "カレンハウ",
+      "jra_horse_id": "002024105815",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024105815/70",
+      "pre_target_history_count": 3,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-08-08",
+          "venue": "新潟",
+          "race_name": "ダリア賞",
+          "course": "芝1400",
+          "going": "良",
+          "field_size": "9",
+          "popularity": "3",
+          "finish": "3",
+          "jockey": "戸崎 圭太",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "452",
+          "time": "1:20.9",
+          "rating": "99",
+          "winner_or_runner_up": "ルークウォーム"
+        },
+        {
+          "date_jst": "2026-07-11",
+          "venue": "小倉",
+          "race_name": "2歳未勝利",
+          "course": "芝1200",
+          "going": "良",
+          "field_size": "12",
+          "popularity": "1",
+          "finish": "1",
+          "jockey": "松山 弘平",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "448",
+          "time": "1:08.6",
+          "rating": "",
+          "winner_or_runner_up": "(バクソウシャチョウ)"
+        },
+        {
+          "date_jst": "2026-06-13",
+          "venue": "阪神",
+          "race_name": "2歳新馬",
+          "course": "芝1200",
+          "going": "良",
+          "field_size": "11",
+          "popularity": "7",
+          "finish": "3",
+          "jockey": "高杉 吏麒",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "458",
+          "time": "1:08.8",
+          "rating": "",
+          "winner_or_runner_up": "ロンドンガーズ"
+        }
+      ]
+    },
+    {
+      "name": "ノヴァーリス",
+      "jra_horse_id": "002024107104",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024107104/74",
+      "pre_target_history_count": 2,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-09-21",
+          "venue": "阪神",
+          "race_name": "2歳未勝利",
+          "course": "芝1200",
+          "going": "良",
+          "field_size": "13",
+          "popularity": "2",
+          "finish": "1",
+          "jockey": "岩田 望来",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "472",
+          "time": "1:08.6",
+          "rating": "",
+          "winner_or_runner_up": "(カツダルマ)"
+        },
+        {
+          "date_jst": "2026-08-01",
+          "venue": "中京",
+          "race_name": "2歳新馬",
+          "course": "芝1400",
+          "going": "良",
+          "field_size": "13",
+          "popularity": "6",
+          "finish": "6",
+          "jockey": "坂井 瑠星",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "470",
+          "time": "1:20.9",
+          "rating": "",
+          "winner_or_runner_up": "ラムラベイ"
+        }
+      ]
+    },
+    {
+      "name": "メモリーブック",
+      "jra_horse_id": "002024102574",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024102574/FD",
+      "pre_target_history_count": 1,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-09-27",
+          "venue": "阪神",
+          "race_name": "2歳新馬",
+          "course": "芝1400",
+          "going": "良",
+          "field_size": "10",
+          "popularity": "10",
+          "finish": "1",
+          "jockey": "横山 和生",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "504",
+          "time": "1:23.1",
+          "rating": "",
+          "winner_or_runner_up": "(スパイスオブライフ)"
+        }
+      ]
+    },
+    {
+      "name": "リエーヴェ",
+      "jra_horse_id": "002024109107",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024109107/AB",
+      "pre_target_history_count": 3,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-07-18",
+          "venue": "小倉",
+          "race_name": "ひまわり賞",
+          "course": "芝1200",
+          "going": "良",
+          "field_size": "18",
+          "popularity": "2",
+          "finish": "6",
+          "jockey": "永島 まなみ",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "464",
+          "time": "1:11.0",
+          "rating": "82",
+          "winner_or_runner_up": "カエリールークス"
+        },
+        {
+          "date_jst": "2026-07-05",
+          "venue": "小倉",
+          "race_name": "2歳未勝利",
+          "course": "芝1200",
+          "going": "重",
+          "field_size": "16",
+          "popularity": "1",
+          "finish": "1",
+          "jockey": "永島 まなみ",
+          "carried_weight_kg": "53.0",
+          "horse_weight_kg": "460",
+          "time": "1:10.8",
+          "rating": "",
+          "winner_or_runner_up": "(スイトーヨ)"
+        },
+        {
+          "date_jst": "2026-06-27",
+          "venue": "小倉",
+          "race_name": "2歳新馬",
+          "course": "芝1200",
+          "going": "稍重",
+          "field_size": "10",
+          "popularity": "2",
+          "finish": "2",
+          "jockey": "永島 まなみ",
+          "carried_weight_kg": "53.0",
+          "horse_weight_kg": "464",
+          "time": "1:10.3",
+          "rating": "",
+          "winner_or_runner_up": "カエリールークス"
+        }
+      ]
+    },
+    {
+      "name": "リュウトウコヤク",
+      "jra_horse_id": "002024107248",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024107248/B1",
+      "pre_target_history_count": 1,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-06-20",
+          "venue": "阪神",
+          "race_name": "2歳新馬",
+          "course": "芝1400",
+          "going": "稍重",
+          "field_size": "9",
+          "popularity": "7",
+          "finish": "1",
+          "jockey": "田山 旺佑",
+          "carried_weight_kg": "53.0",
+          "horse_weight_kg": "456",
+          "time": "1:22.4",
+          "rating": "",
+          "winner_or_runner_up": "(ブラックミューズ)"
+        }
+      ]
+    },
+    {
+      "name": "ロンドンガーズ",
+      "jra_horse_id": "002024100445",
+      "jra_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002024100445/31",
+      "pre_target_history_count": 2,
+      "pre_target_history": [
+        {
+          "date_jst": "2026-07-19",
+          "venue": "函館",
+          "race_name": "函館2歳S",
+          "course": "芝1200",
+          "going": "重",
+          "field_size": "13",
+          "popularity": "3",
+          "finish": "12",
+          "jockey": "北村 友一",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "444",
+          "time": "1:12.1",
+          "rating": "80",
+          "winner_or_runner_up": "フェリチタ"
+        },
+        {
+          "date_jst": "2026-06-13",
+          "venue": "阪神",
+          "race_name": "2歳新馬",
+          "course": "芝1200",
+          "going": "良",
+          "field_size": "11",
+          "popularity": "2",
+          "finish": "1",
+          "jockey": "松山 弘平",
+          "carried_weight_kg": "55.0",
+          "horse_weight_kg": "442",
+          "time": "1:08.2",
+          "rating": "",
+          "winner_or_runner_up": "(メアグローリア)"
+        }
+      ]
+    }
+  ]
+}
