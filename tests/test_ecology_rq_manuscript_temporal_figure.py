@@ -105,6 +105,7 @@ class ManuscriptAggregateEvidenceTests(unittest.TestCase):
         manuscript=(EVIDENCE.parents[2]/"docs"/
                     "ecology-racehorse-individuality-manuscript-v1.md"
                    ).read_text(encoding="utf-8")
+        manuscript=" ".join(manuscript.split())
         self.assertIn("0.255809",manuscript)
         self.assertIn("0.303195",manuscript)
         self.assertIn("0.386131",manuscript)
