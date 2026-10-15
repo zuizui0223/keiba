@@ -19,7 +19,7 @@
     "attempt_ledger_tool": "c2380d353ce646fc09ec473e75bfc691a704c29f",
     "attempt_ledger_tests": "5033112a1457e8b6d35f55d6173ffe15c98c5f33",
     "postrace_validator": "5b7110bc132ae5e382c2d9e2abaad851f7190dba",
-    "pipeline_integration_tests": "5974051040fe1917739bb035ec53b925b62542c0",
+    "pipeline_integration_tests": "e0c1a511d6877b90d532d22f2bef951e3ab352de",
     "result_preparer": "fedf3b2544c6cdea8891d9757da130e36b391cde",
     "result_preparer_tests": "5e265382048c50b521ba95ad10ef86dfe63fae53",
     "freeze_verifier": "54a2e35d5c46803a9fc7163180737d402d42c905",
@@ -86,7 +86,7 @@
   },
   "holdout_start_rule": "The first eligible Kyoto race whose valid source capture, odds snapshot and pre-result freeze all satisfy the frozen contract after created_at_jst is holdout race 1. Every subsequent eligible Kyoto race must be attempted chronologically and recorded in the attempt ledger until 20 scored FROZEN races are accumulated.",
   "change_control": "Any threshold or rescue-logic change creates v3.2 or later and starts a new holdout window.",
-  "created_at_jst": "2026-10-15T12:10:50+09:00",
+  "created_at_jst": "2026-10-15T12:14:37+09:00",
   "integrity_note": "The frozen snapshot preparer records source-page hashes. The frozen holdout wrapper verifies preparer/classifier/wrapper SHAs, baseline quality tiers, race identity, active horse-number set, eligibility, and the 15-25 minute pre-post market window. Every eligible race is additionally recorded in the attempt ledger as FROZEN or PRE_RESULT_DATA_FAILURE. The formal evaluator requires the scored race sequence to match the first FROZEN attempts and applies p<=0.05, candidate fraction<=0.65, and freeze success rate>=0.80.",
   "eligibility": {
     "venue": "京都",
@@ -122,5 +122,6 @@
   "source_sha_correction": "Before any prospective holdout race, a real end-to-end test found the frozen snapshot preparer generated an invalid Git blob hash (literal backslash-zero instead of NUL). The one-line hashing fix and regression test were applied; no candidate-generation thresholds or formal decision gates changed.",
   "postrace_integrity": "Before accepting a score into the holdout ledger, scripts/v31_holdout.py register MUST receive --freeze, --result, --result-capture, --score and --attempt-ledger and invoke scripts/v31_validate_postrace.py. The validator re-parses the raw official JRA result capture through the frozen result preparer, requires exact reproduction of result.json, checks result timing/source hashes, recomputes candidate/recall arithmetic, and validates the prior FROZEN attempt. No score may be registered without this gate.",
   "integrity_correction_2": "Pre-holdout defensive fix: make independent post-race validation mandatory inside ledger registration instead of a voluntary separate command. No v3.1 candidate thresholds, odds window, eligibility or formal evaluation thresholds changed.",
-  "result_source_provenance": "Pre-holdout defensive hardening: official target results are no longer entered as manual top-three numbers. scripts/v31_prepare_result.py accepts only official JRA result-page captures whose date, Kyoto venue and race number match race_id; formal registration re-parses the raw capture and verifies its SHA-backed result provenance. No candidate-generation, market-window, eligibility or formal decision thresholds changed."
+  "result_source_provenance": "Pre-holdout defensive hardening: official target results are no longer entered as manual top-three numbers. scripts/v31_prepare_result.py accepts only official JRA result-page captures whose date, Kyoto venue and race number match race_id; formal registration re-parses the raw capture and verifies its SHA-backed result provenance. No candidate-generation, market-window, eligibility or formal decision thresholds changed.",
+  "integrity_correction_3": "Pre-holdout correction: the full-pipeline integration test was updated to pass the now-required official result capture into ledger registration. This changes no production logic, candidate thresholds, eligibility, market window, or formal decision gates."
 }
