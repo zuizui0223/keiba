@@ -101,8 +101,8 @@ class SourceOverlapManuscriptFigureTests(unittest.TestCase):
         self.assertIn("### 3.5.",m)
         self.assertIn("### 2.7.",m)
         self.assertIn("zero original HORSES IDs",m)
-        self.assertIn("no original horse ID",m.lower()
-            if False else m) if False else None
+        self.assertIn("within-animal change",m)
+        self.assertEqual(m.count("### 3.5."),1)
         self.assertIn("ecology-rq-doomben-matched-timescale-overlap-real-results.md",m)
 
 
