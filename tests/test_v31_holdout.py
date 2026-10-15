@@ -254,6 +254,23 @@ class V31LedgerTests(FixtureMixin, unittest.TestCase):
             self.assertEqual(data['summary']['M_top3_recall'],1/3)
             self.assertEqual(data['summary']['winner_recall'],1.0)
             self.assertEqual(data['summary']['candidate_fraction'],2/3)
+            entry=data['entries'][0]
+            self.assertEqual(
+                entry['result_sha256'],
+                hashlib.sha256((b/'result.json').read_bytes()).hexdigest(),
+            )
+            self.assertEqual(
+                entry['result_capture_sha256'],
+                hashlib.sha256((b/'result-capture.json').read_bytes()).hexdigest(),
+            )
+            self.assertEqual(
+                entry['attempt_ledger_sha256'],
+                hashlib.sha256((b/'attempt-ledger.json').read_bytes()).hexdigest(),
+            )
+            self.assertEqual(
+                entry['result_source_url'],
+                'https://www.jra.go.jp/JRADB/accessS.html?CNAME=fixture',
+            )
 
     def test_register_rejects_duplicate_race(self):
         with tempfile.TemporaryDirectory() as td:
