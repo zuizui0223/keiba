@@ -7,6 +7,7 @@ This schedule is operational metadata only. It does not change the frozen v3.1 s
 | JST | Stage | Target | Repository effect |
 |---|---|---|---|
 | 2026-10-15 17:00 | pre-processing | all currently eligible Kyoto races | cache current JRA cards and pre-race horse histories; no target result |
+| Every Thursday 17:30 | weekly planner | next Kyoto meeting while score ledger < 20 | verify integrity, discover eligible races, prepare source captures, and schedule exact race-day freeze/scoring/fail-safe tasks without duplicates |
 | 2026-10-17 12:55 | pre-result freeze | R7, scheduled 13:15 | freeze inside the fixed 15–25 minute window; register FROZEN or PRE_RESULT_DATA_FAILURE attempt |
 | 2026-10-17 13:25 | pre-result freeze | R8, scheduled 13:45 | same |
 | 2026-10-17 14:30 | pre-result freeze | R10, scheduled 14:50 | same |
@@ -16,6 +17,22 @@ This schedule is operational metadata only. It does not change the frozen v3.1 s
 | 2026-10-17 17:20 | fail-safe audit | all eligible attempts from the day | detect missing attempt records or unscored FROZEN races; no result-driven backfill |
 
 R9 Momiji S is excluded under the frozen rule because it is restricted to 2-year-olds.
+
+## Weekly planner
+
+The weekly planner is operational only. It runs while the scored ledger has fewer than 20 races.
+
+It must:
+
+- verify the frozen contract before creating any future task;
+- discover the next Kyoto meeting from JRA official schedules/current cards;
+- apply the already-frozen eligibility rule only;
+- avoid duplicate tasks for the same race/date/time;
+- schedule each eligible freeze at approximately 20 minutes before post, inside the fixed 15–25 minute window;
+- schedule post-result scoring and a later fail-safe audit for that meeting;
+- stop creating new holdout tasks once the scored ledger reaches 20 or a formal evaluation is already sealed.
+
+The planner may append a newly encountered quality-tier name only when an official JRA tier is available. It may not alter an existing baseline mapping or any v3.1 threshold.
 
 ## Pre-processing stage
 
