@@ -35,7 +35,14 @@ or 2026 source date reversed the sign in one of 26 and one
 of 10 comparisons, respectively. Source class, participating
 animals, timing contexts and data availability differ across
 the evaluations; four locked Doomben source dates were unavailable,
-and matching Class left only six animals. Thus these findings show
+and matching Class left only six animals. An additional same-Doomben
+within-year source test showed that a favorable 2025 estimate
+(21 horses, 21 later records) became scientifically
+unidentifiable (17 horses, 18 records) in a second
+original-source replay, when a different meeting's
+HTTP response was truncated. Across their 36
+commonly retrieved dates, all original-source
+hashes and source join counts agreed. Thus these findings show
 *within-source individual-history predictability alongside limited
 transfer between distinct observed cohorts*, not a causal decline
 in behavioural stability with age or season. An additional Doomben
@@ -288,6 +295,52 @@ unit tests, aggregate values and source digests.
 Publisher reuse/attribution terms must be
 reviewed before submission or derived-data release.
 
+### 2.6. Additional same-Doomben within-year and source-availability test
+
+To reduce the contrast between different
+racecourses, we carried out a further
+**post-hoc, pre-score-locked** comparison
+separately inside original Doomben 2025
+and 2026 source-date cohorts.
+No previously fixed dates, races,
+150/200-m initial marker or official
+race distance was changed. Each
+individual's historical mean used only
+earlier source dates in the SAME
+calendar year, and other-horse
+histories excluded the focal HORSES ID.
+The n/(n+2) shrinkage and equal-horse
+RMSE were unchanged. The new
+numeric support gate required at least
+20 distinct original HORSES IDs,
+20 scored later records, six
+different later source dates and
+20 horse-by-context strata; a
+Class-matched secondary check was
+also fixed in advance.
+
+Two read-only GitHub Actions reran
+all 23 fixed 2025 dates and 19
+fixed 2026 dates independently.
+We then compared their *previously
+archived anonymous aggregate outputs*
+rather than selecting the most
+favorable source retrieval.
+Across dates successfully downloaded
+in both runs, original meeting,
+race, GPS and HORSES-roster
+SHA256 digests, official race counts
+and GPS-ID join counts were
+required to match exactly.
+Missing source dates remained HOLD.
+A numeric estimate passing
+the cutoff in only one original
+source replay could not be
+treated as replicated support.
+This checks source availability,
+not an experimentally randomized
+source-missingness mechanism.
+
 ## 3. Results
 
 ### 3.1. Source-conditional horse-ID repeatability
@@ -499,6 +552,98 @@ result, and no direct within-animal
 temporal decay parameter can be
 estimated from this contrast.
 
+### 3.4. Same-course within-year Doomben scoring is source-availability fragile
+
+Under the predeclared Doomben
+2025 and 2026 within-year
+rules, the first original
+read-only run retrieved 37
+of 42 fixed meeting dates.
+In the 2025 150-m first
+GPS marker and exact race
+distance context, 21 HORSES
+IDs provided 21 scored later
+records across ten future dates.
+Own-horse history RMSE was
+**0.214881 s**, compared
+with **0.243186 s** for
+other-horse history and
+**0.241816 s** for the
+zero-history benchmark.
+The observed other-minus-own
+contrast was **+0.028304 s**.
+This single selected source
+snapshot sat only one
+horse above the minimum
+20-ID numerical gate.
+
+An independent second original
+source run also retrieved 37
+of 42 dates, but not the
+same 37. Its 2025 150-m
+sample had just 17 HORSES
+IDs and 18 future records,
+so it returned **HOLD**,
+with no numerical RMSE estimate.
+In the first run, the
+2025-03-19 source succeeded
+while the 2025-07-12 source
+failed with an incomplete
+HTTP response; in the
+second run, the failure
+pattern was reversed.
+The 36 source dates
+successfully read in BOTH
+runs had matching original
+meeting/race/GPS and HORSES-roster
+SHA256 digests and equal
+GPS-ID join counts.
+Therefore the difference
+in scientific adoption arose
+from intermittent upstream
+date-level data availability,
+not observed disagreement in
+the original measurements
+available to both runs.
+
+The separate 2026 150-m
+same-marker/distance within-year
+cohort had only **9**
+repeated horse IDs and
+11 future records;
+the 2026 200-m cohort
+had **7** and eight.
+Both remained **HOLD**
+in both source runs.
+For 2025, the 150-m
+exact-Class cohort had
+16 versus 12 IDs
+(HOLD in both), and
+the 200-m no-Class
+cohort 13 (HOLD
+in both). No
+same-course time-window
+causal effect is
+identified.
+
+The positive within-2025
+Doomben observation is
+preserved as a single-run
+exploratory score, but
+**does not constitute a
+replicated biological
+effect or a valid
+population-level timescale
+comparison**. The 2025→2026
+Doomben previous source
+cohort also had its own
+distinct missing-date
+pattern and evaluation
+population; the two
+historical questions
+must not be interpreted
+as paired experiments.
+
 ## 4. Discussion
 
 ### 4.1. Predictive individuality is a conditional property of the observed system
@@ -575,6 +720,33 @@ year-to-year plasticity
 increased or that season,
 training, age or ground
 caused the difference.
+
+The new same-Doomben
+within-year control
+strengthens this caution:
+a marginally supported
+positive 2025 within-year
+score was lost as an
+estimable result when
+a different fixed 2025
+meeting had a truncated
+source response. The
+common 36 successful
+original source dates
+were byte-identical
+under multiple independent
+SHA256 components and
+source-join counts. A
+source-retrieval failure
+can therefore determine
+whether an apparent
+individual-history effect
+is even eligible to be
+reported. It cannot
+tell us whether the
+horse itself altered
+its behavior across
+months or years.
 
 This pattern instead
 separates two ecological
@@ -740,6 +912,14 @@ a generalizable
 advantage of each
 horse's earlier
 year's record.
+A separate within-Doomben
+same-year analysis
+also lacked stable
+numerical support
+across two original
+source re-fetches,
+because different
+locked dates failed.
 The contrast
 cautions against
 conflating observed
@@ -776,6 +956,27 @@ source dates were unavailable. Figure provenance:
 [generated figure CI and SVG artifact](https://github.com/zuizui0223/keiba/actions/runs/38679786636);
 [anonymized pinned evidence](evidence/rq-racehorse-temporal-generalization-20261015.json);
 [deterministic figure generator](../scripts/ecology_rq_manuscript_temporal_figure.py).
+
+**Table 3. Doomben same-course source replay
+availability and individual-history score support.**
+Run A: 2025 150m exact-distance
+21 IDs/21 future records,
+OTHER−OWN gain +0.028304 s;
+Run B: 17 IDs/18 records, HOLD.
+All 36 jointly successful dates
+have matching original source
+hashes and matching GPS-ID
+join counts. The two
+source-specific available
+dates are 2025-03-19
+and 2025-07-12;
+each was unavailable in
+the opposite source run.
+No claim of individual
+within-year decay follows.
+Evidence: [independent source
+comparison](https://github.com/zuizui0223/keiba/actions/runs/38697999341);
+[source and inference audit](ecology-rq-doomben-within-year-source-replay-results.md).
 
 **Figure 2, planned:** historical source provenance
 and missingness/eligibility flow for the 543-current vs
@@ -831,6 +1032,10 @@ https://www.racingqueensland.com.au/rq-open-data-web-services.pdf
 - docs/ecology-rq-doomben-within-year-history-design-lock.md
 - docs/ecology-rq-doomben-within-year-source-replay-results.md
 - GitHub Actions source replay consistency execution 38697999341
+- docs/ecology-rq-doomben-within-year-history-design-lock.md
+- docs/ecology-rq-doomben-within-year-source-replay-results.md
+- scripts/ecology_rq_doomben_same_year_source_replay_compare.py
+- GitHub Actions source-run comparison 38697999341
 - docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md
 - docs/ecology-rq-cannon-original-source-drift-20261014.md
 - docs/ecology-rq-real-icc-source-conditional-sampling.md
