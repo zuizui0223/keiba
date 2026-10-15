@@ -122,6 +122,67 @@ def _scored_rows_private(
     return scored,support
 
 
+def _equal_horse_rmse_gain(private_rows:list[dict])->float:
+    by_horse=defaultdict(list)
+    for r in private_rows:
+        by_horse[r["horse_id"]].append(r)
+    if not by_horse:
+        raise ValueError("HOLD_EMPTY_HORSE_SCORING_POPULATION")
+    own=math.sqrt(mean(
+        mean((r["observed"]-r["own_prediction"])**2 for r in rr)
+        for rr in by_horse.values()
+    ))
+    other=math.sqrt(mean(
+        mean((r["observed"]-r["other_prediction"])**2 for r in rr)
+        for rr in by_horse.values()
+    ))
+    return other-own
+
+
+def posthoc_delete_one_source_unit(private_rows:list[dict])->dict:
+    """Post-hoc influence, NEVER an independent uncertainty interval.
+
+    Delete one original HORSES ID or all future 2026 observations from
+    one original meeting date; keep 2025 predictors UNCHANGED. Do not
+    tune the shrinkage or the minimum ID/row support thresholds.
+    """
+    ids=sorted({r["horse_id"] for r in private_rows})
+    dates=sorted({r["day"] for r in private_rows})
+    result={
+        "status":"EXPLORATORY_POSTHOC_YEAR_FORWARD_INFLUENCE_NOT_CI",
+        "original_matched_IDs":len(ids),
+        "original_2026_scored_dates":len(dates),
+        "source_support_threshold_not_relaxed":MIN_HORSES_WITH_YEAR_BRIDGE,
+        "no_original_IDs_or_individual_predictions_exported":True,
+        "not_an_independent_validation_or_95pct_confidence_interval":True,
+    }
+    for dimension,categories,selector in (
+        ("one_original_HORSES_ID",ids,lambda r,id:r["horse_id"]!=id),
+        ("one_2026_source_date",dates,lambda r,date:r["day"]!=date),
+    ):
+        gains=[]
+        held=0
+        for key in categories:
+            keep=[r for r in private_rows if selector(r,key)]
+            if (len(keep)<MIN_SCORED_2026_OBSERVATIONS or
+                    len({r["horse_id"] for r in keep})<
+                    MIN_HORSES_WITH_YEAR_BRIDGE):
+                held+=1
+                continue
+            gains.append(_equal_horse_rmse_gain(keep))
+        result[dimension]={
+            "attempted_deletions":len(categories),
+            "numerically_and_source_supported_deletions":len(gains),
+            "HOLD_due_to_falling_below_fixed_20_ID_or_20_future_row_gate":held,
+            "OTHER_minus_OWN_RMSE_gain_min_sec":min(gains) if gains else None,
+            "OTHER_minus_OWN_RMSE_gain_max_sec":max(gains) if gains else None,
+            "deletions_where_own_2025_history_better":sum(x>0 for x in gains),
+            "deletions_where_other_horses_history_better":sum(x<0 for x in gains),
+            "not_an_uncertainty_interval":True,
+        }
+    return result
+
+
 def score(
     relative:list[dict], *, marker:float, strict_class:bool
 )->dict:
@@ -191,6 +252,8 @@ def score(
             "own":mae["own_prediction"],
             "other":mae["other_prediction"],
         },
+        "posthoc_leave_one_horse_and_one_2026_date_out_influence":
+            posthoc_delete_one_source_unit(matches),
         "source_design_this_is_NOT_a_valid_cross_year_effect_size":True,
         "no_confidence_interval_or_causal_p_value":True,
     }
