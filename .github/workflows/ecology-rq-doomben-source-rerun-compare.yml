@@ -1,0 +1,77 @@
+name: "Ecology: compare two original Doomben within-year source replays"
+
+# Both inputs are prior public Actions aggregate-only artifacts, not
+# original runner records; source status differs on precisely two 2025
+# dates. Never interpret availability-dependent positive support as an
+# independently replicated biological effect.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_doomben_same_year_source_replay_compare.py'
+      - 'tests/test_ecology_rq_doomben_same_year_source_replay_compare.py'
+      - '.github/workflows/ecology-rq-doomben-source-rerun-compare.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  compare-original-source-snapshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic availability and privacy falsification tests
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_doomben_same_year_source_replay_compare.py' -v
+      - name: Retrieve the two independent original source anonymous source runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p tmp/earlier tmp/later
+          gh run download 38696624349 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name doomben-within-year-source-anonymous-horse-profile-results \
+            --dir tmp/earlier
+          gh run download 38696711022 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name doomben-2025-2026-separate-within-year-history-safe-aggregate \
+            --dir tmp/later
+          test -s tmp/earlier/doomben-original-within-year-history-aggregates.json
+          test -s tmp/later/doomben-within-2025-and-2026-aggregate-only.json
+      - name: Compare the EXACT original source dates and digest groups
+        run: |
+          python scripts/ecology_rq_doomben_same_year_source_replay_compare.py \
+            --runA tmp/earlier/doomben-original-within-year-history-aggregates.json \
+            --runB tmp/later/doomben-within-2025-and-2026-aggregate-only.json \
+            --output tmp/doomben-within-year-two-source-replay-availability.json
+          python - <<'PY'
+          import json
+          q=json.load(open("tmp/doomben-within-year-two-source-replay-availability.json"))
+          assert q["status"]=="HOLD_DOOMBEN_WITHIN_YEAR_SCORE_NOT_ROBUST_TO_SOURCE_AVAILABILITY"
+          assert q["shared_original_source_success_dates"]==36
+          assert all(n==36 for n in q["shared_success_source_component_equality_counts"].values())
+          assert q["shared_dates_with_changed_original_source_fingerprints_or_counts"]=={}
+          assert q["dates_only_runA_read_successfully"]==["2025-03-19"]
+          assert q["dates_only_runB_read_successfully"]==["2025-07-12"]
+          x=q["original_year_marker_class_context_gate_sensitivity"]["2025_150m_same_distance"]
+          assert x["runA_original_HORSES_IDs"]==21
+          assert x["runB_original_HORSES_IDs"]==17
+          assert x["runA_numeric_GAIN_if_supported"]>0
+          assert x["runB_numeric_GAIN_if_supported"] is None
+          assert not x["same_source_population_supported_across_two_runs"]
+          assert q["source_missing_date_not_zero_horse_or_neglected_result"]
+          assert q["no_original_horse_names_IDs_licence_GPS_row_or_predictions_exported"]
+          print("ORIGINAL_SOURCE_SCIENTIFIC_GATE",q["status"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-Doomben-within-year-two-run-source-availability-audit
+          path: tmp/doomben-within-year-two-source-replay-availability.json
+          retention-days: 30
