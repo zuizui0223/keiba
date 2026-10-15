@@ -1,5 +1,57 @@
 # keiba — ecological individuality & competitive context
 
+## 2026-10-15: independent Doomben same-year reruns overturn a borderline positive claim
+
+The **frozen** Doomben same-venue, *separately within 2025 and
+within 2026* historical own-versus-other horse-profile study
+was independently run TWICE on the exact prior 23 (2025)
+and 19 (2026) official meeting dates and the same original
+source-only 150m/200m markers, race distances and Class gates.
+
+**Important reproducibility correction:** One source run
+showed an exploratory 2025 150m same-distance own-horse
+historical RMSE advantage of **+0.028304 sec** against
+the prior OTHER-horses source history
+(21 distinct horses / 21 future rows).
+**The other run did NOT satisfy the unchanged >=20 horse
+support gate** (17 horses / 18 future rows),
+so a positive biological claim cannot be independently
+replicated and the scientific status is **HOLD**.
+All 2026 same-year contexts and source-Class-matched
+2025 contexts also remain HOLD for inadequate
+matched within-year histories.
+
+[An independent aggregate-only comparison of the
+two workflow artifacts](https://github.com/zuizui0223/keiba/actions/runs/38697999341)
+found **36 identical original source meeting/race/GPS
+SHA256, roster SHA256 and matched original HORSES counts**
+on every meeting that BOTH runs successfully downloaded.
+The nonshared original dates were 2025-03-19 and
+2025-07-12: each was respectively rejected in one
+run because the official HTTP response was **incomplete
+or truncated**. This **source availability / sampling
+threshold sensitivity**, not evidence of new biological
+year, venue or adaptation effects, decides whether
+the one apparent positive score is reportable.
+
+The source-specific result, two original run URLs,
+predeclared support gates and HTTP-response
+limitations are archived in
+[the 2025/2026 same-year source-replay results](docs/ecology-rq-doomben-within-year-source-replay-results.md).
+A supplementary *posthoc* leave-one-original-source-date
+re-fit now audits how often the same numerical eligibility
+would fail if exactly one 150m/200m date disappeared.
+It is not a valid 95% interval or independent animal
+experiment.
+
+**Scientific summary:** Individual historical
+early-section timing can be useful *within some
+selected racing cohorts*, but its portability and
+supporting data availability are not yet stable
+enough to infer a universal horse trait or
+age-dependent decline. H1 ground-reaction slopes
+and H2 socially mediated competition remain HOLD.
+
 ## 2026-10-15: manuscript v1 and figure — individual history is conditionally predictive
 
 A full [English ecological manuscript draft](docs/ecology-racehorse-individuality-manuscript-v1.md)
