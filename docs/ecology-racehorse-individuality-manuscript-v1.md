@@ -8,54 +8,36 @@ explicitly retains a nonconfirming year-forward result.
 
 ## Abstract
 
-Repeated individual differences in animal behaviour can predict future
-phenotypes, yet the predictive value of individual identity may depend on
-time, sampling and behavioural context. We examined source-identified
-Thoroughbreds using historical public racing and first-GPS-sectional
-records from Racing Queensland. We distinguished three questions:
-whether horse identity was associated with repeatable early timing;
-whether the horse's prior measurements improved chronological prediction
-within a racecourse; and whether this advantage persisted when an earlier
-calendar year was used to predict the next year at another racecourse.
-In a fixed Cannon Park 2026 cohort, a race-fixed Gaussian model yielded
-a horse-ID conditional intraclass correlation of approximately 0.43.
-Among 36 horses and 46 subsequently observed, context-matched records
-with a source-documented rider not previously recorded for that horse,
-the focal horse's strictly earlier race-relative first-GPS time history
-reduced equal-horse-weighted root-mean-square error (RMSE) to 0.256 s
-compared with 0.298 s for an unpersonalized zero-relative-time baseline
-and 0.303 s for an identically matched earlier history of other horses.
-Conversely, using fixed 2025 Doomben histories to predict 2026
-same-HORSES-ID early timing did not reproduce this advantage. For
-26 horses and 27 scored 2026 records at the 150-m initial marker
-and an identical official race distance, own-horse history RMSE
-was 0.386 s, versus 0.369 s for the historical other-horse
-reference. In post-hoc influence checks, removing one horse
-or 2026 source date reversed the sign in one of 26 and one
-of 10 comparisons, respectively. Source class, participating
-animals, timing contexts and data availability differ across
-the evaluations; four locked Doomben source dates were unavailable,
-and matching Class left only six animals. An additional same-Doomben
-within-year source test showed that a favorable 2025 estimate
-(21 horses, 21 later records) became scientifically
-unidentifiable (17 horses, 18 records) in a second
-original-source replay, when a different meeting's
-HTTP response was truncated. Across their 36
-commonly retrieved dates, all original-source
-hashes and source join counts agreed. Thus these findings show
-*within-source individual-history predictability alongside limited
-transfer between distinct observed cohorts*, not a causal decline
-in behavioural stability with age or season. An additional Doomben
-same-year 2025 analysis offered a small own-history improvement
-only in one original-source execution; an otherwise identical
-rerun lost the required minimum animal support because a different
-historical meeting's HTTP source response was truncated, despite
-all 36 mutually retrieved source snapshots having matching
-SHA-256 fingerprints. Thus even whether a numerical same-year
-estimate can be reported depended on transient record availability.
-A distinction between observational individual signatures, source
-support and their external generalization is essential before inferring
-stable intrinsic personality.
+Repeatable individual differences can predict future animal performance,
+but the portability of individual historical signatures may depend on
+observational context, elapsed time and source completeness. We
+reconciled original Racing Queensland horse identifiers with positive
+initial GPS sectional timings and compared strictly earlier focal-horse
+histories to historical profiles of other horses with the same first-GPS
+measurement marker and official race distance. Within a fixed
+Cannon Park 2026 cohort, the own-horse history reduced equally
+horse-weighted later race-relative time prediction RMSE to 0.256 s,
+versus 0.303 s for other horses' context-matched history, across
+36 horses and 46 later observations. Within Doomben 2025, two
+re-fetches of 38/42 originally fixed dates gave identical aggregate
+scores for 23 horses and 24 subsequent observations at the 150-m
+first GPS marker: own-history RMSE was 0.211 s versus 0.241 s
+for other-horse history. However, alternative original-source
+re-fetches obtained different meeting dates, reducing the
+eligible sample to 21 or 17 horses and causing one run to
+fail the predeclared minimum support threshold. Moreover,
+fixed Doomben 2025 horse histories did not outperform
+other horses' histories in 2026, with RMSE 0.386 s versus
+0.369 s in 26 matched horses and 27 later recordings.
+The latter result changed sign under one individual/date
+deletion, while a common source-Class requirement retained
+only six horses. The cohorts, historical updating rules
+and source selection differed; there is no identified
+time-decay, aging, intrinsic personality, H1 environment
+response or H2 social mechanism. Horse-ID-associated
+historical performance can be predictively useful within
+a selected source context, but its transfer and even
+numerical estimability depend on observational support.
 
 **Keywords:** repeatability; individual variation; behavioural ecology;
 longitudinal prediction; telemetry; horse; measurement selection;
@@ -473,203 +455,145 @@ proof of consistent failure.
 Four previously fixed source
 dates could not be retrieved.
 
-### 3.4. Same-venue within-year control and its source-replay failure
+### 3.4. Same-venue within-year Doomben history, and its source-availability limits
 
-To separate site from the source-year
-horizon as far as the available records
-permit, we conducted a supplementary
-analysis using exactly the **same
-previously locked Doomben 2025 and 2026
-meeting cohorts** and the same 150m/200m
-GPS markers. Each calendar year supplied
-its *own strictly earlier* HORSES-ID or
-other-horses' same-context first-GPS
-relative-timing history. No 2025
-records entered 2026's within-year
-historical profiles, or vice versa.
+A supplementary analysis reused
+the exactly prelocked Doomben
+2025/2026 date cohorts and
+150-m/200-m initial GPS markers.
+Within each year separately,
+only strictly earlier dates
+trained source-identified horse
+or other-horse histories under
+the same original marker/distance.
+No 2025 observation entered
+a 2026 within-year training
+profile or vice versa.
 
-In one original-source execution,
-the 2025 first-150m, same-distance
-cohort just met the fixed support
-criterion (**21 source IDs and 21 later
-records**). The focal horse's historical
-profile reduced RMSE to **0.214881 s**,
-compared with **0.243186 s** for
-OTHER-horse history (difference
-**+0.028304 s**, positive favouring
-focal identity). This apparent
-advantage was marginal in population
-support and did not qualify as a
-preregistered confirmation.
-
-Crucially, a second independent source
-execution using the **same original
-date, animal and marker selection
-rules** supported only **17 HORSES IDs
-and 18 later records**, which is
-**below the previously frozen 20-ID
-and 20-row thresholds**. Under the
-predeclared scientific reporting rule,
-this result is **HOLD**, not a zero
-or negative effect. Neither original
-2026 within-year 150m nor 200m
-comparison had sufficient IDs,
-and Class-matched contexts were also
-unsupported.
-
-Two later original-source reruns,
-without modifying any earlier
-study date, marker, race ID or
-history rule, successfully
-obtained both of the transiently
-unavailable 2025 dates.
-Each yielded **23 distinct
-HORSES IDs and 23 later GPS
-observations**, with a
+The first read-only source
+run successfully obtained
+37/42 fixed dates. At
+the 2025 150-m original
+GPS marker with identical
+race distance, **21 horse
+IDs and 21 later GPS
+records** passed the
+minimum 20-ID source
+support gate. The
 historical own-horse RMSE
-of **0.211065 s** versus
-**0.240692 s** for other-horse
-history (OTHER−OWN **+0.029627 s**).
-This is a reproducible
-*source-complete observational
-number*, not independent
-biological replication: all
-four executions sample from
-the same original racing
-population, and an incomplete
-HTTP response can still push
-the eligible subset beneath
-the fixed numerical threshold.
-The 2026 within-year sample
-and all Class-matched contexts
-remained below the criterion.
+was **0.214881 s**,
+compared with **0.243186 s**
+for earlier other-horse
+history and **0.241816 s**
+for the zero baseline;
+OTHER−OWN = **+0.028304 s**.
 
-A third, aggregate-only source
-provenance audit independently
-compared the two execution artifacts.
-All **36** meetings successfully
-retrieved by *both* had identical
-meeting/race/GPS and combined
-horse-roster SHA256 fingerprints,
-and matching original horse-source
-counts. Different source meetings
-(**2025-03-19** versus
-**2025-07-12**) returned incomplete
-or truncated HTTP responses in
-opposite runs. This upstream
-source-availability contrast alone
-changed whether the marginal 2025
-numerical result passed the support
-threshold. We therefore classify the
-positive same-year 2025 contrast as
-**not reliably replicated**, and
-do not use it to support a
-biological time-scale or aging
-effect.
+An independent second run
+also successfully read
+37/42 dates, but a
+different original
+2025 meeting was missing.
+It retained only **17
+HORSES IDs and 18
+later records** and
+correctly returned HOLD
+without a numerical RMSE.
+The first run read
+2025-03-19 but not
+2025-07-12, while the
+second did the reverse;
+both failed with original
+incomplete/truncated
+HTTP responses on their
+unavailable date. All
+**36 common successful
+meeting dates** had
+matching source meeting,
+race, GPS and complete
+HORSES-roster SHA256
+digests and exactly
+matching source join
+counts. This is
+sampling/access
+instability, not
+a biological change.
 
-Details:
-[within-year source-replay audit](ecology-rq-doomben-within-year-source-replay-results.md),
-[the original locked protocol](ecology-rq-doomben-within-year-history-design-lock.md),
-and the
-[source-fingerprint GitHub Actions run](https://github.com/zuizui0223/keiba/actions/runs/38697999341).
-This source-quality finding is
-separate from the previously
-selected 2025→2026 prediction
-result, and no direct within-animal
-temporal decay parameter can be
-estimated from this contrast.
+Two additional independently
+executed original-source
+re-fetches each successfully
+read **38/42 original dates**
+(including BOTH key 2025
+dates). Their anonymous
+aggregate JSON output bytes
+were **SHA256-identical**.
+In both runs, the
+2025 150-m matched-distance
+cohort held **23
+HORSES IDs and 24
+later records**. RMSE
+was **0.211065 s**
+for each focal horse's
+strictly earlier history,
+**0.240692 s** for
+other horses' matched
+past history, and
+**0.239390 s** for the
+zero benchmark
+(OTHER−OWN = **+0.029627 s**).
+Thus a positive
+**source-conditional numerical**
+comparison was reproduced
+when both key dates were
+accessible, but it was
+not **source-availability
+invariant** and is
+not an independent
+biological replication.
 
-### 3.4. Same-course within-year Doomben scoring is source-availability fragile
+All 2026 within-year
+Doomben 150-m and
+200-m original contexts
+remained below the
+fixed support gate:
+respectively **9 IDs /
+11 later observations**
+and **7 IDs / 8
+later observations**.
+Even in the first
+2025 run, exact
+Race Class matching
+retained only **16**
+IDs, while the second
+retained **12**;
+2025 200-m without
+Class retained **13**.
+Those original contexts
+were HOLD, not null
+biological effects.
 
-Under the predeclared Doomben
-2025 and 2026 within-year
-rules, the first original
-read-only run retrieved 37
-of 42 fixed meeting dates.
-In the 2025 150-m first
-GPS marker and exact race
-distance context, 21 HORSES
-IDs provided 21 scored later
-records across ten future dates.
-Own-horse history RMSE was
-**0.214881 s**, compared
-with **0.243186 s** for
-other-horse history and
-**0.241816 s** for the
-zero-history benchmark.
-The observed other-minus-own
-contrast was **+0.028304 s**.
-This single selected source
-snapshot sat only one
-horse above the minimum
-20-ID numerical gate.
-
-An independent second original
-source run also retrieved 37
-of 42 dates, but not the
-same 37. Its 2025 150-m
-sample had just 17 HORSES
-IDs and 18 future records,
-so it returned **HOLD**,
-with no numerical RMSE estimate.
-In the first run, the
-2025-03-19 source succeeded
-while the 2025-07-12 source
-failed with an incomplete
-HTTP response; in the
-second run, the failure
-pattern was reversed.
-The 36 source dates
-successfully read in BOTH
-runs had matching original
-meeting/race/GPS and HORSES-roster
-SHA256 digests and equal
-GPS-ID join counts.
-Therefore the difference
-in scientific adoption arose
-from intermittent upstream
-date-level data availability,
-not observed disagreement in
-the original measurements
-available to both runs.
-
-The separate 2026 150-m
-same-marker/distance within-year
-cohort had only **9**
-repeated horse IDs and
-11 future records;
-the 2026 200-m cohort
-had **7** and eight.
-Both remained **HOLD**
-in both source runs.
-For 2025, the 150-m
-exact-Class cohort had
-16 versus 12 IDs
-(HOLD in both), and
-the 200-m no-Class
-cohort 13 (HOLD
-in both). No
-same-course time-window
-causal effect is
-identified.
-
-The positive within-2025
-Doomben observation is
-preserved as a single-run
-exploratory score, but
-**does not constitute a
-replicated biological
-effect or a valid
-population-level timescale
-comparison**. The 2025→2026
-Doomben previous source
-cohort also had its own
-distinct missing-date
-pattern and evaluation
-population; the two
-historical questions
-must not be interpreted
-as paired experiments.
+The 2025→2026
+year-forward Doomben
+analysis evaluated a
+different set of 26
+identities and
+source histories; it
+cannot be treated as
+a paired contrast
+against this
+within-2025 result
+to infer annual
+behavioral decay.
+Full original
+data provenance,
+all non-confirming
+source runs and
+sample-based limitations:
+[within-Doomben source-replay
+audit](ecology-rq-doomben-within-year-source-replay-results.md),
+[pinned anonymous
+source evidence](evidence/rq-doomben-same-year-rerun-availability-20261015.json)
+and [source
+replay CI](https://github.com/zuizui0223/keiba/actions/runs/38697999341).
 
 ## 4. Discussion
 
@@ -939,14 +863,23 @@ a generalizable
 advantage of each
 horse's earlier
 year's record.
-A separate within-Doomben
-same-year analysis
-also lacked stable
-numerical support
-across two original
-source re-fetches,
-because different
-locked dates failed.
+Within Doomben 2025,
+two original-source
+38-date reruns
+reproduced a positive
+individual-history
+numerical advantage,
+but another rerun
+lost the 20-horse
+support threshold
+through an incomplete
+upstream source response.
+The conditional
+advantage was therefore
+reproducible for one
+source snapshot, not
+independent of source
+availability.
 The contrast
 cautions against
 conflating observed
