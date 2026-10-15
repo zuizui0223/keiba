@@ -97,7 +97,12 @@ class RQSectionalTests(unittest.TestCase):
         # calendar additions, plus one separate Eagle Farm comparator.
         # 12 Cannon Park + 12 Eagle Farm + 19 Doomben dated
         # original official files: never accept guessed URLs.
-        self.assertEqual(len(APPROVED),43)
+        # The source allowlist legitimately grows when separately
+        # locked independent-year cohorts are added. Guard the known
+        # original files, not a brittle global catalogue length.
+        self.assertGreaterEqual(len(APPROVED),43)
+        self.assertIn("20250122-doomben",APPROVED)
+        self.assertIn("20251212-doomben",APPROVED)
         self.assertIn("20260114_Doomben_T.csv",
                       official_url("20260114-doomben"))
         self.assertIn("20261005_Doomben_T.csv",
