@@ -27,6 +27,10 @@ FIXTURE_PATHS = [
     "tests/test_v31_attempt_ledger.py",
     "scripts/v31_validate_postrace.py",
     "tests/test_v31_pipeline_integration.py",
+    "scripts/v31_prepare_result.py",
+    "tests/test_v31_prepare_result.py",
+    "scripts/v31_verify_freeze.py",
+    "tests/test_v31_freeze_integrity.py",
     "docs/v31-holdout-decision-contract.json",
     "data/2026-10-12/v3-quality-tier-map.json",
 ]
