@@ -95,14 +95,25 @@ superior** for this selected year-forward cohort.
 The stricter exact race Class criterion retained
 just **6** horse IDs; 200m same-distance only
 **13** (Class-matched **3**), all **HOLD**
-under the pre-scoring 20-ID minimum. Four
+under the pre-scoring 20-ID minimum.
+One-horse-deletion retained a negative
+OTHER-minus-OWN gain in **25/26** analyses
+and flipped positive in one; removing
+each of ten 2026 dates retained
+the negative gain in **9/10**, but
+again flipped once. Thus the result
+is **not stable in sign under every
+single-unit deletion**. Four
 upstream source dates were unavailable and
 not imputed. This is **not proof of
 individual aging, disappearance of personality
-or a causal year effect**, but it falsifies
+or a causal year effect**. It challenges
 a strong *universal temporal transfer*
 interpretation of the Cannon same-year
-positive source result.
+positive source result, but the sign
+sensitivity and unmatched Race Class
+also prohibit calling this a robust
+negative biological effect.
 
 Full [original source analysis and preserved
 negative result](ecology-rq-doomben-2025-to-2026-year-forward-results.md);
