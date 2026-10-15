@@ -195,6 +195,77 @@ def scoring_summary(
     }
 
 
+
+def original_date_deletion_support_sensitivity(
+    relative:list[dict], *,
+    year:str,marker:float,strict_class:bool,
+    baseline:dict|None=None,
+)->dict:
+    """Post-result source-availability robustness: drop one original DATE.
+
+    Readiness thresholds, chronology, GPS marker, race distance, Class
+    and own-vs-other historical profiles are UNCHANGED in each re-fit.
+    The original source year must be supported in the baseline;
+    there is no speculative scoring of unsupported original data.
+    This does not give a CI, p-value or biological time-scale effect.
+    """
+    if baseline is None:
+        baseline=scoring_summary(
+            relative,year=year,marker=marker,strict_class=strict_class)
+    if baseline["status"]!="EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY":
+        return {
+            "status":"HOLD_ORIGINAL_YEAR_MARKER_CONTEXT_ALREADY_UNSUPPORTED",
+            "original_status":baseline["status"],
+            "recalculation_on_unsupported_original_data":False,
+            "not_a_confidence_interval":True,
+        }
+
+    source_days=sorted({
+        r["day"] for r in relative
+        if r["day"].startswith(year+"-")
+        and abs(float(r["first_section_marker"])-marker)<1e-6
+    })
+    if len(source_days)<MIN_FUTURE_DATES:
+        raise ValueError("HOLD_SOURCE_DATE_DELETION_BASELINE_CONTRADICTION")
+    numeric=[]
+    holds=[]
+    for day in source_days:
+        subset=[r for r in relative if r["day"]!=day]
+        result=scoring_summary(
+            subset,year=year,marker=marker,strict_class=strict_class)
+        if result["status"]=="EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY":
+            numeric.append(result["equal_horse_RMSE_seconds"][
+                "OTHER_minus_OWN_positive_horse_history_better"])
+        else:
+            holds.append(result["status"])
+    result={
+        "status":"POSTHOC_ORIGINAL_SOURCE_DATE_AVAILABILITY_SENSITIVITY_ONLY",
+        "original_source_year":int(year),
+        "first_section_marker_m":int(marker),
+        "original_Class_matching_required":strict_class,
+        "original_within_year_result":baseline["equal_horse_RMSE_seconds"][
+            "OTHER_minus_OWN_positive_horse_history_better"],
+        "original_source_dates_with_positive_GPS_for_marker":len(source_days),
+        "delete_one_original_date_refits_attempted":len(source_days),
+        "refits_passing_PREVIOUSLY_FROZEN_minimum_support":len(numeric),
+        "refits_returning_HOLD_after_one_date_missing":len(holds),
+        "HOLD_reasons_by_source_support":dict(
+            (key,holds.count(key)) for key in sorted(set(holds))
+        ),
+        "same_source_data_same_analysis_rules_otherwise_unchanged":True,
+        "is_not_a_source_level_randomization_or_confidence_interval":True,
+        "not_an_independent_prospective_validation":True,
+    }
+    if numeric:
+        result.update({
+            "valid_refit_OTHER_minus_OWN_gain_min_sec":min(numeric),
+            "valid_refit_OTHER_minus_OWN_gain_max_sec":max(numeric),
+            "valid_refits_with_own_history_better":sum(x>0 for x in numeric),
+            "valid_refits_with_other_history_better":sum(x<0 for x in numeric),
+        })
+    return result
+
+
 def analyze(
     relative:list[dict], *,source_dates:list[str],
     source_HOLD_dates:list[str],source_manifests:dict
@@ -211,9 +282,17 @@ def analyze(
                 key=f"{year}_{int(marker)}m_same_distance"+(
                     "_and_Class" if strict else ""
                 )
-                comparisons[key]=scoring_summary(
+                original=scoring_summary(
                     relative,year=year,marker=marker,strict_class=strict
                 )
+                comparisons[key]={
+                    **original,
+                    "posthoc_original_source_date_deletion_sensitivity":
+                        original_date_deletion_support_sensitivity(
+                            relative,year=year,marker=marker,
+                            strict_class=strict,baseline=original
+                        ),
+                }
 
     return {
         "status":"EXPLORATORY_ORIGINAL_DOOMBEN_SAME_YEAR_CONTEXT_CONTROL_NOT_CAUSAL",
