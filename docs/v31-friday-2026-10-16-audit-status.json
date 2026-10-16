@@ -1,1 +1,47 @@
-{"date":"2026-10-16","status":"preparation_only","eligible_races":[7,10,11,12],"verified_runners":52,"manifest_sha":"af6e9bc7cda9f92efb65838a34999f0f97fcad52"}
+{
+  "date": "2026-10-16",
+  "status": "preparation_only",
+  "eligible_races": [
+    7,
+    10,
+    11,
+    12
+  ],
+  "verified_runners": 52,
+  "manifest_sha": "af6e9bc7cda9f92efb65838a34999f0f97fcad52",
+  "checked_at_jst": "2026-10-16T13:23:10+09:00",
+  "frozen_blobs": "19/19_PASS",
+  "quality_baseline": "43/43_PASS",
+  "attempt_ledger_entries": 0,
+  "score_ledger_entries": 0,
+  "race_counts": {
+    "7": 10,
+    "10": 9,
+    "11": 15,
+    "12": 18
+  },
+  "eligible_history_rows": 719,
+  "all_five_races_history_rows": 733,
+  "runner_additions": 0,
+  "runner_deletions": 0,
+  "horse_id_mismatches": 0,
+  "profile_url_mismatches": 0,
+  "cancelled_or_excluded_as_of_check": 0,
+  "eligible_races_official_cards": {
+    "7": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060720261017/EC",
+    "10": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061020261017/4B",
+    "11": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061120261017/00",
+    "12": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061220261017/B5"
+  },
+  "excluded_race_8": {
+    "reason": "exclude_2yo_only",
+    "name": "もみじステークス",
+    "surface": "芝",
+    "distance_m": 1400,
+    "runner_count": 7,
+    "id_name_url_match": "7/7",
+    "source_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060820261017/A1",
+    "attempt_registered": false
+  },
+  "note": "Friday independent JRA racecard runner-number/frame-number reconciliation only. ID-to-name/profile mappings remain in immutable Thursday history cache files. Friday must not generate race-input.json, odds.json, freeze.json or attempt/score registration. Saturday requires independent current JRA re-capture 15-25 minutes before post."
+}
