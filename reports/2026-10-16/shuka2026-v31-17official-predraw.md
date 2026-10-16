@@ -11,7 +11,7 @@
 ## 1. 使用した実装（改変なし）
 
 元々京都競馬予測PR#4に存在する
-[`scripts/v31_candidate_channels.py`](../scripts/v31_candidate_channels.py)
+[`scripts/v31_candidate_channels.py`](../../scripts/v31_candidate_channels.py)
 を**そのまま import**して使用。
 凍結マニフェスト `docs/v31-holdout-freeze.json` の
 classifier Git blob SHA
@@ -61,9 +61,9 @@ v3.1のquality tier mapが未登録だった
 JRA公式に確認した**メタデータとしてのみ追加**。
 クラス・距離・マージンの閾値は変更していない。
 
-[再現可能な17頭の過去出走情報](../data/2026-10-18/shuka-jra-official-17-pre-draw.json)、
-[実行ラッパー](../scripts/shuka2026_official_rule_audit.py)、
-[合成/実ソース整合テスト](../tests/test_shuka2026_official_rule_audit.py)。
+[再現可能な17頭の過去出走情報](../../data/2026-10-18/shuka-jra-official-17-pre-draw.json)、
+[実行ラッパー](../../scripts/shuka2026_official_rule_audit.py)、
+[合成/実ソース整合テスト](../../tests/test_shuka2026_official_rule_audit.py)。
 
 ## 2. 公式履歴へのv3.1実行結果
 
