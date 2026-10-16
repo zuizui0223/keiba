@@ -16,6 +16,9 @@ on:
       - 'tests/test_shuka2026_bind_draw_numbers.py'
       - 'scripts/shuka2026_market_overlay.py'
       - 'tests/test_shuka2026_market_overlay.py'
+      - 'data/2026-10-18/shuka-jra-2026-context-last4c-history.json'
+      - 'scripts/shuka2026_JRA_historical_context.py'
+      - 'tests/test_shuka2026_JRA_historical_context.py'
       - '.github/workflows/shuka2026-v31-shadow.yml'
   workflow_dispatch:
 
@@ -57,6 +60,27 @@ jobs:
           print("MARKET_M_MINIMAL_DET_BOUND",s["nominal_M_no_ties_final_union_min"],s["nominal_M_no_ties_final_union_max"])
           print("PRERACE_ODDS_DATA_NOT_FABRICATED",True)
           PY
+      - name: Verify original JRA 2026 ten-year historical context is not a new model feature
+        run: python -m unittest discover -s tests -p 'test_shuka2026_JRA_historical_context.py' -v
+      - name: Render original JRA past 10-year prep/corner context as a separate caution
+        run: |
+          python scripts/shuka2026_JRA_historical_context.py \
+            --output reports/2026-10-16/shuka2026-JRA-2026-retrospective-risk-not-model.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path("reports/2026-10-16/shuka2026-JRA-2026-retrospective-risk-not-model.json").read_text())
+          assert q["official_seventeen_horse_count"]==17
+          assert q["original_frozen_v31_model_code_or_thresholds_NOT_modified"]
+          assert q["not_added_to_model_rank_win_probabilities_or_M_market"]
+          assert q["past_10_years_winner_counts_not_target_probabilities"]=={
+              "oaks_direct":7,"shion_stakes":3,"rose_stakes":0
+          }
+          print("JRA_ORIGINAL_HISTORICAL_RISK_LABELS",
+            [[x["JRA_official_horse_number"],x["descriptive_context_label_NOT_a_win_probability"]]
+              for x in q["horse_history_context_rows"]
+              if x["JRA_official_horse_number"] in (3,8,13,14)])
+          PY
       - name: Produce source-attributed no-odds no-draw classification
         run: |
           python scripts/shuka2026_official_rule_audit.py \
@@ -92,6 +116,11 @@ jobs:
           assert q["market_plus_historical_v31_complete_union"] is None
           print("JRA_OFFICIAL_SHUKA_V31_NONMARKET_NUMBERS",q["official_nonmarket_v31_candidate_numbers_NOT_RANKING"])
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-JRA-retrospective-form-position-outside-v31
+          path: reports/2026-10-16/shuka2026-JRA-2026-retrospective-risk-not-model.json
+          retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
           name: shuka2026-JRA-GI-sale-window-and-market-coverage-HOLD
