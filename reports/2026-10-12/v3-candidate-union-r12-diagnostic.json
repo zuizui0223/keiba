@@ -1,0 +1,71 @@
+{
+  "created_at_jst": "2026-10-13T09:55:15+09:00",
+  "mode": "RETROSPECTIVE_DIAGNOSTIC_NOT_VALIDATION",
+  "input": "data/2026-10-12/v3/kyoto_12.json",
+  "script": "scripts/build_v3_candidate_union.py",
+  "parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5
+  },
+  "candidate_numbers": [
+    1,
+    2,
+    3,
+    6,
+    8,
+    9,
+    10,
+    12,
+    14,
+    15,
+    16
+  ],
+  "candidate_count": 11,
+  "field_size": 16,
+  "coverage_fraction": 0.6875,
+  "official_top3": [
+    10,
+    12,
+    9
+  ],
+  "retrospective_top3_recall": 1,
+  "precision_within_candidate_set": 0.2727272727272727,
+  "strong_reason_tier": {
+    "definition": "reason_count >= 2",
+    "candidate_numbers": [
+      1,
+      8,
+      9,
+      10,
+      14,
+      16
+    ],
+    "candidate_count": 6,
+    "official_top3_captured": [
+      10,
+      9
+    ],
+    "retrospective_top3_recall": 0.6666666666666666
+  },
+  "top3_reason_trace": {
+    "9": [
+      "market_top_n",
+      "recent_same_class_close"
+    ],
+    "10": [
+      "recent_similar_distance_win",
+      "lightly_raced_recent_win"
+    ],
+    "12": [
+      "recent_same_class_close"
+    ]
+  },
+  "interpretation": [
+    "The union fixes the specific omission mechanisms seen in the 12R postmortem: 10 is reviewed because of a recent similar-distance win and low career starts; 12 is reviewed because of a recent same-class close finish.",
+    "However 11 of 16 runners become candidates, so this is a recall-oriented safety net rather than a ranking model.",
+    "The rules were designed after observing the 12R result. Therefore 3/3 retrospective recall is not evidence of predictive improvement.",
+    "Do not tune thresholds further on 2026-10-12. Freeze the current rule before testing on another race day."
+  ]
+}

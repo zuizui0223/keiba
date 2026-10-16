@@ -1,0 +1,223 @@
+# v3.1 candidate-generation protocol
+
+Status: **FROZEN FOR PROSPECTIVE HOLDOUT.**
+
+v3.1 was designed using the 2026-10-12 Kyoto R7-R12 outcomes, so those six races are development data only. Their 18/18 top-three recall is not prospective evidence.
+
+The first holdout race is the first race classified after the v3.1 freeze manifest is created. Do not backfill earlier races into the holdout window.
+
+## Objective
+
+Generate a broad candidate set that improves top-three recall over the frozen win-market baseline without expanding toward the entire field.
+
+v3.1 does not estimate calibrated win probabilities and does not claim positive expected value.
+
+## Inputs
+
+Only information available before the target race starts:
+
+- timestamped pre-race win odds for M;
+- age and career-start count;
+- the most recent start for C1;
+- last four starts for U and Q1;
+- complete prior history for K1;
+- surface, distance, class, finish, beaten margin;
+- verified GI/GII/GIII/Listed race tier;
+- current body-weight change and jockey only as uncertainty metadata.
+
+Target-race results, final target-race sectionals, payouts and post-race comments are forbidden inputs.
+
+## Distance band
+
+Adjacent distance means target distance ±20%, inclusive.
+
+## M — market baseline
+
+Select the top quarter by timestamped pre-race win odds:
+
+- minimum nominal count: 3
+- maximum nominal count: 5
+- include every horse tied at the cutoff
+
+A stale or unvalidated market snapshot is not silently replaced with a later or final market.
+
+For the prospective holdout, both the odds observation timestamp and the freeze timestamp must fall **15 to 25 minutes before the scheduled post time, inclusive**. This fixed observation window is part of the frozen design. A snapshot outside that window is rejected; a later/final market is never substituted after the fact. If a technically valid snapshot cannot be obtained inside the window, the race is recorded as a pre-result data failure and does not enter the scored denominator.
+
+## C1 — latest same-class adjacent-distance form
+
+Only the **most recent start** is considered.
+
+C1 = true only when all of the following hold:
+
+- same surface as target;
+- same class or higher class;
+- distance within ±20% of target;
+- and either:
+  - finish 1-4 **and** beaten margin <= 1.0 second; or
+  - beaten margin <= 0.5 second.
+
+An older qualifying run cannot rescue a poor latest run through C1.
+
+## U — young sparse-career growth
+
+U = true only when:
+
+- age 3;
+- <=5 career starts before target;
+- most recent start was a win;
+- same surface;
+- distance within ±20% of target.
+
+Class rise does not cancel U. It is reported as uncertainty metadata.
+
+## Q1 — strict quality transfer
+
+Inspect the last four starts on the same surface and within ±20% target distance.
+
+Qualifying result:
+
+- Listed: win only;
+- GIII: win only;
+- GII: top three;
+- GI: top three.
+
+Open races that are not Listed do not qualify.
+
+Unknown quality tier blocks Q1 for that race and must be reported; do not guess the tier.
+
+The quality-tier map may be extended during holdout only for a newly encountered race name, using an official published tier. This is metadata completion, not model tuning. Existing mappings cannot be changed after their race has entered the holdout unless a documented source correction is required; any correction must be logged separately.
+
+## K1 — Kyoto near-distance specialist with win evidence
+
+Using complete pre-race history at Kyoto, same surface, and ±20% target distance:
+
+K1 = true when either:
+
+- >=2 wins; or
+- >=1 win **and** >=2 top-three finishes.
+
+Two placings without a win do not qualify.
+
+## Class-aware rescue gate
+
+For target classes below GII:
+
+> rescue = Q1 OR K1
+
+For GII/GI targets:
+
+> rescue = Q1 AND K1
+
+This prevents Q/K from flooding fields where prior graded and course form are common.
+
+## Final broad set
+
+> union = M OR C1 OR U OR rescue
+
+Candidate membership is fixed before ticket-price comparison.
+
+## Uncertainty flags
+
+Report but do not automatically exclude:
+
+- layoff >120 days;
+- first venue run;
+- first exact-distance run;
+- first ride by current jockey;
+- body-weight change >=10 kg absolute;
+- class rise.
+
+## Ticket-conversion gate
+
+Horse/pair selection happens before ticket-price comparison.
+
+Once a target horse or pair is selected, compare prices only for the same target event. A higher quote cannot substitute a different horse merely because another ticket appears more attractive.
+
+## Frozen implementation
+
+Production reference:
+
+- `scripts/v31_candidate_channels.py`
+- `tests/test_v31_candidate_channels.py`
+- `scripts/v31_prepare_snapshot.py`
+- `tests/test_v31_prepare_snapshot.py`
+- `scripts/v31_holdout.py`
+- `tests/test_v31_holdout.py`
+
+The freeze manifest records the exact Git blob SHAs for the classifier, snapshot preparer, holdout wrapper and their tests. A valid pre-result freeze must carry source metadata generated by the frozen snapshot preparer and verified by the frozen holdout wrapper.
+
+Changes to any C1/U/Q1/K1/M threshold or rescue logic create a new version (v3.2 or later). Do not edit v3.1 in place after holdout results become visible.
+
+## Prospective holdout
+
+Evaluate the next **20 eligible races** without threshold tuning.
+
+Eligibility is applied chronologically to **every** qualifying Kyoto race, not one race per day. A single race day may therefore contribute multiple holdout races. Once an eligible race reaches its fixed 15-25 minute observation window, it must be attempted; it cannot be skipped because another race that day was already frozen or because its eventual prediction looks inconvenient.
+
+An eligible race must be run at **Kyoto**. v3.1's K1 channel is explicitly Kyoto-specific, so Tokyo, Hanshin, Nakayama and other venues are not part of this holdout and must not be counted. The holdout wrapper rejects non-Kyoto inputs.
+
+To keep the prospective population aligned with the six development races, an eligible race must also be a **flat turf/dirt race at 1-win class or higher and must not be restricted to 2-year-olds**. Maiden, newcomer, obstacle and 2-year-old-only races do not enter the 20-race denominator.
+
+
+An eligible race requires enough pre-race data to run M/C1/U/Q1/K1 as specified. Data-integrity failure may mark a race non-evaluable, but performance is never a reason to exclude a race.
+
+Every chronologically eligible race must also be written to `docs/v31-holdout-attempt-ledger.json` as exactly one of:
+
+- `FROZEN`: a valid pre-result freeze was created inside the fixed observation window;
+- `PRE_RESULT_DATA_FAILURE`: the race was eligible but could not be validly frozen for a pre-result technical/data reason, with an explicit failure reason.
+
+A failed attempt cannot be silently skipped. The scored performance ledger contains only FROZEN races after official results are available; the attempt ledger preserves the denominator needed to audit technical evaluability.
+
+For each holdout race save before post time:
+
+- target metadata;
+- observation timestamps;
+- source identifiers;
+- M/C1/U/Q1/K1/rescue membership;
+- union candidate set;
+- candidate fraction;
+- uncertainty flags;
+- classifier blob SHA;
+- quality-tier-map SHA;
+- a pre-result freeze timestamp/hash.
+
+After the result becomes available, append a separate result record; never edit the pre-result freeze.
+
+## Holdout metrics
+
+After every race report cumulatively, without changing rules:
+
+1. winner recall;
+2. top-three recall;
+3. union candidate fraction;
+4. M-only top-three recall;
+5. incremental recall over M;
+6. additional candidates per additional top-three hit;
+7. unique rescues by C1/U/rescue;
+8. market rank of every miss;
+9. residual type for every miss.
+
+The formal comparison point is after 20 scored eligible races. The confirmatory decision rule is frozen separately in `docs/v31-holdout-decision-contract.json`.
+
+The primary test is a one-sided exact stratified random-addition rescue test. Within each race it conditions on field size, M size, the number of actual top-three finishers outside M, and the exact number of non-M horses added by v3.1. It asks whether the observed number of additional top-three rescues across 20 races exceeds what would be expected if the same number of non-M horses had been added uniformly at random within each race. Race-specific hypergeometric distributions are convolved exactly.
+
+Formal promotion requires **all three**:
+
+- one-sided exact p <= 0.05;
+- overall union candidate fraction <= 0.65; and
+- freeze success rate >= 0.80 among all chronologically eligible attempts through the 20th scored FROZEN race.
+
+The freeze-success denominator includes `PRE_RESULT_DATA_FAILURE` attempts. This prevents a favourable result from being obtained by retaining only races with convenient or complete pre-race data.
+
+There is no early promotion, no early stopping for efficacy, and no threshold tuning based on interim holdout results. Interim values are descriptive only.
+
+## Development reference only
+
+On Kyoto 2026-10-12 R7-R12, v3.1 produced:
+
+- 49 / 83 candidates = 59.0%;
+- 18 / 18 top-three development recall;
+- M alone: 22 / 83 candidates, 11 / 18 top-three recall;
+- 27 candidates added over M for 7 additional top-three slots = 3.86 additional candidates per added hit.
+
+These numbers are in-sample diagnostics only and are not success criteria for the holdout.

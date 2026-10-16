@@ -1,0 +1,148 @@
+{
+  "created_at_jst": "2026-10-13T13:17:00+09:00",
+  "label": "DEVELOPMENT_OUTPUT_NOT_VALIDATION",
+  "source_dir": "data/2026-10-12/v3",
+  "parameters": {
+    "market_baseline_n": 4,
+    "upside_slots": 3
+  },
+  "races": [
+    {
+      "race": 7,
+      "candidate_pool": [
+        2,
+        4,
+        5,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "shortlist": [
+        11,
+        2,
+        15,
+        12,
+        16,
+        5,
+        4
+      ]
+    },
+    {
+      "race": 8,
+      "candidate_pool": [
+        1,
+        3,
+        5,
+        9,
+        11
+      ],
+      "shortlist": [
+        9,
+        5,
+        11,
+        1,
+        3
+      ]
+    },
+    {
+      "race": 9,
+      "candidate_pool": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        12
+      ],
+      "shortlist": [
+        12,
+        10,
+        4,
+        5,
+        6,
+        2,
+        3
+      ]
+    },
+    {
+      "race": 10,
+      "candidate_pool": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "shortlist": [
+        5,
+        2,
+        9,
+        7,
+        4,
+        6
+      ]
+    },
+    {
+      "race": 11,
+      "candidate_pool": [
+        1,
+        2,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "shortlist": [
+        9,
+        1,
+        18,
+        15,
+        13,
+        12,
+        17
+      ]
+    },
+    {
+      "race": 12,
+      "candidate_pool": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9,
+        10,
+        12,
+        14,
+        16
+      ],
+      "shortlist": [
+        3,
+        16,
+        8,
+        9,
+        10,
+        6,
+        14
+      ]
+    }
+  ],
+  "guarantees": {
+    "data_gate_required": true,
+    "ranking_produced": false,
+    "probabilities_assigned": false,
+    "ticket_selection_performed": false
+  },
+  "note": "These outputs are development artifacts generated from a race day already used to design v3. They are not out-of-sample evidence."
+}

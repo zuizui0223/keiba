@@ -1,0 +1,115 @@
+{
+  "version": "v3.0-alpha-freeze1-oos-20261017",
+  "created_at_jst": "2026-10-14T21:11:00+09:00",
+  "status": "WAITING_FOR_OFFICIAL_CARD",
+  "repository": "zuizui0223/keiba",
+  "branch": "analysis/kyoto-20261012",
+  "parent_freeze": {
+    "path": "configs/v3-freeze-20261013.json",
+    "blob_sha": "1276fb37308d3af1527930c2bf9c7de213fb789e"
+  },
+  "test_day": {
+    "date": "2026-10-17",
+    "venue": "京都",
+    "meeting": "4回京都6日",
+    "official_program_url": "https://www.jra.go.jp/keiba/calendar2026/2026/10/1017.html",
+    "card_release_note": "JRA notes that the latest card is normally published around Thursday 16:00; use the official card when available."
+  },
+  "target_races": [
+    {
+      "race": 7,
+      "start_jst": "13:15",
+      "class": "3歳以上1勝クラス",
+      "surface": "dirt",
+      "distance_m": 1800
+    },
+    {
+      "race": 8,
+      "start_jst": "13:45",
+      "class": "3歳以上2勝クラス",
+      "surface": "dirt",
+      "distance_m": 1400,
+      "sex": "牝"
+    },
+    {
+      "race": 9,
+      "start_jst": "14:15",
+      "class": "2歳オープン",
+      "name": "もみじステークス",
+      "surface": "turf_outer",
+      "distance_m": 1400
+    },
+    {
+      "race": 10,
+      "start_jst": "14:50",
+      "class": "3歳以上2勝クラス",
+      "name": "清滝特別",
+      "surface": "turf_outer",
+      "distance_m": 2200
+    },
+    {
+      "race": 11,
+      "start_jst": "15:30",
+      "class": "3歳以上3勝クラス",
+      "name": "トルマリンステークス",
+      "surface": "dirt",
+      "distance_m": 1800,
+      "sex": "牝"
+    },
+    {
+      "race": 12,
+      "start_jst": "16:15",
+      "class": "3歳以上1勝クラス",
+      "surface": "turf_outer",
+      "distance_m": 1400
+    }
+  ],
+  "locked_implementation": {
+    "recent_history_gate": {
+      "path": "scripts/audit_recent_history.py",
+      "blob_sha": "cf97732cfb5021bd90d906f88af48eb8e2a0a4ab"
+    },
+    "candidate_union": {
+      "path": "scripts/build_v3_candidate_union.py",
+      "blob_sha": "22f46f7e2ea58ffde71097335f3138eb913d130d"
+    }
+  },
+  "locked_parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5,
+    "min_recent_runs": 3,
+    "max_history_check_age_hours": 24
+  },
+  "pre_result_protocol": [
+    "Wait for the official JRA card; do not infer runners from registration lists.",
+    "For every runner, build structured recent history and require the data gate to PASS.",
+    "If any runner is DATA_HOLD, the race ranking/candidate output is HOLD.",
+    "Run the frozen candidate-union implementation without changing parameters.",
+    "Save market Top5 baseline and v3 candidate set before the race result.",
+    "Store source URLs, retrieval times, blob SHAs, candidate reasons and candidate-set size.",
+    "Do not use race results, post-race odds, or later scratches in the pre-race artifact."
+  ],
+  "evaluation_after_result": {
+    "primary_metrics": [
+      "Top3 recall",
+      "candidate coverage fraction",
+      "winner reciprocal rank where a ranking exists",
+      "unordered Top2 capture",
+      "candidate-set recall at comparable coverage to market Top5"
+    ],
+    "required_baselines": [
+      "market_top5",
+      "frozen_old_system"
+    ],
+    "ticket_layer_evaluated_separately": true,
+    "no_same_day_retuning": true
+  },
+  "prohibited_until_results_scored": [
+    "change candidate thresholds",
+    "add a reason rule to capture a named 2026-10-17 runner",
+    "change the market_top_n baseline",
+    "call v3 improved before scoring all frozen target races"
+  ]
+}

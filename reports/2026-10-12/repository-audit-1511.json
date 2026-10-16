@@ -1,0 +1,87 @@
+{
+  "audited_head": "3ae70b9f1024ce042a514b91f9ff3a2092b1c79f",
+  "audit_started_at_jst": "2026-10-12T15:11:00+09:00",
+  "behavior_run_at_utc": "2026-10-12T06:17:03.670756+00:00",
+  "mode": "READ_ONLY_AUDIT_OF_EXISTING_COMPUTATIONS",
+  "prediction_model_validated": false,
+  "live_odds_verified": false,
+  "live_runner_status_verified": false,
+  "scope": {
+    "scripts_reviewed": 7,
+    "standard_test_files_reviewed": 2,
+    "standard_test_cases_reviewed": 11,
+    "standard_full_test_suite_executed": false,
+    "all_market_lp_rerun": false,
+    "all_95_horse_histories_independently_verified": false,
+    "original_computation_code_changed": false,
+    "original_market_data_changed": false
+  },
+  "byte_verified_executed_modules": [
+    {
+      "path": "scripts/analyze.py",
+      "git_blob_sha": "ad07e890721e28a4ac6d0031de4d0b6623eb5c40",
+      "sha256": "0bb8e772bbdd83ef57ba22615ee53cdc6f9d83dec9b0ecde5abe338495cae4a1"
+    },
+    {
+      "path": "scripts/compare_remaining_integer_stakes.py",
+      "git_blob_sha": "6e2e45110c684c160e2cdf048dc3207e22e42cb3",
+      "sha256": "d93eba4a0e8ce6acbd26213a2d0ea598830144e2dc09bd6859cb8fe4d2bb478c"
+    }
+  ],
+  "fixture_disclaimer": "The following nine cases are synthetic input probes. They are NOT actual cancellations, actual bad quotes, current prices, or evidence of source fabrication.",
+  "synthetic_probe_as_of_jst": "2026-10-12T15:15:00+09:00",
+  "behavior_probes": [
+    {"case": "stale_94_minutes", "validation": "accepted", "ticket_count": 1, "stake_yen": 100, "quote_age_minutes": 94.0, "needs_quote_refresh": true},
+    {"case": "status_explicitly_unverified", "validation": "accepted", "ticket_count": 1, "stake_yen": 100},
+    {"case": "synthetic_cancellation_fields_not_supported", "validation": "accepted", "ticket_count": 1, "stake_yen": 100, "interpretation": "Status fields are outside the existing snapshot schema and are ignored."},
+    {"case": "fresh_but_status_unknown", "validation": "accepted", "ticket_count": 1, "stake_yen": 100, "quote_age_minutes": 2.0, "needs_quote_refresh": false},
+    {"case": "future_observation", "validation": "rejected", "error": "future_observation: 2608040511"},
+    {"case": "wrong_race_source_url", "validation": "accepted", "ticket_count": 1, "stake_yen": 100, "mutation": "R11 ticket URL replaced with a sports.yahoo.co.jp R12 wide-odds URL"},
+    {"case": "observed_after_start_but_updated_before_start", "validation": "accepted", "ticket_count": 0, "stake_yen": 0, "as_of_jst": "2026-10-12T16:01:00+09:00", "observed_at_jst": "2026-10-12T16:00:00+09:00", "interpretation": "Accepted as input but no post-start candidate was generated."},
+    {"case": "cutoff_at_1543", "validation": "accepted", "ticket_count": 0, "stake_yen": 0},
+    {"case": "before_cutoff_154259", "validation": "accepted", "ticket_count": 1, "stake_yen": 100, "needs_quote_refresh": true}
+  ],
+  "known_good_controls": {
+    "naive_time_rejected": true,
+    "null_not_zero": true,
+    "zero_starts_not_zero_rate": true,
+    "cutoff_exactly_two_minutes": true,
+    "shared_axis_max_simultaneous_wide_winners": 2,
+    "axis_absent_max_payout_yen": 0,
+    "distinct_top_three_sets_enumerated": 816
+  },
+  "independent_integer_checks": [
+    {"race": 11, "source_updated_at_jst": "2026-10-12T13:41:00+09:00", "all_positive_splits_checked": 45, "quinella_odds": 33.9, "exacta_odds": [56.7, 93.0], "smallest_both_orders_improvement_budget_yen": 500, "stakes_yen": [300, 200], "exacta_payouts_yen": [17010, 18600], "same_budget_quinella_payout_yen": 16950, "gains_yen": [60, 1650]},
+    {"race": 12, "source_updated_at_jst": "2026-10-12T13:42:00+09:00", "all_positive_splits_checked": 45, "quinella_odds": 16.1, "exacta_odds": [34.9, 36.8], "smallest_both_orders_improvement_budget_yen": 200, "stakes_yen": [100, 100], "exacta_payouts_yen": [3490, 3680], "same_budget_quinella_payout_yen": 3220, "gains_yen": [270, 460]}
+  ],
+  "attachment_recheck": {
+    "package": "kyoto_9-12_recheck_20261012.zip",
+    "script": "reports/2026-10-12/recheck-1407-reproduce.py",
+    "checks_passed": 25,
+    "checks_failed": 0,
+    "script_present_at_same_path_in_audited_repository": false,
+    "repository_has_shorter_integer_reproduction_example": true
+  },
+  "source_control_check": {
+    "base": "862ef0145687773a60344cc99d4b82e9b27cad05",
+    "head": "3ae70b9f1024ce042a514b91f9ff3a2092b1c79f",
+    "status": "ahead",
+    "ahead_by": 3,
+    "behind_by": 0,
+    "previous_update_loss_hypothesis_supported": false
+  },
+  "primary_source_spot_check": {
+    "url": "https://www.jra.go.jp/datafile/seiseki/replay/2025/094.html",
+    "event_date": "2025-10-13",
+    "winner": "オフトレイル",
+    "second": "ワイドラトゥール",
+    "both_times": "1:18.9",
+    "margin": "クビ",
+    "weights_kg": [57, 55],
+    "both_corner_positions": [11, 11],
+    "full_page_text_read": true,
+    "scope": "Historical result only; not verification of 2026 live odds or status."
+  },
+  "test_interpretation": "Successful reproduction of accepted unsafe-for-live inputs is an audit finding, not evidence that live-use safety tests pass.",
+  "readiness": "ARCHIVED_ARITHMETIC_PARTIALLY_VERIFIED; LIVE_RECOMMENDATIONS_NEED_REVISION"
+}

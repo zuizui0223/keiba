@@ -1,0 +1,84 @@
+{
+  "created_at_utc": "2026-10-12T04:41:22.832249+00:00",
+  "input_sha256": "fc896893b1f7be1a9a0a4dc776cdbb963da66f02f60e1f7279d429ccee98c10c",
+  "independent_lp_verification": {
+    "outcomes": 990,
+    "min_gross_factor": 0.9145209121009044,
+    "max_gross_factor": 1.371781368151357,
+    "weights_sum": 1.0000000000000004
+  },
+  "conditional_integer_allocation": {
+    "budget_yen": 1000,
+    "unit_yen": 100,
+    "event": "5と11が1・2着を占める、順不同",
+    "tickets": [
+      {
+        "type": "exacta",
+        "selection": [
+          11,
+          5
+        ],
+        "odds": 21.9
+      },
+      {
+        "type": "exacta",
+        "selection": [
+          5,
+          11
+        ],
+        "odds": 26.8
+      },
+      {
+        "type": "quinella",
+        "selection": [
+          5,
+          11
+        ],
+        "odds": 11.4
+      }
+    ],
+    "allocations_checked": 66,
+    "best": {
+      "stakes_yen": [
+        500,
+        400,
+        100
+      ],
+      "gross_returns_yen": [
+        12090,
+        11860
+      ],
+      "min_gross_return_yen": 11860
+    },
+    "all_quinella_gross_return_yen": 11400.0,
+    "other_results_gross_return_yen": 0,
+    "note": "条件付きの最低払戻最大化。全結果利益や的中確率の推定ではない。馬単13:06・馬連13:34の固定価格比較。予算増額を推奨しない。"
+  },
+  "basic_two_ticket_plan": {
+    "tickets": [
+      {
+        "type": "quinella",
+        "selection": [
+          5,
+          11
+        ],
+        "stake_yen": 100,
+        "odds": 11.4
+      },
+      {
+        "type": "frame",
+        "selection": [
+          1,
+          8
+        ],
+        "stake_yen": 100,
+        "odds": 18
+      }
+    ],
+    "total_stake_yen": 200,
+    "net_if_quinella_only_yen": 940.0,
+    "net_if_frame_only_yen": 1600,
+    "net_if_neither_yen": -200,
+    "can_both_win_without_dead_heat": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "created_at_jst": "2026-10-12T23:46:27+09:00",
+  "scoring_policy": "Frozen pre-race marks and saved wide candidates; no post-result relabeling.",
+  "result_input": "data/2026-10-12/official-results-final.json",
+  "summary": {
+    "races_scored": 6,
+    "winner_in_core_marks": 5,
+    "winner_in_core_rate": 0.8333333333333334,
+    "complete_top3_races": 6,
+    "complete_top3_all_marked_candidates": 4,
+    "complete_top3_all_marked_rate": 0.6666666666666666,
+    "saved_wide_hit_races": 4,
+    "saved_wide_hit_rate": 0.6666666666666666,
+    "winner_pre_race_mark_positions": [2, 3, 1, 2, 2, null],
+    "average_winner_mark_position_when_marked": 2.0
+  },
+  "races": {
+    "7": {"result": [2,15,9], "winner_mark": "○", "top3_marked_recall": 1.0, "saved_wide_hits": [[2,15]]},
+    "8": {"result": [9,1,7], "winner_mark": "▲", "top3_marked_recall": 1.0, "saved_wide_hits": []},
+    "9": {"result": [4,3,12], "winner_mark": "◎", "top3_marked_recall": 1.0, "saved_wide_hits": [[3,4]]},
+    "10": {"result": [5,2,9], "winner_mark": "○", "top3_marked_recall": 1.0, "saved_wide_hits": [[2,5]]},
+    "11": {"result": [1,4,9], "winner_mark": "○", "top3_marked_recall": 0.6666666666666666, "unmarked_top3": [4], "saved_wide_hits": [[1,9]]},
+    "12": {"result": [10,12,9], "winner_mark": "", "top3_marked_recall": 0.3333333333333333, "unmarked_top3": [10,12], "saved_wide_hits": []}
+  },
+  "r12_forward_test": {
+    "official_result": [10,12,9],
+    "old_top3": [14,1,6],
+    "v2_top3": [16,1,14],
+    "broad_v2_candidate_set": [16,1,14,3,9,6],
+    "old": {"winner_rank": null, "top2_exact_unordered": false, "top3_recall": 0.0},
+    "v2": {"winner_rank": null, "top2_exact_unordered": false, "top3_recall": 0.0},
+    "broad_v2_candidate_recall": 0.3333333333333333,
+    "verdict": "No improvement. The first forward test falsified the claim that v2 had already improved prediction quality."
+  },
+  "conclusion": "Across 7-12R, broad candidate generation was useful but not consistently sufficient. The 12R forward test failed for both old and v2 rankings, showing that same-day tuning on 7-11R was not validated and may have overfit the small sample."
+}

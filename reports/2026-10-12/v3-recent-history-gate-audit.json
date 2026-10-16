@@ -1,0 +1,74 @@
+{
+  "audited_at_jst": "2026-10-13T02:54:00+09:00",
+  "branch": "analysis/kyoto-20261012",
+  "scope": "Kyoto 7R-12R frozen pre-race JSON inputs",
+  "policy": "docs/v3-decision-policy-draft.md + scripts/audit_recent_history.py",
+  "status": "DATA_HOLD",
+  "totals": {
+    "races": 6,
+    "horses": 83,
+    "pass": 0,
+    "hold": 83
+  },
+  "required_structured_fields": [
+    "career_starts",
+    "history_checked_at_jst",
+    "history_source_url",
+    "source_latest_run_date",
+    "recent_runs"
+  ],
+  "races": [
+    {
+      "race": 7,
+      "horses": 16,
+      "pass": 0,
+      "hold": 16
+    },
+    {
+      "race": 8,
+      "horses": 11,
+      "pass": 0,
+      "hold": 11
+    },
+    {
+      "race": 9,
+      "horses": 12,
+      "pass": 0,
+      "hold": 12
+    },
+    {
+      "race": 10,
+      "horses": 10,
+      "pass": 0,
+      "hold": 10
+    },
+    {
+      "race": 11,
+      "horses": 18,
+      "pass": 0,
+      "hold": 18
+    },
+    {
+      "race": 12,
+      "horses": 16,
+      "pass": 0,
+      "hold": 16
+    }
+  ],
+  "fail_closed_behavior": {
+    "cli_exit_code_on_data_hold": 2,
+    "ranking_allowed": false
+  },
+  "latest_run_sync_rule": "For horses with at least one career start, recent_runs[0].date must equal source_latest_run_date from the refreshed history source.",
+  "interpretation": [
+    "All frozen race JSONs predate the new structured recent-run completeness schema, so all 83 runners are intentionally blocked.",
+    "Under v3, these inputs remain valid historical artifacts but are not eligible for a new ranking or live decision.",
+    "The source_latest_run_date cross-check directly targets the 12R failure mode where a newer same-class run was omitted from a horse summary."
+  ],
+  "next_required_work": [
+    "Populate career_starts and the latest three runs (or all career starts when fewer than three) for every runner.",
+    "Record history_source_url, source_latest_run_date and history_checked_at_jst from the refresh source.",
+    "Require each saved latest run to match the source-reported latest run date.",
+    "Re-run the fail-closed gate before any future ranking model."
+  ]
+}

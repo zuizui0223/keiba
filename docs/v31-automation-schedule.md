@@ -1,0 +1,128 @@
+# v3.1 holdout automation schedule — Kyoto 2026-10-17
+
+This schedule is operational metadata only. It does not change the frozen v3.1 scientific/candidate rules.
+
+## Timeline
+
+| JST | Stage | Target | Repository effect |
+|---|---|---|---|
+| 2026-10-15 17:00 | pre-processing | all currently eligible Kyoto races | cache official JRA runner identities and pre-race histories; no inferred numbers or target result |
+| 2026-10-16 around 13:00 | numbered-card reconciliation | Kyoto R7/R8/R10/R11/R12 | match newly assigned official JRA horse numbers with Thursday horse IDs; no live odds or freeze |\n| Every Thursday 17:30 | weekly planner | next Kyoto meeting while score ledger < 20 | verify integrity, discover eligible races, prepare source captures, and schedule exact race-day freeze/scoring/fail-safe tasks without duplicates |
+| 2026-10-17 12:55 | pre-result freeze | R7, scheduled 13:15 | freeze inside the fixed 15–25 minute window; register FROZEN or PRE_RESULT_DATA_FAILURE attempt |
+| 2026-10-17 13:25 | pre-result freeze | R8, scheduled 13:45 | same |
+| 2026-10-17 14:30 | pre-result freeze | R10, scheduled 14:50 | same |
+| 2026-10-17 15:10 | pre-result freeze | R11, scheduled 15:30 | same |
+| 2026-10-17 15:55 | pre-result freeze | R12, scheduled 16:15 | same |
+| 2026-10-17 16:50 | post-result scoring | every FROZEN attempt from the day | write result/score separately and register score ledger entries |
+| 2026-10-17 17:20 | fail-safe audit | all eligible attempts from the day | detect missing attempt records or unscored FROZEN races; no result-driven backfill |
+
+R9 Momiji S is excluded under the frozen rule because it is restricted to 2-year-olds.
+
+## Weekly planner
+
+The weekly planner is operational only. It runs while the scored ledger has fewer than 20 races.
+
+It must:
+
+- verify the frozen contract before creating any future task;
+- discover the next Kyoto meeting from JRA official schedules/current cards;
+- apply the already-frozen eligibility rule only;
+- avoid duplicate tasks for the same race/date/time;
+- schedule each eligible freeze at approximately 20 minutes before post, inside the fixed 15–25 minute window;
+- schedule post-result scoring and a later fail-safe audit for that meeting;
+- stop creating new holdout tasks once the scored ledger reaches 20 or a formal evaluation is already sealed.
+
+The planner may append a newly encountered quality-tier name only when an official JRA tier is available. It may not alter an existing baseline mapping or any v3.1 threshold.
+
+## Pre-processing stage
+
+The Thursday stage may fetch the current race cards and full horse histories for all eligible Kyoto races.
+
+It must not:
+
+- create scored holdout entries;
+- lock Thursday odds for Saturday;
+- infer or inspect target-race outcomes;
+- modify v3.1 thresholds, classifier, protocol, decision contract or manifest.
+
+Race-day tasks must revalidate the active horse set and current odds. Thursday data are preparation caches only.
+
+## Pre-result attempt stage
+
+Eligibility:
+
+- Kyoto only;
+- flat turf or dirt;
+- 1-win class or higher;
+- not restricted to 2-year-olds.
+
+Every chronologically eligible race must produce exactly one attempt-ledger event:
+
+- `FROZEN` when a valid pre-result freeze is created;
+- `PRE_RESULT_DATA_FAILURE` with an explicit reason when the race is eligible but cannot be validly frozen.
+
+A race that becomes ineligible under the current official conditions is documented operationally but does not enter the eligible-attempt denominator.
+
+A failed eligible freeze is **not discarded**: it remains in `docs/v31-holdout-attempt-ledger.json` and lowers the technical evaluability rate.
+
+Prediction performance is never a reason to skip a race or change an attempt status.
+
+## Post-result stage
+
+After the programme has finished:
+
+1. verify the frozen contract;
+2. re-check the official list of that day's eligible races against the attempt ledger;
+3. fail closed if an eligible race has no chronological attempt record;
+4. for each `FROZEN` attempt only, obtain the official JRA top three for that exact `race_id`;
+5. write `result.json` separately;
+6. calculate `score.json` without editing the freeze;
+7. register score-ledger entries chronologically;
+8. leave `PRE_RESULT_DATA_FAILURE` attempts unscored but in the attempt denominator;
+9. create descriptive residual audits only for union misses.
+
+No post-result process may backfill a missing pre-result attempt merely because the result is known.
+
+## Formal evaluation
+
+The formal evaluator is run only after 20 scored FROZEN races.
+
+It uses both:
+
+- `docs/v31-holdout-ledger.json` — scored FROZEN races;
+- `docs/v31-holdout-attempt-ledger.json` — every eligible attempt through the 20th scored freeze.
+
+PROMOTE requires all three frozen gates:
+
+- exact one-sided stratified random-addition p <= 0.05;
+- overall union candidate fraction <= 0.65;
+- freeze success rate >= 0.80.
+
+Interim values are descriptive only.
+
+## Current first candidate
+
+The scheduled programme currently makes Kyoto 7R on 2026-10-17 (3yo+ 1-win, dirt 1800m, scheduled 13:15) the first candidate. This remains provisional until the current JRA race card is revalidated.
+
+See:
+
+- `docs/v31-holdout-freeze.json`
+- `docs/v31-holdout-ledger.json`
+- `docs/v31-holdout-attempt-ledger.json`
+- `docs/v31-holdout-decision-contract.json`
+- `docs/v31-next-holdout-plan.md`
+- `docs/v31-holdout-operations.md`
+- `scripts/v31_prepare_snapshot.py`
+- `scripts/v31_holdout.py`
+- `scripts/v31_attempt_ledger.py`
+- `scripts/v31_evaluate_holdout.py`
+
+## Thursday / Friday publication boundary (operational correction, 2026-10-15)
+
+JRA officially explains that on Thursday shortly after 16:00 the race card is generally published **without horse or frame numbers**, and that numbers are generally attached after 10:00 on the preceding Friday. Source: https://jra.jp/faq/pop02/2_2.html
+
+This means the Thursday 17:00 stage may cache declared horses by official JRA horse identity/profile URL and their pre-race histories, but **must not** fabricate horse numbers, assign temporary frame numbers, synthesize win odds, or claim a final horse-number key match. The frozen snapshot preparer requires numbered runners and actual win odds; it therefore remains reserved for the valid race-day observation window.
+
+A one-time Friday numbered-card check is scheduled for 2026-10-16 approximately 13:00 JST. It must reconcile official horse number ↔ JRA horse ID, identity, active runner roster and race class, and keep caches preparatory only. Missing official numbered cards or inaccessible text means preparation failure, not an invented PASS.
+
+Race-day freeze tasks are unchanged. Each still requires a **new** timestamped actual win-odds capture and matching official active runner set 15–25 minutes before its start. No code, classifier, manifest, frozen threshold or formal decision contract is modified by this operational correction.

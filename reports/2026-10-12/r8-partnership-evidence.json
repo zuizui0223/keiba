@@ -1,0 +1,748 @@
+{
+  "race": 8,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "surface": "turf",
+  "distance_m": 2000,
+  "start_jst": "2026-10-12T14:00:00+09:00",
+  "as_of_jst": "2026-10-12T13:37:00+09:00",
+  "current_jockeys_source": {
+    "url": "https://sports.yahoo.co.jp/keiba/race/denma/2608040508",
+    "updated_at_jst": "2026-10-12T13:32:00+09:00",
+    "source_refs": [
+      "turn145view0",
+      "turn147view0"
+    ]
+  },
+  "horse_kyoto_records_source": {
+    "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+    "source_ref": "turn147view4"
+  },
+  "record_order": [
+    "1着",
+    "2着",
+    "3着",
+    "4着以下"
+  ],
+  "method": "各馬の全競走履歴を新馬戦まで確認。今回騎手一致のレースを全場・全芝・京都芝・京都芝2000mに分離して集計。取消・除外は出走数に含めない。2026年10月12日のレース結果は使用しない。",
+  "limitations": [
+    "0戦は確認済み未経験であり相性不良を意味しない。未出走馬の馬自身京都成績はnull。",
+    "コンビの小標本、騎乗馬の能力や人気を調整しない記述集計であり騎手効果・今回的中確率の因果推定ではない。",
+    "ニュース欄の当日レース結果は集計・評価に使用しない。"
+  ],
+  "partnerships": [
+    {
+      "number": 1,
+      "name": "エレガンシア",
+      "jockey": "富田暁",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022103705/",
+      "source_refs": [
+        "turn145view4",
+        "turn147view2",
+        "turn147view3"
+      ],
+      "horse_lifetime_starts_reviewed": 16,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-07-12",
+          "venue": "小倉",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 6
+        },
+        {
+          "date": "2026-06-28",
+          "venue": "小倉",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 7
+        }
+      ],
+      "notes": [
+        "今回コンビは小倉1800mで6着・7着の2回。京都はコンビとして初。",
+        "馬自身の京都芝は2025年5月3日矢車賞2200m5着0.6秒差の1戦のみ。",
+        "2025年8月23日の札幌除外は出走数に含めない。"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "ヴィーナスバブル",
+      "jockey": "松若風馬",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102957/",
+      "source_refs": [
+        "turn147view5",
+        "turn152view0",
+        "turn152view1"
+      ],
+      "horse_lifetime_starts_reviewed": 15,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        1,
+        1,
+        0,
+        6
+      ],
+      "all_turf_record": [
+        1,
+        1,
+        0,
+        6
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-27",
+          "venue": "阪神",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 8
+        },
+        {
+          "date": "2026-07-19",
+          "venue": "小倉",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 2
+        },
+        {
+          "date": "2026-07-12",
+          "venue": "小倉",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 7
+        },
+        {
+          "date": "2026-01-11",
+          "venue": "京都",
+          "surface": "turf",
+          "distance_m": 2000,
+          "finish": 13
+        },
+        {
+          "date": "2025-11-29",
+          "venue": "京都",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 12
+        },
+        {
+          "date": "2025-06-28",
+          "venue": "函館",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 9
+        },
+        {
+          "date": "2025-06-15",
+          "venue": "函館",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 10
+        },
+        {
+          "date": "2025-03-16",
+          "venue": "阪神",
+          "surface": "turf",
+          "distance_m": 2000,
+          "finish": 1
+        }
+      ],
+      "notes": [
+        "松若との8戦で1勝・2着1回。ただし京都芝の同コンビは12着・13着。",
+        "京都芝2000mコンビは2026年1月11日13着1.4秒差の1回のみ。"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "ストロベリーツリー",
+      "jockey": "吉村誠之助",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106887/",
+      "source_refs": [
+        "turn145view5"
+      ],
+      "horse_lifetime_starts_reviewed": 3,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": true,
+      "matched_races": [],
+      "notes": [
+        "過去3走は川田将雅・A.バデル・川田将雅。吉村誠之助は初騎乗。",
+        "馬自身も京都芝初、約10か月休養明け。馬の勝利や2着は今回コンビの実績ではない。"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "テレプシコーラ",
+      "jockey": "中井裕二",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022100457/",
+      "source_refs": [
+        "turn147view6",
+        "turn152view2",
+        "turn152view3",
+        "turn152view4"
+      ],
+      "horse_lifetime_starts_reviewed": 16,
+      "horse_kyoto_turf_record": [
+        0,
+        1,
+        0,
+        9
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        1,
+        0,
+        4
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-27",
+          "venue": "阪神",
+          "surface": "turf",
+          "distance_m": 1800,
+          "finish": 5
+        },
+        {
+          "date": "2026-08-15",
+          "venue": "中京",
+          "surface": "turf",
+          "distance_m": 1600,
+          "finish": 9
+        }
+      ],
+      "notes": [
+        "今回コンビは直近2走の中京1600m9着・阪神1800m5着。京都芝コンビは初。",
+        "馬の京都芝2000m未勝利2着は吉村誠之助とのコンビ。京都10戦の馬自身実績を中井との相性に転用しない。",
+        "2025年6月21日の取消は出走数に含めない。"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "ウィズクィーン",
+      "jockey": "北村友一",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103417/",
+      "source_refs": [
+        "turn145view2"
+      ],
+      "horse_lifetime_starts_reviewed": 6,
+      "horse_kyoto_turf_record": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": true,
+      "matched_races": [],
+      "notes": [
+        "過去6走に北村友一の騎乗なし。今回初騎乗。",
+        "京都芝3戦はすべて2000mで1勝・3着1回・9着1回。勝利は岩田望来、3着は坂井瑠星、9着は武豊。",
+        "約半年休養明け。京都同距離実績を北村とのコンビ相性と混同しない。"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "カドーダムール",
+      "jockey": "坂井瑠星",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023107291/",
+      "source_refs": [
+        "turn147view7",
+        "turn152view5"
+      ],
+      "horse_lifetime_starts_reviewed": 0,
+      "horse_kyoto_turf_record": null,
+      "horse_kyoto_turf_2000m_record": null,
+      "horse_unraced": true,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": true,
+      "matched_races": [],
+      "notes": [
+        "競走履歴掲載なし、出馬表の全芝成績も0戦。未出走馬として馬の京都成績はnullとする。",
+        "坂井瑠星との実戦コンビも0戦。血統だけでコンビ相性を判定できない。"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "レーヌマロン",
+      "jockey": "河原田菜々",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022100655/",
+      "source_refs": [
+        "turn147view8",
+        "turn152view6",
+        "turn152view7",
+        "turn154view0"
+      ],
+      "horse_lifetime_starts_reviewed": 17,
+      "horse_kyoto_turf_record": [
+        1,
+        1,
+        0,
+        3
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": true,
+      "matched_races": [],
+      "notes": [
+        "全17走に河原田菜々の騎乗なし。今回初騎乗。",
+        "馬の京都2200m未勝利1着・2着はいずれも高杉吏麒。京都2000mは長岡禎仁で8着0.9秒差の1戦。",
+        "今回52kgの減量条件とコンビ実績は別の材料。"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "リトルスカーレット",
+      "jockey": "小沢大仁",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022104779/",
+      "source_refs": [
+        "turn147view9",
+        "turn152view8",
+        "turn154view1",
+        "turn154view2"
+      ],
+      "horse_lifetime_starts_reviewed": 12,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-04-11",
+          "venue": "福島",
+          "surface": "dirt",
+          "distance_m": 1700,
+          "finish": 13
+        },
+        {
+          "date": "2025-12-28",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 7
+        }
+      ],
+      "notes": [
+        "小沢との全場コンビ2戦はダートで13着・7着。芝での今回コンビは初。",
+        "馬自身の京都芝は2026年5月30日1600m7着0.5秒差のみ、京都芝2000mは初。",
+        "全場コンビの着外2回はダートのため、芝での相性不良を直接示すものではない。"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "レゼルフォート",
+      "jockey": "西村淳也",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106935/",
+      "source_refs": [
+        "turn145view3"
+      ],
+      "horse_lifetime_starts_reviewed": 3,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": true,
+      "matched_races": [],
+      "notes": [
+        "過去3走は河原田菜々・亀田温心・舟山瑠泉。西村淳也は初騎乗。",
+        "馬自身も京都芝0戦。約5か月休養明け・昇級初戦で、未知の材料が多い。"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "スリラーナイト",
+      "jockey": "斎藤新",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102494/",
+      "source_refs": [
+        "turn154view3",
+        "turn161view0"
+      ],
+      "horse_lifetime_starts_reviewed": 4,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "all_turf_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-20",
+          "venue": "阪神",
+          "surface": "turf",
+          "distance_m": 1600,
+          "finish": 9
+        }
+      ],
+      "notes": [
+        "斎藤新とのコンビは前走阪神1600m9着0.9秒差の1回のみ。",
+        "京都芝1800m新馬4着は団野大成。今回コンビの京都芝は初、馬自身の2000m実戦も初。"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "ベルシュヴァル",
+      "jockey": "松山弘平",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102376/",
+      "source_refs": [
+        "turn145view1",
+        "turn147view1"
+      ],
+      "horse_lifetime_starts_reviewed": 8,
+      "horse_kyoto_turf_record": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "horse_kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "horse_unraced": false,
+      "all_venues_record": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "all_turf_record": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "kyoto_turf_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_turf_2000m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-19",
+          "venue": "阪神",
+          "surface": "turf",
+          "distance_m": 2400,
+          "finish": 2
+        }
+      ],
+      "notes": [
+        "松山とのコンビは前走阪神2400m2着0.1秒差の1回。京都コンビは初。",
+        "馬自身の京都芝は1400m新馬9着、2000m未勝利10着の2回。京都巧者の根拠はない。",
+        "近走の先行好走と継続騎乗を補助材料とするが1戦だけの相性標本。今回400m短縮。"
+      ]
+    }
+  ]
+}

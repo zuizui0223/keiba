@@ -1,0 +1,553 @@
+{
+  "race": 12,
+  "date": "2026-10-12",
+  "history_checked_at_jst": "2026-10-13T09:55:15+09:00",
+  "horses": {
+    "1": {
+      "career_starts": 14,
+      "history_source_url": "https://tospo-keiba.jp/horse/2022101456",
+      "source_latest_run_date": "2026-09-19",
+      "recent_runs": [
+        {
+          "date": "2026-09-19",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 2,
+          "beaten_margin_text": "アタマ",
+          "source_url": "https://tospo-keiba.jp/horse/2022101456"
+        },
+        {
+          "date": "2026-05-23",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 15,
+          "beaten_margin_s": 2.9,
+          "source_url": "https://tospo-keiba.jp/horse/2022101456"
+        },
+        {
+          "date": "2026-04-26",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1150,
+          "finish": 2,
+          "beaten_margin_text": "クビ",
+          "source_url": "https://tospo-keiba.jp/horse/2022101456"
+        }
+      ]
+    },
+    "2": {
+      "career_starts": 8,
+      "history_source_url": "https://race.netkeiba.com/race/shutuba_past_9.html?race_id=202608040512&rf=shutuba_submenu",
+      "source_latest_run_date": "2026-07-26",
+      "recent_runs": [
+        {
+          "date": "2026-07-26",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1000,
+          "finish": 7,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://race.netkeiba.com/race/shutuba_past_9.html?race_id=202608040512&rf=shutuba_submenu"
+        },
+        {
+          "date": "2026-07-11",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1000,
+          "finish": 3,
+          "beaten_margin_s": 0.3,
+          "source_url": "https://race.netkeiba.com/race/shutuba_past_9.html?race_id=202608040512&rf=shutuba_submenu"
+        },
+        {
+          "date": "2026-05-23",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 12,
+          "beaten_margin_s": 1.2,
+          "source_url": "https://race.netkeiba.com/race/shutuba_past_9.html?race_id=202608040512&rf=shutuba_submenu"
+        }
+      ]
+    },
+    "3": {
+      "career_starts": 7,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/2023107545/",
+      "source_latest_run_date": "2026-08-09",
+      "recent_runs": [
+        {
+          "date": "2026-08-09",
+          "class": "1勝クラス",
+          "surface": "turf",
+          "distance_m": 1200,
+          "finish": 11,
+          "beaten_margin_s": 0.5,
+          "source_url": "https://db.sp.netkeiba.com/horse/2023107545/"
+        },
+        {
+          "date": "2026-07-19",
+          "class": "1勝クラス",
+          "surface": "turf",
+          "distance_m": 1200,
+          "finish": 4,
+          "beaten_margin_s": 0.1,
+          "source_url": "https://db.sp.netkeiba.com/horse/2023107545/"
+        },
+        {
+          "date": "2026-05-09",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 9,
+          "beaten_margin_s": 1,
+          "source_url": "https://db.sp.netkeiba.com/horse/2023107545/"
+        }
+      ]
+    },
+    "4": {
+      "career_starts": 24,
+      "history_source_url": "https://keibalab.jp/db/horse/2021103550/",
+      "source_latest_run_date": "2026-07-26",
+      "recent_runs": [
+        {
+          "date": "2026-07-26",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1000,
+          "finish": 6,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://keibalab.jp/db/horse/2021103550/"
+        },
+        {
+          "date": "2026-07-15",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 9,
+          "beaten_margin_s": 2,
+          "source_url": "https://keibalab.jp/db/horse/2021103550/"
+        },
+        {
+          "date": "2026-03-01",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 7,
+          "beaten_margin_s": 1.5,
+          "source_url": "https://keibalab.jp/db/horse/2021103550/"
+        }
+      ],
+      "career_starts_note": "Current public profile showed 25 starts after the target race; pre-race count recorded as 24."
+    },
+    "5": {
+      "career_starts": 4,
+      "history_source_url": "https://db.netkeiba.com/horse/result/2023107538/",
+      "source_latest_run_date": "2026-03-21",
+      "recent_runs": [
+        {
+          "date": "2026-03-21",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 16,
+          "beaten_margin_s": 4.4,
+          "source_url": "https://db.netkeiba.com/horse/result/2023107538/"
+        },
+        {
+          "date": "2026-01-11",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 13,
+          "beaten_margin_s": 2.9,
+          "source_url": "https://db.netkeiba.com/horse/result/2023107538/"
+        },
+        {
+          "date": "2025-12-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 15,
+          "beaten_margin_s": 3.2,
+          "source_url": "https://db.netkeiba.com/horse/result/2023107538/"
+        }
+      ]
+    },
+    "6": {
+      "career_starts": 7,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/result/2023105839/",
+      "source_latest_run_date": "2026-05-23",
+      "recent_runs": [
+        {
+          "date": "2026-05-23",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023105839/"
+        },
+        {
+          "date": "2026-05-10",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 3,
+          "beaten_margin_s": 0.5,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023105839/"
+        },
+        {
+          "date": "2026-04-18",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 2,
+          "beaten_margin_s": 0.2,
+          "source_url": "https://db.sp.netkeiba.com/horse/result/2023105839/"
+        }
+      ]
+    },
+    "7": {
+      "career_starts": 7,
+      "history_source_url": "https://db.netkeiba.com/horse/result/2022110133/",
+      "source_latest_run_date": "2025-08-23",
+      "recent_runs": [
+        {
+          "date": "2025-08-23",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 7,
+          "beaten_margin_s": 2.9,
+          "source_url": "https://db.netkeiba.com/horse/result/2022110133/"
+        },
+        {
+          "date": "2025-07-20",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1700,
+          "finish": 12,
+          "beaten_margin_s": 2,
+          "source_url": "https://db.netkeiba.com/horse/result/2022110133/"
+        },
+        {
+          "date": "2025-06-28",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1700,
+          "finish": 10,
+          "beaten_margin_s": 1.4,
+          "source_url": "https://db.netkeiba.com/horse/result/2022110133/"
+        }
+      ]
+    },
+    "8": {
+      "career_starts": 25,
+      "history_source_url": "https://ittai.kirara.st/RK/horse_index.php?id=2020110051&type=2",
+      "source_latest_run_date": "2026-08-15",
+      "recent_runs": [
+        {
+          "date": "2026-08-15",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 4,
+          "beaten_margin_s": 0.6,
+          "source_url": "https://ittai.kirara.st/RK/horse_index.php?id=2020110051&type=2"
+        },
+        {
+          "date": "2026-07-26",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 2,
+          "beaten_margin_s": 0,
+          "source_url": "https://ittai.kirara.st/RK/horse_index.php?id=2020110051&type=2"
+        },
+        {
+          "date": "2026-05-02",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 5,
+          "beaten_margin_s": 1.2,
+          "source_url": "https://m-jockey.co.jp/keiba-navi/hose/2020110051/"
+        }
+      ]
+    },
+    "9": {
+      "career_starts": 9,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/2022100065",
+      "source_latest_run_date": "2025-10-25",
+      "recent_runs": [
+        {
+          "date": "2025-10-25",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 4,
+          "beaten_margin_s": 0.4,
+          "source_url": "https://db.sp.netkeiba.com/horse/2022100065"
+        },
+        {
+          "date": "2025-09-15",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 2,
+          "beaten_margin_s": 0.3,
+          "source_url": "https://db.sp.netkeiba.com/horse/2022100065"
+        },
+        {
+          "date": "2025-06-29",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1000,
+          "finish": 5,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://db.sp.netkeiba.com/horse/2022100065"
+        }
+      ]
+    },
+    "10": {
+      "career_starts": 3,
+      "history_source_url": "https://tospo-keiba.jp/horse/2023100552",
+      "source_latest_run_date": "2026-08-02",
+      "recent_runs": [
+        {
+          "date": "2026-08-02",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://race.sp.netkeiba.com/?pid=race_result&race_id=202607020404"
+        },
+        {
+          "date": "2026-05-09",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 8,
+          "beaten_margin_s": 0.9,
+          "source_url": "https://tospo-keiba.jp/horse/2023100552"
+        },
+        {
+          "date": "2026-03-21",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 5,
+          "beaten_margin_s": 1.5,
+          "source_url": "https://ittai.net/RK/trainer_index.php?id=1120&nid=&race=JRA&type=0"
+        }
+      ]
+    },
+    "11": {
+      "career_starts": 18,
+      "history_source_url": "https://pc.keibalab.jp/db/horse/2022106705/",
+      "source_latest_run_date": "2026-07-11",
+      "recent_runs": [
+        {
+          "date": "2026-07-11",
+          "class": "1勝クラス",
+          "surface": "turf",
+          "distance_m": 1200,
+          "finish": 16,
+          "beaten_margin_s": 2.6,
+          "source_url": "https://pc.keibalab.jp/db/horse/2022106705/"
+        },
+        {
+          "date": "2026-06-27",
+          "class": "1勝クラス",
+          "surface": "turf",
+          "distance_m": 1200,
+          "finish": 7,
+          "beaten_margin_s": 0.9,
+          "source_url": "https://pc.keibalab.jp/db/horse/2022106705/"
+        },
+        {
+          "date": "2026-05-10",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 11,
+          "beaten_margin_s": 1.5,
+          "source_url": "https://pc.keibalab.jp/db/horse/2022106705/"
+        }
+      ],
+      "career_starts_note": "Current owner profile showed 19 starts after the target race; pre-race count recorded as 18."
+    },
+    "12": {
+      "career_starts": 7,
+      "history_source_url": "https://db.sp.netkeiba.com/horse/2023106968/",
+      "source_latest_run_date": "2026-07-04",
+      "recent_runs": [
+        {
+          "date": "2026-07-04",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1000,
+          "finish": 4,
+          "beaten_margin_s": 0.6,
+          "source_url": "https://db.sp.netkeiba.com/horse/2023106968/"
+        },
+        {
+          "date": "2026-05-09",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 7,
+          "beaten_margin_s": 0.8,
+          "source_url": "https://db.sp.netkeiba.com/horse/2023106968/"
+        },
+        {
+          "date": "2026-04-19",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 5,
+          "beaten_margin_s": 0.5,
+          "source_url": "https://db.sp.netkeiba.com/horse/2023106968/"
+        }
+      ]
+    },
+    "13": {
+      "career_starts": 10,
+      "history_source_url": "https://db.netkeiba.com/horse/result/2023100126/",
+      "source_latest_run_date": "2026-08-23",
+      "recent_runs": [
+        {
+          "date": "2026-08-23",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 7,
+          "beaten_margin_s": 1,
+          "source_url": "https://db.netkeiba.com/horse/result/2023100126/"
+        },
+        {
+          "date": "2026-06-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 16,
+          "beaten_margin_s": 3.3,
+          "source_url": "https://tospo-keiba.jp/horse/2023100126?race_entry_id=283487"
+        },
+        {
+          "date": "2026-04-12",
+          "class": "3歳1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 14,
+          "beaten_margin_s": 1.5,
+          "source_url": "https://tospo-keiba.jp/horse/2023100126?race_entry_id=283487"
+        }
+      ]
+    },
+    "14": {
+      "career_starts": 8,
+      "history_source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517",
+      "source_latest_run_date": "2026-09-12",
+      "recent_runs": [
+        {
+          "date": "2026-09-12",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 3,
+          "beaten_margin_s": 0.5,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517"
+        },
+        {
+          "date": "2026-06-21",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 3,
+          "beaten_margin_s": 0.6,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517"
+        },
+        {
+          "date": "2026-06-06",
+          "class": "3歳未勝利",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 1,
+          "beaten_margin_s": 0,
+          "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517"
+        }
+      ]
+    },
+    "15": {
+      "career_starts": 14,
+      "history_source_url": "https://tospo-keiba.jp/horse/2022100203",
+      "source_latest_run_date": "2026-09-19",
+      "recent_runs": [
+        {
+          "date": "2026-09-19",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 4,
+          "beaten_margin_s": 0.3,
+          "source_url": "https://tospo-keiba.jp/horse/2022100203"
+        },
+        {
+          "date": "2026-06-06",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1400,
+          "finish": 7,
+          "beaten_margin_s": 1.1,
+          "source_url": "https://tospo-keiba.jp/horse/2022100203"
+        },
+        {
+          "date": "2026-05-16",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 4,
+          "beaten_margin_s": 0.9,
+          "source_url": "https://tospo-keiba.jp/horse/2022100203"
+        }
+      ]
+    },
+    "16": {
+      "career_starts": 21,
+      "history_source_url": "https://db.netkeiba.com/horse/result/2021104151/",
+      "source_latest_run_date": "2026-07-04",
+      "recent_runs": [
+        {
+          "date": "2026-07-04",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1000,
+          "finish": 2,
+          "beaten_margin_s": 0.2,
+          "source_url": "https://db.netkeiba.com/horse/result/2021104151/"
+        },
+        {
+          "date": "2026-06-14",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 2,
+          "beaten_margin_s": 0,
+          "source_url": "https://db.netkeiba.com/horse/result/2021104151/"
+        },
+        {
+          "date": "2026-05-16",
+          "class": "1勝クラス",
+          "surface": "dirt",
+          "distance_m": 1200,
+          "finish": 5,
+          "beaten_margin_s": 0.4,
+          "source_url": "https://db.netkeiba.com/horse/result/2021104151/"
+        }
+      ]
+    }
+  }
+}

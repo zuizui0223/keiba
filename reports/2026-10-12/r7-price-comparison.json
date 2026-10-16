@@ -1,0 +1,237 @@
+{
+  "input_sha256": "a49208efc28868e4690f6d7c88a747a39fcf026c114470a30f94aea07ff1ace1",
+  "checked_at_utc": "2026-10-12T04:13:49+00:00",
+  "quote_counts": {
+    "win": 16,
+    "place": 16,
+    "frame": 36,
+    "quinella": 120,
+    "wide": 120,
+    "exacta": 240,
+    "trio": 284,
+    "trifecta": 287
+  },
+  "exhaustive_exclusive_markets": {
+    "win": {
+      "outcomes": 16,
+      "inverse_sum": 1.2596179947678832,
+      "continuous_equal_return_factor_if_every_outcome_bought": 0.7938914846832397
+    },
+    "frame": {
+      "outcomes": 36,
+      "inverse_sum": 1.2950620318062291,
+      "continuous_equal_return_factor_if_every_outcome_bought": 0.7721637847766221
+    },
+    "quinella": {
+      "outcomes": 120,
+      "inverse_sum": 1.293072332482151,
+      "continuous_equal_return_factor_if_every_outcome_bought": 0.7733519424086848
+    },
+    "exacta": {
+      "outcomes": 240,
+      "inverse_sum": 1.3344931260048145,
+      "continuous_equal_return_factor_if_every_outcome_bought": 0.7493481836012037
+    }
+  },
+  "equivalent_event_comparisons": [
+    {
+      "case": "quinella_2_15",
+      "direct_market": "quinella",
+      "selection": [
+        2,
+        15
+      ],
+      "direct_odds": 15.2,
+      "alternative_market": "exacta",
+      "alternative_selections": [
+        [
+          2,
+          15
+        ],
+        [
+          15,
+          2
+        ]
+      ],
+      "alternative_odds": [
+        27,
+        29.9
+      ],
+      "equal_return_synthetic_odds": 14.188049209138839,
+      "direct_to_synthetic_gain": 0.07132416697634092,
+      "same_update_time": false
+    },
+    {
+      "case": "trio_2_5_15",
+      "direct_market": "trio",
+      "selection": [
+        2,
+        5,
+        15
+      ],
+      "direct_odds": 33.5,
+      "alternative_market": "trifecta",
+      "alternative_selections": [
+        [
+          2,
+          5,
+          15
+        ],
+        [
+          2,
+          15,
+          5
+        ],
+        [
+          5,
+          2,
+          15
+        ],
+        [
+          5,
+          15,
+          2
+        ],
+        [
+          15,
+          2,
+          5
+        ],
+        [
+          15,
+          5,
+          2
+        ]
+      ],
+      "alternative_odds": [
+        166,
+        133.1,
+        229.7,
+        214.1,
+        158.3,
+        168.8
+      ],
+      "equal_return_synthetic_odds": 28.733358619962758,
+      "direct_to_synthetic_gain": 0.16589224542395042,
+      "same_update_time": false
+    },
+    {
+      "case": "frame_6_8",
+      "direct_market": "frame",
+      "selection": [
+        6,
+        8
+      ],
+      "direct_odds": 6.5,
+      "alternative_market": "quinella",
+      "alternative_selections": [
+        [
+          11,
+          15
+        ],
+        [
+          11,
+          16
+        ],
+        [
+          12,
+          15
+        ],
+        [
+          12,
+          16
+        ]
+      ],
+      "alternative_odds": [
+        15.7,
+        53.3,
+        13.9,
+        50
+      ],
+      "equal_return_synthetic_odds": 5.733996256367587,
+      "direct_to_synthetic_gain": 0.13358985764627374,
+      "same_update_time": false
+    }
+  ],
+  "same_frame_alternatives": [
+    {
+      "frame": 1,
+      "frame_odds": 107.9,
+      "horse_pair": [
+        1,
+        2
+      ],
+      "quinella_odds": 168
+    },
+    {
+      "frame": 2,
+      "frame_odds": 545.9,
+      "horse_pair": [
+        3,
+        4
+      ],
+      "quinella_odds": 883.8
+    },
+    {
+      "frame": 3,
+      "frame_odds": 255.7,
+      "horse_pair": [
+        5,
+        6
+      ],
+      "quinella_odds": 291.2
+    },
+    {
+      "frame": 4,
+      "frame_odds": 368.7,
+      "horse_pair": [
+        7,
+        8
+      ],
+      "quinella_odds": 579.7
+    },
+    {
+      "frame": 5,
+      "frame_odds": 46.6,
+      "horse_pair": [
+        9,
+        10
+      ],
+      "quinella_odds": 53.4
+    },
+    {
+      "frame": 6,
+      "frame_odds": 26.1,
+      "horse_pair": [
+        11,
+        12
+      ],
+      "quinella_odds": 27.7
+    },
+    {
+      "frame": 7,
+      "frame_odds": 436.7,
+      "horse_pair": [
+        13,
+        14
+      ],
+      "quinella_odds": 1436.2
+    },
+    {
+      "frame": 8,
+      "frame_odds": 37.6,
+      "horse_pair": [
+        15,
+        16
+      ],
+      "quinella_odds": 47.3
+    }
+  ],
+  "limitations": [
+    "中間オッズの更新時刻が市場ごとに異なる。",
+    "払戻均等配分は連続金額の理論値。100円単位の配分は別途検証が必要。",
+    "3連複・3連単の取得は一部。全組合せの最適解を主張しない。",
+    "複勝・ワイドは複数券が同時的中するため排他的市場の逆数和を適用しない。",
+    "単一イベントの比較はそのイベントが起きた場合だけ。利益確定ではない。"
+  ]
+}

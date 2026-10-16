@@ -1,0 +1,63 @@
+{
+  "created_at_jst": "2026-10-13T10:07:39+09:00",
+  "mode": "RETROSPECTIVE_DIAGNOSTIC_NOT_VALIDATION",
+  "input": "data/2026-10-12/v3/kyoto_10.json",
+  "input_sha": "528531911d1fd96895d78f4360c605d33fc144f5",
+  "script": "scripts/build_v3_candidate_union.py",
+  "parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5
+  },
+  "candidate_numbers": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+  ],
+  "candidate_count": 7,
+  "field_size": 10,
+  "coverage_fraction": 0.7,
+  "official_top3": [
+    5,
+    2,
+    9
+  ],
+  "retrospective_top3_recall": 1,
+  "strong_reason_tier": {
+    "definition": "reason_count >= 2",
+    "candidate_numbers": [
+      2,
+      5,
+      6,
+      7,
+      9
+    ],
+    "candidate_count": 5,
+    "retrospective_top3_recall": 1
+  },
+  "top3_reason_trace": {
+    "2": [
+      "market_top_n",
+      "recent_similar_distance_win"
+    ],
+    "5": [
+      "market_top_n",
+      "recent_similar_distance_win",
+      "lightly_raced_recent_win"
+    ],
+    "9": [
+      "market_top_n",
+      "recent_similar_distance_win"
+    ]
+  },
+  "interpretation": [
+    "The fixed v3 union retrospectively contains the official Top3.",
+    "The result is diagnostic only because the rule was designed after the race day.",
+    "No threshold is changed based on this favorable result."
+  ]
+}

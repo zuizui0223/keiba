@@ -1,0 +1,165 @@
+{
+  "race": 7,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "surface": "dirt",
+  "distance_m": 1900,
+  "source_url": "https://sports.yahoo.co.jp/keiba/race/result/2608040507",
+  "going": "良",
+  "finish_time": "1:58.5",
+  "results": [
+    {
+      "finish": 1,
+      "number": 2,
+      "name": "アレンスター",
+      "final_win_odds": 4.1,
+      "market_rank": 1,
+      "market_finish_residual": 0,
+      "final3f_sec": 38.3
+    },
+    {
+      "finish": 2,
+      "number": 15,
+      "name": "ジーティーアメリカ",
+      "final_win_odds": 4.3,
+      "market_rank": 2,
+      "market_finish_residual": 0,
+      "final3f_sec": 37.3
+    },
+    {
+      "finish": 3,
+      "number": 9,
+      "name": "エイユーファイヤー",
+      "final_win_odds": 9.5,
+      "market_rank": 4,
+      "market_finish_residual": 1,
+      "final3f_sec": 37.3
+    },
+    {
+      "finish": 4,
+      "number": 7,
+      "name": "ドメイン",
+      "final_win_odds": 13.2,
+      "market_rank": 8,
+      "market_finish_residual": 4,
+      "final3f_sec": 38.7
+    },
+    {
+      "finish": 5,
+      "number": 12,
+      "name": "ダイシンレアレア",
+      "final_win_odds": 5.5,
+      "market_rank": 3,
+      "market_finish_residual": -2,
+      "final3f_sec": 38.4
+    },
+    {
+      "finish": 6,
+      "number": 16,
+      "name": "タニセンゴールド",
+      "final_win_odds": 10.8,
+      "market_rank": 6,
+      "market_finish_residual": 0,
+      "final3f_sec": 38.4
+    },
+    {
+      "finish": 7,
+      "number": 3,
+      "name": "マジックブルー",
+      "final_win_odds": 137.3,
+      "market_rank": 14,
+      "market_finish_residual": 7,
+      "final3f_sec": 39.1
+    },
+    {
+      "finish": 8,
+      "number": 5,
+      "name": "ゴールドコット",
+      "final_win_odds": 10.3,
+      "market_rank": 5,
+      "market_finish_residual": -3,
+      "final3f_sec": 38.4
+    },
+    {
+      "finish": 9,
+      "number": 8,
+      "name": "エアフォースワン",
+      "final_win_odds": 107.8,
+      "market_rank": 12,
+      "market_finish_residual": 3,
+      "final3f_sec": 38.1
+    },
+    {
+      "finish": 10,
+      "number": 13,
+      "name": "リオンサーガ",
+      "final_win_odds": 170.3,
+      "market_rank": 15,
+      "market_finish_residual": 5,
+      "final3f_sec": 38.3
+    },
+    {
+      "finish": 11,
+      "number": 4,
+      "name": "ハンドフル",
+      "final_win_odds": 28,
+      "market_rank": 10,
+      "market_finish_residual": -1,
+      "final3f_sec": 39.6
+    },
+    {
+      "finish": 12,
+      "number": 1,
+      "name": "ロックウイズユー",
+      "final_win_odds": 109.1,
+      "market_rank": 13,
+      "market_finish_residual": 1,
+      "final3f_sec": 39
+    },
+    {
+      "finish": 13,
+      "number": 10,
+      "name": "エクストラプッシュ",
+      "final_win_odds": 17.8,
+      "market_rank": 9,
+      "market_finish_residual": -4,
+      "final3f_sec": 40.7
+    },
+    {
+      "finish": 14,
+      "number": 6,
+      "name": "タイセイサーブル",
+      "final_win_odds": 41.9,
+      "market_rank": 11,
+      "market_finish_residual": -3,
+      "final3f_sec": 41.9
+    },
+    {
+      "finish": 15,
+      "number": 11,
+      "name": "カイラーサ",
+      "final_win_odds": 12.5,
+      "market_rank": 7,
+      "market_finish_residual": -8,
+      "final3f_sec": 41.8
+    },
+    {
+      "finish": 16,
+      "number": 14,
+      "name": "セルリアンゲーゲン",
+      "final_win_odds": 240.9,
+      "market_rank": 16,
+      "market_finish_residual": 0,
+      "final3f_sec": 41.7
+    }
+  ],
+  "payouts_yen_per_100": {
+    "win_2": 410,
+    "quinella_2_15": 1270,
+    "wide_2_15": 490,
+    "wide_9_15": 620,
+    "wide_2_9": 1160,
+    "trio_2_9_15": 3810,
+    "trifecta_2_15_9": 17910
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "method": "v3.1_frozen_candidate_channels",
+  "uses_target_race_results": false,
+  "target_date": "2026-10-12",
+  "inputs": {
+    "normalized_history_sha": "c60f09fc8e84500579482a1d2f1390862403325c",
+    "quality_tier_map_sha": "a06e33dd396369b9556136b7e12cc4568afde41b",
+    "classifier_sha": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
+    "test_sha": "fd6f4c448f2e59d9e4b58b12886221d6cdb0f672",
+    "frozen_race_shas": {
+      "7": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
+      "8": "40b8626ece484ef6631d4bd97aaf89f26eedec09",
+      "9": "71f6fd82a3c8f44d99ce66354ae077e998b6a238",
+      "10": "4b8c098eedb478ebd6a9e3e874aa6b692adcfe9a",
+      "11": "72180071976ffb9efe81cf6b4a6dfdb2aa458bd0",
+      "12": "3b9194da50df0ead111d179dac609e3c61d3a1c2"
+    }
+  },
+  "races": {
+    "7": {
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1900,
+        "class_rank": 1
+      },
+      "field_size": 16,
+      "candidate_count": 8,
+      "candidate_fraction": 0.5,
+      "sets": {
+        "M": [
+          2,
+          11,
+          12,
+          15
+        ],
+        "C1": [
+          5,
+          9,
+          15
+        ],
+        "U": [
+          16
+        ],
+        "Q1": [],
+        "K1": [
+          2,
+          7
+        ],
+        "rescue": [
+          2,
+          7
+        ],
+        "union": [
+          2,
+          5,
+          7,
+          9,
+          11,
+          12,
+          15,
+          16
+        ]
+      }
+    },
+    "8": {
+      "target": {
+        "surface": "芝",
+        "distance_m": 2000,
+        "class_rank": 1
+      },
+      "field_size": 11,
+      "candidate_count": 7,
+      "candidate_fraction": 0.6363636363636364,
+      "sets": {
+        "M": [
+          5,
+          9,
+          11
+        ],
+        "C1": [
+          1,
+          2,
+          4,
+          11
+        ],
+        "U": [
+          9
+        ],
+        "Q1": [],
+        "K1": [
+          5,
+          7
+        ],
+        "rescue": [
+          5,
+          7
+        ],
+        "union": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          9,
+          11
+        ]
+      }
+    },
+    "9": {
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 2
+      },
+      "field_size": 12,
+      "candidate_count": 7,
+      "candidate_fraction": 0.5833333333333334,
+      "sets": {
+        "M": [
+          4,
+          10,
+          12
+        ],
+        "C1": [
+          3,
+          4,
+          6,
+          7,
+          10,
+          11
+        ],
+        "U": [
+          12
+        ],
+        "Q1": [],
+        "K1": [
+          4,
+          10,
+          12
+        ],
+        "rescue": [
+          4,
+          10,
+          12
+        ],
+        "union": [
+          3,
+          4,
+          6,
+          7,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    "10": {
+      "target": {
+        "surface": "芝",
+        "distance_m": 1800,
+        "class_rank": 2
+      },
+      "field_size": 10,
+      "candidate_count": 7,
+      "candidate_fraction": 0.7,
+      "sets": {
+        "M": [
+          2,
+          5,
+          9
+        ],
+        "C1": [
+          6
+        ],
+        "U": [
+          5,
+          7
+        ],
+        "Q1": [],
+        "K1": [
+          4,
+          10
+        ],
+        "rescue": [
+          4,
+          10
+        ],
+        "union": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10
+        ]
+      }
+    },
+    "11": {
+      "target": {
+        "surface": "芝",
+        "distance_m": 1400,
+        "class_rank": 6
+      },
+      "field_size": 18,
+      "candidate_count": 9,
+      "candidate_fraction": 0.5,
+      "sets": {
+        "M": [
+          1,
+          9,
+          13,
+          15,
+          18
+        ],
+        "C1": [
+          9
+        ],
+        "U": [],
+        "Q1": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          11,
+          12,
+          13,
+          16
+        ],
+        "K1": [
+          2,
+          4,
+          5,
+          9,
+          10,
+          12,
+          14,
+          16,
+          17
+        ],
+        "rescue": [
+          2,
+          4,
+          12,
+          16
+        ],
+        "union": [
+          1,
+          2,
+          4,
+          9,
+          12,
+          13,
+          15,
+          16,
+          18
+        ]
+      }
+    },
+    "12": {
+      "target": {
+        "surface": "ダ",
+        "distance_m": 1200,
+        "class_rank": 1
+      },
+      "field_size": 16,
+      "candidate_count": 11,
+      "candidate_fraction": 0.6875,
+      "sets": {
+        "M": [
+          3,
+          8,
+          9,
+          16
+        ],
+        "C1": [
+          1,
+          8,
+          9,
+          12,
+          14,
+          15,
+          16
+        ],
+        "U": [
+          10
+        ],
+        "Q1": [],
+        "K1": [
+          6,
+          13
+        ],
+        "rescue": [
+          6,
+          13
+        ],
+        "union": [
+          1,
+          3,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    }
+  },
+  "summary": {
+    "starter_count": 83,
+    "candidate_count": 49,
+    "candidate_fraction": 0.5903614457831325,
+    "channel_memberships_nonexclusive": {
+      "M": 22,
+      "C1": 22,
+      "U": 6,
+      "Q1": 9,
+      "K1": 20,
+      "rescue": 15
+    },
+    "unknown_quality_tiers": []
+  }
+}

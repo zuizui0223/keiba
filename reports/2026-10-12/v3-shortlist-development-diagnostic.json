@@ -1,0 +1,168 @@
+{
+  "created_at_jst": "2026-10-13T13:17:00+09:00",
+  "label": "DEVELOPMENT_DIAGNOSTIC_NOT_VALIDATION",
+  "rule": {
+    "baseline": "saved pre-race win-odds top 4",
+    "upside_slots": 3,
+    "upside_weights": {
+      "recent_similar_distance_win": 3,
+      "lightly_raced_latest_win": 3,
+      "lightly_raced_latest_close_form": 2,
+      "recent_similar_distance_close_finish": 1
+    },
+    "max_shortlist_size": 7
+  },
+  "note": "The 2026-10-12 results informed v3 design. This same-day diagnostic cannot establish predictive improvement.",
+  "races": [
+    {
+      "race": 7,
+      "field_size": 16,
+      "broad_candidate_count": 9,
+      "shortlist_count": 7,
+      "shortlist": [
+        11,
+        2,
+        15,
+        12,
+        16,
+        5,
+        4
+      ],
+      "top3": [
+        2,
+        15,
+        9
+      ],
+      "top3_recall": 0.6666666666666666,
+      "missed": [
+        9
+      ]
+    },
+    {
+      "race": 8,
+      "field_size": 11,
+      "broad_candidate_count": 5,
+      "shortlist_count": 5,
+      "shortlist": [
+        9,
+        5,
+        11,
+        1,
+        3
+      ],
+      "top3": [
+        9,
+        1,
+        7
+      ],
+      "top3_recall": 0.6666666666666666,
+      "missed": [
+        7
+      ]
+    },
+    {
+      "race": 9,
+      "field_size": 12,
+      "broad_candidate_count": 7,
+      "shortlist_count": 7,
+      "shortlist": [
+        12,
+        10,
+        4,
+        5,
+        6,
+        2,
+        3
+      ],
+      "top3": [
+        4,
+        3,
+        12
+      ],
+      "top3_recall": 1,
+      "missed": []
+    },
+    {
+      "race": 10,
+      "field_size": 10,
+      "broad_candidate_count": 6,
+      "shortlist_count": 6,
+      "shortlist": [
+        5,
+        2,
+        9,
+        7,
+        4,
+        6
+      ],
+      "top3": [
+        5,
+        2,
+        9
+      ],
+      "top3_recall": 1,
+      "missed": []
+    },
+    {
+      "race": 11,
+      "field_size": 18,
+      "broad_candidate_count": 12,
+      "shortlist_count": 7,
+      "shortlist": [
+        9,
+        1,
+        18,
+        15,
+        13,
+        12,
+        17
+      ],
+      "top3": [
+        1,
+        4,
+        9
+      ],
+      "top3_recall": 0.6666666666666666,
+      "missed": [
+        4
+      ]
+    },
+    {
+      "race": 12,
+      "field_size": 16,
+      "broad_candidate_count": 10,
+      "shortlist_count": 7,
+      "shortlist": [
+        3,
+        16,
+        8,
+        9,
+        10,
+        6,
+        14
+      ],
+      "top3": [
+        10,
+        12,
+        9
+      ],
+      "top3_recall": 0.6666666666666666,
+      "missed": [
+        12
+      ]
+    }
+  ],
+  "aggregate": {
+    "races": 6,
+    "official_top3_slots": 18,
+    "shortlist_top3_hits": 15,
+    "shortlist_top3_recall": 0.8333333333333334,
+    "note": "Recall is descriptive on development data only."
+  },
+  "interpretation": [
+    "The bounded shortlist reduces the largest broad pools from 12 to 7 runners (11R) and from 10 to 7 (12R).",
+    "The shortlist preserves full Top3 recall in 9R and 10R but still misses one official Top3 runner in 7R, 8R, 11R and 12R.",
+    "Those misses are intentionally retained; no further same-day tuning is performed.",
+    "Future evaluation must freeze this rule before a new race day and compare against both the old system and the market baseline."
+  ]
+}

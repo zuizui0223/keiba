@@ -1,0 +1,11 @@
+{
+  "checked_at_jst": "2026-10-12T12:51:11+09:00",
+  "scope": "京都12Rの選択ワイド2点の追加確認",
+  "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=0",
+  "updated_at_jst": "2026-10-12T12:42:00+09:00",
+  "tickets": [
+    {"race": 12, "type": "wide", "horses": [1, 14], "odds_low": 6.5, "odds_high": 6.9},
+    {"race": 12, "type": "wide", "horses": [6, 14], "odds_low": 9.3, "odds_high": 9.8}
+  ],
+  "note": "全頭スナップショットを上書きせず、recommendations.mdの追加候補の試算に使用。取消表示は掲載時点でなし。現在時刻の公式確認や最終オッズの保証ではない。"
+}

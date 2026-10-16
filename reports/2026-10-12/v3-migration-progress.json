@@ -1,0 +1,111 @@
+{
+  "updated_at_jst": "2026-10-15T11:53:00+09:00",
+  "scope": "v3 structured recent-history migration",
+  "status": "MIGRATION_COMPLETE_CANDIDATE_FROZEN_RANKING_FEATURES_READY",
+  "original_frozen_inputs": {
+    "races": 6,
+    "horses": 83,
+    "pass": 0,
+    "hold": 83
+  },
+  "migrated_summary": {
+    "races": 6,
+    "horses": 83,
+    "pass": 83,
+    "hold": 0
+  },
+  "races": [
+    {
+      "race": 7,
+      "horses": 16,
+      "pass": 16,
+      "hold": 0,
+      "base_sha": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
+      "sidecar_sha": "abbccd739dd50d35dcae11e28e471c38a3ba70a4",
+      "derived_sha": "5900010cc77fcf078bb55000c691bfd7710365a6"
+    },
+    {
+      "race": 8,
+      "horses": 11,
+      "pass": 11,
+      "hold": 0,
+      "base_sha": "40b8626ece484ef6631d4bd97aaf89f26eedec09",
+      "sidecar_sha": "ae4cdc33c40d0387a11940046b37546a765473d3",
+      "derived_sha": "f72f7196a97a6942a2e62488ecd5a8133c9a58a3"
+    },
+    {
+      "race": 9,
+      "horses": 12,
+      "pass": 12,
+      "hold": 0,
+      "base_sha": "71f6fd82a3c8f44d99ce66354ae077e998b6a238",
+      "sidecar_sha": "c1b923254a7f1063d3322c29fe486e43faf0e4b1",
+      "derived_sha": "f5824096f547917531d9aad99ae9e8e90f536df7"
+    },
+    {
+      "race": 10,
+      "horses": 10,
+      "pass": 10,
+      "hold": 0,
+      "base_sha": "4b8c098eedb478ebd6a9e3e874aa6b692adcfe9a",
+      "sidecar_sha": "a2fd99cb2f5990393708c64b9fe82b2be9b4232d",
+      "derived_sha": "f00a8b682d0fc73314c28a3fb80d79603261fbb5"
+    },
+    {
+      "race": 11,
+      "horses": 18,
+      "pass": 18,
+      "hold": 0,
+      "base_sha": "72180071976ffb9efe81cf6b4a6dfdb2aa458bd0",
+      "sidecar_sha": "7119c1a219731f6ce033794bd042daeb0c0854bf",
+      "derived_sha": "39288d8cd9816e9201f16355502644b9b7776647"
+    },
+    {
+      "race": 12,
+      "horses": 16,
+      "pass": 16,
+      "hold": 0,
+      "base_sha": "3b9194da50df0ead111d179dac609e3c61d3a1c2",
+      "sidecar_sha": "845b2a8508c640e5b14d4cabbde5a7a2f2bb9861",
+      "derived_sha": "fdf2a08c32df561f1c6e4803f5885eff296caa6b"
+    }
+  ],
+  "verification": {
+    "gate_reproduction": "Independent JS reproduction of scripts/audit_recent_history.py rules on GitHub-fetched derived files.",
+    "frozen_prediction_fields": "mark and notes compared to original frozen JSON for every runner.",
+    "sidecar_consistency": "career_starts/history_source_url/source_latest_run_date/recent_runs compared to sidecar for every runner.",
+    "frozen_mismatches": 0,
+    "sidecar_mismatches": 0
+  },
+  "schema": {
+    "required_horse_fields": [
+      "career_starts",
+      "history_checked_at_jst",
+      "history_source_url",
+      "source_latest_run_date",
+      "recent_runs"
+    ],
+    "latest_sync_rule": "recent_runs[0].date == source_latest_run_date for horses with career starts",
+    "margin_rule": "numeric beaten_margin_s OR official beaten_margin_text OR explicit beaten_margin_missing_reason",
+    "fail_closed": "DATA_HOLD blocks ranking"
+  },
+  "next_stage": "Freeze a ranking/pruning method before future races and evaluate it out-of-sample against market baselines; do not tune further on 2026-10-12.",
+  "candidate_layer": {
+    "path": "scripts/generate_v3_candidates.py",
+    "retrospective_diagnostic": "reports/2026-10-12/v3-candidate-diagnostic.json",
+    "candidate_slots": 49,
+    "winners_captured": "6/6",
+    "top3_captured": "16/18",
+    "validated_out_of_sample": false,
+    "role": "broad_screen_only"
+  },
+  "ranking_feature_layer": {
+    "path": "scripts/v3_ranking_features.py",
+    "feature_table": "reports/2026-10-12/v3-ranking-features.json",
+    "rows": 49,
+    "ranking_produced": false,
+    "target_fields_used": false,
+    "official_results_joined": false,
+    "ticket_selection_performed": false
+  }
+}

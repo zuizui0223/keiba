@@ -1,0 +1,171 @@
+{
+  "audit_at_jst": "2026-10-13T22:17:35+09:00",
+  "audit_type": "read_only_pre_holdout_integrity_and_source_spot_check",
+  "repository": "zuizui0223/keiba",
+  "branch": "analysis/kyoto-20261012",
+  "pull_request": 1,
+  "checked_head_before_report": "ad0ba5c1bc9ddab23c2251e8f15dc22cbeebed27",
+  "structural_data": {
+    "races": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "runners": 83,
+    "pass": 83,
+    "hold": 0,
+    "frozen_prediction_fields_unchanged": true,
+    "derived_sidecar_matches": true,
+    "original_pre_race_files_unchanged": true,
+    "validation_method": "Independent JavaScript implementation of Python history gate and sidecar/base deep comparison over 18 GitHub-fetched files. Source-truth verification is separate.",
+    "unverified_truth_rows": 75
+  },
+  "external_source_spot_check": {
+    "selection": "Eight targeted horses: winners/critical misses and notable candidates; not a random sample.",
+    "verified_count": 8,
+    "total_runners": 83,
+    "fields": "Pre-target latest date, finish, surface and distance; other prior rows not exhaustively checked.",
+    "evidence_method": "Public search-result text and accessible indexed results; several JRA full-page reopen attempts returned cache misses and are not counted as independent full-page captures.",
+    "records": [
+      {
+        "race": 7,
+        "horse": 2,
+        "name": "アレンスター",
+        "latest": "2026-04-05",
+        "finish": 14,
+        "surface": "dirt",
+        "distance_m": 1800,
+        "url": "https://app.jra.jp/JRADB/accessU.html?CNAME=sj01ude002023106175%2F51"
+      },
+      {
+        "race": 8,
+        "horse": 9,
+        "name": "レゼルフォート",
+        "latest": "2026-05-17",
+        "finish": 1,
+        "surface": "turf",
+        "distance_m": 2000,
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0104202601060520260517%2FD2"
+      },
+      {
+        "race": 9,
+        "horse": 3,
+        "name": "クロノスバレット",
+        "latest": "2026-09-05",
+        "finish": 2,
+        "surface": "dirt",
+        "distance_m": 1800,
+        "url": "https://db.netkeiba.com/horse/result/2022110123/"
+      },
+      {
+        "race": 9,
+        "horse": 4,
+        "name": "ソルチェリア",
+        "latest": "2026-09-20",
+        "finish": 2,
+        "surface": "dirt",
+        "distance_m": 1800,
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0109202604061020260920%2FBB"
+      },
+      {
+        "race": 10,
+        "horse": 5,
+        "name": "アクセス",
+        "latest": "2026-09-12",
+        "finish": 1,
+        "surface": "turf",
+        "distance_m": 1800,
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202604030820260912%2FB7"
+      },
+      {
+        "race": 11,
+        "horse": 1,
+        "name": "ダイヤモンドノット",
+        "latest": "2026-09-06",
+        "finish": 8,
+        "surface": "turf",
+        "distance_m": 1200,
+        "url": "https://db.netkeiba.com/horse/horse_laptime.html?id=2023105685"
+      },
+      {
+        "race": 12,
+        "horse": 10,
+        "name": "ビービーシナジー",
+        "latest": "2026-08-02",
+        "finish": 1,
+        "surface": "dirt",
+        "distance_m": 1200,
+        "url": "https://jra.jp/JRADB/accessS.html?CNAME=pw01sde1007202602040420260802%2F8B"
+      },
+      {
+        "race": 12,
+        "horse": 12,
+        "name": "ベラジオリン",
+        "latest": "2026-07-04",
+        "finish": 4,
+        "surface": "dirt",
+        "distance_m": 1000,
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1010202602030820260704%2F0E"
+      }
+    ]
+  },
+  "frozen_artifact_integrity": {
+    "manifest_sha": "92c57b41a979b57b870710f5fd17f3000aefd61e",
+    "status": "frozen_for_prospective_holdout",
+    "frozen_paths_checked": 15,
+    "hashes_matching": 15,
+    "hashes_nonmatching": 0,
+    "quality_tier_map_sha": "a06e33dd396369b9556136b7e12cc4568afde41b",
+    "quality_tier_map_matches_baseline": true,
+    "freeze_created_at_jst": "2026-10-13T17:07:24+09:00"
+  },
+  "holdout": {
+    "candidate_generator_version": "v3.1",
+    "development_only": {
+      "top3_hits": 18,
+      "top3_slots": 18,
+      "candidate_count": 49,
+      "starter_count": 83,
+      "claim_ceiling": "Known-result development diagnostics, NOT prospective accuracy."
+    },
+    "attempt_ledger_sha": "67f5b99d47944a1af2f4bc49c4069107783487b0",
+    "score_ledger_sha": "b77883e970558120091aeb5ca5b252c1f359919b",
+    "eligible_attempts": 0,
+    "frozen_attempts": 0,
+    "scored_races": 0,
+    "formal_target_races": 20,
+    "formal_alpha": 0.05,
+    "max_candidate_fraction": 0.65,
+    "min_freeze_success_rate": 0.8,
+    "next_calendar_date": "2026-10-17",
+    "provisional_kyoto_eligible_races": [
+      7,
+      8,
+      10,
+      11,
+      12
+    ],
+    "race_windows_jst": [
+      "12:50-13:00",
+      "13:20-13:30",
+      "14:25-14:35",
+      "15:05-15:15",
+      "15:50-16:00"
+    ],
+    "programme_source": "https://jra.jp/keiba/calendar2026/2026/10/1017.html",
+    "programme_is_not_current_entry_card": true,
+    "scheduled_automation_preprocess": "2026-10-15T17:00:00+09:00",
+    "scheduled_race_freeze_tasks_exist": true,
+    "scheduled_postrace_score_and_audit_tasks_exist": true
+  },
+  "open_limitations": [
+    "The eight horses were targeted spot checks; 75 pre-race latest history rows and earlier starts have no newly completed independent web-source audit here.",
+    "Source latest date and recent_runs[0].date matching within one sidecar is not independent verification of that upstream source's truth.",
+    "No valid prospective freeze/score has been created yet; scheduled tasks do not guarantee source access or successful freeze.",
+    "The historical gate report (0/83) referred to original unstructured snapshots; the derived migration report (83/83) refers to separate v3 derived files.",
+    "No frozen scientific rule, threshold, classifier, manifest, ledger, or user bet was changed."
+  ]
+}

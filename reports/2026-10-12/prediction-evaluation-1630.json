@@ -1,0 +1,115 @@
+{
+  "created_at_jst": "2026-10-12T16:30:00+09:00",
+  "source_results_file": "data/2026-10-12/official-results-partial.json",
+  "scoring_policy": "Frozen pre-race marks and saved wide candidates; no post-result relabeling.",
+  "summary": {
+    "races_scored": 4,
+    "winner_in_core_count": 4,
+    "winner_in_core_rate": 1,
+    "top2_both_in_core_count": 3,
+    "complete_top3_races": 3,
+    "complete_top3_all_candidates_count": 3,
+    "any_saved_wide_hit_count": 3
+  },
+  "rows": [
+    {
+      "race": 7,
+      "official_positions_available": [
+        2,
+        15,
+        9
+      ],
+      "winner_mark": "○",
+      "winner_in_core_marks": true,
+      "top2_both_in_core_marks": true,
+      "candidate_recall_available": {
+        "hits": 3,
+        "denominator": 3
+      },
+      "top3_candidate_recall": 1,
+      "any_saved_wide_hit_confirmed": true,
+      "saved_wide_hits": [
+        [
+          2,
+          15
+        ]
+      ]
+    },
+    {
+      "race": 8,
+      "official_positions_available": [
+        9,
+        1,
+        7
+      ],
+      "winner_mark": "▲",
+      "winner_in_core_marks": true,
+      "top2_both_in_core_marks": false,
+      "candidate_recall_available": {
+        "hits": 3,
+        "denominator": 3
+      },
+      "top3_candidate_recall": 1,
+      "any_saved_wide_hit_confirmed": false,
+      "saved_wide_hits": []
+    },
+    {
+      "race": 9,
+      "official_positions_available": [
+        4,
+        3,
+        12
+      ],
+      "winner_mark": "◎",
+      "winner_in_core_marks": true,
+      "top2_both_in_core_marks": true,
+      "candidate_recall_available": {
+        "hits": 3,
+        "denominator": 3
+      },
+      "top3_candidate_recall": 1,
+      "any_saved_wide_hit_confirmed": true,
+      "saved_wide_hits": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "race": 10,
+      "official_positions_available": [
+        5,
+        2
+      ],
+      "winner_mark": "○",
+      "winner_in_core_marks": true,
+      "top2_both_in_core_marks": true,
+      "candidate_recall_available": {
+        "hits": 2,
+        "denominator": 2
+      },
+      "top3_candidate_recall": null,
+      "any_saved_wide_hit_confirmed": true,
+      "saved_wide_hits": [
+        [
+          2,
+          5
+        ]
+      ],
+      "note": "Official top two verified; third not stored yet."
+    }
+  ],
+  "verification": {
+    "independent_minimal_reproduction_returncode": 0,
+    "independent_summary_match": true,
+    "github_branch_clone_attempt": "failed_due_to_DNS_resolution_in_container",
+    "full_repository_test_suite_executed": false
+  },
+  "interpretation": [
+    "Winner candidate extraction is currently strong on the small evaluated sample: all 4 winners were in ◎/○/▲.",
+    "For the 3 races with complete top-three results, every actual top-three horse had a nonblank pre-race mark.",
+    "At least one saved wide candidate was a confirmed hit in 3 of 4 evaluated races.",
+    "The main observed weakness is ranking and candidate-to-ticket conversion, not broad candidate generation."
+  ]
+}

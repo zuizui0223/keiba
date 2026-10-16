@@ -1,0 +1,101 @@
+{
+  "created_at_jst": "2026-10-12T16:55:48+09:00",
+  "scoring_policy": "Frozen pre-race marks and saved wide candidates; no post-result relabeling.",
+  "result_input": "data/2026-10-12/results-verified-1655.json",
+  "summary": {
+    "races_scored": 5,
+    "winner_in_core_marks": 5,
+    "winner_in_core_rate": 1,
+    "complete_top3_races": 4,
+    "complete_top3_all_marked_candidates": 3,
+    "saved_wide_hit_races": 4,
+    "saved_wide_hit_rate": 0.8,
+    "winner_pre_race_mark_positions": [
+      2,
+      3,
+      1,
+      2,
+      2
+    ],
+    "average_winner_mark_position": 2,
+    "note": "11R is scored from a secondary result page pending retrieval of the corresponding JRA result page; 12R excluded."
+  },
+  "races": {
+    "7": {
+      "result": [
+        2,
+        15,
+        9
+      ],
+      "winner_mark": "○",
+      "candidate_recall": "3/3",
+      "saved_wide_hits": [
+        [
+          2,
+          15
+        ]
+      ]
+    },
+    "8": {
+      "result": [
+        9,
+        1,
+        7
+      ],
+      "winner_mark": "▲",
+      "candidate_recall": "3/3",
+      "saved_wide_hits": []
+    },
+    "9": {
+      "result": [
+        4,
+        3,
+        12
+      ],
+      "winner_mark": "◎",
+      "candidate_recall": "3/3",
+      "saved_wide_hits": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "10": {
+      "result": [
+        5,
+        2
+      ],
+      "winner_mark": "○",
+      "candidate_recall": "2/2 available",
+      "saved_wide_hits": [
+        [
+          2,
+          5
+        ]
+      ],
+      "complete_top3": false
+    },
+    "11": {
+      "result": [
+        1,
+        4,
+        9
+      ],
+      "winner_mark": "○",
+      "candidate_recall": "2/3",
+      "unmarked_top3": [
+        4
+      ],
+      "saved_wide_hits": [
+        [
+          1,
+          9
+        ]
+      ],
+      "saved_wide_payout_yen_per_100": 570,
+      "interpretation": "Original kyoto_11.json retained 1-9 as a priority wide candidate. The later narrative narrowed the basic one-ticket example to 9-14, which missed. This separates candidate generation from final one-ticket selection."
+    }
+  },
+  "conclusion": "Across the five scored races, winner extraction into ◎/○/▲ is strong in this small sample, while exact ranking and narrowing from a candidate set to one final pair remain the dominant observed weaknesses."
+}

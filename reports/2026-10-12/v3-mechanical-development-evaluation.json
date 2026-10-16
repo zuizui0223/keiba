@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "development_only": true,
+  "prospective_claim": false,
+  "classifier_audit_sha": "0cadcd510e14ea1d45e083f20629534618ca7907",
+  "summary": {
+    "starter_count": 83,
+    "union_candidate_count": 64,
+    "union_candidate_fraction": 0.7710843373493976,
+    "top3_slots": 18,
+    "union_top3_hits": 18,
+    "union_top3_recall": 1,
+    "M_candidate_count": 22,
+    "M_top3_hits": 11,
+    "M_top3_recall": 0.6111111111111112,
+    "added_candidates_over_M": 42,
+    "additional_top3_hits_over_M": 7,
+    "added_candidates_per_additional_top3_hit": 6,
+    "channel_stats": {
+      "M": {
+        "candidates": 22,
+        "hits": 11
+      },
+      "C": {
+        "candidates": 38,
+        "hits": 10
+      },
+      "U": {
+        "candidates": 6,
+        "hits": 4
+      },
+      "Q": {
+        "candidates": 11,
+        "hits": 2
+      },
+      "K": {
+        "candidates": 27,
+        "hits": 7
+      }
+    }
+  },
+  "per_race": {
+    "7": {
+      "field": 16,
+      "candidates": 11,
+      "candidate_fraction": 0.6875,
+      "actual_top3": [
+        2,
+        15,
+        9
+      ],
+      "union_hits": [
+        2,
+        15,
+        9
+      ],
+      "recall": 1,
+      "channel_hits": {
+        "M": [
+          2,
+          15
+        ],
+        "C": [
+          2,
+          15,
+          9
+        ],
+        "U": [],
+        "Q": [],
+        "K": [
+          2,
+          9
+        ]
+      }
+    },
+    "8": {
+      "field": 11,
+      "candidates": 8,
+      "candidate_fraction": 0.7272727272727273,
+      "actual_top3": [
+        9,
+        1,
+        7
+      ],
+      "union_hits": [
+        9,
+        1,
+        7
+      ],
+      "recall": 1,
+      "channel_hits": {
+        "M": [
+          9
+        ],
+        "C": [
+          1
+        ],
+        "U": [
+          9
+        ],
+        "Q": [],
+        "K": [
+          7
+        ]
+      }
+    },
+    "9": {
+      "field": 12,
+      "candidates": 10,
+      "candidate_fraction": 0.8333333333333334,
+      "actual_top3": [
+        4,
+        3,
+        12
+      ],
+      "union_hits": [
+        4,
+        3,
+        12
+      ],
+      "recall": 1,
+      "channel_hits": {
+        "M": [
+          4,
+          12
+        ],
+        "C": [
+          4,
+          3
+        ],
+        "U": [
+          12
+        ],
+        "Q": [],
+        "K": [
+          4,
+          12
+        ]
+      }
+    },
+    "10": {
+      "field": 10,
+      "candidates": 7,
+      "candidate_fraction": 0.7,
+      "actual_top3": [
+        5,
+        2,
+        9
+      ],
+      "union_hits": [
+        5,
+        2,
+        9
+      ],
+      "recall": 1,
+      "channel_hits": {
+        "M": [
+          5,
+          2,
+          9
+        ],
+        "C": [],
+        "U": [
+          5
+        ],
+        "Q": [],
+        "K": []
+      }
+    },
+    "11": {
+      "field": 18,
+      "candidates": 16,
+      "candidate_fraction": 0.8888888888888888,
+      "actual_top3": [
+        1,
+        4,
+        9
+      ],
+      "union_hits": [
+        1,
+        4,
+        9
+      ],
+      "recall": 1,
+      "channel_hits": {
+        "M": [
+          1,
+          9
+        ],
+        "C": [
+          1,
+          9
+        ],
+        "U": [],
+        "Q": [
+          1,
+          4
+        ],
+        "K": [
+          4,
+          9
+        ]
+      }
+    },
+    "12": {
+      "field": 16,
+      "candidates": 12,
+      "candidate_fraction": 0.75,
+      "actual_top3": [
+        10,
+        12,
+        9
+      ],
+      "union_hits": [
+        10,
+        12,
+        9
+      ],
+      "recall": 1,
+      "channel_hits": {
+        "M": [
+          9
+        ],
+        "C": [
+          12,
+          9
+        ],
+        "U": [
+          10
+        ],
+        "Q": [],
+        "K": []
+      }
+    }
+  },
+  "non_M_top3_rescues": [
+    {
+      "race": 7,
+      "number": 9,
+      "channels": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "race": 8,
+      "number": 1,
+      "channels": [
+        "C"
+      ]
+    },
+    {
+      "race": 8,
+      "number": 7,
+      "channels": [
+        "K"
+      ]
+    },
+    {
+      "race": 9,
+      "number": 3,
+      "channels": [
+        "C"
+      ]
+    },
+    {
+      "race": 11,
+      "number": 4,
+      "channels": [
+        "Q",
+        "K"
+      ]
+    },
+    {
+      "race": 12,
+      "number": 10,
+      "channels": [
+        "U"
+      ]
+    },
+    {
+      "race": 12,
+      "number": 12,
+      "channels": [
+        "C"
+      ]
+    }
+  ]
+}

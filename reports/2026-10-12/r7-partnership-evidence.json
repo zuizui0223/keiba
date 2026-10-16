@@ -1,0 +1,449 @@
+{
+  "race": 7,
+  "date": "2026-10-12",
+  "venue": "京都",
+  "as_of_jst": "2026-10-12T13:10:00+09:00",
+  "record_order": [
+    "1着",
+    "2着",
+    "3着",
+    "4着以下"
+  ],
+  "method": "各馬のスポーツナビ全競走履歴を新馬戦まで確認し、今回騎手と一致する出走だけを集計。全場・京都ダート・京都ダ1900mを分離。2026年10月12日の京都7Rの結果は含めない。",
+  "limitations": [
+    "コンビ成績は1〜6戦と小標本。騎手の効果の因果推定ではない。",
+    "成績0-0-0-0は当該コンビが条件で未経験という意味で、相性不良を意味しない。",
+    "全場集計に一致する出走は今回の7組についてすべてダート戦。"
+  ],
+  "partnerships": [
+    {
+      "number": 15,
+      "name": "ジーティーアメリカ",
+      "jockey": "北村友一",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022104654/",
+      "source_refs": [
+        "turn113view0",
+        "turn118view0"
+      ],
+      "horse_lifetime_starts_reviewed": 15,
+      "all_venues_record": [
+        0,
+        2,
+        0,
+        4
+      ],
+      "kyoto_dirt_record": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "kyoto_dirt_1900m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-21",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 2
+        },
+        {
+          "date": "2026-04-26",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 4
+        },
+        {
+          "date": "2026-04-04",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 2
+        },
+        {
+          "date": "2026-01-24",
+          "venue": "小倉",
+          "surface": "dirt",
+          "distance_m": 1700,
+          "finish": 8
+        },
+        {
+          "date": "2025-11-09",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 9
+        },
+        {
+          "date": "2025-10-19",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 6
+        }
+      ],
+      "notes": [
+        "全場のコンビ6戦で2着2回。2回とも阪神。",
+        "京都ダート3戦は4着・9着・6着。馬の京都3着は幸英明騎手で、今回コンビの京都好走実績ではない。",
+        "今回コンビとして京都ダ1900mは初。"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "アレンスター",
+      "jockey": "池添謙一",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106175/",
+      "source_refs": [
+        "turn113view1"
+      ],
+      "horse_lifetime_starts_reviewed": 3,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_dirt_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_dirt_1900m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": true,
+      "matched_races": [],
+      "notes": [
+        "全3走の騎手は三浦皇成・団野大成・三浦皇成。今回池添謙一は初騎乗。",
+        "馬の京都ダート1勝・2着1回は今回コンビでの成績ではない。初騎乗を相性不良と解釈しない。"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "ゴールドコット",
+      "jockey": "角田大和",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/",
+      "source_refs": [
+        "turn113view2"
+      ],
+      "horse_lifetime_starts_reviewed": 4,
+      "all_venues_record": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "kyoto_dirt_record": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "kyoto_dirt_1900m_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-21",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 3
+        },
+        {
+          "date": "2026-05-16",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 1
+        },
+        {
+          "date": "2026-05-10",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 5
+        },
+        {
+          "date": "2026-04-26",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 11
+        }
+      ],
+      "notes": [
+        "全4走が今回と同じ角田大和騎手。コンビで京都ダ1800m勝利、前走阪神ダ2000m3着。",
+        "京都ダ1900m同コンビは1戦5着0.6秒差。未勝利戦の1800m勝利を昇級後1900mでの勝利適性と直接同一視しない。"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "ダイシンレアレア",
+      "jockey": "西村淳也",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106566/",
+      "source_refs": [
+        "turn113view3",
+        "turn118view1",
+        "turn118view2"
+      ],
+      "horse_lifetime_starts_reviewed": 20,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "kyoto_dirt_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_dirt_1900m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2025-04-19",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 9
+        }
+      ],
+      "notes": [
+        "西村淳也とのコンビは2025年4月19日阪神ダ2000m未勝利9着1.5秒差の1回のみ。",
+        "直近ダ2400mの好走3着・2着・2着は佐々木大輔・丹内祐次・丹内祐次騎手。今回コンビの安定成績ではない。",
+        "京都ダートおよび京都ダ1900mは今回コンビとして初。1回の9着だけで相性不良を確定しない。"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "エイユーファイヤー",
+      "jockey": "松山弘平",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/",
+      "source_refs": [
+        "turn113view4",
+        "turn118view3",
+        "turn118view4"
+      ],
+      "horse_lifetime_starts_reviewed": 20,
+      "all_venues_record": [
+        0,
+        1,
+        1,
+        3
+      ],
+      "kyoto_dirt_record": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "kyoto_dirt_1900m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-21",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 4
+        },
+        {
+          "date": "2026-04-04",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 3
+        },
+        {
+          "date": "2026-02-10",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 4
+        },
+        {
+          "date": "2026-01-11",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 2
+        },
+        {
+          "date": "2025-12-20",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 4
+        }
+      ],
+      "notes": [
+        "松山弘平との全場コンビ5戦で2着1回・3着1回。",
+        "京都ダート2戦は2026年1月11日1800m2着0.1秒差と2月10日1800m4着2.2秒差。",
+        "今回コンビの京都ダ1900mは初。"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "カイラーサ",
+      "jockey": "鮫島良太",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023104476/",
+      "source_refs": [
+        "turn113view5"
+      ],
+      "horse_lifetime_starts_reviewed": 7,
+      "all_venues_record": [
+        1,
+        1,
+        0,
+        4
+      ],
+      "kyoto_dirt_record": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "kyoto_dirt_1900m_record": [
+        1,
+        0,
+        0,
+        2
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-21",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 13
+        },
+        {
+          "date": "2026-08-02",
+          "venue": "中京",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 2
+        },
+        {
+          "date": "2026-05-24",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 11
+        },
+        {
+          "date": "2026-05-10",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 1
+        },
+        {
+          "date": "2026-01-10",
+          "venue": "京都",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 14
+        },
+        {
+          "date": "2025-12-28",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 4
+        }
+      ],
+      "notes": [
+        "今回コンビで京都ダ1900m未勝利を逃げ切り勝ちした実績がある。",
+        "同コンビ・京都ダ1900m3戦は14着・1着・11着。勝利は未勝利戦で、1勝クラスでは11着2.3秒差。",
+        "前走同コンビ阪神ダ2000m13着4.6秒差。6戦で2回連対していても振れ幅が大きい。"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "ドメイン",
+      "jockey": "田口貫太",
+      "source_url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105445/",
+      "source_refs": [
+        "turn113view6",
+        "turn118view5"
+      ],
+      "horse_lifetime_starts_reviewed": 9,
+      "all_venues_record": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "kyoto_dirt_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "kyoto_dirt_1900m_record": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "first_partnership": false,
+      "matched_races": [
+        {
+          "date": "2026-09-21",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 2000,
+          "finish": 5
+        },
+        {
+          "date": "2026-09-06",
+          "venue": "阪神",
+          "surface": "dirt",
+          "distance_m": 1800,
+          "finish": 11
+        },
+        {
+          "date": "2026-08-02",
+          "venue": "中京",
+          "surface": "dirt",
+          "distance_m": 1900,
+          "finish": 5
+        }
+      ],
+      "notes": [
+        "今回コンビは直近3走で5着・11着・5着。京都での騎乗は初。",
+        "馬の京都ダ1900m勝利は西村淳也、3着は松若風馬で、田口貫太とのコンビ実績ではない。"
+      ]
+    }
+  ]
+}

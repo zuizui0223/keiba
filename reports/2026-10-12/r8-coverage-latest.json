@@ -1,0 +1,7800 @@
+{
+  "race_id": "2608040508",
+  "created_at_utc": "2026-10-12T04:45:51.806173+00:00",
+  "input_path": "data/2026-10-12/r8_markets_latest.json",
+  "input_sha256": "ba022072545e2ea8625161044345241b594aab8be19aca1546a7877eee5a0e02",
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "horse_frames": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 6,
+    "8": 7,
+    "9": 7,
+    "10": 8,
+    "11": 8
+  },
+  "price_comparison": {
+    "market_timestamps": {
+      "win": "2026-10-12T13:44:00+09:00",
+      "place": "2026-10-12T13:44:00+09:00",
+      "frame": "2026-10-12T13:44:00+09:00",
+      "quinella": "2026-10-12T13:44:00+09:00",
+      "wide": "2026-10-12T13:44:00+09:00",
+      "exacta": "2026-10-12T13:44:00+09:00",
+      "trio": "2026-10-12T13:44:00+09:00",
+      "trifecta": "2026-10-12T13:44:00+09:00"
+    },
+    "frame_pointwise_dominance_at_saved_quotes": [
+      {
+        "frame": [
+          3,
+          5
+        ],
+        "frame_odds": 17.1,
+        "horse_pair": [
+          3,
+          5
+        ],
+        "quinella_odds": 16.4,
+        "frame_covers_horse_pairs": [
+          [
+            3,
+            5
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.0426829268292686
+      },
+      {
+        "frame": [
+          3,
+          6
+        ],
+        "frame_odds": 21.6,
+        "horse_pair": [
+          3,
+          6
+        ],
+        "quinella_odds": 20.0,
+        "frame_covers_horse_pairs": [
+          [
+            3,
+            6
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "same_event": false,
+        "payout_ratio": 1.08
+      },
+      {
+        "frame": [
+          1,
+          5
+        ],
+        "frame_odds": 36.5,
+        "horse_pair": [
+          1,
+          5
+        ],
+        "quinella_odds": 34.4,
+        "frame_covers_horse_pairs": [
+          [
+            1,
+            5
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.061046511627907
+      },
+      {
+        "frame": [
+          1,
+          3
+        ],
+        "frame_odds": 41.2,
+        "horse_pair": [
+          1,
+          3
+        ],
+        "quinella_odds": 35.0,
+        "frame_covers_horse_pairs": [
+          [
+            1,
+            3
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.1771428571428573
+      },
+      {
+        "frame": [
+          1,
+          6
+        ],
+        "frame_odds": 57.4,
+        "horse_pair": [
+          1,
+          6
+        ],
+        "quinella_odds": 56.9,
+        "frame_covers_horse_pairs": [
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            7
+          ]
+        ],
+        "same_event": false,
+        "payout_ratio": 1.0087873462214412
+      },
+      {
+        "frame": [
+          1,
+          4
+        ],
+        "frame_odds": 64.5,
+        "horse_pair": [
+          1,
+          4
+        ],
+        "quinella_odds": 59.8,
+        "frame_covers_horse_pairs": [
+          [
+            1,
+            4
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.0785953177257526
+      },
+      {
+        "frame": [
+          2,
+          3
+        ],
+        "frame_odds": 65.9,
+        "horse_pair": [
+          2,
+          3
+        ],
+        "quinella_odds": 64.8,
+        "frame_covers_horse_pairs": [
+          [
+            2,
+            3
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.0169753086419755
+      },
+      {
+        "frame": [
+          3,
+          4
+        ],
+        "frame_odds": 68.9,
+        "horse_pair": [
+          3,
+          4
+        ],
+        "quinella_odds": 62.1,
+        "frame_covers_horse_pairs": [
+          [
+            3,
+            4
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.109500805152979
+      },
+      {
+        "frame": [
+          1,
+          2
+        ],
+        "frame_odds": 69.4,
+        "horse_pair": [
+          1,
+          2
+        ],
+        "quinella_odds": 62.6,
+        "frame_covers_horse_pairs": [
+          [
+            1,
+            2
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.1086261980830672
+      },
+      {
+        "frame": [
+          4,
+          5
+        ],
+        "frame_odds": 74.4,
+        "horse_pair": [
+          4,
+          5
+        ],
+        "quinella_odds": 63.6,
+        "frame_covers_horse_pairs": [
+          [
+            4,
+            5
+          ]
+        ],
+        "same_event": true,
+        "payout_ratio": 1.169811320754717
+      }
+    ],
+    "pair_comparisons": [
+      {
+        "horses": [
+          9,
+          11
+        ],
+        "quinella_odds": 10.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              9,
+              11
+            ],
+            "odds": 19.0
+          },
+          {
+            "selection": [
+              11,
+              9
+            ],
+            "odds": 16.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 8.944289693593316,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          11
+        ],
+        "quinella_odds": 11.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              11
+            ],
+            "odds": 24.0
+          },
+          {
+            "selection": [
+              11,
+              3
+            ],
+            "odds": 21.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 11.284768211920529,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          5,
+          11
+        ],
+        "quinella_odds": 11.2,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              11
+            ],
+            "odds": 24.8
+          },
+          {
+            "selection": [
+              11,
+              5
+            ],
+            "odds": 19.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 10.853514739229025,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          9
+        ],
+        "quinella_odds": 14.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              9
+            ],
+            "odds": 33.1
+          },
+          {
+            "selection": [
+              9,
+              3
+            ],
+            "odds": 32.2
+          }
+        ],
+        "exacta_equal_return_multiplier": 16.321898928024503,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          6,
+          11
+        ],
+        "quinella_odds": 15.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              6,
+              11
+            ],
+            "odds": 27.3
+          },
+          {
+            "selection": [
+              11,
+              6
+            ],
+            "odds": 31.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 14.58174061433447,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          5
+        ],
+        "quinella_odds": 16.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              5
+            ],
+            "odds": 32.2
+          },
+          {
+            "selection": [
+              5,
+              3
+            ],
+            "odds": 37.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 17.36680972818312,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          11
+        ],
+        "quinella_odds": 17.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              11
+            ],
+            "odds": 34.8
+          },
+          {
+            "selection": [
+              11,
+              1
+            ],
+            "odds": 31.6
+          }
+        ],
+        "exacta_equal_return_multiplier": 16.56144578313253,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          5,
+          9
+        ],
+        "quinella_odds": 17.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              9
+            ],
+            "odds": 39.6
+          },
+          {
+            "selection": [
+              9,
+              5
+            ],
+            "odds": 32.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 17.940331491712705,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          10,
+          11
+        ],
+        "quinella_odds": 18.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              10,
+              11
+            ],
+            "odds": 34.5
+          },
+          {
+            "selection": [
+              11,
+              10
+            ],
+            "odds": 29.5
+          }
+        ],
+        "exacta_equal_return_multiplier": 15.90234375,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          6
+        ],
+        "quinella_odds": 20.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              6
+            ],
+            "odds": 48.4
+          },
+          {
+            "selection": [
+              6,
+              3
+            ],
+            "odds": 42.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 22.685839736553238,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          6,
+          9
+        ],
+        "quinella_odds": 29.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              6,
+              9
+            ],
+            "odds": 49.7
+          },
+          {
+            "selection": [
+              9,
+              6
+            ],
+            "odds": 46.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 23.916179540709813,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          10
+        ],
+        "quinella_odds": 31.8,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              10
+            ],
+            "odds": 61.4
+          },
+          {
+            "selection": [
+              10,
+              3
+            ],
+            "odds": 70.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 32.73110266159696,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          5,
+          6
+        ],
+        "quinella_odds": 31.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              6
+            ],
+            "odds": 58.8
+          },
+          {
+            "selection": [
+              6,
+              5
+            ],
+            "odds": 53.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 27.874776386404292,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          1,
+          5
+        ],
+        "quinella_odds": 34.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              5
+            ],
+            "odds": 58.8
+          },
+          {
+            "selection": [
+              5,
+              1
+            ],
+            "odds": 73.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 32.5874147081122,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          4,
+          11
+        ],
+        "quinella_odds": 34.7,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              11
+            ],
+            "odds": 91.9
+          },
+          {
+            "selection": [
+              11,
+              4
+            ],
+            "odds": 58.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 35.595933333333335,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          3
+        ],
+        "quinella_odds": 35.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              3
+            ],
+            "odds": 72.1
+          },
+          {
+            "selection": [
+              3,
+              1
+            ],
+            "odds": 71.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 35.99993055555555,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          6,
+          10
+        ],
+        "quinella_odds": 37.7,
+        "exacta_orders": [
+          {
+            "selection": [
+              6,
+              10
+            ],
+            "odds": 68.8
+          },
+          {
+            "selection": [
+              10,
+              6
+            ],
+            "odds": 76.2
+          }
+        ],
+        "exacta_equal_return_multiplier": 36.15558620689655,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          9,
+          10
+        ],
+        "quinella_odds": 37.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              9,
+              10
+            ],
+            "odds": 63.3
+          },
+          {
+            "selection": [
+              10,
+              9
+            ],
+            "odds": 69.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 33.17300751879699,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          1,
+          9
+        ],
+        "quinella_odds": 40.6,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              9
+            ],
+            "odds": 85.1
+          },
+          {
+            "selection": [
+              9,
+              1
+            ],
+            "odds": 71.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 38.91371173469388,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          5,
+          10
+        ],
+        "quinella_odds": 40.7,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              10
+            ],
+            "odds": 77.0
+          },
+          {
+            "selection": [
+              10,
+              5
+            ],
+            "odds": 89.4
+          }
+        ],
+        "exacta_equal_return_multiplier": 41.36899038461539,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          11
+        ],
+        "quinella_odds": 45.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              11
+            ],
+            "odds": 104.2
+          },
+          {
+            "selection": [
+              11,
+              2
+            ],
+            "odds": 61.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 38.594924471299095,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          1,
+          6
+        ],
+        "quinella_odds": 56.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              6
+            ],
+            "odds": 86.9
+          },
+          {
+            "selection": [
+              6,
+              1
+            ],
+            "odds": 100.2
+          }
+        ],
+        "exacta_equal_return_multiplier": 46.538642437199364,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          1,
+          4
+        ],
+        "quinella_odds": 59.8,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              4
+            ],
+            "odds": 122.4
+          },
+          {
+            "selection": [
+              4,
+              1
+            ],
+            "odds": 146.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 66.74710252600298,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          3,
+          4
+        ],
+        "quinella_odds": 62.1,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              4
+            ],
+            "odds": 133.8
+          },
+          {
+            "selection": [
+              4,
+              3
+            ],
+            "odds": 186.5
+          }
+        ],
+        "exacta_equal_return_multiplier": 77.90727443022166,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          2
+        ],
+        "quinella_odds": 62.6,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              2
+            ],
+            "odds": 80.0
+          },
+          {
+            "selection": [
+              2,
+              1
+            ],
+            "odds": 203.4
+          }
+        ],
+        "exacta_equal_return_multiplier": 57.417078334509526,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          4,
+          5
+        ],
+        "quinella_odds": 63.6,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              5
+            ],
+            "odds": 135.9
+          },
+          {
+            "selection": [
+              5,
+              4
+            ],
+            "odds": 143.4
+          }
+        ],
+        "exacta_equal_return_multiplier": 69.77465091299678,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          3
+        ],
+        "quinella_odds": 64.8,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              3
+            ],
+            "odds": 161.6
+          },
+          {
+            "selection": [
+              3,
+              2
+            ],
+            "odds": 113.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 66.53425555151074,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          4,
+          9
+        ],
+        "quinella_odds": 66.5,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              9
+            ],
+            "odds": 169.6
+          },
+          {
+            "selection": [
+              9,
+              4
+            ],
+            "odds": 134.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 75.1053876478318,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          5
+        ],
+        "quinella_odds": 67.5,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              5
+            ],
+            "odds": 170.4
+          },
+          {
+            "selection": [
+              5,
+              2
+            ],
+            "odds": 112.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 67.83496997527375,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          10
+        ],
+        "quinella_odds": 68.2,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              10
+            ],
+            "odds": 162.3
+          },
+          {
+            "selection": [
+              10,
+              1
+            ],
+            "odds": 160.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 80.5708966801117,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          9
+        ],
+        "quinella_odds": 78.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              9
+            ],
+            "odds": 163.3
+          },
+          {
+            "selection": [
+              9,
+              2
+            ],
+            "odds": 106.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 64.3137713437268,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          8,
+          11
+        ],
+        "quinella_odds": 94.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              8,
+              11
+            ],
+            "odds": 226.8
+          },
+          {
+            "selection": [
+              11,
+              8
+            ],
+            "odds": 120.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 78.86143226919758,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          7,
+          11
+        ],
+        "quinella_odds": 96.5,
+        "exacta_orders": [
+          {
+            "selection": [
+              7,
+              11
+            ],
+            "odds": 229.5
+          },
+          {
+            "selection": [
+              11,
+              7
+            ],
+            "odds": 158.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 93.57677419354839,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          4,
+          10
+        ],
+        "quinella_odds": 96.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              10
+            ],
+            "odds": 232.9
+          },
+          {
+            "selection": [
+              10,
+              4
+            ],
+            "odds": 225.5
+          }
+        ],
+        "exacta_equal_return_multiplier": 114.57013525305412,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          4,
+          6
+        ],
+        "quinella_odds": 109.3,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              6
+            ],
+            "odds": 254.7
+          },
+          {
+            "selection": [
+              6,
+              4
+            ],
+            "odds": 158.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 97.51054034407561,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          1,
+          7
+        ],
+        "quinella_odds": 123.6,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              7
+            ],
+            "odds": 180.1
+          },
+          {
+            "selection": [
+              7,
+              1
+            ],
+            "odds": 483.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 131.184285929724,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          5,
+          7
+        ],
+        "quinella_odds": 129.1,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              7
+            ],
+            "odds": 307.5
+          },
+          {
+            "selection": [
+              7,
+              5
+            ],
+            "odds": 354.6
+          }
+        ],
+        "exacta_equal_return_multiplier": 164.68735840507478,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          4
+        ],
+        "quinella_odds": 133.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              4
+            ],
+            "odds": 309.9
+          },
+          {
+            "selection": [
+              4,
+              2
+            ],
+            "odds": 230.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 132.28207878675792,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          7
+        ],
+        "quinella_odds": 134.2,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              7
+            ],
+            "odds": 235.0
+          },
+          {
+            "selection": [
+              7,
+              3
+            ],
+            "odds": 382.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 145.50883163182627,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          10
+        ],
+        "quinella_odds": 138.1,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              10
+            ],
+            "odds": 216.8
+          },
+          {
+            "selection": [
+              10,
+              2
+            ],
+            "odds": 203.4
+          }
+        ],
+        "exacta_equal_return_multiplier": 104.94316991908616,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          7,
+          9
+        ],
+        "quinella_odds": 149.5,
+        "exacta_orders": [
+          {
+            "selection": [
+              7,
+              9
+            ],
+            "odds": 384.0
+          },
+          {
+            "selection": [
+              9,
+              7
+            ],
+            "odds": 248.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 150.79424323896885,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          6
+        ],
+        "quinella_odds": 152.7,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              6
+            ],
+            "odds": 272.4
+          },
+          {
+            "selection": [
+              6,
+              2
+            ],
+            "odds": 166.4
+          }
+        ],
+        "exacta_equal_return_multiplier": 103.29845031905195,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          6,
+          7
+        ],
+        "quinella_odds": 165.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              6,
+              7
+            ],
+            "odds": 273.3
+          },
+          {
+            "selection": [
+              7,
+              6
+            ],
+            "odds": 412.2
+          }
+        ],
+        "exacta_equal_return_multiplier": 164.338818380744,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          8
+        ],
+        "quinella_odds": 178.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              8
+            ],
+            "odds": 262.4
+          },
+          {
+            "selection": [
+              8,
+              3
+            ],
+            "odds": 374.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 154.36020712380355,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          8,
+          9
+        ],
+        "quinella_odds": 195.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              8,
+              9
+            ],
+            "odds": 412.2
+          },
+          {
+            "selection": [
+              9,
+              8
+            ],
+            "odds": 266.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 161.9660677466863,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          7,
+          10
+        ],
+        "quinella_odds": 206.6,
+        "exacta_orders": [
+          {
+            "selection": [
+              7,
+              10
+            ],
+            "odds": 457.7
+          },
+          {
+            "selection": [
+              10,
+              7
+            ],
+            "odds": 395.6
+          }
+        ],
+        "exacta_equal_return_multiplier": 212.19514824797844,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          8
+        ],
+        "quinella_odds": 219.8,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              8
+            ],
+            "odds": 362.8
+          },
+          {
+            "selection": [
+              8,
+              1
+            ],
+            "odds": 421.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 194.86960959428427,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          5,
+          8
+        ],
+        "quinella_odds": 223.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              8
+            ],
+            "odds": 376.7
+          },
+          {
+            "selection": [
+              8,
+              5
+            ],
+            "odds": 449.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 205.00866303690262,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          4,
+          8
+        ],
+        "quinella_odds": 242.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              8
+            ],
+            "odds": 645.3
+          },
+          {
+            "selection": [
+              8,
+              4
+            ],
+            "odds": 690.6
+          }
+        ],
+        "exacta_equal_return_multiplier": 333.590972378172,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          4,
+          7
+        ],
+        "quinella_odds": 269.5,
+        "exacta_orders": [
+          {
+            "selection": [
+              4,
+              7
+            ],
+            "odds": 405.8
+          },
+          {
+            "selection": [
+              7,
+              4
+            ],
+            "odds": 629.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 246.7872151409811,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          8,
+          10
+        ],
+        "quinella_odds": 297.2,
+        "exacta_orders": [
+          {
+            "selection": [
+              8,
+              10
+            ],
+            "odds": 615.0
+          },
+          {
+            "selection": [
+              10,
+              8
+            ],
+            "odds": 542.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 288.35262112444946,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          2,
+          7
+        ],
+        "quinella_odds": 306.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              7
+            ],
+            "odds": 715.7
+          },
+          {
+            "selection": [
+              7,
+              2
+            ],
+            "odds": 656.0
+          }
+        ],
+        "exacta_equal_return_multiplier": 342.27542465553694,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          6,
+          8
+        ],
+        "quinella_odds": 348.1,
+        "exacta_orders": [
+          {
+            "selection": [
+              6,
+              8
+            ],
+            "odds": 423.2
+          },
+          {
+            "selection": [
+              8,
+              6
+            ],
+            "odds": 709.2
+          }
+        ],
+        "exacta_equal_return_multiplier": 265.0418933239138,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          2,
+          8
+        ],
+        "quinella_odds": 383.1,
+        "exacta_orders": [
+          {
+            "selection": [
+              2,
+              8
+            ],
+            "odds": 884.6
+          },
+          {
+            "selection": [
+              8,
+              2
+            ],
+            "odds": 803.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 420.9960187214882,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          7,
+          8
+        ],
+        "quinella_odds": 564.2,
+        "exacta_orders": [
+          {
+            "selection": [
+              7,
+              8
+            ],
+            "odds": 1063.9
+          },
+          {
+            "selection": [
+              8,
+              7
+            ],
+            "odds": 904.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 488.9897958147095,
+        "preferred_equal_return_market": "quinella"
+      }
+    ],
+    "triple_comparisons_with_all_six_orders_available": [
+      {
+        "horses": [
+          3,
+          9,
+          11
+        ],
+        "trio_odds": 15.7,
+        "trifecta_equal_return_multiplier": 13.728596773540337,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              9,
+              11
+            ],
+            "odds": 92.8
+          },
+          {
+            "selection": [
+              3,
+              11,
+              9
+            ],
+            "odds": 93.9
+          },
+          {
+            "selection": [
+              9,
+              3,
+              11
+            ],
+            "odds": 94.4
+          },
+          {
+            "selection": [
+              9,
+              11,
+              3
+            ],
+            "odds": 78.9
+          },
+          {
+            "selection": [
+              11,
+              3,
+              9
+            ],
+            "odds": 79.7
+          },
+          {
+            "selection": [
+              11,
+              9,
+              3
+            ],
+            "odds": 64.1
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          5,
+          9,
+          11
+        ],
+        "trio_odds": 16.0,
+        "trifecta_equal_return_multiplier": 14.345855712464132,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              9,
+              11
+            ],
+            "odds": 102.8
+          },
+          {
+            "selection": [
+              5,
+              11,
+              9
+            ],
+            "odds": 98.1
+          },
+          {
+            "selection": [
+              9,
+              5,
+              11
+            ],
+            "odds": 102.9
+          },
+          {
+            "selection": [
+              9,
+              11,
+              5
+            ],
+            "odds": 82.2
+          },
+          {
+            "selection": [
+              11,
+              5,
+              9
+            ],
+            "odds": 77.6
+          },
+          {
+            "selection": [
+              11,
+              9,
+              5
+            ],
+            "odds": 66.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          5,
+          11
+        ],
+        "trio_odds": 19.0,
+        "trifecta_equal_return_multiplier": 17.712176515197037,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              5,
+              11
+            ],
+            "odds": 110.1
+          },
+          {
+            "selection": [
+              3,
+              11,
+              5
+            ],
+            "odds": 106.3
+          },
+          {
+            "selection": [
+              5,
+              3,
+              11
+            ],
+            "odds": 127.8
+          },
+          {
+            "selection": [
+              5,
+              11,
+              3
+            ],
+            "odds": 116.0
+          },
+          {
+            "selection": [
+              11,
+              3,
+              5
+            ],
+            "odds": 94.5
+          },
+          {
+            "selection": [
+              11,
+              5,
+              3
+            ],
+            "odds": 91.4
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          5,
+          9
+        ],
+        "trio_odds": 25.5,
+        "trifecta_equal_return_multiplier": 23.98843744923956,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              5,
+              9
+            ],
+            "odds": 136.9
+          },
+          {
+            "selection": [
+              3,
+              9,
+              5
+            ],
+            "odds": 139.1
+          },
+          {
+            "selection": [
+              5,
+              3,
+              9
+            ],
+            "odds": 161.1
+          },
+          {
+            "selection": [
+              5,
+              9,
+              3
+            ],
+            "odds": 153.3
+          },
+          {
+            "selection": [
+              9,
+              3,
+              5
+            ],
+            "odds": 137.0
+          },
+          {
+            "selection": [
+              9,
+              5,
+              3
+            ],
+            "odds": 139.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          6,
+          9,
+          11
+        ],
+        "trio_odds": 26.9,
+        "trifecta_equal_return_multiplier": 23.875765227518322,
+        "trifecta_orders": [
+          {
+            "selection": [
+              6,
+              9,
+              11
+            ],
+            "odds": 165.3
+          },
+          {
+            "selection": [
+              6,
+              11,
+              9
+            ],
+            "odds": 161.8
+          },
+          {
+            "selection": [
+              9,
+              6,
+              11
+            ],
+            "odds": 172.1
+          },
+          {
+            "selection": [
+              9,
+              11,
+              6
+            ],
+            "odds": 128.5
+          },
+          {
+            "selection": [
+              11,
+              6,
+              9
+            ],
+            "odds": 150.1
+          },
+          {
+            "selection": [
+              11,
+              9,
+              6
+            ],
+            "odds": 106.4
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          6,
+          11
+        ],
+        "trio_odds": 27.6,
+        "trifecta_equal_return_multiplier": 26.608098620566786,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              6,
+              11
+            ],
+            "odds": 179.7
+          },
+          {
+            "selection": [
+              3,
+              11,
+              6
+            ],
+            "odds": 150.1
+          },
+          {
+            "selection": [
+              6,
+              3,
+              11
+            ],
+            "odds": 180.3
+          },
+          {
+            "selection": [
+              6,
+              11,
+              3
+            ],
+            "odds": 163.9
+          },
+          {
+            "selection": [
+              11,
+              3,
+              6
+            ],
+            "odds": 136.8
+          },
+          {
+            "selection": [
+              11,
+              6,
+              3
+            ],
+            "odds": 156.3
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          5,
+          6,
+          11
+        ],
+        "trio_odds": 30.2,
+        "trifecta_equal_return_multiplier": 26.322737967030342,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              6,
+              11
+            ],
+            "odds": 189.5
+          },
+          {
+            "selection": [
+              5,
+              11,
+              6
+            ],
+            "odds": 149.5
+          },
+          {
+            "selection": [
+              6,
+              5,
+              11
+            ],
+            "odds": 184.0
+          },
+          {
+            "selection": [
+              6,
+              11,
+              5
+            ],
+            "odds": 163.2
+          },
+          {
+            "selection": [
+              11,
+              5,
+              6
+            ],
+            "odds": 125.3
+          },
+          {
+            "selection": [
+              11,
+              6,
+              5
+            ],
+            "odds": 154.3
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          9,
+          10,
+          11
+        ],
+        "trio_odds": 30.8,
+        "trifecta_equal_return_multiplier": 29.39113910747561,
+        "trifecta_orders": [
+          {
+            "selection": [
+              9,
+              10,
+              11
+            ],
+            "odds": 205.5
+          },
+          {
+            "selection": [
+              9,
+              11,
+              10
+            ],
+            "odds": 152.6
+          },
+          {
+            "selection": [
+              10,
+              9,
+              11
+            ],
+            "odds": 237.1
+          },
+          {
+            "selection": [
+              10,
+              11,
+              9
+            ],
+            "odds": 211.3
+          },
+          {
+            "selection": [
+              11,
+              9,
+              10
+            ],
+            "odds": 127.0
+          },
+          {
+            "selection": [
+              11,
+              10,
+              9
+            ],
+            "odds": 173.0
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          9,
+          11
+        ],
+        "trio_odds": 31.9,
+        "trifecta_equal_return_multiplier": 30.179805011955494,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              9,
+              11
+            ],
+            "odds": 274.0
+          },
+          {
+            "selection": [
+              1,
+              11,
+              9
+            ],
+            "odds": 230.4
+          },
+          {
+            "selection": [
+              9,
+              1,
+              11
+            ],
+            "odds": 224.0
+          },
+          {
+            "selection": [
+              9,
+              11,
+              1
+            ],
+            "odds": 156.1
+          },
+          {
+            "selection": [
+              11,
+              1,
+              9
+            ],
+            "odds": 153.6
+          },
+          {
+            "selection": [
+              11,
+              9,
+              1
+            ],
+            "odds": 128.8
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          10,
+          11
+        ],
+        "trio_odds": 33.7,
+        "trifecta_equal_return_multiplier": 36.38410830615205,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              10,
+              11
+            ],
+            "odds": 270.2
+          },
+          {
+            "selection": [
+              3,
+              11,
+              10
+            ],
+            "odds": 186.3
+          },
+          {
+            "selection": [
+              10,
+              3,
+              11
+            ],
+            "odds": 294.2
+          },
+          {
+            "selection": [
+              10,
+              11,
+              3
+            ],
+            "odds": 229.2
+          },
+          {
+            "selection": [
+              11,
+              3,
+              10
+            ],
+            "odds": 172.5
+          },
+          {
+            "selection": [
+              11,
+              10,
+              3
+            ],
+            "odds": 205.9
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          3,
+          6,
+          9
+        ],
+        "trio_odds": 37.3,
+        "trifecta_equal_return_multiplier": 32.381574256828664,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              6,
+              9
+            ],
+            "odds": 199.2
+          },
+          {
+            "selection": [
+              3,
+              9,
+              6
+            ],
+            "odds": 174.8
+          },
+          {
+            "selection": [
+              6,
+              3,
+              9
+            ],
+            "odds": 215.8
+          },
+          {
+            "selection": [
+              6,
+              9,
+              3
+            ],
+            "odds": 216.0
+          },
+          {
+            "selection": [
+              9,
+              3,
+              6
+            ],
+            "odds": 169.5
+          },
+          {
+            "selection": [
+              9,
+              6,
+              3
+            ],
+            "odds": 200.9
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          5,
+          11
+        ],
+        "trio_odds": 37.4,
+        "trifecta_equal_return_multiplier": 34.97805862888259,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              5,
+              11
+            ],
+            "odds": 301.2
+          },
+          {
+            "selection": [
+              1,
+              11,
+              5
+            ],
+            "odds": 241.5
+          },
+          {
+            "selection": [
+              5,
+              1,
+              11
+            ],
+            "odds": 285.8
+          },
+          {
+            "selection": [
+              5,
+              11,
+              1
+            ],
+            "odds": 202.1
+          },
+          {
+            "selection": [
+              11,
+              1,
+              5
+            ],
+            "odds": 171.6
+          },
+          {
+            "selection": [
+              11,
+              5,
+              1
+            ],
+            "odds": 145.9
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          11
+        ],
+        "trio_odds": 39.8,
+        "trifecta_equal_return_multiplier": 38.83025875973413,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              11
+            ],
+            "odds": 318.9
+          },
+          {
+            "selection": [
+              1,
+              11,
+              3
+            ],
+            "odds": 279.7
+          },
+          {
+            "selection": [
+              3,
+              1,
+              11
+            ],
+            "odds": 273.4
+          },
+          {
+            "selection": [
+              3,
+              11,
+              1
+            ],
+            "odds": 216.9
+          },
+          {
+            "selection": [
+              11,
+              1,
+              3
+            ],
+            "odds": 201.2
+          },
+          {
+            "selection": [
+              11,
+              3,
+              1
+            ],
+            "odds": 172.3
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          5,
+          10,
+          11
+        ],
+        "trio_odds": 39.9,
+        "trifecta_equal_return_multiplier": 41.18672998859181,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              10,
+              11
+            ],
+            "odds": 312.6
+          },
+          {
+            "selection": [
+              5,
+              11,
+              10
+            ],
+            "odds": 222.2
+          },
+          {
+            "selection": [
+              10,
+              5,
+              11
+            ],
+            "odds": 320.0
+          },
+          {
+            "selection": [
+              10,
+              11,
+              5
+            ],
+            "odds": 265.4
+          },
+          {
+            "selection": [
+              11,
+              5,
+              10
+            ],
+            "odds": 186.3
+          },
+          {
+            "selection": [
+              11,
+              10,
+              5
+            ],
+            "odds": 231.5
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          6,
+          10,
+          11
+        ],
+        "trio_odds": 44.5,
+        "trifecta_equal_return_multiplier": 41.120225532893606,
+        "trifecta_orders": [
+          {
+            "selection": [
+              6,
+              10,
+              11
+            ],
+            "odds": 252.0
+          },
+          {
+            "selection": [
+              6,
+              11,
+              10
+            ],
+            "odds": 251.2
+          },
+          {
+            "selection": [
+              10,
+              6,
+              11
+            ],
+            "odds": 252.4
+          },
+          {
+            "selection": [
+              10,
+              11,
+              6
+            ],
+            "odds": 257.4
+          },
+          {
+            "selection": [
+              11,
+              6,
+              10
+            ],
+            "odds": 231.8
+          },
+          {
+            "selection": [
+              11,
+              10,
+              6
+            ],
+            "odds": 237.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          5,
+          6
+        ],
+        "trio_odds": 44.7,
+        "trifecta_equal_return_multiplier": 41.54209772380807,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              5,
+              6
+            ],
+            "odds": 206.0
+          },
+          {
+            "selection": [
+              3,
+              6,
+              5
+            ],
+            "odds": 251.9
+          },
+          {
+            "selection": [
+              5,
+              3,
+              6
+            ],
+            "odds": 245.9
+          },
+          {
+            "selection": [
+              5,
+              6,
+              3
+            ],
+            "odds": 278.0
+          },
+          {
+            "selection": [
+              6,
+              3,
+              5
+            ],
+            "odds": 266.8
+          },
+          {
+            "selection": [
+              6,
+              5,
+              3
+            ],
+            "odds": 260.7
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          5,
+          6,
+          9
+        ],
+        "trio_odds": 45.9,
+        "trifecta_equal_return_multiplier": 39.9157693603667,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              6,
+              9
+            ],
+            "odds": 271.2
+          },
+          {
+            "selection": [
+              5,
+              9,
+              6
+            ],
+            "odds": 213.5
+          },
+          {
+            "selection": [
+              6,
+              5,
+              9
+            ],
+            "odds": 275.1
+          },
+          {
+            "selection": [
+              6,
+              9,
+              5
+            ],
+            "odds": 239.1
+          },
+          {
+            "selection": [
+              9,
+              5,
+              6
+            ],
+            "odds": 211.1
+          },
+          {
+            "selection": [
+              9,
+              6,
+              5
+            ],
+            "odds": 242.3
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          5
+        ],
+        "trio_odds": 55.2,
+        "trifecta_equal_return_multiplier": 51.95026686228816,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              5
+            ],
+            "odds": 394.9
+          },
+          {
+            "selection": [
+              1,
+              5,
+              3
+            ],
+            "odds": 377.3
+          },
+          {
+            "selection": [
+              3,
+              1,
+              5
+            ],
+            "odds": 309.9
+          },
+          {
+            "selection": [
+              3,
+              5,
+              1
+            ],
+            "odds": 259.6
+          },
+          {
+            "selection": [
+              5,
+              1,
+              3
+            ],
+            "odds": 320.3
+          },
+          {
+            "selection": [
+              5,
+              3,
+              1
+            ],
+            "odds": 258.7
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          4,
+          9,
+          11
+        ],
+        "trio_odds": 56.0,
+        "trifecta_equal_return_multiplier": 61.46997924325798,
+        "trifecta_orders": [
+          {
+            "selection": [
+              4,
+              9,
+              11
+            ],
+            "odds": 656.7
+          },
+          {
+            "selection": [
+              4,
+              11,
+              9
+            ],
+            "odds": 523.7
+          },
+          {
+            "selection": [
+              9,
+              4,
+              11
+            ],
+            "odds": 497.9
+          },
+          {
+            "selection": [
+              9,
+              11,
+              4
+            ],
+            "odds": 281.2
+          },
+          {
+            "selection": [
+              11,
+              4,
+              9
+            ],
+            "odds": 329.8
+          },
+          {
+            "selection": [
+              11,
+              9,
+              4
+            ],
+            "odds": 235.9
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          5,
+          9
+        ],
+        "trio_odds": 56.1,
+        "trifecta_equal_return_multiplier": 57.778187445360714,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              5,
+              9
+            ],
+            "odds": 422.3
+          },
+          {
+            "selection": [
+              1,
+              9,
+              5
+            ],
+            "odds": 453.9
+          },
+          {
+            "selection": [
+              5,
+              1,
+              9
+            ],
+            "odds": 367.0
+          },
+          {
+            "selection": [
+              5,
+              9,
+              1
+            ],
+            "odds": 290.2
+          },
+          {
+            "selection": [
+              9,
+              1,
+              5
+            ],
+            "odds": 344.5
+          },
+          {
+            "selection": [
+              9,
+              5,
+              1
+            ],
+            "odds": 273.0
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          9
+        ],
+        "trio_odds": 56.7,
+        "trifecta_equal_return_multiplier": 53.19769281406234,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              9
+            ],
+            "odds": 418.9
+          },
+          {
+            "selection": [
+              1,
+              9,
+              3
+            ],
+            "odds": 376.1
+          },
+          {
+            "selection": [
+              3,
+              1,
+              9
+            ],
+            "odds": 324.0
+          },
+          {
+            "selection": [
+              3,
+              9,
+              1
+            ],
+            "odds": 265.6
+          },
+          {
+            "selection": [
+              9,
+              1,
+              3
+            ],
+            "odds": 323.7
+          },
+          {
+            "selection": [
+              9,
+              3,
+              1
+            ],
+            "odds": 262.4
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          9,
+          10
+        ],
+        "trio_odds": 62.1,
+        "trifecta_equal_return_multiplier": 64.47412386222261,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              9,
+              10
+            ],
+            "odds": 293.0
+          },
+          {
+            "selection": [
+              3,
+              10,
+              9
+            ],
+            "odds": 439.7
+          },
+          {
+            "selection": [
+              9,
+              3,
+              10
+            ],
+            "odds": 299.2
+          },
+          {
+            "selection": [
+              9,
+              10,
+              3
+            ],
+            "odds": 407.7
+          },
+          {
+            "selection": [
+              10,
+              3,
+              9
+            ],
+            "odds": 535.2
+          },
+          {
+            "selection": [
+              10,
+              9,
+              3
+            ],
+            "odds": 463.1
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          6,
+          11
+        ],
+        "trio_odds": 63.5,
+        "trifecta_equal_return_multiplier": 57.8537844195908,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              6,
+              11
+            ],
+            "odds": 432.4
+          },
+          {
+            "selection": [
+              1,
+              11,
+              6
+            ],
+            "odds": 386.5
+          },
+          {
+            "selection": [
+              6,
+              1,
+              11
+            ],
+            "odds": 395.7
+          },
+          {
+            "selection": [
+              6,
+              11,
+              1
+            ],
+            "odds": 325.4
+          },
+          {
+            "selection": [
+              11,
+              1,
+              6
+            ],
+            "odds": 287.0
+          },
+          {
+            "selection": [
+              11,
+              6,
+              1
+            ],
+            "odds": 303.0
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          2,
+          9,
+          11
+        ],
+        "trio_odds": 63.7,
+        "trifecta_equal_return_multiplier": 62.52516740475994,
+        "trifecta_orders": [
+          {
+            "selection": [
+              2,
+              9,
+              11
+            ],
+            "odds": 645.1
+          },
+          {
+            "selection": [
+              2,
+              11,
+              9
+            ],
+            "odds": 627.3
+          },
+          {
+            "selection": [
+              9,
+              2,
+              11
+            ],
+            "odds": 453.9
+          },
+          {
+            "selection": [
+              9,
+              11,
+              2
+            ],
+            "odds": 278.6
+          },
+          {
+            "selection": [
+              11,
+              2,
+              9
+            ],
+            "odds": 377.7
+          },
+          {
+            "selection": [
+              11,
+              9,
+              2
+            ],
+            "odds": 226.8
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          5,
+          10
+        ],
+        "trio_odds": 64.0,
+        "trifecta_equal_return_multiplier": 65.96979963864712,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              5,
+              10
+            ],
+            "odds": 287.0
+          },
+          {
+            "selection": [
+              3,
+              10,
+              5
+            ],
+            "odds": 406.8
+          },
+          {
+            "selection": [
+              5,
+              3,
+              10
+            ],
+            "odds": 350.1
+          },
+          {
+            "selection": [
+              5,
+              10,
+              3
+            ],
+            "odds": 438.1
+          },
+          {
+            "selection": [
+              10,
+              3,
+              5
+            ],
+            "odds": 545.6
+          },
+          {
+            "selection": [
+              10,
+              5,
+              3
+            ],
+            "odds": 445.6
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          5,
+          9,
+          10
+        ],
+        "trio_odds": 66.3,
+        "trifecta_equal_return_multiplier": 62.59050235213495,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              9,
+              10
+            ],
+            "odds": 300.0
+          },
+          {
+            "selection": [
+              5,
+              10,
+              9
+            ],
+            "odds": 443.4
+          },
+          {
+            "selection": [
+              9,
+              5,
+              10
+            ],
+            "odds": 289.9
+          },
+          {
+            "selection": [
+              9,
+              10,
+              5
+            ],
+            "odds": 389.4
+          },
+          {
+            "selection": [
+              10,
+              5,
+              9
+            ],
+            "odds": 455.6
+          },
+          {
+            "selection": [
+              10,
+              9,
+              5
+            ],
+            "odds": 459.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          4,
+          5,
+          11
+        ],
+        "trio_odds": 67.5,
+        "trifecta_equal_return_multiplier": 71.65949111590531,
+        "trifecta_orders": [
+          {
+            "selection": [
+              4,
+              5,
+              11
+            ],
+            "odds": 845.7
+          },
+          {
+            "selection": [
+              4,
+              11,
+              5
+            ],
+            "odds": 573.1
+          },
+          {
+            "selection": [
+              5,
+              4,
+              11
+            ],
+            "odds": 622.0
+          },
+          {
+            "selection": [
+              5,
+              11,
+              4
+            ],
+            "odds": 359.4
+          },
+          {
+            "selection": [
+              11,
+              4,
+              5
+            ],
+            "odds": 354.9
+          },
+          {
+            "selection": [
+              11,
+              5,
+              4
+            ],
+            "odds": 261.8
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          10,
+          11
+        ],
+        "trio_odds": 67.6,
+        "trifecta_equal_return_multiplier": 68.7939766795884,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              10,
+              11
+            ],
+            "odds": 494.5
+          },
+          {
+            "selection": [
+              1,
+              11,
+              10
+            ],
+            "odds": 443.4
+          },
+          {
+            "selection": [
+              10,
+              1,
+              11
+            ],
+            "odds": 536.0
+          },
+          {
+            "selection": [
+              10,
+              11,
+              1
+            ],
+            "odds": 421.8
+          },
+          {
+            "selection": [
+              11,
+              1,
+              10
+            ],
+            "odds": 324.3
+          },
+          {
+            "selection": [
+              11,
+              10,
+              1
+            ],
+            "odds": 340.3
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          4,
+          11
+        ],
+        "trio_odds": 68.4,
+        "trifecta_equal_return_multiplier": 73.57497230331435,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              4,
+              11
+            ],
+            "odds": 573.1
+          },
+          {
+            "selection": [
+              1,
+              11,
+              4
+            ],
+            "odds": 373.8
+          },
+          {
+            "selection": [
+              4,
+              1,
+              11
+            ],
+            "odds": 843.7
+          },
+          {
+            "selection": [
+              4,
+              11,
+              1
+            ],
+            "odds": 600.5
+          },
+          {
+            "selection": [
+              11,
+              1,
+              4
+            ],
+            "odds": 285.0
+          },
+          {
+            "selection": [
+              11,
+              4,
+              1
+            ],
+            "odds": 355.6
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          3,
+          6,
+          10
+        ],
+        "trio_odds": 69.3,
+        "trifecta_equal_return_multiplier": 70.55232380943241,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              6,
+              10
+            ],
+            "odds": 410.0
+          },
+          {
+            "selection": [
+              3,
+              10,
+              6
+            ],
+            "odds": 478.3
+          },
+          {
+            "selection": [
+              6,
+              3,
+              10
+            ],
+            "odds": 422.3
+          },
+          {
+            "selection": [
+              6,
+              10,
+              3
+            ],
+            "odds": 369.3
+          },
+          {
+            "selection": [
+              10,
+              3,
+              6
+            ],
+            "odds": 504.8
+          },
+          {
+            "selection": [
+              10,
+              6,
+              3
+            ],
+            "odds": 386.5
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          3,
+          4,
+          11
+        ],
+        "trio_odds": 72.8,
+        "trifecta_equal_return_multiplier": 87.4235754688416,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              4,
+              11
+            ],
+            "odds": 654.4
+          },
+          {
+            "selection": [
+              3,
+              11,
+              4
+            ],
+            "odds": 406.3
+          },
+          {
+            "selection": [
+              4,
+              3,
+              11
+            ],
+            "odds": 863.7
+          },
+          {
+            "selection": [
+              4,
+              11,
+              3
+            ],
+            "odds": 760.9
+          },
+          {
+            "selection": [
+              11,
+              3,
+              4
+            ],
+            "odds": 338.7
+          },
+          {
+            "selection": [
+              11,
+              4,
+              3
+            ],
+            "odds": 493.9
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          5,
+          11
+        ],
+        "trio_odds": 74.8,
+        "trifecta_equal_return_multiplier": 77.54960168210536,
+        "trifecta_orders": [
+          {
+            "selection": [
+              2,
+              5,
+              11
+            ],
+            "odds": 828.4
+          },
+          {
+            "selection": [
+              2,
+              11,
+              5
+            ],
+            "odds": 773.9
+          },
+          {
+            "selection": [
+              5,
+              2,
+              11
+            ],
+            "odds": 626.3
+          },
+          {
+            "selection": [
+              5,
+              11,
+              2
+            ],
+            "odds": 359.4
+          },
+          {
+            "selection": [
+              11,
+              2,
+              5
+            ],
+            "odds": 407.7
+          },
+          {
+            "selection": [
+              11,
+              5,
+              2
+            ],
+            "odds": 280.6
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          2,
+          3,
+          11
+        ],
+        "trio_odds": 77.6,
+        "trifecta_equal_return_multiplier": 82.34614598295119,
+        "trifecta_orders": [
+          {
+            "selection": [
+              2,
+              3,
+              11
+            ],
+            "odds": 891.2
+          },
+          {
+            "selection": [
+              2,
+              11,
+              3
+            ],
+            "odds": 861.7
+          },
+          {
+            "selection": [
+              3,
+              2,
+              11
+            ],
+            "odds": 630.6
+          },
+          {
+            "selection": [
+              3,
+              11,
+              2
+            ],
+            "odds": 328.9
+          },
+          {
+            "selection": [
+              11,
+              2,
+              3
+            ],
+            "odds": 480.2
+          },
+          {
+            "selection": [
+              11,
+              3,
+              2
+            ],
+            "odds": 317.2
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          5,
+          6,
+          10
+        ],
+        "trio_odds": 96.7,
+        "trifecta_equal_return_multiplier": 91.41647775575042,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              6,
+              10
+            ],
+            "odds": 565.1
+          },
+          {
+            "selection": [
+              5,
+              10,
+              6
+            ],
+            "odds": 618.8
+          },
+          {
+            "selection": [
+              6,
+              5,
+              10
+            ],
+            "odds": 518.5
+          },
+          {
+            "selection": [
+              6,
+              10,
+              5
+            ],
+            "odds": 484.0
+          },
+          {
+            "selection": [
+              10,
+              5,
+              6
+            ],
+            "odds": 568.6
+          },
+          {
+            "selection": [
+              10,
+              6,
+              5
+            ],
+            "odds": 555.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          6,
+          9,
+          10
+        ],
+        "trio_odds": 97.6,
+        "trifecta_equal_return_multiplier": 84.90356869983792,
+        "trifecta_orders": [
+          {
+            "selection": [
+              6,
+              9,
+              10
+            ],
+            "odds": 478.3
+          },
+          {
+            "selection": [
+              6,
+              10,
+              9
+            ],
+            "odds": 468.5
+          },
+          {
+            "selection": [
+              9,
+              6,
+              10
+            ],
+            "odds": 486.0
+          },
+          {
+            "selection": [
+              9,
+              10,
+              6
+            ],
+            "odds": 543.2
+          },
+          {
+            "selection": [
+              10,
+              6,
+              9
+            ],
+            "odds": 532.9
+          },
+          {
+            "selection": [
+              10,
+              9,
+              6
+            ],
+            "odds": 562.5
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          2,
+          11
+        ],
+        "trio_odds": 99.5,
+        "trifecta_equal_return_multiplier": 105.03362980803304,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              2,
+              11
+            ],
+            "odds": 692.9
+          },
+          {
+            "selection": [
+              1,
+              11,
+              2
+            ],
+            "odds": 519.2
+          },
+          {
+            "selection": [
+              2,
+              1,
+              11
+            ],
+            "odds": 1118.1
+          },
+          {
+            "selection": [
+              2,
+              11,
+              1
+            ],
+            "odds": 1065.8
+          },
+          {
+            "selection": [
+              11,
+              1,
+              2
+            ],
+            "odds": 416.5
+          },
+          {
+            "selection": [
+              11,
+              2,
+              1
+            ],
+            "odds": 521.4
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          6
+        ],
+        "trio_odds": 105.3,
+        "trifecta_equal_return_multiplier": 81.62952534736871,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              6
+            ],
+            "odds": 564.2
+          },
+          {
+            "selection": [
+              1,
+              6,
+              3
+            ],
+            "odds": 562.5
+          },
+          {
+            "selection": [
+              3,
+              1,
+              6
+            ],
+            "odds": 452.2
+          },
+          {
+            "selection": [
+              3,
+              6,
+              1
+            ],
+            "odds": 475.8
+          },
+          {
+            "selection": [
+              6,
+              1,
+              3
+            ],
+            "odds": 464.9
+          },
+          {
+            "selection": [
+              6,
+              3,
+              1
+            ],
+            "odds": 447.2
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          2,
+          3,
+          5
+        ],
+        "trio_odds": 106.4,
+        "trifecta_equal_return_multiplier": 110.0205701953594,
+        "trifecta_orders": [
+          {
+            "selection": [
+              2,
+              3,
+              5
+            ],
+            "odds": 1078.4
+          },
+          {
+            "selection": [
+              2,
+              5,
+              3
+            ],
+            "odds": 1091.3
+          },
+          {
+            "selection": [
+              3,
+              2,
+              5
+            ],
+            "odds": 672.5
+          },
+          {
+            "selection": [
+              3,
+              5,
+              2
+            ],
+            "odds": 441.3
+          },
+          {
+            "selection": [
+              5,
+              2,
+              3
+            ],
+            "odds": 677.5
+          },
+          {
+            "selection": [
+              5,
+              3,
+              2
+            ],
+            "odds": 495.9
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          4,
+          5,
+          9
+        ],
+        "trio_odds": 106.5,
+        "trifecta_equal_return_multiplier": 110.3165543382846,
+        "trifecta_orders": [
+          {
+            "selection": [
+              4,
+              5,
+              9
+            ],
+            "odds": 872.0
+          },
+          {
+            "selection": [
+              4,
+              9,
+              5
+            ],
+            "odds": 841.8
+          },
+          {
+            "selection": [
+              5,
+              4,
+              9
+            ],
+            "odds": 778.8
+          },
+          {
+            "selection": [
+              5,
+              9,
+              4
+            ],
+            "odds": 535.2
+          },
+          {
+            "selection": [
+              9,
+              4,
+              5
+            ],
+            "odds": 699.6
+          },
+          {
+            "selection": [
+              9,
+              5,
+              4
+            ],
+            "odds": 465.5
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          5,
+          6
+        ],
+        "trio_odds": 107.4,
+        "trifecta_equal_return_multiplier": 83.65198685939413,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              5,
+              6
+            ],
+            "odds": 545.6
+          },
+          {
+            "selection": [
+              1,
+              6,
+              5
+            ],
+            "odds": 557.3
+          },
+          {
+            "selection": [
+              5,
+              1,
+              6
+            ],
+            "odds": 511.2
+          },
+          {
+            "selection": [
+              5,
+              6,
+              1
+            ],
+            "odds": 428.3
+          },
+          {
+            "selection": [
+              6,
+              1,
+              5
+            ],
+            "odds": 506.2
+          },
+          {
+            "selection": [
+              6,
+              5,
+              1
+            ],
+            "odds": 485.3
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          6,
+          9
+        ],
+        "trio_odds": 112.6,
+        "trifecta_equal_return_multiplier": 101.32852140689697,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              6,
+              9
+            ],
+            "odds": 737.8
+          },
+          {
+            "selection": [
+              1,
+              9,
+              6
+            ],
+            "odds": 711.9
+          },
+          {
+            "selection": [
+              6,
+              1,
+              9
+            ],
+            "odds": 687.7
+          },
+          {
+            "selection": [
+              6,
+              9,
+              1
+            ],
+            "odds": 512.6
+          },
+          {
+            "selection": [
+              9,
+              1,
+              6
+            ],
+            "odds": 557.3
+          },
+          {
+            "selection": [
+              9,
+              6,
+              1
+            ],
+            "odds": 523.7
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          9,
+          10
+        ],
+        "trio_odds": 136.3,
+        "trifecta_equal_return_multiplier": 124.05990564079409,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              9,
+              10
+            ],
+            "odds": 849.6
+          },
+          {
+            "selection": [
+              1,
+              10,
+              9
+            ],
+            "odds": 742.3
+          },
+          {
+            "selection": [
+              9,
+              1,
+              10
+            ],
+            "odds": 631.7
+          },
+          {
+            "selection": [
+              9,
+              10,
+              1
+            ],
+            "odds": 705.0
+          },
+          {
+            "selection": [
+              10,
+              1,
+              9
+            ],
+            "odds": 824.7
+          },
+          {
+            "selection": [
+              10,
+              9,
+              1
+            ],
+            "odds": 756.2
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          4,
+          5
+        ],
+        "trio_odds": 140.6,
+        "trifecta_equal_return_multiplier": 138.85208062901958,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              4,
+              5
+            ],
+            "odds": 893.4
+          },
+          {
+            "selection": [
+              1,
+              5,
+              4
+            ],
+            "odds": 676.2
+          },
+          {
+            "selection": [
+              4,
+              1,
+              5
+            ],
+            "odds": 1047.4
+          },
+          {
+            "selection": [
+              4,
+              5,
+              1
+            ],
+            "odds": 1075.2
+          },
+          {
+            "selection": [
+              5,
+              1,
+              4
+            ],
+            "odds": 613.6
+          },
+          {
+            "selection": [
+              5,
+              4,
+              1
+            ],
+            "odds": 918.1
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          10
+        ],
+        "trio_odds": 144.4,
+        "trifecta_equal_return_multiplier": 150.92908862328056,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              10
+            ],
+            "odds": 1132.0
+          },
+          {
+            "selection": [
+              1,
+              10,
+              3
+            ],
+            "odds": 872.0
+          },
+          {
+            "selection": [
+              3,
+              1,
+              10
+            ],
+            "odds": 700.9
+          },
+          {
+            "selection": [
+              3,
+              10,
+              1
+            ],
+            "odds": 872.0
+          },
+          {
+            "selection": [
+              10,
+              1,
+              3
+            ],
+            "odds": 922.8
+          },
+          {
+            "selection": [
+              10,
+              3,
+              1
+            ],
+            "odds": 1065.8
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          5,
+          10
+        ],
+        "trio_odds": 144.7,
+        "trifecta_equal_return_multiplier": 136.41110033792873,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              5,
+              10
+            ],
+            "odds": 944.3
+          },
+          {
+            "selection": [
+              1,
+              10,
+              5
+            ],
+            "odds": 764.1
+          },
+          {
+            "selection": [
+              5,
+              1,
+              10
+            ],
+            "odds": 813.6
+          },
+          {
+            "selection": [
+              5,
+              10,
+              1
+            ],
+            "odds": 832.2
+          },
+          {
+            "selection": [
+              10,
+              1,
+              5
+            ],
+            "odds": 819.1
+          },
+          {
+            "selection": [
+              10,
+              5,
+              1
+            ],
+            "odds": 762.5
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      }
+    ],
+    "frame_comparisons": [
+      {
+        "frames": [
+          7,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            9,
+            11
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            8,
+            10
+          ]
+        ],
+        "frame_odds": 6.2,
+        "quinella_equal_return_multiplier": 7.12539066438176,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          3,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            3,
+            11
+          ],
+          [
+            3,
+            10
+          ]
+        ],
+        "frame_odds": 7.8,
+        "quinella_equal_return_multiplier": 8.172897196261683,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          5,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            5,
+            11
+          ],
+          [
+            5,
+            10
+          ]
+        ],
+        "frame_odds": 8.6,
+        "quinella_equal_return_multiplier": 8.783044315992294,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          6,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            6,
+            11
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            7,
+            10
+          ]
+        ],
+        "frame_odds": 9.3,
+        "quinella_equal_return_multiplier": 9.37530212821501,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          3,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            3,
+            9
+          ],
+          [
+            3,
+            8
+          ]
+        ],
+        "frame_odds": 13.4,
+        "quinella_equal_return_multiplier": 13.751474392136576,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          5,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            5,
+            9
+          ],
+          [
+            5,
+            8
+          ]
+        ],
+        "frame_odds": 16.0,
+        "quinella_equal_return_multiplier": 16.572150849564856,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          3,
+          5
+        ],
+        "covered_horse_pairs": [
+          [
+            3,
+            5
+          ]
+        ],
+        "frame_odds": 17.1,
+        "quinella_equal_return_multiplier": 16.4,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          8,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            10,
+            11
+          ]
+        ],
+        "frame_odds": 17.7,
+        "quinella_equal_return_multiplier": 18.9,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          1,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            11
+          ],
+          [
+            1,
+            10
+          ]
+        ],
+        "frame_odds": 17.8,
+        "quinella_equal_return_multiplier": 14.17862950058072,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          6,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "frame_odds": 20.6,
+        "quinella_equal_return_multiplier": 22.331927513150767,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          3,
+          6
+        ],
+        "covered_horse_pairs": [
+          [
+            3,
+            6
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "frame_odds": 21.6,
+        "quinella_equal_return_multiplier": 17.405966277561607,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          5,
+          6
+        ],
+        "covered_horse_pairs": [
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        "frame_odds": 25.7,
+        "quinella_equal_return_multiplier": 25.57944099378882,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          2,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            2,
+            11
+          ],
+          [
+            2,
+            10
+          ]
+        ],
+        "frame_odds": 29.5,
+        "quinella_equal_return_multiplier": 33.940469688694705,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          4,
+          8
+        ],
+        "covered_horse_pairs": [
+          [
+            4,
+            11
+          ],
+          [
+            4,
+            10
+          ]
+        ],
+        "frame_odds": 33.3,
+        "quinella_equal_return_multiplier": 25.55037993920973,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          1,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            9
+          ],
+          [
+            1,
+            8
+          ]
+        ],
+        "frame_odds": 34.8,
+        "quinella_equal_return_multiplier": 34.26989247311828,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          1,
+          5
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            5
+          ]
+        ],
+        "frame_odds": 36.5,
+        "quinella_equal_return_multiplier": 34.4,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          1,
+          3
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            3
+          ]
+        ],
+        "frame_odds": 41.2,
+        "quinella_equal_return_multiplier": 35.0,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          4,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            4,
+            9
+          ],
+          [
+            4,
+            8
+          ]
+        ],
+        "frame_odds": 50.5,
+        "quinella_equal_return_multiplier": 52.18387827775979,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          1,
+          6
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            7
+          ]
+        ],
+        "frame_odds": 57.4,
+        "quinella_equal_return_multiplier": 38.963102493074786,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          2,
+          5
+        ],
+        "covered_horse_pairs": [
+          [
+            2,
+            5
+          ]
+        ],
+        "frame_odds": 59.4,
+        "quinella_equal_return_multiplier": 67.5,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          2,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            2,
+            9
+          ],
+          [
+            2,
+            8
+          ]
+        ],
+        "frame_odds": 60.8,
+        "quinella_equal_return_multiplier": 64.80546519193234,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          1,
+          4
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            4
+          ]
+        ],
+        "frame_odds": 64.5,
+        "quinella_equal_return_multiplier": 59.800000000000004,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          2,
+          3
+        ],
+        "covered_horse_pairs": [
+          [
+            2,
+            3
+          ]
+        ],
+        "frame_odds": 65.9,
+        "quinella_equal_return_multiplier": 64.8,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          3,
+          4
+        ],
+        "covered_horse_pairs": [
+          [
+            3,
+            4
+          ]
+        ],
+        "frame_odds": 68.9,
+        "quinella_equal_return_multiplier": 62.10000000000001,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          1,
+          2
+        ],
+        "covered_horse_pairs": [
+          [
+            1,
+            2
+          ]
+        ],
+        "frame_odds": 69.4,
+        "quinella_equal_return_multiplier": 62.6,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          2,
+          6
+        ],
+        "covered_horse_pairs": [
+          [
+            2,
+            6
+          ],
+          [
+            2,
+            7
+          ]
+        ],
+        "frame_odds": 70.6,
+        "quinella_equal_return_multiplier": 101.86657946370177,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          4,
+          5
+        ],
+        "covered_horse_pairs": [
+          [
+            4,
+            5
+          ]
+        ],
+        "frame_odds": 74.4,
+        "quinella_equal_return_multiplier": 63.6,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          4,
+          6
+        ],
+        "covered_horse_pairs": [
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ]
+        ],
+        "frame_odds": 79.7,
+        "quinella_equal_return_multiplier": 77.76227560718057,
+        "preferred_equal_return_market": "frame"
+      },
+      {
+        "frames": [
+          7,
+          7
+        ],
+        "covered_horse_pairs": [
+          [
+            8,
+            9
+          ]
+        ],
+        "frame_odds": 105.8,
+        "quinella_equal_return_multiplier": 195.40000000000003,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          2,
+          4
+        ],
+        "covered_horse_pairs": [
+          [
+            2,
+            4
+          ]
+        ],
+        "frame_odds": 130.7,
+        "quinella_equal_return_multiplier": 133.0,
+        "preferred_equal_return_market": "quinella_dutch"
+      },
+      {
+        "frames": [
+          6,
+          6
+        ],
+        "covered_horse_pairs": [
+          [
+            6,
+            7
+          ]
+        ],
+        "frame_odds": 141.9,
+        "quinella_equal_return_multiplier": 165.4,
+        "preferred_equal_return_market": "quinella_dutch"
+      }
+    ],
+    "candidate_pair_comparisons": [
+      {
+        "horses": [
+          9,
+          11
+        ],
+        "quinella_odds": 10.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              9,
+              11
+            ],
+            "odds": 19.0
+          },
+          {
+            "selection": [
+              11,
+              9
+            ],
+            "odds": 16.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 8.944289693593316,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          11
+        ],
+        "quinella_odds": 11.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              11
+            ],
+            "odds": 24.0
+          },
+          {
+            "selection": [
+              11,
+              3
+            ],
+            "odds": 21.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 11.284768211920529,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          5,
+          11
+        ],
+        "quinella_odds": 11.2,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              11
+            ],
+            "odds": 24.8
+          },
+          {
+            "selection": [
+              11,
+              5
+            ],
+            "odds": 19.3
+          }
+        ],
+        "exacta_equal_return_multiplier": 10.853514739229025,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          3,
+          9
+        ],
+        "quinella_odds": 14.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              9
+            ],
+            "odds": 33.1
+          },
+          {
+            "selection": [
+              9,
+              3
+            ],
+            "odds": 32.2
+          }
+        ],
+        "exacta_equal_return_multiplier": 16.321898928024503,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          3,
+          5
+        ],
+        "quinella_odds": 16.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              3,
+              5
+            ],
+            "odds": 32.2
+          },
+          {
+            "selection": [
+              5,
+              3
+            ],
+            "odds": 37.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 17.36680972818312,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          11
+        ],
+        "quinella_odds": 17.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              11
+            ],
+            "odds": 34.8
+          },
+          {
+            "selection": [
+              11,
+              1
+            ],
+            "odds": 31.6
+          }
+        ],
+        "exacta_equal_return_multiplier": 16.56144578313253,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          5,
+          9
+        ],
+        "quinella_odds": 17.9,
+        "exacta_orders": [
+          {
+            "selection": [
+              5,
+              9
+            ],
+            "odds": 39.6
+          },
+          {
+            "selection": [
+              9,
+              5
+            ],
+            "odds": 32.8
+          }
+        ],
+        "exacta_equal_return_multiplier": 17.940331491712705,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          5
+        ],
+        "quinella_odds": 34.4,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              5
+            ],
+            "odds": 58.8
+          },
+          {
+            "selection": [
+              5,
+              1
+            ],
+            "odds": 73.1
+          }
+        ],
+        "exacta_equal_return_multiplier": 32.5874147081122,
+        "preferred_equal_return_market": "quinella"
+      },
+      {
+        "horses": [
+          1,
+          3
+        ],
+        "quinella_odds": 35.0,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              3
+            ],
+            "odds": 72.1
+          },
+          {
+            "selection": [
+              3,
+              1
+            ],
+            "odds": 71.9
+          }
+        ],
+        "exacta_equal_return_multiplier": 35.99993055555555,
+        "preferred_equal_return_market": "exacta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          9
+        ],
+        "quinella_odds": 40.6,
+        "exacta_orders": [
+          {
+            "selection": [
+              1,
+              9
+            ],
+            "odds": 85.1
+          },
+          {
+            "selection": [
+              9,
+              1
+            ],
+            "odds": 71.7
+          }
+        ],
+        "exacta_equal_return_multiplier": 38.91371173469388,
+        "preferred_equal_return_market": "quinella"
+      }
+    ],
+    "candidate_triple_comparisons": [
+      {
+        "horses": [
+          3,
+          9,
+          11
+        ],
+        "trio_odds": 15.7,
+        "trifecta_equal_return_multiplier": 13.728596773540337,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              9,
+              11
+            ],
+            "odds": 92.8
+          },
+          {
+            "selection": [
+              3,
+              11,
+              9
+            ],
+            "odds": 93.9
+          },
+          {
+            "selection": [
+              9,
+              3,
+              11
+            ],
+            "odds": 94.4
+          },
+          {
+            "selection": [
+              9,
+              11,
+              3
+            ],
+            "odds": 78.9
+          },
+          {
+            "selection": [
+              11,
+              3,
+              9
+            ],
+            "odds": 79.7
+          },
+          {
+            "selection": [
+              11,
+              9,
+              3
+            ],
+            "odds": 64.1
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          5,
+          9,
+          11
+        ],
+        "trio_odds": 16.0,
+        "trifecta_equal_return_multiplier": 14.345855712464132,
+        "trifecta_orders": [
+          {
+            "selection": [
+              5,
+              9,
+              11
+            ],
+            "odds": 102.8
+          },
+          {
+            "selection": [
+              5,
+              11,
+              9
+            ],
+            "odds": 98.1
+          },
+          {
+            "selection": [
+              9,
+              5,
+              11
+            ],
+            "odds": 102.9
+          },
+          {
+            "selection": [
+              9,
+              11,
+              5
+            ],
+            "odds": 82.2
+          },
+          {
+            "selection": [
+              11,
+              5,
+              9
+            ],
+            "odds": 77.6
+          },
+          {
+            "selection": [
+              11,
+              9,
+              5
+            ],
+            "odds": 66.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          5,
+          11
+        ],
+        "trio_odds": 19.0,
+        "trifecta_equal_return_multiplier": 17.712176515197037,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              5,
+              11
+            ],
+            "odds": 110.1
+          },
+          {
+            "selection": [
+              3,
+              11,
+              5
+            ],
+            "odds": 106.3
+          },
+          {
+            "selection": [
+              5,
+              3,
+              11
+            ],
+            "odds": 127.8
+          },
+          {
+            "selection": [
+              5,
+              11,
+              3
+            ],
+            "odds": 116.0
+          },
+          {
+            "selection": [
+              11,
+              3,
+              5
+            ],
+            "odds": 94.5
+          },
+          {
+            "selection": [
+              11,
+              5,
+              3
+            ],
+            "odds": 91.4
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          3,
+          5,
+          9
+        ],
+        "trio_odds": 25.5,
+        "trifecta_equal_return_multiplier": 23.98843744923956,
+        "trifecta_orders": [
+          {
+            "selection": [
+              3,
+              5,
+              9
+            ],
+            "odds": 136.9
+          },
+          {
+            "selection": [
+              3,
+              9,
+              5
+            ],
+            "odds": 139.1
+          },
+          {
+            "selection": [
+              5,
+              3,
+              9
+            ],
+            "odds": 161.1
+          },
+          {
+            "selection": [
+              5,
+              9,
+              3
+            ],
+            "odds": 153.3
+          },
+          {
+            "selection": [
+              9,
+              3,
+              5
+            ],
+            "odds": 137.0
+          },
+          {
+            "selection": [
+              9,
+              5,
+              3
+            ],
+            "odds": 139.6
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          9,
+          11
+        ],
+        "trio_odds": 31.9,
+        "trifecta_equal_return_multiplier": 30.179805011955494,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              9,
+              11
+            ],
+            "odds": 274.0
+          },
+          {
+            "selection": [
+              1,
+              11,
+              9
+            ],
+            "odds": 230.4
+          },
+          {
+            "selection": [
+              9,
+              1,
+              11
+            ],
+            "odds": 224.0
+          },
+          {
+            "selection": [
+              9,
+              11,
+              1
+            ],
+            "odds": 156.1
+          },
+          {
+            "selection": [
+              11,
+              1,
+              9
+            ],
+            "odds": 153.6
+          },
+          {
+            "selection": [
+              11,
+              9,
+              1
+            ],
+            "odds": 128.8
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          5,
+          11
+        ],
+        "trio_odds": 37.4,
+        "trifecta_equal_return_multiplier": 34.97805862888259,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              5,
+              11
+            ],
+            "odds": 301.2
+          },
+          {
+            "selection": [
+              1,
+              11,
+              5
+            ],
+            "odds": 241.5
+          },
+          {
+            "selection": [
+              5,
+              1,
+              11
+            ],
+            "odds": 285.8
+          },
+          {
+            "selection": [
+              5,
+              11,
+              1
+            ],
+            "odds": 202.1
+          },
+          {
+            "selection": [
+              11,
+              1,
+              5
+            ],
+            "odds": 171.6
+          },
+          {
+            "selection": [
+              11,
+              5,
+              1
+            ],
+            "odds": 145.9
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          11
+        ],
+        "trio_odds": 39.8,
+        "trifecta_equal_return_multiplier": 38.83025875973413,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              11
+            ],
+            "odds": 318.9
+          },
+          {
+            "selection": [
+              1,
+              11,
+              3
+            ],
+            "odds": 279.7
+          },
+          {
+            "selection": [
+              3,
+              1,
+              11
+            ],
+            "odds": 273.4
+          },
+          {
+            "selection": [
+              3,
+              11,
+              1
+            ],
+            "odds": 216.9
+          },
+          {
+            "selection": [
+              11,
+              1,
+              3
+            ],
+            "odds": 201.2
+          },
+          {
+            "selection": [
+              11,
+              3,
+              1
+            ],
+            "odds": 172.3
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          5
+        ],
+        "trio_odds": 55.2,
+        "trifecta_equal_return_multiplier": 51.95026686228816,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              5
+            ],
+            "odds": 394.9
+          },
+          {
+            "selection": [
+              1,
+              5,
+              3
+            ],
+            "odds": 377.3
+          },
+          {
+            "selection": [
+              3,
+              1,
+              5
+            ],
+            "odds": 309.9
+          },
+          {
+            "selection": [
+              3,
+              5,
+              1
+            ],
+            "odds": 259.6
+          },
+          {
+            "selection": [
+              5,
+              1,
+              3
+            ],
+            "odds": 320.3
+          },
+          {
+            "selection": [
+              5,
+              3,
+              1
+            ],
+            "odds": 258.7
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      },
+      {
+        "horses": [
+          1,
+          5,
+          9
+        ],
+        "trio_odds": 56.1,
+        "trifecta_equal_return_multiplier": 57.778187445360714,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              5,
+              9
+            ],
+            "odds": 422.3
+          },
+          {
+            "selection": [
+              1,
+              9,
+              5
+            ],
+            "odds": 453.9
+          },
+          {
+            "selection": [
+              5,
+              1,
+              9
+            ],
+            "odds": 367.0
+          },
+          {
+            "selection": [
+              5,
+              9,
+              1
+            ],
+            "odds": 290.2
+          },
+          {
+            "selection": [
+              9,
+              1,
+              5
+            ],
+            "odds": 344.5
+          },
+          {
+            "selection": [
+              9,
+              5,
+              1
+            ],
+            "odds": 273.0
+          }
+        ],
+        "preferred_equal_return_market": "trifecta_dutch"
+      },
+      {
+        "horses": [
+          1,
+          3,
+          9
+        ],
+        "trio_odds": 56.7,
+        "trifecta_equal_return_multiplier": 53.19769281406234,
+        "trifecta_orders": [
+          {
+            "selection": [
+              1,
+              3,
+              9
+            ],
+            "odds": 418.9
+          },
+          {
+            "selection": [
+              1,
+              9,
+              3
+            ],
+            "odds": 376.1
+          },
+          {
+            "selection": [
+              3,
+              1,
+              9
+            ],
+            "odds": 324.0
+          },
+          {
+            "selection": [
+              3,
+              9,
+              1
+            ],
+            "odds": 265.6
+          },
+          {
+            "selection": [
+              9,
+              1,
+              3
+            ],
+            "odds": 323.7
+          },
+          {
+            "selection": [
+              9,
+              3,
+              1
+            ],
+            "odds": 262.4
+          }
+        ],
+        "preferred_equal_return_market": "trio"
+      }
+    ],
+    "note": "同一的中条件の払戻均等連続配分。市場時刻は混在、100円単位は未反映。三連単6順序の1つでも未取得なら比較しない。期待値・的中率の比較ではない。"
+  },
+  "conditional_5_11_budget_1000": {
+    "budget_yen": 1000,
+    "stake_unit_yen": 100,
+    "condition": "5番・11番が1着と2着を占めると仮定した2結果のみ。",
+    "odds": {
+      "11_to_5": 19.3,
+      "5_to_11": 24.8,
+      "quinella_5_11": 11.2
+    },
+    "stake_yen": {
+      "11_to_5": 0,
+      "5_to_11": 0,
+      "quinella_5_11": 1000
+    },
+    "payout_yen": {
+      "11_first_5_second": 11200,
+      "5_first_11_second": 11200
+    },
+    "minimum_conditional_payout_yen": 11200,
+    "minimum_conditional_net_yen": 10200,
+    "allocations_enumerated": 66,
+    "prediction_probabilities_assigned": false,
+    "outside_condition_payout_yen": 0,
+    "market_updated_at_jst": {
+      "exacta": "2026-10-12T13:44:00+09:00",
+      "quinella": "2026-10-12T13:44:00+09:00"
+    },
+    "note": "条件を満たさなければ全券外れ。全結果保証や予算増額の推薦ではない。表示オッズを固定した整数配分の比較。"
+  },
+  "solver": "scipy.optimize.linprog(method=highs)",
+  "objective": "maximize minimum gross return / total purchase across all 11P3 outcomes",
+  "outcome_count": 990,
+  "available_ticket_count": 838,
+  "available_market_sizes": {
+    "win": 11,
+    "place": 11,
+    "frame": 31,
+    "quinella": 55,
+    "wide": 55,
+    "exacta": 110,
+    "trio": 165,
+    "trifecta": 400
+  },
+  "full_market_sizes": {
+    "win": 11,
+    "place": 11,
+    "frame": 31,
+    "quinella": 55,
+    "wide": 55,
+    "exacta": 110,
+    "trio": 165,
+    "trifecta": 990
+  },
+  "maximin_gross_return_multiplier": 0.8763926114558543,
+  "maximin_net_return_fraction": -0.12360738854414566,
+  "nonzero_ticket_count_tolerance_1e_8": 166,
+  "selected_tickets": [
+    {
+      "type": "place",
+      "selection": [
+        11
+      ],
+      "odds_low": 1.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+      "weight": 0.2738726910799544
+    },
+    {
+      "type": "place",
+      "selection": [
+        5
+      ],
+      "odds_low": 2.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+      "weight": 0.17527852229117094
+    },
+    {
+      "type": "wide",
+      "selection": [
+        3,
+        9
+      ],
+      "odds_low": 6.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.07067682350450435
+    },
+    {
+      "type": "wide",
+      "selection": [
+        3,
+        6
+      ],
+      "odds_low": 9.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.047117882336336236
+    },
+    {
+      "type": "wide",
+      "selection": [
+        1,
+        9
+      ],
+      "odds_low": 13.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.03222031659764172
+    },
+    {
+      "type": "wide",
+      "selection": [
+        9,
+        10
+      ],
+      "odds_low": 16.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.02738726910799546
+    },
+    {
+      "type": "wide",
+      "selection": [
+        1,
+        6
+      ],
+      "odds_low": 18.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.023815016615648207
+    },
+    {
+      "type": "wide",
+      "selection": [
+        4,
+        9
+      ],
+      "odds_low": 21.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.020286866005922544
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        9,
+        11
+      ],
+      "odds_low": 26.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.01628982549174451
+    },
+    {
+      "type": "wide",
+      "selection": [
+        2,
+        9
+      ],
+      "odds_low": 27.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.015819361217614694
+    },
+    {
+      "type": "wide",
+      "selection": [
+        7,
+        9
+      ],
+      "odds_low": 36.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.01193995383454842
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        3,
+        11
+      ],
+      "odds_low": 39.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.011009957430349934
+    },
+    {
+      "type": "wide",
+      "selection": [
+        2,
+        6
+      ],
+      "odds_low": 43.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.010166967650299938
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        10,
+        11
+      ],
+      "odds_low": 44.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.009847107993886007
+    },
+    {
+      "type": "trio",
+      "selection": [
+        5,
+        6,
+        9
+      ],
+      "odds_low": 45.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.009546760473375316
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        3,
+        5
+      ],
+      "odds_low": 55.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0079383388718828
+    },
+    {
+      "type": "wide",
+      "selection": [
+        8,
+        9
+      ],
+      "odds_low": 55.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.007938338871882741
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        3,
+        4
+      ],
+      "odds_low": 152.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.005746836796431832
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        2,
+        3
+      ],
+      "odds_low": 158.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.005536276762197437
+    },
+    {
+      "type": "wide",
+      "selection": [
+        6,
+        8
+      ],
+      "odds_low": 86.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+      "weight": 0.0050775933456306726
+    },
+    {
+      "type": "trio",
+      "selection": [
+        5,
+        6,
+        10
+      ],
+      "odds_low": 96.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0045315026445494
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        9,
+        10
+      ],
+      "odds_low": 97.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.004489716247212367
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        10,
+        11
+      ],
+      "odds_low": 106.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.004122260637139486
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        4,
+        10
+      ],
+      "odds_low": 213.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.004114519302609644
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        2,
+        4
+      ],
+      "odds_low": 219.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0040017927463737646
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        4,
+        10
+      ],
+      "odds_low": 230.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0038054390423615035
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        4,
+        5
+      ],
+      "odds_low": 116.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.003771052544990766
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        6,
+        11
+      ],
+      "odds_low": 116.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0037516806997254055
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        3,
+        10
+      ],
+      "odds_low": 233.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0037516806997254038
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        6,
+        10
+      ],
+      "odds_low": 253.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.003461266237977308
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        10,
+        11
+      ],
+      "odds_low": 134.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.003260389179523269
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        4,
+        5
+      ],
+      "odds_low": 140.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0031166166836978917
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        5,
+        10
+      ],
+      "odds_low": 144.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.003028308954581389
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        3,
+        7
+      ],
+      "odds_low": 294.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002972837895033427
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        2,
+        5
+      ],
+      "odds_low": 157.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0027875083061572967
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        7,
+        11
+      ],
+      "odds_low": 159.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002747312261617099
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        4,
+        8
+      ],
+      "odds_low": 329.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002663807329653053
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        3,
+        4
+      ],
+      "odds_low": 341.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0025640509404793867
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        3,
+        10
+      ],
+      "odds_low": 172.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.002540268439002477
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        2,
+        10
+      ],
+      "odds_low": 347.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0025198177442664013
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        4,
+        11
+      ],
+      "odds_low": 183.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0023945153318465973
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        11,
+        10
+      ],
+      "odds_low": 186.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0023521004064837752
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        7,
+        11
+      ],
+      "odds_low": 190.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0022954232882552504
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        8,
+        11
+      ],
+      "odds_low": 195.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002246008742839197
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        6,
+        10
+      ],
+      "odds_low": 201.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002175751269751377
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        5,
+        7
+      ],
+      "odds_low": 203.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002151184613293702
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        10,
+        3
+      ],
+      "odds_low": 205.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0021281996392808517
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        8,
+        11
+      ],
+      "odds_low": 206.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0021230441168988727
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        4,
+        7
+      ],
+      "odds_low": 414.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002113826848663421
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        7,
+        10
+      ],
+      "odds_low": 419.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0020881406038976754
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        5,
+        6
+      ],
+      "odds_low": 210.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0020846636809130686
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        5,
+        8
+      ],
+      "odds_low": 210.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002081692663790627
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        4,
+        6
+      ],
+      "odds_low": 210.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002077744455798612
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        6,
+        9
+      ],
+      "odds_low": 213.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.002053403494507626
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        5,
+        10
+      ],
+      "odds_low": 218.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0020100747969170963
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        3,
+        8
+      ],
+      "odds_low": 453.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0019337877569634916
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        11,
+        3
+      ],
+      "odds_low": 229.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0019118512466314457
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        4,
+        5
+      ],
+      "odds_low": 231.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.001893674614208846
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        4,
+        6
+      ],
+      "odds_low": 239.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0018281030693697428
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        2,
+        7
+      ],
+      "odds_low": 492.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0017794773836667093
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        5,
+        10
+      ],
+      "odds_low": 248.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.00176407530486283
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        4,
+        10
+      ],
+      "odds_low": 504.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.001738184473335689
+    },
+    {
+      "type": "trio",
+      "selection": [
+        7,
+        10,
+        11
+      ],
+      "odds_low": 253.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0017292671891394134
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        7,
+        11
+      ],
+      "odds_low": 264.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0016598344913936643
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        8,
+        11
+      ],
+      "odds_low": 266.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0016442638113618286
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        10,
+        11
+      ],
+      "odds_low": 270.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0016217479856696054
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        4,
+        7
+      ],
+      "odds_low": 561.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0015608060756114948
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        1,
+        4
+      ],
+      "odds_low": 285.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0015375308972909731
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        5,
+        10
+      ],
+      "odds_low": 287.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.001526816396264554
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        4,
+        8
+      ],
+      "odds_low": 585.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0014965720824041229
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        3,
+        11
+      ],
+      "odds_low": 294.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0014894503933648108
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        7,
+        10
+      ],
+      "odds_low": 593.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0014759053746309437
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        7,
+        10
+      ],
+      "odds_low": 620.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0014117149024739923
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        3,
+        2
+      ],
+      "odds_low": 317.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0013814511529884217
+    },
+    {
+      "type": "trio",
+      "selection": [
+        5,
+        6,
+        7
+      ],
+      "odds_low": 320.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0013668007040796226
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        3,
+        7
+      ],
+      "odds_low": 643.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0013627625741810827
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        1,
+        10
+      ],
+      "odds_low": 324.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0013512066164906794
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        8,
+        10
+      ],
+      "odds_low": 655.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0013371873839729239
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        11,
+        2
+      ],
+      "odds_low": 328.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0013323086218544463
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        3,
+        4
+      ],
+      "odds_low": 338.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0012937593909888613
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        7,
+        11
+      ],
+      "odds_low": 340.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0012884337128136645
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        10,
+        1
+      ],
+      "odds_low": 340.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0012876764787773357
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        6,
+        7
+      ],
+      "odds_low": 344.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.001271608548252836
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        5,
+        7
+      ],
+      "odds_low": 349.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0012548576910879927
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        5,
+        3,
+        10
+      ],
+      "odds_low": 350.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0012516318358409796
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        1,
+        10
+      ],
+      "odds_low": 700.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0012503818111797038
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        2,
+        8
+      ],
+      "odds_low": 710.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0012341819623374938
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        4,
+        1
+      ],
+      "odds_low": 355.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.00123227307572533
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        6,
+        10
+      ],
+      "odds_low": 357.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.001226753375498116
+    },
+    {
+      "type": "trio",
+      "selection": [
+        8,
+        10,
+        11
+      ],
+      "odds_low": 358.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.001222645942321226
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        6,
+        10,
+        3
+      ],
+      "odds_low": 369.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0011865591814999384
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        11,
+        4
+      ],
+      "odds_low": 373.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0011722747611769056
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        6,
+        3
+      ],
+      "odds_low": 386.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.001133754995415077
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        8,
+        10
+      ],
+      "odds_low": 778.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0011261791460496714
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        8,
+        10
+      ],
+      "odds_low": 798.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0010979611769679958
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        11,
+        4
+      ],
+      "odds_low": 406.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010785043212599738
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        10,
+        5
+      ],
+      "odds_low": 406.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010771787259781878
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        6,
+        10
+      ],
+      "odds_low": 410.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010687714773851885
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        7,
+        9
+      ],
+      "odds_low": 414.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0010569134243317106
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        1,
+        2
+      ],
+      "odds_low": 416.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010520919705352396
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        7,
+        11
+      ],
+      "odds_low": 421.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0010401051643197895
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        11,
+        1
+      ],
+      "odds_low": 421.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010388722278993061
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        6,
+        3,
+        10
+      ],
+      "odds_low": 422.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.001037642211053581
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        4,
+        7
+      ],
+      "odds_low": 865.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0010130535330665292
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        4,
+        8
+      ],
+      "odds_low": 871.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0010053832872041462
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        10,
+        3
+      ],
+      "odds_low": 872.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010050373984585486
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        10,
+        1
+      ],
+      "odds_low": 872.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010050373984585486
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        5,
+        10,
+        3
+      ],
+      "odds_low": 438.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0010002198259025953
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        5,
+        8
+      ],
+      "odds_low": 438.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0009990795844229982
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        5,
+        2
+      ],
+      "odds_low": 441.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0009929669289098747
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        11,
+        10
+      ],
+      "odds_low": 443.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0009882641085429125
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        5,
+        3
+      ],
+      "odds_low": 445.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0009833848871811646
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        7,
+        10
+      ],
+      "odds_low": 906.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0009667872161675172
+    },
+    {
+      "type": "trio",
+      "selection": [
+        5,
+        7,
+        10
+      ],
+      "odds_low": 456.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0009590639214881309
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        7,
+        10
+      ],
+      "odds_low": 921.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0009513597605903759
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        1,
+        3
+      ],
+      "odds_low": 922.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0009497102421498207
+    },
+    {
+      "type": "trio",
+      "selection": [
+        3,
+        7,
+        8
+      ],
+      "odds_low": 946.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0009256364717531204
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        3,
+        8
+      ],
+      "odds_low": 952.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0009204837847451468
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        10,
+        6
+      ],
+      "odds_low": 478.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0009161536812208389
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        2,
+        3
+      ],
+      "odds_low": 480.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0009125287499540344
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        6,
+        7
+      ],
+      "odds_low": 982.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0008922751083851093
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        4,
+        3
+      ],
+      "odds_low": 493.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008872166546424931
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        10,
+        11
+      ],
+      "odds_low": 494.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.000886140153140399
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        5,
+        3,
+        2
+      ],
+      "odds_low": 495.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008836384467189494
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        3,
+        6
+      ],
+      "odds_low": 504.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.000868059242725688
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        7,
+        8
+      ],
+      "odds_low": 1011.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0008665143478899093
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        11,
+        2
+      ],
+      "odds_low": 519.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008439836396916936
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        11,
+        2,
+        1
+      ],
+      "odds_low": 521.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008404225272879313
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        3,
+        1
+      ],
+      "odds_low": 1065.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008222861807617324
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        1,
+        11
+      ],
+      "odds_low": 536.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008175304211341927
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        8,
+        11
+      ],
+      "odds_low": 545.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0008035875769813449
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        10,
+        3,
+        5
+      ],
+      "odds_low": 545.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0008031457216420949
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        5,
+        8
+      ],
+      "odds_low": 552.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0007932590617811858
+    },
+    {
+      "type": "trio",
+      "selection": [
+        1,
+        6,
+        7
+      ],
+      "odds_low": 557.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.000785579608691157
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        3,
+        10
+      ],
+      "odds_low": 1132.0,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0007741984200140056
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        4,
+        11
+      ],
+      "odds_low": 573.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0007646070593752003
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        5,
+        7
+      ],
+      "odds_low": 585.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0007482860412020611
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        5,
+        7
+      ],
+      "odds_low": 594.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0007367120136649748
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        4,
+        11,
+        1
+      ],
+      "odds_low": 600.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0007297190769823935
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        4,
+        6
+      ],
+      "odds_low": 618.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0007083677751825525
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        2,
+        11
+      ],
+      "odds_low": 630.6,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.00069488789363769
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        8,
+        10
+      ],
+      "odds_low": 1286.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0006813812870905413
+    },
+    {
+      "type": "trio",
+      "selection": [
+        5,
+        8,
+        10
+      ],
+      "odds_low": 654.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0006698200943563543
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        4,
+        11
+      ],
+      "odds_low": 654.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0006696153816135809
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        3,
+        2,
+        5
+      ],
+      "odds_low": 672.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0006515930196697799
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        5,
+        2,
+        3
+      ],
+      "odds_low": 677.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0006467842150965713
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        1,
+        2,
+        11
+      ],
+      "odds_low": 692.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0006324091582160879
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        7,
+        8
+      ],
+      "odds_low": 1514.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0005785151570769386
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        4,
+        11,
+        3
+      ],
+      "odds_low": 760.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0005758921089866307
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        5,
+        8
+      ],
+      "odds_low": 813.5,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0005386555694258476
+    },
+    {
+      "type": "trio",
+      "selection": [
+        7,
+        8,
+        10
+      ],
+      "odds_low": 1662.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0005270900411715008
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        4,
+        1,
+        11
+      ],
+      "odds_low": 843.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0005193745475025807
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        2,
+        11,
+        3
+      ],
+      "odds_low": 861.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0005085253634999736
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        4,
+        3,
+        11
+      ],
+      "odds_low": 863.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0005073478125829886
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        2,
+        3,
+        11
+      ],
+      "odds_low": 891.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0004916924435905827
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        8,
+        10
+      ],
+      "odds_low": 908.9,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0004821171809087109
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        7,
+        8
+      ],
+      "odds_low": 1852.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0004731119690433245
+    },
+    {
+      "type": "trio",
+      "selection": [
+        4,
+        6,
+        8
+      ],
+      "odds_low": 990.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.00044226514506249756
+    },
+    {
+      "type": "trio",
+      "selection": [
+        2,
+        6,
+        7
+      ],
+      "odds_low": 1029.7,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.00042555725524708846
+    },
+    {
+      "type": "trio",
+      "selection": [
+        7,
+        8,
+        11
+      ],
+      "odds_low": 1055.2,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.0004152732237755187
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        2,
+        11,
+        1
+      ],
+      "odds_low": 1065.8,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.00041114309038086636
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        2,
+        3,
+        5
+      ],
+      "odds_low": 1078.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.00040633930427292627
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        2,
+        5,
+        3
+      ],
+      "odds_low": 1091.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0004015360631613003
+    },
+    {
+      "type": "trifecta",
+      "selection": [
+        2,
+        1,
+        11
+      ],
+      "odds_low": 1118.1,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/st/2608040508?ninki=1",
+      "weight": 0.0003919115514962234
+    },
+    {
+      "type": "trio",
+      "selection": [
+        5,
+        7,
+        8
+      ],
+      "odds_low": 1556.4,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.00028154478651241775
+    },
+    {
+      "type": "trio",
+      "selection": [
+        6,
+        7,
+        8
+      ],
+      "odds_low": 1993.3,
+      "updated_at_jst": "2026-10-12T13:44:00+09:00",
+      "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040508?ninki=1",
+      "weight": 0.00021983459876984265
+    }
+  ],
+  "verification": {
+    "weight_sum_minus_one": -2.220446049250313e-16,
+    "min_weight": 0.0,
+    "max_primal_coverage_violation": 4.773959005888173e-15,
+    "minimum_recomputed_return": 0.8763926114558496,
+    "maximum_recomputed_return": 0.8763926114558579,
+    "dual_weight_sum_minus_one": -2.220446049250313e-16,
+    "min_dual_weight": 0.0,
+    "dual_upper_bound": 0.8763926114558543,
+    "max_dual_constraint_violation": 7.771561172376096e-16,
+    "primal_dual_gap": 0.0,
+    "binding_outcome_count_tolerance_1e_7": 990
+  },
+  "assumptions": [
+    "通常の同着なし上位3着、取消・返還なし。",
+    "複勝とワイドは表示下限オッズを全的中結果に固定。",
+    "枠連は馬番1→1枠、2→2枠、3→3枠、4→4枠、5→5枠、6・7→6枠、8・9→7枠、10・11→8枠。",
+    "購入比率は非負連続値。100円単位、予算、自己購入によるオッズ影響を未反映。",
+    "市場の更新時刻は混在し、中間オッズは購入時に固定されない。",
+    "3連複165組は全取得、3連単は400/990の部分取得。取得済み券に限定した最適値であり、全券種全組合せの最適値ではない。",
+    "結果確率は設定していない。期待利益の最大化、的中予測ではない。"
+  ],
+  "reproduction_command": "python -B scripts/r8_coverage_lp.py --input data/2026-10-12/r8_markets_latest.json --output reports/2026-10-12/r8-coverage-latest.json"
+}

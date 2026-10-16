@@ -1,0 +1,4826 @@
+{
+  "analysis_at_jst": "2026-10-12T12:44:35+09:00",
+  "scope": "2026-10-12 京都6〜12R",
+  "method": "descriptive_history_and_conditional_ticket_arithmetic",
+  "calibrated_prediction_model": false,
+  "horse_count": 95,
+  "stake_per_ticket_yen": 100,
+  "max_quote_age_minutes": 15,
+  "source_manifest": [
+    {
+      "file": "kyoto_06.json",
+      "sha256": "f72272fb195b89a44f9385a1ace989d199f202629a6038146cb73a09da3f159c"
+    },
+    {
+      "file": "kyoto_07.json",
+      "sha256": "b386e14f0e1a6663889fbd0bb5a76b8210b43201f180f07ebd4358f01a3430e2"
+    },
+    {
+      "file": "kyoto_08.json",
+      "sha256": "5632c72dd7619902d59d20020ea0f123e9ab7d455f7e7857d91afb5fe39e55ef"
+    },
+    {
+      "file": "kyoto_09.json",
+      "sha256": "e383968fdc1027983293abc7bb2ca8581d57ca83b41606eee0e260b4a5ba1e8d"
+    },
+    {
+      "file": "kyoto_10.json",
+      "sha256": "e281486619c3512f6d2233de7ea4b80a10178c6d27e9f0f6cfc2b9959065f2cf"
+    },
+    {
+      "file": "kyoto_11.json",
+      "sha256": "869e721434b49b769dd6a4dea8ab38eaf190f251e6a9c19a316bd684dcc38505"
+    },
+    {
+      "file": "kyoto_12.json",
+      "sha256": "a620ac492092c5376212437672e617c785cd1c471adb9fcd03aae9106871887c"
+    }
+  ],
+  "races": [
+    {
+      "race": 6,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040506",
+      "start_jst": "2026-10-12T12:55:00+09:00",
+      "surface": "turf",
+      "distance_m": 1200,
+      "class": "2歳新馬",
+      "odds_observed_at_jst": "2026-10-12T12:35:59+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:30:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:30:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T12:30:00+09:00"
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/06/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://news.netkeiba.com/?no=344989&pid=news_view",
+          "kind": "history",
+          "updated_at_jst": "2026-10-08T19:00:00+09:00"
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "コパノアクション",
+          "win_odds": 51.7,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 2,
+          "name": "プリティランサー",
+          "win_odds": 10.4,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 3,
+          "name": "ベニーバローズ",
+          "win_odds": 7.6,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 4,
+          "name": "オノイチコマチ",
+          "win_odds": 31.6,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 5,
+          "name": "エクセレントワード",
+          "win_odds": 19,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 6,
+          "name": "カレンラヴュー",
+          "win_odds": 44.4,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 7,
+          "name": "クールガモーン",
+          "win_odds": 6.9,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "▲",
+          "notes": [
+            "父タワーオブロンドン。実戦能力は未確認。",
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 8,
+          "name": "ルーチェドンナ",
+          "win_odds": 7.1,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "○",
+          "notes": [
+            "父モーリス、母父ロードカナロア。実戦能力は未確認。",
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "エクセルブリーズ",
+          "win_odds": 12.9,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 10,
+          "name": "ナムラレーヴ",
+          "win_odds": 54.9,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 11,
+          "name": "クラストムーン",
+          "win_odds": 4.4,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "△",
+          "notes": [
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 12,
+          "name": "メイショウギフト",
+          "win_odds": 3.4,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "◎",
+          "notes": [
+            "2026年10月8日19時公開のnetkeiba新馬紹介で調教の動きが良いと評価。",
+            "2歳新馬で実戦未出走。京都通算・同距離通算はnull。調教・血統からの暫定評価で確信度は低い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040506?ninki=1",
+            "https://www.jbis.or.jp/race/20261012/108/06/",
+            "https://news.netkeiba.com/?no=344989&pid=news_view"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            8,
+            12
+          ],
+          "odds_low": 5.9,
+          "odds_high": 6.5,
+          "updated_at_jst": "2026-10-12T12:30:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1",
+          "priority": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            7,
+            12
+          ],
+          "odds_low": 5,
+          "odds_high": 5.5,
+          "updated_at_jst": "2026-10-12T12:30:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1",
+          "priority": false
+        }
+      ],
+      "before_analysis_cutoff": true
+    },
+    {
+      "race": 7,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040507",
+      "start_jst": "2026-10-12T13:25:00+09:00",
+      "surface": "dirt",
+      "distance_m": 1900,
+      "class": "3歳以上1勝クラス",
+      "odds_observed_at_jst": "2026-10-12T12:35:59+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:29:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:29:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T12:29:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+          "kind": "course",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/07/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106175/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105445/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023104476/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106566/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022104654/",
+          "kind": "history",
+          "updated_at_jst": null
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "ロックウイズユー",
+          "win_odds": 43.9,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            6
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート6戦で3着以内なし。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 6,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 2,
+          "name": "アレンスター",
+          "win_odds": 5.8,
+          "kyoto_record": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "mark": "○",
+          "notes": [
+            "京都ダート2戦で1勝・2着1回。2026年2月7日京都ダ1800m新馬1着、2着に1.4秒差。",
+            "2026年2月15日京都ダ1900m・1勝クラス2着、0.8秒差。",
+            "2026年4月5日中山ダ1800m・1勝クラス14着、2.4秒差以来、約6か月ぶり。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023106175/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.5,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 3,
+          "name": "マジックブルー",
+          "win_odds": 67.1,
+          "kyoto_record": [
+            0,
+            2,
+            0,
+            6
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート8戦で2着2回。近3走7着・10着・7着で、過去の京都連対だけで中心視しない。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 8,
+            "wins": 0,
+            "top3": 2,
+            "win_rate": 0.0,
+            "top3_rate": 0.25
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 4,
+          "name": "ハンドフル",
+          "win_odds": 9.6,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート0戦。京都不振ではなく未経験。",
+            "2026年8月21日名古屋ダ2000m1着、9月1日同距離2着0.1秒差。地方の成績を中央の能力比較へ直接転用しない。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 5,
+          "name": "ゴールドコット",
+          "win_odds": 11,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mark": "▲",
+          "notes": [
+            "2026年5月16日京都ダ1800m未勝利1着、0.1秒差勝ち。5月10日京都ダ1900m未勝利5着、0.6秒差。",
+            "2026年9月21日阪神ダ2000m・1勝クラス3着、0.6秒差。休養明け好走から今回2走目。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023103315/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.3333333333333333
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 6,
+          "name": "タイセイサーブル",
+          "win_odds": 34.6,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート0戦。京都適性は未確認。近3走はいずれも13着以下。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 7,
+          "name": "ドメイン",
+          "win_odds": 17.8,
+          "kyoto_record": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "kyoto_distance_record": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "mark": "☆",
+          "notes": [
+            "2026年1月10日京都ダ1900m未勝利3着、0.1秒差。1月25日同条件未勝利1着、0.1秒差勝ち。",
+            "2026年4月25日京都ダ1800m・1勝クラス9着、1.5秒差。9月21日阪神ダ2000m・1勝クラス5着、1.2秒差。",
+            "京都同1900mの好走は未勝利での実績。昇級後の能力比較は別途必要。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023105445/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.5,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 8,
+          "name": "エアフォースワン",
+          "win_odds": 64,
+          "kyoto_record": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート3戦で3着2回。過去の京都好走歴はあるが直近3走7着・4着・8着。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 2,
+            "win_rate": 0.0,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "エイユーファイヤー",
+          "win_odds": 11.3,
+          "kyoto_record": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "△",
+          "notes": [
+            "2026年1月11日京都ダ1800m・1勝クラス2着、0.1秒差。2025年2月10日京都ダ1800m未勝利3着、0.3秒差。",
+            "2026年9月21日阪神ダ2000m・1勝クラス4着、0.6秒差。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022102710/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 0,
+            "top3": 2,
+            "win_rate": 0.0,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 10,
+          "name": "エクストラプッシュ",
+          "win_odds": 17.5,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            3
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート3戦で3着以内なし。",
+            "2026年9月19日中山ダ2400m・1勝クラス2着、タイム差なし。8月2日中京ダ1900mは13着、2.3秒差。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 11,
+          "name": "カイラーサ",
+          "win_odds": 4.1,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            3
+          ],
+          "kyoto_distance_record": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "mark": "",
+          "notes": [
+            "2026年5月10日京都ダ1900m未勝利1着、0.2秒差勝ち。5月24日同距離・1勝クラス11着、2.3秒差。1月10日同距離未勝利14着、3.8秒差。",
+            "2026年8月2日中京ダ1900m・1勝クラス2着、0.2秒差から9月21日阪神ダ2000m13着、4.6秒差。",
+            "京都に勝ち鞍があっても近走の振れ幅が大きく、人気に対して過信しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023104476/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.25,
+            "top3_rate": 0.25
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.3333333333333333
+          }
+        },
+        {
+          "number": 12,
+          "name": "ダイシンレアレア",
+          "win_odds": 7.6,
+          "kyoto_record": [
+            0,
+            2,
+            1,
+            4
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mark": "△",
+          "notes": [
+            "京都ダートの2着2回・3着1回はいずれもダ1800m未勝利。",
+            "2026年1月18日京都ダ1900m・1勝クラス7着、0.8秒差。",
+            "直近3走はダ2400mで3着・2着・2着。今回500m短縮で、近走の安定を同距離適性とは区別する。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022106566/"
+          ],
+          "course_summary": {
+            "starts": 7,
+            "wins": 0,
+            "top3": 3,
+            "win_rate": 0.0,
+            "top3_rate": 0.42857142857142855
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 13,
+          "name": "リオンサーガ",
+          "win_odds": 77.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            3
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート3戦で3着以内なし。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 14,
+          "name": "セルリアンゲーゲン",
+          "win_odds": 65.5,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート0戦。京都芝の出走とダート適性を混同しない。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 15,
+          "name": "ジーティーアメリカ",
+          "win_odds": 6.7,
+          "kyoto_record": [
+            0,
+            0,
+            1,
+            4
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "◎",
+          "notes": [
+            "京都ダートは5戦で3着1回。全戦績に京都ダ1900m出走なし。",
+            "2026年2月15日京都ダ1800m・1勝クラス3着、1.2秒差。4月26日同条件4着、1.3秒差。",
+            "2026年9月21日阪神ダ2000m・1勝クラス2着、0.3秒差。今回出走するゴールドコット・エイユーファイヤーに先着。京都巧者ではなく近走内容を重視した評価。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022104654/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.2
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 16,
+          "name": "タニセンゴールド",
+          "win_odds": 18.9,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート2戦で3着以内なし。",
+            "2026年8月8日中京ダ1900m未勝利1着、0.1秒差勝ち。今回昇級初戦。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040507?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040507",
+            "https://www.jbis.or.jp/race/20261012/108/07/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            2,
+            15
+          ],
+          "odds_low": 6.2,
+          "odds_high": 6.8,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1",
+          "priority": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            5,
+            15
+          ],
+          "odds_low": 7.2,
+          "odds_high": 7.8,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1",
+          "priority": false
+        }
+      ],
+      "before_analysis_cutoff": true
+    },
+    {
+      "race": 8,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040508",
+      "start_jst": "2026-10-12T14:00:00+09:00",
+      "surface": "turf",
+      "distance_m": 2000,
+      "class": "3歳以上1勝クラス（牝）",
+      "odds_observed_at_jst": "2026-10-12T12:35:59+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:21:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:21:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T12:29:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+          "kind": "course",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/08/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022103705/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102957/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106887/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022100457/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103417/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022100655/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106935/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102376/",
+          "kind": "history",
+          "updated_at_jst": null
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "エレガンシア",
+          "win_odds": 5.7,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "京都芝は2025年5月3日矢車賞・芝2200m5着、0.6秒差の1戦のみ。京都芝2000mは未経験。",
+            "2026年8月23日中京芝2000m・1勝クラス6着、0.3秒差。ベルシュヴァルに0.1秒先着。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022103705/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 2,
+          "name": "ヴィーナスバブル",
+          "win_odds": 28.5,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mark": "",
+          "notes": [
+            "2026年1月11日京都芝2000m・1勝クラス13着、1.4秒差。2025年11月29日京都芝1800m・1勝クラス12着、0.6秒差。",
+            "2026年7月19日小倉芝1800m筑紫特別2着、0.6秒差。小倉好走を京都適性に直接転用しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022102957/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 3,
+          "name": "ストロベリーツリー",
+          "win_odds": 7.7,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "京都芝0戦。京都不振ではなく未経験。",
+            "2025年8月23日札幌芝1800m未勝利1着、0.5秒差勝ち。12月13日エリカ賞・阪神芝2000m5着、1.0秒差。約10か月ぶりの実戦。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023106887/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 4,
+          "name": "テレプシコーラ",
+          "win_odds": 14.2,
+          "kyoto_record": [
+            0,
+            1,
+            0,
+            9
+          ],
+          "kyoto_distance_record": [
+            0,
+            1,
+            0,
+            4
+          ],
+          "mark": "",
+          "notes": [
+            "京都芝2000mは5戦で2着1回。2025年4月27日未勝利2着、0.2秒差。",
+            "2026年1月11日京都芝2000m・1勝クラス14着、1.5秒差。5月3日同条件7着、1.6秒差。",
+            "2026年9月27日阪神芝1800m・1勝クラス5着、0.3秒差。京都2000mへの適性を同一視しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022100457/"
+          ],
+          "course_summary": {
+            "starts": 10,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.1
+          },
+          "distance_summary": {
+            "starts": 5,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.2
+          }
+        },
+        {
+          "number": 5,
+          "name": "ウィズクィーン",
+          "win_odds": 5,
+          "kyoto_record": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "kyoto_distance_record": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "mark": "○",
+          "notes": [
+            "京都芝3戦はすべて2000m。2025年10月4日未勝利1着、0.4秒差勝ち。2026年1月4日・1勝クラス3着、0.3秒差。1月24日若駒S9着、1.4秒差。",
+            "2026年4月12日忘れな草賞8着、1.3秒差以来、約半年休養。同条件実績は強いが仕上がりは未確認。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023103417/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          }
+        },
+        {
+          "number": 6,
+          "name": "カドーダムール",
+          "win_odds": 10.3,
+          "kyoto_record": null,
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "確認した出走表に過去の実戦成績なし。未出走として京都通算・同距離通算をnullとする。",
+            "1勝クラスへの初出走で能力比較の根拠が不足。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/"
+          ],
+          "course_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 7,
+          "name": "レーヌマロン",
+          "win_odds": 27.5,
+          "kyoto_record": [
+            1,
+            1,
+            0,
+            3
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mark": "☆",
+          "notes": [
+            "京都芝2200m未勝利で2025年5月11日2着、0.1秒差、5月25日1着。",
+            "京都芝2000mは2025年10月5日・1勝クラス8着、0.9秒差の1戦。2200mの好走を2000m巧者の根拠にそのまま転用しない。",
+            "直近の芝2走は7着・9着。今回は52kg、約4か月休養明け。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022100655/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.2,
+            "top3_rate": 0.4
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 8,
+          "name": "リトルスカーレット",
+          "win_odds": 17,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2026年5月30日京都芝1600m・1勝クラス7着、0.5秒差。",
+            "2026年8月8日中京芝2000m・1勝クラス7着、0.7秒差。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "レゼルフォート",
+          "win_odds": 4.7,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "▲",
+          "notes": [
+            "全3走は阪神・中京・新潟で、京都芝0戦。",
+            "2026年3月15日阪神芝2000m未勝利2着、0.1秒差。5月17日新潟芝2000m未勝利1着、0.1秒差勝ち。",
+            "初京都・昇級初戦・約5か月休養。人気に対して未知の条件が多い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023106935/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 10,
+          "name": "スリラーナイト",
+          "win_odds": 18.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都芝は1戦で3着以内なし。",
+            "2026年9月20日阪神芝1600m・1勝クラス9着、0.9秒差。2000mへの距離延長適性は未確認。",
+            "京都同距離の全履歴集計は未確認。kyoto_distance_recordのnullは0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 11,
+          "name": "ベルシュヴァル",
+          "win_odds": 5.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "mark": "◎",
+          "notes": [
+            "京都芝は2025年10月11日芝1400m新馬9着、1.8秒差、2026年1月17日芝2000m未勝利10着、0.8秒差。",
+            "2026年4月19日阪神芝2000m未勝利1着、0.1秒差勝ち。9月19日阪神芝2400m・1勝クラス逃げて2着、0.1秒差。",
+            "京都好走歴ではなく近走内容を評価。今回は400m短縮、他の先行馬もおり単騎逃げ前提にしない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040508?ninki=1",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040508",
+            "https://www.jbis.or.jp/race/20261012/108/08/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023102376/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            5,
+            11
+          ],
+          "odds_low": 4.5,
+          "odds_high": 5.4,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+          "priority": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            9,
+            11
+          ],
+          "odds_low": 3.9,
+          "odds_high": 4.7,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1",
+          "priority": false
+        }
+      ],
+      "before_analysis_cutoff": true
+    },
+    {
+      "race": 9,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040509",
+      "start_jst": "2026-10-12T14:35:00+09:00",
+      "surface": "dirt",
+      "distance_m": 1800,
+      "class": "2勝クラス",
+      "odds_observed_at_jst": "2026-10-12T12:38:19+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:32:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040509",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:32:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+          "kind": "course",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/09/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040509?ninki=0",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T11:53:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110123/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102075/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110135/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105387/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022102700/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022104214/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023102576/",
+          "kind": "history",
+          "updated_at_jst": null
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "イプシロンナンバー",
+          "win_odds": 13.4,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダートは未出走。同距離履歴の独立確認は未実施。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 2,
+          "name": "ロードソルスティス",
+          "win_odds": 22.5,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダートは未出走。同距離履歴の独立確認は未実施。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 3,
+          "name": "クロノスバレット",
+          "win_odds": 9.6,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            3
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "mark": "▲",
+          "notes": [
+            "京都の勝利は2025/05/17ダ1900m未勝利。京都ダ1800mは2026/01/24・1勝クラス6着0.9秒差、05/31與杼特別6着1.1秒差。",
+            "前走阪神稍重1800m出石特別はアタマ差2着。良ダート通算は0-0-1-8。良馬場の今回、近走だけで本命にはしない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022110123/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.25,
+            "top3_rate": 0.25
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 4,
+          "name": "ソルチェリア",
+          "win_odds": 6.4,
+          "kyoto_record": [
+            1,
+            1,
+            0,
+            3
+          ],
+          "kyoto_distance_record": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "mark": "◎",
+          "notes": [
+            "2026/01/31京都ダ1800m1勝クラスを1-1-1-1から0.2秒差勝ち。2025/11/29同コース新馬2着0.7秒差。",
+            "2026/01/10京都1800m5着0.7秒差、05/30鳳雛S6着1.2秒差。京都1900mユニコーンS4着は同距離集計に含めない。",
+            "前走鳥取特別は逃げて2着0.6秒差。単独先行なら有力だが、競られると失速の懸念。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023102075/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.2,
+            "top3_rate": 0.4
+          },
+          "distance_summary": {
+            "starts": 4,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.25,
+            "top3_rate": 0.5
+          }
+        },
+        {
+          "number": 5,
+          "name": "ゼンエスポワール",
+          "win_odds": 6.7,
+          "kyoto_record": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "mark": "△",
+          "notes": [
+            "京都ダ1800m全3戦：2024/11/09新馬5着3.9秒差、2025/11/30・1勝クラス2着0.1秒差、2026/04/26・2勝クラス2着0.7秒差。",
+            "前走鳥取特別9着1.9秒差は休み明け。京都戻り・休養明け2戦目の変わり身候補だが、人気は既に高い。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022110135/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 2,
+            "win_rate": 0.0,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 2,
+            "win_rate": 0.0,
+            "top3_rate": 0.6666666666666666
+          }
+        },
+        {
+          "number": 6,
+          "name": "マシン",
+          "win_odds": 15.1,
+          "kyoto_record": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "mark": "",
+          "notes": [
+            "京都ダ1800m未勝利は2025/10/12・3着0.7秒差、2026/01/11・4着0.7秒差。",
+            "前走鳥取特別3着0.9秒差で4ソルチェリアに0.3秒後着。上位印に入れないが軽視はできない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023105387/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.5
+          }
+        },
+        {
+          "number": 7,
+          "name": "トゥーザムーン",
+          "win_odds": 17.5,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "☆",
+          "notes": [
+            "全出走履歴で京都未出走を確認。",
+            "前走両津湾特別2着0.1秒差、4-4-4-3。良ダート通算1-1-1-1で良馬場に合う可能性。初京都は留保。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022102700/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 8,
+          "name": "シグムンド",
+          "win_odds": 61.7,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダートは未出走。同距離履歴の独立確認は未実施。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "サザンウォリアー",
+          "win_odds": 117.2,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダートは未出走。同距離履歴の独立確認は未実施。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 10,
+          "name": "ニホンピロデヴィン",
+          "win_odds": 4.7,
+          "kyoto_record": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "mark": "○",
+          "notes": [
+            "ダート全履歴は京都1800mの3戦。2026/04/26・1勝クラス1着0.7秒差勝ち、05/09・2勝クラス4着0.2秒差、05/31與杼特別2着0.3秒差。",
+            "前走は2-2-3-3。京都適性は高いが2026/05/31以来の休み明け。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022104214/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          }
+        },
+        {
+          "number": 11,
+          "name": "レッドボブ",
+          "win_odds": 24.0,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            5
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダート通算0-0-0-5。同距離の全履歴確認は未実施でnull。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 12,
+          "name": "テイエムサンレーヴ",
+          "win_odds": 3.1,
+          "kyoto_record": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "京都1800mは2025/11/01新馬1着0.5秒差勝ち、2026/01/05・1勝クラス1着0.1秒差勝ち。",
+            "前走11-11-11-11から上がり35.8秒。コース適性は高いが約9か月休養・初古馬対戦で単勝3.1倍は慎重に評価。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040509",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023102576/",
+            "https://www.jbis.or.jp/race/20261012/108/09/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 2,
+            "top3": 2,
+            "win_rate": 1.0,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 2,
+            "top3": 2,
+            "win_rate": 1.0,
+            "top3_rate": 1.0
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            4,
+            10
+          ],
+          "odds_low": 3.3,
+          "odds_high": 3.6,
+          "updated_at_jst": "2026-10-12T11:53:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040509?ninki=0",
+          "priority": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            3,
+            4
+          ],
+          "odds_low": 5.5,
+          "odds_high": 6.2,
+          "updated_at_jst": "2026-10-12T11:53:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040509?ninki=0",
+          "priority": false
+        }
+      ],
+      "data_notes": [
+        "単勝は12:32更新を再取得。ワイドの現在取得は内部エラーとなったため、以前取得済み11:53更新を保持。ワイドは最新ではない。",
+        "京都同距離のnullは全履歴集計未実施を表す。京都同surface未出走がコース別で確認できても、独立確認していない場合はnullとした。"
+      ],
+      "before_analysis_cutoff": true
+    },
+    {
+      "race": 10,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040510",
+      "start_jst": "2026-10-12T15:10:00+09:00",
+      "surface": "turf",
+      "distance_m": 1800,
+      "class": "2勝クラス",
+      "odds_observed_at_jst": "2026-10-12T12:38:19+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:18:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040510?ninki=1",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:18:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+          "kind": "course",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/10/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T12:31:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023104386/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022110060/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023100947/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106224/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023106960/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021105886/",
+          "kind": "history",
+          "updated_at_jst": null
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "アンヘリータス",
+          "win_odds": 62.4,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都芝通算0-0-0-1。同距離の全履歴確認は未実施でnull。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 2,
+          "name": "カムアップローゼス",
+          "win_odds": 4.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "◎",
+          "notes": [
+            "京都芝は2026/05/09京都新聞杯2200m6着0.5秒差のみ。京都芝1800mは未出走。京都ダートの勝利は芝成績に混ぜない。",
+            "同京都新聞杯で5アクセスに先着。前走神戸新聞杯9着0.7秒差、6月函館1800m勝利から距離短縮を評価。京都1800m適性の実証はない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023104386/",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 3,
+          "name": "ハイディージェン",
+          "win_odds": 49.6,
+          "kyoto_record": [
+            0,
+            1,
+            0,
+            7
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都芝通算0-1-0-7。同距離の全履歴確認は未実施でnull。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 8,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.125
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 4,
+          "name": "エリカアンディーヴ",
+          "win_odds": 9.9,
+          "kyoto_record": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "mark": "▲",
+          "notes": [
+            "京都芝1800mは2024/12/08新馬1着0.1秒差勝ち、2025/02/09きさらぎ賞6着1.4秒差、2026/04/26・1勝クラス1着0.1秒差勝ち。",
+            "京都芝2200mは2025/11/02・1勝クラス2着0.1秒差。京都条件戦での好走を評価。",
+            "前走新潟7着0.9秒差。得意コースへの戻りに期待するが、2勝クラスでの実績はこれから。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022110060/",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 2,
+            "top3": 3,
+            "win_rate": 0.5,
+            "top3_rate": 0.75
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 2,
+            "top3": 2,
+            "win_rate": 0.6666666666666666,
+            "top3_rate": 0.6666666666666666
+          }
+        },
+        {
+          "number": 5,
+          "name": "アクセス",
+          "win_odds": 2.5,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "○",
+          "notes": [
+            "京都芝は2025/11/16・2000m新馬1着0.5秒差勝ち、2026/05/09京都新聞杯2200m10着1.0秒差。京都芝1800mは未出走。",
+            "近2走中京2000m2着0.1秒差、阪神1800m1着0.2秒差。前走3-2から上がり33.7秒。昇級初戦・単勝2.5倍の価格を留保。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023100947/",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.5,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 6,
+          "name": "ウインリベラシオン",
+          "win_odds": 17.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            4
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "mark": "",
+          "notes": [
+            "京都1800mは2024/10/06新馬12着1.5秒差、2026/05/23・1勝クラス6着0.6秒差。ほか京都芝2000m2戦とも着外。",
+            "前走阪神三木特別勝利は評価できるが休養明け。京都適性から上位6頭には入れない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022106224/",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 7,
+          "name": "キシダンチョウ",
+          "win_odds": 7.7,
+          "kyoto_record": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "mark": "☆",
+          "notes": [
+            "京都唯一の出走は2026/04/25あやめ賞芝1800m3着0.2秒差、通過4-6。",
+            "近2走新潟1800mは逃げて3着、1着。今回は10など同型がいて単独逃げの再現性を留保。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023106960/",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 8,
+          "name": "キーウェーブ",
+          "win_odds": 87.7,
+          "kyoto_record": [
+            1,
+            0,
+            1,
+            6
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都芝通算1-0-1-6。同距離の全履歴確認は未実施でnull。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 8,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.125,
+            "top3_rate": 0.25
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "ミリタリータトゥー",
+          "win_odds": 5.1,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "確認した全3戦は小倉1800m未勝利・1勝クラス勝利、阪神1800mローズS5着1.0秒差。京都は未出走。",
+            "前走12-12から上がり34.2秒。今回54kgと差し展開が魅力。京都経験の不足を留保。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 10,
+          "name": "ホウオウトランプ",
+          "win_odds": 9.8,
+          "kyoto_record": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "kyoto_distance_record": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "京都芝1800mは2026/01/25・1勝クラス1着0.1秒差勝ち、02/15春日特別3着0.7秒差。どちらも通過1-1。京都芝の着外2戦は1400m・1600m。",
+            "前走新潟1800mは逃げて11着1.6秒差。京都同距離実績は拾うが、7などとの先行争いを留保。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040510",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2021105886/",
+            "https://www.jbis.or.jp/race/20261012/108/10/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.25,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.5,
+            "top3_rate": 1.0
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            2,
+            5
+          ],
+          "odds_low": 2.6,
+          "odds_high": 3.0,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+          "priority": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            2,
+            4
+          ],
+          "odds_low": 7.2,
+          "odds_high": 8.5,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1",
+          "priority": true
+        }
+      ],
+      "data_notes": [
+        "単勝馬番順は12:09、人気順は12:18更新。後者を採用。ワイド人気順は12:31更新。",
+        "勝率をモデル化していない。印と買い目は成績・条件・価格からの主観的判断。"
+      ],
+      "before_analysis_cutoff": true
+    },
+    {
+      "race": 11,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040511",
+      "start_jst": "2026-10-12T15:45:00+09:00",
+      "surface": "turf",
+      "distance_m": 1400,
+      "class": "GII",
+      "odds_observed_at_jst": "2026-10-12T12:37:15+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:27:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040511?ninki=1",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:27:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+          "kind": "course",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/11/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T12:24:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2019100213/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021100935/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021104434/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2021110031/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022103205/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022105230/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2022106768/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023105685/",
+          "kind": "history",
+          "updated_at_jst": null
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "ダイヤモンドノット",
+          "win_odds": 6.0,
+          "kyoto_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "mark": "○",
+          "notes": [
+            "2025-10-19もみじS京都芝1400m2着、0.1秒差。",
+            "全場芝1400mは3勝2着1回で4戦4連対。前走セントウルS芝1200m8着から距離を戻す。",
+            "京都は1走だけで小標本。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023105685/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 2,
+          "name": "ショウナンザナドゥ",
+          "win_odds": 19.2,
+          "kyoto_record": [
+            1,
+            1,
+            0,
+            4
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "直近京都は2026-05-24都大路S芝1800m13着。",
+            "近2走芝1400mはパラダイスS2着、朱鷺S1着。距離変更後の良化は評価。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 6,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.16666666666666666,
+            "top3_rate": 0.3333333333333333
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 3,
+          "name": "レイベリング",
+          "win_odds": 89.7,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            5
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2026-05-31安土城S京都芝1400m6着、0.7秒差。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 6,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.16666666666666666,
+            "top3_rate": 0.16666666666666666
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 4,
+          "name": "スズハローム",
+          "win_odds": 17.1,
+          "kyoto_record": [
+            2,
+            0,
+            1,
+            3
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2026-02-14洛陽S京都芝1600m1着。",
+            "近走はダービー卿CT1着、安田記念17着。京都1400mの直接実績が強い相手を優先。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 6,
+            "wins": 2,
+            "top3": 3,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 5,
+          "name": "ビッグシーザー",
+          "win_odds": 53.8,
+          "kyoto_record": [
+            3,
+            0,
+            1,
+            3
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "全場芝1400m出走歴なしのため京都芝1400mも0戦。京都3勝の距離は今回と混同しない。",
+            "前走セントウルS芝1200m13着。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 7,
+            "wins": 3,
+            "top3": 4,
+            "win_rate": 0.42857142857142855,
+            "top3_rate": 0.5714285714285714
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 6,
+          "name": "ウインマーベル",
+          "win_odds": 19.8,
+          "kyoto_record": [
+            0,
+            0,
+            1,
+            4
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            3
+          ],
+          "mark": "△",
+          "notes": [
+            "2025京都スワンS芝1400m4着0.1秒差、2024京都開催阪神C8着、2023スワンS5着。",
+            "京都の3着は2024マイルCS芝1600m。芝1400m全場4勝だが京都同距離での馬券内はない。",
+            "2025-11以来約11か月ぶり。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2019100213/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.2
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          }
+        },
+        {
+          "number": 7,
+          "name": "ネオトキオ",
+          "win_odds": 121.5,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "JRA京都芝未経験なので同距離も0戦。",
+            "近3走は大井ダート。JRA芝通算は0勝で2戦とも4着以下。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 8,
+          "name": "サンダーストラック",
+          "win_odds": 28.3,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "全場芝1400m未経験なので京都同距離も0戦。",
+            "近3走は芝1600mで12着、7着、9着。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.5,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "オフトレイル",
+          "win_odds": 4.6,
+          "kyoto_record": [
+            3,
+            3,
+            1,
+            2
+          ],
+          "kyoto_distance_record": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "mark": "◎",
+          "notes": [
+            "2025スワンS京都芝1400m1着1分18秒9。2024スワンS2着、2024京都開催阪神C3着。",
+            "京都同距離は3戦すべて3着以内。2026マイラーズC京都芝1600m5着0.2秒差。",
+            "6月以来の休み明けで58kg。後方からの競馬は展開による。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2021110031/"
+          ],
+          "course_summary": {
+            "starts": 9,
+            "wins": 3,
+            "top3": 7,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.7777777777777778
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 3,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 10,
+          "name": "ララマセラシオン",
+          "win_odds": 26.4,
+          "kyoto_record": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "2026-01-04京都芝1400m2勝クラス1着、2026-01-25山城S京都芝1400m1着。京都2戦2勝。",
+            "京都2勝は条件戦。近走阪急杯2着と朱鷺S3着0.0秒差でオープン実績もある。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2021100935/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 2,
+            "top3": 2,
+            "win_rate": 1.0,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 2,
+            "wins": 2,
+            "top3": 2,
+            "win_rate": 1.0,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 11,
+          "name": "レザベーション",
+          "win_odds": 32.5,
+          "kyoto_record": [
+            0,
+            1,
+            0,
+            3
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "全場芝1400m未経験なので京都同距離も0戦。",
+            "NZトロフィー芝1600m1着、前走京成杯AH11着。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.25
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 12,
+          "name": "アイサンサン",
+          "win_odds": 13.7,
+          "kyoto_record": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2026愛知杯芝1400m1着。",
+            "スプリンターズS11着から中1週。京都芝3戦馬券内だが京都同距離の全履歴は未確認。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 1,
+            "top3": 3,
+            "win_rate": 0.25,
+            "top3_rate": 0.75
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 13,
+          "name": "マイネルチケット",
+          "win_odds": 8.6,
+          "kyoto_record": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "▲",
+          "notes": [
+            "京都2走は2025-10-12三年坂S芝1600m2着0.0秒差、2026-01-24睦月S芝1600m2着0.1秒差。京都芝1400mは未経験。",
+            "近2走芝1400mは京王杯SC3着、パラダイスS1着。6月以来の実戦。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022106768/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 2,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 14,
+          "name": "ワイドラトゥール",
+          "win_odds": 23.4,
+          "kyoto_record": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "kyoto_distance_record": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "mark": "☆",
+          "notes": [
+            "京都芝1400mは2024紅梅S1着、2024長岡京S1着、2025スワンS2着0.0秒差、2023ファンタジーS10着。",
+            "今回と同じ条件での重賞連対歴を穴評価。5月以来の実戦。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2021104434/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 2,
+            "top3": 3,
+            "win_rate": 0.4,
+            "top3_rate": 0.6
+          },
+          "distance_summary": {
+            "starts": 4,
+            "wins": 2,
+            "top3": 3,
+            "win_rate": 0.5,
+            "top3_rate": 0.75
+          }
+        },
+        {
+          "number": 15,
+          "name": "ジョイフルニュース",
+          "win_odds": 8.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "京都芝と全場芝1400mとも未経験。",
+            "全芝8戦は4勝2着4回。4月以来の実戦で条件への対応は未検証。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 16,
+          "name": "ランフォーヴァウ",
+          "win_odds": 55.9,
+          "kyoto_record": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都芝2勝があるが今回同距離の全履歴は未確認。",
+            "直近は北九州記念8着、朱鷺S16着。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 2,
+            "top3": 2,
+            "win_rate": 0.5,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 17,
+          "name": "ミニトランザット",
+          "win_odds": 16.9,
+          "kyoto_record": [
+            3,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "京都芝1600mで2025-10-19の2勝クラス1着、2026-02-10石清水S1着。",
+            "全場芝1400mは未経験。京都3勝を今回の距離適性と同一視しない。前走中京記念2着0.1秒差。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022105230/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 3,
+            "top3": 3,
+            "win_rate": 0.6,
+            "top3_rate": 0.6
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 18,
+          "name": "エリカエクスプレス",
+          "win_odds": 7.1,
+          "kyoto_record": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "△",
+          "notes": [
+            "2025秋華賞京都芝2000m2着0.1秒差、エリザベス女王杯京都芝2200m12着。",
+            "全場芝1400m未経験。京都GⅠ連対と今回の距離適性は別に評価。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040511",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040511",
+            "https://www.jbis.or.jp/race/20261012/108/11/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2022103205/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            1,
+            9
+          ],
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1",
+          "priority": true
+        },
+        {
+          "type": "wide",
+          "horses": [
+            9,
+            13
+          ],
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1",
+          "priority": true
+        },
+        {
+          "type": "wide",
+          "horses": [
+            9,
+            14
+          ],
+          "odds_low": 9.0,
+          "odds_high": 9.5,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1",
+          "priority": true
+        }
+      ],
+      "analysis_notes": [
+        "過去の京都成績は今日の的中確率ではない。印は近走・クラス・距離・実戦間隔を加味した主観評価。",
+        "オッズは取得できた中間値。単勝とワイドは表示更新時刻をそれぞれ保存する。",
+        "京都通算はスポーツナビのJRA競走のみ。京都同距離は全履歴から確認できた馬だけ保存。"
+      ],
+      "before_analysis_cutoff": true
+    },
+    {
+      "race": 12,
+      "date": "2026-10-12",
+      "venue": "京都",
+      "race_id": "2608040512",
+      "start_jst": "2026-10-12T16:30:00+09:00",
+      "surface": "dirt",
+      "distance_m": 1200,
+      "class": "1勝クラス",
+      "odds_observed_at_jst": "2026-10-12T12:37:15+09:00",
+      "odds_updated_at_jst": "2026-10-12T12:36:00+09:00",
+      "sources": [
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040512?ninki=1",
+          "kind": "win_odds",
+          "updated_at_jst": "2026-10-12T12:36:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+          "kind": "course",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://www.jbis.or.jp/race/20261012/108/12/",
+          "kind": "history",
+          "updated_at_jst": null
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1",
+          "kind": "wide_odds",
+          "updated_at_jst": "2026-10-12T12:36:00+09:00"
+        },
+        {
+          "url": "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517/",
+          "kind": "history",
+          "updated_at_jst": null
+        }
+      ],
+      "horses": [
+        {
+          "number": 1,
+          "name": "ダイヤモンド",
+          "win_odds": 8.4,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "○",
+          "notes": [
+            "京都ダート未経験のため同距離も0戦。",
+            "2026-09-19阪神同級ダ1200m2着0.0秒差。前走の同級実績を評価。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 2,
+          "name": "レネネト",
+          "win_odds": 53.0,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダ2戦とも4着以下。京都同距離全履歴は未確認。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 3,
+          "name": "ウェルカムソング",
+          "win_odds": 4.6,
+          "kyoto_record": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "△",
+          "notes": [
+            "2026-05-09京都同級ダ1200m9着1.0秒差。京都同距離の全履歴は未確認。",
+            "近2走芝1200m4着、11着からダートへ戻る。53kgだが人気だけで軸にしない。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.3333333333333333
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 4,
+          "name": "キープライジング",
+          "win_odds": 34.1,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            6
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダ6戦はすべて4着以下。同距離の全履歴は未確認。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 6,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 5,
+          "name": "ジャレッド",
+          "win_odds": 40.0,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "京都ダート未経験。近3走ダート13着、15着、16着。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 6,
+          "name": "メリフルアス",
+          "win_odds": 14.0,
+          "kyoto_record": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "▲",
+          "notes": [
+            "2026-05-10京都ダ1200m良3着、2026-05-23京都ダ1200m稍重の未勝利1着。",
+            "京都ダ4戦中3戦馬券内だが、京都同距離の全履歴は未確認。",
+            "初昇級、約5か月ぶり。稍重の勝ち時計を良馬場時計と単純比較しない。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 4,
+            "wins": 1,
+            "top3": 3,
+            "win_rate": 0.25,
+            "top3_rate": 0.75
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 7,
+          "name": "メイショウアイナ",
+          "win_odds": 89.7,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "全場ダ1200m未経験のため京都同距離も0戦。",
+            "近3走はダ1700mまたは1800mで、2025-08以来の実戦。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.3333333333333333
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 8,
+          "name": "ザングウィル",
+          "win_odds": 8.0,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "直近京都は2026-05-02同級ダ1400m5着。京都同距離の全履歴は未確認。",
+            "近2走ダ1400m2着、4着。1200mへの短縮。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 9,
+          "name": "トゥインクルアップ",
+          "win_odds": 8.0,
+          "kyoto_record": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "△",
+          "notes": [
+            "京都ダ1勝。確認できた京都ダ1200m持ち時計は2024-10-12良1分13秒4。",
+            "京都同距離の全履歴は未確認。最終出走2025-10-25から約1年ぶり。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 2,
+            "wins": 1,
+            "top3": 1,
+            "win_rate": 0.5,
+            "top3_rate": 0.5
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 10,
+          "name": "ビービーシナジー",
+          "win_odds": 12.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "京都唯一のダート出走は2026-05-09ダ1400m未勝利8着。京都ダ1200mは未経験。",
+            "前走中京ダ1200m未勝利1着から初昇級。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 11,
+          "name": "テーオーミリカン",
+          "win_odds": 85.6,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "kyoto_distance_record": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mark": "",
+          "notes": [
+            "京都唯一のダート出走は2025-10-19ダ1400m。京都ダ1200mは未経験。",
+            "近2走は芝1200m7着、16着。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 1,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": 0,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 12,
+          "name": "ベラジオリン",
+          "win_odds": 17.3,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            3
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "2026-05-09京都同級ダ1200m7着0.8秒差。京都同距離の全履歴は未確認。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 13,
+          "name": "ラッキーバック",
+          "win_odds": 20.1,
+          "kyoto_record": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "京都ダ成績は1勝3着1回で3戦中2戦馬券内。京都同距離の全履歴は未確認。",
+            "直近3走は14着、16着、7着。過去の京都好走だけで近走を無視しない。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 1,
+            "top3": 2,
+            "win_rate": 0.3333333333333333,
+            "top3_rate": 0.6666666666666666
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 14,
+          "name": "ビスケットアソート",
+          "win_odds": 8.6,
+          "kyoto_record": [
+            0,
+            3,
+            0,
+            0
+          ],
+          "kyoto_distance_record": [
+            0,
+            3,
+            0,
+            0
+          ],
+          "mark": "◎",
+          "notes": [
+            "京都3戦はすべてダ1200m未勝利2着。2026-01-04と02-01は0.1秒差、02-14は0.8秒差。",
+            "昇級後は阪神ダ1400m3着、阪神ダ1200m3着。京都適性と同級好走を評価。",
+            "京都3連対は未勝利条件の小標本で、今日の確実性を保証しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/",
+            "https://sports.yahoo.co.jp/keiba/directory/horse/2023103517/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 3,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          },
+          "distance_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 3,
+            "win_rate": 0.0,
+            "top3_rate": 1.0
+          }
+        },
+        {
+          "number": 15,
+          "name": "マダムイグレイン",
+          "win_odds": 15.5,
+          "kyoto_record": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "kyoto_distance_record": null,
+          "mark": "",
+          "notes": [
+            "次点。2026-09-19阪神同級ダ1200m4着0.3秒差で、1ダイヤモンドと0.3秒差。",
+            "京都ダ2着1回があるが京都同距離の全履歴は未確認。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 3,
+            "wins": 0,
+            "top3": 1,
+            "win_rate": 0.0,
+            "top3_rate": 0.3333333333333333
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        },
+        {
+          "number": 16,
+          "name": "カネコメファミリー",
+          "win_odds": 7.6,
+          "kyoto_record": [
+            0,
+            0,
+            0,
+            5
+          ],
+          "kyoto_distance_record": null,
+          "mark": "△",
+          "notes": [
+            "2026-05-16京都ダ1200m良5着0.4秒差。京都同距離の全履歴は未確認。",
+            "近2走は阪神ダ1200m2着0.0秒差、小倉ダ1000m2着0.2秒差。",
+            "京都ダ5戦とも4着以下。約3か月ぶり。",
+            "kyoto_distance_record=nullは全履歴未確認を示し、出走0戦を意味しない。"
+          ],
+          "evidence_urls": [
+            "https://sports.yahoo.co.jp/keiba/race/achievement/course/2608040512",
+            "https://sports.yahoo.co.jp/keiba/race/achievement/distance/2608040512",
+            "https://www.jbis.or.jp/race/20261012/108/12/"
+          ],
+          "course_summary": {
+            "starts": 5,
+            "wins": 0,
+            "top3": 0,
+            "win_rate": 0.0,
+            "top3_rate": 0.0
+          },
+          "distance_summary": {
+            "starts": null,
+            "wins": null,
+            "top3": null,
+            "win_rate": null,
+            "top3_rate": null
+          }
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            1,
+            14
+          ],
+          "odds_low": 6.5,
+          "odds_high": 6.9,
+          "updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1",
+          "priority": true
+        },
+        {
+          "type": "wide",
+          "horses": [
+            6,
+            14
+          ],
+          "odds_low": 9.2,
+          "odds_high": 9.7,
+          "updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1",
+          "priority": true
+        }
+      ],
+      "analysis_notes": [
+        "過去の京都成績は今日の的中確率ではない。印は近走・クラス・距離・実戦間隔を加味した主観評価。",
+        "オッズは取得できた中間値。単勝とワイドは表示更新時刻をそれぞれ保存する。",
+        "京都通算はスポーツナビのJRA競走のみ。京都同距離は全履歴から確認できた馬だけ保存。"
+      ],
+      "before_analysis_cutoff": true
+    }
+  ],
+  "portfolios": {
+    "all": {
+      "ticket_count": 15,
+      "stake_yen": 1500,
+      "tickets": [
+        {
+          "race": 6,
+          "horses": [
+            8,
+            12
+          ],
+          "stake_yen": 100,
+          "odds_low": 5.9,
+          "odds_high": 6.5,
+          "updated_at_jst": "2026-10-12T12:30:00+09:00",
+          "quote_age_minutes": 14.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 590,
+          "only_this_hit_net_yen": -910,
+          "break_even_hit_probability": 0.1694915254237288,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1"
+        },
+        {
+          "race": 6,
+          "horses": [
+            7,
+            12
+          ],
+          "stake_yen": 100,
+          "odds_low": 5,
+          "odds_high": 5.5,
+          "updated_at_jst": "2026-10-12T12:30:00+09:00",
+          "quote_age_minutes": 14.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 500,
+          "only_this_hit_net_yen": -1000,
+          "break_even_hit_probability": 0.2,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040506?ninki=1"
+        },
+        {
+          "race": 7,
+          "horses": [
+            2,
+            15
+          ],
+          "stake_yen": 100,
+          "odds_low": 6.2,
+          "odds_high": 6.8,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "quote_age_minutes": 15.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 620,
+          "only_this_hit_net_yen": -880,
+          "break_even_hit_probability": 0.16129032258064516,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1"
+        },
+        {
+          "race": 7,
+          "horses": [
+            5,
+            15
+          ],
+          "stake_yen": 100,
+          "odds_low": 7.2,
+          "odds_high": 7.8,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "quote_age_minutes": 15.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 720,
+          "only_this_hit_net_yen": -780,
+          "break_even_hit_probability": 0.1388888888888889,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040507?ninki=1"
+        },
+        {
+          "race": 8,
+          "horses": [
+            5,
+            11
+          ],
+          "stake_yen": 100,
+          "odds_low": 4.5,
+          "odds_high": 5.4,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "quote_age_minutes": 15.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 450,
+          "only_this_hit_net_yen": -1050,
+          "break_even_hit_probability": 0.2222222222222222,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1"
+        },
+        {
+          "race": 8,
+          "horses": [
+            9,
+            11
+          ],
+          "stake_yen": 100,
+          "odds_low": 3.9,
+          "odds_high": 4.7,
+          "updated_at_jst": "2026-10-12T12:29:00+09:00",
+          "quote_age_minutes": 15.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 390,
+          "only_this_hit_net_yen": -1110,
+          "break_even_hit_probability": 0.2564102564102564,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040508?ninki=1"
+        },
+        {
+          "race": 9,
+          "horses": [
+            4,
+            10
+          ],
+          "stake_yen": 100,
+          "odds_low": 3.3,
+          "odds_high": 3.6,
+          "updated_at_jst": "2026-10-12T11:53:00+09:00",
+          "quote_age_minutes": 51.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 330,
+          "only_this_hit_net_yen": -1170,
+          "break_even_hit_probability": 0.30303030303030304,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040509?ninki=0"
+        },
+        {
+          "race": 9,
+          "horses": [
+            3,
+            4
+          ],
+          "stake_yen": 100,
+          "odds_low": 5.5,
+          "odds_high": 6.2,
+          "updated_at_jst": "2026-10-12T11:53:00+09:00",
+          "quote_age_minutes": 51.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 550,
+          "only_this_hit_net_yen": -950,
+          "break_even_hit_probability": 0.18181818181818182,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040509?ninki=0"
+        },
+        {
+          "race": 10,
+          "horses": [
+            2,
+            5
+          ],
+          "stake_yen": 100,
+          "odds_low": 2.6,
+          "odds_high": 3.0,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "quote_age_minutes": 13.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 260,
+          "only_this_hit_net_yen": -1240,
+          "break_even_hit_probability": 0.38461538461538464,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1"
+        },
+        {
+          "race": 10,
+          "horses": [
+            2,
+            4
+          ],
+          "stake_yen": 100,
+          "odds_low": 7.2,
+          "odds_high": 8.5,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "quote_age_minutes": 13.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 720,
+          "only_this_hit_net_yen": -780,
+          "break_even_hit_probability": 0.1388888888888889,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            1,
+            9
+          ],
+          "stake_yen": 100,
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 20.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 570,
+          "only_this_hit_net_yen": -930,
+          "break_even_hit_probability": 0.17543859649122806,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            9,
+            13
+          ],
+          "stake_yen": 100,
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 20.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 570,
+          "only_this_hit_net_yen": -930,
+          "break_even_hit_probability": 0.17543859649122806,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            9,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.0,
+          "odds_high": 9.5,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 20.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 900,
+          "only_this_hit_net_yen": -600,
+          "break_even_hit_probability": 0.1111111111111111,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 12,
+          "horses": [
+            1,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 6.5,
+          "odds_high": 6.9,
+          "updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "quote_age_minutes": 8.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 650,
+          "only_this_hit_net_yen": -850,
+          "break_even_hit_probability": 0.15384615384615385,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1"
+        },
+        {
+          "race": 12,
+          "horses": [
+            6,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.2,
+          "odds_high": 9.7,
+          "updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "quote_age_minutes": 8.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 920,
+          "only_this_hit_net_yen": -580,
+          "break_even_hit_probability": 0.10869565217391304,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1"
+        }
+      ],
+      "race_scenarios": [
+        {
+          "race": 6,
+          "stake_yen": 200,
+          "common_axes": [
+            12
+          ],
+          "distinct_top3_sets_enumerated": 220,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 500,
+          "max_low_return_scenario_yen": 1090,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 7,
+          "stake_yen": 200,
+          "common_axes": [
+            15
+          ],
+          "distinct_top3_sets_enumerated": 560,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 620,
+          "max_low_return_scenario_yen": 1340,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 8,
+          "stake_yen": 200,
+          "common_axes": [
+            11
+          ],
+          "distinct_top3_sets_enumerated": 165,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 390,
+          "max_low_return_scenario_yen": 840,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 9,
+          "stake_yen": 200,
+          "common_axes": [
+            4
+          ],
+          "distinct_top3_sets_enumerated": 220,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 330,
+          "max_low_return_scenario_yen": 880,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 10,
+          "stake_yen": 200,
+          "common_axes": [
+            2
+          ],
+          "distinct_top3_sets_enumerated": 120,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 260,
+          "max_low_return_scenario_yen": 980,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 11,
+          "stake_yen": 300,
+          "common_axes": [
+            9
+          ],
+          "distinct_top3_sets_enumerated": 816,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 570,
+          "max_low_return_scenario_yen": 1470,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 12,
+          "stake_yen": 200,
+          "common_axes": [
+            14
+          ],
+          "distinct_top3_sets_enumerated": 560,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 650,
+          "max_low_return_scenario_yen": 1570,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        }
+      ],
+      "purchase_executed": false
+    },
+    "priority": {
+      "ticket_count": 6,
+      "stake_yen": 600,
+      "tickets": [
+        {
+          "race": 10,
+          "horses": [
+            2,
+            4
+          ],
+          "stake_yen": 100,
+          "odds_low": 7.2,
+          "odds_high": 8.5,
+          "updated_at_jst": "2026-10-12T12:31:00+09:00",
+          "quote_age_minutes": 13.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 720,
+          "only_this_hit_net_yen": 120,
+          "break_even_hit_probability": 0.1388888888888889,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040510?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            1,
+            9
+          ],
+          "stake_yen": 100,
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 20.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 570,
+          "only_this_hit_net_yen": -30,
+          "break_even_hit_probability": 0.17543859649122806,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            9,
+            13
+          ],
+          "stake_yen": 100,
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 20.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 570,
+          "only_this_hit_net_yen": -30,
+          "break_even_hit_probability": 0.17543859649122806,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 11,
+          "horses": [
+            9,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.0,
+          "odds_high": 9.5,
+          "updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "quote_age_minutes": 20.58,
+          "needs_quote_refresh": true,
+          "payout_low_yen": 900,
+          "only_this_hit_net_yen": 300,
+          "break_even_hit_probability": 0.1111111111111111,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1"
+        },
+        {
+          "race": 12,
+          "horses": [
+            1,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 6.5,
+          "odds_high": 6.9,
+          "updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "quote_age_minutes": 8.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 650,
+          "only_this_hit_net_yen": 50,
+          "break_even_hit_probability": 0.15384615384615385,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1"
+        },
+        {
+          "race": 12,
+          "horses": [
+            6,
+            14
+          ],
+          "stake_yen": 100,
+          "odds_low": 9.2,
+          "odds_high": 9.7,
+          "updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "quote_age_minutes": 8.58,
+          "needs_quote_refresh": false,
+          "payout_low_yen": 920,
+          "only_this_hit_net_yen": 320,
+          "break_even_hit_probability": 0.10869565217391304,
+          "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1"
+        }
+      ],
+      "race_scenarios": [
+        {
+          "race": 10,
+          "stake_yen": 100,
+          "common_axes": [
+            2,
+            4
+          ],
+          "distinct_top3_sets_enumerated": 120,
+          "max_simultaneous_winners": 1,
+          "min_low_return_if_any_hit_yen": 720,
+          "max_low_return_scenario_yen": 720,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 11,
+          "stake_yen": 300,
+          "common_axes": [
+            9
+          ],
+          "distinct_top3_sets_enumerated": 816,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 570,
+          "max_low_return_scenario_yen": 1470,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        },
+        {
+          "race": 12,
+          "stake_yen": 200,
+          "common_axes": [
+            14
+          ],
+          "distinct_top3_sets_enumerated": 560,
+          "max_simultaneous_winners": 2,
+          "min_low_return_if_any_hit_yen": 650,
+          "max_low_return_scenario_yen": 1570,
+          "axis_absent_max_return_yen": 0,
+          "probabilities_assigned": false
+        }
+      ],
+      "purchase_executed": false
+    }
+  }
+}

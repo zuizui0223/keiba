@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-12",
+  "venue": "京都",
+  "observed_at_jst": "2026-10-12T13:40:23+09:00",
+  "user_purchase_status": "未購入前提",
+  "purchase_actions_taken": false,
+  "threshold_pct": 20,
+  "threshold_rule": "ワイド下限の基準値比の変化率の絶対値が20%以上なら重要変化。",
+  "races": [
+    {
+      "race": 11,
+      "race_id": "2608040511",
+      "start_jst": "2026-10-12T15:45:00+09:00",
+      "observed_at_jst": "2026-10-12T13:40:23+09:00",
+      "win_updated_at_jst": "2026-10-12T13:29:00+09:00",
+      "wide_updated_at_jst": "2026-10-12T13:30:00+09:00",
+      "win_source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040511?ninki=1",
+      "wide_source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040511?ninki=1",
+      "win_web_refs": [
+        "turn171view0"
+      ],
+      "wide_web_refs": [
+        "turn173view0",
+        "turn173view2"
+      ],
+      "horses": [
+        {
+          "number": 9,
+          "name": "オフトレイル",
+          "win_odds": 4.6,
+          "baseline_win_odds": 4.6,
+          "baseline_updated_at_jst": "2026-10-12T12:27:00+09:00",
+          "change_pct": 0.0,
+          "cancellation_marker_observed": false
+        },
+        {
+          "number": 1,
+          "name": "ダイヤモンドノット",
+          "win_odds": 6.0,
+          "baseline_win_odds": 6.0,
+          "baseline_updated_at_jst": "2026-10-12T12:27:00+09:00",
+          "change_pct": 0.0,
+          "cancellation_marker_observed": false
+        },
+        {
+          "number": 13,
+          "name": "マイネルチケット",
+          "win_odds": 8.8,
+          "baseline_win_odds": 8.6,
+          "baseline_updated_at_jst": "2026-10-12T12:27:00+09:00",
+          "change_pct": 2.326,
+          "cancellation_marker_observed": false
+        },
+        {
+          "number": 14,
+          "name": "ワイドラトゥール",
+          "win_odds": 24.0,
+          "baseline_win_odds": 23.4,
+          "baseline_updated_at_jst": "2026-10-12T12:27:00+09:00",
+          "change_pct": 2.564,
+          "cancellation_marker_observed": false
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            1,
+            9
+          ],
+          "odds_low": 5.8,
+          "odds_high": 6.2,
+          "updated_at_jst": "2026-10-12T13:30:00+09:00",
+          "baseline_low": 5.7,
+          "baseline_high": 6.0,
+          "baseline_updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "lower_change_pct": 1.754,
+          "important_change": false,
+          "cancellation_marker_observed": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            9,
+            13
+          ],
+          "odds_low": 5.7,
+          "odds_high": 6.0,
+          "updated_at_jst": "2026-10-12T13:30:00+09:00",
+          "baseline_low": 5.7,
+          "baseline_high": 6.0,
+          "baseline_updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "lower_change_pct": 0.0,
+          "important_change": false,
+          "cancellation_marker_observed": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            9,
+            14
+          ],
+          "odds_low": 9.1,
+          "odds_high": 9.6,
+          "updated_at_jst": "2026-10-12T13:30:00+09:00",
+          "baseline_low": 9.0,
+          "baseline_high": 9.5,
+          "baseline_updated_at_jst": "2026-10-12T12:24:00+09:00",
+          "lower_change_pct": 1.111,
+          "important_change": false,
+          "cancellation_marker_observed": false
+        }
+      ]
+    },
+    {
+      "race": 12,
+      "race_id": "2608040512",
+      "start_jst": "2026-10-12T16:30:00+09:00",
+      "observed_at_jst": "2026-10-12T13:40:23+09:00",
+      "win_updated_at_jst": "2026-10-12T13:40:00+09:00",
+      "wide_updated_at_jst": "2026-10-12T13:40:00+09:00",
+      "win_source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040512?ninki=1",
+      "wide_source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040512?ninki=1",
+      "win_web_refs": [
+        "turn175view1"
+      ],
+      "wide_web_refs": [
+        "turn175view0",
+        "turn175view2"
+      ],
+      "horses": [
+        {
+          "number": 14,
+          "name": "ビスケットアソート",
+          "win_odds": 8.9,
+          "baseline_win_odds": 8.6,
+          "baseline_updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "change_pct": 3.488,
+          "cancellation_marker_observed": false
+        },
+        {
+          "number": 1,
+          "name": "ダイヤモンド",
+          "win_odds": 8.3,
+          "baseline_win_odds": 8.4,
+          "baseline_updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "change_pct": -1.19,
+          "cancellation_marker_observed": false
+        },
+        {
+          "number": 6,
+          "name": "メリフルアス",
+          "win_odds": 14.1,
+          "baseline_win_odds": 14.0,
+          "baseline_updated_at_jst": "2026-10-12T12:36:00+09:00",
+          "change_pct": 0.714,
+          "cancellation_marker_observed": false
+        }
+      ],
+      "tickets": [
+        {
+          "type": "wide",
+          "horses": [
+            1,
+            14
+          ],
+          "odds_low": 6.8,
+          "odds_high": 7.3,
+          "updated_at_jst": "2026-10-12T13:40:00+09:00",
+          "baseline_low": 6.5,
+          "baseline_high": 6.9,
+          "baseline_updated_at_jst": "2026-10-12T12:42:00+09:00",
+          "lower_change_pct": 4.615,
+          "important_change": false,
+          "cancellation_marker_observed": false
+        },
+        {
+          "type": "wide",
+          "horses": [
+            6,
+            14
+          ],
+          "odds_low": 9.7,
+          "odds_high": 10.2,
+          "updated_at_jst": "2026-10-12T13:40:00+09:00",
+          "baseline_low": 9.3,
+          "baseline_high": 9.8,
+          "baseline_updated_at_jst": "2026-10-12T12:42:00+09:00",
+          "lower_change_pct": 4.301,
+          "important_change": false,
+          "cancellation_marker_observed": false
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "取得確認時刻とページ更新時刻は別。表示が中間オッズなので確定払戻倍率ではない。",
+    "対象馬・対象ワイドに出走取消/競走除外を示す****表示なし。これは取得した各ページ更新時点の確認で、公式リアルタイム不存在の保証ではない。",
+    "基準は依頼で指定された前回成功値。今回も馬券購入操作はしていない。"
+  ],
+  "any_important_monitored_change": false
+}

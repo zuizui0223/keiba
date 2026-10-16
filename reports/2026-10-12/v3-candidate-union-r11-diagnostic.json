@@ -1,0 +1,68 @@
+{
+  "created_at_jst": "2026-10-13T10:04:26+09:00",
+  "mode": "RETROSPECTIVE_DIAGNOSTIC_NOT_VALIDATION",
+  "input": "data/2026-10-12/v3/kyoto_11.json",
+  "input_sha": "50d3930691dfe765b0cb6f2535d973d93dba524e",
+  "script": "scripts/build_v3_candidate_union.py",
+  "parameters": {
+    "market_top_n": 5,
+    "similar_distance_tolerance_m": 200,
+    "close_margin_s": 0.6,
+    "lightly_raced_max_starts": 5
+  },
+  "candidate_numbers": [
+    1,
+    2,
+    4,
+    6,
+    9,
+    11,
+    12,
+    13,
+    15,
+    16,
+    18
+  ],
+  "candidate_count": 11,
+  "field_size": 18,
+  "coverage_fraction": 0.6111111111111112,
+  "official_top3": [
+    1,
+    4,
+    9
+  ],
+  "retrospective_top3_recall": 1,
+  "precision_within_candidate_set": 0.2727272727272727,
+  "strong_reason_tier": {
+    "definition": "reason_count >= 2",
+    "candidate_numbers": [
+      1,
+      11,
+      13,
+      15
+    ],
+    "candidate_count": 4,
+    "official_top3_captured": [
+      1
+    ],
+    "retrospective_top3_recall": 0.3333333333333333
+  },
+  "top3_reason_trace": {
+    "1": [
+      "market_top_n",
+      "recent_similar_distance_win"
+    ],
+    "4": [
+      "recent_similar_distance_win"
+    ],
+    "9": [
+      "market_top_n"
+    ]
+  },
+  "interpretation": [
+    "The broad union retrospectively contains all official Top3, including previously unmarked runner 4 through a recent similar-distance win rule.",
+    "It selects 11 of 18 runners, so full recall is obtained with low selectivity.",
+    "The reason_count>=2 tier is much smaller but captures only one of the actual Top3.",
+    "The rule was designed after observing 2026-10-12 outcomes; this diagnostic is not predictive validation and parameters are not tuned further on this race."
+  ]
+}

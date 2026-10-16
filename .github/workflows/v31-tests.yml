@@ -1,0 +1,57 @@
+name: v3.1 holdout tests
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/v31-tests.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/v31-candidate-generation-protocol.md"
+      - "docs/v31-holdout-freeze.json"
+      - "docs/v31-holdout-ledger.json"
+      - "docs/v31-holdout-attempt-ledger.json"
+      - "docs/v31-holdout-decision-contract.json"
+      - "docs/v31-residual-audit-protocol.md"
+      - "holdout/v31/**"
+      - "reports/v31-holdout-final-evaluation.json"
+      - "docs/v31-holdout-operations.md"
+      - "data/2026-10-12/v3-quality-tier-map.json"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v31-tests.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "docs/v31-candidate-generation-protocol.md"
+      - "docs/v31-holdout-freeze.json"
+      - "docs/v31-holdout-ledger.json"
+      - "docs/v31-holdout-attempt-ledger.json"
+      - "docs/v31-holdout-decision-contract.json"
+      - "docs/v31-residual-audit-protocol.md"
+      - "holdout/v31/**"
+      - "reports/v31-holdout-final-evaluation.json"
+      - "docs/v31-holdout-operations.md"
+      - "data/2026-10-12/v3-quality-tier-map.json"
+
+permissions:
+  contents: read
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run v3.1 holdout tests first
+        run: |
+          python -m unittest tests.test_v31_holdout -v
+      - name: Verify frozen v3.1 contract
+        run: |
+          python scripts/v31_verify_freeze.py --repo-root .
+      - name: Run repository unit tests
+        run: |
+          python -m unittest discover -s tests -v

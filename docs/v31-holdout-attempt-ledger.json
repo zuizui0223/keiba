@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "version": "v3.1",
+  "manifest_blob_sha": "af6e9bc7cda9f92efb65838a34999f0f97fcad52",
+  "status": "collecting",
+  "entries": [],
+  "summary": {
+    "eligible_attempts": 0,
+    "frozen_attempts": 0,
+    "pre_result_data_failures": 0,
+    "freeze_success_rate": null
+  },
+  "manifest_created_at_jst": "2026-10-15T12:47:15+09:00"
+}

@@ -1,0 +1,241 @@
+{
+  "created_from": "frozen pre-race kyoto_07..12.json + post-race result snapshots",
+  "development_only": true,
+  "prospective_claim": false,
+  "races": [
+    {
+      "race": 7,
+      "field": 16,
+      "M": [
+        11,
+        2,
+        15,
+        12
+      ],
+      "actual_top3": [
+        2,
+        15,
+        9
+      ],
+      "M_hits": [
+        2,
+        15
+      ],
+      "old_marked": [
+        2,
+        5,
+        7,
+        9,
+        12,
+        15
+      ],
+      "old_hits": [
+        2,
+        15,
+        9
+      ]
+    },
+    {
+      "race": 8,
+      "field": 11,
+      "M": [
+        9,
+        5,
+        11
+      ],
+      "actual_top3": [
+        9,
+        1,
+        7
+      ],
+      "M_hits": [
+        9
+      ],
+      "old_marked": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "old_hits": [
+        9,
+        1,
+        7
+      ]
+    },
+    {
+      "race": 9,
+      "field": 12,
+      "M": [
+        12,
+        10,
+        4
+      ],
+      "actual_top3": [
+        4,
+        3,
+        12
+      ],
+      "M_hits": [
+        4,
+        12
+      ],
+      "old_marked": [
+        3,
+        4,
+        5,
+        7,
+        10,
+        12
+      ],
+      "old_hits": [
+        4,
+        3,
+        12
+      ]
+    },
+    {
+      "race": 10,
+      "field": 10,
+      "M": [
+        5,
+        2,
+        9
+      ],
+      "actual_top3": [
+        5,
+        2,
+        9
+      ],
+      "M_hits": [
+        5,
+        2,
+        9
+      ],
+      "old_marked": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "old_hits": [
+        5,
+        2,
+        9
+      ]
+    },
+    {
+      "race": 11,
+      "field": 18,
+      "M": [
+        9,
+        1,
+        18,
+        15,
+        13
+      ],
+      "actual_top3": [
+        1,
+        4,
+        9
+      ],
+      "M_hits": [
+        1,
+        9
+      ],
+      "old_marked": [
+        1,
+        6,
+        9,
+        10,
+        13,
+        14,
+        17,
+        18
+      ],
+      "old_hits": [
+        1,
+        9
+      ]
+    },
+    {
+      "race": 12,
+      "field": 16,
+      "M": [
+        3,
+        16,
+        8,
+        9
+      ],
+      "actual_top3": [
+        10,
+        12,
+        9
+      ],
+      "M_hits": [
+        9
+      ],
+      "old_marked": [
+        1,
+        3,
+        6,
+        9,
+        14,
+        16
+      ],
+      "old_hits": [
+        9
+      ]
+    }
+  ],
+  "summaries": {
+    "M_only": {
+      "candidate_count": 22,
+      "starter_count": 83,
+      "candidate_fraction": 0.26506024096385544,
+      "top3_hits": 11,
+      "top3_slots": 18,
+      "top3_recall": 0.6111111111111112
+    },
+    "old_qualitative_marks": {
+      "candidate_count": 38,
+      "starter_count": 83,
+      "candidate_fraction": 0.4578313253012048,
+      "top3_hits": 15,
+      "top3_slots": 18,
+      "top3_recall": 0.8333333333333334
+    }
+  },
+  "old_mark_misses": [
+    {
+      "race": 11,
+      "number": 4,
+      "name": "スズハローム",
+      "v3_rescue_channels": [
+        "Q",
+        "K"
+      ]
+    },
+    {
+      "race": 12,
+      "number": 10,
+      "name": "ビービーシナジー",
+      "v3_rescue_channels": [
+        "U"
+      ]
+    },
+    {
+      "race": 12,
+      "number": 12,
+      "name": "ベラジオリン",
+      "v3_rescue_channels": [
+        "C"
+      ]
+    }
+  ],
+  "note": "v3 channel rules were designed after observing these development results. Rescue coverage is not prospective validation. Full v3 candidate fraction awaits normalized last-three-start histories for all starters."
+}
