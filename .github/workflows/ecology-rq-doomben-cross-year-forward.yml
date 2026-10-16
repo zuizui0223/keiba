@@ -1,0 +1,63 @@
+name: "Ecology Doomben 2025-to-2026 genuinely same-horse histories"
+
+# Frozen AFTER earlier Doomben ICC observation but BEFORE
+# scoring the 2026 heldout GPS timing against 2025 histories.
+# Reuses EXACT same 23 source days from 2025 and 19 from 2026,
+# race numbers 1-6, no ad-hoc URL/date/horse discovery.
+# Outputs anonymized source counts and HOLD, never individual rows.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md'
+      - 'scripts/ecology_rq_doomben_cross_year_forward.py'
+      - 'tests/test_ecology_rq_doomben_cross_year_forward.py'
+      - '.github/workflows/ecology-rq-doomben-cross-year-forward.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-horse-cross-year-read-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source reconciliation dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Strict fictional 2025-only training, opposite effect and HOLD tests
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_doomben_cross_year_forward.py' -v
+      - name: Evaluate the original 2025-to-2026 same-HORSES-ID histories only
+        run: |
+          python scripts/ecology_rq_doomben_cross_year_forward.py \
+            --output tmp/doomben-2025-to-2026-horse-history-aggregate.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("tmp/doomben-2025-to-2026-horse-history-aggregate.json").read_text())
+          assert r["status"]=="POSTHOC_DOOMBEN_YEAR_FORWARD_DATA_SUPPORT_NOT_CAUSAL_H1_H2"
+          assert r["2025_training_ONLY_and_2026_heldout_ONLY"]
+          assert r["locked_2025_date_count"]==23 and r["locked_2026_date_count"]==19
+          assert r["no_original_HORSES_ID_name_rider_trainer_licence_individual_GPS_or_prediction_output"]
+          assert len(r["cross_year_score_by_first_GPS_marker_and_context"])==4
+          for k, v in r["cross_year_score_by_first_GPS_marker_and_context"].items():
+              assert v["source_support"]["no_2026_values_used_to_fit_a_historical_profile"]
+              assert v["race_relative_GPS_target_uses_measured_contemporaneous_rivals"]
+              if v["status"].startswith("HOLD_"):
+                  assert "equal_original_HORSES_ID_weighted_2026_RMSE_seconds" not in v
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: doomben-2025-history-2026-heldout-aggregate-only
+          path: tmp/doomben-2025-to-2026-horse-history-aggregate.json
+          retention-days: 30

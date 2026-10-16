@@ -1,0 +1,36 @@
+name: "Ecological official horse-ID repeated-date pilot"
+
+# Only two specific historical days from one venue, four preselected
+# races each; source-level identity evidence, NOT ecological effects.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_two_date_horse_id_repeat.py'
+      - 'tests/test_ecology_rq_two_date_horse_id_repeat.py'
+      - '.github/workflows/ecology-rq-two-date-id.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  small-real-horse-repeated-id-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Two-date original-source ID join contract (fictional IDs only)
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_two_date_horse_id_repeat.py' -v
+      - name: Two historical RQ meetings, four races each; aggregate result only
+        run: |
+          python scripts/ecology_rq_two_date_horse_id_repeat.py --output tmp/rq-two-date-id-recurrence.json
+          python -c "import json; a=json.load(open('tmp/rq-two-date-id-recurrence.json')); assert a['status']=='REAL_HORSE_OFFICIAL_ID_RECURRENCE_AUDIT_H1_H2_HOLD'; assert not a['identity_values_or_raw_horse_names_exported']; assert len(a['per_date'])==2; assert a['api_calls_upper_bound']==12; assert not a['track_ground_response_identifiable_after_two_dates']; assert not a['competitor_interactions_identifiable_after_two_dates']"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rq-horse-repeat-id-aggregate-only
+          path: tmp/rq-two-date-id-recurrence.json
+          retention-days: 30

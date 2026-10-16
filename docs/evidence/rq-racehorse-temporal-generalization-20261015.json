@@ -1,0 +1,107 @@
+{
+  "$schema_note": "Aggregate manuscript evidence snapshot — NO animal, jockey, trainer IDs or horse-level rows",
+  "version": "2026-10-15.1",
+  "scientific_status": "POST_HOC_SOURCE_CONDITIONAL_OBSERVATIONAL_CONTRAST_NOT_CAUSAL",
+  "sources": {
+    "cannon_first_party_aggregate": "https://github.com/zuizui0223/keiba/actions/runs/38563275612",
+    "cannon_source_detail": "docs/ecology-rq-forward-other-horse-comparator-results.md",
+    "doomben_first_party_aggregate": "https://github.com/zuizui0223/keiba/actions/runs/38678720302",
+    "doomben_source_detail": "docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md",
+    "doomben_protocol": "docs/ecology-rq-doomben-cross-year-own-vs-other-history-lock.md"
+  },
+  "within_year_cannon": {
+    "original_racecourse": "Cannon Park",
+    "calendar": "2026 earlier dates predicting later 2026 dates",
+    "cohort_selection": "documented novel jockey within original horse/marker/distance context, original GPS-positive races>=4",
+    "source_original_dates_successful": 12,
+    "source_positive_GPS_HORSES_candidates": 543,
+    "source_positive_GPS_rows_after_4timed_minimum": 519,
+    "scored_distinct_original_horses": 36,
+    "scored_future_rows": 46,
+    "future_dates_scored": 11,
+    "matched_horse_marker_distance_strata": 38,
+    "measurement": "focal first GPS duration minus mean of other GPS-positive horses in same source race (seconds)",
+    "error_weighting": "horse-equal RMSE (mean horse MSE, then square root)",
+    "prediction": "strict prior dated matched-context histories only; n/(n+2) fixed shrinkage",
+    "rmse_seconds": {
+      "zero": 0.29767566361078884,
+      "own": 0.25580872360868767,
+      "other_horses_context": 0.3031949592644062
+    },
+    "other_minus_own_rmse_seconds": 0.047386235655718534,
+    "interpretation": "positive individual-ID-associated source-conditional predictive information, NOT trait causality or external replication"
+  },
+  "year_forward_doomben": {
+    "original_racecourse": "Doomben",
+    "calendar": "2025 fixed prior histories predicting heldout 2026 original source rows",
+    "cohort_selection": "same original horse numeric ID, 150m first GPS marker and identical official race distance, >=4 GPS-positive race peers",
+    "original_dates_locked_total": 42,
+    "original_dates_successful": 38,
+    "original_dates_HOLD": [
+      "2025-01-22",
+      "2025-05-28",
+      "2025-08-27",
+      "2026-08-26"
+    ],
+    "scored_distinct_original_horses": 26,
+    "scored_future_rows": 27,
+    "future_dates_scored": 10,
+    "source_dates_positive_150m_2025": 18,
+    "source_dates_positive_150m_2026": 14,
+    "measurement": "focal first GPS duration minus mean of other GPS-positive horses in same source race (seconds)",
+    "error_weighting": "horse-equal RMSE (mean horse MSE, then square root)",
+    "prediction": "train 2025 only, heldout 2026 only; fixed n/(n+2) shrinkage",
+    "rmse_seconds": {
+      "zero": 0.36884431016913627,
+      "own": 0.38613101186797555,
+      "other_horses_context": 0.36890618428638666
+    },
+    "other_minus_own_rmse_seconds": -0.017224827581588886,
+    "year_forward_leave_one_horse": {
+      "attempted": 26,
+      "supported": 26,
+      "other_minus_own_min_seconds": -0.027772156376187906,
+      "other_minus_own_max_seconds": 0.007524067674775425,
+      "own_better_count": 1,
+      "other_better_count": 25
+    },
+    "year_forward_leave_one_future_date": {
+      "attempted": 10,
+      "supported": 10,
+      "other_minus_own_min_seconds": -0.0314331442080778,
+      "other_minus_own_max_seconds": 0.014649872358270477,
+      "own_better_count": 1,
+      "other_better_count": 9
+    },
+    "strict_original_race_class_support": {
+      "150m_same_distance_and_class": {
+        "horse_ids": 6,
+        "future_rows": 6,
+        "status": "HOLD"
+      },
+      "200m_same_distance": {
+        "horse_ids": 13,
+        "future_rows": 14,
+        "status": "HOLD"
+      },
+      "200m_same_distance_and_class": {
+        "horse_ids": 3,
+        "future_rows": 3,
+        "status": "HOLD"
+      }
+    },
+    "interpretation": "no source-conditional 2025-history improvement observed; different cohort, source class, dates and site prevent causal time-decay interpretation"
+  },
+  "limitations": {
+    "cannon_old_source_candidate_count": 548,
+    "cannon_new_source_candidate_count": 543,
+    "cannon_old_horse_roster_digest_missing": true,
+    "doomben_original_date_coverage_incomplete": true,
+    "measured_actual_starter_or_final_jockey": false,
+    "biological_age_or_genotype_verified": false,
+    "h1_ground_reaction_norm_fitted": false,
+    "h2_competitor_causal_effect_estimated": false,
+    "independent_population_confidence_intervals_computed": false,
+    "comparisons_are_not_matched_treatment_effects": true
+  }
+}

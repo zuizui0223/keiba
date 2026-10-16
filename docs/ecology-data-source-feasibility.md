@@ -1,0 +1,294 @@
+# Feasibility audit: obtaining legal longitudinal animal race performance data
+
+Review date: **2026-10-12**. No external archive has been ingested
+into this repo. Links below are **candidates**, not permissions.
+
+## Data decision: choose a rights-cleared horse×race source before fitting
+
+The actual H1/H2 research model requires repeat starts for stable
+`horse_id`, race date, track/going, distance, individual performance,
+historical early-running position, and all rivals per race, with
+terms allowing the intended research and publication. Mere download
+access does **not** imply redistribution or commercial permission.
+
+| Candidate | What seems available | Rights/compatibility check | Current decision |
+| --- | --- | --- | --- |
+| [Racing Queensland original Thoroughbred sectionals and SOAP API](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals) | **Verified actual multi-date numeric HORSES IDs:** across 5 Cannon Park dates spanning Good/Soft/Heavy, 38 official races in expanded scope, 280 positive-GPS ID-linked measurements, 65 IDs on 2+ dates, 37 IDs recorded on both Good and wet ground. [Independent original 20-race audit](ecology-rq-real-h1-multigoing-feasibility.md) and [38-race extension](ecology-rq-real-h1-multigoing-expanded-audit.md) | **HOLD:** no verified full official starter/finisher roster or certified individual finish time; 17 same-distance/section source IDs reduce to **2** if race class matched, and **zero** repeated twice under both conditions. H2 rival completeness unavailable. Original public source rights/attribution still apply; raw original runner rows not committed | **REAL EQUINE REPEATED ID AND GROUND OVERLAP VERIFIED—H1/H2 EFFECTS HOLD** |
+| [Australian Racing Open Data (PandaVision) Queensland greyhound GPS](https://github.com/brucem1967/au-racing-open-data) | Verified pinned ODC-BY file: 25,679 greyhound 50m sectionals and early positions. Dog names recur, track/date/box observed. [Frozen real-data benchmark](ecology-real-greyhound-method-benchmark.md) | Attribution explicitly provided; Racing Queensland public open-data permissions corroborated. **Species is greyhound, not horse**; no stable biological ID guarantee, no certified complete race fields, and no track going or official full-distance horse outcomes | **REAL CROSS-SPECIES METHODS PILOT ONLY—NO HORSE H1/H2** |
+| [Existing 2026-10-12 Kyoto analysis branch](https://github.com/zuizui0223/keiba/tree/analysis/kyoto-20261012) | 7 races, 95 starters, historical aggregate course counts, odds snapshots; not full individual starts across environments | No longitudinal horse×race exposure panel; race snapshots not enough | **H1/H2 HOLD** |
+| [Kaggle Hong Kong Horse Racing](https://www.kaggle.com/datasets/gdaley/hkracing) | `races.csv` plus `runs.csv`: stable horse and race IDs, ground conditions, distance, individual finishing time and first-sectional position, with repeated starts across races. Publisher describes dates as deliberately obscured | Dataset page claims **CC0**, but original HKJC/source-chain rights and obligations have not been independently verified. Obscured dates also prevent official-season/clock verification. Run our new **aggregate-only** `scripts/ecology_hk_preflight.py` on locally and lawfully obtained files; it refuses to promote this to the empirical H1/H2 pipeline | **TOP COMPATIBILITY CANDIDATE—PROVENANCE/TIMELINE HOLD** |
+| [Kaggle JRA日本中央競馬会 dataset](https://www.kaggle.com/datasets/takamotoki/jra-horse-racing-dataset) and [usage README](https://github.com/evanfadhil/japan_horse_racing_analysis) | 4 CSV categories described: race results, corner passage order, laptimes, odds (scraped from netkeiba; older historical archive) | Source/CSV reuse terms and any netkeiba redistribution rights **not verified**; an MIT license for analysis code does not license the underlying source dataset | **CANDIDATE—RIGHTS HOLD** |
+| [HK/SG historical racing archive](https://github.com/eprochasson/horserace_data) | Hong Kong/Singapore `performances`, `races`, `horses`, `sectional_times` CSV.gz; some historical record tables do not join 1:1 and may lack dates/races for earlier years | README says scraped from HKJC/SGTC, root has **no LICENSE file** (reviewed GitHub contents). Public GitHub alone does not establish permission to reproduce original results or provide a rights-cleared derived dataset | **CANDIDATE—RIGHTS HOLD** |
+| [Huggy French race sample](https://huggingface.co/datasets/huggy-engine/horse-racing-database-fr) | Sample explicitly lists CC BY 4.0, `courses.csv` (~931 races) and `rapports.csv`; parent vendor advertises larger multi-year commercial collection | Current freely listed files are race-level and payouts, **not** the complete horse×race performance panel/positions needed for H2; attribution and source-chain checks remain necessary | **NOT SUFFICIENT FOR H1/H2** |
+| [HKJC Guru historical results export](https://data.hkjc.guru/data/hkjc/hkjc_race_results) | Rich horse-level profiles and sectional times, paid archive | Site explicitly states redistribution of raw exports is not permitted. Evaluate research usage terms separately before payment, do not add proprietary exports to public GitHub | **RIGHTS / ACCESS HOLD** |
+| [TrapStats greyhound CC BY sample](https://trapstats.co.uk/en/data) / [Zenodo CC BY greyhound research data](https://zenodo.org/records/19842376) | Runner×race records with track, going, finish, sometimes sectional/bend positions; a potentially relevant *other species* methodological comparison | Species is greyhound, not Thoroughbred; cannot be used as direct evidence about racehorses. Underlying source rights and full-file scope should be checked | **OPTIONAL CROSS-SPECIES METHODS, NOT HORSE EVIDENCE** |
+
+## Minimum rights checklist before any authorized raw data enters pipeline
+
+1. Confirm whether research use is allowed and whether derived
+   coefficient tables/figures can be published; obtain written permission
+   if raw results are contractually restricted.
+2. Record original publisher, source URL, archived version/DOI, date of
+   access, original license or written approval, and restrictions on
+   redistribution and machine-learning analysis.
+3. Use race date/time and official record version for provenance. Verify
+   each derived pre-race variable was knowable before the target start.
+4. Confirm individual identity across different courses and years,
+   correct status of scratches/disqualifications/dead heats, and handling
+   of same-time/tied finishing ranks.
+5. Quantify how many horses have repeated starts under varying going
+   **and** changing rival contexts. Small selected subsets can bias
+   interaction estimates.
+6. Keep source bulk files local/private if redistribution prohibited;
+   publish only code, synthetic tests, permitted derived metrics and
+   attribution.
+
+## Recommendation
+
+**First** seek permission or independently rights-clear a complete
+longitudinal equine dataset with early-race sectional/position information;
+the existing Kaggle JRA archive and HK/SG performance+sectionals are
+worth screening, but have unresolved upstream conditions.
+
+**Do not** treat a public scraper, a code repository's permissive license
+or a free commercial preview as an explicit dataset license.
+
+Until then, a substantial, reproducible **ecological research code base**
+exists, but zero real-race H1/H2 biological claims are justified.
+
+
+## New offline HK screen: turn a promising dataset into measurable readiness
+
+The 2019 public Kaggle listing for
+[Horse Racing in HK](https://www.kaggle.com/datasets/gdaley/hkracing)
+describes `races.csv` / `runs.csv`, including `horse_id`,
+`race_id`, `position_sec1`, `finish_time`, `going`, `distance`,
+and stable horse-level metadata. The uploader marks the page **CC0**,
+but this is not independent verification of the original provider's
+rights to redistribute the records. Race dates have deliberately
+been changed; they must not be re-labelled as official calendar time.
+
+The following offline-only command screens schema compatibility,
+joining, repeated individual starts, changing opponent sets, first
+section measurement availability and missing finish times. It does
+**not** scrape, download, reproduce individual rows, guess dates or
+run the ecological model.
+
+```bash
+python scripts/ecology_hk_preflight.py \
+  --races /private/hk/races.csv \
+  --runs /private/hk/runs.csv \
+  --audit tmp/hk-compatibility.json
+```
+
+Output will explicitly say `HOLD_SOURCE_RIGHTS_AND_OBSCURED_DATES`.
+The full rights/timeline gate must be cleared independently before
+any source data are published or analysis is represented as a
+dated historical test. The local input files must remain outside
+GitHub. A separate source-to-Japan-going mapping is scientifically
+unresolved and will not be guessed automatically.
+
+**Most promising path now:** source/rights review followed by this
+preflight, then a carefully versioned data harmonization step.
+No factual dataset has yet been ingested into the repo.
+
+
+## 2026-10-13 preflight revision: conditional overlap rather than mere size
+
+[scripts/ecology_hk_preflight.py](../scripts/ecology_hk_preflight.py)
+now distinguishes:
+
+- Horse repeated starts globally, including varying raw going labels.
+- Within-horse repeated starts under **2+ observations in each of two
+  different ground labels**, while holding venue, surface, exact
+  distance and race class constant.
+- Distinct opponent sets within the same race stratum, with at least
+  4 starts (a necessary support screen, not identification).
+- Starts recorded on the same **obscured** calendar date which cannot
+  be ordered without verified race clock information.
+
+An artificial counterexample in the CI tests assigns all GOOD
+races to one class and all YIELDING races to another. The preflight
+correctly refuses to count this as same-stratum environmental
+replication, despite global within-horse variation.
+
+The Kaggle dataset's reported 1997–2005 period and obscured date
+labels must not be treated as an authoritative racing calendar. This
+preflight has **not** been run against the actual Kaggle CSVs.
+Upstream rights remain unverified, so no record-level data were copied
+into the public repository.
+
+
+## Verified cross-species methodological proof, 2026-10-13
+
+A real racing-animal GPS dataset has now been processed, *without
+claiming that it contains horses*. Frozen data revision and the
+first 50m repeated-exposure summary:
+[Queensland greyhound analysis](ecology-real-greyhound-method-benchmark.md).
+The raw data are not mirrored or committed in this repository; the
+source states **ODC-BY 1.0**. [Racing Queensland's public open data
+page](https://www.racingqueensland.com.au/about/reports-and-data/open-data)
+is additional upstream rights context, but its explicit access,
+accuracy and commercial terms continue to apply.
+
+### Focused next-equine acquisition priority
+
+**Official Racing Queensland (thoroughbred)** is the highest-value
+access route to inspect: the operator's official open-data catalogue
+lists race results, position maps and sectionals, with SOAP interfaces
+for dates, races and horses (see
+[Meetings.asmx](https://www.racingqueensland.com.au/OpenDataWebServices/Meetings.asmx)).
+Two official horse-sectionals CSVs **have now been inspected and hashed**.
+This is evidence of a real original Thoroughbred timing source, not
+yet of a complete individual-outcome panel. **No official HORSES ID
+crosswalk, longitudinal join, verified DNF classification, or individual
+finish time** has been completed. See
+[the updated source audit](ecology-rq-thoroughbred-source-audit.md).
+Before calling it an H1/H2 data source, verify in a *small,
+documented sample*: stable horse identity; real local dates; actual
+starter versus non-starter; horse-specific elapsed times and
+first-sectional positions; track going, distance, class and venue;
+enough historical depth to see the same horses under distinct
+environments and rival rosters.
+
+If these are absent in public SOAP fields, a manual export from
+explicitly open race/sectional CSV or PDF may be required, and must
+pass the same provenance and anti-leakage checks. The project must
+not synthesize missing horse IDs or longitudinal start records.
+
+**Species boundary:** the licensed greyhound test provides a
+pragmatic *methods* calibration, but not an empirical test of
+Thoroughbred individual reaction norms or social plasticity.
+
+
+## Updated 2026-10-13: real official Thoroughbred telemetry available
+
+The source at
+[Thoroughbred Sectionals and Position Maps](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals)
+has now been verified through two independent, bounded historical
+official CSV fetches, with a reproducible parser and GitHub Actions:
+[run #38330158633](https://github.com/zuizui0223/keiba/actions/runs/38330158633).
+The parser recognized 197 horse-labelled rows in 18 race headers,
+162 with positive interval telemetry, and 35 with only zeros.
+Five same-day names had mixed zero/positive telemetry in different
+race headings — a direct warning against interpreting zero as DNF.
+The files do not supply certified stable horse IDs or a validated
+individual finishing time; the internal HORSES ID is described in
+the official API specification, but not linked to CSV rows.
+
+**Access to observed horse sectionals is confirmed**, but the full
+research-grade horse×start×environment×competitor panel remains
+**HOLD**. **Updated original-data progress**: a one-race name-to-HORSES-ID
+comparison was completed at 11/11 exact source matches; and a
+two-date selected-race pilot recovered **two** repeated genuine
+numeric HORSES IDs with positive GPS on both dates. See
+[verified repeat-ID audit](ecology-rq-two-date-official-id-recurrence.md).
+The **official result/starter** crosswalk is still missing: its
+API horse list may include same-day double nominations, its metadata
+does not provide verified horse-specific finishing times/placements,
+and section-time zeros cannot be classified as DNF. Biological H1/H2
+analyses therefore remain HOLD. Attribution/terms: Racing Queensland official
+open-data program; no republishing raw records from the source.
+
+
+## Source-ready but not inference-ready: Good/Soft/Heavy same-horse evidence (2026-10-13)
+
+Original source `HORSES` IDs were linked to
+published positive first-interval GPS in Cannon Park
+races from two Good, two Soft, and one Heavy
+meeting date. The preserved **20-race**
+data-readiness audit identified 20 source IDs
+crossing Good/non-Good; its explicitly
+post-result **38-race** extension identified 37.
+
+At the physically and procedurally stronger
+source comparison level, only 17 shared both
+a measured first segment marker and official
+race distance, 2 also agreed on original
+race class, and **zero** had >=2 starts in
+each of Good and wet in the same class/
+distance/marker stratum.
+
+See the [versioned 20-race audit](ecology-rq-real-h1-multigoing-feasibility.md)
+and [follow-up audit](ecology-rq-real-h1-multigoing-expanded-audit.md)
+for dates, event selection, source hashes,
+selection bias and explicit HOLD. Neither
+result demonstrates phenotypic plasticity
+or an evolutionary response.
+
+
+## New official nuisance-variable feasibility result (2026-10-13)
+
+The original public SOAP `GetHorsesForRace`
+interface specifically documents `Weight`,
+`Jockey/@Id` and `Trainer/@Id`.
+[Actual Weight/Jockey/Trainer coverage and
+same-record model comparisons](ecology-rq-real-horse-weight-jockey-trainer-adjusted-icc.md)
+were independently rerun on 12 source dates:
+
+- 548 original stable-HORSES-ID/positive-first-GPS rows;
+  **337** have every documented role and weight
+  value; after >=4 such GPS records in an
+  individual race, **279** survive (54 races).
+- Retained original-source fractions are
+  **47.8% Good, 56.9% Soft and 45.9% Heavy**.
+  The 2026-04-04 original meeting drops out
+  entirely on covariate-plus-race selection.
+- On the *same 279 observations*, Gaussian
+  race-FE horse ICC is 0.503 without these
+  nuisances and 0.487 with all three.
+- **One recorded horse changed trainer licence,
+  45 changed registered jockey licence**;
+  most trainer-ID and horse-ID effects are
+  not independently assignable and the source
+  may list nominations rather than actual
+  ride assignments.
+- No verified HORSES biological age, complete
+  official result/finisher roster, or credible
+  ecological reaction-norm/competition effect
+  estimate is available through this study.
+
+The new original-source audit and model are
+still **exploratory source selection / model
+dependence diagnostics**, not a licensed
+complete-panel solution or a supported H1/H2
+ecological effect.
+
+
+## Independent (different racecourse) source examination: Eagle Farm 2026
+
+An [Eagle Farm 12-date original-source
+cohort](ecology-rq-eagle-farm-2026-independent-track-lock.md)
+was fixed before looking at the new track's original
+HORSES ID recurrence and first sectional outcomes.
+[First successful Eagle Farm original-data and
+source-quality audit](ecology-rq-eagle-farm-real-icc-cross-site-audit.md):
+
+- 391 officially ID-linked positive first-GPS candidates,
+  339 distinct HORSES IDs; 48 recurring on multiple dates.
+- Fitted race-fixed ICC sample of 382 positive source
+  records in 51 races; **ICC 0.452894**.
+- Different source track and GPS first-marker composition:
+  **NO shared marker with estimable ICC at both Eagle Farm
+  and Cannon Park**. Numerical similarity of pooled
+  0.453 and 0.432 is not scientifically a matched
+  cross-course trait replication.
+- Original source Weight/Jockey/Trainer fields complete
+  plus >=4 similarly documented timed racehorses:
+  **108/391** retained, 21 races, 10 dates, only
+  **3 repeated HORSES IDs**; the source-adjusted ICC
+  numerical point estimate was correctly suppressed
+  as **HOLD** under a stricter random-effect
+  identifiability gate.
+- Official original data access and provenance
+  independently verified; raw IDs/names/horse sectionals
+  are not republished. Same data publisher and possibly
+  overlapping animal cohorts do not give a statistically
+  independent causal replication.
+
+Official sources: Racing Queensland [Thoroughbred
+Sectionals](https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals)
+and [Open Data](https://www.racingqueensland.com.au/about/reports-and-data/open-data).
+Neither venue yields H1 wet-ground reaction slopes or
+H2 confirmed-competitor social effects from the existing
+partial sources.

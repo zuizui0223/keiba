@@ -1,0 +1,80 @@
+{
+  "type": "ANONYMOUS_ORIGINAL_SOURCE_IDENTIFIABILITY_AUDIT",
+  "version": "2026-10-15.1",
+  "source": "Racing Queensland original Doomben Thoroughbred positive first-GPS and official HORSES ID",
+  "locked_cohort": {
+    "original_2025_dates": 23,
+    "original_2026_dates": 19,
+    "race_numbers_requested": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "first_marker_m": 150,
+    "original_official_race_distance_exact_matching": true,
+    "minimum_original_GPS_timed_horses_per_race": 4,
+    "fetched_source_dates_successfully": 38,
+    "source_HOLD_dates": [
+      "2025-01-22",
+      "2025-05-28",
+      "2025-08-27",
+      "2026-08-26"
+    ],
+    "not_an_unbiased_sample_of_verified_final_starters": true
+  },
+  "source_identity_and_GPS_support": {
+    "all_original_positive_first_GPS_numeric_HORSES_ID_candidates": 1277,
+    "distinct_original_HORSES_IDs_any_marker": 977,
+    "IDs_recorded_on_two_or_more_distinct_original_source_dates_any_context": 228,
+    "positive_first_GPS_rows_after_minimum_four_timed_peers_gate": 1227,
+    "original_IDs_blocked_for_inconsistent_names": 0,
+    "source_counts_conditional_on_observed_positive_GPS_not_all_starters": true
+  },
+  "two_original_horizon_population_comparisons": {
+    "same_150m_first_marker_and_official_race_distance": {
+      "individuals_with_2plus_distinct_source_dates_in_2025": 23,
+      "individuals_with_1plus_date_in_both_2025_and_2026": 26,
+      "individuals_with_2plus_dates_2025_and_1plus_date_2026": 0,
+      "individuals_with_2plus_dates_each_year": 0,
+      "cross_horizon_original_horse_ID_overlap_between_two_scored_groups_even_ignoring_context": 0,
+      "previously_fixed_numeric_minimum_horse_IDs": 20,
+      "scientific_status": "HOLD_INSUFFICIENT_SAME_HORSE_TWO_TIMESCALE_CONTEXT_SUPPORT"
+    },
+    "add_exact_original_race_Class": {
+      "individuals_with_2plus_distinct_source_dates_in_2025": 17,
+      "individuals_with_1plus_date_in_both_2025_and_2026": 6,
+      "individuals_with_2plus_dates_2025_and_1plus_date_2026": 0,
+      "individuals_with_2plus_dates_each_year": 0,
+      "cross_horizon_original_horse_ID_overlap_between_two_scored_groups_even_ignoring_context": 0,
+      "previously_fixed_numeric_minimum_horse_IDs": 20,
+      "scientific_status": "HOLD_INSUFFICIENT_SAME_HORSE_TWO_TIMESCALE_CONTEXT_SUPPORT"
+    }
+  },
+  "independent_original_source_replays": [
+    {
+      "actions_run_id": 38703717378,
+      "actions_url": "https://github.com/zuizui0223/keiba/actions/runs/38703717378",
+      "source_dates_fetched": 38,
+      "anonymous_aggregate_json_sha256": "ce7b14b42b54c187c3f7554fcb109e1b2b5b261a5395a348c0bb9085869ed564"
+    },
+    {
+      "actions_run_id": 38703784178,
+      "actions_url": "https://github.com/zuizui0223/keiba/actions/runs/38703784178",
+      "source_dates_fetched": 38,
+      "anonymous_aggregate_json_sha256": "ce7b14b42b54c187c3f7554fcb109e1b2b5b261a5395a348c0bb9085869ed564"
+    }
+  ],
+  "comparison": {
+    "anonymous_outputs_deep_equal": true,
+    "source_manifest_entries_all_equal_across_runs": true,
+    "same_source_incidence_recomputed_without_any_GPS_time_outcome": true,
+    "compared_time_horizon_scoring_cohorts_ARE_DISJOINT": true,
+    "CANNOT_identify_within_horse_temporal_decay_or_age_effect": true,
+    "source_coverage_incomplete_and_nonrepresentative": true,
+    "not_biological_absence_personality_H1_H2_or_heritability": true,
+    "no_original_horse_names_IDs_rider_trainer_licences_or_times_exposed": true
+  }
+}

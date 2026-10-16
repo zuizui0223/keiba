@@ -1,0 +1,64 @@
+name: "Ecology: locked Doomben third-venue 150/200m ICC bridge"
+
+# This is an exploratory ORIGINAL-SOURCE measurement compatibility
+# test with two previously analysed venues. Calendar and race-number
+# inclusion was committed BEFORE any 19-date HORSES ID/ICC was fitted.
+# Do NOT output horse names/ids/individual GPS observations.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'docs/ecology-rq-doomben-2026-third-venue-calendar-lock.md'
+      - 'scripts/ecology_rq_doomben_third_venue_icc.py'
+      - 'tests/test_ecology_rq_doomben_third_venue_icc.py'
+      - '.github/workflows/ecology-rq-doomben-third-venue.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-third-venue-markers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact Gaussian ICC dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Validate fake horses and immutable venue/file/marker inclusion
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_doomben_third_venue_icc.py' -v
+      - name: Original Doomben 19-date source identity and marker ICC feasibility
+        run: |
+          python scripts/ecology_rq_doomben_third_venue_icc.py \
+            --output tmp/rq-doomben-2026-19-days-150m-200m-source-audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("tmp/rq-doomben-2026-19-days-150m-200m-source-audit.json").read_text())
+          assert data["status"] in (
+              "DOOMBEN_THIRD_VENUE_ORIGINAL_SOURCE_MARKER_PILOT_NO_H1_H2",
+              "HOLD_INCOMPLETE_LOCKED_DOOMBEN_SOURCE_DATES")
+          assert len(data["source_lock"]["locked_meeting_dates"])==19
+          assert data["raw_original_horse_names_IDs_or_individual_interval_exported"] is False
+          assert data["H1_ground_reaction_norm_variance_estimated"] is False
+          assert data["H2_social_context_response_estimated"] is False
+          assert set(data["first_marker_150_and_200_original_race_FE_ICC"])=={"150.0","200.0"}
+          assert data["Cannon_Eagle_reference_marker_compatibility"]["this_is_not_a_direct_paired_trait_replication_or_racecourse_effect_test"]
+          print("DOOMBEN_SOURCE_DATES_VERIFIED",len(data["source_lock"]["dates_successfully_original_source_audited"]))
+          for marker,model in data["first_marker_150_and_200_original_race_FE_ICC"].items():
+              print("SOURCE_MARKER_MODEL",marker,model.get("status"),model.get("source_rows",0),model.get("original_races",0),model.get("conditional_observational_ICC_point_estimate"))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: doomben-third-venue-original-marker-aggregates-only
+          path: tmp/rq-doomben-2026-19-days-150m-200m-source-audit.json
+          retention-days: 30

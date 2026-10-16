@@ -1,0 +1,98 @@
+name: "Ecology: repeatable first-GPS timing with changed documented jockey"
+
+# IMPORTANT: POST-HOC observation only, not randomized riding assignment,
+# verified actual jockeys, a causal rider effect, or real-time prediction.
+# Original Cannon Park 2026 12 dates were locked before this new analysis.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_rider_switch_consistency.py'
+      - 'tests/test_ecology_rq_rider_switch_consistency.py'
+      - 'scripts/ecology_rq_rider_forward_check.py'
+      - 'tests/test_ecology_rq_rider_forward_check.py'
+      - 'scripts/ecology_rq_forward_alternative_history.py'
+      - 'tests/test_ecology_rq_forward_alternative_history.py'
+      - 'docs/ecology-rq-forward-alternative-history-lock.md'
+      - 'docs/ecology-rq-rider-change-forward-validation-lock.md'
+      - 'docs/ecology-rq-rider-switch-persistence-design.md'
+      - '.github/workflows/ecology-rq-rider-switch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-horse-rider-source-pair-support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source and preexisting parser dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Source-privacy and causal-HOLD falsification on fictional horses
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_rider_switch_consistency.py' -v
+      - name: Check fictional strictly past-only horse-profile source gates
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_rider_forward_check.py' -v
+      - name: Test fictional horse versus trainer/rider/context historical alternatives
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_forward_alternative_history.py' -v
+      - name: Recalculate twelve prelocked original RQ sources; anonymous aggregates only
+        run: |
+          python scripts/ecology_rq_rider_switch_consistency.py \
+            --output tmp/rq-cannon-original-rider-switch-aggregate.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          z=json.loads(Path("tmp/rq-cannon-original-rider-switch-aggregate.json").read_text())
+          assert len(z["all_twelve_original_source_dates_requested"])==12
+          assert z["no_original_horse_jockey_trainer_names_IDs_or_times_emitted"]
+          assert z["status"] in (
+              "HOLD_SOURCE_DATES_UNAVAILABLE_FOR_RIDER_SWITCH_INFERENCE",
+              "POST_HOC_ORIGINAL_RQ_RIDER_SWITCH_PERSISTENCE_FEASIBILITY_NOT_H1_H2",
+          )
+          print("SOURCE_STATUS",z["status"])
+          if "same_official_race_distance_and_exact_first_GPS_marker" in z:
+              assert not z["causal_jockey_or_evolutionary_or_heritability_claim_supported"]
+              assert z["horse_going_H1_ground_random_slope_fitted"] is False
+              assert z["horse_competitor_H2_interaction_fitted"] is False
+              a=z["same_official_race_distance_and_exact_first_GPS_marker"]["status_by_rider_pair_condition"]
+              p=a["switched"]
+              print("DOCUMENTED_RIDER_SWITCH_PERSISTENCE_SUPPORT",p["status"])
+              print("SWITCHED_SOURCE_HORSE_ID_COUNT",p["distinct_official_HORSES_IDs"])
+              print("SWITCHED_SOURCE_STRATA_COUNT",p["horse_by_matching_distance_marker_class_strata"])
+              print("SWITCHED_SOURCE_PAIR_COUNT",p["within_horse_cross_date_pairs"])
+              print("SWITCHED_PAIR_MEAN_SEC_SQUARED",p.get("equal_horse_stratum_mean_pair_product_seconds_squared","HOLD"))
+              print("NULL_STATUS",z["changed_declared_jockey_within_race_outcome_shuffle_reference"]["status"])
+              forward=z["fixed_shrinkage_strictly_earlier_horse_profile_when_new_declared_jockey"]
+              assert forward["no_original_IDs_licence_IDs_timing_predictions_or_history_exported"]
+              assert forward["not_H1_H2_heritability_actual_final_riders_or_wagering"]
+              cohort=forward["contexts"]["same_original_distance_and_first_GPS_marker"]["source_cohorts"]["new_documented_rider"]
+              print("FORWARD_DOCUMENTED_NEW_RIDER_SOURCE_GATE",cohort["status"])
+              print("FORWARD_SOURCE_HORSE_COUNT",cohort["original_animal_IDs_with_out_of_date_predictions"])
+              print("FORWARD_FUTURE_TIMED_ROWS",cohort["out_of_date_matched_source_rows_scored"])
+              print("FORWARD_HORSE_EQUAL_RMSE_REDUCTION_SEC",cohort.get(
+                  "equal_horse_weighted_RMSE_reduction_seconds_positive_if_persistent","HOLD"))
+              alternative=z["fixed_context_role_and_other_horse_past_only_benchmarks"]
+              assert alternative["no_original_horse_rider_trainer_ID_or_row_level_output"]
+              assert alternative["strictly_earlier_date_train_then_update"]
+              group=alternative["contexts"]["same_official_distance_and_exact_GPS_marker"]["identical_scored_future_records"]
+              for label,record in group.items():
+                  print("OTHER_HORSE_CONTROL",label,record["status"],
+                        "HORSES",record["distinct_original_HORSES_IDs"],
+                        "FUTURE_ROWS",record["matched_chronological_future_source_rows"],
+                        "PEER_MINUS_HORSE_RMSE",record.get("past_other_horse_minus_focal_horse_RMSE_sec","HOLD"))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-rq-rider-switch-anonymous-aggregate
+          path: tmp/rq-cannon-original-rider-switch-aggregate.json
+          retention-days: 30

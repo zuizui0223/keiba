@@ -1,0 +1,164 @@
+{
+  "version": "2026-10-15.2",
+  "origin": "Previously executed public GitHub Actions original Racing Queensland Doomben aggregate-only source runs",
+  "source_original_calendar": {
+    "2025_locked_days": 23,
+    "2026_locked_days": 19,
+    "source_races_requested_per_meeting": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "first_GPS_markers_m": [
+      150,
+      200
+    ]
+  },
+  "replays": [
+    {
+      "id": "A",
+      "github_run_id": 38696624349,
+      "source_anonymous_artifact_sha256": "22bc3b91b0901cce4ec812f59f82db646f4db39436286a604148ae05e8ded092",
+      "dates_successfully_read": 37,
+      "source_HOLD": [
+        "2025-01-22",
+        "2025-05-28",
+        "2025-07-12",
+        "2025-08-27",
+        "2026-08-26"
+      ],
+      "within_2025_first_150m_same_distance": {
+        "status": "EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY",
+        "distinct_horse_ids": 21,
+        "future_rows": 21,
+        "later_dates": 10,
+        "RMSE_seconds": {
+          "zero": 0.2418164284869903,
+          "own": 0.2148813966145116,
+          "other": 0.24318567987678782
+        },
+        "other_minus_own_seconds": 0.028304283262276214
+      }
+    },
+    {
+      "id": "B",
+      "github_run_id": 38696711022,
+      "source_anonymous_artifact_sha256": "650a219b2221dc0d1671b904d102ee62eb8613d0c6a8ec36ece3fed5fd1d3300",
+      "dates_successfully_read": 37,
+      "source_HOLD": [
+        "2025-01-22",
+        "2025-03-19",
+        "2025-05-28",
+        "2025-08-27",
+        "2026-08-26"
+      ],
+      "within_2025_first_150m_same_distance": {
+        "status": "HOLD_TOO_FEW_WITHIN_YEAR_REPEATED_HORSES_FUTURE_ROWS_OR_DATES",
+        "distinct_horse_ids": 17,
+        "future_rows": 18,
+        "later_dates": 8,
+        "RMSE_seconds": null,
+        "other_minus_own_seconds": null
+      }
+    }
+  ],
+  "same_date_source_comparability": {
+    "both_successful_original_dates": 36,
+    "all_meeting_race_GPS_source_SHA256_groups_identical": 36,
+    "all_HORSES_roster_response_SHA256_identical": 36,
+    "all_matched_HORSES_positive_first_GPS_candidate_counts_identical": 36,
+    "all_original_race_metadata_counts_identical": 36,
+    "original_date_success_only_A": "2025-03-19",
+    "original_date_success_only_B": "2025-07-12",
+    "unique_A_original_horse_join_candidates": 27,
+    "unique_B_original_horse_join_candidates": 35,
+    "nonshared_date_failure_type": "IncompleteRead; original HTTP response incomplete/truncated, not biological absence"
+  },
+  "source_available_and_scientific_hold": {
+    "comparison_script": "scripts/ecology_rq_doomben_same_year_source_replay_compare.py",
+    "independent_compared_source_action": 38697999341,
+    "status": "HOLD_DOOMBEN_WITHIN_YEAR_SCORE_NOT_ROBUST_TO_SOURCE_AVAILABILITY",
+    "single_successful_numeric_estimate_cannot_be_called_replicated": true,
+    "missing_dates_cannot_be_interpreted_as_zero_animal_performance": true,
+    "not_a_causal_year_age_ground_or_personality_effect": true,
+    "no_original_animal_name_identifier_licence_number_GPS_row_or_per_animal_prediction": true
+  },
+  "other_locked_same_year_HOLD_repetitions": {
+    "2025_150m_same_distance_and_Class": {
+      "A_IDs": 16,
+      "B_IDs": 12
+    },
+    "2025_200m_same_distance": {
+      "A_IDs": 13,
+      "B_IDs": 13
+    },
+    "2025_200m_same_distance_and_Class": {
+      "A_IDs": 5,
+      "B_IDs": 5
+    },
+    "2026_150m_same_distance": {
+      "A_IDs": 9,
+      "B_IDs": 9
+    },
+    "2026_150m_same_distance_and_Class": {
+      "A_IDs": 7,
+      "B_IDs": 7
+    },
+    "2026_200m_same_distance": {
+      "A_IDs": 7,
+      "B_IDs": 7
+    },
+    "2026_200m_same_distance_and_Class": {
+      "A_IDs": 6,
+      "B_IDs": 6
+    }
+  },
+  "source_complete_matched_replays": {
+    "source_replay_C": {
+      "github_run_id": 38697565949,
+      "anonymized_aggregate_sha256": "8d6617440a30abbcc8075a5287d6d68ad7d0527e82a384f105a19f0b925dacc8",
+      "original_source_dates_successful": 38,
+      "source_HOLD_dates": [
+        "2025-01-22",
+        "2025-05-28",
+        "2025-08-27",
+        "2026-08-26"
+      ]
+    },
+    "source_replay_D": {
+      "github_run_id": 38697629972,
+      "anonymized_aggregate_sha256": "8d6617440a30abbcc8075a5287d6d68ad7d0527e82a384f105a19f0b925dacc8",
+      "original_source_dates_successful": 38,
+      "source_HOLD_dates": [
+        "2025-01-22",
+        "2025-05-28",
+        "2025-08-27",
+        "2026-08-26"
+      ]
+    },
+    "all_38_successful_original_source_manifest_entries_equal": true,
+    "all_8_scoring_comparison_aggregates_equal": true,
+    "within_year_2025_150m_same_distance": {
+      "status": "EXPLORATORY_SAME_VENUE_WITHIN_YEAR_SOURCE_ID_HISTORY_ONLY",
+      "distinct_horse_ids": 23,
+      "future_rows": 24,
+      "equal_horse_RMSE_seconds": {
+        "zero": 0.23939042295167864,
+        "own": 0.2110649524967905,
+        "other": 0.24069150510963605
+      },
+      "OTHER_minus_OWN_gain_seconds": 0.029626552612845553,
+      "minimum_20_horses_source_gate_passed": true
+    },
+    "scientific_interpretation": {
+      "source_conditional_numerical_positive_recomputed_on_identical_source_snapshot": true,
+      "independent_animal_population_or_experiment": false,
+      "source_availability_invariant_under_all_reruns": false,
+      "stable_intrinsic_personality_or_yearly_decay_identified": false,
+      "year_forward_2025_to_2026_different_horses_context_not_paired_within_year": true
+    }
+  }
+}

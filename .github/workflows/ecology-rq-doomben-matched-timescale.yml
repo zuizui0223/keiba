@@ -1,0 +1,73 @@
+name: "Ecology: original Doomben matched animal time-horizon support"
+
+# Same original HORSES ID+exact 150m marker+official distance must
+# contribute BOTH 2025 within-year and 2025-to-2026 forecast outcomes.
+# New support test was locked post hoc BEFORE first real overlap read.
+# This is NOT a difference-in-ages causal behavioral-effect analysis.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'docs/ecology-rq-doomben-matched-individual-timescale-overlap-lock.md'
+      - 'scripts/ecology_rq_doomben_matched_timescale_overlap.py'
+      - 'tests/test_ecology_rq_doomben_matched_timescale_overlap.py'
+      - '.github/workflows/ecology-rq-doomben-matched-timescale.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-horse-context-two-time-horizons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact existing source/parser numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Synthetic planted, reversed, no-overlap and source-HOLD gates
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_doomben_matched_timescale_overlap.py' -v
+      - name: Score only existing locked 23 plus 19 original meeting dates
+        run: |
+          python scripts/ecology_rq_doomben_matched_timescale_overlap.py \
+            --output tmp/doomben-cross-timescale-common-horses-anonymous.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("tmp/doomben-cross-timescale-common-horses-anonymous.json").read_text())
+          assert d["original_locked_2025_dates"]==23
+          assert d["original_locked_2026_dates"]==19
+          assert d["no_original_animal_ID_name_licence_time_or_predictions_published"]
+          assert d["NOT_ageing_H1_H2_heritability_personality_or_wagering"]
+          for name in ("exact_150m_marker_distance_overlap",
+                       "also_same_original_race_Class_support"):
+              c=d[name]
+              assert c["original_record_dates_remain_separate_years"]
+              assert c["all_2025_histories_strictly_prior_to_2025_scored_date"]
+              assert c["all_2026_outcomes_NOT_used_to_fit_2025_historical_profiles"]
+              assert c["not_a_identified_year_effect_or_within_horse_phenotypic_change"]
+              if c["status"].startswith("HOLD_"):
+                  assert "conditional_equal_ID_weighted_RMSE_seconds" not in c
+              else:
+                  assert c["status"]=="EXPLORATORY_MATCHED_SOURCE_ID_TIMESCALE_CONTEXTS_NOT_CAUSAL"
+                  assert c["common_original_HORSES_IDs_with_identical_marker_and_distance_optional_class"]>=20
+              print("PAIRED_HORSE_SCIENTIFIC_SUPPORT",name,c["status"],
+                "matched_horses",c["common_original_HORSES_IDs_with_identical_marker_and_distance_optional_class"],
+                "future_2025",c["same_HORSES_ID_original_2025_scored_rows"],
+                "future_2026",c["same_HORSES_ID_original_2026_scored_rows"],
+                "RMSE",c.get("conditional_equal_ID_weighted_RMSE_seconds","HOLD"))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rq-doomben-original-matched-two-timescales-anonymous-support
+          path: tmp/doomben-cross-timescale-common-horses-anonymous.json
+          retention-days: 30

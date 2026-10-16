@@ -1,0 +1,75 @@
+name: "RQ Thoroughbred historical source-snapshot drift audit"
+
+# Compare immutable, previously completed aggregate-only workflow outputs:
+# 2026-10-13 run 38347984553 vs 2026-10-14 run 38501390778.
+# ORIGINAL HORSES XML was not hashed in early run; NEVER infer cause.
+# Artifacts expire under GitHub retention; this comparison can then
+# be verified from its archived documentation and anonymous counts.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_source_snapshot_drift.py'
+      - 'tests/test_ecology_rq_source_snapshot_drift.py'
+      - '.github/workflows/ecology-rq-source-drift.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  compare-two-previous-original-source-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test source snapshot provenance and anonymization on fictional archives
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_source_snapshot_drift.py' -v
+      - name: Retrieve two previous anonymous workflow outputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p tmp/earlier tmp/later
+          gh run download 38347984553 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name rq-2026-calendar-12-meetings-aggregate-no-runner-records \
+            --dir tmp/earlier
+          gh run download 38501390778 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name original-rq-rider-switch-anonymous-aggregate \
+            --dir tmp/later
+          test -s tmp/earlier/cannon-park-2026-12-source-days-aggregate.json
+          test -s tmp/later/rq-cannon-original-rider-switch-aggregate.json
+      - name: Verify hash identity and list changes in the 12 source join counts
+        run: |
+          python scripts/ecology_rq_source_snapshot_drift.py \
+            --earlier tmp/earlier/cannon-park-2026-12-source-days-aggregate.json \
+            --later tmp/later/rq-cannon-original-rider-switch-aggregate.json \
+            --output tmp/source-rq-historical-12day-drift.json
+          python - <<'PY'
+          import json
+          d=json.load(open('tmp/source-rq-historical-12day-drift.json'))
+          assert d["status"]=="HOLD_SAME_ORIGINAL_3_SOURCES_DIFFERENT_JOIN_COUNTS_ROSTER_OR_CODE_UNRESOLVED"
+          assert d["source_original_id_GPS_linked_candidates_earlier"]==548
+          assert d["source_original_id_GPS_linked_candidates_later"]==543
+          assert d["source_join_candidate_change_later_minus_earlier"]==-5
+          assert d["source_dates_with_changed_candidate_count"]==[
+              "2026-02-16","2026-03-26","2026-04-09",
+              "2026-08-28","2026-10-11"]
+          assert d["source_component_equality_counts"]["meeting_XML_unchanged"]==12
+          assert d["source_component_equality_counts"]["races_XML_unchanged"]==12
+          assert d["source_component_equality_counts"]["GPS_CSV_unchanged"]==12
+          assert not d["GetHorsesForRace_comparable_earlier_response_hashes_available"]
+          assert not d["any_ecological_H1_or_H2_claim_permitted_from_drift"]
+          assert d["no_horse_rider_trainer_names_licence_IDs_or_records_exported"]
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: anonymized-rq-twelve-meeting-historical-snapshot-drift
+          path: tmp/source-rq-historical-12day-drift.json
+          retention-days: 30

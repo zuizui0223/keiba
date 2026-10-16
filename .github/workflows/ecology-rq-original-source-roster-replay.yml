@@ -1,0 +1,87 @@
+name: "RQ original HORSES 12-day roster replay against pinned SHA256"
+
+# Compare permanent 2026-10-14 aggregate fingerprints to first-party
+# current GetHorsesForRace, GetRacesForMeeting, GetMeetingsForDate
+# and original date-specific GPS bytes. All animal records stay in memory.
+# This DOES NOT reconstruct the unarchived original 548-row HORSES XML.
+on:
+  push:
+    branches:
+      - research/ecological-reaction-norms
+    paths:
+      - 'scripts/ecology_rq_horse_roster_snapshot_check.py'
+      - 'tests/test_ecology_rq_horse_roster_snapshot_check.py'
+      - 'docs/evidence/rq-cannon-original-source-fingerprints-20261014.json'
+      - '.github/workflows/ecology-rq-original-source-roster-replay.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  replay-official-date-limited-anonymous-HORSES-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source-audit model imports
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Fictional source/matching-fingerprint falsification and privacy tests
+        run: python -m unittest discover -s tests -p 'test_ecology_rq_horse_roster_snapshot_check.py' -v
+      - name: Validate permanent anonymized digest manifest against original GitHub archive
+        run: |
+          mkdir -p tmp/baseline
+          gh run download 38501390778 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name original-rq-rider-switch-anonymous-aggregate \
+            --dir tmp/baseline
+          python scripts/ecology_rq_horse_roster_snapshot_check.py \
+            --baseline docs/evidence/rq-cannon-original-source-fingerprints-20261014.json \
+            --archived-aggregate tmp/baseline/rq-cannon-original-rider-switch-aggregate.json \
+            --output tmp/rq-permanent-source-baseline-proof.json \
+            --no-live
+      - name: Re-fetch only twelve locked original source dates and report source-drift HOLDs
+        run: |
+          python scripts/ecology_rq_horse_roster_snapshot_check.py \
+            --baseline docs/evidence/rq-cannon-original-source-fingerprints-20261014.json \
+            --archived-aggregate tmp/baseline/rq-cannon-original-rider-switch-aggregate.json \
+            --scope all_twelve \
+            --output tmp/rq-original-source-roster-replay.json
+          python - <<'PY'
+          import json
+          r=json.load(open('tmp/rq-original-source-roster-replay.json'))
+          assert r['scope']=='all_twelve'
+          assert len(r['source_dates_queried'])==12
+          assert r['no_animal_rider_trainer_identifiers_or_raw_GPS_written']
+          assert r['old_20261013_GetHorsesForRace_XML_was_NOT_fingerprinted']
+          assert r['archived_fixture_validation']['verified_original_days']==12
+          # Source drift is not a biological result, but it MUST NOT
+          # quietly pass an independent source-reproducibility sentinel.
+          # The JSON report is still uploaded when this test fails.
+          assert r['status']=='SOURCE_SNAPSHOT_REPLAY_MATCHES_20261014_FOUR_ORIGINAL_COMPONENTS'
+          c=r['source_component_status_counts']
+          assert c['dates_fully_matching_frozen_source_and_count']==12
+          for key in (
+              'meeting_XML_SHA256_matching',
+              'race_XML_SHA256_matching',
+              'gps_CSV_SHA256_matching',
+              'combined_original_GetHorsesForRace_roster_SHA256_matching',
+          ):
+              assert c[key]==12
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rq-pinned-original-roster-fingerprint-anonymous-replay
+          path: |
+            tmp/rq-permanent-source-baseline-proof.json
+            tmp/rq-original-source-roster-replay.json
+          retention-days: 30
