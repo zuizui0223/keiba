@@ -11,6 +11,9 @@ on:
       - 'data/2026-10-18/shuka-jra-official-17-pre-draw.json'
       - 'scripts/shuka2026_official_rule_audit.py'
       - 'tests/test_shuka2026_official_rule_audit.py'
+      - 'data/2026-10-18/shuka-jra-official-17-horse-numbers.json'
+      - 'scripts/shuka2026_bind_draw_numbers.py'
+      - 'tests/test_shuka2026_bind_draw_numbers.py'
       - '.github/workflows/shuka2026-v31-shadow.yml'
   workflow_dispatch:
 
@@ -29,6 +32,8 @@ jobs:
       - name: Test actual frozen v3.1 rules on official 17 horse histories
         run: |
           python -m unittest discover -s tests -p 'test_shuka2026_official_rule_audit.py' -v
+      - name: Validate official post-draw numbers independently of model odds
+        run: python -m unittest discover -s tests -p 'test_shuka2026_bind_draw_numbers.py' -v
       - name: Produce source-attributed no-odds no-draw classification
         run: |
           python scripts/shuka2026_official_rule_audit.py \
@@ -50,6 +55,25 @@ jobs:
           print("JRA_V31_NONMARKET_CANDIDATE_NAMES",q["nonmarket_C1_or_U_or_rescue_names"])
           print("CURRENT_JRA_ODDS_AND_HORSE_NUMBERS_STATUS","NOT_CLAIMED")
           PY
+      - name: Rebind JRA real horse numbers to exact same six candidates
+        run: |
+          python scripts/shuka2026_bind_draw_numbers.py \
+            --output reports/2026-10-16/shuka2026-JRA-draw-v31-without-M.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path("reports/2026-10-16/shuka2026-JRA-draw-v31-without-M.json").read_text())
+          assert q["official_17_horse_numbers_confirmed"]
+          assert q["official_nonmarket_v31_candidate_numbers_NOT_RANKING"]==[1,3,6,8,9,12]
+          assert q["actual_live_market_M_still_HOLD"]
+          assert q["market_plus_historical_v31_complete_union"] is None
+          print("JRA_OFFICIAL_SHUKA_V31_NONMARKET_NUMBERS",q["official_nonmarket_v31_candidate_numbers_NOT_RANKING"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-JRA-draw-confirmed-v31-market-not-known
+          path: reports/2026-10-16/shuka2026-JRA-draw-v31-without-M.json
+          retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
           name: shuka2026-official-JRA-v31-historical-only-shadow
