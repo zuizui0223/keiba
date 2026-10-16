@@ -1,0 +1,79 @@
+{
+  "schema": "SHUKA2026_JRA_OFFICIAL_DRAW_17_NAMES_V1",
+  "status": "OFFICIAL_JRA_DRAW_HORSE_NUMBERS_CONFIRMED_BUT_LIVE_WIN_ODDS_NOT_CAPTURED",
+  "source_JRA_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604071120261018%2F30",
+  "original_JRA_source_name_count": 17,
+  "official_numbers_are_NOT_alphabetic_entry_order": true,
+  "actual_timestamped_win_odds_captured": false,
+  "JRA_official_horse_number_by_name": [
+    {
+      "official_horse_number": 1,
+      "horse_name": "ギャラボーグ"
+    },
+    {
+      "official_horse_number": 2,
+      "horse_name": "テイエムアイラン"
+    },
+    {
+      "official_horse_number": 3,
+      "horse_name": "マスターソアラ"
+    },
+    {
+      "official_horse_number": 4,
+      "horse_name": "エンネ"
+    },
+    {
+      "official_horse_number": 5,
+      "horse_name": "タイセイボーグ"
+    },
+    {
+      "official_horse_number": 6,
+      "horse_name": "ラベルセーヌ"
+    },
+    {
+      "official_horse_number": 7,
+      "horse_name": "バースデイフライト"
+    },
+    {
+      "official_horse_number": 8,
+      "horse_name": "モンローウォーク"
+    },
+    {
+      "official_horse_number": 9,
+      "horse_name": "スウィートハピネス"
+    },
+    {
+      "official_horse_number": 10,
+      "horse_name": "ナイスプレーアスク"
+    },
+    {
+      "official_horse_number": 11,
+      "horse_name": "ガーネットフレア"
+    },
+    {
+      "official_horse_number": 12,
+      "horse_name": "カナルサンマルタン"
+    },
+    {
+      "official_horse_number": 13,
+      "horse_name": "ドリームコア"
+    },
+    {
+      "official_horse_number": 14,
+      "horse_name": "サムシングスイート"
+    },
+    {
+      "official_horse_number": 15,
+      "horse_name": "フェスティバルヒル"
+    },
+    {
+      "official_horse_number": 16,
+      "horse_name": "ハヤブササキチャン"
+    },
+    {
+      "official_horse_number": 17,
+      "horse_name": "ロザーンジュ"
+    }
+  ],
+  "rate_or_model_not_retrained": true
+}
