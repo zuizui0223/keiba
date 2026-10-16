@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "status": "friday_prep_audit_only_not_holdout",
+  "stage": "independent_official_card_identity_recheck",
+  "target_date": "2026-10-17",
+  "venue": "京都",
+  "checked_at_jst": "2026-10-16T13:38:07.555+09:00",
+  "source_branch": "analysis/v31-kyoto-20261017-thursday-prep-audit",
+  "source_site": "JRA official JRADB accessD",
+  "freeze_manifest_blob_sha": "af6e9bc7cda9f92efb65838a34999f0f97fcad52",
+  "frozen_blobs_verified_in_separate_read_only_preflight": "19/19",
+  "quality_tier_baseline_verified": "43/43",
+  "attempt_ledger_entries": 0,
+  "score_ledger_entries": 0,
+  "friday_generates_no_race_input_odds_or_freeze": true,
+  "results_referenced": false,
+  "actual_win_odds_collected": false,
+  "source_capture_note": "Live JRA pre-race card text and accessU link lists checked independently; source page text is not stored as an immutable raw capture. At Saturday freeze the source-card text and EVERY runner profile and actual time-stamped win odds MUST be independently recaptured in the frozen preparer contract; this Friday record cannot stand in for Saturday capture.",
+  "excluded_8R": {
+    "race_number": 8,
+    "name": "もみじステークス",
+    "age_scope": "2歳",
+    "surface": "芝",
+    "distance_m": 1400,
+    "reason": "exclude_2yo_only",
+    "holdout_attempt": false
+  },
+  "summary": {
+    "eligible_races": 4,
+    "eligible_runners": 52,
+    "pre_target_history_rows": 719,
+    "added_runners": 0,
+    "removed_runners": 0,
+    "jra_horse_id_mismatches": 0,
+    "profile_url_mismatches": 0,
+    "name_mismatches": 0,
+    "official_outside_table_links_excluded": 12
+  },
+  "races": {
+    "7": {
+      "race_number": 7,
+      "race_name": "3歳以上1勝クラス",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604060720261017/EC",
+      "post_time_jst": "2026-10-17T13:15:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 1
+      },
+      "friday_mapping_blob_sha": "6916fd8ac0965b9720edd7fa84a2a259b778b0f5",
+      "thursday_cache_blob_sha": "f61d46e02da9ea4815e06c7702322b333389a81b",
+      "official_table_runner_rows": 10,
+      "matched_runners": 10,
+      "pre_target_history_rows": 124,
+      "official_JRA_accessU_links_total": 11,
+      "official_outside_table_links_excluded": 1,
+      "outside_table_profile_links_excluded": [
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105700/4C"
+      ],
+      "course_record_profile_link_excluded": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105700/4C",
+      "horse_number_name_id_profile_match": true,
+      "source_note": "Official card table rows establish runners. Links to course-record horse and past-years winners outside the table are NEVER runners.",
+      "runners": [
+        {
+          "horse_number": 1,
+          "frame_number": 1,
+          "horse_name": "アミラル",
+          "jra_horse_id": "002023104682",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104682/AA",
+          "thursday_pre_target_history_rows": 7
+        },
+        {
+          "horse_number": 2,
+          "frame_number": 2,
+          "horse_name": "ビズロード",
+          "jra_horse_id": "002023100235",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100235/33",
+          "thursday_pre_target_history_rows": 6
+        },
+        {
+          "horse_number": 3,
+          "frame_number": 3,
+          "horse_name": "キタノサワヤカ",
+          "jra_horse_id": "002022102501",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022102501/1C",
+          "thursday_pre_target_history_rows": 7
+        },
+        {
+          "horse_number": 4,
+          "frame_number": 4,
+          "horse_name": "ココロヅヨサ",
+          "jra_horse_id": "002023105041",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105041/C0",
+          "thursday_pre_target_history_rows": 9
+        },
+        {
+          "horse_number": 5,
+          "frame_number": 5,
+          "horse_name": "スコーピオンイメル",
+          "jra_horse_id": "002022104496",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022104496/98",
+          "thursday_pre_target_history_rows": 19
+        },
+        {
+          "horse_number": 6,
+          "frame_number": 6,
+          "horse_name": "ゲレイロ",
+          "jra_horse_id": "002023104669",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104669/AF",
+          "thursday_pre_target_history_rows": 11
+        },
+        {
+          "horse_number": 7,
+          "frame_number": 7,
+          "horse_name": "ゼンカイナダル",
+          "jra_horse_id": "002023100267",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100267/49",
+          "thursday_pre_target_history_rows": 4
+        },
+        {
+          "horse_number": 8,
+          "frame_number": 7,
+          "horse_name": "ビービーバザーク",
+          "jra_horse_id": "002022102397",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022102397/FC",
+          "thursday_pre_target_history_rows": 17
+        },
+        {
+          "horse_number": 9,
+          "frame_number": 8,
+          "horse_name": "ディニテ",
+          "jra_horse_id": "002022105695",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022105695/76",
+          "thursday_pre_target_history_rows": 18
+        },
+        {
+          "horse_number": 10,
+          "frame_number": 8,
+          "horse_name": "ピエナオルフェ",
+          "jra_horse_id": "002021101155",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021101155/F9",
+          "thursday_pre_target_history_rows": 26
+        }
+      ]
+    },
+    "10": {
+      "race_number": 10,
+      "race_name": "清滝特別",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061020261017/4B",
+      "post_time_jst": "2026-10-17T14:50:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "芝",
+        "distance_m": 2200,
+        "class_rank": 2
+      },
+      "friday_mapping_blob_sha": "eb154085b34335083ba566a9f7b34e54550b7ab6",
+      "thursday_cache_blob_sha": "e41ea02dd14aab1f411cdb1bff45849560deb86e",
+      "official_table_runner_rows": 9,
+      "matched_runners": 9,
+      "pre_target_history_rows": 134,
+      "official_JRA_accessU_links_total": 13,
+      "official_outside_table_links_excluded": 4,
+      "outside_table_profile_links_excluded": [
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002015104868/4B",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022103787/9F",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021106449/F3",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020103101/2F"
+      ],
+      "course_record_profile_link_excluded": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002015104868/4B",
+      "horse_number_name_id_profile_match": true,
+      "source_note": "Official card table rows establish runners. Links to course-record horse and past-years winners outside the table are NEVER runners.",
+      "runners": [
+        {
+          "horse_number": 1,
+          "frame_number": 1,
+          "horse_name": "アメジストブラック",
+          "jra_horse_id": "002019105051",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002019105051/AD",
+          "thursday_pre_target_history_rows": 19
+        },
+        {
+          "horse_number": 2,
+          "frame_number": 2,
+          "horse_name": "エイシンビーコン",
+          "jra_horse_id": "002023105513",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105513/6B",
+          "thursday_pre_target_history_rows": 10
+        },
+        {
+          "horse_number": 3,
+          "frame_number": 3,
+          "horse_name": "メイショウナルカミ",
+          "jra_horse_id": "002023106560",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023106560/51",
+          "thursday_pre_target_history_rows": 10
+        },
+        {
+          "horse_number": 4,
+          "frame_number": 4,
+          "horse_name": "アルベリック",
+          "jra_horse_id": "002021101554",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021101554/4A",
+          "thursday_pre_target_history_rows": 21
+        },
+        {
+          "horse_number": 5,
+          "frame_number": 5,
+          "horse_name": "アットアブラスト",
+          "jra_horse_id": "002020101323",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020101323/B9",
+          "thursday_pre_target_history_rows": 36
+        },
+        {
+          "horse_number": 6,
+          "frame_number": 6,
+          "horse_name": "チェルヴァーラ",
+          "jra_horse_id": "002023107106",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023107106/CE",
+          "thursday_pre_target_history_rows": 5
+        },
+        {
+          "horse_number": 7,
+          "frame_number": 7,
+          "horse_name": "トリニティ",
+          "jra_horse_id": "002023103492",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023103492/69",
+          "thursday_pre_target_history_rows": 5
+        },
+        {
+          "horse_number": 8,
+          "frame_number": 8,
+          "horse_name": "エアビッグマム",
+          "jra_horse_id": "002022105250",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022105250/33",
+          "thursday_pre_target_history_rows": 17
+        },
+        {
+          "horse_number": 9,
+          "frame_number": 8,
+          "horse_name": "セイキュート",
+          "jra_horse_id": "002022104850",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022104850/6A",
+          "thursday_pre_target_history_rows": 11
+        }
+      ]
+    },
+    "11": {
+      "race_number": 11,
+      "race_name": "トルマリンステークス",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061120261017/00",
+      "post_time_jst": "2026-10-17T15:30:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "ダ",
+        "distance_m": 1800,
+        "class_rank": 3
+      },
+      "friday_mapping_blob_sha": "34d6cb6900fa85d3a51b70ae9f49b06ab940f2f1",
+      "thursday_cache_blob_sha": "c67ed410978d6fafd2a3ea78de066968be72375e",
+      "official_table_runner_rows": 15,
+      "matched_runners": 15,
+      "pre_target_history_rows": 265,
+      "official_JRA_accessU_links_total": 21,
+      "official_outside_table_links_excluded": 6,
+      "outside_table_profile_links_excluded": [
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105700/4C",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022104628/70",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020101024/99",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020102688/DA",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002019105273/15",
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002017101819/B9"
+      ],
+      "course_record_profile_link_excluded": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105700/4C",
+      "horse_number_name_id_profile_match": true,
+      "source_note": "Official card table rows establish runners. Links to course-record horse and past-years winners outside the table are NEVER runners.",
+      "runners": [
+        {
+          "horse_number": 1,
+          "frame_number": 1,
+          "horse_name": "ウィンターダフネ",
+          "jra_horse_id": "002020103246",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020103246/DF",
+          "thursday_pre_target_history_rows": 29
+        },
+        {
+          "horse_number": 2,
+          "frame_number": 2,
+          "horse_name": "コンドゥイア",
+          "jra_horse_id": "002022100201",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022100201/AB",
+          "thursday_pre_target_history_rows": 18
+        },
+        {
+          "horse_number": 3,
+          "frame_number": 2,
+          "horse_name": "メイショウオーロラ",
+          "jra_horse_id": "002020101209",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020101209/1A",
+          "thursday_pre_target_history_rows": 20
+        },
+        {
+          "horse_number": 4,
+          "frame_number": 3,
+          "horse_name": "サイモンブーケ",
+          "jra_horse_id": "002020102317",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020102317/64",
+          "thursday_pre_target_history_rows": 35
+        },
+        {
+          "horse_number": 5,
+          "frame_number": 3,
+          "horse_name": "ジューンエオス",
+          "jra_horse_id": "002022110069",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022110069/0F",
+          "thursday_pre_target_history_rows": 14
+        },
+        {
+          "horse_number": 6,
+          "frame_number": 4,
+          "horse_name": "エルフストラック",
+          "jra_horse_id": "002021105616",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105616/DD",
+          "thursday_pre_target_history_rows": 25
+        },
+        {
+          "horse_number": 7,
+          "frame_number": 4,
+          "horse_name": "エリカサファイア",
+          "jra_horse_id": "002021103732",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021103732/84",
+          "thursday_pre_target_history_rows": 15
+        },
+        {
+          "horse_number": 8,
+          "frame_number": 5,
+          "horse_name": "スマートケープ",
+          "jra_horse_id": "002020102187",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002020102187/72",
+          "thursday_pre_target_history_rows": 13
+        },
+        {
+          "horse_number": 9,
+          "frame_number": 5,
+          "horse_name": "エアトベーレ",
+          "jra_horse_id": "002023100964",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100964/47",
+          "thursday_pre_target_history_rows": 10
+        },
+        {
+          "horse_number": 10,
+          "frame_number": 6,
+          "horse_name": "マジックローズ",
+          "jra_horse_id": "002022100622",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022100622/02",
+          "thursday_pre_target_history_rows": 12
+        },
+        {
+          "horse_number": 11,
+          "frame_number": 6,
+          "horse_name": "モモンウールー",
+          "jra_horse_id": "002021105984",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021105984/FA",
+          "thursday_pre_target_history_rows": 25
+        },
+        {
+          "horse_number": 12,
+          "frame_number": 7,
+          "horse_name": "プリンセッサ",
+          "jra_horse_id": "002022102138",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022102138/AD",
+          "thursday_pre_target_history_rows": 12
+        },
+        {
+          "horse_number": 13,
+          "frame_number": 7,
+          "horse_name": "キャットテイル",
+          "jra_horse_id": "002022101678",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022101678/F3",
+          "thursday_pre_target_history_rows": 12
+        },
+        {
+          "horse_number": 14,
+          "frame_number": 8,
+          "horse_name": "メイショウコマチ",
+          "jra_horse_id": "002023102243",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102243/3B",
+          "thursday_pre_target_history_rows": 5
+        },
+        {
+          "horse_number": 15,
+          "frame_number": 8,
+          "horse_name": "エンセリオ",
+          "jra_horse_id": "002021100300",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021100300/DD",
+          "thursday_pre_target_history_rows": 20
+        }
+      ]
+    },
+    "12": {
+      "race_number": 12,
+      "race_name": "3歳以上1勝クラス",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604061220261017/B5",
+      "post_time_jst": "2026-10-17T16:15:00+09:00",
+      "official_conditions": {
+        "age_scope": "3歳以上",
+        "surface": "芝",
+        "distance_m": 1400,
+        "class_rank": 1
+      },
+      "friday_mapping_blob_sha": "32e4e5bd8d4c9d11dd436843bd5b8ec7677f1d24",
+      "thursday_cache_blob_sha": "9e51105be5cbda8cd125155e3ce5229a8653cbce",
+      "official_table_runner_rows": 18,
+      "matched_runners": 18,
+      "pre_target_history_rows": 196,
+      "official_JRA_accessU_links_total": 19,
+      "official_outside_table_links_excluded": 1,
+      "outside_table_profile_links_excluded": [
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021110031/BB"
+      ],
+      "course_record_profile_link_excluded": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021110031/BB",
+      "horse_number_name_id_profile_match": true,
+      "source_note": "Official card table rows establish runners. Links to course-record horse and past-years winners outside the table are NEVER runners.",
+      "runners": [
+        {
+          "horse_number": 1,
+          "frame_number": 1,
+          "horse_name": "カルロット",
+          "jra_horse_id": "002023105339",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105339/DB",
+          "thursday_pre_target_history_rows": 10
+        },
+        {
+          "horse_number": 2,
+          "frame_number": 1,
+          "horse_name": "ウォーターエアリー",
+          "jra_horse_id": "002022100404",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022100404/66",
+          "thursday_pre_target_history_rows": 8
+        },
+        {
+          "horse_number": 3,
+          "frame_number": 2,
+          "horse_name": "マイティキングダム",
+          "jra_horse_id": "002023101501",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023101501/B9",
+          "thursday_pre_target_history_rows": 8
+        },
+        {
+          "horse_number": 4,
+          "frame_number": 2,
+          "horse_name": "ヴァージル",
+          "jra_horse_id": "002022106912",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022106912/1F",
+          "thursday_pre_target_history_rows": 17
+        },
+        {
+          "horse_number": 5,
+          "frame_number": 3,
+          "horse_name": "タナブイハチターボ",
+          "jra_horse_id": "002023103861",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023103861/8A",
+          "thursday_pre_target_history_rows": 11
+        },
+        {
+          "horse_number": 6,
+          "frame_number": 3,
+          "horse_name": "グランドオーパス",
+          "jra_horse_id": "002023104373",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023104373/7A",
+          "thursday_pre_target_history_rows": 9
+        },
+        {
+          "horse_number": 7,
+          "frame_number": 4,
+          "horse_name": "キシャール",
+          "jra_horse_id": "002023100685",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023100685/47",
+          "thursday_pre_target_history_rows": 4
+        },
+        {
+          "horse_number": 8,
+          "frame_number": 4,
+          "horse_name": "ファニーバニー",
+          "jra_horse_id": "002023105277",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105277/04",
+          "thursday_pre_target_history_rows": 12
+        },
+        {
+          "horse_number": 9,
+          "frame_number": 5,
+          "horse_name": "ギルトエッジ",
+          "jra_horse_id": "002021104537",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021104537/50",
+          "thursday_pre_target_history_rows": 22
+        },
+        {
+          "horse_number": 10,
+          "frame_number": 5,
+          "horse_name": "ムーンライトダイヤ",
+          "jra_horse_id": "002023101844",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023101844/E5",
+          "thursday_pre_target_history_rows": 5
+        },
+        {
+          "horse_number": 11,
+          "frame_number": 6,
+          "horse_name": "ホーリーステップ",
+          "jra_horse_id": "002023102145",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102145/F0",
+          "thursday_pre_target_history_rows": 5
+        },
+        {
+          "horse_number": 12,
+          "frame_number": 6,
+          "horse_name": "フロンティエール",
+          "jra_horse_id": "002022105012",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022105012/77",
+          "thursday_pre_target_history_rows": 18
+        },
+        {
+          "horse_number": 13,
+          "frame_number": 7,
+          "horse_name": "アラビアンジョイ",
+          "jra_horse_id": "002023102939",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102939/34",
+          "thursday_pre_target_history_rows": 10
+        },
+        {
+          "horse_number": 14,
+          "frame_number": 7,
+          "horse_name": "フルールジェンヌ",
+          "jra_horse_id": "002023103247",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023103247/F6",
+          "thursday_pre_target_history_rows": 8
+        },
+        {
+          "horse_number": 15,
+          "frame_number": 7,
+          "horse_name": "ペプチドブッドレア",
+          "jra_horse_id": "002023105720",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023105720/84",
+          "thursday_pre_target_history_rows": 8
+        },
+        {
+          "horse_number": 16,
+          "frame_number": 8,
+          "horse_name": "アイスヴィレッジ",
+          "jra_horse_id": "002022103702",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002022103702/E0",
+          "thursday_pre_target_history_rows": 16
+        },
+        {
+          "horse_number": 17,
+          "frame_number": 8,
+          "horse_name": "タイガーロード",
+          "jra_horse_id": "002023102989",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002023102989/84",
+          "thursday_pre_target_history_rows": 7
+        },
+        {
+          "horse_number": 18,
+          "frame_number": 8,
+          "horse_name": "サリュエ",
+          "jra_horse_id": "002021101650",
+          "official_profile_url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud002021101650/AF",
+          "thursday_pre_target_history_rows": 18
+        }
+      ]
+    }
+  }
+}
