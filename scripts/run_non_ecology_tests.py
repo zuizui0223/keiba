@@ -21,7 +21,10 @@ def select_test_files(tests_dir: Path) -> list[Path]:
 
 
 def main() -> int:
-    tests_dir = Path(__file__).resolve().parents[1] / "tests"
+    repo_root = Path(__file__).resolve().parents[1]
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+    tests_dir = repo_root / "tests"
     files = select_test_files(tests_dir)
     if not files:
         print("ERROR: no non-ecology unit tests discovered", file=sys.stderr)
