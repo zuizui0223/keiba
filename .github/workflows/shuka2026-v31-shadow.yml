@@ -1,0 +1,57 @@
+name: "Shuka Sho 2026: official JRA 17-runner frozen v3.1 non-market audit"
+
+# Separate development-only shadow, NOT formal 20-race prospective
+# v3.1 holdout. The market M, final horse numbers, trained
+# probabilities and expected value are NOT fabricated.
+on:
+  push:
+    branches:
+      - analysis/shuka-20261018-official-form
+    paths:
+      - 'data/2026-10-18/shuka-jra-official-17-pre-draw.json'
+      - 'scripts/shuka2026_official_rule_audit.py'
+      - 'tests/test_shuka2026_official_rule_audit.py'
+      - '.github/workflows/shuka2026-v31-shadow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  jra-prerace-historical-channels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test actual frozen v3.1 rules on official 17 horse histories
+        run: |
+          python -m unittest discover -s tests -p 'test_shuka2026_official_rule_audit.py' -v
+      - name: Produce source-attributed no-odds no-draw classification
+        run: |
+          python scripts/shuka2026_official_rule_audit.py \
+            --output reports/2026-10-16/shuka2026-pre-draw-v31-without-M.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path("reports/2026-10-16/shuka2026-pre-draw-v31-without-M.json")
+          q=json.loads(f.read_text())
+          assert q["horse_count"]==17
+          assert not q["original_v31_thresholds_changed"]
+          assert not q["real_confirmed_horse_numbers_captured"]
+          assert not q["real_timestamped_pre_race_win_odds_captured"]
+          assert not q["market_M_channel_completed"]
+          assert not q["formal_v31_pre_result_15_to_25_minutes_freeze"]
+          assert len(q["nonmarket_C1_or_U_or_rescue_names"])==6
+          print("JRA_V31_SOURCE_STATUS",q["status"])
+          print("JRA_V31_HISTORICAL_CHANNEL_COUNTS",q["counts_by_channel"])
+          print("JRA_V31_NONMARKET_CANDIDATE_NAMES",q["nonmarket_C1_or_U_or_rescue_names"])
+          print("CURRENT_JRA_ODDS_AND_HORSE_NUMBERS_STATUS","NOT_CLAIMED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-official-JRA-v31-historical-only-shadow
+          path: reports/2026-10-16/shuka2026-pre-draw-v31-without-M.json
+          retention-days: 30
