@@ -106,11 +106,11 @@ v3.1候補抽出に基づく参考評価であり、
 
 ## 5. ソース・再現性・暫定扱い
 
-- [公式JRA17頭の全馬履歴](../data/2026-10-18/shuka-jra-official-17-pre-draw.json)
-- [最新JRAの1〜17番の実馬番](../data/2026-10-18/shuka-jra-official-17-horse-numbers.json)
-- [本当の凍結版v3.1コードを呼ぶ処理](../scripts/shuka2026_official_rule_audit.py)
-- [確定JRA馬番への照合](../scripts/shuka2026_bind_draw_numbers.py)
-- [再現性/不正な馬番やオッズを弾くテスト](../tests/test_shuka2026_bind_draw_numbers.py)
+- [公式JRA17頭の全馬履歴](../../data/2026-10-18/shuka-jra-official-17-pre-draw.json)
+- [最新JRAの1〜17番の実馬番](../../data/2026-10-18/shuka-jra-official-17-horse-numbers.json)
+- [本当の凍結版v3.1コードを呼ぶ処理](../../scripts/shuka2026_official_rule_audit.py)
+- [確定JRA馬番への照合](../../scripts/shuka2026_bind_draw_numbers.py)
+- [再現性/不正な馬番やオッズを弾くテスト](../../tests/test_shuka2026_bind_draw_numbers.py)
 - [単勝M未取得のGitHub Actions](https://github.com/zuizui0223/keiba/actions/runs/38827199607)
 
 `M`とフルunionは未計算。
