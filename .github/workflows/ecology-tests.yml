@@ -4,6 +4,14 @@ on:
   push:
     branches:
       - research/ecological-reaction-norms
+      - main
+    paths:
+      - 'scripts/ecology_*'
+      - 'tests/test_ecology_*'
+      - 'docs/ecology-*'
+      - 'docs/evidence/rq-*.json'
+      - 'ECOLOGY_RESEARCH.md'
+      - '.github/workflows/ecology-tests.yml'
   pull_request:
     paths:
       - 'scripts/ecology_*'
