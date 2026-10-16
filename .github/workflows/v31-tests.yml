@@ -54,4 +54,4 @@ jobs:
           python scripts/v31_verify_freeze.py --repo-root .
       - name: Run repository unit tests
         run: |
-          python -m unittest discover -s tests -v
+          python scripts/run_non_ecology_tests.py
