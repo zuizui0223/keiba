@@ -26,7 +26,6 @@
     "holdout_attempt": false
   },
   "summary": {
-    "eligible_races": 4,
     "eligible_runners": 52,
     "pre_target_history_rows": 719,
     "added_runners": 0,
@@ -34,7 +33,12 @@
     "jra_horse_id_mismatches": 0,
     "profile_url_mismatches": 0,
     "name_mismatches": 0,
-    "official_outside_table_links_excluded": 12
+    "official_outside_table_links_excluded": 12,
+    "friday_number_audited_eligible_races": 4,
+    "calendar_eligible_races": 5,
+    "eligible_unprepared_for_friday_roster_audit": [
+      9
+    ]
   },
   "races": {
     "7": {
@@ -569,5 +573,6 @@
         }
       ]
     }
-  }
+  },
+  "audit_scope_note": "Friday formal-number/horse-ID/profile reconciliation was intentionally scoped ONLY to Kyoto R7,R10,R11,R12 (52 horses). An independent all-card eligibility check found R9 ALSO qualifies for v3.1 but its numbers/horse IDs were NOT reconciled Friday, per user constraint. It must be attempted in Saturday's allowed pre-post window or documented as an actual PRE_RESULT_DATA_FAILURE; see docs/v31-friday-2026-10-16-full-calendar-eligibility-audit.json."
 }
