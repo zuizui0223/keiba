@@ -100,6 +100,7 @@ class ShukaJRAOfficialPreDrawRulesTests(unittest.TestCase):
     def test_missing_profile_or_unknown_grade_is_scientific_HOLD(self):
         q=copy.deepcopy(self.original)
         q["runners"][2]["full_history_before_target"][0]["class_rank"]=None
+        q["runners"][2]["last4"][0]["class_rank"]=None
         with self.assertRaisesRegex(ValueError,"HOLD_UNVERIFIED_ORIGINAL_PAST_RACE_CLASS"):
             audit(q,manifest=self.manifest,actual_classifier_blob_sha=self.actual_blob)
         q=copy.deepcopy(self.original)
