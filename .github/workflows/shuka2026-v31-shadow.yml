@@ -14,6 +14,8 @@ on:
       - 'data/2026-10-18/shuka-jra-official-17-horse-numbers.json'
       - 'scripts/shuka2026_bind_draw_numbers.py'
       - 'tests/test_shuka2026_bind_draw_numbers.py'
+      - 'scripts/shuka2026_market_overlay.py'
+      - 'tests/test_shuka2026_market_overlay.py'
       - '.github/workflows/shuka2026-v31-shadow.yml'
   workflow_dispatch:
 
@@ -34,6 +36,27 @@ jobs:
           python -m unittest discover -s tests -p 'test_shuka2026_official_rule_audit.py' -v
       - name: Validate official post-draw numbers independently of model odds
         run: python -m unittest discover -s tests -p 'test_shuka2026_bind_draw_numbers.py' -v
+      - name: Falsify fake, stale, before-sale or incomplete market inputs
+        run: python -m unittest discover -s tests -p 'test_shuka2026_market_overlay.py' -v
+      - name: Evaluate no-odds exact market coverage and tie conditions
+        run: |
+          python scripts/shuka2026_market_overlay.py \
+            --output reports/2026-10-16/shuka2026-market-M-HOLD-and-coverage-bounds.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path("reports/2026-10-16/shuka2026-market-M-HOLD-and-coverage-bounds.json").read_text())
+          assert q["status"]=="HOLD_UNTIL_ACTUAL_JRA_WIN_ODDS_ARE_AVAILABLE"
+          assert q["historical_C1_U_Q1_AND_K1_candidates"]==[1,3,6,8,9,12]
+          assert q["market_M_numbers"] is None and q["full_union_candidate_numbers"] is None
+          s=q["locked_market_coverage_scenario"]
+          assert s["frozen_M_nominal_top_quarter_count_without_ties"]==5
+          assert (s["nominal_M_no_ties_final_union_min"],s["nominal_M_no_ties_final_union_max"])==(6,11)
+          assert s["maximum_candidate_count_below_or_equal_65pct"]==11
+          print("MARKET_WAIT_STATUS",q["status"])
+          print("MARKET_M_MINIMAL_DET_BOUND",s["nominal_M_no_ties_final_union_min"],s["nominal_M_no_ties_final_union_max"])
+          print("PRERACE_ODDS_DATA_NOT_FABRICATED",True)
+          PY
       - name: Produce source-attributed no-odds no-draw classification
         run: |
           python scripts/shuka2026_official_rule_audit.py \
@@ -69,6 +92,11 @@ jobs:
           assert q["market_plus_historical_v31_complete_union"] is None
           print("JRA_OFFICIAL_SHUKA_V31_NONMARKET_NUMBERS",q["official_nonmarket_v31_candidate_numbers_NOT_RANKING"])
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-JRA-GI-sale-window-and-market-coverage-HOLD
+          path: reports/2026-10-16/shuka2026-market-M-HOLD-and-coverage-bounds.json
+          retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
           name: shuka2026-JRA-draw-confirmed-v31-market-not-known
