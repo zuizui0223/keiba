@@ -1,0 +1,40 @@
+{
+  "target_date": "2026-10-17",
+  "race": 7,
+  "checked_at_jst": "2026-10-16T13:23:10+09:00",
+  "status": "friday_independent_number_check_only",
+  "card_path_ref": "docs/v31-prep-2026-10-17-thursday-correction.json",
+  "history_cache_ref": "docs/v31-prep-history-2026-10-17/R7.json",
+  "horse_number_to_jra_id": {
+    "1": "002023104682",
+    "2": "002023100235",
+    "3": "002022102501",
+    "4": "002023105041",
+    "5": "002022104496",
+    "6": "002023104669",
+    "7": "002023100267",
+    "8": "002022102397",
+    "9": "002022105695",
+    "10": "002021101155"
+  },
+  "frame_by_horse_number": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    7,
+    8,
+    8
+  ],
+  "additions": [],
+  "removals": [],
+  "name_mismatches": [],
+  "profile_mismatches": [],
+  "scratch_count": 0,
+  "attempt_recorded": false,
+  "odds_recorded": false,
+  "freeze_created": false
+}
