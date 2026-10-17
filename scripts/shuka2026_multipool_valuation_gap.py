@@ -93,6 +93,10 @@ def audited(snapshot:dict,earlier:dict,base:dict)->dict:
                newer[n]["name"]!=expected[n] for n in ALL_17)
         or sorted(r["rank"] for r in new_rows)!=list(range(1,18))):
         raise ValueError("HOLD_MISSING_OR_WRONG_JRA_RACE_HORSE_NAMES")
+    sorted_by_price=sorted(new_rows,key=lambda r:
+                           (r["win_odds"],r["horse_number"]))
+    if [r["rank"] for r in sorted_by_price]!=list(range(1,18)):
+        raise ValueError("HOLD_PUBLIC_WIN_RANK_INCONSISTENT_WITH_QUOTED_ODDS")
     for r in new_rows:
         odd=r.get("win_odds")
         if type(odd) not in (int,float) or not math.isfinite(odd) or odd<1:
