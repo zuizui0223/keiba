@@ -22,6 +22,9 @@ on:
       - 'data/2026-10-17/shuka2026-sportsnavi-intermediate-win-odds.json'
       - 'scripts/shuka2026_compare_own_vs_crowd.py'
       - 'tests/test_shuka2026_compare_own_vs_crowd.py'
+      - 'data/2026-10-17/shuka2026-sportsnavi-multipool-intermediate-1537.json'
+      - 'scripts/shuka2026_multipool_valuation_gap.py'
+      - 'tests/test_shuka2026_multipool_valuation_gap.py'
       - '.github/workflows/shuka2026-v31-shadow.yml'
   workflow_dispatch:
 
@@ -104,6 +107,32 @@ jobs:
           print("QUALITATIVE_RANK_DISAGREEMENT",[(r["horse_number"],r["market_rank_minus_earlier_assistant_rank"])
               for r in d["earlier_assistant_qualitative_ranks_vs_crowd"]])
           PY
+      - name: Falsify cross-pool snapshot / odd-type mismatches and rank inversions
+        run: |
+          python -m unittest discover -s tests -p 'test_shuka2026_multipool_valuation_gap.py' -v
+          python scripts/shuka2026_multipool_valuation_gap.py \
+            --output reports/2026-10-17/shuka2026-multipool-cross-event-valuation-gap.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path("reports/2026-10-17/shuka2026-multipool-cross-event-valuation-gap.json").read_text())
+          c=q["pair_event_rank_inversion"]
+          assert q["exact_frozen_v31_market_M_top5"]==[3,6,8,12,13]
+          assert q["market_shadow_union"]==[1,3,6,8,9,12,13]
+          assert c["14_more_favored_than_3_in_WIN_market"] is False
+          assert c["14_more_favored_than_3_in_WIDE_given_pairing_8"] is True
+          assert c["14_more_favored_than_3_in_QUINELLA_given_pairing_8"] is False
+          assert c["14_wide_pair8_global_rank"]==4
+          assert c["3_wide_pair8_global_rank"]==6
+          assert c["14_quinella_pair8_global_rank"]==6
+          assert c["3_quinella_pair8_global_rank"]==4
+          assert q["source_later_reported_update_timestamp"]=="UNKNOWN"
+          assert q["not_v31_formal_prerace_holdout_15_to_25min_window"]
+          print("SOURCE_POOL_EVENT_REVERSAL",c)
+          print("MARKET_SNAPSHOT_DRIFT_MAX_8_13_3_14_9_PCT",
+            q["largest_watched_8_13_3_14_9_absolute_win_odds_pct_change"])
+          print("NO_POSITIVE_EV_CLAIM",True)
+          PY
       - name: Produce source-attributed no-odds no-draw classification
         run: |
           python scripts/shuka2026_official_rule_audit.py \
@@ -139,6 +168,11 @@ jobs:
           assert q["market_plus_historical_v31_complete_union"] is None
           print("JRA_OFFICIAL_SHUKA_V31_NONMARKET_NUMBERS",q["official_nonmarket_v31_candidate_numbers_NOT_RANKING"])
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-multipool-win-wide-quinella-event-gap
+          path: reports/2026-10-17/shuka2026-multipool-cross-event-valuation-gap.json
+          retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
           name: shuka2026-public-tote-own-vs-crowd-ordinal-v31-shadow
