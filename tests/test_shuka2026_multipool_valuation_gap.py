@@ -61,6 +61,47 @@ class PublicWinWideQuinellaSnapshotCohortTests(unittest.TestCase):
         self.assertAlmostEqual(q[(8,3)]["wide_two_horses_top_three"]["low"],6.4)
         self.assertEqual(q[(8,13)]["quinella_two_horses_top_two_unordered"]["rank"],1)
 
+    def test_16_other_horses_compare_anchored_win_wide_quinella_order(self):
+        ranked=self.result[
+            "win_wide_quinella_anchor8_partner_ranks_16_comparable_members"
+        ]
+        self.assertEqual(len(ranked),16)
+        by={r["partner_horse_number"]:r for r in ranked}
+        self.assertEqual(
+            set(by),set(range(1,18))-{8}
+        )
+        self.assertEqual(
+            (by[14]["win_order_AMONG_16_NON_8_horses"],
+             by[14]["wide_pair_with8_order_AMONG_16_pair_choices"],
+             by[14]["quinella_pair_with8_order_AMONG_16_pair_choices"]),
+            (7,4,6),
+        )
+        self.assertEqual(
+            (by[3]["win_order_AMONG_16_NON_8_horses"],
+             by[3]["wide_pair_with8_order_AMONG_16_pair_choices"],
+             by[3]["quinella_pair_with8_order_AMONG_16_pair_choices"]),
+            (2,6,4),
+        )
+        self.assertEqual(
+            (by[9]["win_order_AMONG_16_NON_8_horses"],
+             by[9]["wide_pair_with8_order_AMONG_16_pair_choices"]),
+            (11,11),
+        )
+        self.assertEqual(
+            self.result[
+                "source_market_rank_14_place_tilt_relative_to_win_order_only"],3
+        )
+        self.assertEqual(
+            self.result[
+                "source_market_rank_3_place_tilt_relative_to_win_order_only"],-4
+        )
+        self.assertEqual(
+            self.result[
+                "source_market_rank_9_place_tilt_relative_to_win_order_only"],0
+        )
+        self.assertTrue(all(x["event_rank_differences_not_place_win_probabilities"]
+                            for x in ranked))
+
     def test_subjective_rank_14_and_9_still_above_win_crowd_rank(self):
         rows={x["number"]:x for x in self.result[
             "prior_assistant_vs_later_win_market_rank"]}
