@@ -122,7 +122,7 @@ class PublicWinWideQuinellaSnapshotCohortTests(unittest.TestCase):
         self.assertAlmostEqual(drifts[14]["later_win"],43.6)
         self.assertEqual(drifts[14]["earlier_win_rank"],8)
         self.assertEqual(drifts[14]["later_win_rank"],8)
-        self.assertEqual(drifts[9]["earlier_market_rank"],12)
+        self.assertEqual(drifts[9]["earlier_win_rank"],12)
         self.assertEqual(drifts[9]["later_win_rank"],12)
         self.assertLess(self.result[
             "largest_watched_8_13_3_14_9_absolute_win_odds_pct_change"],10)
