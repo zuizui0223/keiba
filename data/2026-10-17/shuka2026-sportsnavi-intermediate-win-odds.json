@@ -1,0 +1,155 @@
+{
+  "schema": "SHUKA2026_SPORTSNAVI_ACTUAL_INTERMEDIATE_SINGLE_WIN_ODDS_17_V1",
+  "status": "THIRD_PARTY_DISPLAYED_ACTUAL_PARIMUTUEL_ODDS_NOT_OFFICIAL_JRA_BYTE_VERIFIED",
+  "target_race": "2026-10-18-KYOTO-11",
+  "target_race_date": "2026-10-18",
+  "source_publisher": "Sports Navi / Yahoo Japan racing",
+  "quoted_source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040711?ninki=1",
+  "source_JRA_horse_name_and_number_crosswalk": "data/2026-10-18/shuka-jra-official-17-horse-numbers.json",
+  "observation_started_at_jst": "2026-10-17T14:37:44+09:00",
+  "source_page_last_updated_timestamp": "NOT_EXPOSED_BY_THIS_EXTRACTION",
+  "source_display_type": "中間オッズ (not final payout and subject to change)",
+  "no_pre_race_holdout_freeze_claimed": true,
+  "original_JRA_tote_html_byte_verification_not_performed": true,
+  "source_odds_from_live_display_not_pre_event_forecast": true,
+  "independent_from_model_history_JRA_17_names_checked": true,
+  "is_training_feature_for_v31": false,
+  "horses": [
+    {
+      "market_rank": 1,
+      "frame_number": 4,
+      "number": 8,
+      "name": "モンローウォーク",
+      "win_odds": 1.2,
+      "place_odds_range": "1.1 - 1.1"
+    },
+    {
+      "market_rank": 2,
+      "frame_number": 7,
+      "number": 13,
+      "name": "ドリームコア",
+      "win_odds": 9.9,
+      "place_odds_range": "1.6 - 3.0"
+    },
+    {
+      "market_rank": 3,
+      "frame_number": 2,
+      "number": 3,
+      "name": "マスターソアラ",
+      "win_odds": 15.2,
+      "place_odds_range": "3.0 - 7.1"
+    },
+    {
+      "market_rank": 4,
+      "frame_number": 3,
+      "number": 6,
+      "name": "ラベルセーヌ",
+      "win_odds": 15.9,
+      "place_odds_range": "2.4 - 5.6"
+    },
+    {
+      "market_rank": 5,
+      "frame_number": 6,
+      "number": 12,
+      "name": "カナルサンマルタン",
+      "win_odds": 21.4,
+      "place_odds_range": "3.7 - 9.0"
+    },
+    {
+      "market_rank": 6,
+      "frame_number": 2,
+      "number": 4,
+      "name": "エンネ",
+      "win_odds": 29.6,
+      "place_odds_range": "2.1 - 4.8"
+    },
+    {
+      "market_rank": 7,
+      "frame_number": 1,
+      "number": 1,
+      "name": "ギャラボーグ",
+      "win_odds": 39.2,
+      "place_odds_range": "4.4 - 10.8"
+    },
+    {
+      "market_rank": 8,
+      "frame_number": 7,
+      "number": 14,
+      "name": "サムシングスイート",
+      "win_odds": 41.9,
+      "place_odds_range": "3.3 - 7.8"
+    },
+    {
+      "market_rank": 9,
+      "frame_number": 8,
+      "number": 16,
+      "name": "ハヤブササキチャン",
+      "win_odds": 42.1,
+      "place_odds_range": "3.9 - 9.5"
+    },
+    {
+      "market_rank": 10,
+      "frame_number": 6,
+      "number": 11,
+      "name": "ガーネットフレア",
+      "win_odds": 46,
+      "place_odds_range": "5.1 - 12.8"
+    },
+    {
+      "market_rank": 11,
+      "frame_number": 8,
+      "number": 17,
+      "name": "ロザーンジュ",
+      "win_odds": 59.6,
+      "place_odds_range": "6.5 - 16.4"
+    },
+    {
+      "market_rank": 12,
+      "frame_number": 5,
+      "number": 9,
+      "name": "スウィートハピネス",
+      "win_odds": 78.9,
+      "place_odds_range": "6.7 - 16.9"
+    },
+    {
+      "market_rank": 13,
+      "frame_number": 1,
+      "number": 2,
+      "name": "テイエムアイラン",
+      "win_odds": 86.1,
+      "place_odds_range": "8.4 - 21.5"
+    },
+    {
+      "market_rank": 14,
+      "frame_number": 3,
+      "number": 5,
+      "name": "タイセイボーグ",
+      "win_odds": 89.8,
+      "place_odds_range": "8.1 - 20.7"
+    },
+    {
+      "market_rank": 15,
+      "frame_number": 8,
+      "number": 15,
+      "name": "フェスティバルヒル",
+      "win_odds": 124.2,
+      "place_odds_range": "12.6 - 32.6"
+    },
+    {
+      "market_rank": 16,
+      "frame_number": 4,
+      "number": 7,
+      "name": "バースデイフライト",
+      "win_odds": 146.1,
+      "place_odds_range": "16.9 - 43.7"
+    },
+    {
+      "market_rank": 17,
+      "frame_number": 5,
+      "number": 10,
+      "name": "ナイスプレーアスク",
+      "win_odds": 197,
+      "place_odds_range": "17.4 - 45.1"
+    }
+  ]
+}
