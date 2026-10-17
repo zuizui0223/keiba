@@ -1,0 +1,2690 @@
+{
+  "schema": "SHUKA2026_PUBLIC_MULTIPOOL_SPORTSNAVI_INTERMEDIATE_20261017_V1",
+  "source_type": "REAL_PUBLIC_THIRD_PARTY_DISPLAYED_INTERMEDIATE_TOTE_NOT_FINAL_NOT_JRA_ORIGINAL_BYTE_VERIFIED",
+  "event": "2026-10-18 Kyoto 11R 15:40 GI Shuka Sho 17 horses",
+  "observation_started_jst": "2026-10-17T15:37:39+09:00",
+  "source_provider_reported_last_update_not_available": true,
+  "separate_pool_pages_not_transactionally_synchronized": true,
+  "prior_win_snapshot_quoted_start_jst": "2026-10-17T14:37:44+09:00",
+  "prior_win_data_path": "data/2026-10-17/shuka2026-sportsnavi-intermediate-win-odds.json",
+  "source_urls": {
+    "win": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040711?ninki=1",
+    "wide": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040711?ninki=1",
+    "quinella": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040711?ninki=1",
+    "trio": "https://sports.yahoo.co.jp/keiba/race/odds/sf/2608040711?ninki=1"
+  },
+  "official_JRA_horse_number_name_crosswalk": "data/2026-10-18/shuka-jra-official-17-horse-numbers.json",
+  "data_quality": {
+    "complete_17_win_prices": true,
+    "complete_136_wide_pair_prices": true,
+    "complete_136_quinella_pair_prices": true,
+    "selected_three_horse_ranks_only_no_full_680_claim": true,
+    "selected_three_horse_count": 5,
+    "all_prices_subject_to_change": true,
+    "original_source_published_timestamp_unknown": true
+  },
+  "win_prices_all_17": [
+    {
+      "rank": 1,
+      "frame": 4,
+      "horse_number": 8,
+      "name": "モンローウォーク",
+      "win_odds": 1.2,
+      "place_range_text": "1.1 - 1.1"
+    },
+    {
+      "rank": 2,
+      "frame": 7,
+      "horse_number": 13,
+      "name": "ドリームコア",
+      "win_odds": 9.6,
+      "place_range_text": "1.6 - 3.3"
+    },
+    {
+      "rank": 3,
+      "frame": 2,
+      "horse_number": 3,
+      "name": "マスターソアラ",
+      "win_odds": 15,
+      "place_range_text": "2.9 - 7.6"
+    },
+    {
+      "rank": 4,
+      "frame": 3,
+      "horse_number": 6,
+      "name": "ラベルセーヌ",
+      "win_odds": 16.1,
+      "place_range_text": "2.5 - 6.4"
+    },
+    {
+      "rank": 5,
+      "frame": 6,
+      "horse_number": 12,
+      "name": "カナルサンマルタン",
+      "win_odds": 22.1,
+      "place_range_text": "3.6 - 9.7"
+    },
+    {
+      "rank": 6,
+      "frame": 2,
+      "horse_number": 4,
+      "name": "エンネ",
+      "win_odds": 29.9,
+      "place_range_text": "2.2 - 5.4"
+    },
+    {
+      "rank": 7,
+      "frame": 1,
+      "horse_number": 1,
+      "name": "ギャラボーグ",
+      "win_odds": 39.1,
+      "place_range_text": "4.4 - 12.1"
+    },
+    {
+      "rank": 8,
+      "frame": 7,
+      "horse_number": 14,
+      "name": "サムシングスイート",
+      "win_odds": 43.6,
+      "place_range_text": "3.2 - 8.5"
+    },
+    {
+      "rank": 9,
+      "frame": 8,
+      "horse_number": 16,
+      "name": "ハヤブササキチャン",
+      "win_odds": 44.1,
+      "place_range_text": "3.9 - 10.4"
+    },
+    {
+      "rank": 10,
+      "frame": 6,
+      "horse_number": 11,
+      "name": "ガーネットフレア",
+      "win_odds": 46.7,
+      "place_range_text": "5.0 - 13.7"
+    },
+    {
+      "rank": 11,
+      "frame": 8,
+      "horse_number": 17,
+      "name": "ロザーンジュ",
+      "win_odds": 63.2,
+      "place_range_text": "6.7 - 18.8"
+    },
+    {
+      "rank": 12,
+      "frame": 5,
+      "horse_number": 9,
+      "name": "スウィートハピネス",
+      "win_odds": 77.6,
+      "place_range_text": "6.4 - 17.9"
+    },
+    {
+      "rank": 13,
+      "frame": 1,
+      "horse_number": 2,
+      "name": "テイエムアイラン",
+      "win_odds": 91.5,
+      "place_range_text": "8.4 - 23.6"
+    },
+    {
+      "rank": 14,
+      "frame": 3,
+      "horse_number": 5,
+      "name": "タイセイボーグ",
+      "win_odds": 93.8,
+      "place_range_text": "8.2 - 23.1"
+    },
+    {
+      "rank": 15,
+      "frame": 8,
+      "horse_number": 15,
+      "name": "フェスティバルヒル",
+      "win_odds": 131.3,
+      "place_range_text": "12.6 - 36.2"
+    },
+    {
+      "rank": 16,
+      "frame": 4,
+      "horse_number": 7,
+      "name": "バースデイフライト",
+      "win_odds": 155.1,
+      "place_range_text": "17.5 - 50.4"
+    },
+    {
+      "rank": 17,
+      "frame": 5,
+      "horse_number": 10,
+      "name": "ナイスプレーアスク",
+      "win_odds": 203.2,
+      "place_range_text": "17.4 - 50.2"
+    }
+  ],
+  "wide_pair_all_136": [
+    {
+      "rank": 1,
+      "horse_numbers": [
+        6,
+        8
+      ],
+      "quoted_odds_min": 3.1,
+      "quoted_odds_max": 3.3
+    },
+    {
+      "rank": 2,
+      "horse_numbers": [
+        8,
+        13
+      ],
+      "quoted_odds_min": 3.1,
+      "quoted_odds_max": 3.4
+    },
+    {
+      "rank": 3,
+      "horse_numbers": [
+        4,
+        8
+      ],
+      "quoted_odds_min": 3.7,
+      "quoted_odds_max": 4.1
+    },
+    {
+      "rank": 4,
+      "horse_numbers": [
+        8,
+        14
+      ],
+      "quoted_odds_min": 4.4,
+      "quoted_odds_max": 4.8
+    },
+    {
+      "rank": 5,
+      "horse_numbers": [
+        8,
+        12
+      ],
+      "quoted_odds_min": 5.1,
+      "quoted_odds_max": 5.6
+    },
+    {
+      "rank": 6,
+      "horse_numbers": [
+        3,
+        8
+      ],
+      "quoted_odds_min": 6.4,
+      "quoted_odds_max": 7.1
+    },
+    {
+      "rank": 7,
+      "horse_numbers": [
+        1,
+        8
+      ],
+      "quoted_odds_min": 8.2,
+      "quoted_odds_max": 9
+    },
+    {
+      "rank": 8,
+      "horse_numbers": [
+        3,
+        13
+      ],
+      "quoted_odds_min": 10,
+      "quoted_odds_max": 11.4
+    },
+    {
+      "rank": 9,
+      "horse_numbers": [
+        4,
+        13
+      ],
+      "quoted_odds_min": 10,
+      "quoted_odds_max": 11.7
+    },
+    {
+      "rank": 10,
+      "horse_numbers": [
+        8,
+        16
+      ],
+      "quoted_odds_min": 10.7,
+      "quoted_odds_max": 11.8
+    },
+    {
+      "rank": 11,
+      "horse_numbers": [
+        6,
+        12
+      ],
+      "quoted_odds_min": 12,
+      "quoted_odds_max": 13.8
+    },
+    {
+      "rank": 12,
+      "horse_numbers": [
+        8,
+        11
+      ],
+      "quoted_odds_min": 12.5,
+      "quoted_odds_max": 13.7
+    },
+    {
+      "rank": 13,
+      "horse_numbers": [
+        5,
+        8
+      ],
+      "quoted_odds_min": 13.7,
+      "quoted_odds_max": 15
+    },
+    {
+      "rank": 14,
+      "horse_numbers": [
+        4,
+        6
+      ],
+      "quoted_odds_min": 14.3,
+      "quoted_odds_max": 16.9
+    },
+    {
+      "rank": 15,
+      "horse_numbers": [
+        8,
+        9
+      ],
+      "quoted_odds_min": 14.5,
+      "quoted_odds_max": 15.9
+    },
+    {
+      "rank": 16,
+      "horse_numbers": [
+        6,
+        13
+      ],
+      "quoted_odds_min": 14.7,
+      "quoted_odds_max": 17.7
+    },
+    {
+      "rank": 17,
+      "horse_numbers": [
+        13,
+        14
+      ],
+      "quoted_odds_min": 16.2,
+      "quoted_odds_max": 18.9
+    },
+    {
+      "rank": 18,
+      "horse_numbers": [
+        3,
+        4
+      ],
+      "quoted_odds_min": 17.9,
+      "quoted_odds_max": 20
+    },
+    {
+      "rank": 19,
+      "horse_numbers": [
+        12,
+        13
+      ],
+      "quoted_odds_min": 18,
+      "quoted_odds_max": 20.8
+    },
+    {
+      "rank": 20,
+      "horse_numbers": [
+        1,
+        13
+      ],
+      "quoted_odds_min": 18.6,
+      "quoted_odds_max": 20.9
+    },
+    {
+      "rank": 21,
+      "horse_numbers": [
+        6,
+        14
+      ],
+      "quoted_odds_min": 19.2,
+      "quoted_odds_max": 22.5
+    },
+    {
+      "rank": 22,
+      "horse_numbers": [
+        3,
+        6
+      ],
+      "quoted_odds_min": 20.2,
+      "quoted_odds_max": 23.1
+    },
+    {
+      "rank": 23,
+      "horse_numbers": [
+        3,
+        14
+      ],
+      "quoted_odds_min": 23.6,
+      "quoted_odds_max": 26
+    },
+    {
+      "rank": 24,
+      "horse_numbers": [
+        2,
+        8
+      ],
+      "quoted_odds_min": 24,
+      "quoted_odds_max": 26.3
+    },
+    {
+      "rank": 25,
+      "horse_numbers": [
+        1,
+        4
+      ],
+      "quoted_odds_min": 24.6,
+      "quoted_odds_max": 27.2
+    },
+    {
+      "rank": 26,
+      "horse_numbers": [
+        4,
+        14
+      ],
+      "quoted_odds_min": 24.6,
+      "quoted_odds_max": 28.2
+    },
+    {
+      "rank": 27,
+      "horse_numbers": [
+        3,
+        12
+      ],
+      "quoted_odds_min": 26.3,
+      "quoted_odds_max": 28.8
+    },
+    {
+      "rank": 28,
+      "horse_numbers": [
+        4,
+        12
+      ],
+      "quoted_odds_min": 26.8,
+      "quoted_odds_max": 30.4
+    },
+    {
+      "rank": 29,
+      "horse_numbers": [
+        12,
+        14
+      ],
+      "quoted_odds_min": 27.2,
+      "quoted_odds_max": 30.5
+    },
+    {
+      "rank": 30,
+      "horse_numbers": [
+        6,
+        16
+      ],
+      "quoted_odds_min": 28.8,
+      "quoted_odds_max": 32.3
+    },
+    {
+      "rank": 31,
+      "horse_numbers": [
+        1,
+        3
+      ],
+      "quoted_odds_min": 29,
+      "quoted_odds_max": 31
+    },
+    {
+      "rank": 32,
+      "horse_numbers": [
+        13,
+        16
+      ],
+      "quoted_odds_min": 29.5,
+      "quoted_odds_max": 32.9
+    },
+    {
+      "rank": 33,
+      "horse_numbers": [
+        1,
+        6
+      ],
+      "quoted_odds_min": 34.1,
+      "quoted_odds_max": 38.6
+    },
+    {
+      "rank": 34,
+      "horse_numbers": [
+        4,
+        9
+      ],
+      "quoted_odds_min": 36.6,
+      "quoted_odds_max": 40
+    },
+    {
+      "rank": 35,
+      "horse_numbers": [
+        12,
+        16
+      ],
+      "quoted_odds_min": 37.2,
+      "quoted_odds_max": 40
+    },
+    {
+      "rank": 36,
+      "horse_numbers": [
+        1,
+        12
+      ],
+      "quoted_odds_min": 37.3,
+      "quoted_odds_max": 40.5
+    },
+    {
+      "rank": 37,
+      "horse_numbers": [
+        8,
+        17
+      ],
+      "quoted_odds_min": 37.5,
+      "quoted_odds_max": 41.1
+    },
+    {
+      "rank": 38,
+      "horse_numbers": [
+        11,
+        13
+      ],
+      "quoted_odds_min": 38.6,
+      "quoted_odds_max": 43
+    },
+    {
+      "rank": 39,
+      "horse_numbers": [
+        9,
+        13
+      ],
+      "quoted_odds_min": 39,
+      "quoted_odds_max": 43.3
+    },
+    {
+      "rank": 40,
+      "horse_numbers": [
+        8,
+        15
+      ],
+      "quoted_odds_min": 39.4,
+      "quoted_odds_max": 43.2
+    },
+    {
+      "rank": 41,
+      "horse_numbers": [
+        11,
+        12
+      ],
+      "quoted_odds_min": 41.4,
+      "quoted_odds_max": 44.4
+    },
+    {
+      "rank": 42,
+      "horse_numbers": [
+        6,
+        11
+      ],
+      "quoted_odds_min": 42.9,
+      "quoted_odds_max": 48
+    },
+    {
+      "rank": 43,
+      "horse_numbers": [
+        4,
+        16
+      ],
+      "quoted_odds_min": 44.9,
+      "quoted_odds_max": 49.4
+    },
+    {
+      "rank": 44,
+      "horse_numbers": [
+        7,
+        8
+      ],
+      "quoted_odds_min": 45.3,
+      "quoted_odds_max": 49.6
+    },
+    {
+      "rank": 45,
+      "horse_numbers": [
+        1,
+        5
+      ],
+      "quoted_odds_min": 47.6,
+      "quoted_odds_max": 49.9
+    },
+    {
+      "rank": 46,
+      "horse_numbers": [
+        1,
+        14
+      ],
+      "quoted_odds_min": 47.8,
+      "quoted_odds_max": 52.4
+    },
+    {
+      "rank": 47,
+      "horse_numbers": [
+        4,
+        11
+      ],
+      "quoted_odds_min": 49.4,
+      "quoted_odds_max": 54.1
+    },
+    {
+      "rank": 48,
+      "horse_numbers": [
+        11,
+        14
+      ],
+      "quoted_odds_min": 51.7,
+      "quoted_odds_max": 56
+    },
+    {
+      "rank": 49,
+      "horse_numbers": [
+        5,
+        13
+      ],
+      "quoted_odds_min": 52.1,
+      "quoted_odds_max": 58
+    },
+    {
+      "rank": 50,
+      "horse_numbers": [
+        14,
+        16
+      ],
+      "quoted_odds_min": 52.7,
+      "quoted_odds_max": 57.3
+    },
+    {
+      "rank": 51,
+      "horse_numbers": [
+        3,
+        16
+      ],
+      "quoted_odds_min": 53.8,
+      "quoted_odds_max": 57.2
+    },
+    {
+      "rank": 52,
+      "horse_numbers": [
+        6,
+        9
+      ],
+      "quoted_odds_min": 56.1,
+      "quoted_odds_max": 62.6
+    },
+    {
+      "rank": 53,
+      "horse_numbers": [
+        3,
+        11
+      ],
+      "quoted_odds_min": 57.9,
+      "quoted_odds_max": 61.3
+    },
+    {
+      "rank": 54,
+      "horse_numbers": [
+        5,
+        6
+      ],
+      "quoted_odds_min": 69.5,
+      "quoted_odds_max": 77.7
+    },
+    {
+      "rank": 55,
+      "horse_numbers": [
+        4,
+        5
+      ],
+      "quoted_odds_min": 70.8,
+      "quoted_odds_max": 77.5
+    },
+    {
+      "rank": 56,
+      "horse_numbers": [
+        1,
+        16
+      ],
+      "quoted_odds_min": 71.3,
+      "quoted_odds_max": 75.1
+    },
+    {
+      "rank": 57,
+      "horse_numbers": [
+        9,
+        14
+      ],
+      "quoted_odds_min": 71.4,
+      "quoted_odds_max": 77.1
+    },
+    {
+      "rank": 58,
+      "horse_numbers": [
+        8,
+        10
+      ],
+      "quoted_odds_min": 72.6,
+      "quoted_odds_max": 79.4
+    },
+    {
+      "rank": 59,
+      "horse_numbers": [
+        13,
+        17
+      ],
+      "quoted_odds_min": 73.4,
+      "quoted_odds_max": 80.8
+    },
+    {
+      "rank": 60,
+      "horse_numbers": [
+        3,
+        9
+      ],
+      "quoted_odds_min": 75.5,
+      "quoted_odds_max": 79.7
+    },
+    {
+      "rank": 61,
+      "horse_numbers": [
+        1,
+        11
+      ],
+      "quoted_odds_min": 77,
+      "quoted_odds_max": 80.9
+    },
+    {
+      "rank": 62,
+      "horse_numbers": [
+        11,
+        16
+      ],
+      "quoted_odds_min": 79,
+      "quoted_odds_max": 82.3
+    },
+    {
+      "rank": 63,
+      "horse_numbers": [
+        1,
+        9
+      ],
+      "quoted_odds_min": 83,
+      "quoted_odds_max": 87
+    },
+    {
+      "rank": 64,
+      "horse_numbers": [
+        2,
+        6
+      ],
+      "quoted_odds_min": 83.7,
+      "quoted_odds_max": 92.7
+    },
+    {
+      "rank": 65,
+      "horse_numbers": [
+        9,
+        12
+      ],
+      "quoted_odds_min": 90.2,
+      "quoted_odds_max": 96.5
+    },
+    {
+      "rank": 66,
+      "horse_numbers": [
+        3,
+        5
+      ],
+      "quoted_odds_min": 92.1,
+      "quoted_odds_max": 97.5
+    },
+    {
+      "rank": 67,
+      "horse_numbers": [
+        2,
+        13
+      ],
+      "quoted_odds_min": 93.3,
+      "quoted_odds_max": 103
+    },
+    {
+      "rank": 68,
+      "horse_numbers": [
+        5,
+        12
+      ],
+      "quoted_odds_min": 98.8,
+      "quoted_odds_max": 105.8
+    },
+    {
+      "rank": 69,
+      "horse_numbers": [
+        2,
+        12
+      ],
+      "quoted_odds_min": 102.1,
+      "quoted_odds_max": 108.4
+    },
+    {
+      "rank": 70,
+      "horse_numbers": [
+        9,
+        16
+      ],
+      "quoted_odds_min": 105.5,
+      "quoted_odds_max": 109.6
+    },
+    {
+      "rank": 71,
+      "horse_numbers": [
+        1,
+        2
+      ],
+      "quoted_odds_min": 107,
+      "quoted_odds_max": 111.3
+    },
+    {
+      "rank": 72,
+      "horse_numbers": [
+        2,
+        3
+      ],
+      "quoted_odds_min": 107.6,
+      "quoted_odds_max": 112.9
+    },
+    {
+      "rank": 73,
+      "horse_numbers": [
+        2,
+        4
+      ],
+      "quoted_odds_min": 114,
+      "quoted_odds_max": 123.7
+    },
+    {
+      "rank": 74,
+      "horse_numbers": [
+        5,
+        14
+      ],
+      "quoted_odds_min": 114.7,
+      "quoted_odds_max": 124.1
+    },
+    {
+      "rank": 75,
+      "horse_numbers": [
+        5,
+        9
+      ],
+      "quoted_odds_min": 114.9,
+      "quoted_odds_max": 118.9
+    },
+    {
+      "rank": 76,
+      "horse_numbers": [
+        13,
+        15
+      ],
+      "quoted_odds_min": 121.1,
+      "quoted_odds_max": 133.2
+    },
+    {
+      "rank": 77,
+      "horse_numbers": [
+        2,
+        11
+      ],
+      "quoted_odds_min": 122,
+      "quoted_odds_max": 125.5
+    },
+    {
+      "rank": 78,
+      "horse_numbers": [
+        3,
+        17
+      ],
+      "quoted_odds_min": 123.8,
+      "quoted_odds_max": 129.4
+    },
+    {
+      "rank": 79,
+      "horse_numbers": [
+        9,
+        11
+      ],
+      "quoted_odds_min": 125.7,
+      "quoted_odds_max": 130.2
+    },
+    {
+      "rank": 80,
+      "horse_numbers": [
+        5,
+        16
+      ],
+      "quoted_odds_min": 139,
+      "quoted_odds_max": 144.7
+    },
+    {
+      "rank": 81,
+      "horse_numbers": [
+        2,
+        16
+      ],
+      "quoted_odds_min": 139.8,
+      "quoted_odds_max": 144.3
+    },
+    {
+      "rank": 82,
+      "horse_numbers": [
+        4,
+        17
+      ],
+      "quoted_odds_min": 141.2,
+      "quoted_odds_max": 152.7
+    },
+    {
+      "rank": 83,
+      "horse_numbers": [
+        14,
+        17
+      ],
+      "quoted_odds_min": 153.3,
+      "quoted_odds_max": 163.9
+    },
+    {
+      "rank": 84,
+      "horse_numbers": [
+        6,
+        17
+      ],
+      "quoted_odds_min": 154,
+      "quoted_odds_max": 170.1
+    },
+    {
+      "rank": 85,
+      "horse_numbers": [
+        2,
+        14
+      ],
+      "quoted_odds_min": 160,
+      "quoted_odds_max": 171.8
+    },
+    {
+      "rank": 86,
+      "horse_numbers": [
+        12,
+        17
+      ],
+      "quoted_odds_min": 189.3,
+      "quoted_odds_max": 200.3
+    },
+    {
+      "rank": 87,
+      "horse_numbers": [
+        10,
+        13
+      ],
+      "quoted_odds_min": 189.5,
+      "quoted_odds_max": 207.8
+    },
+    {
+      "rank": 88,
+      "horse_numbers": [
+        5,
+        11
+      ],
+      "quoted_odds_min": 192.2,
+      "quoted_odds_max": 199.3
+    },
+    {
+      "rank": 89,
+      "horse_numbers": [
+        16,
+        17
+      ],
+      "quoted_odds_min": 193.1,
+      "quoted_odds_max": 198.6
+    },
+    {
+      "rank": 90,
+      "horse_numbers": [
+        6,
+        15
+      ],
+      "quoted_odds_min": 197.7,
+      "quoted_odds_max": 218.3
+    },
+    {
+      "rank": 91,
+      "horse_numbers": [
+        1,
+        17
+      ],
+      "quoted_odds_min": 199.5,
+      "quoted_odds_max": 206.8
+    },
+    {
+      "rank": 92,
+      "horse_numbers": [
+        3,
+        15
+      ],
+      "quoted_odds_min": 205.1,
+      "quoted_odds_max": 214.4
+    },
+    {
+      "rank": 93,
+      "horse_numbers": [
+        2,
+        5
+      ],
+      "quoted_odds_min": 205.4,
+      "quoted_odds_max": 211
+    },
+    {
+      "rank": 94,
+      "horse_numbers": [
+        14,
+        15
+      ],
+      "quoted_odds_min": 209,
+      "quoted_odds_max": 223.5
+    },
+    {
+      "rank": 95,
+      "horse_numbers": [
+        2,
+        9
+      ],
+      "quoted_odds_min": 210,
+      "quoted_odds_max": 215.5
+    },
+    {
+      "rank": 96,
+      "horse_numbers": [
+        4,
+        15
+      ],
+      "quoted_odds_min": 211.4,
+      "quoted_odds_max": 228.5
+    },
+    {
+      "rank": 97,
+      "horse_numbers": [
+        12,
+        15
+      ],
+      "quoted_odds_min": 211.5,
+      "quoted_odds_max": 223.7
+    },
+    {
+      "rank": 98,
+      "horse_numbers": [
+        1,
+        15
+      ],
+      "quoted_odds_min": 212,
+      "quoted_odds_max": 219.7
+    },
+    {
+      "rank": 99,
+      "horse_numbers": [
+        4,
+        7
+      ],
+      "quoted_odds_min": 216.2,
+      "quoted_odds_max": 233.5
+    },
+    {
+      "rank": 100,
+      "horse_numbers": [
+        7,
+        13
+      ],
+      "quoted_odds_min": 227.1,
+      "quoted_odds_max": 249.5
+    },
+    {
+      "rank": 101,
+      "horse_numbers": [
+        3,
+        10
+      ],
+      "quoted_odds_min": 252,
+      "quoted_odds_max": 262.7
+    },
+    {
+      "rank": 102,
+      "horse_numbers": [
+        1,
+        10
+      ],
+      "quoted_odds_min": 256.6,
+      "quoted_odds_max": 265.2
+    },
+    {
+      "rank": 103,
+      "horse_numbers": [
+        3,
+        7
+      ],
+      "quoted_odds_min": 259.5,
+      "quoted_odds_max": 271.1
+    },
+    {
+      "rank": 104,
+      "horse_numbers": [
+        11,
+        17
+      ],
+      "quoted_odds_min": 271.4,
+      "quoted_odds_max": 278.3
+    },
+    {
+      "rank": 105,
+      "horse_numbers": [
+        15,
+        16
+      ],
+      "quoted_odds_min": 284.1,
+      "quoted_odds_max": 292.2
+    },
+    {
+      "rank": 106,
+      "horse_numbers": [
+        10,
+        12
+      ],
+      "quoted_odds_min": 289.4,
+      "quoted_odds_max": 305.2
+    },
+    {
+      "rank": 107,
+      "horse_numbers": [
+        11,
+        15
+      ],
+      "quoted_odds_min": 294.6,
+      "quoted_odds_max": 302
+    },
+    {
+      "rank": 108,
+      "horse_numbers": [
+        1,
+        7
+      ],
+      "quoted_odds_min": 297.4,
+      "quoted_odds_max": 307.9
+    },
+    {
+      "rank": 109,
+      "horse_numbers": [
+        6,
+        10
+      ],
+      "quoted_odds_min": 301.6,
+      "quoted_odds_max": 332
+    },
+    {
+      "rank": 110,
+      "horse_numbers": [
+        6,
+        7
+      ],
+      "quoted_odds_min": 303.9,
+      "quoted_odds_max": 335.3
+    },
+    {
+      "rank": 111,
+      "horse_numbers": [
+        10,
+        11
+      ],
+      "quoted_odds_min": 304.7,
+      "quoted_odds_max": 311.4
+    },
+    {
+      "rank": 112,
+      "horse_numbers": [
+        4,
+        10
+      ],
+      "quoted_odds_min": 305.1,
+      "quoted_odds_max": 328.7
+    },
+    {
+      "rank": 113,
+      "horse_numbers": [
+        7,
+        16
+      ],
+      "quoted_odds_min": 320.7,
+      "quoted_odds_max": 329.5
+    },
+    {
+      "rank": 114,
+      "horse_numbers": [
+        10,
+        14
+      ],
+      "quoted_odds_min": 321.6,
+      "quoted_odds_max": 342.8
+    },
+    {
+      "rank": 115,
+      "horse_numbers": [
+        9,
+        17
+      ],
+      "quoted_odds_min": 323.6,
+      "quoted_odds_max": 330.8
+    },
+    {
+      "rank": 116,
+      "horse_numbers": [
+        10,
+        17
+      ],
+      "quoted_odds_min": 331.9,
+      "quoted_odds_max": 334.8
+    },
+    {
+      "rank": 117,
+      "horse_numbers": [
+        2,
+        10
+      ],
+      "quoted_odds_min": 336.6,
+      "quoted_odds_max": 340.9
+    },
+    {
+      "rank": 118,
+      "horse_numbers": [
+        9,
+        15
+      ],
+      "quoted_odds_min": 337.5,
+      "quoted_odds_max": 344.9
+    },
+    {
+      "rank": 119,
+      "horse_numbers": [
+        7,
+        12
+      ],
+      "quoted_odds_min": 348.9,
+      "quoted_odds_max": 368.8
+    },
+    {
+      "rank": 120,
+      "horse_numbers": [
+        9,
+        10
+      ],
+      "quoted_odds_min": 352.7,
+      "quoted_odds_max": 359.5
+    },
+    {
+      "rank": 121,
+      "horse_numbers": [
+        7,
+        14
+      ],
+      "quoted_odds_min": 362.6,
+      "quoted_odds_max": 387.3
+    },
+    {
+      "rank": 122,
+      "horse_numbers": [
+        7,
+        9
+      ],
+      "quoted_odds_min": 365.2,
+      "quoted_odds_max": 372.9
+    },
+    {
+      "rank": 123,
+      "horse_numbers": [
+        5,
+        15
+      ],
+      "quoted_odds_min": 371,
+      "quoted_odds_max": 379.6
+    },
+    {
+      "rank": 124,
+      "horse_numbers": [
+        7,
+        11
+      ],
+      "quoted_odds_min": 376.5,
+      "quoted_odds_max": 385.6
+    },
+    {
+      "rank": 125,
+      "horse_numbers": [
+        2,
+        7
+      ],
+      "quoted_odds_min": 388.1,
+      "quoted_odds_max": 393.8
+    },
+    {
+      "rank": 126,
+      "horse_numbers": [
+        5,
+        7
+      ],
+      "quoted_odds_min": 391.4,
+      "quoted_odds_max": 400.2
+    },
+    {
+      "rank": 127,
+      "horse_numbers": [
+        10,
+        16
+      ],
+      "quoted_odds_min": 399.6,
+      "quoted_odds_max": 409.7
+    },
+    {
+      "rank": 128,
+      "horse_numbers": [
+        5,
+        10
+      ],
+      "quoted_odds_min": 438.7,
+      "quoted_odds_max": 447.6
+    },
+    {
+      "rank": 129,
+      "horse_numbers": [
+        5,
+        17
+      ],
+      "quoted_odds_min": 462.9,
+      "quoted_odds_max": 473.8
+    },
+    {
+      "rank": 130,
+      "horse_numbers": [
+        15,
+        17
+      ],
+      "quoted_odds_min": 481.9,
+      "quoted_odds_max": 487.6
+    },
+    {
+      "rank": 131,
+      "horse_numbers": [
+        2,
+        17
+      ],
+      "quoted_odds_min": 504.6,
+      "quoted_odds_max": 512.5
+    },
+    {
+      "rank": 132,
+      "horse_numbers": [
+        7,
+        10
+      ],
+      "quoted_odds_min": 534.4,
+      "quoted_odds_max": 538.6
+    },
+    {
+      "rank": 133,
+      "horse_numbers": [
+        7,
+        17
+      ],
+      "quoted_odds_min": 561.3,
+      "quoted_odds_max": 567.3
+    },
+    {
+      "rank": 134,
+      "horse_numbers": [
+        2,
+        15
+      ],
+      "quoted_odds_min": 704.8,
+      "quoted_odds_max": 715.5
+    },
+    {
+      "rank": 135,
+      "horse_numbers": [
+        7,
+        15
+      ],
+      "quoted_odds_min": 717.3,
+      "quoted_odds_max": 724.8
+    },
+    {
+      "rank": 136,
+      "horse_numbers": [
+        10,
+        15
+      ],
+      "quoted_odds_min": 734.4,
+      "quoted_odds_max": 740.7
+    }
+  ],
+  "quinella_pair_all_136": [
+    {
+      "rank": 1,
+      "horse_numbers": [
+        8,
+        13
+      ],
+      "quoted_odds": 5.9
+    },
+    {
+      "rank": 2,
+      "horse_numbers": [
+        6,
+        8
+      ],
+      "quoted_odds": 6.7
+    },
+    {
+      "rank": 3,
+      "horse_numbers": [
+        4,
+        8
+      ],
+      "quoted_odds": 9
+    },
+    {
+      "rank": 4,
+      "horse_numbers": [
+        3,
+        8
+      ],
+      "quoted_odds": 10.4
+    },
+    {
+      "rank": 5,
+      "horse_numbers": [
+        8,
+        12
+      ],
+      "quoted_odds": 11.7
+    },
+    {
+      "rank": 6,
+      "horse_numbers": [
+        8,
+        14
+      ],
+      "quoted_odds": 16.3
+    },
+    {
+      "rank": 7,
+      "horse_numbers": [
+        1,
+        8
+      ],
+      "quoted_odds": 16.9
+    },
+    {
+      "rank": 8,
+      "horse_numbers": [
+        8,
+        16
+      ],
+      "quoted_odds": 29.1
+    },
+    {
+      "rank": 9,
+      "horse_numbers": [
+        3,
+        13
+      ],
+      "quoted_odds": 32.1
+    },
+    {
+      "rank": 10,
+      "horse_numbers": [
+        8,
+        11
+      ],
+      "quoted_odds": 33.1
+    },
+    {
+      "rank": 11,
+      "horse_numbers": [
+        4,
+        13
+      ],
+      "quoted_odds": 40.6
+    },
+    {
+      "rank": 12,
+      "horse_numbers": [
+        8,
+        9
+      ],
+      "quoted_odds": 40.6
+    },
+    {
+      "rank": 13,
+      "horse_numbers": [
+        5,
+        8
+      ],
+      "quoted_odds": 48
+    },
+    {
+      "rank": 14,
+      "horse_numbers": [
+        6,
+        13
+      ],
+      "quoted_odds": 53.4
+    },
+    {
+      "rank": 15,
+      "horse_numbers": [
+        13,
+        14
+      ],
+      "quoted_odds": 60
+    },
+    {
+      "rank": 16,
+      "horse_numbers": [
+        1,
+        13
+      ],
+      "quoted_odds": 66
+    },
+    {
+      "rank": 17,
+      "horse_numbers": [
+        12,
+        13
+      ],
+      "quoted_odds": 69.4
+    },
+    {
+      "rank": 18,
+      "horse_numbers": [
+        2,
+        8
+      ],
+      "quoted_odds": 69.5
+    },
+    {
+      "rank": 19,
+      "horse_numbers": [
+        4,
+        6
+      ],
+      "quoted_odds": 76.8
+    },
+    {
+      "rank": 20,
+      "horse_numbers": [
+        3,
+        4
+      ],
+      "quoted_odds": 77.8
+    },
+    {
+      "rank": 21,
+      "horse_numbers": [
+        3,
+        6
+      ],
+      "quoted_odds": 81.5
+    },
+    {
+      "rank": 22,
+      "horse_numbers": [
+        6,
+        12
+      ],
+      "quoted_odds": 81.7
+    },
+    {
+      "rank": 23,
+      "horse_numbers": [
+        1,
+        3
+      ],
+      "quoted_odds": 112.6
+    },
+    {
+      "rank": 24,
+      "horse_numbers": [
+        1,
+        4
+      ],
+      "quoted_odds": 112.7
+    },
+    {
+      "rank": 25,
+      "horse_numbers": [
+        3,
+        14
+      ],
+      "quoted_odds": 113.9
+    },
+    {
+      "rank": 26,
+      "horse_numbers": [
+        3,
+        12
+      ],
+      "quoted_odds": 120
+    },
+    {
+      "rank": 27,
+      "horse_numbers": [
+        4,
+        14
+      ],
+      "quoted_odds": 121.3
+    },
+    {
+      "rank": 28,
+      "horse_numbers": [
+        8,
+        17
+      ],
+      "quoted_odds": 123.7
+    },
+    {
+      "rank": 29,
+      "horse_numbers": [
+        8,
+        15
+      ],
+      "quoted_odds": 127.2
+    },
+    {
+      "rank": 30,
+      "horse_numbers": [
+        6,
+        14
+      ],
+      "quoted_odds": 128.3
+    },
+    {
+      "rank": 31,
+      "horse_numbers": [
+        4,
+        12
+      ],
+      "quoted_odds": 139.1
+    },
+    {
+      "rank": 32,
+      "horse_numbers": [
+        13,
+        16
+      ],
+      "quoted_odds": 143.2
+    },
+    {
+      "rank": 33,
+      "horse_numbers": [
+        7,
+        8
+      ],
+      "quoted_odds": 154.8
+    },
+    {
+      "rank": 34,
+      "horse_numbers": [
+        1,
+        6
+      ],
+      "quoted_odds": 159.5
+    },
+    {
+      "rank": 35,
+      "horse_numbers": [
+        8,
+        10
+      ],
+      "quoted_odds": 184.6
+    },
+    {
+      "rank": 36,
+      "horse_numbers": [
+        12,
+        14
+      ],
+      "quoted_odds": 188.1
+    },
+    {
+      "rank": 37,
+      "horse_numbers": [
+        11,
+        13
+      ],
+      "quoted_odds": 196.8
+    },
+    {
+      "rank": 38,
+      "horse_numbers": [
+        9,
+        13
+      ],
+      "quoted_odds": 198.4
+    },
+    {
+      "rank": 39,
+      "horse_numbers": [
+        6,
+        16
+      ],
+      "quoted_odds": 201.7
+    },
+    {
+      "rank": 40,
+      "horse_numbers": [
+        1,
+        12
+      ],
+      "quoted_odds": 210.7
+    },
+    {
+      "rank": 41,
+      "horse_numbers": [
+        5,
+        13
+      ],
+      "quoted_odds": 219.9
+    },
+    {
+      "rank": 42,
+      "horse_numbers": [
+        1,
+        14
+      ],
+      "quoted_odds": 228.7
+    },
+    {
+      "rank": 43,
+      "horse_numbers": [
+        1,
+        5
+      ],
+      "quoted_odds": 249.4
+    },
+    {
+      "rank": 44,
+      "horse_numbers": [
+        12,
+        16
+      ],
+      "quoted_odds": 267
+    },
+    {
+      "rank": 45,
+      "horse_numbers": [
+        4,
+        9
+      ],
+      "quoted_odds": 270.5
+    },
+    {
+      "rank": 46,
+      "horse_numbers": [
+        4,
+        16
+      ],
+      "quoted_odds": 294.2
+    },
+    {
+      "rank": 47,
+      "horse_numbers": [
+        3,
+        16
+      ],
+      "quoted_odds": 298.1
+    },
+    {
+      "rank": 48,
+      "horse_numbers": [
+        6,
+        9
+      ],
+      "quoted_odds": 308.6
+    },
+    {
+      "rank": 49,
+      "horse_numbers": [
+        11,
+        12
+      ],
+      "quoted_odds": 327.1
+    },
+    {
+      "rank": 50,
+      "horse_numbers": [
+        3,
+        11
+      ],
+      "quoted_odds": 333
+    },
+    {
+      "rank": 51,
+      "horse_numbers": [
+        5,
+        6
+      ],
+      "quoted_odds": 335.6
+    },
+    {
+      "rank": 52,
+      "horse_numbers": [
+        6,
+        11
+      ],
+      "quoted_odds": 336.9
+    },
+    {
+      "rank": 53,
+      "horse_numbers": [
+        1,
+        16
+      ],
+      "quoted_odds": 343.9
+    },
+    {
+      "rank": 54,
+      "horse_numbers": [
+        14,
+        16
+      ],
+      "quoted_odds": 345.1
+    },
+    {
+      "rank": 55,
+      "horse_numbers": [
+        2,
+        13
+      ],
+      "quoted_odds": 361.1
+    },
+    {
+      "rank": 56,
+      "horse_numbers": [
+        3,
+        9
+      ],
+      "quoted_odds": 362.2
+    },
+    {
+      "rank": 57,
+      "horse_numbers": [
+        11,
+        14
+      ],
+      "quoted_odds": 364.4
+    },
+    {
+      "rank": 58,
+      "horse_numbers": [
+        4,
+        11
+      ],
+      "quoted_odds": 368.8
+    },
+    {
+      "rank": 59,
+      "horse_numbers": [
+        4,
+        5
+      ],
+      "quoted_odds": 375.2
+    },
+    {
+      "rank": 60,
+      "horse_numbers": [
+        3,
+        5
+      ],
+      "quoted_odds": 398.6
+    },
+    {
+      "rank": 61,
+      "horse_numbers": [
+        13,
+        17
+      ],
+      "quoted_odds": 404.7
+    },
+    {
+      "rank": 62,
+      "horse_numbers": [
+        1,
+        9
+      ],
+      "quoted_odds": 421.6
+    },
+    {
+      "rank": 63,
+      "horse_numbers": [
+        9,
+        14
+      ],
+      "quoted_odds": 435.2
+    },
+    {
+      "rank": 64,
+      "horse_numbers": [
+        5,
+        12
+      ],
+      "quoted_odds": 440.3
+    },
+    {
+      "rank": 65,
+      "horse_numbers": [
+        2,
+        6
+      ],
+      "quoted_odds": 475.9
+    },
+    {
+      "rank": 66,
+      "horse_numbers": [
+        2,
+        4
+      ],
+      "quoted_odds": 478.1
+    },
+    {
+      "rank": 67,
+      "horse_numbers": [
+        9,
+        12
+      ],
+      "quoted_odds": 488.1
+    },
+    {
+      "rank": 68,
+      "horse_numbers": [
+        2,
+        3
+      ],
+      "quoted_odds": 492.9
+    },
+    {
+      "rank": 69,
+      "horse_numbers": [
+        11,
+        16
+      ],
+      "quoted_odds": 515.9
+    },
+    {
+      "rank": 70,
+      "horse_numbers": [
+        1,
+        2
+      ],
+      "quoted_odds": 519
+    },
+    {
+      "rank": 71,
+      "horse_numbers": [
+        1,
+        11
+      ],
+      "quoted_odds": 534.1
+    },
+    {
+      "rank": 72,
+      "horse_numbers": [
+        5,
+        14
+      ],
+      "quoted_odds": 549.6
+    },
+    {
+      "rank": 73,
+      "horse_numbers": [
+        3,
+        17
+      ],
+      "quoted_odds": 618.5
+    },
+    {
+      "rank": 74,
+      "horse_numbers": [
+        2,
+        12
+      ],
+      "quoted_odds": 647.5
+    },
+    {
+      "rank": 75,
+      "horse_numbers": [
+        13,
+        15
+      ],
+      "quoted_odds": 647.5
+    },
+    {
+      "rank": 76,
+      "horse_numbers": [
+        9,
+        16
+      ],
+      "quoted_odds": 704.7
+    },
+    {
+      "rank": 77,
+      "horse_numbers": [
+        2,
+        16
+      ],
+      "quoted_odds": 714.7
+    },
+    {
+      "rank": 78,
+      "horse_numbers": [
+        10,
+        13
+      ],
+      "quoted_odds": 721.5
+    },
+    {
+      "rank": 79,
+      "horse_numbers": [
+        5,
+        16
+      ],
+      "quoted_odds": 735.5
+    },
+    {
+      "rank": 80,
+      "horse_numbers": [
+        7,
+        13
+      ],
+      "quoted_odds": 763.2
+    },
+    {
+      "rank": 81,
+      "horse_numbers": [
+        2,
+        14
+      ],
+      "quoted_odds": 770
+    },
+    {
+      "rank": 82,
+      "horse_numbers": [
+        5,
+        11
+      ],
+      "quoted_odds": 771
+    },
+    {
+      "rank": 83,
+      "horse_numbers": [
+        2,
+        11
+      ],
+      "quoted_odds": 792.1
+    },
+    {
+      "rank": 84,
+      "horse_numbers": [
+        4,
+        17
+      ],
+      "quoted_odds": 822.2
+    },
+    {
+      "rank": 85,
+      "horse_numbers": [
+        2,
+        9
+      ],
+      "quoted_odds": 854.6
+    },
+    {
+      "rank": 86,
+      "horse_numbers": [
+        4,
+        7
+      ],
+      "quoted_odds": 889.7
+    },
+    {
+      "rank": 87,
+      "horse_numbers": [
+        9,
+        11
+      ],
+      "quoted_odds": 911
+    },
+    {
+      "rank": 88,
+      "horse_numbers": [
+        14,
+        17
+      ],
+      "quoted_odds": 915.2
+    },
+    {
+      "rank": 89,
+      "horse_numbers": [
+        3,
+        7
+      ],
+      "quoted_odds": 954
+    },
+    {
+      "rank": 90,
+      "horse_numbers": [
+        3,
+        10
+      ],
+      "quoted_odds": 958.5
+    },
+    {
+      "rank": 91,
+      "horse_numbers": [
+        2,
+        7
+      ],
+      "quoted_odds": 967.7
+    },
+    {
+      "rank": 92,
+      "horse_numbers": [
+        5,
+        9
+      ],
+      "quoted_odds": 977.1
+    },
+    {
+      "rank": 93,
+      "horse_numbers": [
+        4,
+        15
+      ],
+      "quoted_odds": 1021.5
+    },
+    {
+      "rank": 94,
+      "horse_numbers": [
+        2,
+        5
+      ],
+      "quoted_odds": 1030.2
+    },
+    {
+      "rank": 95,
+      "horse_numbers": [
+        14,
+        15
+      ],
+      "quoted_odds": 1058.9
+    },
+    {
+      "rank": 96,
+      "horse_numbers": [
+        1,
+        17
+      ],
+      "quoted_odds": 1064.5
+    },
+    {
+      "rank": 97,
+      "horse_numbers": [
+        6,
+        15
+      ],
+      "quoted_odds": 1087.4
+    },
+    {
+      "rank": 98,
+      "horse_numbers": [
+        1,
+        7
+      ],
+      "quoted_odds": 1089.3
+    },
+    {
+      "rank": 99,
+      "horse_numbers": [
+        3,
+        15
+      ],
+      "quoted_odds": 1117.4
+    },
+    {
+      "rank": 100,
+      "horse_numbers": [
+        15,
+        16
+      ],
+      "quoted_odds": 1123.6
+    },
+    {
+      "rank": 101,
+      "horse_numbers": [
+        6,
+        7
+      ],
+      "quoted_odds": 1136.3
+    },
+    {
+      "rank": 102,
+      "horse_numbers": [
+        1,
+        15
+      ],
+      "quoted_odds": 1164.6
+    },
+    {
+      "rank": 103,
+      "horse_numbers": [
+        16,
+        17
+      ],
+      "quoted_odds": 1171.4
+    },
+    {
+      "rank": 104,
+      "horse_numbers": [
+        6,
+        17
+      ],
+      "quoted_odds": 1203.9
+    },
+    {
+      "rank": 105,
+      "horse_numbers": [
+        12,
+        17
+      ],
+      "quoted_odds": 1225.8
+    },
+    {
+      "rank": 106,
+      "horse_numbers": [
+        10,
+        11
+      ],
+      "quoted_odds": 1296.5
+    },
+    {
+      "rank": 107,
+      "horse_numbers": [
+        2,
+        10
+      ],
+      "quoted_odds": 1302.1
+    },
+    {
+      "rank": 108,
+      "horse_numbers": [
+        6,
+        10
+      ],
+      "quoted_odds": 1394.9
+    },
+    {
+      "rank": 109,
+      "horse_numbers": [
+        12,
+        15
+      ],
+      "quoted_odds": 1404.6
+    },
+    {
+      "rank": 110,
+      "horse_numbers": [
+        4,
+        10
+      ],
+      "quoted_odds": 1444.7
+    },
+    {
+      "rank": 111,
+      "horse_numbers": [
+        1,
+        10
+      ],
+      "quoted_odds": 1472.7
+    },
+    {
+      "rank": 112,
+      "horse_numbers": [
+        10,
+        12
+      ],
+      "quoted_odds": 1472.7
+    },
+    {
+      "rank": 113,
+      "horse_numbers": [
+        11,
+        17
+      ],
+      "quoted_odds": 1536.1
+    },
+    {
+      "rank": 114,
+      "horse_numbers": [
+        9,
+        10
+      ],
+      "quoted_odds": 1555.8
+    },
+    {
+      "rank": 115,
+      "horse_numbers": [
+        7,
+        9
+      ],
+      "quoted_odds": 1580.1
+    },
+    {
+      "rank": 116,
+      "horse_numbers": [
+        7,
+        11
+      ],
+      "quoted_odds": 1584.3
+    },
+    {
+      "rank": 117,
+      "horse_numbers": [
+        7,
+        12
+      ],
+      "quoted_odds": 1784.6
+    },
+    {
+      "rank": 118,
+      "horse_numbers": [
+        9,
+        15
+      ],
+      "quoted_odds": 1822.1
+    },
+    {
+      "rank": 119,
+      "horse_numbers": [
+        9,
+        17
+      ],
+      "quoted_odds": 1838.7
+    },
+    {
+      "rank": 120,
+      "horse_numbers": [
+        10,
+        14
+      ],
+      "quoted_odds": 1855.6
+    },
+    {
+      "rank": 121,
+      "horse_numbers": [
+        5,
+        15
+      ],
+      "quoted_odds": 1908.1
+    },
+    {
+      "rank": 122,
+      "horse_numbers": [
+        5,
+        17
+      ],
+      "quoted_odds": 1996
+    },
+    {
+      "rank": 123,
+      "horse_numbers": [
+        7,
+        14
+      ],
+      "quoted_odds": 2106.9
+    },
+    {
+      "rank": 124,
+      "horse_numbers": [
+        10,
+        16
+      ],
+      "quoted_odds": 2114.2
+    },
+    {
+      "rank": 125,
+      "horse_numbers": [
+        10,
+        17
+      ],
+      "quoted_odds": 2121.6
+    },
+    {
+      "rank": 126,
+      "horse_numbers": [
+        5,
+        7
+      ],
+      "quoted_odds": 2151.7
+    },
+    {
+      "rank": 127,
+      "horse_numbers": [
+        2,
+        17
+      ],
+      "quoted_odds": 2239
+    },
+    {
+      "rank": 128,
+      "horse_numbers": [
+        7,
+        16
+      ],
+      "quoted_odds": 2281.1
+    },
+    {
+      "rank": 129,
+      "horse_numbers": [
+        11,
+        15
+      ],
+      "quoted_odds": 2315.9
+    },
+    {
+      "rank": 130,
+      "horse_numbers": [
+        7,
+        10
+      ],
+      "quoted_odds": 2333.8
+    },
+    {
+      "rank": 131,
+      "horse_numbers": [
+        5,
+        10
+      ],
+      "quoted_odds": 2427.1
+    },
+    {
+      "rank": 132,
+      "horse_numbers": [
+        15,
+        17
+      ],
+      "quoted_odds": 2733.2
+    },
+    {
+      "rank": 133,
+      "horse_numbers": [
+        7,
+        17
+      ],
+      "quoted_odds": 2889.4
+    },
+    {
+      "rank": 134,
+      "horse_numbers": [
+        2,
+        15
+      ],
+      "quoted_odds": 3297.7
+    },
+    {
+      "rank": 135,
+      "horse_numbers": [
+        10,
+        15
+      ],
+      "quoted_odds": 3371
+    },
+    {
+      "rank": 136,
+      "horse_numbers": [
+        7,
+        15
+      ],
+      "quoted_odds": 3889.6
+    }
+  ],
+  "selected_trio_three_horse_quotes_only": [
+    {
+      "rank": 1,
+      "horse_numbers": [
+        4,
+        8,
+        13
+      ],
+      "quoted_odds": 14.5
+    },
+    {
+      "rank": 2,
+      "horse_numbers": [
+        3,
+        8,
+        13
+      ],
+      "quoted_odds": 16.3
+    },
+    {
+      "rank": 9,
+      "horse_numbers": [
+        8,
+        13,
+        14
+      ],
+      "quoted_odds": 31.3
+    },
+    {
+      "rank": 16,
+      "horse_numbers": [
+        3,
+        8,
+        14
+      ],
+      "quoted_odds": 52
+    },
+    {
+      "rank": 24,
+      "horse_numbers": [
+        8,
+        9,
+        13
+      ],
+      "quoted_odds": 80.5
+    }
+  ],
+  "win_price_drift_vs_prior_snapshot_all17": [
+    {
+      "horse_number": 8,
+      "horse_name": "モンローウォーク",
+      "earlier_win_odds": 1.2,
+      "current_win_odds": 1.2,
+      "percent_odds_change": 0,
+      "earlier_market_rank": 1,
+      "current_market_rank": 1
+    },
+    {
+      "horse_number": 13,
+      "horse_name": "ドリームコア",
+      "earlier_win_odds": 9.9,
+      "current_win_odds": 9.6,
+      "percent_odds_change": -3.0303030303030387,
+      "earlier_market_rank": 2,
+      "current_market_rank": 2
+    },
+    {
+      "horse_number": 3,
+      "horse_name": "マスターソアラ",
+      "earlier_win_odds": 15.2,
+      "current_win_odds": 15,
+      "percent_odds_change": -1.3157894736842035,
+      "earlier_market_rank": 3,
+      "current_market_rank": 3
+    },
+    {
+      "horse_number": 6,
+      "horse_name": "ラベルセーヌ",
+      "earlier_win_odds": 15.9,
+      "current_win_odds": 16.1,
+      "percent_odds_change": 1.2578616352201255,
+      "earlier_market_rank": 4,
+      "current_market_rank": 4
+    },
+    {
+      "horse_number": 12,
+      "horse_name": "カナルサンマルタン",
+      "earlier_win_odds": 21.4,
+      "current_win_odds": 22.1,
+      "percent_odds_change": 3.2710280373831946,
+      "earlier_market_rank": 5,
+      "current_market_rank": 5
+    },
+    {
+      "horse_number": 4,
+      "horse_name": "エンネ",
+      "earlier_win_odds": 29.6,
+      "current_win_odds": 29.9,
+      "percent_odds_change": 1.0135135135135087,
+      "earlier_market_rank": 6,
+      "current_market_rank": 6
+    },
+    {
+      "horse_number": 1,
+      "horse_name": "ギャラボーグ",
+      "earlier_win_odds": 39.2,
+      "current_win_odds": 39.1,
+      "percent_odds_change": -0.25510204081633514,
+      "earlier_market_rank": 7,
+      "current_market_rank": 7
+    },
+    {
+      "horse_number": 14,
+      "horse_name": "サムシングスイート",
+      "earlier_win_odds": 41.9,
+      "current_win_odds": 43.6,
+      "percent_odds_change": 4.057279236276856,
+      "earlier_market_rank": 8,
+      "current_market_rank": 8
+    },
+    {
+      "horse_number": 16,
+      "horse_name": "ハヤブササキチャン",
+      "earlier_win_odds": 42.1,
+      "current_win_odds": 44.1,
+      "percent_odds_change": 4.750593824228022,
+      "earlier_market_rank": 9,
+      "current_market_rank": 9
+    },
+    {
+      "horse_number": 11,
+      "horse_name": "ガーネットフレア",
+      "earlier_win_odds": 46,
+      "current_win_odds": 46.7,
+      "percent_odds_change": 1.521739130434785,
+      "earlier_market_rank": 10,
+      "current_market_rank": 10
+    },
+    {
+      "horse_number": 17,
+      "horse_name": "ロザーンジュ",
+      "earlier_win_odds": 59.6,
+      "current_win_odds": 63.2,
+      "percent_odds_change": 6.040268456375841,
+      "earlier_market_rank": 11,
+      "current_market_rank": 11
+    },
+    {
+      "horse_number": 9,
+      "horse_name": "スウィートハピネス",
+      "earlier_win_odds": 78.9,
+      "current_win_odds": 77.6,
+      "percent_odds_change": -1.647655259822578,
+      "earlier_market_rank": 12,
+      "current_market_rank": 12
+    },
+    {
+      "horse_number": 2,
+      "horse_name": "テイエムアイラン",
+      "earlier_win_odds": 86.1,
+      "current_win_odds": 91.5,
+      "percent_odds_change": 6.271777003484336,
+      "earlier_market_rank": 13,
+      "current_market_rank": 13
+    },
+    {
+      "horse_number": 5,
+      "horse_name": "タイセイボーグ",
+      "earlier_win_odds": 89.8,
+      "current_win_odds": 93.8,
+      "percent_odds_change": 4.454342984409809,
+      "earlier_market_rank": 14,
+      "current_market_rank": 14
+    },
+    {
+      "horse_number": 15,
+      "horse_name": "フェスティバルヒル",
+      "earlier_win_odds": 124.2,
+      "current_win_odds": 131.3,
+      "percent_odds_change": 5.716586151368763,
+      "earlier_market_rank": 15,
+      "current_market_rank": 15
+    },
+    {
+      "horse_number": 7,
+      "horse_name": "バースデイフライト",
+      "earlier_win_odds": 146.1,
+      "current_win_odds": 155.1,
+      "percent_odds_change": 6.160164271047219,
+      "earlier_market_rank": 16,
+      "current_market_rank": 16
+    },
+    {
+      "horse_number": 10,
+      "horse_name": "ナイスプレーアスク",
+      "earlier_win_odds": 197,
+      "current_win_odds": 203.2,
+      "percent_odds_change": 3.147208121827405,
+      "earlier_market_rank": 17,
+      "current_market_rank": 17
+    }
+  ],
+  "interpretation_constraints": [
+    "Winning (single win), pair top three (wide), exact top-two unordered (quinella) and triple top-three (trio) are DIFFERENT event definitions.",
+    "Wide odds are a possible payout range whose realized payout depends on other placed horses and betting pool; not calibrated probability.",
+    "Do not compare 1/odds between different pari-mutuel pool types as if they were identical win probabilities.",
+    "The published update timestamp was not available from the page extraction; query time is a retrieval time, not price-generation time.",
+    "This public price snapshot is NOT a valid prospective 15-25-min frozen odds input and not external JRA homepage byte verification.",
+    "Prior assistant qualitative ordering is not the user's separately elicited numerical belief."
+  ]
+}
