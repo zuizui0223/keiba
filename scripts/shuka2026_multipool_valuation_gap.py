@@ -149,6 +149,32 @@ def audited(snapshot:dict,earlier:dict,base:dict)->dict:
         "14_quinella_pair8_global_rank":get(8,14)["quinella_two_horses_top_two_unordered"]["rank"],
         "3_quinella_pair8_global_rank":get(8,3)["quinella_two_horses_top_two_unordered"]["rank"],
     }
+    # Compare ranks among the exact SAME 16 possible partners of
+    # horse 8.  Unlike raw global 136-pair ranks, these are comparable
+    # 1..16 order statistics within a defined fixed-anchor population.
+    # The win rankings exclude horse 8 to use the same 16 animals.
+    other_horses=sorted(ALL_17-{8})
+    win_rank={n:i+1 for i,n in enumerate(
+        sorted(other_horses,key=lambda n:(newer[n]["win_odds"],n))
+    )}
+    wide_rank={n:i+1 for i,n in enumerate(
+        sorted(other_horses,key=lambda n:(wide[tuple(sorted((8,n)))]["rank"],n))
+    )}
+    quin_rank={n:i+1 for i,n in enumerate(
+        sorted(other_horses,key=lambda n:(quin[tuple(sorted((8,n)))]["rank"],n))
+    )}
+    anchor_partner_rankings=[{
+        "partner_horse_number":n,
+        "partner_name":newer[n]["name"],
+        "win_order_AMONG_16_NON_8_horses":win_rank[n],
+        "wide_pair_with8_order_AMONG_16_pair_choices":wide_rank[n],
+        "quinella_pair_with8_order_AMONG_16_pair_choices":quin_rank[n],
+        "wide_partner_preference_rank_gain_over_win_order":
+            win_rank[n]-wide_rank[n],
+        "quinella_partner_preference_rank_gain_over_win_order":
+            win_rank[n]-quin_rank[n],
+        "event_rank_differences_not_place_win_probabilities":True,
+    } for n in other_horses]
     author=[
         {"number":n,"name":newer[n]["name"],
          "our_prior_qualitative_order_NOT_personal_win_probability":i,
@@ -186,6 +212,14 @@ def audited(snapshot:dict,earlier:dict,base:dict)->dict:
         "market_shadow_union":total,
         "market_shadow_union_fraction":len(total)/17,
         "pair_event_rank_inversion":race,
+        "win_wide_quinella_anchor8_partner_ranks_16_comparable_members":
+            anchor_partner_rankings,
+        "source_market_rank_14_place_tilt_relative_to_win_order_only":
+            win_rank[14]-wide_rank[14],
+        "source_market_rank_3_place_tilt_relative_to_win_order_only":
+            win_rank[3]-wide_rank[3],
+        "source_market_rank_9_place_tilt_relative_to_win_order_only":
+            win_rank[9]-wide_rank[9],
         "selected_pair_quotes":pairs,
         "selected_three_horse_quotes_partial_pool_ONLY":selected_trios,
         "first_win_rank_vs_later_win_rank_changes_all_17":moves,
