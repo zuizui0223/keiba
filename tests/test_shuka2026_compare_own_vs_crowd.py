@@ -110,6 +110,11 @@ class LiveIntermediateMarketVsPriorQualitativeRanking(unittest.TestCase):
         ):
             q=copy.deepcopy(self.quoted)
             q["horses"][0][col]=val
+            if col=="number":
+                # Keep the new number's real corresponding JRA name to
+                # reach the duplicate-identity gate rather than failing
+                # earlier at the official-number/name mismatch gate.
+                q["horses"][0]["name"]="ドリームコア"
             with self.assertRaisesRegex(ValueError,message):
                 measure(q,self.base)
 
