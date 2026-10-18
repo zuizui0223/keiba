@@ -1,0 +1,62 @@
+name: "Shuka Sho 2026: all common betting methods, relative price dominance"
+
+# The event happened nowhere yet at source capture: all prices are
+# explicitly original JRA pre-race / SportsNavi independently
+# updated intermediate observations. Do not claim any wager won,
+# that relative within-market dominance is positive EV, or that
+# 400 displayed trifectas are a full census of all 4080.
+on:
+  push:
+    branches:
+      - analysis/shuka-20261018-official-form
+    paths:
+      - 'data/2026-10-18/shuka2026-JRA-all-bet-pools-and-superset-20261018.json'
+      - 'scripts/shuka2026_all_market_ticket_dominance.py'
+      - 'tests/test_shuka2026_all_market_ticket_dominance.py'
+      - '.github/workflows/shuka2026-all-bet-types-odds-consistency.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  all-actual-2026-shuka-odds-tickets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate full public prices and poisoned-source ticket inclusion counterexamples
+        run: |
+          python -m unittest discover -s tests -p 'test_shuka2026_all_market_ticket_dominance.py' -v
+      - name: Compare exact odds for overlapping 1st-2nd events across frames, horses, two-way exacta
+        run: |
+          python scripts/shuka2026_all_market_ticket_dominance.py \
+            --output reports/2026-10-18/shuka2026-all-bet-types-pre-race-relative-dominance.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("reports/2026-10-18/shuka2026-all-bet-types-pre-race-relative-dominance.json").read_text())
+          assert d["source_official_JRA_publication_time_jst"]=="2026-10-18T12:18:00+09:00"
+          assert d["independent_model_history_H_intersection_market_M"]==[3,6,8,12]
+          s=d["single_ticket_relative_dominance_case"]
+          assert s["best_single_ticket_for_model_and_market_top5_relative_payout_domination"]=="枠連 3-4"
+          assert s["frame_quote"]==6.9 and s["horse_quinella_6_8_quote"]==6.8
+          assert s["frame_covers_exactly_horse_quinella_pair_events"]==[
+            [5,7],[5,8],[6,7],[6,8]
+          ]
+          assert d["source_covered_methods"]["trifecta_TOP400_ONLY"]==400
+          assert d["not_proven_single_global_max_expected_value_no_true_probabilities"]
+          assert d["no_actual_bet_purchase"]
+          print("TRUSTED_TICKET_PRICE_CONDITION",d["status"])
+          print("BEST_AUDITABLE_RELATIVE_PRICING",s["best_single_ticket_for_model_and_market_top5_relative_payout_domination"])
+          print("INDEPENDENT_MODEL_CROWD_INTERSECTION",d["independent_model_history_H_intersection_market_M"])
+          print("GUARANTEED_WIN_IS_FALSE",True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-all-common-bet-types-relative-odds-not-expected-value
+          path: reports/2026-10-18/shuka2026-all-bet-types-pre-race-relative-dominance.json
+          retention-days: 30
