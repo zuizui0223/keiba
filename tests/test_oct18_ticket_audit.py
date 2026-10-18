@@ -96,6 +96,11 @@ class Oct18TicketAuditTests(unittest.TestCase):
     def test_checked_in_json_matches_reproducible_math(self):
         self.assertEqual(json.loads(OUTPUT.read_text(encoding="utf-8")), self.report)
 
+    def test_markdown_report_is_exactly_reproducible(self):
+        from scripts.audit_20261018_tickets import make_markdown
+        actual = (ROOT / "reports/2026-10-18/ticket-audit.md").read_text(encoding="utf-8")
+        self.assertEqual(actual, make_markdown(self.report))
+
 
 if __name__ == "__main__":
     unittest.main()
