@@ -1,0 +1,4931 @@
+{
+  "schema_version": 1,
+  "status": "exploratory_market_snapshot_not_v31_holdout",
+  "observed_window_start_jst": "2026-10-18T12:31:24.061+09:00",
+  "observed_window_end_jst": "2026-10-18T12:31:27.499+09:00",
+  "quote_source": "Yahoo!競馬 intermediary displayed 中間オッズ",
+  "upstream_quote_updated_at_jst": null,
+  "upstream_update_timestamp_absence": "Source pages extracted here did not expose independently verifiable per-market upstream quote update timestamps; receipt time is not JRA update time.",
+  "provenance_limitation": "Parsed odds page text, not official JRADB capture. Caching/delay, scratches and final prices not fully verified. Fetch time describes receipt, not each market's update.",
+  "method": "read-only source extraction; not a v3.1 freeze; do not backfill into 20-race formal score ledger",
+  "races": [
+    {
+      "race_id": "2608040707",
+      "venue": "京都",
+      "race": 7,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T13:15:00+09:00",
+      "race_name": "サラ系3歳上500万円以下",
+      "course": "ダート・右 1800m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040707?ninki=1",
+      "source_wide_url": null,
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 9,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 3,
+          "number": 3,
+          "name": "エイシンマールス",
+          "win_odds": 3.8,
+          "place_odds_low": 1.3,
+          "place_odds_high": 1.7
+        },
+        {
+          "popularity": 2,
+          "frame": 8,
+          "number": 8,
+          "name": "バリオス",
+          "win_odds": 3.8,
+          "place_odds_low": 1.3,
+          "place_odds_high": 1.8
+        },
+        {
+          "popularity": 3,
+          "frame": 8,
+          "number": 9,
+          "name": "ゴンタ",
+          "win_odds": 4.6,
+          "place_odds_low": 1.4,
+          "place_odds_high": 1.9
+        },
+        {
+          "popularity": 4,
+          "frame": 4,
+          "number": 4,
+          "name": "アンクルブラック",
+          "win_odds": 7.4,
+          "place_odds_low": 1.8,
+          "place_odds_high": 2.6
+        },
+        {
+          "popularity": 5,
+          "frame": 2,
+          "number": 2,
+          "name": "ジャカルタバオ",
+          "win_odds": 8,
+          "place_odds_low": 2.2,
+          "place_odds_high": 3.2
+        },
+        {
+          "popularity": 6,
+          "frame": 5,
+          "number": 5,
+          "name": "ゴールドコット",
+          "win_odds": 9.6,
+          "place_odds_low": 2.5,
+          "place_odds_high": 3.6
+        },
+        {
+          "popularity": 7,
+          "frame": 7,
+          "number": 7,
+          "name": "タガノアルトゥーラ",
+          "win_odds": 10.2,
+          "place_odds_low": 2.7,
+          "place_odds_high": 4
+        },
+        {
+          "popularity": 8,
+          "frame": 6,
+          "number": 6,
+          "name": "シゲルオトヒメ",
+          "win_odds": 32.7,
+          "place_odds_low": 4.7,
+          "place_odds_high": 7
+        },
+        {
+          "popularity": 9,
+          "frame": 1,
+          "number": 1,
+          "name": "ビナハイバン",
+          "win_odds": 47.2,
+          "place_odds_low": 9.3,
+          "place_odds_high": 13.6
+        }
+      ],
+      "wide": []
+    },
+    {
+      "race_id": "2608040708",
+      "venue": "京都",
+      "race": 8,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T13:45:00+09:00",
+      "race_name": "サラ系3歳上500万円以下",
+      "course": "芝・右・外 2400m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040708?ninki=1",
+      "source_wide_url": null,
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 12,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 5,
+          "number": 5,
+          "name": "ロイドウェバー",
+          "win_odds": 2.1,
+          "place_odds_low": 1.2,
+          "place_odds_high": 1.4
+        },
+        {
+          "popularity": 2,
+          "frame": 3,
+          "number": 3,
+          "name": "サトノブリジャール",
+          "win_odds": 7.6,
+          "place_odds_low": 2.2,
+          "place_odds_high": 3.1
+        },
+        {
+          "popularity": 3,
+          "frame": 2,
+          "number": 2,
+          "name": "ニホンピロロジャー",
+          "win_odds": 7.8,
+          "place_odds_low": 2,
+          "place_odds_high": 2.8
+        },
+        {
+          "popularity": 4,
+          "frame": 1,
+          "number": 1,
+          "name": "ロングホリデー",
+          "win_odds": 8.8,
+          "place_odds_low": 2.4,
+          "place_odds_high": 3.4
+        },
+        {
+          "popularity": 5,
+          "frame": 6,
+          "number": 8,
+          "name": "ウインリュクス",
+          "win_odds": 10.4,
+          "place_odds_low": 2.3,
+          "place_odds_high": 3.4
+        },
+        {
+          "popularity": 6,
+          "frame": 8,
+          "number": 11,
+          "name": "シャンドラファール",
+          "win_odds": 13.8,
+          "place_odds_low": 2.4,
+          "place_odds_high": 3.4
+        },
+        {
+          "popularity": 7,
+          "frame": 5,
+          "number": 6,
+          "name": "マーゴットレジーナ",
+          "win_odds": 16.1,
+          "place_odds_low": 3.4,
+          "place_odds_high": 5
+        },
+        {
+          "popularity": 8,
+          "frame": 8,
+          "number": 12,
+          "name": "エテルノレガーメ",
+          "win_odds": 22.8,
+          "place_odds_low": 4.3,
+          "place_odds_high": 6.5
+        },
+        {
+          "popularity": 9,
+          "frame": 7,
+          "number": 9,
+          "name": "ニホンピロゴルディ",
+          "win_odds": 23.1,
+          "place_odds_low": 3.5,
+          "place_odds_high": 5.2
+        },
+        {
+          "popularity": 10,
+          "frame": 7,
+          "number": 10,
+          "name": "バディ",
+          "win_odds": 28.8,
+          "place_odds_low": 5.5,
+          "place_odds_high": 8.2
+        },
+        {
+          "popularity": 11,
+          "frame": 4,
+          "number": 4,
+          "name": "プレデスティナーレ",
+          "win_odds": 30.3,
+          "place_odds_low": 4.7,
+          "place_odds_high": 7
+        },
+        {
+          "popularity": 12,
+          "frame": 6,
+          "number": 7,
+          "name": "マイネルビスマルク",
+          "win_odds": 43.2,
+          "place_odds_low": 5.8,
+          "place_odds_high": 8.7
+        }
+      ],
+      "wide": []
+    },
+    {
+      "race_id": "2608040710",
+      "venue": "京都",
+      "race": 10,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T14:55:00+09:00",
+      "race_name": "聚楽第特別",
+      "course": "ダート・右 1800m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040710?ninki=1",
+      "source_wide_url": null,
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 10,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 8,
+          "number": 9,
+          "name": "ホウショウルクス",
+          "win_odds": 3.2,
+          "place_odds_low": 1.3,
+          "place_odds_high": 1.6
+        },
+        {
+          "popularity": 2,
+          "frame": 4,
+          "number": 4,
+          "name": "ショーダンサー",
+          "win_odds": 4.5,
+          "place_odds_low": 1.4,
+          "place_odds_high": 1.7
+        },
+        {
+          "popularity": 3,
+          "frame": 8,
+          "number": 10,
+          "name": "マハートマーベル",
+          "win_odds": 6.5,
+          "place_odds_low": 1.9,
+          "place_odds_high": 2.9
+        },
+        {
+          "popularity": 4,
+          "frame": 7,
+          "number": 8,
+          "name": "ジョータルマエ",
+          "win_odds": 7,
+          "place_odds_low": 2,
+          "place_odds_high": 2.9
+        },
+        {
+          "popularity": 5,
+          "frame": 2,
+          "number": 2,
+          "name": "ビルンバウム",
+          "win_odds": 7.1,
+          "place_odds_low": 2.1,
+          "place_odds_high": 3.1
+        },
+        {
+          "popularity": 6,
+          "frame": 3,
+          "number": 3,
+          "name": "ポッドフォルク",
+          "win_odds": 8.2,
+          "place_odds_low": 2.3,
+          "place_odds_high": 3.4
+        },
+        {
+          "popularity": 7,
+          "frame": 1,
+          "number": 1,
+          "name": "アールプロスト",
+          "win_odds": 16.7,
+          "place_odds_low": 2.2,
+          "place_odds_high": 3.3
+        },
+        {
+          "popularity": 8,
+          "frame": 6,
+          "number": 6,
+          "name": "エンマ",
+          "win_odds": 24.8,
+          "place_odds_low": 5.7,
+          "place_odds_high": 8.8
+        },
+        {
+          "popularity": 9,
+          "frame": 5,
+          "number": 5,
+          "name": "ヒデノレインボー",
+          "win_odds": 28.1,
+          "place_odds_low": 5.2,
+          "place_odds_high": 8.2
+        },
+        {
+          "popularity": 10,
+          "frame": 7,
+          "number": 7,
+          "name": "フクキタテーラー",
+          "win_odds": 37,
+          "place_odds_low": 4.5,
+          "place_odds_high": 7
+        }
+      ],
+      "wide": []
+    },
+    {
+      "race_id": "2608040711",
+      "venue": "京都",
+      "race": 11,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T15:40:00+09:00",
+      "race_name": "秋華賞 GI",
+      "course": "芝・右 2000m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040711?ninki=1",
+      "source_wide_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040711?ninki=1",
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 17,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 4,
+          "number": 8,
+          "name": "モンローウォーク",
+          "win_odds": 1.4,
+          "place_odds_low": 1.1,
+          "place_odds_high": 1.2
+        },
+        {
+          "popularity": 2,
+          "frame": 7,
+          "number": 13,
+          "name": "ドリームコア",
+          "win_odds": 8.3,
+          "place_odds_low": 1.7,
+          "place_odds_high": 2.6
+        },
+        {
+          "popularity": 3,
+          "frame": 3,
+          "number": 6,
+          "name": "ラベルセーヌ",
+          "win_odds": 13.2,
+          "place_odds_low": 2.6,
+          "place_odds_high": 4.6
+        },
+        {
+          "popularity": 4,
+          "frame": 2,
+          "number": 3,
+          "name": "マスターソアラ",
+          "win_odds": 15,
+          "place_odds_low": 2.9,
+          "place_odds_high": 5.2
+        },
+        {
+          "popularity": 5,
+          "frame": 6,
+          "number": 12,
+          "name": "カナルサンマルタン",
+          "win_odds": 16.3,
+          "place_odds_low": 2.8,
+          "place_odds_high": 5.1
+        },
+        {
+          "popularity": 6,
+          "frame": 2,
+          "number": 4,
+          "name": "エンネ",
+          "win_odds": 24.2,
+          "place_odds_low": 2.8,
+          "place_odds_high": 5.2
+        },
+        {
+          "popularity": 7,
+          "frame": 1,
+          "number": 1,
+          "name": "ギャラボーグ",
+          "win_odds": 30.4,
+          "place_odds_low": 3.7,
+          "place_odds_high": 6.8
+        },
+        {
+          "popularity": 8,
+          "frame": 8,
+          "number": 16,
+          "name": "ハヤブササキチャン",
+          "win_odds": 34.1,
+          "place_odds_low": 4.3,
+          "place_odds_high": 8.1
+        },
+        {
+          "popularity": 9,
+          "frame": 7,
+          "number": 14,
+          "name": "サムシングスイート",
+          "win_odds": 35.1,
+          "place_odds_low": 3.2,
+          "place_odds_high": 5.9
+        },
+        {
+          "popularity": 10,
+          "frame": 6,
+          "number": 11,
+          "name": "ガーネットフレア",
+          "win_odds": 39.8,
+          "place_odds_low": 4.1,
+          "place_odds_high": 7.7
+        },
+        {
+          "popularity": 11,
+          "frame": 5,
+          "number": 9,
+          "name": "スウィートハピネス",
+          "win_odds": 59.8,
+          "place_odds_low": 5.4,
+          "place_odds_high": 10.3
+        },
+        {
+          "popularity": 12,
+          "frame": 3,
+          "number": 5,
+          "name": "タイセイボーグ",
+          "win_odds": 64.8,
+          "place_odds_low": 6.8,
+          "place_odds_high": 13
+        },
+        {
+          "popularity": 13,
+          "frame": 8,
+          "number": 17,
+          "name": "ロザーンジュ",
+          "win_odds": 80.4,
+          "place_odds_low": 8.9,
+          "place_odds_high": 17.2
+        },
+        {
+          "popularity": 14,
+          "frame": 1,
+          "number": 2,
+          "name": "テイエムアイラン",
+          "win_odds": 83.4,
+          "place_odds_low": 10.2,
+          "place_odds_high": 19.8
+        },
+        {
+          "popularity": 15,
+          "frame": 8,
+          "number": 15,
+          "name": "フェスティバルヒル",
+          "win_odds": 122.1,
+          "place_odds_low": 12.8,
+          "place_odds_high": 25.1
+        },
+        {
+          "popularity": 16,
+          "frame": 4,
+          "number": 7,
+          "name": "バースデイフライト",
+          "win_odds": 172.5,
+          "place_odds_low": 18.6,
+          "place_odds_high": 36.4
+        },
+        {
+          "popularity": 17,
+          "frame": 5,
+          "number": 10,
+          "name": "ナイスプレーアスク",
+          "win_odds": 177.5,
+          "place_odds_low": 19.5,
+          "place_odds_high": 38.3
+        }
+      ],
+      "wide": [
+        {
+          "popularity": 1,
+          "horses": [
+            8,
+            13
+          ],
+          "odds_low": 3.3,
+          "odds_high": 3.5
+        },
+        {
+          "popularity": 2,
+          "horses": [
+            6,
+            8
+          ],
+          "odds_low": 3.8,
+          "odds_high": 4.1
+        },
+        {
+          "popularity": 3,
+          "horses": [
+            4,
+            8
+          ],
+          "odds_low": 3.9,
+          "odds_high": 4.2
+        },
+        {
+          "popularity": 4,
+          "horses": [
+            8,
+            12
+          ],
+          "odds_low": 4.9,
+          "odds_high": 5.4
+        },
+        {
+          "popularity": 5,
+          "horses": [
+            3,
+            8
+          ],
+          "odds_low": 6.2,
+          "odds_high": 6.9
+        },
+        {
+          "popularity": 6,
+          "horses": [
+            1,
+            8
+          ],
+          "odds_low": 7.2,
+          "odds_high": 7.9
+        },
+        {
+          "popularity": 7,
+          "horses": [
+            8,
+            14
+          ],
+          "odds_low": 7.8,
+          "odds_high": 8.6
+        },
+        {
+          "popularity": 8,
+          "horses": [
+            3,
+            13
+          ],
+          "odds_low": 9.7,
+          "odds_high": 11
+        },
+        {
+          "popularity": 9,
+          "horses": [
+            8,
+            16
+          ],
+          "odds_low": 9.9,
+          "odds_high": 10.9
+        },
+        {
+          "popularity": 10,
+          "horses": [
+            4,
+            13
+          ],
+          "odds_low": 10,
+          "odds_high": 11.7
+        },
+        {
+          "popularity": 11,
+          "horses": [
+            8,
+            11
+          ],
+          "odds_low": 11.1,
+          "odds_high": 12.1
+        },
+        {
+          "popularity": 12,
+          "horses": [
+            6,
+            12
+          ],
+          "odds_low": 11.7,
+          "odds_high": 13.2
+        },
+        {
+          "popularity": 13,
+          "horses": [
+            8,
+            9
+          ],
+          "odds_low": 13,
+          "odds_high": 14.2
+        },
+        {
+          "popularity": 14,
+          "horses": [
+            6,
+            13
+          ],
+          "odds_low": 13.5,
+          "odds_high": 15.9
+        },
+        {
+          "popularity": 15,
+          "horses": [
+            4,
+            6
+          ],
+          "odds_low": 13.8,
+          "odds_high": 15.9
+        },
+        {
+          "popularity": 16,
+          "horses": [
+            12,
+            13
+          ],
+          "odds_low": 14.6,
+          "odds_high": 16.9
+        },
+        {
+          "popularity": 17,
+          "horses": [
+            5,
+            8
+          ],
+          "odds_low": 15.2,
+          "odds_high": 16.6
+        },
+        {
+          "popularity": 18,
+          "horses": [
+            1,
+            13
+          ],
+          "odds_low": 17.4,
+          "odds_high": 19.6
+        },
+        {
+          "popularity": 19,
+          "horses": [
+            13,
+            14
+          ],
+          "odds_low": 17.6,
+          "odds_high": 19.8
+        },
+        {
+          "popularity": 20,
+          "horses": [
+            3,
+            4
+          ],
+          "odds_low": 17.7,
+          "odds_high": 19.8
+        },
+        {
+          "popularity": 21,
+          "horses": [
+            3,
+            6
+          ],
+          "odds_low": 19.4,
+          "odds_high": 21.7
+        },
+        {
+          "popularity": 22,
+          "horses": [
+            4,
+            12
+          ],
+          "odds_low": 19.9,
+          "odds_high": 22.6
+        },
+        {
+          "popularity": 23,
+          "horses": [
+            1,
+            4
+          ],
+          "odds_low": 21.7,
+          "odds_high": 24.1
+        },
+        {
+          "popularity": 24,
+          "horses": [
+            4,
+            14
+          ],
+          "odds_low": 21.9,
+          "odds_high": 24.3
+        },
+        {
+          "popularity": 25,
+          "horses": [
+            3,
+            12
+          ],
+          "odds_low": 22.7,
+          "odds_high": 24.9
+        },
+        {
+          "popularity": 26,
+          "horses": [
+            2,
+            8
+          ],
+          "odds_low": 23.5,
+          "odds_high": 25.6
+        },
+        {
+          "popularity": 27,
+          "horses": [
+            6,
+            14
+          ],
+          "odds_low": 23.5,
+          "odds_high": 26.1
+        },
+        {
+          "popularity": 28,
+          "horses": [
+            6,
+            16
+          ],
+          "odds_low": 24.7,
+          "odds_high": 27.2
+        },
+        {
+          "popularity": 29,
+          "horses": [
+            1,
+            6
+          ],
+          "odds_low": 25.1,
+          "odds_high": 28
+        },
+        {
+          "popularity": 30,
+          "horses": [
+            12,
+            14
+          ],
+          "odds_low": 26,
+          "odds_high": 28.3
+        },
+        {
+          "popularity": 31,
+          "horses": [
+            3,
+            14
+          ],
+          "odds_low": 26.4,
+          "odds_high": 28.4
+        },
+        {
+          "popularity": 32,
+          "horses": [
+            1,
+            12
+          ],
+          "odds_low": 27.1,
+          "odds_high": 29.6
+        },
+        {
+          "popularity": 33,
+          "horses": [
+            13,
+            16
+          ],
+          "odds_low": 27.8,
+          "odds_high": 31
+        },
+        {
+          "popularity": 34,
+          "horses": [
+            1,
+            3
+          ],
+          "odds_low": 28.8,
+          "odds_high": 31.1
+        },
+        {
+          "popularity": 35,
+          "horses": [
+            12,
+            16
+          ],
+          "odds_low": 30.8,
+          "odds_high": 33.3
+        },
+        {
+          "popularity": 36,
+          "horses": [
+            11,
+            14
+          ],
+          "odds_low": 33.2,
+          "odds_high": 35
+        },
+        {
+          "popularity": 37,
+          "horses": [
+            11,
+            12
+          ],
+          "odds_low": 34.5,
+          "odds_high": 37.2
+        },
+        {
+          "popularity": 38,
+          "horses": [
+            11,
+            13
+          ],
+          "odds_low": 35.4,
+          "odds_high": 39.5
+        },
+        {
+          "popularity": 39,
+          "horses": [
+            9,
+            13
+          ],
+          "odds_low": 36.4,
+          "odds_high": 40.4
+        },
+        {
+          "popularity": 40,
+          "horses": [
+            4,
+            9
+          ],
+          "odds_low": 36.6,
+          "odds_high": 40
+        },
+        {
+          "popularity": 41,
+          "horses": [
+            6,
+            11
+          ],
+          "odds_low": 36.9,
+          "odds_high": 40.5
+        },
+        {
+          "popularity": 42,
+          "horses": [
+            8,
+            15
+          ],
+          "odds_low": 39.2,
+          "odds_high": 42.7
+        },
+        {
+          "popularity": 43,
+          "horses": [
+            1,
+            5
+          ],
+          "odds_low": 40.9,
+          "odds_high": 43
+        },
+        {
+          "popularity": 44,
+          "horses": [
+            6,
+            9
+          ],
+          "odds_low": 41.4,
+          "odds_high": 45.4
+        },
+        {
+          "popularity": 45,
+          "horses": [
+            1,
+            14
+          ],
+          "odds_low": 41.9,
+          "odds_high": 44.7
+        },
+        {
+          "popularity": 46,
+          "horses": [
+            4,
+            16
+          ],
+          "odds_low": 42.3,
+          "odds_high": 46.5
+        },
+        {
+          "popularity": 47,
+          "horses": [
+            5,
+            13
+          ],
+          "odds_low": 44.2,
+          "odds_high": 49
+        },
+        {
+          "popularity": 48,
+          "horses": [
+            4,
+            11
+          ],
+          "odds_low": 44.7,
+          "odds_high": 49
+        },
+        {
+          "popularity": 49,
+          "horses": [
+            8,
+            17
+          ],
+          "odds_low": 47,
+          "odds_high": 51.2
+        },
+        {
+          "popularity": 50,
+          "horses": [
+            1,
+            16
+          ],
+          "odds_low": 49,
+          "odds_high": 52
+        },
+        {
+          "popularity": 51,
+          "horses": [
+            3,
+            16
+          ],
+          "odds_low": 51.9,
+          "odds_high": 55.4
+        },
+        {
+          "popularity": 52,
+          "horses": [
+            14,
+            16
+          ],
+          "odds_low": 52,
+          "odds_high": 55
+        },
+        {
+          "popularity": 53,
+          "horses": [
+            5,
+            6
+          ],
+          "odds_low": 52.6,
+          "odds_high": 57.5
+        },
+        {
+          "popularity": 54,
+          "horses": [
+            3,
+            11
+          ],
+          "odds_low": 53.1,
+          "odds_high": 56.6
+        },
+        {
+          "popularity": 55,
+          "horses": [
+            9,
+            12
+          ],
+          "odds_low": 53.7,
+          "odds_high": 57.7
+        },
+        {
+          "popularity": 56,
+          "horses": [
+            9,
+            14
+          ],
+          "odds_low": 57.2,
+          "odds_high": 60.2
+        },
+        {
+          "popularity": 57,
+          "horses": [
+            4,
+            5
+          ],
+          "odds_low": 57.3,
+          "odds_high": 62.4
+        },
+        {
+          "popularity": 58,
+          "horses": [
+            7,
+            8
+          ],
+          "odds_low": 58.8,
+          "odds_high": 64
+        },
+        {
+          "popularity": 59,
+          "horses": [
+            11,
+            16
+          ],
+          "odds_low": 65,
+          "odds_high": 68.1
+        },
+        {
+          "popularity": 60,
+          "horses": [
+            1,
+            11
+          ],
+          "odds_low": 65,
+          "odds_high": 68.8
+        },
+        {
+          "popularity": 61,
+          "horses": [
+            3,
+            9
+          ],
+          "odds_low": 65.3,
+          "odds_high": 69.3
+        },
+        {
+          "popularity": 62,
+          "horses": [
+            5,
+            12
+          ],
+          "odds_low": 65.6,
+          "odds_high": 70.3
+        },
+        {
+          "popularity": 63,
+          "horses": [
+            1,
+            9
+          ],
+          "odds_low": 70.7,
+          "odds_high": 74.5
+        },
+        {
+          "popularity": 64,
+          "horses": [
+            8,
+            10
+          ],
+          "odds_low": 71.5,
+          "odds_high": 77.7
+        },
+        {
+          "popularity": 65,
+          "horses": [
+            3,
+            5
+          ],
+          "odds_low": 76.6,
+          "odds_high": 81
+        },
+        {
+          "popularity": 66,
+          "horses": [
+            2,
+            6
+          ],
+          "odds_low": 86.3,
+          "odds_high": 93.7
+        },
+        {
+          "popularity": 67,
+          "horses": [
+            9,
+            16
+          ],
+          "odds_low": 89.8,
+          "odds_high": 93.8
+        },
+        {
+          "popularity": 68,
+          "horses": [
+            13,
+            17
+          ],
+          "odds_low": 91.7,
+          "odds_high": 100.5
+        },
+        {
+          "popularity": 69,
+          "horses": [
+            5,
+            14
+          ],
+          "odds_low": 92.1,
+          "odds_high": 96.5
+        },
+        {
+          "popularity": 70,
+          "horses": [
+            9,
+            11
+          ],
+          "odds_low": 94.2,
+          "odds_high": 98.1
+        },
+        {
+          "popularity": 71,
+          "horses": [
+            2,
+            13
+          ],
+          "odds_low": 94.7,
+          "odds_high": 104.3
+        },
+        {
+          "popularity": 72,
+          "horses": [
+            2,
+            12
+          ],
+          "odds_low": 105.1,
+          "odds_high": 111.9
+        },
+        {
+          "popularity": 73,
+          "horses": [
+            5,
+            9
+          ],
+          "odds_low": 111.3,
+          "odds_high": 115.2
+        },
+        {
+          "popularity": 74,
+          "horses": [
+            1,
+            2
+          ],
+          "odds_low": 112.9,
+          "odds_high": 118.1
+        },
+        {
+          "popularity": 75,
+          "horses": [
+            2,
+            4
+          ],
+          "odds_low": 115.8,
+          "odds_high": 125.4
+        },
+        {
+          "popularity": 76,
+          "horses": [
+            5,
+            16
+          ],
+          "odds_low": 124.6,
+          "odds_high": 129.8
+        },
+        {
+          "popularity": 77,
+          "horses": [
+            13,
+            15
+          ],
+          "odds_low": 130.1,
+          "odds_high": 142.7
+        },
+        {
+          "popularity": 78,
+          "horses": [
+            2,
+            3
+          ],
+          "odds_low": 130.7,
+          "odds_high": 137.4
+        },
+        {
+          "popularity": 79,
+          "horses": [
+            2,
+            11
+          ],
+          "odds_low": 137.5,
+          "odds_high": 141.9
+        },
+        {
+          "popularity": 80,
+          "horses": [
+            5,
+            11
+          ],
+          "odds_low": 138.3,
+          "odds_high": 143.6
+        },
+        {
+          "popularity": 81,
+          "horses": [
+            2,
+            16
+          ],
+          "odds_low": 150.4,
+          "odds_high": 155.6
+        },
+        {
+          "popularity": 82,
+          "horses": [
+            3,
+            17
+          ],
+          "odds_low": 165.3,
+          "odds_high": 172.9
+        },
+        {
+          "popularity": 83,
+          "horses": [
+            2,
+            14
+          ],
+          "odds_low": 171.5,
+          "odds_high": 178.8
+        },
+        {
+          "popularity": 84,
+          "horses": [
+            6,
+            15
+          ],
+          "odds_low": 176.5,
+          "odds_high": 190.8
+        },
+        {
+          "popularity": 85,
+          "horses": [
+            4,
+            15
+          ],
+          "odds_low": 180.4,
+          "odds_high": 194.6
+        },
+        {
+          "popularity": 86,
+          "horses": [
+            10,
+            13
+          ],
+          "odds_low": 183.9,
+          "odds_high": 201.1
+        },
+        {
+          "popularity": 87,
+          "horses": [
+            4,
+            17
+          ],
+          "odds_low": 184.1,
+          "odds_high": 198.4
+        },
+        {
+          "popularity": 88,
+          "horses": [
+            12,
+            15
+          ],
+          "odds_low": 187,
+          "odds_high": 198.4
+        },
+        {
+          "popularity": 89,
+          "horses": [
+            2,
+            9
+          ],
+          "odds_low": 194.2,
+          "odds_high": 199.7
+        },
+        {
+          "popularity": 90,
+          "horses": [
+            14,
+            17
+          ],
+          "odds_low": 195.3,
+          "odds_high": 202.5
+        },
+        {
+          "popularity": 91,
+          "horses": [
+            7,
+            13
+          ],
+          "odds_low": 208.3,
+          "odds_high": 228
+        },
+        {
+          "popularity": 92,
+          "horses": [
+            14,
+            15
+          ],
+          "odds_low": 217.7,
+          "odds_high": 226
+        },
+        {
+          "popularity": 93,
+          "horses": [
+            2,
+            5
+          ],
+          "odds_low": 224.1,
+          "odds_high": 229.9
+        },
+        {
+          "popularity": 94,
+          "horses": [
+            1,
+            15
+          ],
+          "odds_low": 224.8,
+          "odds_high": 234
+        },
+        {
+          "popularity": 95,
+          "horses": [
+            6,
+            17
+          ],
+          "odds_low": 227.5,
+          "odds_high": 245.7
+        },
+        {
+          "popularity": 96,
+          "horses": [
+            16,
+            17
+          ],
+          "odds_low": 232.5,
+          "odds_high": 239.4
+        },
+        {
+          "popularity": 97,
+          "horses": [
+            12,
+            17
+          ],
+          "odds_low": 236,
+          "odds_high": 250
+        },
+        {
+          "popularity": 98,
+          "horses": [
+            6,
+            7
+          ],
+          "odds_low": 240.1,
+          "odds_high": 259.1
+        },
+        {
+          "popularity": 99,
+          "horses": [
+            7,
+            12
+          ],
+          "odds_low": 252.6,
+          "odds_high": 267.3
+        },
+        {
+          "popularity": 100,
+          "horses": [
+            15,
+            16
+          ],
+          "odds_low": 255.2,
+          "odds_high": 263.1
+        },
+        {
+          "popularity": 101,
+          "horses": [
+            1,
+            17
+          ],
+          "odds_low": 258.1,
+          "odds_high": 268.5
+        },
+        {
+          "popularity": 102,
+          "horses": [
+            3,
+            15
+          ],
+          "odds_low": 259.8,
+          "odds_high": 272
+        },
+        {
+          "popularity": 103,
+          "horses": [
+            4,
+            7
+          ],
+          "odds_low": 276.3,
+          "odds_high": 297.4
+        },
+        {
+          "popularity": 104,
+          "horses": [
+            1,
+            7
+          ],
+          "odds_low": 278,
+          "odds_high": 288.9
+        },
+        {
+          "popularity": 105,
+          "horses": [
+            5,
+            15
+          ],
+          "odds_low": 282,
+          "odds_high": 288.1
+        },
+        {
+          "popularity": 106,
+          "horses": [
+            3,
+            7
+          ],
+          "odds_low": 282.6,
+          "odds_high": 295.2
+        },
+        {
+          "popularity": 107,
+          "horses": [
+            9,
+            15
+          ],
+          "odds_low": 283.2,
+          "odds_high": 290.2
+        },
+        {
+          "popularity": 108,
+          "horses": [
+            3,
+            10
+          ],
+          "odds_low": 287.4,
+          "odds_high": 300
+        },
+        {
+          "popularity": 109,
+          "horses": [
+            10,
+            12
+          ],
+          "odds_low": 300.9,
+          "odds_high": 318.2
+        },
+        {
+          "popularity": 110,
+          "horses": [
+            11,
+            17
+          ],
+          "odds_low": 307.2,
+          "odds_high": 315.4
+        },
+        {
+          "popularity": 111,
+          "horses": [
+            4,
+            10
+          ],
+          "odds_low": 330.9,
+          "odds_high": 355.9
+        },
+        {
+          "popularity": 112,
+          "horses": [
+            6,
+            10
+          ],
+          "odds_low": 331.1,
+          "odds_high": 356.8
+        },
+        {
+          "popularity": 113,
+          "horses": [
+            1,
+            10
+          ],
+          "odds_low": 346.2,
+          "odds_high": 359.4
+        },
+        {
+          "popularity": 114,
+          "horses": [
+            11,
+            15
+          ],
+          "odds_low": 346.5,
+          "odds_high": 356.2
+        },
+        {
+          "popularity": 115,
+          "horses": [
+            10,
+            14
+          ],
+          "odds_low": 355.6,
+          "odds_high": 368.1
+        },
+        {
+          "popularity": 116,
+          "horses": [
+            10,
+            11
+          ],
+          "odds_low": 362.5,
+          "odds_high": 371.5
+        },
+        {
+          "popularity": 117,
+          "horses": [
+            7,
+            9
+          ],
+          "odds_low": 367.5,
+          "odds_high": 375.7
+        },
+        {
+          "popularity": 118,
+          "horses": [
+            7,
+            16
+          ],
+          "odds_low": 370.2,
+          "odds_high": 380.8
+        },
+        {
+          "popularity": 119,
+          "horses": [
+            9,
+            17
+          ],
+          "odds_low": 391.4,
+          "odds_high": 400.6
+        },
+        {
+          "popularity": 120,
+          "horses": [
+            2,
+            10
+          ],
+          "odds_low": 401.8,
+          "odds_high": 407
+        },
+        {
+          "popularity": 121,
+          "horses": [
+            9,
+            10
+          ],
+          "odds_low": 409.5,
+          "odds_high": 418.3
+        },
+        {
+          "popularity": 122,
+          "horses": [
+            7,
+            14
+          ],
+          "odds_low": 416,
+          "odds_high": 430.9
+        },
+        {
+          "popularity": 123,
+          "horses": [
+            7,
+            11
+          ],
+          "odds_low": 444.3,
+          "odds_high": 455.7
+        },
+        {
+          "popularity": 124,
+          "horses": [
+            5,
+            7
+          ],
+          "odds_low": 444.4,
+          "odds_high": 453.1
+        },
+        {
+          "popularity": 125,
+          "horses": [
+            10,
+            16
+          ],
+          "odds_low": 456.4,
+          "odds_high": 469.1
+        },
+        {
+          "popularity": 126,
+          "horses": [
+            5,
+            17
+          ],
+          "odds_low": 470.3,
+          "odds_high": 479.9
+        },
+        {
+          "popularity": 127,
+          "horses": [
+            2,
+            7
+          ],
+          "odds_low": 480.4,
+          "odds_high": 487
+        },
+        {
+          "popularity": 128,
+          "horses": [
+            5,
+            10
+          ],
+          "odds_low": 513.2,
+          "odds_high": 522.9
+        },
+        {
+          "popularity": 129,
+          "horses": [
+            2,
+            17
+          ],
+          "odds_low": 571.8,
+          "odds_high": 580.3
+        },
+        {
+          "popularity": 130,
+          "horses": [
+            7,
+            10
+          ],
+          "odds_low": 652.5,
+          "odds_high": 656.9
+        },
+        {
+          "popularity": 131,
+          "horses": [
+            10,
+            17
+          ],
+          "odds_low": 659.2,
+          "odds_high": 664.3
+        },
+        {
+          "popularity": 132,
+          "horses": [
+            2,
+            15
+          ],
+          "odds_low": 675.3,
+          "odds_high": 686
+        },
+        {
+          "popularity": 133,
+          "horses": [
+            15,
+            17
+          ],
+          "odds_low": 687.2,
+          "odds_high": 694.5
+        },
+        {
+          "popularity": 134,
+          "horses": [
+            7,
+            15
+          ],
+          "odds_low": 707.8,
+          "odds_high": 714.5
+        },
+        {
+          "popularity": 135,
+          "horses": [
+            7,
+            17
+          ],
+          "odds_low": 749.6,
+          "odds_high": 756
+        },
+        {
+          "popularity": 136,
+          "horses": [
+            10,
+            15
+          ],
+          "odds_low": 775.9,
+          "odds_high": 782.7
+        }
+      ]
+    },
+    {
+      "race_id": "2608040712",
+      "venue": "京都",
+      "race": 12,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T16:30:00+09:00",
+      "race_name": "桂川ステークス",
+      "course": "ダート・右 1400m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040712?ninki=1",
+      "source_wide_url": null,
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 12,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 8,
+          "number": 12,
+          "name": "サンダーバース",
+          "win_odds": 4.3,
+          "place_odds_low": 2,
+          "place_odds_high": 2.4
+        },
+        {
+          "popularity": 2,
+          "frame": 5,
+          "number": 5,
+          "name": "モーニングマジック",
+          "win_odds": 5.2,
+          "place_odds_low": 2.2,
+          "place_odds_high": 2.6
+        },
+        {
+          "popularity": 3,
+          "frame": 6,
+          "number": 8,
+          "name": "ジョディーズマロン",
+          "win_odds": 7.8,
+          "place_odds_low": 2.4,
+          "place_odds_high": 2.8
+        },
+        {
+          "popularity": 4,
+          "frame": 8,
+          "number": 11,
+          "name": "マッシャーブルム",
+          "win_odds": 7.8,
+          "place_odds_low": 2.3,
+          "place_odds_high": 2.7
+        },
+        {
+          "popularity": 5,
+          "frame": 2,
+          "number": 2,
+          "name": "ハクサンアイリス",
+          "win_odds": 8,
+          "place_odds_low": 2.3,
+          "place_odds_high": 2.8
+        },
+        {
+          "popularity": 6,
+          "frame": 7,
+          "number": 10,
+          "name": "トゥロン",
+          "win_odds": 8.2,
+          "place_odds_low": 2.5,
+          "place_odds_high": 3
+        },
+        {
+          "popularity": 7,
+          "frame": 5,
+          "number": 6,
+          "name": "エムズマインド",
+          "win_odds": 12.9,
+          "place_odds_low": 2.5,
+          "place_odds_high": 3.1
+        },
+        {
+          "popularity": 8,
+          "frame": 3,
+          "number": 3,
+          "name": "アスクアイルビゼア",
+          "win_odds": 13,
+          "place_odds_low": 3.5,
+          "place_odds_high": 4.2
+        },
+        {
+          "popularity": 9,
+          "frame": 6,
+          "number": 7,
+          "name": "クーデール",
+          "win_odds": 16.7,
+          "place_odds_low": 5.7,
+          "place_odds_high": 7
+        },
+        {
+          "popularity": 10,
+          "frame": 4,
+          "number": 4,
+          "name": "シゲルソロソロ",
+          "win_odds": 18.2,
+          "place_odds_low": 4.2,
+          "place_odds_high": 5.1
+        },
+        {
+          "popularity": 11,
+          "frame": 7,
+          "number": 9,
+          "name": "キタノソワレ",
+          "win_odds": 24.3,
+          "place_odds_low": 4.7,
+          "place_odds_high": 5.7
+        },
+        {
+          "popularity": 12,
+          "frame": 1,
+          "number": 1,
+          "name": "ホワイトガーベラ",
+          "win_odds": 49.8,
+          "place_odds_low": 11.5,
+          "place_odds_high": 13.9
+        }
+      ],
+      "wide": []
+    },
+    {
+      "race_id": "2605040711",
+      "venue": "東京",
+      "race": 11,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T15:20:00+09:00",
+      "race_name": "ブラジルカップ L",
+      "course": "ダート・左 2100m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2605040711?ninki=1",
+      "source_wide_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2605040711?ninki=1",
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 13,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 6,
+          "number": 9,
+          "name": "クールミラボー",
+          "win_odds": 5.1,
+          "place_odds_low": 2,
+          "place_odds_high": 2.4
+        },
+        {
+          "popularity": 2,
+          "frame": 7,
+          "number": 11,
+          "name": "レッドプロフェシー",
+          "win_odds": 5.1,
+          "place_odds_low": 1.8,
+          "place_odds_high": 2.1
+        },
+        {
+          "popularity": 3,
+          "frame": 5,
+          "number": 6,
+          "name": "ハピ",
+          "win_odds": 5.4,
+          "place_odds_low": 2.4,
+          "place_odds_high": 2.9
+        },
+        {
+          "popularity": 4,
+          "frame": 5,
+          "number": 7,
+          "name": "リアレスト",
+          "win_odds": 8.2,
+          "place_odds_low": 2.6,
+          "place_odds_high": 3.3
+        },
+        {
+          "popularity": 5,
+          "frame": 3,
+          "number": 3,
+          "name": "ルシュヴァルドール",
+          "win_odds": 9.3,
+          "place_odds_low": 2,
+          "place_odds_high": 2.4
+        },
+        {
+          "popularity": 6,
+          "frame": 2,
+          "number": 2,
+          "name": "メイプルリッジ",
+          "win_odds": 11.6,
+          "place_odds_low": 3.5,
+          "place_odds_high": 4.5
+        },
+        {
+          "popularity": 7,
+          "frame": 4,
+          "number": 5,
+          "name": "ピカピカサンダー",
+          "win_odds": 12.2,
+          "place_odds_low": 3.3,
+          "place_odds_high": 4.2
+        },
+        {
+          "popularity": 8,
+          "frame": 8,
+          "number": 13,
+          "name": "カズタンジャー",
+          "win_odds": 12.3,
+          "place_odds_low": 3.1,
+          "place_odds_high": 3.9
+        },
+        {
+          "popularity": 9,
+          "frame": 8,
+          "number": 12,
+          "name": "リチュアル",
+          "win_odds": 20.8,
+          "place_odds_low": 4.8,
+          "place_odds_high": 6.1
+        },
+        {
+          "popularity": 10,
+          "frame": 7,
+          "number": 10,
+          "name": "ハグ",
+          "win_odds": 23.6,
+          "place_odds_low": 5.1,
+          "place_odds_high": 6.5
+        },
+        {
+          "popularity": 11,
+          "frame": 4,
+          "number": 4,
+          "name": "ロードプレジール",
+          "win_odds": 26,
+          "place_odds_low": 4.9,
+          "place_odds_high": 6.2
+        },
+        {
+          "popularity": 12,
+          "frame": 1,
+          "number": 1,
+          "name": "ダブルジョーク",
+          "win_odds": 27,
+          "place_odds_low": 5.7,
+          "place_odds_high": 7.2
+        },
+        {
+          "popularity": 13,
+          "frame": 6,
+          "number": 8,
+          "name": "ピュアキアン",
+          "win_odds": 27.6,
+          "place_odds_low": 6.7,
+          "place_odds_high": 8.6
+        }
+      ],
+      "wide": [
+        {
+          "popularity": 1,
+          "horses": [
+            6,
+            9
+          ],
+          "odds_low": 5.2,
+          "odds_high": 5.5
+        },
+        {
+          "popularity": 2,
+          "horses": [
+            3,
+            9
+          ],
+          "odds_low": 5.6,
+          "odds_high": 5.9
+        },
+        {
+          "popularity": 3,
+          "horses": [
+            7,
+            9
+          ],
+          "odds_low": 5.6,
+          "odds_high": 6
+        },
+        {
+          "popularity": 4,
+          "horses": [
+            9,
+            11
+          ],
+          "odds_low": 6.2,
+          "odds_high": 6.6
+        },
+        {
+          "popularity": 5,
+          "horses": [
+            2,
+            9
+          ],
+          "odds_low": 7.1,
+          "odds_high": 7.5
+        },
+        {
+          "popularity": 6,
+          "horses": [
+            9,
+            13
+          ],
+          "odds_low": 7.3,
+          "odds_high": 7.7
+        },
+        {
+          "popularity": 7,
+          "horses": [
+            5,
+            9
+          ],
+          "odds_low": 7.8,
+          "odds_high": 8.2
+        },
+        {
+          "popularity": 8,
+          "horses": [
+            6,
+            7
+          ],
+          "odds_low": 8,
+          "odds_high": 8.7
+        },
+        {
+          "popularity": 9,
+          "horses": [
+            7,
+            11
+          ],
+          "odds_low": 9.9,
+          "odds_high": 10.7
+        },
+        {
+          "popularity": 10,
+          "horses": [
+            3,
+            11
+          ],
+          "odds_low": 10.2,
+          "odds_high": 11
+        },
+        {
+          "popularity": 11,
+          "horses": [
+            3,
+            6
+          ],
+          "odds_low": 10.4,
+          "odds_high": 11.3
+        },
+        {
+          "popularity": 12,
+          "horses": [
+            6,
+            11
+          ],
+          "odds_low": 11.3,
+          "odds_high": 12.2
+        },
+        {
+          "popularity": 13,
+          "horses": [
+            2,
+            6
+          ],
+          "odds_low": 13.1,
+          "odds_high": 14.1
+        },
+        {
+          "popularity": 14,
+          "horses": [
+            3,
+            7
+          ],
+          "odds_low": 13.7,
+          "odds_high": 14.9
+        },
+        {
+          "popularity": 15,
+          "horses": [
+            7,
+            13
+          ],
+          "odds_low": 14,
+          "odds_high": 15
+        },
+        {
+          "popularity": 16,
+          "horses": [
+            5,
+            11
+          ],
+          "odds_low": 14.1,
+          "odds_high": 15.1
+        },
+        {
+          "popularity": 17,
+          "horses": [
+            11,
+            13
+          ],
+          "odds_low": 14.4,
+          "odds_high": 15.4
+        },
+        {
+          "popularity": 18,
+          "horses": [
+            6,
+            13
+          ],
+          "odds_low": 14.6,
+          "odds_high": 15.8
+        },
+        {
+          "popularity": 19,
+          "horses": [
+            5,
+            7
+          ],
+          "odds_low": 14.9,
+          "odds_high": 16
+        },
+        {
+          "popularity": 20,
+          "horses": [
+            2,
+            11
+          ],
+          "odds_low": 15.2,
+          "odds_high": 16.3
+        },
+        {
+          "popularity": 21,
+          "horses": [
+            2,
+            7
+          ],
+          "odds_low": 15.3,
+          "odds_high": 16.5
+        },
+        {
+          "popularity": 22,
+          "horses": [
+            5,
+            6
+          ],
+          "odds_low": 15.4,
+          "odds_high": 16.6
+        },
+        {
+          "popularity": 23,
+          "horses": [
+            3,
+            5
+          ],
+          "odds_low": 15.7,
+          "odds_high": 16.9
+        },
+        {
+          "popularity": 24,
+          "horses": [
+            9,
+            12
+          ],
+          "odds_low": 15.8,
+          "odds_high": 16.5
+        },
+        {
+          "popularity": 25,
+          "horses": [
+            2,
+            13
+          ],
+          "odds_low": 16.6,
+          "odds_high": 17.7
+        },
+        {
+          "popularity": 26,
+          "horses": [
+            3,
+            13
+          ],
+          "odds_low": 17,
+          "odds_high": 18.3
+        },
+        {
+          "popularity": 27,
+          "horses": [
+            2,
+            3
+          ],
+          "odds_low": 17.9,
+          "odds_high": 19.3
+        },
+        {
+          "popularity": 28,
+          "horses": [
+            2,
+            5
+          ],
+          "odds_low": 18,
+          "odds_high": 19.2
+        },
+        {
+          "popularity": 29,
+          "horses": [
+            9,
+            10
+          ],
+          "odds_low": 18.4,
+          "odds_high": 19.4
+        },
+        {
+          "popularity": 30,
+          "horses": [
+            5,
+            13
+          ],
+          "odds_low": 18.6,
+          "odds_high": 19.8
+        },
+        {
+          "popularity": 31,
+          "horses": [
+            4,
+            9
+          ],
+          "odds_low": 20.7,
+          "odds_high": 21.7
+        },
+        {
+          "popularity": 32,
+          "horses": [
+            6,
+            10
+          ],
+          "odds_low": 21.4,
+          "odds_high": 22.7
+        },
+        {
+          "popularity": 33,
+          "horses": [
+            1,
+            9
+          ],
+          "odds_low": 21.7,
+          "odds_high": 22.8
+        },
+        {
+          "popularity": 34,
+          "horses": [
+            7,
+            10
+          ],
+          "odds_low": 22.4,
+          "odds_high": 23.6
+        },
+        {
+          "popularity": 35,
+          "horses": [
+            5,
+            10
+          ],
+          "odds_low": 27,
+          "odds_high": 28.1
+        },
+        {
+          "popularity": 36,
+          "horses": [
+            11,
+            12
+          ],
+          "odds_low": 27,
+          "odds_high": 28.4
+        },
+        {
+          "popularity": 37,
+          "horses": [
+            8,
+            9
+          ],
+          "odds_low": 28.7,
+          "odds_high": 29.9
+        },
+        {
+          "popularity": 38,
+          "horses": [
+            1,
+            11
+          ],
+          "odds_low": 28.7,
+          "odds_high": 30.1
+        },
+        {
+          "popularity": 39,
+          "horses": [
+            1,
+            5
+          ],
+          "odds_low": 29.2,
+          "odds_high": 30.4
+        },
+        {
+          "popularity": 40,
+          "horses": [
+            4,
+            11
+          ],
+          "odds_low": 29.7,
+          "odds_high": 31.1
+        },
+        {
+          "popularity": 41,
+          "horses": [
+            4,
+            7
+          ],
+          "odds_low": 30.2,
+          "odds_high": 31.8
+        },
+        {
+          "popularity": 42,
+          "horses": [
+            10,
+            11
+          ],
+          "odds_low": 31,
+          "odds_high": 32.5
+        },
+        {
+          "popularity": 43,
+          "horses": [
+            4,
+            6
+          ],
+          "odds_low": 31.5,
+          "odds_high": 33.3
+        },
+        {
+          "popularity": 44,
+          "horses": [
+            1,
+            7
+          ],
+          "odds_low": 32.3,
+          "odds_high": 34
+        },
+        {
+          "popularity": 45,
+          "horses": [
+            3,
+            4
+          ],
+          "odds_low": 32.7,
+          "odds_high": 34.4
+        },
+        {
+          "popularity": 46,
+          "horses": [
+            3,
+            8
+          ],
+          "odds_low": 32.9,
+          "odds_high": 34.5
+        },
+        {
+          "popularity": 47,
+          "horses": [
+            3,
+            10
+          ],
+          "odds_low": 33.2,
+          "odds_high": 34.9
+        },
+        {
+          "popularity": 48,
+          "horses": [
+            1,
+            6
+          ],
+          "odds_low": 33.3,
+          "odds_high": 35.2
+        },
+        {
+          "popularity": 49,
+          "horses": [
+            1,
+            3
+          ],
+          "odds_low": 34.2,
+          "odds_high": 36
+        },
+        {
+          "popularity": 50,
+          "horses": [
+            2,
+            4
+          ],
+          "odds_low": 34.4,
+          "odds_high": 35.9
+        },
+        {
+          "popularity": 51,
+          "horses": [
+            4,
+            5
+          ],
+          "odds_low": 36,
+          "odds_high": 37.5
+        },
+        {
+          "popularity": 52,
+          "horses": [
+            1,
+            2
+          ],
+          "odds_low": 37,
+          "odds_high": 38.6
+        },
+        {
+          "popularity": 53,
+          "horses": [
+            3,
+            12
+          ],
+          "odds_low": 38.5,
+          "odds_high": 40.7
+        },
+        {
+          "popularity": 54,
+          "horses": [
+            10,
+            13
+          ],
+          "odds_low": 41.8,
+          "odds_high": 43.6
+        },
+        {
+          "popularity": 55,
+          "horses": [
+            4,
+            13
+          ],
+          "odds_low": 42.2,
+          "odds_high": 44
+        },
+        {
+          "popularity": 56,
+          "horses": [
+            6,
+            8
+          ],
+          "odds_low": 43.1,
+          "odds_high": 45.4
+        },
+        {
+          "popularity": 57,
+          "horses": [
+            1,
+            10
+          ],
+          "odds_low": 44.7,
+          "odds_high": 45.6
+        },
+        {
+          "popularity": 58,
+          "horses": [
+            7,
+            12
+          ],
+          "odds_low": 45.9,
+          "odds_high": 48.5
+        },
+        {
+          "popularity": 59,
+          "horses": [
+            2,
+            12
+          ],
+          "odds_low": 46.4,
+          "odds_high": 48.6
+        },
+        {
+          "popularity": 60,
+          "horses": [
+            1,
+            13
+          ],
+          "odds_low": 47.5,
+          "odds_high": 49.5
+        },
+        {
+          "popularity": 61,
+          "horses": [
+            2,
+            10
+          ],
+          "odds_low": 47.9,
+          "odds_high": 50
+        },
+        {
+          "popularity": 62,
+          "horses": [
+            7,
+            8
+          ],
+          "odds_low": 49.4,
+          "odds_high": 51.8
+        },
+        {
+          "popularity": 63,
+          "horses": [
+            6,
+            12
+          ],
+          "odds_low": 50.3,
+          "odds_high": 53.4
+        },
+        {
+          "popularity": 64,
+          "horses": [
+            8,
+            11
+          ],
+          "odds_low": 54.9,
+          "odds_high": 57.2
+        },
+        {
+          "popularity": 65,
+          "horses": [
+            2,
+            8
+          ],
+          "odds_low": 55.8,
+          "odds_high": 57.9
+        },
+        {
+          "popularity": 66,
+          "horses": [
+            5,
+            12
+          ],
+          "odds_low": 58.8,
+          "odds_high": 61.3
+        },
+        {
+          "popularity": 67,
+          "horses": [
+            1,
+            4
+          ],
+          "odds_low": 59.6,
+          "odds_high": 60.7
+        },
+        {
+          "popularity": 68,
+          "horses": [
+            5,
+            8
+          ],
+          "odds_low": 62.6,
+          "odds_high": 64.7
+        },
+        {
+          "popularity": 69,
+          "horses": [
+            12,
+            13
+          ],
+          "odds_low": 66.2,
+          "odds_high": 69.3
+        },
+        {
+          "popularity": 70,
+          "horses": [
+            8,
+            13
+          ],
+          "odds_low": 66.4,
+          "odds_high": 69
+        },
+        {
+          "popularity": 71,
+          "horses": [
+            8,
+            12
+          ],
+          "odds_low": 71.4,
+          "odds_high": 72.9
+        },
+        {
+          "popularity": 72,
+          "horses": [
+            4,
+            10
+          ],
+          "odds_low": 81.5,
+          "odds_high": 83.2
+        },
+        {
+          "popularity": 73,
+          "horses": [
+            4,
+            12
+          ],
+          "odds_low": 88.7,
+          "odds_high": 90.7
+        },
+        {
+          "popularity": 74,
+          "horses": [
+            10,
+            12
+          ],
+          "odds_low": 90.2,
+          "odds_high": 92.3
+        },
+        {
+          "popularity": 75,
+          "horses": [
+            8,
+            10
+          ],
+          "odds_low": 90.3,
+          "odds_high": 91.8
+        },
+        {
+          "popularity": 76,
+          "horses": [
+            4,
+            8
+          ],
+          "odds_low": 98.4,
+          "odds_high": 99.9
+        },
+        {
+          "popularity": 77,
+          "horses": [
+            1,
+            8
+          ],
+          "odds_low": 100.1,
+          "odds_high": 101.6
+        },
+        {
+          "popularity": 78,
+          "horses": [
+            1,
+            12
+          ],
+          "odds_low": 119.3,
+          "odds_high": 121.9
+        }
+      ]
+    },
+    {
+      "race_id": "2605040712",
+      "venue": "東京",
+      "race": 12,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T16:10:00+09:00",
+      "race_name": "甲斐路ステークス",
+      "course": "芝・左 1800m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2605040712?ninki=1",
+      "source_wide_url": null,
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 16,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 5,
+          "number": 9,
+          "name": "タイセイプランセス",
+          "win_odds": 5.4,
+          "place_odds_low": 2.7,
+          "place_odds_high": 3.6
+        },
+        {
+          "popularity": 2,
+          "frame": 7,
+          "number": 14,
+          "name": "ベストミーエヴァー",
+          "win_odds": 5.8,
+          "place_odds_low": 1.4,
+          "place_odds_high": 1.6
+        },
+        {
+          "popularity": 3,
+          "frame": 7,
+          "number": 13,
+          "name": "キングノジョー",
+          "win_odds": 6.2,
+          "place_odds_low": 3,
+          "place_odds_high": 4.1
+        },
+        {
+          "popularity": 4,
+          "frame": 3,
+          "number": 5,
+          "name": "ラブリージャブリー",
+          "win_odds": 8.2,
+          "place_odds_low": 2.4,
+          "place_odds_high": 3.1
+        },
+        {
+          "popularity": 5,
+          "frame": 8,
+          "number": 16,
+          "name": "カフジエメンタール",
+          "win_odds": 8.2,
+          "place_odds_low": 3,
+          "place_odds_high": 4
+        },
+        {
+          "popularity": 6,
+          "frame": 3,
+          "number": 6,
+          "name": "ロンギングセリーヌ",
+          "win_odds": 12.8,
+          "place_odds_low": 3.4,
+          "place_odds_high": 4.6
+        },
+        {
+          "popularity": 7,
+          "frame": 2,
+          "number": 4,
+          "name": "ソルトブリーズ",
+          "win_odds": 13.5,
+          "place_odds_low": 3.3,
+          "place_odds_high": 4.5
+        },
+        {
+          "popularity": 8,
+          "frame": 4,
+          "number": 7,
+          "name": "ビーオンザカバー",
+          "win_odds": 15.8,
+          "place_odds_low": 4.1,
+          "place_odds_high": 5.6
+        },
+        {
+          "popularity": 9,
+          "frame": 5,
+          "number": 10,
+          "name": "キュクヌス",
+          "win_odds": 18.6,
+          "place_odds_low": 4.3,
+          "place_odds_high": 5.8
+        },
+        {
+          "popularity": 10,
+          "frame": 8,
+          "number": 15,
+          "name": "ログラール",
+          "win_odds": 18.7,
+          "place_odds_low": 4.4,
+          "place_odds_high": 6.1
+        },
+        {
+          "popularity": 11,
+          "frame": 2,
+          "number": 3,
+          "name": "マイネルフルムーン",
+          "win_odds": 28.5,
+          "place_odds_low": 4.4,
+          "place_odds_high": 6
+        },
+        {
+          "popularity": 12,
+          "frame": 1,
+          "number": 1,
+          "name": "ダノンエンブレム",
+          "win_odds": 29.8,
+          "place_odds_low": 5.2,
+          "place_odds_high": 7.2
+        },
+        {
+          "popularity": 13,
+          "frame": 4,
+          "number": 8,
+          "name": "クリニクラウン",
+          "win_odds": 32.3,
+          "place_odds_low": 7.7,
+          "place_odds_high": 10.7
+        },
+        {
+          "popularity": 14,
+          "frame": 1,
+          "number": 2,
+          "name": "グラニット",
+          "win_odds": 40,
+          "place_odds_low": 7.1,
+          "place_odds_high": 9.8
+        },
+        {
+          "popularity": 15,
+          "frame": 6,
+          "number": 11,
+          "name": "ナヴォーナ",
+          "win_odds": 43.6,
+          "place_odds_low": 8,
+          "place_odds_high": 11.1
+        },
+        {
+          "popularity": 16,
+          "frame": 6,
+          "number": 12,
+          "name": "ショーマンフリート",
+          "win_odds": 44,
+          "place_odds_low": 10.1,
+          "place_odds_high": 14
+        }
+      ],
+      "wide": []
+    },
+    {
+      "race_id": "2604040210",
+      "venue": "新潟",
+      "race": 10,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T14:35:00+09:00",
+      "race_name": "飛翼特別",
+      "course": "芝・直線 1000m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2604040210?ninki=1",
+      "source_wide_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2604040210?ninki=1",
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 18,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 7,
+          "number": 13,
+          "name": "カレンデュラ",
+          "win_odds": 5.8,
+          "place_odds_low": 1.9,
+          "place_odds_high": 2.3
+        },
+        {
+          "popularity": 2,
+          "frame": 8,
+          "number": 18,
+          "name": "シーグルロス",
+          "win_odds": 6.2,
+          "place_odds_low": 2.2,
+          "place_odds_high": 2.6
+        },
+        {
+          "popularity": 3,
+          "frame": 7,
+          "number": 15,
+          "name": "スペルキャスター",
+          "win_odds": 6.4,
+          "place_odds_low": 2.4,
+          "place_odds_high": 3
+        },
+        {
+          "popularity": 4,
+          "frame": 8,
+          "number": 17,
+          "name": "ウーマンズパワー",
+          "win_odds": 10,
+          "place_odds_low": 2.8,
+          "place_odds_high": 3.5
+        },
+        {
+          "popularity": 5,
+          "frame": 8,
+          "number": 16,
+          "name": "ゼンダンタカ",
+          "win_odds": 10.5,
+          "place_odds_low": 3.7,
+          "place_odds_high": 4.7
+        },
+        {
+          "popularity": 6,
+          "frame": 6,
+          "number": 12,
+          "name": "イスラコラソン",
+          "win_odds": 13,
+          "place_odds_low": 4.3,
+          "place_odds_high": 5.5
+        },
+        {
+          "popularity": 7,
+          "frame": 4,
+          "number": 7,
+          "name": "ピコアーガイル",
+          "win_odds": 13.6,
+          "place_odds_low": 3,
+          "place_odds_high": 3.7
+        },
+        {
+          "popularity": 8,
+          "frame": 7,
+          "number": 14,
+          "name": "ライクアフラワー",
+          "win_odds": 17.1,
+          "place_odds_low": 5.1,
+          "place_odds_high": 6.4
+        },
+        {
+          "popularity": 9,
+          "frame": 1,
+          "number": 1,
+          "name": "レジーナローズ",
+          "win_odds": 17.7,
+          "place_odds_low": 4.6,
+          "place_odds_high": 5.9
+        },
+        {
+          "popularity": 10,
+          "frame": 5,
+          "number": 10,
+          "name": "ミスエル",
+          "win_odds": 18.4,
+          "place_odds_low": 7.6,
+          "place_odds_high": 9.8
+        },
+        {
+          "popularity": 11,
+          "frame": 5,
+          "number": 9,
+          "name": "パレスドフィーヌ",
+          "win_odds": 18.7,
+          "place_odds_low": 4,
+          "place_odds_high": 5
+        },
+        {
+          "popularity": 12,
+          "frame": 2,
+          "number": 4,
+          "name": "セイウンデセオ",
+          "win_odds": 23.8,
+          "place_odds_low": 5.6,
+          "place_odds_high": 7.1
+        },
+        {
+          "popularity": 13,
+          "frame": 3,
+          "number": 6,
+          "name": "ニホンピロトッティ",
+          "win_odds": 24.6,
+          "place_odds_low": 6.7,
+          "place_odds_high": 8.6
+        },
+        {
+          "popularity": 14,
+          "frame": 3,
+          "number": 5,
+          "name": "クォーツァイト",
+          "win_odds": 36.1,
+          "place_odds_low": 8.3,
+          "place_odds_high": 10.7
+        },
+        {
+          "popularity": 15,
+          "frame": 6,
+          "number": 11,
+          "name": "パーティーガール",
+          "win_odds": 38.9,
+          "place_odds_low": 7.3,
+          "place_odds_high": 9.3
+        },
+        {
+          "popularity": 16,
+          "frame": 4,
+          "number": 8,
+          "name": "ラヴェンデル",
+          "win_odds": 45.5,
+          "place_odds_low": 9.6,
+          "place_odds_high": 12.3
+        },
+        {
+          "popularity": 17,
+          "frame": 1,
+          "number": 2,
+          "name": "ラブディーヴァ",
+          "win_odds": 50.3,
+          "place_odds_low": 9.6,
+          "place_odds_high": 12.3
+        },
+        {
+          "popularity": 18,
+          "frame": 2,
+          "number": 3,
+          "name": "ケンキョ",
+          "win_odds": 57.8,
+          "place_odds_low": 10.8,
+          "place_odds_high": 13.9
+        }
+      ],
+      "wide": [
+        {
+          "popularity": 1,
+          "horses": [
+            13,
+            15
+          ],
+          "odds_low": 5.1,
+          "odds_high": 5.4
+        },
+        {
+          "popularity": 2,
+          "horses": [
+            13,
+            17
+          ],
+          "odds_low": 6.6,
+          "odds_high": 7.1
+        },
+        {
+          "popularity": 3,
+          "horses": [
+            13,
+            16
+          ],
+          "odds_low": 6.8,
+          "odds_high": 7.3
+        },
+        {
+          "popularity": 4,
+          "horses": [
+            13,
+            18
+          ],
+          "odds_low": 7,
+          "odds_high": 7.6
+        },
+        {
+          "popularity": 5,
+          "horses": [
+            12,
+            13
+          ],
+          "odds_low": 8,
+          "odds_high": 8.6
+        },
+        {
+          "popularity": 6,
+          "horses": [
+            17,
+            18
+          ],
+          "odds_low": 8.6,
+          "odds_high": 9.2
+        },
+        {
+          "popularity": 7,
+          "horses": [
+            7,
+            13
+          ],
+          "odds_low": 8.9,
+          "odds_high": 9.5
+        },
+        {
+          "popularity": 8,
+          "horses": [
+            15,
+            18
+          ],
+          "odds_low": 9.4,
+          "odds_high": 10.2
+        },
+        {
+          "popularity": 9,
+          "horses": [
+            15,
+            17
+          ],
+          "odds_low": 10,
+          "odds_high": 11
+        },
+        {
+          "popularity": 10,
+          "horses": [
+            15,
+            16
+          ],
+          "odds_low": 10.6,
+          "odds_high": 11.5
+        },
+        {
+          "popularity": 11,
+          "horses": [
+            12,
+            15
+          ],
+          "odds_low": 12.8,
+          "odds_high": 13.8
+        },
+        {
+          "popularity": 12,
+          "horses": [
+            7,
+            15
+          ],
+          "odds_low": 13.8,
+          "odds_high": 14.9
+        },
+        {
+          "popularity": 13,
+          "horses": [
+            9,
+            13
+          ],
+          "odds_low": 14.1,
+          "odds_high": 14.9
+        },
+        {
+          "popularity": 14,
+          "horses": [
+            16,
+            18
+          ],
+          "odds_low": 14.2,
+          "odds_high": 15.2
+        },
+        {
+          "popularity": 15,
+          "horses": [
+            7,
+            17
+          ],
+          "odds_low": 14.8,
+          "odds_high": 15.8
+        },
+        {
+          "popularity": 16,
+          "horses": [
+            1,
+            13
+          ],
+          "odds_low": 16.4,
+          "odds_high": 17.4
+        },
+        {
+          "popularity": 17,
+          "horses": [
+            16,
+            17
+          ],
+          "odds_low": 16.6,
+          "odds_high": 17.9
+        },
+        {
+          "popularity": 18,
+          "horses": [
+            12,
+            17
+          ],
+          "odds_low": 17,
+          "odds_high": 18.2
+        },
+        {
+          "popularity": 19,
+          "horses": [
+            7,
+            18
+          ],
+          "odds_low": 17.7,
+          "odds_high": 18.8
+        },
+        {
+          "popularity": 20,
+          "horses": [
+            12,
+            18
+          ],
+          "odds_low": 18.2,
+          "odds_high": 19.4
+        },
+        {
+          "popularity": 21,
+          "horses": [
+            1,
+            15
+          ],
+          "odds_low": 18.6,
+          "odds_high": 19.9
+        },
+        {
+          "popularity": 22,
+          "horses": [
+            7,
+            12
+          ],
+          "odds_low": 19.5,
+          "odds_high": 20.7
+        },
+        {
+          "popularity": 23,
+          "horses": [
+            13,
+            14
+          ],
+          "odds_low": 20.2,
+          "odds_high": 21.4
+        },
+        {
+          "popularity": 24,
+          "horses": [
+            9,
+            15
+          ],
+          "odds_low": 22.3,
+          "odds_high": 23.8
+        },
+        {
+          "popularity": 25,
+          "horses": [
+            11,
+            13
+          ],
+          "odds_low": 23.6,
+          "odds_high": 25
+        },
+        {
+          "popularity": 26,
+          "horses": [
+            14,
+            15
+          ],
+          "odds_low": 24,
+          "odds_high": 25.5
+        },
+        {
+          "popularity": 27,
+          "horses": [
+            12,
+            16
+          ],
+          "odds_low": 26.4,
+          "odds_high": 28.2
+        },
+        {
+          "popularity": 28,
+          "horses": [
+            9,
+            17
+          ],
+          "odds_low": 27.6,
+          "odds_high": 29.1
+        },
+        {
+          "popularity": 29,
+          "horses": [
+            9,
+            12
+          ],
+          "odds_low": 27.8,
+          "odds_high": 29.2
+        },
+        {
+          "popularity": 30,
+          "horses": [
+            1,
+            18
+          ],
+          "odds_low": 28.6,
+          "odds_high": 30.1
+        },
+        {
+          "popularity": 31,
+          "horses": [
+            7,
+            9
+          ],
+          "odds_low": 29,
+          "odds_high": 30.3
+        },
+        {
+          "popularity": 32,
+          "horses": [
+            7,
+            16
+          ],
+          "odds_low": 29.3,
+          "odds_high": 31.2
+        },
+        {
+          "popularity": 33,
+          "horses": [
+            10,
+            13
+          ],
+          "odds_low": 30.9,
+          "odds_high": 32.8
+        },
+        {
+          "popularity": 34,
+          "horses": [
+            10,
+            15
+          ],
+          "odds_low": 30.9,
+          "odds_high": 32.8
+        },
+        {
+          "popularity": 35,
+          "horses": [
+            9,
+            18
+          ],
+          "odds_low": 31.8,
+          "odds_high": 33.5
+        },
+        {
+          "popularity": 36,
+          "horses": [
+            1,
+            7
+          ],
+          "odds_low": 32,
+          "odds_high": 33.4
+        },
+        {
+          "popularity": 37,
+          "horses": [
+            14,
+            17
+          ],
+          "odds_low": 32.6,
+          "odds_high": 34.2
+        },
+        {
+          "popularity": 38,
+          "horses": [
+            1,
+            17
+          ],
+          "odds_low": 32.8,
+          "odds_high": 34.5
+        },
+        {
+          "popularity": 39,
+          "horses": [
+            1,
+            12
+          ],
+          "odds_low": 33.7,
+          "odds_high": 35.2
+        },
+        {
+          "popularity": 40,
+          "horses": [
+            14,
+            18
+          ],
+          "odds_low": 34.3,
+          "odds_high": 35.9
+        },
+        {
+          "popularity": 41,
+          "horses": [
+            14,
+            16
+          ],
+          "odds_low": 35.4,
+          "odds_high": 37.2
+        },
+        {
+          "popularity": 42,
+          "horses": [
+            11,
+            15
+          ],
+          "odds_low": 35.5,
+          "odds_high": 37.7
+        },
+        {
+          "popularity": 43,
+          "horses": [
+            5,
+            13
+          ],
+          "odds_low": 35.6,
+          "odds_high": 37.5
+        },
+        {
+          "popularity": 44,
+          "horses": [
+            11,
+            18
+          ],
+          "odds_low": 36,
+          "odds_high": 37.7
+        },
+        {
+          "popularity": 45,
+          "horses": [
+            10,
+            17
+          ],
+          "odds_low": 38.4,
+          "odds_high": 40.2
+        },
+        {
+          "popularity": 46,
+          "horses": [
+            8,
+            13
+          ],
+          "odds_low": 39.8,
+          "odds_high": 42
+        },
+        {
+          "popularity": 47,
+          "horses": [
+            7,
+            14
+          ],
+          "odds_low": 39.9,
+          "odds_high": 41.5
+        },
+        {
+          "popularity": 48,
+          "horses": [
+            4,
+            13
+          ],
+          "odds_low": 41.4,
+          "odds_high": 43.7
+        },
+        {
+          "popularity": 49,
+          "horses": [
+            1,
+            16
+          ],
+          "odds_low": 42.1,
+          "odds_high": 44.3
+        },
+        {
+          "popularity": 50,
+          "horses": [
+            10,
+            18
+          ],
+          "odds_low": 42.6,
+          "odds_high": 44.4
+        },
+        {
+          "popularity": 51,
+          "horses": [
+            11,
+            12
+          ],
+          "odds_low": 43.9,
+          "odds_high": 45.7
+        },
+        {
+          "popularity": 52,
+          "horses": [
+            12,
+            14
+          ],
+          "odds_low": 43.9,
+          "odds_high": 45.8
+        },
+        {
+          "popularity": 53,
+          "horses": [
+            1,
+            9
+          ],
+          "odds_low": 44.4,
+          "odds_high": 45.8
+        },
+        {
+          "popularity": 54,
+          "horses": [
+            9,
+            16
+          ],
+          "odds_low": 45.8,
+          "odds_high": 48.3
+        },
+        {
+          "popularity": 55,
+          "horses": [
+            11,
+            17
+          ],
+          "odds_low": 45.9,
+          "odds_high": 48.1
+        },
+        {
+          "popularity": 56,
+          "horses": [
+            4,
+            15
+          ],
+          "odds_low": 47,
+          "odds_high": 49.6
+        },
+        {
+          "popularity": 57,
+          "horses": [
+            6,
+            7
+          ],
+          "odds_low": 48.6,
+          "odds_high": 50.1
+        },
+        {
+          "popularity": 58,
+          "horses": [
+            4,
+            18
+          ],
+          "odds_low": 48.7,
+          "odds_high": 50.7
+        },
+        {
+          "popularity": 59,
+          "horses": [
+            7,
+            10
+          ],
+          "odds_low": 49.1,
+          "odds_high": 50.8
+        },
+        {
+          "popularity": 60,
+          "horses": [
+            7,
+            11
+          ],
+          "odds_low": 51.4,
+          "odds_high": 53.3
+        },
+        {
+          "popularity": 61,
+          "horses": [
+            5,
+            7
+          ],
+          "odds_low": 51.6,
+          "odds_high": 53.4
+        },
+        {
+          "popularity": 62,
+          "horses": [
+            4,
+            7
+          ],
+          "odds_low": 53.7,
+          "odds_high": 55.4
+        },
+        {
+          "popularity": 63,
+          "horses": [
+            10,
+            16
+          ],
+          "odds_low": 54.1,
+          "odds_high": 56.5
+        },
+        {
+          "popularity": 64,
+          "horses": [
+            5,
+            15
+          ],
+          "odds_low": 55.3,
+          "odds_high": 58.6
+        },
+        {
+          "popularity": 65,
+          "horses": [
+            9,
+            10
+          ],
+          "odds_low": 58.5,
+          "odds_high": 59.9
+        },
+        {
+          "popularity": 66,
+          "horses": [
+            5,
+            17
+          ],
+          "odds_low": 59.4,
+          "odds_high": 62.1
+        },
+        {
+          "popularity": 67,
+          "horses": [
+            6,
+            13
+          ],
+          "odds_low": 60.6,
+          "odds_high": 63.8
+        },
+        {
+          "popularity": 68,
+          "horses": [
+            1,
+            10
+          ],
+          "odds_low": 61.4,
+          "odds_high": 62.7
+        },
+        {
+          "popularity": 69,
+          "horses": [
+            10,
+            12
+          ],
+          "odds_low": 61.4,
+          "odds_high": 63.8
+        },
+        {
+          "popularity": 70,
+          "horses": [
+            11,
+            16
+          ],
+          "odds_low": 61.6,
+          "odds_high": 64.6
+        },
+        {
+          "popularity": 71,
+          "horses": [
+            6,
+            18
+          ],
+          "odds_low": 65.4,
+          "odds_high": 67.9
+        },
+        {
+          "popularity": 72,
+          "horses": [
+            5,
+            18
+          ],
+          "odds_low": 65.9,
+          "odds_high": 68.6
+        },
+        {
+          "popularity": 73,
+          "horses": [
+            5,
+            12
+          ],
+          "odds_low": 66.1,
+          "odds_high": 68.5
+        },
+        {
+          "popularity": 74,
+          "horses": [
+            8,
+            18
+          ],
+          "odds_low": 67,
+          "odds_high": 69.8
+        },
+        {
+          "popularity": 75,
+          "horses": [
+            9,
+            14
+          ],
+          "odds_low": 67.3,
+          "odds_high": 69.2
+        },
+        {
+          "popularity": 76,
+          "horses": [
+            8,
+            15
+          ],
+          "odds_low": 69.7,
+          "odds_high": 73.8
+        },
+        {
+          "popularity": 77,
+          "horses": [
+            1,
+            14
+          ],
+          "odds_low": 72.1,
+          "odds_high": 73.9
+        },
+        {
+          "popularity": 78,
+          "horses": [
+            9,
+            11
+          ],
+          "odds_low": 73.3,
+          "odds_high": 75.2
+        },
+        {
+          "popularity": 79,
+          "horses": [
+            8,
+            17
+          ],
+          "odds_low": 76.2,
+          "odds_high": 79.6
+        },
+        {
+          "popularity": 80,
+          "horses": [
+            5,
+            16
+          ],
+          "odds_low": 77.3,
+          "odds_high": 80.8
+        },
+        {
+          "popularity": 81,
+          "horses": [
+            11,
+            14
+          ],
+          "odds_low": 77.9,
+          "odds_high": 79.6
+        },
+        {
+          "popularity": 82,
+          "horses": [
+            6,
+            17
+          ],
+          "odds_low": 80.4,
+          "odds_high": 83.8
+        },
+        {
+          "popularity": 83,
+          "horses": [
+            3,
+            13
+          ],
+          "odds_low": 80.8,
+          "odds_high": 85
+        },
+        {
+          "popularity": 84,
+          "horses": [
+            1,
+            4
+          ],
+          "odds_low": 81.3,
+          "odds_high": 82.8
+        },
+        {
+          "popularity": 85,
+          "horses": [
+            8,
+            16
+          ],
+          "odds_low": 84.7,
+          "odds_high": 88.4
+        },
+        {
+          "popularity": 86,
+          "horses": [
+            8,
+            12
+          ],
+          "odds_low": 86,
+          "odds_high": 89.2
+        },
+        {
+          "popularity": 87,
+          "horses": [
+            1,
+            11
+          ],
+          "odds_low": 90.3,
+          "odds_high": 92.4
+        },
+        {
+          "popularity": 88,
+          "horses": [
+            8,
+            9
+          ],
+          "odds_low": 90.5,
+          "odds_high": 92.5
+        },
+        {
+          "popularity": 89,
+          "horses": [
+            7,
+            8
+          ],
+          "odds_low": 91.3,
+          "odds_high": 94.3
+        },
+        {
+          "popularity": 90,
+          "horses": [
+            4,
+            17
+          ],
+          "odds_low": 92.7,
+          "odds_high": 96.7
+        },
+        {
+          "popularity": 91,
+          "horses": [
+            1,
+            5
+          ],
+          "odds_low": 96.3,
+          "odds_high": 98.3
+        },
+        {
+          "popularity": 92,
+          "horses": [
+            10,
+            14
+          ],
+          "odds_low": 98.6,
+          "odds_high": 100.4
+        },
+        {
+          "popularity": 93,
+          "horses": [
+            1,
+            8
+          ],
+          "odds_low": 100.4,
+          "odds_high": 102.3
+        },
+        {
+          "popularity": 94,
+          "horses": [
+            10,
+            11
+          ],
+          "odds_low": 105.8,
+          "odds_high": 107.6
+        },
+        {
+          "popularity": 95,
+          "horses": [
+            6,
+            15
+          ],
+          "odds_low": 105.8,
+          "odds_high": 111.7
+        },
+        {
+          "popularity": 96,
+          "horses": [
+            2,
+            13
+          ],
+          "odds_low": 106.3,
+          "odds_high": 111.9
+        },
+        {
+          "popularity": 97,
+          "horses": [
+            4,
+            14
+          ],
+          "odds_low": 106.8,
+          "odds_high": 108.5
+        },
+        {
+          "popularity": 98,
+          "horses": [
+            5,
+            9
+          ],
+          "odds_low": 108.3,
+          "odds_high": 110.7
+        },
+        {
+          "popularity": 99,
+          "horses": [
+            6,
+            12
+          ],
+          "odds_low": 112,
+          "odds_high": 115.9
+        },
+        {
+          "popularity": 100,
+          "horses": [
+            5,
+            10
+          ],
+          "odds_low": 113,
+          "odds_high": 114.5
+        },
+        {
+          "popularity": 101,
+          "horses": [
+            6,
+            16
+          ],
+          "odds_low": 114.2,
+          "odds_high": 118.9
+        },
+        {
+          "popularity": 102,
+          "horses": [
+            2,
+            18
+          ],
+          "odds_low": 120.3,
+          "odds_high": 124.7
+        },
+        {
+          "popularity": 103,
+          "horses": [
+            8,
+            11
+          ],
+          "odds_low": 126.3,
+          "odds_high": 128.2
+        },
+        {
+          "popularity": 104,
+          "horses": [
+            4,
+            9
+          ],
+          "odds_low": 128.5,
+          "odds_high": 131.3
+        },
+        {
+          "popularity": 105,
+          "horses": [
+            4,
+            12
+          ],
+          "odds_low": 129,
+          "odds_high": 133.6
+        },
+        {
+          "popularity": 106,
+          "horses": [
+            3,
+            18
+          ],
+          "odds_low": 130.1,
+          "odds_high": 135
+        },
+        {
+          "popularity": 107,
+          "horses": [
+            4,
+            16
+          ],
+          "odds_low": 131,
+          "odds_high": 136.6
+        },
+        {
+          "popularity": 108,
+          "horses": [
+            3,
+            15
+          ],
+          "odds_low": 137.5,
+          "odds_high": 145
+        },
+        {
+          "popularity": 109,
+          "horses": [
+            5,
+            8
+          ],
+          "odds_low": 138.7,
+          "odds_high": 140.3
+        },
+        {
+          "popularity": 110,
+          "horses": [
+            6,
+            9
+          ],
+          "odds_low": 140.6,
+          "odds_high": 143.4
+        },
+        {
+          "popularity": 111,
+          "horses": [
+            2,
+            15
+          ],
+          "odds_low": 143.7,
+          "odds_high": 151.4
+        },
+        {
+          "popularity": 112,
+          "horses": [
+            2,
+            4
+          ],
+          "odds_low": 145.4,
+          "odds_high": 146.3
+        },
+        {
+          "popularity": 113,
+          "horses": [
+            5,
+            14
+          ],
+          "odds_low": 150.2,
+          "odds_high": 152.8
+        },
+        {
+          "popularity": 114,
+          "horses": [
+            2,
+            7
+          ],
+          "odds_low": 150.9,
+          "odds_high": 155.2
+        },
+        {
+          "popularity": 115,
+          "horses": [
+            1,
+            6
+          ],
+          "odds_low": 154.6,
+          "odds_high": 157.3
+        },
+        {
+          "popularity": 116,
+          "horses": [
+            3,
+            7
+          ],
+          "odds_low": 154.6,
+          "odds_high": 159.2
+        },
+        {
+          "popularity": 117,
+          "horses": [
+            4,
+            11
+          ],
+          "odds_low": 155.1,
+          "odds_high": 157.3
+        },
+        {
+          "popularity": 118,
+          "horses": [
+            8,
+            10
+          ],
+          "odds_low": 155.4,
+          "odds_high": 157.4
+        },
+        {
+          "popularity": 119,
+          "horses": [
+            2,
+            12
+          ],
+          "odds_low": 156.9,
+          "odds_high": 162
+        },
+        {
+          "popularity": 120,
+          "horses": [
+            3,
+            9
+          ],
+          "odds_low": 157,
+          "odds_high": 159.9
+        },
+        {
+          "popularity": 121,
+          "horses": [
+            5,
+            6
+          ],
+          "odds_low": 159.3,
+          "odds_high": 160.7
+        },
+        {
+          "popularity": 122,
+          "horses": [
+            3,
+            17
+          ],
+          "odds_low": 161.3,
+          "odds_high": 167.8
+        },
+        {
+          "popularity": 123,
+          "horses": [
+            1,
+            3
+          ],
+          "odds_low": 172.2,
+          "odds_high": 174.9
+        },
+        {
+          "popularity": 124,
+          "horses": [
+            8,
+            14
+          ],
+          "odds_low": 172.9,
+          "odds_high": 175.9
+        },
+        {
+          "popularity": 125,
+          "horses": [
+            2,
+            5
+          ],
+          "odds_low": 177.9,
+          "odds_high": 179.2
+        },
+        {
+          "popularity": 126,
+          "horses": [
+            3,
+            4
+          ],
+          "odds_low": 178,
+          "odds_high": 179.2
+        },
+        {
+          "popularity": 127,
+          "horses": [
+            5,
+            11
+          ],
+          "odds_low": 179,
+          "odds_high": 181.8
+        },
+        {
+          "popularity": 128,
+          "horses": [
+            1,
+            2
+          ],
+          "odds_low": 179.9,
+          "odds_high": 182.6
+        },
+        {
+          "popularity": 129,
+          "horses": [
+            3,
+            12
+          ],
+          "odds_low": 183.9,
+          "odds_high": 190
+        },
+        {
+          "popularity": 130,
+          "horses": [
+            2,
+            17
+          ],
+          "odds_low": 190.5,
+          "odds_high": 198.1
+        },
+        {
+          "popularity": 131,
+          "horses": [
+            4,
+            8
+          ],
+          "odds_low": 193.1,
+          "odds_high": 195.1
+        },
+        {
+          "popularity": 132,
+          "horses": [
+            2,
+            9
+          ],
+          "odds_low": 194.6,
+          "odds_high": 198.1
+        },
+        {
+          "popularity": 133,
+          "horses": [
+            4,
+            10
+          ],
+          "odds_low": 194.8,
+          "odds_high": 197.2
+        },
+        {
+          "popularity": 134,
+          "horses": [
+            3,
+            10
+          ],
+          "odds_low": 202.9,
+          "odds_high": 204.7
+        },
+        {
+          "popularity": 135,
+          "horses": [
+            2,
+            3
+          ],
+          "odds_low": 207.5,
+          "odds_high": 208.2
+        },
+        {
+          "popularity": 136,
+          "horses": [
+            3,
+            11
+          ],
+          "odds_low": 208.1,
+          "odds_high": 210.5
+        },
+        {
+          "popularity": 137,
+          "horses": [
+            6,
+            14
+          ],
+          "odds_low": 211.1,
+          "odds_high": 214.2
+        },
+        {
+          "popularity": 138,
+          "horses": [
+            2,
+            16
+          ],
+          "odds_low": 219.9,
+          "odds_high": 228.5
+        },
+        {
+          "popularity": 139,
+          "horses": [
+            2,
+            11
+          ],
+          "odds_low": 222,
+          "odds_high": 224.4
+        },
+        {
+          "popularity": 140,
+          "horses": [
+            6,
+            11
+          ],
+          "odds_low": 238.8,
+          "odds_high": 241.9
+        },
+        {
+          "popularity": 141,
+          "horses": [
+            6,
+            10
+          ],
+          "odds_low": 239.5,
+          "odds_high": 242
+        },
+        {
+          "popularity": 142,
+          "horses": [
+            4,
+            6
+          ],
+          "odds_low": 239.9,
+          "odds_high": 241.8
+        },
+        {
+          "popularity": 143,
+          "horses": [
+            3,
+            14
+          ],
+          "odds_low": 243.4,
+          "odds_high": 246.7
+        },
+        {
+          "popularity": 144,
+          "horses": [
+            4,
+            5
+          ],
+          "odds_low": 248.9,
+          "odds_high": 251.6
+        },
+        {
+          "popularity": 145,
+          "horses": [
+            3,
+            6
+          ],
+          "odds_low": 252.1,
+          "odds_high": 253.4
+        },
+        {
+          "popularity": 146,
+          "horses": [
+            3,
+            5
+          ],
+          "odds_low": 253.1,
+          "odds_high": 255
+        },
+        {
+          "popularity": 147,
+          "horses": [
+            3,
+            16
+          ],
+          "odds_low": 253.9,
+          "odds_high": 264
+        },
+        {
+          "popularity": 148,
+          "horses": [
+            6,
+            8
+          ],
+          "odds_low": 273.6,
+          "odds_high": 275.9
+        },
+        {
+          "popularity": 149,
+          "horses": [
+            2,
+            8
+          ],
+          "odds_low": 282.4,
+          "odds_high": 284.3
+        },
+        {
+          "popularity": 150,
+          "horses": [
+            2,
+            6
+          ],
+          "odds_low": 282.9,
+          "odds_high": 284.3
+        },
+        {
+          "popularity": 151,
+          "horses": [
+            2,
+            14
+          ],
+          "odds_low": 285,
+          "odds_high": 288.6
+        },
+        {
+          "popularity": 152,
+          "horses": [
+            3,
+            8
+          ],
+          "odds_low": 298.1,
+          "odds_high": 300.3
+        },
+        {
+          "popularity": 153,
+          "horses": [
+            2,
+            10
+          ],
+          "odds_low": 321.1,
+          "odds_high": 323.8
+        }
+      ]
+    },
+    {
+      "race_id": "2604040211",
+      "venue": "新潟",
+      "race": 11,
+      "date": "2026-10-18",
+      "scheduled_post_jst": "2026-10-18T15:10:00+09:00",
+      "race_name": "新潟牝馬ステークス L",
+      "course": "芝・左 2200m",
+      "source_win_place_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2604040211?ninki=1",
+      "source_wide_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2604040211?ninki=1",
+      "win_place_upstream_updated_at": null,
+      "wide_upstream_updated_at": null,
+      "runner_count": 10,
+      "horses": [
+        {
+          "popularity": 1,
+          "frame": 3,
+          "number": 3,
+          "name": "シャドウメテオ",
+          "win_odds": 4.4,
+          "place_odds_low": 1.7,
+          "place_odds_high": 2.1
+        },
+        {
+          "popularity": 2,
+          "frame": 8,
+          "number": 10,
+          "name": "ケリフレッドアスク",
+          "win_odds": 4.4,
+          "place_odds_low": 1.6,
+          "place_odds_high": 2
+        },
+        {
+          "popularity": 3,
+          "frame": 5,
+          "number": 5,
+          "name": "カニキュル",
+          "win_odds": 5.1,
+          "place_odds_low": 1.7,
+          "place_odds_high": 2.1
+        },
+        {
+          "popularity": 4,
+          "frame": 6,
+          "number": 6,
+          "name": "パフュームセント",
+          "win_odds": 6.7,
+          "place_odds_low": 1.9,
+          "place_odds_high": 2.5
+        },
+        {
+          "popularity": 5,
+          "frame": 1,
+          "number": 1,
+          "name": "ウインデイジー",
+          "win_odds": 7.9,
+          "place_odds_low": 2.1,
+          "place_odds_high": 2.7
+        },
+        {
+          "popularity": 6,
+          "frame": 8,
+          "number": 9,
+          "name": "フレミングフープ",
+          "win_odds": 8.1,
+          "place_odds_low": 2.3,
+          "place_odds_high": 3
+        },
+        {
+          "popularity": 7,
+          "frame": 4,
+          "number": 4,
+          "name": "ヴェルミセル",
+          "win_odds": 10.3,
+          "place_odds_low": 2.9,
+          "place_odds_high": 3.9
+        },
+        {
+          "popularity": 8,
+          "frame": 7,
+          "number": 8,
+          "name": "ルールーリマ",
+          "win_odds": 16.3,
+          "place_odds_low": 3.7,
+          "place_odds_high": 4.9
+        },
+        {
+          "popularity": 9,
+          "frame": 2,
+          "number": 2,
+          "name": "ダンツエラン",
+          "win_odds": 35,
+          "place_odds_low": 5.8,
+          "place_odds_high": 7.7
+        },
+        {
+          "popularity": 10,
+          "frame": 7,
+          "number": 7,
+          "name": "セントメモリーズ",
+          "win_odds": 39.6,
+          "place_odds_low": 6.8,
+          "place_odds_high": 8.9
+        }
+      ],
+      "wide": [
+        {
+          "popularity": 1,
+          "horses": [
+            3,
+            5
+          ],
+          "odds_low": 3.3,
+          "odds_high": 3.6
+        },
+        {
+          "popularity": 2,
+          "horses": [
+            3,
+            6
+          ],
+          "odds_low": 3.6,
+          "odds_high": 4
+        },
+        {
+          "popularity": 3,
+          "horses": [
+            3,
+            10
+          ],
+          "odds_low": 4.6,
+          "odds_high": 5.2
+        },
+        {
+          "popularity": 4,
+          "horses": [
+            5,
+            10
+          ],
+          "odds_low": 4.6,
+          "odds_high": 5.2
+        },
+        {
+          "popularity": 5,
+          "horses": [
+            1,
+            3
+          ],
+          "odds_low": 4.7,
+          "odds_high": 5.2
+        },
+        {
+          "popularity": 6,
+          "horses": [
+            5,
+            6
+          ],
+          "odds_low": 5.2,
+          "odds_high": 6
+        },
+        {
+          "popularity": 7,
+          "horses": [
+            3,
+            9
+          ],
+          "odds_low": 5.9,
+          "odds_high": 6.5
+        },
+        {
+          "popularity": 8,
+          "horses": [
+            1,
+            5
+          ],
+          "odds_low": 6.8,
+          "odds_high": 7.8
+        },
+        {
+          "popularity": 9,
+          "horses": [
+            9,
+            10
+          ],
+          "odds_low": 6.9,
+          "odds_high": 7.6
+        },
+        {
+          "popularity": 10,
+          "horses": [
+            1,
+            6
+          ],
+          "odds_low": 7.4,
+          "odds_high": 8.3
+        },
+        {
+          "popularity": 11,
+          "horses": [
+            6,
+            10
+          ],
+          "odds_low": 7.4,
+          "odds_high": 8.4
+        },
+        {
+          "popularity": 12,
+          "horses": [
+            5,
+            9
+          ],
+          "odds_low": 7.6,
+          "odds_high": 8.5
+        },
+        {
+          "popularity": 13,
+          "horses": [
+            6,
+            9
+          ],
+          "odds_low": 8.2,
+          "odds_high": 9.1
+        },
+        {
+          "popularity": 14,
+          "horses": [
+            3,
+            8
+          ],
+          "odds_low": 8.9,
+          "odds_high": 9.7
+        },
+        {
+          "popularity": 15,
+          "horses": [
+            1,
+            10
+          ],
+          "odds_low": 9,
+          "odds_high": 10
+        },
+        {
+          "popularity": 16,
+          "horses": [
+            3,
+            4
+          ],
+          "odds_low": 9.7,
+          "odds_high": 10.6
+        },
+        {
+          "popularity": 17,
+          "horses": [
+            4,
+            10
+          ],
+          "odds_low": 10.4,
+          "odds_high": 11.2
+        },
+        {
+          "popularity": 18,
+          "horses": [
+            6,
+            8
+          ],
+          "odds_low": 11,
+          "odds_high": 12.1
+        },
+        {
+          "popularity": 19,
+          "horses": [
+            1,
+            9
+          ],
+          "odds_low": 11.2,
+          "odds_high": 12.3
+        },
+        {
+          "popularity": 20,
+          "horses": [
+            5,
+            8
+          ],
+          "odds_low": 11.7,
+          "odds_high": 12.9
+        },
+        {
+          "popularity": 21,
+          "horses": [
+            4,
+            5
+          ],
+          "odds_low": 12.1,
+          "odds_high": 13.4
+        },
+        {
+          "popularity": 22,
+          "horses": [
+            1,
+            4
+          ],
+          "odds_low": 13,
+          "odds_high": 13.9
+        },
+        {
+          "popularity": 23,
+          "horses": [
+            8,
+            10
+          ],
+          "odds_low": 13.8,
+          "odds_high": 14.9
+        },
+        {
+          "popularity": 24,
+          "horses": [
+            1,
+            8
+          ],
+          "odds_low": 14.3,
+          "odds_high": 15.4
+        },
+        {
+          "popularity": 25,
+          "horses": [
+            8,
+            9
+          ],
+          "odds_low": 15.9,
+          "odds_high": 17
+        },
+        {
+          "popularity": 26,
+          "horses": [
+            4,
+            6
+          ],
+          "odds_low": 16.9,
+          "odds_high": 18.5
+        },
+        {
+          "popularity": 27,
+          "horses": [
+            4,
+            9
+          ],
+          "odds_low": 17.3,
+          "odds_high": 18.4
+        },
+        {
+          "popularity": 28,
+          "horses": [
+            2,
+            3
+          ],
+          "odds_low": 22.2,
+          "odds_high": 24.1
+        },
+        {
+          "popularity": 29,
+          "horses": [
+            2,
+            9
+          ],
+          "odds_low": 26,
+          "odds_high": 27.3
+        },
+        {
+          "popularity": 30,
+          "horses": [
+            4,
+            8
+          ],
+          "odds_low": 29.3,
+          "odds_high": 30.7
+        },
+        {
+          "popularity": 31,
+          "horses": [
+            2,
+            5
+          ],
+          "odds_low": 29.5,
+          "odds_high": 32.1
+        },
+        {
+          "popularity": 32,
+          "horses": [
+            2,
+            10
+          ],
+          "odds_low": 30.1,
+          "odds_high": 31.9
+        },
+        {
+          "popularity": 33,
+          "horses": [
+            2,
+            6
+          ],
+          "odds_low": 32.8,
+          "odds_high": 35.4
+        },
+        {
+          "popularity": 34,
+          "horses": [
+            1,
+            2
+          ],
+          "odds_low": 35.3,
+          "odds_high": 37.4
+        },
+        {
+          "popularity": 35,
+          "horses": [
+            2,
+            8
+          ],
+          "odds_low": 35.8,
+          "odds_high": 36.9
+        },
+        {
+          "popularity": 36,
+          "horses": [
+            3,
+            7
+          ],
+          "odds_low": 39.7,
+          "odds_high": 42.9
+        },
+        {
+          "popularity": 37,
+          "horses": [
+            5,
+            7
+          ],
+          "odds_low": 42,
+          "odds_high": 45.5
+        },
+        {
+          "popularity": 38,
+          "horses": [
+            2,
+            4
+          ],
+          "odds_low": 46.1,
+          "odds_high": 47.5
+        },
+        {
+          "popularity": 39,
+          "horses": [
+            7,
+            10
+          ],
+          "odds_low": 46.1,
+          "odds_high": 48.5
+        },
+        {
+          "popularity": 40,
+          "horses": [
+            1,
+            7
+          ],
+          "odds_low": 52.4,
+          "odds_high": 55.1
+        },
+        {
+          "popularity": 41,
+          "horses": [
+            6,
+            7
+          ],
+          "odds_low": 58.8,
+          "odds_high": 63.1
+        },
+        {
+          "popularity": 42,
+          "horses": [
+            7,
+            9
+          ],
+          "odds_low": 62.3,
+          "odds_high": 64.5
+        },
+        {
+          "popularity": 43,
+          "horses": [
+            4,
+            7
+          ],
+          "odds_low": 62.7,
+          "odds_high": 64.2
+        },
+        {
+          "popularity": 44,
+          "horses": [
+            7,
+            8
+          ],
+          "odds_low": 66.2,
+          "odds_high": 67.7
+        },
+        {
+          "popularity": 45,
+          "horses": [
+            2,
+            7
+          ],
+          "odds_low": 69.2,
+          "odds_high": 69.7
+        }
+      ]
+    }
+  ]
+}
