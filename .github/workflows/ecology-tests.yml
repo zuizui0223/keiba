@@ -9,6 +9,8 @@ on:
       - 'scripts/ecology_*'
       - 'tests/test_ecology_*'
       - 'docs/ecology-*'
+      - 'docs/research/**'
+      - 'docs/repository-map.json'
       - 'docs/evidence/rq-*.json'
       - 'ECOLOGY_RESEARCH.md'
       - '.github/workflows/ecology-tests.yml'
@@ -17,6 +19,8 @@ on:
       - 'scripts/ecology_*'
       - 'tests/test_ecology_*'
       - 'docs/ecology-*'
+      - 'docs/research/**'
+      - 'docs/repository-map.json'
       - '.github/workflows/ecology-tests.yml'
 
 permissions:
