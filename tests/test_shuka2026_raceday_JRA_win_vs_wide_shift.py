@@ -145,7 +145,10 @@ class RaceDayActualJraVersusSaturdayPublicPoolsTests(unittest.TestCase):
     def test_one_JRA_price_corruption_or_name_change_rejected(self):
         fake=copy.deepcopy(self.today)
         fake["first_party_JRA_win"]["displayed_official_win_prices_all_17"][0][
-            "official_displayed_win_odds"]=1.1
+            "official_displayed_win_odds"]=31.3
+        # Retain this runner's market rank; otherwise the earlier
+        # anti-mismatched-rank guard correctly fires before checking
+        # JRA-vs-third-party quote identity.
         with self.assertRaisesRegex(ValueError,"HOLD_ORIGINAL_JRA_AND_THIRD_PARTY_QUOTES"):
             compare(fake,self.yesterday,self.base)
         fake=copy.deepcopy(self.today)
