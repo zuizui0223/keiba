@@ -1,0 +1,56 @@
+{
+  "schema": "SHUKA2026_FRAME34_CONSENSUS_QUOTE_RECHECK_PRE_RACE_V1",
+  "event": {
+    "date": "2026-10-18",
+    "venue": "京都",
+    "race": 11,
+    "post_time_jst": "15:40"
+  },
+  "comparison_at_JST": "2026-10-18T12:30:00+09:00",
+  "comparison_is_approximate_check_time_NOT_providers_cross_pool_price_generation_time": true,
+  "official_JRA_win_publication_time": "2026-10-18T12:27:00+09:00",
+  "official_JRA_race_card": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604071120261018%2F30",
+  "sources": {
+    "frame_quinella": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2608040711?ninki=1",
+    "horse_quinella": "https://sports.yahoo.co.jp/keiba/race/odds/ur/2608040711?ninki=1",
+    "wide": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2608040711?ninki=1"
+  },
+  "frame_3_4_odds": 7,
+  "horse_6_8_quinella_odds": 6.8,
+  "frame_3_4_horse_numbers_by_side": [
+    [
+      5,
+      6
+    ],
+    [
+      7,
+      8
+    ]
+  ],
+  "frame_3_4_covers_horse_quinella_events": [
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      6,
+      8
+    ]
+  ],
+  "frame_3_4_quoted_relative_outperformance_multiple": 1.0294117647058825,
+  "winner_known": false,
+  "prices_not_final": true,
+  "horse_weights_not_available_in_this_snapshot": true,
+  "third_party_pair_quote_publisher_update_time_NOT_EXPOSED": true,
+  "no_calibrated_frame_3_4_win_probability_or_positive_expected_value_claim": true,
+  "original_frozen_v31_unchanged": true,
+  "source_comment": "JRA official original displays win quote timestamp; Yahoo/SportsNavi frame and quinella source pages are separately updated. Quote relationship must be checked again at ticket entry."
+}
