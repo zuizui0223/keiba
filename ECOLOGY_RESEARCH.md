@@ -1,3 +1,5 @@
+> **Current research navigation (2026-10-18):** [start here](docs/research/README.md) · [observed vs HOLD evidence matrix](docs/research/EVIDENCE_MATRIX.md) · [reproducibility](docs/research/REPRODUCIBILITY.md) · [next experiments](docs/research/ROADMAP.md). This long file preserves the **historical research-branch narrative**; its older analyses, populations and draft-PR statuses are not automatically current. For scientific claims, prefer the specific original-source audit and evidence matrix.
+
 > **Research draft (not a peer-reviewed paper).** This document preserves the original ecological research branch overview. Observational associations, source-availability limits, and all scientific HOLD decisions must remain explicit. This is not evidence of heritability, adaptation, causal rider effects, H1 reaction norms, or H2 competitor effects.
 
 # keiba — ecological individuality & competitive context
