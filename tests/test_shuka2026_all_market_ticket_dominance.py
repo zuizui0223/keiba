@@ -90,9 +90,8 @@ class AllActualShukaMarketTicketPriceRelations(unittest.TestCase):
     def test_frame_domination_scan_all_136_not_inventing_absolute_EV(self):
         all_edges=self.result["frame_vs_quinella_all_source_pair_relative_dominances"]
         self.assertEqual(len(all_edges),3)
-        self.assertEqual([x["horse_pair"] for x in all_edges],[
-            [3,4],[6,8],[11,12],
-        ] if False else [x["horse_pair"] for x in all_edges])
+        self.assertEqual([x["horse_pair"] for x in all_edges],
+                         [[6,8],[3,4],[11,12]])
         self.assertEqual({tuple(x["horse_pair"]) for x in all_edges},
                          {(6,8),(3,4),(11,12)})
         t={tuple(x["horse_pair"]):x for x in all_edges}
