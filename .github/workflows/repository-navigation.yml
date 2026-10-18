@@ -1,0 +1,48 @@
+name: Research-first repository navigation
+
+# Navigation-only: no original RQ horse data, JRA tote prices, or
+# scientific result re-estimation. Guards the frozen betting
+# classifier Git blob and HOLD labels against accidental drift.
+on:
+  push:
+    branches:
+      - main
+      - chore/research-first-navigation-20261018
+    paths:
+      - 'README.md'
+      - 'ECOLOGY_RESEARCH.md'
+      - 'docs/research/**'
+      - 'docs/betting/**'
+      - 'docs/archive/README-main-before-reorganization-20261018.md'
+      - 'docs/repository-map.json'
+      - 'scripts/check_repository_navigation.py'
+      - 'tests/test_repository_navigation.py'
+      - '.github/workflows/repository-navigation.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'ECOLOGY_RESEARCH.md'
+      - 'docs/research/**'
+      - 'docs/betting/**'
+      - 'docs/archive/**'
+      - 'docs/repository-map.json'
+      - 'scripts/check_repository_navigation.py'
+      - 'tests/test_repository_navigation.py'
+      - '.github/workflows/repository-navigation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  research-and-betting-source-map:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check research statuses, relative links, frozen model Git blob
+        run: |
+          python scripts/check_repository_navigation.py
+          python -m unittest discover -s tests -p 'test_repository_navigation.py' -v

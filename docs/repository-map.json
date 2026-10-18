@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "as_of_jst": "2026-10-18",
+  "purpose": "Research-first documentation/navigation only. No original horse/odds data transformation or Python model changes.",
+  "primary_track": "ecology",
+  "tracks": {
+    "ecology": {
+      "index": "docs/research/README.md",
+      "evidence_matrix": "docs/research/EVIDENCE_MATRIX.md",
+      "reproduce": "docs/research/REPRODUCIBILITY.md",
+      "roadmap": "docs/research/ROADMAP.md",
+      "manuscript": "docs/ecology-racehorse-individuality-manuscript-v1.md",
+      "historical_notebook": "ECOLOGY_RESEARCH.md",
+      "source_audit": "docs/ecology-rq-thoroughbred-source-audit.md",
+      "source_rights": "docs/ecology-rq-official-soap-vs-final-starters-jockey-data-scope.md",
+      "workflow": ".github/workflows/ecology-tests.yml",
+      "code_examples": [
+        "scripts/ecology_rq_race_fixed_icc.py",
+        "scripts/ecology_rq_forward_alternative_history.py",
+        "scripts/ecology_rq_doomben_matched_timescale_overlap.py",
+        "scripts/ecology_rq_multigoing_h1_preflight.py",
+        "scripts/ecology_h2_absolute_speed.py"
+      ],
+      "source_aggregate_evidence": [
+        "docs/evidence/rq-cannon-original-source-fingerprints-20261014.json",
+        "docs/evidence/rq-racehorse-temporal-generalization-20261015.json",
+        "docs/evidence/rq-doomben-identical-horse-timescale-overlap-20261015.json",
+        "docs/evidence/rq-doomben-same-year-rerun-availability-20261015.json"
+      ],
+      "test_prefix": "test_ecology_"
+    },
+    "betting": {
+      "index": "docs/betting/README.md",
+      "classifier": "scripts/v31_candidate_channels.py",
+      "holdout_manifest": "docs/v31-holdout-freeze.json",
+      "decision_contract": "docs/v31-holdout-decision-contract.json",
+      "score_ledger": "docs/v31-holdout-ledger.json",
+      "attempt_ledger": "docs/v31-holdout-attempt-ledger.json",
+      "runbook": "docs/v31-holdout-operations.md",
+      "archive_old": "docs/archive/README-main-before-reorganization-20261018.md",
+      "workflow": ".github/workflows/tests.yml",
+      "separate_draft_pr": "https://github.com/zuizui0223/keiba/pull/5",
+      "test_runner": "scripts/run_non_ecology_tests.py"
+    }
+  },
+  "protected_frozen_v31": {
+    "classifier_path": "scripts/v31_candidate_channels.py",
+    "frozen_manifest_path": "docs/v31-holdout-freeze.json",
+    "expected_git_blob_sha_at_index_creation": "f5bcccd37be53441a17386eedc13b9f3adcfa852",
+    "no_current_retraining_or_threshold_change": true
+  },
+  "scientific_status_categories": [
+    "OBSERVED_SOURCE_CONDITIONAL",
+    "OBSERVED_NONTRANSFER",
+    "HOLD_NONIDENTIFIABLE",
+    "HOLD_SOURCE_COVERAGE",
+    "HOLD_SOURCE_PROVENANCE",
+    "HOLD_MEASUREMENT",
+    "SIMULATION_ONLY",
+    "UNTESTED"
+  ],
+  "research_evidence": [
+    {
+      "id": "R1",
+      "status": "OBSERVED_SOURCE_CONDITIONAL",
+      "primary_document": "docs/ecology-rq-real-icc-source-conditional-sampling.md"
+    },
+    {
+      "id": "R2",
+      "status": "OBSERVED_SOURCE_CONDITIONAL",
+      "primary_document": "docs/ecology-rq-forward-other-horse-comparator-results.md"
+    },
+    {
+      "id": "R3",
+      "status": "OBSERVED_SOURCE_CONDITIONAL",
+      "primary_document": "docs/ecology-rq-real-rider-switch-persistence-audit.md"
+    },
+    {
+      "id": "R4",
+      "status": "OBSERVED_SOURCE_CONDITIONAL",
+      "primary_document": "docs/ecology-rq-doomben-within-year-source-replay-results.md"
+    },
+    {
+      "id": "R5",
+      "status": "OBSERVED_NONTRANSFER",
+      "primary_document": "docs/ecology-rq-doomben-2025-to-2026-year-forward-results.md"
+    },
+    {
+      "id": "R6",
+      "status": "HOLD_NONIDENTIFIABLE",
+      "primary_document": "docs/ecology-rq-doomben-matched-timescale-overlap-real-results.md"
+    },
+    {
+      "id": "R7",
+      "status": "HOLD_NONIDENTIFIABLE",
+      "primary_document": "docs/ecology-rq-eagle-farm-real-icc-cross-site-audit.md"
+    },
+    {
+      "id": "R8",
+      "status": "HOLD_NONIDENTIFIABLE",
+      "primary_document": "docs/ecology-rq-real-h1-multigoing-expanded-audit.md"
+    },
+    {
+      "id": "R9",
+      "status": "SIMULATION_ONLY",
+      "primary_document": "docs/ecology-h2-absolute-stress-audit.md"
+    },
+    {
+      "id": "R10",
+      "status": "HOLD_SOURCE_PROVENANCE",
+      "primary_document": "docs/ecology-rq-cannon-original-source-drift-20261014.md"
+    },
+    {
+      "id": "R11",
+      "status": "HOLD_MEASUREMENT",
+      "primary_document": "docs/ecology-rq-official-soap-vs-final-starters-jockey-data-scope.md"
+    }
+  ],
+  "legacy_full_readme": "docs/archive/README-main-before-reorganization-20261018.md"
+}
