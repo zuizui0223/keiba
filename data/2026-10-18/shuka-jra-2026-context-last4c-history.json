@@ -1,0 +1,172 @@
+{
+  "schema": "SHUKA2026_JRA_OFFICIAL_CONTEXT_STRESS_SOURCE_V1",
+  "status": "OFFICIAL_JRA_HISTORICAL_CONTEXT_ONLY_NOT_FROZEN_V31_FEATURES",
+  "original_card_source": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604071120261018%2F30",
+  "historic_trend_source": "https://www.jra.go.jp/keiba/g1/shuka/data.html",
+  "recent_historical_winner_period": "10 years preceding 2026 Shuka Sho, interpreted per JRA",
+  "JRA_previous_race_winner_counts_10years": {
+    "oaks_direct": 7,
+    "shion_stakes": 3,
+    "rose_stakes": 0
+  },
+  "JRA_previous_race_finish_4c_kyoto_8editions": {
+    "last_race_corner_at_most_4": {
+      "first": 0,
+      "second": 3,
+      "third": 2,
+      "outside_top3": 50
+    },
+    "last_race_corner_at_least_5": {
+      "first": 8,
+      "second": 5,
+      "third": 6,
+      "outside_top3": 65
+    }
+  },
+  "caveats": [
+    "Descriptive aggregate historical selection, NOT causal or future horse probability",
+    "Different previous-race entry populations; do not treat absence of winners as impossible",
+    "Sample only eight Kyoto editions for positional comparison; confounded by race and field",
+    "Not a feature of frozen v3.1; do not edit its C1/U/Q1/K1/M rules",
+    "No current tote odds in this JRA historical-source audit",
+    "No actual win market M or formal 15-25-minute prospective freeze"
+  ],
+  "official_17_recent_past_races": [
+    {
+      "official_number": 1,
+      "name": "ギャラボーグ",
+      "last_race_name": "桜花賞",
+      "last_race_date": "2026-04-12",
+      "last_race_finish": 2,
+      "last_race_fourth_corner_position": 4
+    },
+    {
+      "official_number": 2,
+      "name": "テイエムアイラン",
+      "last_race_name": "納屋橋特別",
+      "last_race_date": "2026-08-08",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 1
+    },
+    {
+      "official_number": 3,
+      "name": "マスターソアラ",
+      "last_race_name": "紫苑S",
+      "last_race_date": "2026-09-06",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 5
+    },
+    {
+      "official_number": 4,
+      "name": "エンネ",
+      "last_race_name": "ローズS",
+      "last_race_date": "2026-09-13",
+      "last_race_finish": 2,
+      "last_race_fourth_corner_position": 4
+    },
+    {
+      "official_number": 5,
+      "name": "タイセイボーグ",
+      "last_race_name": "ローズS",
+      "last_race_date": "2026-09-13",
+      "last_race_finish": 12,
+      "last_race_fourth_corner_position": 4
+    },
+    {
+      "official_number": 6,
+      "name": "ラベルセーヌ",
+      "last_race_name": "三面川特別",
+      "last_race_date": "2026-08-08",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 4
+    },
+    {
+      "official_number": 7,
+      "name": "バースデイフライト",
+      "last_race_name": "牝1勝クラス",
+      "last_race_date": "2026-09-27",
+      "last_race_finish": 4,
+      "last_race_fourth_corner_position": 6
+    },
+    {
+      "official_number": 8,
+      "name": "モンローウォーク",
+      "last_race_name": "ローズS",
+      "last_race_date": "2026-09-13",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 2
+    },
+    {
+      "official_number": 9,
+      "name": "スウィートハピネス",
+      "last_race_name": "ローズS",
+      "last_race_date": "2026-09-13",
+      "last_race_finish": 7,
+      "last_race_fourth_corner_position": 7
+    },
+    {
+      "official_number": 10,
+      "name": "ナイスプレーアスク",
+      "last_race_name": "紫苑S",
+      "last_race_date": "2026-09-06",
+      "last_race_finish": 6,
+      "last_race_fourth_corner_position": 1
+    },
+    {
+      "official_number": 11,
+      "name": "ガーネットフレア",
+      "last_race_name": "夕月特別",
+      "last_race_date": "2026-09-20",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 2
+    },
+    {
+      "official_number": 12,
+      "name": "カナルサンマルタン",
+      "last_race_name": "スイートピー",
+      "last_race_date": "2026-05-02",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 3
+    },
+    {
+      "official_number": 13,
+      "name": "ドリームコア",
+      "last_race_name": "紫苑S",
+      "last_race_date": "2026-09-06",
+      "last_race_finish": 3,
+      "last_race_fourth_corner_position": 3
+    },
+    {
+      "official_number": 14,
+      "name": "サムシングスイート",
+      "last_race_name": "紫苑S",
+      "last_race_date": "2026-09-06",
+      "last_race_finish": 2,
+      "last_race_fourth_corner_position": 7
+    },
+    {
+      "official_number": 15,
+      "name": "フェスティバルヒル",
+      "last_race_name": "クイーンS",
+      "last_race_date": "2026-08-02",
+      "last_race_finish": 14,
+      "last_race_fourth_corner_position": 7
+    },
+    {
+      "official_number": 16,
+      "name": "ハヤブササキチャン",
+      "last_race_name": "HTB賞",
+      "last_race_date": "2026-09-06",
+      "last_race_finish": 1,
+      "last_race_fourth_corner_position": 3
+    },
+    {
+      "official_number": 17,
+      "name": "ロザーンジュ",
+      "last_race_name": "1勝クラス",
+      "last_race_date": "2026-08-22",
+      "last_race_finish": 2,
+      "last_race_fourth_corner_position": 4
+    }
+  ]
+}

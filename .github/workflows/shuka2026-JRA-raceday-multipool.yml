@@ -1,0 +1,64 @@
+name: "Shuka 2026: JRA official Sunday win and wide market divergence audit"
+
+# A real original 2026-10-18 JRA 11:42 publication snapshot
+# plus *separately refreshed* third-party wide/quinella/trio pages.
+# Same frozen v3.1 rules, no race outcome and no actual wager.
+on:
+  push:
+    branches:
+      - analysis/shuka-20261018-official-form
+    paths:
+      - 'data/2026-10-18/shuka2026-JRA-official-win-plus-multipool-morning.json'
+      - 'scripts/shuka2026_raceday_JRA_win_vs_wide_shift.py'
+      - 'tests/test_shuka2026_raceday_JRA_win_vs_wide_shift.py'
+      - '.github/workflows/shuka2026-JRA-raceday-multipool.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  genuine-prerace-race-day-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test original minute-stamped JRA win odds, 136/136 public pair rows and source HOLDs
+        run: python -m unittest discover -s tests -p 'test_shuka2026_raceday_JRA_win_vs_wide_shift.py' -v
+      - name: Recalculate unmodified frozen v3.1 market M and opposite Saturday/Sunday wide rank order
+        run: |
+          python scripts/shuka2026_raceday_JRA_win_vs_wide_shift.py \
+            --output reports/2026-10-18/shuka2026-JRA-official-1142-our-vs-market-gap.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("reports/2026-10-18/shuka2026-JRA-official-1142-our-vs-market-gap.json")
+          r=json.loads(p.read_text())
+          assert r["official_JRA_odds_publication_jst"]=="2026-10-18T11:42:00+09:00"
+          assert r["current_Kyoto_turf_going"]=="良"
+          assert r["frozen_v31_market_M_on_JRA_official_priced_five"]==[3,6,8,12,13]
+          assert r["frozen_v31_market_plus_history_shadow_union"]==[1,3,6,8,9,12,13]
+          assert r["WATCH_wide_8_14_vs_8_3_event_order_reversal"]==(
+            "PRIOR_14_WIDE_MORE_POPULAR_THAN_3_BUT_SUNDAY_3_WIDE_MORE_POPULAR")
+          assert r["SUNDAY_SportsNavi_pool_page_quote_publication_time_UNKNOWN"]
+          assert r["not_formal_15_to_25min_JRA_pre_start_holdout"]
+          assert r["no_positive_expected_value_proof"]
+          assert not r["frozen_v31_market_M_CHANGED"]
+          print("SCIENTIFIC_SOURCE_STATUS",r["status"])
+          print("OFFICIAL_JRA_1142_M_AND_UNION",
+            r["frozen_v31_market_M_on_JRA_official_priced_five"],
+            r["frozen_v31_market_plus_history_shadow_union"])
+          print("WIDE_YESTERDAY_TO_SUNDAY_TILT",
+            r["WATCH_wide_8_14_vs_8_3_event_order_reversal"])
+          print("WATCH_20PCT_PAYOUT_CHANGE",
+            [(q["horse_number"],round(q["percent_change_in_payout_odds_NOT_change_in_win_probability"],1))
+             for q in r["watch_prices_20pct_or_more_changed_since_Saturday"]])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shuka2026-original-JRA-1142-win-vs-wide-quinella-odds-shift
+          path: reports/2026-10-18/shuka2026-JRA-official-1142-our-vs-market-gap.json
+          retention-days: 30
