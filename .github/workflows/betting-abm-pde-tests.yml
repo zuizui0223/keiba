@@ -1,0 +1,49 @@
+name: Betting ABM-PDE synthetic QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/betting_abm_pde_sensitivity.py'
+      - 'tests/test_betting_abm_pde_sensitivity.py'
+      - 'docs/betting/abm-pde-win-place-sensitivity-20261023.md'
+      - '.github/workflows/betting-abm-pde-tests.yml'
+  pull_request:
+    paths:
+      - 'scripts/betting_abm_pde_sensitivity.py'
+      - 'tests/test_betting_abm_pde_sensitivity.py'
+      - 'docs/betting/abm-pde-win-place-sensitivity-20261023.md'
+      - '.github/workflows/betting-abm-pde-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  numerical-sensitivity-tests:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: PL mass, deterministic ABM, paired Monte Carlo, PDE conservation and input-source gates
+        run: python -m unittest discover -s tests -p 'test_betting_abm_pde_sensitivity.py' -v
+      - name: Verify a complete 17-horse 10k-draw synthetic Kyoto sample
+        run: |
+          python scripts/betting_abm_pde_sensitivity.py --venue 京都 --race 11 --runs 10000 --seed 20261023 --output tmp/abm-shuka
+          python -c "import json; r=json.load(open('tmp/abm-shuka/summary.json')); assert r['selected_races']==1; assert r['races'][0]['n_horses']==17; assert abs(r['pde']['total_mass']-1)<1e-10; assert r['pde']['l1_error_against_gaussian']<0.025"
+      - name: Smoke-test every archived race, without changing v3.1 data
+        run: |
+          python scripts/betting_abm_pde_sensitivity.py --all-races --runs 1000 --seed 20261023 --output tmp/abm-all-nine
+          python -c "import json,csv; x=json.load(open('tmp/abm-all-nine/summary.json')); rows=list(csv.DictReader(open('tmp/abm-all-nine/horses.csv',encoding='utf-8-sig'))); assert len(x['races'])==9 and len(rows)==117 and all(r['status'].startswith('SYNTHETIC') for r in x['races'])"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-abm-pde-qa-output
+          path: |
+            tmp/abm-shuka
+            tmp/abm-all-nine
+          retention-days: 7
