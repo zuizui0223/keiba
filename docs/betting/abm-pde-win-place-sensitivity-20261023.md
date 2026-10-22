@@ -63,3 +63,59 @@ Outputs: summary.json (source/time caveats and the PDE diagnostic) plus horses.c
 ## The empirical next step, not yet satisfied
 
 Before interpreting ABM parameters as biology or improving prediction: obtain a legally usable longitudinal horse-ID × race-ID panel with pre-race sectional/pace history, course, going, class, actual rider, verified starters and finish/withdrawal status. Estimate style and crowding on *past* races only, and compare on chronologically later races against (a) a frozen market-only baseline and (b) a horse-history-only baseline using win/Top3 Brier scores, log loss and calibration. The current frozen v3.1 holdout is a separate candidate-generation study; **this exploratory synthetic analysis must not enter its formal 20-race ledger**.
+
+
+## Additional 2026-10-23 result — official postrace evaluation, nine archived races
+
+**Observed outcomes, not synthetic:** The first three finishers for the nine pre-existing saved-odds races were manually verified against individual JRA official result pages, and minimal per-race top-three numbers and source URLs are pinned in [postrace source ledger](../evidence/betting-20261018-official-top3-postrace.json). **This is deliberately a different input than pre-race betting snapshots; the outcome file must only be used after generating the probability predictions.** This work is retrospective and is not appended to the v3.1 holdout.
+
+| Race | JRA actual Top3 horse numbers, in order | Top-three win-odds favorites appearing in actual Top3 |
+| --- | --- | ---: |
+| 京都7R | 7,8,3 | 2/3 |
+| 京都8R | 5,2,3 | 3/3 |
+| 京都10R | 8,2,4 | 1/3 |
+| 京都11R 秋華賞 | 8,1,13 | 2/3 |
+| 京都12R | 3,8,10 | 1/3 |
+| 東京11R | 9,11,6 | 3/3 |
+| 東京12R | 14,15,13 | 2/3 |
+| 新潟10R | 16,15,9 | 1/3 |
+| 新潟11R | 3,1,5 | 2/3 |
+
+Total: 9 races, 117 archived runners, top-three market-ranking inclusion **17 / 27 = 62.96%**. Winner ranked joint top in archived win quotes **4/9** (Tokyo11R has a tied top quote); *this is not the accuracy of a new calibrated win model*.
+
+New executable [postrace scoring audit](../../scripts/betting_abm_pde_postrace_audit.py) evaluates independently saved odds versus JRA podiums, using:
+
+- Categorical winner log loss: \(-\log p_{\mathrm{winner}}\), mean of 9 races.
+- Top-three per-horse binary Brier score, averaging within each race then averaging 9 races. Top-three inclusion events are dependent; **117 horse entries are not 117 independent races**.
+- Binary Top3 log loss as a secondary descriptive metric.
+- Identical score definitions for: uniform \(1/n\) win and \(3/n\) Top3, exact market-only PL and each synthetic ABM scenario. No scenario may use actual winners as features.
+
+| Locked market-only descriptive score | Uniform entry baseline | Pre-race archived win odds → PL |
+| --- | ---: | ---: |
+| Mean winner log loss (lower better) | 2.5370 | **1.9119** |
+| Mean Top3 binary Brier (lower better) | 0.1813 | **0.1364** |
+| Mean Top3 binary log loss (lower better) | 0.5469 | **0.4204** |
+
+These nine races show the market-only reference beat a naïve equal-probability baseline on that day's observed outcomes. This is **not an estimate of future generalization or a statistical superiority finding**. More importantly, no genuine *empirically fitted* physical/social parameters exist yet to show that ABM beats the market. Any apparent difference among the synthetic crowding scenarios is model-specification sensitivity and cannot justify betting.
+
+Reproduce the fixed source audit independently of ABM Monte Carlo:
+
+    python scripts/betting_abm_pde_postrace_audit.py --market-only --output tmp/abm-postrace-market.json
+
+Run the exact same outcome metrics on the predeclared synthetic mechanisms, without refitting them:
+
+    python scripts/betting_abm_pde_postrace_audit.py --runs 10000 --seed 20261023 --output tmp/abm-postrace-allmodels.json
+
+### Actual toy ABM ↔ PDE connection — not the crowded horse ABM
+
+A [new particle-to-density bridge](../../scripts/betting_abm_pde_particle_bridge.py) compares \(N=20{,}000\) independent stochastic agents \(dX=v\,dt+\sqrt{2D}\,dW\) with a **finite-volume PDE using the exact same drift and diffusivity**:
+
+\[
+\partial_t\rho=-v\partial_x\rho+D\partial_{xx}\rho.
+\]
+
+It checks terminal means, empirical-versus-numerical cumulative densities (KS), total mass, variance and agreement with the analytical Gaussian solution. This is a genuine **toy stochastic-particle/Fokker–Planck numerical correspondence**, not a claim that the full horse-level, crowded, finite-agent race is solved by that PDE. A separate **nonlocal nonlinear mean-field closure** would be needed to model density-dependent overtaking/crowding. At \(17\) horses, ABM is still the primary individual-ranking model; PDE can only serve as a theoretically justified auxiliary model if validated.
+
+    python scripts/betting_abm_pde_particle_bridge.py --particles 20000 --seed 20261023
+
+**Audit gate:** All new scripts and their individual tests live on Draft PR #9, without changing the mainline frozen v3.1 source, thresholds or the formal evaluation ledger.
