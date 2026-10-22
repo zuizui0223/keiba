@@ -473,6 +473,8 @@ def main():
         "pair_8_14_divergence": obj["cross_pool_non_synchrony"]
         ["horse_14_stronger_in_win_but_pair_8_14_weaker_in_wide"],
         "forecast_threshold": obj["inference_gates"]["forecast_skill_threshold"],
+        "fictional_voter_ABM_means": obj["voter_ABM"]["results"],
+        "eight_fourteen_log_cross_pool_gap": obj["cross_pool_non_synchrony"]["8_14_cross_pool_log_residual_change_vs_PL_reference"],
     }, ensure_ascii=False))
 
 
