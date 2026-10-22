@@ -53,7 +53,7 @@ jobs:
           python scripts/betting_abm_pde_postrace_audit.py --market-only --output tmp/abm-postrace-market.json
           python -c "import json; x=json.load(open('tmp/abm-postrace-market.json')); a=x['overall_mean_by_model']; assert x['race_count']==9 and x['total_horse_entries']==117; assert x['market_odds_top3_hits_of_total']['hits']==17; assert abs(a['market_PL']['winner_log_loss']-1.911876143)<1e-6; assert abs(a['market_PL']['top3_binary_brier_mean_horse']-0.1364333775)<1e-6"
       - name: Postrace score the unchanged synthetic scenarios; no outcome-based fitting
-        run: python scripts/betting_abm_pde_postrace_audit.py --runs 1000 --output tmp/abm-postrace-allmodels.json
+        run: python scripts/betting_abm_pde_postrace_audit.py --runs 10000 --output tmp/abm-postrace-allmodels.json
       - name: Numerical particle-ABM to advection-diffusion PDE consistency
         run: |
           python scripts/betting_abm_pde_particle_bridge.py --particles 20000 --output tmp/abm-pde-particle-bridge.json
