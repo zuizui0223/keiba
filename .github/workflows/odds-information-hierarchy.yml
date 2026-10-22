@@ -6,6 +6,8 @@ on:
       - analysis/odds-information-hierarchy-20261023
     paths:
       - scripts/shuka2026_odds_information_hierarchy.py
+      - scripts/odds_threshold_forward_eval.py
+      - tests/test_odds_threshold_forward_eval.py
       - tests/test_shuka2026_odds_information_hierarchy.py
       - docs/odds-information-hierarchy-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
@@ -29,14 +31,22 @@ jobs:
         with:
           python-version: "3.12"
       - name: Run locked source, clocks, synthetic feedback and no postrace leakage tests
-        run: python -m unittest discover -s tests -p 'test_shuka2026_odds_information_hierarchy.py' -v
+        run: |
+          python -m unittest discover -s tests -p 'test_shuka2026_odds_information_hierarchy.py' -v
+          python -m unittest discover -s tests -p 'test_odds_threshold_forward_eval.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
       - name: Validate expected archival pattern and explicit nonidentifiability
         run: |
           python -c "import json; d=json.load(open('tmp/shuka-odds-hierarchy.json')); assert d['snapshot_count']==4; assert len(d['wide_market_windows'])==3; assert d['transitions'][1]['different_20pct_or_more_quote_horses']==6; assert 7.57<d['transitions'][1]['relative_share_total_variation_pp']<7.59; assert d['cross_pool_non_synchrony']['relative_wide_pair_ranking_reversal']; assert d['inference_gates']['forecast_skill_threshold'].startswith('HOLD'); assert not d['inference_gates']['backtest_outcomes_used_in_model_fitting']"
+      - name: Synthetic future-only winner and Top3 threshold scoring with chronological date blocks
+        run: |
+          python scripts/odds_threshold_forward_eval.py --demo-synthetic --output tmp/odds-threshold-future-demo.json
+          python -c "import json; x=json.load(open('tmp/odds-threshold-future-demo.json')); assert x['status'].startswith('SYNTHETIC'); assert x['train_max_date']<x['future_min_date']; assert x['training_race_count']>=35 and x['future_race_count']>=12; assert x['training_only_selected_parameters']['train_selected_threshold_path']['early_odds_at_least'] in [5,10,20,50]"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
-          path: tmp/shuka-odds-hierarchy.json
+          path: |
+            tmp/shuka-odds-hierarchy.json
+            tmp/odds-threshold-future-demo.json
           retention-days: 14
