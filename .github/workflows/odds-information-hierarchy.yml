@@ -1,0 +1,42 @@
+name: Shuka Sho odds information hierarchy audit
+
+on:
+  push:
+    branches:
+      - analysis/odds-information-hierarchy-20261023
+    paths:
+      - scripts/shuka2026_odds_information_hierarchy.py
+      - tests/test_shuka2026_odds_information_hierarchy.py
+      - docs/odds-information-hierarchy-20261023.md
+      - .github/workflows/odds-information-hierarchy.yml
+  pull_request:
+    paths:
+      - scripts/shuka2026_odds_information_hierarchy.py
+      - tests/test_shuka2026_odds_information_hierarchy.py
+      - docs/odds-information-hierarchy-20261023.md
+      - .github/workflows/odds-information-hierarchy.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-descriptive-and-synthetic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run locked source, clocks, synthetic feedback and no postrace leakage tests
+        run: python -m unittest discover -s tests -p 'test_shuka2026_odds_information_hierarchy.py' -v
+      - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
+        run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
+      - name: Validate expected archival pattern and explicit nonidentifiability
+        run: |
+          python -c "import json; d=json.load(open('tmp/shuka-odds-hierarchy.json')); assert d['snapshot_count']==4; assert len(d['wide_market_windows'])==3; assert d['transitions'][1]['different_20pct_or_more_quote_horses']==6; assert 7.57<d['transitions'][1]['relative_share_total_variation_pp']<7.59; assert d['cross_pool_non_synchrony']['relative_wide_pair_ranking_reversal']; assert d['inference_gates']['forecast_skill_threshold'].startswith('HOLD'); assert not d['inference_gates']['backtest_outcomes_used_in_model_fitting']"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: odds-hierarchy-descriptive-and-synthetic-only
+          path: tmp/shuka-odds-hierarchy.json
+          retention-days: 14
