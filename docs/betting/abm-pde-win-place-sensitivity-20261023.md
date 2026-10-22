@@ -119,3 +119,22 @@ It checks terminal means, empirical-versus-numerical cumulative densities (KS), 
     python scripts/betting_abm_pde_particle_bridge.py --particles 20000 --seed 20261023
 
 **Audit gate:** All new scripts and their individual tests live on Draft PR #9, without changing the mainline frozen v3.1 source, thresholds or the formal evaluation ledger.
+
+
+### Completed 10,000-draw × nine-race same-outcome score (2026-10-23 CI)
+
+Reproducible run: [GitHub Actions #39863368081](https://github.com/zuizui0223/keiba/actions/runs/39863368081). Each of the three ABM conditions was run **10,000 times per race** with shared random inputs, then judged on the identical **official JRA** outcomes. No actual outcome entered the generator. The real outcomes are not 10,000 repetitions: they are **nine actual races**.
+
+| Frozen condition | Winner log loss (lower better) | Top3 binary Brier (lower better) |
+| --- | ---: | ---: |
+| Uniform probability | 2.5370 | 0.181255 |
+| Market-only exact PL | 1.9119 | 0.136433 |
+| Fictional ABM: no crowding | 1.8976 | 0.136320 |
+| Fictional ABM: weak crowding | 1.9001 | 0.136238 |
+| Fictional ABM: strong crowding | 1.9113 | 0.136601 |
+
+The *no crowding* model's winner-log-loss difference from PL is only **−0.0143**, the *weak crowding* Top3-Brier difference is only **−0.000195**, and the strong-crowding Top3 Brier **worsens** by **+0.000167**. These small retrospective numerical differences do **not** identify actual crowding or forecast skill. ABM is not independently parameter-fitted or prospectively tested; changes are due to hypothetical pace/crowding and finite-simulation noise. Selecting the apparent best row based on this table and then declaring a betting model would be outcome-guided tuning.
+
+The corresponding toy Brownian ABM–PDE check from the same CI used **20,000 particles × 400 steps** and obtained PDE mass = 1.0, ABM mean = 6.42745 m, PDE mean = 6.40000 m, and maximum CDF discrepancy = 0.006988. This establishes numerical agreement for an uncoupled stochastic process, **not** a nonlinear finite-horse competition PDE.
+
+**Decision: keep ABM/PDE as synthetic exploratory models; retain market PL as the unmodified empirical benchmark.** Next is prospective, race-date-blocked calibration on licensed real pre-race horse/race/sectional features and complete official outcomes.
