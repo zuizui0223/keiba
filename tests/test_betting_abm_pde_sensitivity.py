@@ -4,17 +4,22 @@ import sys
 import unittest
 from pathlib import Path
 
-import numpy as np
+try:
+    import numpy as np
+except ModuleNotFoundError:
+    np = None  # Optional numerical dependency; the dedicated ABM CI installs it.
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from betting_abm_pde_sensitivity import (
+if np is not None:
+    from betting_abm_pde_sensitivity import (
     SNAPSHOT, exact_top3, first_passage, paired_delta, pde_gaussian_check,
     ranked, races_from_snapshot, scenario,
 )
 
 
+@unittest.skipIf(np is None, "NumPy belongs to the separately installed numerical ABM test suite")
 class TestBettingABMPDE(unittest.TestCase):
     def test_probability_mass_and_uniform_baseline(self):
         for n in (3, 8, 17):
