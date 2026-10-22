@@ -20,6 +20,10 @@ This program has **not** established calibrated win, Top-3
 or multi-ticket probabilities, positive expected value or
 profitable future wagering.
 
+## Win/place probability and ABM/PDE simulation (exploratory)
+
+[2026-10-23 market-conditional win/top-3 and synthetic first-passage ABM/PDE sensitivity](abm-pde-win-place-sensitivity-20261023.md) compares exactly computed Plackett–Luce probabilities with fictional crowding scenarios and a standalone PDE conservation check. **No calibrated horse win/place probabilities, real causal crowding effect, or betting ROI are established.** This is separate from the v3.1 20-race holdout.
+
 ## Frozen v3.1 — read these first
 
 | Purpose | Grounded source file |
