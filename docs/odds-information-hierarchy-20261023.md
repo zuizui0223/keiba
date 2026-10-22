@@ -120,3 +120,21 @@ q_{i,t+1}=\frac{B_t q_{it}+\Delta B_t b_{it}}
     python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
 
 成果物は実在の市場価格からの記述集計、経路指標、4区分の要約、全136組ワイドの照合結果から特定比較だけを抜き出したもの、および架空の投票者ABMの比較であり、元の馬券価格テーブルは複製しない。
+
+
+## 4. 将来の実データ用：閾値モデルを訓練期間と将来期間で分離する
+
+[時系列閾値評価の実装](../scripts/odds_threshold_forward_eval.py)を独立に追加した。現状の秋華賞1レースでは結果を返す代わりに **HOLD** とする。ソースが増えた場合だけ比較する。
+
+最低必要な将来データ形式（JSON）：schema = WIN_ODDS_PATH_PANEL_WITH_VERIFIED_PUBLICATION_TIMES_V1、provenance = synthetic または rights_audited_source、races 配列。各レースには race_id、post_jst、early_win / latest_win（馬番→オッズの完全な表、market=JRA_win、provider_timestamp_verified=true、provider_published_at_jst）、公式3着内順と終了後に確認できた official_top3_verified_at_jst を持たせる。早期・後期の市場時計はレース発走より10分以上前、結果検証時刻は発走後とする。これは厳格な時系列データ試験用の契約であって、今のPR #5の異なる掲載更新時刻を恣意的に同時刻へ合わせることはしない。rights_audited_source という入力表示は*利用許諾の代用品ではない*。
+
+モデルはレース単位の対数尤度とTop3 Brierを記録し、必ず過去開催日だけでパラメータを選び、その後の開催日の結果を初めて評価する。早期オッズ5・10・20・50倍という固定区分と、タイムパス係数ベータ−1・−0.5・0・0.5・1から候補を選ぶ。比較対象は「最新オッズだけ」、滑らかな時系列変化、初期オッズ帯でゲートした時系列変化。混合比と閾値を評価対象の未来結果で再調整してはいけない。
+
+必要独立レース数60、異なる開催日8、訓練35以上、将来12以上は**ソフトウェアの最低データガードであり統計的検出力の保証ではない**。これを満たさなくても誤差や閾値を数値的に報告せずHOLDを返す。より厳密な信頼区間・多重比較・モデル選択の扱いは、多数の新しいレースで事前登録した後に評価する。
+
+合成データを自動生成して未来だけで評価する方法は以下。
+
+    python -m unittest discover -s tests -p 'test_odds_threshold_forward_eval.py' -v
+    python scripts/odds_threshold_forward_eval.py --demo-synthetic --output tmp/odds-threshold-future-demo.json
+
+合成データ内の「真の閾値」は生成器が恣意的に設定したもので、現実の馬のオッズ閾値があるという実証にはならない。
