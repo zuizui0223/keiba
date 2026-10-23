@@ -45,6 +45,8 @@ class CoherentMarketHierarchyRankingTests(unittest.TestCase):
         self.assertAlmostEqual(sum(r["both_top3_pair"].values()),3,places=10)
         self.assertAlmostEqual(sum(r["unordered_top3_trio"].values()),1,places=10)
         self.assertAlmostEqual(sum(r["ordered_firsttwo_exacta"].values()),1,places=10)
+        self.assertAlmostEqual(sum(r["ordered_top3_trifecta"].values()),1,places=10)
+        self.assertEqual(len(r["ordered_top3_trifecta"]),8*7*6)
         for i in odds:
             self.assertAlmostEqual(
                 r["top3"][i],
@@ -55,6 +57,18 @@ class CoherentMarketHierarchyRankingTests(unittest.TestCase):
                 r["both_top3_pair"][(i,j)],
                 sum(v for trio,v in r["unordered_top3_trio"].items()
                     if i in trio and j in trio),places=10)
+        for triple, p in r["unordered_top3_trio"].items():
+            from itertools import permutations
+            self.assertAlmostEqual(
+                p,
+                sum(r["ordered_top3_trifecta"][ordered] for ordered in permutations(triple)),
+                places=10)
+        for (a, b), p in r["ordered_firsttwo_exacta"].items():
+            self.assertAlmostEqual(
+                p,
+                sum(prob for (i,j,k),prob in r["ordered_top3_trifecta"].items()
+                    if i==a and j==b),
+                places=10)
         for i in odds:
             self.assertAlmostEqual(
                 sum(v for (first, second),v in r["ordered_firsttwo_exacta"].items()
@@ -132,6 +146,7 @@ class CoherentMarketHierarchyRankingTests(unittest.TestCase):
             self.assertAlmostEqual(scenario["mass"]["three_top3_inclusions"],3,places=10)
             self.assertAlmostEqual(scenario["mass"]["three_successful_wide_pairs"],3,places=10)
             self.assertAlmostEqual(scenario["mass"]["one_unordered_trio"],1,places=10)
+            self.assertAlmostEqual(scenario["mass"]["one_ordered_trifecta"],1,places=10)
         self.assertNotAlmostEqual(
             scenarios["hypothetical_two_layer"]["pair_3_11_both_top3_probability"],
             base["pair_3_11_both_top3_probability"],places=8)
