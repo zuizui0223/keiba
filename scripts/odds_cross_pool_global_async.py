@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Global win-vs-wide asynchrony index across all 136 pairs, one archived race.
+"""Win-vs-wide relative quote indices; Shuka 136 pairs and other complete fields.
 
 Win odds and wide quotes are different overlapping events. The source
 updates are NOT atomic across pools, so residuals are exploratory relative
@@ -37,7 +37,8 @@ def _rank_corr(a, b):
 
 
 def relative_pair_indices(s):
-    if "wide" not in s or len(s["wide"]) != 136:
+    n = len(s["win"])
+    if "wide" not in s or len(s["wide"]) != n*(n-1)//2:
         raise ValueError("HOLD_MISSING_FULL_WIDE_GRID")
     raw = {pair: 1/o for pair, o in s["wide"].items()}
     mass = sum(raw.values())
