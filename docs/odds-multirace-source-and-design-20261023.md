@@ -46,3 +46,21 @@ JRAの [払戻計算規則](https://www.jra.go.jp/kouza/baken/index.html) では
 閾値モデルは滑らかな非線形モデルと比較し、閾値候補は過去開催日だけから決め、新しい開催日で初めて採点する。[実装済みの時間順評価器](../scripts/odds_threshold_forward_eval.py) は合成データでだけ試験済み。60レース・8日などの閾値はソフトウェア上の最低サポート条件で、十分な統計的検出力ではない。
 
 **現時点のステータス：6実レースの価格変化を再計算可能、予測精度が変わる真のオッズ閾値はHOLD、社会的模倣の因果効果もHOLD。**
+
+
+## 実装済み：認可されたローカル時系列オッズの安全な読み込み監査
+
+[odds_local_timeseries_preflight.py](../scripts/odds_local_timeseries_preflight.py) はJRA-VANの専用通信APIやJV-Data生バイナリを読み取るプログラムではない。**利用者側で合法的に取得・正規化されたJSON** の完全性と時計を検証するソフトウェアである。
+
+入力スキーマ名は KEIBA_AUTHORIZED_NORMALIZED_WIN_TIMESERIES_V1。最上位にはorigin=local_operator_authorized_normalized_export、operator_confirmed_research_access=true、raw_records_redistributable=false、market_family=win、normalized_record_family=JV_TS_O1_authorized_local_normalization を含める。認可の自己申告自体が法的な確認に代わるわけではない。対象レースごとにrace_id、post_jst、snapshots配列、各スナップショットにはbet_type=win、producer_clock_verified、producer_quote_updated_at_jst、received_at_jst、全馬分のwin_odds_by_horse（馬番文字列→正の単勝表示倍率）を含める。配信元公表時刻と取得時刻は区別する。
+
+全頭が揃わない、レース途中で馬番集合が変わった、公表時刻不明、到着時刻と公開時刻が矛盾、発走直前10分以内もしくは発走後の価格が混入した場合は、自動でそのレースをHOLDまたは例外として扱う。少なくとも2つの完全スナップショットを必要とする。60レース・8開催日は既存の閾値評価手法へ進むための**ソフトウェアの最低条件**であり、十分な検出力を意味しない。
+
+ファイルの出力は各レースのスナップショット数・頭数・取得時刻の間隔・正規化価格の再配分など**集計メタデータだけ**。馬名と個別単勝価格の配列は結果ファイルには書かない。勝敗・3着内結果も入力していないため、予測精度・利益の評価機能ではない。
+
+外部アカウントやライセンスが無くても、人工的な60レース・10開催日・180スナップショットでテストできる。
+
+    python -m unittest discover -s tests -p 'test_odds_local_timeseries_preflight.py' -v
+    python scripts/odds_local_timeseries_preflight.py --demo-synthetic --output tmp/odds-local-preflight.json
+
+実際の研究用データを利用する場合、権利条件に従いライセンス保有環境内で正規化JSONを用意し、--input でローカル読込みする。生データを公開GitHubにpushしないこと。
