@@ -103,7 +103,7 @@ jobs:
       - name: Validate local export preflight with synthetic 60 race / 10 date sample (no raw export)
         run: |
           python scripts/odds_local_timeseries_preflight.py --demo-synthetic --output tmp/odds-local-source-preflight.json
-          python -c "import json; r=json.load(open('tmp/odds-local-source-preflight.json')); assert r['status']=='SYNTHETIC_SOURCE_PANEL_DESIGN_READY_NOT_EVIDENCE'; assert r['unique_race_count']==60 and r['distinct_meeting_dates']==10; assert r['raw_snapshots_in_input']==180 and r['full_prestart_verified_races']==60; assert not r['real_future_race_win_and_top3_skill_estimated']"
+          python -c "import json; r=json.load(open('tmp/odds-local-source-preflight.json')); assert r['status']=='SYNTHETIC_SOURCE_PANEL_DESIGN_READY_NOT_EVIDENCE'; assert r['unique_race_count']==60 and r['distinct_meeting_dates']==10; assert r['raw_snapshots_in_input']==180 and r['full_prestart_verified_races']==60 and r['full_prestart_three_plus_timeseries_races']==60; assert not r['real_future_race_win_and_top3_skill_estimated']"
       - name: Historical paired scoring on six source-verified JRA finishing outcomes (not prospective)
         run: |
           python scripts/odds_six_race_predictive_increment.py --output tmp/odds-six-race-paired-scoring.json
