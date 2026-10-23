@@ -14,6 +14,8 @@ on:
       - scripts/odds_local_timeseries_preflight.py
       - scripts/odds_six_race_predictive_increment.py
       - scripts/odds_conditional_path_falsification.py
+      - scripts/odds_r8_real_three_time_market.py
+      - tests/test_odds_r8_real_three_time_market.py
       - tests/test_odds_conditional_path_falsification.py
       - tests/test_odds_six_race_predictive_increment.py
       - docs/evidence/shuka2026-top3-20261023.json
@@ -39,6 +41,8 @@ on:
       - scripts/odds_local_timeseries_preflight.py
       - scripts/odds_six_race_predictive_increment.py
       - scripts/odds_conditional_path_falsification.py
+      - scripts/odds_r8_real_three_time_market.py
+      - tests/test_odds_r8_real_three_time_market.py
       - tests/test_odds_conditional_path_falsification.py
       - tests/test_odds_six_race_predictive_increment.py
       - docs/evidence/shuka2026-top3-20261023.json
@@ -75,6 +79,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_local_timeseries_preflight.py' -v
           python -m unittest discover -s tests -p 'test_odds_six_race_predictive_increment.py' -v
           python -m unittest discover -s tests -p 'test_odds_conditional_path_falsification.py' -v
+          python -m unittest discover -s tests -p 'test_odds_r8_real_three_time_market.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
       - name: Validate expected archival pattern and explicit nonidentifiability
@@ -112,6 +117,10 @@ jobs:
         run: |
           python scripts/odds_conditional_path_falsification.py --dates 30 --pairs-per-date 16 --bootstrap 300 --seed 20261023 --output tmp/odds-matched-endpoint-null-positive.json
           python -c "import json; x=json.load(open('tmp/odds-matched-endpoint-null-positive.json')); a=x['synthetic_mechanisms']; assert len(a)==3 and all(z['status']==x['status'] and z['generated_twin_cases_identical_initial_and_latest'] and z['training_max_date']<z['future_min_date'] for z in a); assert all(z['training_race_count']>=50 and z['future_race_count']>=20 for z in a); assert x['true_real_market_additional_forecasting_value'].startswith('HOLD')"
+      - name: Real Kyoto8 three pre-race win snapshots and 55 aligned-minute wide comparisons
+        run: |
+          python scripts/odds_r8_real_three_time_market.py --output tmp/odds-r8-real-three-point-path.json
+          python -c "import json; x=json.load(open('tmp/odds-r8-real-three-point-path.json')); a=x['price_redistribution_pp']; z=x['win_wide_relative_pair_index_change']; assert x['n_horses']==11 and x['wide_two_time_full_pair_count']==55; assert a['1326_to_1344']>a['1221_to_1326']; assert z['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==22; assert x['selected_pair_3_11']['different_direction_win_and_pair_price']; assert not z['contemporaneous_venue_bettor_updating_identified']"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -125,4 +134,5 @@ jobs:
             tmp/odds-local-source-preflight.json
             tmp/odds-six-race-paired-scoring.json
             tmp/odds-matched-endpoint-null-positive.json
+            tmp/odds-r8-real-three-point-path.json
           retention-days: 14
