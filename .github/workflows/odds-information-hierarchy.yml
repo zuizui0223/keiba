@@ -15,6 +15,8 @@ on:
       - scripts/odds_six_race_predictive_increment.py
       - scripts/odds_conditional_path_falsification.py
       - scripts/odds_r8_real_three_time_market.py
+      - scripts/odds_pair_hierarchy_decomposition.py
+      - tests/test_odds_pair_hierarchy_decomposition.py
       - tests/test_odds_r8_real_three_time_market.py
       - tests/test_odds_conditional_path_falsification.py
       - tests/test_odds_six_race_predictive_increment.py
@@ -43,6 +45,8 @@ on:
       - scripts/odds_six_race_predictive_increment.py
       - scripts/odds_conditional_path_falsification.py
       - scripts/odds_r8_real_three_time_market.py
+      - scripts/odds_pair_hierarchy_decomposition.py
+      - tests/test_odds_pair_hierarchy_decomposition.py
       - tests/test_odds_r8_real_three_time_market.py
       - tests/test_odds_conditional_path_falsification.py
       - tests/test_odds_six_race_predictive_increment.py
@@ -82,6 +86,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_six_race_predictive_increment.py' -v
           python -m unittest discover -s tests -p 'test_odds_conditional_path_falsification.py' -v
           python -m unittest discover -s tests -p 'test_odds_r8_real_three_time_market.py' -v
+          python -m unittest discover -s tests -p 'test_odds_pair_hierarchy_decomposition.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
       - name: Validate expected archival pattern and explicit nonidentifiability
@@ -123,6 +128,10 @@ jobs:
         run: |
           python scripts/odds_r8_real_three_time_market.py --output tmp/odds-r8-real-three-point-path.json
           python -c "import json; x=json.load(open('tmp/odds-r8-real-three-point-path.json')); a=x['price_redistribution_pp']; z=x['win_wide_relative_pair_index_change']; assert x['n_horses']==11 and x['wide_two_time_full_pair_count']==55; assert a['1326_to_1344']>a['1221_to_1326']; assert z['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==22; assert x['selected_pair_3_11']['different_direction_win_and_pair_price']; assert not z['contemporaneous_venue_bettor_updating_identified']"
+      - name: Decompose complete win-wide pair price changes into horse-associated + pair-specific terms
+        run: |
+          python scripts/odds_pair_hierarchy_decomposition.py --permutations 999 --seed 20261023 --output tmp/odds-pair-hierarchy.json
+          python -c "import json; d=json.load(open('tmp/odds-pair-hierarchy.json')); r=d['selected_r8']; assert d['number_of_real_independent_races']==2 and r['number_of_overlapping_wide_events']==55; assert .726<r['fraction_edge_change_variance_explained_by_additive_horse_terms']<.727; assert .5<r['leave_one_pair_out_relative_squared_error_reduction']<.7; assert r['permutation_reference']['no_formal_statistical_significance_or_causal_identification']; assert len(d['other_shuka_lower_provenance_comparisons'])==2 and all(q['number_of_overlapping_wide_events']==136 for q in d['other_shuka_lower_provenance_comparisons'])"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -137,4 +146,5 @@ jobs:
             tmp/odds-six-race-paired-scoring.json
             tmp/odds-matched-endpoint-null-positive.json
             tmp/odds-r8-real-three-point-path.json
+            tmp/odds-pair-hierarchy.json
           retention-days: 14
