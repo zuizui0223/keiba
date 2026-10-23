@@ -122,6 +122,22 @@ class FiveRaceCompleteWinWideTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"HOLD_OFFICIAL_FINISH"):
             score_ranking(base,[9,1,99])
 
+    def test_leave_one_real_race_influence_can_change_metric_conclusion(self):
+        v=self.outcomes["one_race_deletion_influence_not_independent_test"]
+        a=v["win_categorical_log_loss"]["pair_specific_positive_half"]
+        self.assertEqual(a["n_real_races_model_score_better_than_market"],4)
+        self.assertEqual(a["n_leave_one_race_out_deltas_below_zero"],5)
+        self.assertLess(a["race_equal_mean_delta"],0)
+        self.assertFalse(a["sign_switches_when_one_race_removed"])
+        b=v["top3_per_horse_binary_brier"]["pair_specific_positive_half"]
+        self.assertTrue(b["sign_switches_when_one_race_removed"])
+        self.assertLess(b["race_equal_mean_delta"],0)
+        self.assertGreater(
+            b["leave_one_race_out_race_equal_mean_deltas"]["10"],0)
+        self.assertTrue(b["not_future_meeting_day_performance"])
+        c=v["unordered_top3_trio_log_loss"]["pair_specific_positive_half"]
+        self.assertGreater(c["race_equal_mean_delta"],0)
+
     def test_missing_WIDE_pair_or_impossible_high_low_rejected(self):
         roster=set(range(1,6))
         items=[
