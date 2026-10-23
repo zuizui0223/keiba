@@ -24,6 +24,7 @@ on:
       - tests/test_shuka2026_odds_information_hierarchy.py
       - docs/odds-information-hierarchy-20261023.md
       - docs/odds-multirace-source-and-design-20261023.md
+      - docs/odds-six-race-early-late-scoring-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   pull_request:
     paths:
@@ -44,6 +45,7 @@ on:
       - tests/test_shuka2026_odds_information_hierarchy.py
       - docs/odds-information-hierarchy-20261023.md
       - docs/odds-multirace-source-and-design-20261023.md
+      - docs/odds-six-race-early-late-scoring-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   workflow_dispatch:
 
