@@ -253,6 +253,37 @@ def audit(root=ROOT):
             "scores":scores,
         })
     cohorts=aggregate_scored_races(seen)
+    # A race (not horse or ticket) is the only leave-one-out unit.
+    # This is descriptive influence, NOT unbiased generalization because
+    # all five races share one meeting day and the coefficient grid is not
+    # trained on an earlier dataset.
+    leave_one_race_out={}
+    for metric in METRICS:
+        leave_one_race_out[metric]={}
+        for label in SCENARIOS:
+            if label=="win_PL_baseline":
+                continue
+            effects={
+                row["race_no"]:
+                    row["scores"][label][metric]-
+                    row["scores"]["win_PL_baseline"][metric]
+                for row in seen
+            }
+            loo={
+                str(r):mean(v for k,v in effects.items() if k!=r)
+                for r in effects
+            }
+            leave_one_race_out[metric][label]={
+                "race_equal_mean_delta":mean(effects.values()),
+                "n_real_races_model_score_better_than_market":
+                    sum(v<0 for v in effects.values()),
+                "n_leave_one_race_out_deltas_below_zero":
+                    sum(v<0 for v in loo.values()),
+                "leave_one_race_out_race_equal_mean_deltas":loo,
+                "sign_switches_when_one_race_removed":
+                    min(loo.values())<0<max(loo.values()),
+                "not_future_meeting_day_performance":True,
+            }
     return {
         "status":STATUS,"date":"2026-10-12",
         "venue":"Kyoto",
@@ -272,6 +303,7 @@ def audit(root=ROOT):
         "outcome_scores_are_retrospective_not_frozen_or_prospective":True,
         "raw_official_result_input_not_part_of_predictor":True,
         "cohort_means":cohorts,
+        "one_race_deletion_influence_not_independent_test":leave_one_race_out,
         "per_race":seen,
         "scientific_limitations":[
             "Only one Kyoto meeting date, five races; race-level and meeting-date statistical uncertainty cannot be generalized.",
@@ -313,6 +345,12 @@ def main():
         },
         "all_five_scores":pack(result["cohort_means"][
             "all_five_one_meeting_day"]["mean_scores_by_model"]),
+        "one_race_deletion_winner_ll":result[
+            "one_race_deletion_influence_not_independent_test"
+        ]["win_categorical_log_loss"],
+        "one_race_deletion_top3_brier":result[
+            "one_race_deletion_influence_not_independent_test"
+        ]["top3_per_horse_binary_brier"],
         "cohorts_not_independent_dates":True,
     },ensure_ascii=False))
 
