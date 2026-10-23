@@ -19,6 +19,8 @@ on:
       - scripts/odds_pair_hierarchy_robustness.py
       - scripts/odds_r8_next_win_market_forecast.py
       - scripts/odds_crosspool_forward_market_eval.py
+      - scripts/odds_five_race_joint_market_score.py
+      - tests/test_odds_five_race_joint_market_score.py
       - tests/test_odds_crosspool_forward_market_eval.py
       - tests/test_odds_r8_next_win_market_forecast.py
       - tests/test_odds_pair_hierarchy_robustness.py
@@ -62,6 +64,8 @@ on:
       - scripts/odds_pair_hierarchy_robustness.py
       - scripts/odds_r8_next_win_market_forecast.py
       - scripts/odds_crosspool_forward_market_eval.py
+      - scripts/odds_five_race_joint_market_score.py
+      - tests/test_odds_five_race_joint_market_score.py
       - tests/test_odds_crosspool_forward_market_eval.py
       - tests/test_odds_r8_next_win_market_forecast.py
       - tests/test_odds_pair_hierarchy_robustness.py
@@ -116,6 +120,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_pair_hierarchy_robustness.py' -v
           python -m unittest discover -s tests -p 'test_odds_r8_next_win_market_forecast.py' -v
           python -m unittest discover -s tests -p 'test_odds_crosspool_forward_market_eval.py' -v
+          python -m unittest discover -s tests -p 'test_odds_five_race_joint_market_score.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
@@ -178,6 +183,10 @@ jobs:
         run: |
           python scripts/odds_crosspool_forward_market_eval.py --demo-synthetic --output tmp/odds-crosspool-forward-market-demo.json
           python -c "import json; q=json.load(open('tmp/odds-crosspool-forward-market-demo.json')); assert q['no_real_JRA_market_quotes_used']; c=q['cases']; assert len(c)==2; assert all(x['status'].startswith('SYNTHETIC') and x['train_max_date']<x['future_min_date'] for x in c.values()); assert c['positive_half_strength_WIDE_signal']['future_equal_race_market_price_index_scores']['train_selected_wide_horse_node']['market_index_KL']<c['positive_half_strength_WIDE_signal']['future_equal_race_market_price_index_scores']['elapsed_time_momentum_only']['market_index_KL']"
+      - name: Score FIVE observed Kyoto races with complete WIN runners + 439 WIDE pairs on official JRA results
+        run: |
+          python scripts/odds_five_race_joint_market_score.py --output tmp/odds-five-race-win-wide-retrospective.json
+          python -c "import json; r=json.load(open('tmp/odds-five-race-win-wide-retrospective.json')); assert r['independent_real_races']==5 and r['number_of_meeting_dates']==1 and r['horse_race_entries']==67 and r['full_bet_pairs_not_independent_samples']==439; assert r['same_minute_win_wide_races']==3 and r['one_minute_source_update_gap_races']==2; assert r['outcome_scores_are_retrospective_not_frozen_or_prospective']; assert len(r['per_race'])==5"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -196,5 +205,6 @@ jobs:
             tmp/odds-pair-robustness.json
             tmp/odds-r8-next-win-market.json
             tmp/odds-crosspool-forward-market-demo.json
+            tmp/odds-five-race-win-wide-retrospective.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
