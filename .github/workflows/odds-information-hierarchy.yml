@@ -37,6 +37,7 @@ on:
       - docs/odds-six-race-early-late-scoring-20261023.md
       - docs/odds-conditional-path-and-kyoto8-20261023.md
       - docs/odds-pair-hierarchy-decomposition-20261023.md
+      - docs/odds-pair-hierarchy-robustness-20261023.md
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   pull_request:
@@ -71,6 +72,7 @@ on:
       - docs/odds-six-race-early-late-scoring-20261023.md
       - docs/odds-conditional-path-and-kyoto8-20261023.md
       - docs/odds-pair-hierarchy-decomposition-20261023.md
+      - docs/odds-pair-hierarchy-robustness-20261023.md
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   workflow_dispatch:
