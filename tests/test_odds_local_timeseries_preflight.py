@@ -26,10 +26,34 @@ class PrivateOddsPanelPreflightTests(unittest.TestCase):
         self.assertEqual(r["distinct_meeting_dates"],10)
         self.assertEqual(r["full_prestart_verified_races"],60)
         self.assertEqual(r["raw_snapshots_in_input"],180)
+        self.assertEqual(r["full_prestart_three_plus_timeseries_races"],60)
+        self.assertTrue(all(
+            x["intermediate_path_curvature_readiness"]
+            ["status"].startswith("SOURCE_TIME_")
+            for x in r["per_race_aggregate_only"]))
+        self.assertTrue(all(
+            x["intermediate_path_curvature_readiness"]
+            ["crosshorse_sd_of_centered_intermediate_log_relative_price_curvature"]>0
+            for x in r["per_race_aggregate_only"]))
         self.assertEqual(r["aggregate_passing_market_motion"]
                          ["total_horse_entries_in_passing_races"],720)
         self.assertFalse(r["real_future_race_win_and_top3_skill_estimated"])
         self.assertTrue(r["original_record_types_and_bytes_never_exported"])
+
+    def test_two_full_quotes_do_not_identify_middle_path(self):
+        s=copy.deepcopy(self.example)
+        for row in s["races"]:
+            del row["snapshots"][1]
+        q=audit(s)
+        self.assertEqual(q["full_prestart_verified_races"],60)
+        self.assertEqual(q["full_prestart_three_plus_timeseries_races"],0)
+        self.assertTrue(all(
+            r["intermediate_path_curvature_readiness"]["status"]
+            =="HOLD_THREE_DISTINCT_SOURCE_TIMEPOINTS_REQUIRED_FOR_MIDDLE_PATH"
+            for r in q["per_race_aggregate_only"]))
+        self.assertTrue(all(not r["intermediate_path_curvature_readiness"]
+                            ["additional_winner_forecast_information_verified"]
+                            for r in q["per_race_aggregate_only"]))
 
     def test_too_few_races_holds_not_false_positive_skill(self):
         s=copy.deepcopy(self.example)
