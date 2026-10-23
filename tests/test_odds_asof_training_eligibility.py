@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from odds_asof_training_eligibility import (
-    STATUS, audit, demo, training_graph,
+    STATUS, audit, demo, training_graph, next_quote_training_graph,
 )
 
 
@@ -35,6 +35,54 @@ class MarketOutcomeAsOfTests(unittest.TestCase):
         self.assertTrue(r["all_five_forecast_features_available_before_any_of_five_races_started"])
         self.assertFalse(r["result_available_for_same_day_other_race_model_fit"])
         self.assertTrue(g["no_real_future_holdout_created"])
+
+    def test_archived_1344_win_market_cannot_train_any_1327_snapshot(self):
+        r=self.observed
+        g=r["within_meeting_next_WIN_market_label_training_graph"]
+        self.assertEqual(g["full_next_market_labels_available_in_archive"],1)
+        self.assertEqual(g["frozen_market_candidate_count"],5)
+        self.assertEqual(g["market_target_to_forecast_training_relations"],0)
+        self.assertTrue(g["not_a_true_outcome_probability_or_betting_roi_test"])
+        self.assertTrue(r["different_market_target_source_not_a_winner_label"])
+        self.assertEqual(
+            r["r8_next_market_quote_received_at"],
+            "2026-10-12T13:44:55.575221+09:00")
+        self.assertTrue(all(
+            not x["next_market_label_ids_received_before_features"]
+            for x in g["per_race"]))
+
+    def test_synthetic_next_market_can_train_later_forecast_even_before_race_finishes(self):
+        base=[
+            {"race_id":"A","scheduled_post_jst":"2026-01-01T14:00+09:00",
+             "quote_published_at":"2026-01-01T12:00+09:00",
+             "last_required_feature_received_at":"2026-01-01T12:01+09:00",
+             "feature_source_verified":True},
+            {"race_id":"B","scheduled_post_jst":"2026-01-01T15:00+09:00",
+             "quote_published_at":"2026-01-01T12:45+09:00",
+             "last_required_feature_received_at":"2026-01-01T12:46+09:00",
+             "feature_source_verified":True},
+            {"race_id":"C","scheduled_post_jst":"2026-01-01T16:00+09:00",
+             "quote_published_at":"2026-01-01T13:45+09:00",
+             "last_required_feature_received_at":"2026-01-01T13:46+09:00",
+             "feature_source_verified":True},
+        ]
+        later={
+            "race_id":"A","scheduled_post_jst":"2026-01-01T14:00+09:00",
+            "next_market_source_published_at":"2026-01-01T13:00+09:00",
+            "next_market_received_at":"2026-01-01T13:01+09:00",
+            "full_field_verified":True,
+        }
+        g=next_quote_training_graph(base,[later])
+        self.assertEqual(g["market_target_to_forecast_training_relations"],1)
+        self.assertEqual(
+            {x["race_id"]:x["next_market_label_ids_received_before_features"]
+             for x in g["per_race"]},
+            {"A":[],"B":[],"C":["A"]})
+        self.assertTrue(g["source_receiver_clock_overrides_race_number"])
+        late=deepcopy(later)
+        late["next_market_received_at"]="2026-01-01T14:01+09:00"
+        with self.assertRaisesRegex(ValueError,"HOLD_NEXT_MARKET_LABEL"):
+            next_quote_training_graph(base,[late])
 
     def test_actual_1327_receipts_are_before_1400_first_post(self):
         r = self.observed
