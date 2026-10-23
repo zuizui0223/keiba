@@ -13,6 +13,8 @@ on:
       - scripts/odds_real_multirace_archive_audit.py
       - scripts/odds_local_timeseries_preflight.py
       - scripts/odds_six_race_predictive_increment.py
+      - scripts/odds_conditional_path_falsification.py
+      - tests/test_odds_conditional_path_falsification.py
       - tests/test_odds_six_race_predictive_increment.py
       - docs/evidence/shuka2026-top3-20261023.json
       - tests/test_odds_local_timeseries_preflight.py
@@ -36,6 +38,8 @@ on:
       - scripts/odds_real_multirace_archive_audit.py
       - scripts/odds_local_timeseries_preflight.py
       - scripts/odds_six_race_predictive_increment.py
+      - scripts/odds_conditional_path_falsification.py
+      - tests/test_odds_conditional_path_falsification.py
       - tests/test_odds_six_race_predictive_increment.py
       - docs/evidence/shuka2026-top3-20261023.json
       - tests/test_odds_local_timeseries_preflight.py
@@ -70,6 +74,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_real_multirace_archive_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_local_timeseries_preflight.py' -v
           python -m unittest discover -s tests -p 'test_odds_six_race_predictive_increment.py' -v
+          python -m unittest discover -s tests -p 'test_odds_conditional_path_falsification.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
       - name: Validate expected archival pattern and explicit nonidentifiability
@@ -103,6 +108,10 @@ jobs:
         run: |
           python scripts/odds_six_race_predictive_increment.py --output tmp/odds-six-race-paired-scoring.json
           python -c "import json; q=json.load(open('tmp/odds-six-race-paired-scoring.json')); assert q['total_independent_races']==6 and q['distinct_meeting_dates']==2 and q['distinct_horse_race_rows']==84; assert q['direction_changes_under_meeting_day_vs_race_weighting_win_log_loss']; assert q['equal_race_weighting_descriptive']['win_categorical_log_loss']['number_races_late_better']==4 and q['equal_race_weighting_descriptive']['top3_binary_brier_mean_per_horse']['number_races_late_better']==5; assert q['status'].startswith('SIX_RACE')"
+      - name: Matched same-latest odds distinct mid-path synthetic null, smooth, threshold and shuffle placebo
+        run: |
+          python scripts/odds_conditional_path_falsification.py --dates 30 --pairs-per-date 16 --bootstrap 300 --seed 20261023 --output tmp/odds-matched-endpoint-null-positive.json
+          python -c "import json; x=json.load(open('tmp/odds-matched-endpoint-null-positive.json')); a=x['synthetic_mechanisms']; assert len(a)==3 and all(z['status']==x['status'] and z['generated_twin_cases_identical_initial_and_latest'] and z['training_max_date']<z['future_min_date'] for z in a); assert all(z['training_race_count']>=50 and z['future_race_count']>=20 for z in a); assert x['true_real_market_additional_forecasting_value'].startswith('HOLD')"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -115,4 +124,5 @@ jobs:
             tmp/odds-real-multirace-coverage.json
             tmp/odds-local-source-preflight.json
             tmp/odds-six-race-paired-scoring.json
+            tmp/odds-matched-endpoint-null-positive.json
           retention-days: 14
