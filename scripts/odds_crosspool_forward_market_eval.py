@@ -155,7 +155,7 @@ def prepare_target_for_scoring(r,f):
     q=win_proxy(odds)
     if set(q)!=set(f["last_market_q"]) or len(q)!=f["n_horses"]:
         raise ValueError("HOLD_TARGET_RUNNER_ROSTER_MISMATCH")
-    return q,horizon
+    return q
 
 
 def _forecast(feature, *, b_momentum=1.0,b_node=0,threshold=None,
