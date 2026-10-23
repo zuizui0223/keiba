@@ -102,6 +102,7 @@ def joint_rank_probability(odds, horse_node, pair_residual, *,
     pair={k:0.0 for k in combinations(ids,2)}
     trio={k:0.0 for k in combinations(ids,3)}
     ordered_firsttwo={(a,b):0.0 for a in ids for b in ids if a!=b}
+    ordered_top3_trifecta={}
     for a,b,c,z in rows:
         mass=math.exp(z-max_log)/norm
         p1[a]+=mass
@@ -113,13 +114,15 @@ def joint_rank_probability(odds, horse_node, pair_residual, *,
             pair[e]+=mass
         trio[tuple(sorted((a,b,c)))]+=mass
         ordered_firsttwo[(a,b)]+=mass
+        ordered_top3_trifecta[(a,b,c)]=mass
     epsilon=1e-9
     if not (math.isclose(sum(p1.values()),1,abs_tol=epsilon)
             and math.isclose(sum(p2.values()),2,abs_tol=epsilon)
             and math.isclose(sum(p3.values()),3,abs_tol=epsilon)
             and math.isclose(sum(pair.values()),3,abs_tol=epsilon)
             and math.isclose(sum(trio.values()),1,abs_tol=epsilon)
-            and math.isclose(sum(ordered_firsttwo.values()),1,abs_tol=epsilon)):
+            and math.isclose(sum(ordered_firsttwo.values()),1,abs_tol=epsilon)
+            and math.isclose(sum(ordered_top3_trifecta.values()),1,abs_tol=epsilon)):
         raise ValueError("HOLD_COHERENT_RANK_PROBABILITY_MASS")
     return {
         "status": STATUS,
@@ -133,6 +136,7 @@ def joint_rank_probability(odds, horse_node, pair_residual, *,
         "both_top3_pair":pair,
         "unordered_top3_trio":trio,
         "ordered_firsttwo_exacta":ordered_firsttwo,
+        "ordered_top3_trifecta":ordered_top3_trifecta,
         "probabilities_properly_normalized_and_joint_rank_coherent":True,
     }
 
@@ -192,6 +196,8 @@ def audit():
                     forecasts["both_top3_pair"].values()),
                 "one_unordered_trio":sum(
                     forecasts["unordered_top3_trio"].values()),
+                "one_ordered_trifecta":sum(
+                    forecasts["ordered_top3_trifecta"].values()),
             },
         }
     return {
