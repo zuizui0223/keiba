@@ -74,22 +74,36 @@ def _aware(value):
     return ts
 
 
-def _strict_wide_range(rows, roster):
+def _strict_wide_range(rows, roster, *, mode="lower"):
     for row in rows:
         low,high=row.get("odds_low"),row.get("odds_high")
         if (type(low) not in (float,int) or type(high) not in (float,int)
                 or not math.isfinite(low) or not math.isfinite(high)
                 or not 1.0<low<=high):
             raise ValueError("HOLD_WIDE_QUOTE_RANGE_INVALID")
-    values=_wide_vector(rows)
+    if mode not in ("lower","geometric","upper"):
+        raise ValueError("HOLD_UNKNOWN_WIDE_RANGE_MAPPING")
+    # Conditional WIDE payout low/high are different event payout cases.
+    # They are not uncertainty bounds of a single true observed quote.
+    values={}
+    for row in rows:
+        k=tuple(sorted(row["selection"]))
+        lo,hi=row["odds_low"],row["odds_high"]
+        value=lo if mode=="lower" else hi if mode=="upper" else math.sqrt(lo*hi)
+        if k in values:
+            raise ValueError("HOLD_DUPLICATE_WIDE_PAIR")
+        values[k]=float(value)
     all_pairs=set(combinations(sorted(roster),2))
     if set(values)!=all_pairs:
         raise ValueError("HOLD_WIDE_QUOTE_PAIRS_INCOMPLETE_OR_CHANGED")
     return values
 
 
-def pre_race_forecasts(root=ROOT):
+def pre_race_forecasts(root=ROOT, *, pl_gamma=1.0, wide_mode="lower"):
     """Never opens JRA postrace outcomes or any quote later than candidate cutoff."""
+    if pl_gamma not in (0.75,1.0,1.25) or wide_mode not in (
+            "lower","geometric","upper"):
+        raise ValueError("HOLD_UNREGISTERED_CROSS_MARKET_INDEX_ASSUMPTION")
     outputs=[]
     for race_no in range(8,13):
         early=read_file(root,SOURCE_SHA[race_no][0])
@@ -106,7 +120,8 @@ def pre_race_forecasts(root=ROOT):
         odds=_win_vector(win_page["quotes"]["win"])
         if set(odds)!=set(h["number"] for h in early["horses"]):
             raise ValueError("HOLD_WIN_WIDE_RUNNER_UNIVERSE")
-        wide=_strict_wide_range(wide_page["quotes"]["wide"],set(odds))
+        wide=_strict_wide_range(
+            wide_page["quotes"]["wide"],set(odds),mode=wide_mode)
         tw=_aware(win_page["updated_at_jst"])
         tp=_aware(wide_page["updated_at_jst"])
         post=_aware(early["start_jst"])
@@ -121,9 +136,12 @@ def pre_race_forecasts(root=ROOT):
             raise ValueError("HOLD_STALE_NONPRESTART_OR_UNMATCHED_SOURCE_MINUTES")
         if not (5<=len(odds)<=30):
             raise ValueError("HOLD_UNSUPPORTED_STARTER_COUNT")
+        # The assumption strength gamma changes only the WIDE-vs-WIN
+        # diagnostic residual, not the original PL ranking benchmark.
+        index_win_odds={i:o**pl_gamma for i,o in odds.items()}
         relative=relative_pair_indices({
             "label":f"prestart_kyoto_{race_no}",
-            "win":odds,"wide":wide})
+            "win":index_win_odds,"wide":wide})
         graph=complete_graph_decompose(relative["pair_residual"])
         if graph["status"]!="COMPLETE_GRAPH_HORSE_ADDITIVE_DESCRIPTIVE_DECOMPOSITION":
             raise ValueError("HOLD_BAD_PRE_RACE_GRAPH_DECOMPOSITION")
@@ -140,6 +158,8 @@ def pre_race_forecasts(root=ROOT):
             "date":early["date"],
             "n_horses":len(odds),
             "wide_pair_count":len(wide),
+            "diagnostic_PL_gamma_hypothetical":pl_gamma,
+            "WIDE_range_mapping_counterfactual":wide_mode,
             "win_page_source_updated_at":tw.isoformat(),
             "wide_page_source_updated_at":tp.isoformat(),
             "source_page_update_minute_gap":gap_minutes,
