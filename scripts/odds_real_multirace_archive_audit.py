@@ -59,6 +59,44 @@ BANDS = ((0, 5, "<5"), (5, 15, "5-15"),
          (15, 50, "15-50"), (50, math.inf, "50+"))
 
 
+def independent_uniform_newvote_fit(q0, q1):
+    """Best one-parameter fit of uniform, independent new votes.
+
+    The INPUT is a price-derived relative index, NOT the actual vote
+    distribution. q1_pred=(1-lambda)*q0+lambda*uniform.
+    lambda is a least-squares *hypothetical* mixing parameter, not
+    measured incremental stakes or a causal share of real bettors.
+    A poor fit falsifies only uniform-new-vote dilution, NOT every
+    possible model without herding (informed non-herders can be skewed).
+    """
+    if set(q0)!=set(q1) or len(q0)<3:
+        raise ValueError("HOLD_MISMATCHED_FULL_RACE_SHARE_VECTOR")
+    if not math.isclose(sum(q0.values()),1.0,abs_tol=1e-9) or not math.isclose(
+            sum(q1.values()),1.0,abs_tol=1e-9):
+        raise ValueError("HOLD_UNNORMALIZED_PROXIES")
+    n=len(q0)
+    direction={i:1/n-q0[i] for i in q0}
+    observed={i:q1[i]-q0[i] for i in q0}
+    norm=sum(v*v for v in direction.values())
+    lstar=(sum(observed[i]*direction[i] for i in q0)/norm) if norm>1e-15 else 0.0
+    lstar=max(0.0,min(1.0,lstar))
+    pred={i:(1-lstar)*q0[i]+lstar/n for i in q0}
+    observed_TV=50*sum(abs(observed[i]) for i in q0)
+    residual_TV=50*sum(abs(q1[i]-pred[i]) for i in q0)
+    before=sum(observed[i]**2 for i in q0)
+    after=sum((q1[i]-pred[i])**2 for i in q0)
+    return {
+        "status":"CONSTRAINED_LEAST_SQUARES_UNIFORM_NEWVOTE_NULL_ONLY",
+        "fitted_hypothetical_uniform_newvote_fraction":lstar,
+        "observed_normalized_inverse_odds_TV_pp":observed_TV,
+        "unexplained_TV_after_uniform_dilution_fit_pp":residual_TV,
+        "fraction_squared_share_change_explained_by_uniform_null":
+            1-after/before if before>1e-20 else None,
+        "not_an_estimate_of_true_incremental_bets":True,
+        "rejecting_uniform_bets_would_not_identify_herding":True,
+    }
+
+
 def read_file(root, item):
     path, locked_sha = item
     raw = (Path(root)/path).read_bytes()
@@ -133,6 +171,8 @@ def _one_race(early, late, race_no):
         "minutes_between_displayed_update_times":
             (second-first).total_seconds()/60,
         "normalized_inverse_quote_total_variation_pp":tv,
+        "uniform_independent_new_votes_reference":
+            independent_uniform_newvote_fit(q0,q1),
         "horses_absolute_quote_move_ge20pct":
             sum(x["abs_delta_quote_pct"]>=20 for x in changed),
         "full_field_top_five_membership_unchanged":
@@ -194,6 +234,12 @@ def audit(root=ROOT):
             sum(r["horses_absolute_quote_move_ge20pct"] for r in races),
         "kyoto_20261012_top_five_membership_unchanged_races":
             sum(r["full_field_top_five_membership_unchanged"] for r in races),
+        "kyoto_20261012_uniform_newvote_best_fit_at_zero_races":
+            sum(r["uniform_independent_new_votes_reference"]
+                ["fitted_hypothetical_uniform_newvote_fraction"]<1e-12
+                for r in races),
+        "kyoto_20261012_uniform_newvote_null_is_not_every_independent_information_model":
+            True,
         "shuka_snapshot_adjacent_transitions":[
             {"from":s["from"],"to":s["to"],
              "normalized_inverse_quote_TV_pp":s["relative_share_total_variation_pp"],
