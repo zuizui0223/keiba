@@ -116,6 +116,11 @@ def prepare_feature_before_future(r):
     fit=complete_graph_decompose(index["pair_residual"])
     if fit["status"]!="COMPLETE_GRAPH_HORSE_ADDITIVE_DESCRIPTIVE_DECOMPOSITION":
         raise ValueError("HOLD_INCOMPLETE_GRAPH_FIT")
+    horizon=r.get("target_horizon_minutes_predeclared")
+    if (type(horizon) not in (int,float) or not math.isfinite(horizon)
+            or not 10<=horizon<=30 or
+            t1+timedelta(minutes=horizon)>=start-timedelta(minutes=10)):
+        raise ValueError("HOLD_MISSING_PREDECLARED_TARGET_QUOTE_HORIZON")
     return {
         "id":race_id,"date":start.date().isoformat(),
         "start_time":start.isoformat(),
@@ -128,7 +133,7 @@ def prepare_feature_before_future(r):
         "early_displayed_win_odds":early_odds,
         "wide_extra_horse_node":fit["node_effects"],
         "prior_earlier_minutes":(t1-t0).total_seconds()/60,
-        "comparison_horizon_minutes_in_advance":None,
+        "comparison_horizon_minutes_in_advance":horizon,
     }
 
 
@@ -139,8 +144,10 @@ def prepare_target_for_scoring(r,f):
     t2,rx,_=_check_market(target,"win",start,base_provider=f["provider"])
     t1=_time(f["latest_win_timestamp"])
     horizon=(t2-t1).total_seconds()/60
-    if not (10 <= horizon <= 30 and _time(f["feature_receipt"])<t2):
-        raise ValueError("HOLD_TARGET_NOT_A_LATER_SOURCE_PUBLISHED_QUOTE")
+    if not (math.isclose(horizon,f["comparison_horizon_minutes_in_advance"],
+                         rel_tol=0,abs_tol=1e-8) and
+            _time(f["feature_receipt"])<t2):
+        raise ValueError("HOLD_TARGET_NOT_AT_PREDECLARED_PUBLISHED_HORIZON")
     try:
         odds={int(k):v for k,v in target["odds"].items()}
     except (TypeError,ValueError):
@@ -221,9 +228,8 @@ def evaluate(data, *, seed=20261023):
     features=[prepare_feature_before_future(r) for r in races]
     pairs=[]
     for r,feature in zip(races,features):
-        target,horizon=prepare_target_for_scoring(r,feature)
-        f={**feature,"comparison_horizon_minutes_in_advance":horizon}
-        pairs.append((f,target))
+        target=prepare_target_for_scoring(r,feature)
+        pairs.append((feature,target))
     pairs.sort(key=lambda p:(p[0]["date"],p[0]["id"]))
     dates=sorted({f["date"] for f,_ in pairs})
     if len(pairs)<60 or len(dates)<8:
@@ -370,6 +376,7 @@ def synthetic_panel(*, seed=20261023, dates=15, races_per_day=6,
             rows.append({
                 "race_id":f"FICTITIOUS-WIN-WIDE-{day:03d}-{k:02d}",
                 "post_jst":post.isoformat(),
+                "target_horizon_minutes_predeclared":18,
                 "early_win":a,"mid_win":b,"mid_wide":wide,"target_win":c,
             })
     return {
