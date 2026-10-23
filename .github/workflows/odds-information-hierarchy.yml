@@ -21,6 +21,8 @@ on:
       - scripts/odds_crosspool_forward_market_eval.py
       - scripts/odds_five_race_joint_market_score.py
       - scripts/odds_five_race_market_assumption_sensitivity.py
+      - scripts/odds_asof_training_eligibility.py
+      - tests/test_odds_asof_training_eligibility.py
       - tests/test_odds_five_race_market_assumption_sensitivity.py
       - tests/test_odds_five_race_joint_market_score.py
       - tests/test_odds_crosspool_forward_market_eval.py
@@ -69,6 +71,8 @@ on:
       - scripts/odds_crosspool_forward_market_eval.py
       - scripts/odds_five_race_joint_market_score.py
       - scripts/odds_five_race_market_assumption_sensitivity.py
+      - scripts/odds_asof_training_eligibility.py
+      - tests/test_odds_asof_training_eligibility.py
       - tests/test_odds_five_race_market_assumption_sensitivity.py
       - tests/test_odds_five_race_joint_market_score.py
       - tests/test_odds_crosspool_forward_market_eval.py
@@ -128,6 +132,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_crosspool_forward_market_eval.py' -v
           python -m unittest discover -s tests -p 'test_odds_five_race_joint_market_score.py' -v
           python -m unittest discover -s tests -p 'test_odds_five_race_market_assumption_sensitivity.py' -v
+          python -m unittest discover -s tests -p 'test_odds_asof_training_eligibility.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
@@ -198,6 +203,12 @@ jobs:
         run: |
           python scripts/odds_five_race_market_assumption_sensitivity.py --output tmp/odds-five-race-market-sensitivity.json
           python -c "import json; x=json.load(open('tmp/odds-five-race-market-sensitivity.json')); assert x['actual_independent_races']==5 and x['actual_independent_meeting_dates']==1 and x['assumption_regimes_not_independent_realizations']==9; assert x['official_results_only_loaded_after_all_prestart_forecasts']; assert len(x['sign_stability_by_group_model_and_proper_score']['all_five'])==4"
+      - name: As-of result availability — all Kyoto 8–12 market features before first race post
+        run: |
+          python scripts/odds_asof_training_eligibility.py --output tmp/odds-asof-eligibility.json
+          python -c "import json; q=json.load(open('tmp/odds-asof-eligibility.json')); g=q['within_meeting_training_graph']; assert q['all_five_forecast_features_available_before_any_of_five_races_started']; assert g['race_count']==5 and g['available_training_relationships']==0; assert abs(q['minutes_between_last_market_receive_and_first_race_post']-32.4342591)<1e-5; assert not q['result_available_for_same_day_other_race_model_fit']"
+          python scripts/odds_asof_training_eligibility.py --demo --output tmp/odds-asof-synthetic-demo.json
+          python -c "import json; q=json.load(open('tmp/odds-asof-synthetic-demo.json')); assert q['available_training_relationships']==2 and q['targets_with_at_least_two_documented_training_outcomes']==1"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -218,5 +229,7 @@ jobs:
             tmp/odds-crosspool-forward-market-demo.json
             tmp/odds-five-race-win-wide-retrospective.json
             tmp/odds-five-race-market-sensitivity.json
+            tmp/odds-asof-eligibility.json
+            tmp/odds-asof-synthetic-demo.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
