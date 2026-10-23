@@ -6,6 +6,8 @@ on:
       - analysis/odds-information-hierarchy-20261023
     paths:
       - scripts/shuka2026_odds_information_hierarchy.py
+      - scripts/odds_market_accounting_null.py
+      - tests/test_odds_market_accounting_null.py
       - scripts/odds_threshold_forward_eval.py
       - tests/test_odds_threshold_forward_eval.py
       - tests/test_shuka2026_odds_information_hierarchy.py
@@ -14,6 +16,8 @@ on:
   pull_request:
     paths:
       - scripts/shuka2026_odds_information_hierarchy.py
+      - scripts/odds_market_accounting_null.py
+      - tests/test_odds_market_accounting_null.py
       - tests/test_shuka2026_odds_information_hierarchy.py
       - docs/odds-information-hierarchy-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
@@ -34,6 +38,7 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_shuka2026_odds_information_hierarchy.py' -v
           python -m unittest discover -s tests -p 'test_odds_threshold_forward_eval.py' -v
+          python -m unittest discover -s tests -p 'test_odds_market_accounting_null.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
       - name: Validate expected archival pattern and explicit nonidentifiability
@@ -43,10 +48,15 @@ jobs:
         run: |
           python scripts/odds_threshold_forward_eval.py --demo-synthetic --output tmp/odds-threshold-future-demo.json
           python -c "import json; x=json.load(open('tmp/odds-threshold-future-demo.json')); assert x['status'].startswith('SYNTHETIC'); assert x['train_max_date']<x['future_min_date']; assert x['training_race_count']>=35 and x['future_race_count']>=12; assert x['training_only_selected_parameters']['train_selected_threshold_path']['early_odds_at_least'] in [5,10,20,50]"
+      - name: Mathematical accounting identity and independent-no-herding Monte Carlo
+        run: |
+          python scripts/odds_market_accounting_null.py --paths 300 --seed 20261023 --output tmp/odds-accounting-negative-control.json
+          python -c "import json; r=json.load(open('tmp/odds-accounting-negative-control.json')); z=r['observed_intervals_conditional_on_proxy']; assert len(z)==3; assert abs(z[1]['minimum_new_fraction_of_final_pool_conditional_on_exact_share_proxy']-.17202998646422618)<1e-7; assert z[1]['source_change'] and r['inference_decision']['actual_new_pool_fraction'].startswith('HOLD'); assert r['mechanical_memory_counterexample']['results']['independent_uniform_new_votes']['mean_across_horse_prior_vs_final_share_Pearson']>.99"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
           path: |
             tmp/shuka-odds-hierarchy.json
             tmp/odds-threshold-future-demo.json
+            tmp/odds-accounting-negative-control.json
           retention-days: 14
