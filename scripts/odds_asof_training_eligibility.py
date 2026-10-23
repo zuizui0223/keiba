@@ -272,7 +272,8 @@ def audit(root=ROOT) -> dict:
         "within_meeting_training_graph": graph,
         "within_meeting_next_WIN_market_label_training_graph":quote_graph,
         "r8_next_market_quote_received_at":
-            _aware(target["observed_at_utc"]).isoformat(),
+            _aware(target["observed_at_utc"]).astimezone(
+                _aware(eight["scheduled_post"]).tzinfo).isoformat(),
         "different_market_target_source_not_a_winner_label":True,
         "scientific_interpretation": [
             "A retrospective random train/test split across these five races is physically time-inconsistent at the observed 13:27 predictor cutoff.",
