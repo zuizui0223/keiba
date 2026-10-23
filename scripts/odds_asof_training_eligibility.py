@@ -30,6 +30,7 @@ from odds_five_race_joint_market_score import (
     pre_race_forecasts, WIDE_SOURCE,
 )
 from odds_real_multirace_archive_audit import SOURCE_SHA
+from odds_r8_real_three_time_market import OTHER_SOURCE, _locked
 from odds_six_race_predictive_increment import (
     OFFICIAL_OCT12_BLOB_SHA, verify_official_oct12,
 )
@@ -138,6 +139,58 @@ def training_graph(forecast_events: list[dict], result_events: list[dict]) -> di
     }
 
 
+def next_quote_training_graph(forecast_events: list[dict],
+                              quote_label_events: list[dict]) -> dict:
+    """As-of eligibility for later MARKET quote targets, not race results.
+
+    An independent future-win quote target can be used to tune another
+    market model only if the complete target quotes had actually been
+    RECEIVED before the other forecast's required feature receipt.
+    No race finish or JRA outcome is required for this different target.
+    """
+    base = training_graph(forecast_events, [])
+    by_id = {f["race_id"]:f for f in forecast_events}
+    if len(set(e.get("race_id") for e in quote_label_events)) != len(
+            quote_label_events):
+        raise ValueError("HOLD_DUPLICATED_NEXT_MARKET_TARGET")
+    labels = {}
+    for entry in quote_label_events:
+        rid = entry.get("race_id")
+        if (rid not in by_id or
+                entry.get("full_field_verified") is not True):
+            raise ValueError("HOLD_MISSING_FULL_MARKET_TARGET_SOURCE")
+        pub = _aware(entry["next_market_source_published_at"])
+        received = _aware(entry["next_market_received_at"])
+        post = _aware(entry["scheduled_post_jst"])
+        orig = by_id[rid]
+        if (post != _aware(orig["scheduled_post_jst"])
+                or not _aware(orig["quote_published_at"]) < pub <= received
+                or not _aware(orig["last_required_feature_received_at"]) < received < post):
+            raise ValueError("HOLD_NEXT_MARKET_LABEL_SOURCE_CLOCK_OR_POST")
+        labels[rid] = received
+    out = []
+    for p in base["per_race"]:
+        asof = _aware(p["asof_last_feature_received_at"])
+        available = sorted(
+            rid for rid,when in labels.items()
+            if rid != p["race_id"] and when < asof)
+        out.append({
+            "race_id":p["race_id"],
+            "next_market_label_ids_received_before_features":available,
+            "n_prior_received_next_market_targets":len(available),
+        })
+    return {
+        "status":"MARKET_TARGET_ASOF_QUOTE_RECEIPT_NOT_RACE_NUMBER",
+        "frozen_market_candidate_count":len(out),
+        "full_next_market_labels_available_in_archive":len(labels),
+        "market_target_to_forecast_training_relations":sum(
+            x["n_prior_received_next_market_targets"] for x in out),
+        "per_race":out,
+        "source_receiver_clock_overrides_race_number":True,
+        "not_a_true_outcome_probability_or_betting_roi_test":True,
+    }
+
+
 def audit(root=ROOT) -> dict:
     # Every source-snapshot and raw quote hash is validated by the existing
     # pre-result-only feature builder. Its outputs are built before results.
@@ -169,6 +222,29 @@ def audit(root=ROOT) -> dict:
             "official_source_verified": True,
         })
     graph = training_graph(events, outcomes)
+    # The only archived FULL later source-market win panel for this same
+    # meeting cohort is R8's source-locked 13:44 full 11-horse snapshot.
+    # Its quote receipt follows all five 13:27 predictor receipts.
+    next_win = _locked(*OTHER_SOURCE["late_all"],root=root)
+    target = next_win["markets"]["win"]
+    eight = next(f for f in forecasts if f["race_no"] == 8)
+    target_ids = [r["selection"][0] for r in target["quotes"]
+                  if len(r["selection"]) == 1]
+    if (next_win["race_id"]!=eight["race_id"]
+            or len(target_ids)!=eight["n_horses"]
+            or len(set(target_ids))!=len(target_ids)
+            or next_win["start_jst"]!=eight["scheduled_post"]):
+        raise ValueError("HOLD_R8_LATER_WIN_FULL_TARGET_CHANGED")
+    quote_graph = next_quote_training_graph(
+        events,[{
+            "race_id":eight["race_id"],
+            "scheduled_post_jst":eight["scheduled_post"],
+            "next_market_source_published_at":target["updated_at_jst"],
+            "next_market_received_at":target["observed_at_utc"],
+            "full_field_verified":True,
+        }])
+    if quote_graph["market_target_to_forecast_training_relations"] != 0:
+        raise ValueError("HOLD_REAL_ARCHIVE_MARKET_TARGET_TIME_ORDER_CHANGED")
     if graph["race_count"] != 5 or graph["available_training_relationships"] != 0:
         raise ValueError("HOLD_ARCHIVED_COHORT_ASOF_EXPECTATION_CHANGED")
     latest_receipt = max(_aware(x["last_required_feature_received_at"])
@@ -194,6 +270,10 @@ def audit(root=ROOT) -> dict:
             True,
         "result_available_for_same_day_other_race_model_fit": False,
         "within_meeting_training_graph": graph,
+        "within_meeting_next_WIN_market_label_training_graph":quote_graph,
+        "r8_next_market_quote_received_at":
+            _aware(target["observed_at_utc"]).isoformat(),
+        "different_market_target_source_not_a_winner_label":True,
         "scientific_interpretation": [
             "A retrospective random train/test split across these five races is physically time-inconsistent at the observed 13:27 predictor cutoff.",
             "A race number smaller than the target does not prove its result existed before the target's quote was captured.",
