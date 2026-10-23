@@ -7,6 +7,8 @@ on:
     paths:
       - scripts/shuka2026_odds_information_hierarchy.py
       - scripts/odds_market_accounting_null.py
+      - scripts/odds_cross_pool_global_async.py
+      - tests/test_odds_cross_pool_global_async.py
       - tests/test_odds_market_accounting_null.py
       - scripts/odds_threshold_forward_eval.py
       - tests/test_odds_threshold_forward_eval.py
@@ -17,6 +19,8 @@ on:
     paths:
       - scripts/shuka2026_odds_information_hierarchy.py
       - scripts/odds_market_accounting_null.py
+      - scripts/odds_cross_pool_global_async.py
+      - tests/test_odds_cross_pool_global_async.py
       - tests/test_odds_market_accounting_null.py
       - tests/test_shuka2026_odds_information_hierarchy.py
       - docs/odds-information-hierarchy-20261023.md
@@ -39,6 +43,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_shuka2026_odds_information_hierarchy.py' -v
           python -m unittest discover -s tests -p 'test_odds_threshold_forward_eval.py' -v
           python -m unittest discover -s tests -p 'test_odds_market_accounting_null.py' -v
+          python -m unittest discover -s tests -p 'test_odds_cross_pool_global_async.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
       - name: Validate expected archival pattern and explicit nonidentifiability
@@ -52,6 +57,10 @@ jobs:
         run: |
           python scripts/odds_market_accounting_null.py --paths 300 --seed 20261023 --output tmp/odds-accounting-negative-control.json
           python -c "import json; r=json.load(open('tmp/odds-accounting-negative-control.json')); z=r['observed_intervals_conditional_on_proxy']; assert len(z)==3; assert abs(z[1]['minimum_new_fraction_of_final_pool_conditional_on_exact_share_proxy']-.17202998646422618)<1e-7; assert z[1]['source_change'] and r['inference_decision']['actual_new_pool_fraction'].startswith('HOLD'); assert r['mechanical_memory_counterexample']['results']['independent_uniform_new_votes']['mean_across_horse_prior_vs_final_share_Pearson']>.99"
+      - name: All 136 cross-pool wide-pair residual indices and asynchronous gaps
+        run: |
+          python scripts/odds_cross_pool_global_async.py --output tmp/odds-cross-pool-index.json
+          python -c "import json; r=json.load(open('tmp/odds-cross-pool-index.json')); a,b=r['cross_pool_pair_contrasts']; assert a['pair_count']==136 and b['pair_count']==136; assert a['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==27 and b['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==0; assert not r['underlying_per_pool_quote_update_times_verified']"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -59,4 +68,5 @@ jobs:
             tmp/shuka-odds-hierarchy.json
             tmp/odds-threshold-future-demo.json
             tmp/odds-accounting-negative-control.json
+            tmp/odds-cross-pool-index.json
           retention-days: 14
