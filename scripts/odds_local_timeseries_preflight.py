@@ -59,6 +59,51 @@ def _normalize(odds):
     return {i:v/total for i,v in weights.items()}
 
 
+def intermediate_path_readiness(series):
+    """Source-time weighted middle-price curvature of normalized odds.
+
+    This is purely descriptive even with all 3+ clocks; it does not
+    estimate additional winner information, dynamics, herding, or
+    independently calibrated probabilities.
+    """
+    if len(series)<3:
+        return {
+            "status":"HOLD_THREE_DISTINCT_SOURCE_TIMEPOINTS_REQUIRED_FOR_MIDDLE_PATH",
+            "intermediate_points":0,
+            "additional_winner_forecast_information_verified":False,
+        }
+    first_t,first_q=series[0]
+    mid_t,mid_q=series[(len(series)-1)//2]
+    last_t,last_q=series[-1]
+    if set(first_q)!=set(mid_q) or set(mid_q)!=set(last_q):
+        raise ValueError("HOLD_MIDDLE_ODDS_ROSTER")
+    u=(mid_t-first_t)/(last_t-first_t)
+    if not 0 < u < 1:
+        raise ValueError("HOLD_MIDDLE_TIMESTAMP_NOT_STRICTLY_INTERIOR")
+    raw=[
+        math.log(mid_q[i]) - (
+            (1-u)*math.log(first_q[i])+u*math.log(last_q[i]))
+        for i in first_q
+    ]
+    center=mean(raw)
+    curvature=[v-center for v in raw]
+    sd=math.sqrt(mean(x*x for x in curvature))
+    reversal=sum(
+        (math.log(mid_q[i]/first_q[i])*math.log(last_q[i]/mid_q[i]) < 0)
+        for i in first_q
+    )
+    return {
+        "status":"SOURCE_TIME_WEIGHTS_AND_MIDDLE_CURVATURE_COMPUTED_NOT_FORECAST_SKILL",
+        "intermediate_points":len(series)-2,
+        "representative_interior_fraction_elapsed":u,
+        "crosshorse_sd_of_centered_intermediate_log_relative_price_curvature":sd,
+        "horses_with_direction_reversal_from_first_to_mid_to_last":reversal,
+        "source_update_times_verified_by_supplied_input_flag_only":True,
+        "additional_winner_forecast_information_verified":False,
+        "causal_asynchrony_or_bettor_herding_identified":False,
+    }
+
+
 def race_preflight(r):
     raceid=r.get("race_id")
     if not isinstance(raceid,str) or not raceid:
@@ -108,6 +153,7 @@ def race_preflight(r):
         "first_to_last_relative_quote_TV_pp":50*sum(
             abs(summaries[-1][1][i]-summaries[0][1][i])
             for i in original_field),
+        "intermediate_path_curvature_readiness":intermediate_path_readiness(summaries),
         "features_or_verified_outcomes_used":False,
         "win_odds_price_proxy_is_not_true_pool_share":True,
     }
@@ -150,6 +196,9 @@ def audit(payload):
         "unique_race_count":len(races),
         "distinct_meeting_dates":len(dates),
         "full_prestart_verified_races":len(passed),
+        "full_prestart_three_plus_timeseries_races":sum(
+            r["snapshot_count"]>=3 for r in passed),
+        "middle_path_sufficient_source_observations_not_causal_identification":True,
         "raw_snapshots_in_input":total_snapshots,
         "future_threshold_minimum_races_60_dates_8_is_engineering_not_power":True,
         "real_future_race_win_and_top3_skill_estimated":False,
