@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_OCT12 = ROOT / "data/2026-10-12/official-results-final.json"
 OFFICIAL_OCT12_BLOB_SHA = "fdcc70b78c64a50b8a0f566868b38b69ce2c6ff8"
 OFFICIAL_SHUKA = ROOT / "docs/evidence/shuka2026-top3-20261023.json"
+OFFICIAL_SHUKA_BLOB_SHA = "17d9ec43e7fd68100e8eeb05237edd383452f6c0"
 STATUS = "SIX_RACE_TWO_MEETING_DATES_RETROSPECTIVE_NO_HOLDOUT_OR_VALIDATED_WIN_RATE"
 METRICS = ("win_categorical_log_loss", "win_multiclass_brier",
            "top3_binary_brier_mean_per_horse", "top3_binary_log_loss_mean_per_horse")
@@ -73,7 +74,8 @@ def verify_official_oct12(root):
 
 
 def verify_official_shuka(root):
-    official = _load_official(root, OFFICIAL_SHUKA.relative_to(ROOT))
+    official = _load_official(root, OFFICIAL_SHUKA.relative_to(ROOT),
+                              OFFICIAL_SHUKA_BLOB_SHA)
     u = urlparse(official["source_url"])
     if (official.get("status") != "POSTRACE_OFFICIAL_JRA_TOP3_ONLY"
             or official.get("date") != "2026-10-18"
@@ -266,6 +268,7 @@ def audit(root=ROOT):
     summary["source_pinning"]={
         "oct12_complete_JRA_results_git_blob":OFFICIAL_OCT12_BLOB_SHA,
         "shuka_official_JRA_link":shuka["source_url"],
+        "shuka_postrace_podium_git_blob":OFFICIAL_SHUKA_BLOB_SHA,
     }
     summary["results"] = scored
     return summary
