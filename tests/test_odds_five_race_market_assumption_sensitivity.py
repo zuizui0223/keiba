@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Nine price-index model assumptions reused on five real race podiums."""
 import math
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -77,6 +78,18 @@ class FiveRaceWinWideAssumptionsTests(unittest.TestCase):
             deltas["pair_specific_positive_half"]["win_categorical_log_loss"],0)
         self.assertGreater(
             deltas["pair_specific_positive_half"]["unordered_top3_trio_log_loss"],0)
+        print("FIVE_RACE_ASSUMPTION_QA " + json.dumps({
+            name:{
+                model:{
+                    metric:{
+                        "min":round(values["min_assumption_specific_delta"],6),
+                        "max":round(values["max_assumption_specific_delta"],6),
+                        "better_than_PL_out_of_9":
+                            values["cases_out_of_nine_model_better_than_PL"],
+                    } for metric,values in scores.items()
+                } for model,scores in group.items()
+            } for name,group in spans.items()
+        },sort_keys=True))
 
     def test_models_are_unfitted_and_no_future_win_claim(self):
         params=self.out["fixed_coefficients_not_fit_to_podiums"]
