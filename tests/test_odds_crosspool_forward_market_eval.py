@@ -2,6 +2,7 @@
 """Future-date next-market WIN/WIDE: synthetic-only chronology and license gates."""
 from copy import deepcopy
 import math
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -73,6 +74,17 @@ class ForwardWinWideMarketTests(unittest.TestCase):
                ["train_selected_wide_horse_node"]["market_index_KL"],
             sig["future_equal_race_market_price_index_scores"]
                ["elapsed_time_momentum_only"]["market_index_KL"])
+        print("ODDS_FORWARD_SYNTHETIC_QA " + json.dumps({
+            name:{
+                "train":result["train_race_count"],
+                "future":result["future_race_count"],
+                "selected":result["training_only_selected"],
+                "future_KL":{
+                    k:v["market_index_KL"]
+                    for k,v in result["future_equal_race_market_price_index_scores"].items()
+                },
+            } for name,result in [("null",null),("planted_signal",sig)]
+        },sort_keys=True))
 
     def test_future_outcomes_cannot_change_selected_coefficients(self):
         a=evaluate(self.signal,seed=222)
