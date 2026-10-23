@@ -16,6 +16,8 @@ on:
       - scripts/odds_conditional_path_falsification.py
       - scripts/odds_r8_real_three_time_market.py
       - scripts/odds_pair_hierarchy_decomposition.py
+      - scripts/odds_pair_hierarchy_robustness.py
+      - tests/test_odds_pair_hierarchy_robustness.py
       - scripts/odds_coherent_hierarchy_rank_bridge.py
       - tests/test_odds_coherent_hierarchy_rank_bridge.py
       - tests/test_odds_pair_hierarchy_decomposition.py
@@ -50,6 +52,8 @@ on:
       - scripts/odds_conditional_path_falsification.py
       - scripts/odds_r8_real_three_time_market.py
       - scripts/odds_pair_hierarchy_decomposition.py
+      - scripts/odds_pair_hierarchy_robustness.py
+      - tests/test_odds_pair_hierarchy_robustness.py
       - scripts/odds_coherent_hierarchy_rank_bridge.py
       - tests/test_odds_coherent_hierarchy_rank_bridge.py
       - tests/test_odds_pair_hierarchy_decomposition.py
@@ -95,6 +99,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_conditional_path_falsification.py' -v
           python -m unittest discover -s tests -p 'test_odds_r8_real_three_time_market.py' -v
           python -m unittest discover -s tests -p 'test_odds_pair_hierarchy_decomposition.py' -v
+          python -m unittest discover -s tests -p 'test_odds_pair_hierarchy_robustness.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
@@ -145,6 +150,10 @@ jobs:
         run: |
           python scripts/odds_coherent_hierarchy_rank_bridge.py --output tmp/odds-coherent-hierarchy-bridge.json
           python -c "import json; q=json.load(open('tmp/odds-coherent-hierarchy-bridge.json')); assert q['only_independent_empirical_races']==1 and q['all_two_layer_coefficients_are_hypothetical_not_estimated']; m=q['scenarios']; assert len(m)==4 and m['market_PL_exact']['market_shift_in_win_probability_distribution_TV']==0; assert all(abs(s['mass']['three_top3_inclusions']-3)<1e-9 and abs(s['mass']['three_successful_wide_pairs']-3)<1e-9 and abs(s['mass']['one_unordered_trio']-1)<1e-9 and abs(s['mass']['one_ordered_trifecta']-1)<1e-9 for s in m.values())"
+      - name: Compare WIDE conditional lower/geometric/upper mappings and PL gamma 0.75/1/1.25 across 55 real pairs
+        run: |
+          python scripts/odds_pair_hierarchy_robustness.py --synthetic-draws 500 --seed 20261023 --output tmp/odds-pair-robustness.json
+          python -c "import json; r=json.load(open('tmp/odds-pair-robustness.json')); assert r['number_of_independent_races']==1 and r['n_price_mapping_scenarios']==9; assert abs(r['direct_PL_gamma1_lower_quote_decompositions']['wide_minus_PL_relative_index']-.7264335920434639)<1e-9; assert .55<r['wide_minus_PL_horse_node_R2_min']<.56 and .81<r['wide_minus_PL_horse_node_R2_max']<.82; assert all(v['all_nine_assumptions_have_same_sign'] for v in r['pair_residual_sign_stability'].values()); assert r['invented_noise_reference']['cannot_interpret_as_pvalue_or_empirical_noise_baseline']"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -160,5 +169,6 @@ jobs:
             tmp/odds-matched-endpoint-null-positive.json
             tmp/odds-r8-real-three-point-path.json
             tmp/odds-pair-hierarchy.json
+            tmp/odds-pair-robustness.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
