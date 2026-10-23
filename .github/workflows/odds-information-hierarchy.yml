@@ -53,6 +53,7 @@ on:
       - docs/odds-r8-next-market-cross-pool-20261023.md
       - docs/odds-crosspool-forward-market-benchmark-20261023.md
       - docs/odds-five-race-win-wide-outcome-comparison-20261023.md
+      - docs/odds-asof-shadow-freeze-protocol-20261023.md
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   pull_request:
@@ -103,6 +104,7 @@ on:
       - docs/odds-r8-next-market-cross-pool-20261023.md
       - docs/odds-crosspool-forward-market-benchmark-20261023.md
       - docs/odds-five-race-win-wide-outcome-comparison-20261023.md
+      - docs/odds-asof-shadow-freeze-protocol-20261023.md
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   workflow_dispatch:
@@ -211,7 +213,7 @@ jobs:
       - name: As-of result availability — all Kyoto 8–12 market features before first race post
         run: |
           python scripts/odds_asof_training_eligibility.py --output tmp/odds-asof-eligibility.json
-          python -c "import json; q=json.load(open('tmp/odds-asof-eligibility.json')); g=q['within_meeting_training_graph']; assert q['all_five_forecast_features_available_before_any_of_five_races_started']; assert g['race_count']==5 and g['available_training_relationships']==0; assert abs(q['minutes_between_last_market_receive_and_first_race_post']-32.4342591)<1e-5; assert not q['result_available_for_same_day_other_race_model_fit']"
+          python -c "import json; q=json.load(open('tmp/odds-asof-eligibility.json')); g=q['within_meeting_training_graph']; assert q['all_five_forecast_features_available_before_any_of_five_races_started']; assert g['race_count']==5 and g['available_training_relationships']==0; assert q['within_meeting_next_WIN_market_label_training_graph']['market_target_to_forecast_training_relations']==0; assert q['within_meeting_next_WIN_market_label_training_graph']['full_next_market_labels_available_in_archive']==1; assert abs(q['minutes_between_last_market_receive_and_first_race_post']-32.4342591)<1e-5; assert not q['result_available_for_same_day_other_race_model_fit']"
           python scripts/odds_asof_training_eligibility.py --demo --output tmp/odds-asof-synthetic-demo.json
           python -c "import json; q=json.load(open('tmp/odds-asof-synthetic-demo.json')); assert q['available_training_relationships']==2 and q['targets_with_at_least_two_documented_training_outcomes']==1"
       - name: Synthetic local shadow freeze, canonical SHA verification and postrace scoring
