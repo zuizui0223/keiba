@@ -144,7 +144,7 @@ jobs:
       - name: Keep PL win, top3, every 55 wide pair and all 165 trio probabilities coherent after hypothetical market hierarchy overlays
         run: |
           python scripts/odds_coherent_hierarchy_rank_bridge.py --output tmp/odds-coherent-hierarchy-bridge.json
-          python -c "import json; q=json.load(open('tmp/odds-coherent-hierarchy-bridge.json')); assert q['only_independent_empirical_races']==1 and q['all_two_layer_coefficients_are_hypothetical_not_estimated']; m=q['scenarios']; assert len(m)==4 and m['market_PL_exact']['market_shift_in_win_probability_distribution_TV']==0; assert all(abs(s['mass']['three_top3_inclusions']-3)<1e-9 and abs(s['mass']['three_successful_wide_pairs']-3)<1e-9 and abs(s['mass']['one_unordered_trio']-1)<1e-9 for s in m.values())"
+          python -c "import json; q=json.load(open('tmp/odds-coherent-hierarchy-bridge.json')); assert q['only_independent_empirical_races']==1 and q['all_two_layer_coefficients_are_hypothetical_not_estimated']; m=q['scenarios']; assert len(m)==4 and m['market_PL_exact']['market_shift_in_win_probability_distribution_TV']==0; assert all(abs(s['mass']['three_top3_inclusions']-3)<1e-9 and abs(s['mass']['three_successful_wide_pairs']-3)<1e-9 and abs(s['mass']['one_unordered_trio']-1)<1e-9 and abs(s['mass']['one_ordered_trifecta']-1)<1e-9 for s in m.values())"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
