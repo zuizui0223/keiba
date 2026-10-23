@@ -126,7 +126,7 @@ class SixRealRaceForecastAuditTests(unittest.TestCase):
 
     def test_no_promotion_to_v31_or_pooled_claim(self):
         r=audit()
-        self.assertIn("NOT",r["status"])
+        self.assertIn("NO_HOLDOUT",r["status"])
         self.assertEqual(len(r["results"]),6)
         self.assertTrue(any("two meeting-day clusters" in s for s in r[
             "scientific_limitations"]))
