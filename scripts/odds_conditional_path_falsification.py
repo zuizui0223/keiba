@@ -260,7 +260,7 @@ def _score_future(future, labels, selected, *, placebo_seed=112):
             scores[name]={
                 "win_log_loss": _winner_loss(win, truth[0]),
                 "top3_brier_per_horse":mean(
-                    (top[i]-(1 if (i+1) in y else 0))**2
+                    (top3[i]-(1 if (i+1) in y else 0))**2
                     for i in range(len(q))),
             }
         records.append({"date":r["date"],"id":r["id"],
