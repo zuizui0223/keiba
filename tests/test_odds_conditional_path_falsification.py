@@ -101,7 +101,7 @@ class SameEndpointCounterfactualTests(unittest.TestCase):
     def test_outcome_generation_is_null_or_planted_not_real(self):
         for mech in MECHANISMS:
             rows=attach_fictional_results(generate(
-                mechanism=mech,seed=115,dates=12,twin_pairs_per_date=3),seed=112)
+                mechanism=mech,seed=115,dates=12,twin_pairs_per_date=4),seed=112)
             self.assertEqual(rows["status"],"FABRICATED_MATCHED_ENDPOINT_RACES_NO_JRA_DATA")
             report=evaluate(rows,repetitions=100,seed=115)
             self.assertEqual(report["status"],STATUS)
