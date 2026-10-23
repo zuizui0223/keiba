@@ -55,14 +55,15 @@ class CoherentMarketHierarchyRankingTests(unittest.TestCase):
                 r["both_top3_pair"][(i,j)],
                 sum(v for trio,v in r["unordered_top3_trio"].items()
                     if i in trio and j in trio),places=10)
-        for i,j in r["ordered_firsttwo_exacta"]:
+        for i in odds:
             self.assertAlmostEqual(
-                r["ordered_firsttwo_exacta"][(i,j)],
-                sum(
-                    v for trio,v in r["unordered_top3_trio"].items()
-                    if i in trio and j in trio
-                ) * 0.0 +
-                r["ordered_firsttwo_exacta"][(i,j)],places=10)
+                sum(v for (first, second),v in r["ordered_firsttwo_exacta"].items()
+                    if first == i),
+                r["win"][i],places=10)
+            self.assertAlmostEqual(
+                sum(v for (first, second),v in r["ordered_firsttwo_exacta"].items()
+                    if second == i),
+                r["top2"][i] - r["win"][i],places=10)
         self.assertEqual(r["status"],STATUS)
 
     def test_coherent_node_boost_changes_horse_marginal(self):
