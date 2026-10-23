@@ -11,7 +11,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from odds_six_race_predictive_increment import (
-    STATUS, OFFICIAL_OCT12, METRICS, _odds_probabilities,
+    STATUS, OFFICIAL_OCT12, OFFICIAL_SHUKA, METRICS, _odds_probabilities,
     collect_pre_race_forecasts, score_forecast, score_against_outcomes,
     summarize_scored_races, audit, verify_official_oct12,
     verify_official_shuka,
@@ -123,6 +123,17 @@ class SixRealRaceForecastAuditTests(unittest.TestCase):
             target.write_bytes(target.read_bytes()+b" ")
             with self.assertRaisesRegex(ValueError,"HOLD_OFFICIAL_RESULT_SOURCE_DRIFT"):
                 verify_official_oct12(root)
+
+    def test_minimal_Shuka_official_result_tampering_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            target=root/"docs/evidence/shuka2026-top3-20261023.json"
+            target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes(OFFICIAL_SHUKA.read_bytes())
+            verify_official_shuka(root)
+            target.write_bytes(target.read_bytes()+b" ")
+            with self.assertRaisesRegex(ValueError,"HOLD_OFFICIAL_RESULT_SOURCE_DRIFT"):
+                verify_official_shuka(root)
 
     def test_no_promotion_to_v31_or_pooled_claim(self):
         r=audit()
