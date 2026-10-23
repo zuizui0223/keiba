@@ -1,0 +1,24 @@
+{
+  "status": "POSTRACE_OFFICIAL_JRA_TOP3_ONLY",
+  "date": "2026-10-18",
+  "race_id": "2608040711",
+  "venue": "京都",
+  "race_number": 11,
+  "scheduled_post_jst": "2026-10-18T15:40:00+09:00",
+  "verified_on_jst": "2026-10-23",
+  "source_type": "JRA_official",
+  "source_url": "https://www.jra.go.jp/datafile/seiseki/g1/shuka/result/shuka2026.html",
+  "top3": [
+    8,
+    1,
+    13
+  ],
+  "top3_display_names_for_crosscheck": [
+    "モンローウォーク",
+    "ギャラボーグ",
+    "ドリームコア"
+  ],
+  "usage_contract": "Postrace observed outcome only; never a feature for earlier odds forecasts or v3.1 frozen prediction.",
+  "derivation": "Only three official finishing horse numbers, not a copy of source race table; manually checked against JRA official results after the race.",
+  "score_cohort": "descriptive historical 6 races on 2 dates; not independent prospective test"
+}
