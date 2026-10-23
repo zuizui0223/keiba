@@ -10,7 +10,7 @@ import unittest
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from odds_real_multirace_archive_audit import (
-    SOURCE_SHA, STATUS, audit, _one_race, read_file,
+    SOURCE_SHA, STATUS, audit, _one_race, read_file, independent_uniform_newvote_fit,
 )
 from shuka2026_odds_information_hierarchy import SOURCE as SHUKA_SOURCE
 
@@ -90,6 +90,39 @@ class RealMultipleRaceTimeSeriesAuditTests(unittest.TestCase):
         late["quotes"]["win"][0]["selection"]=[9,10]
         with self.assertRaisesRegex(ValueError,"HOLD_INCONSISTENT_WIN"):
             _one_race(self.a,late,8)
+
+
+    def test_uniform_new_votes_null_exact_synthetic_line_segment(self):
+        prior={1:.6,2:.3,3:.1}
+        lam=.4
+        later={h:(1-lam)*v+lam/3 for h,v in prior.items()}
+        test=independent_uniform_newvote_fit(prior,later)
+        self.assertAlmostEqual(
+            test["fitted_hypothetical_uniform_newvote_fraction"],lam,places=12)
+        self.assertAlmostEqual(
+            test["unexplained_TV_after_uniform_dilution_fit_pp"],0,places=11)
+        self.assertTrue(test["not_an_estimate_of_true_incremental_bets"])
+        self.assertTrue(test["rejecting_uniform_bets_would_not_identify_herding"])
+
+    def test_real_five_races_uniform_dilution_does_not_fit(self):
+        r=audit()
+        self.assertEqual(
+            r["kyoto_20261012_uniform_newvote_best_fit_at_zero_races"],4)
+        results=[
+            x["uniform_independent_new_votes_reference"]
+            for x in r["kyoto_20261012_races"]]
+        self.assertAlmostEqual(
+            results[0]["fitted_hypothetical_uniform_newvote_fraction"],
+            .0665,delta=.0001)
+        self.assertAlmostEqual(
+            results[0]["fraction_squared_share_change_explained_by_uniform_null"],
+            .082,delta=.002)
+        for item in results[1:]:
+            self.assertAlmostEqual(
+                item["unexplained_TV_after_uniform_dilution_fit_pp"],
+                item["observed_normalized_inverse_odds_TV_pp"],places=9)
+        self.assertTrue(
+            r["kyoto_20261012_uniform_newvote_null_is_not_every_independent_information_model"])
 
     def test_horses_cannot_be_duplicated_by_market_rank(self):
         late=copy.deepcopy(self.b)
