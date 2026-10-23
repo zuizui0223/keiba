@@ -36,7 +36,7 @@ class ForwardWinWideMarketTests(unittest.TestCase):
         self.assertAlmostEqual(sum(q.values()),1.0)
         self.assertNotIn("target_win",str(f))
         self.assertFalse(any("top3" in k for k in f))
-        pred=_forecast(f,bm=1,bn=.5)
+        pred=_forecast(f,b_momentum=1,b_node=.5)
         self.assertAlmostEqual(sum(pred.values()),1.0)
 
     def test_only_train_dates_tune_wide_node(self):
