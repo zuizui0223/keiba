@@ -23,6 +23,9 @@ on:
       - scripts/odds_five_race_market_assumption_sensitivity.py
       - scripts/odds_asof_training_eligibility.py
       - scripts/odds_shadow_freeze_score.py
+      - scripts/odds_github_attestation.py
+      - tests/test_odds_github_attestation.py
+      - .github/workflows/odds-shadow-attest.yml
       - tests/test_odds_shadow_freeze_score.py
       - tests/test_odds_asof_training_eligibility.py
       - tests/test_odds_five_race_market_assumption_sensitivity.py
@@ -76,6 +79,9 @@ on:
       - scripts/odds_five_race_market_assumption_sensitivity.py
       - scripts/odds_asof_training_eligibility.py
       - scripts/odds_shadow_freeze_score.py
+      - scripts/odds_github_attestation.py
+      - tests/test_odds_github_attestation.py
+      - .github/workflows/odds-shadow-attest.yml
       - tests/test_odds_shadow_freeze_score.py
       - tests/test_odds_asof_training_eligibility.py
       - tests/test_odds_five_race_market_assumption_sensitivity.py
@@ -140,6 +146,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_five_race_market_assumption_sensitivity.py' -v
           python -m unittest discover -s tests -p 'test_odds_asof_training_eligibility.py' -v
           python -m unittest discover -s tests -p 'test_odds_shadow_freeze_score.py' -v
+          python -m unittest discover -s tests -p 'test_odds_github_attestation.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
@@ -220,6 +227,10 @@ jobs:
         run: |
           python scripts/odds_shadow_freeze_score.py demo --freeze-out tmp/synthetic-winwide-shadow-freeze.json --score-out tmp/synthetic-winwide-shadow-score.json
           python -c "import json; f=json.load(open('tmp/synthetic-winwide-shadow-freeze.json')); s=json.load(open('tmp/synthetic-winwide-shadow-score.json')); assert f['payload']['no_actual_result_loaded'] and s['formal_prospective_status'].startswith('HOLD_'); assert f['payload']['model_coefficient_lock_at_jst']<'2030-01-01T13:29:00+09:00'; assert s['cannot_append_to_frozen_v31_formal_ledger']; assert s['freeze_payload_sha256']==f['seal_sha256_of_canonical_payload']"
+      - name: Synthetic offline commitment proof is NEVER treated as authenticated GitHub run
+        run: |
+          python scripts/odds_github_attestation.py demo --output tmp/odds-github-attestation-offline-demo.json
+          python -c "import json; r=json.load(open('tmp/odds-github-attestation-offline-demo.json')); assert r['status']=='HOLD_OFFLINE_RECEIPT_IS_NOT_INDEPENDENT_GITHUB_EVIDENCE'; assert not r['independent_fetch_performed']; assert r['does_not_append_to_v31_holdout']"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -244,5 +255,6 @@ jobs:
             tmp/odds-asof-synthetic-demo.json
             tmp/synthetic-winwide-shadow-freeze.json
             tmp/synthetic-winwide-shadow-score.json
+            tmp/odds-github-attestation-offline-demo.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
