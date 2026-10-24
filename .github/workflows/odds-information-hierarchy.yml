@@ -31,6 +31,9 @@ on:
       - scripts/odds_prequential_cohort.py
       - scripts/odds_graded_calendar_coverage.py
       - scripts/odds_multiyear_provisional_coverage.py
+      - scripts/odds_2027_provisional_comment_proof.py
+      - tests/test_odds_2027_provisional_comment_proof.py
+      - docs/odds-2027-q1-provisional-calendar-annex-20261024.md
       - tests/test_odds_multiyear_provisional_coverage.py
       - data/research/jra-graded-2027jan-mar-provisional-calendar.json
       - data/research/odds-prequential-2027jan-mar-provisional-registry.json
@@ -116,6 +119,9 @@ on:
       - scripts/odds_prequential_cohort.py
       - scripts/odds_graded_calendar_coverage.py
       - scripts/odds_multiyear_provisional_coverage.py
+      - scripts/odds_2027_provisional_comment_proof.py
+      - tests/test_odds_2027_provisional_comment_proof.py
+      - docs/odds-2027-q1-provisional-calendar-annex-20261024.md
       - tests/test_odds_multiyear_provisional_coverage.py
       - data/research/jra-graded-2027jan-mar-provisional-calendar.json
       - data/research/odds-prequential-2027jan-mar-provisional-registry.json
@@ -211,6 +217,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_prequential_cohort.py' -v
           python -m unittest discover -s tests -p 'test_odds_graded_calendar_coverage.py' -v
           python -m unittest discover -s tests -p 'test_odds_multiyear_provisional_coverage.py' -v
+          python -m unittest discover -s tests -p 'test_odds_2027_provisional_comment_proof.py' -v
           python -m unittest discover -s tests -p 'test_odds_graded_calendar_comment_proof.py' -v
           python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
