@@ -29,6 +29,10 @@ on:
       - scripts/odds_preoutcome_discriminability.py
       - scripts/odds_sharp_reference_power_envelope.py
       - scripts/odds_prequential_cohort.py
+      - scripts/odds_graded_calendar_coverage.py
+      - tests/test_odds_graded_calendar_coverage.py
+      - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
+      - data/research/odds-prequential-2026oct24-coverage-registry.json
       - tests/test_odds_prequential_cohort.py
       - tests/test_odds_sharp_reference_power_envelope.py
       - scripts/odds_private_source_replay_audit.py
@@ -103,6 +107,10 @@ on:
       - scripts/odds_preoutcome_discriminability.py
       - scripts/odds_sharp_reference_power_envelope.py
       - scripts/odds_prequential_cohort.py
+      - scripts/odds_graded_calendar_coverage.py
+      - tests/test_odds_graded_calendar_coverage.py
+      - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
+      - data/research/odds-prequential-2026oct24-coverage-registry.json
       - tests/test_odds_prequential_cohort.py
       - tests/test_odds_sharp_reference_power_envelope.py
       - scripts/odds_private_source_replay_audit.py
@@ -187,6 +195,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_preoutcome_discriminability.py' -v
           python -m unittest discover -s tests -p 'test_odds_sharp_reference_power_envelope.py' -v
           python -m unittest discover -s tests -p 'test_odds_prequential_cohort.py' -v
+          python -m unittest discover -s tests -p 'test_odds_graded_calendar_coverage.py' -v
           python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
@@ -278,6 +287,10 @@ jobs:
           python scripts/odds_prequential_cohort.py protocol --output tmp/odds-graded-cohort-v1-protocol.json
           python scripts/odds_prequential_cohort.py offline-demo --output tmp/odds-graded-cohort-v1-offline.json
           python -c "import json; a=json.load(open('tmp/odds-graded-cohort-v1-protocol.json')); r=json.load(open('tmp/odds-graded-cohort-v1-offline.json')); assert a['fixed_coverage_feasibility_min_races']==60 and a['fixed_coverage_feasibility_min_meeting_dates']==8; assert r['status'].startswith('HOLD_') and not r['remote_GitHub_comment_verification_was_independently_run'] and r['included_scored_race_count']==3; assert r['e_value_not_a_test_for_absence_of_incremental_path_information']"
+      - name: Audit official 26-slot 2026 JRA flat-graded calendar and freeze unbiased future-race denominator
+        run: |
+          python scripts/odds_graded_calendar_coverage.py --calendar data/research/jra-graded-flat-2026oct25-dec27-calendar.json --registry data/research/odds-prequential-2026oct24-coverage-registry.json --output tmp/odds-jra-flat-graded-coverage-2026.json
+          python -c "import json; r=json.load(open('tmp/odds-jra-flat-graded-coverage-2026.json')); assert r['calendar_segment_event_count']==26 and r['calendar_segment_distinct_race_dates']==20 and r['coverage_rows_present']==26; assert r['registered_local_SHA_submission_count_not_externally_verified']==1 and r['actual_forward_graded_stakes_scores_count']==0; assert not r['full_period_calendar_denominator_verified']; assert r['status_counts']=={'preseal_sha_submitted_unverified':1,'upcoming_not_due':25}"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -305,5 +318,6 @@ jobs:
             tmp/odds-github-attestation-offline-demo.json
             tmp/odds-graded-cohort-v1-protocol.json
             tmp/odds-graded-cohort-v1-offline.json
+            tmp/odds-jra-flat-graded-coverage-2026.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
