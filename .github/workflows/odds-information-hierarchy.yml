@@ -1,0 +1,351 @@
+name: Shuka Sho odds information hierarchy audit
+
+on:
+  push:
+    branches:
+      - analysis/odds-information-hierarchy-20261023
+    paths:
+      - scripts/shuka2026_odds_information_hierarchy.py
+      - scripts/odds_market_accounting_null.py
+      - scripts/odds_cross_pool_global_async.py
+      - scripts/odds_rounding_sensitivity.py
+      - tests/test_odds_rounding_sensitivity.py
+      - scripts/odds_real_multirace_archive_audit.py
+      - scripts/odds_local_timeseries_preflight.py
+      - scripts/odds_six_race_predictive_increment.py
+      - scripts/odds_conditional_path_falsification.py
+      - scripts/odds_r8_real_three_time_market.py
+      - scripts/odds_pair_hierarchy_decomposition.py
+      - scripts/odds_pair_hierarchy_robustness.py
+      - scripts/odds_r8_next_win_market_forecast.py
+      - scripts/odds_crosspool_forward_market_eval.py
+      - scripts/odds_five_race_joint_market_score.py
+      - scripts/odds_five_race_market_assumption_sensitivity.py
+      - scripts/odds_asof_training_eligibility.py
+      - scripts/odds_shadow_freeze_score.py
+      - scripts/odds_github_attestation.py
+      - scripts/odds_public_two_point_freeze.py
+      - scripts/odds_public_comment_attestation.py
+      - scripts/odds_preoutcome_discriminability.py
+      - scripts/odds_sharp_reference_power_envelope.py
+      - scripts/odds_prequential_cohort.py
+      - scripts/odds_graded_calendar_coverage.py
+      - scripts/odds_multiyear_provisional_coverage.py
+      - scripts/odds_2027_provisional_comment_proof.py
+      - tests/test_odds_2027_provisional_comment_proof.py
+      - docs/odds-2027-q1-provisional-calendar-annex-20261024.md
+      - tests/test_odds_multiyear_provisional_coverage.py
+      - data/research/jra-graded-2027jan-mar-provisional-calendar.json
+      - data/research/odds-prequential-2027jan-mar-provisional-registry.json
+      - scripts/odds_graded_calendar_comment_proof.py
+      - tests/test_odds_graded_calendar_comment_proof.py
+      - tests/test_odds_graded_calendar_coverage.py
+      - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
+      - docs/odds-graded-calendar-preregistered-20261024.md
+      - data/research/odds-prequential-2026oct24-coverage-registry.json
+      - tests/test_odds_prequential_cohort.py
+      - tests/test_odds_sharp_reference_power_envelope.py
+      - scripts/odds_private_source_replay_audit.py
+      - tests/test_odds_private_source_replay_audit.py
+      - tests/test_odds_preoutcome_discriminability.py
+      - tests/test_odds_public_comment_attestation.py
+      - scripts/odds_sha_only_receipt.py
+      - tests/test_odds_sha_only_receipt.py
+      - tests/test_odds_github_attestation.py
+      - .github/workflows/odds-shadow-attest.yml
+      - tests/test_odds_shadow_freeze_score.py
+      - tests/test_odds_asof_training_eligibility.py
+      - tests/test_odds_five_race_market_assumption_sensitivity.py
+      - tests/test_odds_five_race_joint_market_score.py
+      - tests/test_odds_crosspool_forward_market_eval.py
+      - tests/test_odds_r8_next_win_market_forecast.py
+      - tests/test_odds_pair_hierarchy_robustness.py
+      - scripts/odds_coherent_hierarchy_rank_bridge.py
+      - tests/test_odds_coherent_hierarchy_rank_bridge.py
+      - tests/test_odds_pair_hierarchy_decomposition.py
+      - tests/test_odds_r8_real_three_time_market.py
+      - tests/test_odds_conditional_path_falsification.py
+      - tests/test_odds_six_race_predictive_increment.py
+      - docs/evidence/shuka2026-top3-20261023.json
+      - tests/test_odds_local_timeseries_preflight.py
+      - tests/test_odds_real_multirace_archive_audit.py
+      - tests/test_odds_cross_pool_global_async.py
+      - tests/test_odds_market_accounting_null.py
+      - scripts/odds_threshold_forward_eval.py
+      - tests/test_odds_threshold_forward_eval.py
+      - tests/test_shuka2026_odds_information_hierarchy.py
+      - docs/odds-information-hierarchy-20261023.md
+      - docs/odds-multirace-source-and-design-20261023.md
+      - docs/odds-six-race-early-late-scoring-20261023.md
+      - docs/odds-conditional-path-and-kyoto8-20261023.md
+      - docs/odds-pair-hierarchy-decomposition-20261023.md
+      - docs/odds-pair-hierarchy-robustness-20261023.md
+      - docs/odds-r8-next-market-cross-pool-20261023.md
+      - docs/odds-crosspool-forward-market-benchmark-20261023.md
+      - docs/odds-five-race-win-wide-outcome-comparison-20261023.md
+      - docs/odds-asof-shadow-freeze-protocol-20261023.md
+      - docs/odds-github-server-preseal-attestation-20261024.md
+      - docs/odds-first-precommitted-kikka20261025.md
+      - docs/odds-kikka2026-preoutcome-discriminability-20261024.md
+      - docs/odds-prequential-power-and-cohort-20261024.md
+      - docs/odds-prequential-graded-cohort-v1-20261024.json
+      - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
+      - .github/workflows/odds-information-hierarchy.yml
+  pull_request:
+    paths:
+      - scripts/shuka2026_odds_information_hierarchy.py
+      - scripts/odds_market_accounting_null.py
+      - scripts/odds_cross_pool_global_async.py
+      - scripts/odds_rounding_sensitivity.py
+      - tests/test_odds_rounding_sensitivity.py
+      - scripts/odds_real_multirace_archive_audit.py
+      - scripts/odds_local_timeseries_preflight.py
+      - scripts/odds_six_race_predictive_increment.py
+      - scripts/odds_conditional_path_falsification.py
+      - scripts/odds_r8_real_three_time_market.py
+      - scripts/odds_pair_hierarchy_decomposition.py
+      - scripts/odds_pair_hierarchy_robustness.py
+      - scripts/odds_r8_next_win_market_forecast.py
+      - scripts/odds_crosspool_forward_market_eval.py
+      - scripts/odds_five_race_joint_market_score.py
+      - scripts/odds_five_race_market_assumption_sensitivity.py
+      - scripts/odds_asof_training_eligibility.py
+      - scripts/odds_shadow_freeze_score.py
+      - scripts/odds_github_attestation.py
+      - scripts/odds_public_two_point_freeze.py
+      - scripts/odds_public_comment_attestation.py
+      - scripts/odds_preoutcome_discriminability.py
+      - scripts/odds_sharp_reference_power_envelope.py
+      - scripts/odds_prequential_cohort.py
+      - scripts/odds_graded_calendar_coverage.py
+      - scripts/odds_multiyear_provisional_coverage.py
+      - scripts/odds_2027_provisional_comment_proof.py
+      - tests/test_odds_2027_provisional_comment_proof.py
+      - docs/odds-2027-q1-provisional-calendar-annex-20261024.md
+      - tests/test_odds_multiyear_provisional_coverage.py
+      - data/research/jra-graded-2027jan-mar-provisional-calendar.json
+      - data/research/odds-prequential-2027jan-mar-provisional-registry.json
+      - scripts/odds_graded_calendar_comment_proof.py
+      - tests/test_odds_graded_calendar_comment_proof.py
+      - tests/test_odds_graded_calendar_coverage.py
+      - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
+      - docs/odds-graded-calendar-preregistered-20261024.md
+      - data/research/odds-prequential-2026oct24-coverage-registry.json
+      - tests/test_odds_prequential_cohort.py
+      - tests/test_odds_sharp_reference_power_envelope.py
+      - scripts/odds_private_source_replay_audit.py
+      - tests/test_odds_private_source_replay_audit.py
+      - tests/test_odds_preoutcome_discriminability.py
+      - tests/test_odds_public_comment_attestation.py
+      - scripts/odds_sha_only_receipt.py
+      - tests/test_odds_sha_only_receipt.py
+      - tests/test_odds_github_attestation.py
+      - .github/workflows/odds-shadow-attest.yml
+      - tests/test_odds_shadow_freeze_score.py
+      - tests/test_odds_asof_training_eligibility.py
+      - tests/test_odds_five_race_market_assumption_sensitivity.py
+      - tests/test_odds_five_race_joint_market_score.py
+      - tests/test_odds_crosspool_forward_market_eval.py
+      - tests/test_odds_r8_next_win_market_forecast.py
+      - tests/test_odds_pair_hierarchy_robustness.py
+      - scripts/odds_coherent_hierarchy_rank_bridge.py
+      - tests/test_odds_coherent_hierarchy_rank_bridge.py
+      - tests/test_odds_pair_hierarchy_decomposition.py
+      - tests/test_odds_r8_real_three_time_market.py
+      - tests/test_odds_conditional_path_falsification.py
+      - tests/test_odds_six_race_predictive_increment.py
+      - docs/evidence/shuka2026-top3-20261023.json
+      - tests/test_odds_local_timeseries_preflight.py
+      - tests/test_odds_real_multirace_archive_audit.py
+      - tests/test_odds_cross_pool_global_async.py
+      - tests/test_odds_market_accounting_null.py
+      - tests/test_shuka2026_odds_information_hierarchy.py
+      - docs/odds-information-hierarchy-20261023.md
+      - docs/odds-multirace-source-and-design-20261023.md
+      - docs/odds-six-race-early-late-scoring-20261023.md
+      - docs/odds-conditional-path-and-kyoto8-20261023.md
+      - docs/odds-pair-hierarchy-decomposition-20261023.md
+      - docs/odds-pair-hierarchy-robustness-20261023.md
+      - docs/odds-r8-next-market-cross-pool-20261023.md
+      - docs/odds-crosspool-forward-market-benchmark-20261023.md
+      - docs/odds-five-race-win-wide-outcome-comparison-20261023.md
+      - docs/odds-asof-shadow-freeze-protocol-20261023.md
+      - docs/odds-github-server-preseal-attestation-20261024.md
+      - docs/odds-first-precommitted-kikka20261025.md
+      - docs/odds-kikka2026-preoutcome-discriminability-20261024.md
+      - docs/odds-prequential-power-and-cohort-20261024.md
+      - docs/odds-prequential-graded-cohort-v1-20261024.json
+      - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
+      - .github/workflows/odds-information-hierarchy.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-descriptive-and-synthetic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run locked source, clocks, synthetic feedback and no postrace leakage tests
+        run: |
+          python -m unittest discover -s tests -p 'test_shuka2026_odds_information_hierarchy.py' -v
+          python -m unittest discover -s tests -p 'test_odds_threshold_forward_eval.py' -v
+          python -m unittest discover -s tests -p 'test_odds_market_accounting_null.py' -v
+          python -m unittest discover -s tests -p 'test_odds_cross_pool_global_async.py' -v
+          python -m unittest discover -s tests -p 'test_odds_rounding_sensitivity.py' -v
+          python -m unittest discover -s tests -p 'test_odds_real_multirace_archive_audit.py' -v
+          python -m unittest discover -s tests -p 'test_odds_local_timeseries_preflight.py' -v
+          python -m unittest discover -s tests -p 'test_odds_six_race_predictive_increment.py' -v
+          python -m unittest discover -s tests -p 'test_odds_conditional_path_falsification.py' -v
+          python -m unittest discover -s tests -p 'test_odds_r8_real_three_time_market.py' -v
+          python -m unittest discover -s tests -p 'test_odds_pair_hierarchy_decomposition.py' -v
+          python -m unittest discover -s tests -p 'test_odds_pair_hierarchy_robustness.py' -v
+          python -m unittest discover -s tests -p 'test_odds_r8_next_win_market_forecast.py' -v
+          python -m unittest discover -s tests -p 'test_odds_crosspool_forward_market_eval.py' -v
+          python -m unittest discover -s tests -p 'test_odds_five_race_joint_market_score.py' -v
+          python -m unittest discover -s tests -p 'test_odds_five_race_market_assumption_sensitivity.py' -v
+          python -m unittest discover -s tests -p 'test_odds_asof_training_eligibility.py' -v
+          python -m unittest discover -s tests -p 'test_odds_shadow_freeze_score.py' -v
+          python -m unittest discover -s tests -p 'test_odds_github_attestation.py' -v
+          python -m unittest discover -s tests -p 'test_odds_public_comment_attestation.py' -v
+          python -m unittest discover -s tests -p 'test_odds_preoutcome_discriminability.py' -v
+          python -m unittest discover -s tests -p 'test_odds_sharp_reference_power_envelope.py' -v
+          python -m unittest discover -s tests -p 'test_odds_prequential_cohort.py' -v
+          python -m unittest discover -s tests -p 'test_odds_graded_calendar_coverage.py' -v
+          python -m unittest discover -s tests -p 'test_odds_multiyear_provisional_coverage.py' -v
+          python -m unittest discover -s tests -p 'test_odds_2027_provisional_comment_proof.py' -v
+          python -m unittest discover -s tests -p 'test_odds_graded_calendar_comment_proof.py' -v
+          python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
+          python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
+          python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
+      - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
+        run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
+      - name: Validate expected archival pattern and explicit nonidentifiability
+        run: |
+          python -c "import json; d=json.load(open('tmp/shuka-odds-hierarchy.json')); assert d['snapshot_count']==4; assert len(d['wide_market_windows'])==3; assert d['transitions'][1]['different_20pct_or_more_quote_horses']==6; assert 7.57<d['transitions'][1]['relative_share_total_variation_pp']<7.59; assert d['cross_pool_non_synchrony']['relative_wide_pair_ranking_reversal']; assert d['inference_gates']['forecast_skill_threshold'].startswith('HOLD'); assert not d['inference_gates']['backtest_outcomes_used_in_model_fitting']"
+      - name: Synthetic future-only winner and Top3 threshold scoring with chronological date blocks
+        run: |
+          python scripts/odds_threshold_forward_eval.py --demo-synthetic --output tmp/odds-threshold-future-demo.json
+          python -c "import json; x=json.load(open('tmp/odds-threshold-future-demo.json')); assert x['status'].startswith('SYNTHETIC'); assert x['train_max_date']<x['future_min_date']; assert x['training_race_count']>=35 and x['future_race_count']>=12; assert x['training_only_selected_parameters']['train_selected_threshold_path']['early_odds_at_least'] in [5,10,20,50]"
+      - name: Mathematical accounting identity and independent-no-herding Monte Carlo
+        run: |
+          python scripts/odds_market_accounting_null.py --paths 300 --seed 20261023 --output tmp/odds-accounting-negative-control.json
+          python -c "import json; r=json.load(open('tmp/odds-accounting-negative-control.json')); z=r['observed_intervals_conditional_on_proxy']; assert len(z)==3; assert abs(z[1]['minimum_new_fraction_of_final_pool_conditional_on_exact_share_proxy']-.17202998646422618)<1e-7; assert z[1]['source_change'] and r['inference_decision']['actual_new_pool_fraction'].startswith('HOLD'); assert r['mechanical_memory_counterexample']['results']['independent_uniform_new_votes']['mean_across_horse_prior_vs_final_share_Pearson']>.99"
+      - name: All 136 cross-pool wide-pair residual indices and asynchronous gaps
+        run: |
+          python scripts/odds_cross_pool_global_async.py --output tmp/odds-cross-pool-index.json
+          python -c "import json; r=json.load(open('tmp/odds-cross-pool-index.json')); a,b=r['cross_pool_pair_contrasts']; assert a['pair_count']==136 and b['pair_count']==136; assert a['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==27 and b['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==0; assert not r['underlying_per_pool_quote_update_times_verified']"
+      - name: Hypothetical win quote rounding vs direct inverse-odds memory assumption
+        run: |
+          python scripts/odds_rounding_sensitivity.py --output tmp/odds-rounding-sensitivity.json
+          python -c "import json; r=json.load(open('tmp/odds-rounding-sensitivity.json')); a,b,c=r['transitions']; assert len(r['snapshots'])==4; assert r['display_rounding_rule_is_NOT_VERIFIED']; assert not r['actual_pool_totals_observed']; assert 0.198<b['alternative_hypothetical_floor_conservative']['necessary_minimum_lambda_regardless_of_unobserved_rounding']<0.200"
+      - name: Match every full-field October 12 Kyoto race archive with later quote
+        run: |
+          python scripts/odds_real_multirace_archive_audit.py --output tmp/odds-real-multirace-coverage.json
+          python -c "import json; r=json.load(open('tmp/odds-real-multirace-coverage.json')); assert r['distinct_real_races']==6 and r['distinct_meeting_dates']==2 and r['win_horse_entries_with_2_or_more_prestart_captures']==84; assert r['kyoto_20261012_horses_absolute_quote_move_ge20pct']==2 and r['kyoto_20261012_uniform_newvote_best_fit_at_zero_races']==4 and r['prediction_skill'].startswith('HOLD')"
+      - name: Validate local export preflight with synthetic 60 race / 10 date sample (no raw export)
+        run: |
+          python scripts/odds_local_timeseries_preflight.py --demo-synthetic --output tmp/odds-local-source-preflight.json
+          python -c "import json; r=json.load(open('tmp/odds-local-source-preflight.json')); assert r['status']=='SYNTHETIC_SOURCE_PANEL_DESIGN_READY_NOT_EVIDENCE'; assert r['unique_race_count']==60 and r['distinct_meeting_dates']==10; assert r['raw_snapshots_in_input']==180 and r['full_prestart_verified_races']==60 and r['full_prestart_three_plus_timeseries_races']==60; assert not r['real_future_race_win_and_top3_skill_estimated']"
+      - name: Historical paired scoring on six source-verified JRA finishing outcomes (not prospective)
+        run: |
+          python scripts/odds_six_race_predictive_increment.py --output tmp/odds-six-race-paired-scoring.json
+          python -c "import json; q=json.load(open('tmp/odds-six-race-paired-scoring.json')); assert q['total_independent_races']==6 and q['distinct_meeting_dates']==2 and q['distinct_horse_race_rows']==84; assert q['direction_changes_under_meeting_day_vs_race_weighting_win_log_loss']; assert q['equal_race_weighting_descriptive']['win_categorical_log_loss']['number_races_late_better']==4 and q['equal_race_weighting_descriptive']['top3_binary_brier_mean_per_horse']['number_races_late_better']==5; assert q['status'].startswith('SIX_RACE')"
+      - name: Matched same-latest odds distinct mid-path synthetic null, smooth, threshold and shuffle placebo
+        run: |
+          python scripts/odds_conditional_path_falsification.py --dates 30 --pairs-per-date 16 --bootstrap 300 --seed 20261023 --output tmp/odds-matched-endpoint-null-positive.json
+          python -c "import json; x=json.load(open('tmp/odds-matched-endpoint-null-positive.json')); a=x['synthetic_mechanisms']; assert len(a)==3 and all(z['status']==x['status'] and z['generated_twin_cases_identical_initial_and_latest'] and z['training_max_date']<z['future_min_date'] for z in a); assert all(z['training_race_count']>=50 and z['future_race_count']>=20 for z in a); assert x['true_real_market_additional_forecasting_value'].startswith('HOLD')"
+      - name: Real Kyoto8 three pre-race win snapshots and 55 aligned-minute wide comparisons
+        run: |
+          python scripts/odds_r8_real_three_time_market.py --output tmp/odds-r8-real-three-point-path.json
+          python -c "import json; x=json.load(open('tmp/odds-r8-real-three-point-path.json')); a=x['price_redistribution_pp']; z=x['win_wide_relative_pair_index_change']; assert x['n_horses']==11 and x['wide_two_time_full_pair_count']==55; assert a['1326_to_1344']>a['1221_to_1326']; assert z['pairs_with_cross_pool_residual_ratio_change_at_least_25pct']==22; assert x['selected_pair_3_11']['different_direction_win_and_pair_price']; assert not z['contemporaneous_venue_bettor_updating_identified']"
+      - name: Decompose complete win-wide pair price changes into horse-associated + pair-specific terms
+        run: |
+          python scripts/odds_pair_hierarchy_decomposition.py --permutations 999 --seed 20261023 --output tmp/odds-pair-hierarchy.json
+          python -c "import json; d=json.load(open('tmp/odds-pair-hierarchy.json')); r=d['selected_r8']; assert d['number_of_real_independent_races']==2 and r['number_of_overlapping_wide_events']==55; assert .726<r['fraction_edge_change_variance_explained_by_additive_horse_terms']<.727; assert .5<r['leave_one_pair_out_relative_squared_error_reduction']<.7; assert r['permutation_reference']['no_formal_statistical_significance_or_causal_identification']; assert len(d['other_shuka_lower_provenance_comparisons'])==2 and all(q['number_of_overlapping_wide_events']==136 for q in d['other_shuka_lower_provenance_comparisons'])"
+      - name: Keep PL win, top3, every 55 wide pair and all 165 trio probabilities coherent after hypothetical market hierarchy overlays
+        run: |
+          python scripts/odds_coherent_hierarchy_rank_bridge.py --output tmp/odds-coherent-hierarchy-bridge.json
+          python -c "import json; q=json.load(open('tmp/odds-coherent-hierarchy-bridge.json')); assert q['only_independent_empirical_races']==1 and q['all_two_layer_coefficients_are_hypothetical_not_estimated']; m=q['scenarios']; assert len(m)==4 and m['market_PL_exact']['market_shift_in_win_probability_distribution_TV']==0; assert all(abs(s['mass']['three_top3_inclusions']-3)<1e-9 and abs(s['mass']['three_successful_wide_pairs']-3)<1e-9 and abs(s['mass']['one_unordered_trio']-1)<1e-9 and abs(s['mass']['one_ordered_trifecta']-1)<1e-9 for s in m.values())"
+      - name: Compare WIDE conditional lower/geometric/upper mappings and PL gamma 0.75/1/1.25 across 55 real pairs
+        run: |
+          python scripts/odds_pair_hierarchy_robustness.py --synthetic-draws 500 --seed 20261023 --output tmp/odds-pair-robustness.json
+          python -c "import json; r=json.load(open('tmp/odds-pair-robustness.json')); assert r['number_of_independent_races']==1 and r['n_price_mapping_scenarios']==9; assert abs(r['direct_PL_gamma1_lower_quote_decompositions']['wide_minus_PL_relative_index']-.7264335920434639)<1e-9; assert .55<r['wide_minus_PL_horse_node_R2_min']<.56 and .81<r['wide_minus_PL_horse_node_R2_max']<.82; assert all(v['all_nine_assumptions_have_same_sign'] for v in r['pair_residual_sign_stability'].values()); assert r['invented_noise_reference']['cannot_interpret_as_pvalue_or_empirical_noise_baseline']"
+      - name: Strictly before target: 12:21 and 13:26 win + 13:26 wide predict 13:44 WIN display-market proxy
+        run: |
+          python scripts/odds_r8_next_win_market_forecast.py --permutations 999 --seed 20261023 --output tmp/odds-r8-next-win-market.json
+          python -c "import json; x=json.load(open('tmp/odds-r8-next-win-market.json')); z=x['next_market_price_proxy_scores']; assert x['real_independent_races']==1; assert x['source_last_update']=='2026-10-12T13:26:00+09:00' and x['target_source_published']=='2026-10-12T13:44:00+09:00'; assert abs(z['last_win_only']['normalized_inverse_odds_TV_pp']-9.6563629482)<1e-7 and abs(z['elapsed_time_scaled_win_momentum']['normalized_inverse_odds_TV_pp']-8.1809653549)<1e-7 and abs(z['momentum_plus_wide_node_beta_025']['normalized_inverse_odds_TV_pp']-7.1041135426)<1e-7; assert x['coefficients_are_arbitrary_and_not_trained_or_registered_before_race']"
+      - name: Synthetic future-date-only WIDE-to-next-WIN market quote coefficient learning and shuffled-node controls
+        run: |
+          python scripts/odds_crosspool_forward_market_eval.py --demo-synthetic --output tmp/odds-crosspool-forward-market-demo.json
+          python -c "import json; q=json.load(open('tmp/odds-crosspool-forward-market-demo.json')); assert q['no_real_JRA_market_quotes_used']; c=q['cases']; assert len(c)==2; assert all(x['status'].startswith('SYNTHETIC') and x['train_max_date']<x['future_min_date'] for x in c.values()); assert c['positive_half_strength_WIDE_signal']['future_equal_race_market_price_index_scores']['train_selected_wide_horse_node']['market_index_KL']<c['positive_half_strength_WIDE_signal']['future_equal_race_market_price_index_scores']['elapsed_time_momentum_only']['market_index_KL']"
+      - name: Score FIVE observed Kyoto races with complete WIN runners + 439 WIDE pairs on official JRA results
+        run: |
+          python scripts/odds_five_race_joint_market_score.py --output tmp/odds-five-race-win-wide-retrospective.json
+          python -c "import json; r=json.load(open('tmp/odds-five-race-win-wide-retrospective.json')); assert r['independent_real_races']==5 and r['number_of_meeting_dates']==1 and r['horse_race_entries']==67 and r['full_bet_pairs_not_independent_samples']==439; assert r['same_minute_win_wide_races']==3 and r['one_minute_source_update_gap_races']==2; assert r['outcome_scores_are_retrospective_not_frozen_or_prospective']; assert len(r['per_race'])==5"
+      - name: Stress five actual JRA podiums across gamma 0.75/1/1.25 and all conditional WIDE payout quote mappings
+        run: |
+          python scripts/odds_five_race_market_assumption_sensitivity.py --output tmp/odds-five-race-market-sensitivity.json
+          python -c "import json; x=json.load(open('tmp/odds-five-race-market-sensitivity.json')); assert x['actual_independent_races']==5 and x['actual_independent_meeting_dates']==1 and x['assumption_regimes_not_independent_realizations']==9; assert x['official_results_only_loaded_after_all_prestart_forecasts']; assert len(x['sign_stability_by_group_model_and_proper_score']['all_five'])==4"
+      - name: As-of result availability — all Kyoto 8–12 market features before first race post
+        run: |
+          python scripts/odds_asof_training_eligibility.py --output tmp/odds-asof-eligibility.json
+          python -c "import json; q=json.load(open('tmp/odds-asof-eligibility.json')); g=q['within_meeting_training_graph']; assert q['all_five_forecast_features_available_before_any_of_five_races_started']; assert g['race_count']==5 and g['available_training_relationships']==0; assert q['within_meeting_next_WIN_market_label_training_graph']['market_target_to_forecast_training_relations']==0; assert q['within_meeting_next_WIN_market_label_training_graph']['full_next_market_labels_available_in_archive']==1; assert abs(q['minutes_between_last_market_receive_and_first_race_post']-32.4342591)<1e-5; assert not q['result_available_for_same_day_other_race_model_fit']"
+          python scripts/odds_asof_training_eligibility.py --demo --output tmp/odds-asof-synthetic-demo.json
+          python -c "import json; q=json.load(open('tmp/odds-asof-synthetic-demo.json')); assert q['available_training_relationships']==2 and q['targets_with_at_least_two_documented_training_outcomes']==1"
+      - name: Synthetic local shadow freeze, canonical SHA verification and postrace scoring
+        run: |
+          python scripts/odds_shadow_freeze_score.py demo --freeze-out tmp/synthetic-winwide-shadow-freeze.json --score-out tmp/synthetic-winwide-shadow-score.json
+          python -c "import json; f=json.load(open('tmp/synthetic-winwide-shadow-freeze.json')); s=json.load(open('tmp/synthetic-winwide-shadow-score.json')); assert f['payload']['no_actual_result_loaded'] and s['formal_prospective_status'].startswith('HOLD_'); assert f['payload']['model_coefficient_lock_at_jst']<'2030-01-01T13:29:00+09:00'; assert s['cannot_append_to_frozen_v31_formal_ledger']; assert s['freeze_payload_sha256']==f['seal_sha256_of_canonical_payload']"
+      - name: Synthetic offline commitment proof is NEVER treated as authenticated GitHub run
+        run: |
+          python scripts/odds_github_attestation.py demo --output tmp/odds-github-attestation-offline-demo.json
+          python -c "import json; r=json.load(open('tmp/odds-github-attestation-offline-demo.json')); assert r['status']=='HOLD_OFFLINE_RECEIPT_IS_NOT_INDEPENDENT_GITHUB_EVIDENCE'; assert not r['independent_fetch_performed']; assert r['does_not_append_to_v31_holdout']"
+      - name: Generate preregistered graded-stakes cohort protocol and synthetic-only sharp M0 e-process trial
+        run: |
+          python scripts/odds_prequential_cohort.py protocol --output tmp/odds-graded-cohort-v1-protocol.json
+          python scripts/odds_prequential_cohort.py offline-demo --output tmp/odds-graded-cohort-v1-offline.json
+          python -c "import json; a=json.load(open('tmp/odds-graded-cohort-v1-protocol.json')); r=json.load(open('tmp/odds-graded-cohort-v1-offline.json')); assert a['fixed_coverage_feasibility_min_races']==60 and a['fixed_coverage_feasibility_min_meeting_dates']==8; assert r['status'].startswith('HOLD_') and not r['remote_GitHub_comment_verification_was_independently_run'] and r['included_scored_race_count']==3; assert r['e_value_not_a_test_for_absence_of_incremental_path_information']"
+      - name: Audit official 26-slot 2026 JRA flat-graded calendar and freeze unbiased future-race denominator
+        run: |
+          python scripts/odds_graded_calendar_coverage.py --calendar data/research/jra-graded-flat-2026oct25-dec27-calendar.json --registry data/research/odds-prequential-2026oct24-coverage-registry.json --output tmp/odds-jra-flat-graded-coverage-2026.json
+          python -c "import json; r=json.load(open('tmp/odds-jra-flat-graded-coverage-2026.json')); assert r['calendar_segment_event_count']==26 and r['calendar_segment_distinct_race_dates']==20 and r['coverage_rows_present']==26; assert r['registered_local_SHA_submission_count_not_externally_verified']==1 and r['actual_forward_graded_stakes_scores_count']==0; assert not r['full_period_calendar_denominator_verified']; assert r['status_counts']=={'preseal_sha_submitted_unverified':1,'upcoming_not_due':25}"
+      - name: Validate immutable 2026 precommitted 26 races and distinct 36 PROVISIONAL JRA 2027 Q1 event annex
+        run: |
+          python scripts/odds_multiyear_provisional_coverage.py --calendar-2026 data/research/jra-graded-flat-2026oct25-dec27-calendar.json --registry-2026 data/research/odds-prequential-2026oct24-coverage-registry.json --protocol docs/odds-prequential-graded-cohort-v1-20261024.json --calendar-2027 data/research/jra-graded-2027jan-mar-provisional-calendar.json --registry-2027 data/research/odds-prequential-2027jan-mar-provisional-registry.json --output tmp/odds-multiyear-provisional-coverage.json
+          python -c "import json; r=json.load(open('tmp/odds-multiyear-provisional-coverage.json')); assert r['preliminary_total_planned_cohort_slots']==62 and r['2027_Q1_provisional_candidate_slots']==36 and r['2027_disputed_exact_date_count']==4; assert r['2027_pending_graded_promotion_count']==2; assert r['forecast_results_officially_scored_in_this_prestart_cohort']==0 and not r['full_study_period_official_grades_and_exact_dates_verified']"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: odds-hierarchy-descriptive-and-synthetic-only
+          path: |
+            tmp/shuka-odds-hierarchy.json
+            tmp/odds-threshold-future-demo.json
+            tmp/odds-accounting-negative-control.json
+            tmp/odds-cross-pool-index.json
+            tmp/odds-rounding-sensitivity.json
+            tmp/odds-real-multirace-coverage.json
+            tmp/odds-local-source-preflight.json
+            tmp/odds-six-race-paired-scoring.json
+            tmp/odds-matched-endpoint-null-positive.json
+            tmp/odds-r8-real-three-point-path.json
+            tmp/odds-pair-hierarchy.json
+            tmp/odds-pair-robustness.json
+            tmp/odds-r8-next-win-market.json
+            tmp/odds-crosspool-forward-market-demo.json
+            tmp/odds-five-race-win-wide-retrospective.json
+            tmp/odds-five-race-market-sensitivity.json
+            tmp/odds-asof-eligibility.json
+            tmp/odds-asof-synthetic-demo.json
+            tmp/synthetic-winwide-shadow-freeze.json
+            tmp/synthetic-winwide-shadow-score.json
+            tmp/odds-github-attestation-offline-demo.json
+            tmp/odds-graded-cohort-v1-protocol.json
+            tmp/odds-graded-cohort-v1-offline.json
+            tmp/odds-jra-flat-graded-coverage-2026.json
+            tmp/odds-multiyear-provisional-coverage.json
+            tmp/odds-coherent-hierarchy-bridge.json
+          retention-days: 14

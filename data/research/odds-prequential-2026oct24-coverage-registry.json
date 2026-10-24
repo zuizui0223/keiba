@@ -1,0 +1,243 @@
+{
+  "schema": "KEIBA_GRADED_PRESTART_COVERAGE_REGISTRY_V1",
+  "protocol_schema": "KEIBA_WIN_ODDS_PREQUENTIAL_COHORT_V1",
+  "declared_as_of_jst": "2026-10-24T18:39:00+09:00",
+  "source_segment_jra": "https://jra.jp/datafile/seiseki/replay/2026/jyusyo.html",
+  "status_rules": "One explicit row per calendar slot; never mark an outcome score without independent prestart proof and independent official result",
+  "entries": [
+    {
+      "slot_id": "2026-10-25|京都|菊花賞",
+      "status": "preseal_sha_submitted_unverified",
+      "reason_code": null,
+      "claimed_race_id": "2026-10-25-KYOTO-11",
+      "preseal_comment_id": 6381798252,
+      "preseal_digest_sha256": "9ef880b44decf3b38c4ea01ece9570bd4c6c61d636db26f05af8181fe41fe857",
+      "source_private_hash_only": "407c9c804cb4cc029fed1a2ebaec9e9a9336d6e8b2b8b7826c174637536668bd"
+    },
+    {
+      "slot_id": "2026-10-31|京都|ファンタジーS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-01|東京|天皇賞（秋）",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-07|東京|京王杯2歳S",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-08|東京|アルゼンチン共和国杯",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-08|京都|みやこS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-14|東京|武蔵野S",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-14|京都|デイリー杯2歳S",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-15|京都|エリザベス女王杯",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-21|福島|福島記念",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-22|京都|マイルチャンピオンシップ",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-23|東京|東スポ杯2歳S",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-28|京都|京都2歳S",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-29|東京|ジャパンC",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-11-29|京都|京阪杯",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-05|中山|ステイヤーズS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-05|阪神|鳴尾記念",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-06|中京|チャンピオンズC",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-12|中京|中日新聞杯",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-13|中山|カペラS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-13|阪神|阪神ジュベナイルF",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-19|中山|ターコイズS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-20|阪神|朝日杯フューチュリティS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-26|中山|ホープフルS",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-26|阪神|阪神C",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    },
+    {
+      "slot_id": "2026-12-27|中山|有馬記念",
+      "status": "upcoming_not_due",
+      "reason_code": null,
+      "claimed_race_id": null,
+      "preseal_comment_id": null,
+      "preseal_digest_sha256": null,
+      "source_private_hash_only": null
+    }
+  ]
+}
