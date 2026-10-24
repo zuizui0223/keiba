@@ -72,6 +72,18 @@ class GitHubAttestationTests(unittest.TestCase):
         self.assertNotIn('odds_by_horse_number',content)
         self.assertNotIn('predicted_probabilities',content)
 
+    def test_independent_main_receiver_payload_is_bitwise_equivalent(self):
+        from odds_sha_only_receipt import receive
+        inputs=att.dispatch_inputs(self.freeze)
+        standalone=receive(
+            repo=att.REPOSITORY,run_id=314159,attempt=1,
+            event="workflow_dispatch",
+            workflow_ref=f"{att.REPOSITORY}/{att.WORKFLOW_PATH}@refs/heads/main",
+            inputs=inputs)
+        self.assertEqual(standalone,self.receipt)
+        offline=att.inspect_fixture(self.freeze,standalone,self.remote,[self.remote])
+        self.assertEqual(offline["status"],att.STATUS_OFFLINE)
+
     def test_untrusted_receipt_content_tamper_fails(self):
         for key,bad in (
             ("seal_sha256","a"*64),
