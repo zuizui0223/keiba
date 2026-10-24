@@ -1,0 +1,250 @@
+{
+  "schema": "KEIBA_OFFICIAL_GRADED_FLAT_CALENDAR_SEGMENT_V1",
+  "source_jra": "https://jra.jp/datafile/seiseki/replay/2026/jyusyo.html",
+  "source_jra_kikka": "https://jra.jp/JRADB/accessD.html?CNAME=pw01dde0108202604091120261025%2F39",
+  "source_review_date_jst": "2026-10-24",
+  "segment_start_jst": "2026-10-25",
+  "segment_end_jst": "2026-12-27",
+  "protocol_window_end_jst": "2027-03-31",
+  "scope": "JRA flat G1/G2/G3 only; excludes distinct J-G1/J-G2/J-G3 steeplechase grades and non-JRA racing",
+  "calendar_segment_is_entire_study_horizon": false,
+  "all_official_event_post_times_known": false,
+  "not_an_externally_signed_official_calendar_snapshot": true,
+  "expected_event_count": 26,
+  "events": [
+    {
+      "slot_id": "2026-10-25|京都|菊花賞",
+      "scheduled_date_jst": "2026-10-25",
+      "grade": "G1",
+      "venue": "京都",
+      "race_name_jp": "菊花賞",
+      "official_race_id": "2026-10-25-KYOTO-11",
+      "source_reported_post_jst": "2026-10-25T15:40:00+09:00"
+    },
+    {
+      "slot_id": "2026-10-31|京都|ファンタジーS",
+      "scheduled_date_jst": "2026-10-31",
+      "grade": "G3",
+      "venue": "京都",
+      "race_name_jp": "ファンタジーS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-01|東京|天皇賞（秋）",
+      "scheduled_date_jst": "2026-11-01",
+      "grade": "G1",
+      "venue": "東京",
+      "race_name_jp": "天皇賞（秋）",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-07|東京|京王杯2歳S",
+      "scheduled_date_jst": "2026-11-07",
+      "grade": "G2",
+      "venue": "東京",
+      "race_name_jp": "京王杯2歳S",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-08|東京|アルゼンチン共和国杯",
+      "scheduled_date_jst": "2026-11-08",
+      "grade": "G2",
+      "venue": "東京",
+      "race_name_jp": "アルゼンチン共和国杯",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-08|京都|みやこS",
+      "scheduled_date_jst": "2026-11-08",
+      "grade": "G3",
+      "venue": "京都",
+      "race_name_jp": "みやこS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-14|東京|武蔵野S",
+      "scheduled_date_jst": "2026-11-14",
+      "grade": "G3",
+      "venue": "東京",
+      "race_name_jp": "武蔵野S",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-14|京都|デイリー杯2歳S",
+      "scheduled_date_jst": "2026-11-14",
+      "grade": "G2",
+      "venue": "京都",
+      "race_name_jp": "デイリー杯2歳S",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-15|京都|エリザベス女王杯",
+      "scheduled_date_jst": "2026-11-15",
+      "grade": "G1",
+      "venue": "京都",
+      "race_name_jp": "エリザベス女王杯",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-21|福島|福島記念",
+      "scheduled_date_jst": "2026-11-21",
+      "grade": "G3",
+      "venue": "福島",
+      "race_name_jp": "福島記念",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-22|京都|マイルチャンピオンシップ",
+      "scheduled_date_jst": "2026-11-22",
+      "grade": "G1",
+      "venue": "京都",
+      "race_name_jp": "マイルチャンピオンシップ",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-23|東京|東スポ杯2歳S",
+      "scheduled_date_jst": "2026-11-23",
+      "grade": "G2",
+      "venue": "東京",
+      "race_name_jp": "東スポ杯2歳S",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-28|京都|京都2歳S",
+      "scheduled_date_jst": "2026-11-28",
+      "grade": "G3",
+      "venue": "京都",
+      "race_name_jp": "京都2歳S",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-29|東京|ジャパンC",
+      "scheduled_date_jst": "2026-11-29",
+      "grade": "G1",
+      "venue": "東京",
+      "race_name_jp": "ジャパンC",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-11-29|京都|京阪杯",
+      "scheduled_date_jst": "2026-11-29",
+      "grade": "G3",
+      "venue": "京都",
+      "race_name_jp": "京阪杯",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-05|中山|ステイヤーズS",
+      "scheduled_date_jst": "2026-12-05",
+      "grade": "G2",
+      "venue": "中山",
+      "race_name_jp": "ステイヤーズS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-05|阪神|鳴尾記念",
+      "scheduled_date_jst": "2026-12-05",
+      "grade": "G3",
+      "venue": "阪神",
+      "race_name_jp": "鳴尾記念",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-06|中京|チャンピオンズC",
+      "scheduled_date_jst": "2026-12-06",
+      "grade": "G1",
+      "venue": "中京",
+      "race_name_jp": "チャンピオンズC",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-12|中京|中日新聞杯",
+      "scheduled_date_jst": "2026-12-12",
+      "grade": "G3",
+      "venue": "中京",
+      "race_name_jp": "中日新聞杯",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-13|中山|カペラS",
+      "scheduled_date_jst": "2026-12-13",
+      "grade": "G3",
+      "venue": "中山",
+      "race_name_jp": "カペラS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-13|阪神|阪神ジュベナイルF",
+      "scheduled_date_jst": "2026-12-13",
+      "grade": "G1",
+      "venue": "阪神",
+      "race_name_jp": "阪神ジュベナイルF",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-19|中山|ターコイズS",
+      "scheduled_date_jst": "2026-12-19",
+      "grade": "G3",
+      "venue": "中山",
+      "race_name_jp": "ターコイズS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-20|阪神|朝日杯フューチュリティS",
+      "scheduled_date_jst": "2026-12-20",
+      "grade": "G1",
+      "venue": "阪神",
+      "race_name_jp": "朝日杯フューチュリティS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-26|中山|ホープフルS",
+      "scheduled_date_jst": "2026-12-26",
+      "grade": "G1",
+      "venue": "中山",
+      "race_name_jp": "ホープフルS",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-26|阪神|阪神C",
+      "scheduled_date_jst": "2026-12-26",
+      "grade": "G2",
+      "venue": "阪神",
+      "race_name_jp": "阪神C",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    },
+    {
+      "slot_id": "2026-12-27|中山|有馬記念",
+      "scheduled_date_jst": "2026-12-27",
+      "grade": "G1",
+      "venue": "中山",
+      "race_name_jp": "有馬記念",
+      "official_race_id": null,
+      "source_reported_post_jst": null
+    }
+  ]
+}
