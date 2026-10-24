@@ -30,6 +30,10 @@ on:
       - scripts/odds_sharp_reference_power_envelope.py
       - scripts/odds_prequential_cohort.py
       - scripts/odds_graded_calendar_coverage.py
+      - scripts/odds_multiyear_provisional_coverage.py
+      - tests/test_odds_multiyear_provisional_coverage.py
+      - data/research/jra-graded-2027jan-mar-provisional-calendar.json
+      - data/research/odds-prequential-2027jan-mar-provisional-registry.json
       - scripts/odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_coverage.py
@@ -111,6 +115,10 @@ on:
       - scripts/odds_sharp_reference_power_envelope.py
       - scripts/odds_prequential_cohort.py
       - scripts/odds_graded_calendar_coverage.py
+      - scripts/odds_multiyear_provisional_coverage.py
+      - tests/test_odds_multiyear_provisional_coverage.py
+      - data/research/jra-graded-2027jan-mar-provisional-calendar.json
+      - data/research/odds-prequential-2027jan-mar-provisional-registry.json
       - scripts/odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_coverage.py
@@ -202,6 +210,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_sharp_reference_power_envelope.py' -v
           python -m unittest discover -s tests -p 'test_odds_prequential_cohort.py' -v
           python -m unittest discover -s tests -p 'test_odds_graded_calendar_coverage.py' -v
+          python -m unittest discover -s tests -p 'test_odds_multiyear_provisional_coverage.py' -v
           python -m unittest discover -s tests -p 'test_odds_graded_calendar_comment_proof.py' -v
           python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
@@ -298,6 +307,10 @@ jobs:
         run: |
           python scripts/odds_graded_calendar_coverage.py --calendar data/research/jra-graded-flat-2026oct25-dec27-calendar.json --registry data/research/odds-prequential-2026oct24-coverage-registry.json --output tmp/odds-jra-flat-graded-coverage-2026.json
           python -c "import json; r=json.load(open('tmp/odds-jra-flat-graded-coverage-2026.json')); assert r['calendar_segment_event_count']==26 and r['calendar_segment_distinct_race_dates']==20 and r['coverage_rows_present']==26; assert r['registered_local_SHA_submission_count_not_externally_verified']==1 and r['actual_forward_graded_stakes_scores_count']==0; assert not r['full_period_calendar_denominator_verified']; assert r['status_counts']=={'preseal_sha_submitted_unverified':1,'upcoming_not_due':25}"
+      - name: Validate immutable 2026 precommitted 26 races and distinct 36 PROVISIONAL JRA 2027 Q1 event annex
+        run: |
+          python scripts/odds_multiyear_provisional_coverage.py --calendar-2026 data/research/jra-graded-flat-2026oct25-dec27-calendar.json --registry-2026 data/research/odds-prequential-2026oct24-coverage-registry.json --protocol docs/odds-prequential-graded-cohort-v1-20261024.json --calendar-2027 data/research/jra-graded-2027jan-mar-provisional-calendar.json --registry-2027 data/research/odds-prequential-2027jan-mar-provisional-registry.json --output tmp/odds-multiyear-provisional-coverage.json
+          python -c "import json; r=json.load(open('tmp/odds-multiyear-provisional-coverage.json')); assert r['preliminary_total_planned_cohort_slots']==62 and r['2027_Q1_provisional_candidate_slots']==36 and r['2027_disputed_exact_date_count']==4; assert r['2027_pending_graded_promotion_count']==2; assert r['forecast_results_officially_scored_in_this_prestart_cohort']==0 and not r['full_study_period_official_grades_and_exact_dates_verified']"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -326,5 +339,6 @@ jobs:
             tmp/odds-graded-cohort-v1-protocol.json
             tmp/odds-graded-cohort-v1-offline.json
             tmp/odds-jra-flat-graded-coverage-2026.json
+            tmp/odds-multiyear-provisional-coverage.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
