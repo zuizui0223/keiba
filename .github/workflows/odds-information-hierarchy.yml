@@ -73,6 +73,8 @@ on:
       - docs/odds-github-server-preseal-attestation-20261024.md
       - docs/odds-first-precommitted-kikka20261025.md
       - docs/odds-kikka2026-preoutcome-discriminability-20261024.md
+      - docs/odds-prequential-power-and-cohort-20261024.md
+      - docs/odds-prequential-graded-cohort-v1-20261024.json
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   pull_request:
@@ -143,6 +145,8 @@ on:
       - docs/odds-github-server-preseal-attestation-20261024.md
       - docs/odds-first-precommitted-kikka20261025.md
       - docs/odds-kikka2026-preoutcome-discriminability-20261024.md
+      - docs/odds-prequential-power-and-cohort-20261024.md
+      - docs/odds-prequential-graded-cohort-v1-20261024.json
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   workflow_dispatch:
