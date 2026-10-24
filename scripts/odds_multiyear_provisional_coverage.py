@@ -45,6 +45,13 @@ EXPECTED_2026_GIT_BLOB={
     "2026_registry":"9052dbb3590fd6a93bd6c6732d4e992929f77f0e",
     "protocol_v1":"a0c3b180417ce061b72831fc649c5e5743a20935",
 }
+# This new 2027 annex is still provisional, but its original exact
+# candidate list must not be silently edited. Corrections require
+# distinctly versioned successor files and a new pre-result GH receipt.
+EXPECTED_2027_PROVISIONAL_GIT_BLOB={
+    "2027_provisional_calendar":"15200e2429bc4c1c3b4388f11ffa2c4ba169369b",
+    "2027_provisional_registry":"40ea5551472615f2faa61b0cb700b5862bb34305",
+}
 VALID_STAGING_STATUS="provisional_upcoming_requires_official_confirmation"
 JAN_2027_PENDING_UPGRADES={"根岸ステークス","オーシャンステークス"}
 SOURCE_PDF="https://www.jra.go.jp/keiba/program/2027/pdf/nittei.pdf"
@@ -222,6 +229,11 @@ def audit_raw(older_cal,older_reg,protocol_raw,annex_raw,staged_raw):
     if (older["calendar_segment_event_count"]!=26
             or older["coverage_rows_present"]!=26):
         raise ValueError("HOLD_UNEXPECTED_2026_SEGMENT_SIZE")
+    if ({
+        "2027_provisional_calendar":blob_sha(annex_raw),
+        "2027_provisional_registry":blob_sha(staged_raw),
+    }!=EXPECTED_2027_PROVISIONAL_GIT_BLOB):
+        raise ValueError("HOLD_2027_PROVISIONAL_ANNEX_CHANGED_AFTER_INITIAL_CANDIDATE_REGISTRATION")
     annex=parse_json(annex_raw,"2027_PROVISIONAL")
     staging=parse_json(staged_raw,"2027_STAGE")
     future=audit_2027(annex,staging)
