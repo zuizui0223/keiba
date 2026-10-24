@@ -124,7 +124,7 @@ def verify_live(calendar_bytes,registry_bytes,protocol_bytes):
             ["gh","api",f"/repos/{REPO}/issues/comments/{COMMENT_ID}"],
             text=True,capture_output=True,check=True)
         comment=json.loads(proc.stdout)
-    except (FileNotFoundError,subprocess.CalledProcessError,json.JSONDecodeError) as exc:
+    except (OSError,subprocess.CalledProcessError,json.JSONDecodeError) as exc:
         raise ValueError("HOLD_GITHUB_API_INDEPENDENT_CALENDAR_COMMENT_FETCH_FAILED") from exc
     result=inspect_fixture(calendar_bytes,registry_bytes,protocol_bytes,comment)
     return {
