@@ -1,0 +1,263 @@
+{
+  "schema": "KEIBA_2027_Q1_PROVISIONAL_COVERAGE_STAGING_V1",
+  "calendar_schema": "KEIBA_JRA_2027_Q1_PROVISIONAL_FLAT_GRADED_CANDIDATES_V1",
+  "source_official_news": "https://www.jra.go.jp/news/202609/092805.html",
+  "asof_jst": "2026-10-24T22:37:00+09:00",
+  "regulatory_status": "AWAITING_FINAL_2027_JRA_PROGRAM_AND_GRADE_REVIEW",
+  "can_merge_into_2026_committed_denominator_now": false,
+  "full_future_results_scored_count": 0,
+  "entries": [
+    {
+      "slot_id": "2027|中山|中山金杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|京都金杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|フェアリーステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|シンザン記念",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|京成杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|日経新春杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|小倉|小倉牝馬ステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|アメリカジョッキークラブカップ",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|プロキオンステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|東京|根岸ステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|シルクロードステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|東京|東京新聞杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|きさらぎ賞",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|東京|クイーンカップ",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|東京|共同通信杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|京都|京都記念",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|東京|ダイヤモンドステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|阪神|阪急杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|東京|フェブラリーステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|小倉|小倉大賞典",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|オーシャンステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|中山記念",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|阪神|チューリップ賞",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|阪神|フィリーズレビュー",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|弥生賞ディープインパクト記念",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|中山牝馬ステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|スプリングステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中京|金鯱賞",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中京|ファルコンステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|フラワーカップ",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|阪神|阪神大賞典",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中京|愛知杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|日経賞",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|阪神|毎日杯",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中山|マーチステークス",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    },
+    {
+      "slot_id": "2027|中京|高松宮記念",
+      "status": "provisional_upcoming_requires_official_confirmation",
+      "source_quote_two_times_full_field_present": false,
+      "externally_precommitted_win_probability_sha": null,
+      "official_final_schedule_confirmation": null
+    }
+  ]
+}
