@@ -59,6 +59,19 @@ class GitHubAttestationTests(unittest.TestCase):
         self.assertAlmostEqual(offline["safe_margin_minutes_from_github_created_to_post"],28)
         self.assertTrue(offline["does_not_append_to_v31_holdout"])
 
+    def test_workflow_is_hash_only_dispatch_and_correct_GitHub_expressions(self):
+        content=(ROOT/".github/workflows/odds-shadow-attest.yml").read_text(
+            encoding="utf-8")
+        self.assertIn("on:\\n  workflow_dispatch:",content)
+        self.assertIn('run-name: odds-preseal/${{ inputs.race_id }}',content)
+        self.assertIn('SEAL_SHA256: ${{ inputs.seal_sha256 }}',content)
+        self.assertIn('SEAL_POST_JST: ${{ inputs.scheduled_post_jst }}',content)
+        self.assertIn('SEAL_RECEIVED_JST: ${{ inputs.last_source_received_jst }}',content)
+        self.assertIn('name: winwide-sha-commitment-${{ github.run_id }}',content)
+        self.assertNotIn('x${{',content)
+        self.assertNotIn('odds_by_horse_number',content)
+        self.assertNotIn('predicted_probabilities',content)
+
     def test_untrusted_receipt_content_tamper_fails(self):
         for key,bad in (
             ("seal_sha256","a"*64),
