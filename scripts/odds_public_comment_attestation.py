@@ -35,6 +35,7 @@ STATUS_OFFLINE="HOLD_OFFLINE_JSON_IS_NOT_SERVER_PRESTART_ATTESTATION"
 HEADER="### 【事前提出・SHA-only】"
 RACE_FIELD_RE=re.compile(r"(?m)^- race_id:\s*(\S+)\s*$")
 SHA_FIELD_RE=re.compile(r"(?m)^- freeze_payload_sha256:\s*([a-f0-9]{64})\s*$")
+SOURCE_SHA_FIELD_RE=re.compile(r"(?m)^- private_source_json_sha256:\s*([a-f0-9]{64})\s*$")
 
 
 def _date(text):
@@ -53,19 +54,21 @@ def _unique_field(pattern,body,what):
     return matches[0]
 
 
-def inspect_records(freeze,comment,all_comments):
+def inspect_records(freeze,comment,all_comments,*,comment_id=COMMENT_ID):
     p=verify_freeze(freeze)
     if not isinstance(comment,dict) or not isinstance(all_comments,list):
         raise ValueError("HOLD_GITHUB_COMMENT_NOT_ACQUIRED")
     commentid=comment.get("id")
-    if commentid!=COMMENT_ID:
+    if commentid!=comment_id:
         raise ValueError("HOLD_GITHUB_COMMENT_ID_CHANGED")
     body=comment.get("body")
     if not isinstance(body,str) or not body.startswith(HEADER):
         raise ValueError("HOLD_GITHUB_COMMENT_MISSING_PRECOMMIT_MARKER")
     race=_unique_field(RACE_FIELD_RE,body,"RACE")
     digest=_unique_field(SHA_FIELD_RE,body,"SHA")
-    if race!=p["race_id"] or digest!=freeze["seal_sha256_of_payload"]:
+    input_sha=_unique_field(SOURCE_SHA_FIELD_RE,body,"SOURCE_SHA")
+    if (race!=p["race_id"] or digest!=freeze["seal_sha256_of_payload"]
+            or input_sha!=p["source_private_input_sha256"]):
         raise ValueError("HOLD_SHA_OR_RACE_DOES_NOT_MATCH_FROZEN_PREDICTION")
     created=_date(comment.get("created_at"))
     updated=_date(comment.get("updated_at"))
@@ -106,9 +109,9 @@ def inspect_records(freeze,comment,all_comments):
     }
 
 
-def offline_fixture_check(freeze,comment,all_comments):
+def offline_fixture_check(freeze,comment,all_comments,*,comment_id=COMMENT_ID):
     """Never certify user-provided fake JSON as authentic GH API evidence."""
-    audit=inspect_records(freeze,comment,all_comments)
+    audit=inspect_records(freeze,comment,all_comments,comment_id=comment_id)
     return {**audit,"status":STATUS_OFFLINE,
             "GitHub_API_independently_fetched":False}
 
@@ -138,11 +141,11 @@ def fetch_all_comments():
     raise ValueError("HOLD_GITHUB_COMMENT_HISTORY_EXCEEDS_AUDIT_LIMIT")
 
 
-def verify_live(freeze,*,with_result=None):
+def verify_live(freeze,*,with_result=None,comment_id=COMMENT_ID):
     # Cannot substitute a forged local fixture for independent gh api data.
-    comment=_gh_api(f"/repos/{REPO}/issues/comments/{COMMENT_ID}")
+    comment=_gh_api(f"/repos/{REPO}/issues/comments/{int(comment_id)}")
     all_comments=fetch_all_comments()
-    proof=inspect_records(freeze,comment,all_comments)
+    proof=inspect_records(freeze,comment,all_comments,comment_id=comment_id)
     proof["GitHub_API_independently_fetched"]=True
     if with_result is None:
         return proof
@@ -157,13 +160,14 @@ def verify_live(freeze,*,with_result=None):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--freeze",type=Path,required=True)
+    p.add_argument("--comment-id",type=int,default=COMMENT_ID)
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--result",type=Path)
     args=p.parse_args()
     frozen=json.loads(args.freeze.read_text(encoding="utf-8"))
     result=(json.loads(args.result.read_text(encoding="utf-8"))
             if args.result else None)
-    proof=verify_live(frozen,with_result=result)
+    proof=verify_live(frozen,with_result=result,comment_id=args.comment_id)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(proof,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"status":proof["status"],"race":proof["race_id"],
