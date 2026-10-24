@@ -1,0 +1,66 @@
+name: SHA-only shadow odds prediction preseal (requires default-branch install)
+
+# GitHub requires workflow_dispatch workflows to exist on the DEFAULT
+# branch. A Draft PR on an analysis branch CANNOT activate this trigger.
+# Only a sealed payload SHA and nonsensitive race/timing metadata are sent.
+# Never submit original provider odds, probabilities or licensed raw rows.
+run-name: odds-preseal/x${{ inputs.race_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      race_id:
+        description: "Public race ID (no account information or original odds)"
+        type: string
+        required: true
+      seal_sha256:
+        description: "64-hex SHA256 of local shadow freeze payload ONLY"
+        type: string
+        required: true
+      scheduled_post_jst:
+        description: "Race post ISO 8601 with explicit +09:00 timezone"
+        type: string
+        required: true
+      last_source_received_jst:
+        description: "Last local market receipt ISO 8601 (no odds)"
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shadow-winwide-x${{ inputs.race_id }}
+  cancel-in-progress: false
+
+jobs:
+  only_sha_commitment:
+    name: Hash-only independent GitHub run commitment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout scripts, NOT source odds
+        uses: actions/checkout@v4
+
+      - name: Install Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Persist dispatch commitment without private source fields
+        env:
+          SEAL_RACE_ID: x${{ inputs.race_id }}
+          SEAL_SHA256: x${{ inputs.seal_sha256 }}
+          SEAL_POST_JST: x${{ inputs.scheduled_post_jst }}
+          SEAL_RECEIVED_JST: x${{ inputs.last_source_received_jst }}
+        run: |
+          python scripts/odds_github_attestation.py runner --output tmp/commitment.json
+          python -c "import json; q=json.load(open('tmp/commitment.json')); assert q['contains_only_digest_and_nonsecret_race_time_metadata']; assert q['run_attempt']==1; assert len(q['submitted_commitment_inputs']['seal_sha256'])==64"
+
+      - name: Upload immutable SHA-only preseal receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: winwide-sha-commitment-x${{ github.run_id }}
+          path: tmp/commitment.json
+          if-no-files-found: error
+          retention-days: 90
