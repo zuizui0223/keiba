@@ -30,6 +30,8 @@ on:
       - scripts/odds_sharp_reference_power_envelope.py
       - scripts/odds_prequential_cohort.py
       - scripts/odds_graded_calendar_coverage.py
+      - scripts/odds_graded_calendar_comment_proof.py
+      - tests/test_odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_coverage.py
       - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
       - data/research/odds-prequential-2026oct24-coverage-registry.json
@@ -108,6 +110,8 @@ on:
       - scripts/odds_sharp_reference_power_envelope.py
       - scripts/odds_prequential_cohort.py
       - scripts/odds_graded_calendar_coverage.py
+      - scripts/odds_graded_calendar_comment_proof.py
+      - tests/test_odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_coverage.py
       - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
       - data/research/odds-prequential-2026oct24-coverage-registry.json
@@ -196,6 +200,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_sharp_reference_power_envelope.py' -v
           python -m unittest discover -s tests -p 'test_odds_prequential_cohort.py' -v
           python -m unittest discover -s tests -p 'test_odds_graded_calendar_coverage.py' -v
+          python -m unittest discover -s tests -p 'test_odds_graded_calendar_comment_proof.py' -v
           python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
