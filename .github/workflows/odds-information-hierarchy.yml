@@ -28,6 +28,8 @@ on:
       - scripts/odds_public_comment_attestation.py
       - scripts/odds_preoutcome_discriminability.py
       - scripts/odds_sharp_reference_power_envelope.py
+      - scripts/odds_prequential_cohort.py
+      - tests/test_odds_prequential_cohort.py
       - tests/test_odds_sharp_reference_power_envelope.py
       - scripts/odds_private_source_replay_audit.py
       - tests/test_odds_private_source_replay_audit.py
@@ -98,6 +100,8 @@ on:
       - scripts/odds_public_comment_attestation.py
       - scripts/odds_preoutcome_discriminability.py
       - scripts/odds_sharp_reference_power_envelope.py
+      - scripts/odds_prequential_cohort.py
+      - tests/test_odds_prequential_cohort.py
       - tests/test_odds_sharp_reference_power_envelope.py
       - scripts/odds_private_source_replay_audit.py
       - tests/test_odds_private_source_replay_audit.py
@@ -178,6 +182,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_public_comment_attestation.py' -v
           python -m unittest discover -s tests -p 'test_odds_preoutcome_discriminability.py' -v
           python -m unittest discover -s tests -p 'test_odds_sharp_reference_power_envelope.py' -v
+          python -m unittest discover -s tests -p 'test_odds_prequential_cohort.py' -v
           python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
@@ -264,6 +269,11 @@ jobs:
         run: |
           python scripts/odds_github_attestation.py demo --output tmp/odds-github-attestation-offline-demo.json
           python -c "import json; r=json.load(open('tmp/odds-github-attestation-offline-demo.json')); assert r['status']=='HOLD_OFFLINE_RECEIPT_IS_NOT_INDEPENDENT_GITHUB_EVIDENCE'; assert not r['independent_fetch_performed']; assert r['does_not_append_to_v31_holdout']"
+      - name: Generate preregistered graded-stakes cohort protocol and synthetic-only sharp M0 e-process trial
+        run: |
+          python scripts/odds_prequential_cohort.py protocol --output tmp/odds-graded-cohort-v1-protocol.json
+          python scripts/odds_prequential_cohort.py offline-demo --output tmp/odds-graded-cohort-v1-offline.json
+          python -c "import json; a=json.load(open('tmp/odds-graded-cohort-v1-protocol.json')); r=json.load(open('tmp/odds-graded-cohort-v1-offline.json')); assert a['fixed_coverage_feasibility_min_races']==60 and a['fixed_coverage_feasibility_min_meeting_dates']==8; assert r['status'].startswith('HOLD_') and not r['remote_GitHub_comment_verification_was_independently_run'] and r['included_scored_race_count']==3; assert r['e_value_not_a_test_for_absence_of_incremental_path_information']"
       - uses: actions/upload-artifact@v4
         with:
           name: odds-hierarchy-descriptive-and-synthetic-only
@@ -289,5 +299,7 @@ jobs:
             tmp/synthetic-winwide-shadow-freeze.json
             tmp/synthetic-winwide-shadow-score.json
             tmp/odds-github-attestation-offline-demo.json
+            tmp/odds-graded-cohort-v1-protocol.json
+            tmp/odds-graded-cohort-v1-offline.json
             tmp/odds-coherent-hierarchy-bridge.json
           retention-days: 14
