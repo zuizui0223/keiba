@@ -63,6 +63,7 @@ on:
       - docs/odds-five-race-win-wide-outcome-comparison-20261023.md
       - docs/odds-asof-shadow-freeze-protocol-20261023.md
       - docs/odds-github-server-preseal-attestation-20261024.md
+      - docs/odds-first-precommitted-kikka20261025.md
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   pull_request:
@@ -123,6 +124,7 @@ on:
       - docs/odds-five-race-win-wide-outcome-comparison-20261023.md
       - docs/odds-asof-shadow-freeze-protocol-20261023.md
       - docs/odds-github-server-preseal-attestation-20261024.md
+      - docs/odds-first-precommitted-kikka20261025.md
       - docs/odds-coherent-hierarchy-finish-rank-model-20261023.md
       - .github/workflows/odds-information-hierarchy.yml
   workflow_dispatch:
