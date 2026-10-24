@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 
 from odds_multiyear_provisional_coverage import (
-    EXPECTED_2026_GIT_BLOB, STATUS, audit_raw, audit_2027, blob_sha,
+    EXPECTED_2026_GIT_BLOB, EXPECTED_2027_PROVISIONAL_GIT_BLOB, STATUS, audit_raw, audit_2027, blob_sha,
 )
 
 P={
@@ -157,6 +157,30 @@ class TwoYearDenominatorAuditTests(unittest.TestCase):
         changed["protocol"]+=b" "
         with self.assertRaisesRegex(ValueError,
                                     "HOLD_ORIGINAL_PRECOMMITTED_2026_OR_PROTOCOL_BLOB_MUTATED"):
+            audit_raw(*(changed[k] for k in (
+                "calendar_2026","registry_2026","protocol",
+                "calendar_2027","registry_2027")))
+
+    def test_tentative_2027_calendar_and_registry_are_exactly_pinned(self):
+        self.assertEqual(
+            blob_sha(self.raw["calendar_2027"]),
+            EXPECTED_2027_PROVISIONAL_GIT_BLOB["2027_provisional_calendar"])
+        self.assertEqual(
+            blob_sha(self.raw["registry_2027"]),
+            EXPECTED_2027_PROVISIONAL_GIT_BLOB["2027_provisional_registry"])
+        changed=dict(self.raw)
+        changed["calendar_2027"]+=b" "
+        with self.assertRaisesRegex(
+                ValueError,
+                "HOLD_2027_PROVISIONAL_ANNEX_CHANGED_AFTER_INITIAL_CANDIDATE_REGISTRATION"):
+            audit_raw(*(changed[k] for k in (
+                "calendar_2026","registry_2026","protocol",
+                "calendar_2027","registry_2027")))
+        changed=dict(self.raw)
+        changed["registry_2027"]+=b" "
+        with self.assertRaisesRegex(
+                ValueError,
+                "HOLD_2027_PROVISIONAL_ANNEX_CHANGED_AFTER_INITIAL_CANDIDATE_REGISTRATION"):
             audit_raw(*(changed[k] for k in (
                 "calendar_2026","registry_2026","protocol",
                 "calendar_2027","registry_2027")))
