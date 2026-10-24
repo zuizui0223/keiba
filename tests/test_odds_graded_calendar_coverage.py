@@ -136,7 +136,9 @@ class GradedCalendarCoverageTests(unittest.TestCase):
         later=deepcopy(self.r)
         later["declared_as_of_jst"]="2026-12-28T09:00:00+09:00"
         a=audit(self.c,later)
-        self.assertEqual(len(a["overdue_pending_unresolved_races"]),25)
+        self.assertEqual(len(a["overdue_pending_unresolved_races"]),26)
+        self.assertEqual(a["status"],
+                         "HOLD_OVERDUE_CALENDAR_SLOTS_WITHOUT_EXPLICIT_POSTRACE_DISPOSITION")
         self.assertFalse(a["full_period_calendar_denominator_verified"])
         self.assertEqual(a["actual_forward_graded_stakes_scores_count"],0)
 
