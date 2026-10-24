@@ -34,6 +34,7 @@ on:
       - tests/test_odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_coverage.py
       - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
+      - docs/odds-graded-calendar-preregistered-20261024.md
       - data/research/odds-prequential-2026oct24-coverage-registry.json
       - tests/test_odds_prequential_cohort.py
       - tests/test_odds_sharp_reference_power_envelope.py
@@ -114,6 +115,7 @@ on:
       - tests/test_odds_graded_calendar_comment_proof.py
       - tests/test_odds_graded_calendar_coverage.py
       - data/research/jra-graded-flat-2026oct25-dec27-calendar.json
+      - docs/odds-graded-calendar-preregistered-20261024.md
       - data/research/odds-prequential-2026oct24-coverage-registry.json
       - tests/test_odds_prequential_cohort.py
       - tests/test_odds_sharp_reference_power_envelope.py
