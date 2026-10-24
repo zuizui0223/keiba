@@ -190,6 +190,14 @@ class FrozenProspectiveCohortTests(unittest.TestCase):
         self.assertEqual(z["status"],pre.OFFLINE_STATUS)
         self.assertTrue(z["predeclared_full_calendar_reporting_missing_still_required"])
         self.assertFalse(z["graded_stakes_calendar_denominator_verified"])
+        self.assertTrue(z["full_period_2027_Jan_Mar_calendar_segment_not_registered"])
+        self.assertEqual(
+            z["externally_precommitted_2026_oct_dec_flat_grade_segment_comment_id"],
+            6382991405)
+        self.assertEqual(z["externally_precommitted_calendar_segment_slot_count"],26)
+        self.assertFalse(z["formal_full_eligible_grades_statistical_inference_allowed"])
+        self.assertTrue(z["sharp_M0_e_process_validity_not_established_for_real_market"])
+        self.assertTrue(z["official_results_url_text_alone_is_not_independent_JRA_result_fetch"])
 
 
 if __name__=="__main__":
