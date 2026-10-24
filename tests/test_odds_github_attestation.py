@@ -150,10 +150,10 @@ class GitHubAttestationTests(unittest.TestCase):
         for bad in ("..","race\nnew","race; ls","/race","🐎"):
             badfreeze=deepcopy(self.freeze)
             badfreeze["payload"]["race_id"]=bad
-            badfreeze["seal_sha256_of_canonical_payload"]=(
-                att._seal(badfreeze["payload"]) if hasattr(att,"_seal") else
-                "0"*64)
-            with self.assertRaises(ValueError):
+            from odds_shadow_freeze_score import _seal
+            badfreeze["seal_sha256_of_canonical_payload"]=_seal(
+                badfreeze["payload"])
+            with self.assertRaisesRegex(ValueError,"HOLD_UNSAFE_OR_INVALID_RACE_ID"):
                 att.dispatch_inputs(badfreeze)
 
     def test_local_only_does_not_impersonate_first_party_timestamps(self):
