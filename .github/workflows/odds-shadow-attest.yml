@@ -54,7 +54,7 @@ jobs:
           SEAL_POST_JST: ${{ inputs.scheduled_post_jst }}
           SEAL_RECEIVED_JST: ${{ inputs.last_source_received_jst }}
         run: |
-          python scripts/odds_github_attestation.py runner --output tmp/commitment.json
+          python scripts/odds_sha_only_receipt.py runner --output tmp/commitment.json
           python -c "import json; q=json.load(open('tmp/commitment.json')); assert q['contains_only_digest_and_nonsecret_race_time_metadata']; assert q['run_attempt']==1; assert len(q['submitted_commitment_inputs']['seal_sha256'])==64"
 
       - name: Upload immutable SHA-only preseal receipt
