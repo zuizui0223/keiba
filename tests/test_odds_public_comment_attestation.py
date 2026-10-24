@@ -69,7 +69,7 @@ class GitHubCommentPresealTests(unittest.TestCase):
         self.assertFalse(x["GitHub_API_independently_fetched"])
         self.assertEqual(x["sha256_of_original_frozen_payload"],
                          self.frozen["seal_sha256_of_payload"])
-        self.assertAlmostEqual(x["lead_time_hours"],26+35/60)
+        self.assertAlmostEqual(x["lead_time_hours"],2+35/60)
 
     def test_hash_or_source_sha_mismatch_hard_fail(self):
         for key in ("freeze_payload_sha256","private_source_json_sha256"):
