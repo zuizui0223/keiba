@@ -31,6 +31,13 @@ class FrozenProspectiveCohortTests(unittest.TestCase):
         self.assertIn("winner categorical logloss",p["primary_metric"])
         self.assertTrue(p["old_v31_formal_holdout_untouched"])
 
+    def test_public_precommitted_protocol_json_exactly_equals_code(self):
+        fixed=json.loads((ROOT/"docs/odds-prequential-graded-cohort-v1-20261024.json").read_text(
+            encoding="utf-8"))
+        self.assertEqual(fixed,pre.protocol())
+        self.assertEqual(fixed["fixed_coverage_feasibility_min_races"],60)
+        self.assertTrue(fixed["statistical_inference_not_claimed_at_feasibility_60_8"])
+
     def test_offline_demo_remains_hold_and_sharp_e_factor_is_well_defined(self):
         z=pre.offline_demo()
         self.assertEqual(z["status"],pre.OFFLINE_STATUS)
