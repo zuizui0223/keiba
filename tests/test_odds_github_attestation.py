@@ -62,7 +62,7 @@ class GitHubAttestationTests(unittest.TestCase):
     def test_workflow_is_hash_only_dispatch_and_correct_GitHub_expressions(self):
         content=(ROOT/".github/workflows/odds-shadow-attest.yml").read_text(
             encoding="utf-8")
-        self.assertIn("on:\\n  workflow_dispatch:",content)
+        self.assertIn("on:\n  workflow_dispatch:",content)
         self.assertIn('run-name: odds-preseal/${{ inputs.race_id }}',content)
         self.assertIn('SEAL_SHA256: ${{ inputs.seal_sha256 }}',content)
         self.assertIn('SEAL_POST_JST: ${{ inputs.scheduled_post_jst }}',content)
