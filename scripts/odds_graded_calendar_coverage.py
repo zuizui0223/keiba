@@ -175,7 +175,10 @@ def audit(calendar,registry):
             raise ValueError("HOLD_UNDECLARED_OUTCOME_DRIVEN_SELECTION_STATUS")
         statuses[status]+=1
         date=_date(event["scheduled_date_jst"])
-        if status=="upcoming_not_due" and date<asof.date():
+        if (status in ("upcoming_not_due",
+                        "preseal_sha_submitted_unverified",
+                        "sealed_no_independent_GitHub_proof")
+                and date<asof.date()):
             overdue_pending.append(event["slot_id"])
         if status=="preseal_sha_submitted_unverified":
             if (not isinstance(row.get("preseal_comment_id"),int)
@@ -210,7 +213,10 @@ def audit(calendar,registry):
     if no_outcome_exclusions:
         raise ValueError("HOLD_SELF_CLAIMED_REMOTE_PROOF_OR_POSTRACE_SCORE")
     return {
-        "status":STATUS,
+        "status":(
+            "HOLD_OVERDUE_CALENDAR_SLOTS_WITHOUT_EXPLICIT_POSTRACE_DISPOSITION"
+            if overdue_pending else STATUS
+        ),
         "segment_start_jst":verified_cal["period_start"],
         "segment_end_jst":verified_cal["period_end"],
         "full_protocol_study_end_jst":verified_cal["study_end"],
