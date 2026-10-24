@@ -161,7 +161,10 @@ def _evaluate_sealed_records(records, *, authenticated=False):
     # Do not assert statistical significance: grades/dates may cluster,
     # the source coverage calendar is not verified by this tool.
     return {
-        "status":(REPORT_STATUS if authenticated else OFFLINE_STATUS),
+        "status":(
+            "HOLD_PARTIAL_STUDY_HORIZON_CALENDAR_DENOMINATOR_WITH_AUTHENTICATED_SCORES"
+            if authenticated else OFFLINE_STATUS
+        ),
         "remote_GitHub_comment_verification_was_independently_run":
             authenticated,
         "protocol":p,
@@ -171,6 +174,10 @@ def _evaluate_sealed_records(records, *, authenticated=False):
             len(output)>=MIN_RACES_FOR_FEASIBILITY and
             len(days)>=MIN_DATES_FOR_FEASIBILITY,
         "graded_stakes_calendar_denominator_verified":False,
+        "externally_precommitted_2026_oct_dec_flat_grade_segment_comment_id":6382991405,
+        "externally_precommitted_calendar_segment_slot_count":26,
+        "full_period_2027_Jan_Mar_calendar_segment_not_registered":True,
+        "formal_full_eligible_grades_statistical_inference_allowed":False,
         "primary_race_equal_mean_WIN_logloss_M1_minus_M0":
             avg(output,"win_logloss_M1_minus_M0"),
         "primary_meeting_day_equal_mean_WIN_logloss_M1_minus_M0":(
@@ -191,6 +198,8 @@ def _evaluate_sealed_records(records, *, authenticated=False):
             running_log_e>=math.log(SHARP_NULL_EVIDENCE_THRESHOLD),
         "e_process_is_only_valid_if_each_frozen_M0_is_exact_conditional_winner_distribution":True,
         "e_value_not_a_test_for_absence_of_incremental_path_information":True,
+        "sharp_M0_e_process_validity_not_established_for_real_market":True,
+        "official_results_url_text_alone_is_not_independent_JRA_result_fetch":True,
         "per_race_scored_provenance":output,
         "predeclared_full_calendar_reporting_missing_still_required":True,
         "not_a_real_market_advantage_claim":True,
