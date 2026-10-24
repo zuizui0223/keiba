@@ -27,6 +27,8 @@ on:
       - scripts/odds_public_two_point_freeze.py
       - scripts/odds_public_comment_attestation.py
       - scripts/odds_preoutcome_discriminability.py
+      - scripts/odds_sharp_reference_power_envelope.py
+      - tests/test_odds_sharp_reference_power_envelope.py
       - scripts/odds_private_source_replay_audit.py
       - tests/test_odds_private_source_replay_audit.py
       - tests/test_odds_preoutcome_discriminability.py
@@ -95,6 +97,8 @@ on:
       - scripts/odds_public_two_point_freeze.py
       - scripts/odds_public_comment_attestation.py
       - scripts/odds_preoutcome_discriminability.py
+      - scripts/odds_sharp_reference_power_envelope.py
+      - tests/test_odds_sharp_reference_power_envelope.py
       - scripts/odds_private_source_replay_audit.py
       - tests/test_odds_private_source_replay_audit.py
       - tests/test_odds_preoutcome_discriminability.py
@@ -173,6 +177,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_github_attestation.py' -v
           python -m unittest discover -s tests -p 'test_odds_public_comment_attestation.py' -v
           python -m unittest discover -s tests -p 'test_odds_preoutcome_discriminability.py' -v
+          python -m unittest discover -s tests -p 'test_odds_sharp_reference_power_envelope.py' -v
           python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
