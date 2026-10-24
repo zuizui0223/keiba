@@ -24,6 +24,8 @@ on:
       - scripts/odds_asof_training_eligibility.py
       - scripts/odds_shadow_freeze_score.py
       - scripts/odds_github_attestation.py
+      - scripts/odds_sha_only_receipt.py
+      - tests/test_odds_sha_only_receipt.py
       - tests/test_odds_github_attestation.py
       - .github/workflows/odds-shadow-attest.yml
       - tests/test_odds_shadow_freeze_score.py
@@ -81,6 +83,8 @@ on:
       - scripts/odds_asof_training_eligibility.py
       - scripts/odds_shadow_freeze_score.py
       - scripts/odds_github_attestation.py
+      - scripts/odds_sha_only_receipt.py
+      - tests/test_odds_sha_only_receipt.py
       - tests/test_odds_github_attestation.py
       - .github/workflows/odds-shadow-attest.yml
       - tests/test_odds_shadow_freeze_score.py
@@ -149,6 +153,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_asof_training_eligibility.py' -v
           python -m unittest discover -s tests -p 'test_odds_shadow_freeze_score.py' -v
           python -m unittest discover -s tests -p 'test_odds_github_attestation.py' -v
+          python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
         run: python scripts/shuka2026_odds_information_hierarchy.py --paths 300 --seed 20261023 --output tmp/shuka-odds-hierarchy.json
