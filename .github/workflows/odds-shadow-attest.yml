@@ -4,7 +4,7 @@ name: SHA-only shadow odds prediction preseal (requires default-branch install)
 # branch. A Draft PR on an analysis branch CANNOT activate this trigger.
 # Only a sealed payload SHA and nonsensitive race/timing metadata are sent.
 # Never submit original provider odds, probabilities or licensed raw rows.
-run-name: odds-preseal/x${{ inputs.race_id }}
+run-name: odds-preseal/${{ inputs.race_id }}
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: shadow-winwide-x${{ inputs.race_id }}
+  group: shadow-winwide-${{ inputs.race_id }}
   cancel-in-progress: false
 
 jobs:
@@ -49,10 +49,10 @@ jobs:
 
       - name: Persist dispatch commitment without private source fields
         env:
-          SEAL_RACE_ID: x${{ inputs.race_id }}
-          SEAL_SHA256: x${{ inputs.seal_sha256 }}
-          SEAL_POST_JST: x${{ inputs.scheduled_post_jst }}
-          SEAL_RECEIVED_JST: x${{ inputs.last_source_received_jst }}
+          SEAL_RACE_ID: ${{ inputs.race_id }}
+          SEAL_SHA256: ${{ inputs.seal_sha256 }}
+          SEAL_POST_JST: ${{ inputs.scheduled_post_jst }}
+          SEAL_RECEIVED_JST: ${{ inputs.last_source_received_jst }}
         run: |
           python scripts/odds_github_attestation.py runner --output tmp/commitment.json
           python -c "import json; q=json.load(open('tmp/commitment.json')); assert q['contains_only_digest_and_nonsecret_race_time_metadata']; assert q['run_attempt']==1; assert len(q['submitted_commitment_inputs']['seal_sha256'])==64"
@@ -60,7 +60,7 @@ jobs:
       - name: Upload immutable SHA-only preseal receipt
         uses: actions/upload-artifact@v4
         with:
-          name: winwide-sha-commitment-x${{ github.run_id }}
+          name: winwide-sha-commitment-${{ github.run_id }}
           path: tmp/commitment.json
           if-no-files-found: error
           retention-days: 90
