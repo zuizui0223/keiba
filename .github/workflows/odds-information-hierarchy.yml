@@ -27,6 +27,8 @@ on:
       - scripts/odds_public_two_point_freeze.py
       - scripts/odds_public_comment_attestation.py
       - scripts/odds_preoutcome_discriminability.py
+      - scripts/odds_private_source_replay_audit.py
+      - tests/test_odds_private_source_replay_audit.py
       - tests/test_odds_preoutcome_discriminability.py
       - tests/test_odds_public_comment_attestation.py
       - scripts/odds_sha_only_receipt.py
@@ -93,6 +95,8 @@ on:
       - scripts/odds_public_two_point_freeze.py
       - scripts/odds_public_comment_attestation.py
       - scripts/odds_preoutcome_discriminability.py
+      - scripts/odds_private_source_replay_audit.py
+      - tests/test_odds_private_source_replay_audit.py
       - tests/test_odds_preoutcome_discriminability.py
       - tests/test_odds_public_comment_attestation.py
       - scripts/odds_sha_only_receipt.py
@@ -169,6 +173,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_odds_github_attestation.py' -v
           python -m unittest discover -s tests -p 'test_odds_public_comment_attestation.py' -v
           python -m unittest discover -s tests -p 'test_odds_preoutcome_discriminability.py' -v
+          python -m unittest discover -s tests -p 'test_odds_private_source_replay_audit.py' -v
           python -m unittest discover -s tests -p 'test_odds_sha_only_receipt.py' -v
           python -m unittest discover -s tests -p 'test_odds_coherent_hierarchy_rank_bridge.py' -v
       - name: 300 synthetic bettor paths per mechanism; real odds analysis is descriptive only
