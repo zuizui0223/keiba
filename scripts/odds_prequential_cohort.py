@@ -247,6 +247,13 @@ def verify_live_manifest(manifest):
         if pre.get("predeclared_primary_contrast")!=(
                 "winner_log_loss_M1_minus_M0"):
             raise ValueError("HOLD_PRIMARY_CHANGED_AFTER_PRECOMMITMENT")
+        expected_models=[
+            {"name":"M0_market_only","beta":0.0,"earlier_odds_threshold":None},
+            {"name":"M1_smooth_beta025","beta":0.25,"earlier_odds_threshold":None},
+            {"name":"M2_initial_10x_beta025","beta":0.25,"earlier_odds_threshold":10.0},
+        ]
+        if pre.get("models") != expected_models:
+            raise ValueError("HOLD_PROSPECTIVE_MODEL_BETA_OR_10X_RULE_CHANGED")
         # A true GH CLI/API server fetch happens EACH time, not fake caller
         # fields. The function checks original comment, unedited timestamp
         # and earliest PR commitment for this race.
