@@ -66,6 +66,15 @@ class CoupledPureMathTest(unittest.TestCase):
                 duration_hours=1, seed=9, synthetic_votes_per_step=0)
         np.testing.assert_allclose(no_stakes["final"], m.vector(q), atol=1e-14)
 
+    def test_paired_voter_randomness_cancels_for_same_policy_distribution(self):
+        q = [.40, .20, .15, .10, .09, .06]
+        a = m.vote_market(q, q, mode="independent", duration_hours=1.,
+                          seed=137, steps=4)
+        b = m.vote_market(q, q, mode="information", duration_hours=1.,
+                          seed=137, steps=4)
+        for x, y in zip(a["path"], b["path"]):
+            np.testing.assert_array_equal(x, y)
+
     def test_bad_market_inputs_rejected(self):
         with self.assertRaisesRegex(ValueError, "MARKET_HORSE_MISMATCH"):
             m.vote_market([1,2,3,4,5], [1,2,3,4,5,6], mode="information",
