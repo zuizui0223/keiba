@@ -170,7 +170,7 @@ class SHAOnlyPRTimestampTest(unittest.TestCase):
         f=fake_freeze()
         score=shadow.score_target(f,target(source()))
         fake_local=m.inspect_fixture(f,[gh_comment(f)])
-        with self.assertRaisesRegex(ValueError,"NOT_INDEPENDENTLY"):
+        with self.assertRaisesRegex(ValueError,"NOT_INDEPENDENT_GITHUB_VERIFIED"):
             m.bind_scored_next_market_to_proof(fake_local,score)
         # A structurally matched object can be fabricated in a test.
         # Only the verify-live CLI may publicly assert GitHub REST proof.
