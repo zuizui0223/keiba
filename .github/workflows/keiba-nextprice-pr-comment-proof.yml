@@ -1,0 +1,44 @@
+name: GitHub PR comment SHA-only next-price proof gates
+
+on:
+  push:
+    branches: [analysis/nextprice-github-comment-preseal-20261025]
+    paths:
+      - 'scripts/keiba_nextprice_pr_comment_attestation.py'
+      - 'tests/test_keiba_nextprice_pr_comment_attestation.py'
+      - 'docs/betting/github-pr-comment-next-market-proof-20261025.md'
+      - '.github/workflows/keiba-nextprice-pr-comment-proof.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_nextprice_pr_comment_attestation.py'
+      - 'tests/test_keiba_nextprice_pr_comment_attestation.py'
+      - 'docs/betting/github-pr-comment-next-market-proof-20261025.md'
+      - '.github/workflows/keiba-nextprice-pr-comment-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  do-not-claim-remote-proof-from-fixture:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical horse model dependency for synthetic freeze fixtures
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Reject late, edited, other-user, duplicated, malformed SHA comments
+        run: |
+          python -m compileall -q scripts/keiba_nextprice_pr_comment_attestation.py tests/test_keiba_nextprice_pr_comment_attestation.py
+          python -m unittest discover -s tests -p 'test_keiba_nextprice_pr_comment_attestation.py' -v
+      - name: Recheck existing source-locked multi-race pipeline is not modified
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_private_multirace_winwide_shadow.py' -v
+      - name: Do not falsely assert any upcoming public SHA receipt
+        run: |
+          python -c "import sys; sys.path.insert(0,'scripts'); import keiba_nextprice_pr_comment_attestation as a; assert a.STATUS_PREPARED.startswith('PREPARED') and a.STATUS_LOCAL.startswith('HOLD') and a.COMMIT_PR==22; print('SHA_COMMENT_SERVER_PROOF_OF_ANY_NEW_FUTURE_RACE', False); print('MAIN_UNCHANGED', True)"
