@@ -229,6 +229,43 @@ def objective_horse_prior(traits: dict, *, seconds_to_logweight=3.0,
     return unit_weights(np.exp(x-np.max(x)))
 
 
+
+def premarket_context_log_scores(receipt: dict, target: dict):
+    """Use only independently prepared objective features known before q0.
+
+    The feature log scores are outputs of an *earlier* context model, not
+    estimates of weather, ground or jockey coefficients by this script.
+    Timestamps and rights are caller supplied, not external proof.
+    """
+    ids,_ = _target(target)
+    if (receipt.get("schema") != "KEIBA_PUBLISHED_OBJECTIVE_CONTEXT_V1"
+            or receipt.get("rights_checked_locally") is not True
+            or receipt.get("target_source_system") != target["source_system"]
+            or not isinstance(receipt.get("feature_names"),list)):
+        raise ValueError("HOLD_UNAUTHORIZED_OBJECTIVE_CONTEXT_RECEIPT")
+    allowed={"past_form","gps","track","going","weather","jockey",
+             "distance","body_condition","layoff"}
+    f=receipt["feature_names"]
+    if not f or len(set(f))!=len(f) or not set(f).issubset(allowed):
+        raise ValueError("HOLD_UNAPPROVED_CONTEXT_OR_ODDS_FEATURE")
+    quote_pub=_clock(target["initial_market_published_at_jst"])
+    pub=_clock(receipt["source_published_at_jst"])
+    received=_clock(receipt["source_received_at_jst"])
+    frozen=_clock(receipt["feature_model_frozen_at_jst"])
+    if not frozen <= pub <= received < quote_pub:
+        raise ValueError("HOLD_CONTEXT_NOT_KNOWN_BEFORE_FIRST_MARKET_QUOTE")
+    if any(k in receipt for k in ("odds", "market_q0", "market_share",
+                                   "target_finish", "target_winner")):
+        raise ValueError("HOLD_MARKET_OR_FUTURE_TARGET_CONTAMINATES_CONTEXT")
+    scores=receipt.get("objective_log_score_by_horse_id")
+    if not isinstance(scores,dict) or set(scores)!=set(ids):
+        raise ValueError("HOLD_OBJECTIVE_CONTEXT_ROSTER_MISMATCH")
+    if any(type(x) not in (int,float) or not math.isfinite(x)
+           for x in scores.values()):
+        raise ValueError("HOLD_NONFINITE_INDEPENDENT_CONTEXT_SCORES")
+    return {i:float(scores[i]) for i in ids}
+
+
 def initial_market_proxy(odds: Mapping, horse_ids: list[str]):
     """Observed early odds are ALREADY crowdsourced, NEVER horse traits."""
     if set(odds) != set(horse_ids):
@@ -402,7 +439,8 @@ def local_market_gain(q, objective, signal, *,
 def run_coupled_repeatability_trial(
         source, target, *, observed_first_odds, prior_scale=3.0,
         distance_m=None, horse_draws=80, seed=20261026,
-        info_release_round=1, herding_gamma=1.0, pde_particles=0):
+        info_release_round=1, herding_gamma=1.0, pde_particles=0,
+        premarket_context_receipt=None):
     """One coherent source-matched path; synthetic/authorized use only.
 
     The original horse prior is independent of observed q0. A source
@@ -411,7 +449,11 @@ def run_coupled_repeatability_trial(
     """
     trait=repeatable_traits(source,target)
     horse_ids=trait["horse_ids"]
-    fundamental=objective_horse_prior(trait,seconds_to_logweight=prior_scale)
+    context = (premarket_context_log_scores(premarket_context_receipt,target)
+               if premarket_context_receipt is not None else None)
+    fundamental=objective_horse_prior(
+        trait, seconds_to_logweight=prior_scale,
+        prestart_objective_log_covariates=context)
     q0=initial_market_proxy(observed_first_odds,horse_ids)
     if distance_m is not None and distance_m!=target["distance_m"]:
         raise ValueError("HOLD_DISTANCE_NOT_SOURCE_MATCHED")
@@ -439,6 +481,8 @@ def run_coupled_repeatability_trial(
       "status":TRIAL_STATUS,
       "source_same_horse_repeatability":trait,
       "independent_horse_objective_prior":fundamental,
+      "premarket_context_used":premarket_context_receipt is not None,
+      "premarket_context_proof":"LOCAL_ONLY_EXTERNAL_ATTESTATION_HOLD",
       "observed_early_market_proxy":q0,
       "physical_nonlocal_horse_model":{
           "crowding_winner_change_in_paired_runs":
