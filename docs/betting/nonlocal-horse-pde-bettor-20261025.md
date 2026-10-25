@@ -71,3 +71,48 @@ Synthetic shared physical coefficients and the factorized PDE do **not** estimat
 Outputs aggregate only, reporting probability scores, PDE closure mass/CDF accuracy, mean paired differences between crowd/no crowd and matching-market price-index errors. No raw horse IDs, full protected quote table, source telemetric datasets, or calibrated gambling claims are published.
 
 **Next real experiment:** Obtain independently before-race timestamped true horse-ID GPS/lap movement, confirmed starters including missing GPS, and prestart market snapshots on *the same racing population*. Fit only earlier dates, then test a future-date holdout separately for physical motion and market-price innovations. Test class/going/jockey effects only with adequate repeated within-horse support. Extend PDE to a justified nonlocal joint-density/closure with overtaking and lane choice only after the measured positions support it.
+
+
+## Reproducible source-locked numerical result (fixed c=2, seed=20261025)
+
+[Source-locked dedicated numerical CI #40165928292](https://github.com/zuizui0223/keiba/actions/runs/40165928292) ran on 2026-10-25. These are **counterfactual synthetic interaction** results evaluated against six historical JRA race labels; never a calibrated horse–market causal effect.
+
+### Matched horse-particle vs nonlocal marginal PDE
+
+| Original physical input | Mean paired race simulations where hypothetical WINNER changes when crowding is switched on | Mean crowd-induced WIN-probability distribution TV | Largest per-horse terminal CDF difference, particle vs factorized PDE (over six races) |
+|---|---:|---:|---:|
+| Earliest quoted market q0 | 9.90% | 2.841 percentage points | 0.05196 |
+| Past-only horse-form h (reconstructed postrace) | 11.33% | 3.977 percentage points | 0.05099 |
+
+Each horse marginal PDE retained mass = 1 to numerical precision. The PDE/particle maximum CDF difference has **multiple sources**: finite particle Monte Carlo, grid/time discretization, and the factorization's neglect of finite-horse correlations. The test is on a **12-second non-finishing, no-Gumbel** conditional slice. No real horse positions were supplied to the PDE.
+
+### Precisely how physical crowding passes to the synthetic voter market
+
+Average across SIX *real race labels* (the numerator/denominator of all pp values is an invented physical world and simulated bettor pool, not independent real ballot observations):
+
+| Voter mechanism | Market-index TV between the paired crowd vs no-crowd scenarios, from q0 prior | Same TV from historical-form prior |
+|---|---:|---:|
+| Independent, no information about horse motion | **0.000 pp** | **0.000 pp** |
+| Herding-only, no information about horse motion | **0.000 pp** | **0.000 pp** |
+| Information-following bettor | 0.850 pp | 1.025 pp |
+| Information + herding mix | 0.588 pp | 1.046 pp |
+| Invented speed-threshold herding rule + information | 0.496 pp | 1.217 pp |
+
+This is the key **mechanism identifiability check within the synthetic model**: changing a horse's physical crowding can change market price only along rules receiving the generated horse signal. It is not evidence that real investors changed their wagers because horses crowded one another.
+
+The synthetic **threshold gate step count** changed by 0 (market initial prior) or −1 (history prior) out of six race trajectories with four hypothetical voter updates each. The original hypothesized discontinuous market transition is **not discovered**: any threshold switch was built into the voting rule beforehand.
+
+### Same official six podiums, paired historical scoring (winner log loss ↓)
+
+| Model arm | Crowding off | Nonlocal crowding on | Change |
+| --- | ---: | ---: | ---: |
+| q0-driven horse -> information-following bettors | 1.71326 | 1.72066 | +0.00740 (worse) |
+| q0-driven horse -> threshold-mixed bettors | 1.64720 | 1.65614 | +0.00894 (worse) |
+| historical h-driven horse -> information-following bettors | 1.81022 | 1.80785 | −0.00237 (better) |
+| historical h-driven horse -> threshold-mixed bettors | 1.68186 | 1.67407 | −0.00780 (better) |
+
+Observed later-market-only PL M0 winner log loss is **1.696959**. A favorable *retrospective* score direction in one synthetic rule is not proof of real predictive gain, since these coefficients, horse priors, source clocks and the six outcomes do not constitute a fitted, externally sealed, future cohort. The q0 case and the past-form case even show opposing tendencies; selecting the better after seeing six races would create post-hoc bias.
+
+Comparisons of actual later relative WIN quote shape to these simulated market endpoints are separately recorded in the CI (often favoring different policies from the retrospective podium score). The actual amount and timing of bets are absent.
+
+**Decision:** The physical/social coupling can now be *numerically exercised from one shared interaction law*; biological crowd causality, nonlinear PDE calibration, threshold discovery and positive wagering ROI all remain HOLD.
