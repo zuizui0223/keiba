@@ -235,6 +235,24 @@ def pde_density_and_agent_check(prior, *, strength=CROWD_COEFFICIENT_M2_PER_S,
         empirical=np.cumsum(observed)/particles
         calculated=np.cumsum(rho[j])*dx
         errors.append(float(np.max(np.abs(empirical-calculated))))
+    # A finite horse group builds inter-horse positional dependence. The
+    # product-marginal PDE discards all such joint information.
+    corr=np.corrcoef(positions,rowvar=False)
+    mask=np.triu_indices(len(p),k=1)
+    pair_abs_corr=float(np.mean(np.abs(corr[mask])))
+    pair_signed_corr=float(np.mean(corr[mask]))
+    analytic_no_crowd_cdf_error=None
+    if strength==0:
+        # No interactions -> each marginal has an analytical Gaussian CDF;
+        # isolate PDE discretization error from particle sampling/closure.
+        sigma=math.sqrt(START_SD_M**2+2*diffusion*duration_s)
+        edge=x+dx/2
+        analytic_no_crowd_cdf_error=max(
+            float(np.max(np.abs(np.cumsum(rho[j])*dx-
+                np.asarray([0.5*(1+math.erf(
+                    (position-v[j]*duration_s)/(math.sqrt(2)*sigma)))
+                    for position in edge]))))
+            for j in range(len(p)))
     return {
         "status":"CORRELATED_FINITE_AGENT_VS_FACTORIZED_NONLOCAL_PDE_CHECK",
         "n_horse_species":len(p), "independent_replica_races":particles,
@@ -248,6 +266,9 @@ def pde_density_and_agent_check(prior, *, strength=CROWD_COEFFICIENT_M2_PER_S,
         "particle_outside_grid_total_over_species":off_grid,
         "mean_KS_particle_to_PDE":float(np.mean(errors)),
         "max_KS_particle_to_PDE":float(np.max(errors)),
+        "mean_abs_interhorse_position_correlation_particle":pair_abs_corr,
+        "mean_signed_interhorse_position_correlation_particle":pair_signed_corr,
+        "analytic_no_interaction_PDE_CDF_max_error":analytic_no_crowd_cdf_error,
         "closure_is_not_exact_for_finite_correlated_horses":True,
         "PDE_conditions_on_fixed_logprior_drift_without_Gumbel":True,
         "no_real_GPS_or_fitted_physics":True,
