@@ -51,6 +51,7 @@ FEATURE_SCHEMA="KEIBA_PRIVATE_TWO_WIN_ONE_FULL_WIDE_FEATURE_V1"
 TARGET_SCHEMA="KEIBA_PRIVATE_LATER_WIN_RECEIPT_STREAM_V1"
 FREEZE_SCHEMA="KEIBA_LOCAL_NEXT_WIN_MARKET_SHADOW_FREEZE_V1"
 SCORE_SCHEMA="KEIBA_LOCAL_NEXT_WIN_MARKET_SCORE_V1"
+ROOT=Path(__file__).resolve().parents[1]
 FREEZE_STATUS="LOCAL_SHA_ONLY_NOT_INDEPENDENT_GITHUB_PRESEAL"
 SCORE_STATUS="LOCAL_SOURCE_SCOPED_NEXT_MARKET_SCORE_NOT_PROSPECTIVE_VERIFIED"
 COHORT_STATUS="LOCAL_NEXT_MARKET_COHORT_NOT_PROSPECTIVE_AUTHENTICATED"
@@ -158,8 +159,7 @@ def _freeze_source(doc,*, source_bytes, history_bytes=None,history_receipt=None,
         raise ValueError("HOLD_UNSUPPORTED_NEXT_MARKET_HORIZON")
     target_first=t1+timedelta(minutes=horizon)
     target_last=target_first+timedelta(minutes=width)
-    if not (lock<=t0<=r0<t1==tw<=r1+timedelta(days=1)
-            and tw<=rw and max(r1,rw)<=freeze_at<target_first
+    if not (lock<=t0<=r0<t1==tw and tw<=r1 and tw<=rw and max(r1,rw)<=freeze_at<target_first
             and target_last<post-timedelta(minutes=10)):
         raise ValueError("HOLD_MARKET_SOURCE_CLOCK_LEAKAGE_OR_LATE_FREEZE")
     original=_market_prices(first)
