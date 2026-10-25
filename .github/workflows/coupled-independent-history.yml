@@ -1,0 +1,52 @@
+name: Coupled independent-horse-history falsification
+
+on:
+  push:
+    branches: [analysis/coupled-independent-history-falsification-20261025]
+    paths:
+      - 'scripts/keiba_coupled_history_falsification.py'
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'tests/test_keiba_coupled_history_falsification.py'
+      - 'docs/betting/coupled-independent-history-20261025.md'
+      - '.github/workflows/coupled-independent-history.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_coupled_history_falsification.py'
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'tests/test_keiba_coupled_history_falsification.py'
+      - 'docs/betting/coupled-independent-history-20261025.md'
+      - '.github/workflows/coupled-independent-history.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-history-to-ABM:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Validate history source locks, no future runs, identity placebo and coupled ABM
+        run: |
+          python -m compileall -q scripts/keiba_coupled_history_falsification.py tests/test_keiba_coupled_history_falsification.py
+          python -m unittest discover -s tests -p 'test_keiba_coupled_history_falsification.py' -v
+      - name: Reconstruct past-only form independently of official target outcomes and score six races
+        run: |
+          python scripts/keiba_coupled_history_falsification.py --draws 120 --seed 20261025 --output tmp/coupled-history-reconstruction.json
+          python -c "import json; a=json.load(open('tmp/coupled-history-reconstruction.json')); assert a['status'].startswith('POSTRACE_HISTORY_RECONSTRUCTION') and a['real_races']==6 and a['real_meeting_dates']==2 and a['horse_race_entries']==84 and a['entrants_with_no_past_start']==1; assert not a['future_target_data_used_to_calculate_form'] and a['prospective_model_readiness'].startswith('HOLD'); assert abs(a['M0_late_market_reference']['win_log_loss']-1.696959293802405)<1e-7; assert len(a['mean_race_equal'])==4"
+      - name: Print aggregate score and placebo only; never emit detailed horse histories
+        run: |
+          python -c "import json; x=json.load(open('tmp/coupled-history-reconstruction.json')); print('PAST_FORM_FIXED_SCENARIOS',json.dumps(x['mean_race_equal'],ensure_ascii=False,sort_keys=True)); print('PAST_FORM_MARKET_TV',json.dumps(x['market_TV_pp_race_equal'],ensure_ascii=False,sort_keys=True)); print('PAST_FORM_IDENTITY_PLACEBO_DELTA',x['history_only_vs_permuted_past_identity_win_log_loss_delta']); print('PAST_FORM_ASOF_STATUS',x['prospective_model_readiness']); print('PAST_FORM_DATE_EQUAL',json.dumps(x['mean_date_equal_contrasts'],ensure_ascii=False,sort_keys=True)); print('PAST_FORM_BY_DATE',json.dumps(x['by_meeting_date'],ensure_ascii=False,sort_keys=True))"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coupled-past-form-aggregate-hold-only
+          path: tmp/coupled-history-reconstruction.json
+          retention-days: 14
