@@ -1,0 +1,56 @@
+name: Authorized local WIN WIDE source capture and tentative week1 JRA planning
+
+on:
+  push:
+    branches: [analysis/authorized-winwide-ingest-week1-20261026]
+    paths:
+      - 'scripts/keiba_operator_winwide_capture.py'
+      - 'scripts/keiba_week1_licensed_capture_plan.py'
+      - 'tests/test_keiba_operator_winwide_capture.py'
+      - 'tests/test_keiba_week1_licensed_capture_plan.py'
+      - 'docs/betting/operator-capture-week1-20261026.md'
+      - '.github/workflows/keiba-operator-capture-week1.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_operator_winwide_capture.py'
+      - 'scripts/keiba_week1_licensed_capture_plan.py'
+      - 'tests/test_keiba_operator_winwide_capture.py'
+      - 'tests/test_keiba_week1_licensed_capture_plan.py'
+      - 'docs/betting/operator-capture-week1-20261026.md'
+      - '.github/workflows/keiba-operator-capture-week1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  private-capture-contract-and-source-locked-upcoming-plan:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Numerical dependency of the PR17 horse ABM and PR19 social voter
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Complete local synthetic receipt plus authentic-source data quality gates
+        run: |
+          python -m compileall -q scripts/keiba_operator_winwide_capture.py scripts/keiba_week1_licensed_capture_plan.py tests/test_keiba_operator_winwide_capture.py tests/test_keiba_week1_licensed_capture_plan.py
+          python -m unittest discover -s tests -p 'test_keiba_operator_winwide_capture.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_week1_licensed_capture_plan.py' -v
+      - name: Source JRA programme checkpoint plan remains prospective UNCOLLECTED
+        run: |
+          python scripts/keiba_week1_licensed_capture_plan.py --as-of 2026-10-26T01:14:00+09:00 --output tmp/week1-operator-checkpoints-20261026.json
+          python -c "import json; d=json.load(open('tmp/week1-operator-checkpoints-20261026.json')); assert d['predeclared_slots_in_first_two_dates']==16 and d['possible_overlap_with_prior_26_graded_race_calendar']==2; assert d['actual_full_field_win_wide_quote_snapshots_collected']==0 and d['observed_next_market_targets']==0 and d['actually_authenticated_SHA_pre_next_price']==0; print('WEEK1_FIRST_TWO_JRA_PROGRAMME_DATES_NO_ACTUAL_CAPTURE',json.dumps({'candidate_slots':16,'grade_overlap':2,'licensed_full_quote_capture':0,'new_prospective_market_target':0},sort_keys=True))"
+      - name: Regression guard for unchanged fixed 26 plus secondary 64 denominators
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_fixed_denominator_market_campaign.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_secondary_64_market_slots.py' -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: week1-public-provisional-capture-checkpoints-no-private-prices
+          path: tmp/week1-operator-checkpoints-20261026.json
+          retention-days: 14
