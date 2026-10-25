@@ -87,7 +87,7 @@ class GammaResearchTests(unittest.TestCase):
             f=Path(directory)/"a.json"
             f.write_text('{"frozen":true}',encoding="utf-8")
             blob=f.read_bytes()
-            expected=hashlib.sha1(b"blob "+str(len(blob)).encode()+b"\\0"+blob).hexdigest()
+            expected=hashlib.sha1(b"blob "+str(len(blob)).encode()+b"\0"+blob).hexdigest()
             self.assertEqual(source_json(f,expected),{"frozen":True})
             f.write_text('{"frozen":false}',encoding="utf-8")
             with self.assertRaises(ValueError):
@@ -95,7 +95,7 @@ class GammaResearchTests(unittest.TestCase):
 
     def test_scores_not_probabilities_sold_as_returns(self):
         x=audit(fictional_races())
-        self.assertIn("not a calibrated",str(x).lower())
+        self.assertTrue(x["refit_on_all_14_past_races_for_new_20261025_shadow"]["not_a_calibrated_probability_model"])
         self.assertIn("no real money",str(x).lower())
         self.assertNotIn("stake_optimum",x)
         self.assertEqual(len(x["historical_validation_race_deltas"]),9)
