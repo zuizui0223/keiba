@@ -156,6 +156,14 @@ class RealArchiveCouplingTest(unittest.TestCase):
         self.assertEqual(a["horse_abm"]["legacy_P9_reused_unmodified"], True)
         self.assertEqual(a["real_calibrated_forecast_advantage"], "HOLD")
 
+    def test_seed_sensitivity_has_no_independent_new_races(self):
+        from keiba_coupled_seed_sensitivity import sensitivity
+        report = sensitivity(n_seeds=2, draws=40, first_seed=20261025)
+        self.assertEqual(report["real_independent_races"], 6)
+        self.assertEqual(report["synthetic_seed_repetitions_not_new_independent_trials"], 2)
+        self.assertTrue(report["any_score_advantage_is_retrospective_and_unvalidated"])
+        self.assertEqual(len(report["seeds"]), 2)
+
     def test_real_results_only_score_after_all_forecasts_generated(self):
         report = m.audit(draws=60, seed=20261025)
         z = report["postrace"]
