@@ -85,7 +85,7 @@ The no-information null is therefore **not rejected robustly across plausible si
 
 ## Finite synthetic-seed robustness (not additional races)
 
-[The seed-only audit](../..//scripts/keiba_r8_threepoint_seed_noise.py) runs five different PR17 horse Gumbel/Brownian and PR19 bettor-uniform seeds (120 virtual horse draws per seed) **against the SAME one real 13:44 market target**. Deterministic persistence/momentum/WIDE prices remain exactly unchanged by horse/voter random seed.
+[The seed-only audit](../../scripts/keiba_r8_threepoint_seed_noise.py) runs five different PR17 horse Gumbel/Brownian and PR19 bettor-uniform seeds (120 virtual horse draws per seed) **against the SAME one real 13:44 market target**. Deterministic persistence/momentum/WIDE prices remain exactly unchanged by horse/voter random seed.
 
 | Candidate (all round-1 horse information) | Mean next-market TV across 5 seeds | Min–max across synthetic seeds |
 |---|---:|---:|
