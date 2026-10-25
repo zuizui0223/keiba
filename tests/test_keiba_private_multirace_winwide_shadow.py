@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+from datetime import datetime,timedelta
 from hashlib import sha256
 from itertools import combinations
 import json
@@ -76,7 +77,7 @@ def target(feature,*,change=1.03,first_at="2026-11-07T11:18:00+09:00",
         {"market":"win","provider":feature["provider"],
          "source_clock_verified":True,
          "source_updated_at_jst":first_at,
-         "received_at_jst":"2026-11-07T11:20:00+09:00",
+         "received_at_jst":(datetime.fromisoformat(first_at)+timedelta(minutes=2)).isoformat(),
          "odds_by_horse_number":{
              k:float(v*(change if int(k)%2 else 2-change))
              for k,v in prices.items()},
@@ -265,7 +266,7 @@ class ShadowPureTests(unittest.TestCase):
         time_travel=target(d)
         time_travel["snapshots"][0]["received_at_jst"]=(
             "2026-11-07T10:00:00+09:00")
-        with self.assertRaisesRegex(ValueError,"TARGET_SNAPSHOT_CLOCK"):
+        with self.assertRaisesRegex(ValueError,"RECEIVED_BEFORE_PUBLICATION"):
             m.score_target(f,time_travel)
 
     def test_cohort_duplicate_and_missing_target_guard(self):
