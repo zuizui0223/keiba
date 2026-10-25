@@ -130,6 +130,26 @@ class HistoricalOnlyPureTest(unittest.TestCase):
             m.couple_prestart(row, distance_m=1200, draws=80,
                               horse_prior=[.4,.3,.2,.1,.05])
 
+    def test_external_horse_prior_is_market_invariant_including_mc_smoothing(self):
+        row=fake_row()
+        independent_prior=h.form_prior(row,fake_archive())["prior"]
+        run1=m.couple_prestart(row,distance_m=1200,draws=50,
+                               seed=217,horse_prior=independent_prior)
+        shifted=copy.deepcopy(row)
+        shifted["first_odds"]={i:float(i*13+3) for i in row["first_odds"]}
+        run2=m.couple_prestart(shifted,distance_m=1200,draws=50,
+                               seed=217,horse_prior=independent_prior)
+        # Shared historical physical prior must NOT borrow q0 even through
+        # the fixed two-draw-equivalent Monte Carlo smoothing step.
+        for kind in ("horse_P9_weak","horse_SDE_no_pack","horse_SDE_weak"):
+            self.assertEqual(run1["predictions"][kind],
+                             run2["predictions"][kind])
+        np.testing.assert_array_equal(run1["horse_signal"],
+                                      run2["horse_signal"])
+        # But voters do start from the independently changing initial market.
+        self.assertFalse(np.allclose(run1["initial_market_q"],
+                                     run2["initial_market_q"]))
+
     def test_history_source_not_eligible_for_prestart_and_no_asof_promotion(self):
         with self.assertRaisesRegex(ValueError,"POSTRACE_RETRIEVED"):
             h.audit(prestart_only=True)

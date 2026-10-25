@@ -1,0 +1,66 @@
+name: Coupled horse-form to market-innovation source audit
+
+on:
+  push:
+    branches: [analysis/coupled-history-market-innovation-20261025]
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_history_market_innovation_audit.py'
+      - 'scripts/keiba_independent_horse_asof_preflight.py'
+      - 'tests/test_keiba_coupled_history_falsification.py'
+      - 'tests/test_keiba_history_market_innovation_audit.py'
+      - 'tests/test_keiba_independent_horse_asof_preflight.py'
+      - 'docs/betting/coupled-history-market-innovation-20261025.md'
+      - '.github/workflows/coupled-history-market-innovation.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_history_market_innovation_audit.py'
+      - 'scripts/keiba_independent_horse_asof_preflight.py'
+      - 'tests/test_keiba_coupled_history_falsification.py'
+      - 'tests/test_keiba_history_market_innovation_audit.py'
+      - 'tests/test_keiba_independent_horse_asof_preflight.py'
+      - 'docs/betting/coupled-history-market-innovation-20261025.md'
+      - '.github/workflows/coupled-history-market-innovation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  coupled-market-information-test:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Compile and test causal independence and real source validation
+        run: |
+          python -m compileall -q scripts/keiba_history_market_innovation_audit.py tests/test_keiba_history_market_innovation_audit.py
+          python -m unittest discover -s tests -p 'test_keiba_history_market_innovation_audit.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_independent_horse_asof_preflight.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_coupled_history_falsification.py' -v
+      - name: Source-locked real historical market-innovation scoring (no official outcome)
+        run: |
+          python scripts/keiba_history_market_innovation_audit.py --output tmp/coupled-next-market-innovation.json
+          python -c "import json; a=json.load(open('tmp/coupled-next-market-innovation.json')); assert a['independent_race_outcomes']==6 and a['independent_dates']==2 and a['horse_race_rows']==84 and a['source_last_quote_used_only_as_score_target'] and a['no_independent_past_horse_source_receipt']; assert len(a['mean_race_equal_market_price_index_scores'])==3 and a['research_decision'].startswith('HOLD')"
+      - name: Report only source-scoped market-index summary
+        run: |
+          python -c "import json; a=json.load(open('tmp/coupled-next-market-innovation.json')); print('HISTORY_MARKET_INDEX_SCORES',json.dumps(a['mean_race_equal_market_price_index_scores'],sort_keys=True)); print('HISTORY_MARKET_RACE_WIN_COUNTS',a['n_races_history_blend_lower_TV_than_q0'],a['n_races_correct_history_lower_TV_than_shifted']); print('HISTORY_MARKET_BY_DATE',json.dumps(a['by_meeting_date'],sort_keys=True)); print('HISTORY_MARKET_HOLD',a['research_decision'])"
+      - name: Re-score connected horse ABMs after correcting prior smoothing
+        run: |
+          python scripts/keiba_coupled_history_falsification.py --draws 120 --seed 20261025 --output tmp/coupled-prior-corrected-postrace.json
+          python -c "import json; r=json.load(open('tmp/coupled-prior-corrected-postrace.json')); assert r['real_races']==6 and r['real_meeting_dates']==2 and r['prospective_model_readiness'].startswith('HOLD') and len(r['mean_race_equal'])==4; assert abs(r['M0_late_market_reference']['win_log_loss']-1.696959293802405)<1e-7; print('CORRECTED_HORSE_HISTORY_OUTCOME_LL',json.dumps({a:{k:v['win_log_loss'] for k,v in row.items()} for a,row in r['mean_race_equal'].items()},sort_keys=True)); print('CORRECTED_HORSE_HISTORY_DATE_EFFECTS',json.dumps(r['mean_date_equal_contrasts'],sort_keys=True))"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coupled-history-market-innovation-aggregates-only
+          path: |
+            tmp/coupled-next-market-innovation.json
+            tmp/coupled-prior-corrected-postrace.json
+          retention-days: 14
