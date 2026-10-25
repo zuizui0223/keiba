@@ -94,3 +94,37 @@ Adding h improves next-quote TV in just **1/6 races** versus q0 alone; the corre
 | 80% earliest q0 + 20% historical form | 1.715829 | 1.655729 |
 
 These replace the prior PR #15 *uncorrected history-only* scores; the market-only reference stays exactly unchanged. The negative-control direction persists but there is still no incremental benefit over the q0-informed integrated model under these fixed assumptions. This is NOT future holdout performance; it is a source-limited retrospective sensitivity on two dates, and the history file's reception before the target race is unverified.
+
+
+## Future real-data wiring: first-quote availability, not just race-start availability
+
+The independent horse prior and observed market q0 are now **separately wired**. The next empirical dependency is proof that the horse information was available when the bettor simulation was initialized.
+
+New [strict local source preflight](../../scripts/keiba_independent_horse_asof_preflight.py) accepts three privately held JSON inputs:
+- a horse-history source with its own SHA-256 hash, race ID/date, surface/distance, official horse numbers/names and strictly previous race records (date, finish, distance_m, surface);
+- a local receipt with declared source URL, source publication time, reception time, SHA-256 and source-rights review status;
+- a full-field WIN quote pair with each exact source clock, the first quote as q0, a later quote and scheduled post.
+
+To simulate the WHOLE between-quotes interval, the source must meet the stronger timing rule:
+
+\[
+t_{\mathrm{publisher\ history}}
+\le t_{\mathrm{received\ history}}
+\le t_{\mathrm{earliest\ quote}}
+< t_{\mathrm{later\ quote}}
+\le t_{\mathrm{post}} - 10\ {\rm minutes}.
+\]
+
+The audit hard-rejects any history received *after* the earliest q0, even if received before post time. Feeding later information into agents at t0 would otherwise be a second, subtle kind of future leakage. Future architectures may introduce **explicit information-arrival events midstream**, but this code does not simulate an earlier release than the real source reception.
+
+The receipt is an untrusted **local declaration**. Even if all arithmetic and SHA checks pass, its clock is NOT authenticated by GitHub's server or a neutral third party; a self-asserted externally_attested=true is explicitly rejected. Thus the output status is ALWAYS **CLOCK_ORDER_CHECKED_LOCAL_SOURCE_NOT_EXTERNALLY_AUTHENTICATED** and the forecast cannot be counted as a sealed prospective JRA evaluation. Independent pre-race third-party receipt verification, rights, and an official result captured later are still separate controls.
+
+Private-only demo use:
+
+    python scripts/keiba_independent_horse_asof_preflight.py \
+      --history-source PRIVATE_AUTHORIZED_PAST_RUNS.json \
+      --receipt PRIVATE_LOCAL_RECEIPT.json \
+      --market-panel PRIVATE_CLOCKED_WIN_QUOTES.json \
+      --output PRIVATE_COUPLED_SCENARIOS.json
+
+The three schemas can be reviewed directly in the new unit-test fixtures. This demo performs no external downloads, does not publish underlying JRA history or odds, and **never reads actual finishing positions or payouts**. The resulting private file contains scenario probabilities and an explicit proof-HOLD, not recommended bets.
