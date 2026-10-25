@@ -110,6 +110,11 @@ class NonlocalMathematicalTests(unittest.TestCase):
                 self.assertAlmostEqual(sum(p["win"]),1,places=10)
                 self.assertAlmostEqual(sum(p["top3"]),3,places=10)
         self.assertTrue(a["no_official_outcome_read"])
+        t=a["physical_to_market_transmission"]
+        self.assertGreater(t["horse_win_distribution_shift_TV_pp"],0)
+        self.assertTrue(t["null_information_voter_effect_identically_zero"])
+        self.assertEqual(t["market_price_index_shift_TV_pp"]["independent"],0)
+        self.assertEqual(t["market_price_index_shift_TV_pp"]["herding"],0)
 
     def test_frozen_horse_prior_does_not_depend_on_market_quote(self):
         row=demo_row()
@@ -159,6 +164,11 @@ class RealArchiveTests(unittest.TestCase):
                                  set(m.VOTER_TYPES))
         self.assertEqual(z["real_successful_forward_threshold_or_bet_EV"],"HOLD")
         self.assertTrue(z["no_result_used_for_mechanism_selection"])
+        for arm in m.PRIOR_ARMS:
+            t=z["physical_interaction_to_bettor_market_transmission"][arm]
+            self.assertGreater(t["mean_horse_WIN_probability_TV_shift_pp"],0)
+            self.assertEqual(t["voter_market_response_TV_pp"]["independent"],0)
+            self.assertEqual(t["voter_market_response_TV_pp"]["herding"],0)
 
 
 if __name__=="__main__":
