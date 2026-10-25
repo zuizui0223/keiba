@@ -52,7 +52,7 @@ def verified_time(s):
 
 def source_json(path, sha):
     content = Path(path).read_bytes()
-    computed = hashlib.sha1(b"blob " + str(len(content)).encode() + b"\\0" + content).hexdigest()
+    computed = hashlib.sha1(b"blob " + str(len(content)).encode() + b"\0" + content).hexdigest()
     if computed != sha:
         raise ValueError("HOLD_GITHUB_SOURCE_BLOB_DRIFT:" + str(path))
     return json.loads(content.decode("utf-8"))
