@@ -41,7 +41,7 @@ jobs:
       - name: Score future 13:44 WIN quote after 12:21/13:26 price, paired WIDE and horse ABM models frozen in memory
         run: |
           python scripts/keiba_r8_threepoint_conditional_shadow.py --null-draws 2000 --horse-draws 120 --output tmp/kyoto8-threepoint-shadow.json
-          python -c "import json; r=json.load(open('tmp/kyoto8-threepoint-shadow.json')); assert r['n_real_races']==1 and r['n_horses']==11 and r['fixed_retrospective_18min_horizon_NOT_precommitted_externally'] and r['mid_source_cutoff'].startswith('2026-10-12T13:26:00') and len(r['candidate_forecast_scores'])==9 and len(r['null_condition_sensitivity'])==12 and not r['market_criticality_or_information_arrival_inferred'] and r['source_provider_same_all_three_quote_points']; assert r['next_18minute_interval_TV_pp']>=r['display_0_05_half_bin_conditional_lower_bound_TV_pp']"
+          python -c "import json; r=json.load(open('tmp/kyoto8-threepoint-shadow.json')); assert r['n_real_races']==1 and r['n_horses']==11 and r['fixed_retrospective_18min_horizon_NOT_precommitted_externally'] and r['mid_source_cutoff'].startswith('2026-10-12T13:26:00') and len(r['candidate_forecast_scores'])==21 and len(r['null_condition_sensitivity'])==12 and not r['market_criticality_or_information_arrival_inferred'] and r['source_provider_same_all_three_quote_points']; assert r['next_18minute_interval_TV_pp']>=r['display_0_05_half_bin_conditional_lower_bound_TV_pp']"
       - name: Five synthetic horse-voter seeds reuse ONE independently archived next quote
         run: |
           python scripts/keiba_r8_threepoint_seed_noise.py --seeds 5 --horse-draws 120 --output tmp/kyoto8-seed-only.json
