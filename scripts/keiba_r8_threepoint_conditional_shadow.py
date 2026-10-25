@@ -46,7 +46,8 @@ from keiba_conditional_volume_null_bridge import (
     _market_shape_statistics,transition_accounting_lower_bound,
     quotation_TV_rounding_lower_bound,
 )
-from keiba_endogenous_threshold_null_bridge import preoutcome_panel
+from keiba_endogenous_threshold_null_bridge import preoutcome_panel,voter_path
+from keiba_nonlocal_horse_pde_bettor_bridge import finish_pair
 from keiba_coupled_horse_market_pde import ROOT,vector
 
 STATUS="ONE_ARCHIVED_R8_NEXT_WIN_QUOTE_SHADOW_VOLUME_UNIDENTIFIED"
@@ -115,11 +116,46 @@ def build_pre_1344_forecasts(root=ROOT, *, horse_draws=120,seed=20261025):
         "momentum_plus_mid_WIDE_node_beta025":construct_advance_forecast(
             features,beta_momentum=1.,beta_node=.25),
     }
-    for label,model in (("mid_market",physical),
-                        ("retrospective_past_form",physical_h)):
+    # SOURCE-ALIGNED JOINT CROSSPOOL SIGNAL (an additional hypothetical
+    # mechanism, not proof that WIDE's displayed quote was public/atomic).
+    # Inject the 13:26 WIDE residual ONCE as a tilt of the physical horse
+    # signal, then run the EXACT SAME four-step synthetic bettor ABM.
+    # A one-horse cyclic node reassignment is a fixed placebo.
+    midmarket=_vector_from_proxy(features["last_market_q"],ids)
+    nodes=np.asarray([features["wide_extra_horse_node"][i] for i in ids],
+                     dtype=float)
+    if not np.all(np.isfinite(nodes)) or np.max(np.abs(nodes))>10:
+        raise ValueError("HOLD_R8_NONFINITE_OR_EXPLOSIVE_WIDE_HORSE_NODES")
+    candidates=(("mid_market",physical,midmarket),
+                ("retrospective_past_form",physical_h,vector(h["prior"])))
+    for label,model,initial_prior in candidates:
+        # Reuses the same physical nonlocal kernel/D/draws from PR17 as
+        # preoutcome_panel; only the subsequent WIDE residual gate differs.
+        horse=finish_pair(
+            initial_prior,distance_m=historical["distance_m"],
+            draws=horse_draws,seed=seed,crowd_coefficient=2.)
+        base_signal=vector(
+            horse["scenarios"]["nonlocal_crowd"]["win"])
         for arrival in ARRIVALS:
-            scenarios[f"coupled_{label}_smooth_c2_signal_round{arrival}"]=(
-                model["models"][CROWDING][arrival][SOCIAL_RULE]["market"])
+            control=model["models"][CROWDING][arrival][SOCIAL_RULE]["market"]
+            scenarios[f"coupled_{label}_smooth_c2_signal_round{arrival}"]=control
+            baseline_voter=voter_path(
+                midmarket,base_signal,policy=SOCIAL_RULE,
+                duration_hours=NEXT_HORIZON_MINUTES/60,
+                arrival=arrival,seed=seed+390)["final"]
+            if not np.allclose(control,baseline_voter,rtol=0,atol=1e-13):
+                raise ValueError("HOLD_CROSSPOOL_CONTROL_CHANGED_UNDER_SAME_HORSE_MODEL")
+            for origin,node in (("WIDE_residual",nodes),
+                                ("WIDE_node_rotated_placebo",np.roll(nodes,1))):
+                modified_signal=vector(base_signal*np.exp(
+                    .25*(node-np.max(node))))
+                informed=voter_path(
+                    midmarket,modified_signal,policy=SOCIAL_RULE,
+                    duration_hours=NEXT_HORIZON_MINUTES/60,
+                    arrival=arrival,seed=seed+390)["final"]
+                scenarios[
+                    f"coupled_{label}_smooth_c2_{origin}_beta025_round{arrival}"
+                ]=informed
     predictions={
         label:_vector_from_proxy(proxy,ids)
         if isinstance(proxy,dict) else vector(proxy)
@@ -143,6 +179,8 @@ def build_pre_1344_forecasts(root=ROOT, *, horse_draws=120,seed=20261025):
         "mid_wide_full_55_pair_source_already_checked":True,
         "horse_history_source_received_pre_cutoff_proven":False,
         "PR17_horse_to_staged_PR19_social_market_connected":True,
+        "mid_WIDE_node_feeds_same_bettor_ABM_after_horse_agent_signal":True,
+        "rotated_mid_WIDE_node_negative_control_in_same_ABM":True,
         "no_target_quote_or_winner_used_by_candidate_forecasts":True,
     }
 
