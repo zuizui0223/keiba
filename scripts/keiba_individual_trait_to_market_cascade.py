@@ -58,6 +58,8 @@ def _finite_nonnegative(v, name):
 
 def _target(target: dict) -> tuple[list[str], datetime]:
     required = ("source_system", "horse_ids", "asof_jst",
+                "initial_market_published_at_jst",
+                "initial_market_received_at_jst",
                 "first_marker_m", "distance_m", "race_class")
     if any(k not in target for k in required):
         raise ValueError("HOLD_TARGET_CONTEXT_INCOMPLETE")
@@ -67,6 +69,10 @@ def _target(target: dict) -> tuple[list[str], datetime]:
             or len(set(ids)) != len(ids)):
         raise ValueError("HOLD_INVALID_TARGET_HORSE_IDENTITIES")
     t = _clock(target["asof_jst"])
+    quote_pub = _clock(target["initial_market_published_at_jst"])
+    quote_recv = _clock(target["initial_market_received_at_jst"])
+    if not quote_pub <= quote_recv <= t:
+        raise ValueError("HOLD_INITIAL_MARKET_SOURCE_CLOCK_ORDER")
     if (not isinstance(target["source_system"], str)
             or not target["source_system"]
             or type(target["first_marker_m"]) is not int
@@ -76,7 +82,9 @@ def _target(target: dict) -> tuple[list[str], datetime]:
             or target["distance_m"] > 5000
             or not target["race_class"]):
         raise ValueError("HOLD_UNSUPPORTED_TARGET_CONTEXT")
-    return ids, t
+    # The independent horse information must predate the very first
+    # publicly quoted market snapshot, not just this later forecast.
+    return ids, quote_pub
 
 
 def repeatable_traits(source: dict, target: dict, *, min_dates=3):
@@ -95,6 +103,8 @@ def repeatable_traits(source: dict, target: dict, *, min_dates=3):
             or source.get("rights_checked_locally") is not True
             or not isinstance(source.get("records"), list)):
         raise ValueError("HOLD_SOURCE_RIGHTS_OR_IDENTITIES")
+    # All historical source receipts must precede the FIRST observed
+    # market quote publication, even if the target forecast is later.
     # No measured GPS from other providers / unrelated animal IDs may
     # be "ported" to this target's identities.
     if source.get("authenticated_publisher_clock") is not True:
