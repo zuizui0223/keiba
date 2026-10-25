@@ -122,3 +122,61 @@ Run unit tests or GitHub Actions without any external/licensed source:
       -p 'test_keiba_fixed_denominator_market_campaign.py' -v
 
 **This work turns the old one-race replay into a fixed-denominator reproducible data-collection study design. It does not convert the archive into new prospective experiments.**
+
+
+## 2026-10-25: GitHub live-SHA receipts joined to the same 26-slot denominator
+
+The new script \`scripts/keiba_campaign_remote_sha_evidence.py\` joins the registered race-card identity, local private freeze, separately saved future quote score, and the **independently retrieved** GitHub PR22 SHA-comment timestamp. Unlike accepting an operator-supplied "verified" JSON flag, the LIVE option calls PR #23's \`verify_live(freeze)\`, which fetches GitHub REST issue-comment pages and individual comment records via the authenticated GitHub CLI. It fails closed on missing or unverifiable API access, inconsistent race/official post, changed SHA, changed 15+5-minute horizon, duplicate race freeze, or a GitHub comment created AFTER the next-market target. There is no GitHub write action.
+
+Example with *legitimately authorized future local sources* (never run on the historical Kyoto R8 demo):
+
+    python scripts/keiba_campaign_remote_sha_evidence.py \
+      --as-of FUTURE_OFFSET_AWARE_JST \
+      --receipts private/fixed_slot_capture_metadata.json \
+      --private-freezes private/raceA_frozen_market_predictions.json \
+      --scores private/raceA_separate_next_WIN_price_score.json \
+      --output private/fixed_cohort_server_SHA_audit.json
+
+Before a real future freeze exists, the same command may be run with only \`--receipts\` and an **empty** metadata entry list to verify the 26 registered events, 25 newly eligible next-market candidates, and **zero** server-confirmed SHA events. The script does not accept local API JSON as independent proof. A SHA can be counted as server-created before the next price only when authenticated GitHub GET returns a matching PR22 owner comment; target score data are still a **locally declared** WIN capture stream, not independently authenticated actual bets/odds. Hence the strict indicator \`new_independent_real_prospective_quote_trials_confirmed\` remains **0**, even if an independent SHA is verified. The report separates SHA time, local q2 price score, fully validated outcome data, and source-rights and horse-GPS uncertainty.
+
+[Dedicated CI run](https://github.com/zuizui0223/keiba/actions/runs/40202239784) passed the 14 original cohort guards and 10 new proof-integration tests using **clearly marked, synthetic GitHub API mocks**. The currently visible PR22 comment thread is empty; no actual future next-price SHA was published during testing.
+
+## Auxiliary 64-slot, 8-date development cohort (SEPARATE from the 26 graded events)
+
+To meet the *possibility* of the earlier 60-race/8-date **development** guard without falsely declaring 60 already observed races, \`scripts/keiba_secondary_64_market_slots.py\` predefines an independent **candidate** experiment. This is NOT a rewrite of the source-locked G1/G2/G3 26 event registry and NOT an additional observed sample.
+
+The date/venue selection rule is completely deterministic, frozen before Oct31:
+
+1. Traverse the *exact original SHA-locked graded-calendar source* and select the first eight **future distinct meeting dates after 2026-10-25**.
+2. On each selected day use the venue of the first listed graded event, without considering future odds, horse success, or later result availability.
+3. On each venue/day take **all proposed R05–R12 flat race numbers**. Total = 8 dates × 8 race numbers = **64 planned race-number slots**.
+
+The resulting fixed dates and provisional venues are:
+
+| Date (2026 JST) | Selected venue | Proposed eligible race numbers |
+| --- | --- | --- |
+| October 31 | 京都 | 5–12 |
+| November 1 | 東京 | 5–12 |
+| November 7 | 東京 | 5–12 |
+| November 8 | 東京 | 5–12 |
+| November 14 | 東京 | 5–12 |
+| November 15 | 京都 | 5–12 |
+| November 21 | 福島 | 5–12 |
+| November 22 | 京都 | 5–12 |
+
+For reference, **JRA's preliminary October 31/November 1 programme** currently lists the 2026-10-31 Kyoto 11R KBSファンタジーS (scheduled post 15:45 JST), and November 1 Tokyo 11R 天皇賞（秋） (scheduled post 15:40 JST). Official programme sources: https://jra.jp/keiba/calendar2026/2026/10/1031.html and https://jra.jp/keiba/calendar2026/2026/11/1101.html . The Fantasy Stakes official entry list is scheduled to appear 2026-10-29. JRA explicitly warns that race order, conditions or post times can change. These public PROGRAMME details are NOT equivalent to published entrant numbers, actual authorized WIN/WIDE data, an independently timestamped local download, or final race identifiers. Do not write confirmed post/runner IDs into PR22 source metadata solely from this planning table.
+
+A cancelled, renumbered or uncollected race stays in the 64-slot denominator with a **HOLD**; do not swap in another slot after viewing its market/results. Grade races that appear in both the 26-slot and 64-slot experiment are potentially the SAME physical race — NEVER add the two denominators without matching official race IDs and removing duplicates. All 64 unacquired slots, even if planned in an existing JRA programme, count as ZERO observed prospective next-market outcomes. Achieving 60 real races on 8 distinct dates remains a **conditional future requirement**, not a result of source acquisition or predictive evidence.
+
+Reproduce:
+
+    python scripts/keiba_secondary_64_market_slots.py \
+      --as-of 2026-10-25T23:18:00+09:00 \
+      --output tmp/keiba-secondary-64-planned-slots.json
+
+    python -m unittest discover -s tests \
+      -p 'test_keiba_secondary_64_market_slots.py' -v
+
+The secondary study borrows the same fixed PR22 price prediction target **15–20 minutes after the middle WIN update**, the same source-clock and all-pairs WIDE gates, and the same physical horse→bettor ABM comparison models. It creates **no quote feed**, no auto bets and no new source rights. Its own outputs clearly mark every race number as a planned, unverified slot, not actual official race identification.
+
+**Core evidence status is unchanged**: no independently captured full WIN/WIDE time series, authenticated PR22 SHA pretarget receipt or genuine new market-target evaluation has yet occurred. A synthetic unit test, a nominal slot, 55 overlapping WIDE pairs, or 350 simulated horse races is not an observed independent JRA trial.
