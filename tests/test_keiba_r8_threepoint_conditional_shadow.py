@@ -97,6 +97,20 @@ class ArchivedR8Tests(unittest.TestCase):
             self.assertAlmostEqual(sum(p),1,places=12,msg=name)
         self.assertEqual(set(m.WIN_FORECASTS).issubset(z["candidate_indices"]),True)
 
+    def test_same_one_real_quote_seed_replicates_are_not_new_market_data(self):
+        from keiba_r8_threepoint_seed_noise import audit as seed_audit
+        with patch("odds_six_race_predictive_increment.verify_official_oct12",
+                   side_effect=AssertionError("NO_RACE_WINNERS_ALLOWED")):
+            z=seed_audit(n_seeds=2,horse_draws=40,seed=100)
+        self.assertEqual(z["independent_real_next_quote_targets"],1)
+        self.assertEqual(z["artificial_horse_bettor_seed_repetitions"],2)
+        self.assertFalse(z["real_bettor_vote_counts_or_JRA_race_outcomes_consumed"])
+        for name in m.WIN_FORECASTS:
+            item=z["by_fixed_candidate"][name]
+            self.assertAlmostEqual(
+                item["single_real_target_5seed_TV_max_pp"],
+                item["single_real_target_5seed_TV_min_pp"],places=12)
+
     def test_locked_future_source_and_nulls_score_one_real_market(self):
         with patch("odds_six_race_predictive_increment.verify_official_oct12",
                    side_effect=AssertionError("OFFICIAL_RESULT_LEAK")) as fn:
