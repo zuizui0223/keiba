@@ -6,11 +6,15 @@ import math
 import sys
 import unittest
 from unittest.mock import patch
-import numpy as np
+try:
+    import numpy as np
+except ModuleNotFoundError:
+    np=None  # Generic and frozen-v3.1 test suites intentionally omit NumPy.
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-import keiba_nonlocal_horse_pde_bettor_bridge as m
+if np is not None:
+    import keiba_nonlocal_horse_pde_bettor_bridge as m
 
 
 def demo_row():
@@ -24,6 +28,7 @@ def demo_row():
             "post_at":"2026-10-25T15:40:00+09:00"}
 
 
+@unittest.skipIf(np is None, "NumPy belongs to the dedicated horse-physics CI")
 class NonlocalMathematicalTests(unittest.TestCase):
     def test_kernel_is_anisotropic_bounded_and_has_no_self_effect(self):
         gaps=np.asarray([-3.,0.,2.,8.,9.])
@@ -140,7 +145,7 @@ class NonlocalMathematicalTests(unittest.TestCase):
                     d["by_crowd_and_vote"][c][mode]["market"])
 
 
-@unittest.skipUnless((ROOT/"data/2026-10-12/v3-normalized-prerace-history.json").exists(),
+@unittest.skipUnless(np is not None and (ROOT/"data/2026-10-12/v3-normalized-prerace-history.json").exists(),
                      "Full historical source-locked checkout needed")
 class RealArchiveTests(unittest.TestCase):
     def test_six_races_particle_pde_and_model_event_scores(self):
