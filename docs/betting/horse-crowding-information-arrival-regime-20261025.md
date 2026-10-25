@@ -92,3 +92,60 @@ r =
 The market simulation still uses q0 as observed initial support; the horse signal is unavailable before its assigned round. If \`externally_authenticated_by_third_party=true\` is merely self-declared in JSON, the gate rejects the input outright. A source SHA and internally consistent local clock cannot prove that the source actually existed or was public before the simulated market. The output is ALWAYS LOCAL_EVENT_ORDER_AND_ROUND_ASSIGNMENT_NOT_EXTERNALLY_ATTESTED; it cannot be inserted into v3.1 or any formal prospective ledger.
 
 **Distinction from the stricter earlier preflight:** the full-window [independent-horse source gate](../../scripts/keiba_independent_horse_asof_preflight.py) correctly refused sources received after q0 when modeling the *entire* interval as if already informed. With the new explicit information arrival, later but before-forecast sources may be used **only from their actual declared reception round onward**. Neither route imputes an earlier receipt or simulates knowledge of a result that had not arrived.
+
+
+## Source-locked results of the 2026-10-25 coupled regime scan
+
+Reproduced by the [full 350-draw source-locked numerical workflow](https://github.com/zuizui0223/keiba/actions/runs/40167058492), followed by [five synthetic seed-only repeats](https://github.com/zuizui0223/keiba/actions/runs/40167234795). The six original race labels are reused and do NOT become 350×6 independent racing outcomes. Fixed grid and thresholds were chosen as illustrative model assumptions, not fitted to real labels.
+
+### First-stage physical response, same Gumbel/Brownian draws for each c
+
+| c (m²/s) | q0 physical prior: paired hypothetical winners changed | history physical prior: paired hypothetical winners changed |
+| ---: | ---: | ---: |
+| 0 | 0% | 0% |
+| 0.5 | 2.57% | 3.00% |
+| 1 | 5.43% | 5.52% |
+| 2 | **9.90%** | **11.33%** |
+| 4 | 18.57% | 19.95% |
+| 8 | 31.38% | 34.81% |
+
+These are changes to the **same virtual race outcome under two counterfactual c choices**, NOT actual race result errors. In the finite grid the response grows over c; no physical discontinuity or biological critical point has been identified.
+
+### Second-stage information arrival modifies synthetic price response
+
+Market-index TV(pp) caused by switching physical c from 0 to 2, while preserving the same underlying q0 and random voter choices:
+
+| Horse prior | Horse information from round 1 | First received at round 3 | Never received in four rounds |
+| --- | ---: | ---: | ---: |
+| First saved quote q0 | **0.850** | **0.438** | **0.000** |
+| Historical form h | **1.025** | **0.625** | **0.000** |
+
+The independent and no-information herding-only voter models have **zero effect in every tested c, release time and physical prior**. This is a structural causal-wiring constraint from the simulated information pathways, not proof that real bettors react to horse crowding. Market output may depend on information content and arrival even when its fixed voter threshold never changes. Threshold step counts reflect the deliberately coded 0.10/hour gate, not a learned market boundary.
+
+### Five seeds stress the finite-draw sensitivity
+
+A second audit **reused the same six historic races** for 5 different synthetic seeds, 150 virtual horse races per source race and seed. For c=2 the equal-real-race market-index TV responses were:
+
+| Horse prior | Signal early: mean [seed min, seed max] | Signal late: mean [min, max] | Never |
+| --- | ---: | ---: | ---: |
+| q0 | 1.331 [1.200, 1.504] | 0.734 [0.700, 0.775] | 0 |
+| h | 1.420 [1.292, 1.521] | 0.784 [0.729, 0.921] | 0 |
+
+The early response exceeded delayed in **5/5 artificial seed replications** in both source-prior scenarios. These are **simulation-noise ranges on the same input race labels**, not population confidence intervals, independent experiments, calibrated market effects, or new data supporting a phase transition. Because this audit uses 150 rather than 350 virtual draws, its seed-mean response need not numerically equal the main 350-draw run.
+
+### PDE closure diagnostic: numerical error is not the whole particle/PDE difference
+
+One representative historical 11-horse roster under each prior, 12-second fixed ability/no-Gumbel short-time residual process, and 1500 independent particle replicas:
+
+| Physical prior | c=0 PDE vs analytic Gaussian max CDF deviation | c=0 particle-vs-PDE max CDF difference | c=8 particle-vs-PDE max CDF difference | c=0 → c=8 mean absolute off-diagonal synthetic horse-position correlation |
+| --- | ---: | ---: | ---: | ---: |
+| q0 | **0.00761** | 0.02938 | 0.06288 | 0.02065 → 0.05264 |
+| h | **0.00178** | 0.03243 | 0.05525 | 0.02065 → 0.05289 |
+
+All one-horse PDE densities retained total mass 1 to floating point precision. The c=0 Gaussian comparison supplies a **discretization-only** reference; the interacting particle-vs-factorized-PDE discrepancy still mixes sampling, numerical method differences and ignored joint spatial correlations. The correlation statistic is itself a finite synthetic-sample statistic, not a real GPS observation. These data cannot allocate an exact percentage of discrepancy to the mean-field closure.
+
+### Negative and conflicting scores must remain visible
+
+The source-locked retrospective **official outcome** score for the q0-prior, c=2 information-only vote scenario was WIN Log loss **1.72066** if the signal was released in round 1, **1.71583** if received in round 3, and **1.70740** if never received. Better fit to hypothetical physical crowding **did not** mean better historical winner scoring. No rule can be selected as a future betting advantage from these six known labels or from matching later quoted market indices.
+
+**Conclusion:** One linked physical/social mathematical model now connects interaction intensity, PDE closure diagnostics, as-of-limited source-clock arrival, voter information response, price indices and ordered finish probabilities. **Real-world crowding coefficient, critical threshold, real bettor imitation, true winning probability calibration, expected wagering return and cross-date generalization: HOLD.**
