@@ -287,7 +287,7 @@ def audit(root=ROOT, *, prestart_only=False):
         return result
     scores = _score_history(prepared, root)
     if {(x["race_id"], x["meeting_day"]) for x in scores} != {
-        (x["race_id"], x["meeting_day"]) for x in per_race}:
+        (x["race_id"], x["date"]) for x in per_race}:
         raise ValueError("HOLD_POSTRACE_JOIN_CHANGED")
     score_by_id = {x["race_id"]: x for x in scores}
     for row in per_race:
