@@ -68,11 +68,16 @@ JST=timezone(timedelta(hours=9))
 EXPECTED_SLOTS=26
 EXPECTED_DATES=20
 EXPECTED_LEGACY_KIKKA="2026-10-25|京都|菊花賞"
+# Fixed BEFORE Oct31 first future slot: do not choose a convenient
+# qmid->qnext horizon after inspecting the next observed quote.
+LOCKED_MARKET_HORIZON_MINUTES=15
+LOCKED_MARKET_TARGET_WINDOW_MINUTES=5
 REQUIRED_ENTRY_FIELDS={
     "slot_id","official_race_id","scheduled_post_jst",
     "racecard_source_url","racecard_received_at_jst",
     "quote_provider_name","source_rights_checked_locally",
     "capture_stage","local_frozen_model_sha256",
+    "target_horizon_minutes","target_window_minutes",
 }
 
 
@@ -166,6 +171,11 @@ def _metadata(receipts,events):
             raise ValueError("HOLD_UNREGISTERED_DUPLICATE_OR_PAST_CAPTURE_SLOT")
         if entry["capture_stage"] not in CAPTURE_STAGES:
             raise ValueError("HOLD_UNKNOWN_LOCAL_CAPTURE_STAGE")
+        if (type(entry["target_horizon_minutes"]) is not int or
+                entry["target_horizon_minutes"]!=LOCKED_MARKET_HORIZON_MINUTES
+                or type(entry["target_window_minutes"]) is not int or
+                entry["target_window_minutes"]!=LOCKED_MARKET_TARGET_WINDOW_MINUTES):
+            raise ValueError("HOLD_CHANGED_PREDECLARED_15PLUS5_NEXT_MARKET_WINDOW")
         eid=entry["official_race_id"]
         post=entry["scheduled_post_jst"]
         card=entry["racecard_source_url"]
@@ -386,6 +396,11 @@ def campaign(root=ROOT, *, asof="2026-10-25T22:04:00+09:00",
         "new_independent_real_prospective_quote_trials_confirmed":0,
         "require_complete_same_provider_WIN_2point_and_WIDE_pair_grid":True,
         "target_selection_first_source_update_in_frozen_window":True,
+        "globally_predeclared_next_quote_horizon_minutes":
+            LOCKED_MARKET_HORIZON_MINUTES,
+        "globally_predeclared_next_quote_window_minutes":
+            LOCKED_MARKET_TARGET_WINDOW_MINUTES,
+        "changing_target_horizon_after_observing_future_quote_forbidden":True,
         "unsubmitted_slots_always_remain_in_denominator":True,
         "one_real_market_interval_not_many_horses_or_WIDE_pairs_is_unit":True,
         "six_prior_historical_real_races_are_not_new_forward_trials":True,
