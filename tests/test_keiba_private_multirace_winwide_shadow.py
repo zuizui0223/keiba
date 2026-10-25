@@ -269,6 +269,19 @@ class ShadowPureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"RECEIVED_BEFORE_PUBLICATION"):
             m.score_target(f,time_travel)
 
+    def test_authorized_future_private_export_and_too_late_received_quote(self):
+        d=source()
+        d["provenance"]="authorized_private_local_export"
+        d["operator_confirmed_research_rights"]=True
+        frozen=m.freeze_source_bytes(as_bytes(d),horse_draws=40,
+                                     horse_seed=212)
+        self.assertEqual(m.verify_freeze(frozen)["source_provenance"],
+                         "authorized_private_local_export")
+        later=target(d)
+        later["snapshots"][0]["received_at_jst"]="2026-11-07T14:56:00+09:00"
+        with self.assertRaisesRegex(ValueError,"TARGET_SNAPSHOT_CLOCK_TIME_TRAVEL"):
+            m.score_target(frozen,later)
+
     def test_cohort_duplicate_and_missing_target_guard(self):
         d=source()
         freeze=m.freeze_source_bytes(as_bytes(d),horse_draws=40)
