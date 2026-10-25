@@ -211,7 +211,7 @@ def _synthetic_odds_row(row, ids, q_latest):
 
 
 def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
-                    votes_per_step=250):
+                    votes_per_step=250, horse_prior=None):
     """The outcome never enters; late odds only enter an *audit sidecar*.
 
     Both physical ABMs are initialized from EARLY source quotes. Future
@@ -221,7 +221,16 @@ def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
     features = market_features(row)
     ids = features["horse_numbers"]
     q0 = vector(features["early"])
-    early_odds = [row["first_odds"][i] for i in ids]
+    # When an independently recorded, past-only horse prior is provided,
+    # initialize BOTH horse ensembles from it, but leave voter pool q0
+    # at the actual archived early market. No realized finish is passed.
+    # Caller is responsible for externally verifying the prior's as-of time.
+    external_horse_prior = horse_prior is not None
+    prior = vector(horse_prior) if external_horse_prior else q0
+    if len(prior) != len(ids):
+        raise ValueError("HOLD_INDEPENDENT_HORSE_PRIOR_ROSTER_MISMATCH")
+    early_odds = ([float(1/x) for x in prior] if external_horse_prior
+                  else [row["first_odds"][i] for i in ids])
     # Existing PR #9 agent model, imported unchanged.
     legacy = legacy_horse_scenario(
         early_odds, float(distance_m), draws=draws, seed=seed)
@@ -229,7 +238,7 @@ def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
         "win": [h["weak_win_pct"]/100 for h in legacy["horses"]],
         "top3": [h["weak_top3_pct"]/100 for h in legacy["horses"]]}
     sde = brownian_horse_ensemble(
-        q0, distance_m, draws=draws, seed=seed + 1)
+        prior, distance_m, draws=draws, seed=seed + 1)
     # With only a few hundred MC runs a horse may have zero simulated wins.
     # Smooth with a *prestart-only*, fixed 2-draw equivalent PL prior.
     # Otherwise log loss is undefined for an unseen winning horse.
@@ -290,6 +299,10 @@ def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
             "horse_pr9_status": legacy["status"],
             "horse_entries": len(ids),
             "initial_market_q": q0,
+            "horse_physical_initial_prior": prior,
+            "horse_prior_source": ("external_past_history_needs_source_clock"
+                                   if external_horse_prior else
+                                   "same_early_market_quote_proxy"),
             "diagnostic_only_later_market_q": np.asarray(features["latest"]),
             "event_probability_no_double_count": True,
             "not_an_independent_horse_ability_estimate": True}
