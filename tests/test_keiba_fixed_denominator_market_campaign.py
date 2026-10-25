@@ -203,7 +203,7 @@ class PrivateMetadataAndFutureCaptureTests(unittest.TestCase):
         sh["all_model_scores"]["FAKE_WINNER_MODEL"]={
             "next_price_index_TV_pp":0.0,
             "next_price_index_KL_nats":0.0}
-        with self.assertRaisesRegex(ValueError,"UNIVERSE"):
+        with self.assertRaisesRegex(ValueError,"PREDECLARED_MODEL_CANDIDATES"):
             m.campaign(asof=POSTRACE,local_receipts=meta,private_scores=[sh])
         sh=local_score()
         sh["sealed_prediction_sha256"]="0"*64
