@@ -40,6 +40,8 @@ def first_receipt(stage="next_quote_local_scored", *, sha=None):
         "source_rights_checked_locally":True,
         "capture_stage":stage,
         "local_frozen_model_sha256":sha,
+        "target_horizon_minutes":15,
+        "target_window_minutes":5,
     }
 
 
@@ -244,6 +246,16 @@ class PrivateMetadataAndFutureCaptureTests(unittest.TestCase):
         meta=receipts(stage="metadata_only")
         with self.assertRaisesRegex(ValueError,"WITHOUT_ELIGIBLE"):
             meta["entries"][0]["local_frozen_model_sha256"]="a"*64
+            m.campaign(asof=CUTOFF,local_receipts=meta)
+
+    def test_frozen_next_market_quote_horizon_cannot_be_changed_posthoc(self):
+        meta=receipts(stage="local_SHA_frozen")
+        meta["entries"][0]["target_horizon_minutes"]=18
+        with self.assertRaisesRegex(ValueError,"CHANGED_PREDECLARED_15PLUS5"):
+            m.campaign(asof=CUTOFF,local_receipts=meta)
+        meta=receipts(stage="local_SHA_frozen")
+        meta["entries"][0]["target_window_minutes"]=0
+        with self.assertRaisesRegex(ValueError,"CHANGED_PREDECLARED_15PLUS5"):
             m.campaign(asof=CUTOFF,local_receipts=meta)
 
     def test_metadata_source_enumeration_cannot_change_denominator(self):
