@@ -28,6 +28,8 @@ def make_target():
     return {
         "source_system":SOURCE_SYSTEM,"horse_ids":HORSES.copy(),
         "asof_jst":"2026-10-26T09:30:00+09:00",
+        "initial_market_published_at_jst":"2026-10-26T08:45:00+09:00",
+        "initial_market_received_at_jst":"2026-10-26T09:00:00+09:00",
         "first_marker_m":150,"distance_m":1000,"race_class":"C",
     }
 
@@ -79,10 +81,17 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
 
     def test_source_identity_marker_class_date_are_strict(self):
         for mode in ("new_target","cross_source","cross_record_source",
+                     "market_quote_time_reversed","early_market_quote",
                      "marker","race_class","late_receive","late_race",
                      "missing_one_peer","duplicate","future_target_label",
                      "no_source_rights"):
             source,target=make_source(),make_target()
+            if mode=="market_quote_time_reversed":
+                target["initial_market_published_at_jst"]="2026-10-26T09:15:00+09:00"
+                target["initial_market_received_at_jst"]="2026-10-26T09:00:00+09:00"
+            if mode=="early_market_quote":
+                target["initial_market_published_at_jst"]="2026-09-30T08:30:00+09:00"
+                target["initial_market_received_at_jst"]="2026-09-30T08:50:00+09:00"
             if mode=="new_target":target["source_system"]="UNRELATED_JRA"
             if mode=="cross_source":source["source_system"]="UNRELATED_JRA"
             if mode=="cross_record_source":source["records"][0]["source_system"]="UNRELATED_JRA"
