@@ -15,7 +15,8 @@ import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from keiba_individual_trait_to_market_cascade import (
     repeatable_traits,objective_horse_prior,initial_market_proxy,
-    layered_vote_market,theoretical_gain,deterministic_market_step,\n    local_market_gain,run_coupled_repeatability_trial,
+    layered_vote_market,theoretical_gain,deterministic_market_step,
+    local_market_gain,run_coupled_repeatability_trial,
 )
 
 
