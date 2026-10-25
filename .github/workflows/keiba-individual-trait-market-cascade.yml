@@ -1,0 +1,36 @@
+name: Individual repeatability to horse ABM/PDE and market mechanism
+on:
+  push:
+    branches: [analysis/horse-trait-market-feedback-stability-20261026]
+    paths:
+      - 'scripts/keiba_individual_trait_to_market_cascade.py'
+      - 'tests/test_keiba_individual_trait_to_market_cascade.py'
+      - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
+      - '.github/workflows/keiba-individual-trait-market-cascade.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_individual_trait_to_market_cascade.py'
+      - 'tests/test_keiba_individual_trait_to_market_cascade.py'
+      - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
+      - '.github/workflows/keiba-individual-trait-market-cascade.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-same-horse-physics-bettors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install scientific dependency for inherited horse particle and PDE laws
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Check all source gates, integrated probability and null markets
+        run: |
+          python -m compileall -q scripts/keiba_individual_trait_to_market_cascade.py tests/test_keiba_individual_trait_to_market_cascade.py
+          python -m unittest discover -s tests -p test_keiba_individual_trait_to_market_cascade.py -v
