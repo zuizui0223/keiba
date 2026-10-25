@@ -370,7 +370,7 @@ def score_target(freeze,target):
         pub,rx=_validate_panel(snap,PANEL_WIN_FIELDS,
                                frozen["provider"],"win")
         if not (prev_pub<pub<=rx and rx>prev_rx and rx>=previous_receipt
-                and pub<scheduled-timedelta(minutes=10)):
+                and rx<scheduled-timedelta(minutes=10)):
             raise ValueError("HOLD_TARGET_SNAPSHOT_CLOCK_TIME_TRAVEL")
         prices=_market_prices(snap)
         if set(prices)!=set(frozen["horse_numbers"]):
