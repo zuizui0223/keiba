@@ -1,0 +1,50 @@
+name: Odds three-gate threshold source-locked audit (exploratory only)
+
+on:
+  push:
+    branches:
+      - analysis/odds-three-threshold-regime-20261025
+    paths:
+      - scripts/odds_threshold_regime_bridge.py
+      - tests/test_odds_threshold_regime_bridge.py
+      - docs/odds-threshold-three-gate-20261025.md
+      - .github/workflows/odds-threshold-regime.yml
+  pull_request:
+    paths:
+      - scripts/odds_threshold_regime_bridge.py
+      - tests/test_odds_threshold_regime_bridge.py
+      - docs/odds-threshold-three-gate-20261025.md
+      - .github/workflows/odds-threshold-regime.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixed-exploratory-threshold-math-and-history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit and source-locked integration tests
+        run: |
+          python -m unittest discover -s tests -p 'test_odds_threshold_regime_bridge.py' -v
+          python -m compileall -q scripts/odds_threshold_regime_bridge.py tests/test_odds_threshold_regime_bridge.py
+      - name: Produce history-free, prestart-only market regime counts
+        run: |
+          python scripts/odds_threshold_regime_bridge.py --prestart-only --output tmp/odds-three-gate-prestart.json
+          python -c "import json; r=json.load(open('tmp/odds-three-gate-prestart.json')); assert r['races']==6 and r['horse_entries']==84; assert r['postrace_scores']=='NOT_COMPUTED'; assert r['model_status'].startswith('NEW_EXPLORATORY'); assert not r['qualified_for_forward_threshold_inference']"
+      - name: Reproduce negative real six-race retrospective properly scored outcome
+        run: |
+          python scripts/odds_threshold_regime_bridge.py --output tmp/odds-three-gate-retrospective.json
+          python -c "import json; r=json.load(open('tmp/odds-three-gate-retrospective.json')); assert r['races']==6 and r['meeting_dates']==2 and r['high_KL_M1_races']==0; assert r['race_count_lower_win_log_loss_than_M0']['M3_initial10_speed010']==1; assert r['postrace_scores_are_retrospective_only']; assert not r['qualified_for_forward_threshold_inference']"
+      - name: Preserve aggregate-only reproducibility artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: three-gate-hold-six-historic-races-not-prospective
+          path: |
+            tmp/odds-three-gate-prestart.json
+            tmp/odds-three-gate-retrospective.json
+          retention-days: 14
