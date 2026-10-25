@@ -8,8 +8,10 @@ on:
       - 'scripts/keiba_nonlocal_horse_pde_bettor_bridge.py'
       - 'scripts/keiba_coupled_info_delay_regime_surface.py'
       - 'scripts/keiba_coupled_signal_clock_gate.py'
+      - 'scripts/keiba_coupled_delay_seed_envelope.py'
       - 'tests/test_keiba_coupled_info_delay_regime_surface.py'
       - 'tests/test_keiba_coupled_signal_clock_gate.py'
+      - 'tests/test_keiba_coupled_delay_seed_envelope.py'
       - 'docs/betting/horse-crowding-information-arrival-regime-20261025.md'
       - '.github/workflows/keiba-coupled-info-delay-regime.yml'
   pull_request:
@@ -18,8 +20,10 @@ on:
       - 'scripts/keiba_nonlocal_horse_pde_bettor_bridge.py'
       - 'scripts/keiba_coupled_info_delay_regime_surface.py'
       - 'scripts/keiba_coupled_signal_clock_gate.py'
+      - 'scripts/keiba_coupled_delay_seed_envelope.py'
       - 'tests/test_keiba_coupled_info_delay_regime_surface.py'
       - 'tests/test_keiba_coupled_signal_clock_gate.py'
+      - 'tests/test_keiba_coupled_delay_seed_envelope.py'
       - 'docs/betting/horse-crowding-information-arrival-regime-20261025.md'
       - '.github/workflows/keiba-coupled-info-delay-regime.yml'
   workflow_dispatch:
@@ -44,6 +48,7 @@ jobs:
           python -m compileall -q scripts/keiba_coupled_horse_market_pde.py scripts/keiba_nonlocal_horse_pde_bettor_bridge.py scripts/keiba_coupled_info_delay_regime_surface.py tests/test_keiba_coupled_info_delay_regime_surface.py
           python -m unittest discover -s tests -p 'test_keiba_coupled_info_delay_regime_surface.py' -v
           python -m unittest discover -s tests -p 'test_keiba_coupled_signal_clock_gate.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_coupled_delay_seed_envelope.py' -v
       - name: Real archived six race rosters, but no target outcome opened
         run: |
           python scripts/keiba_coupled_info_delay_regime_surface.py --preoutcome-only --draws 60 --pde-particles 400 --output tmp/coupled-info-preoutcome.json
@@ -55,10 +60,15 @@ jobs:
       - name: Print only the physical-market link and PDE closure diagnostics
         run: |
           python -c "import json; x=json.load(open('tmp/coupled-info-retrospective.json')); print('SYNTHETIC_PDE_CLOSURE',json.dumps(x['PDE_one_representative_race_not_empirical_GPS'],sort_keys=True)); print('PHYSICAL_INTENSITY_RESPONSE',json.dumps(x['physical_crowd_intensity_response'],sort_keys=True)); print('COUPLED_INFORMATION_TRANSFER_CURVE',json.dumps({p:{str(c):{str(a):x['mean_equal_race_scores'][p][str(float(c))][str(a)]['information']['counterfactual_crowd_to_market_TV_pp'] for a in [1,3,5]} for c in [0.,.5,1.,2.,4.,8.]} for p in ['initial_market','historical_form']},sort_keys=True)); print('DATE_SCOPED_INFO_DELAY',json.dumps(x['by_meeting_day'],sort_keys=True)); print('C2_CROWD_DELAY_WIN_AND_MARKET',json.dumps({p:{a:{m:x['mean_equal_race_scores'][p]['2.0'][str(a)][m] for m in ['independent','information','mixed','threshold_mixed']} for a in [1,3,5]} for p in ['initial_market','historical_form']},sort_keys=True)); print('EMPIRICAL_CRITICALITY','HOLD')"
+      - name: Five seeds quantify MC variability, NOT five additional race cohorts
+        run: |
+          python scripts/keiba_coupled_delay_seed_envelope.py --seeds 5 --draws 150 --output tmp/coupled-info-seed-noise.json
+          python -c "import json; x=json.load(open('tmp/coupled-info-seed-noise.json')); assert x['real_races']==6 and x['real_meeting_dates']==2 and x['synthetic_seed_repeat_count']==5 and x['same_real_races_reused_for_seed_repetitions'] and x['no_official_outcomes_read']; assert all(y['seed_repetitions_any_no_info_response']==0 for y in x['by_horse_initial_prior'].values()); print('SYNTHETIC_SIGNAL_DELAY_SEED_ENVELOPE',json.dumps(x['by_horse_initial_prior'],sort_keys=True))"
       - uses: actions/upload-artifact@v4
         with:
           name: coupled-crowd-time-hierarchy-aggregate-only
           path: |
             tmp/coupled-info-preoutcome.json
             tmp/coupled-info-retrospective.json
+            tmp/coupled-info-seed-noise.json
           retention-days: 14
