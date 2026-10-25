@@ -1,0 +1,50 @@
+name: Keiba conditional pool-volume null and integrated horse-bettor market
+
+on:
+  push:
+    branches: [analysis/market-null-volume-identifiability-20261025]
+    paths:
+      - 'scripts/keiba_conditional_volume_null_bridge.py'
+      - 'tests/test_keiba_conditional_volume_null_bridge.py'
+      - 'docs/betting/market-volume-conditional-null-20261025.md'
+      - '.github/workflows/keiba-conditional-volume-null.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_conditional_volume_null_bridge.py'
+      - 'tests/test_keiba_conditional_volume_null_bridge.py'
+      - 'docs/betting/market-volume-conditional-null-20261025.md'
+      - '.github/workflows/keiba-conditional-volume-null.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quote-noise-stake-identifiability:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependency
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Enforce mathematical accounting, noise calibration, source integrity and no outcome leakage
+        run: |
+          python -m compileall -q scripts/keiba_conditional_volume_null_bridge.py tests/test_keiba_conditional_volume_null_bridge.py
+          python -m unittest discover -s tests -p 'test_keiba_conditional_volume_null_bridge.py' -v
+      - name: Source-locked six real market snapshots, conditional on synthetic vote volumes
+        run: |
+          python scripts/keiba_conditional_volume_null_bridge.py --null-draws 2000 --horse-draws 80 --output tmp/conditional-volume-noise.json
+          python -c "import json; x=json.load(open('tmp/conditional-volume-noise.json')); assert x['archived_real_races']==6 and x['distinct_source_meeting_dates']==2 and x['horse_race_entries']==84; assert not x['observed_exact_JRA_pool_shares_and_stake_flow_available']; assert x['no_horse_outcomes_loaded_even_for_scoring'] and x['real_social_contagion_or_market_criticality']=='HOLD'; assert len(x['by_real_race_without_raw_prices'])==6 and all(len(q['price_index_null_sensitivity'])==12 for q in x['by_real_race_without_raw_prices'])"
+      - name: Emit only aggregate sensitivity and dependent-date grouping
+        run: |
+          python -c "import json; x=json.load(open('tmp/conditional-volume-noise.json')); print('SOURCE_DATE_CONDITIONAL_NULL',json.dumps(x['source_date_summaries'],sort_keys=True)); print('SYNTHETIC_CALIBRATION_NOT_REAL_PVALUES',json.dumps(x['synthetic_holdout_null_calibration'],sort_keys=True)); print('CONNECTED_ABM_MARKET_FIT_BY_RACE',json.dumps({r['race_id']:r['same_ABM_horse_to_bettor_smooth_candidates'] for r in x['by_real_race_without_raw_prices']},sort_keys=True)); print('MARKET_CRITICALITY',x['real_social_contagion_or_market_criticality'])"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keiba-conditional-volume-noise-aggregate-only
+          path: tmp/conditional-volume-noise.json
+          retention-days: 14
