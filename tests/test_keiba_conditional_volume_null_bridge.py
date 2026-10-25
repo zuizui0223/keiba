@@ -47,8 +47,7 @@ def synthetic_history():
 class ConditionalNullPureTests(unittest.TestCase):
     def test_simplex_lower_bound_and_genuine_flow_witness_algebra(self):
         q=m.vector([.4,.25,.15,.12,.08])
-        b=m.vector([0,.5,.3,.2,0]+[]) if False else np.asarray(
-            [0.,.5,.3,.2,0.])
+        b=np.asarray([0.,.5,.3,.2,0.])
         later=.6*q+.4*b
         self.assertAlmostEqual(
             m.transition_accounting_lower_bound(q,later),.4,places=12)
