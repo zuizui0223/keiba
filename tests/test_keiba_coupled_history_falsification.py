@@ -179,6 +179,11 @@ class HistoricalRealSourceIntegrationTest(unittest.TestCase):
         self.assertEqual(report["prospective_model_readiness"],
                          "HOLD_UNPROVEN_HISTORY_CAPTURE_TIME")
         self.assertTrue(report["original_postrace_normalization_not_asof_proven"])
+        self.assertEqual(report["by_meeting_date"]["2026-10-12"]["n_real_races"],5)
+        self.assertEqual(report["by_meeting_date"]["2026-10-18"]["n_real_races"],1)
+        self.assertTrue(report["meeting_date_bootstrap_not_claimed_with_2_dates"])
+        self.assertIn("history_minus_shuffled_information_WIN_LL",
+                      report["mean_date_equal_contrasts"])
 
 
 if __name__=="__main__":
