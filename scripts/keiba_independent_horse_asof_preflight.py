@@ -78,12 +78,18 @@ def verify_offline_source(source_bytes: bytes, receipt: dict, market_row: dict):
     capture=aware(receipt.get("source_received_at_jst"))
     upstream=aware(receipt.get("publisher_updated_at_jst"))
     earliest=aware(market_row["initial_quote_at"])
+    first_received=aware(market_row.get("initial_quote_received_at_jst"))
     latest=aware(market_row["latest_quote_at"])
+    later_received=aware(market_row.get("latest_quote_received_at_jst"))
+    frozen_locally=aware(market_row.get("local_forecast_generated_at_jst"))
     post=aware(market_row["post_at"])
-    # SOURCE and snapshot clocks need to precede the first synthetic
-    # market-agent interval. Local strings do not prove these clocks genuine.
-    if not (upstream<=capture<=earliest<latest<=post-timedelta(minutes=10)):
-        raise ValueError("HOLD_HORSE_SOURCE_NOT_AVAILABLE_AT_MARKET_INITIAL_TIME")
+    # Publication clocks and OUR acquisition clocks are separate. All
+    # source declarations are still LOCAL and not independent proof.
+    # Both historical signal AND first market source must be available
+    # before the simulated bettor path begins, without time travel.
+    if not (upstream<=capture<=earliest<=first_received<
+            latest<=later_received<=frozen_locally<=post-timedelta(minutes=10)):
+        raise ValueError("HOLD_HORSE_SOURCE_OR_QUOTE_RECEPTION_TIME_TRAVEL")
     official_name_map=receipt.get("declared_official_horse_names_by_number")
     ids=_positive_ids(official_name_map)
     if ids!=f["horse_numbers"]:
@@ -124,6 +130,9 @@ def verify_offline_source(source_bytes: bytes, receipt: dict, market_row: dict):
         "status":STATUS,
         "race_id":source["race_id"],
         "checked_first_market_timestamp":market_row["initial_quote_at"],
+        "first_market_received_at":market_row["initial_quote_received_at_jst"],
+        "latest_market_received_at":market_row["latest_quote_received_at_jst"],
+        "local_forecast_generated_at":market_row["local_forecast_generated_at_jst"],
         "local_source_received_at":receipt["source_received_at_jst"],
         "first_market_horse_numbers":ids,
         "horse_history_prior":form["prior"],
