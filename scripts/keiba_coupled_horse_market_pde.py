@@ -140,7 +140,7 @@ def brownian_horse_ensemble(q0, distance_m, *, draws=400, seed=20261025,
 def vote_market(q0, signal, *, mode, duration_hours, seed=20261025,
                 steps=4, synthetic_prior_stakes=3000,
                 synthetic_votes_per_step=250):
-    """Independent categorical bettors represented by multinomial tallies.
+    """Independent categorical bettors with shared-uniform paired tally draws.
 
     Prices are normalized *proxy vote shares*, not recovered JRA pool stakes.
     Threshold mixing is a fixed, hypothetical endogenous response rule.
@@ -174,7 +174,13 @@ def vote_market(q0, signal, *, mode, duration_hours, seed=20261025,
                 herd_power = 1.50
                 active_steps += 1
             weights = current**herd_power * signal**0.75
-        votes = rng.multinomial(synthetic_votes_per_step, vector(weights))
+        # Inverse-CDF categorical choices using the SAME per-bettor
+        # uniforms across counterfactual modes (when initialized with the
+        # same seed). This isolates mechanism changes from voter MC noise.
+        uniforms = rng.random(synthetic_votes_per_step)
+        allocations = np.searchsorted(np.cumsum(vector(weights)),
+                                      uniforms, side="right")
+        votes = np.bincount(allocations, minlength=len(q0))
         pool = pool + votes
         path.append(vector(pool))
     end = path[-1]
@@ -243,9 +249,9 @@ def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
                    "horse_SDE_no_pack": no_pack_prediction,
                    "horse_SDE_weak": weak_prediction}
     market = {}
-    for i, mode in enumerate(MIXED_MODES):
+    for mode in MIXED_MODES:
         out = vote_market(q0, signal, mode=mode,
-                          duration_hours=features["hours"], seed=seed+300+i,
+                          duration_hours=features["hours"], seed=seed+300,
                           synthetic_votes_per_step=votes_per_step)
         market[mode] = out
         synthetic_row = _synthetic_odds_row(row, ids, out["final"])
