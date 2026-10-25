@@ -67,3 +67,28 @@ For strict outcome-firewall verification:
 Neither mode downloads protected sources, submits bets, rewrites any frozen forecast, or appends to v3.1's official results ledger.
 
 **Actual empirical next step:** use lawful, independently server-timestamped past-ID/GPS/lap movement for the SAME upcoming racing horses as the WIN quote panels, measure when a given information item reaches the public market, model actual as-of quote reception rather than invented equal voting rounds, and then score a genuinely separate future date cohort. Until then all biological/social criticality claims remain HOLD.
+
+
+## A real *clock-declaration* can be mapped to these rounds (no alleged time proof)
+
+The new [horse-signal clock gate](../../scripts/keiba_coupled_signal_clock_gate.py) connects local publisher/receipt timestamps to the **same** signal_start_step parameter used by the integrated bettor ABM. It does not hardcode the number of hours to information reception or reuse a later quote as a horse signal.
+
+The source declaration (KEIBA_CAUSAL_HORSE_SIGNAL_AND_MARKET_RECEIPTS_V1) must include eight timezone-aware clocks: first WIN quote publisher/update and receipt; later WIN publisher/update and receipt; local model creation; scheduled post; horse-signal publisher/update and receipt. Hard chronological constraints:
+- first published <= first received < later published <= later received <= model creation <= post minus ten minutes;
+- horse-signal publication <= horse-signal receipt <= model creation.
+- A horse signal already received when the first market q0 is locally available can enter round 1. If it arrives between voting-round start times it enters the **next** round. At the exact start of round 3 it is usable in round 3. Once all four round-start times have passed, return round 5 (not available in this quote interval).
+
+For four equal hypothetical rounds within the first-to-later quote **receipt** interval, the integer mapping is:
+\[
+r =
+\begin{cases}
+1,& t_{\mathrm{horse\ received}}\le t_{\mathrm{first\ quote\ received}},\\
+1+\lceil4(t_{\mathrm{horse}}-t_{\mathrm{first}})/(t_{\mathrm{later}}-t_{\mathrm{first}})\rceil,
+& t_{\mathrm{first}}<t_{\mathrm{horse}}<t_{\mathrm{later}},\\
+5,&t_{\mathrm{horse}}\ge t_{\mathrm{later}}.
+\end{cases}
+\]
+
+The market simulation still uses q0 as observed initial support; the horse signal is unavailable before its assigned round. If \`externally_authenticated_by_third_party=true\` is merely self-declared in JSON, the gate rejects the input outright. A source SHA and internally consistent local clock cannot prove that the source actually existed or was public before the simulated market. The output is ALWAYS LOCAL_EVENT_ORDER_AND_ROUND_ASSIGNMENT_NOT_EXTERNALLY_ATTESTED; it cannot be inserted into v3.1 or any formal prospective ledger.
+
+**Distinction from the stricter earlier preflight:** the full-window [independent-horse source gate](../../scripts/keiba_independent_horse_asof_preflight.py) correctly refused sources received after q0 when modeling the *entire* interval as if already informed. With the new explicit information arrival, later but before-forecast sources may be used **only from their actual declared reception round onward**. Neither route imputes an earlier receipt or simulates knowledge of a result that had not arrived.
