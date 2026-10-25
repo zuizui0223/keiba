@@ -26,7 +26,7 @@ import numpy as np
 from betting_abm_pde_sensitivity import scenario as legacy_horse_scenario
 from betting_abm_pde_particle_bridge import compare_particle_density
 from odds_threshold_regime_bridge import (
-    ROOT, market_features, forecast_prestart, exact_win_top3,
+    ROOT, aware, market_features, forecast_prestart, exact_win_top3,
     load_source_locked_panels, score_forecast, normalize,
 )
 
@@ -338,8 +338,7 @@ def audit(root=ROOT, *, prestart_only=False, draws=250, seed=20261025):
     date_rows = {}
     for row, res in prepared:
         if row["meeting_day"] == "2026-10-12":
-            if verified_at <= market_features(row)["hours"] * 0 + __import__(
-                    "odds_threshold_regime_bridge").aware(row["post_at"]):
+            if verified_at <= aware(row["post_at"]):
                 raise ValueError("HOLD_OUTCOME_BEFORE_POST")
             top3 = oct12["races"][str(row["race_no"])]["positions"]
         else:
