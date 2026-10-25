@@ -43,7 +43,7 @@ from pathlib import Path
 import re
 import subprocess
 
-from keiba_private_multirace_winwide_shadow import verify_freeze
+from keiba_private_multirace_winwide_shadow import (verify_freeze,SCORE_SCHEMA,SCORE_STATUS)
 from odds_shadow_freeze_score import _aware
 
 REPOSITORY="zuizui0223/keiba"
@@ -258,6 +258,49 @@ def verify_live(freeze):
     }
 
 
+def bind_scored_next_market_to_proof(proof, score):
+    """Match a LOCAL next-price score to a remotely proven SHA timestamp.
+
+    Does not independently verify the completeness of the target quote
+    capture. A correct score with a real GitHub pretarget commitment is
+    still *not* an authenticated betting-pool or horse-outcome experiment.
+    """
+    if (not isinstance(proof,dict) or proof.get("status")!=STATUS_REMOTE
+            or proof.get("external_sha_pre_target_verified") is not True
+            or proof.get("independent_GitHub_API_fetch_performed") is not True):
+        raise ValueError("HOLD_SHA_PROOF_NOT_INDEPENDENT_GITHUB_VERIFIED")
+    if (not isinstance(score,dict) or score.get("schema")!=SCORE_SCHEMA
+            or score.get("status")!=SCORE_STATUS
+            or score.get("race_id")!=proof["race_id"]
+            or score.get("sealed_prediction_sha256")!=
+               proof["sha256_of_full_private_frozen_model"]
+            or score.get("external_preseal_authenticated") is not False
+            or score.get("capture_stream_independently_complete") is not False):
+        raise ValueError("HOLD_LOCAL_SCORE_AND_EXTERNALLY_PROVEN_SHA_DO_NOT_MATCH")
+    observed_at=_aware(score["selected_first_eligible_source_published_at"])
+    recorded_at=_aware(proof["github_server_comment_created_at_claim"])
+    min_target=_aware(proof["target_market_window_begins_at"])
+    if not recorded_at<min_target<=observed_at:
+        raise ValueError("HOLD_TARGET_PRICE_PUBLISHED_BEFORE_GITHUB_COMMITMENT")
+    return {
+        "status":"SHA_CREATED_BEFORE_TARGET_VERIFIED_SCORE_CAPTURE_STILL_LOCAL",
+        "race_id":proof["race_id"],
+        "github_comment_url":proof["github_comment_url"],
+        "sealed_SHA256":proof["sha256_of_full_private_frozen_model"],
+        "score_primary_TV_model_values": {
+            name:{"next_price_index_TV_pp":value["next_price_index_TV_pp"],
+                  "next_price_index_KL_nats":value["next_price_index_KL_nats"]}
+            for name,value in score["all_model_scores"].items()
+        },
+        "external_GitHub_SHA_creation_time_verified":True,
+        "source_receipts_independently_verified":False,
+        "later_price_capture_completeness_independently_verified":False,
+        "true_win_place_probability_calibration":False,
+        "wager_profit_or_market_phase_transition":"HOLD",
+        "formal_v31_evaluation_unchanged":True,
+    }
+
+
 def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -281,6 +324,7 @@ def main():
     c=sub.add_parser("verify-live")
     c.add_argument("--freeze",required=True,type=Path)
     c.add_argument("--output",required=True,type=Path)
+    c.add_argument("--score",type=Path)
     args=p.parse_args()
     freeze=read_json(args.freeze)
     if args.action=="prepare":
@@ -289,6 +333,8 @@ def main():
         out=inspect_fixture(freeze,read_json(args.comments_json))
     else:
         out=verify_live(freeze)
+        if args.score is not None:
+            out=bind_scored_next_market_to_proof(out,read_json(args.score))
     write_json(args.output,out)
     print(json.dumps({
         "status":out["status"],
