@@ -15,7 +15,7 @@ import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from keiba_individual_trait_to_market_cascade import (
     repeatable_traits,objective_horse_prior,initial_market_proxy,
-    layered_vote_market,theoretical_gain,run_coupled_repeatability_trial,
+    layered_vote_market,theoretical_gain,deterministic_market_step,\n    local_market_gain,run_coupled_repeatability_trial,
 )
 
 
@@ -177,6 +177,29 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
         self.assertEqual(out["physical_nonlocal_horse_model"]
                          ["source_physical_constants_hypothetical"]["kernel_radius_m"],8.)
         self.assertTrue(out["information_never_market_identical"])
+
+
+    def test_local_gain_jacobian_matches_analytic_uniform_threshold(self):
+        # f_herd = 1/2 => the source-free uniform fixed point is neutral
+        # at gamma=2, NOT when any particular displayed odds hits 10.
+        q=np.ones(6)/6
+        for gamma,expected in ((1.,.9),(2.,1.),(3.,1.1)):
+            with self.subTest(gamma=gamma):
+                out=local_market_gain(q,q,q,gamma=gamma,
+                                      new_vote_fraction=.2)
+                analytic=theoretical_gain(
+                    herding_fraction=.5,gamma=gamma,
+                    new_vote_fraction=.2)["linear_gain"]
+                self.assertTrue(out["is_evaluated_at_equilibrium"])
+                self.assertTrue(out["gain_is_an_instability_test"])
+                self.assertAlmostEqual(
+                    out["local_simplex_spectral_gain"],analytic,places=7)
+                self.assertAlmostEqual(analytic,expected)
+        nonuniform=unit = np.asarray([.35,.25,.20,.10,.07,.03])
+        out=local_market_gain(q,nonuniform,q,gamma=1.3)
+        self.assertFalse(out["is_evaluated_at_equilibrium"])
+        self.assertFalse(out["gain_is_an_instability_test"])
+        self.assertIsNone(out["model_critical_absolute_odds"])
 
 
 if __name__ == "__main__":
