@@ -36,6 +36,7 @@ from urllib.parse import urlparse
 
 from keiba_private_multirace_winwide_shadow import (
     SCORE_SCHEMA, SCORE_STATUS,
+    MODEL_BENCHMARKS, SIGNAL_VARIANTS, ARRIVALS,
 )
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -242,7 +243,14 @@ def _scores(score_files,metadata):
             models=score.get("all_model_scores")
             if not isinstance(models,dict) or not set(MODEL_NAMES).issubset(models):
                 raise ValueError("HOLD_INCOMPLETE_PREDECLARED_MODEL_CANDIDATES")
-            if len(models) not in (12,21):
+            permitted_base=set(MODEL_BENCHMARKS)
+            permitted_base.update(
+                f"coupled_market_qmid_{variant}_round{step}"
+                for variant in SIGNAL_VARIANTS for step in ARRIVALS)
+            permitted_with_history=permitted_base|{
+                f"coupled_authorized_past_form_{variant}_round{step}"
+                for variant in SIGNAL_VARIANTS for step in ARRIVALS}
+            if set(models) not in (permitted_base,permitted_with_history):
                 raise ValueError("HOLD_CHANGED_WIN_WIDE_PHYSICAL_MODEL_UNIVERSE")
             for val in models.values():
                 if not isinstance(val,dict) or set(val)!={
@@ -261,6 +269,19 @@ def campaign(root=ROOT, *, asof="2026-10-25T22:04:00+09:00",
     calendar,coverage=_locked_universe(root)
     local=_metadata(local_receipts,calendar)
     scored=_scores(private_scores if private_scores is not None else [],local)
+    # A campaign report for an earlier as-of date cannot pretend it has
+    # already observed a quote that will only be received in the future.
+    # Missing an entire target window cannot be final until race post.
+    for slot,score in scored.items():
+        item=local[slot]
+        if score["status"]==SCORE_STATUS:
+            quote=_aware(score["selected_source_received_at"])
+            published=_aware(score["selected_first_eligible_source_published_at"])
+            if not (published<=quote<=now and
+                    quote<_aware(item["scheduled_post_jst"])):
+                raise ValueError("HOLD_TARGET_MARKET_QUOTE_RECEIVED_AFTER_ASOF")
+        elif now<_aware(item["scheduled_post_jst"]):
+            raise ValueError("HOLD_TARGET_WINDOW_MARKED_MISSING_BEFORE_RACE_POST")
     statuses=[]
     for e in calendar:
         slot=e["slot_id"]
