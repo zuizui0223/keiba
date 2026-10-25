@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Keep authorized local market sources, horse histories and private freezes
+# out of commits and Draft PRs; only code and aggregate synthetic audits.
+private/
+tmp/
