@@ -6,16 +6,20 @@ on:
     paths:
       - 'scripts/keiba_coupled_horse_market_pde.py'
       - 'scripts/keiba_history_market_innovation_audit.py'
+      - 'scripts/keiba_independent_horse_asof_preflight.py'
       - 'tests/test_keiba_coupled_history_falsification.py'
       - 'tests/test_keiba_history_market_innovation_audit.py'
+      - 'tests/test_keiba_independent_horse_asof_preflight.py'
       - 'docs/betting/coupled-history-market-innovation-20261025.md'
       - '.github/workflows/coupled-history-market-innovation.yml'
   pull_request:
     paths:
       - 'scripts/keiba_coupled_horse_market_pde.py'
       - 'scripts/keiba_history_market_innovation_audit.py'
+      - 'scripts/keiba_independent_horse_asof_preflight.py'
       - 'tests/test_keiba_coupled_history_falsification.py'
       - 'tests/test_keiba_history_market_innovation_audit.py'
+      - 'tests/test_keiba_independent_horse_asof_preflight.py'
       - 'docs/betting/coupled-history-market-innovation-20261025.md'
       - '.github/workflows/coupled-history-market-innovation.yml'
   workflow_dispatch:
@@ -40,6 +44,7 @@ jobs:
         run: |
           python -m compileall -q scripts/keiba_history_market_innovation_audit.py tests/test_keiba_history_market_innovation_audit.py
           python -m unittest discover -s tests -p 'test_keiba_history_market_innovation_audit.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_independent_horse_asof_preflight.py' -v
           python -m unittest discover -s tests -p 'test_keiba_coupled_history_falsification.py' -v
       - name: Source-locked real historical market-innovation scoring (no official outcome)
         run: |
