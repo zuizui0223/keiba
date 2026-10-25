@@ -26,7 +26,10 @@ def fixtures():
         "first_odds":{i:float(2+i*2) for i in range(1,7)},
         "last_odds":{i:float(2+i*2)*1.05 for i in range(1,7)},
         "initial_quote_at":"2026-11-01T12:00:00+09:00",
+        "initial_quote_received_at_jst":"2026-11-01T12:02:00+09:00",
         "latest_quote_at":"2026-11-01T13:00:00+09:00",
+        "latest_quote_received_at_jst":"2026-11-01T13:02:00+09:00",
+        "local_forecast_generated_at_jst":"2026-11-01T13:05:00+09:00",
         "post_at":"2026-11-01T15:00:00+09:00",
     }
     snapshot={
@@ -72,8 +75,21 @@ class LocalAsOfTests(unittest.TestCase):
         row,src,raw,rec,encode=fixtures()
         bad=copy.deepcopy(rec)
         bad["source_received_at_jst"]="2026-11-01T12:30:00+09:00"
-        with self.assertRaisesRegex(ValueError,"NOT_AVAILABLE"):
+        with self.assertRaisesRegex(ValueError,"TIME_TRAVEL"):
             m.verify_offline_source(raw,bad,row)
+
+    def test_market_published_and_acquired_clocks_cannot_time_travel(self):
+        row,src,raw,rec,encode=fixtures()
+        for field,clock in (
+            ("initial_quote_received_at_jst","2026-11-01T13:12:00+09:00"),
+            ("latest_quote_received_at_jst","2026-11-01T14:56:00+09:00"),
+            ("local_forecast_generated_at_jst","2026-11-01T14:59:00+09:00"),
+        ):
+            bad=copy.deepcopy(row)
+            bad[field]=clock
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(ValueError,"TIME_TRAVEL"):
+                    m.verify_offline_source(raw,rec,bad)
 
     def test_claimed_external_attestation_cannot_self_authorize(self):
         row,src,raw,rec,encode=fixtures()
