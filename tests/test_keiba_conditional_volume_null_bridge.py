@@ -187,6 +187,17 @@ class SourceLockedSixRaceChecks(unittest.TestCase):
                          {"2026-10-12","2026-10-18"})
         self.assertEqual(z["source_date_summaries"]["2026-10-12"]["real_races"],5)
         self.assertEqual(z["source_date_summaries"]["2026-10-18"]["real_races"],1)
+        # Under the *fiction* of exact q0/q1 pool shares, 20% new-pool
+        # weight cannot algebraically generate the archived Shuka q1.
+        shuka=z["source_date_summaries"]["2026-10-18"]
+        for setup in shuka["condition_sensitivity"]:
+            if setup["assumed_lambda"]==.2:
+                self.assertEqual(
+                    setup["n_source_races_where_exact_proxy_turnover_would_be_feasible"],0)
+                self.assertEqual(
+                    setup["n_nominal_tail_below_0_05_among_proxy_flow_feasible"],0)
+        self.assertGreater(
+            shuka["mean_conditional_exact_proxy_minimum_new_share"],.2)
         self.assertFalse(z["observed_exact_JRA_pool_shares_and_stake_flow_available"])
         self.assertEqual(z["real_social_contagion_or_market_criticality"],"HOLD")
         for race in z["by_real_race_without_raw_prices"]:
