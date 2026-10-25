@@ -51,6 +51,7 @@ class MathematicalTests(unittest.TestCase):
                   "source_price_q0":q.copy(),
                   "source_price_qmid":q.copy(),
                   "nominal_cutoff":m.aware("2026-10-12T13:26:00+09:00"),
+                  "first_source_published":m.aware("2026-10-12T12:21:00+09:00"),
                   "mid_received":m.aware("2026-10-12T13:27:00+09:00"),
                   "nominal_next_market_publication":m.aware(
                       "2026-10-12T13:44:00+09:00"),
