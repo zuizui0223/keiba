@@ -86,7 +86,7 @@ def compare(*,seed=20261026,horse_draws=250):
         jac[str(social_exponent)]={"gain":round(theorem["linear_gain"],6),
                                   "regime":theorem["regime"]}
     return {
-        "status":"TOY_SYNTHESTIC_ONLY_NOT_JRA_EVIDENCE",
+        "status":"TOY_SYNTHETIC_ONLY_NOT_JRA_EVIDENCE",
         "experimental_n_horse_ids":len(IDS),
         "experimental_historical_races":7,
         "individual_traits_purposefully_planted":True,
