@@ -60,9 +60,12 @@ class Auxiliary64Registration(unittest.TestCase):
         self.assertEqual(len(r["slots"]),64)
         self.assertEqual(sum(s["status"]==
                             "PAST_UNCOLLECTED_DO_NOT_DROP_FROM_DENOMINATOR"
-                             for s in r["slots"]),48)
+                             for s in r["slots"]),40)
         self.assertEqual(sum(s["status"]=="UPCOMING_AUXILIARY_SLOT_UNACQUIRED"
                              for s in r["slots"]),16)
+        self.assertEqual(sum(s["status"]==
+            "SAME_DATE_UNVERIFIED_POST_DO_NOT_DECIDE_IF_CLOSED"
+            for s in r["slots"]),8)
         self.assertEqual(r["auxiliary_real_future_market_targets_collected"],0)
 
     def test_same_day_without_actual_post_clock_not_assumed_completed(self):
