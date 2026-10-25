@@ -35,6 +35,7 @@ DIFFUSION_M2_PER_S = 0.25
 INITIAL_POSITION_SD_M = 2.0
 CROWD_PENALTY_MPS = 0.08
 BETA_SIGNAL_BLEND = 0.5
+MC_PRIOR_WEIGHT = 2.0  # early-market PL pseudo-sample; stops finite-MC zero log loss
 MIXED_MODES = ("independent", "herding", "information", "mixed", "threshold_mixed")
 REPORT_MODELS = ("observed_M0", "observed_M1", "observed_M2", "observed_M3",
                  "horse_P9_weak", "horse_SDE_no_pack", "horse_SDE_weak",
@@ -221,13 +222,26 @@ def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
         "top3": [h["weak_top3_pct"]/100 for h in legacy["horses"]]}
     sde = brownian_horse_ensemble(
         q0, distance_m, draws=draws, seed=seed + 1)
+    # With only a few hundred MC runs a horse may have zero simulated wins.
+    # Smooth with a *prestart-only*, fixed 2-draw equivalent PL prior.
+    # Otherwise log loss is undefined for an unseen winning horse.
+    pl_prior = exact_win_top3([float(v) for v in q0])
+    def smooth_mc(raw):
+        return {
+            kind: [float((draws*float(v) + MC_PRIOR_WEIGHT*prior)
+                         / (draws+MC_PRIOR_WEIGHT))
+                   for v, prior in zip(raw[kind], pl_prior[kind])]
+            for kind in ("win", "top3")}
+    legacy_prediction = smooth_mc(legacy_prediction)
+    no_pack_prediction = smooth_mc(_sde_prediction(sde["no_pack"]))
+    weak_prediction = smooth_mc(_sde_prediction(sde["weak"]))
     # This is only a hypothetical prestart signal; it is NOT a learned
     # independent covariate. It enters ONCE, in bettors' information.
     signal = vector(BETA_SIGNAL_BLEND * np.asarray(legacy_prediction["win"])
-                    + (1-BETA_SIGNAL_BLEND)*sde["no_pack"]["win"])
+                    + (1-BETA_SIGNAL_BLEND)*np.asarray(no_pack_prediction["win"]))
     predictions = {"horse_P9_weak": legacy_prediction,
-                   "horse_SDE_no_pack": _sde_prediction(sde["no_pack"]),
-                   "horse_SDE_weak": _sde_prediction(sde["weak"])}
+                   "horse_SDE_no_pack": no_pack_prediction,
+                   "horse_SDE_weak": weak_prediction}
     market = {}
     for i, mode in enumerate(MIXED_MODES):
         out = vote_market(q0, signal, mode=mode,
@@ -300,6 +314,7 @@ def audit(root=ROOT, *, prestart_only=False, draws=250, seed=20261025):
                       "early_odds_proxy_used_for_latent_baseline": True,
                       "legacy_P9_reused_unmodified": True,
                       "synthetic_signal_mixture_from_two_ABMs": BETA_SIGNAL_BLEND,
+                      "MC_prestart_PL_pseudocount_weight": MC_PRIOR_WEIGHT,
                       "real_horse_crowding_causal_effect_identified": False},
         "market_abm": {
             "synthetic_stakes_not_observed_actual_JRA_votes": True,
