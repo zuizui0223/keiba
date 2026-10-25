@@ -324,6 +324,71 @@ def theoretical_gain(*, herding_fraction, gamma, new_vote_fraction):
             "not_observed_JRA_phase_transition":True}
 
 
+
+def deterministic_market_step(q, objective, signal, *,
+                              voter_shares=None, gamma=1.0,
+                              new_vote_fraction=.2):
+    """Expected cumulative-vote update, free of Monte Carlo ballot noise.
+
+    This is a stylized one-step mean-field transformation in relative
+    SUPPORT. It does not reconstruct JRA observed stake amounts or payout.
+    """
+    q=unit_weights(q)
+    obj=unit_weights(objective)
+    news=unit_weights(signal)
+    if len(q)!=len(obj) or len(q)!=len(news):
+        raise ValueError("HOLD_UNALIGNED_DETERMINISTIC_INFO")
+    f=voter_shares or {"fundamental":.25,"herding":.5,"informed":.25}
+    if (set(f)!=set(AGENT_TYPES) or any(
+          type(f[k]) not in (int,float) or f[k]<0 or not math.isfinite(f[k])
+          for k in AGENT_TYPES)
+          or not math.isclose(sum(f.values()),1,abs_tol=1e-12)):
+        raise ValueError("HOLD_INVALID_EXPECTED_VOTER_MIX")
+    lam=_finite_nonnegative(new_vote_fraction,"NEW_SHARE")
+    if lam>1:
+        raise ValueError("HOLD_INVALID_LAMBDA")
+    fchoice=(f["fundamental"]*obj+
+             f["herding"]*_herding_index(q,gamma)+
+             f["informed"]*unit_weights(obj*news))
+    return (1-lam)*q+lam*fchoice
+
+
+def local_market_gain(q, objective, signal, *,
+                      voter_shares=None, gamma=1.0,
+                      new_vote_fraction=.2, eps=1e-6):
+    """Numerically differentiate the expected market update on simplex.
+
+    In a NON-equilibrium state this is only a local response measure,
+    NOT a local stability test / bifurcation. Criticality requires a
+    stationary solution and a calibrated voting response law.
+    """
+    x=unit_weights(q)
+    n=len(x)
+    if not (0<eps<min(x)/3):
+        raise ValueError("HOLD_BAD_FINITE_DIFFERENCE_STEP")
+    differences=np.zeros((n,n-1))
+    differences[:-1,:]=np.eye(n-1)
+    differences[-1,:]=-1.
+    B,_=np.linalg.qr(differences,mode="reduced")
+    args=dict(voter_shares=voter_shares,gamma=gamma,
+              new_vote_fraction=new_vote_fraction)
+    f0=deterministic_market_step(x,objective,signal,**args)
+    derivative=np.zeros((n,n-1))
+    for col in range(n-1):
+        v=B[:,col]
+        plus=deterministic_market_step(x+eps*v,objective,signal,**args)
+        minus=deterministic_market_step(x-eps*v,objective,signal,**args)
+        derivative[:,col]=(plus-minus)/(2*eps)
+    tangential=B.T@derivative
+    eigen=np.linalg.eigvals(tangential)
+    spectral=float(max(abs(v) for v in eigen))
+    equilibrium=bool(np.max(abs(f0-x))<1e-9)
+    return {"local_simplex_spectral_gain":spectral,
+            "is_evaluated_at_equilibrium":equilibrium,
+            "gain_is_an_instability_test":equilibrium,
+            "model_critical_absolute_odds":None,
+            "real_market_criticality":"HOLD"}
+
 def run_coupled_repeatability_trial(
         source, target, *, observed_first_odds, prior_scale=3.0,
         distance_m=None, horse_draws=80, seed=20261026,
