@@ -97,7 +97,7 @@ def _commitment(freeze, *, fixture=False):
 def prepare_comment(freeze):
     """No network, no GitHub POST, never returns private forecast content."""
     data=_commitment(freeze)
-    body=MARKER+"\n"+_canonical(data)+"\n"
+    body=_comment_body(data)
     if len(body)>1600 or "candidate_predictions" in body:
         raise ValueError("HOLD_PUBLIC_COMMENT_MAY_LEAK_PRIVATE_PREDICTIONS")
     return {
@@ -112,7 +112,7 @@ def prepare_comment(freeze):
 
 
 def _comment_body(data):
-    return MARKER+"\n"+_canonical(data)+"\n"
+    return MARKER+"\n"+_canonical(data)
 
 
 def _decode_race(body):
