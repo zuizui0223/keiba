@@ -95,6 +95,15 @@ class CoupledPureMathTest(unittest.TestCase):
             self.assertAlmostEqual(sum(p["top3"]), 3, places=9, msg=name)
         self.assertTrue(all("M3_initial10_speed010" in x["market_paths"][k]["M0_to_M3"]
                             for k in m.MIXED_MODES))
+        for k in m.MIXED_MODES:
+            joint=x["market_paths"][k]["joint_all_ticket_events"]
+            self.assertAlmostEqual(sum(joint["win"].values()), 1, places=10)
+            self.assertAlmostEqual(sum(joint["top2"].values()), 2, places=10)
+            self.assertAlmostEqual(sum(joint["top3"].values()), 3, places=10)
+            self.assertAlmostEqual(sum(joint["both_top3_pair"].values()), 3, places=10)
+            self.assertAlmostEqual(sum(joint["unordered_top3_trio"].values()), 1, places=10)
+            self.assertAlmostEqual(sum(joint["ordered_firsttwo_exacta"].values()), 1, places=10)
+            self.assertAlmostEqual(sum(joint["ordered_top3_trifecta"].values()), 1, places=10)
 
     def test_same_early_price_and_horse_state_ignore_later_quote_for_simulation(self):
         row = demo_row()
@@ -174,6 +183,10 @@ class RealArchiveCouplingTest(unittest.TestCase):
         self.assertAlmostEqual(z["mean_race_equal_winner_log_loss"]["observed_M1"],
                                1.696681573413395, places=8)
         self.assertTrue(z["no_parameter_tuning_to_any_of_six_actual_winners"])
+        tickets=z["mean_coherent_ticket_scores_race_equal"]
+        self.assertEqual(set(tickets), {"observed_M0", *m.MIXED_MODES})
+        self.assertGreater(tickets["observed_M0"]["unordered_trio_log_loss"], 0)
+        self.assertTrue(report["all_ticket_markets"]["sourced_from_same_ordered_finish_distribution"])
         for a in m.REPORT_MODELS:
             self.assertGreater(z["mean_race_equal_winner_log_loss"][a], 0)
 
