@@ -10,10 +10,16 @@ from pathlib import Path
 import math
 import sys
 import unittest
-import numpy as np
+try:
+    import numpy as np
+except ModuleNotFoundError as error:
+    if error.name != "numpy":
+        raise
+    np = None
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
-from keiba_individual_trait_to_market_cascade import (
+if np is not None:
+    from keiba_individual_trait_to_market_cascade import (
     repeatable_traits,objective_horse_prior,initial_market_proxy,
     layered_vote_market,theoretical_gain,deterministic_market_step,
     local_market_gain,premarket_context_log_scores,run_coupled_repeatability_trial,
@@ -61,6 +67,7 @@ def make_source():
     }
 
 
+@unittest.skipIf(np is None, "Optional numpy required; dedicated CI installs it")
 class RepeatableIndividualToMarketsTests(unittest.TestCase):
     def test_estimates_identity_specific_repeated_traits(self):
         x=repeatable_traits(make_source(),make_target())
