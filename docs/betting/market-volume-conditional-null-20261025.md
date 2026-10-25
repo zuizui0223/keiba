@@ -79,3 +79,37 @@ The null test's actual scientific outcome can only be: **under precisely specifi
 Only race-level and aggregate SOURCE-CONDITIONAL metrics are emitted. No full original individual quote/protected horse-history tables are published; no official race outcome is accessed. This is a **Draft investigation / full HOLD**, not a tool for recommended bets.
 
 **Future identification gate**: obtain source-authorized aggregate per-pool stake *amounts*, synchronized quote/sale timestamps and independent third-party receipts, fit the null count/overdispersion process on earlier meeting dates, then freeze it before truly future races. If those volumes remain unavailable, the correct claim is partial identification and volume-sensitivity, not true significance.
+
+
+## Source-locked 2026-10-25 result: the conclusion depends on the unknown vote units
+
+[Dedicated 2,000-draw CI](https://github.com/zuizui0223/keiba/actions/runs/40181450712) generated the new source-condition sensitivity and reused the exact same nonlocal-horse/crowded physical prior → delayed smooth social-voter simulator. The source cohort is still five Kyoto R8–12 races (October 12) and one Shuka race (October 18).
+
+**Observed price-derived index movement:**
+
+| Archived source window | n real races | Mean central TV between q0 and q1 (pp) | Mean minimum TV under *hypothetical* ±0.05 decimal odds bins (pp) | Mean lower bound λ_min if price indices were exact pool shares |
+| --- | ---: | ---: | ---: | ---: |
+| Kyoto Oct 12, ~0.85–1.15h, same provider | 5 | **2.59158** | 1.69820 | 0.11906 |
+| Shuka Oct 18, ~21.67h, mixed provider/update semantics | 1 | **7.66140** | 5.64403 | 0.22874 |
+
+The rounding lower bound is conditional on an invented symmetric interval around the display, not an authenticated JRA net payout/rounding function. The λ lower bound is a theorem about *exact* cumulative pool shares and cannot be treated as actual JRA new turnover when derived from quoted payout reciprocals.
+
+**Sensitivity to conditional Monte Carlo vote assumptions:**
+
+Number of the FIVE Kyoto race quote-index movements with conditional TV tail area below 0.05 (not actual population tests), holding the *hypothetical* new fraction at λ=0.2:
+
+| Assumed effective N of new pseudo-votes | iid q0-vote null | Overdispersed Dirichlet(80 q0) null |
+| ---: | ---: | ---: |
+| 100 | 1/5 | 1/5 |
+| 1,000 | 4/5 | 1/5 |
+| 10,000 | **5/5** | **1/5** |
+
+At assumed λ=0.8, 100 pseudo-votes, NEITHER model puts any of the five Kyoto observations in the extreme upper 5% tail; the assumed noise process is too broad to regard that particular observed price-index movement as unusual. At λ=0.2,N=10,000, the stationary iid null is very narrow, but correlated pseudo-voters have much broader results. **Thus without real effective stake volume or vote dispersion, simply calling these movements unusual cannot identify informed voting or criticality.**
+
+For the mixed-source **Shuka** quote pair, the proxy simplex bound is **λ_min=0.22874**. Therefore the λ=0.20 sensitivity is **mathematically infeasible if the quoted reciprocal indices were exact cumulative pool shares**. Its very small simulated TV tail areas must not be counted as meaningful evidence for this conditional cumulative-pool representation. The λ=0.80 scenario is feasible under that proxy assumption but gives conflicting results: with N=1,000 the iid tail is at the simulation floor, whereas the overdispersed model's tail is about **0.761**; with N=10,000, the latter is about **0.729**. This is also provider-clock confounded, not an independently authenticated 22-hour stake history. The executable aggregate audit separately flags feasible cells before interpreting tail counts.
+
+**Noise calibration sanity check.** In an independent synthetic null split (not real source data), the nominal 5% threshold rejected **4.95%** of generated held-out TV paths and **5.25%** of maximal log-change paths. Crucially, the maximal-statistic tail area calibrates the *largest move among every horse in a single race*, and is mathematically unchanged by dividing both the observed and reference change by the same 1-hour or 22-hour interval. This removes the trivial time-denominator dependence of PR #19's fixed 0.10/hour gate *inside the stated null model*; it does not authenticate a real null process.
+
+**Horse↔voter integration did not disappear.** The PR #19 physical SDE with forward nonlocal crowd c=2, first-round/third-round/never information arrival and smooth-social voting remains in the same executed study. For the five same-provider Kyoto races, the **first-round** smooth bettor market candidates based on q0 physical priors were on average about 6.004pp from the *later displayed quote proxy*, compared with roughly 4.562pp for the retrospectively reconstructed historical form physical prior; both are worse than simply retaining the first observed q0 quote proxy (2.592pp). For mixed-provider Shuka, historical-form first-round model TV was about 5.302pp versus simply retaining original q0 at 7.661pp, but this single race with source mismatch and unproven original history reception cannot establish extra independent predictive information. The other information arrival times are preserved in the source-scoped aggregate results, not selected by hindsight.
+
+**Interpretation:** This is partial identification with explicit measurement/proxy and effective-count caveats. It is **not** a real p-value, volume estimate, biological behavioral effect, superior next-market model, or a licensed betting rule. Evidence for a real odds critical threshold, new information arrival, winning probability calibration, positive expected return and future-date transferability remains **HOLD**.
