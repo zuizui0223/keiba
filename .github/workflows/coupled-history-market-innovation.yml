@@ -48,8 +48,14 @@ jobs:
       - name: Report only source-scoped market-index summary
         run: |
           python -c "import json; a=json.load(open('tmp/coupled-next-market-innovation.json')); print('HISTORY_MARKET_INDEX_SCORES',json.dumps(a['mean_race_equal_market_price_index_scores'],sort_keys=True)); print('HISTORY_MARKET_RACE_WIN_COUNTS',a['n_races_history_blend_lower_TV_than_q0'],a['n_races_correct_history_lower_TV_than_shifted']); print('HISTORY_MARKET_BY_DATE',json.dumps(a['by_meeting_date'],sort_keys=True)); print('HISTORY_MARKET_HOLD',a['research_decision'])"
+      - name: Re-score connected horse ABMs after correcting prior smoothing
+        run: |
+          python scripts/keiba_coupled_history_falsification.py --draws 120 --seed 20261025 --output tmp/coupled-prior-corrected-postrace.json
+          python -c "import json; r=json.load(open('tmp/coupled-prior-corrected-postrace.json')); assert r['real_races']==6 and r['real_meeting_dates']==2 and r['prospective_model_readiness'].startswith('HOLD') and len(r['mean_race_equal'])==4; assert abs(r['M0_late_market_reference']['win_log_loss']-1.696959293802405)<1e-7; print('CORRECTED_HORSE_HISTORY_OUTCOME_LL',json.dumps({a:{k:v['win_log_loss'] for k,v in row.items()} for a,row in r['mean_race_equal'].items()},sort_keys=True)); print('CORRECTED_HORSE_HISTORY_DATE_EFFECTS',json.dumps(r['mean_date_equal_contrasts'],sort_keys=True))"
       - uses: actions/upload-artifact@v4
         with:
           name: coupled-history-market-innovation-aggregates-only
-          path: tmp/coupled-next-market-innovation.json
+          path: |
+            tmp/coupled-next-market-innovation.json
+            tmp/coupled-prior-corrected-postrace.json
           retention-days: 14
