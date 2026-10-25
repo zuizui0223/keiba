@@ -108,16 +108,19 @@ New [strict local source preflight](../../scripts/keiba_independent_horse_asof_p
 To simulate the WHOLE between-quotes interval, the source must meet the stronger timing rule:
 
 \[
-t_{\mathrm{publisher\ history}}
+t_{\mathrm{published\ history}}
 \le t_{\mathrm{received\ history}}
-\le t_{\mathrm{earliest\ quote}}
-< t_{\mathrm{later\ quote}}
-\le t_{\mathrm{post}} - 10\ {\rm minutes}.
+\le t_{\mathrm{published\ first\ quote}}
+\le t_{\mathrm{received\ first\ quote}}
+< t_{\mathrm{published\ later\ quote}}
+\le t_{\mathrm{received\ later\ quote}}
+\le t_{\mathrm{local\ forecast}}
+\le t_{\mathrm{post}} - 10\,\mathrm{min}.
 \]
 
 The audit hard-rejects any history received *after* the earliest q0, even if received before post time. Feeding later information into agents at t0 would otherwise be a second, subtle kind of future leakage. Future architectures may introduce **explicit information-arrival events midstream**, but this code does not simulate an earlier release than the real source reception.
 
-The receipt is an untrusted **local declaration**. Even if all arithmetic and SHA checks pass, its clock is NOT authenticated by GitHub's server or a neutral third party; a self-asserted externally_attested=true is explicitly rejected. Thus the output status is ALWAYS **CLOCK_ORDER_CHECKED_LOCAL_SOURCE_NOT_EXTERNALLY_AUTHENTICATED** and the forecast cannot be counted as a sealed prospective JRA evaluation. Independent pre-race third-party receipt verification, rights, and an official result captured later are still separate controls.
+All market publication stamps are separately compared against actual local capture stamps; the forecast's own creation time is required too. The receipt is an untrusted **local declaration**. Even if all arithmetic and SHA checks pass, its clock is NOT authenticated by GitHub's server or a neutral third party; a self-asserted externally_attested=true is explicitly rejected. Thus the output status is ALWAYS **CLOCK_ORDER_CHECKED_LOCAL_SOURCE_NOT_EXTERNALLY_AUTHENTICATED** and the forecast cannot be counted as a sealed prospective JRA evaluation. Independent pre-race third-party receipt verification, rights, and an official result captured later are still separate controls.
 
 Private-only demo use:
 
