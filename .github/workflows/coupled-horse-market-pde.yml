@@ -1,0 +1,57 @@
+name: Coupled horse, bettor, market threshold and PDE audit
+
+on:
+  push:
+    branches: [analysis/coupled-horse-bettor-pde-20261025]
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/betting_abm_pde_sensitivity.py'
+      - 'scripts/betting_abm_pde_particle_bridge.py'
+      - 'tests/test_keiba_coupled_horse_market_pde.py'
+      - 'docs/betting/coupled-horse-market-pde-20261025.md'
+      - '.github/workflows/coupled-horse-market-pde.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/betting_abm_pde_sensitivity.py'
+      - 'scripts/betting_abm_pde_particle_bridge.py'
+      - 'tests/test_keiba_coupled_horse_market_pde.py'
+      - 'docs/betting/coupled-horse-market-pde-20261025.md'
+      - '.github/workflows/coupled-horse-market-pde.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  coupled-numerical-evidence:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: NumPy numerical dependency
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Test all coupled mathematical gates and as-of source isolation
+        run: |
+          python -m compileall -q scripts/keiba_coupled_horse_market_pde.py tests/test_keiba_coupled_horse_market_pde.py
+          python -m unittest discover -s tests -p 'test_keiba_coupled_horse_market_pde.py' -v
+      - name: No postrace outcomes are accessed during prestart simulator
+        run: |
+          python scripts/keiba_coupled_horse_market_pde.py --prestart-only --draws 90 --output tmp/coupled-prestart.json
+          python -c "import json; q=json.load(open('tmp/coupled-prestart.json')); assert q['status'].startswith('PRESTART_ONLY'); assert q['postrace']=='NOT_COMPUTED'; assert q['cohort']['races']==6 and q['cohort']['horse_race_entries']==84; assert abs(q['physics_SDE_to_PDE']['pde_mass']-1)<1e-8 and q['physics_SDE_to_PDE']['max_CDF_gap']<.06; assert q['real_calibrated_forecast_advantage']=='HOLD'"
+      - name: Source-locked six-race descriptive postrace scoring, not prospective
+        run: |
+          python scripts/keiba_coupled_horse_market_pde.py --draws 90 --output tmp/coupled-retrospective.json
+          python -c "import json; x=json.load(open('tmp/coupled-retrospective.json')); s=x['postrace']; assert s['status'].startswith('RETROSPECTIVE'); assert abs(s['mean_race_equal_winner_log_loss']['observed_M0']-1.696959293802405)<1e-7; assert len(s['mean_race_equal_winner_log_loss'])==12; assert x['horse_abm']['legacy_P9_reused_unmodified']; assert x['market_abm']['synthetic_stakes_not_observed_actual_JRA_votes']; assert x['odds_threshold_phase_transition_claim']=='HOLD'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coupled-abm-pde-aggregates-only
+          path: |
+            tmp/coupled-prestart.json
+            tmp/coupled-retrospective.json
+          retention-days: 14
