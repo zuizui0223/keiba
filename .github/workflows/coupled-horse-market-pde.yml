@@ -5,6 +5,7 @@ on:
     branches: [analysis/coupled-horse-bettor-pde-20261025]
     paths:
       - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_coupled_seed_sensitivity.py'
       - 'scripts/betting_abm_pde_sensitivity.py'
       - 'scripts/betting_abm_pde_particle_bridge.py'
       - 'tests/test_keiba_coupled_horse_market_pde.py'
@@ -13,6 +14,7 @@ on:
   pull_request:
     paths:
       - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_coupled_seed_sensitivity.py'
       - 'scripts/betting_abm_pde_sensitivity.py'
       - 'scripts/betting_abm_pde_particle_bridge.py'
       - 'tests/test_keiba_coupled_horse_market_pde.py'
@@ -49,10 +51,15 @@ jobs:
           python scripts/keiba_coupled_horse_market_pde.py --draws 90 --output tmp/coupled-retrospective.json
           python -c "import json; x=json.load(open('tmp/coupled-retrospective.json')); s=x['postrace']; assert s['status'].startswith('RETROSPECTIVE'); assert abs(s['mean_race_equal_winner_log_loss']['observed_M0']-1.696959293802405)<1e-7; assert len(s['mean_race_equal_winner_log_loss'])==12; assert x['horse_abm']['legacy_P9_reused_unmodified']; assert x['market_abm']['synthetic_stakes_not_observed_actual_JRA_votes']; assert x['odds_threshold_phase_transition_claim']=='HOLD'"
           python -c "import json; x=json.load(open('tmp/coupled-retrospective.json')); print('JOINT_RETROSPECTIVE_MARKET_TV',json.dumps(x['market_abm']['mean_TV_to_actual_later_quote_pp'],ensure_ascii=False,sort_keys=True)); print('JOINT_WIN_LL',json.dumps(x['postrace']['mean_race_equal_winner_log_loss'],ensure_ascii=False,sort_keys=True)); print('JOINT_TOP3_BRIER',json.dumps(x['postrace']['mean_race_equal_Top3_brier'],ensure_ascii=False,sort_keys=True)); print('JOINT_THRESHOLD_TRIGGER_COUNT',x['market_abm']['threshold_triggered_steps_sum'])"
+      - name: Seed variability is simulation noise, not seven new real races
+        run: |
+          python scripts/keiba_coupled_seed_sensitivity.py --seeds 7 --draws 120 --output tmp/coupled-seed-sensitivity.json
+          python -c "import json; x=json.load(open('tmp/coupled-seed-sensitivity.json')); assert x['real_independent_races']==6 and x['real_meeting_dates']==2 and x['synthetic_seed_repetitions_not_new_independent_trials']==7; assert x['hypothetical_parameters_unchanged_across_seeds'] and x['any_score_advantage_is_retrospective_and_unvalidated']"
       - uses: actions/upload-artifact@v4
         with:
           name: coupled-abm-pde-aggregates-only
           path: |
             tmp/coupled-prestart.json
             tmp/coupled-retrospective.json
+            tmp/coupled-seed-sensitivity.json
           retention-days: 14
