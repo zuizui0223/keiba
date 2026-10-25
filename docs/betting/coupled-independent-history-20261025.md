@@ -69,3 +69,26 @@ The target score is not used to select the winning arm. **Even if the history ar
 The output is an aggregate audit. It reports the six-race equal-weight WIN Log loss, Top3 Brier and market-index distance for each prior arm, along with the identity-placebo difference and historical source HOLDs. Original restricted odds rows, original detailed per-horse histories and individual betting simulations are not redistributed in new outputs.
 
 **Next empirical requirement:** obtain independently timestamped, source-permitted full past-horse histories (preferably past GPS sectionals and documented rider/going context) **before the real target prediction cutoff**, freeze the physically and socially coupled model without seeing the outcome, and score across genuinely distinct subsequent race dates. The Racing Queensland first-GPS early-section results from the ecology track cannot simply be transplanted into JRA winners; their response is a different physical interval with different horses and observation selection.
+
+
+## Real archived historical reconstruction: fixed-seed preliminary results
+
+[GitHub Actions reproducible run #40163483271](https://github.com/zuizui0223/keiba/actions/runs/40163483271) completed the numerical and source-locked checks on six archived races / two distinct race dates / 84 horse-race entries. The source reconstruction and all seven assumptions above remain **strictly retrospective**, not independently as-of verified. Each horse model used 120 Monte Carlo draws and fixed seed 20261025 (the same count across arms).
+
+| Physical horse-model upstream prior | Information-voter path: winner LL ↓ | Mixed-voter path: winner LL ↓ | Threshold-mixed path: winner LL ↓ | Information-voter Top3 Brier ↓ |
+|---|---:|---:|---:|---:|
+| Saved early WIN quote | 1.703731 | 1.670977 | **1.652295** | 0.122181 |
+| Past-race form only | 1.807772 | 1.702158 | 1.691369 | 0.128548 |
+| Fixed rotated horse identity (placebo) | 1.852078 | 1.740307 | 1.705576 | 0.131588 |
+| 80% early WIN + 20% past form | 1.715458 | 1.675384 | 1.654930 | 0.123259 |
+| Actual later WIN quote M0 (single benchmark) | 1.696959 | 1.696959 | 1.696959 | 0.121811 |
+
+The historical identity-shuffle contrast in the *information-voter* path is **−0.044307 winner log-loss** (history correctly mapped minus one deterministic cyclic permutation), and the analogous Top3 Brier for correctly mapped history is 0.128548 vs 0.131588. This is a useful **software/identity negative-control response**, not a statistical significance test or evidence that past form adds information beyond the real contemporary market.
+
+More revealing: adding historical features at fixed 20% to market-informed horse agents did **not** improve the frozen market-proxy version of the same integrated voting rule. The threshold-mixed winner log loss moved from 1.652295 to 1.654930; information-voter 1.703731 to 1.715458. True incremental forecasting value conditional on the observed market is thus **not established**. The market-based model may already encode much of the historical race performance, and the form transform is uncalibrated.
+
+For the INFORMATION-only voter mechanism, the actual later-quote TV distance was **4.072 pp** from the original market horse prior, **8.117 pp** from the form-only horse prior, and **9.441 pp** after identity shuffling. For the threshold-mixed voter mechanism, TV distance was **8.111 pp** from the original market prior versus **4.482 pp** from form only. Thus *predicting eventual podiums* and *reproducing market price changes* can select different mechanisms—this contradiction remains, not to be hidden by post-hoc selection.
+
+The elapsed time differs strongly across cohorts (Kyoto 8–12R ~51–69 minutes, 秋華賞 ~21.7 hours with heterogeneous sources). A **date-equal** decomposition is added to the executable audit, rather than assuming 5+1 independent and exchangeable forecasts. With only two meeting dates, its sign is descriptive and no bootstrap confidence interval is promoted.
+
+No target outcome labels are consumed by either the horse-history transform or the coupled ABMs; JRA results are opened only for later retrospective evaluation. All previous externally presealed models and formal v3.1 ledger remain unchanged.
