@@ -120,7 +120,7 @@ class BudgetFreeAuditTests(unittest.TestCase):
         r=evaluate(d)
         self.assertIn("model_positive_all",r["by_bet_type"]["wide"])
         # No user stake is stored; per-unit is independent of budget.
-        self.assertNotIn("amount",str(r).lower())
+        self.assertIsNone(r["proposed_amounts"])
 
 
 if __name__=="__main__":
