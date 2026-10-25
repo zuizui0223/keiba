@@ -85,7 +85,14 @@ def transition_witness(q0,q1,new_fraction):
         raise ValueError("HOLD_NEGATIVE_HYPOTHETICAL_NEW_VOTE_SHARE")
     if not np.isclose(implied.sum(),1,atol=1e-11):
         raise ValueError("HOLD_HYPOTHETICAL_TURNOVER_MASS")
-    return vector(np.maximum(implied,0))
+    # Exact feasible new-vote compositions may put zero share on a horse.
+    # The horse-prior normalization helper requires strictly positive
+    # probabilities and is NOT appropriate for simplex boundary witnesses.
+    nonnegative=np.maximum(implied,0.)
+    total=float(nonnegative.sum())
+    if not math.isclose(total,1.,rel_tol=0,abs_tol=1e-9):
+        raise ValueError("HOLD_FLOW_WITNESS_SUM")
+    return nonnegative/total
 
 
 def _rounding_marginal_bounds(odds, *, half_width=ROUNDING_HALF_WIDTH_DECIMAL):
