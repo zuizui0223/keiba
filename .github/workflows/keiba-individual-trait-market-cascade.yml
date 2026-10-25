@@ -4,12 +4,14 @@ on:
     branches: [analysis/horse-trait-market-feedback-stability-20261026]
     paths:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
+      - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   pull_request:
     paths:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
+      - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
@@ -34,3 +36,12 @@ jobs:
         run: |
           python -m compileall -q scripts/keiba_individual_trait_to_market_cascade.py tests/test_keiba_individual_trait_to_market_cascade.py
           python -m unittest discover -s tests -p test_keiba_individual_trait_to_market_cascade.py -v
+      - name: Independent synthetic six-horse case and analytic amplification check
+        run: |
+          python scripts/keiba_individual_trait_market_demo.py --horse-draws 250 --output tmp/synthetic-individual-to-market.json
+          python -c "import json; x=json.load(open('tmp/synthetic-individual-to-market.json')); assert x['status']=='TOY_SYNTHETIC_ONLY_NOT_JRA_EVIDENCE'; assert x['no_information_reached_market_exactly_identical']; assert x['stability_at_uniform_fixed_point_for_50pct_social_20pct_new_votes']['2.0']['regime']=='neutral'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-individual-to-market-diagnostics-not-real-evidence
+          path: tmp/synthetic-individual-to-market.json
+          retention-days: 14
