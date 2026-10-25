@@ -137,7 +137,7 @@ class TestPLBox(unittest.TestCase):
         win,p,_=fixture()
         a=audit(win,p)
         p2=copy.deepcopy(p)
-        p2["key_tickets"][0]["low"]*=1.2
+        p2["key_tickets"][0]["low"]*=1.05
         b=audit(win,p2)
         arow=a["tickets"][0]["scenario_by_rate_spread"]["0.1"]["by_gamma"]["1"]
         brow=b["tickets"][0]["scenario_by_rate_spread"]["0.1"]["by_gamma"]["1"]
