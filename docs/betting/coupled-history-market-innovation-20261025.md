@@ -70,3 +70,27 @@ The output contains only race-level diagnostics and aggregate mean scores, not t
 ## Scientific decision
 
 The independently sourced past form is now a clean **physical horse input** to the coupled ABM and a clearly separated *candidate* market innovation feature. A positive market-alignment score, if observed, would support further prospective testing of information assimilation. It would not identify actual imitation, a transition threshold, or a guaranteed wagering advantage. The **future** target is multi-date, externally timestamped horse histories, market snapshots and authentic race results; until then **HOLD**.
+
+
+## 2026-10-25 source-locked six-race result
+
+[Dedicated CI](https://github.com/zuizui0223/keiba/actions/runs/40164391767) passed the new two-stage no-future-quote tests and the source-locked JRA archive check.
+
+| Candidate next WIN quote-price INDEX | Mean 6-race TV distance (pp) ↓ | Mean KL(q1 || candidate), nats ↓ |
+| --- | ---: | ---: |
+| Earliest saved quoted q0 unchanged | **3.43655** | **0.004713** |
+| Same q0 + 20% correct horse history h | 6.53113 | 0.012543 |
+| Same q0 + same historical scores shifted to the wrong horse | 7.40114 | 0.016072 |
+
+Adding h improves next-quote TV in just **1/6 races** versus q0 alone; the correct history beats the shifted identity in **4/6 races**. When stratifying by date, the correct history minus q0 distance is +3.81616 pp (worse) for five 2026-10-12 races, but −0.51332 pp (better) for the sole 2026-10-18 race. Comparing these price indices does **not** estimate actual betting stakes, new information arrival times, bettor imitation or future finishing performance.
+
+**Correction to previous physical simulation:** after changing the finite-MC prior to use the actual physical input prior (no cross-contamination from q0), the information-voter WIN Log loss on the SAME six already observed podiums is:
+
+| Input to both horse ABMs | Information-voter WIN LL ↓ | Threshold-mixed WIN LL ↓ |
+| --- | ---: | ---: |
+| Earliest saved market q0 | **1.703731** | **1.652295** |
+| Correct horse historical form | 1.810225 | 1.691430 |
+| Same history shifted to a different horse | 1.853751 | 1.709529 |
+| 80% earliest q0 + 20% historical form | 1.715829 | 1.655729 |
+
+These replace the prior PR #15 *uncorrected history-only* scores; the market-only reference stays exactly unchanged. The negative-control direction persists but there is still no incremental benefit over the q0-informed integrated model under these fixed assumptions. This is NOT future holdout performance; it is a source-limited retrospective sensitivity on two dates, and the history file's reception before the target race is unverified.
