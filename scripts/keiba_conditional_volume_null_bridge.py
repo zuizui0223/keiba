@@ -354,12 +354,31 @@ def audit(root=ROOT, *, repetitions=2000, horse_draws=80,seed=20261025):
                                 and q["label"]==label))[
                                     "conditional_tail_area_TV_not_real_p_value"]
                         for x in cohort),
+                    "n_source_races_where_exact_proxy_turnover_would_be_feasible":sum(
+                        next(q for q in x["price_index_null_sensitivity"]
+                            if q["assumed_new_fraction_of_final_pool"]==lamb
+                            and q["assumed_effective_new_vote_count"]==n
+                            and q["label"]==label)[
+                                "nominal_proxy_exact_cumulative_flow_feasible_at_assumed_lambda"]
+                        for x in cohort),
                     "n_source_races_with_nominal_TV_tail_below_0_05":sum(
                         next(q for q in x["price_index_null_sensitivity"]
                             if q["assumed_new_fraction_of_final_pool"]==lamb
                             and q["assumed_effective_new_vote_count"]==n
                             and q["label"]==label)[
                                 "conditional_tail_area_TV_not_real_p_value"]<.05
+                        for x in cohort),
+                    "n_nominal_tail_below_0_05_among_proxy_flow_feasible":sum(
+                        (next(q for q in x["price_index_null_sensitivity"]
+                              if q["assumed_new_fraction_of_final_pool"]==lamb
+                              and q["assumed_effective_new_vote_count"]==n
+                              and q["label"]==label)[
+                                    "conditional_tail_area_TV_not_real_p_value"]<.05)
+                        and (next(q for q in x["price_index_null_sensitivity"]
+                              if q["assumed_new_fraction_of_final_pool"]==lamb
+                              and q["assumed_effective_new_vote_count"]==n
+                              and q["label"]==label)[
+                                "nominal_proxy_exact_cumulative_flow_feasible_at_assumed_lambda"])
                         for x in cohort),
                 } for lamb in LAMBDAS
                   for n in EFFECTIVE_NEW_VOTE_COUNTS
