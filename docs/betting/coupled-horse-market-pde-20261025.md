@@ -44,3 +44,25 @@ Neither command writes to v3.1's ledger or official Kikka prediction freeze. Onl
 - a physically justified stochastic-ABM/PDE discrepancy, with crowding separately tested.
 
 **Scientific state: HOLD until independent horse observations, vote-flow data, several meeting dates and prospective market snapshots are available.**
+
+
+## Source-locked integrated calculation (GitHub Actions, 2026-10-25)
+
+At fixed seed 20261025, 250 Monte Carlo runs per horse ensemble and 6 **historical** JRA races (two race dates), with shared voter uniform draws across the five counterfactual rules:
+
+| Scenario / real archived benchmark | Winner log loss ↓ | Mean Top3 Brier ↓ | WIDE-pair Brier ↓ | Unordered-trio log loss ↓ |
+|---|---:|---:|---:|---:|
+| Observed later WIN quote M0 | 1.696959 | 0.121811 | 0.030515 | 4.139985 |
+| Hypothetical independent votes | 1.700937 | 0.124128 | 0.031062 | 4.222556 |
+| Hypothetical herding votes | 1.678879 | 0.123205 | 0.030859 | 4.183545 |
+| Horse signal → information votes | 1.677054 | 0.122279 | 0.030933 | 4.136889 |
+| Horse signal → mixed votes | 1.657542 | 0.121383 | 0.030571 | 4.121147 |
+| Horse signal → hypothetical rate-switch votes | 1.642032 | 0.120380 | 0.030270 | 4.096338 |
+
+**Important falsification:** Relative to the ACTUAL later WIN quote, the simulated WIN index is closest under *independent* vote simulation (mean TV=3.5984 percentage points), whereas threshold_mixed has the **largest** mismatch (7.9444 pp). The threshold_mixed "best" retrospective event scores and poor observed-market shape agreement simultaneously show that **fitting the finish labels and explaining the market's path are different tasks**. No fitted coefficients, true winning probabilities, or wagering profits have been established.
+
+The numerical residual SDE/PDE check has PDE mass ~1 and particle-vs-PDE max cumulative gap ~0.0113 with the same D=0.25 and independent initial SD=2 m. It does not validate the crowded racing PDE.
+
+With the same six official results reused, a separate 7-seed × 120-draw **simulation-noise sensitivity** found mean (threshold_mixed winner log loss − observed M0) = −0.04886, range [−0.06688, −0.03312], for seven out of seven tested seeds. This is **not seven independent racing experiments**, not a 95% interval of future generalization, and not confirmation of an empirical threshold. Model structural uncertainty and the lack of independent horse/voter features dominate this seed-only variability.
+
+Reproducibility: [joint model CI](https://github.com/zuizui0223/keiba/actions/runs/40162708655), source-locked forecasts plus postrace scoring; [base M0/M1/M2/M3](../odds-threshold-three-gate-20261025.md). The actual upstream quoted prices remain historical intermediate values, not matched final prices or measured stakes.
