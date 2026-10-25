@@ -128,7 +128,7 @@ class HistoricalOnlyPureTest(unittest.TestCase):
                             history["horse_signal"].tolist())
         with self.assertRaisesRegex(ValueError,"PRIOR_ROSTER"):
             m.couple_prestart(row, distance_m=1200, draws=80,
-                              horse_prior=[.4,.3,.2,.1,.0])
+                              horse_prior=[.4,.3,.2,.1,.05])
 
     def test_history_source_not_eligible_for_prestart_and_no_asof_promotion(self):
         with self.assertRaisesRegex(ValueError,"POSTRACE_RETRIEVED"):
