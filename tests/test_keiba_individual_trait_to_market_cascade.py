@@ -16,7 +16,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from keiba_individual_trait_to_market_cascade import (
     repeatable_traits,objective_horse_prior,initial_market_proxy,
     layered_vote_market,theoretical_gain,deterministic_market_step,
-    local_market_gain,run_coupled_repeatability_trial,
+    local_market_gain,premarket_context_log_scores,run_coupled_repeatability_trial,
 )
 
 
@@ -210,6 +210,49 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
         self.assertFalse(out["is_evaluated_at_equilibrium"])
         self.assertFalse(out["gain_is_an_instability_test"])
         self.assertIsNone(out["model_critical_absolute_odds"])
+
+
+    def test_pre_market_objective_weather_going_jockey_source_gate(self):
+        target=make_target()
+        receipt={
+            "schema":"KEIBA_PUBLISHED_OBJECTIVE_CONTEXT_V1",
+            "rights_checked_locally":True,
+            "target_source_system":SOURCE_SYSTEM,
+            "feature_names":["track","going","weather","jockey","distance"],
+            "feature_model_frozen_at_jst":"2026-09-28T12:00:00+09:00",
+            "source_published_at_jst":"2026-10-20T12:00:00+09:00",
+            "source_received_at_jst":"2026-10-20T12:15:00+09:00",
+            "objective_log_score_by_horse_id":{h:(i-2.5)*.03 for i,h in enumerate(HORSES)}
+        }
+        scores=premarket_context_log_scores(receipt,target)
+        self.assertEqual(set(scores),set(HORSES))
+        a=run_coupled_repeatability_trial(
+            make_source(),target,
+            observed_first_odds=dict(zip(HORSES,[2.,3.,4.,5.,6.,7.])),
+            premarket_context_receipt=receipt,horse_draws=40,seed=77)
+        b=run_coupled_repeatability_trial(
+            make_source(),target,
+            observed_first_odds=dict(zip(HORSES,[2.,3.,4.,5.,6.,7.])),
+            horse_draws=40,seed=77)
+        self.assertTrue(a["premarket_context_used"])
+        self.assertFalse(b["premarket_context_used"])
+        self.assertFalse(np.array_equal(a["independent_horse_objective_prior"],
+                                        b["independent_horse_objective_prior"]))
+        self.assertEqual(a["premarket_context_proof"],
+                         "LOCAL_ONLY_EXTERNAL_ATTESTATION_HOLD")
+        for mode in ("late_source","late_model_freeze","odds_leak","missing_horse","bad_feature"):
+            modified=deepcopy(receipt)
+            if mode=="late_source":
+                modified["source_received_at_jst"]="2026-10-26T08:46:00+09:00"
+            if mode=="late_model_freeze":
+                modified["feature_model_frozen_at_jst"]="2026-10-26T08:50:00+09:00"
+            if mode=="odds_leak":modified["market_q0"]={h:1/6 for h in HORSES}
+            if mode=="missing_horse":
+                modified["objective_log_score_by_horse_id"].pop("H6")
+            if mode=="bad_feature":modified["feature_names"].append("current_odds")
+            with self.subTest(mode=mode),self.assertRaises(ValueError):
+                premarket_context_log_scores(modified,target)
+
 
 
 if __name__ == "__main__":
