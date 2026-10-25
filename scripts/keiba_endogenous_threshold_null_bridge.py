@@ -355,14 +355,6 @@ def run_source_locked(root=ROOT, *, draws=150, seeds=30,
                 for arrival in ARRIVALS}
             for crowd in ("0.0","2.0")}
         for arm in PRIOR_ARMS}
-    out["date_equal_scores"]={
-        arm:{
-            key:mean(
-                mean(z["winner_log_loss"] for z in perdate[day][key])
-                for day in perdate)
-            for key in perdate[next(iter(perdate))]
-            if key[0]==arm and key[2] in (1,3)}
-        for arm in PRIOR_ARMS}
     # JSON cannot serialize tuple keys; convert date contrast to structured
     # nested statistics rather than promoting them into arbitrary ranks.
     out["date_equal_scores"]={
@@ -377,7 +369,7 @@ def run_source_locked(root=ROOT, *, draws=150, seeds=30,
                 for arrival in (1,3)}
             for crowd in ("0.0","2.0")}
         for arm in PRIOR_ARMS}
-    out["official_outcomes_read_only_after_all_horse_market_and_null_models"]:True
+    out["official_outcomes_read_only_after_all_horse_market_and_null_models"]=True
     return out
 
 
