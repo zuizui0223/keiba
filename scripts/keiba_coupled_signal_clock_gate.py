@@ -53,6 +53,8 @@ def source_clock_to_voter_round(x, *, steps=4):
         raise ValueError("HOLD_UNVERIFIED_OR_OUT_OF_ORDER_QUOTE_RECEPTION_CLOCKS")
     if not pub<=rec:
         raise ValueError("HOLD_HORSE_SIGNAL_RECEPTION_PRECEDES_PUBLICATION")
+    if rec>e:
+        raise ValueError("HOLD_HORSE_SIGNAL_NOT_KNOWN_AT_LOCAL_FORECAST")
     duration=(d-b).total_seconds()
     if duration<=0:
         raise ValueError("HOLD_MISSING_CLOCKED_SIGNAL_INTERVAL")
