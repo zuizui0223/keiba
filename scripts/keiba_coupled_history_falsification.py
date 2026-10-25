@@ -307,6 +307,38 @@ def audit(root=ROOT, *, draws=120, seed=20261025,
         "separate_cannon_park_GPS_transfer_to_JRA_ability": "NOT_PERMITTED",
         "existing_PR10_Kikka_and_v31_frozen": True,
     }
+    # Time hierarchy: compare race-equal against MEETING-DATE-equal averages.
+    # Five Kyoto races on Oct12 are not five independent race dates.
+    days = sorted({z["day"] for z in results})
+    if days != ["2026-10-12", "2026-10-18"]:
+        raise ValueError("HOLD_CHANGED_MEETING_DATE_COHORT")
+    def dated_mean(day, arm, model, metric):
+        return mean(z["arms"][arm]["scores"][model][metric]
+                    for z in results if z["day"] == day)
+    contrasts = {
+        "history_minus_shuffled_information_WIN_LL":
+            ("history_only", "history_shuffled", "market_information", "win_log_loss"),
+        "history_minus_shuffled_threshold_WIN_LL":
+            ("history_only", "history_shuffled", "market_threshold_mixed", "win_log_loss"),
+        "blend_minus_market_prior_information_WIN_LL":
+            ("market_80_history_20", "market_proxy", "market_information", "win_log_loss"),
+        "blend_minus_market_prior_threshold_WIN_LL":
+            ("market_80_history_20", "market_proxy", "market_threshold_mixed", "win_log_loss"),
+        "blend_minus_market_prior_information_Top3_Brier":
+            ("market_80_history_20", "market_proxy", "market_information", "top3_brier"),
+    }
+    out["by_meeting_date"] = {
+        day: {
+            "n_real_races": sum(z["day"] == day for z in results),
+            "contrasts": {
+                label: dated_mean(day, arm1, model, metric)
+                       - dated_mean(day, arm0, model, metric)
+                for label, (arm1, arm0, model, metric) in contrasts.items()},
+        } for day in days}
+    out["mean_date_equal_contrasts"] = {
+        label: mean(out["by_meeting_date"][day]["contrasts"][label]
+                    for day in days) for label in contrasts}
+    out["meeting_date_bootstrap_not_claimed_with_2_dates"] = True
     if out["horse_race_entries"] != 84 or out["entrants_with_no_past_start"]!=1:
         raise ValueError("HOLD_ARCHIVED_PAST_FORM_SOURCE_COVERAGE_CHANGED")
     return out
