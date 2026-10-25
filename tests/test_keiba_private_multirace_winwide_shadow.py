@@ -97,6 +97,7 @@ def target(feature,*,change=1.03,first_at="2026-11-07T11:18:00+09:00",
              "odds_by_horse_number":{
                  k:float(v*(1.2 if int(k)%2 else .85))
                  for k,v in prices.items()},
+            },
         ]
     return {
         "schema":m.TARGET_SCHEMA,
