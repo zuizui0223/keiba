@@ -160,7 +160,7 @@ class PrivateMetadataAndFutureCaptureTests(unittest.TestCase):
         self.assertAlmostEqual(
             metric["race_equal_delta_next_price_TV_vs_persistence_pp"],-3.0)
         self.assertAlmostEqual(
-            metric["meeting_date_equal_delta_next_price_TV_pp"],-3.0)
+            metric["meeting_date_equal_delta_next_price_TV_vs_persistence_pp"],-3.0)
         self.assertEqual(metric["locally_scored_distinct_real_market_intervals_not_authenticated"],1)
 
     def test_future_quoted_result_cannot_exist_at_prior_asof(self):
