@@ -1,0 +1,68 @@
+name: Coupled horse, bettor, market threshold and PDE audit
+
+on:
+  push:
+    branches: [analysis/coupled-horse-bettor-pde-20261025]
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_coupled_seed_sensitivity.py'
+      - 'scripts/betting_abm_pde_sensitivity.py'
+      - 'scripts/betting_abm_pde_particle_bridge.py'
+      - 'tests/test_keiba_coupled_horse_market_pde.py'
+      - 'docs/betting/coupled-horse-market-pde-20261025.md'
+      - '.github/workflows/coupled-horse-market-pde.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_coupled_seed_sensitivity.py'
+      - 'scripts/betting_abm_pde_sensitivity.py'
+      - 'scripts/betting_abm_pde_particle_bridge.py'
+      - 'tests/test_keiba_coupled_horse_market_pde.py'
+      - 'docs/betting/coupled-horse-market-pde-20261025.md'
+      - '.github/workflows/coupled-horse-market-pde.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  coupled-numerical-evidence:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: NumPy numerical dependency
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Test all coupled mathematical gates and as-of source isolation
+        run: |
+          python -m compileall -q scripts/keiba_coupled_horse_market_pde.py tests/test_keiba_coupled_horse_market_pde.py
+          python -m unittest discover -s tests -p 'test_keiba_coupled_horse_market_pde.py' -v
+      - name: No postrace outcomes are accessed during prestart simulator
+        run: |
+          python scripts/keiba_coupled_horse_market_pde.py --prestart-only --draws 90 --output tmp/coupled-prestart.json
+          python -c "import json; q=json.load(open('tmp/coupled-prestart.json')); assert q['status'].startswith('PRESTART_ONLY'); assert q['postrace']=='NOT_COMPUTED'; assert q['cohort']['races']==6 and q['cohort']['horse_race_entries']==84; assert abs(q['physics_SDE_to_PDE']['pde_mass']-1)<1e-8 and q['physics_SDE_to_PDE']['max_CDF_gap']<.06; assert q['real_calibrated_forecast_advantage']=='HOLD'"
+      - name: Source-locked six-race descriptive postrace scoring, not prospective
+        run: |
+          python scripts/keiba_coupled_horse_market_pde.py --draws 90 --output tmp/coupled-retrospective.json
+          python -c "import json; x=json.load(open('tmp/coupled-retrospective.json')); s=x['postrace']; assert s['status'].startswith('RETROSPECTIVE'); assert abs(s['mean_race_equal_winner_log_loss']['observed_M0']-1.696959293802405)<1e-7; assert len(s['mean_race_equal_winner_log_loss'])==12; assert x['horse_abm']['legacy_P9_reused_unmodified']; assert x['market_abm']['synthetic_stakes_not_observed_actual_JRA_votes']; assert x['odds_threshold_phase_transition_claim']=='HOLD'"
+          python -c "import json; x=json.load(open('tmp/coupled-retrospective.json')); print('JOINT_RETROSPECTIVE_MARKET_TV',json.dumps(x['market_abm']['mean_TV_to_actual_later_quote_pp'],ensure_ascii=False,sort_keys=True)); print('JOINT_WIN_LL',json.dumps(x['postrace']['mean_race_equal_winner_log_loss'],ensure_ascii=False,sort_keys=True)); print('JOINT_TOP3_BRIER',json.dumps(x['postrace']['mean_race_equal_Top3_brier'],ensure_ascii=False,sort_keys=True)); print('JOINT_THRESHOLD_TRIGGER_COUNT',x['market_abm']['threshold_triggered_steps_sum'])"
+      - name: Verify joint-ticket WIN/WIDE/quinella/trio mass and real podium-only scores
+        run: |
+          python -c "import json; x=json.load(open('tmp/coupled-retrospective.json')); a=x['all_ticket_markets']; b=x['postrace']['mean_coherent_ticket_scores_race_equal']; assert a['sourced_from_same_ordered_finish_distribution'] and a['WIDE_both_Top3_mass']==3; assert len(b)==6 and b['observed_M0']['unordered_trio_log_loss']>0; print('JOINT_TICKET_SCORES',json.dumps(b,ensure_ascii=False,sort_keys=True))"
+      - name: Seed variability is simulation noise, not seven new real races
+        run: |
+          python scripts/keiba_coupled_seed_sensitivity.py --seeds 7 --draws 120 --output tmp/coupled-seed-sensitivity.json
+          python -c "import json; x=json.load(open('tmp/coupled-seed-sensitivity.json')); assert x['real_independent_races']==6 and x['real_meeting_dates']==2 and x['synthetic_seed_repetitions_not_new_independent_trials']==7; assert x['hypothetical_parameters_unchanged_across_seeds'] and x['any_score_advantage_is_retrospective_and_unvalidated']"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coupled-abm-pde-aggregates-only
+          path: |
+            tmp/coupled-prestart.json
+            tmp/coupled-retrospective.json
+            tmp/coupled-seed-sensitivity.json
+          retention-days: 14
