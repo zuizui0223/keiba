@@ -5,12 +5,14 @@ on:
     branches: [analysis/r8-threepoint-noise-and-coupled-shadow-20261025]
     paths:
       - 'scripts/keiba_r8_threepoint_conditional_shadow.py'
+      - 'scripts/keiba_r8_threepoint_seed_noise.py'
       - 'tests/test_keiba_r8_threepoint_conditional_shadow.py'
       - 'docs/betting/kyoto8-threepoint-conditional-shadow-20261025.md'
       - '.github/workflows/keiba-r8-threepoint-conditional-shadow.yml'
   pull_request:
     paths:
       - 'scripts/keiba_r8_threepoint_conditional_shadow.py'
+      - 'scripts/keiba_r8_threepoint_seed_noise.py'
       - 'tests/test_keiba_r8_threepoint_conditional_shadow.py'
       - 'docs/betting/kyoto8-threepoint-conditional-shadow-20261025.md'
       - '.github/workflows/keiba-r8-threepoint-conditional-shadow.yml'
@@ -40,11 +42,17 @@ jobs:
         run: |
           python scripts/keiba_r8_threepoint_conditional_shadow.py --null-draws 2000 --horse-draws 120 --output tmp/kyoto8-threepoint-shadow.json
           python -c "import json; r=json.load(open('tmp/kyoto8-threepoint-shadow.json')); assert r['n_real_races']==1 and r['n_horses']==11 and r['fixed_retrospective_18min_horizon_NOT_precommitted_externally'] and r['mid_source_cutoff'].startswith('2026-10-12T13:26:00') and len(r['candidate_forecast_scores'])==9 and len(r['null_condition_sensitivity'])==12 and not r['market_criticality_or_information_arrival_inferred'] and r['source_provider_same_all_three_quote_points']; assert r['next_18minute_interval_TV_pp']>=r['display_0_05_half_bin_conditional_lower_bound_TV_pp']"
+      - name: Five synthetic horse-voter seeds reuse ONE independently archived next quote
+        run: |
+          python scripts/keiba_r8_threepoint_seed_noise.py --seeds 5 --horse-draws 120 --output tmp/kyoto8-seed-only.json
+          python -c "import json; x=json.load(open('tmp/kyoto8-seed-only.json')); assert x['independent_real_next_quote_targets']==1 and x['artificial_horse_bettor_seed_repetitions']==5 and not x['real_bettor_vote_counts_or_JRA_race_outcomes_consumed']; print('ONE_REAL_TARGET_SYNTHETIC_SEED_ENVELOPE',json.dumps(x['by_fixed_candidate'],sort_keys=True))"
       - name: Print aggregate market shape and identification limits (never true vote count)
         run: |
           python -c "import json; q=json.load(open('tmp/kyoto8-threepoint-shadow.json')); print('R8_OBSERVED_3POINT_MARKET',json.dumps({k:q[k] for k in ['previous_65minute_interval_TV_pp','next_18minute_interval_TV_pp','previous_65minute_quote_TV_rate_pp_per_hour','next_18minute_quote_TV_rate_pp_per_hour','next_interval_exact_proxy_minimum_new_fraction','display_0_05_half_bin_conditional_lower_bound_TV_pp']},sort_keys=True)); print('R8_NEXT_MARKET_TV_AND_KL',json.dumps(q['candidate_forecast_scores'],sort_keys=True)); print('R8_NULL_CONDITIONAL_SENSITIVITY',json.dumps(q['null_condition_sensitivity'],sort_keys=True)); print('R8_ASSUMPTION_ROBUSTNESS',json.dumps(q['null_robustness_only_under_unverified_exact_share_proxy'],sort_keys=True))"
       - uses: actions/upload-artifact@v4
         with:
           name: r8-source-locked-next-quote-shadow-one-race-only
-          path: tmp/kyoto8-threepoint-shadow.json
+          path: |
+            tmp/kyoto8-threepoint-shadow.json
+            tmp/kyoto8-seed-only.json
           retention-days: 14
