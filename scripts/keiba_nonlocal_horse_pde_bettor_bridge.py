@@ -289,9 +289,32 @@ def coupled_prestart(row, prior, *, distance_m, draws=350, seed=20261025):
         if not np.array_equal(states["no_crowd"][null]["market"],
                               states["nonlocal_crowd"][null]["market"]):
             raise ValueError("HOLD_HORSE_CROWD_CAUSED_MARKET_WITHOUT_INFO_PATH")
+    horse_win_shift_pp=float(50*np.sum(np.abs(
+        animal["scenarios"]["nonlocal_crowd"]["win"]-
+        animal["scenarios"]["no_crowd"]["win"])))
+    horse_top3_rel_shift_pp=float((50/3)*np.sum(np.abs(
+        animal["scenarios"]["nonlocal_crowd"]["top3"]-
+        animal["scenarios"]["no_crowd"]["top3"])))
+    vote_signal_market_transfer_pp={
+        mode:float(50*np.sum(np.abs(
+            states["nonlocal_crowd"][mode]["market"]-
+            states["no_crowd"][mode]["market"])))
+        for mode in VOTER_TYPES}
+    if any(vote_signal_market_transfer_pp[k]!=0
+           for k in ("independent","herding")):
+        raise ValueError("HOLD_CAUSAL_BYPASS_OF_INFORMATION_FILTER")
     return {
         "horse_scenario":animal,
         "by_crowd_and_vote":states,
+        "physical_to_market_transmission": {
+            "horse_win_distribution_shift_TV_pp":horse_win_shift_pp,
+            "horse_Top3_normalized_shift_TV_pp":horse_top3_rel_shift_pp,
+            "market_price_index_shift_TV_pp":vote_signal_market_transfer_pp,
+            "synthetic_threshold_gate_step_delta":
+                (states["nonlocal_crowd"]["threshold_mixed"]["triggered_steps"]-
+                 states["no_crowd"]["threshold_mixed"]["triggered_steps"]),
+            "null_information_voter_effect_identically_zero":True,
+        },
         "market_q0":market_q0,
         "physical_horse_prior":input_horse_p,
         "later_observed_market_only_for_shape_scoring":True,
@@ -368,6 +391,23 @@ def archived_six_race_audit(root=ROOT, *, draws=350, seed=20261025,
                      for z in scored)) for k in metrics}
         for mode in VOTER_TYPES} for crowd in CROWD_SCENARIOS}
         for arm in PRIOR_ARMS}
+    transfer={arm:{
+        "mean_horse_WIN_probability_TV_shift_pp":float(mean(
+            z["cases"][arm]["physical_to_market_transmission"][
+                "horse_win_distribution_shift_TV_pp"] for z in scored)),
+        "mean_horse_Top3_relative_TV_shift_pp":float(mean(
+            z["cases"][arm]["physical_to_market_transmission"][
+                "horse_Top3_normalized_shift_TV_pp"] for z in scored)),
+        "voter_market_response_TV_pp":{
+            mode:float(mean(z["cases"][arm][
+                "physical_to_market_transmission"][
+                    "market_price_index_shift_TV_pp"][mode]
+                for z in scored)) for mode in VOTER_TYPES},
+        "sum_threshold_gate_switch_delta":sum(z["cases"][arm][
+            "physical_to_market_transmission"][
+                "synthetic_threshold_gate_step_delta"] for z in scored),
+        "no_direct_physical_to_quoted_odds_arrow":True,
+        } for arm in PRIOR_ARMS}
     physical={arm:{
         "mean_max_KS_particle_to_nonlocal_PDE":float(
             mean(z["pde"][arm]["max_KS_particle_to_PDE"] for z in scored)),
@@ -424,6 +464,7 @@ def archived_six_race_audit(root=ROOT, *, draws=350, seed=20261025,
             for k in metrics},
         "mean_race_equal_scores":scores,
         "market_index_TV_to_real_later":tvs,
+        "physical_interaction_to_bettor_market_transmission":transfer,
         "nonlocal_particle_PDE_diagnostics":physical,
         "by_meeting_date":date_effects,
         "real_successful_forward_threshold_or_bet_EV":"HOLD",
