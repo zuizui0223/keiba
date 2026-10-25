@@ -89,8 +89,21 @@ class ArchivedR8Tests(unittest.TestCase):
             side_effect=AssertionError("POSTRACE_WINNER_WOULD_LEAK")):
             z=m.build_pre_1344_forecasts(horse_draws=40,seed=144)
         self.assertEqual(z["ids"],list(range(1,12)))
-        self.assertEqual(len(z["candidate_indices"]),9)
+        self.assertEqual(len(z["candidate_indices"]),21)
         self.assertTrue(z["mid_wide_full_55_pair_source_already_checked"])
+        self.assertTrue(z["mid_WIDE_node_feeds_same_bettor_ABM_after_horse_agent_signal"])
+        self.assertTrue(z["rotated_mid_WIDE_node_negative_control_in_same_ABM"])
+        # If information arrives after all four rounds, changing WIDE
+        # residuals cannot affect market predictions in the coupled agents.
+        for arm in ("mid_market","retrospective_past_form"):
+            prefix=f"coupled_{arm}_smooth_c2_"
+            neutral=z["candidate_indices"][prefix+"signal_round5"]
+            correct=z["candidate_indices"][
+                prefix+"WIDE_residual_beta025_round5"]
+            rotated=z["candidate_indices"][
+                prefix+"WIDE_node_rotated_placebo_beta025_round5"]
+            np.testing.assert_array_equal(neutral,correct)
+            np.testing.assert_array_equal(neutral,rotated)
         self.assertFalse(z["horse_history_source_received_pre_cutoff_proven"])
         self.assertLess(z["mid_received"],z["nominal_next_market_publication"])
         for name,p in z["candidate_indices"].items():
@@ -120,7 +133,7 @@ class ArchivedR8Tests(unittest.TestCase):
              "RETROSPECTIVE_NEXT_QUOTE_SINGLE_RACE_NOT_HOLDOUT")
         self.assertEqual(z["n_real_races"],1)
         self.assertEqual(z["n_horses"],11)
-        self.assertEqual(len(z["candidate_forecast_scores"]),9)
+        self.assertEqual(len(z["candidate_forecast_scores"]),21)
         self.assertEqual(len(z["null_condition_sensitivity"]),12)
         self.assertGreater(z["previous_65minute_interval_TV_pp"],0)
         self.assertGreater(z["next_18minute_interval_TV_pp"],0)
