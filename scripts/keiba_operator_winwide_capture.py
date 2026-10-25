@@ -450,7 +450,7 @@ def _read(path):
 
 def _write_new_private(path,obj):
     path=Path(path)
-    if "private" not in path.parts:
+    if "private" not in path.resolve().parts:
         raise ValueError("HOLD_RAW_CAPTURE_OUTPUT_NOT_IN_GITIGNORED_PRIVATE")
     path.parent.mkdir(parents=True,exist_ok=True)
     with path.open("x",encoding="utf-8") as f:
@@ -478,7 +478,7 @@ def main():
                     action="store_true")
     args=p.parse_args()
     if args.action=="append":
-        if "private" not in args.private_ledger.parts:
+        if "private" not in args.private_ledger.resolve().parts:
             raise ValueError("HOLD_CAPTURE_LEDGER_MUST_STAY_IN_PRIVATE_DIRECTORY")
         out=append_capture(args.private_ledger,_read(args.raw_source))
     elif args.action=="freeze":
