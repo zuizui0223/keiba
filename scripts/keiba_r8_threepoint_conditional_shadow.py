@@ -131,6 +131,7 @@ def build_pre_1344_forecasts(root=ROOT, *, horse_draws=120,seed=20261025):
         "status":"EARLY_AND_MIDDLE_SOURCE_ONLY_BEFORE_TARGET_UNOPENED",
         "ids":ids,"nominal_cutoff":signal_cutoff,
         "mid_received":mid_received,
+        "first_source_published":aware(features["feature_first_published"]),
         "nominal_next_market_publication":future_nominal,
         "official_post":race_post,
         "source_price_q0":_vector_from_proxy(
@@ -254,7 +255,7 @@ def score_source_only_forecasts(prepared, target_prices, nulls):
     rounding=quotation_TV_rounding_lower_bound(
         prepared["mid_original_displayed_win_prices"],target_prices)
     prev_hr=(prepared["nominal_cutoff"]-
-             aware("2026-10-12T12:21:00+09:00")).total_seconds()/3600
+             prepared["first_source_published"]).total_seconds()/3600
     return {
         "status":"RETROSPECTIVE_NEXT_QUOTE_SINGLE_RACE_NOT_HOLDOUT",
         "n_real_races":1,
@@ -263,7 +264,7 @@ def score_source_only_forecasts(prepared, target_prices, nulls):
         "mid_received_at":prepared["mid_received"].isoformat(),
         "later_quote_update_at":prepared[
             "nominal_next_market_publication"].isoformat(),
-        "one_precommitted_18min_later_market_target":True,
+        "fixed_retrospective_18min_horizon_NOT_precommitted_externally":True,
         "source_provider_same_all_three_quote_points":True,
         "full_55_WIDE_pair_mid_source_not_atomic_pool_receipt":True,
         "actual_market_votes_or_pool_size_observed":False,
