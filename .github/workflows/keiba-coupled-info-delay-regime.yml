@@ -1,0 +1,74 @@
+name: Coupled horse interaction and staged market information
+
+on:
+  push:
+    branches: [analysis/coupled-horse-info-delay-regime-20261025]
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_nonlocal_horse_pde_bettor_bridge.py'
+      - 'scripts/keiba_coupled_info_delay_regime_surface.py'
+      - 'scripts/keiba_coupled_signal_clock_gate.py'
+      - 'scripts/keiba_coupled_delay_seed_envelope.py'
+      - 'tests/test_keiba_coupled_info_delay_regime_surface.py'
+      - 'tests/test_keiba_coupled_signal_clock_gate.py'
+      - 'tests/test_keiba_coupled_delay_seed_envelope.py'
+      - 'docs/betting/horse-crowding-information-arrival-regime-20261025.md'
+      - '.github/workflows/keiba-coupled-info-delay-regime.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_coupled_horse_market_pde.py'
+      - 'scripts/keiba_nonlocal_horse_pde_bettor_bridge.py'
+      - 'scripts/keiba_coupled_info_delay_regime_surface.py'
+      - 'scripts/keiba_coupled_signal_clock_gate.py'
+      - 'scripts/keiba_coupled_delay_seed_envelope.py'
+      - 'tests/test_keiba_coupled_info_delay_regime_surface.py'
+      - 'tests/test_keiba_coupled_signal_clock_gate.py'
+      - 'tests/test_keiba_coupled_delay_seed_envelope.py'
+      - 'docs/betting/horse-crowding-information-arrival-regime-20261025.md'
+      - '.github/workflows/keiba-coupled-info-delay-regime.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  single-model-physical-social-timescale:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Causal signal gates, common horse/voter draws, PDE Gaussian floor and source firewall
+        run: |
+          python -m compileall -q scripts/keiba_coupled_horse_market_pde.py scripts/keiba_nonlocal_horse_pde_bettor_bridge.py scripts/keiba_coupled_info_delay_regime_surface.py tests/test_keiba_coupled_info_delay_regime_surface.py
+          python -m unittest discover -s tests -p 'test_keiba_coupled_info_delay_regime_surface.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_coupled_signal_clock_gate.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_coupled_delay_seed_envelope.py' -v
+      - name: Real archived six race rosters, but no target outcome opened
+        run: |
+          python scripts/keiba_coupled_info_delay_regime_surface.py --preoutcome-only --draws 60 --pde-particles 400 --output tmp/coupled-info-preoutcome.json
+          python -c "import json; z=json.load(open('tmp/coupled-info-preoutcome.json')); assert z['status'].startswith('PREOUTCOME_COMPUTATION_ONLY') and z['official_scores']=='NOT_COMPUTED' and z['independent_real_races']==6 and z['horse_race_entries']==84 and z['not_a_discovered_biological_or_market_critical_point']"
+      - name: Historical proper outcome scoring on same predeclared model and same physical law
+        run: |
+          python scripts/keiba_coupled_info_delay_regime_surface.py --draws 350 --pde-particles 1500 --output tmp/coupled-info-retrospective.json
+          python -c "import json; z=json.load(open('tmp/coupled-info-retrospective.json')); assert z['independent_real_races']==6 and z['independent_meeting_dates']==2 and z['horse_race_entries']==84; assert z['declared_crowd_strength_m2_per_s']==[0.,.5,1.,2.,4.,8.]; assert z['declared_signal_first_available_voter_round']==[1,3,5] and z['market_or_biological_threshold_inference']=='HOLD'; assert all(abs(v['min_horse_probability_mass']-1)<1e-8 and abs(v['max_horse_probability_mass']-1)<1e-8 for cases in z['PDE_one_representative_race_not_empirical_GPS'].values() for v in cases.values())"
+      - name: Print only the physical-market link and PDE closure diagnostics
+        run: |
+          python -c "import json; x=json.load(open('tmp/coupled-info-retrospective.json')); print('SYNTHETIC_PDE_CLOSURE',json.dumps(x['PDE_one_representative_race_not_empirical_GPS'],sort_keys=True)); print('PHYSICAL_INTENSITY_RESPONSE',json.dumps(x['physical_crowd_intensity_response'],sort_keys=True)); print('COUPLED_INFORMATION_TRANSFER_CURVE',json.dumps({p:{str(c):{str(a):x['mean_equal_race_scores'][p][str(float(c))][str(a)]['information']['counterfactual_crowd_to_market_TV_pp'] for a in [1,3,5]} for c in [0.,.5,1.,2.,4.,8.]} for p in ['initial_market','historical_form']},sort_keys=True)); print('DATE_SCOPED_INFO_DELAY',json.dumps(x['by_meeting_day'],sort_keys=True)); print('C2_CROWD_DELAY_WIN_AND_MARKET',json.dumps({p:{a:{m:x['mean_equal_race_scores'][p]['2.0'][str(a)][m] for m in ['independent','information','mixed','threshold_mixed']} for a in [1,3,5]} for p in ['initial_market','historical_form']},sort_keys=True)); print('EMPIRICAL_CRITICALITY','HOLD')"
+      - name: Five seeds quantify MC variability, NOT five additional race cohorts
+        run: |
+          python scripts/keiba_coupled_delay_seed_envelope.py --seeds 5 --draws 150 --output tmp/coupled-info-seed-noise.json
+          python -c "import json; x=json.load(open('tmp/coupled-info-seed-noise.json')); assert x['real_races']==6 and x['real_meeting_dates']==2 and x['synthetic_seed_repeat_count']==5 and x['same_real_races_reused_for_seed_repetitions'] and x['no_official_outcomes_read']; assert all(y['seed_repetitions_any_no_info_response']==0 for y in x['by_horse_initial_prior'].values()); print('SYNTHETIC_SIGNAL_DELAY_SEED_ENVELOPE',json.dumps(x['by_horse_initial_prior'],sort_keys=True))"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coupled-crowd-time-hierarchy-aggregate-only
+          path: |
+            tmp/coupled-info-preoutcome.json
+            tmp/coupled-info-retrospective.json
+            tmp/coupled-info-seed-noise.json
+          retention-days: 14

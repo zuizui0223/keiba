@@ -141,16 +141,23 @@ def brownian_horse_ensemble(q0, distance_m, *, draws=400, seed=20261025,
 
 def vote_market(q0, signal, *, mode, duration_hours, seed=20261025,
                 steps=4, synthetic_prior_stakes=3000,
-                synthetic_votes_per_step=250):
+                synthetic_votes_per_step=250, signal_start_step=1):
     """Independent categorical bettors with shared-uniform paired tally draws.
 
     Prices are normalized *proxy vote shares*, not recovered JRA pool stakes.
     Threshold mixing is a fixed, hypothetical endogenous response rule.
+    signal_start_step=1 retains all original PR #14/#17 results exactly.
+    At earlier steps, bettors have ONLY q0, not future horse information.
+    signal_start_step=steps+1 means no horse information was released.
+    There is no claim that any actual information arrived at these times.
     """
     if mode not in MIXED_MODES or duration_hours <= 0 or steps < 2:
         raise ValueError("HOLD_INVALID_MARKET_MODE_OR_TIME")
     if synthetic_prior_stakes <= 0 or synthetic_votes_per_step < 0:
         raise ValueError("HOLD_BAD_SYNTHETIC_STAKES")
+    if (type(signal_start_step) is not int or
+            not 1 <= signal_start_step <= steps+1):
+        raise ValueError("HOLD_INVALID_HORSE_SIGNAL_ARRIVAL_ROUND")
     q0 = vector(q0)
     signal = vector(signal)
     if len(q0) != len(signal):
@@ -164,18 +171,21 @@ def vote_market(q0, signal, *, mode, duration_hours, seed=20261025,
         elapsed_h = duration_hours * (step-1)/steps
         change_rate = (np.max(np.abs(np.log(current/q0))) / elapsed_h
                        if elapsed_h > 0 else 0.0)
+        # Voters cannot respond to information not yet released.
+        # Before arrival they may use the visible q0 market index only.
+        visible_horse_information = signal if step >= signal_start_step else q0
         if mode == "independent":
             weights = q0
         elif mode == "herding":
             weights = current**1.25
         elif mode == "information":
-            weights = signal
+            weights = visible_horse_information
         else:
             herd_power = 0.75
             if mode == "threshold_mixed" and change_rate >= .10:
                 herd_power = 1.50
                 active_steps += 1
-            weights = current**herd_power * signal**0.75
+            weights = current**herd_power * visible_horse_information**0.75
         # Inverse-CDF categorical choices using the SAME per-bettor
         # uniforms across counterfactual modes (when initialized with the
         # same seed). This isolates mechanism changes from voter MC noise.
@@ -193,6 +203,8 @@ def vote_market(q0, signal, *, mode, duration_hours, seed=20261025,
                       atol=1e-8):
         raise ValueError("HOLD_CUMULATIVE_POOL_ACCOUNTING_FAILED")
     return {"path": path, "final": end, "triggered_steps": active_steps,
+            "signal_first_visible_round": signal_start_step,
+            "information_visible_round_count": max(0, steps-signal_start_step+1),
             "initial_stakes_assumption": synthetic_prior_stakes,
             "new_vote_count_assumption": steps*synthetic_votes_per_step}
 
