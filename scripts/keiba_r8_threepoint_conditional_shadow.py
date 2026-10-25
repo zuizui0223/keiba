@@ -99,7 +99,7 @@ def build_pre_1344_forecasts(root=ROOT, *, horse_draws=120,seed=20261025):
         "post_at":race_post.isoformat(),
     }
     physical=preoutcome_panel(
-        synthetic_row,features["last_market_q"],
+        synthetic_row,_vector_from_proxy(features["last_market_q"],ids),
         distance_m=historical["distance_m"],
         draws=horse_draws,seed=seed)
     from keiba_coupled_history_falsification import form_prior
