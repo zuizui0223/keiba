@@ -1,0 +1,72 @@
+name: Fixed JRA 26-race next-market cohort and source readiness
+
+on:
+  push:
+    branches: [analysis/fixed-denominator-nextprice-campaign-20261025]
+    paths:
+      - 'scripts/keiba_fixed_denominator_market_campaign.py'
+      - 'scripts/keiba_campaign_remote_sha_evidence.py'
+      - 'scripts/keiba_secondary_64_market_slots.py'
+      - 'tests/test_keiba_fixed_denominator_market_campaign.py'
+      - 'tests/test_keiba_campaign_remote_sha_evidence.py'
+      - 'tests/test_keiba_secondary_64_market_slots.py'
+      - 'docs/betting/fixed-cohort-next-market-capture-20261025.md'
+      - '.github/workflows/keiba-fixed-denominator-nextmarket-campaign.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_fixed_denominator_market_campaign.py'
+      - 'scripts/keiba_campaign_remote_sha_evidence.py'
+      - 'scripts/keiba_secondary_64_market_slots.py'
+      - 'tests/test_keiba_fixed_denominator_market_campaign.py'
+      - 'tests/test_keiba_campaign_remote_sha_evidence.py'
+      - 'tests/test_keiba_secondary_64_market_slots.py'
+      - 'docs/betting/fixed-cohort-next-market-capture-20261025.md'
+      - '.github/workflows/keiba-fixed-denominator-nextmarket-campaign.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  immutable-cohort-and-denominator:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Numerical dependencies for the imported future WIN/WIDE capture/score schemas
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Verify fixed 26/20 SHA registers, new quote target timing and private score denial
+        run: |
+          python -m compileall -q scripts/keiba_fixed_denominator_market_campaign.py tests/test_keiba_fixed_denominator_market_campaign.py
+          python -m unittest discover -s tests -p 'test_keiba_fixed_denominator_market_campaign.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_campaign_remote_sha_evidence.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_secondary_64_market_slots.py' -v
+      - name: As of October 25 22:04 JST, no new actual future race receipt exists
+        run: |
+          python scripts/keiba_fixed_denominator_market_campaign.py --as-of 2026-10-25T22:04:00+09:00 --output tmp/fixed-cohort-20261025.json
+          python -c "import json; x=json.load(open('tmp/fixed-cohort-20261025.json')); assert x['registered_flat_G1_G2_G3_slots_including_Kikka']==26 and x['registered_meeting_dates']==20 and x['registered_next_price_candidate_slots_excluding_old_Kikka']==25; assert x['future_registered_slots_after_asof_date']==25 and x['official_post_and_race_id_unresolved_in_public_registry']==25; assert x['new_independent_real_prospective_quote_trials_confirmed']==0 and x['remotely_SHA_pre_next_price_verified_intervals']==0; assert x['globally_predeclared_next_quote_horizon_minutes']==15 and x['globally_predeclared_next_quote_window_minutes']==5; assert not x['minimum_60_races_8_dates_development_guard_met']; assert x['registered_slot_readiness'][1]['slot_id']=='2026-10-31|京都|ファンタジーS' and x['registered_slot_readiness'][2]['slot_id']=='2026-11-01|東京|天皇賞（秋）'"
+      - name: No private forecast means no remote proof, but all 26 slots remain
+        run: |
+          python -c "import json, pathlib; p=pathlib.Path('tmp/empty-local-receipts.json'); p.parent.mkdir(exist_ok=True); json.dump({'schema':'KEIBA_PRIVATE_FIXED_SLOTS_CAPTURE_METADATA_V1','entries':[]},open(p,'w'))"
+          python scripts/keiba_campaign_remote_sha_evidence.py --as-of 2026-10-25T23:18:00+09:00 --receipts tmp/empty-local-receipts.json --output tmp/campaign-remote-proof-hold.json
+          python -c "import json; x=json.load(open('tmp/campaign-remote-proof-hold.json')); assert x['registered_flat_G1_G2_G3_slots_including_Kikka']==26 and x['registered_next_price_candidate_slots_excluding_old_Kikka']==25 and x['remotely_SHA_pre_next_price_verified_intervals']==0 and x['new_independent_real_prospective_quote_trials_confirmed']==0 and x['live_sha_proof_does_NOT_authenticate_market_capture']; print('GITHUB_PROOF_COUPLED_FIXED_DENOMINATOR',json.dumps({k:x[k] for k in ['registered_flat_G1_G2_G3_slots_including_Kikka','remotely_SHA_pre_next_price_verified_intervals','new_independent_real_prospective_quote_trials_confirmed']},sort_keys=True))"
+      - name: Separate predeclared 64-slot eight-date development denominator, ZERO actual market targets
+        run: |
+          python scripts/keiba_secondary_64_market_slots.py --as-of 2026-10-25T23:18:00+09:00 --output tmp/auxiliary-64-planned-20261025.json
+          python -c "import json; x=json.load(open('tmp/auxiliary-64-planned-20261025.json')); assert x['predeclared_auxiliary_slots']==64 and x['predeclared_distinct_meeting_dates']==8 and len(x['slots'])==64; assert x['auxiliary_real_future_market_targets_collected']==0 and not x['observed_60race_8date_development_guard_met']; assert x['cannot_pool_with_grade_26_without_deduplicating_race_ids']; print('AUXILIARY_64_PREDECLARED_NO_REAL_TARGETS',json.dumps({k:x[k] for k in ['predeclared_auxiliary_slots','predeclared_distinct_meeting_dates','auxiliary_real_future_market_targets_collected']},sort_keys=True))"
+      - name: Emit public slot readiness only, not private horse or bettor prices
+        run: |
+          python -c "import json; d=json.load(open('tmp/fixed-cohort-20261025.json')); print('FIXED_JRA_COHORT',json.dumps({k:d[k] for k in ['registered_flat_G1_G2_G3_slots_including_Kikka','registered_meeting_dates','registered_next_price_candidate_slots_excluding_old_Kikka','future_registered_slots_after_asof_date','official_post_and_race_id_unresolved_in_public_registry','globally_predeclared_next_quote_horizon_minutes','globally_predeclared_next_quote_window_minutes','new_independent_real_prospective_quote_trials_confirmed','remotely_SHA_pre_next_price_verified_intervals']},ensure_ascii=False,sort_keys=True)); print('NEXT_CAPTURE_ELIGIBLE_SLOTS',json.dumps([{k:v[k] for k in ['slot_id','capture_state']} for v in d['registered_slot_readiness'][1:4]],ensure_ascii=False))"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: keiba-registered-slot-readiness-no-private-prices
+          path: |
+            tmp/fixed-cohort-20261025.json
+            tmp/campaign-remote-proof-hold.json
+            tmp/auxiliary-64-planned-20261025.json
+          retention-days: 14
