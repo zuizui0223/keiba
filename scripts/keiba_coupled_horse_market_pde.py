@@ -20,11 +20,13 @@ import json
 import math
 from pathlib import Path
 from statistics import mean
+from itertools import combinations
 
 import numpy as np
 
 from betting_abm_pde_sensitivity import scenario as legacy_horse_scenario
 from betting_abm_pde_particle_bridge import compare_particle_density
+from odds_coherent_hierarchy_rank_bridge import joint_rank_probability
 from odds_threshold_regime_bridge import (
     ROOT, aware, market_features, forecast_prestart, exact_win_top3,
     load_source_locked_panels, score_forecast, normalize,
@@ -260,6 +262,19 @@ def couple_prestart(row, *, distance_m, draws=400, seed=20261025,
         # Same synthetic price path also produces coherent M0-M3.
         # M1-M3 are auxiliary diagnostics, not repeated horse evidence.
         market[mode]["M0_to_M3"] = rankings
+        # One ordered-finish distribution supplies ALL ticket-event types.
+        # No independent, potentially incoherent pair/trio logits are used.
+        joint = joint_rank_probability(
+            synthetic_row["last_odds"], {i: 0.0 for i in ids},
+            {p: 0.0 for p in combinations(ids, 2)})
+        for j, horse in enumerate(ids):
+            if not math.isclose(joint["win"][horse], rankings["M0_latest"]["win"][j],
+                                abs_tol=1e-10):
+                raise ValueError("HOLD_WIN_MARKET_AND_CROSSPOOL_NOT_COHERENT")
+            if not math.isclose(joint["top3"][horse], rankings["M0_latest"]["top3"][j],
+                                abs_tol=1e-10):
+                raise ValueError("HOLD_TOP3_MARKET_AND_CROSSPOOL_NOT_COHERENT")
+        market[mode]["joint_all_ticket_events"] = joint
         market[mode]["TV_to_archived_later_quote_pp"] = float(
             50*np.sum(np.abs(out["final"]-features["latest"])))
     actual = forecast_prestart(row)["predictions"]
@@ -341,6 +356,12 @@ def audit(root=ROOT, *, prestart_only=False, draws=250, seed=20261025):
             "max_CDF_gap": pde["kolmogorov_cdf_error"],
             "out_of_domain_particles": pde["out_of_domain_particles"]},
         "rank_probability_masses_verified": True,
+        "all_ticket_markets": {
+            "sourced_from_same_ordered_finish_distribution": True,
+            "win_mass": 1, "top2_inclusion_mass": 2, "top3_inclusion_mass": 3,
+            "WIDE_both_Top3_mass": 3, "unordered_trio_mass": 1,
+            "ordered_exacta_mass": 1, "ordered_trifecta_mass": 1,
+            "actual_JRA_crosspool_quotes_used_for_fitting": False},
         "real_calibrated_forecast_advantage": "HOLD",
         "odds_threshold_phase_transition_claim": "HOLD",
         "wager_positive_expected_profit": "HOLD",
@@ -369,8 +390,34 @@ def audit(root=ROOT, *, prestart_only=False, draws=250, seed=20261025):
         f = market_features(row)
         scores = {name: score_forecast(f, pred, top3)
                   for name, pred in res["predictions"].items()}
+        trio = tuple(sorted(top3))
+        actual_pairs = set(combinations(sorted(top3), 2))
+        ticket_metrics = {}
+        for mode in MIXED_MODES:
+            joint = res["market_paths"][mode]["joint_all_ticket_events"]
+            p_trio = joint["unordered_top3_trio"][trio]
+            ticket_metrics[mode] = {
+                "unordered_trio_log_loss": -math.log(p_trio),
+                "WIDE_pair_Brier_mean_pairs": mean(
+                    (p-int(edge in actual_pairs))**2
+                    for edge,p in joint["both_top3_pair"].items())}
+        # Observed market M0 uses the identical crosspool probability law,
+        # but *not* real WIDE quotes. Actual JRA outcomes are used only here.
+        ids = f["horse_numbers"]
+        actual_late = {i: float(1/q) for i, q
+                       in zip(ids, f["latest"])}
+        actual_joint = joint_rank_probability(
+            actual_late, {i:0.0 for i in ids},
+            {p:0.0 for p in combinations(ids,2)})
+        ticket_metrics["observed_M0"] = {
+            "unordered_trio_log_loss": -math.log(
+                actual_joint["unordered_top3_trio"][trio]),
+            "WIDE_pair_Brier_mean_pairs": mean(
+                (p-int(edge in actual_pairs))**2
+                for edge,p in actual_joint["both_top3_pair"].items())}
         date_rows[row["race_id"]] = {
-            "date": row["meeting_day"], "scores": scores}
+            "date": row["meeting_day"], "scores": scores,
+            "ticket_scores": ticket_metrics}
     out["postrace"] = {
         "status": "RETROSPECTIVE_SIX_REAL_OUTCOMES_ONLY_NOT_PROSPECTIVE",
         "mean_race_equal_winner_log_loss": {
@@ -385,6 +432,12 @@ def audit(root=ROOT, *, prestart_only=False, draws=250, seed=20261025):
                                 for x in date_rows.values() if x["date"]==d)
                        for d in sorted({x["date"] for x in date_rows.values()}))
             for name in REPORT_MODELS if name != "observed_M0"},
+        "mean_coherent_ticket_scores_race_equal": {
+            name: {metric: mean(
+                x["ticket_scores"][name][metric] for x in date_rows.values())
+                for metric in ("unordered_trio_log_loss", "WIDE_pair_Brier_mean_pairs")}
+            for name in ("observed_M0", *MIXED_MODES)},
+        "WIDE_pairs_overlap_and_are_not_independent_races": True,
         "horses_and_pairs_not_independent_races": True,
         "no_parameter_tuning_to_any_of_six_actual_winners": True,
     }
