@@ -29,6 +29,7 @@ from pathlib import Path
 import numpy as np
 
 from keiba_source_race_fixed_reml import _helmert, _golden_min
+from keiba_rq_within_race_identity_shuffle import identity_history_shuffle
 from ecology_rq_2026_calendar_overlap import COHORT, LOCKED_RACE_NUMBERS, validate_cohort
 from ecology_rq_cross_venue_identity_support import collect_cannon
 from ecology_rq_eagle_farm_external_icc import identity_overlap
@@ -452,6 +453,16 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
         screened,compare)
     historical_forward=_previously_locked_out_of_date_horse_vs_other_horse(
         screened)
+    timed_null, _null_source_cov = source_timed_panel(
+        screened,min_gps=4)
+    horse_identity_history_null={
+        "same_distance_and_GPS_marker":
+            identity_history_shuffle(
+                timed_null,strict_class=False,permutations=299,seed=20261026),
+        "additionally_same_original_class":
+            identity_history_shuffle(
+                timed_null,strict_class=True,permutations=299,seed=20261027),
+    }
     marker_replay=_prelocked_marker_specific_rem_l(
         screened,compare=compare,reference=reference)
     old_a=existing["horse_variance_component_sec_squared"]
@@ -491,6 +502,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
         "original_source_date_deletion_sensitivity":source_date_deletion,
         "same_original_20261014_design_horse_vs_other_history_on_current_source":
             historical_forward,
+        "within_race_history_identity_shuffle_source_conditional_null":
+            horse_identity_history_null,
         "prelocked_marker_specific_source_icc_sensitivity":
             marker_replay,
         "both_same_original_source_and_eligibility":True,
