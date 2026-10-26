@@ -128,6 +128,18 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
         self.assertGreater(
             result["new_same_original_horse_race_source"]
             ["conditional_icc_point"],0)
+        nulls=result[
+            "within_race_history_identity_shuffle_source_conditional_null"]
+        self.assertEqual(
+            set(nulls),
+            {"same_distance_and_GPS_marker",
+             "additionally_same_original_class"})
+        # The basic 24-horse input has no verified source-declared
+        # jockey IDs; original eligibility correctly cannot construct
+        # the candidate set, and neither can the permutation null.
+        self.assertTrue(all(
+            n["status"]=="HOLD_ORIGINAL_CONTEXT_DID_NOT_PASS_EVIDENCE_GATE"
+            for n in nulls.values()))
         deletion=result["original_source_date_deletion_sensitivity"]
         self.assertEqual(deletion["original_dates_deletion_attempted"],12)
         self.assertEqual(
