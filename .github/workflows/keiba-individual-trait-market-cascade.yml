@@ -5,20 +5,24 @@ on:
     paths:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
+      - 'scripts/keiba_race_contrast_trait_posterior.py'
       - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
       - 'tests/test_keiba_trait_uncertainty_ensemble.py'
+      - 'tests/test_keiba_race_contrast_trait_posterior.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   pull_request:
     paths:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
+      - 'scripts/keiba_race_contrast_trait_posterior.py'
       - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
       - 'tests/test_keiba_trait_uncertainty_ensemble.py'
+      - 'tests/test_keiba_race_contrast_trait_posterior.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   workflow_dispatch:
@@ -43,6 +47,7 @@ jobs:
           python -m compileall -q scripts/keiba_individual_trait_to_market_cascade.py tests/test_keiba_individual_trait_to_market_cascade.py
           python -m unittest discover -s tests -p test_keiba_individual_trait_to_market_cascade.py -v
           python -m unittest discover -s tests -p test_keiba_trait_uncertainty_ensemble.py -v
+          python -m unittest discover -s tests -p test_keiba_race_contrast_trait_posterior.py -v
       - name: Toy posterior uncertainty and evolving social imitation law
         run: |
           python scripts/keiba_trait_uncertainty_demo.py --draws 20 --horse-draws 80 --seed 20261026 --output tmp/synthetic-trait-uncertainty-cascade.json
