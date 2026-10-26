@@ -83,6 +83,30 @@ class SyntheticCaptureToCampaignIntegration(unittest.TestCase):
         self.assertFalse(x["external_GitHub_comment_created_at_verified"])
         self.assertFalse(x["genuinely_prospective_market_trial_counted"])
 
+    def test_same_displayed_source_minute_with_distinct_seconds_is_accepted(self):
+        # WIN and WIDE page updates can display the same minute while
+        # their underlying publication seconds are NOT simultaneous.
+        with tempfile.TemporaryDirectory() as t:
+            ledger=Path(t)/"private"/"seconds"
+            for original,at in self.sources:
+                src=copy.deepcopy(original)
+                if src["market"]=="win" and "T11:00:" in src["source_updated_at_jst"]:
+                    src["source_updated_at_jst"]=DATE+"T11:00:04+09:00"
+                if src["market"]=="wide":
+                    src["source_updated_at_jst"]=DATE+"T11:00:39+09:00"
+                op.append_capture(ledger,src,captured_at_jst=DATE+at+"+09:00")
+            x=m.prepare_bundle(ledger,self.c,
+                               frozen_at_jst=DATE+"T11:03:00+09:00",
+                               horse_draws=40)
+            p=x["freeze"]["payload"]
+            self.assertEqual(p["middle_WIN_quote_published_at"],
+                             DATE+"T11:00:04+09:00")
+            self.assertEqual(p["middle_WIDE_quote_published_at"],
+                             DATE+"T11:00:39+09:00")
+            self.assertEqual(p["next_quote_min_published_at"],
+                             DATE+"T11:15:04+09:00")
+            self.assertFalse(x["external_GitHub_comment_created_at_verified"])
+
     def test_later_winner_or_quote_cannot_rewrite_frozen_sha(self):
         x=self.prepare()
         old=x["freeze"]["seal_sha256_of_canonical_payload"]
