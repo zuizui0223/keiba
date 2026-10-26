@@ -1,0 +1,52 @@
+name: Horse market commitment binds original capture chain and final card
+
+on:
+  push:
+    branches: [analysis/source-card-chain-seal-market-20261026]
+    paths:
+      - 'scripts/keiba_operator_cohort_bundle.py'
+      - 'scripts/keiba_operator_winwide_capture.py'
+      - 'tests/test_keiba_operator_cohort_bundle.py'
+      - 'docs/betting/horse-market-original-source-seal-20261026.md'
+      - '.github/workflows/keiba-capture-source-card-commitment.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_operator_cohort_bundle.py'
+      - 'scripts/keiba_operator_winwide_capture.py'
+      - 'tests/test_keiba_operator_cohort_bundle.py'
+      - 'docs/betting/horse-market-original-source-seal-20261026.md'
+      - '.github/workflows/keiba-capture-source-card-commitment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  detect-postcommit-input-provenance-drift:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install synthetic nonlocal horse ABM dependency
+        run: python -m pip install 'numpy>=1.26,<3'
+      - name: Compile, test original source chain/card/physical distance binding, and prevent grade/aux double count
+        run: |
+          python -m compileall -q scripts/keiba_operator_cohort_bundle.py scripts/keiba_operator_winwide_capture.py tests/test_keiba_operator_cohort_bundle.py
+          python -m unittest discover -s tests -p 'test_keiba_operator_cohort_bundle.py' -v
+      - name: Retain all previous private WIN/WIDE source and next-market model contracts
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_operator_winwide_capture.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_private_multirace_winwide_shadow.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_nextprice_pr_comment_attestation.py' -v
+      - name: Replay source-locked historical Kyoto 8R without claiming real forward sealing
+        run: |
+          python scripts/keiba_private_forward_r8_replay.py --horse-draws 120 --output tmp/r8-historical-model-regression.json
+          python -c "import json; x=json.load(open('tmp/r8-historical-model-regression.json')); assert x['real_future_after_freeze_event_count']==0 and x['n_market_models']==12; assert abs(x['scores']['mid_WIN_momentum_plus_WIDE_node_beta025']['next_price_index_TV_pp']-7.104113542634069)<1e-8; print('ORIGINAL_HISTORIC_R8_OUTCOME_HOLD',x['status'])"
+      - name: No operator source files or external GitHub comment were actually submitted
+        run: |
+          python -c "import sys; sys.path.insert(0,'scripts'); import keiba_operator_cohort_bundle as x; assert x.CAPTURE_BINDING_SCHEMA.endswith('_V1'); print('CAPTURE_CARD_CHAIN_BOUND_IN_PRIVATE_MODEL_SHA',True); print('REAL_NEW_MARKET_CAPTURES',0); print('EXTERNALLY_TIMESTAMPED_NEW_PRETARGET_SHA',0); print('INDEPENDENT_FORWARDED_NEXT_QUOTE_TRIALS',0)"
