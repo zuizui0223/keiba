@@ -7,6 +7,7 @@ on:
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
       - 'scripts/keiba_race_contrast_trait_posterior.py'
       - 'scripts/keiba_source_race_fixed_reml.py'
+      - 'scripts/keiba_reml_trait_market_profile_demo.py'
       - 'scripts/keiba_race_contrast_seed_sensitivity.py'
       - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
@@ -22,6 +23,7 @@ on:
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
       - 'scripts/keiba_race_contrast_trait_posterior.py'
       - 'scripts/keiba_source_race_fixed_reml.py'
+      - 'scripts/keiba_reml_trait_market_profile_demo.py'
       - 'scripts/keiba_race_contrast_seed_sensitivity.py'
       - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
@@ -55,6 +57,15 @@ jobs:
           python -m unittest discover -s tests -p test_keiba_trait_uncertainty_ensemble.py -v
           python -m unittest discover -s tests -p test_keiba_race_contrast_trait_posterior.py -v
           python -m unittest discover -s tests -p test_keiba_source_race_fixed_reml.py -v
+      - name: Toy source-only Gaussian REML and prior source-date deletion through physics and market
+        run: |
+          python scripts/keiba_reml_trait_market_profile_demo.py --draws 12 --horse-draws 65 --output tmp/synthetic-source-reml-profile-to-market.json
+          python -c "import json; x=json.load(open('tmp/synthetic-source-reml-profile-to-market.json')); assert x['status']=='FULLY_ARTIFICIAL_RACE_REML_PROFILE_TO_HORSE_ABM_PDE_TO_SOCIAL_MARKET'; assert all(c['no_public_information_bitwise_equal'] for c in x['reml_profile_scenarios'].values()); assert x['real_RQ_and_JRA_horse_ID_mapping']=='NONE_VERIFIED'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-source-reml-variance-profile-and-market-no-real-horses
+          path: tmp/synthetic-source-reml-profile-to-market.json
+          retention-days: 14
       - name: Compare diagonal and full covariance with same race-contrast posterior across toy seeds
         run: |
           python scripts/keiba_race_contrast_seed_sensitivity.py --seeds 8 --trait-draws 12 --horse-draws 60 --output tmp/synthetic-race-contrast-covariance-seed-audit.json
