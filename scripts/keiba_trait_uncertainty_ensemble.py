@@ -140,6 +140,8 @@ def propagate_individual_uncertainty(
     voter_shares_by_round=None,
     herding_gamma: float = 1.0,
     posterior_covariance_mode: str = "independent_approximation",
+    source_variance_fit_mode: str = "source_moments",
+    reml_profile_scenario: str = "central",
 ):
     """Uncertainty propagation, fixed source and shared CRNs per arm.
 
@@ -157,6 +159,13 @@ def propagate_individual_uncertainty(
             "race_contrast_marginal_independent",
             "race_contrast_covariance"):
         raise ValueError("HOLD_UNKNOWN_TRAIT_POSTERIOR_COVARIANCE_MODE")
+    if source_variance_fit_mode not in ("source_moments","source_reml"):
+        raise ValueError("HOLD_UNKNOWN_SOURCE_VARIANCE_FIT_MODE")
+    if reml_profile_scenario not in ("low","central","high"):
+        raise ValueError("HOLD_REML_PROFILE_SCENARIO")
+    if (source_variance_fit_mode=="source_reml" and
+            posterior_covariance_mode=="independent_approximation"):
+        raise ValueError("HOLD_REML_REQUIRES_SOURCE_RACE_CONTRAST_POSTERIOR")
     if type(physical_mc_draws) is not int or physical_mc_draws<40:
         raise ValueError("HOLD_LOW_PHYSICAL_MONTE_CARLO_SUPPORT")
     if (type(vote_rounds) is not int or vote_rounds<1 or
@@ -174,7 +183,9 @@ def propagate_individual_uncertainty(
     if posterior_covariance_mode in (
             "race_contrast_marginal_independent",
             "race_contrast_covariance"):
-        joint_posterior=fit_race_contrast_posterior(source,target)
+        joint_posterior=fit_race_contrast_posterior(
+            source,target,variance_fit_mode=source_variance_fit_mode,
+            source_reml_sensitivity=reml_profile_scenario)
         revised=dict(trait["posterior"])
         for j,horse_id in enumerate(ids):
             revised[horse_id]={
@@ -291,6 +302,10 @@ def propagate_individual_uncertainty(
       "conditional_race_contrast_covariance_used":
           posterior_covariance_mode=="race_contrast_covariance",
       "trait_posterior_covariance_mode":posterior_covariance_mode,
+      "source_variance_fit_mode":source_variance_fit_mode,
+      "reml_profile_scenario":(
+          reml_profile_scenario if source_variance_fit_mode=="source_reml"
+          else None),
       "race_contrast_covariance_summary":(
           {"shared_race_residual_covariance_model":
              joint_posterior["shared_race_residual_covariance_model"],
@@ -300,6 +315,8 @@ def propagate_individual_uncertainty(
              joint_posterior["historical_horses_in_joint_fit"],
            "hyperparameters":
              joint_posterior["hyperparameters"],
+           "source_reml_profile_diagnostic":
+             joint_posterior["source_reml_profile_diagnostic"],
            "relative_trait_pair_variance_min":
               min(joint_posterior["pair_effect_variance"].values()),
            "relative_trait_pair_variance_max":
