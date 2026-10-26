@@ -312,6 +312,82 @@ def _previously_locked_out_of_date_horse_vs_other_horse(screened):
         "contexts":contexts,
     }
 
+
+def _prelocked_marker_specific_rem_l(rows, *, compare=_fit_new_reml,
+                                     reference=race_fixed_reml):
+    """Original Cannon 150m/250m sensitivity, report explicit support HOLD.
+
+    Marker choices were locked in main BEFORE this retrospective
+    current-edition replay. Do not interpret the pair as equivalent
+    genetic/behavioral traits or reuse estimates across race distances.
+    """
+    tested={}
+    for marker in (150.0,250.0):
+        filtered=[r for r in rows
+                  if r["first_marker_m"] is not None
+                  and float(r["first_marker_m"])==marker]
+        source_days={r["day"] for r in filtered}
+        field={
+            "first_GPS_marker_m":int(marker),
+            "original_positive_GPS_rows_before_4_race_peer_gate":
+                len(filtered),
+            "source_days_with_marker_rows":len(source_days),
+            "same_marker_only_but_official_race_distance_may_differ":True,
+            "source_current_roster_edition_not_the_old_frozen_roster":True,
+            "no_individual_horse_ID_or_GPS_time_exported":True,
+        }
+        if not filtered:
+            tested[str(int(marker))]={
+                **field,"status":"HOLD_NO_SOURCE_GPS_ROWS_AT_LOCKED_MARKER"}
+            continue
+        try:
+            old=reference(filtered,min_race_telemetry=4)
+            if old["status"].startswith("HOLD_"):
+                tested[str(int(marker))]={
+                    **field,"status":"HOLD_OLD_ECOLOGY_MARKER_COHORT_NOT_IDENTIFIABLE",
+                    "existing_reference_status":old["status"]}
+                continue
+            new=compare(filtered)
+            err=abs(new["conditional_icc_point"]-
+                    old["conditional_observational_ICC_point_estimate"])
+            if err>=1e-5:
+                tested[str(int(marker))]={
+                    **field,"status":"HOLD_MARKER_SPECIFIC_NUMERICAL_MODEL_DISAGREEMENT",
+                    "absolute_method_difference":err}
+                continue
+            tested[str(int(marker))]={
+                **field,"status":"EXPLORATORY_FIXED_MARKER_OBSERVED_SOURCE_VERSION",
+                "source_rows_in_min_four_eligible_races":
+                    new["original_source_rows_with_positive_GPS_and_min_four_peers"],
+                "races_with_same_fixed_marker":
+                    new["original_races_measured"],
+                "source_dates_after_race_gate":
+                    new["original_meeting_dates"],
+                "distinct_horse_ids_anonymous":
+                    new["anonymous_horse_ID_count"],
+                "repeated_horse_ids_anonymous":
+                    new["anonymous_horse_IDs_with_two_plus_dates"],
+                "conditional_icc_current_source_only":
+                    new["conditional_icc_point"],
+                "reference_main_conditional_icc":
+                    old["conditional_observational_ICC_point_estimate"],
+                "absolute_method_difference":err}
+        except ValueError as exc:
+            if not str(exc).startswith("HOLD_"):
+                raise
+            tested[str(int(marker))]={
+                **field,
+                "status":"HOLD_MARKER_SPECIFIC_FIT_NOT_IDENTIFIABLE",
+                "reason_code":str(exc).split(":",1)[0]}
+    return {
+        "status":"PRELOCKED_CANNON_FIRST_GPS_MARKER_SENSITIVITY",
+        "marker_selection_m":[150,250],
+        "study_is_conditioned_on_updated_source_edition":True,
+        "not_same_phenotype_across_markers_without_biological_measurement_match":True,
+        "no_CI_heritability_or_ground_reaction_slope":True,
+        "results":tested,
+    }
+
 def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
            reference=race_fixed_reml):
     validate_cohort()
@@ -376,6 +452,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
         screened,compare)
     historical_forward=_previously_locked_out_of_date_horse_vs_other_horse(
         screened)
+    marker_replay=_prelocked_marker_specific_rem_l(
+        screened,compare=compare,reference=reference)
     old_a=existing["horse_variance_component_sec_squared"]
     old_e=existing["independent_error_variance_component_sec_squared"]
     old_icc=existing["conditional_observational_ICC_point_estimate"]
@@ -413,6 +491,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
         "original_source_date_deletion_sensitivity":source_date_deletion,
         "same_original_20261014_design_horse_vs_other_history_on_current_source":
             historical_forward,
+        "prelocked_marker_specific_source_icc_sensitivity":
+            marker_replay,
         "both_same_original_source_and_eligibility":True,
         "did_NOT_use_actual_future_target_prices_or_race_finishes":True,
         "no_real_social_causality_critical_odds_or_ROI_inferred":True,
