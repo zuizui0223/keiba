@@ -43,6 +43,11 @@ jobs:
           python -m unittest discover -s tests -p 'test_keiba_operator_winwide_capture.py' -v
           python -m unittest discover -s tests -p 'test_keiba_private_multirace_winwide_shadow.py' -v
           python -m unittest discover -s tests -p 'test_keiba_nextprice_pr_comment_attestation.py' -v
+      - name: Verify core 26, auxiliary 64 and live-only Github receipt guards still work
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_fixed_denominator_market_campaign.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_secondary_64_market_slots.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_campaign_remote_sha_evidence.py' -v
       - name: Replay source-locked historical Kyoto 8R without claiming real forward sealing
         run: |
           python scripts/keiba_private_forward_r8_replay.py --horse-draws 120 --output tmp/r8-historical-model-regression.json
