@@ -153,7 +153,9 @@ def propagate_individual_uncertainty(
     if type(include_posterior_error) is not bool:
         raise ValueError("HOLD_INVALID_UNCERTAINTY_SCENARIO_FLAG")
     if posterior_covariance_mode not in (
-            "independent_approximation", "race_contrast_covariance"):
+            "independent_approximation",
+            "race_contrast_marginal_independent",
+            "race_contrast_covariance"):
         raise ValueError("HOLD_UNKNOWN_TRAIT_POSTERIOR_COVARIANCE_MODE")
     if type(physical_mc_draws) is not int or physical_mc_draws<40:
         raise ValueError("HOLD_LOW_PHYSICAL_MONTE_CARLO_SUPPORT")
@@ -169,7 +171,9 @@ def propagate_individual_uncertainty(
     trait=repeatable_traits(source,target)
     ids=trait["horse_ids"]
     joint_posterior=None
-    if posterior_covariance_mode == "race_contrast_covariance":
+    if posterior_covariance_mode in (
+            "race_contrast_marginal_independent",
+            "race_contrast_covariance"):
         joint_posterior=fit_race_contrast_posterior(source,target)
         revised=dict(trait["posterior"])
         for j,horse_id in enumerate(ids):
@@ -191,7 +195,9 @@ def propagate_individual_uncertainty(
     samples,means,sds=_draw_traits(
         trait_for_prediction,posterior_draws,seed+503,
         include_posterior_error=include_posterior_error,
-        joint_posterior=joint_posterior)
+        joint_posterior=(joint_posterior
+                         if posterior_covariance_mode=="race_contrast_covariance"
+                         else None))
     context=(np.asarray([raw_context[i] for i in ids],dtype=float)
              if raw_context is not None else None)
     p0=[]
@@ -279,9 +285,11 @@ def propagate_individual_uncertainty(
       "physical_draws_per_posterior":physical_mc_draws,
       "model_error_not_population_confidence_interval":True,
       "trait_posterior_independence_ignores_shared_peer_denominator":
-          joint_posterior is None,
-      "conditional_race_contrast_covariance_used":
+          posterior_covariance_mode!="race_contrast_covariance",
+      "conditional_race_contrast_likelihood_used":
           joint_posterior is not None,
+      "conditional_race_contrast_covariance_used":
+          posterior_covariance_mode=="race_contrast_covariance",
       "trait_posterior_covariance_mode":posterior_covariance_mode,
       "race_contrast_covariance_summary":(
           {"shared_race_residual_covariance_model":
