@@ -9,6 +9,7 @@ skips if unavailable without pretending a full comparison succeeded.
 from __future__ import annotations
 from pathlib import Path
 import math
+import os
 import sys
 import unittest
 
@@ -19,10 +20,19 @@ except ModuleNotFoundError:
     scipy = None
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
+REFERENCE_AVAILABLE=False
 if scipy is not None:
-    from ecology_rq_race_fixed_icc import race_fixed_reml
+    try:
+        from ecology_rq_race_fixed_icc import race_fixed_reml
+        REFERENCE_AVAILABLE=True
+    except ModuleNotFoundError as error:
+        if error.name not in ("ecology_rq_race_fixed_icc",
+                               "ecology_rq_early_pace_repeatability"):
+            raise
     from keiba_source_race_fixed_reml import estimate_race_fixed_reml
     from keiba_race_contrast_trait_posterior import fit_race_contrast_posterior
+if os.environ.get("RQ_ECOLOGY_REFERENCE_REQUIRED")=="1" and not REFERENCE_AVAILABLE:
+    raise RuntimeError("HOLD_PINNED_MAIN_ECOLOGY_REFERENCE_NOT_PRESENT")
 
 
 def prepared_toy_cohort():
@@ -71,7 +81,7 @@ def prepared_toy_cohort():
     return all_old_rows,source,target
 
 
-@unittest.skipIf(scipy is None,"Crosscheck requires optional SciPy in dedicated CI")
+@unittest.skipIf(not REFERENCE_AVAILABLE,"Original main ecology implementation is only present in pinned-reference CI")
 class RealEcologyImplementationEquivalenceSyntheticTests(unittest.TestCase):
     def test_race_fixed_reml_matches_independent_main_ecology_implementation(self):
         old,source,target=prepared_toy_cohort()
