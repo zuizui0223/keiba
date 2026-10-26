@@ -109,6 +109,18 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
         self.assertTrue(forward["same_locked_old_shrinkage_n_over_n_plus_2"])
         self.assertTrue(forward["no_animal_IDs_or_records_exported"])
         self.assertEqual(forward["source_timed_rows"],288)
+        marker=result["prelocked_marker_specific_source_icc_sensitivity"]
+        self.assertEqual(marker["marker_selection_m"],[150,250])
+        self.assertEqual(
+            marker["results"]["150"]["status"],
+            "EXPLORATORY_FIXED_MARKER_OBSERVED_SOURCE_VERSION")
+        self.assertEqual(
+            marker["results"]["150"]["source_rows_in_min_four_eligible_races"],288)
+        self.assertEqual(
+            marker["results"]["250"]["status"],
+            "HOLD_NO_SOURCE_GPS_ROWS_AT_LOCKED_MARKER")
+        self.assertNotIn(
+            "conditional_icc_current_source_only",marker["results"]["250"])
         output=json.dumps(result)
         self.assertNotIn("FABHORSE-",output)
         self.assertNotIn("FABRICATED_",output)
