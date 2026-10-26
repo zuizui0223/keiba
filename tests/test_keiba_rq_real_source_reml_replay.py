@@ -128,6 +128,14 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
         self.assertGreater(
             result["new_same_original_horse_race_source"]
             ["conditional_icc_point"],0)
+        absolute=result[
+            "original_absolute_first_GPS_timing_frozen_cohort_out_of_date_comparison"]
+        self.assertEqual(
+            set(absolute),{"same_distance_and_GPS_marker",
+                           "additionally_same_original_class"})
+        self.assertTrue(all(
+            d["status"]=="HOLD_ORIGINAL_HORSE_HISTORY_EVIDENCE_GATE"
+            for d in absolute.values()))
         nulls=result[
             "within_race_history_identity_shuffle_source_conditional_null"]
         self.assertEqual(
