@@ -13,7 +13,8 @@ except ModuleNotFoundError as err:
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 if np is not None:
     from keiba_source_race_fixed_reml import (
-        _helmert,estimate_race_fixed_reml,REML_STATUS
+        _helmert,estimate_race_fixed_reml,leave_one_source_date_out_reml,
+        REML_STATUS
     )
     from keiba_individual_trait_market_demo import toy_data
     from keiba_race_contrast_trait_posterior import fit_race_contrast_posterior
@@ -132,6 +133,25 @@ class RaceFixedREMlTests(unittest.TestCase):
         self.assertEqual(len(covariance["covariance"]),6)
         self.assertTrue(covariance["shared_race_residual_covariance_model"].startswith("orthogonal"))
         self.assertTrue(np.linalg.eigvalsh(covariance["covariance"])[0]>0)
+
+
+    def test_leave_one_source_date_out_diagnostic_not_claimed_as_population_CI(self):
+        r=leave_one_source_date_out_reml(self.source,self.target)
+        self.assertEqual(r["source_dates"],7)
+        self.assertEqual(r["successful_leave_one_source_date_fits"]+
+                         r["HOLD_leave_one_source_date_fits"],7)
+        self.assertTrue(
+            r["no_confirmatory_significance_or_population_confidence_interval"])
+        self.assertTrue(r["no_target_race_outcomes_or_odds_loaded"])
+        self.assertEqual(len(r["date_deletion_details"]),7)
+        if r["minimum_deletion_icc"] is not None:
+            self.assertLessEqual(r["minimum_deletion_icc"],
+                                 r["maximum_deletion_icc"])
+        bad=deepcopy(self.source)
+        bad["records"]=[row for row in bad["records"] if
+                        row["race_day"].split("T")[0]<="2026-10-04"]
+        with self.assertRaises(ValueError):
+            leave_one_source_date_out_reml(bad,self.target)
 
 
 if __name__=="__main__":
