@@ -61,7 +61,7 @@ def toy_experiment(draws=20,physical_draws=80,seed=20261026):
         "underlying_GPS_trait_moments_ICC":
             late["source_conditional_moment_icc"],
         "reference_prior_market_odds_already_social":True,
-        "double_counted_objective_before_fix":False,
+        "objective_probability_double_counting_removed":True,
         "same_pseudo_ballots_across_synthetic_counterfactuals":True,
         "uncertainty_effect":{
             "max_individual_prior_probability_sd":
