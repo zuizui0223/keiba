@@ -34,10 +34,11 @@ class TraitUncertaintySyntheticTests(unittest.TestCase):
         cls.source,cls.target,cls.first=toy_data()
 
     def _run(self,**options):
+        params={"posterior_draws":8,"physical_mc_draws":50,"seed":123}
+        params.update(options)
         return propagate_individual_uncertainty(
             self.source,self.target,observed_first_odds=self.first,
-            posterior_draws=8,physical_mc_draws=50,seed=123,
-            **options)
+            **params)
 
     def test_posterior_sampling_propagates_beyond_point_estimate(self):
         r=self._run()
