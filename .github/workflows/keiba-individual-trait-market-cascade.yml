@@ -1,0 +1,113 @@
+name: Individual repeatability to horse ABM/PDE and market mechanism
+on:
+  push:
+    branches: [analysis/horse-trait-market-feedback-stability-20261026]
+    paths:
+      - 'scripts/keiba_individual_trait_to_market_cascade.py'
+      - 'scripts/keiba_trait_uncertainty_ensemble.py'
+      - 'scripts/keiba_race_contrast_trait_posterior.py'
+      - 'scripts/keiba_source_race_fixed_reml.py'
+      - 'scripts/keiba_reml_trait_market_profile_demo.py'
+      - 'scripts/keiba_race_contrast_seed_sensitivity.py'
+      - 'scripts/keiba_trait_uncertainty_demo.py'
+      - 'scripts/keiba_individual_trait_market_demo.py'
+      - 'tests/test_keiba_individual_trait_to_market_cascade.py'
+      - 'tests/test_keiba_trait_uncertainty_ensemble.py'
+      - 'tests/test_keiba_race_contrast_trait_posterior.py'
+      - 'tests/test_keiba_source_race_fixed_reml.py'
+      - 'tests/test_keiba_source_reml_vs_ecology_main.py'
+      - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
+      - 'docs/betting/source-locked-race-fixed-reml-trait-market-20261026.md'
+      - '.github/workflows/keiba-individual-trait-market-cascade.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_individual_trait_to_market_cascade.py'
+      - 'scripts/keiba_trait_uncertainty_ensemble.py'
+      - 'scripts/keiba_race_contrast_trait_posterior.py'
+      - 'scripts/keiba_source_race_fixed_reml.py'
+      - 'scripts/keiba_reml_trait_market_profile_demo.py'
+      - 'scripts/keiba_race_contrast_seed_sensitivity.py'
+      - 'scripts/keiba_trait_uncertainty_demo.py'
+      - 'scripts/keiba_individual_trait_market_demo.py'
+      - 'tests/test_keiba_individual_trait_to_market_cascade.py'
+      - 'tests/test_keiba_trait_uncertainty_ensemble.py'
+      - 'tests/test_keiba_race_contrast_trait_posterior.py'
+      - 'tests/test_keiba_source_race_fixed_reml.py'
+      - 'tests/test_keiba_source_reml_vs_ecology_main.py'
+      - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
+      - 'docs/betting/source-locked-race-fixed-reml-trait-market-20261026.md'
+      - '.github/workflows/keiba-individual-trait-market-cascade.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-same-horse-physics-bettors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install scientific dependency for inherited horse particle and PDE laws
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.12,<2'
+      - name: Check all source gates, integrated probability and null markets
+        run: |
+          python -m compileall -q scripts/keiba_individual_trait_to_market_cascade.py tests/test_keiba_individual_trait_to_market_cascade.py
+          python -m unittest discover -s tests -p test_keiba_individual_trait_to_market_cascade.py -v
+          python -m unittest discover -s tests -p test_keiba_trait_uncertainty_ensemble.py -v
+          python -m unittest discover -s tests -p test_keiba_race_contrast_trait_posterior.py -v
+          python -m unittest discover -s tests -p test_keiba_source_race_fixed_reml.py -v
+      - name: Pin independent main-ecology Helmert REML to original commit
+        run: |
+          git fetch --no-tags --depth=1 origin 43e0fe30e0a2b976614b5b73bf889480a8e45c1c
+          mkdir -p tmp/pinned_ecology/scripts
+          git show 43e0fe30e0a2b976614b5b73bf889480a8e45c1c:scripts/ecology_rq_race_fixed_icc.py > tmp/pinned_ecology/scripts/ecology_rq_race_fixed_icc.py
+          git show 43e0fe30e0a2b976614b5b73bf889480a8e45c1c:scripts/ecology_rq_early_pace_repeatability.py > tmp/pinned_ecology/scripts/ecology_rq_early_pace_repeatability.py
+          test "$(git hash-object tmp/pinned_ecology/scripts/ecology_rq_race_fixed_icc.py)" = "185249dc9c6a9c4bb3f9699e9c4370147fed0ff0"
+          test "$(git hash-object tmp/pinned_ecology/scripts/ecology_rq_early_pace_repeatability.py)" = "eedf02fb730c82fb08ff2e96a67710896c54fb06"
+      - name: Independently verify our REML vs main ecology on fake 24 horses 12 dates
+        env:
+          PYTHONPATH: "tmp/pinned_ecology/scripts:scripts"
+          RQ_ECOLOGY_REFERENCE_REQUIRED: '1'
+        run: |
+          python -m unittest discover -s tests -p test_keiba_source_reml_vs_ecology_main.py -v
+      - name: Toy source-only Gaussian REML and prior source-date deletion through physics and market
+        run: |
+          python scripts/keiba_reml_trait_market_profile_demo.py --draws 12 --horse-draws 65 --output tmp/synthetic-source-reml-profile-to-market.json
+          python -c "import json; x=json.load(open('tmp/synthetic-source-reml-profile-to-market.json')); assert x['status']=='FULLY_ARTIFICIAL_RACE_REML_PROFILE_TO_HORSE_ABM_PDE_TO_SOCIAL_MARKET'; assert all(c['no_public_information_bitwise_equal'] for c in x['reml_profile_scenarios'].values()); assert x['real_RQ_and_JRA_horse_ID_mapping']=='NONE_VERIFIED'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-source-reml-variance-profile-and-market-no-real-horses
+          path: tmp/synthetic-source-reml-profile-to-market.json
+          retention-days: 14
+      - name: Compare diagonal and full covariance with same race-contrast posterior across toy seeds
+        run: |
+          python scripts/keiba_race_contrast_seed_sensitivity.py --seeds 8 --trait-draws 12 --horse-draws 60 --output tmp/synthetic-race-contrast-covariance-seed-audit.json
+          python -c "import json; r=json.load(open('tmp/synthetic-race-contrast-covariance-seed-audit.json')); assert r['status']=='ARTIFICIAL_SEED_SENSITIVITY_GAUSSIAN_COVARIANCE_ONLY' and r['seeds_tested']==8 and r['same_marginal_variances'] and r['real_market_criticality']=='HOLD'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-race-contrast-covariance-seed-audit-no-real-horses
+          path: tmp/synthetic-race-contrast-covariance-seed-audit.json
+          retention-days: 14
+      - name: Toy posterior uncertainty and evolving social imitation law
+        run: |
+          python scripts/keiba_trait_uncertainty_demo.py --draws 20 --horse-draws 80 --seed 20261026 --output tmp/synthetic-trait-uncertainty-cascade.json
+          python -c "import json; x=json.load(open('tmp/synthetic-trait-uncertainty-cascade.json')); assert x['status']=='ARTIFICIAL_HORSE_TRAIT_AND_BETTOR_POPULATION_COHORT_ONLY'; assert x['social_info_release']['no_information_final_markets_equal']; assert x['price_threshold_discovery'] is None"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-horse-uncertainty-to-social-market-demo-no-real-data
+          path: tmp/synthetic-trait-uncertainty-cascade.json
+          retention-days: 14
+      - name: Independent synthetic six-horse case and analytic amplification check
+        run: |
+          python scripts/keiba_individual_trait_market_demo.py --horse-draws 250 --output tmp/synthetic-individual-to-market.json
+          python -c "import json; x=json.load(open('tmp/synthetic-individual-to-market.json')); assert x['status']=='TOY_SYNTHETIC_ONLY_NOT_JRA_EVIDENCE'; assert x['no_information_reached_market_exactly_identical']; assert x['stability_at_uniform_fixed_point_for_50pct_social_20pct_new_votes']['2.0']['regime']=='neutral'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-individual-to-market-diagnostics-not-real-evidence
+          path: tmp/synthetic-individual-to-market.json
+          retention-days: 14
