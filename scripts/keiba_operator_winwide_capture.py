@@ -408,6 +408,7 @@ def score_private_from_ledger(directory,freeze,*,operator_declares_complete,
         raise ValueError("HOLD_OPERATOR_DID_NOT_DECLARED_CAPTURE_STREAM_COMPLETE")
     payload=verify_freeze(freeze)
     time=_aware(scoring_at_jst or datetime.now(JST).isoformat())
+    originally_frozen_at=_aware(payload["local_freeze_created_at"])
     snapshots=[]
     for item in _read_ledger(directory):
         src=item["captured_source"]
@@ -419,7 +420,12 @@ def score_private_from_ledger(directory,freeze,*,operator_declares_complete,
                 src["provider"]!=payload["provider"]):
             raise ValueError("HOLD_TARGET_PRICE_WRONG_RACE_OR_PROVIDER")
         if (src["market"]=="win" and
-                published>_aware(payload["middle_WIN_quote_published_at"])):
+                published>_aware(payload["middle_WIN_quote_published_at"]) and
+                received>originally_frozen_at):
+            # A price update already acquired before freeze is an input-
+            # period record, never a newly received TARGET stream record.
+            # Rejecting such prefreeze intermediate quotes downstream was
+            # incorrectly treating normal source capture as time-travel.
             snapshots.append({
                 "market":"win","provider":src["provider"],
                 "source_clock_verified":True,
