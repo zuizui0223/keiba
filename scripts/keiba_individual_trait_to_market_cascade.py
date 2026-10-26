@@ -284,7 +284,8 @@ def _herding_index(q, gamma):
 def layered_vote_market(q0, objective, horse_signal, *,
                         voter_shares=None, gamma=1.0,
                         release_step=1, rounds=4, pool_size=3000,
-                        votes_per_round=250, seed=20261026):
+                        votes_per_round=250, seed=20261026,
+                        voter_shares_by_round=None):
     """Objective information, feedback, and released news are three channels.
 
     'fundamental' voters use ONLY objective form; 'herding' voters
@@ -303,23 +304,37 @@ def layered_vote_market(q0, objective, horse_signal, *,
             and type(rounds) is int and 1<=release_step<=rounds+1
             and rounds>=1 and pool_size>0 and votes_per_round>0):
         raise ValueError("HOLD_MARKET_SHAPE_OR_INFORMATION_CLOCK")
-    shares=voter_shares or {"fundamental":.25,"herding":.50,"informed":.25}
-    if set(shares)!=set(AGENT_TYPES) or any(
-            type(shares[k]) not in (int,float) or shares[k]<0
-            or not math.isfinite(shares[k]) for k in AGENT_TYPES
-        ) or not math.isclose(sum(shares.values()),1,abs_tol=1e-12):
-        raise ValueError("HOLD_INVALID_HETEROGENEOUS_VOTER_SHARES")
-    counts={}
-    remaining=votes_per_round
-    for kind in AGENT_TYPES[:-1]:
-        counts[kind]=int(votes_per_round*shares[kind])
-        remaining-=counts[kind]
-    counts[AGENT_TYPES[-1]]=remaining
+    if voter_shares_by_round is not None and voter_shares is not None:
+        raise ValueError("HOLD_CONFLICTING_VOTER_MIX_DESIGNS")
+    baseline={"fundamental":.25,"herding":.50,"informed":.25}
+    def validated_mix(raw):
+        shares=baseline if raw is None else raw
+        if (not isinstance(shares,dict)
+                or set(shares)!=set(AGENT_TYPES) or any(
+                type(shares[k]) not in (int,float) or shares[k]<0
+                or not math.isfinite(shares[k]) for k in AGENT_TYPES)
+                or not math.isclose(sum(shares.values()),1,abs_tol=1e-12)):
+            raise ValueError("HOLD_INVALID_HETEROGENEOUS_VOTER_SHARES")
+        return dict(shares)
+    if voter_shares_by_round is None:
+        schedule=[validated_mix(voter_shares) for _ in range(rounds)]
+    else:
+        if (not isinstance(voter_shares_by_round,(list,tuple))
+                or len(voter_shares_by_round)!=rounds):
+            raise ValueError("HOLD_VOTER_SHARES_TIME_SCHEDULE_LENGTH")
+        schedule=[validated_mix(x) for x in voter_shares_by_round]
     rng=np.random.default_rng(seed)
     pool=q0*pool_size
     paths=[q0.copy()]
     contributions=[]
     for step in range(1,rounds+1):
+        shares=schedule[step-1]
+        counts={}
+        remaining=votes_per_round
+        for kind in AGENT_TYPES[:-1]:
+            counts[kind]=int(votes_per_round*shares[kind])
+            remaining-=counts[kind]
+        counts[AGENT_TYPES[-1]]=remaining
         current=unit_weights(pool)
         available=(step>=release_step)
         probabilities={
@@ -335,15 +350,26 @@ def layered_vote_market(q0, objective, horse_signal, *,
             new+=np.bincount(np.minimum(assigned,n-1),minlength=n)
         pool+=new
         paths.append(unit_weights(pool))
-        contributions.append({"round":step,"new_votes":int(new.sum()),
-                              "horse_information_visible":available})
+        lambda_t=float(votes_per_round/(pool_size+step*votes_per_round))
+        contributions.append({
+            "round":step,"new_votes":int(new.sum()),
+            "horse_information_visible":available,
+            "hypothetical_voter_fractions":shares,
+            "effective_new_pseudo_vote_fraction":lambda_t,
+            "uniform_null_local_gain":(1-lambda_t)+
+                lambda_t*shares["herding"]*gamma,
+        })
     if not math.isclose(pool.sum(),pool_size+rounds*votes_per_round,
                         rel_tol=0,abs_tol=1e-8):
         raise AssertionError("HOLD_CUMULATIVE_VOTE_ACCOUNTING")
     return {"initial_market":q0,"path":paths,"final":paths[-1],
             "assumed_pool_votes":pool_size,
             "assumed_next_votes":rounds*votes_per_round,
-            "voter_shares":shares,"beta_social":gamma,
+            "voter_shares":schedule[0],
+            "voter_shares_by_round":schedule,
+            "social_mix_is_time_varying":
+                any(x!=schedule[0] for x in schedule[1:]),
+            "beta_social":gamma,
             "information_first_visible_round":release_step,
             "rounds":contributions,"has_real_bettor_transactions":False}
 
