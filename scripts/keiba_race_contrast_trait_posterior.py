@@ -138,9 +138,12 @@ def fit_race_contrast_posterior(source: dict, target: dict, *,
           {str(n):float(-1/(n-1)) for n in sorted(set(race_sizes))},
       "hyperparameters":{
           "horse_between_variance_seconds2":a2,
-          "absolute_time_residual_variance_seconds2":e2,
+          "assumed_absolute_time_residual_variance_seconds2":e2,
           "source":origin,
-          "held_fixed_in_posterior":True
+          "held_fixed_in_posterior":True,
+          "peer_relative_variance_estimate_is_not_the_same_as_absolute_time_variance":
+              variance_override is None,
+          "hyperparameter_estimation_error_integrated":False,
       },
       "shared_race_residual_covariance_model":"orthogonal_n_minus_1_contrasts",
       "global_mean_unidentified_by_within_race_contrasts":True,
