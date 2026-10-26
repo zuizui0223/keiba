@@ -5,16 +5,20 @@ on:
     paths:
       - scripts/keiba_rq_real_source_reml_replay.py
       - scripts/keiba_rq_within_race_identity_shuffle.py
+      - scripts/keiba_rq_absolute_first_section_forward.py
       - tests/test_keiba_rq_real_source_reml_replay.py
       - tests/test_keiba_rq_within_race_identity_shuffle.py
+      - tests/test_keiba_rq_absolute_first_section_forward.py
       - .github/workflows/keiba-rq-real-source-reml-replay.yml
       - docs/betting/rq-real-source-reml-replay-20261026.md
   pull_request:
     paths:
       - scripts/keiba_rq_real_source_reml_replay.py
       - scripts/keiba_rq_within_race_identity_shuffle.py
+      - scripts/keiba_rq_absolute_first_section_forward.py
       - tests/test_keiba_rq_real_source_reml_replay.py
       - tests/test_keiba_rq_within_race_identity_shuffle.py
+      - tests/test_keiba_rq_absolute_first_section_forward.py
       - .github/workflows/keiba-rq-real-source-reml-replay.yml
       - docs/betting/rq-real-source-reml-replay-20261026.md
   workflow_dispatch:
@@ -53,6 +57,7 @@ jobs:
           python -m compileall -q scripts/keiba_rq_real_source_reml_replay.py tests/test_keiba_rq_real_source_reml_replay.py
           python -m unittest discover -s tests -p test_keiba_rq_real_source_reml_replay.py -v
           python -m unittest discover -s tests -p test_keiba_rq_within_race_identity_shuffle.py -v
+          python -m unittest discover -s tests -p test_keiba_rq_absolute_first_section_forward.py -v
       - name: Re-fetch ALL 12 prelocked ORIGINAL RQ dates and independently replay horse GPS REML
         run: |
           python scripts/keiba_rq_real_source_reml_replay.py \
