@@ -15,6 +15,7 @@ on:
       - 'tests/test_keiba_trait_uncertainty_ensemble.py'
       - 'tests/test_keiba_race_contrast_trait_posterior.py'
       - 'tests/test_keiba_source_race_fixed_reml.py'
+      - 'tests/test_keiba_source_reml_vs_ecology_main.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   pull_request:
@@ -31,6 +32,7 @@ on:
       - 'tests/test_keiba_trait_uncertainty_ensemble.py'
       - 'tests/test_keiba_race_contrast_trait_posterior.py'
       - 'tests/test_keiba_source_race_fixed_reml.py'
+      - 'tests/test_keiba_source_reml_vs_ecology_main.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   workflow_dispatch:
@@ -49,7 +51,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install scientific dependency for inherited horse particle and PDE laws
-        run: python -m pip install 'numpy>=1.26,<3'
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.12,<2'
       - name: Check all source gates, integrated probability and null markets
         run: |
           python -m compileall -q scripts/keiba_individual_trait_to_market_cascade.py tests/test_keiba_individual_trait_to_market_cascade.py
@@ -57,6 +59,7 @@ jobs:
           python -m unittest discover -s tests -p test_keiba_trait_uncertainty_ensemble.py -v
           python -m unittest discover -s tests -p test_keiba_race_contrast_trait_posterior.py -v
           python -m unittest discover -s tests -p test_keiba_source_race_fixed_reml.py -v
+          python -m unittest discover -s tests -p test_keiba_source_reml_vs_ecology_main.py -v
       - name: Toy source-only Gaussian REML and prior source-date deletion through physics and market
         run: |
           python scripts/keiba_reml_trait_market_profile_demo.py --draws 12 --horse-draws 65 --output tmp/synthetic-source-reml-profile-to-market.json
