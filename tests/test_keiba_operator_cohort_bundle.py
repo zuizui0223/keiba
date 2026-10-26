@@ -215,6 +215,48 @@ class SyntheticCaptureToCampaignIntegration(unittest.TestCase):
         self.assertEqual(scored["cohort_audit"]["local_candidate_price_scores"],1)
         self.assertTrue(scored["frozen_input_capture_chain_prefix_unchanged"])
 
+    def test_core_aux_same_actual_race_id_cannot_be_counted_twice(self):
+        grade=self.prepare()
+        aux_card=copy.deepcopy(self.c)
+        aux_card["slot_id"]="2026-10-31|京都|R11"
+        aux=self.prepare(card_override=aux_card)
+        self.assertNotEqual(
+            grade["freeze"]["seal_sha256_of_canonical_payload"],
+            aux["freeze"]["seal_sha256_of_canonical_payload"])
+        with self.assertRaisesRegex(ValueError,"DUPLICATE_PHYSICAL_RACE_ID"):
+            m.audit_distinct_private_bundles([grade,aux])
+        with self.assertRaisesRegex(ValueError,"DUPLICATE_PHYSICAL_RACE_ID"):
+            m.audit_distinct_private_bundles([grade,copy.deepcopy(grade)])
+        single=m.audit_distinct_private_bundles([grade])
+        self.assertEqual(single["distinct_operator_declared_race_ids"],1)
+        self.assertEqual(single["registered_grade_denominator_preserved"],26)
+        self.assertEqual(single["registered_auxiliary_numbered_slot_denominator_preserved"],64)
+        self.assertEqual(single["possible_grade_auxiliary_overlaps_to_check_with_real_ids"],1)
+        self.assertEqual(single["independently_authenticated_next_market_capture_trials"],0)
+
+    def test_mutated_public_sha_only_comment_body_is_not_valid_for_next_market_score(self):
+        original=self.prepare()
+        self.add_future(17)
+        b=copy.deepcopy(original)
+        b["public_SHA_only_comment_not_posted"]["body_to_post_once_in_PR22_comment"]+=(
+            "\\nAN_UNDISCLOSED_DIFFERENT_PREDICTION")
+        with self.assertRaisesRegex(ValueError,"PUBLIC_SHA_COMMENT_BODY_NOT_SAME"):
+            m.score_bundle(b,self.ledger,
+                           asof=DATE+"T11:21:00+09:00",
+                           operator_confirms_complete=True)
+        with self.assertRaisesRegex(ValueError,"PUBLIC_SHA_COMMENT_BODY_NOT_SAME"):
+            m.audit_distinct_private_bundles([b])
+
+    def test_bundle_cannot_self_claim_external_SHA_attestation(self):
+        b=self.prepare()
+        b["external_GitHub_comment_created_at_verified"]=True
+        with self.assertRaisesRegex(ValueError,"FALSELY_CLAIMS_EXTERNAL_PROOF"):
+            m.audit_distinct_private_bundles([b])
+        with self.assertRaisesRegex(ValueError,"FALSELY_CLAIMS_EXTERNAL_PROOF"):
+            m.score_bundle(b,self.ledger,
+                           asof=DATE+"T11:21:00+09:00",
+                           operator_confirms_complete=True)
+
     def test_later_winner_or_quote_cannot_rewrite_frozen_sha(self):
         x=self.prepare()
         old=x["freeze"]["seal_sha256_of_canonical_payload"]
