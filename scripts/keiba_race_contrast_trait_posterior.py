@@ -35,13 +35,16 @@ import math
 import numpy as np
 
 from keiba_individual_trait_to_market_cascade import repeatable_traits
+from keiba_source_race_fixed_reml import estimate_race_fixed_reml
 
 STATUS = "RACE_CONTRAST_JOINT_GAUSSIAN_CONDITIONAL_POSTERIOR_UNCALIBRATED"
 MAX_HISTORICAL_HORSE_IDS = 160
 
 
 def fit_race_contrast_posterior(source: dict, target: dict, *,
-                                variance_override=None):
+                                variance_override=None,
+                                variance_fit_mode="source_moments",
+                                source_reml_sensitivity="central"):
     """Return ordered target horse effects AND full covariance.
 
     variance_override may be an explicitly specified tuple
@@ -55,7 +58,21 @@ def fit_race_contrast_posterior(source: dict, target: dict, *,
     observed=sorted({r["horse_id"] for r in records})
     if len(observed) > MAX_HISTORICAL_HORSE_IDS:
         raise ValueError("HOLD_TOO_MANY_HISTORICAL_HORSES_FOR_DENSE_GAUSSIAN")
-    if variance_override is None:
+    if variance_fit_mode not in ("source_moments","source_reml"):
+        raise ValueError("HOLD_UNKNOWN_SOURCE_VARIANCE_FIT_MODE")
+    if source_reml_sensitivity not in ("low","central","high"):
+        raise ValueError("HOLD_UNREGISTERED_SOURCE_REML_SCENARIO")
+    if variance_override is not None and variance_fit_mode!="source_moments":
+        raise ValueError("HOLD_CONFLICTING_MANUAL_AND_REML_VARIANCE_FITS")
+    reml_result=None
+    if variance_fit_mode=="source_reml":
+        reml_result=estimate_race_fixed_reml(source,target)
+        chosen=next(v for v in reml_result["sensitivity_scenarios"]
+                    if v["label"]==source_reml_sensitivity)
+        a2=chosen["horse_variance_seconds2"]
+        e2=chosen["error_variance_seconds2"]
+        origin="SOURCE_RACE_FIXED_ABSOLUTE_GPS_REML_PROFILE_SENSITIVITY_ONLY"
+    elif variance_override is None:
         a2=gate["horse_effect_variance_seconds_squared"]
         e2=gate["residual_variance_seconds_squared"]
         origin="SOURCE_CONDITIONAL_METHOD_OF_MOMENTS_NOT_REML"
@@ -130,6 +147,22 @@ def fit_race_contrast_posterior(source: dict, target: dict, *,
       "historical_horses_in_joint_fit":len(observed),
       "historical_race_count":len(by_race),
       "source_race_sizes":race_sizes,
+      "source_variance_estimation_mode":variance_fit_mode,
+      "source_reml_profile_scenario":(
+          source_reml_sensitivity if reml_result is not None else None),
+      "source_reml_profile_diagnostic":(
+          {"status":reml_result["status"],
+           "horse_contrast_rank":reml_result["horse_contrast_rank"],
+           "n_independent_contrast_dimensions":
+               reml_result["n_independent_contrast_dimensions"],
+           "conditional_icc_point":reml_result["conditional_icc_point"],
+           "profile_improvement_vs_zero_horse_variance":
+               reml_result["profile_improvement_vs_zero_horse_variance"],
+           "sensitivity_deviance_tolerance_not_confidence_interval":
+               reml_result[
+                   "sensitivity_deviance_tolerance_not_confidence_interval"],
+           "variance_hyperparameter_estimation_error_integrated":False}
+          if reml_result is not None else None),
       # Centering by the mean of OTHER horses creates NEGATIVE
       # same-race measurement-noise correlation -1/(n-1), distinct
       # from the often POSITIVE posterior horse-effect correlation
@@ -142,7 +175,9 @@ def fit_race_contrast_posterior(source: dict, target: dict, *,
           "source":origin,
           "held_fixed_in_posterior":True,
           "peer_relative_variance_estimate_is_not_the_same_as_absolute_time_variance":
-              variance_override is None,
+              variance_override is None and reml_result is None,
+          "source_only_orthogonal_race_contrast_reml":
+              reml_result is not None,
           "hyperparameter_estimation_error_integrated":False,
       },
       "shared_race_residual_covariance_model":"orthogonal_n_minus_1_contrasts",
