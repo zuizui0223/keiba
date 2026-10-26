@@ -117,8 +117,14 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
             deletion["source_dates_with_variance_hold"],12)
         self.assertTrue(
             deletion["not_a_jackknife_95pct_CI_or_a_preregistered_replication"])
-        self.assertLessEqual(deletion["minimum_source_deleted_ICC"],
-                             deletion["maximum_source_deleted_ICC"])
+        if deletion["successful_reml_delete_one_original_source_date"]:
+            self.assertLessEqual(deletion["minimum_source_deleted_ICC"],
+                                 deletion["maximum_source_deleted_ICC"])
+        else:
+            self.assertIsNone(deletion["minimum_source_deleted_ICC"])
+            self.assertIsNone(deletion["maximum_source_deleted_ICC"])
+            self.assertEqual(deletion["status"],
+                             "HOLD_INSUFFICIENT_DATE_DELETE_VARIANCE_FITS")
 
     def test_omitted_locked_date_returns_HOLD_not_11day_optimistic_ICC(self):
         rows,manifest,baseline=fictional_cohort()
