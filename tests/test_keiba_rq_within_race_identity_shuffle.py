@@ -54,7 +54,7 @@ def fake_timed():
                 "distance":"1400","marker":150.0,
                 "race_class":"TOY_OPEN",
                 "relative_seconds":val,
-                "jockey_id":str(100+i*4+di%2),
+                "jockey_id":str(100+i*20+di),
                 "trainer_id":str(200+i%5),
             })
     return out
