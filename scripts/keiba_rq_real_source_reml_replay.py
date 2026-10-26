@@ -235,8 +235,10 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
     if set(manifest)!=set(COHORT):
         raise ValueError("HOLD_SOURCE_DATE_DENOMINATOR_CHANGED")
     status_by_day={k:manifest[k]["status"] for k in COHORT}
+    injected_test_collector = reader is not _original_read
     meta={
         "schema":SCHEMA,
+        "source_collector_is_injected_test_fixture":injected_test_collector,
         "original_calendar_date_count":len(COHORT),
         "original_requested_races":list(LOCKED_RACE_NUMBERS),
         "official_source_publisher":"Racing Queensland",
@@ -299,6 +301,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
     return {
         **meta,
         "status":(
+            "SYNTHETIC_FIXTURE_NUMERIC_METHOD_REPLAY_NOT_REAL_HORSE_DATA"
+            if injected_test_collector else
             "OBSERVED_REAL_RQ_SOURCE_REML_INDEPENDENT_NUMERICAL_REPLAY"
             if comparable and frozen else
             "OBSERVED_REAL_RQ_SOURCE_REML_SOURCE_EDITION_HOLD"
