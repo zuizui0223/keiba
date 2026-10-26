@@ -6,6 +6,7 @@ on:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
       - 'scripts/keiba_race_contrast_trait_posterior.py'
+      - 'scripts/keiba_race_contrast_seed_sensitivity.py'
       - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
@@ -18,6 +19,7 @@ on:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
       - 'scripts/keiba_race_contrast_trait_posterior.py'
+      - 'scripts/keiba_race_contrast_seed_sensitivity.py'
       - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
@@ -48,6 +50,15 @@ jobs:
           python -m unittest discover -s tests -p test_keiba_individual_trait_to_market_cascade.py -v
           python -m unittest discover -s tests -p test_keiba_trait_uncertainty_ensemble.py -v
           python -m unittest discover -s tests -p test_keiba_race_contrast_trait_posterior.py -v
+      - name: Compare diagonal and full covariance with same race-contrast posterior across toy seeds
+        run: |
+          python scripts/keiba_race_contrast_seed_sensitivity.py --seeds 8 --trait-draws 12 --horse-draws 60 --output tmp/synthetic-race-contrast-covariance-seed-audit.json
+          python -c "import json; r=json.load(open('tmp/synthetic-race-contrast-covariance-seed-audit.json')); assert r['status']=='ARTIFICIAL_SEED_SENSITIVITY_GAUSSIAN_COVARIANCE_ONLY' and r['seeds_tested']==8 and r['same_marginal_variances'] and r['real_market_criticality']=='HOLD'"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-race-contrast-covariance-seed-audit-no-real-horses
+          path: tmp/synthetic-race-contrast-covariance-seed-audit.json
+          retention-days: 14
       - name: Toy posterior uncertainty and evolving social imitation law
         run: |
           python scripts/keiba_trait_uncertainty_demo.py --draws 20 --horse-draws 80 --seed 20261026 --output tmp/synthetic-trait-uncertainty-cascade.json
