@@ -1,0 +1,79 @@
+name: RQ real original source 12-date horse REML replay
+on:
+  push:
+    branches: [analysis/rq-real-source-reml-validation-20261026]
+    paths:
+      - scripts/keiba_rq_real_source_reml_replay.py
+      - tests/test_keiba_rq_real_source_reml_replay.py
+      - .github/workflows/keiba-rq-real-source-reml-replay.yml
+      - docs/betting/rq-real-source-reml-replay-20261026.md
+  pull_request:
+    paths:
+      - scripts/keiba_rq_real_source_reml_replay.py
+      - tests/test_keiba_rq_real_source_reml_replay.py
+      - .github/workflows/keiba-rq-real-source-reml-replay.yml
+      - docs/betting/rq-real-source-reml-replay-20261026.md
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  original-source-real-gps-12days:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONPATH: tmp/pinned_main/scripts:scripts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install same SciPy and NumPy dependencies as ecology-main
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.12,<2'
+      - name: Pin the independent main original RQ source collectors and baseline fingerprints
+        run: |
+          set -euo pipefail
+          REF=43e0fe30e0a2b976614b5b73bf889480a8e45c1c
+          git fetch --no-tags --depth=1 origin "$REF"
+          mkdir -p tmp/pinned_main
+          git archive "$REF" scripts docs/evidence/rq-cannon-original-source-fingerprints-20261014.json | tar -xf - -C tmp/pinned_main
+          test "$(git hash-object tmp/pinned_main/scripts/ecology_rq_cross_venue_identity_support.py)" = b17e9e7d123582eed7eacbb1415068bde1461aeb
+          test "$(git hash-object tmp/pinned_main/scripts/ecology_rq_early_pace_repeatability.py)" = eedf02fb730c82fb08ff2e96a67710896c54fb06
+          test "$(git hash-object tmp/pinned_main/scripts/ecology_rq_race_fixed_icc.py)" = 185249dc9c6a9c4bb3f9699e9c4370147fed0ff0
+          test "$(git hash-object tmp/pinned_main/docs/evidence/rq-cannon-original-source-fingerprints-20261014.json)" = 5f27d4ee2cde30d9dc3e79bf0d8b68dabb240471
+      - name: Validate source-denominator/horse-identity/roster-SHA drift and no-individual-export with fictional animals
+        run: |
+          python -m compileall -q scripts/keiba_rq_real_source_reml_replay.py tests/test_keiba_rq_real_source_reml_replay.py
+          python -m unittest discover -s tests -p test_keiba_rq_real_source_reml_replay.py -v
+      - name: Re-fetch ALL 12 prelocked ORIGINAL RQ dates and independently replay horse GPS REML
+        run: |
+          python scripts/keiba_rq_real_source_reml_replay.py \
+            --baseline tmp/pinned_main/docs/evidence/rq-cannon-original-source-fingerprints-20261014.json \
+            --output tmp/real-rq-12date-original-GPS-REML-replay-anonymous.json
+      - name: Enforce scientific SOURCE-EDITION and complete-date gate (no false PASS)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("tmp/real-rq-12date-original-GPS-REML-replay-anonymous.json")
+          x=json.loads(p.read_text(encoding="utf-8"))
+          assert x["no_original_horse_ID_names_jockey_licence_or_GPS_timing_exported"]
+          assert not x["is_new_empirical_animal_phenotype_evidence"]
+          assert x["retrieval_time_is_NOT_historical_first_odds_clock"]
+          print("SCIENTIFIC_REAL_SOURCE_REPLAY_STATUS", x["status"])
+          if x["status"] != "OBSERVED_REAL_RQ_SOURCE_REML_INDEPENDENT_NUMERICAL_REPLAY":
+              raise SystemExit("HOLD: source edition/coverage or numerical reproducibility not proven; see aggregate artifact")
+          assert x["original_20261014_source_component_match"]["fully_matched_dates"]==12
+          assert x["new_same_original_horse_race_source"]["original_meeting_dates"]>=6
+          assert x["independent_algorithm_absolute_numerical_differences"]["conditional_icc_abs_difference"]<1e-5
+          print("RQ_REAL_SOURCE_CONDITIONAL_ICC",x["new_same_original_horse_race_source"]["conditional_icc_point"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: anonymous-real-RQ-twelve-date-original-source-REML-replay
+          path: tmp/real-rq-12date-original-GPS-REML-replay-anonymous.json
+          retention-days: 30
