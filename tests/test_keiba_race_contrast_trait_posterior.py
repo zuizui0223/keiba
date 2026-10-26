@@ -127,7 +127,7 @@ class ContrastPosteriorSyntheticTests(unittest.TestCase):
             with self.subTest(override=override),self.assertRaises(ValueError):
                 self.fit(override=override)
         altered=deepcopy(self.source)
-        altered["records"][0]["horse_id"]="UNKNOWN_OTHER_PROVIDER_HORSE"
+        altered["records"][0]["source_system"]="UNRELATED_GPS_PROVIDER"
         with self.assertRaises(ValueError):
             self.fit(source=altered)
         altered=deepcopy(self.source)
