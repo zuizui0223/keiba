@@ -1,0 +1,47 @@
+name: KEIBA operator WIN WIDE to fixed cohort SHA frozen market pipeline
+
+on:
+  push:
+    branches: [analysis/operator-capture-to-cohort-bundle-20261026]
+    paths:
+      - 'scripts/keiba_operator_cohort_bundle.py'
+      - 'tests/test_keiba_operator_cohort_bundle.py'
+      - 'docs/betting/operator-to-fixed-cohort-complete-20261026.md'
+      - '.github/workflows/keiba-operator-cohort-bundle.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_operator_cohort_bundle.py'
+      - 'tests/test_keiba_operator_cohort_bundle.py'
+      - 'docs/betting/operator-to-fixed-cohort-complete-20261026.md'
+      - '.github/workflows/keiba-operator-cohort-bundle.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authenticated-market-source-contract-but-no-fake-prospective-proof:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Compile full source-chain -> PR22 -> PR23 -> fixed PR24 denominator integration
+        run: |
+          python -m compileall -q scripts/keiba_operator_cohort_bundle.py tests/test_keiba_operator_cohort_bundle.py
+          python -m unittest discover -s tests -p 'test_keiba_operator_cohort_bundle.py' -v
+      - name: Protect all existing PR25 local WIN/WIDE source receipt controls
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_operator_winwide_capture.py' -v
+      - name: Keep original twenty-four fixed-denominator and remote-SHA tests
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_fixed_denominator_market_campaign.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_campaign_remote_sha_evidence.py' -v
+      - name: Never count a synthetic source, local chain or fake comment as actual JRA observation
+        run: |
+          python -c "import sys; sys.path.insert(0,'scripts'); import keiba_operator_cohort_bundle as x; assert x.HOLD_SOURCE.startswith('SOURCE_RIGHTS') and x.BUNDLE_STATUS.startswith('LOCAL'); print('NEW_RETRIEVED_PROSPECTIVE_WIN_WIDE_SNAPSHOTS',0); print('ACTUAL_GITHUB_PRE_NEXT_PRICE_SHA_PROOFS',0); print('INDEPENDENT_PROSPECTIVE_NEXT_MARKET_SCORES',0)"

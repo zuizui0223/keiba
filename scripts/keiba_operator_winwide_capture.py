@@ -329,7 +329,8 @@ def prepare_feature_from_ledger(directory,card,*,freeze_at_jst=None):
             continue
         for wide in wides:
             if (_aware(wide["captured_source"]["source_updated_at_jst"])
-                    ==pub):
+                    .replace(second=0,microsecond=0)
+                    ==pub.replace(second=0,microsecond=0)):
                 matched.append((pub,win,wide))
     if not matched:
         raise ValueError("HOLD_NO_SAME_SOURCE_MINUTE_FULL_WIN_AND_WIDE_PAIR_GRID")
