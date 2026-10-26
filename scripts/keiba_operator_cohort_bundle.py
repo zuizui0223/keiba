@@ -375,6 +375,62 @@ def score_bundle(bundle,ledger,*,asof,operator_confirms_complete):
     }
 
 
+def audit_distinct_private_bundles(bundles):
+    """Reject double counted declared race IDs across grade and auxiliary.
+
+    The original 26 and 64 candidate registries are preserved independently.
+    This is a LOCAL identity check only: names/numbers, race-card authority,
+    and remote source times are *not* independently authenticated here.
+    """
+    if (not isinstance(bundles,list) or not bundles):
+        raise ValueError("HOLD_MISSING_PRIVATE_BUNDLE_AUDIT_INPUTS")
+    ids=set()
+    slots=set()
+    by_scope={"FROZEN_GRADED_26_PRIMARY":0,
+              "FROZEN_AUXILIARY_64_PRIMARY":0}
+    overlapping=0
+    days=set()
+    for b in bundles:
+        if not isinstance(b,dict) or b.get("schema")!=BUNDLE_SCHEMA:
+            raise ValueError("HOLD_BUNDLE_UNRECOGNIZED_FOR_COMBINED_AUDIT")
+        freeze=b["freeze"]
+        card=_check_card(b["card"])
+        payload=verify_freeze(freeze)
+        binding=_check_bound_card(freeze,card)
+        scope=_scope(card)
+        if (b.get("registered_cohort")!=scope or
+                b.get("capture_ledger_prefix_events")!=
+                    binding["local_chain_prefix_length"] or
+                b.get("capture_ledger_prefix_head_SHA256")!=
+                    binding["private_capture_chain_prefix_sha256"]):
+            raise ValueError("HOLD_LOCAL_BUNDLE_SCOPE_OR_SOURCE_BINDING_CHANGED")
+        rid=payload["race_id"]
+        sid=card["slot_id"]
+        if rid in ids:
+            raise ValueError("HOLD_DUPLICATE_PHYSICAL_RACE_ID_ACROSS_26_AND_64")
+        if sid in slots:
+            raise ValueError("HOLD_TWO_DIFFERENT_RACE_IDS_ASSIGNED_TO_SAME_FIXED_SLOT")
+        ids.add(rid)
+        slots.add(sid)
+        by_scope[scope["primary_scope"]]+=1
+        overlapping+=int(scope["possible_same_real_grade_auxiliary_race"])
+        days.add(_aware(card["scheduled_post_jst"]).date().isoformat())
+    return {
+        "status":"LOCAL_UNIQUE_OPERATOR_DECLARED_RACE_IDS_NOT_PROSPECTIVE_EVIDENCE",
+        "private_source_bound_bundles_submitted":len(bundles),
+        "distinct_operator_declared_race_ids":len(ids),
+        "distinct_local_meeting_dates":len(days),
+        "registered_grade_denominator_preserved":26,
+        "registered_auxiliary_numbered_slot_denominator_preserved":64,
+        "independent_observations_NOT_26_plus_64":True,
+        "possible_grade_auxiliary_overlaps_to_check_with_real_ids":overlapping,
+        "by_distinct_primary_campaign":by_scope,
+        "public_git_SHA_comments_actually_submitted_by_this_tool":0,
+        "independently_authenticated_next_market_capture_trials":0,
+        "no_automatic_quote_fetching_or_wagering":True,
+    }
+
+
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     sub=ap.add_subparsers(dest="action",required=True)
@@ -389,6 +445,9 @@ def main():
     sc.add_argument("--private-bundle",required=True,type=Path)
     sc.add_argument("--private-output",required=True,type=Path)
     sc.add_argument("--operator-confirms-complete-capture",action="store_true")
+    audit= sub.add_parser("audit")
+    audit.add_argument("--private-bundles",required=True,nargs="+",type=Path)
+    audit.add_argument("--private-output",required=True,type=Path)
     args=ap.parse_args()
     from keiba_operator_winwide_capture import _write_new_private
     if args.action=="prepare":
@@ -396,11 +455,16 @@ def main():
             args.private_ledger,
             json.loads(args.confirmed_card.read_text(encoding="utf-8")),
             horse_draws=args.horse_draws,seed=args.seed)
-    else:
+    elif args.action=="score":
         data=score_bundle(
             json.loads(args.private_bundle.read_text(encoding="utf-8")),
             args.private_ledger,asof=datetime.now(JST).isoformat(),
             operator_confirms_complete=args.operator_confirms_complete_capture)
+    else:
+        data=audit_distinct_private_bundles([
+            json.loads(fn.read_text(encoding="utf-8"))
+            for fn in args.private_bundles
+        ])
     _write_new_private(args.private_output,data)
     print(json.dumps({
         "status":data["status"],
