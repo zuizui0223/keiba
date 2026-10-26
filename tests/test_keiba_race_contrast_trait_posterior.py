@@ -55,6 +55,13 @@ class ContrastPosteriorSyntheticTests(unittest.TestCase):
         self.assertEqual(got["historical_horses_in_joint_fit"],6)
         self.assertEqual(got["historical_race_count"],7)
         self.assertEqual(got["source_race_sizes"],[6]*7)
+        self.assertAlmostEqual(
+            got["theoretical_peer_relative_measurement_noise_correlation_by_race_size"]["6"],
+            -1/5)
+        # The -0.20 shared-denominator OBSERVATION-noise correlation
+        # and the positive random-horse-effect POSTERIOR correlation
+        # are two different statistical objects.
+        self.assertGreater(cov[0,1],0)
         self.assertTrue(got["global_mean_unidentified_by_within_race_contrasts"])
         for a in range(n):
             for b in range(a+1,n):
