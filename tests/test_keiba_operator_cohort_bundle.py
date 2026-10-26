@@ -7,6 +7,7 @@ and MUST NOT be submitted to the real PR22 GitHub comment thread.
 from __future__ import annotations
 
 import copy
+from hashlib import sha256
 import json
 from pathlib import Path
 import sys
@@ -106,6 +107,155 @@ class SyntheticCaptureToCampaignIntegration(unittest.TestCase):
             self.assertEqual(p["next_quote_min_published_at"],
                              DATE+"T11:15:04+09:00")
             self.assertFalse(x["external_GitHub_comment_created_at_verified"])
+
+    def test_gh_precommit_sha_binds_all_original_capture_urls_and_final_card(self):
+        bundle=self.prepare()
+        freeze=bundle["freeze"]
+        payload=freeze["payload"]
+        lock=payload["operator_source_card_chain_binding"]
+        self.assertEqual(lock["schema"],m.CAPTURE_BINDING_SCHEMA)
+        self.assertEqual(lock["local_chain_prefix_length"],3)
+        self.assertEqual(lock["private_capture_chain_prefix_sha256"],
+                         op._read_ledger(self.ledger)[-1]["event_sha256"])
+        self.assertEqual(lock["operator_final_card_sha256"],
+                         sha256(op._dump(self.c).encode("utf-8")).hexdigest())
+        self.assertEqual(lock["actual_horse_physics_distance_m"],1400)
+        self.assertEqual(lock["final_runner_numbers"],list(range(1,7)))
+        # The GitHub-public message contains ONLY the digest; that digest
+        # covers the original source-chain head, full declared card and
+        # physical horse model input, although not independent source proof.
+        public=bundle["public_SHA_only_comment_not_posted"][
+            "body_to_post_once_in_PR22_comment"]
+        self.assertIn(freeze["seal_sha256_of_canonical_payload"],public)
+        self.assertNotIn(lock["private_capture_chain_prefix_sha256"],public)
+        self.assertNotIn(self.c["source_card_url"],public)
+        self.assertEqual(
+            freeze["SHA_only_existing_dispatch_inputs_NOT_SENT"]["seal_sha256"],
+            freeze["seal_sha256_of_canonical_payload"])
+
+    def test_final_card_distance_horse_identity_or_url_cannot_change_postfreeze(self):
+        bundle=self.prepare()
+        self.add_future(17)
+        for field,value in (
+            ("race_distance_m",1800),
+            ("horse_numbers",[1,2,3,4,5,7]),
+            ("source_card_url","https://example.org/another-card"),
+            ("slot_id","2026-10-31|京都|R11"),
+        ):
+            with self.subTest(field=field):
+                altered=copy.deepcopy(bundle)
+                altered["card"][field]=value
+                with self.assertRaisesRegex(
+                        ValueError,"CARD_CHAIN_AND_PHYSICAL_MODEL_NOT_SAME_SEAL"):
+                    m.score_bundle(altered,self.ledger,
+                                   asof=DATE+"T11:21:00+09:00",
+                                   operator_confirms_complete=True)
+
+    def test_physical_distance_and_source_card_digest_change_public_sha(self):
+        left=self.prepare()
+        other=copy.deepcopy(self.c)
+        other["race_distance_m"]=1800
+        right=self.prepare(card_override=other)
+        self.assertNotEqual(
+            left["freeze"]["seal_sha256_of_canonical_payload"],
+            right["freeze"]["seal_sha256_of_canonical_payload"])
+        self.assertNotEqual(
+            left["freeze"]["payload"]["operator_source_card_chain_binding"][
+                "operator_final_card_sha256"],
+            right["freeze"]["payload"]["operator_source_card_chain_binding"][
+                "operator_final_card_sha256"])
+        self.assertEqual(
+            left["registered_cohort"]["primary_slot_id"],
+            right["registered_cohort"]["primary_slot_id"])
+
+    def test_replacing_complete_local_event_chain_is_detected_by_frozen_source_sha(self):
+        from keiba_operator_winwide_capture import _read_ledger
+        orig=self.prepare()
+        before=_read_ledger(self.ledger)
+        # Deliberately rewrite ENTIRE LOCAL chain to be self-consistent.
+        # Ordinary file-hash validation passes, but the PREVIOUSLY frozen
+        # SHA still binds the ORIGINAL head and must reject new provenance.
+        altered=copy.deepcopy(before)
+        altered[0]["captured_source"]["odds_by_horse_number"]["1"]=91.
+        old=list(self.ledger.glob("*.json"))
+        for file in old:
+            file.unlink()
+        prev="0"*64
+        for ix,e in enumerate(altered,1):
+            e["previous_event_sha256"]=prev
+            e["event_sha256"]=op._sha({k:v for k,v in e.items()
+                                      if k!="event_sha256"})
+            fn=self.ledger/f"{ix:06d}-{e['event_sha256'][:12]}.json"
+            fn.write_text(json.dumps(e,ensure_ascii=False,indent=2)+"\n",
+                          encoding="utf-8")
+            prev=e["event_sha256"]
+        self.assertEqual(len(_read_ledger(self.ledger)),3)
+        self.add_future(17)
+        with self.assertRaisesRegex(ValueError,"EARLY_CAPTURE_SOURCE_CHAIN_CHANGED"):
+            m.score_bundle(orig,self.ledger,
+                           asof=DATE+"T11:21:00+09:00",
+                           operator_confirms_complete=True)
+
+    def test_pretarget_intermediate_win_received_before_freeze_not_scored_as_future(self):
+        # One full WIN update can occur between selected middle WIN/WIDE
+        # and local freeze. It is NOT a future observation and must not
+        # make postfreeze scoring fail because received < freeze clock.
+        v=win(11,1,scale=1.15)
+        v["provenance"]="authorized_private_local_export"
+        v["rights_reviewed_by_operator"]=True
+        op.append_capture(self.ledger,v,
+                          captured_at_jst=DATE+"T11:02:30+09:00")
+        orig=self.prepare()
+        self.assertEqual(orig["capture_ledger_prefix_events"],4)
+        self.add_future(17)
+        scored=m.score_bundle(orig,self.ledger,
+                              asof=DATE+"T11:21:00+09:00",
+                              operator_confirms_complete=True)
+        self.assertEqual(scored["local_market_score"]["status"],m.SCORE_STATUS)
+        self.assertEqual(scored["cohort_audit"]["local_candidate_price_scores"],1)
+        self.assertTrue(scored["frozen_input_capture_chain_prefix_unchanged"])
+
+    def test_core_aux_same_actual_race_id_cannot_be_counted_twice(self):
+        grade=self.prepare()
+        aux_card=copy.deepcopy(self.c)
+        aux_card["slot_id"]="2026-10-31|京都|R11"
+        aux=self.prepare(card_override=aux_card)
+        self.assertNotEqual(
+            grade["freeze"]["seal_sha256_of_canonical_payload"],
+            aux["freeze"]["seal_sha256_of_canonical_payload"])
+        with self.assertRaisesRegex(ValueError,"DUPLICATE_PHYSICAL_RACE_ID"):
+            m.audit_distinct_private_bundles([grade,aux])
+        with self.assertRaisesRegex(ValueError,"DUPLICATE_PHYSICAL_RACE_ID"):
+            m.audit_distinct_private_bundles([grade,copy.deepcopy(grade)])
+        single=m.audit_distinct_private_bundles([grade])
+        self.assertEqual(single["distinct_operator_declared_race_ids"],1)
+        self.assertEqual(single["registered_grade_denominator_preserved"],26)
+        self.assertEqual(single["registered_auxiliary_numbered_slot_denominator_preserved"],64)
+        self.assertEqual(single["possible_grade_auxiliary_overlaps_to_check_with_real_ids"],1)
+        self.assertEqual(single["independently_authenticated_next_market_capture_trials"],0)
+
+    def test_mutated_public_sha_only_comment_body_is_not_valid_for_next_market_score(self):
+        original=self.prepare()
+        self.add_future(17)
+        b=copy.deepcopy(original)
+        b["public_SHA_only_comment_not_posted"]["body_to_post_once_in_PR22_comment"]+=(
+            "\\nAN_UNDISCLOSED_DIFFERENT_PREDICTION")
+        with self.assertRaisesRegex(ValueError,"PUBLIC_SHA_COMMENT_BODY_NOT_SAME"):
+            m.score_bundle(b,self.ledger,
+                           asof=DATE+"T11:21:00+09:00",
+                           operator_confirms_complete=True)
+        with self.assertRaisesRegex(ValueError,"PUBLIC_SHA_COMMENT_BODY_NOT_SAME"):
+            m.audit_distinct_private_bundles([b])
+
+    def test_bundle_cannot_self_claim_external_SHA_attestation(self):
+        b=self.prepare()
+        b["external_GitHub_comment_created_at_verified"]=True
+        with self.assertRaisesRegex(ValueError,"FALSELY_CLAIMS_EXTERNAL_PROOF"):
+            m.audit_distinct_private_bundles([b])
+        with self.assertRaisesRegex(ValueError,"FALSELY_CLAIMS_EXTERNAL_PROOF"):
+            m.score_bundle(b,self.ledger,
+                           asof=DATE+"T11:21:00+09:00",
+                           operator_confirms_complete=True)
 
     def test_later_winner_or_quote_cannot_rewrite_frozen_sha(self):
         x=self.prepare()

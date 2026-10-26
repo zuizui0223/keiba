@@ -275,7 +275,7 @@ jobs:
         run: |
           python scripts/odds_pair_hierarchy_robustness.py --synthetic-draws 500 --seed 20261023 --output tmp/odds-pair-robustness.json
           python -c "import json; r=json.load(open('tmp/odds-pair-robustness.json')); assert r['number_of_independent_races']==1 and r['n_price_mapping_scenarios']==9; assert abs(r['direct_PL_gamma1_lower_quote_decompositions']['wide_minus_PL_relative_index']-.7264335920434639)<1e-9; assert .55<r['wide_minus_PL_horse_node_R2_min']<.56 and .81<r['wide_minus_PL_horse_node_R2_max']<.82; assert all(v['all_nine_assumptions_have_same_sign'] for v in r['pair_residual_sign_stability'].values()); assert r['invented_noise_reference']['cannot_interpret_as_pvalue_or_empirical_noise_baseline']"
-      - name: Strictly before target: 12:21 and 13:26 win + 13:26 wide predict 13:44 WIN display-market proxy
+      - name: "Strictly before target: 12:21 and 13:26 win + 13:26 wide predict 13:44 WIN display-market proxy"
         run: |
           python scripts/odds_r8_next_win_market_forecast.py --permutations 999 --seed 20261023 --output tmp/odds-r8-next-win-market.json
           python -c "import json; x=json.load(open('tmp/odds-r8-next-win-market.json')); z=x['next_market_price_proxy_scores']; assert x['real_independent_races']==1; assert x['source_last_update']=='2026-10-12T13:26:00+09:00' and x['target_source_published']=='2026-10-12T13:44:00+09:00'; assert abs(z['last_win_only']['normalized_inverse_odds_TV_pp']-9.6563629482)<1e-7 and abs(z['elapsed_time_scaled_win_momentum']['normalized_inverse_odds_TV_pp']-8.1809653549)<1e-7 and abs(z['momentum_plus_wide_node_beta_025']['normalized_inverse_odds_TV_pp']-7.1041135426)<1e-7; assert x['coefficients_are_arbitrary_and_not_trained_or_registered_before_race']"
