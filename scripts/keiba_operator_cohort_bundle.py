@@ -44,12 +44,13 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime
+from hashlib import sha256
 import json
 from pathlib import Path
 
 from keiba_operator_winwide_capture import (
     ROOT, JST, _read_ledger, _check_card, freeze_private_from_ledger,
-    score_private_from_ledger, _write_new_private,
+    score_private_from_ledger, _write_new_private, _dump,
 )
 from keiba_fixed_denominator_market_campaign import (
     _locked_universe, _aware, campaign, RECEIPT_SCHEMA,
@@ -64,6 +65,7 @@ from keiba_private_multirace_winwide_shadow import (
 from keiba_nextprice_pr_comment_attestation import (
     prepare_comment, STATUS_PREPARED,
 )
+from odds_shadow_freeze_score import _seal
 
 BUNDLE_SCHEMA="KEIBA_OPERATOR_PRIVATE_NEXT_MARKET_COHORT_BUNDLE_V1"
 BUNDLE_SCORED_SCHEMA="KEIBA_OPERATOR_PRIVATE_NEXT_MARKET_COHORT_SCORE_V1"
@@ -71,11 +73,79 @@ BUNDLE_STATUS="LOCAL_FULL_WIN_WIDE_FREEZE_WITH_FIXED_COHORT_SLOT"
 SCORE_STATUS_LOCAL="LOCAL_NEXT_MARKET_PRICE_ONLY_WITH_FIXED_COHORT_SLOT"
 MISSING="HOLD_TARGET_NOT_OBSERVED_IN_LOCKED_TIME_WINDOW"
 HOLD_SOURCE="SOURCE_RIGHTS_RECEPTION_AND_TARGET_CAPTURE_NOT_EXTERNALLY_VERIFIED"
+CAPTURE_BINDING_SCHEMA="KEIBA_FROZEN_SOURCE_CHAIN_AND_FINAL_CARD_BINDING_V1"
+CAPTURE_BINDING_FIELDS={
+    "schema", "operator_final_card_sha256",
+    "private_capture_chain_prefix_sha256", "local_chain_prefix_length",
+    "actual_horse_physics_distance_m", "final_runner_numbers",
+}
+
+
+def _card_digest(card):
+    """Canonical private-card hash, never the contents of a public SHA comment."""
+    return sha256(_dump(card).encode("utf-8")).hexdigest()
+
+
+def _anchor_original_inputs(freeze, card, ledger_events, selected_feature):
+    """Bind ALL pre-freeze raw capture events and the official-card claim.
+
+    Previously the PR22 prediction SHA committed only to normalized market
+    feature rows and forecast vectors. The source URLs and card distance
+    remained outside that digest in a mutable local wrapper. Here the
+    complete operator input chain head, original declared final card and
+    actual horse-physics distance enter the SAME pre-next-price SHA.
+
+    This is a hash integrity binding, NOT a third-party source/timestamp
+    attestation and NOT evidence of true measured horse movement.
+    """
+    payload=verify_freeze(freeze)
+    if not ledger_events or "operator_source_card_chain_binding" in payload:
+        raise ValueError("HOLD_ALREADY_BOUND_OR_EMPTY_SOURCE_CHAIN")
+    if (payload["race_id"]!=card["race_id"] or
+        payload["provider"]!=card["provider"] or
+        payload["horse_numbers"]!=card["horse_numbers"] or
+        payload["source_sha256_local_only"]!=
+            sha256(_dump(selected_feature).encode("utf-8")).hexdigest()):
+        raise ValueError("HOLD_SELECTED_MODEL_INPUTS_NOT_FROM_DECLARED_SOURCE")
+    binding={
+        "schema":CAPTURE_BINDING_SCHEMA,
+        "operator_final_card_sha256":_card_digest(card),
+        "private_capture_chain_prefix_sha256":ledger_events[-1]["event_sha256"],
+        "local_chain_prefix_length":len(ledger_events),
+        "actual_horse_physics_distance_m":card["race_distance_m"],
+        "final_runner_numbers":list(card["horse_numbers"]),
+    }
+    payload["operator_source_card_chain_binding"]=binding
+    digest=_seal(payload)
+    freeze["seal_sha256_of_canonical_payload"]=digest
+    # This nested summary is a PREPARATION AID only; it is not submitted.
+    freeze["SHA_only_existing_dispatch_inputs_NOT_SENT"]["seal_sha256"]=digest
+    verify_freeze(freeze)
+    return binding
+
+
+def _check_bound_card(freeze,card):
+    payload=verify_freeze(freeze)
+    b=payload.get("operator_source_card_chain_binding")
+    if (not isinstance(b,dict) or set(b)!=CAPTURE_BINDING_FIELDS or
+        b["schema"]!=CAPTURE_BINDING_SCHEMA or
+        b["operator_final_card_sha256"]!=_card_digest(card) or
+        b["actual_horse_physics_distance_m"]!=card["race_distance_m"] or
+        b["final_runner_numbers"]!=card["horse_numbers"] or
+        b["final_runner_numbers"]!=payload["horse_numbers"] or
+        type(b["local_chain_prefix_length"]) is not int or
+        b["local_chain_prefix_length"]<1):
+        raise ValueError("HOLD_CARD_CHAIN_AND_PHYSICAL_MODEL_NOT_SAME_SEAL")
+    if (freeze.get("SHA_only_existing_dispatch_inputs_NOT_SENT",{}).get(
+           "seal_sha256")!=freeze["seal_sha256_of_canonical_payload"]):
+        raise ValueError("HOLD_PUBLIC_SHA_PREPARATION_NOT_SAME_FROZEN_MODEL")
+    return b
 
 
 def _receipt(card,freeze,stage):
     """The EXACT PR24 receipt schema; never invent an official race ID."""
     source=verify_freeze(freeze)
+    _check_bound_card(freeze,card)
     if source["race_id"]!=card["race_id"]:
         raise ValueError("HOLD_CARD_RACE_AND_FREEZE_ID_MISMATCH")
     if stage not in ("local_SHA_frozen","next_quote_local_scored",
@@ -191,8 +261,10 @@ def prepare_bundle(ledger,card,*,frozen_at_jst=None,
     if not all_events:
         raise ValueError("HOLD_EMPTY_LOCAL_SOURCE_CAPTURE")
     latest=all_events[-1]["event_sha256"]
-    # Source history prefix cannot be replaced after the hash freeze.
-    sha=freeze["seal_sha256_of_canonical_payload"]
+    # Crucial: include the original source-chain and final-card digests in
+    # the externally publishable forecast's *own* SHA, not just in a local
+    # wrapper which could be relabeled after a remote comment is posted.
+    _anchor_original_inputs(freeze,card,all_events,output["feature"])
     receipt=_receipt(card,freeze,"local_SHA_frozen")
     manifest=None
     if card["provenance"]=="authorized_private_local_export":
@@ -228,6 +300,7 @@ def _validate_bundle_and_prefix(bundle,ledger):
     frozen=bundle["freeze"]
     payload=verify_freeze(frozen)
     card=_check_card(bundle["card"])
+    anchored=_check_bound_card(frozen,card)
     if (payload["race_id"]!=card["race_id"]
             or payload["provider"]!=card["provider"]
             or payload["scheduled_post_jst"]!=
@@ -236,7 +309,10 @@ def _validate_bundle_and_prefix(bundle,ledger):
     current=_read_ledger(ledger)
     n=bundle["capture_ledger_prefix_events"]
     if (type(n) is not int or n<=0 or len(current)<n
-            or current[n-1]["event_sha256"]!=
+            or n!=anchored["local_chain_prefix_length"] or
+            bundle["capture_ledger_prefix_head_SHA256"]!=
+                anchored["private_capture_chain_prefix_sha256"] or
+            current[n-1]["event_sha256"]!=
                bundle["capture_ledger_prefix_head_SHA256"]):
         raise ValueError("HOLD_EARLY_CAPTURE_SOURCE_CHAIN_CHANGED_AFTER_FREEZE")
     if (bundle["private_PR24_metadata_receipt"] !={
