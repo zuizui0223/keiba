@@ -154,7 +154,7 @@ def estimate_race_fixed_reml(source, target, *, profile_deviance_tolerance=2.0):
     best_ind=int(np.argmin(values))
     if best_ind in (0,len(grid)-1):
         raise ValueError("HOLD_VARIANCE_RATIO_NUMERIC_SEARCH_BOUNDARY")
-    logratio,best=_golden_min(obj_ratio_exp:=lambda y:obj_ratio(math.exp(y)),
+    logratio,best=_golden_min(lambda y:obj_ratio(math.exp(y)),
                               float(grid[best_ind-1]),
                               float(grid[best_ind+1]))
     ratio=math.exp(logratio)
