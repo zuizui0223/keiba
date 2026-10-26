@@ -23,6 +23,7 @@ if np is not None:
         fit_race_contrast_posterior, draw_joint_effects
     )
     from keiba_individual_trait_market_demo import toy_data
+    from keiba_race_contrast_seed_sensitivity import run as seed_sensitivity
 
 
 @unittest.skipIf(np is None, "NumPy optional scientific tests run in dedicated CI")
@@ -156,6 +157,22 @@ class ContrastPosteriorSyntheticTests(unittest.TestCase):
             draw_joint_effects(modified,draws=5,seed=1)
         with self.assertRaises(ValueError):
             draw_joint_effects(got,draws=65,seed=1)
+
+
+    def test_paired_seed_audit_keeps_hyperparameters_and_prior_means_fixed(self):
+        r=seed_sensitivity(n_seeds=2,posterior_draws=4,horse_draws=40)
+        self.assertEqual(r["seeds_tested"],2)
+        self.assertTrue(r["same_individual_posterior_means"])
+        self.assertTrue(r["same_marginal_variances"])
+        self.assertTrue(r["same_initial_market"])
+        self.assertTrue(r["distinct_simulation_seeds_not_distinct_real_races"])
+        self.assertFalse(r["real_market_criticality"]!="HOLD")
+        self.assertEqual(len(r["seed_level_aggregate_summaries"]),2)
+        self.assertAlmostEqual(
+            r["covariance_only_mean_difference_pp"],
+            sum(a["full_minus_diagonal_pp"]
+                for a in r["seed_level_aggregate_summaries"])/2,
+            places=12)
 
 
 if __name__=="__main__":
