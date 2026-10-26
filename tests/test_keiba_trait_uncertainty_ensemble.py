@@ -161,5 +161,65 @@ class TraitUncertaintySyntheticTests(unittest.TestCase):
         self.assertGreater(gains[-1],gains[0])
 
 
+    def test_source_matched_correlated_posterior_reaches_market_and_pde(self):
+        r=self._run(posterior_covariance_mode="race_contrast_covariance",
+                    pde_particles=100,pde_draws=1)
+        self.assertTrue(r["conditional_race_contrast_covariance_used"])
+        self.assertFalse(
+            r["trait_posterior_independence_ignores_shared_peer_denominator"])
+        self.assertTrue(r["posterior_sampling_enabled"])
+        self.assertEqual(r["trait_posterior_covariance_mode"],
+                         "race_contrast_covariance")
+        cov=r["race_contrast_covariance_summary"]
+        self.assertEqual(
+            cov["shared_race_residual_covariance_model"],
+            "orthogonal_n_minus_1_contrasts")
+        self.assertGreater(
+            cov["max_absolute_offdiagonal_effect_correlation"],0)
+        self.assertGreater(cov["relative_trait_pair_variance_min"],0)
+        self.assertEqual(r["pde_diagnostic_ensemble_draws"],1)
+        self.assertFalse(
+            r["variance_hyperparameter_estimation_uncertainty_included"])
+        for k in ("expected_objective_prior_under_trait_error",
+                  "expected_physical_win_signal_with_crowding",
+                  "expected_final_market_with_crowding"):
+            self.assertAlmostEqual(sum(r[k]),1,places=11)
+        a=self._run(posterior_covariance_mode="race_contrast_covariance",
+                    pde_particles=100,pde_draws=1)
+        self.assertEqual(r,a)
+
+    def test_independent_vs_joint_contrast_do_not_silently_mix_trait_models(self):
+        a=self._run()
+        b=self._run(posterior_covariance_mode="race_contrast_covariance")
+        self.assertFalse(a["conditional_race_contrast_covariance_used"])
+        self.assertIsNone(a["race_contrast_covariance_summary"])
+        self.assertTrue(b["conditional_race_contrast_covariance_used"])
+        self.assertNotEqual(
+            a["expected_objective_prior_under_trait_error"],
+            b["expected_objective_prior_under_trait_error"])
+        # Both use the SAME initial market, which cannot modify the
+        # horse prior and was already an aggregation of social opinions.
+        self.assertEqual(a["initial_market_proxy"],b["initial_market_proxy"])
+        self.assertEqual(a["n_horses"],b["n_horses"])
+
+    def test_covariance_model_respects_no_news_and_posterior_mean_controls(self):
+        outcome=self._run(posterior_covariance_mode="race_contrast_covariance",
+                          information_release_round=5)
+        self.assertTrue(outcome["never_released_pairs_bitwise_identical"])
+        self.assertEqual(
+            outcome["scenario_market_difference_TV_pp"]["mean"],0.0)
+        noerror=self._run(
+            posterior_covariance_mode="race_contrast_covariance",
+            include_posterior_error=False)
+        self.assertAlmostEqual(max(noerror["prior_across_trait_sd"]),0.0,
+                               places=12)
+        self.assertEqual(noerror["trait_posterior_covariance_mode"],
+                         "race_contrast_covariance")
+
+    def test_invalid_joint_mode_fails_closed_without_substituting_independent(self):
+        with self.assertRaises(ValueError):
+            self._run(posterior_covariance_mode="not_a_valid_posterior")
+
+
 if __name__=="__main__":
     unittest.main()
