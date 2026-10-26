@@ -17,6 +17,7 @@ on:
       - 'tests/test_keiba_source_race_fixed_reml.py'
       - 'tests/test_keiba_source_reml_vs_ecology_main.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
+      - 'docs/betting/source-locked-race-fixed-reml-trait-market-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   pull_request:
     paths:
@@ -34,6 +35,7 @@ on:
       - 'tests/test_keiba_source_race_fixed_reml.py'
       - 'tests/test_keiba_source_reml_vs_ecology_main.py'
       - 'docs/betting/individual-repeatability-market-cascade-20261026.md'
+      - 'docs/betting/source-locked-race-fixed-reml-trait-market-20261026.md'
       - '.github/workflows/keiba-individual-trait-market-cascade.yml'
   workflow_dispatch:
 permissions:
