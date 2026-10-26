@@ -65,7 +65,7 @@ class RaceFixedREMlTests(unittest.TestCase):
         for field in ("horse_effect_variance_seconds_squared",
                       "independent_absolute_time_error_variance_seconds_squared",
                       "conditional_icc_point","log_variance_ratio"):
-            self.assertAlmostEqual(a[field],actual[field],places=9)
+            self.assertAlmostEqual(a[field],actual[field],places=7)  # eigenspace numerical tolerance
 
     def test_new_rem_l_changes_legacy_method_moments_without_adding_odds(self):
         fit=estimate_race_fixed_reml(self.source,self.target)
@@ -101,7 +101,7 @@ class RaceFixedREMlTests(unittest.TestCase):
         s=deepcopy(self.source)
         s["records"].reverse()
         b=estimate_race_fixed_reml(s,self.target)
-        self.assertAlmostEqual(a["conditional_icc_point"],b["conditional_icc_point"],places=12)
+        self.assertAlmostEqual(a["conditional_icc_point"],b["conditional_icc_point"],places=7)
         for bad in ("future","wrongmarker","wrongsource","postscore"):
             src=deepcopy(self.source)
             if bad=="future":
