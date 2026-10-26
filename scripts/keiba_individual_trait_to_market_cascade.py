@@ -289,7 +289,9 @@ def layered_vote_market(q0, objective, horse_signal, *,
 
     'fundamental' voters use ONLY objective form; 'herding' voters
     use ONLY the already visible market q_t; 'informed' bettors
-    use objective and new horse signal AFTER its public release.
+    switch from objective to the already objective-conditioned horse
+    forecast AFTER release. Multiplying objective by the posterior-like
+    forecast again would double-count the original objective evidence.
     Counterfactuals use the same per-round uniforms.
     """
     q0=unit_weights(q0)
@@ -323,8 +325,7 @@ def layered_vote_market(q0, objective, horse_signal, *,
         probabilities={
             "fundamental":objective,
             "herding":_herding_index(current,gamma),
-            "informed":unit_weights(objective*horse_signal if available
-                                    else objective),
+            "informed":horse_signal if available else objective,
         }
         new=np.zeros(n,dtype=int)
         for kind in AGENT_TYPES:
@@ -396,7 +397,7 @@ def deterministic_market_step(q, objective, signal, *,
         raise ValueError("HOLD_INVALID_LAMBDA")
     fchoice=(f["fundamental"]*obj+
              f["herding"]*_herding_index(q,gamma)+
-             f["informed"]*unit_weights(obj*news))
+             f["informed"]*news)
     return (1-lam)*q+lam*fchoice
 
 
