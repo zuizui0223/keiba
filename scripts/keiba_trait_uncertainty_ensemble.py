@@ -128,6 +128,7 @@ def propagate_individual_uncertainty(
     pde_particles: int = 0,
     pde_draws: int = 0,
     voter_shares_by_round=None,
+    herding_gamma: float = 1.0,
 ):
     """Uncertainty propagation, fixed source and shared CRNs per arm.
 
@@ -192,11 +193,13 @@ def propagate_individual_uncertainty(
         market_no=layered_vote_market(
             q0,objective,uncrowded,seed=voter_seed,
             rounds=vote_rounds,release_step=information_release_round,
-            voter_shares_by_round=voter_shares_by_round)
+            voter_shares_by_round=voter_shares_by_round,
+            gamma=herding_gamma)
         market_c=layered_vote_market(
             q0,objective,crowded,seed=voter_seed,
             rounds=vote_rounds,release_step=information_release_round,
-            voter_shares_by_round=voter_shares_by_round)
+            voter_shares_by_round=voter_shares_by_round,
+            gamma=herding_gamma)
         for t in range(information_release_round):
             if not np.array_equal(market_no["path"][t],market_c["path"][t]):
                 raise AssertionError("HOLD_HORSE_SIGNAL_PASSED_BEFORE_RELEASE")
@@ -256,6 +259,7 @@ def propagate_individual_uncertainty(
       "uniform_equilibrium_gain_trace_not_real_criticality":
           uniform_gain_trace,
       "voter_shares_time_schedule_used":voter_shares_by_round is not None,
+      "social_exponent_gamma_hypothetical":herding_gamma,
       "initial_observed_market_not_objective":True,
       "initial_market_proxy":q0.tolist(),
       "plug_in_objective_prior":prior_means.tolist(),
