@@ -208,6 +208,18 @@ def _scope(card):
     }
 
 
+def _check_safe_public_comment_draft(bundle,card,freeze):
+    """A mutable local wrapper cannot silently substitute the public SHA text."""
+    expected=(prepare_comment(freeze) if
+              card["provenance"]=="authorized_private_local_export" else None)
+    if bundle.get("public_SHA_only_comment_not_posted")!=expected:
+        raise ValueError("HOLD_PUBLIC_SHA_COMMENT_BODY_NOT_SAME_FROZEN_MODEL")
+    # A legitimate source can still have ZERO actual GitHub comments.
+    if (bundle.get("external_GitHub_comment_created_at_verified") is not False
+            or bundle.get("genuinely_prospective_market_trial_counted") is not False):
+        raise ValueError("HOLD_LOCAL_BUNDLE_FALSELY_CLAIMS_EXTERNAL_PROOF")
+
+
 def _cohort_diagnostic(card,freeze,*,stage,score=None,asof=None):
     scope=_scope(card)
     if scope["primary_scope"]=="FROZEN_GRADED_26_PRIMARY":
@@ -301,6 +313,7 @@ def _validate_bundle_and_prefix(bundle,ledger):
     payload=verify_freeze(frozen)
     card=_check_card(bundle["card"])
     anchored=_check_bound_card(frozen,card)
+    _check_safe_public_comment_draft(bundle,card,frozen)
     if (payload["race_id"]!=card["race_id"]
             or payload["provider"]!=card["provider"]
             or payload["scheduled_post_jst"]!=
@@ -397,6 +410,7 @@ def audit_distinct_private_bundles(bundles):
         card=_check_card(b["card"])
         payload=verify_freeze(freeze)
         binding=_check_bound_card(freeze,card)
+        _check_safe_public_comment_draft(b,card,freeze)
         scope=_scope(card)
         if (b.get("registered_cohort")!=scope or
                 b.get("capture_ledger_prefix_events")!=
