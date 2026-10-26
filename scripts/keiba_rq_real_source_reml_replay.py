@@ -301,7 +301,11 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
     return {
         **meta,
         "status":(
-            "SYNTHETIC_FIXTURE_NUMERIC_METHOD_REPLAY_NOT_REAL_HORSE_DATA"
+            ("SYNTHETIC_FIXTURE_NUMERIC_METHOD_REPLAY_NOT_REAL_HORSE_DATA"
+             if comparable and frozen else
+             "SYNTHETIC_FIXTURE_SOURCE_EDITION_CHANGED_HOLD"
+             if comparable else
+             "HOLD_SYNTHETIC_METHODS_DISAGREE")
             if injected_test_collector else
             "OBSERVED_REAL_RQ_SOURCE_REML_INDEPENDENT_NUMERICAL_REPLAY"
             if comparable and frozen else
