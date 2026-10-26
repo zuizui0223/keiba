@@ -33,6 +33,8 @@ from ecology_rq_2026_calendar_overlap import COHORT, LOCKED_RACE_NUMBERS, valida
 from ecology_rq_cross_venue_identity_support import collect_cannon
 from ecology_rq_eagle_farm_external_icc import identity_overlap
 from ecology_rq_early_pace_repeatability import prepare
+from ecology_rq_rider_switch_consistency import source_timed_panel
+from ecology_rq_forward_alternative_history import audit_other_horse_baselines
 from ecology_rq_race_fixed_icc import race_fixed_reml
 from ecology_rq_single_race_id_probe import request_xml
 from ecology_rq_thoroughbred_sectional_audit import fetch_official
@@ -262,6 +264,54 @@ def _leave_one_original_source_date_reml(screened, compare):
     }
 
 
+
+def _previously_locked_out_of_date_horse_vs_other_horse(screened):
+    """Reapply a PREVIOUSLY FROZEN source-conditional experiment.
+
+    All focal records are scored against only earlier original dates;
+    exact GPS first marker and official distance must match, and a
+    newly documented source jockey ID is required by the *OLD*
+    comparator eligibility. It is a POSTRACE peer-relative GPS
+    measurement, never an odds-market or absolute focal speed forecast.
+    Return only already-safe aggregates of the original method.
+    """
+    timed,coverage=source_timed_panel(screened,min_gps=4)
+    if not timed:
+        return {"status":"HOLD_NO_ORIGINAL_TIMED_PEER_RELATIVE_GPS",
+                "no_animal_IDs_or_records_exported":True}
+    report=audit_other_horse_baselines(timed)
+    if not report["strictly_earlier_date_train_then_update"]:
+        raise ValueError("HOLD_EARLIER_DATE_PREDICTION_RULE_NOT_ENFORCED")
+    contexts={}
+    for context,details in report["contexts"].items():
+        forecasts={}
+        for name,e in details["identical_scored_future_records"].items():
+            keep=[
+              "status","distinct_original_HORSES_IDs",
+              "matched_chronological_future_source_rows",
+              "distinct_future_original_source_dates",
+              "distinct_original_horse_by_matching_contexts",
+              "same_future_rows_for_each_compared_predictor",
+              "equal_HORSES_weighted_past_horse_RMSE_sec",
+              "equal_HORSES_weighted_past_other_horse_baseline_RMSE_sec",
+              "past_other_horse_minus_focal_horse_RMSE_sec",
+            ]
+            forecasts[name]={k:e[k] for k in keep if k in e}
+        contexts[context]=forecasts
+    return {
+        "status":"RETROSPECTIVE_ORIGINAL_METHOD_PAST_HORSE_VS_OTHER_HORSE_SOURCE_EDITION",
+        "source_timed_rows":len(timed),
+        "source_meeting_dates_with_timed_rows":
+            coverage["original_source_dates_after_race_minimum"],
+        "same_locked_old_shrinkage_n_over_n_plus_2":True,
+        "same_old_new_documented_rider_comparator_population":True,
+        "not_a_new_preregistered_validation":True,
+        "not_absolute_horse_speed_or_prestart_market_prediction":True,
+        "original_source_rider_ids_not_verified_actual_riders":True,
+        "no_animal_IDs_or_records_exported":True,
+        "contexts":contexts,
+    }
+
 def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
            reference=race_fixed_reml):
     validate_cohort()
@@ -324,6 +374,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
                 "existing_main_status":existing["status"]}
     source_date_deletion=_leave_one_original_source_date_reml(
         screened,compare)
+    historical_forward=_previously_locked_out_of_date_horse_vs_other_horse(
+        screened)
     old_a=existing["horse_variance_component_sec_squared"]
     old_e=existing["independent_error_variance_component_sec_squared"]
     old_icc=existing["conditional_observational_ICC_point_estimate"]
@@ -359,6 +411,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
              updated,
         "independent_algorithm_absolute_numerical_differences":diff,
         "original_source_date_deletion_sensitivity":source_date_deletion,
+        "same_original_20261014_design_horse_vs_other_history_on_current_source":
+            historical_forward,
         "both_same_original_source_and_eligibility":True,
         "did_NOT_use_actual_future_target_prices_or_race_finishes":True,
         "no_real_social_causality_critical_odds_or_ROI_inferred":True,
