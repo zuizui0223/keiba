@@ -141,9 +141,9 @@ def repeatable_traits(source: dict, target: dict, *, min_dates=3):
             raise ValueError("HOLD_NOT_SAME_GPS_MARKER_DISTANCE_CLASS")
         racekey=(row["race_day"],row["race_id"])
         by_race[racekey].append(row)
-        key=(row["horse_id"],row["race_day"])
-        if row["race_id"] in individual_days[key]:
-            raise ValueError("HOLD_DUPLICATE_HORSE_RACE")
+        key=(row["horse_id"],dt.date().isoformat())
+        if individual_days[key]:
+            raise ValueError("HOLD_SAME_HORSE_MULTIPLE_RACE_STARTS_ONE_DAY")
         individual_days[key].add(row["race_id"])
     if len(by_race) < min_dates or len({r[0] for r in by_race}) < min_dates:
         raise ValueError("HOLD_TOO_FEW_INDEPENDENT_SOURCE_DATES")
