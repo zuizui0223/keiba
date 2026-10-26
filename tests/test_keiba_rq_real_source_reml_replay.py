@@ -56,7 +56,8 @@ def fictional_cohort():
                 "horse_id":h, "horse_name":f"FABRICATED_{i:02d}",
                 "day":day, "race_number":4,
                 "distance":"1400", "first_marker_m":150.,
-                "first_section_sec":value, "class":"TOY_OPEN"})
+                "first_section_sec":value, "class":"TOY_OPEN",
+                "ground":"Good"})
         original={
           "verified_positive_first_GPS_HORSES_ID_matches":24,
           "meeting_XML_SHA256":"1"*64,
