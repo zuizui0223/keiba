@@ -28,7 +28,7 @@ def toy_experiment(draws=20,physical_draws=80,seed=20261026):
         {"fundamental":.25,"herding":.50,"informed":.25},
         {"fundamental":.15,"herding":.60,"informed":.25},
     ]
-    def go(release,posterior=True,gamma=2.0):
+    def go(release,posterior=True,gamma=2.0,mode="independent_approximation"):
         return propagate_individual_uncertainty(
             source,target,observed_first_odds=odds,
             posterior_draws=draws,physical_mc_draws=physical_draws,
@@ -36,11 +36,15 @@ def toy_experiment(draws=20,physical_draws=80,seed=20261026):
             information_release_round=release,
             voter_shares_by_round=mix,
             herding_gamma=gamma,
+            posterior_covariance_mode=mode,
         )
     early=go(1)
     late=go(3)
     never=go(5)
     point=go(3,False)
+    correlated_late=go(3,True,mode="race_contrast_covariance")
+    correlated_never=go(5,True,mode="race_contrast_covariance")
+    correlated_point=go(3,False,mode="race_contrast_covariance")
     g=late["uniform_equilibrium_gain_trace_not_real_criticality"]
     if not ([x["uniform_null_local_gain"]<1 for x in g[:2]]
             == [True,True]
@@ -51,6 +55,12 @@ def toy_experiment(draws=20,physical_draws=80,seed=20261026):
         raise AssertionError("HOLD_INFORMATION_LEAK")
     if max(point["prior_across_trait_sd"])>1e-12:
         raise AssertionError("HOLD_PLUG_IN_PREDICTIVE_SPREAD")
+    if not correlated_never["never_released_pairs_bitwise_identical"]:
+        raise AssertionError("HOLD_CORRELATED_TRAIT_INFORMATION_LEAK")
+    if max(correlated_point["prior_across_trait_sd"])>1e-12:
+        raise AssertionError("HOLD_CORRELATED_PLUGIN_UNCERTAINTY_SPREAD")
+    if not correlated_late["conditional_race_contrast_covariance_used"]:
+        raise AssertionError("HOLD_RACE_CONTRAST_COVARIANCE_WAS_IGNORED")
     return {
         "status":"ARTIFICIAL_HORSE_TRAIT_AND_BETTOR_POPULATION_COHORT_ONLY",
         "real_market_or_animal_population_supported":False,
@@ -60,6 +70,37 @@ def toy_experiment(draws=20,physical_draws=80,seed=20261026):
         "each_physical_ABM_draws":physical_draws,
         "underlying_GPS_trait_moments_ICC":
             late["source_conditional_moment_icc"],
+        "correlated_race_contrast_vs_independent_approximation":{
+            "method":"source_conditional_exact_Gaussian_given_FIXED_variances",
+            "shared_race_mean_removed":True,
+            "horse_effect_max_abs_offdiagonal_posterior_correlation":
+                correlated_late["race_contrast_covariance_summary"]
+                    ["max_absolute_offdiagonal_effect_correlation"],
+            "relative_horse_effect_variance_min":
+                correlated_late["race_contrast_covariance_summary"]
+                    ["relative_trait_pair_variance_min"],
+            "max_objective_prior_sd_independent":
+                max(late["prior_across_trait_sd"]),
+            "max_objective_prior_sd_correlated":
+                max(correlated_late["prior_across_trait_sd"]),
+            "predicted_market_crowding_TV_pp_independent":
+                late["scenario_market_difference_TV_pp"],
+            "predicted_market_crowding_TV_pp_correlated":
+                correlated_late["scenario_market_difference_TV_pp"],
+            "correlated_minus_independent_mean_market_no_crowd_TV_pp":
+                50*sum(abs(a-b) for a,b in zip(
+                    correlated_late["expected_final_market_no_crowding"],
+                    late["expected_final_market_no_crowding"])),
+            "correlated_minus_independent_mean_market_crowd_TV_pp":
+                50*sum(abs(a-b) for a,b in zip(
+                    correlated_late["expected_final_market_with_crowding"],
+                    late["expected_final_market_with_crowding"])),
+            "no_information_transmission_with_correlated_traits":
+                correlated_never["scenario_market_difference_TV_pp"]["mean"],
+            "plugin_correlated_objective_prior_draw_sd":
+                max(correlated_point["prior_across_trait_sd"]),
+            "variance_hyperparameter_uncertainty_not_included":True,
+        },
         "reference_prior_market_odds_already_social":True,
         "objective_probability_double_counting_removed":True,
         "same_pseudo_ballots_across_synthetic_counterfactuals":True,
