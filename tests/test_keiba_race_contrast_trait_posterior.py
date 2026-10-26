@@ -49,7 +49,9 @@ class ContrastPosteriorSyntheticTests(unittest.TestCase):
         expected=d*(np.eye(n)-J)+a2*J
         np.testing.assert_allclose(cov,expected,atol=1e-12,rtol=1e-11)
         self.assertGreater(cov[0,1],0)
-        self.assertGreater(got["max_absolute_offdiagonal_effect_correlation"],.8)
+        self.assertAlmostEqual(
+            got["max_absolute_offdiagonal_effect_correlation"],
+            expected[0,1]/expected[0,0],places=11)
         self.assertEqual(got["historical_horses_in_joint_fit"],6)
         self.assertEqual(got["historical_race_count"],7)
         self.assertEqual(got["source_race_sizes"],[6]*7)
