@@ -251,5 +251,75 @@ class TraitUncertaintySyntheticTests(unittest.TestCase):
         self.assertFalse(joint["has_outcome_data"])
 
 
+    def test_source_reml_joint_horse_posterior_reaches_physical_and_bettors(self):
+        x=self._run(posterior_covariance_mode="race_contrast_covariance",
+                    source_variance_fit_mode="source_reml",
+                    reml_profile_scenario="central",
+                    pde_particles=100,pde_draws=1)
+        self.assertEqual(x["source_variance_fit_mode"],"source_reml")
+        self.assertTrue(x["conditional_race_contrast_covariance_used"])
+        summary=x["race_contrast_covariance_summary"]
+        self.assertTrue(summary["hyperparameters"]
+                        ["source_only_orthogonal_race_contrast_reml"])
+        self.assertFalse(summary["hyperparameters"]
+                         ["hyperparameter_estimation_error_integrated"])
+        self.assertEqual(x["reml_profile_scenario"],"central")
+        self.assertGreater(summary["source_reml_profile_diagnostic"]
+                           ["profile_improvement_vs_zero_horse_variance"],0)
+        self.assertEqual(x["pde_diagnostic_ensemble_draws"],1)
+        self.assertAlmostEqual(sum(x["expected_final_market_with_crowding"]),1)
+        self.assertFalse(x["has_outcome_data"])
+
+    def test_source_reml_profile_scenarios_are_sensitivity_not_CI(self):
+        out={}
+        for case in ("low","central","high"):
+            out[case]=self._run(
+                posterior_covariance_mode="race_contrast_covariance",
+                source_variance_fit_mode="source_reml",
+                reml_profile_scenario=case)
+        ratios=[out[k]["race_contrast_covariance_summary"]["hyperparameters"]
+                ["horse_between_variance_seconds2"]/
+                out[k]["race_contrast_covariance_summary"]["hyperparameters"]
+                ["assumed_absolute_time_residual_variance_seconds2"]
+                for k in ("low","central","high")]
+        self.assertLessEqual(ratios[0],ratios[1])
+        self.assertLessEqual(ratios[1],ratios[2])
+        self.assertFalse(out["central"]
+                         ["variance_hyperparameter_estimation_uncertainty_included"])
+        self.assertEqual(out["central"]["actual_market_predictive_superiority"],
+                         "HOLD")
+        self.assertNotEqual(
+            out["low"]["plug_in_objective_prior"],
+            out["high"]["plug_in_objective_prior"])
+
+    def test_reml_same_marginals_diagonal_and_covariance_scenarios(self):
+        diag=self._run(posterior_covariance_mode=
+                       "race_contrast_marginal_independent",
+                       source_variance_fit_mode="source_reml")
+        joint=self._run(posterior_covariance_mode="race_contrast_covariance",
+                        source_variance_fit_mode="source_reml")
+        self.assertEqual(diag["plug_in_objective_prior"],
+                         joint["plug_in_objective_prior"])
+        self.assertEqual(diag["race_contrast_covariance_summary"],
+                         joint["race_contrast_covariance_summary"])
+        self.assertNotEqual(diag["expected_objective_prior_under_trait_error"],
+                            joint["expected_objective_prior_under_trait_error"])
+
+    def test_reml_keeps_early_market_and_no_information_counterfactual(self):
+        x=self._run(posterior_covariance_mode="race_contrast_covariance",
+                    source_variance_fit_mode="source_reml",
+                    information_release_round=5)
+        self.assertTrue(x["never_released_pairs_bitwise_identical"])
+        self.assertAlmostEqual(
+            x["scenario_market_difference_TV_pp"]["mean"],0.,places=12)
+        with self.assertRaises(ValueError):
+            self._run(source_variance_fit_mode="source_reml")
+        with self.assertRaises(ValueError):
+            self._run(
+                posterior_covariance_mode="race_contrast_covariance",
+                source_variance_fit_mode="source_reml",
+                reml_profile_scenario="chosen_using_future_winner")
+
+
 if __name__=="__main__":
     unittest.main()
