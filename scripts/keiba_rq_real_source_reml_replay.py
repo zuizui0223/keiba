@@ -228,6 +228,40 @@ def _fit_new_reml(rows):
             "no_original_IDs_names_or_GPS_values_in_output":True}
 
 
+def _leave_one_original_source_date_reml(screened, compare):
+    """Original source DATE is the deletion unit; never a per-horse CI."""
+    results=[]
+    for day in COHORT:
+        without=[r for r in screened if r["day"]!=day]
+        try:
+            fit=compare(without)
+            icc=fit["conditional_icc_point"]
+            if not (math.isfinite(icc) and 0<=icc<=1):
+                raise ValueError("HOLD_NONFINITE_DELETED_DATE_ICC")
+            results.append({"status":"ORIGINAL_DATE_DELETED_VALID",
+                            "icc":float(icc)})
+        except ValueError as exc:
+            if not str(exc).startswith("HOLD_"):
+                raise
+            results.append({"status":"HOLD_ONE_SOURCE_DATE_LEFT_OUT",
+                            "error_code":str(exc).split(":",1)[0]})
+    valid=[v["icc"] for v in results if v["status"]=="ORIGINAL_DATE_DELETED_VALID"]
+    return {
+        "status":(
+            "EXPLORATORY_ORIGINAL_SOURCE_DATE_DELETION_NOT_CONFIDENCE_INTERVAL"
+            if len(valid)>=len(COHORT)-2
+            else "HOLD_INSUFFICIENT_DATE_DELETE_VARIANCE_FITS"),
+        "original_dates_deletion_attempted":len(COHORT),
+        "successful_reml_delete_one_original_source_date":len(valid),
+        "source_dates_with_variance_hold":len(COHORT)-len(valid),
+        "minimum_source_deleted_ICC":min(valid) if valid else None,
+        "maximum_source_deleted_ICC":max(valid) if valid else None,
+        "original_source_date_not_horse_rows_is_deletion_unit":True,
+        "no_individual_original_source_date_ICC_rankings_exported":True,
+        "not_a_jackknife_95pct_CI_or_a_preregistered_replication":True,
+    }
+
+
 def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
            reference=race_fixed_reml):
     validate_cohort()
@@ -288,6 +322,8 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
             raise
         return {**_hold(str(exc)),**meta,
                 "existing_main_status":existing["status"]}
+    source_date_deletion=_leave_one_original_source_date_reml(
+        screened,compare)
     old_a=existing["horse_variance_component_sec_squared"]
     old_e=existing["independent_error_variance_component_sec_squared"]
     old_icc=existing["conditional_observational_ICC_point_estimate"]
@@ -322,6 +358,7 @@ def replay(*,reader=_original_read,baseline, compare=_fit_new_reml,
         "new_same_original_horse_race_source":
              updated,
         "independent_algorithm_absolute_numerical_differences":diff,
+        "original_source_date_deletion_sensitivity":source_date_deletion,
         "both_same_original_source_and_eligibility":True,
         "did_NOT_use_actual_future_target_prices_or_race_finishes":True,
         "no_real_social_causality_critical_odds_or_ROI_inferred":True,
