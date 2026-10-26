@@ -14,7 +14,7 @@ A GitHub pretarget comment containing such a SHA proves only the existence of th
 
 \`keiba_operator_cohort_bundle.prepare_bundle\` now adds one typed, strict source-binding object **inside** the PR #22 SHA256-covered frozen forecast payload:
 
-- SHA-256 of the entire declared **final JRA card** (race ID, source card URL, card publishing/acquisition times, final full field, venue/slot, announced post, surface/distance and operator rights claim);
+- SHA-256 of the entire declared **final JRA card** (race ID, source card URL, card publishing/acquisition times, final full field, venue/slot, scheduled post, race distance and operator rights claim);
 - the original private full WIN/WIDE source event **chain-head SHA-256** at freeze time;
 - the exact length of the source-event chain before freeze;
 - the **physical horse model's original race distance** actually passed to the nonlocal first-passage agents;
