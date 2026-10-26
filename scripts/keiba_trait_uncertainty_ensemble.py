@@ -127,6 +127,7 @@ def propagate_individual_uncertainty(
     vote_seed: int | None = None,
     pde_particles: int = 0,
     pde_draws: int = 0,
+    voter_shares_by_round=None,
 ):
     """Uncertainty propagation, fixed source and shared CRNs per arm.
 
@@ -175,6 +176,7 @@ def propagate_individual_uncertainty(
     noinfo_checks=0
     pde_diagnostics=[]
     voter_seed=vote_seed if vote_seed is not None else seed+10007
+    uniform_gain_trace=None
     for sample_idx,effect in enumerate(samples):
         objective=_prior_from_draw(
             effect,seconds_to_logweight=prior_scale,context=context)
@@ -189,10 +191,12 @@ def propagate_individual_uncertainty(
         # distribution, not an independent likelihood multiplier.
         market_no=layered_vote_market(
             q0,objective,uncrowded,seed=voter_seed,
-            rounds=vote_rounds,release_step=information_release_round)
+            rounds=vote_rounds,release_step=information_release_round,
+            voter_shares_by_round=voter_shares_by_round)
         market_c=layered_vote_market(
             q0,objective,crowded,seed=voter_seed,
-            rounds=vote_rounds,release_step=information_release_round)
+            rounds=vote_rounds,release_step=information_release_round,
+            voter_shares_by_round=voter_shares_by_round)
         for t in range(information_release_round):
             if not np.array_equal(market_no["path"][t],market_c["path"][t]):
                 raise AssertionError("HOLD_HORSE_SIGNAL_PASSED_BEFORE_RELEASE")
@@ -200,6 +204,15 @@ def propagate_individual_uncertainty(
             if not np.array_equal(market_no["final"],market_c["final"]):
                 raise AssertionError("HOLD_HORSE_SIGNAL_AFFECTED_NEVER_MARKET")
             noinfo_checks+=1
+        if uniform_gain_trace is None:
+            uniform_gain_trace=[
+                {"round":r["round"],
+                 "uniform_null_local_gain":r["uniform_null_local_gain"],
+                 "effective_new_pseudo_vote_fraction":
+                     r["effective_new_pseudo_vote_fraction"],
+                 "herding_fraction_assumed":
+                     r["hypothetical_voter_fractions"]["herding"]}
+                for r in market_no["rounds"]]
         p0.append(objective)
         sig0.append(uncrowded)
         sig1.append(crowded)
@@ -240,6 +253,9 @@ def propagate_individual_uncertainty(
       "pre_market_context_used":raw_context is not None,
       "physical_pairing":"same_prior_same_Gumbel_and_Brownian_randomness",
       "voter_pairing":"same_aggregated_pseudo_voter_uniforms",
+      "uniform_equilibrium_gain_trace_not_real_criticality":
+          uniform_gain_trace,
+      "voter_shares_time_schedule_used":voter_shares_by_round is not None,
       "initial_observed_market_not_objective":True,
       "initial_market_proxy":q0.tolist(),
       "plug_in_objective_prior":prior_means.tolist(),
