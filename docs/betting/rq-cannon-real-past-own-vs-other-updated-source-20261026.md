@@ -25,7 +25,7 @@ Racing Queenslandが公開した元の公式HORSES IDと初期GPS区間秒数に
 
 **2026-10-14 source edition（543候補行）では**：同距離・同マーカーの一般対照は **36馬ID／46後続観測**、自馬0.255809秒 vs 他馬0.303195秒（改善+0.047386秒、15.63%）。今回の最新版は35馬ID／44観測で符号とほぼ同じ規模を維持。これは**同じsource期間内でソース版を変えた感度**であり、外部データによる独立再現ではない。
 
-出典：[本研究の2026-10-14元比較](https://github.com/zuizui0223/keiba/blob/main/docs/ecology-rq-forward-other-horse-comparator-results.md)／[更新ソースを用いた実行（6つの人工テスト＋実測）](https://github.com/zuizui0223/keiba/actions/runs/40308240906)／[個票が一切ない匿名JSON ZIP](https://github.com/zuizui0223/keiba/actions/runs/40308240906/artifacts/12643592677)。
+出典：[本研究の2026-10-14元比較](https://github.com/zuizui0223/keiba/blob/main/docs/ecology-rq-forward-other-horse-comparator-results.md)／[更新ソースを用いた実行（7つの人工テスト＋実測）](https://github.com/zuizui0223/keiba/actions/runs/40308240906)／[個票が一切ない匿名JSON ZIP](https://github.com/zuizui0223/keiba/actions/runs/40308240906/artifacts/12643592677)。
 
 ## 反復可能な個体差のREMＬも同じ最新のsourceで確認
 
@@ -41,3 +41,19 @@ Racing Queenslandが公開した元の公式HORSES IDと初期GPS区間秒数に
 **未同定：** 先天的/遺伝的な性格、馬場別の反応規範、ライバルからの因果効果、GPSに入らなかった全出走馬、実際の確定騎手、完全レースの着順・全距離タイム、対象初期オッズより早く公開されていた個体GPS、Racing Queensland馬とJRA別馬番の同一個体性、実投票の追随係数、臨界オッズ、実市場予測・馬券収益。**上記の相対GPS目標は他の同レース測定馬のタイムを参照するため、馬の絶対速度・物理的相互作用を直接測った結果ではない。**
 
 同レースの`mark 150m vs 250m`を別の測定形質として扱う追試もDraft PR #29に実装し、ソースが十分でなければ個別に**HOLD**とする。後から観測結果に合わせたマーカー・日付・馬の選択は禁止。
+
+
+## さらに：初期GPSの測定マーカーを固定した実測REML
+
+2026-10-14の元source lockで感度分析の対象にした **150m/250m** を後から変更せず、新NumPy REMLと旧main SciPy REMLを各source版に独立に再適用した。[実データ実行記録](https://github.com/zuizui0223/keiba/actions/runs/40309207395) / [匿名ソース集計artifact](https://github.com/zuizui0223/keiba/actions/runs/40309207395/artifacts/12643134119)。
+
+| 元first GPSマーカー | 採用GPS観測 | 採用レース | 異なる元HORSES ID | 別日に反復GPSあり | 新REML ICC | 旧main REML ICC |
+|---|---:|---:|---:|---:|---:|---:|
+| **150m** | **203** | **29** | 126 | **47** | **0.540718** | 0.540718 |
+| **250m** | **215** | **33** | 133 | **63** | **0.431808** | 0.431808 |
+
+最新526候補行における pooled 503行と、150m＋250mの418行は一致しない。**他にも計測マーカーがあり、これらの2つは元ソースが予め対象に定めた部分集合である。** 同マーカー内でも距離・Class・馬場が混在し、分散比を同じ生物学的反復性の尺度として無条件で比較しない。共通馬IDと同等測定が保証されていないので、「150mの方が個体性が高い」「馬の行動は短距離で遺伝的に固定」とは結論できない。
+
+重要なのは、分散を元レース単位で差し引くREMLで、**元GPSマーカーを別々に扱ってもそれぞれ正の馬ID分散成分が推定され、異なる2実装が数理的に一致したこと**である。これは実測由来の**探索的反復性**の頑健性に関する知見だが、新しい競馬場・独立馬群での前向き再現ではない。
+
+**ソース版監査は引き続きHOLD**：10月14日元HORSES名簿の結合SHAと今回の最新source名簿は9/12日で異なる。GitHub Actionsが科学的な元ソース版一致で失敗していても、今回の最新版のサブセットICCを旧版の完全再現と呼んではいけない。
