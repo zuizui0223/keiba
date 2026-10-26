@@ -281,5 +281,45 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
         self.assertAlmostEqual(float(expected.sum()),1.,places=12)
 
 
+    def test_time_layered_objective_then_social_influence_is_a_scenario_not_observed(self):
+        ids=HORSES
+        q0=initial_market_proxy(dict(zip(ids,[2.,3.,4.,5.,6.,7.])),ids)
+        objective=initial_market_proxy(dict(zip(ids,[7.,6.,5.,4.,3.,2.])),ids)
+        schedule=[
+            {"fundamental":.60,"herding":.20,"informed":.20},
+            {"fundamental":.45,"herding":.35,"informed":.20},
+            {"fundamental":.25,"herding":.50,"informed":.25},
+            {"fundamental":.15,"herding":.60,"informed":.25},
+        ]
+        a=layered_vote_market(
+            q0,objective,objective,gamma=2.,release_step=5,
+            voter_shares_by_round=schedule,seed=71)
+        self.assertTrue(a["social_mix_is_time_varying"])
+        gains=[round(r["uniform_null_local_gain"],6) for r in a["rounds"]]
+        self.assertLess(gains[0],1)
+        self.assertLess(gains[1],1)
+        self.assertAlmostEqual(gains[2],1.,places=6)
+        self.assertGreater(gains[3],1)
+        self.assertEqual([r["new_votes"] for r in a["rounds"]],[250]*4)
+        # This equilibrium result does NOT imply the current nonuniform
+        # market actually changes phase at one fixed quoted price.
+        self.assertNotEqual(schedule[0]["herding"],schedule[-1]["herding"])
+        const={"fundamental":.25,"herding":.5,"informed":.25}
+        base=layered_vote_market(q0,objective,objective,seed=71)
+        same=layered_vote_market(q0,objective,objective,
+                                 voter_shares_by_round=[const]*4,seed=71)
+        for x,y in zip(base["path"],same["path"]):
+            np.testing.assert_array_equal(x,y)
+
+        for bad in ([schedule[0]]*3,
+                    [dict(schedule[0],herding=-.01)]*4):
+            with self.subTest(bad=bad),self.assertRaises(ValueError):
+                layered_vote_market(q0,objective,objective,
+                                     voter_shares_by_round=bad)
+        with self.assertRaises(ValueError):
+            layered_vote_market(q0,objective,objective,
+                 voter_shares=schedule[0],voter_shares_by_round=schedule)
+
+
 if __name__ == "__main__":
     unittest.main()
