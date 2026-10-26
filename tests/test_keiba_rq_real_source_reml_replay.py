@@ -25,7 +25,8 @@ if np is not None:
     try:
         from keiba_rq_real_source_reml_replay import (
             replay,_fit_new_reml,_frozen_fingerprints,SCHEMA,
-            SOURCE_STATUS,COHORT)
+            SOURCE_STATUS,COHORT,
+            _previously_locked_out_of_date_horse_vs_other_horse)
         HAS_PINNED_MAIN=True
     except ModuleNotFoundError as exc:
         if exc.name not in {
@@ -103,6 +104,11 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
             result["new_same_original_horse_race_source"]
             ["original_meeting_dates"],12)
         self.assertTrue(result["did_NOT_use_actual_future_target_prices_or_race_finishes"])
+        forward=result[
+          "same_original_20261014_design_horse_vs_other_history_on_current_source"]
+        self.assertTrue(forward["same_locked_old_shrinkage_n_over_n_plus_2"])
+        self.assertTrue(forward["no_animal_IDs_or_records_exported"])
+        self.assertEqual(forward["source_timed_rows"],288)
         output=json.dumps(result)
         self.assertNotIn("FABHORSE-",output)
         self.assertNotIn("FABRICATED_",output)
@@ -181,5 +187,34 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
         baseline["per_date"].pop(list(COHORT)[0])
         with self.assertRaises(ValueError):
             replay(reader=lambda:(rows,manifest),baseline=baseline)
+
+
+    def test_previous_locked_own_vs_other_horse_history_on_fabricated_12days(self):
+        rows,manifest,baseline=fictional_cohort()
+        date_order={day:index for index,day in enumerate(COHORT)}
+        for row in rows:
+            idx=int(row["horse_id"].split("-")[1])
+            row["jockey_license_id"]=str(5000+date_order[row["day"]])
+            row["trainer_license_id"]=str(6000+idx%3)
+        result=replay(reader=lambda:(rows,manifest),baseline=baseline)
+        self.assertEqual(result["status"],
+                         "SYNTHETIC_FIXTURE_NUMERIC_METHOD_REPLAY_NOT_REAL_HORSE_DATA")
+        old=result[
+          "same_original_20261014_design_horse_vs_other_history_on_current_source"]
+        broad=old["contexts"]["same_official_distance_and_exact_GPS_marker"]
+        a=broad["historical_other_horses_same_context"]
+        self.assertEqual(a["status"],
+                         "EXPLORATORY_IDENTICAL_FUTURE_HORSES_ROLE_CONTEXT_COMPARISON_ONLY")
+        self.assertEqual(a["distinct_original_HORSES_IDs"],24)
+        self.assertEqual(a["matched_chronological_future_source_rows"],264)
+        self.assertEqual(a["distinct_future_original_source_dates"],11)
+        self.assertTrue(a["same_future_rows_for_each_compared_predictor"])
+        self.assertGreater(a["past_other_horse_minus_focal_horse_RMSE_sec"],0)
+        safe=json.dumps(old,ensure_ascii=False)
+        self.assertNotIn("FABHORSE-",safe)
+        self.assertNotIn("FABRICATED_",safe)
+        self.assertNotIn('"jockey_license_id"',safe)
+        self.assertTrue(old["not_absolute_horse_speed_or_prestart_market_prediction"])
+
 
 if __name__=="__main__":unittest.main()
