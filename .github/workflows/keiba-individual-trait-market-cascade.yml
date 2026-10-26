@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
+      - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
       - 'tests/test_keiba_trait_uncertainty_ensemble.py'
@@ -14,6 +15,7 @@ on:
     paths:
       - 'scripts/keiba_individual_trait_to_market_cascade.py'
       - 'scripts/keiba_trait_uncertainty_ensemble.py'
+      - 'scripts/keiba_trait_uncertainty_demo.py'
       - 'scripts/keiba_individual_trait_market_demo.py'
       - 'tests/test_keiba_individual_trait_to_market_cascade.py'
       - 'tests/test_keiba_trait_uncertainty_ensemble.py'
@@ -41,6 +43,15 @@ jobs:
           python -m compileall -q scripts/keiba_individual_trait_to_market_cascade.py tests/test_keiba_individual_trait_to_market_cascade.py
           python -m unittest discover -s tests -p test_keiba_individual_trait_to_market_cascade.py -v
           python -m unittest discover -s tests -p test_keiba_trait_uncertainty_ensemble.py -v
+      - name: Toy posterior uncertainty and evolving social imitation law
+        run: |
+          python scripts/keiba_trait_uncertainty_demo.py --draws 20 --horse-draws 80 --seed 20261026 --output tmp/synthetic-trait-uncertainty-cascade.json
+          python -c "import json; x=json.load(open('tmp/synthetic-trait-uncertainty-cascade.json')); assert x['status']=='ARTIFICIAL_HORSE_TRAIT_AND_BETTOR_POPULATION_COHORT_ONLY'; assert x['social_info_release']['no_information_final_markets_equal']; assert x['price_threshold_discovery'] is None"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-horse-uncertainty-to-social-market-demo-no-real-data
+          path: tmp/synthetic-trait-uncertainty-cascade.json
+          retention-days: 14
       - name: Independent synthetic six-horse case and analytic amplification check
         run: |
           python scripts/keiba_individual_trait_market_demo.py --horse-draws 250 --output tmp/synthetic-individual-to-market.json
