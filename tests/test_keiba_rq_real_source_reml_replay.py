@@ -89,8 +89,10 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
         self.assertEqual(result["schema"],SCHEMA)
         self.assertEqual(
             result["status"],
-            "OBSERVED_REAL_RQ_SOURCE_REML_INDEPENDENT_NUMERICAL_REPLAY")
+            "SYNTHETIC_FIXTURE_NUMERIC_METHOD_REPLAY_NOT_REAL_HORSE_DATA")
         self.assertEqual(result["original_calendar_date_count"],12)
+        self.assertTrue(result["source_collector_is_injected_test_fixture"])
+        self.assertNotIn("OBSERVED_REAL",result["status"])
         self.assertEqual(
             result["original_20261014_source_component_match"]
             ["fully_matched_dates"],12)
@@ -124,7 +126,7 @@ class RealSourceREMLReplaySyntheticUnitTests(unittest.TestCase):
         manifest[list(COHORT)[0]]["original_horse_roster_sha256_combined"]="f"*64
         result=replay(reader=lambda:(rows,manifest),baseline=baseline)
         self.assertEqual(result["status"],
-          "OBSERVED_REAL_RQ_SOURCE_REML_SOURCE_EDITION_HOLD")
+          "SYNTHETIC_FIXTURE_SOURCE_EDITION_CHANGED_HOLD")
         self.assertEqual(
             result["original_20261014_source_component_match"]
             ["fully_matched_dates"],11)
