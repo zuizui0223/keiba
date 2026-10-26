@@ -213,3 +213,63 @@ def estimate_race_fixed_reml(source, target, *, profile_deviance_tolerance=2.0):
             "no_verified_licensed_individual_horse_data_in_repo":True
         },
     }
+
+
+def leave_one_source_date_out_reml(source, target):
+    """Descriptive clustered source-date sensitivity, not a 95% CI.
+
+    Each *source date* is deleted in its entirety so that multiple
+    repeated horse/peer rows from that same day cannot masquerade as
+    independent uncertainty replicates. Failed source-eligibility or
+    variance-boundary refits remain explicit HOLD counts.
+    """
+    gate=repeatable_traits(source,target)
+    days=sorted({row["race_day"].split("T")[0]
+                 for row in source["records"]})
+    if len(days)<5:
+        raise ValueError("HOLD_TOO_FEW_SOURCE_DATE_CLUSTERS_FOR_DELETION")
+    full=estimate_race_fixed_reml(source,target)
+    rows=[]
+    for omitted in days:
+        source_minus={**source,
+                      "records":[r for r in source["records"]
+                                 if r["race_day"].split("T")[0]!=omitted]}
+        try:
+            trial=estimate_race_fixed_reml(source_minus,target)
+            rows.append({"source_date_omitted":omitted,
+                         "status":"EXPLORATORY_SOURCE_DATE_DELETION_FIT",
+                         "icc":trial["conditional_icc_point"],
+                         "horse_variance_seconds2":
+                             trial["horse_effect_variance_seconds_squared"],
+                         "residual_variance_seconds2":
+                             trial[
+                               "independent_absolute_time_error_variance_seconds_squared"]})
+        except ValueError as exc:
+            if not str(exc).startswith("HOLD_"):
+                raise
+            rows.append({"source_date_omitted":omitted,
+                         "status":str(exc)})
+    available=[x for x in rows if x["status"]==
+               "EXPLORATORY_SOURCE_DATE_DELETION_FIT"]
+    if len(available)<len(days)-2:
+        status="HOLD_MANY_DATE_CLUSTER_REML_VARIANCES_UNIDENTIFIABLE"
+    else:
+        status="EXPLORATORY_SOURCE_DATE_DELETION_SENSITIVITY_NOT_CI"
+    summary={
+      "status":status,
+      "source_dates":len(days),
+      "full_icc":full["conditional_icc_point"],
+      "successful_leave_one_source_date_fits":len(available),
+      "HOLD_leave_one_source_date_fits":len(days)-len(available),
+      "minimum_deletion_icc":(
+          min(x["icc"] for x in available) if available else None),
+      "maximum_deletion_icc":(
+          max(x["icc"] for x in available) if available else None),
+      "no_confirmatory_significance_or_population_confidence_interval":True,
+      "no_target_race_outcomes_or_odds_loaded":True,
+      "no_independent_date_bootstrap_claim":True,
+    }
+    # Individual dates are retained only in private returned metadata;
+    # synthetic demo reports aggregates, never licensed race date roster.
+    summary["date_deletion_details"]=rows
+    return summary
