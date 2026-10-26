@@ -130,6 +130,12 @@ def fit_race_contrast_posterior(source: dict, target: dict, *,
       "historical_horses_in_joint_fit":len(observed),
       "historical_race_count":len(by_race),
       "source_race_sizes":race_sizes,
+      # Centering by the mean of OTHER horses creates NEGATIVE
+      # same-race measurement-noise correlation -1/(n-1), distinct
+      # from the often POSITIVE posterior horse-effect correlation
+      # (which includes the globally unidentified common intercept).
+      "theoretical_peer_relative_measurement_noise_correlation_by_race_size":
+          {str(n):float(-1/(n-1)) for n in sorted(set(race_sizes))},
       "hyperparameters":{
           "horse_between_variance_seconds2":a2,
           "absolute_time_residual_variance_seconds2":e2,
