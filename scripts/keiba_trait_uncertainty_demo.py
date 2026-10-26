@@ -35,6 +35,7 @@ def toy_experiment(draws=20,physical_draws=80,seed=20261026):
             seed=seed,include_posterior_error=posterior,
             information_release_round=release,
             voter_shares_by_round=mix,
+            herding_gamma=gamma,
         )
     early=go(1)
     late=go(3)
