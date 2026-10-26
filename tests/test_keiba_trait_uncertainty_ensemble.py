@@ -143,5 +143,23 @@ class TraitUncertaintySyntheticTests(unittest.TestCase):
                 posterior_draws=3,physical_mc_draws=40)
 
 
+    def test_increasing_herding_layer_changes_theoretical_gain_not_critical_price(self):
+        fractions=[
+            {"fundamental":.60,"herding":.20,"informed":.20},
+            {"fundamental":.45,"herding":.35,"informed":.20},
+            {"fundamental":.25,"herding":.50,"informed":.25},
+            {"fundamental":.15,"herding":.60,"informed":.25}
+        ]
+        r=self._run(voter_shares_by_round=fractions)
+        self.assertTrue(r["voter_shares_time_schedule_used"])
+        trace=r["uniform_equilibrium_gain_trace_not_real_criticality"]
+        gains=[z["uniform_null_local_gain"] for z in trace]
+        self.assertEqual(len(trace),4)
+        self.assertEqual([z["herding_fraction_assumed"] for z in trace],
+                         [.20,.35,.50,.60])
+        self.assertTrue(all(0<g<1 for g in gains))
+        self.assertGreater(gains[-1],gains[0])
+
+
 if __name__=="__main__":
     unittest.main()
