@@ -221,5 +221,35 @@ class TraitUncertaintySyntheticTests(unittest.TestCase):
             self._run(posterior_covariance_mode="not_a_valid_posterior")
 
 
+    def test_race_contrast_diagonal_control_isolates_cross_horse_covariance(self):
+        diag=self._run(
+            posterior_covariance_mode="race_contrast_marginal_independent")
+        joint=self._run(
+            posterior_covariance_mode="race_contrast_covariance")
+        self.assertTrue(diag["conditional_race_contrast_likelihood_used"])
+        self.assertTrue(joint["conditional_race_contrast_likelihood_used"])
+        self.assertFalse(diag["conditional_race_contrast_covariance_used"])
+        self.assertTrue(joint["conditional_race_contrast_covariance_used"])
+        self.assertTrue(
+            diag["trait_posterior_independence_ignores_shared_peer_denominator"])
+        self.assertFalse(
+            joint["trait_posterior_independence_ignores_shared_peer_denominator"])
+        # Same *fitted* horse means, same fitted marginal uncertainties:
+        # sampling distribution differs ONLY in its off-diagonal
+        # covariance, not in pointwise horse ability or prior context.
+        self.assertEqual(diag["plug_in_objective_prior"],
+                         joint["plug_in_objective_prior"])
+        self.assertEqual(
+            diag["race_contrast_covariance_summary"],
+            joint["race_contrast_covariance_summary"])
+        self.assertNotEqual(
+            diag["expected_objective_prior_under_trait_error"],
+            joint["expected_objective_prior_under_trait_error"])
+        self.assertEqual(diag["initial_market_proxy"],
+                         joint["initial_market_proxy"])
+        self.assertFalse(diag["has_outcome_data"])
+        self.assertFalse(joint["has_outcome_data"])
+
+
 if __name__=="__main__":
     unittest.main()
