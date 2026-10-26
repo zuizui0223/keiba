@@ -180,7 +180,7 @@ class SyntheticCaptureToCampaignIntegration(unittest.TestCase):
     def test_original_Kikka_graded_slot_is_not_next_market_candidate(self):
         c=copy.deepcopy(self.c)
         c["slot_id"]=m.EXPECTED_LEGACY_KIKKA
-        with self.assertRaisesRegex(ValueError,"NOT_REGISTERED"):
+        with self.assertRaisesRegex(ValueError,"ORIGINAL_KIKKA"):
             self.prepare(card_override=c)
 
     def test_operator_without_rights_can_replay_synthetic_but_not_submit_GitHub(self):
