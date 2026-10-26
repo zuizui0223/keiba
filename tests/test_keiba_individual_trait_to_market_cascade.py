@@ -90,7 +90,8 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
         for mode in ("new_target","cross_source","cross_record_source",
                      "market_quote_time_reversed","early_market_quote",
                      "marker","race_class","late_receive","late_race",
-                     "missing_one_peer","duplicate","future_target_label",
+                     "missing_one_peer","duplicate",
+                     "same_horse_two_races_one_day","future_target_label",
                      "no_source_rights"):
             source,target=make_source(),make_target()
             if mode=="market_quote_time_reversed":
@@ -109,6 +110,12 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
             if mode=="missing_one_peer":source["records"]=[r for r in source["records"]
                                                        if not (r["race_id"]=="TOY-R1" and r["horse_id"] in ("H1","H2","H3"))]
             if mode=="duplicate":source["records"].append(source["records"][0].copy())
+            if mode=="same_horse_two_races_one_day":
+                extra=source["records"][0].copy()
+                extra["race_id"]="TOY-R1-AFTERNOON"
+                extra["race_day"]="2026-10-01T16:00:00+09:00"
+                extra["received_at"]="2026-10-01T19:00:00+09:00"
+                source["records"].append(extra)
             if mode=="future_target_label":source["winner"]="H1"
             if mode=="no_source_rights":source["rights_checked_locally"]=False
             with self.subTest(mode=mode),self.assertRaises(ValueError):
