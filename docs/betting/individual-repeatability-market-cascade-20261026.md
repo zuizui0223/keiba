@@ -1,5 +1,7 @@
 # 同一馬の反復GPS個体効果 → 馬ABM/PDE → 投票者ABM → 市場安定性
 
+> **2026-10-26追加修正:** informed投票者が客観priorを二重計上していたため修正済みです。旧表の混雑による0.025pp（旧仮想ルール）を現行モデル結果として再利用しないでください。個体効果のposterior不確実性を馬ABM/PDEと投票者市場へ流す現行仕様、および人工20draw×80物理MCの結果は [新しい解析ノート](individual-trait-uncertainty-time-layered-market-20261026.md) を参照してください。数理的な臨界増幅の解析と現実の絶対オッズ臨界点は区別します。
+
 **2026-10-26: SYNTHETIC ONLY／実馬・実市場の因果接続は未実証。**
 
 本実験は親[PR #24](https://github.com/zuizui0223/keiba/pull/24)の上に積む新規Draftブランチで、main・v3.1・2026菊花賞の封印M0/M1/M2・既存PRを変更しない。
