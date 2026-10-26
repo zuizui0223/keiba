@@ -262,5 +262,24 @@ class RepeatableIndividualToMarketsTests(unittest.TestCase):
 
 
 
+    def test_already_conditioned_physical_signal_is_not_multiplied_by_objective_twice(self):
+        # The physical ABM already used objective evidence. Giving its
+        # exact same probability vector as the public "new" signal must
+        # NOT cause a change. The old obj*signal code violates this.
+        obj=initial_market_proxy(dict(zip(HORSES,[2.,3.,4.,6.,8.,12.])),HORSES)
+        q0=initial_market_proxy(dict(zip(HORSES,[9.,7.,5.,4.,3.,2.])),HORSES)
+        all_informed={"fundamental":0.,"herding":0.,"informed":1.}
+        immediate=layered_vote_market(
+            q0,obj,obj,voter_shares=all_informed,release_step=1,seed=1234)
+        never=layered_vote_market(
+            q0,obj,obj,voter_shares=all_informed,release_step=5,seed=1234)
+        for early,late in zip(immediate["path"],never["path"]):
+            np.testing.assert_array_equal(early,late)
+        expected=deterministic_market_step(
+            q0,obj,obj,voter_shares=all_informed,new_vote_fraction=.2)
+        np.testing.assert_allclose(expected,.8*q0+.2*obj,atol=1e-14)
+        self.assertAlmostEqual(float(expected.sum()),1.,places=12)
+
+
 if __name__ == "__main__":
     unittest.main()
