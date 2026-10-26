@@ -2,10 +2,11 @@
 """Propagate repeatable-horse uncertainty to SAME horse ABM/PDE -> bettor market.
 
 This is source-gated, synthetic until authorized same-ID GPS and market
-histories have both been obtained. The approximate horse posterior comes
-from source-conditional peer-relative GPS times, not independently
-recovered JRA animal abilities. Its Gaussian posterior ignores residual
-correlation created by shared race-relative denominators.
+histories have both been obtained. The default approximate horse
+posterior treats peer-relative GPS time effects as independent; the
+optional race-contrast conditional Gaussian posterior preserves their
+full within-race and between-horse covariance given fixed variance
+components. Neither fits JRA horse ability nor full hyperparameter risk.
 
 NO outcome labels or realized next quote enter any forecast. This is not
 a Bayesian population interval, observed JRA ballot model, payout, or
@@ -27,6 +28,9 @@ from keiba_individual_trait_to_market_cascade import (
     premarket_context_log_scores,
     repeatable_traits,
     unit_weights,
+)
+from keiba_race_contrast_trait_posterior import (
+    fit_race_contrast_posterior, draw_joint_effects,
 )
 from keiba_nonlocal_horse_pde_bettor_bridge import (
     CROWD_COEFFICIENT_M2_PER_S,
@@ -57,12 +61,13 @@ def _market_tv(a,b):
 
 
 def _draw_traits(traits: dict, draws: int, seed: int, *,
-                 include_posterior_error: bool):
+                 include_posterior_error: bool,
+                 joint_posterior: dict | None = None):
     """Independent Gaussian *approximation* for posterior trait uncertainty.
 
-    Horse random intercept and residual uncertainties use the current
-    source-conditional, method-of-moments model. Correlations of
-    individual peer-relative outcomes are NOT recovered by that model.
+    Independent Gaussian remains the old default. A source-matched
+    joint Gaussian based on orthogonal contrasts can optionally be used.
+    Both paths condition on source-derived uncalibrated variance estimates.
     """
     if type(draws) is not int or not (2 <= draws <= 64):
         raise ValueError("HOLD_TRAIT_DRAW_COUNT")
@@ -85,7 +90,12 @@ def _draw_traits(traits: dict, draws: int, seed: int, *,
     rng=np.random.default_rng(seed)
     means=np.asarray(means)
     std=np.asarray(std)
-    if include_posterior_error:
+    if joint_posterior is not None:
+        if joint_posterior["horse_ids"] != ids:
+            raise ValueError("HOLD_CORRELATED_TRAIT_ROSTER_ORDER")
+        samples=draw_joint_effects(joint_posterior,draws=draws,
+                                   seed=seed,enabled=include_posterior_error)
+    elif include_posterior_error:
         samples=rng.normal(size=(draws,len(ids)))*std[None,:]+means[None,:]
     else:
         samples=np.broadcast_to(means,(draws,len(ids))).copy()
@@ -129,6 +139,7 @@ def propagate_individual_uncertainty(
     pde_draws: int = 0,
     voter_shares_by_round=None,
     herding_gamma: float = 1.0,
+    posterior_covariance_mode: str = "independent_approximation",
 ):
     """Uncertainty propagation, fixed source and shared CRNs per arm.
 
@@ -141,6 +152,9 @@ def propagate_individual_uncertainty(
     """
     if type(include_posterior_error) is not bool:
         raise ValueError("HOLD_INVALID_UNCERTAINTY_SCENARIO_FLAG")
+    if posterior_covariance_mode not in (
+            "independent_approximation", "race_contrast_covariance"):
+        raise ValueError("HOLD_UNKNOWN_TRAIT_POSTERIOR_COVARIANCE_MODE")
     if type(physical_mc_draws) is not int or physical_mc_draws<40:
         raise ValueError("HOLD_LOW_PHYSICAL_MONTE_CARLO_SUPPORT")
     if (type(vote_rounds) is not int or vote_rounds<1 or
@@ -154,17 +168,30 @@ def propagate_individual_uncertainty(
         raise ValueError("HOLD_INCOMPLETE_PDE_CLOSURE_REQUEST")
     trait=repeatable_traits(source,target)
     ids=trait["horse_ids"]
-    prior_means=objective_horse_prior(
-        trait,seconds_to_logweight=prior_scale,
-        prestart_objective_log_covariates=(
-            premarket_context_log_scores(premarket_context_receipt,target)
-            if premarket_context_receipt is not None else None))
-    q0=initial_market_proxy(observed_first_odds,ids)
-    samples,means,sds=_draw_traits(
-        trait,posterior_draws,seed+503,
-        include_posterior_error=include_posterior_error)
+    joint_posterior=None
+    if posterior_covariance_mode == "race_contrast_covariance":
+        joint_posterior=fit_race_contrast_posterior(source,target)
+        revised=dict(trait["posterior"])
+        for j,horse_id in enumerate(ids):
+            revised[horse_id]={
+                **revised[horse_id],
+                "mean_relative_seconds":joint_posterior["mean"][j],
+                "variance_seconds_squared":
+                    joint_posterior["covariance"][j][j],
+            }
+        trait_for_prediction={**trait,"posterior":revised}
+    else:
+        trait_for_prediction=trait
     raw_context=(premarket_context_log_scores(premarket_context_receipt,target)
                  if premarket_context_receipt is not None else None)
+    prior_means=objective_horse_prior(
+        trait_for_prediction,seconds_to_logweight=prior_scale,
+        prestart_objective_log_covariates=raw_context)
+    q0=initial_market_proxy(observed_first_odds,ids)
+    samples,means,sds=_draw_traits(
+        trait_for_prediction,posterior_draws,seed+503,
+        include_posterior_error=include_posterior_error,
+        joint_posterior=joint_posterior)
     context=(np.asarray([raw_context[i] for i in ids],dtype=float)
              if raw_context is not None else None)
     p0=[]
@@ -251,7 +278,26 @@ def propagate_individual_uncertainty(
       "posterior_draws":posterior_draws,
       "physical_draws_per_posterior":physical_mc_draws,
       "model_error_not_population_confidence_interval":True,
-      "trait_posterior_independence_ignores_shared_peer_denominator":True,
+      "trait_posterior_independence_ignores_shared_peer_denominator":
+          joint_posterior is None,
+      "conditional_race_contrast_covariance_used":
+          joint_posterior is not None,
+      "trait_posterior_covariance_mode":posterior_covariance_mode,
+      "race_contrast_covariance_summary":(
+          {"shared_race_residual_covariance_model":
+             joint_posterior["shared_race_residual_covariance_model"],
+           "max_absolute_offdiagonal_effect_correlation":
+             joint_posterior["max_absolute_offdiagonal_effect_correlation"],
+           "historical_horses_in_joint_fit":
+             joint_posterior["historical_horses_in_joint_fit"],
+           "hyperparameters":
+             joint_posterior["hyperparameters"],
+           "relative_trait_pair_variance_min":
+              min(joint_posterior["pair_effect_variance"].values()),
+           "relative_trait_pair_variance_max":
+              max(joint_posterior["pair_effect_variance"].values())}
+          if joint_posterior is not None else None),
+      "variance_hyperparameter_estimation_uncertainty_included":False,
       "posterior_sampling_enabled":include_posterior_error,
       "pre_market_context_used":raw_context is not None,
       "physical_pairing":"same_prior_same_Gumbel_and_Brownian_randomness",
