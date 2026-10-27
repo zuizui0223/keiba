@@ -182,6 +182,17 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"EXPECTED_RACE_HEADER"):
             self.import_win(b"nonsense,header\n")
 
+    def test_friday_presale_quote_can_have_different_date_from_saturday_race(self):
+        # The exported first-row date is the RACE date, not necessarily the
+        # selected pre-sale WIN odds published date. Only publication and
+        # local append receipt are distinct, operator-declared clocks.
+        src,check=self.import_win(t="2026-10-30T17:00:00+09:00")
+        self.assertEqual(src["source_updated_at_jst"],
+                         "2026-10-30T17:00:00+09:00")
+        self.assertEqual(check["full_win_n"],6)
+        with self.assertRaisesRegex(ValueError,"QUOTE_TIME_NOT_BEFORE_POST"):
+            self.import_win(t="2026-10-27T12:00:00+09:00")
+
     def test_real_csv_must_be_UTF8_and_bom_handled_safely(self):
         with self.assertRaisesRegex(ValueError,"NOT_UTF8"):
             self.import_win(csv_sample().replace(b"\xe9\xa6\xac",b"\xff"))
