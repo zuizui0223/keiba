@@ -14,6 +14,15 @@ The operator must have a genuine FINAL-card private JSON matching the existing K
 
 The **単複 one-time table** must have 馬番 and 単勝 columns for every final-card horse. Column 着順 and 払戻 may appear but cannot contain any after-race value. The **ワイド pair-list tab** must contain ワイド in the tab name and a 組 column identifying each unordered pair. It must have either genuine low/high columns (such as 下限 and 上限) or a genuinely exported price RANGE field such as 3.4～4.1. The adapter does not invent a low/high value from an unknown single odds number. It requires exactly n(n−1)/2 distinct complete WIDE pairs; all other cases HOLD.
 
+The private optional audit report records TWO distinct local checksums:
+(1) SHA-256 of the original CSV bytes, including its actual BOM/CRLF;
+(2) SHA-256 of the normalized capture-source object. These permit local
+reprocessing audits when the operator retains the actual CSV. **The
+original vendor CSV byte digest is NOT currently part of the downstream
+PR22/PR30 publicly committed model SHA** (those source chains bind the
+normalized captured market rows instead). This provenance limitation is
+explicitly recorded rather than claiming end-to-end raw-source sealing.
+
 The first-row CSV race header does **NOT** itself attest the selected odds observation minute. Therefore the explicit selected quote time provided to the adapter is only an operator declaration. After conversion, the pre-existing capture append action stamps its own local receipt clock. Neither of these is independent evidence of when market values were publicly available; for future validation publish the forecast SHA ONLY before the target next-WIN market window and verify the independent GitHub server timestamp. The source and future target capture completeness remain separate, unproved obligations.
 
 ## Local-private integration (no remote fetch, no wagers)
