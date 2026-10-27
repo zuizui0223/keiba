@@ -72,6 +72,16 @@ def csv_sample(*, market="win",scale=1.,tab=None,postrace=False,
     return ("\ufeff"+buf.getvalue()).encode("utf-8")
 
 
+def edit_vendor_csv(raw,edit):
+    """Retain documented vendor UTF-8-BOM, CRLF and exact four-line frame."""
+    rows=list(csv.reader(io.StringIO(raw.decode("utf-8-sig"))))
+    edit(rows)
+    io_buf=io.StringIO(newline="")
+    writer=csv.writer(io_buf,lineterminator="\r\n")
+    writer.writerows(rows)
+    return ("\ufeff"+io_buf.getvalue()).encode("utf-8")
+
+
 @unittest.skipIf(np is None,"NumPy only required for linked horse/voter test")
 class VisualizerCSVEnvelopeTests(unittest.TestCase):
     def setUp(self):
@@ -264,6 +274,68 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
             self.assertEqual(
                 laneB["payload"]["original_local_capture_chain_prefix_SHA256"],
                 chain[-1]["event_sha256"])
+
+    def test_documented_duplicate_horse_name_display_headers_are_supported(self):
+        # Official vendor export docs show 馬名,馬名 in pair tables. That
+        # duplication must not cause a false HOLD, nor remove columns.
+        def add_names(rows):
+            rows[3][2:2]=["馬名","馬名"]
+            for k,r in enumerate(rows[4:],1):
+                r[2:2]=[f"SYNTHETIC_HORSE_A{k}",f"SYNTHETIC_HORSE_B{k}"]
+        blob=edit_vendor_csv(csv_sample(market="wide"),add_names)
+        source,check=self.import_wide(blob)
+        self.assertEqual(len(source["pairs"]),15)
+        self.assertEqual(check["full_wide_n_pairs"],15)
+        with tempfile.TemporaryDirectory() as td:
+            folder=Path(td)/"private"/"vendor"
+            op.append_capture(
+                folder,source,captured_at_jst=DATE+"T11:02:00+09:00",
+                original_vendor_bytes=blob,
+                confirmed_final_card=self.card)
+            self.assertEqual(len(op._read_ledger(folder)),1)
+
+    def test_duplicate_range_prices_require_explicit_low_and_high_columns(self):
+        # Actual WIDE exports are documented as adjacent low/high cells;
+        # if both have the same 'オッズ' header, first/second ordinal
+        # must be declared. A single unqualified odds column is NOT a
+        # valid inferred range and the parser fails closed by default.
+        def duplicate_odd_headers(rows):
+            rows[3][2]="オッズ"
+            rows[3][3]="オッズ"
+        blob=edit_vendor_csv(
+            csv_sample(market="wide",range_column=False),
+            duplicate_odd_headers)
+        with self.assertRaisesRegex(ValueError,"UNPARSABLE_WIDE_ODDS_RANGE"):
+            self.import_wide(blob)
+        source,_=a.adapt_one_export(
+            blob,self.card,market="wide",
+            source_updated_at_jst=self.upd,
+            provider=self.provider,source_url=self.url,
+            low_col="オッズ",high_col="オッズ.1")
+        self.assertEqual(len(source["pairs"]),15)
+        self.assertEqual(
+            source["original_vendor_export"]["wide_high_col"],"オッズ.1")
+
+    def test_duplicate_postrace_payout_column_second_copy_is_still_a_leak(self):
+        # Exact-name checks alone would miss a postrace payout hidden in
+        # the SECOND duplicated payout heading.
+        def add_second_payout(rows):
+            rows[3].append("払戻")
+            for k,r in enumerate(rows[4:]):
+                r.append("450" if k==0 else "")
+        blob=edit_vendor_csv(csv_sample(),add_second_payout)
+        with self.assertRaisesRegex(ValueError,"POSTRACE_FINISH_OR_PAYOUT"):
+            self.import_win(blob)
+
+    def test_ambiguous_duplicate_required_horse_or_pair_column_is_rejected(self):
+        def duplicate_win_id(rows):
+            idx=2
+            rows[3].insert(idx,"馬番")
+            for r in rows[4:]:
+                r.insert(idx,r[1])
+        blob=edit_vendor_csv(csv_sample(),duplicate_win_id)
+        with self.assertRaisesRegex(ValueError,"AMBIGUOUS_REQUIRED_SOURCE_COLUMN"):
+            self.import_win(blob)
 
     def test_original_bytes_required_not_merely_unverified_vendor_hash(self):
         original=csv_sample()
