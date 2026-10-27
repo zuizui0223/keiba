@@ -88,3 +88,118 @@ For both races, every entry/quote must still be source-clock checked. The [offic
 - A, B, all parent Drafts, original sealed 菊花賞 M0–M2, v3.1 official ledger and main are not merged/changed.
 
 **At protocol creation, genuine newly collected JRA source snapshots = 0; future independently GitHub timestamped WIN-only lane = 0; future verified next-price observations = 0.**
+
+
+## 2026-10-28: independent typed WIN-only GitHub SHA verification
+
+A **separate** SHA-only GitHub PR-comment verifier is now implemented in
+[keiba_win_only_github_receipt.py](../../scripts/keiba_win_only_github_receipt.py).
+This is NOT PR #23's WIN+WIDE verifier: the secondary WIN-only schema has a
+different marker, a different six-candidate source model, and a different
+public comment anchor.
+
+| Research lane | Public comment anchor | Comment marker | Preconditions |
+| --- | --- | --- | --- |
+| A: full WIN/WIDE | Existing [PR #22](https://github.com/zuizui0223/keiba/pull/22) | KEIBA_SHA_ONLY_NEXT_MARKET_PR_COMMENT_V1 | 12/21-model complete WIN/WIDE freeze |
+| B: WIN-only | Existing [PR #30](https://github.com/zuizui0223/keiba/pull/30) | KEIBA_SECONDARY_WIN_ONLY_NEXT_QUOTE_SHA_V1 | The six-model WIN-only freeze, source-card and code SHA manifest |
+
+For the WIN-only secondary experiment, once a *genuine authorized future*
+private freeze exists, the local operator may prepare the single public
+SHA-only text WITHOUT POSTING it:
+
+    python scripts/keiba_win_only_github_receipt.py prepare \
+      --private-freeze private/RACE_WIN_only_frozen.json \
+      --private-output private/RACE_WIN_only_comment_not_posted.json
+
+The prepared SHA-only body must be deliberately posted ONCE by the repository
+owner to **PR #30 before the predeclared next WIN target window starts**.
+No model source, full horse card, original odds, actual stake stream or horse
+prediction distribution is contained in the public body. The code does not
+make GitHub writes or bet placements.
+
+With an authenticated GitHub CLI, the operator can later validate the
+GitHub-server comment creation time directly from the full paginated PR #30
+issue-comment list and an independent GET of the single comment:
+
+    python scripts/keiba_win_only_github_receipt.py verify-live \
+      --private-freeze private/RACE_WIN_only_frozen.json \
+      --private-output private/RACE_WIN_only_GitHub_SHA_receipt.json
+
+It refuses owner mismatch, wrong PR, malformed/multiple same-race claims,
+different SHA, edited timestamps, source receipt later than posted SHA,
+comment posting after the +15min target window starts, incomplete GitHub API
+pages, or changed model-code fingerprints. Offline fixture inspection NEVER
+counts as server proof. Comments can be deleted or edited within a
+one-second timestamp resolution, so the current GitHub list is not a
+fully append-only certificate.
+
+To bind the remote SHA timestamp to a *locally* saved subsequent price score
+without falsely authenticating its completeness:
+
+    python scripts/keiba_win_only_github_receipt.py verify-live \
+      --private-freeze private/RACE_WIN_only_frozen.json \
+      --private-local-score private/RACE_WIN_only_local_score.json \
+      --private-output private/RACE_WIN_only_SHA_proved_q2_capture_local.json
+
+Even if the user's future GitHub SHA were externally timestamped, only
+SHA pre-existence would be proven. Source ownership, original quote
+publisher clocks, all capture completeness, real stake amounts, win
+probability calibration, bettor imitation and betting ROI remain unproven.
+
+**As of implementation**, PR #30 has no new real WIN-only SHA comment; the
+GitHub API runs in unit tests are explicit mocks and never count as real
+market evidence.
+
+## Same physical race, two lanes: a paired next-WIN evaluation
+
+[keiba_dual_market_lane_audit.py](../../scripts/keiba_dual_market_lane_audit.py)
+reopens the source-chained PRIVATE A and B freezes, recomputes each local
+q2 score from the recorded later full-field WIN quote, and refuses
+within-race comparisons unless all of these match exactly:
+
+- official source-derived race ID and frozen horse-number identity universe;
+- first and middle source-published WIN quote times, and the locked
+  +15..20-minute target window;
+- the **selected actual target WIN publisher update AND local receipt**;
+- persistence and log-WIN-momentum benchmark TV and KL values.
+
+After these prerequisites, compare original A's
+\`mid_WIN_momentum_plus_WIDE_node_beta025\` error to secondary B's
+\`WIN_log_momentum\` error. This is a **paired one-target
+WIDE-information contrast**, not two independent race observations.
+
+Example for one authorized privately recorded race:
+
+    python scripts/keiba_dual_market_lane_audit.py compare \
+      --ledger private/captures/CONFIRMED_RACE_ID \
+      --final-card private/CONFIRMED_RACE_ID_final_card.json \
+      --A-complete-WIDE-bundle private/RACE_full_WIDE_bundle.json \
+      --B-win-only-freeze private/RACE_WIN_only_frozen.json \
+      --private-output private/RACE_dual_lane_q2_comparison.json
+
+If WIDE is unavailable, simply omit \`--A-complete-WIDE-bundle\`. The A
+primary hypothesis stays \`HOLD_FULL_WIDE_NOT_PRETARGET_FROZEN\`, and B's
+locally scored q2 is still one race, not a success for A. If neither source
+exists, this script rejects the comparison instead of silently removing a
+race from the original registered denominator.
+
+The separately declared score files can be grouped and deduplicated by
+official race ID and registered slot:
+
+    python scripts/keiba_dual_market_lane_audit.py cohort \
+      --reports private/raceA_dual_lane_q2_comparison.json \
+                private/raceB_dual_lane_q2_comparison.json \
+      --private-output private/all_registered_market_lanes_report.json
+
+The cohort reports the number of A and B models locally scored, number of
+races successfully scored in at least one lane, number of eligible exact
+A/B pairs, and each lane's missingness, while explicitly guarding that
+26+64 are *two candidate* registries, not 90 independent observed races.
+Duplicate declared race IDs are rejected. All source quote capture and
+external SHA proof validation limitations remain, so the result NEVER
+promotes an unverified local score to a genuinely authenticated prospective
+JRA sample.
+
+[Dedicated cross-lane CI](https://github.com/zuizui0223/keiba/actions/runs/40532831691)
+passed tests with synthetic sources for this exact paired-q2 and missing-WIDE
+behavior. Real new forward races remain **0**.
