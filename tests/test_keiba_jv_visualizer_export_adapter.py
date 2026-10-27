@@ -72,6 +72,16 @@ def csv_sample(*, market="win",scale=1.,tab=None,postrace=False,
     return ("\ufeff"+buf.getvalue()).encode("utf-8")
 
 
+def edit_vendor_csv(raw,edit):
+    """Retain documented vendor UTF-8-BOM, CRLF and exact four-line frame."""
+    rows=list(csv.reader(io.StringIO(raw.decode("utf-8-sig"))))
+    edit(rows)
+    io_buf=io.StringIO(newline="")
+    writer=csv.writer(io_buf,lineterminator="\r\n")
+    writer.writerows(rows)
+    return ("\ufeff"+io_buf.getvalue()).encode("utf-8")
+
+
 @unittest.skipIf(np is None,"NumPy only required for linked horse/voter test")
 class VisualizerCSVEnvelopeTests(unittest.TestCase):
     def setUp(self):
@@ -114,7 +124,10 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
             audit["normalized_private_snapshot_SHA256_local_only"],
             sha256(op._dump(result).encode("utf-8")).hexdigest())
         self.assertTrue(audit[
-            "raw_vendor_export_bytes_not_part_of_the_PR22_PR30_frozen_model_SHA"])
+            "raw_vendor_export_byte_digest_in_normalized_capture_and_later_chain"])
+        self.assertTrue(audit["append_requires_original_csv_and_final_card_reparse"])
+        self.assertEqual(result["original_vendor_export"]["raw_csv_sha256"],
+                         audit["original_vendor_export_bytes_SHA256_local_only"])
 
     def test_WIDE_range_as_pair_list_full_edges_not_matrix(self):
         win,_=self.import_win()
@@ -212,16 +225,25 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
     def test_exported_WIN_and_WIDE_snapshots_feed_actual_existing_models(self):
         with tempfile.TemporaryDirectory() as td:
             folder=Path(td)/"private"/"jv_visualizer"
-            first,_=self.import_win(csv_sample(scale=1),
+            original_first=csv_sample(scale=1)
+            original_mid=csv_sample(scale=1.10)
+            original_wide=csv_sample(market="wide")
+            first,_=self.import_win(original_first,
                  t=DATE+"T10:00:00+09:00")
-            mid,_=self.import_win(csv_sample(scale=1.10))
-            wide,_=self.import_wide()
+            mid,_=self.import_win(original_mid)
+            wide,_=self.import_wide(original_wide)
             op.append_capture(folder,first,
-                              captured_at_jst=DATE+"T10:02:00+09:00")
+                              captured_at_jst=DATE+"T10:02:00+09:00",
+                              original_vendor_bytes=original_first,
+                              confirmed_final_card=self.card)
             op.append_capture(folder,mid,
-                              captured_at_jst=DATE+"T11:01:00+09:00")
+                              captured_at_jst=DATE+"T11:01:00+09:00",
+                              original_vendor_bytes=original_mid,
+                              confirmed_final_card=self.card)
             op.append_capture(folder,wide,
-                              captured_at_jst=DATE+"T11:02:00+09:00")
+                              captured_at_jst=DATE+"T11:02:00+09:00",
+                              original_vendor_bytes=original_wide,
+                              confirmed_final_card=self.card)
             laneB=B.prepare_win_only(
                 folder,self.card,horse_draws=40,
                 frozen_at_jst=DATE+"T11:03:00+09:00",seed=8)
@@ -234,6 +256,153 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
             self.assertEqual(laneA["registered_cohort"]["primary_scope"],
                              "FROZEN_GRADED_26_PRIMARY")
             self.assertFalse(laneA["external_GitHub_comment_created_at_verified"])
+            chain=op._read_ledger(folder)
+            from hashlib import sha256
+            self.assertEqual(chain[0]["captured_source"]["original_vendor_export"][
+                "raw_csv_sha256"],sha256(original_first).hexdigest())
+            self.assertEqual(chain[1]["captured_source"]["original_vendor_export"][
+                "raw_csv_sha256"],sha256(original_mid).hexdigest())
+            self.assertEqual(chain[2]["captured_source"]["original_vendor_export"][
+                "raw_csv_sha256"],sha256(original_wide).hexdigest())
+            # Thus the outer PR22 SHA covers original CSV byte digests
+            # transitively through the committed local source-chain HEAD.
+            binding=laneA["freeze"]["payload"][
+                "operator_source_card_chain_binding"]
+            self.assertEqual(
+                binding["private_capture_chain_prefix_sha256"],
+                chain[-1]["event_sha256"])
+            self.assertEqual(
+                laneB["payload"]["original_local_capture_chain_prefix_SHA256"],
+                chain[-1]["event_sha256"])
+
+    def test_documented_duplicate_horse_name_display_headers_are_supported(self):
+        # Official vendor export docs show 馬名,馬名 in pair tables. That
+        # duplication must not cause a false HOLD, nor remove columns.
+        def add_names(rows):
+            rows[3][2:2]=["馬名","馬名"]
+            for k,r in enumerate(rows[4:],1):
+                r[2:2]=[f"SYNTHETIC_HORSE_A{k}",f"SYNTHETIC_HORSE_B{k}"]
+        blob=edit_vendor_csv(csv_sample(market="wide"),add_names)
+        source,check=self.import_wide(blob)
+        self.assertEqual(len(source["pairs"]),15)
+        self.assertEqual(check["full_wide_n_pairs"],15)
+        with tempfile.TemporaryDirectory() as td:
+            folder=Path(td)/"private"/"vendor"
+            op.append_capture(
+                folder,source,captured_at_jst=DATE+"T11:02:00+09:00",
+                original_vendor_bytes=blob,
+                confirmed_final_card=self.card)
+            self.assertEqual(len(op._read_ledger(folder)),1)
+
+    def test_duplicate_range_prices_require_explicit_low_and_high_columns(self):
+        # Actual WIDE exports are documented as adjacent low/high cells;
+        # if both have the same 'オッズ' header, first/second ordinal
+        # must be declared. A single unqualified odds column is NOT a
+        # valid inferred range and the parser fails closed by default.
+        def duplicate_odd_headers(rows):
+            rows[3][2]="オッズ"
+            rows[3][3]="オッズ"
+        blob=edit_vendor_csv(
+            csv_sample(market="wide",range_column=False),
+            duplicate_odd_headers)
+        with self.assertRaisesRegex(ValueError,"UNPARSABLE_WIDE_ODDS_RANGE"):
+            self.import_wide(blob)
+        source,_=a.adapt_one_export(
+            blob,self.card,market="wide",
+            source_updated_at_jst=self.upd,
+            provider=self.provider,source_url=self.url,
+            low_col="オッズ",high_col="オッズ.1")
+        self.assertEqual(len(source["pairs"]),15)
+        self.assertEqual(
+            source["original_vendor_export"]["wide_high_col"],"オッズ.1")
+
+    def test_duplicate_postrace_payout_column_second_copy_is_still_a_leak(self):
+        # Exact-name checks alone would miss a postrace payout hidden in
+        # the SECOND duplicated payout heading.
+        def add_second_payout(rows):
+            rows[3].append("払戻")
+            for k,r in enumerate(rows[4:]):
+                r.append("450" if k==0 else "")
+        blob=edit_vendor_csv(csv_sample(),add_second_payout)
+        with self.assertRaisesRegex(ValueError,"POSTRACE_FINISH_OR_PAYOUT"):
+            self.import_win(blob)
+
+    def test_ambiguous_duplicate_required_horse_or_pair_column_is_rejected(self):
+        def duplicate_win_id(rows):
+            idx=2
+            rows[3].insert(idx,"馬番")
+            for r in rows[4:]:
+                r.insert(idx,r[1])
+        blob=edit_vendor_csv(csv_sample(),duplicate_win_id)
+        with self.assertRaisesRegex(ValueError,"AMBIGUOUS_REQUIRED_SOURCE_COLUMN"):
+            self.import_win(blob)
+
+    def test_original_bytes_required_not_merely_unverified_vendor_hash(self):
+        original=csv_sample()
+        normalized,_=self.import_win(original)
+        with tempfile.TemporaryDirectory() as td:
+            folder=Path(td)/"private"/"captures"
+            with self.assertRaisesRegex(
+                    ValueError,"ORIGINAL_VENDOR_BYTES_AND_FINAL_CARD_REQUIRED"):
+                op.append_capture(folder,normalized,
+                                  captured_at_jst=DATE+"T11:01:00+09:00")
+            self.assertEqual(len(op._read_ledger(folder)),0)
+            with self.assertRaisesRegex(
+                    ValueError,"ORIGINAL_VENDOR_CSV_BYTES_DIGEST_MISMATCH"):
+                op.append_capture(folder,normalized,
+                                  captured_at_jst=DATE+"T11:01:00+09:00",
+                                  original_vendor_bytes=csv_sample(scale=1.3),
+                                  confirmed_final_card=self.card)
+            self.assertEqual(len(op._read_ledger(folder)),0)
+
+    def test_correct_original_CSV_cannot_certify_changed_normalized_prices(self):
+        original=csv_sample()
+        normalized,_=self.import_win(original)
+        changed=copy.deepcopy(normalized)
+        changed["odds_by_horse_number"]["1"]=987.0
+        with tempfile.TemporaryDirectory() as td:
+            folder=Path(td)/"private"/"captures"
+            with self.assertRaisesRegex(
+                    ValueError,"ORIGINAL_CSV_NOT_SAME_NORMALIZED_HORSE_QUOTES"):
+                op.append_capture(folder,changed,
+                                  captured_at_jst=DATE+"T11:01:00+09:00",
+                                  original_vendor_bytes=original,
+                                  confirmed_final_card=self.card)
+            self.assertEqual(len(op._read_ledger(folder)),0)
+
+    def test_wrong_original_CSV_mapping_or_card_cannot_enter_receipt_chain(self):
+        original=csv_sample(market="wide")
+        normalized,_=self.import_wide(original)
+        altered=copy.deepcopy(normalized)
+        altered["original_vendor_export"]["wide_range_col"]="下限"
+        with tempfile.TemporaryDirectory() as td:
+            folder=Path(td)/"private"/"captures"
+            with self.assertRaises(ValueError):
+                op.append_capture(folder,altered,
+                                  captured_at_jst=DATE+"T11:01:00+09:00",
+                                  original_vendor_bytes=original,
+                                  confirmed_final_card=self.card)
+            altered=copy.deepcopy(self.card)
+            altered["race_distance_m"]=1800
+            with self.assertRaisesRegex(ValueError,"SOURCE_RACE_NOT_CONFIRMED_CARD"):
+                op.append_capture(folder,normalized,
+                                  captured_at_jst=DATE+"T11:01:00+09:00",
+                                  original_vendor_bytes=original,
+                                  confirmed_final_card=altered)
+            self.assertEqual(len(op._read_ledger(folder)),0)
+
+    def test_vendor_binding_cannot_be_silently_removed_by_extra_field(self):
+        original=csv_sample()
+        normalized,_=self.import_win(original)
+        corrupted=copy.deepcopy(normalized)
+        corrupted["original_vendor_export"]["raw_csv_sha256"]="bad"
+        with self.assertRaisesRegex(
+                ValueError,"INVALID_OR_UNLINKED_VENDOR_CSV_BYTES_DIGEST"):
+            op._verify_capture_payload(corrupted)
+        corrupted=copy.deepcopy(normalized)
+        corrupted["unverified_future_winner"]=1
+        with self.assertRaisesRegex(ValueError,"EXTRA_FUTURE_FIELDS"):
+            op._verify_capture_payload(corrupted)
 
     def test_historical_license_and_vanishing_noncanonical_pair_rejected(self):
         raw=csv_sample(market="wide")

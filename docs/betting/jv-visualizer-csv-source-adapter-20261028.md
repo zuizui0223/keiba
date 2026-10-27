@@ -14,14 +14,20 @@ The operator must have a genuine FINAL-card private JSON matching the existing K
 
 The **単複 one-time table** must have 馬番 and 単勝 columns for every final-card horse. Column 着順 and 払戻 may appear but cannot contain any after-race value. The **ワイド pair-list tab** must contain ワイド in the tab name and a 組 column identifying each unordered pair. It must have either genuine low/high columns (such as 下限 and 上限) or a genuinely exported price RANGE field such as 3.4～4.1. The adapter does not invent a low/high value from an unknown single odds number. It requires exactly n(n−1)/2 distinct complete WIDE pairs; all other cases HOLD.
 
-The private optional audit report records TWO distinct local checksums:
-(1) SHA-256 of the original CSV bytes, including its actual BOM/CRLF;
-(2) SHA-256 of the normalized capture-source object. These permit local
-reprocessing audits when the operator retains the actual CSV. **The
-original vendor CSV byte digest is NOT currently part of the downstream
-PR22/PR30 publicly committed model SHA** (those source chains bind the
-normalized captured market rows instead). This provenance limitation is
-explicitly recorded rather than claiming end-to-end raw-source sealing.
+The vendor's [CSV exporter documentation](https://keiba.ryuzee.com/jv-odds-visualizer/manual/09-export.html) explicitly allows **repeated display-column headers** such as `馬名,馬名` in pair tables. The adapter now deterministically names these `馬名` and `馬名.1` without discarding either column. It rejects duplicates of indispensable `馬番`, `単勝`, or `組` identifiers, rejects paid-out result values even in a *second* duplicate `払戻.1` column, and refuses to guess which of two adjacent same-named `オッズ` columns is low versus high. If a real WIDE file has two adjacent numerical `オッズ,オッズ` columns, supply the explicit mappings `--wide-low-col オッズ --wide-high-col オッズ.1` after inspecting the actual file; **do not** infer its real layout from an illustrative synthetic test. The [vendor's time-series manual](https://keiba.ryuzee.com/jv-odds-visualizer/manual/06-series.html) confirms the WIDE lower/upper cells are exported as two adjacent values rather than retaining the display-only `〜` separator.
+
+The private audit report retains two local checksums: (1) SHA-256 of
+the exact original vendor CSV bytes (including BOM/CRLF), and (2) SHA-256
+of the normalized capture object. Unlike the earlier PR #31 state, the
+normalized capture now includes a typed original CSV digest, and the
+append operation **re-reads the original CSV and verifies every normalized
+horse/pair quote before recording the source event**. The prediction's
+later source-event chain head commits to this original byte digest.
+
+This binds the **digest** of the raw source file, not the file's bytes
+themselves. The operator must retain the real original CSV privately for
+independent later examination; a cryptographic checksum alone does not
+authenticate its producer, availability time or licensing claim.
 
 The first-row CSV race header does **NOT** itself attest the selected odds observation minute. Therefore the explicit selected quote time provided to the adapter is only an operator declaration. After conversion, the pre-existing capture append action stamps its own local receipt clock. Neither of these is independent evidence of when market values were publicly available; for future validation publish the forecast SHA ONLY before the target next-WIN market window and verify the independent GitHub server timestamp. The source and future target capture completeness remain separate, unproved obligations.
 
@@ -56,7 +62,13 @@ Append each *normalized* source to the previously implemented PRIVATE source cha
 
     python scripts/keiba_operator_winwide_capture.py append \
       --raw-source private/NORMALIZED_RACE_EARLY_WIN.json \
+      --original-vendor-csv private/RAW_RACE_EARLY_単複.csv \
+      --confirmed-card private/REAL_CONFIRMED_RACE_final_card.json \
       --private-ledger private/captures/REAL_CONFIRMED_RACE_ID
+
+**The original CSV and the already normalized source MUST be supplied together at append time.** The program recalculates the raw CSV byte SHA, re-parses the actual horse/pair quotes and checks the normalized source is exactly identical to the original file and confirmed final card. It refuses a fabricated CSV hash without the original bytes, changed odds under a valid hash, changed row mappings or mismatched final cards. The append clock is still only a LOCAL receipt clock.
+
+The SHA of the original CSV bytes is included in the captured source object's typed `original_vendor_export` field; PR25's local capture-event hash chain includes that field; both the PR28 full-WIDE freeze and the PR30 WIN-only freeze commit that source-chain head within the full prediction SHA. **Thus the original CSV's byte digest is now transitively part of the public forecast commitment — the CSV file bytes themselves remain PRIVATE, and SHA does not prove the source clock or the source's truthfulness.**
 
 This is when the operator's local **reception** time is stamped. Repeat for qmid WIN and WIDE only if both really exist. Then use the existing PR28/PR30 private model freeze and the two typed SHA comment verifiers.
 

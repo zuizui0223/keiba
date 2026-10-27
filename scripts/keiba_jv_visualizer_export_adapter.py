@@ -44,7 +44,8 @@ from pathlib import Path
 import re
 
 from keiba_operator_winwide_capture import (
-    CAPTURE_SCHEMA, _check_card, _verify_capture_payload,
+    CAPTURE_SCHEMA, CAPTURE_VENDOR_SCHEMA,
+    _check_card, _verify_capture_payload,
     _write_new_private, _aware, _dump,
 )
 from odds_shadow_freeze_score import _normalized_odds, _wide_prices
@@ -83,11 +84,32 @@ def _decode_csv(data):
             any(v.strip() for v in records[1]) or
             len(records[2])!=1 or not records[2][0].strip()):
         raise ValueError("HOLD_VISUALIZER_EXPECTED_RACE_HEADER_BLANK_TAB_COLUMNS")
-    headers=[x.strip() for x in records[3]]
-    if not headers or len(set(headers))!=len(headers):
+    raw_headers=[x.strip() for x in records[3]]
+    if not raw_headers or any(not x for x in raw_headers):
         raise ValueError("HOLD_VISUALIZER_DUPLICATE_OR_EMPTY_TABLE_HEADERS")
-    if any(not x for x in headers):
-        raise ValueError("HOLD_VISUALIZER_DUPLICATE_OR_EMPTY_TABLE_HEADERS")
+    # The vendor explicitly documents legitimate repeated headers,
+    # e.g. pair table columns 馬名,馬名. Preserve their independent
+    # positions as 馬名 and 馬名.1, without confusing horse odds.
+    # PRICE/PAIR schema ambiguity is handled by _wide_col_map, below.
+    # Never auto-select an ambiguous repeated odds column as a range.
+    original_names=set(raw_headers)
+    seen_names={}
+    headers=[]
+    for name in raw_headers:
+        seen_names[name]=seen_names.get(name,0)+1
+        repeated=seen_names[name]-1
+        unique=name if repeated==0 else f"{name}.{repeated}"
+        if repeated and unique in original_names:
+            raise ValueError("HOLD_VISUALIZER_DUPLICATE_HEADER_SUFFIX_COLLISION")
+        headers.append(unique)
+    if len(set(headers))!=len(headers):
+        raise ValueError("HOLD_VISUALIZER_DUPLICATE_HEADER_SUFFIX_COLLISION")
+    # These keys are essential to the parser, not harmless duplicate
+    # display-only horse names. Never choose the first duplicate key
+    # silently from a vendor export or a manipulated table.
+    if any(seen_names.get(name,0)>1 for name in (
+            "馬番","単勝","組")):
+        raise ValueError("HOLD_VISUALIZER_AMBIGUOUS_REQUIRED_SOURCE_COLUMN")
     rows=[]
     for record in records[4:]:
         if not any(x.strip() for x in record):
@@ -98,7 +120,16 @@ def _decode_csv(data):
     if not rows:
         raise ValueError("HOLD_VISUALIZER_ZERO_MARKET_PRICE_ROWS")
     for row in rows:
-        if any(row.get(c,"") not in ("","-","－") for c in LEAK_COLS):
+        # Also inspect duplicated leak columns (払戻,払戻.1), as
+        # legitimate pair tables may have repeated display headers.
+        # Any filled finish/payout column disqualifies a prediction input.
+        if any(
+            value not in ("","-","－") and
+            (key in LEAK_COLS or any(
+                key.startswith(label+".") and
+                key[len(label)+1:].isdigit() for label in LEAK_COLS))
+            for key,value in row.items()
+        ):
             raise ValueError("HOLD_VISUALIZER_POSTRACE_FINISH_OR_PAYOUT_PRESENT")
     return records[0],records[2][0].strip(),headers,rows
 
@@ -249,6 +280,18 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
         data={"pairs":_parse_wide(headers,rows,card["horse_numbers"],
                 low_header=low_col,high_header=high_col,
                 range_header=range_col)}
+    export_link={
+        "schema":CAPTURE_VENDOR_SCHEMA,
+        "vendor":"Jv Odds Visualizer",
+        "raw_csv_sha256":sha256(raw).hexdigest(),
+        "original_race_code":header["export_race_code_not_assumed_JRA_ID"],
+        "selected_table_tab":tab,
+        "wide_low_col":low_col if market=="wide" else None,
+        "wide_high_col":high_col if market=="wide" else None,
+        "wide_range_col":range_col if market=="wide" else None,
+        "quote_publication_time_embedded_in_csv":False,
+        "local_reception_time_embedded_in_csv":False,
+    }
     source={
         "schema":CAPTURE_SCHEMA,
         "race_id":card["race_id"],
@@ -259,6 +302,7 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
         "source_clock_declared_verified":True,
         "rights_reviewed_by_operator":card["rights_reviewed_by_operator"],
         "provenance":card["provenance"],
+        "original_vendor_export":export_link,
         **data,
     }
     _verify_capture_payload(source)
@@ -269,7 +313,9 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
             sha256(raw).hexdigest(),
         "normalized_private_snapshot_SHA256_local_only":
             sha256(_dump(source).encode("utf-8")).hexdigest(),
-        "raw_vendor_export_bytes_not_part_of_the_PR22_PR30_frozen_model_SHA":True,
+        "raw_vendor_export_byte_digest_in_normalized_capture_and_later_chain":True,
+        "raw_vendor_export_bytes_not_stored_in_public_model":True,
+        "append_requires_original_csv_and_final_card_reparse":True,
         "JvOddsVisualizer_16digit_race_code":header[
             "export_race_code_not_assumed_JRA_ID"],
         "operator_provided_source_update_clock_NOT_from_csv_header":True,
