@@ -84,11 +84,32 @@ def _decode_csv(data):
             any(v.strip() for v in records[1]) or
             len(records[2])!=1 or not records[2][0].strip()):
         raise ValueError("HOLD_VISUALIZER_EXPECTED_RACE_HEADER_BLANK_TAB_COLUMNS")
-    headers=[x.strip() for x in records[3]]
-    if not headers or len(set(headers))!=len(headers):
+    raw_headers=[x.strip() for x in records[3]]
+    if not raw_headers or any(not x for x in raw_headers):
         raise ValueError("HOLD_VISUALIZER_DUPLICATE_OR_EMPTY_TABLE_HEADERS")
-    if any(not x for x in headers):
-        raise ValueError("HOLD_VISUALIZER_DUPLICATE_OR_EMPTY_TABLE_HEADERS")
+    # The vendor explicitly documents legitimate repeated headers,
+    # e.g. pair table columns 馬名,馬名. Preserve their independent
+    # positions as 馬名 and 馬名.1, without confusing horse odds.
+    # PRICE/PAIR schema ambiguity is handled by _wide_col_map, below.
+    # Never auto-select an ambiguous repeated odds column as a range.
+    original_names=set(raw_headers)
+    seen_names={}
+    headers=[]
+    for name in raw_headers:
+        seen_names[name]=seen_names.get(name,0)+1
+        repeated=seen_names[name]-1
+        unique=name if repeated==0 else f"{name}.{repeated}"
+        if repeated and unique in original_names:
+            raise ValueError("HOLD_VISUALIZER_DUPLICATE_HEADER_SUFFIX_COLLISION")
+        headers.append(unique)
+    if len(set(headers))!=len(headers):
+        raise ValueError("HOLD_VISUALIZER_DUPLICATE_HEADER_SUFFIX_COLLISION")
+    # These keys are essential to the parser, not harmless duplicate
+    # display-only horse names. Never choose the first duplicate key
+    # silently from a vendor export or a manipulated table.
+    if any(seen_names.get(name,0)>1 for name in (
+            "馬番","単勝","組")):
+        raise ValueError("HOLD_VISUALIZER_AMBIGUOUS_REQUIRED_SOURCE_COLUMN")
     rows=[]
     for record in records[4:]:
         if not any(x.strip() for x in record):
@@ -99,7 +120,16 @@ def _decode_csv(data):
     if not rows:
         raise ValueError("HOLD_VISUALIZER_ZERO_MARKET_PRICE_ROWS")
     for row in rows:
-        if any(row.get(c,"") not in ("","-","－") for c in LEAK_COLS):
+        # Also inspect duplicated leak columns (払戻,払戻.1), as
+        # legitimate pair tables may have repeated display headers.
+        # Any filled finish/payout column disqualifies a prediction input.
+        if any(
+            value not in ("","-","－") and
+            (key in LEAK_COLS or any(
+                key.startswith(label+".") and
+                key[len(label)+1:].isdigit() for label in LEAK_COLS))
+            for key,value in row.items()
+        ):
             raise ValueError("HOLD_VISUALIZER_POSTRACE_FINISH_OR_PAYOUT_PRESENT")
     return records[0],records[2][0].strip(),headers,rows
 
