@@ -65,6 +65,28 @@ class TwoUpcomingProgrammeTests(unittest.TestCase):
                             for x in d["slots"]))
         self.assertFalse(d["no_actual_scheduled_future_background_fetch"] is False)
 
+    def test_autumn_G1_numbered_Thursday_14_versus_normal_graded_two_stage(self):
+        x=plan.plan_week1(asof="2026-10-28T00:00:00+09:00")
+        slots={z["auxiliary_slot_id"]:z for z in x["slots"]}
+        special=slots["2026-11-01|東京|R11"][
+            "official_final_card_publication_check_only_not_receipt"]
+        ordinary=slots["2026-10-31|京都|R11"][
+            "official_final_card_publication_check_only_not_receipt"]
+        self.assertEqual(special["rule"],
+                         "SPECIAL_G1_THURSDAY_NUMBERED_TENNO_SHO_AUTUMN")
+        self.assertEqual(special["check_numbered_card_after_jst"],
+                         "2026-10-29T14:00:00+09:00")
+        self.assertEqual(ordinary["check_unumbered_list_after_jst"],
+                         "2026-10-29T16:00:00+09:00")
+        self.assertEqual(ordinary["check_numbered_card_normally_after_jst"],
+                         "2026-10-30T10:00:00+09:00")
+        self.assertTrue(all(not y["racecard_confirmed_received"]
+                            for y in (ordinary,special)))
+        self.assertTrue(x[
+            "special_Tenno_Sho_G1_numbered_card_Thu_after_14_distinct_from_regular_graded"])
+        self.assertIsNone(slots["2026-10-31|京都|R10"][
+            "official_final_card_publication_check_only_not_receipt"])
+
     def test_race_number_or_venue_source_drift_blocks_programme_use(self):
         with patch.dict(plan.PROGRAMME_PAGES["2026-11-01"]["races"],
                         {11:("15:40",2600,"芝")}):
