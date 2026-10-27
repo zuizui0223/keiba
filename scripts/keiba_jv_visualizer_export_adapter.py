@@ -227,8 +227,12 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
     card=_validate_meta(header,card)
     pub=_aware(source_updated_at_jst)
     post=_aware(card["scheduled_post_jst"])
-    if (not pub<post-timedelta(minutes=10) or
-            pub.date()!=post.date()):
+    # Friday presales for Saturday racing can be legitimate. The
+    # exported race metadata DATE remains the race date, but the selected
+    # WIN quote may have an earlier published time. Do not wrongly force
+    # them to share a calendar date. Never infer publication from export.
+    if not (post-timedelta(days=2)<=pub<
+            post-timedelta(minutes=10)):
         raise ValueError("HOLD_VISUALIZER_QUOTE_TIME_NOT_BEFORE_POST")
     if not isinstance(provider,str) or provider!=card["provider"]:
         raise ValueError("HOLD_VISUALIZER_PROVIDER_DIFFERENT_FROM_CARD")
