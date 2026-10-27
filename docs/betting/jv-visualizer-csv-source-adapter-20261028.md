@@ -23,6 +23,8 @@ PR22/PR30 publicly committed model SHA** (those source chains bind the
 normalized captured market rows instead). This provenance limitation is
 explicitly recorded rather than claiming end-to-end raw-source sealing.
 
+A previous PR #31 iteration stored the original CSV SHA only in a separate audit report, outside the published prediction commitment. This child PR now binds that original-byte digest to the normalized captured quote **inside** the event head (and therefore the PR28/PR30 forecast SHA), with an explicit append-time exact reparse. The original CSV file is still only locally available and must be retained for a later raw-source audit; no live JRA-VAN license or actual real export has been verified.
+
 The first-row CSV race header does **NOT** itself attest the selected odds observation minute. Therefore the explicit selected quote time provided to the adapter is only an operator declaration. After conversion, the pre-existing capture append action stamps its own local receipt clock. Neither of these is independent evidence of when market values were publicly available; for future validation publish the forecast SHA ONLY before the target next-WIN market window and verify the independent GitHub server timestamp. The source and future target capture completeness remain separate, unproved obligations.
 
 ## Local-private integration (no remote fetch, no wagers)
@@ -56,7 +58,13 @@ Append each *normalized* source to the previously implemented PRIVATE source cha
 
     python scripts/keiba_operator_winwide_capture.py append \
       --raw-source private/NORMALIZED_RACE_EARLY_WIN.json \
+      --original-vendor-csv private/RAW_RACE_EARLY_単複.csv \
+      --confirmed-card private/REAL_CONFIRMED_RACE_final_card.json \
       --private-ledger private/captures/REAL_CONFIRMED_RACE_ID
+
+**The original CSV and the already normalized source MUST be supplied together at append time.** The program recalculates the raw CSV byte SHA, re-parses the actual horse/pair quotes and checks the normalized source is exactly identical to the original file and confirmed final card. It refuses a fabricated CSV hash without the original bytes, changed odds under a valid hash, changed row mappings or mismatched final cards. The append clock is still only a LOCAL receipt clock.
+
+The SHA of the original CSV bytes is included in the captured source object's typed `original_vendor_export` field; PR25's local capture-event hash chain includes that field; both the PR28 full-WIDE freeze and the PR30 WIN-only freeze commit that source-chain head within the full prediction SHA. **Thus the original CSV's byte digest is now transitively part of the public forecast commitment — the CSV file bytes themselves remain PRIVATE, and SHA does not prove the source clock or the source's truthfulness.**
 
 This is when the operator's local **reception** time is stamped. Repeat for qmid WIN and WIDE only if both really exist. Then use the existing PR28/PR30 private model freeze and the two typed SHA comment verifiers.
 
