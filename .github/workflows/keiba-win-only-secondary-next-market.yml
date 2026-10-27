@@ -37,6 +37,7 @@ jobs:
         run: |
           python -m compileall -q scripts/keiba_win_only_shadow_lane.py tests/test_keiba_win_only_shadow_lane.py
           python -m unittest discover -s tests -p 'test_keiba_win_only_shadow_lane.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_week1_licensed_capture_plan.py' -v
       - name: Original full WIDE crosspool analysis must remain complete-grid-gated
         run: |
           python -m unittest discover -s tests -p 'test_keiba_operator_winwide_capture.py' -v
