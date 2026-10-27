@@ -122,6 +122,21 @@ def compare_once(ledger,card,*,asof,lane_A_bundle=None,lane_B_freeze=None):
                 a_score["selected_source_received_at"]!=
                     b["source_target_received"]):
             raise ValueError("HOLD_DUAL_A_B_DIFFERENT_SOURCE_Q0_QMID_OR_Q2_CLOCK")
+        # First verify the EXACT frozen qmid and momentum distributions,
+        # not merely equal errors against the same later target. Different
+        # original WIN price vectors can accidentally have the same TV/KL
+        # scores, which would fabricate a paired WIDE-information contrast.
+        for left,right in (
+            ("mid_WIN_persistence","WIN_mid_persistence"),
+            ("mid_WIN_momentum","WIN_log_momentum"),
+        ):
+            av=A["candidate_predictions"][left]
+            bv=B["fixed_next_quote_model_indices"][right]
+            if (len(av)!=len(bv) or any(
+                    (u["n"]!=v["n"] or not math.isclose(
+                        u["p"],v["p"],rel_tol=0,abs_tol=1e-12))
+                    for u,v in zip(av,bv))):
+                raise ValueError("HOLD_DUAL_ORIGINAL_WIN_PRICE_VECTORS_NOT_IDENTICAL")
         AS=a_score["all_model_scores"]
         BS=b["model_score_TV_KL"]
         # Shared q0, qmid and q2 entail IDENTICAL zero-information
