@@ -115,6 +115,9 @@ class SeparateWINOnlyFixtureTests(unittest.TestCase):
         self.assertEqual(out["local_frozen_model_sha256"],earlier_sha)
         self.assertEqual(len(out["model_score_TV_KL"]),6)
         self.assertFalse(out["new_independently_proven_next_market_trial"])
+        self.assertEqual(out["locally_scored_declared_market_target_intervals"],1)
+        self.assertEqual(out["independently_confirmed_real_market_intervals"],0)
+        self.assertTrue(out["synthetic_source_is_not_a_real_JRA_market_observation"])
         for v in out["model_score_TV_KL"].values():
             self.assertTrue(v["target_price_index_TV_pp"]>=0)
             self.assertTrue(v["target_price_index_KL_nats"]>=-1e-12)
