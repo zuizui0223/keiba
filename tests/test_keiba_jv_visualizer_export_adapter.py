@@ -106,6 +106,15 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
         self.assertTrue(audit[
             "operator_provided_source_update_clock_NOT_from_csv_header"])
         self.assertFalse(audit["source_clock_and_reception_independently_attested"])
+        from hashlib import sha256
+        self.assertEqual(
+            audit["original_vendor_export_bytes_SHA256_local_only"],
+            sha256(csv_sample()).hexdigest())
+        self.assertEqual(
+            audit["normalized_private_snapshot_SHA256_local_only"],
+            sha256(op._dump(result).encode("utf-8")).hexdigest())
+        self.assertTrue(audit[
+            "raw_vendor_export_bytes_not_part_of_the_PR22_PR30_frozen_model_SHA"])
 
     def test_WIDE_range_as_pair_list_full_edges_not_matrix(self):
         win,_=self.import_win()
