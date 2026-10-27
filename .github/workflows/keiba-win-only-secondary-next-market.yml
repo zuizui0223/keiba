@@ -6,8 +6,10 @@ on:
     paths:
       - 'scripts/keiba_win_only_shadow_lane.py'
       - 'scripts/keiba_win_only_github_receipt.py'
+      - 'scripts/keiba_dual_market_lane_audit.py'
       - 'tests/test_keiba_win_only_shadow_lane.py'
       - 'tests/test_keiba_win_only_github_receipt.py'
+      - 'tests/test_keiba_dual_market_lane_audit.py'
       - 'docs/betting/win-only-and-full-wide-source-lanes-20261028.md'
       - 'scripts/keiba_week1_licensed_capture_plan.py'
       - '.github/workflows/keiba-win-only-secondary-next-market.yml'
@@ -15,8 +17,10 @@ on:
     paths:
       - 'scripts/keiba_win_only_shadow_lane.py'
       - 'scripts/keiba_win_only_github_receipt.py'
+      - 'scripts/keiba_dual_market_lane_audit.py'
       - 'tests/test_keiba_win_only_shadow_lane.py'
       - 'tests/test_keiba_win_only_github_receipt.py'
+      - 'tests/test_keiba_dual_market_lane_audit.py'
       - 'docs/betting/win-only-and-full-wide-source-lanes-20261028.md'
       - 'scripts/keiba_week1_licensed_capture_plan.py'
       - '.github/workflows/keiba-win-only-secondary-next-market.yml'
@@ -39,9 +43,10 @@ jobs:
       - run: python -m pip install 'numpy>=1.26,<3'
       - name: Pre-source future WIN-only full roster, code/content fingerprint and no-horse-outcome audit
         run: |
-          python -m compileall -q scripts/keiba_win_only_shadow_lane.py tests/test_keiba_win_only_shadow_lane.py
+          python -m compileall -q scripts/keiba_win_only_shadow_lane.py scripts/keiba_win_only_github_receipt.py scripts/keiba_dual_market_lane_audit.py tests/test_keiba_win_only_shadow_lane.py tests/test_keiba_win_only_github_receipt.py tests/test_keiba_dual_market_lane_audit.py
           python -m unittest discover -s tests -p 'test_keiba_win_only_shadow_lane.py' -v
           python -m unittest discover -s tests -p 'test_keiba_win_only_github_receipt.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_dual_market_lane_audit.py' -v
           python -m unittest discover -s tests -p 'test_keiba_week1_licensed_capture_plan.py' -v
       - name: Original full WIDE crosspool analysis must remain complete-grid-gated
         run: |
