@@ -201,6 +201,7 @@ class SeparateWINOnlyFixtureTests(unittest.TestCase):
             self.write(fake,"T11:02:00")
         path=self.ledger
         self.assertEqual(len(capture._read_ledger(path)),2)
+        frozen=self.frozen()
         bad=win(11,minute=17,scale=1.2)
         bad["odds_by_horse_number"].pop("1")
         self.write(bad,"T11:18:00")
@@ -208,7 +209,7 @@ class SeparateWINOnlyFixtureTests(unittest.TestCase):
         # incomplete full-field quote even if missing a single runner.
         with self.assertRaisesRegex(ValueError,"HORSE_FIELD_INCOMPLETE"):
             m.score_win_only(
-                self.ledger,self.card,self.frozen(),
+                self.ledger,self.card,frozen,
                 asof=DATE+"T11:21:00+09:00",
                 operator_declares_capture_complete=True)
 
