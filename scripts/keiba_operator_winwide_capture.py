@@ -24,6 +24,7 @@ from hashlib import sha256
 from itertools import combinations
 import json
 import math
+import re
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -40,6 +41,14 @@ from keiba_private_multirace_winwide_shadow import (
 )
 
 CAPTURE_SCHEMA="KEIBA_OPERATOR_AUTHORIZED_SNAPSHOT_V1"
+CAPTURE_VENDOR_SCHEMA="KEIBA_JV_VISUALIZER_ORIGINAL_CSV_BINDING_V1"
+VENDOR_EXPORT_KEY="original_vendor_export"
+VENDOR_EXPORT_FIELDS={
+    "schema","vendor","raw_csv_sha256","original_race_code",
+    "selected_table_tab","wide_low_col","wide_high_col","wide_range_col",
+    "quote_publication_time_embedded_in_csv",
+    "local_reception_time_embedded_in_csv",
+}
 CARD_SCHEMA="KEIBA_OPERATOR_OFFICIAL_FINAL_CARD_RECEIPT_V1"
 LEDGER_SCHEMA="KEIBA_LOCAL_SOURCE_EVENT_HASH_CHAIN_V1"
 STATUS="PRIVATE_MANUAL_WIN_WIDE_SOURCE_CAPTURE_LOCAL_CLOCK_NOT_AUTHENTICATED"
@@ -95,8 +104,36 @@ def _verify_capture_payload(source):
     fields=(SNAPSHOT_FIELDS|{"odds_by_horse_number"} if market=="win"
             else SNAPSHOT_FIELDS|{"pairs"} if market=="wide"
             else None)
-    if fields is None or set(source)!=fields:
+    if fields is None or set(source) not in (fields,fields|{VENDOR_EXPORT_KEY}):
         raise ValueError("HOLD_UNSUPPORTED_MARKET_OR_EXTRA_FUTURE_FIELDS")
+    if VENDOR_EXPORT_KEY in source:
+        binding=source[VENDOR_EXPORT_KEY]
+        if (not isinstance(binding,dict) or set(binding)!=VENDOR_EXPORT_FIELDS or
+                binding.get("schema")!=CAPTURE_VENDOR_SCHEMA or
+                binding.get("vendor")!="Jv Odds Visualizer" or
+                type(binding.get("raw_csv_sha256")) is not str or
+                not re.fullmatch(r"[0-9a-f]{64}",binding["raw_csv_sha256"]) or
+                type(binding.get("original_race_code")) is not str or
+                not re.fullmatch(r"[0-9]{16}",binding["original_race_code"]) or
+                not isinstance(binding.get("selected_table_tab"),str) or
+                not binding["selected_table_tab"].strip() or
+                len(binding["selected_table_tab"])>100 or
+                any(ord(c)<32 for c in binding["selected_table_tab"]) or
+                binding.get("quote_publication_time_embedded_in_csv") is not False or
+                binding.get("local_reception_time_embedded_in_csv") is not False):
+            raise ValueError("HOLD_INVALID_OR_UNLINKED_VENDOR_CSV_BYTES_DIGEST")
+        for field in ("wide_low_col","wide_high_col","wide_range_col"):
+            value=binding.get(field)
+            if value is not None and (not isinstance(value,str) or
+                   not value or len(value)>120 or any(ord(c)<32 for c in value)):
+                raise ValueError("HOLD_VENDOR_CSV_COLUMN_MAPPING_NOT_EXACT")
+        if market=="win":
+            if (binding["selected_table_tab"]!="単複" or
+                    any(binding[z] is not None for z in (
+                        "wide_low_col","wide_high_col","wide_range_col"))):
+                raise ValueError("HOLD_VENDOR_WIN_CSV_WRONG_TAB_OR_WIDE_COLUMNS")
+        elif "ワイド" not in binding["selected_table_tab"]:
+            raise ValueError("HOLD_VENDOR_WIDE_CSV_WRONG_TAB")
     if (not isinstance(source["race_id"],str) or
         not 1<=len(source["race_id"])<=95 or
         not isinstance(source["provider"],str) or
@@ -179,7 +216,8 @@ def _read_ledger(directory):
     return records
 
 
-def append_capture(directory,source,*,captured_at_jst=None):
+def append_capture(directory,source,*,captured_at_jst=None,
+                   original_vendor_bytes=None,confirmed_final_card=None):
     """CREATE a new immutable-by-convention local file, never overwrite.
 
     CLI always derives reception from machine wall clock. Injected
@@ -187,6 +225,29 @@ def append_capture(directory,source,*,captured_at_jst=None):
     is NOT an external timestamp or valid prospective receipt.
     """
     source=_verify_capture_payload(source)
+    vendor=source.get(VENDOR_EXPORT_KEY)
+    if vendor is not None:
+        # A digest supplied in JSON alone is just another potentially
+        # fabricated claim. Re-read the ORIGINAL export bytes, recompute
+        # its digest AND independently parse back to all the exact source
+        # horse/pair prices before stamping this capture event.
+        if (type(original_vendor_bytes) is not bytes or
+                not isinstance(confirmed_final_card,dict)):
+            raise ValueError("HOLD_ORIGINAL_VENDOR_BYTES_AND_FINAL_CARD_REQUIRED")
+        if sha256(original_vendor_bytes).hexdigest()!=vendor["raw_csv_sha256"]:
+            raise ValueError("HOLD_ORIGINAL_VENDOR_CSV_BYTES_DIGEST_MISMATCH")
+        from keiba_jv_visualizer_export_adapter import adapt_one_export
+        reparsed,_=adapt_one_export(
+            original_vendor_bytes,confirmed_final_card,
+            market=source["market"],
+            source_updated_at_jst=source["source_updated_at_jst"],
+            provider=source["provider"],source_url=source["source_url"],
+            low_col=vendor["wide_low_col"],high_col=vendor["wide_high_col"],
+            range_col=vendor["wide_range_col"])
+        if reparsed!=source:
+            raise ValueError("HOLD_ORIGINAL_CSV_NOT_SAME_NORMALIZED_HORSE_QUOTES")
+    elif original_vendor_bytes is not None or confirmed_final_card is not None:
+        raise ValueError("HOLD_ORIGINAL_VENDOR_ARGUMENTS_WITHOUT_VENDOR_SOURCE")
     current=_aware(captured_at_jst or datetime.now(JST).isoformat())
     if _aware(source["source_updated_at_jst"])>current:
         raise ValueError("HOLD_SOURCE_UPDATED_AFTER_CAPTURE_CLOCK")
@@ -471,6 +532,8 @@ def main():
     app=sub.add_parser("append")
     app.add_argument("--raw-source",required=True,type=Path)
     app.add_argument("--private-ledger",required=True,type=Path)
+    app.add_argument("--original-vendor-csv",type=Path)
+    app.add_argument("--confirmed-card",type=Path)
     fr=sub.add_parser("freeze")
     fr.add_argument("--private-ledger",required=True,type=Path)
     fr.add_argument("--confirmed-card",required=True,type=Path)
@@ -487,7 +550,12 @@ def main():
     if args.action=="append":
         if "private" not in args.private_ledger.resolve().parts:
             raise ValueError("HOLD_CAPTURE_LEDGER_MUST_STAY_IN_PRIVATE_DIRECTORY")
-        out=append_capture(args.private_ledger,_read(args.raw_source))
+        out=append_capture(
+            args.private_ledger,_read(args.raw_source),
+            original_vendor_bytes=(args.original_vendor_csv.read_bytes()
+                                   if args.original_vendor_csv else None),
+            confirmed_final_card=(_read(args.confirmed_card)
+                                  if args.confirmed_card else None))
     elif args.action=="freeze":
         out=freeze_private_from_ledger(
             args.private_ledger,_read(args.confirmed_card),
