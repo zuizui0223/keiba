@@ -85,6 +85,9 @@ def compare_once(ledger,card,*,asof,lane_A_bundle=None,lane_B_freeze=None):
             lane_A_bundle["registered_cohort"]!=scope):
         raise ValueError("HOLD_DUAL_A_RACE_SCOPE_OR_CARD_CHANGED")
     if lane_B_freeze is not None:
+        if (not isinstance(lane_B_freeze,dict) or
+                lane_B_freeze.get("payload",{}).get("schema")!=B_FREEZE_SCHEMA):
+            raise ValueError("HOLD_DUAL_B_NOT_A_TYPE_SAFE_WIN_ONLY_FREEZE")
         b=verify_win_only(lane_B_freeze)
         if (b["race_id"]!=card["race_id"] or
                 b["provider"]!=card["provider"] or
@@ -208,7 +211,7 @@ def cohort(reports):
                 "paired_difference_A_WIDE_minus_B_momentum_TV_pp"])
     return {
         "schema":COHORT_SCHEMA,
-        "status":"LOCAL_DUAL_LANE_AVAILABILITY_COHO RT_NOT_PROSPECTIVE".replace(" ",""),
+        "status":"LOCAL_DUAL_LANE_AVAILABILITY_COHORT_NOT_PROSPECTIVE",
         "registered_grade_denominator":26,
         "registered_auxiliary_denominator":64,
         "distinct_operator_declared_real_race_IDs":len(unique),
