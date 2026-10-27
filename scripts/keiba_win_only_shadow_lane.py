@@ -47,7 +47,9 @@ from keiba_operator_winwide_capture import (
 from keiba_fixed_denominator_market_campaign import (
     LOCKED_MARKET_HORIZON_MINUTES,LOCKED_MARKET_TARGET_WINDOW_MINUTES
 )
-from keiba_nonlocal_horse_pde_bettor_bridge import finish_pair
+from keiba_nonlocal_horse_pde_bettor_bridge import (
+    finish_pair, pde_density_and_agent_check,
+)
 from keiba_endogenous_threshold_null_bridge import voter_path
 from odds_shadow_freeze_score import _normalized_odds,_seal
 
@@ -77,6 +79,8 @@ CODE_FILES=(
 HYPOTHETICAL_CROWD_C=2.0
 HYPOTHETICAL_DRAW_SEED=20261028
 DEFAULT_DRAWS=120
+PDE_DIAGNOSTIC_PARTICLES=600
+PDE_DIAGNOSTIC_DURATION_S=12.0
 
 
 def _normalize(a):
@@ -184,6 +188,19 @@ def prepare_win_only(ledger,card,*,frozen_at_jst=None,
                         draws=horse_draws,seed=seed,
                         crowd_coefficient=HYPOTHETICAL_CROWD_C)
     signal=_normalize(physics["scenarios"]["nonlocal_crowd"]["win"])
+    # Apply the exact same K, c and D physical law to the other half
+    # of the PR17 model: the 12-s fixed-drift *factorized marginal PDE*
+    # diagnostic. It is NOT a fitted JRA trajectory or a rank forecast;
+    # include its mass/CDF closure warning in the same pretarget SHA.
+    pde=pde_density_and_agent_check(
+        qmid,strength=HYPOTHETICAL_CROWD_C,
+        particles=PDE_DIAGNOSTIC_PARTICLES,
+        duration_s=PDE_DIAGNOSTIC_DURATION_S,
+        seed=seed+177)
+    if (not pde["nonnegative_density"] or
+            abs(pde["min_horse_probability_mass"]-1.)>1e-8 or
+            abs(pde["max_horse_probability_mass"]-1.)>1e-8):
+        raise ValueError("HOLD_WIN_ONLY_LINKED_HORSE_PDE_MASS_CONSERVATION")
     horizon_hours=LOCKED_MARKET_HORIZON_MINUTES/60
     candidates={
         MODEL_NAMES[0]:qmid,
@@ -235,6 +252,17 @@ def prepare_win_only(ledger,card,*,frozen_at_jst=None,
         "model_code_content_SHA256":_model_code_manifest(),
         "model_draws":horse_draws,"model_seed":seed,
         "physical_crowding_c_m2ps_HYPOTHETICAL":HYPOTHETICAL_CROWD_C,
+        "linked_horse_marginal_PDE_numeric_diagnostic":{
+            "same_physical_K_c_D_as_first_passage_ABM":True,
+            "particle_PDE_max_CDF_gap_synthetic_only":
+                pde["max_KS_particle_to_PDE"],
+            "horse_density_mass_min":pde["min_horse_probability_mass"],
+            "horse_density_mass_max":pde["max_horse_probability_mass"],
+            "short_residual_process_duration_s":PDE_DIAGNOSTIC_DURATION_S,
+            "particle_replica_count_not_real_races":PDE_DIAGNOSTIC_PARTICLES,
+            "factorized_closure_ignores_finite_horse_correlations":True,
+            "not_empirically_validated_JRA_horse_PDE":True,
+        },
         "past_horse_records_independent_asof_available":False,
         "full_WIDE_grid_used_as_signal":False,
         "actual_JRA_bettor_vote_amounts_observed":False,
