@@ -44,7 +44,8 @@ from pathlib import Path
 import re
 
 from keiba_operator_winwide_capture import (
-    CAPTURE_SCHEMA, _check_card, _verify_capture_payload,
+    CAPTURE_SCHEMA, CAPTURE_VENDOR_SCHEMA,
+    _check_card, _verify_capture_payload,
     _write_new_private, _aware, _dump,
 )
 from odds_shadow_freeze_score import _normalized_odds, _wide_prices
@@ -249,6 +250,18 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
         data={"pairs":_parse_wide(headers,rows,card["horse_numbers"],
                 low_header=low_col,high_header=high_col,
                 range_header=range_col)}
+    export_link={
+        "schema":CAPTURE_VENDOR_SCHEMA,
+        "vendor":"Jv Odds Visualizer",
+        "raw_csv_sha256":sha256(raw).hexdigest(),
+        "original_race_code":header["export_race_code_not_assumed_JRA_ID"],
+        "selected_table_tab":tab,
+        "wide_low_col":low_col if market=="wide" else None,
+        "wide_high_col":high_col if market=="wide" else None,
+        "wide_range_col":range_col if market=="wide" else None,
+        "quote_publication_time_embedded_in_csv":False,
+        "local_reception_time_embedded_in_csv":False,
+    }
     source={
         "schema":CAPTURE_SCHEMA,
         "race_id":card["race_id"],
@@ -259,6 +272,7 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
         "source_clock_declared_verified":True,
         "rights_reviewed_by_operator":card["rights_reviewed_by_operator"],
         "provenance":card["provenance"],
+        "original_vendor_export":export_link,
         **data,
     }
     _verify_capture_payload(source)
@@ -269,7 +283,9 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
             sha256(raw).hexdigest(),
         "normalized_private_snapshot_SHA256_local_only":
             sha256(_dump(source).encode("utf-8")).hexdigest(),
-        "raw_vendor_export_bytes_not_part_of_the_PR22_PR30_frozen_model_SHA":True,
+        "raw_vendor_export_byte_digest_in_normalized_capture_and_later_chain":True,
+        "raw_vendor_export_bytes_not_stored_in_public_model":True,
+        "append_requires_original_csv_and_final_card_reparse":True,
         "JvOddsVisualizer_16digit_race_code":header[
             "export_race_code_not_assumed_JRA_ID"],
         "operator_provided_source_update_clock_NOT_from_csv_header":True,
