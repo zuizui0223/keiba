@@ -144,7 +144,7 @@ class DualMarketSourceTests(unittest.TestCase):
         rows[0]["p"]+=0.01
         rows[1]["p"]-=0.01
         changed["seal_sha256_of_canonical_payload"]=_seal(changed["payload"])
-        with self.assertRaisesRegex(ValueError,"MARKET_BASELINE_OR_Q2"):
+        with self.assertRaisesRegex(ValueError,"ORIGINAL_WIN_PRICE_VECTORS_NOT_IDENTICAL"):
             m.compare_once(self.ledger,self.card,
                 asof=DATE+"T11:21:00+09:00",
                 lane_A_bundle=a,lane_B_freeze=changed)
