@@ -211,6 +211,15 @@ def prepare_win_only(ledger,card,*,frozen_at_jst=None,
                          duration_hours=horizon_hours,arrival=release,
                          seed=seed+390)["final"]
         candidates[f"WIN_horse_ABM_smooth_info_round{release}"]=_normalize(quote)
+    # If the horse signal does not arrive during any of four rounds,
+    # changing simulated horse physiology cannot reach bettor decisions.
+    # This is a necessary causal negative control (bitwise same uniform).
+    uninformed=voter_path(qmid,qmid,policy="smooth",
+                          duration_hours=horizon_hours,arrival=5,
+                          seed=seed+390)["final"]
+    if not np.array_equal(candidates[
+            "WIN_horse_ABM_smooth_info_round5"],_normalize(uninformed)):
+        raise ValueError("HOLD_WIN_ONLY_UNRELEASED_HORSE_INFORMATION_LEAKED")
     placebo=voter_path(qmid,np.roll(signal,1),policy="smooth",
                        duration_hours=horizon_hours,arrival=1,
                        seed=seed+390)["final"]
