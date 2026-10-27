@@ -30,9 +30,16 @@ class DualMarketSourceTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.ledger=Path(self.tmp.name)/"private"/"chain"
         self.card=card()
+        # CONTRACT-ONLY fixture: fake rights-reviewed source is still
+        # synthetic and is NEVER remotely submitted as a real JRA result.
+        self.card["provenance"]="authorized_private_local_export"
+        self.card["rights_reviewed_by_operator"]=True
 
     def append(self,source,t):
-        return op.append_capture(self.ledger,source,
+        src=copy.deepcopy(source)
+        src["provenance"]="authorized_private_local_export"
+        src["rights_reviewed_by_operator"]=True
+        return op.append_capture(self.ledger,src,
                                  captured_at_jst=DATE+t+"+09:00")
 
     def early(self,*,wide_available=True):
