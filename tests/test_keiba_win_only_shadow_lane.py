@@ -63,6 +63,15 @@ class SeparateWINOnlyFixtureTests(unittest.TestCase):
                          DATE+"T11:20:00+09:00")
         self.assertFalse(p["full_WIDE_grid_used_as_signal"])
         self.assertFalse(p["past_horse_records_independent_asof_available"])
+        linked=p["linked_horse_marginal_PDE_numeric_diagnostic"]
+        self.assertTrue(linked["same_physical_K_c_D_as_first_passage_ABM"])
+        self.assertAlmostEqual(linked["horse_density_mass_min"],1,places=9)
+        self.assertAlmostEqual(linked["horse_density_mass_max"],1,places=9)
+        self.assertTrue(linked["not_empirically_validated_JRA_horse_PDE"])
+        self.assertTrue(linked[
+            "factorized_closure_ignores_finite_horse_correlations"])
+        self.assertGreaterEqual(
+            linked["particle_PDE_max_CDF_gap_synthetic_only"],0)
         self.assertFalse(f["external_GitHub_comment_created_at_verified"])
         self.assertEqual(
             p["original_local_capture_chain_prefix_SHA256"],
