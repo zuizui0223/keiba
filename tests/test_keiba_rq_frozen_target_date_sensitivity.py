@@ -50,7 +50,7 @@ def toy_records():
                 "day":d,"race_number":3,"distance":"1400",
                 "first_marker_m":150.,"first_section_sec":seconds,
                 "class":"TOY_OPEN","ground":"Good",
-                "jockey_license_id":str(1000+k+100*(day%2)),
+                "jockey_license_id":str(1000+k+100*day),
                 "trainer_license_id":str(3000+k),
             })
     return rows
@@ -102,7 +102,7 @@ class FrozenRelativeAbsoluteDateSensitivityTests(unittest.TestCase):
                   "horse_id":f"TOY_{i}",
                   "day":f"2026-09-{day+1:02d}",
                   "relative":(.1,.1,.3),
-                  "absolute":(11.,10.8,11.2),
+                  "absolute":(11.,10.9,11.3),
                 })
         out=_date_sensitivity(small,"absolute",draws=99,seed=22)
         self.assertEqual(out["attempted_future_date_deletions"],9)
