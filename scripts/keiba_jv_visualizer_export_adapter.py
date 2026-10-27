@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from hashlib import sha256
 from datetime import date, datetime, timedelta
 import io
 import json
@@ -44,7 +45,7 @@ import re
 
 from keiba_operator_winwide_capture import (
     CAPTURE_SCHEMA, _check_card, _verify_capture_payload,
-    _write_new_private, _aware,
+    _write_new_private, _aware, _dump,
 )
 from odds_shadow_freeze_score import _normalized_odds, _wide_prices
 
@@ -264,6 +265,11 @@ def adapt_one_export(raw,card,*,market,source_updated_at_jst,
     audit={
         "status":STATUS,
         "selected_csv_tab":tab,
+        "original_vendor_export_bytes_SHA256_local_only":
+            sha256(raw).hexdigest(),
+        "normalized_private_snapshot_SHA256_local_only":
+            sha256(_dump(source).encode("utf-8")).hexdigest(),
+        "raw_vendor_export_bytes_not_part_of_the_PR22_PR30_frozen_model_SHA":True,
         "JvOddsVisualizer_16digit_race_code":header[
             "export_race_code_not_assumed_JRA_ID"],
         "operator_provided_source_update_clock_NOT_from_csv_header":True,
