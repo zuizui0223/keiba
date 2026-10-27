@@ -108,11 +108,11 @@ class FrozenRelativeAbsoluteDateSensitivityTests(unittest.TestCase):
         self.assertEqual(out["attempted_future_date_deletions"],9)
         self.assertEqual(out["HOLD_deletions_below_original_threshold"],0)
         self.assertEqual(out["valid_deletions_positive_other_minus_own"],9)
-        for k in range(20):
-            small[k]["horse_id"]="SINGLE"
-        # Eliminating the first full date still leaves twenty unique
-        # horse IDs on later dates, but deleting a later day might not:
-        # descriptive gate must remain explicit.
+        # One unique horse occurs on just the earliest original date.
+        # Removing that date fails the old 20-ID gate; every other
+        # date deletion still has this horse and can pass.
+        small=[r for r in small
+               if r["day"]=="2026-09-01" or r["horse_id"]!="TOY_19"]
         out=_date_sensitivity(small,"absolute",draws=99,seed=22)
         self.assertGreaterEqual(out["HOLD_deletions_below_original_threshold"],1)
         self.assertEqual(out["attempted_future_date_deletions"],9)
