@@ -28,6 +28,17 @@ The script \`scripts/keiba_win_only_shadow_lane.py\` consumes the existing PR25 
 - **WIN_horse_ABM_smooth_info_round1**, **...round3**, **...round5**: PR17 horse first passage with front-neighbour nonlocal \(c=2\) m²/s, synthetic diffusion, Gumbel ability proxy from **qmid only**, then PR19 fixed smooth-feedback synthetic bettor ABM, receiving the simulated horse signal at the first, third, or no voting round.
 - **WIN_horse_ABM_shifted_signal_placebo_round1**: cyclically reassign those simulated horse WIN signals to other official horse IDs before the same bettor ABM. This negative control can expose mechanical label alignment but is not a real randomized horse experiment.
 
+In the SAME pre-target freeze, the model also runs the corresponding
+12-second fixed-drift, no-Gumbel **product-marginal nonlocal PDE** diagnostic
+from PR #17 with exactly the same forward K, physical crowd coefficient
+`c=2`, diffusion `D=0.25` and qmid input used in the horse SDE. It
+checks that every species density retains mass 1, and records the maximum
+CDF discrepancy against interacting particle replicas. The PDE output is
+a **numeric factorized closure audit**, not a second prediction of the
+horse's real first-passage rank; this distinction remains in the
+original SHA-bound payload. Finite correlated horses, different Brownian
+samples, and PDE grid error still contribute to its discrepancy.
+
 Each forecast is a full-field positive normalized **quoted-price** index. No actual finish positions, target q2 prices, real vote counts, wager stake amounts or ROI influence any model input. Each candidate keeps its exact horse-ID ordering.
 
 All forecast routes are **hypothetical** physical and voting mechanisms. The qmid-only horse ABM is NOT an independent measurement of form: its initial "ability" is derived from the same observed market. No additional past performance or GPS value has been smuggled into it. With no real independent horse measurements, the original WIN-only market momentum/persistence benchmarks remain essential.
