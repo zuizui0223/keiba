@@ -154,7 +154,7 @@ class VisualizerCSVEnvelopeTests(unittest.TestCase):
                     a.adapt_one_export(csv_sample(),c,market="win",
                         source_updated_at_jst=self.upd,
                         provider=self.provider,source_url=self.url)
-        with self.assertRaisesRegex(ValueError,"RACE_META_INCONSISTENT"):
+        with self.assertRaisesRegex(ValueError,"SOURCE_RACE_NOT_CONFIRMED_CARD"):
             self.import_win(csv_sample(race_no=10))
 
     def test_no_late_or_naive_operator_fabricated_source_clock(self):
