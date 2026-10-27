@@ -5,14 +5,18 @@ on:
     branches: [analysis/win-only-parallel-market-protocol-20261028]
     paths:
       - 'scripts/keiba_win_only_shadow_lane.py'
+      - 'scripts/keiba_win_only_github_receipt.py'
       - 'tests/test_keiba_win_only_shadow_lane.py'
+      - 'tests/test_keiba_win_only_github_receipt.py'
       - 'docs/betting/win-only-and-full-wide-source-lanes-20261028.md'
       - 'scripts/keiba_week1_licensed_capture_plan.py'
       - '.github/workflows/keiba-win-only-secondary-next-market.yml'
   pull_request:
     paths:
       - 'scripts/keiba_win_only_shadow_lane.py'
+      - 'scripts/keiba_win_only_github_receipt.py'
       - 'tests/test_keiba_win_only_shadow_lane.py'
+      - 'tests/test_keiba_win_only_github_receipt.py'
       - 'docs/betting/win-only-and-full-wide-source-lanes-20261028.md'
       - 'scripts/keiba_week1_licensed_capture_plan.py'
       - '.github/workflows/keiba-win-only-secondary-next-market.yml'
@@ -37,6 +41,7 @@ jobs:
         run: |
           python -m compileall -q scripts/keiba_win_only_shadow_lane.py tests/test_keiba_win_only_shadow_lane.py
           python -m unittest discover -s tests -p 'test_keiba_win_only_shadow_lane.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_win_only_github_receipt.py' -v
           python -m unittest discover -s tests -p 'test_keiba_week1_licensed_capture_plan.py' -v
       - name: Original full WIDE crosspool analysis must remain complete-grid-gated
         run: |
