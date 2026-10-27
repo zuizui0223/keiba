@@ -59,6 +59,29 @@ PROGRAMME_PAGES={
 }
 LOCKED_QMID_MARKET_STUDY_HORIZON=(15,5)
 
+# JRA official FAQ, https://jra.jp/faq/pop02/2_2.html :
+# Tian-no-sho Autumn is a special-numbered-G1 Thursday-after-14 case.
+# Ordinary Saturday graded cards usually show UNNUMBERED Thursday-after-16
+# and numbered Friday-after-10 (some race-dependent 09:00 exceptions).
+# A scheduled announcement must NEVER be confused with a RECEIVED final card.
+PRELIMINARY_FINAL_CARD_RELEASE_CHECKS={
+    "2026-10-31|京都|R11":{
+        "rule":"ORDINARY_SATURDAY_GRADED_UNNUMBERED_THURSDAY_NUMBERED_FRIDAY",
+        "check_unumbered_list_after_jst":"2026-10-29T16:00:00+09:00",
+        "check_numbered_card_normally_after_jst":"2026-10-30T10:00:00+09:00",
+        "provider_may_use_earlier_friday_09_special_exception":True,
+        "racecard_confirmed_received":False,
+        "source":"https://jra.jp/faq/pop02/2_2.html",
+    },
+    "2026-11-01|東京|R11":{
+        "rule":"SPECIAL_G1_THURSDAY_NUMBERED_TENNO_SHO_AUTUMN",
+        "check_numbered_card_after_jst":"2026-10-29T14:00:00+09:00",
+        "exact_publication_time_not_yet_attested":True,
+        "racecard_confirmed_received":False,
+        "source":"https://jra.jp/faq/pop02/2_2.html",
+    },
+}
+
 
 def plan_week1(*, asof="2026-10-26T01:14:00+09:00"):
     now=_aware(asof)
@@ -114,6 +137,8 @@ def plan_week1(*, asof="2026-10-26T01:14:00+09:00"):
                 "legitimate_next_price_scored":False,
                 "status":"PRELIMINARY_PROGRAMME_WAIT_FOR_FINAL_CARD_AND_SOURCE",
                 "possible_grade_calendar_overlap_slots":overlapping,
+                "official_final_card_publication_check_only_not_receipt":
+                    PRELIMINARY_FINAL_CARD_RELEASE_CHECKS.get(sid),
             })
     if (len(slots)!=16 or len({s["auxiliary_slot_id"] for s in slots})!=16
             or sum(bool(s["possible_grade_calendar_overlap_slots"])
@@ -134,6 +159,7 @@ def plan_week1(*, asof="2026-10-26T01:14:00+09:00"):
         "potential_unique_after_proper_overlap_dedup_not_observations":16,
         "real_market_information_or_positive_wager_EV":"HOLD",
         "no_actual_scheduled_future_background_fetch":True,
+        "special_Tenno_Sho_G1_numbered_card_Thu_after_14_distinct_from_regular_graded":True,
         "slots":slots,
     }
 
