@@ -12,9 +12,15 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/"scripts"))
-import keiba_tenno_20261101_m0_rank_stability as m
+try:
+    import numpy as np
+except ModuleNotFoundError:
+    np = None
+if np is not None:
+    import keiba_tenno_20261101_m0_rank_stability as m
 
 
+@unittest.skipIf(np is None, "NumPy is required by the parent coupled model")
 class PublishedQuoteRankStabilityTests(unittest.TestCase):
     def test_reuse_exact_parent_source_not_renumbered_or_overwritten(self):
         odds, digest = m.declared_field()
