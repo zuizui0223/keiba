@@ -1,4 +1,4 @@
-name: Kyoto R8 one real q2: smooth vs hard price plus PR19 no-info ABM
+name: "Kyoto R8 one real q2 - smooth vs hard price plus PR19 no-info ABM"
 
 on:
   push:
