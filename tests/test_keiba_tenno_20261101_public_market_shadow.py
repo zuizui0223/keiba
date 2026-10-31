@@ -49,9 +49,9 @@ class DatedTennoPublicM0Tests(unittest.TestCase):
         self.assertFalse(a[
             "prediction_eligible_for_PR22_or_PR30_capture_certificate"])
         self.assertEqual(a["synthetic_horse_social_sensitivity"],"NOT_RUN")
-        self.assertEqual(sum(r["market_M0_win_index"]
+        self.assertAlmostEqual(sum(r["market_M0_win_index"]
                              for r in a["all_horses_source_market_M0_and_top3"]),
-                         1.)
+                         1.,places=12)
 
     def test_top3_and_pair_trio_PL_are_coherent_and_race_field_not_selected(self):
         a=m.audit(include_physical=False)
