@@ -50,6 +50,13 @@ class RealOneR8NextQuoteBridgeTests(unittest.TestCase):
         self.assertEqual(p["predeclared_method_constants"][
             "rate_threshold_log_index_per_hour"],.10)
         self.assertTrue(0<p["imposed_continuous_price_projection_gain"]<1)
+        self.assertAlmostEqual(
+            p["observed_source_first_to_second_max_rate_log_index_per_hour"],
+            .21029162102117585,places=10)
+        self.assertAlmostEqual(
+            p["imposed_continuous_price_projection_gain"],
+            .6777225254394623,places=10)
+        self.assertEqual(p["imposed_hard_price_projection_gain"],1.0)
         self.assertIn(p["imposed_hard_price_projection_gain"],(0.,1.))
         for rule,v in p["no_information_original_PR19_vote_paths_by_seed"].items():
             self.assertEqual(len(v),30)
