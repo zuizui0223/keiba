@@ -129,7 +129,7 @@ class RealOneR8NextQuoteBridgeTests(unittest.TestCase):
         self.assertGreater(m._KL(u,r),0)
 
     def test_wrong_roster_and_invalid_stochastic_parameters_hold(self):
-        for a in (float("nan"),float("inf"),-1,0):
+        for a in (float("nan"),float("inf"),-1,2.1):
             with self.subTest(s=a):
                 with self.assertRaisesRegex(ValueError,
                         "HOLD_R8_INVALID_PRICE_MOMENTUM_SHAPE"):
