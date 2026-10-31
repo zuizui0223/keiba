@@ -1,0 +1,47 @@
+name: "Kyoto R8 full-11 archived price reversals and continuous smooth market null"
+
+on:
+  push:
+    branches: [analysis/kyoto8-crossrace-quantized-rate-null-20261031]
+    paths:
+      - 'scripts/keiba_kyotoR8_crossrace_quantized_rate_null.py'
+      - 'tests/test_keiba_kyotoR8_crossrace_quantized_rate_null.py'
+      - 'docs/betting/kyotoR8-crossrace-quantized-rate-null-20261031.md'
+      - '.github/workflows/keiba-r8-crossrace-quantization-rate.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_kyotoR8_crossrace_quantized_rate_null.py'
+      - 'tests/test_keiba_kyotoR8_crossrace_quantized_rate_null.py'
+      - 'docs/betting/kyotoR8-crossrace-quantized-rate-null-20261031.md'
+      - '.github/workflows/keiba-r8-crossrace-quantization-rate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-r8-source-three-times-price-only-no-jra-outcomes:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Validate source-locked R8, sharp continuous bounds, 11-horse C2 market
+        run: |
+          python -m compileall -q scripts/keiba_kyotoR8_crossrace_quantized_rate_null.py tests/test_keiba_kyotoR8_crossrace_quantized_rate_null.py
+          python -m unittest discover -s tests -p 'test_keiba_kyotoR8_crossrace_quantized_rate_null.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_tenno_quantized_nonmonotone_identification.py' -v
+      - name: Run 55 original R8 pairs and 10 partial Tenno comparisons without race results
+        run: |
+          python scripts/keiba_kyotoR8_crossrace_quantized_rate_null.py --output tmp/kyotoR8-vs-tenno-quantized-rate-audit.json
+          python -c "import json; a=json.load(open('tmp/kyotoR8-vs-tenno-quantized-rate-audit.json')); k=a['archived_kyoto_R8']['by_quantization_assumption']; t=a['editorial_tenno_top_five_only']['by_quantization_assumption']; names=('nearest_tenth_hypothetical','truncate_tenth_hypothetical','union_of_both_conservative'); assert [k[n]['strict_nonmonotone_pair_count'] for n in names]==[3,3,2]; assert [t[n]['strict_nonmonotone_pair_count'] for n in names]==[8,8,6]; assert k['union_of_both_conservative']['nonmonotone_horse_pairs']==[[3,10],[3,11]]; assert a['R8_joint_full_horse_continuous_C2_counterexample']['same_joint_all_horses_C2_price_and_M0_simplex_path_exists'] and a['two_distinct_source_races_not_pooled_for_p_value']==2; r=a['R8_retrospective_PR36_same_one_target_7_model_crosscheck']; assert r['original_later_1344_WIN_target_count']==1 and r['model_candidate_count']==7 and r['price_rank_reversal_pairs_between_1326_and_1344']==7 and r['model_succeeded_prospectively_or_found_true_criticality'] is False; assert abs(r['persistence_target_price_index_TV_pp']-9.656362948215287)<1e-9 and abs(r['plain_log_momentum_target_price_index_TV_pp']-8.180965354937557)<1e-9; assert not a['original_JRA_race_outcome_or_betting_payout_read'] and a['independently_new_prospective_market_q2_trials']==0; print('NO_R8_HERDING_CAUSAL_OR_NEW_PROSPECTIVE_CLAIM',True)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R8-three-original-source-times-55pairs-vs-partial-tenno-quantization-rate
+          path: tmp/kyotoR8-vs-tenno-quantized-rate-audit.json
+          retention-days: 20
