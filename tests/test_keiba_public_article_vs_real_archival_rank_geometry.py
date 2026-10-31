@@ -133,6 +133,20 @@ class PublicArticleVsArchiveRankTests(unittest.TestCase):
              (10,"first_to_second"),(11,"first_to_second"),
              (12,"first_to_second"),(8,"second_to_third")])
         self.assertTrue(a["third_point_is_R8_NOT_A_SIXTH_NEW_RACE"])
+        self.assertEqual([x["diagnostic"]["strictly_reversed_pair_count"]
+                          for x in a["by_interval"]], [3,0,1,2,1,7])
+        self.assertEqual(
+            a["total_rank_reversed_pairs_descriptive_not_independent_samples"],
+            14)
+        self.assertEqual(a["intervals_with_one_or_more_reversed_pairs"],5)
+        self.assertAlmostEqual(
+            a["by_interval"][0]["diagnostic"][
+                "normalized_inverse_quote_TV_percentage_points"],
+            5.368638694568566, places=9)
+        self.assertAlmostEqual(
+            a["by_interval"][-1]["diagnostic"][
+                "normalized_inverse_quote_TV_percentage_points"],
+            9.656362948215287, places=9)
         for r in a["by_interval"]:
             h=r["diagnostic"]["horse_count"]
             self.assertEqual(r["diagnostic"]["unique_unordered_horse_pairs"],
