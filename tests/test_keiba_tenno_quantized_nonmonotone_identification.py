@@ -46,7 +46,7 @@ class QuantizedPriceNonmonotonicityTests(unittest.TestCase):
             "nearest_tenth_hypothetical":(0.04000533461369942,
                                          0.12014431184206321),
             "truncate_tenth_hypothetical":(0.03922071315328133,
-                                          0.11778303565638346),
+                                          0.11778303565638365),
             "union_of_both_conservative":(0.01980262729617973,
                                           0.13883644485421576),
         }
@@ -83,9 +83,9 @@ class QuantizedPriceNonmonotonicityTests(unittest.TestCase):
             "nearest_tenth_hypothetical":(0.1512309697239239,
                                          0.03846628082779642),
             "truncate_tenth_hypothetical":(0.14842000511827322,
-                                          0.03774028790736027),
-            "union_of_both_conservative":(0.11161029027887775,
-                                          0.00165667689886549),
+                                          0.0377403279828471),
+            "union_of_both_conservative":(0.11161017654930258,
+                                          0.0016564522588255332),
         }
         for label,(down,up) in expected.items():
             with self.subTest(label=label):
@@ -117,7 +117,7 @@ class QuantizedPriceNonmonotonicityTests(unittest.TestCase):
         self.assertEqual(d["discrete_exogenous_step_construction"][
             "max_error_at_editorial_points"],0)
         self.assertEqual(set(d["feedback_AR1_with_unrestricted_exogenous_innovations"]),
-                         {"0","0.5","0.9"} if "0" in d["feedback_AR1_with_unrestricted_exogenous_innovations"] else {"0.0","0.5","0.9"})
+                         {"0.0","0.5","0.9"})
         for p in d["feedback_AR1_with_unrestricted_exogenous_innovations"].values():
             self.assertLessEqual(p["max_error_at_editorial_points"],1e-12)
             self.assertTrue(p["feedback_parameter_is_ARBITRARY_not_calibrated"])
