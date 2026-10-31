@@ -109,6 +109,33 @@ class CrossRaceQuantizedTurningRateTests(unittest.TestCase):
         for v in d["at_knots_price_indices_mass"]+d["at_segment_midpoints_price_indices_mass"]:
             self.assertAlmostEqual(v,1,places=12)
 
+    def test_existing_seven_price_models_use_exact_same_R8_q2_target(self):
+        r=self.report["R8_retrospective_PR36_same_one_target_7_model_crosscheck"]
+        self.assertEqual(r["original_later_1344_WIN_target_count"],1)
+        self.assertTrue(r["archived_original_target_known_before_model_code"])
+        self.assertEqual(r["model_candidate_count"],7)
+        self.assertEqual(
+            r["price_rank_reversal_pairs_between_1326_and_1344"],7)
+        self.assertAlmostEqual(
+            r["actual_same_next_market_index_TV_pp"],
+            9.656362948215287,places=9)
+        self.assertAlmostEqual(
+            r["persistence_target_price_index_TV_pp"],
+            9.656362948215287,places=9)
+        self.assertAlmostEqual(
+            r["plain_log_momentum_target_price_index_TV_pp"],
+            8.180965354937557,places=9)
+        self.assertAlmostEqual(
+            r["continuous_gain_target_price_index_TV_pp"],
+            8.657104883763182,places=9)
+        self.assertAlmostEqual(
+            r["imposed_hard_price_gain_target_price_index_TV_pp"],
+            r["plain_log_momentum_target_price_index_TV_pp"],places=12)
+        self.assertTrue(r["nonmonotone_certificate_not_an_explanatory_variable_in_7_models"])
+        self.assertFalse(r["model_succeeded_prospectively_or_found_true_criticality"])
+        self.assertFalse(r["actual_JRA_race_result_or_bettor_stakes_read"])
+        self.assertEqual(len(r["original_unchanged_all_seven_scores"]),7)
+
     def test_lipschitz_lower_bound_is_sharp_on_synthetic_forced_valley(self):
         t=["2026-10-31T10:00:00+09:00",
            "2026-10-31T11:00:00+09:00",
