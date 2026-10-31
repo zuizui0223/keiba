@@ -1,0 +1,44 @@
+name: "WIN only: original six horse-PDE-bettor models plus five regime nulls, same future q2"
+
+on:
+  push:
+    branches: [analysis/win-only-future-regime-sidecar-20261031]
+    paths:
+      - 'scripts/keiba_win_only_regime_sidecar.py'
+      - 'tests/test_keiba_win_only_regime_sidecar.py'
+      - 'docs/betting/win-only-future-regime-sidecar-20261031.md'
+      - '.github/workflows/keiba-win-only-regime-sidecar.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_win_only_regime_sidecar.py'
+      - 'tests/test_keiba_win_only_regime_sidecar.py'
+      - 'docs/betting/win-only-future-regime-sidecar-20261031.md'
+      - '.github/workflows/keiba-win-only-regime-sidecar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-original-capture-chain-and-target-proof:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Compile and verify unchanged source-card six-model original freeze plus five fixed additions
+        run: |
+          python -m compileall -q scripts/keiba_win_only_regime_sidecar.py tests/test_keiba_win_only_regime_sidecar.py
+          python -m unittest discover -s tests -p 'test_keiba_win_only_regime_sidecar.py' -v
+      - name: Original six candidate and remote receipt contracts remain unchanged
+        run: |
+          python -m unittest discover -s tests -p 'test_keiba_win_only_shadow_lane.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_win_only_github_receipt.py' -v
+      - name: No original JRA target or bettor stream available to this CI
+        run: |
+          python -c "from pathlib import Path; assert Path('scripts/keiba_win_only_regime_sidecar.py').exists(); print('NO_REAL_JRA_LICENSED_SNAPSHOT_OR_REMOTE_PRETARGET_SHA_FROM_SYNTHETIC_CI',True)"
