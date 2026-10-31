@@ -1,0 +1,46 @@
+name: "Tenno 2026 quoted partial timepath, rounding and source provenance audit"
+
+on:
+  push:
+    branches: [analysis/tenno-20261031-partial-odds-switching-20261031]
+    paths:
+      - 'scripts/keiba_tenno_partial_article_timepath.py'
+      - 'tests/test_keiba_tenno_partial_article_timepath.py'
+      - 'docs/betting/tenno-20261031-partial-source-switches-20261031.md'
+      - '.github/workflows/keiba-tenno-partial-source-timepath.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_tenno_partial_article_timepath.py'
+      - 'tests/test_keiba_tenno_partial_article_timepath.py'
+      - 'docs/betting/tenno-20261031-partial-source-switches-20261031.md'
+      - '.github/workflows/keiba-tenno-partial-source-timepath.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prestart-reported-public-quotes-not-remote-source-receipts:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Confirm original 17-runner and partial only source quote SHA pins
+        run: |
+          python -m compileall -q scripts/keiba_tenno_partial_article_timepath.py tests/test_keiba_tenno_partial_article_timepath.py
+          python -m unittest discover -s tests -p 'test_keiba_tenno_partial_article_timepath.py' -v
+      - name: Seven reported editorial points and conservative rounding tests
+        run: |
+          python scripts/keiba_tenno_partial_article_timepath.py --output tmp/tenno-20261031-publisher-reported-partial-timepath.json
+          python -c "import json; d=json.load(open('tmp/tenno-20261031-publisher-reported-partial-timepath.json')); assert d['one_mutable_blog_partial_timepoints']==5 and d['different_editorial_full_field_timepoints']==2 and d['publisher_self_reported_timepoints_not_provider_attested']==7; assert d['reported_1_vs_7_strict_reversal_interval_count']==2 and d['robust_1_vs_7_reversal_under_conservative_one_decimal_rounding']==1 and d['strict_price_pair_reversals_over_reported_intervals']==3; assert [x['compared_pair_count_ONLY_common_reported_horses'] for x in d['by_adjacent_publication_timepoint_interval']]==[6,10,10,10,10,136]; assert d['missing_partial_runners_NOT_imputed_and_NOT_renormalized'] and d['new_genuinely_pretarget_SHA_verified_price_score_count']==0; print('PARTIAL_NO_PSEUDO_FULL_MARKET_OR_CONFIRMED_TIPPING',True)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tenno-20261031-seven-editorial-timepoints-not-market-receipts
+          path: tmp/tenno-20261031-publisher-reported-partial-timepath.json
+          retention-days: 20
