@@ -173,12 +173,55 @@ def audit():
     }
 
 
+
+def remote_GitHub_22h25_not_a_prospective_test():
+    """Read REAL PR41 GitHub owner SHA comment, not offline fixture JSON.
+
+    This verifies two separate facts:
+      GitHub genuinely witnessed the PR41 digest at a server time;
+      the *page-reported* 22:25 quote timestamp is BEFORE that time.
+    It cannot attest original SportsNavi clock truth, target license,
+    or real JRA-VAN source completeness. It MUST NOT turn 22:25 into
+    the preregistered Nov1 14:45..15:05 target.
+    """
+    from keiba_tenno_public_pretarget_remote_receipt import (
+        verify_live, STATUS_REMOTE
+    )
+    frozen=original_news_freeze()
+    proof=verify_live(frozen)
+    if (proof.get("status")!=STATUS_REMOTE or
+            proof.get("real_GitHub_server_comment_verified") is not True or
+            proof.get("public_news_frozen_model_SHA256")!=
+                EXPECTED_ORIGINAL_NEWS_FREEZE_SHA256):
+        raise ValueError("HOLD_PR41_SHA_NOT_AUTHENTICATED_BY_REAL_GITHUB")
+    when=datetime.fromisoformat(proof["github_server_created_at_claim"])
+    public=datetime.fromisoformat(SOURCE_DISPLAYED_UPDATED_AT)
+    target=datetime.fromisoformat(TARGET_START)
+    if not public<when<target:
+        raise ValueError("HOLD_2225_PUBLIC_QUOTE_NOT_PROVEN_BEFORE_PR41_GITHUB_SHA")
+    return {
+        "status":"REAL_PR41_GITHUB_SHA_AFTER_PUBLIC_2225_DECLARED_CLOCK",
+        "original_PR41_SHA256":EXPECTED_ORIGINAL_NEWS_FREEZE_SHA256,
+        "github_comment_url":proof["github_comment_url"],
+        "github_server_created_at_jst":when.isoformat(),
+        "public_2225_published_clock_not_original_vendor_receipt":
+            SOURCE_DISPLAYED_UPDATED_AT,
+        "site_displayed_update_before_GitHub_original_news_sha":True,
+        "original_future_target_window_still_Nov1_not_today":True,
+        "real_GitHub_SHA_time_does_NOT_attest_SportsNavi_source_clock":True,
+        "this_quote_cannot_be_scored_as_prospective_PR41_target":True,
+        "real_independently_authenticated_JRA_VAN_future_quote":False,
+    }
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--verify-live-remote-clock",action="store_true")
     parser.add_argument("--output",type=Path,default=Path(
         "tmp/tenno-sportsnavi-2225-public-source-declared-descriptive.json"))
     args=parser.parse_args()
     result=audit()
+    if args.verify_live_remote_clock:
+        result["actual_PR41_GitHub_remote_time_relative_to_2225_quote"]=remote_GitHub_22h25_not_a_prospective_test()
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,indent=2,ensure_ascii=False,
                                        allow_nan=False)+"\n",encoding="utf-8")
