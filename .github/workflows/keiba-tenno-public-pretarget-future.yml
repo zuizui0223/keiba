@@ -1,0 +1,92 @@
+name: "Tenno next-day public news SHA freeze, strict future WIN target and GitHub remote receipt"
+
+on:
+  push:
+    branches: [analysis/tenno-public-pretarget-shadow-20261031]
+    paths:
+      - 'scripts/keiba_tenno_public_pretarget_future_shadow.py'
+      - 'scripts/keiba_tenno_public_pretarget_remote_receipt.py'
+      - 'tests/test_keiba_tenno_public_pretarget_future_shadow.py'
+      - 'tests/test_keiba_tenno_public_pretarget_remote_receipt.py'
+      - 'docs/betting/tenno-public-news-to-nextwin-fixed-preseal-20261031.md'
+      - '.github/workflows/keiba-tenno-public-pretarget-future.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_tenno_public_pretarget_future_shadow.py'
+      - 'scripts/keiba_tenno_public_pretarget_remote_receipt.py'
+      - 'tests/test_keiba_tenno_public_pretarget_future_shadow.py'
+      - 'tests/test_keiba_tenno_public_pretarget_remote_receipt.py'
+      - 'docs/betting/tenno-public-news-to-nextwin-fixed-preseal-20261031.md'
+      - '.github/workflows/keiba-tenno-public-pretarget-future.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  public-news-no-licensed-source-synthetic-target:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Four public-article price models and locked target/timing tests
+        run: |
+          python -m compileall -q scripts/keiba_tenno_public_pretarget_future_shadow.py scripts/keiba_tenno_public_pretarget_remote_receipt.py tests/test_keiba_tenno_public_pretarget_future_shadow.py tests/test_keiba_tenno_public_pretarget_remote_receipt.py
+          python -m unittest discover -s tests -p 'test_keiba_tenno_public_pretarget_future_shadow.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_tenno_public_pretarget_remote_receipt.py' -v
+      - name: Create deterministic tomorrow-only frozen source and SHA claim without target
+        run: |
+          python scripts/keiba_tenno_public_pretarget_future_shadow.py freeze --output tmp/tenno-public-news-frozen.json
+          python scripts/keiba_tenno_public_pretarget_remote_receipt.py prepare --frozen tmp/tenno-public-news-frozen.json --output tmp/tenno-public-news-sha-comment-NOT-POSTED.json
+          python - <<'PY'
+          import json
+          f=json.load(open('tmp/tenno-public-news-frozen.json'))
+          x=json.load(open('tmp/tenno-public-news-sha-comment-NOT-POSTED.json'))
+          p=f['payload']
+          assert p['registered_fixed_2026_race_slot']=='2026-11-01|東京|天皇賞（秋）'
+          assert p['target_source_update_window_start_jst']=='2026-11-01T14:45:00+09:00'
+          assert p['target_source_update_window_end_jst']=='2026-11-01T15:05:00+09:00'
+          assert len(p['frozen_price_index_forecasts'])==4
+          assert x['created_comment'] is False and x['sha256']==f['sha256_of_canonical_frozen_payload']
+          assert p['PR30_PR37_11_physically_coupled_models_NOT_promoted_or_altered']
+          print("PUBLIC_NEWS_ONLY_CANONICAL_SHA",f['sha256_of_canonical_frozen_payload'])
+          print("PUBLIC_NEWS_SHA_COMMENT_BODY_NOT_AUTO_POSTED")
+          print(x['sha_only_comment_BODY_not_posted'])
+          print("NO_FUTURE_JRA_TARGET_OR_WINNER_READ", True)
+          PY
+      - name: Independently check actual GitHub comment timestamps if SHA was manually posted
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,sys
+          sys.path.insert(0,'scripts')
+          from keiba_tenno_public_pretarget_remote_receipt import verify_live
+          f=json.load(open('tmp/tenno-public-news-frozen.json'))
+          try:
+              p=verify_live(f)
+          except ValueError as e:
+              if str(e)=='HOLD_NEWS_ZERO_OR_MULTIPLE_SHA_ATTEMPTS':
+                  print("NO_SHA_COMMENT_YET_NOT_PRETARGET_TIME_VERIFIED",True)
+              else:
+                  raise
+          else:
+              print("LIVE_GITHUB_SERVER_PUBLIC_NEWS_PRETARGET_SHA_VERIFIED",
+                    p['real_GitHub_server_comment_verified'])
+              print("LIVE_GITHUB_RECEIPT_COMMENT",p['github_comment_url'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tenno-20261101-public-news-pretarget-four-index-freeze-only
+          path: |
+            tmp/tenno-public-news-frozen.json
+            tmp/tenno-public-news-sha-comment-NOT-POSTED.json
+          retention-days: 25
