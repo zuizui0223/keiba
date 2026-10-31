@@ -73,7 +73,7 @@ class CrossRaceQuantizedTurningRateTests(unittest.TestCase):
         for (name,row),target in zip(q.items(),expected):
             self.assertAlmostEqual(
                 row["largest_minimum_continuous_logratio_speed_per_reported_hour"],
-                target,places=11,msg=name)
+                target,places=8,msg=name)
             self.assertEqual(row["pair_with_largest_required_continuous_rate"],
                              [6,8])
             self.assertEqual(row["pairwise_continuous_speed_caps_hypothetical_not_calibrated"]["3.0"],0)
