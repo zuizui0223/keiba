@@ -119,6 +119,61 @@ class PublishedEveningSeventeenOddsTests(unittest.TestCase):
                                     "HOLD_PUBLIC_PRICE_INDEX_NOT_FULL_POSITIVE"):
             m._error([.5]*16,[.5]*17)
 
+    def test_real_GitHub_time_relative_to_public_2225_clock_with_mock_API(self):
+        from keiba_tenno_public_pretarget_remote_receipt import STATUS_REMOTE
+        proof={
+            "status":STATUS_REMOTE,
+            "real_GitHub_server_comment_verified":True,
+            "public_news_frozen_model_SHA256":
+                m.EXPECTED_ORIGINAL_NEWS_FREEZE_SHA256,
+            "github_server_created_at_claim":"2026-10-31T13:38:00+00:00",
+            "github_comment_url":
+                "https://github.com/zuizui0223/keiba/pull/41#issuecomment-6544070454",
+        }
+        with patch(
+            "keiba_tenno_public_pretarget_remote_receipt.verify_live",
+            return_value=proof):
+            result=m.remote_GitHub_22h25_not_a_prospective_test()
+        self.assertTrue(
+            result["site_displayed_update_before_GitHub_original_news_sha"])
+        self.assertTrue(
+            result["real_GitHub_SHA_time_does_NOT_attest_SportsNavi_source_clock"])
+        self.assertTrue(
+            result["this_quote_cannot_be_scored_as_prospective_PR41_target"])
+        self.assertFalse(
+            result["real_independently_authenticated_JRA_VAN_future_quote"])
+
+    def test_false_remote_timestamp_or_fake_remote_sha_fails_closed(self):
+        from keiba_tenno_public_pretarget_remote_receipt import STATUS_REMOTE
+        p={
+            "status":STATUS_REMOTE,
+            "real_GitHub_server_comment_verified":True,
+            "public_news_frozen_model_SHA256":
+                m.EXPECTED_ORIGINAL_NEWS_FREEZE_SHA256,
+            "github_server_created_at_claim":"2026-10-31T13:05:00+00:00",
+            "github_comment_url":"https://github.com/zuizui0223/keiba/pull/41",
+        }
+        with patch(
+            "keiba_tenno_public_pretarget_remote_receipt.verify_live",
+            return_value=p):
+            with self.assertRaisesRegex(
+                ValueError,"HOLD_2225_PUBLIC_QUOTE_NOT_PROVEN_BEFORE"):
+                m.remote_GitHub_22h25_not_a_prospective_test()
+        p2={**p,"github_server_created_at_claim":"2026-10-31T13:38:00+00:00",
+            "public_news_frozen_model_SHA256":"f"*64}
+        with patch(
+            "keiba_tenno_public_pretarget_remote_receipt.verify_live",
+            return_value=p2):
+            with self.assertRaisesRegex(
+                ValueError,"HOLD_PR41_SHA_NOT_AUTHENTICATED_BY_REAL_GITHUB"):
+                m.remote_GitHub_22h25_not_a_prospective_test()
+        with patch(
+            "keiba_tenno_public_pretarget_remote_receipt.verify_live",
+            side_effect=ValueError("HOLD_LIVE_GITHUB_API_UNAVAILABLE")):
+            with self.assertRaisesRegex(ValueError,
+                                        "HOLD_LIVE_GITHUB_API_UNAVAILABLE"):
+                m.remote_GitHub_22h25_not_a_prospective_test()
+
     def test_deterministic_report_and_json_finite(self):
         self.assertEqual(self.report,m.audit())
         import json
