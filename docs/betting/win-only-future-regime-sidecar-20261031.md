@@ -54,6 +54,34 @@ B+は、1. 連続価格ゲイン alpha=r/(r+0.10)、2. ハード価格ゲート 
 
 JRA-VAN認可元CSVや真の投票量は取得しておらず、今回の新規真正未来次オッズ評価は**0件**。JRAの馬勝率校正、賭け期待利益、社会的な相転移・臨界オッズはいずれも未確証。元26重賞/64補助枠の固定分母と菊花賞M0–M2およびv3.1 ledger、mainは変更なし。
 
+## B+を独立した外部GitHub時刻証明に結びつける（新規コード）
+
+keiba_win_only_regime_sidecar_receipt.py を追加した。**既存の親PR30 commentだけでは追加5候補の事前性を証明できない**ので、別スキーマ **KEIBA_BPLUS_SMOOTH_HARD_NOINFO_COMPANION_SHA_V1** により、既存 [Draft PR #37](https://github.com/zuizui0223/keiba/pull/37) へ2つのSHA（元6候補SHAと追加5候補SHA）だけを記した**独立コメント**を、所有者の明示的操作で1度だけ投稿する。
+
+重要：下記CLIは**prepare/verifyだけで、GitHubへのPOSTは一切しない**。新規sourceを自分で取りに行く仕組みでもない。
+
+1. 元PR30の元6候補freezeを、同リポ既存の keiba_win_only_github_receipt.py prepare で SHA-only 文字列にし、**q2の初回対象更新より前に、所有者がPR30へ投稿する**。
+2. 新しいB+を元のsourceチェーンに対してfreezeし、追加5候補のSHA-only文字列を取得する：
+
+        python scripts/keiba_win_only_regime_sidecar_receipt.py prepare \
+          --original-win-only-freeze private/RACE_WIN_only_frozen.json \
+          --sidecar-freeze private/RACE_WIN_only_regime_Bplus.json \
+          --private-output private/RACE_Bplus_comment_not_posted.json
+
+3. 出力のSHA-only本文だけを、**q2の対象窓が始まる前に**所有者が[PR #37](https://github.com/zuizui0223/keiba/pull/37) に1コメントとして投稿する。元オッズ・元出走情報・馬券・投票数は投稿しない。**元PR30コメントのサーバー時刻 ≤ PR37コメントのサーバー時刻 < q2対象窓開始**が必要。
+4. 実GitHub APIが利用できる環境で、親PR30の全コメント・単一詳細GETと、PR37の全コメント・単一詳細GETを独立に読み取り、所有者、コメント本文完全一致、SHA・レース・窓の一致、未編集、同レース1コメント、原取得受信時刻の順序を検証：
+
+        python scripts/keiba_win_only_regime_sidecar_receipt.py verify-live \
+          --original-win-only-freeze private/RACE_WIN_only_frozen.json \
+          --sidecar-freeze private/RACE_WIN_only_regime_Bplus.json \
+          --private-output private/RACE_Bplus_dual_GitHub_SHA_proof.json
+
+5. 別の元取得イベントで後続q2が揃い、従来PR30＋B+で同じq2を採点した場合、さらに --private-local-score private/RACE_WIN_only_regime_Bplus_local_score.json を付けて型付き照合する。
+
+親・子の**2つのGitHub SHAがサーバーで対象q2より前に存在した事実のみ**が遠隔時刻で検証できる。コメントは削除・ごく短時間編集され得るので完全な不変台帳ではない。原データの正しいsource更新時刻、原本受信の真正証明、Data Labライセンス、全q2取得、投票量や馬行動の独立観測はなお別の問題。**本実装時に、新しい真正なPR30/PR37サーバー時刻つき実レース観測は0件。**
+
+外部GETをモックした全自動テストは、**fixtureのSHA/時計が正しい**ことのみ確認する。実コメントを投稿しない。fixture結果をREMOTE SUCCESSとは報告しない。
+
 ## 再現（人工6頭の厳密な反証試験）
 
     python -m pip install 'numpy>=1.26,<3'
