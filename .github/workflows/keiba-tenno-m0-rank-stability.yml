@@ -1,0 +1,46 @@
+name: Tenno Sho single-snapshot market rank counterfactual M0 null
+
+on:
+  push:
+    branches: [analysis/tenno-m0-rank-robustness-20261031]
+    paths:
+      - 'scripts/keiba_tenno_20261101_m0_rank_stability.py'
+      - 'tests/test_keiba_tenno_20261101_m0_rank_stability.py'
+      - 'docs/betting/tenno-20261101-m0-rank-stability-20261031.md'
+      - '.github/workflows/keiba-tenno-m0-rank-stability.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_tenno_20261101_m0_rank_stability.py'
+      - 'tests/test_keiba_tenno_20261101_m0_rank_stability.py'
+      - 'docs/betting/tenno-20261101-m0-rank-stability-20261031.md'
+      - '.github/workflows/keiba-tenno-m0-rank-stability.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prestart-source-frozen-m0-rank-null:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Compile and test exact public quote M0 rank crossing null
+        run: |
+          python -m compileall -q scripts/keiba_tenno_20261101_m0_rank_stability.py tests/test_keiba_tenno_20261101_m0_rank_stability.py
+          python -m unittest discover -s tests -p 'test_keiba_tenno_20261101_m0_rank_stability.py' -v
+      - name: Emit deterministic source-declared, result-free confidence-envelope distinction
+        run: |
+          python scripts/keiba_tenno_20261101_m0_rank_stability.py --output tmp/tenno-20261101-exact-market-M0-rank-null.json
+          python -c "import json; a=json.load(open('tmp/tenno-20261101-exact-market-M0-rank-null.json')); assert a['unique_rank_pairs']==136 and a['pinned_source_declared_field_sha256_not_vendor_bytes']=='b8f4b1e617b2582c156c88dece77e440d10a39140feaccf35125d896caf1f479'; assert [x['ambiguous_or_reversible_rank_pair_count'] for x in a['hypothetical_shock_scenarios']]==[0,0,2,6,11]; assert not a['official_target_race_results_used'] and not a['independent_future_quote_for_scoring_available']; assert a['price_rank_crossing_is_NOT_dynamic_market_tipping']; print('FIXED_SOURCE_ONLY_NO_DYNAMIC_THRESHOLD_EVIDENCE', True)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tenno-20261101-single-quote-market-M0-rank-null
+          path: tmp/tenno-20261101-exact-market-M0-rank-null.json
+          retention-days: 20
