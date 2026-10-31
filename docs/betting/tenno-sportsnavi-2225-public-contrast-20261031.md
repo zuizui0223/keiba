@@ -47,3 +47,14 @@
     python scripts/keiba_tenno_sportsnavi_2225_public_contrast.py --output tmp/tenno-2225-public-evening-descriptive.json
 
 CIは17頭元価格SHA、新17頭公開ページ宣言SHA、元PR41四候補凍結SHA、TV・KL・順位136比較の不変性、残りの未来q2を前向き結果へ昇格しない否定対照を検査する。追加データは同じ1競走に属し、独立レースのサンプル数を増やさない。元PR41のソースモデルコード/SSH対象、元PR37の馬ABM・PDE・投票者ABM11モデル、main・菊花賞M0–M2・v3.1正式台帳を変更しない。
+
+
+## 追加の独立検査：予測SHAの実GitHubサーバー作成時刻
+
+[PR #42の専用GitHub Actions #41207258832](https://github.com/zuizui0223/keiba/actions/runs/41207258832) では、[PR #41の元SHA-onlyコメント](https://github.com/zuizui0223/keiba/pull/41#issuecomment-6544070454)について、**本物のGitHub RESTコメント全リスト・詳細GET**を実施した。元17頭ニュース由来4候補の元SHAが正しいこと、所有者コメントで、編集後改ざんではないことを再検証。
+
+GitHub APIが認証したサーバー時刻は **2026-10-31 22:36:31 JST**（13:36:31 UTC）。一方、スポーツナビのサイト表中の更新時刻は **同日22:25 JST**。すなわち**ソースに表示された更新時計より11分31秒後に、PR41の元予測SHAがGitHubで登録**された。
+
+この数理的不等式が認証できるのは「元GitHub SHA登録は22:25というサイト表示時計より後」ということ。GitHubはSportsNaviの本当の原配信/受信時計を認証するものではないため、原市場取引履歴の証明ではない。**22:25価格に対する上記4候補比較は明確に事後診断であり、元PR41の固定済み翌日14:45〜15:05という未来targetとして採点できない**。
+
+専用CIは**今回追加した9テスト＋PR41元の11+7テスト＝27テスト成功**、共通testとv3.1 holdoutも同じheadでsuccess。実合法JRA-VAN原q2は依然0件で、元PR41のSHA・原モデルファイル内容は一切変わらない。
