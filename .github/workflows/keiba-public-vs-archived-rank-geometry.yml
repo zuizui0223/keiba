@@ -1,0 +1,46 @@
+name: Public quoted Tenno and source-locked Kyoto rank geometry
+
+on:
+  push:
+    branches: [analysis/public-reports-vs-archived-rank-dynamics-20261031]
+    paths:
+      - 'scripts/keiba_public_article_vs_real_archival_rank_geometry.py'
+      - 'tests/test_keiba_public_article_vs_real_archival_rank_geometry.py'
+      - 'docs/betting/public-reports-vs-archived-rank-geometry-20261031.md'
+      - '.github/workflows/keiba-public-vs-archived-rank-geometry.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_public_article_vs_real_archival_rank_geometry.py'
+      - 'tests/test_keiba_public_article_vs_real_archival_rank_geometry.py'
+      - 'docs/betting/public-reports-vs-archived-rank-geometry-20261031.md'
+      - '.github/workflows/keiba-public-vs-archived-rank-geometry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived-rank-clock-negative-control:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Source-locked prices, article timestamps, result-free geometry tests
+        run: |
+          python -m compileall -q scripts/keiba_public_article_vs_real_archival_rank_geometry.py tests/test_keiba_public_article_vs_real_archival_rank_geometry.py
+          python -m unittest discover -s tests -p 'test_keiba_public_article_vs_real_archival_rank_geometry.py' -v
+      - name: Recompute original five-race archive plus separate Tenno cross-article comparison
+        run: |
+          python scripts/keiba_public_article_vs_real_archival_rank_geometry.py --output tmp/public-article-vs-kyoto-source-rank-geometry.json
+          python -c "import json; a=json.load(open('tmp/public-article-vs-kyoto-source-rank-geometry.json')); t=a['tenno_cross_publisher']; k=a['retrospective_kyoto_archived']; assert t['horse_count']==17 and t['strictly_reversed_pair_count']==0 and t['nominal_18h_quote_already_published_in_1742_article'] and not t['independently_attested_genuine_two_time_JRA_feed']; assert k['original_distinct_races']==5 and k['original_source_price_intervals']==6 and k['no_official_outcome_or_result_or_bettor_records_read']; assert a['no_target_JRA_winner_or_finishing_order_used'] and a['no_market_criticality_or_herding_mechanism_identified']; print('PUBLIC_REPORTS_NOT_AUTHENTICATED_MARET_TIMES',True)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: five-archived-races-plus-tenno-two-public-report-geometry
+          path: tmp/public-article-vs-kyoto-source-rank-geometry.json
+          retention-days: 20
