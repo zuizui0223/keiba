@@ -1,0 +1,61 @@
+name: "Tenno complete 17 public quote at 22:25 versus 17:42 news, not original vendor or future q2"
+
+on:
+  push:
+    branches: [analysis/tenno-public-2225-source-contrast-20261031]
+    paths:
+      - 'scripts/keiba_tenno_sportsnavi_2225_public_contrast.py'
+      - 'tests/test_keiba_tenno_sportsnavi_2225_public_contrast.py'
+      - 'docs/betting/tenno-sportsnavi-2225-public-contrast-20261031.md'
+      - '.github/workflows/keiba-tenno-public-evening-2225.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_tenno_sportsnavi_2225_public_contrast.py'
+      - 'tests/test_keiba_tenno_sportsnavi_2225_public_contrast.py'
+      - 'docs/betting/tenno-sportsnavi-2225-public-contrast-20261031.md'
+      - '.github/workflows/keiba-tenno-public-evening-2225.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-declared-evening-quotes-not-future-JRA-outcome:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Test exactly 17 full odds quote declarations and previous immutable PR41 four
+        run: |
+          python -m compileall -q scripts/keiba_tenno_sportsnavi_2225_public_contrast.py tests/test_keiba_tenno_sportsnavi_2225_public_contrast.py
+          python -m unittest discover -s tests -p 'test_keiba_tenno_sportsnavi_2225_public_contrast.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_tenno_public_pretarget_future_shadow.py' -v
+          python -m unittest discover -s tests -p 'test_keiba_tenno_public_pretarget_remote_receipt.py' -v
+      - name: Recompute pure historical cross-publisher description and explicit no-promote gate
+        run: |
+          python scripts/keiba_tenno_sportsnavi_2225_public_contrast.py --output tmp/tenno-evening-22h25-public-descriptive.json
+          python - <<'PY'
+          import json
+          a=json.load(open('tmp/tenno-evening-22h25-public-descriptive.json'))
+          p=a['cross_public_page_descriptive_price_change']
+          assert a['source_sportsnavi_complete_horse_count']==17 and a['earlier_all_17_news_horse_prices_changed']==17
+          assert p['strictly_reversed_pair_count']==0 and p['unique_unordered_horse_pairs']==136
+          assert abs(p['normalized_inverse_quote_TV_percentage_points']-3.2111564063769875)<1e-10
+          assert a['frozen_PR41_pretarget_news_four_model_SHA256']=='5a3a948194c83af8570abd80d3f2cde6ba3da3e255ad841cb22f6da4e78df7cb'
+          assert a['news_1742_vs_2225_comparison_known_before_PR41_GitHub_SHA_comment']
+          assert a['retrospective_diagnostic_NOT_a_PR41_Nov1_target']
+          assert a['PR41_fixed_Nov1_1445_1505_target_remains_unobserved']
+          assert a['new_independently_confirmed_prospective_market_trial'] is False
+          print('SPORTSNAVI22H25_PUBLIC_CONTRAST_NOT_PROSPECTIVE_PRICE_FORECAST',True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tenno-20261031-sportsnavi-2225-17-quotes-source-declared-only
+          path: tmp/tenno-evening-22h25-public-descriptive.json
+          retention-days: 21
