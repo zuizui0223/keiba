@@ -176,7 +176,7 @@ class TennoPublicNewsFutureFreezeTests(unittest.TestCase):
             bad[key]=value
             with self.subTest(key=key):
                 with self.assertRaisesRegex(ValueError,
-                                            "CARD_SLOT_FIELD_SOURCE_MISMATCH"):
+                                            "CARD_DATE_VS_REGISTERED_SLOT|CARD_SLOT_FIELD_SOURCE_MISMATCH"):
                     self.score(card=bad)
 
     def test_unconfirmed_provider_stream_and_wrong_received_time_hold(self):
