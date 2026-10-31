@@ -108,6 +108,31 @@ class RealOneR8NextQuoteBridgeTests(unittest.TestCase):
         self.assertAlmostEqual(score["by_predeclared_price_model"][
             "WIN_latest_persistence"]["one_real_target_index_TV_pp"],
             9.656362948215287,places=9)
+        expected_price_scores={
+            "WIN_full_log_momentum_beta1":8.180965354937557,
+            "WIN_continuous_momentum_gain_r_over_rplus010":
+                8.657104883763182,
+            "WIN_hard_gate_momentum_r_ge_010_per_hour":
+                8.180965354937557,
+        }
+        for label,value in expected_price_scores.items():
+            self.assertAlmostEqual(
+                score["by_predeclared_price_model"][label][
+                    "one_real_target_index_TV_pp"],value,places=9)
+        expected_uninformed={
+            "uninformed_PR19_fixed_ABM":9.978719363319316,
+            "uninformed_PR19_smooth_ABM":10.39547486037361,
+            "uninformed_PR19_hard_ABM":10.464641527040277,
+        }
+        for label,value in expected_uninformed.items():
+            self.assertAlmostEqual(
+                score["by_predeclared_price_model"][label][
+                    "mean_one_target_TV_over_only_synthetic_seeds_pp"],
+                value,places=9)
+        self.assertLess(
+            score["by_predeclared_price_model"][
+                "WIN_continuous_momentum_gain_r_over_rplus010"][
+                    "one_real_target_index_TV_pp"],9.656362948215287)
         for label in m.MODEL_NAMES[4:]:
             v=score["by_predeclared_price_model"][label]
             self.assertLessEqual(v[
