@@ -1,0 +1,52 @@
+name: Kyoto R8 one real q2: smooth vs hard price plus PR19 no-info ABM
+
+on:
+  push:
+    branches: [analysis/r8-next-quote-geometry-vs-smooth-hard-20261031]
+    paths:
+      - 'scripts/keiba_r8_rank_geometry_smooth_hard_nextquote.py'
+      - 'tests/test_keiba_r8_rank_geometry_smooth_hard_nextquote.py'
+      - 'docs/betting/r8-rank-continuous-hard-q2-retrospective-20261031.md'
+      - '.github/workflows/keiba-r8-nextprice-geometry-smooth-hard.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_r8_rank_geometry_smooth_hard_nextquote.py'
+      - 'tests/test_keiba_r8_rank_geometry_smooth_hard_nextquote.py'
+      - 'docs/betting/r8-rank-continuous-hard-q2-retrospective-20261031.md'
+      - '.github/workflows/keiba-r8-nextprice-geometry-smooth-hard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r8-one-real-archived-next-quote-retrospective-only:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Source 12:21 13:26 only, original PR19 null and 13:44 q2 separation tests
+        run: |
+          python -m compileall -q scripts/keiba_r8_rank_geometry_smooth_hard_nextquote.py tests/test_keiba_r8_rank_geometry_smooth_hard_nextquote.py
+          python -m unittest discover -s tests -p 'test_keiba_r8_rank_geometry_smooth_hard_nextquote.py' -v
+      - name: Run pretarget-only original source features without reading later source
+        run: |
+          python scripts/keiba_r8_rank_geometry_smooth_hard_nextquote.py --pretarget-only --output tmp/r8-1326-7models-original-source-only.json
+          python -c "import json; a=json.load(open('tmp/r8-1326-7models-original-source-only.json')); assert a['retrospective_score'] is None and a['freeze']['external_SHA_pre_target_attested'] is False and a['freeze']['freeze_payload']['no_target_quote_or_horse_finish_result_consulted_before_freeze']; print('TARGET_ARCHIVE_NEVER_OPENED_BY_FREEZE',True)"
+      - name: Retrospective only, now read original 13:44 SHA-locked target
+        run: |
+          python scripts/keiba_r8_rank_geometry_smooth_hard_nextquote.py --output tmp/r8-one-real-archived-q2-smooth-hard-null.json
+          python -c "import json; a=json.load(open('tmp/r8-one-real-archived-q2-smooth-hard-null.json')); s=a['retrospective_score']; assert s['independent_real_target_market_intervals']==1 and s['new_prospective_verified_target_intervals']==0 and s['target_price_rank_geometry']['actually_reversed_pairs']==7 and not s['actual_JRA_race_result_or_bettor_stakes_read']; assert s['model_selection_or_criticality_from_one_target']=='HOLD'; print('NO_JRA_WINNER_OR_RETURNS_READ',True)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R8-archived-one-nextprice-vs-null-not-prospective
+          path: |
+            tmp/r8-1326-7models-original-source-only.json
+            tmp/r8-one-real-archived-q2-smooth-hard-null.json
+          retention-days: 20
