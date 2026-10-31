@@ -1,0 +1,46 @@
+name: Tenno Sho 2026 prestart quoted market index and linked horse voter sensitivity
+
+on:
+  push:
+    branches: [analysis/tenno-20261101-market-prestart-preview-20261031]
+    paths:
+      - 'scripts/keiba_tenno_20261101_public_market_shadow.py'
+      - 'tests/test_keiba_tenno_20261101_public_market_shadow.py'
+      - 'docs/betting/tenno-sho-20261101-prestart-public-price-20261031.md'
+      - '.github/workflows/keiba-tenno-20261101-prestart-shadow.yml'
+  pull_request:
+    paths:
+      - 'scripts/keiba_tenno_20261101_public_market_shadow.py'
+      - 'tests/test_keiba_tenno_20261101_public_market_shadow.py'
+      - 'docs/betting/tenno-sho-20261101-prestart-public-price-20261031.md'
+      - '.github/workflows/keiba-tenno-20261101-prestart-shadow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-prestart-baseline-no-future-results:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - name: Confirm complete 17-starter public quote and zero target/podium leakage
+        run: |
+          python -m compileall -q scripts/keiba_tenno_20261101_public_market_shadow.py tests/test_keiba_tenno_20261101_public_market_shadow.py
+          python -m unittest discover -s tests -p 'test_keiba_tenno_20261101_public_market_shadow.py' -v
+      - name: Run all-17-horse prestart coherent M0 ticket events and physically coupled synthetic sensitivity
+        run: |
+          python scripts/keiba_tenno_20261101_public_market_shadow.py --horse-draws 120 --seeds 3 --output tmp/tenno-20261101-public-market-M0-and-synthetic-horse-voter.json
+          python -c "import json,math; d=json.load(open('tmp/tenno-20261101-public-market-M0-and-synthetic-horse-voter.json')); assert d['full_horse_field']==17 and len(d['all_horses_source_market_M0_and_top3'])==17 and not d['actual_JRA_outcome_read'] and not d['prediction_eligible_for_PR22_or_PR30_capture_certificate'] and d['real_WIN_snapshot_count']==1 and d['independent_asof_authenticated_source_receipts']==0; assert abs(sum(x['market_M0_win_index'] for x in d['all_horses_source_market_M0_and_top3'])-1)<1e-10; assert abs(sum(x['Plackett_Luce_top3_index'] for x in d['all_horses_source_market_M0_and_top3'])-3)<1e-10; print('NO_JRA_WINNER_OR_WAGER_PAYOUT_USED',True); print('PUBLIC_QUOTE_SOURCE_TIME',d['source_published_WIN_odds_reported_at_jst']); print('MARKET_M0_COUPLED_ABM_PDE_HYPOTHETICAL_ONLY',True)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 2026-tenno-public-quote-M0-and-synthetic-physical-market
+          path: tmp/tenno-20261101-public-market-M0-and-synthetic-horse-voter.json
+          retention-days: 20
