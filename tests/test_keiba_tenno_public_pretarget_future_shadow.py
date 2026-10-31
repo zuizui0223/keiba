@@ -186,7 +186,7 @@ class TennoPublicNewsFutureFreezeTests(unittest.TestCase):
             self.score(confirmed=False)
         with self.assertRaisesRegex(ValueError,
                                     "RECEIPT_AFTER_SCORING_CLOCK"):
-            self.score(at="2026-11-01T15:06:00+09:00") if False else self._bad_clock()
+            self._bad_clock()
  
     def _bad_clock(self):
         # Scoring clock passes quote window but precedes a late reception.
