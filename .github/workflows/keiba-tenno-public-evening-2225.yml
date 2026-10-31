@@ -54,8 +54,26 @@ jobs:
           assert a['new_independently_confirmed_prospective_market_trial'] is False
           print('SPORTSNAVI22H25_PUBLIC_CONTRAST_NOT_PROSPECTIVE_PRICE_FORECAST',True)
           PY
+      - name: Actual PR41 GitHub server time proves 22:25 quoted data precedes public SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/keiba_tenno_sportsnavi_2225_public_contrast.py --verify-live-remote-clock --output tmp/tenno-evening-22h25-github-live-negative-control.json
+          python - <<'PY'
+          import json
+          a=json.load(open('tmp/tenno-evening-22h25-github-live-negative-control.json'))
+          proof=a['actual_PR41_GitHub_remote_time_relative_to_2225_quote']
+          assert proof['site_displayed_update_before_GitHub_original_news_sha']
+          assert proof['this_quote_cannot_be_scored_as_prospective_PR41_target']
+          assert proof['real_GitHub_SHA_time_does_NOT_attest_SportsNavi_source_clock']
+          assert not proof['real_independently_authenticated_JRA_VAN_future_quote']
+          print("REAL_GITHUB_PR41_SHA_IS_AFTER_SPORTSNAVI_DISPLAYED_2225",proof['github_server_created_at_jst'])
+          print("NOT_AN_ORIGINALLY_FIXED_NOV1_1445_JRA_DATA_LAB_TARGET",True)
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: tenno-20261031-sportsnavi-2225-17-quotes-source-declared-only
-          path: tmp/tenno-evening-22h25-public-descriptive.json
+          path: |
+            tmp/tenno-evening-22h25-public-descriptive.json
+            tmp/tenno-evening-22h25-github-live-negative-control.json
           retention-days: 21
