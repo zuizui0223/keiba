@@ -24,7 +24,7 @@ class RealOneR8NextQuoteBridgeTests(unittest.TestCase):
     def setUpClass(cls):
         if np is None:
             return
-        cls.frozen=m.freeze_1326_only(ROOT,n_seeds=5,seed=20261031)
+        cls.frozen=m.freeze_1326_only(ROOT,n_seeds=30,seed=20261031)
 
     def test_honest_only_1221_and_1326_features_no_1344_target_read(self):
         with patch.object(m,"validate_later_quote",
@@ -52,7 +52,7 @@ class RealOneR8NextQuoteBridgeTests(unittest.TestCase):
         self.assertTrue(0<p["imposed_continuous_price_projection_gain"]<1)
         self.assertIn(p["imposed_hard_price_projection_gain"],(0.,1.))
         for rule,v in p["no_information_original_PR19_vote_paths_by_seed"].items():
-            self.assertEqual(len(v),5)
+            self.assertEqual(len(v),30)
             for seed_rows in v:
                 self.assertEqual(len(seed_rows),11)
                 self.assertAlmostEqual(sum(x["p"] for x in seed_rows),1,places=10)
