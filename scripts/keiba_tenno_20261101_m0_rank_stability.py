@@ -43,7 +43,7 @@ def declared_field():
         "race": RACE,
         "market_source_reported_clock": MARKET_SOURCE_REPORTED_CLOCK,
         "market_source_url": SOURCE_ODDS_URL,
-        "full_field": [[i, format(odds[i], ".1f")] for i in sorted(odds)],
+        "full_field": [[i, repr(float(odds[i]))] for i in sorted(odds)],
     }
     canonical = json.dumps(manifest, ensure_ascii=False, sort_keys=True,
                            separators=(",", ":")).encode("utf-8")
