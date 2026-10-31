@@ -30,8 +30,9 @@ import math
 from pathlib import Path
 
 from keiba_tenno_20261101_m0_rank_stability import (
-    declared_field, RACE, RACE_LOCAL_POST, MARKET_SOURCE_REPORTED_CLOCK,
+    declared_field, RACE, MARKET_SOURCE_REPORTED_CLOCK,
 )
+from keiba_tenno_20261101_public_market_shadow import RACE_LOCAL_POST
 from keiba_public_article_vs_real_archival_rank_geometry import (
     _declared_later, rank_contrast, CORROBORATING_NEWS_PUBLISHED,
 )
