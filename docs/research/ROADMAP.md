@@ -164,4 +164,6 @@ or profitable wagering. Those are different estimands.
 
 | P7 | [National JRA+NAR exact pedigree A](JAPAN_NATIONAL_PEDIGREE_SCALING.md) using an authorized official registry export and a separate registered-horse cohort list | **Two small real QID/JBIS cohorts computed only**; full national source/access/coverage gate **HOLD**. Use per-horse F/sibling counts and selective pair queries, not a dense N×N dump |
 
+| P8 | [Maternal source sensitivity and Wikidata QID audit](JAPAN_PEDIGREE_MATERNAL_SOURCE_SENSITIVITY.md): quantify missing maternal links on identical known horse pairs and screen exact page-to-QID supplementary parent claims | **Real same-source paired ablation completed** (5,878 Wiki articles; 2,049,634 lost known A paths when mother links removed). QID pilot is bounded and secondary; neither is nationwide genetic heritability |
+
 **Do not infer successful execution from items in this queue.**
