@@ -41,6 +41,21 @@ Script: scripts/ecology_japan_wikimedia_parent_crosscheck.py .
 
 Bounded to at most 200 **targeted** Wikipedia horse articles, prioritizing 38 Meisho-name pages followed by deterministic sampled articles with unlinked mothers. Exact Japanese Wikipedia page-title -> wikibase_item QID -> direct Wikidata P22/P25 claims; no name matching or transliteration. Count source-consistent additional sire/dam IDs, overlaps and conflicts. A missing/ambiguous/rate-limited Wikidata response is HOLD, not biological absence, and these secondary-source records are NOT an independent official studbook verification. No raw horse identities or records are republished in the aggregated output. The 200-target sampling is not representative.
 
+## Second-source result: actual 200-article exact-ID audit
+
+A separate successful 2026-11-14 bounded check resolved **200/200** selected Japanese Wikipedia article titles to exact Wikidata QIDs and fetched parent claims for **200/200** entities. The deliberately targeted cohort included **all 38 Meisho-name articles** and 162 other articles missing unambiguous mother-page links in the baseline.
+
+- **170** records contain a Wikidata direct sire QID; **14** contain a Wikidata direct dam QID.
+- **34** sire QID claims and **12** dam QID claims were present where the original article-infobox source lacked the corresponding direct parent-page link.
+- There were **0 directly verifiable parent-ID conflicts** in the matched validation comparisons (this does not prove every claim correct).
+- In the selected 200-node Wikidata-QID graph, only **43** shared-sire and **1** shared-dam pairs can be formed from the immediately recorded parents.
+- **No mother candidate was automatically inserted into the 5,878-horse baseline**; each requires a source-compatible ancestry and conflict audit. This 200-node sample is nonrandom and cannot estimate the nationwide mother missingness rate.
+
+Original run: https://github.com/zuizui0223/keiba/actions/runs/43586049844 .
+Permanent bounded result: [Wikimedia 200-QID parent audit](../evidence/japan-wikimedia-200-parent-qid-audit-20261114.json).
+
+This is measurable coverage improvement from a second *public metadata source*, but it is **not independent official pedigree validation** and not evidence of an inherited behavior effect.
+
 ## National external benchmark
 
 A 2024 published Japanese Thoroughbred study (doi:10.1294/jes.35.57) reported five-generation pedigree analysis of 346,744 Japanese-bred horses born from 1978, showing inbreeding increases partly linked to Sunday Silence and Northern Dancer lines. That published number is **not** a dataset retrieved or reanalyzed in this repository. It cannot be combined with the Wikipedia sample denominators; ancestry depth and selection differ.
