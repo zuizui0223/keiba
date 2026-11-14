@@ -9,7 +9,9 @@
     "upstream_code": "https://github.com/Sheep-Meadow-Road-Games/open-horse-data",
     "upstream_credit": "Sheep Meadow Road Games and Horse Racing Manager",
     "credit_url": "https://store.steampowered.com/app/2740170/Horse_Racing_Manager/",
-    "numeric_measure": "expected partial pedigree numerator A, based on direct unique Wikipedia parent-page links"
+    "numeric_measure": "expected partial pedigree numerator A, based on direct unique Wikipedia parent-page links",
+    "reproduced_second_action_url": "https://github.com/zuizui0223/keiba/actions/runs/43584355462",
+    "second_run_same_source_sha256": true
   },
   "subsets": {
     "japanese_language_horse_articles": {
@@ -60,6 +62,34 @@
         "0.001<=A<0.01": 800200,
         "0<A<0.001": 1028307
       }
+    },
+    "meisho_named_article_only": {
+      "title_prefix": "メイショウ",
+      "named_articles": 38,
+      "explicitly_japan_born_named_articles": 37,
+      "identified_sire_links": 32,
+      "identified_dam_links": 2,
+      "within_meisho_name_pairs_all": 703,
+      "within_meisho_name_pairs_nonzero_known_paths": 311,
+      "within_meisho_name_pairs_unresolved_paths": 392,
+      "named_horses_with_any_documented_path": 26,
+      "A_bins": {
+        "A>=0.5": 3,
+        "0.25<=A<0.5": 7,
+        "0.125<=A<0.25": 0,
+        "0.0625<=A<0.125": 84,
+        "0.03125<=A<0.0625": 0,
+        "0.01<=A<0.03125": 21,
+        "0.001<=A<0.01": 99,
+        "0<A<0.001": 97
+      },
+      "explicitly_japan_born_name_only": {
+        "named_articles": 37,
+        "pairs": 666,
+        "nonzero_known_paths": 286
+      },
+      "owner_id_not_verified_in_source": true,
+      "description": "Meisho is a name prefix, not a biological kin group"
     }
   },
   "data_quality": {
