@@ -109,7 +109,7 @@ def source_report(*, max_targets:int=1500,
     status=[]
     lane="wikidata_japan_origin_P495_Q17"
     try:
-        seeds=normalize(source_get(JAPANESE_ORIGIN.format(limit=max_targets)))
+        seeds=normalize(source_get(JAPANESE_ORIGIN.replace("{limit}",str(max_targets))))
     except (TimeoutError,urllib.error.URLError,urllib.error.HTTPError,
             ValueError,KeyError,TypeError,OSError) as ex:
         return {
@@ -121,7 +121,7 @@ def source_report(*, max_targets:int=1500,
     if not seeds:
         lane="ja_wikipedia_sitelink_not_confirmed_japan_only"
         try:
-            seeds=normalize(source_get(JAPANESE_ARTICLE.format(limit=max_targets)))
+            seeds=normalize(source_get(JAPANESE_ARTICLE.replace("{limit}",str(max_targets))))
         except (TimeoutError,urllib.error.URLError,urllib.error.HTTPError,
                 ValueError,KeyError,TypeError,OSError) as ex:
             return {"status":"HOLD_SECONDARY_SOURCE_REQUEST_FAILED",
