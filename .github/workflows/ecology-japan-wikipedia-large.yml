@@ -5,11 +5,15 @@ on:
       - analysis/ecology-pedigree-forward-20261114
     paths:
       - "scripts/ecology_japan_wikipedia_large.py"
+      - "scripts/ecology_japan_wikipedia_parent_ablation.py"
+      - "tests/test_ecology_japan_wikipedia_parent_ablation.py"
       - "tests/test_ecology_japan_wikipedia_large.py"
       - ".github/workflows/ecology-japan-wikipedia-large.yml"
   pull_request:
     paths:
       - "scripts/ecology_japan_wikipedia_large.py"
+      - "scripts/ecology_japan_wikipedia_parent_ablation.py"
+      - "tests/test_ecology_japan_wikipedia_parent_ablation.py"
       - "tests/test_ecology_japan_wikipedia_large.py"
       - ".github/workflows/ecology-japan-wikipedia-large.yml"
   workflow_dispatch:
@@ -28,7 +32,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Offline pedigree identity and full pairwise A test
-        run: python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_large.py" -v
+        run: |
+          python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_large.py" -v
+          python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_parent_ablation.py" -v
       - name: Obtain upstream licensed Japanese Wikipedia fetcher code
         shell: bash
         run: |
@@ -72,6 +78,18 @@ jobs:
           else
             echo 'HOLD_NO_VERIFIED_REAL_LARGE_JAPAN_INFOBOX_COHORT'
           fi
+      - name: Compare father-only and mother-only source relationships on identical real horse pairs
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_wikipedia_parent_ablation.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/japan-parent-source-ablation.json \
+              --expected-source-sha e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57 \
+              --max-pairs 20000000
+          else
+            echo 'HOLD_SOURCE_UNAVAILABLE_NO_PAIRED_MATERNAL_SENSITIVITY'
+          fi
       - name: Declare source and scope on all outcomes
         shell: bash
         run: |
@@ -90,5 +108,13 @@ jobs:
                   q=r[cohort]["all_pairs"]
                   assert q["status"].startswith("EXACT_ALL_") or q["status"].startswith("HOLD_")
               print("SUCCESS_SOURCE_CONDITIONAL_ACTUAL_HORSE_PEDIGREE_ONLY")
+              extra=Path("tmp/japan-parent-source-ablation.json")
+              if extra.exists():
+                  a=json.loads(extra.read_text(encoding="utf-8"))
+                  assert a["status"]=="REAL_JAPANESE_WIKIPEDIA_PARENTS_INFORMATION_SENSITIVITY_NOT_NATIONAL"
+                  assert a["source_sha256"]==r["input_sha256"]
+                  for sub in ("all_language_articles","japan_origin_infobox_articles","meisho_named_articles"):
+                      assert a["cohorts"][sub]["per_pair_genealogical_monotonicity_pass"]
+                  print("SUCCESS_MATERNAL_INFORMATION_INCREMENT_NOT_GENETIC_HERITABILITY")
           PY
       # NO source raw/CSV artifact upload; only aggregation in ephemeral CI logs.
