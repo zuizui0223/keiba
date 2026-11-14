@@ -1,0 +1,74 @@
+name: Japan real prefix and sire group replay
+on:
+  push:
+    branches: [analysis/japan-race-history-forward-20261114]
+    paths:
+      - '.github/workflows/japan-group-extension.yml'
+      - 'scripts/ecology_japan_group_extension.py'
+      - 'tests/test_ecology_japan_group_extension.py'
+      - 'docs/evidence/japan-group-primary-lock-20261114.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: japan-real-prefix-sire-extension
+  cancel-in-progress: false
+jobs:
+  fixed-model-subgroups:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install fixed numerical dependencies
+        run: pip install numpy==2.2.6 pandas==2.2.3
+      - name: Verify subgroup classification and fixed original model tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_japan_group_extension.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_archive_*.py' -v
+      - name: Retrieve source-locked public archive into private temporary workspace
+        run: |
+          mkdir -p private-input
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('private-input/source.zip'))"
+      - name: Replay original predictions and compare all fixed naming and father groups
+        run: |
+          python scripts/ecology_japan_group_extension.py \
+            --archive private-input/source.zip \
+            --primary-lock docs/evidence/japan-group-primary-lock-20261114.json \
+            --output tmp/japan-prefix-sire-actual-results.json \
+            --draws 399
+      - name: Verify complete reporting and print aggregate group results
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('tmp/japan-prefix-sire-actual-results.json').read_text(encoding='utf-8'))
+          assert x['status']=='REAL_SOURCE_REPLAY_SUBGROUP_EXTENSION_NO_MODEL_REFIT'
+          assert x['all_original_annual_and_pooled_scores_verified'] and not x['primary_refit']
+          assert x['source_quality']['analysis_horses']==90962
+          assert len(x['fixed_prefix_aliases'])==38
+          assert len(x['name_groups'])==40
+          assert len(x['training_size_selected_sire_families'])==20
+          assert sum(g['all']['rows'] for g in x['name_groups'].values())==524998
+          print('NAME_CLASSIFICATION_AUDIT',json.dumps(x['name_classification_audit'],ensure_ascii=False))
+          for name,r in x['name_groups'].items():
+              a=r['all'];print('PREFIX_RESULT',json.dumps({'name':name,**a,'positive_years_vs_neutral':r['positive_years_vs_neutral']},ensure_ascii=False))
+          for r in x['training_size_selected_sire_families']:
+              print('SIRE_RESULT',json.dumps({'sire':r['source_sire_label'],'pre2019_offspring':r['pre2019_distinct_offspring'],**r['all'],'positive_years_vs_neutral':r['positive_years_vs_neutral']},ensure_ascii=False))
+          print('SOURCE_SCOPE: retrospective 2019-2021 grouped diagnostics, not national census, genetics or betting returns; raw redistribution licence Unknown.')
+          PY
+      - name: Remove original archive before aggregate upload
+        if: always()
+        run: rm -rf private-input
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-prefix-sire-aggregate-only
+          path: tmp/japan-prefix-sire-actual-results.json
+          if-no-files-found: error
+          retention-days: 7

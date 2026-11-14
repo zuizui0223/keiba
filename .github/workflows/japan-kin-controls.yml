@@ -1,0 +1,62 @@
+name: Japan kin controls with strong baseline
+on:
+  push:
+    branches: [analysis/japan-race-history-forward-20261114]
+    paths:
+      - scripts/ecology_japan_kin_controls.py
+      - tests/test_ecology_japan_kin_controls.py
+      - .github/workflows/japan-kin-controls.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: japan-kin-controls-real-source
+  cancel-in-progress: false
+jobs:
+  strong-baseline-and-shuffled-parents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install fixed numerical dependencies
+        run: pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify new controls and original source guards
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_japan_kin_controls.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_archive_*.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_group_extension.py' -v
+      - name: Download source-locked archive into temporary private workspace
+        run: |
+          mkdir -p private-input
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('private-input/source.zip'))"
+      - name: Compare models on identical actual later-year races
+        run: python scripts/ecology_japan_kin_controls.py --archive private-input/source.zip --output tmp/japan-strong-kin-controls.json
+      - name: Assert target counts source digest and complete subgroup reporting
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('tmp/japan-strong-kin-controls.json'))
+          assert r['status']=='REAL_RETROSPECTIVE_STRONG_BASELINE_AND_THREE_SHUFFLED_PARENT_CONTROLS'
+          assert r['target_rows']==524998 and r['target_horses']==34676
+          assert r['original_annual_predictions_unchanged']
+          assert len(r['prefix_groups'])==40 and len(r['selected_sire_groups'])==20
+          assert not r['new_untouched_test_set'] and not r['raw_or_individual_outputs_exported']
+          assert len(r['parent_shuffle']['audit'])==3
+          print('Verified same target roster and all fixed groups')
+          PY
+      - name: Remove source before exporting aggregates
+        if: always()
+        run: rm -rf private-input
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-strong-kin-controls-aggregate-only
+          path: tmp/japan-strong-kin-controls.json
+          if-no-files-found: error
+          retention-days: 7

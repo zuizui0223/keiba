@@ -1,0 +1,128 @@
+{
+  "status": "REAL_RETROSPECTIVE_RANK_RESULTS_WITH_POSITIVE_AND_FAILED_BENCHMARKS",
+  "source": {
+    "publisher": "ayuser",
+    "url": "https://www.kaggle.com/datasets/ayuser/horse-racing-in-japan",
+    "archive_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "archive_digest_verified": true,
+    "declared_redistribution_license": "Unknown",
+    "raw_data_or_individual_scores_redistributed": false
+  },
+  "quality": {
+    "input_rows": 2170144,
+    "all_source_horses": 91524,
+    "all_source_races": 198411,
+    "source_date_min": "2010-01-01",
+    "source_date_max": "2021-12-31",
+    "rows_outside_flat_scope": 19144,
+    "rows_without_positive_integer_finish": 22524,
+    "incomplete_or_tied_races": 2855,
+    "valid_complete_races": 194026,
+    "analysis_rows": 2092836,
+    "analysis_horses": 90962,
+    "analysis_meisho_horses": 1271,
+    "horses_with_inconsistent_parent_pairs": 0,
+    "horses_with_known_sire": 90962,
+    "horses_with_known_dam": 90962
+  },
+  "direct_parent_structure": {
+    "source_consistent_horses": 90962,
+    "different_sires": 1392,
+    "different_dams": 24999,
+    "shared_sire_pairs": 24361993,
+    "shared_dam_pairs": 202597,
+    "same_both_parents_pairs": 13664,
+    "union_shared_parent_pairs": 24550926,
+    "all_horse_pairs_if_enumerated": 4136997241,
+    "full_multigeneration_A_not_computed": true,
+    "parent_ids_independently_studbook_verified": false
+  },
+  "test_cohort": {"rows": 524998, "horses": 34676, "races": 48341},
+  "test_years": [2019, 2020, 2021],
+  "outcome": "normalized classified finishing rank 0 best to 1 last",
+  "metric": "RMSE with equal weight per distinct horse; lower is better",
+  "groups": {
+    "all": {
+      "rows": 524998, "horses": 34676,
+      "midrank_RMSE": 0.3249187893150759,
+      "M0_RMSE": 0.33058306515946095,
+      "kin_RMSE": 0.3273908688960825,
+      "trainer_RMSE": 0.32672710884320505,
+      "trainer_kin_RMSE": 0.32558613792567287
+    },
+    "Meisho": {
+      "rows": 7897, "horses": 532,
+      "midrank_RMSE": 0.31870115575054825,
+      "M0_RMSE": 0.3323559419269898,
+      "kin_RMSE": 0.32719540897951366,
+      "trainer_kin_RMSE": 0.3268751757688607,
+      "kin_vs_midrank_95pct_sire_cluster": [-0.013479209422662272, -0.002515880803577957],
+      "kin_vs_midrank_95pct_day_cluster": [-0.012708858329965267, -0.004467776457698904]
+    },
+    "JRA": {
+      "rows": 133966, "horses": 20777,
+      "midrank_RMSE": 0.32209067299717087,
+      "M0_RMSE": 0.32781306042207753,
+      "kin_RMSE": 0.31560380380508835,
+      "trainer_kin_RMSE": 0.312478798851674,
+      "kin_vs_midrank_95pct_sire_cluster": [0.0038760386948967634, 0.009380098532075474],
+      "kin_vs_midrank_95pct_day_cluster": [0.005460455965999303, 0.00742372546606998]
+    },
+    "NAR": {
+      "rows": 391032, "horses": 23491,
+      "midrank_RMSE": 0.332971237895433,
+      "M0_RMSE": 0.33722280630004753,
+      "kin_RMSE": 0.33535690807430346,
+      "trainer_kin_RMSE": 0.33324568796450177,
+      "kin_vs_midrank_95pct_sire_cluster": [-0.003599076890796521, -0.0008533564855531665],
+      "kin_vs_midrank_95pct_day_cluster": [-0.003048477210222339, -0.0017492213288168188]
+    },
+    "first_recorded_start": {
+      "rows": 19773, "horses": 19773,
+      "midrank_RMSE": 0.3218480770100626,
+      "M0_RMSE": 0.3218480770100612,
+      "kin_RMSE": 0.3147767747141345,
+      "trainer_kin_RMSE": 0.3120632213832536,
+      "kin_vs_midrank_95pct_sire_cluster": [0.004934345903503168, 0.009744937353513802],
+      "kin_vs_midrank_95pct_day_cluster": [0.006124400875858682, 0.008043117732999464],
+      "official_debut_not_verified": true
+    },
+    "unseen_at_year_start": {
+      "rows": 89233, "horses": 19773,
+      "midrank_RMSE": 0.3246990328494921,
+      "M0_RMSE": 0.3246990328494854,
+      "kin_RMSE": 0.3193413282319903,
+      "trainer_kin_RMSE": 0.31700715614552405
+    }
+  },
+  "conditional_kin_increment_CI": {
+    "sire_family": {
+      "clusters": 706, "draws": 499,
+      "kin_vs_own_RMSE_gain_2_5_97_5": [0.002569009957908816, 0.0037236959000261165],
+      "kin_plus_trainer_vs_trainer_RMSE_gain_2_5_97_5": [0.0006630913154986234, 0.001584796959145332]
+    },
+    "race_day": {
+      "clusters": 1095, "draws": 499,
+      "kin_vs_own_RMSE_gain_2_5_97_5": [0.00289108660389433, 0.003471579543983752],
+      "kin_plus_trainer_vs_trainer_RMSE_gain_2_5_97_5": [0.0009029586321464722, 0.001371882335183572]
+    }
+  },
+  "provenance": {
+    "first_run": 43596866105,
+    "final_run": 43597721074,
+    "final_code_sha": "351abde0efa2ebc0344eeb4f535e70c1fa3fb688",
+    "final_artifact_id": 14115033543,
+    "final_artifact_sha256": "fb414bd70f4e28464d6be92ca1be7e3fbdf3397321e8a797b0b4687ece353b25",
+    "primary_numerical_scores_identical_across_three_runs": true,
+    "neutral_comparator_added_after_first_run_without_refitting": true
+  },
+  "limitations": [
+    "Secondary public archive, Unknown redistribution licence, not an authorized official census; only aggregated statistical results published.",
+    "Retrospective yearly time split; historic pedigree/trainer publication timestamps unverified.",
+    "Outcome is relative classified finishing rank, not early GPS timing or win probability.",
+    "Direct shared-parent past histories are not multigeneration pedigree A, genomic G or genetic causation.",
+    "Other race-selection, class, age, sex, rider, going and odds covariates are not comprehensively adjusted.",
+    "Single-way cluster bootstrap intervals are sensitivity summaries, not joint multiway causal confidence intervals.",
+    "The own-history baseline is weak: pooled and Meisho rank RMSE do not beat the unfitted midpoint. Do not report only the positive incremental comparison."
+  ]
+}
