@@ -1,0 +1,119 @@
+{
+  "status": "SOURCE_CONDITIONAL_REAL_MEISHO_NAME_GROUP_MATCHED_PEDIGREE_DIAGNOSTIC",
+  "source_sha256": "660a18d891c026390af6361fb463875cecef9f65cd421efa1b3d47cfe0fbd8c6",
+  "expected_sha_matches": null,
+  "historical_reference_source_sha": "e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57",
+  "matches_historical_reference_sha": false,
+  "source": "Japanese Wikipedia horse infoboxes CC BY-SA; selected article content",
+  "credit": "Sheep Meadow Road Games / Horse Racing Manager",
+  "credit_url": "https://store.steampowered.com/app/2740170/Horse_Racing_Manager/",
+  "random_seed": 20261114,
+  "random_control_groups": 999,
+  "selection_and_support": {
+    "total_source_articles": 5879,
+    "named_meisho_articles": 38,
+    "candidate_non_meisho_articles": 5841,
+    "matched_strata_count": 10,
+    "insufficient_strata": [],
+    "matching": "EXACT [birth_decase, infobox_country_Japan, known_sire_page, known_dam_page]",
+    "cohort_selected_by_name_NOT_ownership_or_registered_pedigree_family": true
+  },
+  "same_pair_count_all_models": true,
+  "results": {
+    "both_available_parents": {
+      "observed": {
+        "mean_partial_A": 0.013277136642225207,
+        "positive_known_path_pairs": 311,
+        "A_at_least_0_125_pairs": 10,
+        "A_at_least_0_25_pairs": 10,
+        "pairs": 703
+      },
+      "n_matched_random_sets": 999,
+      "mean_partial_A_matched_reference": {
+        "observed": 0.013277136642225207,
+        "random_set_mean": 0.011336999490428186,
+        "random_set_5pct": 0.006235957117265913,
+        "random_set_95pct": 0.018437807757685654,
+        "fraction_random_sets_at_least_observed": 0.24624624624624625,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      },
+      "positive_known_path_pairs_matched_reference": {
+        "observed": 311,
+        "random_set_mean": 376.74974974974975,
+        "random_set_5pct": 300,
+        "random_set_95pct": 465,
+        "fraction_random_sets_at_least_observed": 0.9079079079079079,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      },
+      "A_at_least_0_125_pairs_matched_reference": {
+        "observed": 10,
+        "random_set_mean": 22.766766766766768,
+        "random_set_5pct": 6,
+        "random_set_95pct": 47,
+        "fraction_random_sets_at_least_observed": 0.8828828828828829,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      },
+      "A_at_least_0_25_pairs_matched_reference": {
+        "observed": 10,
+        "random_set_mean": 5.985985985985986,
+        "random_set_5pct": 2,
+        "random_set_95pct": 12,
+        "fraction_random_sets_at_least_observed": 0.11511511511511512,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      }
+    },
+    "sire_only": {
+      "observed": {
+        "mean_partial_A": 0.011082699424342105,
+        "positive_known_path_pairs": 277,
+        "A_at_least_0_125_pairs": 7,
+        "A_at_least_0_25_pairs": 7,
+        "pairs": 703
+      },
+      "n_matched_random_sets": 999,
+      "mean_partial_A_matched_reference": {
+        "observed": 0.011082699424342105,
+        "random_set_mean": 0.009738306204071618,
+        "random_set_5pct": 0.0049635126105752134,
+        "random_set_95pct": 0.016687515280494312,
+        "fraction_random_sets_at_least_observed": 0.2852852852852853,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      },
+      "positive_known_path_pairs_matched_reference": {
+        "observed": 277,
+        "random_set_mean": 258.0900900900901,
+        "random_set_5pct": 182,
+        "random_set_95pct": 351,
+        "fraction_random_sets_at_least_observed": 0.35535535535535534,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      },
+      "A_at_least_0_125_pairs_matched_reference": {
+        "observed": 7,
+        "random_set_mean": 21.71271271271271,
+        "random_set_5pct": 6,
+        "random_set_95pct": 45,
+        "fraction_random_sets_at_least_observed": 0.934934934934935,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      },
+      "A_at_least_0_25_pairs_matched_reference": {
+        "observed": 7,
+        "random_set_mean": 5.907907907907908,
+        "random_set_5pct": 2,
+        "random_set_95pct": 12,
+        "fraction_random_sets_at_least_observed": 0.3483483483483483,
+        "descriptive_diagnostic_NOT_a_genetic_p_value": true
+      }
+    }
+  },
+  "interpretation_boundaries": [
+    "Do NOT call name prefix a family or infer owner identity from it.",
+    "Matched random sets are not independent horse pedigrees or race outcomes.",
+    "Exact birth decade and parent-link availability are matched but race, breeder, trainer and article selection are not.",
+    "Many sire IDs are ancestors from outside the 5,878 source articles; missing mothers remain unknown founders.",
+    "This is a DESCRIPTIVE Wikipedia coverage-conditioned name-group concentration test, NOT genetic causation, inherited pacing, significance or national prevalence."
+  ],
+  "analysis_seconds": 4.955,
+  "source_run_url": "https://github.com/zuizui0223/keiba/actions/runs/43588576130",
+  "freeze_note": "2026-11-14 new Wikipedia source version, differs from original fixed SHA of 5,878 articles",
+  "inference": "Coverage-matched descriptive article-level name-group screen, NOT heritability or hypothesis test of a genetic clan"
+}
