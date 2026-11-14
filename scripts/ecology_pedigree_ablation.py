@@ -30,10 +30,18 @@ GROUPS = (
 def load_metadata(path: Path) -> tuple[dict, dict]:
     rows = read_csv(path, OBS_COLS)
     cols = set(rows[0])
-    status = {
-        "trainer_id": "PRESENT_BUT_NOT_VERIFIED" if "trainer_id" in cols else "HOLD_ABSENT",
-        "breeder_id": "PRESENT_BUT_NOT_VERIFIED" if "breeder_id" in cols else "HOLD_ABSENT",
-    }
+    status = {}
+    for name in ("trainer_id", "breeder_id"):
+        if name not in cols:
+            status[name] = "HOLD_ABSENT"
+        else:
+            available = sum(bool(r.get(name)) for r in rows)
+            if available == 0:
+                status[name] = "HOLD_ALL_BLANK"
+            elif available < len(rows):
+                status[name] = "HOLD_PARTIAL_MISSING_VALUES"
+            else:
+                status[name] = "PRESENT_BUT_NOT_VERIFIED"
     return ({
         (r["horse_id"], r["race_id"]): {
             "trainer": r.get("trainer_id", "") or None,
@@ -141,10 +149,10 @@ def audit(observations_file: Path, pedigree_file: Path, *,
         base_rmse = metric(exposed, "base")
         alt_rmse = metric(exposed, group)
         status = "EXPLORATORY_DESCRIPTIVE_ONLY" if n_ids >= min_support else "HOLD_LOW_EXPOSURE"
-        if group == "kin_different_trainer" and column_status["trainer_id"] == "HOLD_ABSENT":
-            status = "HOLD_NO_TRAINER_ID"
-        if group == "kin_different_breeder" and column_status["breeder_id"] == "HOLD_ABSENT":
-            status = "HOLD_NO_BREEDER_ID"
+        if group == "kin_different_trainer" and column_status["trainer_id"].startswith("HOLD_"):
+            status = "HOLD_NO_COMPLETE_TRAINER_ID"
+        if group == "kin_different_breeder" and column_status["breeder_id"].startswith("HOLD_"):
+            status = "HOLD_NO_COMPLETE_BREEDER_ID"
         stats[group] = {
             "status": status,
             "exposed_scored_rows": len(exposed),
