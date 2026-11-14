@@ -162,4 +162,6 @@ or profitable wagering. Those are different estimands.
 
 | P6 | [Japan Meisho owner/name/kin comparison](JAPAN_MEISHO_DESIGN.md): verify a complete time-stamped Japanese race × stable horse ID × as-of owner panel and legally reconcile pedigree sources | **11 manually verified registry profiles only (actual pedigree links); race prediction HOLD**. Fit predeclared five-channel M0/name/owner/kin/owner+kin, test matched exact future rows and independent family/management overlap |
 
+| P7 | [National JRA+NAR exact pedigree A](JAPAN_NATIONAL_PEDIGREE_SCALING.md) using an authorized official registry export and a separate registered-horse cohort list | **Two small real QID/JBIS cohorts computed only**; full national source/access/coverage gate **HOLD**. Use per-horse F/sibling counts and selective pair queries, not a dense N×N dump |
+
 **Do not infer successful execution from items in this queue.**
