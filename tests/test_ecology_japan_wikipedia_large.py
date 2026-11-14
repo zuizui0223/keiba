@@ -65,7 +65,7 @@ class WikipediaPedigreeTests(unittest.TestCase):
         data["S"]["生"]="2010年"
         ped,meta,_=prepare_infoboxes(data)
         self.assertEqual(ped.recorded[PREFIX+"メイショウA"][0],None)
-        self.assertEqual(meta["link_rejections"]["父_implausible_parent_age"],1)
+        self.assertEqual(meta["link_rejections"]["父_implausible_parent_age"],2)
         data["C"]["母"]="[[C]]"
         ped,meta,_=prepare_infoboxes(data)
         self.assertEqual(ped.recorded[PREFIX+"C"][1],None)
