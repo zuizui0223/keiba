@@ -84,7 +84,8 @@ def summarize_observed_vs_shams(observed:dict,shams:list[dict]) -> dict:
 def analyze(infobox_json:Path, *,
             n_random:int=499,
             seed:int=20261114,
-            expected_sha:str|None=None) -> dict:
+            expected_sha:str|None=None,
+            reference_sha:str|None=None) -> dict:
     if n_random<10 or n_random>4999:
         raise ValueError("HOLD_PERMUTATION_COUNT_OUT_OF_BOUNDS")
     t0=time.monotonic()
@@ -152,7 +153,11 @@ def analyze(infobox_json:Path, *,
     return {
         "status":"SOURCE_CONDITIONAL_REAL_MEISHO_NAME_GROUP_MATCHED_PEDIGREE_DIAGNOSTIC",
         "source_sha256":digest,
-        "expected_sha_matches":expected_sha is None or digest==expected_sha,
+        "expected_sha_matches":(digest==expected_sha if expected_sha else None),
+        "historical_reference_source_sha":reference_sha,
+        "matches_historical_reference_sha":(
+            digest==reference_sha if reference_sha else None
+        ),
         "source":"Japanese Wikipedia horse infoboxes CC BY-SA; selected article content",
         "credit":"Sheep Meadow Road Games / Horse Racing Manager",
         "credit_url":"https://store.steampowered.com/app/2740170/Horse_Racing_Manager/",
@@ -179,9 +184,11 @@ def main() -> None:
     p.add_argument("--n-random",type=int,default=499)
     p.add_argument("--seed",type=int,default=20261114)
     p.add_argument("--expected-sha")
+    p.add_argument("--reference-sha")
     args=p.parse_args()
     result=analyze(args.infobox_json,n_random=args.n_random,seed=args.seed,
-                   expected_sha=args.expected_sha)
+                   expected_sha=args.expected_sha,
+                   reference_sha=args.reference_sha)
     args.summary.parent.mkdir(parents=True,exist_ok=True)
     args.summary.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(result,ensure_ascii=False,indent=2))
