@@ -81,8 +81,10 @@ class RelatednessAndForwardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             p1, _ = fictional_cohort(td)
             records = list(csv.DictReader(p1.open()))
-            records[1]["race_id"] = records[0]["race_id"]
-            records[1]["going"] = "Heavy"
+            other = next(r for r in records if r["horse_id"] != records[0]["horse_id"]
+                         and r["race_date"] == records[0]["race_date"])
+            other["race_id"] = records[0]["race_id"]
+            other["going"] = "Heavy"
             write_csv(p1, records, list(records[0]))
             with self.assertRaisesRegex(ValueError, "RACE_ID_CONTEXT_INCONSISTENT"):
                 observations(p1)
