@@ -42,6 +42,7 @@ for scientific `OBSERVED` versus `HOLD` in the saved artifact.
 | --- | --- | --- |
 | An original horse ID carries out-of-time predictive information *in the measured Cannon cohort* | **Supported only as R2 source-conditional association** | Independent prospective source-fixed cohort and complete measurement/selection audit |
 | Horse-ID repeatability is intrinsic, genetic, inherited temperament | **UNTESTED** | Validated repeated behavioral phenotype, pedigree/genomic or experimental design, training and rider confounding control |
+| Historical relatives' early-GPS pace improves the focal horse's future pace prediction | **SIMULATION-ONLY METHODS / EMPIRICAL HOLD** | Rights-cleared, ID-verified sire/dam linkage to original HORSES IDs, complete dated pedigree as-of data, adequate within-context kin exposure, independent time-forward M1 vs M0 and stable/trainer negative controls ([protocol](PEDIGREE_FORWARD.md)) |
 | A jockey replacement *causes* stable or altered pacing | **UNTESTED** | Actual independently verified final jockey, same-horse repeated switches, role/horse selection adjustment |
 | Individual response slopes to Good/Soft/Heavy (H1) | **HOLD** | Repeated same marker/distance/Class/horse at multiple ground levels |
 | Rivals' identities/strategies *cause* focal pacing changes (H2) | **HOLD** | Verified actual starters, pre-race opponent exposure, absolute focal outcome, missingness framework |
