@@ -95,6 +95,10 @@ Strong competing explanations include: shared breeder, stable, trainer, owner or
 Keep all market and betting odds evaluation in the separate docs/betting track unless pre-race odds and verified outcomes are available in a future independently frozen prediction design.
 
 
+## Follow-up: kinship-vs-management falsification and public-source audit
+
+[**Pedigree falsification results**](PEDIGREE_FALSIFICATION.md) now record the 3-seed *fabricated* stable-only counterexample, paternal versus maternal half-sib and full-sib prediction channels, and trainer-/breeder-exclusion controls. The published Dryad source API returned dataset metadata and CC0 declaration, but raw files stayed inaccessible (401/403): **no empirical horse kin gains were measured**.
+
 ## Independent empirical candidate — NOT downloaded or scored
 
 Wilson (2022) deposited an anonymized real Thoroughbred dataset for a parental-age/speed paper at **Dryad DOI https://doi.org/10.5061/dryad.qbzkh18m0**. The companion publication (https://doi.org/10.1098/rsos.220691) describes **906,027 finishing-time records from 101,257 horses**, with known sire and dam identities. This is promising for an **independent pedigree × future full-race speed** verification. It cannot validate RQ **first-GPS early pacing** (a different outcome). At the time of this audit, the dataset landing page and metadata were available but the actual 15.89 MB parental_ageing_data.zip could not be retrieved in the current runtime (403 on file-stream download). Therefore no schema preflight, identity linkage, as-of ordering, reanalysis or novel numerical effects are claimed. Source-version, license, observation dates and phenotype columns must be validated after authorized acquisition. Do not present publication sample sizes as samples processed by this repository.
