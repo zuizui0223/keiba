@@ -138,6 +138,7 @@ def source_report(*, max_targets:int=1500,
     }
     requests=0
     completed=0
+    ancestor_error=None
     for generation in range(ancestor_generations):
         if not pending:
             completed+=1
@@ -156,12 +157,15 @@ def source_report(*, max_targets:int=1500,
                 got=normalize(source_get(ancestor_query(batch)))
             except (TimeoutError,urllib.error.URLError,urllib.error.HTTPError,
                     ValueError,KeyError,TypeError,OSError) as ex:
-                return {"status":"HOLD_WIKIDATA_ANCESTOR_FETCH_FAILED",
-                        "retrieved_seed_horses":len(seed_ids),
-                        "retrieved_ancestor_rows":len(all_rows)-len(seed_ids),
-                        "requests_completed":requests,
-                        "reason_type":type(ex).__name__,
-                        "coverage_not_exhaustive":True}
+                # Keep the already verified direct parent relationships in
+                # the real subset; do not upgrade missing ancestors to zero.
+                ancestor_error={
+                    "status":"HOLD_WIKIDATA_ANCESTOR_FETCH_FAILED",
+                    "reason_type":type(ex).__name__,
+                    "http_status_code":ex.code if isinstance(ex,urllib.error.HTTPError) else None,
+                }
+                pending.update(batch_ids[offset:])
+                break
             requests+=1
             for qid in batch:
                 row=got.get(qid,{"horse_id":qid,"sire_id":"","dam_id":""})
@@ -189,7 +193,9 @@ def source_report(*, max_targets:int=1500,
         documented+=v>0
         high+=v>=0.125
     return {
-        "status":"REAL_CC0_WIKIDATA_SECONDARY_PEDIGREE_SUBSET_NOT_JAPAN_COMPLETE",
+        "status":("REAL_CC0_WIKIDATA_SECONDARY_PEDIGREE_SUBSET_ANCESTOR_HOLD"
+                  if ancestor_error else
+                  "REAL_CC0_WIKIDATA_SECONDARY_PEDIGREE_SUBSET_NOT_JAPAN_COMPLETE"),
         "source":"https://query.wikidata.org/sparql",
         "source_license":"CC0",
         "extraction_date_utc":date.today().isoformat(),
@@ -199,6 +205,7 @@ def source_report(*, max_targets:int=1500,
         "no_coverage_fraction_claim":True,
         "ancestor_generations_requested":ancestor_generations,
         "ancestor_batches_executed":requests,
+        "ancestor_fetch_error":ancestor_error,
         "ancestor_rows_observed":len(all_rows)-len(seed_ids),
         "ancestry_complete_to_requested_depth":not bool(pending),
         "unexpanded_ancestor_ids":len(pending),
