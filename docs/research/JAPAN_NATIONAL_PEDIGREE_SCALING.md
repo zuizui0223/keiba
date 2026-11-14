@@ -1,6 +1,6 @@
 # Japan JRA + NAR national pedigree relatedness: all-horse computation gate
 
-**Update: 2026-11-14. STATUS: ONLY TWO SMALL REAL SUBSETS COMPUTED. NOT ALL JAPANESE HORSES.**
+**Update: 2026-11-14. REAL large source-conditional Wikipedia pedigree subset computed (5,878 articles; all 17,272,503 unordered pairs). STILL NOT the complete JRA+NAR racehorse population.**
 
 ## Population and source rights
 
@@ -34,6 +34,37 @@ A bounded original WDQS (P31/P279* Horse, P495 Japan, optional P22/P25) query **
 - Actual source check: https://github.com/zuizui0223/keiba/actions/runs/43582522592 (GitHub Actions aggregate logs). The attempted query is bounded and does not bulk crawl JBIS.
 
 These are **numbers of partial documented genealogical relationships**, not a genetic association with speed or race performance.
+
+## C. Large publicly licensed Japanese Wikipedia horse article sample — newly measured
+
+A separate GitHub Actions run directly downloaded the CC BY-SA Japanese Wikipedia {{競走馬}} article infoboxes (using the license-attributed third-party fetcher) and computed **all pairwise exact partial A values for the observed article cohort**, not a random-pair extrapolation. **No JRA/JBIS/NAR bulk profile data were harvested.**
+
+**Fixed original-source SHA256**: e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57.
+**Original successful computation**: https://github.com/zuizui0223/keiba/actions/runs/43583807454 .
+**Reconciled aggregate evidence**: [docs/evidence/japan-wikipedia-actual-kinship-20261114.json](../evidence/japan-wikipedia-actual-kinship-20261114.json).
+
+| Metric | All Japanese-language horse articles | Subset with infobox country explicitly Japan |
+| --- | ---: | ---: |
+| Real source article identities | **5,878** | **3,411** |
+| All distinct i<j A pairs computed | **17,272,503** | **5,815,755** |
+| Nonzero A in the truncated documented pedigree | **5,327,594** | **2,555,223** |
+| A>=0.125 (including more strongly related pairs) | **201,794** | **163,107** |
+| Documented father page link in the target | **4,304** | **2,822** |
+| Documented mother page link in the target | **642** | **472** |
+| Full-sib pairs with both parent page IDs | **86** | **68** |
+| Maternal half-sibs with fully distinguishable father pages | **165** | **131** |
+
+Real source association is verified here; biological whole-pedigree coefficients and national coverage are **NOT** verified. The 5,878 pages include horses from outside Japan, and the 3,411 with Japan in the infobox country field exclude imported horses that raced in Japan. Both are article-selected populations, so reporting either as "all Japanese racehorses" would be false. Parents were linked only by exact unambiguous Wikipedia article-title hyperlinks; absent links were not guessed from labels. Zero A is **no path in the recorded pedigree**, not genetic unrelatedness.
+
+**Major quality limitation:** 73.2% had an unambiguous father link, but only 10.9% had an unambiguous mother link in the all-article source. Strong paternal coverage and missing mothers make the observed A distribution and any derived inbreeding F highly sensitive to source completeness. The counted positive pairs can include extremely weak common-ancestor paths, so A>0 is not the same as being close kin. The predeclared partial A bins are saved in the evidence file.
+
+**Meisho target:** 38 racehorse article titles start with メイショウ; the first version's all-pair pass counted 311 positive documented pedigree paths among within-prefix pairs and 82,634 between a Meisho-prefix article and another named horse article, but these are **Wikipedia-selected** naming groups, not the population of all Meisho-owned or named horses. No owner/management-causal or racing-performance effect is established.
+
+**Attribution:** Uses the external extractor from [Sheep Meadow Road Games open-horse-data](https://github.com/Sheep-Meadow-Road-Games/open-horse-data). As required by its LICENSE, credit **Sheep Meadow Road Games / Horse Racing Manager**, https://store.steampowered.com/app/2740170/Horse_Racing_Manager/ . Japanese Wikipedia source: CC BY-SA; do not relicense or mirror its raw records without complying with those terms. Only non-personal aggregate counts and source SHA are committed here.
+
+### Why the licensed official registry is still needed
+
+An official complete source can resolve dam lines, foreign ancestors, non-notable runners, exported Japanese horses, ownership histories and same-name ambiguity with genuine stable identifiers. The official TARGET CSV data dictionary has **血統登録番号**, **繁殖登録番号**, **父繁殖登録番号** and **母繁殖登録番号**, which are **not interchangeable identifier namespaces**. The new private adapter \`scripts/ecology_jravan_blood_breeding_id_bridge.py\` performs typed crosswalks and explicitly refuses name-only/ID-collision joins; no licensed bulk export is present in this PR.
 
 ## Full-registry implementation
 
