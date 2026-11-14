@@ -73,7 +73,7 @@ class WikiWikidataParentTests(unittest.TestCase):
         def fake_get(endpoint,params):
             if params["action"]=="query":
                 return {"query":{"pages":{
-                    "1":{"title":"メイショウ甲","pageprops":{"wikibase_item":"Q101"}}
+                    "1":{"title":params["titles"].split("|")[0],"pageprops":{"wikibase_item":"Q101"}}
                 }}}
             raise HTTPError("https://www.wikidata.org/w/api.php",429,"slow",{},None)
         with patch("ecology_japan_wikimedia_parent_crosscheck.json_get",side_effect=fake_get):
