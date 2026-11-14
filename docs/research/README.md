@@ -72,6 +72,16 @@ positive pooled horse-ID ICCs use different first-section marker
 distributions and have **no jointly estimable identical-marker
 ICC subgroup**. [Source audit](../ecology-rq-eagle-farm-real-icc-cross-site-audit.md).
 
+## New, not-yet-empirical extension: pedigree-based future prediction
+
+[**Pedigree forward protocol and offline scorer**](PEDIGREE_FORWARD.md) tests
+whether relatives' earlier absolute first-GPS timing provides incremental
+future predictive information beyond a horse's own history. The as-of
+pedigree coefficients, cold-start split and synthetic regression tests
+are implemented; **no validated original HORSES-ID × sire/dam crosswalk exists**
+for the current real cohort, so its kinship predictive effect remains
+**HOLD / UNTESTED**. This is not heritability or a horse-racing odds model.
+
 ## Practical directory map (preserves working imports)
 
 | Source family | Location |
