@@ -66,6 +66,17 @@ class MeishoMatchedNullTests(unittest.TestCase):
                          "HOLD_SOURCE_SHA_CHANGED_CANNOT_COMPARE_FIXED_BASELINE")
         self.assertFalse(report["matched_analysis_performed"])
 
+    def test_drifted_reference_is_reported_but_new_source_can_be_evaluated(self):
+        with tempfile.TemporaryDirectory() as d:
+            src=Path(d)/"input.json"
+            src.write_text(json.dumps(make_fixture(),ensure_ascii=False))
+            report=analyze(src,n_random=19,reference_sha="0"*64)
+        self.assertEqual(report["status"],
+                         "SOURCE_CONDITIONAL_REAL_MEISHO_NAME_GROUP_MATCHED_PEDIGREE_DIAGNOSTIC")
+        self.assertFalse(report["matches_historical_reference_sha"])
+        self.assertIsNone(report["expected_sha_matches"])
+        self.assertEqual(report["random_control_groups"],19)
+
     def test_insufficient_comparable_control_horses(self):
         with tempfile.TemporaryDirectory() as d:
             src=Path(d)/"input.json"
