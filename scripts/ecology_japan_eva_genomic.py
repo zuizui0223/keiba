@@ -212,12 +212,19 @@ def analyze(vcf: Path, assembly: Path, output: Path, *, expected_md5: str | None
     with (output/'markers_by_autosome.csv').open('w',newline='',encoding='utf-8') as f:
         w=csv.writer(f);w.writerow(['autosome','autosomal_biallelic_unique_before_QC','selected_maf01','selected_maf05','selected_spaced50kb'])
         for c in range(1,32):w.writerow([c,int(np.sum(chrom==c)),int(np.sum(chr_selected==c)),int(np.sum((chr_selected==c)&higher)),int(np.sum((chr_selected==c)&spaced))])
-    summary={'status':'REAL_PUBLIC_JAPANESE_THOROUGHBRED_GENOMIC_RELATIONSHIPS_COMPUTED',
-        'study':'PRJEB32686','analysis_accession':'ERZ936110','publication_doi':'10.1371/journal.pone.0218407',
+    verified=(digest=='f8ca6056b897fe2d3fc0e9cabdf866794933034a57ede2948428451f4826fd9e'
+              and file_hash(assembly)=='376246dc4dac2bd8873594f5d40a1109781da550cdbfa794779d5bfd0a9eaa53'
+              and len(samples)==370)
+    summary={'status':('REAL_PUBLIC_JAPANESE_THOROUGHBRED_GENOMIC_RELATIONSHIPS_COMPUTED'
+                       if verified else 'UNVERIFIED_INPUT_GENOMIC_RELATIONSHIPS_COMPUTED'),
+        'original_study_source_identity_verified':verified,
+        'study':'PRJEB32686' if verified else None,
+        'analysis_accession':'ERZ936110' if verified else None,
+        'publication_doi':'10.1371/journal.pone.0218407' if verified else None,
         'source_file':vcf.name,'source_sha256':digest,'source_md5':md5,'matches_official_md5':md5==expected_md5 if expected_md5 else None,
         'assembly':'GCA_000002305.1 EquCab2.0','assembly_report_sha256':file_hash(assembly),
         'raw_file_audit':audit,'sample_QC_threshold':.98,'site_call_rate_threshold':.99,'primary_MAF':.01,
-        'sample_count_before_QC':len(samples),'sample_count_retained':len(ids),'sample_ids_are_animal_lab_ids_not_registered_horse_names':True,
+        'sample_count_before_QC':len(samples),'sample_count_retained':len(ids),'sample_ids_are_animal_lab_ids_not_registered_horse_names':verified,
         'sample_call_rate_quantiles':quantiles(qc['sample_call_rates']),
         'variants_retained_by_panel':variant_counts,'selected_genotype_cells':int(selected.size),
         'selected_observed_genotype_cells':int(np.count_nonzero(selected>=0)),
@@ -227,7 +234,8 @@ def analyze(vcf: Path, assembly: Path, output: Path, *, expected_md5: str | None
         'sensitivity':{name:matrix_comparison(g,matrices[name]) for name in ('maf05','spaced_50kb')},
         'odd_even_autosome_stability':matrix_comparison(matrices['odd_autosomes'],matrices['even_autosomes']),
         'normalization':'G=ZZ^T/sum(2p(1-p)); p from retained cohort, missing dosages mean-imputed after QC',
-        'limitations':['Selected 370-horse research sample, not all JRA/NAR horses.',
+        'limitations':[('Selected 370-horse research sample, not all JRA/NAR horses.' if verified
+                        else 'Input source identity is unverified; synthetic tests and other datasets are not original Japanese study observations.'),
             'Sample-relative genomic G is not absolute pedigree A or a coefficient of identity by descent.',
             'Negative G means below the sampled allele-frequency baseline; not absence of common ancestry.',
             'G diagonal minus 1 is not reported as pedigree/ROH inbreeding.',
