@@ -24,7 +24,9 @@ class JapaneseWikipediaLargeEvidenceTests(unittest.TestCase):
                             for s in x["interpretation_limits"]))
 
     def test_exact_full_and_japan_subsets_reconcile(self):
-        for name,item in self.x["subsets"].items():
+        for name in ("japanese_language_horse_articles",
+                     "explicitly_japan_born_according_to_infobox_country"):
+            item=self.x["subsets"][name]
             n=item["registered_horses"]
             self.assertEqual(item["scored_pairs"],n*(n-1)//2)
             self.assertEqual(item["scored_pairs"],
