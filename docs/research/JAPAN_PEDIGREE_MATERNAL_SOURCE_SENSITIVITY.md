@@ -15,6 +15,26 @@ Script: scripts/ecology_japan_wikipedia_parent_ablation.py .
 
 From the SAME original input and SAME actual horse identities, compute pairwise partial numerator A on three graphs: (1) all directly documented parents, (2) sire-page links only, (3) dam-page links only. Report how many positives are lost when documented maternal edges are removed, positive A changes and A-threshold crossings, plus birth-decade missingness. Compare three fixed cohorts: 5,878 Japanese-language articles, 3,411 explicitly Japan-born article entries, and the 38 Meisho-name entries. A full graph must never have less known-path A than its sire-only or dam-only deletion. This is an information-ablation exercise — it does **NOT** identify a paternal or maternal biological variance component, genetic selection, or inherited pacing.
 
+## Observed paired source-ablation results (original source, same SHA)
+
+Real execution: https://github.com/zuizui0223/keiba/actions/runs/43585740000 .
+Frozen aggregate source: [maternal-ablation evidence](../evidence/japan-wikipedia-maternal-ablation-20261114.json).
+Input SHA256 matches the original 5,878-article run exactly; all three counterfactual parent-link graphs score the **same unordered pairs**.
+
+| Real matched cohort | Both recorded parent types: known-path A>0 | Sire links only: known-path A>0 | Dam links only | Known paths lost when all recorded mothers removed | Pairs whose A increased after adding mothers |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| All 5,878 horse infoboxes | 5,327,594 | 3,277,960 | 1,186 | **2,049,634** | **4,912,213** |
+| 3,411 infoboxes explicitly Japan-born | 2,555,223 | 1,675,440 | 721 | **879,783** | 2,358,532 |
+| 38 named Meisho infoboxes | 311 | 277 | 3 | **34** | 268 |
+
+For the full article cohort, only 642 direct mother links are known (10.9% of articles), yet deleting those documented links removes **38.5% of nonzero known paths** and reduces computed A in **4.91 million** pairs. The observed connections are highly nonlocal: one mother link can connect members of large existing sire-line networks. Therefore, a superficially small missing-parent field can substantially change the genealogy's inferred connectedness.
+
+At the more stringent **partial A >= 0.125** threshold, documented counts are 201,794 with both available parent types versus 181,259 with sire links only — **20,535 pairs** would cross the threshold only with the recorded maternal edges. Within the 38 Meisho-name sample, the corresponding threshold counts are **10 versus 7**. These are information-recovery statistics, **not biological maternal effects or genome variance components**.
+
+Mean source-conditional partial A over all 17,272,503 pairs was 0.004471 with both available parents versus 0.003307 with sire only; these means have substantial article ascertainment and parent-coverage bias and must never be interpreted as population kinship.
+
+Modern-source documentation also varies: for 1990s article births, linked sire/dam coverage was 766/928 versus 123/928; for 2010s 962/1,251 versus 141/1,251; for 2020s 189/422 versus 33/422. **This is article metadata completeness by decade, not biological breeding change or an unbiased time trend.**
+
 ## Secondary-parent ID coverage check
 
 Script: scripts/ecology_japan_wikimedia_parent_crosscheck.py .
