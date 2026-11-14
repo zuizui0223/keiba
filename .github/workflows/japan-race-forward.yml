@@ -6,32 +6,31 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: japan-real-archive-forward
+  cancel-in-progress: false
 jobs:
   race-forward:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
+    env:
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Examine nonidentifying original value formats
-        run: |
-          python - <<'PY'
-          import csv,io,json,urllib.request,zipfile,tempfile,pathlib
-          from collections import Counter
-          u='https://www.kaggle.com/api/v1/datasets/download/ayuser/horse-racing-in-japan'
-          with tempfile.TemporaryDirectory() as td:
-              p=pathlib.Path(td)/'source.zip'
-              urllib.request.urlretrieve(u,p)
-              with zipfile.ZipFile(p) as z,z.open('2010-2021.csv') as b:
-                  r=csv.DictReader(io.TextIOWrapper(b,encoding='utf-8-sig'))
-                  fields=['date','racecourse','race_number','track','distance','place','age','sex','going','finish_time']
-                  freq={k:Counter() for k in fields}; ids=Counter(); total=0
-                  for row in r:
-                      total+=1
-                      for k in fields:freq[k][row[k]]+=1
-                      for k in ['horse_id','sire_id','dam_id','trainer_id']:
-                          v=row[k];ids[k+':'+str(len(v))+':'+str(v.isdigit())]+=1
-                  print(json.dumps({'rows':total,'field_examples':{k:v.most_common(12) for k,v in freq.items()},'id_formats':dict(ids)},ensure_ascii=False,indent=2))
-          PY
+      - name: Install numerical dependencies
+        run: pip install numpy==2.2.6 pandas==2.2.3
+      - name: Verify chronological leakage and source guards
+        run: python -m unittest discover -s tests -p 'test_ecology_japan_archive_forward.py' -v
+      - name: Score original 2010-2021 archive with 2019-2021 held-out years
+        run: python scripts/ecology_japan_archive_forward.py --summary tmp/japan-archive-forward-summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-archive-forward-aggregate-only
+          path: tmp/japan-archive-forward-summary.json
+          if-no-files-found: error
+          retention-days: 7
+      # Never upload or log raw races, names, individual scores or pedigree rows.
