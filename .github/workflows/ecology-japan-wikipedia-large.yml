@@ -1,0 +1,94 @@
+name: "Japan racehorse Wikipedia CC-BY-SA large pedigree A analysis"
+on:
+  push:
+    branches:
+      - analysis/ecology-pedigree-forward-20261114
+    paths:
+      - "scripts/ecology_japan_wikipedia_large.py"
+      - "tests/test_ecology_japan_wikipedia_large.py"
+      - ".github/workflows/ecology-japan-wikipedia-large.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_japan_wikipedia_large.py"
+      - "tests/test_ecology_japan_wikipedia_large.py"
+      - ".github/workflows/ecology-japan-wikipedia-large.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wikipedia-real-article-pedigree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline pedigree identity and full pairwise A test
+        run: python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_large.py" -v
+      - name: Obtain upstream licensed Japanese Wikipedia fetcher code
+        shell: bash
+        run: |
+          git clone --depth=1 https://github.com/Sheep-Meadow-Road-Games/open-horse-data.git tmp/upstream
+          git -C tmp/upstream rev-parse HEAD > tmp/upstream-source-revision.txt
+          echo "CREDIT: Sheep Meadow Road Games / Horse Racing Manager"
+          echo "https://store.steampowered.com/app/2740170/Horse_Racing_Manager/"
+          echo "SOURCE: Japanese Wikipedia CC BY-SA; upstream MIT with additional attribution requirement"
+      - name: Download only Wikimedia licensed {{競走馬}} infoboxes, not the restricted archives
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          from datetime import date
+          sys.path.insert(0, "tmp/upstream")
+          import fetch_ja_wikipedia as up
+          try:
+              titles=up.list_titles()
+              if len(titles)<100:
+                  raise ValueError("HOLD_FEWER_THAN_100_TEMPLATE_RACEHORSE_ARTICLES")
+              boxes=up.fetch_infoboxes(titles)
+              if len(boxes)<100:
+                  raise ValueError("HOLD_TOO_FEW_PARSED_INFOBOXES")
+              Path("tmp/ja_wikipedia.json").write_text(
+                  json.dumps(boxes, ensure_ascii=False), encoding="utf-8"
+              )
+              print(json.dumps({"status":"SOURCE_AVAILABLE_FOR_LARGE_PEDIGREE","listed_titles":len(titles),"parsed_infoboxes":len(boxes)}))
+          except Exception as e:
+              print(json.dumps({"status":"HOLD_EXTERNAL_WIKIPEDIA_SOURCE_FETCH","error_class":type(e).__name__}))
+          PY
+      - name: Score all pairwise partial pedigree A among licensed, actually fetched articles
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_wikipedia_large.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/japan-large-kinship-source-report.json \
+              --max-pairs 20000000
+          else
+            echo 'HOLD_NO_VERIFIED_REAL_LARGE_JAPAN_INFOBOX_COHORT'
+          fi
+      - name: Declare source and scope on all outcomes
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("tmp/japan-large-kinship-source-report.json")
+          if not p.exists():
+              print("HOLD_LARGE_DATA_SOURCE_UNAVAILABLE_NOT_AN_EMPTY_PEDIGREE")
+          else:
+              r=json.loads(p.read_text(encoding="utf-8"))
+              assert r["status"]=="REAL_JA_WIKIPEDIA_INFOBOXES_ANALYZED_NOT_ALL_JAPANESE_RACEHORSES"
+              assert r["not_jra_or_nar_population"]
+              assert r["unknown_parent_article_is_assumed_unrelated_FOUNDER_for_partial_A_only"]
+              for cohort in ("all_japanese_language_articles","explicit_japan_country_articles"):
+                  q=r[cohort]["all_pairs"]
+                  assert q["status"].startswith("EXACT_ALL_") or q["status"].startswith("HOLD_")
+              print("SUCCESS_SOURCE_CONDITIONAL_ACTUAL_HORSE_PEDIGREE_ONLY")
+          PY
+      # NO source raw/CSV artifact upload; only aggregation in ephemeral CI logs.
