@@ -166,4 +166,6 @@ or profitable wagering. Those are different estimands.
 
 | P8 | [Maternal source sensitivity and Wikidata QID audit](JAPAN_PEDIGREE_MATERNAL_SOURCE_SENSITIVITY.md): quantify missing maternal links on identical known horse pairs and screen exact page-to-QID supplementary parent claims | **Real same-source paired ablation completed** (5,878 Wiki articles; 2,049,634 lost known A paths when mother links removed). QID pilot is bounded and secondary; neither is nationwide genetic heritability |
 
+| P9 | [Meisho matched-coverage bloodline comparison](JAPAN_MEISHO_MATCHED_CONTROLS.md): verify name group versus exact decade/country/sire/dam-documentation-matched control groups and stress source drift | **DONE on REAL selected articles**, 38 Meisho-name articles vs 999 source-control sets; mean A 0.01328 vs 0.01134, **NOT a genetic family/heritability result**, national owner histories and official pedigrees still HOLD |
+
 **Do not infer successful execution from items in this queue.**
