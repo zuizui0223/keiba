@@ -107,6 +107,21 @@ deeper ancestors HTTP 429). **Neither is the complete JRA+NAR register.**
 No complete national pedigree export was obtained; a countrywide genetic
 matrix, inbreeding distribution or speed prediction must NOT be claimed.
 
+## Large real public-data pedigree benchmark (2026-11-14)
+
+The source-conditional [Japan national scaling report](JAPAN_NATIONAL_PEDIGREE_SCALING.md)
+now also includes an **actual large-source subset**: 5,878 Japanese-language
+Wikipedia racehorse article IDs with **17,272,503 exact partial-pedigree A
+pair calculations** (5,327,594 with a documented positive ancestral path).
+Among 3,411 entries explicitly labelled Japanese-born, 5,815,755 pairs
+were scored (2,555,223 positive documented paths). The mother link is
+available for only 642/5,878 article IDs, so a positive A does not
+establish close kin, and missing paths cannot be treated as non-kin.
+The 38 メイショウ-prefixed Wikipedia articles form **703 within-prefix
+pairs (311 with documented paths)**, not a Japanese ownership or breeding
+census. [Frozen source SHA, both reruns, denominators and bins](../evidence/japan-wikipedia-actual-kinship-20261114.json).
+**JRA+NAR population-complete A and prediction effects remain HOLD.**
+
 ## Practical directory map (preserves working imports)
 
 | Source family | Location |
