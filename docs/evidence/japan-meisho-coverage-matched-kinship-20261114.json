@@ -115,5 +115,14 @@
   "analysis_seconds": 4.955,
   "source_run_url": "https://github.com/zuizui0223/keiba/actions/runs/43588576130",
   "freeze_note": "2026-11-14 new Wikipedia source version, differs from original fixed SHA of 5,878 articles",
-  "inference": "Coverage-matched descriptive article-level name-group screen, NOT heritability or hypothesis test of a genetic clan"
+  "inference": "Coverage-matched descriptive article-level name-group screen, NOT heritability or hypothesis test of a genetic clan",
+  "reproduction": {
+    "same_source_sha256_on_independent_actions": true,
+    "confirmed_runs": [
+      "https://github.com/zuizui0223/keiba/actions/runs/43588576130",
+      "https://github.com/zuizui0223/keiba/actions/runs/43588570869",
+      "https://github.com/zuizui0223/keiba/actions/runs/43588558500"
+    ],
+    "note": "Reproduction uses the identical deterministic random seed and reused source version; it is computational reproducibility, not biological replication."
+  }
 }
