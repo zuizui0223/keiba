@@ -44,7 +44,11 @@ def evaluate(archive,primary):
         if check['rows']!=report['groups']['all']['rows']:raise ValueError('PRIMARY_CASES_CHANGED')
         for m in MODEL_NAMES:
             if abs(check['models'][m]['equal_horse_RMSE']-report['groups']['all']['models'][m]['equal_horse_RMSE'])>1e-10:raise ValueError('PRIMARY_SCORES_CHANGED')
-        annual.append({'year':year,'midrank':midrank_score(f.y,f.horse),'unchanged_primary_RMSE':{m:check['models'][m]['equal_horse_RMSE'] for m in MODEL_NAMES}})
+        annual_groups={}
+        for name,mask in {'JRA':f.circuit.eq('JRA'),'NAR':f.circuit.eq('NAR'),'Meisho':f.meisho,'first_recorded_start':f.cold&f.first_recorded}.items():
+            fg=f[mask];pg=p[mask.to_numpy()];sc=score_group(fg,pg)
+            annual_groups[name]={'rows':len(fg),'horses':int(fg.horse.nunique()),'midrank':midrank_score(fg.y,fg.horse),'models':sc['models']}
+        annual.append({'year':year,'midrank':midrank_score(f.y,f.horse),'unchanged_primary_RMSE':{m:check['models'][m]['equal_horse_RMSE'] for m in MODEL_NAMES},'predeclared_groups':annual_groups})
         all_f.append(f);all_p.append(p)
     f=pd.concat(all_f,ignore_index=True);p=np.vstack(all_p)
     masks={'all':np.ones(len(f),bool),'Meisho':f.meisho.to_numpy(),'JRA':f.circuit.eq('JRA').to_numpy(),'NAR':f.circuit.eq('NAR').to_numpy(),'first_recorded_start':(f.cold&f.first_recorded).to_numpy(),'unseen_at_year_start':f.cold.to_numpy()}
@@ -58,9 +62,16 @@ def evaluate(archive,primary):
         ci[m]={}
         for name,c in [('sire_family',f.sire_id.astype(str)),('race_day',f.day.astype(str))]:
             ci[m][name]=cluster_comparison(f.y,p[:,MODEL_NAMES.index(m)],f.horse,c)
+    group_ci={}
+    for name in ['first_recorded_start','JRA','NAR','Meisho']:
+        mask=masks[name];fg=f.loc[mask];group_ci[name]={}
+        for m in ['M_kin','M_trainer_kin']:
+            group_ci[name][m]={}
+            for cname,c in [('sire_family',fg.sire_id.astype(str)),('race_day',fg.day.astype(str))]:
+                group_ci[name][m][cname]=cluster_comparison(fg.y,p[mask,MODEL_NAMES.index(m)],fg.horse,c)
     return {'status':'REAL_SOURCE_LOCKED_MIDRANK_BENCHMARK_WITH_UNCHANGED_PRIMARY_MODELS','archive_sha256':SOURCE_SHA,
         'added_after_first_primary_result':True,'no_primary_refitting_or_weight_selection':True,'annual':annual,'pooled_groups':groups,
-        'paired_single_way_cluster_bootstrap':ci,'limits':['Midpoint uses no fitted parameters. Added diagnostically after first primary run; no primary result was tuned again.',
+        'paired_single_way_cluster_bootstrap':ci,'predeclared_group_intervals':group_ci,'limits':['Midpoint uses no fitted parameters. Added diagnostically after first primary run; no primary result was tuned again.',
         'Retrospective held-out rank analysis, not a prospective forecast, genome effect, heritability, or wagering return.',
         'Same secondary archive and Unknown redistribution licence; no raw records or individual predictions published.']}
 
