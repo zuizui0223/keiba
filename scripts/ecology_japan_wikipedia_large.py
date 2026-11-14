@@ -137,7 +137,23 @@ def all_pairs(pedigree: RegistryPedigree, targets: list[str],
             if value<=1e-12:
                 continue
             positive+=1
-            bins[f"{value:.6g}"]+=1
+            if value >= 0.5:
+                group="A>=0.5"
+            elif value >= 0.25:
+                group="0.25<=A<0.5"
+            elif value >= 0.125:
+                group="0.125<=A<0.25"
+            elif value >= 0.0625:
+                group="0.0625<=A<0.125"
+            elif value >= 0.03125:
+                group="0.03125<=A<0.0625"
+            elif value >= 0.01:
+                group="0.01<=A<0.03125"
+            elif value >= 0.001:
+                group="0.001<=A<0.01"
+            else:
+                group="0<A<0.001"
+            bins[group]+=1
             nonzero_individuals.add(left)
             nonzero_individuals.add(right)
             n_m=meisho_l+int(right in meisho)
@@ -153,8 +169,7 @@ def all_pairs(pedigree: RegistryPedigree, targets: list[str],
         "documented_nonzero_path_pairs":positive,
         "pairs_without_known_path_not_unrelated":n_pairs-positive,
         "horses_with_any_documented_path":len(nonzero_individuals),
-        "documented_A_value_histogram":dict(sorted(
-            bins.items(),key=lambda z:float(z[0]),reverse=True)),
+        "partial_A_predeclared_bins":dict(bins),
         "positive_pairs_same_known_sire":positive_same_sire,
         "positive_pairs_meisho_to_meisho":both_meisho,
         "positive_pairs_meisho_to_other":one_meisho,
@@ -174,6 +189,11 @@ def analyze(input_file:Path, *, max_pairs=20000000) -> dict:
     japan_stats,_=counts(ped,japan)
     world_pairs=all_pairs(ped,articles,meisho,max_pairs=max_pairs)
     japan_pairs=all_pairs(ped,japan,meisho,max_pairs=max_pairs)
+    meisho_article_ids=sorted(meisho)
+    meisho_japan_ids=sorted(meisho.intersection(set(japan)))
+    meisho_counts,_=counts(ped,meisho_article_ids)
+    meisho_pairs=all_pairs(ped,meisho_article_ids,meisho,max_pairs=max_pairs)
+    meisho_japan_pairs=all_pairs(ped,meisho_japan_ids,meisho,max_pairs=max_pairs)
     return {
         "status":"REAL_JA_WIKIPEDIA_INFOBOXES_ANALYZED_NOT_ALL_JAPANESE_RACEHORSES",
         "source":"Japanese Wikipedia transclusions of Template:競走馬",
@@ -208,6 +228,14 @@ def analyze(input_file:Path, *, max_pairs=20000000) -> dict:
         "explicit_japan_country_articles":{
             "cohort_counts":japan_stats,
             "all_pairs":japan_pairs,
+        },
+        "meisho_name_not_an_owner_or_bloodline":{
+            "named_articles_total":len(meisho_article_ids),
+            "named_articles_explicitly_japan_born":len(meisho_japan_ids),
+            "same_prefix_cohort":meisho_counts,
+            "within_meisho_all_pairs":meisho_pairs,
+            "within_japan_born_meisho_all_pairs":meisho_japan_pairs,
+            "source_does_not_supply_historically_verified_owner_ID":True,
         },
         "analysis_runtime_seconds":round(time.monotonic()-clock,3),
         "limits":[
