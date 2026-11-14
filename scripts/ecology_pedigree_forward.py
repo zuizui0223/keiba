@@ -152,7 +152,8 @@ def training_profile(history: list[dict], min_context: int = 4):
 
 
 def predict(target: dict, contexts: dict, histories: dict,
-            pedigree: Pedigree, weight: float, label_map: dict[str, str] | None = None):
+            pedigree: Pedigree, weight: float, label_map: dict[str, str] | None = None,
+            seen_horses: set[str] | None = None):
     context, horse = target["context"], target["horse"]
     if context not in contexts:
         return None
@@ -174,7 +175,10 @@ def predict(target: dict, contexts: dict, histories: dict,
     expanded = primary + weight * (SHRINK_OWN / (n_own + SHRINK_OWN)) * family_signal
     return {"y": target["y"], "base": primary, "kin": expanded,
             "horse": horse, "day": target["day"],
-            "own_prior": bool(n_own), "kin_prior": bool(n_rel),
+            "own_prior": bool(n_own),
+            "any_prior": horse in seen_horses if seen_horses is not None else bool(n_own),
+            "cold_start": horse not in seen_horses if seen_horses is not None else not bool(n_own),
+            "kin_prior": bool(n_rel),
             "relatives": n_rel}
 
 
@@ -182,9 +186,10 @@ def evaluate(history: list[dict], future: list[dict],
              pedigree: Pedigree, weight: float,
              label_map: dict[str, str] | None = None) -> list[dict]:
     contexts, horse_means = training_profile(history)
+    seen_horses = {r["horse"] for r in history}
     return [score for row in future
             if (score := predict(row, contexts, horse_means, pedigree,
-                                 weight, label_map)) is not None]
+                                 weight, label_map, seen_horses)) is not None]
 
 
 def metric(scores: list[dict], key: str) -> float | None:
@@ -201,10 +206,11 @@ def group_report(scores: list[dict]) -> dict:
     for group, entries in {
         "all": scores,
         "own_history": [s for s in scores if s["own_prior"]],
-        "cold_start": [s for s in scores if not s["own_prior"]],
+        "cold_start": [s for s in scores if s["cold_start"]],
+        "prior_other_context_only": [s for s in scores if s["any_prior"] and not s["own_prior"]],
         "kin_exposed": [s for s in scores if s["kin_prior"]],
         "cold_start_kin_exposed": [
-            s for s in scores if not s["own_prior"] and s["kin_prior"]],
+            s for s in scores if s["cold_start"] and s["kin_prior"]],
     }.items():
         m0, m1 = metric(entries, "base"), metric(entries, "kin")
         output[group] = {
