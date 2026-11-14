@@ -6,6 +6,8 @@ on:
     paths:
       - "scripts/ecology_japan_wikipedia_large.py"
       - "scripts/ecology_japan_wikipedia_parent_ablation.py"
+      - "scripts/ecology_japan_wikimedia_parent_crosscheck.py"
+      - "tests/test_ecology_japan_wikimedia_parent_crosscheck.py"
       - "tests/test_ecology_japan_wikipedia_parent_ablation.py"
       - "tests/test_ecology_japan_wikipedia_large.py"
       - ".github/workflows/ecology-japan-wikipedia-large.yml"
@@ -13,6 +15,8 @@ on:
     paths:
       - "scripts/ecology_japan_wikipedia_large.py"
       - "scripts/ecology_japan_wikipedia_parent_ablation.py"
+      - "scripts/ecology_japan_wikimedia_parent_crosscheck.py"
+      - "tests/test_ecology_japan_wikimedia_parent_crosscheck.py"
       - "tests/test_ecology_japan_wikipedia_parent_ablation.py"
       - "tests/test_ecology_japan_wikipedia_large.py"
       - ".github/workflows/ecology-japan-wikipedia-large.yml"
@@ -35,6 +39,7 @@ jobs:
         run: |
           python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_large.py" -v
           python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_parent_ablation.py" -v
+          python -m unittest discover -s tests -p "test_ecology_japan_wikimedia_parent_crosscheck.py" -v
       - name: Obtain upstream licensed Japanese Wikipedia fetcher code
         shell: bash
         run: |
@@ -90,6 +95,18 @@ jobs:
           else
             echo 'HOLD_SOURCE_UNAVAILABLE_NO_PAIRED_MATERNAL_SENSITIVITY'
           fi
+      - name: Secondary Wikimedia QID mother-link pilot, Meisho-first 200 selected articles
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_wikimedia_parent_crosscheck.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/wikimedia-parent-QID-crosscheck.json \
+              --max-titles 200 \
+              --max-requests 16
+          else
+            echo 'HOLD_NO_WIKIMEDIA_PARENT_CROSSCHECK_NO_ORIGINAL_COHORT'
+          fi
       - name: Declare source and scope on all outcomes
         shell: bash
         run: |
@@ -116,5 +133,12 @@ jobs:
                   for sub in ("all_language_articles","japan_origin_infobox_articles","meisho_named_articles"):
                       assert a["cohorts"][sub]["per_pair_genealogical_monotonicity_pass"]
                   print("SUCCESS_MATERNAL_INFORMATION_INCREMENT_NOT_GENETIC_HERITABILITY")
+              second=Path("tmp/wikimedia-parent-QID-crosscheck.json")
+              if second.exists():
+                  c=json.loads(second.read_text(encoding="utf-8"))
+                  assert c["sampled_titles"]<=200
+                  assert c["no_JRA_NAR_complete_census_or_biological_heritability_estimated"]
+                  assert c["no_individual_ids_or_rows_in_output"]
+                  print("SECONDARY_PARENT_QID_SOURCE_STATUS",c["status"])
           PY
       # NO source raw/CSV artifact upload; only aggregation in ephemeral CI logs.
