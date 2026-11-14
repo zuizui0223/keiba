@@ -1,0 +1,51 @@
+name: Japan Meisho maternal-line and naming/owner audit
+
+on:
+  push:
+    branches: [analysis/ecology-pedigree-forward-20261114]
+    paths:
+      - "scripts/ecology_japan_meisho_audit.py"
+      - "tests/test_ecology_japan_meisho_audit.py"
+      - "docs/evidence/japan-meisho-manual-profile-snapshot-20261114.json"
+      - ".github/workflows/ecology-japan-meisho-pedigree-audit.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_japan_meisho_audit.py"
+      - "tests/test_ecology_japan_meisho_audit.py"
+      - "docs/evidence/japan-meisho-manual-profile-snapshot-20261114.json"
+      - ".github/workflows/ecology-japan-meisho-pedigree-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry-overlap-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test documented mothers and protect nonidentifiable comparisons
+        run: python -m unittest discover -s tests -p "test_ecology_japan_meisho_audit.py" -v
+      - name: Audit manually verified JBIS IDs (no scraping or race predictions)
+        run: |
+          python scripts/ecology_japan_meisho_audit.py \
+            --profiles docs/evidence/japan-meisho-manual-profile-snapshot-20261114.json \
+            --output tmp/japan-meisho-kin-summary.json
+      - name: Require sample-size caveat, no heritability or racing gain
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open("tmp/japan-meisho-kin-summary.json"))
+          assert j["counts"]["profiles"]==11
+          assert j["counts"]["same_dam_different_sire_pairs"]==3
+          assert j["counts"]["same_dam_pairs_with_name_prefix_difference"]==1
+          assert j["unlinked_pairs_are_NOT_classified_as_genetically_unrelated"]
+          assert not j["real_future_prediction_or_heritability_estimated"]
+          assert j["displayed_owner_labels_are_NOT_historical_race_owner_ids"]
+          PY
+      # Deliberately no artifact upload: public primary-source references
+      # are stored as small curated facts, not scraped bulk HTML.
