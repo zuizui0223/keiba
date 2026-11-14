@@ -81,6 +81,10 @@ class WikipediaPedigreeTests(unittest.TestCase):
         self.assertTrue(result["not_jra_or_nar_population"])
         self.assertEqual(result["data_quality"]["total_wikipedia_article_infoboxes"],7)
         self.assertEqual(result["all_japanese_language_articles"]["all_pairs"]["pairs_scored"],21)
+        self.assertEqual(result["meisho_name_not_an_owner_or_bloodline"]["named_articles_total"],2)
+        self.assertEqual(result["meisho_name_not_an_owner_or_bloodline"]["within_meisho_all_pairs"]["pairs_scored"],1)
+        self.assertEqual(result["meisho_name_not_an_owner_or_bloodline"]["within_meisho_all_pairs"]["documented_nonzero_path_pairs"],1)
+        self.assertTrue("0.25<=A<0.5" in result["meisho_name_not_an_owner_or_bloodline"]["within_meisho_all_pairs"]["partial_A_predeclared_bins"])
         self.assertTrue(result["unknown_parent_article_is_assumed_unrelated_FOUNDER_for_partial_A_only"])
 
 
