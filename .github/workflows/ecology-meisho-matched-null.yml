@@ -64,7 +64,7 @@ jobs:
               --infobox-json tmp/ja_wikipedia.json \
               --summary tmp/meisho-matched-source-kinship.json \
               --n-random 999 \
-              --expected-sha e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57
+              --reference-sha e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57
           else
             echo 'HOLD_UNAVAILABLE_REAL_WIKIPEDIA_ARTICLE_INPUT'
           fi
