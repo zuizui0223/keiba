@@ -95,6 +95,10 @@ The real Japanese name/owner/kin predictive improvement remains **HOLD**:
 original race-level GPS, pre-race owner versions, stable JRA/JBIS crosswalk
 and licensed longitudinal outcomes are not yet joined.
 
+## Meisho naming-group matched null: real-source negative/control evidence
+
+[**Meisho name group versus 999 coverage-matched real horse sets**](JAPAN_MEISHO_MATCHED_CONTROLS.md): in a **new 5,879-article Wikipedia source version** (different SHA from the earlier frozen 5,878-article study), 38 named Meisho horses had 703 within-group pairs and mean partial pedigree A **0.01328**, vs **0.01134** for decade/country/parent-link-coverage-matched control sets. This is **not compelling evidence of a systematically special high-kinship clan**; among the same control sets the frequency of A>=0.125 pairs was actually lower for Meisho (10 vs mean 22.77). The source cohort is selected, dam IDs sparse, and no breeding causal or racing-performance prediction is justified. [Reproducible aggregate result](../evidence/japan-meisho-coverage-matched-kinship-20261114.json).
+
 ## Nationwide pedigree computation: source gate still OPEN
 
 [**Japan JRA/NAR full-registry kinship method**](JAPAN_NATIONAL_PEDIGREE_SCALING.md)
