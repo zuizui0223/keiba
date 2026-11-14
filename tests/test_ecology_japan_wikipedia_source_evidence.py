@@ -48,6 +48,13 @@ class JapaneseWikipediaLargeEvidenceTests(unittest.TestCase):
         self.assertLessEqual(a["known_positive_pairs_among_meisho_named"],n*(n-1)//2)
         self.assertLessEqual(a["known_positive_cross_meisho_non_meisho"],
                              n*(a["registered_horses"]-n))
+        source=self.x["subsets"]["meisho_named_article_only"]
+        self.assertEqual(source["named_articles"],38)
+        self.assertEqual(source["within_meisho_name_pairs_all"],38*37//2)
+        self.assertEqual(source["within_meisho_name_pairs_nonzero_known_paths"],311)
+        self.assertEqual(sum(source["A_bins"].values()),311)
+        self.assertEqual(source["identified_dam_links"],2)
+        self.assertTrue(source["owner_id_not_verified_in_source"])
 
 
 if __name__=="__main__":
