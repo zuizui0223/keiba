@@ -120,6 +120,16 @@ establish close kin, and missing paths cannot be treated as non-kin.
 The 38 メイショウ-prefixed Wikipedia articles form **703 within-prefix
 pairs (311 with documented paths)**, not a Japanese ownership or breeding
 census. [Frozen source SHA, both reruns, denominators and bins](../evidence/japan-wikipedia-actual-kinship-20261114.json).
+**New real-data source-information contrast:** removing the 642 documented
+maternal page links from the SAME 5,878-horse source removes **2,049,634**
+of the previously documented positive A paths (**38.5%**), and reduces
+A for **4,912,213** same-target pairs. Among Japan-born-infobox
+articles the missing-path count is **879,783**, and among 38 Meisho-name
+articles **34**. This quantifies pedigree-source sensitivity, **not**
+a maternal genetic variance or predictive racing effect.
+[Fixed-SHA paired source-ablation evidence](../evidence/japan-wikipedia-maternal-ablation-20261114.json)
+and [protocol](JAPAN_PEDIGREE_MATERNAL_SOURCE_SENSITIVITY.md).
+
 **JRA+NAR population-complete A and prediction effects remain HOLD.**
 
 ## Practical directory map (preserves working imports)
