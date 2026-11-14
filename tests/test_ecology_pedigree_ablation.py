@@ -51,7 +51,8 @@ class KinAblationTests(unittest.TestCase):
     def test_absent_trainer_column_emits_hold_not_misleading_zero(self):
         with tempfile.TemporaryDirectory() as td:
             x, p = fabricate(Path(td), "family_signal", 101)
-            original = list(csv.DictReader(x.open()))
+            with x.open(encoding="utf-8") as source:
+                original = list(csv.DictReader(source))
             for row in original:
                 row.pop("trainer_id")
             with x.open("w", encoding="utf-8", newline="") as fd:
@@ -60,7 +61,26 @@ class KinAblationTests(unittest.TestCase):
                 writer.writerows(original)
             result = audit(x, p, min_horses=10)
         self.assertEqual(result["channels"]["kin_different_trainer"]["status"],
-                         "HOLD_NO_TRAINER_ID")
+                         "HOLD_NO_COMPLETE_TRAINER_ID")
+
+    def test_all_blank_management_ids_cannot_pass_support_gate(self):
+        with tempfile.TemporaryDirectory() as td:
+            x, p = fabricate(Path(td), "family_signal", 101)
+            with x.open(encoding="utf-8") as source:
+                records = list(csv.DictReader(source))
+            for row in records:
+                row["trainer_id"] = ""
+                row["breeder_id"] = ""
+            with x.open("w", encoding="utf-8", newline="") as fd:
+                writer = csv.DictWriter(fd, fieldnames=list(records[0]))
+                writer.writeheader()
+                writer.writerows(records)
+            result = audit(x, p, min_horses=10)
+        self.assertEqual(result["metadata_availability"]["trainer_id"], "HOLD_ALL_BLANK")
+        self.assertEqual(result["channels"]["kin_different_trainer"]["status"],
+                         "HOLD_NO_COMPLETE_TRAINER_ID")
+        self.assertEqual(result["channels"]["kin_different_breeder"]["status"],
+                         "HOLD_NO_COMPLETE_BREEDER_ID")
 
     def test_synthetic_shared_trainer_null_can_mimic_genetic_signal(self):
         result = run(seeds=(101, 202))
