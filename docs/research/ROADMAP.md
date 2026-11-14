@@ -160,4 +160,6 @@ or profitable wagering. Those are different estimands.
 | P4 | Update English manuscript claims and replication ledger without moving source versions | Traceable evidence-to-figure links and transparent limitations |
 | P5 | [Pedigree prediction](PEDIGREE_FORWARD.md): acquire authorized sire/dam IDs and reconcile original HORSES ID, then evaluate relatives' predictive contribution | **Currently empirical HOLD**; report true cold-start vs own-history future RMSE and stable/trainer confounding, not heritability |
 
+| P6 | [Japan Meisho owner/name/kin comparison](JAPAN_MEISHO_DESIGN.md): verify a complete time-stamped Japanese race × stable horse ID × as-of owner panel and legally reconcile pedigree sources | **11 manually verified registry profiles only (actual pedigree links); race prediction HOLD**. Fit predeclared five-channel M0/name/owner/kin/owner+kin, test matched exact future rows and independent family/management overlap |
+
 **Do not infer successful execution from items in this queue.**
