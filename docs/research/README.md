@@ -95,6 +95,18 @@ The real Japanese name/owner/kin predictive improvement remains **HOLD**:
 original race-level GPS, pre-race owner versions, stable JRA/JBIS crosswalk
 and licensed longitudinal outcomes are not yet joined.
 
+## Nationwide pedigree computation: source gate still OPEN
+
+[**Japan JRA/NAR full-registry kinship method**](JAPAN_NATIONAL_PEDIGREE_SCALING.md)
+adds exact pedigree numerator A, partial inbreeding F, per-horse shared
+parent/full-sib/half-sib counts, a bounded Wikidata CC0 check, and sparse
+pair-query output. It was **actually run** on 11 manually checked real
+profiles (all 55 pairs, 13 nonzero documented maternal paths) and 12
+Wikidata Japan-origin QIDs (all 66 pairs, 2 nonzero documented paths;
+deeper ancestors HTTP 429). **Neither is the complete JRA+NAR register.**
+No complete national pedigree export was obtained; a countrywide genetic
+matrix, inbreeding distribution or speed prediction must NOT be claimed.
+
 ## Practical directory map (preserves working imports)
 
 | Source family | Location |
