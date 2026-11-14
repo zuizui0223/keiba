@@ -2,7 +2,7 @@ name: Japan archive forward evaluation
 on:
   push:
     branches: [analysis/japan-race-history-forward-20261114]
-    paths: ['.github/workflows/japan-race-forward.yml','scripts/ecology_japan_archive_forward.py','tests/test_ecology_japan_archive_forward.py']
+    paths: ['.github/workflows/japan-race-forward.yml','scripts/ecology_japan_archive_*.py','tests/test_ecology_japan_archive_*.py']
   workflow_dispatch:
 permissions:
   contents: read
@@ -23,14 +23,25 @@ jobs:
           python-version: '3.12'
       - name: Install numerical dependencies
         run: pip install numpy==2.2.6 pandas==2.2.3
-      - name: Verify chronological leakage and source guards
-        run: python -m unittest discover -s tests -p 'test_ecology_japan_archive_forward.py' -v
+      - name: Verify chronological leakage, identity and source guards
+        run: python -m unittest discover -s tests -p 'test_ecology_japan_archive_*.py' -v
+      - name: Download and fingerprint public original into temporary workspace
+        run: |
+          mkdir -p private-input
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('private-input/source.zip'))"
       - name: Score original 2010-2021 archive with 2019-2021 held-out years
-        run: python scripts/ecology_japan_archive_forward.py --summary tmp/japan-archive-forward-summary.json
+        run: python scripts/ecology_japan_archive_forward.py --archive private-input/source.zip --summary tmp/japan-archive-forward-summary.json
+      - name: Evaluate midpoint benchmark without modifying primary model weights
+        run: python scripts/ecology_japan_archive_benchmarks.py --archive private-input/source.zip --primary-summary tmp/japan-archive-forward-summary.json --summary tmp/japan-archive-midrank-benchmark.json
+      - name: Delete raw original before uploading aggregates
+        if: always()
+        run: rm -rf private-input
       - uses: actions/upload-artifact@v4
         with:
           name: japan-archive-forward-aggregate-only
-          path: tmp/japan-archive-forward-summary.json
+          path: |
+            tmp/japan-archive-forward-summary.json
+            tmp/japan-archive-midrank-benchmark.json
           if-no-files-found: error
           retention-days: 7
-      # Never upload or log raw races, names, individual scores or pedigree rows.
+      # Never upload raw races, horse names, individual scores or parent tables.
