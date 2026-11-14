@@ -1,0 +1,66 @@
+name: Japan registered horse kinship: curated A and bounded CC0 pilot
+
+on:
+  push:
+    branches: [analysis/ecology-pedigree-forward-20261114]
+    paths:
+      - "scripts/ecology_japan_registry_*.py"
+      - "scripts/ecology_japan_wikidata_pedigree.py"
+      - "tests/test_ecology_japan_registry_pedigree.py"
+      - "tests/test_ecology_japan_wikidata_pedigree.py"
+      - "docs/evidence/japan-meisho-manual-profile-snapshot-20261114.json"
+      - ".github/workflows/ecology-japan-registry-kinship.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_japan_registry_*.py"
+      - "scripts/ecology_japan_wikidata_pedigree.py"
+      - "tests/test_ecology_japan_registry_pedigree.py"
+      - "tests/test_ecology_japan_wikidata_pedigree.py"
+      - ".github/workflows/ecology-japan-registry-kinship.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-real-kinship-scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test exact pedigree recurrence and bounded-source gates
+        run: |
+          python -m unittest discover -s tests -p "test_ecology_japan_registry_pedigree.py" -v
+          python -m unittest discover -s tests -p "test_ecology_japan_wikidata_pedigree.py" -v
+      - name: All pairwise A within only 11 selected and checked real Japanese profiles
+        run: |
+          python scripts/ecology_japan_registry_sample.py \
+            --profiles docs/evidence/japan-meisho-manual-profile-snapshot-20261114.json \
+            --output tmp/curated-japan-11-pairs-summary.json
+      - name: Try bounded freely reusable Wikidata country-of-origin = Japan cohort
+        run: |
+          python scripts/ecology_japan_wikidata_pedigree.py \
+            --output tmp/secondary-wikidata-japan-subset-summary.json \
+            --max-targets 1000 \
+            --ancestor-generations 2 \
+            --max-requests 12
+      - name: Refuse false all-Japan coverage claims
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open("tmp/curated-japan-11-pairs-summary.json"))
+          b=json.load(open("tmp/secondary-wikidata-japan-subset-summary.json"))
+          assert a["status"]=="CURATED_11_REAL_JAPAN_HORSES_55_PAIRS_ONLY_NOT_ALL_JAPAN"
+          assert a["n_profiles"]==11 and a["partial_A_results"]["pair_queries"]==55
+          assert a["partial_A_results"]["documented_positive_pairs"]==13
+          assert a["verified_canonical_sire_ids"]==0
+          assert not a["not_official_countrywide_coverage"] is False
+          assert not b.get("not_an_official_JRA_NAR_registry",True) is False
+          assert "ALL_JAPAN_COMPLETE" not in b["status"]
+          PY
+      # No bulk JBIS/JRA-VAN scrape, no private horse-data artifacts.
