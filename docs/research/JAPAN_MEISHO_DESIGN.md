@@ -42,6 +42,8 @@ Primary individually audited JBIS pages:
 
 No automated JBIS scraping, live-performance harvesting, bulk duplication or commercial data transfer was performed. Current owner/trainer display may reflect later transfers; **never retrospectively assign those current labels to an earlier race**.
 
+**Important management confounding visible in the actual registry:** メイショウハリオ and テーオーロイヤル have different name prefixes and different listed owners **but both show 岡田稲男 as trainer and 三嶋牧場 as breeder**. メイショウタバル and メイショウメイスイ have different listed owners/trainers and the same dam **but both show 三嶋牧場 as breeder**. Thus a cross-owner sibling comparison is **not** automatically a cross-management experiment. Stable, breeder and pre-race owner histories must be separated in a population-scale study.
+
 Executed first-party check:
 https://github.com/zuizui0223/keiba/actions/runs/43579722814 .
 The action tests stable IDs, original source URL pairs, canonical maternal references, partial A, and absence of unsupported unrelatedness claims.
@@ -74,6 +76,18 @@ python scripts/ecology_japan_meisho_forward.py \
   --pedigree /private/verified-japan-parent-ids.csv \
   --output /private/japan-meisho-prefix-owner-kin-future.json
 ~~~
+
+## Software falsification: five different models, same fabricated future test
+
+A 3-seed × 3-mechanism entirely **fictional** dataset (64 invented horses on each outer scoring horizon) ran under the Japan forward scorer. For the SAME held-out scoring rows, artificial mean future RMSE gains M0−model (units are **fabricated seconds**, not real Japanese horse data):
+
+| Artificial generator | M_name | M_owner | M_kin | M_owner+kin |
+| --- | ---: | ---: | ---: | ---: |
+| Invented sire-family timing contribution (trainer weak and crossed) | +0.0028 | 0.0000 | **+0.1165** | +0.1165 |
+| **NO genetic contribution**; sire family perfectly coincides with owner/trainer | +0.0028 | **+0.1933** | **+0.1185 (false genetic impression)** | +0.2064 |
+| **NO genetic contribution**; trainer independently crosses sire family | 0.0000 | **+0.1940** | 0.0000 | +0.1940 |
+
+GitHub Actions: https://github.com/zuizui0223/keiba/actions/runs/43580090705 . **This is a constructed identifiability test**, not an estimated quantitative Japanese-Meisho result. It demonstrates that an observational family signal can persist even when genetics play no role, if stable and pedigree labels overlap. An independent test population and uncertainty are still required.
 
 ## What was tested, and what remains untested
 
