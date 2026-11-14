@@ -130,6 +130,12 @@ a maternal genetic variance or predictive racing effect.
 [Fixed-SHA paired source-ablation evidence](../evidence/japan-wikipedia-maternal-ablation-20261114.json)
 and [protocol](JAPAN_PEDIGREE_MATERNAL_SOURCE_SENSITIVITY.md).
 
+A separate exact Japanese Wikipedia page → Wikidata QID cross-check on
+**200 selected real articles** (all 38 Meisho titles included) found
+**12 candidate new mother QID links** absent from the article baseline;
+none was silently merged into the main pedigree.
+[Secondary parent audit](../evidence/japan-wikimedia-200-parent-qid-audit-20261114.json).
+
 **JRA+NAR population-complete A and prediction effects remain HOLD.**
 
 ## Practical directory map (preserves working imports)
