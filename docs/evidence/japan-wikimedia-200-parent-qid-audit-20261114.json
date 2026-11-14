@@ -1,0 +1,31 @@
+{
+  "status": "SECONDARY_WIKIDATA_ACTUAL_PARENT_QIDS_PARTIAL_SAMPLE",
+  "source": "Wikimedia ja.wikipedia pageprops and Wikidata wbgetentities",
+  "source_license": "Wikidata CC0; Wikipedia article title source CC BY-SA",
+  "selection": "ALL Meisho named articles up to sample limit, then deterministic sample of Wikipedia infoboxes lacking direct mother page links",
+  "sampled_titles": 200,
+  "meisho_titles_in_sample": 38,
+  "unique_article_pageprops_qids": 200,
+  "parsed_Wikidata_horse_entities": 200,
+  "meisho_entities_with_Wikidata_parent_record": 38,
+  "requests_sent": 16,
+  "request_budget": 16,
+  "failures": {},
+  "Wikidata_documented_sire_claims": 170,
+  "Wikidata_documented_dam_claims": 14,
+  "additional_parent_claims_where_Wikipedia_infobox_missing": {
+    "wikidata_sire_when_infobox_sire_missing": 34,
+    "wikidata_dam_when_infobox_dam_missing": 12
+  },
+  "direct_source_conflicts": {},
+  "within_same_sample_shared_sire_pairs": 43,
+  "within_same_sample_shared_dam_pairs": 1,
+  "no_Wikidata_and_article_title_P22_P25_edges_joined_to_all_5878": true,
+  "source_conflicts_do_not_auto_overwrite_official_or_article_parents": true,
+  "no_JRA_NAR_complete_census_or_biological_heritability_estimated": true,
+  "no_individual_ids_or_rows_in_output": true,
+  "provenance_run": "https://github.com/zuizui0223/keiba/actions/runs/43586049844",
+  "bounded_sampling_note": "all 38 Meisho-name articles + 162 deterministic articles with missing direct mother-page links; deliberately nonrepresentative",
+  "source_input_baseline_SHA256": "e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57",
+  "source_comparison_status": "second-source suggestions only; 12 new mother QID claims NOT inserted into the main full 5,878-horse pedigree"
+}
