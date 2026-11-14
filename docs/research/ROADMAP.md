@@ -158,5 +158,6 @@ or profitable wagering. Those are different estimands.
 | P2 | Build fixed class/going per-horse exposure census | Count of repeated cross-going strata and measured missingness, then power/design audit |
 | P3 | Validate pre-race rival exposures and complete outcome selection | Only then fit real opponent models |
 | P4 | Update English manuscript claims and replication ledger without moving source versions | Traceable evidence-to-figure links and transparent limitations |
+| P5 | [Pedigree prediction](PEDIGREE_FORWARD.md): acquire authorized sire/dam IDs and reconcile original HORSES ID, then evaluate relatives' predictive contribution | **Currently empirical HOLD**; report true cold-start vs own-history future RMSE and stable/trainer confounding, not heritability |
 
 **Do not infer successful execution from items in this queue.**
