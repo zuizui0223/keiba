@@ -82,6 +82,19 @@ are implemented; a [**simulation-only trainer-confounding falsification**](PEDIG
 for the current real cohort, so its kinship predictive effect remains
 **HOLD / UNTESTED**. This is not heritability or a horse-racing odds model.
 
+## Japan case study — Meisho name is not a pedigree
+
+[**Japan Meisho study / real JBIS maternal-kin evidence**](JAPAN_MEISHO_DESIGN.md)
+adds 11 hand-verified public JBIS profiles (9 named メイショウ), three
+different-sire shared-dam pairs, and 13 pairs linked through documented
+maternal paths (including parents). This is **real identity evidence,
+not actual timing prediction**. The separate strictly time-forward
+**synthetic** scorer compares a common name prefix, documented pre-race
+owner IDs, known kin, and combined owner+kin on the SAME future targets.
+The real Japanese name/owner/kin predictive improvement remains **HOLD**:
+original race-level GPS, pre-race owner versions, stable JRA/JBIS crosswalk
+and licensed longitudinal outcomes are not yet joined.
+
 ## Practical directory map (preserves working imports)
 
 | Source family | Location |
