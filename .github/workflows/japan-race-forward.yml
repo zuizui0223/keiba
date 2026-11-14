@@ -1,0 +1,37 @@
+name: Japan archive forward evaluation
+on:
+  push:
+    branches: [analysis/japan-race-history-forward-20261114]
+    paths: ['.github/workflows/japan-race-forward.yml','scripts/ecology_japan_archive_forward.py','tests/test_ecology_japan_archive_forward.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  race-forward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Examine nonidentifying original value formats
+        run: |
+          python - <<'PY'
+          import csv,io,json,urllib.request,zipfile,tempfile,pathlib
+          from collections import Counter
+          u='https://www.kaggle.com/api/v1/datasets/download/ayuser/horse-racing-in-japan'
+          with tempfile.TemporaryDirectory() as td:
+              p=pathlib.Path(td)/'source.zip'
+              urllib.request.urlretrieve(u,p)
+              with zipfile.ZipFile(p) as z,z.open('2010-2021.csv') as b:
+                  r=csv.DictReader(io.TextIOWrapper(b,encoding='utf-8-sig'))
+                  fields=['date','racecourse','race_number','track','distance','place','age','sex','going','finish_time']
+                  freq={k:Counter() for k in fields}; ids=Counter(); total=0
+                  for row in r:
+                      total+=1
+                      for k in fields:freq[k][row[k]]+=1
+                      for k in ['horse_id','sire_id','dam_id','trainer_id']:
+                          v=row[k];ids[k+':'+str(len(v))+':'+str(v.isdigit())]+=1
+                  print(json.dumps({'rows':total,'field_examples':{k:v.most_common(12) for k,v in freq.items()},'id_formats':dict(ids)},ensure_ascii=False,indent=2))
+          PY
