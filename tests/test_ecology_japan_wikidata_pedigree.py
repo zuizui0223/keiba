@@ -55,6 +55,25 @@ class JapaneseWikidataPilotTests(unittest.TestCase):
         self.assertFalse(output["seed_hits_limit"])
         self.assertEqual(output["exact_A_pair_check_first_100_QIDs"]["queries"],3)
 
+    def test_failed_ancestor_fetch_preserves_direct_parentage(self):
+        from urllib.error import HTTPError
+        def data(q):
+            if "ORDER BY ?horse" in q:
+                return [
+                    {"horse":b("Q101"),"father":b("Q201")},
+                    {"horse":b("Q102"),"father":b("Q201")},
+                ]
+            raise HTTPError("https://query.wikidata.org/sparql",429,"limited",{},None)
+        with patch("ecology_japan_wikidata_pedigree.source_get",side_effect=data):
+            result=source_report(max_targets=10,ancestor_generations=3,max_requests=5)
+        self.assertEqual(result["status"],
+                         "REAL_CC0_WIKIDATA_SECONDARY_PEDIGREE_SUBSET_ANCESTOR_HOLD")
+        self.assertEqual(result["ancestor_fetch_error"]["http_status_code"],429)
+        self.assertEqual(result["known_parentage"]["target_horses"],2)
+        self.assertEqual(result["known_parentage"]["shared_sire_target_pairs_including_unknown_other_parent"],1)
+        self.assertEqual(result["exact_A_pair_check_first_100_QIDs"]["positive_documented_path_pairs"],1)
+        self.assertFalse(result["ancestry_complete_to_requested_depth"])
+
     def test_source_failure_is_hold_not_an_actual_zero_relation(self):
         with patch("ecology_japan_wikidata_pedigree.source_get",
                    side_effect=TimeoutError("dummy")):
