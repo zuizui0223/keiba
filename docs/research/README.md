@@ -78,7 +78,7 @@ ICC subgroup**. [Source audit](../ecology-rq-eagle-farm-real-icc-cross-site-audi
 whether relatives' earlier absolute first-GPS timing provides incremental
 future predictive information beyond a horse's own history. The as-of
 pedigree coefficients, cold-start split and synthetic regression tests
-are implemented; **no validated original HORSES-ID × sire/dam crosswalk exists**
+are implemented; a [**simulation-only trainer-confounding falsification**](PEDIGREE_FALSIFICATION.md) demonstrates why predictive gains are not heritability; **no validated original HORSES-ID × sire/dam crosswalk exists**
 for the current real cohort, so its kinship predictive effect remains
 **HOLD / UNTESTED**. This is not heritability or a horse-racing odds model.
 
