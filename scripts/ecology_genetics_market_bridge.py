@@ -260,11 +260,11 @@ def _train_grid(train:list[dict],mode:str)->tuple[float,float,float]:
             raise ValueError("HOLD_GENOTYPE_COHORT_TRAIN_TOO_SMALL")
         train=eligible
     def loss(param):
-        g,b,d=param
+        b=param[1]
         scores=[
             _kl(r["q0"],_softmax([b*k for k in r["kin"]]))
             if mode=="initial_kin" else
-            _kl(r["qlast"],_predict(r,g,b,d))
+            _kl(r["qlast"],_predict(r,*param))
             for r in train
         ]
         return (sum(scores)/len(scores),sum(abs(v) for v in param),param)
