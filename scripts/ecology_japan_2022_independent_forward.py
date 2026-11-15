@@ -53,16 +53,29 @@ def parse_independent_history(raw, race_index:dict) -> tuple[list[dict],dict]:
         if metadata is None:
             qa["missing_race_id_lookup"]+=1
             continue
-        try:
-            date_value,distance,ctype=metadata
-            date=normalize_date(date_value)
-            source_distance=int(distance)
-            source_surface=int(ctype)
-            horse_distance=int(rec[5])
-            horse_surface=int(rec[4])
-            n=int(rec[7])
-            place=int(rec[12])
-        except (TypeError,ValueError,OverflowError):
+        date_value,distance,ctype=metadata
+        date=normalize_date(date_value)
+        if qa["sampled_field_types"]<500:
+            qa["sampled_field_types"]+=1
+            for key,value in (("race_surface",ctype),("horse_surface",rec[4]),
+                              ("race_distance",distance),("horse_distance",rec[5]),
+                              ("source_field_size",rec[7]),("source_placing",rec[12])):
+                qa["field_type_"+key+"_"+type(value).__name__]+=1
+                qa["field_int_castable_"+key]+=str(value).strip().lstrip("-").isdigit()
+        def require_int(value,key):
+            try:
+                return int(value)
+            except (TypeError,ValueError,OverflowError):
+                qa["invalid_"+key]+=1
+                return None
+        source_distance=require_int(distance,"race_distance")
+        source_surface=require_int(ctype,"race_surface")
+        horse_distance=require_int(rec[5],"horse_distance")
+        horse_surface=require_int(rec[4],"horse_surface")
+        n=require_int(rec[7],"source_field_size")
+        place=require_int(rec[12],"source_placing")
+        if any(v is None for v in (source_distance,source_surface,
+                                   horse_distance,horse_surface,n,place)):
             qa["invalid_structural_values"]+=1
             continue
         if not date:
@@ -366,6 +379,7 @@ def main():
         "status":result["status"],
         "source_sha256":result.get("new_source_sha256"),
         "identity_gate":result.get("identity_gate"),
+        "source_qa":result.get("source_independent_quality"),
         "training_years":result.get("training_calendar_years"),
         "year":result.get("by_year"),
         "pooled":result.get("pooled_full_2022_2024"),
