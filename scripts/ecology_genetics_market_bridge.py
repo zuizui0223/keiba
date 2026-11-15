@@ -249,8 +249,9 @@ def _train_grid(train:list[dict],mode:str)->tuple[float,float,float]:
     def loss(param):
         g,b,d=param
         scores=[
-            _kl(r["q0"] if mode=="initial_kin" else r["qlast"],
-                _predict(r,g,b,d,initial=mode=="initial_kin"))
+            _kl(r["q0"],_softmax([b*k for k in r["kin"]]))
+            if mode=="initial_kin" else
+            _kl(r["qlast"],_predict(r,g,b,d))
             for r in train
         ]
         return (sum(scores)/len(scores),sum(abs(v) for v in param),param)
@@ -295,7 +296,7 @@ def score(races:list[dict]) -> dict:
         }
     zeros=(0.0,0.0,0.0)
     scores={
-        "M_midpoint_market_persistence":eval_one("M_market",zeros,test),
+        "M_penultimate_market_persistence":eval_one("M_market",zeros,test),
         "M_earliest_market_persistence":{
             "mean_KL_true_market_support_vs_model":
                 sum(_kl(r["qlast"],r["q0"]) for r in test)/len(test),
