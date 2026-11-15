@@ -208,15 +208,20 @@ def build_races(cards: list[dict], quotes: list[dict]) -> tuple[list[dict],dict]
 
 
 def _predict(r: dict, gamma: float=0.0, beta: float=0.0,
-             gene_beta:float=0.0, initial:bool=False) -> list[float]:
+             gene_beta:float=0.0, threshold:float|None=None,
+             high_gamma:float|None=None, initial:bool=False) -> list[float]:
     current=r["q0"] if initial else r["qmid"]
     q0=r["q0"]
-    z=[
-        math.log(p)+
-        (0.0 if initial else gamma*math.log(max(p,1e-15)/max(q0[i],1e-15)))+
-        beta*r["kin"][i]+gene_beta*r["genotype_distance"][i]
-        for i,p in enumerate(current)
-    ]
+    z=[]
+    for i,p in enumerate(current):
+        momentum=math.log(max(p,1e-15)/max(q0[i],1e-15))
+        local_gamma=(high_gamma if threshold is not None
+                     and abs(momentum)>threshold else gamma)
+        if local_gamma is None:
+            raise ValueError("HOLD_THRESHOLD_MODEL_HIGH_GAMMA_MISSING")
+        z.append(math.log(p)+
+                 (0.0 if initial else local_gamma*momentum)+
+                 beta*r["kin"][i]+gene_beta*r["genotype_distance"][i])
     return _softmax(z)
 
 
@@ -239,6 +244,14 @@ def _train_grid(train:list[dict],mode:str)->tuple[float,float,float]:
         candidates=[(g,b,v) for g in GAMMA for b in BETA for v in BETA]
     elif mode=="initial_kin":
         candidates=[(0.0,b,0.0) for b in BETA]
+    elif mode=="threshold":
+        # Thresholds are on *already observed* q0→qmid changes only.
+        # Earlier race dates select a discrete regime, later dates test it.
+        candidates=[(g,b,0.0,t,hi)
+                    for t in (0.1,0.25,0.5)
+                    for g in (0.0,0.5,1.0)
+                    for hi in (0.0,0.5,1.5)
+                    for b in (0.0,0.25,0.5)]
     else:
         raise ValueError("UNKNOWN_TRAIN_MODE")
     if mode=="joint_genotype":
@@ -273,8 +286,20 @@ def score(races:list[dict]) -> dict:
         "M_market_momentum":_train_grid(train,"momentum"),
         "M_kin_only":_train_grid(train,"kin"),
         "M_market_plus_kin":_train_grid(train,"joint"),
+        "M_market_threshold_kin":_train_grid(train,"threshold"),
         "M_initial_kin":_train_grid(train,"initial_kin"),
     }
+    # One fixed seeded family-information falsification: shuffle documented
+    # relatedness only within each RACE, preserving every other market state.
+    # Refit on earlier sham races; no calibration of permutation p-values.
+    rng=random.Random(20261115)
+    def shuffled(race):
+        kin=list(race["kin"])
+        rng.shuffle(kin)
+        return {**race,"kin":kin}
+    sham_train=[shuffled(r) for r in train]
+    sham_test=[shuffled(r) for r in test]
+    sham_weight=_train_grid(sham_train,"joint")
     genetr=[r for r in train if r["gene_complete"]]
     genet=[r for r in test if r["gene_complete"]]
     if len(genetr)>=5 and len(genet)>=2:
@@ -313,6 +338,8 @@ def score(races:list[dict]) -> dict:
     for k,v in parameters.items():
         sub=genet if k=="M_market_kin_MSTN" else test
         scores[k]=eval_one(k,v,sub)
+    scores["M_market_plus_shuffled_kin"]=eval_one(
+        "M_market_plus_shuffled_kin",sham_weight,sham_test)
     source_races=len(races)
     return {
         "status":"MARKET_SUPPORT_TIMESERIES_OUT_OF_DATE_SCORE_NOT_CAUSAL",
@@ -323,6 +350,10 @@ def score(races:list[dict]) -> dict:
         "outcome":"future_PRE_START_relative_implied_support_not_race_finish",
         "models":scores,
         "train_only_selected_parameters":{k:list(v) for k,v in parameters.items()},
+        "negative_control_parameters":{"M_market_plus_shuffled_kin":list(sham_weight)},
+        "negative_control_permutations":1,
+        "negative_control_is_not_calibrated_p_value":True,
+        "threshold_is_exploratory_not_critical_point":True,
         "genotype_channel":("MEASURED_MSTN_COHORT_ONLY" if "M_market_kin_MSTN" in parameters
                             else "HOLD_NO_VERIFIED_ID_LINKED_MSTN_COHORT"),
         "source_snapshot_count":source_races,
