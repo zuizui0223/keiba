@@ -158,6 +158,14 @@ def main():
     new = pd.read_csv(args.new_jra_csv, dtype=str, keep_default_na=False,
                       usecols=["date", "course", "race", "surface", "distance", "finish", "horse"])
     _, report = build_anchor_map(old, new)
+    report["source_value_diagnostics"] = {
+        "old_course_values": {str(k):int(v) for k,v in old.racecourse.value_counts().head(35).items()},
+        "old_track_values": {str(k):int(v) for k,v in old.track.value_counts().head(12).items()},
+        "old_race_number_examples": {str(k):int(v) for k,v in old.race_number.value_counts().head(8).items()},
+        "old_distance_examples": {str(k):int(v) for k,v in old.distance.value_counts().head(8).items()},
+        "old_rank_examples": {str(k):int(v) for k,v in old.place.value_counts().head(8).items()},
+        "new_course_values": {str(k):int(v) for k,v in new.course.value_counts().head(12).items()},
+    }
     report.update({
         "original_archive_sha256": OLD_SHA,
         "external_csv_sha256": hashlib.sha256(args.new_jra_csv.read_bytes()).hexdigest(),
