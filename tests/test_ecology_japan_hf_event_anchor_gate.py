@@ -57,6 +57,16 @@ class TrueHistoryAnchorTests(unittest.TestCase):
         self.assertEqual(matched,{})
         self.assertEqual(report["new_names_with_multiple_ids"],1)
 
+    def test_source_shape_diagnostics_do_not_leak_names_or_ids(self):
+        matched,report=anchor_name_histories(old(),current())
+        probe=report["source_shape_probe"]
+        self.assertGreaterEqual(probe["candidate_histories_with_parsed_races"],1)
+        self.assertGreaterEqual(probe["candidate_histories_with_pre2022_parsed_races"],1)
+        self.assertGreaterEqual(probe["candidate_pre2022_dates_matching_old"],1)
+        self.assertNotIn("メイショウ",str(probe))
+        self.assertNotIn("old-a",str(probe))
+        self.assertNotIn("new-1",str(probe))
+
     def test_first_source_colliding_names_rejected(self):
         rows=old()
         rows.loc[len(rows)]=["different","メイショウA","2019-01-01","1","1600M"]
