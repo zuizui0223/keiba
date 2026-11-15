@@ -74,7 +74,7 @@ class GeneticsMarketBridgeTests(unittest.TestCase):
         self.assertEqual(outcome["status"],
                          "MARKET_SUPPORT_TIMESERIES_OUT_OF_DATE_SCORE_NOT_CAUSAL")
         self.assertLess(outcome["models"]["M_market_plus_kin"]["mean_race_share_RMSE"],
-                        outcome["models"]["M_midpoint_market_persistence"]["mean_race_share_RMSE"])
+                        outcome["models"]["M_penultimate_market_persistence"]["mean_race_share_RMSE"])
         self.assertLess(outcome["models"]["M_initial_kin"]["mean_race_share_RMSE"],
                         outcome["models"]["M_initial_uniform"]["mean_race_share_RMSE"])
         self.assertEqual(outcome["genotype_channel"],
