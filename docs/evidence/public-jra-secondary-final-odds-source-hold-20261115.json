@@ -1,0 +1,53 @@
+{
+  "source": "https://raw.githubusercontent.com/whitedogk/jra-condition-app/main/jra-results-actual.csv",
+  "raw_rows_exported": false,
+  "not_certified_pre_start_time_series": true,
+  "source_rights_review_pending": true,
+  "source_sha256": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f",
+  "bytes": 24214953,
+  "encoding": "utf-8-sig",
+  "rows": 141394,
+  "columns": [
+    "date",
+    "course",
+    "surface",
+    "distance",
+    "race",
+    "meeting",
+    "day",
+    "finish",
+    "horseNumber",
+    "horse",
+    "jockey",
+    "trainer",
+    "winPayout",
+    "source"
+  ],
+  "years": {
+    "2023": 28424,
+    "2024": 46752,
+    "2025": 47497,
+    "2026": 18721
+  },
+  "nonempty_columns": {
+    "date": 141394,
+    "course": 141394,
+    "surface": 141394,
+    "distance": 141394,
+    "race": 141394,
+    "meeting": 141394,
+    "day": 141394,
+    "finish": 141394,
+    "horseNumber": 141394,
+    "horse": 141394,
+    "jockey": 141394,
+    "trainer": 141394,
+    "winPayout": 141394,
+    "source": 141394
+  },
+  "status": "SOURCE_ORIGINAL_HEADER_AND_VALUE_COUNTS_AUDITED",
+  "github_runner_url": "https://github.com/zuizui0223/keiba/actions/runs/43697288220",
+  "historical_sire_or_odds_test_possible_from_this_exact_csv": false,
+  "winPayout_is_not_win_odds": true,
+  "source_name_only_does_not_imply_JRA_stable_horse_id": true
+}
