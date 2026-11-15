@@ -75,7 +75,7 @@ class IndependentValidationModelTests(unittest.TestCase):
         z=make_common_features(h,t)
         pd.testing.assert_frame_equal(x,z)
         self.assertNotIn("y",x.columns)
-        self.assertGreater(float(x.iloc[0]["sire_kin_history"]),0)
+        self.assertEqual(int(x.iloc[0]["sire_relative_count"]),2)
 
     def test_actual_kin_and_no_kin_use_identical_training_samples(self):
         h=old()
