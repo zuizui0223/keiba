@@ -27,7 +27,7 @@ def norm_name(name):
     return " ".join(unicodedata.normalize("NFKC",name).strip().split()).casefold()
 
 
-def _source_record_shape(raw):
+def _source_record_shape(raw,race_dates=None):
     """Only field TYPES/lengths; never return a source value or identifier."""
     out=Counter()
     if not raw:
@@ -54,6 +54,14 @@ def _source_record_shape(raw):
         out["leaf_type_"+type(record).__name__]+=1
         if isinstance(record,list):
             out["leaf_list_length_"+str(min(len(record),200))]+=1
+            for idx in (0,2,5,7,12,16):
+                if len(record)>idx:
+                    value=record[idx]
+                    out["field"+str(idx)+"_type_"+type(value).__name__]+=1
+                    out["field"+str(idx)+"_integer_like"]+=str(value).strip().lstrip("-").isdigit()
+                    out["field"+str(idx)+"_length_"+str(min(len(str(value)),20))]+=1
+            if race_dates is not None and record:
+                out["race_id_field0_found_in_Race_table"]+=str(record[0]).strip() in race_dates
             if len(record)>17:
                 out["r_date_type_"+type(record[17]).__name__]+=1
                 out["r_date_char_length_"+str(min(len(str(record[17])),40))]+=1
@@ -106,7 +114,7 @@ def anchor_name_histories(old:pd.DataFrame, horse_records, race_dates=None):
             continue
         probe["candidate_histories_total"]+=1
         if shape_examples<500:
-            probe.update(_source_record_shape(raw))
+            probe.update(_source_record_shape(raw,race_dates))
             shape_examples+=1
         try:
             records=parse_horse_history(raw,race_dates=race_dates)
