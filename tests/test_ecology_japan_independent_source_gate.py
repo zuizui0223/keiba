@@ -70,6 +70,12 @@ class IndependentSourceGateTests(unittest.TestCase):
         self.assertNotIn("ニュー馬",mapping)
         self.assertEqual(report["future_2022_2025"]["anchored_rows"],1)
 
+    def test_original_distance_with_M_suffix_is_normalized(self):
+        old=old_rows()
+        old["distance"]=old.distance+"M"
+        mapping,_=build_anchor_map(old,new_rows())
+        self.assertEqual(mapping, {"メイショウa":"100"})
+
     def test_2026_records_are_excluded_from_2022_2025_window(self):
         n=new_rows()
         n.loc[len(n)]=["2026-04-01","東京","1","芝","1600","1","メイショウA"]
