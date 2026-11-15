@@ -1,0 +1,46 @@
+{
+  "status": "REAL_NINE_INITIAL_SUPPORT_STATES_SYNTHETIC_FUTURE_VOTER_ABM",
+  "source_sha256": "5423270f25ce79cd393116ab944dc3fe5d709a67ed169711d3e1eb93bef77e8e",
+  "observed_races": 9,
+  "observed_horse_price_rows": 117,
+  "observed_mean_effective_support_horses": 7.858672472477231,
+  "repetitions_per_race": 40,
+  "fictional_steps": 20,
+  "fictional_tickets_per_batch": 250,
+  "market_regime_sensitivity": {
+    "objective_only": {
+      "fictional_trajectories": 360,
+      "mean_simulated_effective_support_horses": 7.850142274932762,
+      "mean_simulated_original_favorite_final_share": 0.2453847222222222,
+      "fraction_fictional_trajectories_changing_favorite": 0.15833333333333333,
+      "fictional_final_tickets": 6000
+    },
+    "proportional_following": {
+      "fictional_trajectories": 360,
+      "mean_simulated_effective_support_horses": 7.82457751795962,
+      "mean_simulated_original_favorite_final_share": 0.24565787037037037,
+      "fraction_fictional_trajectories_changing_favorite": 0.21388888888888888,
+      "fictional_final_tickets": 6000
+    },
+    "smooth_strong_following": {
+      "fictional_trajectories": 360,
+      "mean_simulated_effective_support_horses": 7.775840257920691,
+      "mean_simulated_original_favorite_final_share": 0.23250694444444445,
+      "fraction_fictional_trajectories_changing_favorite": 0.40555555555555556,
+      "fictional_final_tickets": 6000
+    },
+    "threshold_following": {
+      "fictional_trajectories": 360,
+      "mean_simulated_effective_support_horses": 7.781858142866524,
+      "mean_simulated_original_favorite_final_share": 0.2329212962962963,
+      "fraction_fictional_trajectories_changing_favorite": 0.3888888888888889,
+      "fictional_final_tickets": 6000
+    }
+  },
+  "no_actual_odds_time_series_or_ticket_counts_observed": true,
+  "no_genotype_or_pedigree_information_in_initial_market": true,
+  "no_real_market_social_herding_or_critical_threshold_detected": true,
+  "not_calibrated_to_actual_outcomes_or_betting_returns": true,
+  "github_workflow_run_url": "https://github.com/zuizui0223/keiba/actions/runs/43697398731",
+  "provenance": "9 real single-time price vectors feed entirely fabricated voter updates; simulations are not observed market changes"
+}
