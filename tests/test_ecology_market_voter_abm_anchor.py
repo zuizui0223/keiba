@@ -32,7 +32,14 @@ class EcologicalMarketVoterABMTests(unittest.TestCase):
         b=run_one(p,"objective_only",seed=20,steps=8)
         self.assertEqual(a["simulated_final_pool"],b["simulated_final_pool"])
         self.assertTrue(a["effective_support_horses"]>0)
-        self.assertNotEqual(a,b)
+        # With no observed momentum exceeding the threshold, both must agree.
+        self.assertEqual(a,b)
+        # A deliberately constructed already-diverging pool crosses threshold.
+        q=[.5,.35,.15]
+        pool=[600,250,150]
+        ordinary=one_batch(q,pool,0,None,None,seed=20)
+        herding=one_batch(q,pool,0,.07,2.0,seed=20)
+        self.assertNotEqual(ordinary,herding)
 
     def test_unknown_scenario_fails_and_pool_mass_validated(self):
         with self.assertRaisesRegex(ValueError,"SCENARIO"):
