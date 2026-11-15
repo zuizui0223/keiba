@@ -29,7 +29,7 @@ def normalize_date(raw):
     return None
 
 
-def parse_horse_history(raw):
+def parse_horse_history(raw, race_dates=None):
     if not raw:
         return []
     data=json.loads(raw)
@@ -40,9 +40,20 @@ def parse_horse_history(raw):
         return []
     records=[]
     for r in data:
-        if not isinstance(r,list) or len(r)<18:
+        if not isinstance(r,list) or len(r)<17:
             continue
-        day=normalize_date(r[17])
+        embedded=normalize_date(r[17]) if len(r)>=18 else None
+        if race_dates is not None:
+            # In the actual published SQLite, horse.races has 17 fields:
+            # its full date lives in race.date, joined by race.rid.
+            from_race=normalize_date(race_dates.get(str(r[0]).strip())) if str(r[0]).strip() in race_dates else None
+            if not from_race or (embedded and embedded!=from_race):
+                continue
+            day=from_race
+        else:
+            day=embedded
+        if not day:
+            continue
         try:
             place=int(r[12]);distance=int(r[5])
             if day and 1<=place<=30 and 600<=distance<=4000:
