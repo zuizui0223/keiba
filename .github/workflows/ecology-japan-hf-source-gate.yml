@@ -7,6 +7,8 @@ on:
       - ".github/workflows/ecology-japan-hf-source-gate.yml"
       - "scripts/ecology_japan_hf_sqlite_source_gate.py"
       - "scripts/ecology_japan_hf_event_anchor_gate.py"
+      - "scripts/ecology_japan_2022_independent_forward.py"
+      - "tests/test_ecology_japan_2022_independent_forward.py"
       - "tests/test_ecology_japan_hf_event_anchor_gate.py"
       - "tests/test_ecology_japan_hf_sqlite_source_gate.py"
   workflow_dispatch:
@@ -17,7 +19,7 @@ permissions:
 jobs:
   independent-archive-feasibility:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     env:
       PYTHONUNBUFFERED: "1"
       PYTHONDONTWRITEBYTECODE: "1"
@@ -34,6 +36,7 @@ jobs:
         run: |
           python -m unittest discover -s tests -p "test_ecology_japan_hf_sqlite_source_gate.py" -v
           python -m unittest discover -s tests -p "test_ecology_japan_hf_event_anchor_gate.py" -v
+          python -m unittest discover -s tests -p "test_ecology_japan_2022_independent_forward.py" -v
       - name: Get old original with verified hash
         run: |
           mkdir -p tmp/private
@@ -81,6 +84,16 @@ jobs:
           else
             cp tmp/hf-download-status.json tmp/hf-name-plus-event-ID-audit.json
           fi
+      - name: Score only 2022-2024 independent outcomes after frozen pre-2022 training
+        run: |
+          if test -s tmp/private/all_races_1990-2025.db; then
+            python scripts/ecology_japan_2022_independent_forward.py \
+              --archive tmp/private/old.zip \
+              --sqlite tmp/private/all_races_1990-2025.db \
+              --output tmp/japan-2022-2024-independent-rank-result.json
+          else
+            cp tmp/hf-download-status.json tmp/japan-2022-2024-independent-rank-result.json
+          fi
       - name: Verify source controls before any publication
         run: |
           python - <<'PY'
@@ -104,6 +117,15 @@ jobs:
           }
           assert not x.get("no_names_IDs_or_source_records_exported",False) is False if x["status"] != "HOLD_EXTERNAL_SQLITE_DOWNLOAD" else True
           print("EVENT_ANCHORED_CROSS_SOURCE_STATUS",x["status"])
+          s=json.load(open("tmp/japan-2022-2024-independent-rank-result.json"))
+          assert s["status"] in {
+            "ACTUAL_INDEPENDENT_2022_2024_SOURCE_HOLDOUT_SCORE_NOT_GENETIC_CAUSATION",
+            "HOLD_CROSS_SOURCE_IDENTITY_SUPPORT",
+            "HOLD_NO_VALID_INDEPENDENT_2022_OUTCOMES",
+            "HOLD_EXTERNAL_SQLITE_DOWNLOAD",
+          }
+          assert not s.get("no_future_2022_plus_outcome_used_for_model_training_or_anchoring",False) is False if s["status"]=="ACTUAL_INDEPENDENT_2022_2024_SOURCE_HOLDOUT_SCORE_NOT_GENETIC_CAUSATION" else True
+          print("INDEPENDENT_2022_PLUS_FROZEN_FORECAST",s["status"])
           PY
       - name: Remove large original databases before uploading aggregated results
         if: always()
@@ -115,5 +137,6 @@ jobs:
             tmp/hf-download-status.json
             tmp/hf-independent-horse-ID-audit.json
             tmp/hf-name-plus-event-ID-audit.json
+            tmp/japan-2022-2024-independent-rank-result.json
           if-no-files-found: error
           retention-days: 7
