@@ -59,7 +59,7 @@ def normalize(frame: pd.DataFrame, kind: str) -> pd.DataFrame:
         "ダート": "dirt", "ダ": "dirt"
     })
     out["race_no"] = pd.to_numeric(out.race_no, errors="coerce")
-    out["distance"] = pd.to_numeric(out.distance, errors="coerce")
+    out["distance"] = pd.to_numeric(out.distance.astype(str).str.strip().str.replace(r"(?i)m$", "", regex=True), errors="coerce")
     out["rank"] = pd.to_numeric(out["rank"], errors="coerce")
     out["name"] = out.name.map(canonical_name)
     valid = (out.day.notna() & out.course.notna() & out.surface.notna()
