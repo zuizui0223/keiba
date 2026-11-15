@@ -54,6 +54,18 @@ class IndependentValidationModelTests(unittest.TestCase):
         self.assertEqual(rows,[])
         self.assertEqual(qa["source_race_metadata_conflicts"],1)
 
+    def test_invalid_record_field_is_reported_by_exact_column(self):
+        x=hf_record()
+        x[4]=None
+        rows,qa=parse_independent_history(json.dumps([[x]]),
+            {"101":("2022/01/05",1600,1)})
+        self.assertEqual(rows,[])
+        self.assertEqual(qa["invalid_horse_surface"],1)
+        y=hf_record()
+        rows,qa=parse_independent_history(json.dumps([[y]]),
+            {"101":("2022/01/05",1600,None)})
+        self.assertEqual(qa["invalid_race_surface"],1)
+
     def test_unclassified_finisher_and_no_source_race_ref_excluded(self):
         x=hf_record(rank=9,field=8)
         y=hf_record(rid="999")
