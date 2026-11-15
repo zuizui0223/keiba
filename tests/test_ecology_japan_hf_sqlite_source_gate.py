@@ -18,6 +18,23 @@ class IndependentlySourcedHistoryTests(unittest.TestCase):
         self.assertEqual(parse_horse_history(json.dumps([[rec],{"meta":"x"}])),
                          [("20220101",2,1600)])
 
+    def test_actual_17_field_history_requires_date_from_race_table(self):
+        rec=fixture_result(day="2020-01-01")[:17]
+        self.assertEqual(len(rec),17)
+        self.assertEqual(parse_horse_history(json.dumps([[rec]])),[])
+        self.assertEqual(
+            parse_horse_history(json.dumps([[rec]]),race_dates={"R":"2020/01/01"}),
+            [("20200101",2,1600)])
+
+    def test_unmatched_race_reference_must_not_invent_date(self):
+        rec=fixture_result()[:17]
+        self.assertEqual(parse_horse_history(json.dumps([[rec]]),race_dates={"other":"2020/01/01"}),[])
+
+    def test_race_table_date_overrides_no_date_but_rejects_inconsistent_embedded_date(self):
+        rec=fixture_result(day="2020-01-01")
+        self.assertEqual(parse_horse_history(json.dumps([[rec]]),race_dates={"R":"2020/01/01"}),[("20200101",2,1600)])
+        self.assertEqual(parse_horse_history(json.dumps([[rec]]),race_dates={"R":"2021/01/01"}),[])
+
     def test_nonfinisher_is_not_fabricated_as_classified_rank(self):
         rec=fixture_result(finish="DNF")
         self.assertEqual(parse_horse_history(json.dumps([[rec]])),[])
