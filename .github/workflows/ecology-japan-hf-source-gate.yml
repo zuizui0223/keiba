@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install fixed data and open HF downloader packages
-        run: python -m pip install pandas==2.2.3 numpy==2.2.6 huggingface_hub>=0.30 hf_xet>=1.0
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6 'huggingface_hub>=0.30' 'hf_xet>=1.0'
       - name: Verify parsed source histories and pre-2022 identity gate
         run: python -m unittest discover -s tests -p "test_ecology_japan_hf_sqlite_source_gate.py" -v
       - name: Get old original with verified hash
