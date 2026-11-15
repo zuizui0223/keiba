@@ -27,6 +27,42 @@ def norm_name(name):
     return " ".join(unicodedata.normalize("NFKC",name).strip().split()).casefold()
 
 
+def _source_record_shape(raw):
+    """Only field TYPES/lengths; never return a source value or identifier."""
+    out=Counter()
+    if not raw:
+        out["EMPTY_JSON_HISTORY"]+=1
+        return out
+    try:
+        tree=json.loads(raw)
+    except (TypeError,ValueError):
+        out["UNREADABLE_JSON_HISTORY"]+=1
+        return out
+    out["root_type_"+type(tree).__name__]+=1
+    if isinstance(tree,list):
+        out["root_length_0" if not tree else "root_length_positive"]+=1
+        root=tree[0] if tree else None
+        out["first_type_"+type(root).__name__]+=1
+        if isinstance(root,list):
+            out["first_list_length_"+str(min(len(root),1000))]+=1
+            if root and isinstance(root[0],list):
+                record=root[0]
+            else:
+                record=root
+        else:
+            record=root
+        out["leaf_type_"+type(record).__name__]+=1
+        if isinstance(record,list):
+            out["leaf_list_length_"+str(min(len(record),200))]+=1
+            if len(record)>17:
+                out["r_date_type_"+type(record[17]).__name__]+=1
+                out["r_date_char_length_"+str(min(len(str(record[17])),40))]+=1
+                out["r_date_chars_all_digits"]+=str(record[17]).isdigit()
+                out["rank_index_12_is_digit"]+=str(record[12]).isdigit()
+                out["distance_index_5_is_digit"]+=str(record[5]).isdigit()
+    return out
+
+
 def anchor_name_histories(old:pd.DataFrame, horse_records):
     required={"horse_id","horse_name","date","place","distance"}
     if not required.issubset(old.columns):
@@ -62,18 +98,37 @@ def anchor_name_histories(old:pd.DataFrame, horse_records):
     one=0
     later_counts=Counter()
     bad_history=0
+    probe=Counter()
+    shape_examples=0
     for hid,name,raw in iterator():
         normalized=norm_name(name)
         if normalized not in name_to_id or normalized in ambiguous:
             continue
+        probe["candidate_histories_total"]+=1
+        if shape_examples<500:
+            probe.update(_source_record_shape(raw))
+            shape_examples+=1
         try:
             records=parse_horse_history(raw)
         except (TypeError,ValueError,KeyError):
             bad_history+=1
             continue
         old_id=name_to_id[normalized]
-        dates={r[0] for r in set(records).intersection(history[old_id])
-               if r[0]<"20220101"}
+        probe["candidate_histories_with_parsed_races"]+=bool(records)
+        pre=[r for r in records if r[0]<"20220101"]
+        probe["candidate_histories_with_pre2022_parsed_races"]+=bool(pre)
+        probe["candidate_parsed_races_total"]+=len(records)
+        probe["candidate_parsed_pre2022_races_total"]+=len(pre)
+        # Compare granularity progressively to locate a wrong source field.
+        hist=history[old_id]
+        old_days={v[0] for v in hist}
+        new_days={v[0] for v in pre}
+        probe["candidate_pre2022_dates_matching_old"]+=bool(new_days & old_days)
+        old_daydist={(v[0],v[2]) for v in hist}
+        old_dayrank={(v[0],v[1]) for v in hist}
+        probe["candidate_pre2022_day_distance_matching_old"]+=bool(old_daydist & {(v[0],v[2]) for v in pre})
+        probe["candidate_pre2022_day_rank_matching_old"]+=bool(old_dayrank & {(v[0],v[1]) for v in pre})
+        dates={r[0] for r in set(pre).intersection(hist)}
         if dates:
             one+=1
         if len(dates)<2:
@@ -94,6 +149,7 @@ def anchor_name_histories(old:pd.DataFrame, horse_records):
         "independent_future_rows_on_anchors":sum(later_counts.values()),
         "future_by_year":dict(later_counts),
         "candidate_histories_unparseable":bad_history,
+        "source_shape_probe":dict(probe),
         "only_pre2022_results_used_for_anchoring":True,
         "not_official_studbook_ID_crosswalk":True,
         "no_names_IDs_or_source_records_exported":True,
