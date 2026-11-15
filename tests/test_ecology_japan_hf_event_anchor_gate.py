@@ -36,6 +36,22 @@ class TrueHistoryAnchorTests(unittest.TestCase):
         self.assertEqual(report["independent_future_rows_on_anchors"],2)
         self.assertEqual(report["future_by_year"],{"2022":1,"2023":1})
 
+    def test_real_17_field_rows_with_source_race_dates_can_match_two_events(self):
+        history=current()
+        truncated=[]
+        dates={"new-race-1":"2020/01/01","new-race-2":"2021/01/01",
+               "new-race-3":"2022/01/01","new-race-4":"2023/01/01"}
+        rows=[]
+        for rid,(name,rank,dist) in zip(dates,[("a",1,1600),("b",2,1800),("c",1,1600),("d",2,1800)]):
+            r=race("2020-01-01",rank,dist)[:17]
+            r[0]=rid
+            rows.append(r)
+        truncated.append(("new-1","メイショウA",json.dumps([rows])))
+        mapping,report=anchor_name_histories(old(),truncated,race_dates=dates)
+        self.assertEqual(mapping,{"new-1":"old-a"})
+        self.assertEqual(report["two_event_anchor_horses"],1)
+        self.assertEqual(report["independent_future_rows_on_anchors"],2)
+
     def test_future_rank_change_never_changes_identity_map(self):
         rows=current()
         before,_=anchor_name_histories(old(),rows)
