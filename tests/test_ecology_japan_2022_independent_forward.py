@@ -54,6 +54,23 @@ class IndependentValidationModelTests(unittest.TestCase):
         self.assertEqual(rows,[])
         self.assertEqual(qa["source_race_metadata_conflicts"],1)
 
+    def test_textual_turf_and_dirt_must_match_race_table_surface(self):
+        turf=hf_record(surface="芝")
+        dirt=hf_record(rid="102",surface="ダ")
+        rows,qa=parse_independent_history(json.dumps([[turf,dirt]]),{
+            "101":("2022/01/05",1600,1),
+            "102":("2022/01/06",1600,0),
+        })
+        self.assertEqual(len(rows),2)
+        self.assertEqual([r["surface"] for r in rows],["turf","dirt"])
+        self.assertEqual(qa["eligible_rows"],2)
+        wrong=hf_record(surface="芝")
+        rows,qa=parse_independent_history(json.dumps([[wrong]]),{
+            "101":("2022/01/05",1600,0)
+        })
+        self.assertEqual(rows,[])
+        self.assertEqual(qa["source_race_metadata_conflicts"],1)
+
     def test_invalid_record_field_is_reported_by_exact_column(self):
         x=hf_record()
         x[4]=None
