@@ -31,6 +31,16 @@ FEATURE_KIN=FEATURE_NO_KIN+("sire_kin_history","dam_kin_history",
 RIDGE_ALPHA=100.0
 
 
+def source_surface_code(value):
+    """Explicit source category mapping; no treating unknown labels as dirt."""
+    if value is None:
+        return None
+    if isinstance(value,(int,bool)) and int(value) in (0,1):
+        return int(value)
+    s=str(value).strip().casefold()
+    return {"1":1,"0":0,"芝":1,"turf":1,"ダ":0,"ダート":0,"dirt":0}.get(s)
+
+
 def parse_independent_history(raw, race_index:dict) -> tuple[list[dict],dict]:
     if not race_index:
         raise ValueError("HOLD_SOURCE_EVENT_DATE_TABLE_EMPTY")
@@ -71,7 +81,9 @@ def parse_independent_history(raw, race_index:dict) -> tuple[list[dict],dict]:
         source_distance=require_int(distance,"race_distance")
         source_surface=require_int(ctype,"race_surface")
         horse_distance=require_int(rec[5],"horse_distance")
-        horse_surface=require_int(rec[4],"horse_surface")
+        horse_surface=source_surface_code(rec[4])
+        if horse_surface is None:
+            qa["invalid_horse_surface"]+=1
         n=require_int(rec[7],"source_field_size")
         place=require_int(rec[12],"source_placing")
         if any(v is None for v in (source_distance,source_surface,
