@@ -63,7 +63,7 @@ def _source_record_shape(raw):
     return out
 
 
-def anchor_name_histories(old:pd.DataFrame, horse_records):
+def anchor_name_histories(old:pd.DataFrame, horse_records, race_dates=None):
     required={"horse_id","horse_name","date","place","distance"}
     if not required.issubset(old.columns):
         raise ValueError("HOLD_OLD_SCHEMA_REQUIRED_FOR_EVENT_ANCHOR")
@@ -109,7 +109,7 @@ def anchor_name_histories(old:pd.DataFrame, horse_records):
             probe.update(_source_record_shape(raw))
             shape_examples+=1
         try:
-            records=parse_horse_history(raw)
+            records=parse_horse_history(raw,race_dates=race_dates)
         except (TypeError,ValueError,KeyError):
             bad_history+=1
             continue
@@ -173,7 +173,12 @@ def main():
     con=sqlite3.connect(f"file:{args.db}?mode=ro",uri=True)
     def get_rows():
         return con.execute("SELECT hid,name,races FROM horse")
-    _,report=anchor_name_histories(old,get_rows)
+    source_dates={str(rid).strip():day for rid,day in con.execute("SELECT rid,date FROM race")}
+    n_races=con.execute("SELECT count(*) FROM race").fetchone()[0]
+    if len(source_dates)!=n_races:
+        raise ValueError("HOLD_SOURCE_RACE_ID_COLLISIONS")
+    _,report=anchor_name_histories(old,get_rows,race_dates=source_dates)
+    report["source_race_id_date_mapping_count"]=len(source_dates)
     con.close()
     report.update({
         "original_archive_sha256":OLD_SHA,
