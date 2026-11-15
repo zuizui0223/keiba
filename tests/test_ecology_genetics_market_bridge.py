@@ -11,7 +11,7 @@ import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 from ecology_genetics_market_bridge import (
-    _softmax, build_races, score, source_snapshot_readiness
+    _softmax, _predict, build_races, score, source_snapshot_readiness
 )
 
 
@@ -81,6 +81,30 @@ class GeneticsMarketBridgeTests(unittest.TestCase):
                          "HOLD_NO_VERIFIED_ID_LINKED_MSTN_COHORT")
         self.assertTrue(outcome["no_races_from_same_calendar_day_cross_train_test"])
         self.assertNotIn("FAKE-",str(outcome))
+
+    def test_frozen_threshold_competes_without_criticality_claim(self):
+        cards,quotes=fixture()
+        races,_=build_races(cards,quotes)
+        result=score(races)
+        self.assertIn("M_market_threshold_kin",result["models"])
+        self.assertTrue(result["threshold_is_exploratory_not_critical_point"])
+        self.assertEqual(len(result["train_only_selected_parameters"]
+                             ["M_market_threshold_kin"]),5)
+        r={**races[0],"q0":[.25,.5,.25],"qmid":[.35,.4,.25],
+           "kin":[0.,0.,0.],"genotype_distance":[0.,0.,0.]}
+        slow=_predict(r,gamma=0.0,beta=0.0)
+        regime=_predict(r,gamma=0.0,beta=0.0,threshold=0.1,high_gamma=1.5)
+        self.assertNotEqual(slow,regime)
+        self.assertAlmostEqual(sum(regime),1.0)
+
+    def test_parent_kin_label_shuffle_is_falsification_not_p_value(self):
+        cards,quotes=fixture()
+        races,_=build_races(cards,quotes)
+        r=score(races)
+        self.assertEqual(r["negative_control_permutations"],1)
+        self.assertTrue(r["negative_control_is_not_calibrated_p_value"])
+        self.assertLess(r["models"]["M_market_plus_kin"]["mean_race_share_RMSE"],
+                        r["models"]["M_market_plus_shuffled_kin"]["mean_race_share_RMSE"])
 
     def test_known_MSTN_requires_assay_and_full_race_coverage(self):
         cards,quotes=fixture(genotype=True)
