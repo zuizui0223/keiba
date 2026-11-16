@@ -1,0 +1,140 @@
+{
+  "date_utc": "2026-11-16",
+  "status": "POSTHOC_REAL_SOURCE_2022_2024_PARENT_PAIR_PLACEBO_NOT_GENETIC_CAUSATION",
+  "success_run_url": "https://github.com/zuizui0223/keiba/actions/runs/43889528129",
+  "run_id": 43889528129,
+  "job_id": 133376636858,
+  "run_source_commit_sha": "37fe04c6fc3a7401b0abda40c015550c666122b2",
+  "source_archive_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_later_sqlite_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "source_artifact": {
+    "id": 14234479873,
+    "name": "japan-2022-2024-parent-placebo-aggregate-only",
+    "digest": "sha256:5234f7517cad47b4e676635205910e76ac75d815cd1397bb50243ad5e1c9023e",
+    "created_at": "2026-11-16T14:52:10Z"
+  },
+  "scope": {
+    "calendar_years": "2022-2024",
+    "horse_ids_with_2_pre_2022_event_identity_crosswalk": 20400,
+    "holdout_rows": 255484,
+    "holdout_unique_horses": 12919
+  },
+  "score_metric": "equal-horse-weight normalized-rank RMSE",
+  "original_frozen": {
+    "rmse_no_family_history": 0.31277751588017505,
+    "rmse_real_parent_history": 0.3124550620307501,
+    "real_gain": 0.0003224538494249751
+  },
+  "negative_control_protocol": {
+    "comparison": "retrain model on frozen 2018-2021 outcomes after swapping whole sire/dam pairs within five-year birth, first circuit and parent-known/missing strata",
+    "shuffled_only_historical_source_parents": true,
+    "original_heldout_rows_scores_ridge_alpha_unchanged": true,
+    "original_parent_covariates_verified_by_identity_reconstruction": true,
+    "real_family_member_excludes_focal_horse": true,
+    "n_shuffles": 19,
+    "selection": "pre-recorded seeds 2026111600..2026111618",
+    "inference_level": "post-hoc falsification screen, not confirmatory family-effect causal test"
+  },
+  "empirical_placebo_results": {
+    "mean_placebo_gain": -0.000040234638457741456,
+    "min_placebo_gain": -0.00010479242161237634,
+    "max_placebo_gain": -0.000006039547747360707,
+    "median_placebo_gain": -0.000037600782943236766,
+    "percentile_95_range": [
+      -0.00009340697336550908,
+      -0.000006418647951439426
+    ],
+    "placebos_beating_or_tying_real": 0,
+    "mc_upper_tail_p_plus_one": 0.05,
+    "min_possible_mc_p": 0.05,
+    "per_seed_gains": [
+      {
+        "seed": 2026111600,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00005744518828976197
+      },
+      {
+        "seed": 2026111601,
+        "no_family_rmse_minus_placebo_family_rmse": -0.0000563951581565858
+      },
+      {
+        "seed": 2026111602,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000007714173568040827
+      },
+      {
+        "seed": 2026111603,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000037600782943236766
+      },
+      {
+        "seed": 2026111604,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00006121913848017302
+      },
+      {
+        "seed": 2026111605,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000023000743189227624
+      },
+      {
+        "seed": 2026111606,
+        "no_family_rmse_minus_placebo_family_rmse": -0.0000349116102016378
+      },
+      {
+        "seed": 2026111607,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000012334879113840014
+      },
+      {
+        "seed": 2026111608,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000006039547747360707
+      },
+      {
+        "seed": 2026111609,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00005855246139879755
+      },
+      {
+        "seed": 2026111610,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000011800855121313347
+      },
+      {
+        "seed": 2026111611,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00005962728858638355
+      },
+      {
+        "seed": 2026111612,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00005783971499001561
+      },
+      {
+        "seed": 2026111613,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00010479242161237634
+      },
+      {
+        "seed": 2026111614,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000011868209540577546
+      },
+      {
+        "seed": 2026111615,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000009887911975703378
+      },
+      {
+        "seed": 2026111616,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00006705462762851555
+      },
+      {
+        "seed": 2026111617,
+        "no_family_rmse_minus_placebo_family_rmse": -0.000006881992645313417
+      },
+      {
+        "seed": 2026111618,
+        "no_family_rmse_minus_placebo_family_rmse": -0.00007949142550822685
+      }
+    ]
+  },
+  "limitations": [
+    "Only recorded direct-parent family relationships, not pedigree A/genomic G",
+    "Two-event matched prior surviving horses, not all Japanese horses",
+    "Source-A classified finisher denominator differs from Source-B declared runner denominator",
+    "A false-parent null rules out some arbitrary clustering but cannot separate genotype, farm, trainer, selection, geography or parent-name reputation",
+    "N=19 permutations, min attainable Monte Carlo p=0.05; a post-hoc test",
+    "Original racing source and upstream rights not independently verified",
+    "No future result used in pre-2022 identity matches or fitting coefficients",
+    "No odds/market or betting gains established"
+  ],
+  "no_individual_source_records_names_ids_exported": true
+}

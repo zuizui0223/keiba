@@ -1,0 +1,68 @@
+name: "Japan 2022-2025 independent source identity anchor audit"
+on:
+  push:
+    branches: [analysis/japan-independent-2022-anchor-gate-20261115]
+    paths:
+      - ".github/workflows/ecology-japan-independent-anchor.yml"
+      - "scripts/ecology_japan_independent_source_gate.py"
+      - "tests/test_ecology_japan_independent_source_gate.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-identity-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fixed dataframe dependencies
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6
+      - name: Verify exact identity and no post-2021 outcome lookahead
+        run: python -m unittest discover -s tests -p "test_ecology_japan_independent_source_gate.py" -v
+      - name: Download two independent public sources transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old-2010-2021.zip'))"
+          curl --fail --location --silent --show-error --retry 2 --max-time 150 \
+            https://raw.githubusercontent.com/whitedogk/jra-condition-app/main/jra-results-actual.csv \
+            --output tmp/private/new-jra-results.csv
+          test -s tmp/private/new-jra-results.csv
+      - name: Audit verified pre-2022 race identity intersections only
+        run: |
+          python scripts/ecology_japan_independent_source_gate.py \
+            --old-archive tmp/private/old-2010-2021.zip \
+            --new-jra-csv tmp/private/new-jra-results.csv \
+            --output tmp/japan-independent-2022-id-gate.json
+      - name: Verify aggregate scope and race-result exclusion
+        run: |
+          python - <<'PY'
+          import json
+          p='tmp/japan-independent-2022-id-gate.json'
+          j=json.load(open(p,encoding="utf-8"))
+          assert j["status"] in {
+            "ANCHORED_2022_PLUS_FEASIBILITY_NOT_FORECAST",
+            "HOLD_INSUFFICIENT_CROSS_SOURCE_ANCHORS"
+          }
+          assert j["no_future_race_outcome_in_crosswalk"]
+          assert j["no_individual_names_or_ids_exported"]
+          assert j["identity_not_studbook_verified"]
+          assert j["external_csv_license_not_verified"]
+          print("STRICT_SOURCE_FEASIBILITY_STATUS",j["status"])
+          PY
+      - name: Delete third-party rows before any upload
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-independent-identity-aggregate-only
+          path: tmp/japan-independent-2022-id-gate.json
+          if-no-files-found: error
+          retention-days: 7

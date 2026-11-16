@@ -1,0 +1,180 @@
+{
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/43892293154",
+  "run_id": 43892293154,
+  "job_id": 133386438483,
+  "head_sha": "18927911a15c2f05261b0d83c1ee0ac1dedaba27",
+  "artifact": {
+    "id": 14237611481,
+    "name": "japan-2022-24-denominator-audit-aggregate-only",
+    "digest": "sha256:1066827e51904a7f2fbfeca81e1453aeca7636efbd744887c892d182e230b8ed",
+    "created_at": "2026-11-16T15:05:37Z"
+  },
+  "analysis_from_job_stdout": {
+    "status": "REAL_SOURCE_2022_2024_RACE_HORSES_DENOMINATOR_AUDIT_NOT_GENETIC_CAUSATION",
+    "counts": {
+      "frozen_rows": 255484,
+      "frozen_horses": 12919,
+      "frozen_races": 36955,
+      "race_qualification": {
+        "STRICT_COMPLETE_CLASSIFIED_RACE": 35333,
+        "CLASSIFIED_PROXY_INCOMPLETE_DECLARED": 1050,
+        "TIED_OR_DUPLICATED_RANKS": 569,
+        "GAPPED_CLASSIFIED_RANKS": 3
+      },
+      "source_horse_rank_failures": {
+        "rank_matches_but_race_not_audit_eligible": 4564
+      },
+      "rows_matched_to_Race.horses_exact_identity_and_rank": 250920,
+      "rows_strict_complete": 244147,
+      "rows_classified_proxy": 250920,
+      "strict_complete_races": 35333
+    },
+    "strict_complete": {
+      "rows": 244147,
+      "unique_horses": 12887,
+      "races": 35333,
+      "RMSE_unchanged_midpoint": 0.3217441421829057,
+      "RMSE_portable_no_kin": 0.31354335632983643,
+      "RMSE_portable_kin": 0.3132186661774923,
+      "M0_minus_kin_gain": 0.00032469015234415366,
+      "midpoint_minus_kin_gain": 0.008525476005413424,
+      "status": "SCORED_CONDITIONAL_COHORT",
+      "uses_proxy_denominator_not_studbook_certified": false,
+      "by_year": {
+        "2022": {
+          "rows": 120381,
+          "unique_horses": 12755,
+          "races": 14238,
+          "RMSE_unchanged_midpoint": 0.3221321594881176,
+          "RMSE_portable_no_kin": 0.31152881445567865,
+          "RMSE_portable_kin": 0.3110853012331066,
+          "M0_minus_kin_gain": 0.00044351322257202286,
+          "midpoint_minus_kin_gain": 0.01104685825501095
+        },
+        "2023": {
+          "rows": 80939,
+          "unique_horses": 8778,
+          "races": 11469,
+          "RMSE_unchanged_midpoint": 0.3204516628348531,
+          "RMSE_portable_no_kin": 0.3193306914945653,
+          "RMSE_portable_kin": 0.31907951725293665,
+          "M0_minus_kin_gain": 0.00025117424162862667,
+          "midpoint_minus_kin_gain": 0.0013721455819164508
+        },
+        "2024": {
+          "rows": 42827,
+          "unique_horses": 5225,
+          "races": 9626,
+          "RMSE_unchanged_midpoint": 0.3180587844880855,
+          "RMSE_portable_no_kin": 0.3204701007956131,
+          "RMSE_portable_kin": 0.32035958322563507,
+          "M0_minus_kin_gain": 0.00011051756997804141,
+          "midpoint_minus_kin_gain": -0.0023007987375495698
+        }
+      },
+      "single_way_bootstrap": {
+        "horse": {
+          "clusters": 12887,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            0.00012796724783828984,
+            0.0004994852663967209
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            0.007765948708337025,
+            0.009237437818813579
+          ],
+          "single_way_approximation_only": true
+        },
+        "race_day": {
+          "clusters": 1067,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            0.00018628992463716465,
+            0.00046678610627341743
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            0.007551212445714028,
+            0.009484539731353306
+          ],
+          "single_way_approximation_only": true
+        }
+      }
+    },
+    "classified_proxy": {
+      "rows": 250920,
+      "unique_horses": 12908,
+      "races": 36383,
+      "RMSE_unchanged_midpoint": 0.3218589291474365,
+      "RMSE_portable_no_kin": 0.3135749219765991,
+      "RMSE_portable_kin": 0.3132727874572254,
+      "M0_minus_kin_gain": 0.00030213451937366465,
+      "midpoint_minus_kin_gain": 0.008586141690211102,
+      "status": "SCORED_CONDITIONAL_COHORT",
+      "uses_proxy_denominator_not_studbook_certified": true,
+      "by_year": {
+        "2022": {
+          "rows": 123704,
+          "unique_horses": 12777,
+          "races": 14658,
+          "RMSE_unchanged_midpoint": 0.32232198068051476,
+          "RMSE_portable_no_kin": 0.31160508689122995,
+          "RMSE_portable_kin": 0.3111617737955088,
+          "M0_minus_kin_gain": 0.00044331309572115396,
+          "midpoint_minus_kin_gain": 0.011160206885005963
+        },
+        "2023": {
+          "rows": 83164,
+          "unique_horses": 8793,
+          "races": 11801,
+          "RMSE_unchanged_midpoint": 0.32045508943680573,
+          "RMSE_portable_no_kin": 0.3192976819111887,
+          "RMSE_portable_kin": 0.31909222406238924,
+          "M0_minus_kin_gain": 0.00020545784879943962,
+          "midpoint_minus_kin_gain": 0.0013628653744164887
+        },
+        "2024": {
+          "rows": 44052,
+          "unique_horses": 5238,
+          "races": 9924,
+          "RMSE_unchanged_midpoint": 0.3181830525647428,
+          "RMSE_portable_no_kin": 0.32061204540602584,
+          "RMSE_portable_kin": 0.3204935501512265,
+          "M0_minus_kin_gain": 0.00011849525479934453,
+          "midpoint_minus_kin_gain": -0.0023104975864837174
+        }
+      },
+      "single_way_bootstrap": {
+        "horse": {
+          "clusters": 12908,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            0.00009979752757520723,
+            0.0005142199270044113
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            0.0077841279908022944,
+            0.009304487936666373
+          ],
+          "single_way_approximation_only": true
+        },
+        "race_day": {
+          "clusters": 1067,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            0.0001683969350262604,
+            0.00043861029834566244
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            0.007598971689358708,
+            0.009556551554272758
+          ],
+          "single_way_approximation_only": true
+        }
+      }
+    }
+  },
+  "independently_verified_workflow_gate": "DENOMINATOR_SOURCE_QA_STATUS REAL_SOURCE_2022_2024_RACE_HORSES_DENOMINATOR_AUDIT_NOT_GENETIC_CAUSATION",
+  "origin": "aggregate GitHub Actions stdout, original source rows not published",
+  "posthoc": true
+}
