@@ -1,0 +1,75 @@
+name: "Japan 2022-24 joint strict-race and strong family-history effect"
+on:
+  push:
+    branches: [analysis/japan-independent-2022-anchor-gate-20261115]
+    paths:
+      - ".github/workflows/ecology-japan-2022-joint-strict-strong.yml"
+      - "scripts/ecology_japan_2022_joint_strict_strong.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  joint-source-locked-race-family:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned analysis and source download dependencies
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Test previous source-rank audit and pretarget own-history covariates
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_denominator_audit.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_strong_portable_baseline.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_parent_placebo.py" -v
+      - name: Download source A transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download source B 1990-2025 SQLite transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Triple-parity audit and joint strict-race age-sex-family scoring
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_joint_strict_strong.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --output tmp/japan-2022-2024-joint-strict-strong.json
+      - name: Fail-closed provenance, sample and no-disclosure check
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open("tmp/japan-2022-2024-joint-strict-strong.json",encoding="utf-8"))
+          assert j["status"]=="POSTHOC_JOINT_STRICT_RACE_AND_STRONG_AGE_SEX_RECENCY_NOT_GENETIC_CAUSATION"
+          assert j["strict_strong"]["rows"]==244147
+          assert j["strict_strong"]["unique_horses"]==12887
+          assert j["training_2018_2021_only"]
+          assert j["no_raw_horse_ids_names_race_rows_or_individual_predictions_exported"]
+          assert j["strict_source_qa"]["same_new_source_horse_ID_and_rank_verified"]
+          print("JOINT_STRICT_STRONG_HOLDOUT_TRIPLE_PARITY_VERIFIED")
+          PY
+      - name: Delete third-party originals
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-2024-joint-strict-strong-aggregate-only
+          path: tmp/japan-2022-2024-joint-strict-strong.json
+          if-no-files-found: warn
+          retention-days: 14
