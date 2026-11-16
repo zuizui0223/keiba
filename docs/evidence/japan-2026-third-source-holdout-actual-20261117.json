@@ -1,0 +1,156 @@
+{
+  "source_run_url": "https://github.com/zuizui0223/keiba/actions/runs/43897234479",
+  "run_id": 43897234479,
+  "job_id": 133404000470,
+  "head_commit_sha": "ae152c83840a4b4a948f1ec4f8cfb135efc5edca",
+  "source_artifact": {
+    "id": 14240625433,
+    "name": "japan-2026-triple-source-aggregate-only",
+    "digest": "sha256:dcf5b81df27cb75818a78f99aa98cc8e22982bd2dc722ec40c8fb5ce92fcaf05",
+    "created_at": "2026-11-16T15:33:48Z",
+    "expired": false
+  },
+  "source_method": "actual 2026 year third-source outcome, both identity joins anchored on <2025 records, model fit original source through 2021",
+  "analysis_from_aggregate_GitHub_job_stdout": {
+    "status": "SOURCE_SEPARATED_2026_RETROSPECTIVE_HOLDOUT_NOT_STUDBOOK",
+    "sourceA_full_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "sourceB_full_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "sourceC_full_sha256": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f",
+    "sourceC": {
+      "csv_sha256": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f",
+      "valid_rows": 137860,
+      "date_min": "2023-05-20",
+      "date_max": "2026-05-17",
+      "valid_rows_by_year": {
+        "2023": 27705,
+        "2024": 45600,
+        "2025": 46333,
+        "2026": 18222
+      },
+      "horse_id_column_present": false,
+      "sire_dam_id_column_present": false,
+      "csv_source_rights_verified": false
+    },
+    "sourceA_to_B": {
+      "two_pre2022_event_horses": 20400,
+      "ambiguous_labels_old": 875,
+      "ambiguous_labels_B": 5531,
+      "used_2025_or_2026_results_for_ID": false
+    },
+    "sourceB_to_C": {
+      "at_least_one_day": 2223,
+      "two_day_horses": 1945,
+      "two_day_events": 12125,
+      "ambiguous_normalized_names": 0
+    },
+    "sourceC_2026_race_quality": {
+      "source_complete_races": 1264,
+      "incomplete_tied_or_gapped_results": 25
+    },
+    "sourceC_2026_valid_complete_race_rows": 17864,
+    "sourceC_2026_linked_rows": 480,
+    "sourceC_2026_linked_horses": 232,
+    "sourceC_2026_linked_distinct_dates": 42,
+    "sourceC_2026_linked_races": 259,
+    "thresholds": {
+      "min_2026_horses": 30,
+      "min_2026_rows": 100,
+      "min_2026_distinct_race_dates": 30,
+      "fixed_before_2026_scoring": true
+    },
+    "rights_of_original_racing_records_unverified": true,
+    "no_names_IDs_or_individual_races_exported": true,
+    "outcomes_2026_scored_only_after_fixed_two_stage_2024_identity": true,
+    "sourceA_2018_2021_training_only": true,
+    "sourceA_kin_not_full_pedigree_A_or_genome_G": true,
+    "2026_ordinary": {
+      "rows": 480,
+      "unique_horses": 232,
+      "races": 259,
+      "RMSE_unchanged_midpoint": 0.31214627917891946,
+      "RMSE_portable_no_kin": 0.319681772293503,
+      "RMSE_portable_kin": 0.32030160640717165,
+      "M0_minus_kin_gain": -0.0006198341136686714,
+      "midpoint_minus_kin_gain": -0.008155327228252185,
+      "one_way_399_bootstrap": {
+        "horse": {
+          "clusters": 232,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            -0.005077073501105875,
+            0.0030330197628484867
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            -0.016644743625299243,
+            -0.0003242412138285644
+          ],
+          "single_way_approximation_only": true
+        },
+        "race_day": {
+          "clusters": 42,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            -0.003877665574703948,
+            0.002867835159734481
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            -0.014877436734131666,
+            -0.002078958067838036
+          ],
+          "single_way_approximation_only": true
+        }
+      }
+    },
+    "2026_strong_pretarget": {
+      "rows": 480,
+      "unique_horses": 232,
+      "races": 259,
+      "RMSE_unchanged_midpoint": 0.31214627917891946,
+      "RMSE_portable_no_kin": 0.3215185305911288,
+      "RMSE_portable_kin": 0.3180747501712852,
+      "M0_minus_kin_gain": 0.003443780419843556,
+      "midpoint_minus_kin_gain": -0.005928470992365764,
+      "one_way_399_bootstrap": {
+        "horse": {
+          "clusters": 232,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            -0.0006436563554740563,
+            0.007023420624543705
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            -0.015058732393355905,
+            0.0020117607705450492
+          ],
+          "single_way_approximation_only": true
+        },
+        "race_day": {
+          "clusters": 42,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            -0.00011929883715878211,
+            0.00704004756554507
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            -0.012582104817498246,
+            0.0004528268853525624
+          ],
+          "single_way_approximation_only": true
+        }
+      }
+    },
+    "scope_limits": [
+      "Retrospective new 2026 source release, not live prospective collection",
+      "Surviving old-source runners only; excludes 2022+ debuting horses",
+      "C source has no official unique horse ID; exact two-event historical anchor not studbook-certified",
+      "2026 new CSV may be incomplete and derived from shared JRA upstream website",
+      "Race ranks normalized by complete classified finisher set in source C; may differ from actual entrant field",
+      "Cross-source license and data reuse rights not independently cleared",
+      "Family sharing cannot identify additive genetics versus breeding environment",
+      "No odds, probability calibration, betting profit, national JRA+NAR census or new genomic analysis"
+    ]
+  },
+  "rights_clear": false,
+  "not_registered_studbook_ID": true,
+  "no_row_level_records_disclosed": true
+}
