@@ -1,0 +1,90 @@
+name: "Japan 2026 third-source horse identity and family holdout feasibility"
+
+on:
+  push:
+    branches: [analysis/japan-2026-triple-source-holdout-20261117]
+    paths:
+      - ".github/workflows/ecology-japan-2026-triple-source.yml"
+      - "scripts/ecology_japan_2026_triple_source.py"
+      - "tests/test_ecology_japan_2026_triple_source.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  japan-2026-triple-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fixed numerical and historic-source download packages
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Synthetic identity leakage, ambiguous name and complete-race tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2026_triple_source.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_independent_forward.py" -v
+      - name: Download public 2010-2021 old source only for transient analysis
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download 1990-2025 intermediate historical SQLite transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Fetch the exact public 2023-2026 JRA CSV release; never re-scrape the JRA website
+        run: |
+          curl --fail --location --silent --show-error --retry 2 --max-time 150 \
+            "https://raw.githubusercontent.com/whitedogk/jra-condition-app/main/jra-results-actual.csv" \
+            --output tmp/private/jra-results-actual.csv
+          test -s tmp/private/jra-results-actual.csv
+      - name: Verify pre-2025 two-hop horse identities and eligibility for 2026
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2026_triple_source.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --jra-csv tmp/private/jra-results-actual.csv \
+            --output tmp/japan-2026-triple-source-aggregate.json
+      - name: Validate fail-closed evidence, no individual horse result leakage
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/japan-2026-triple-source-aggregate.json").read_text(encoding="utf-8"))
+          assert j["status"] in {
+              "HOLD_PRE2022_TWO_EVENT_IDENTITY",
+              "HOLD_EMPTY_THIRD_SOURCE",
+              "HOLD_SPARSE_2026_ANCHORED_COHORT",
+              "SOURCE_SEPARATED_2026_RETROSPECTIVE_HOLDOUT_NOT_STUDBOOK"
+          }
+          assert j.get("no_names_IDs_or_individual_races_exported", True)
+          if j["status"] == "SOURCE_SEPARATED_2026_RETROSPECTIVE_HOLDOUT_NOT_STUDBOOK":
+              assert j["sourceC_2026_linked_horses"] >= 30
+              assert j["sourceC_2026_linked_rows"] >= 100
+              assert j["sourceC_2026_linked_distinct_dates"] >= 30
+              assert j["outcomes_2026_scored_only_after_fixed_two_stage_2024_identity"]
+          print("THIRD_SOURCE_2026_STATUS", j["status"])
+          PY
+      - name: Remove all third-party input rows, names and horse IDs before artifact
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2026-triple-source-aggregate-only
+          path: tmp/japan-2026-triple-source-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14
