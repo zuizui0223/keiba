@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  2026-triple-source:
+  japan-2026-triple-source:
     runs-on: ubuntu-latest
     timeout-minutes: 55
     env:
