@@ -231,6 +231,7 @@ def _history_with_conditions(raw_history: list[dict], prepared: list[dict]):
     out = defaultdict(list)
     if len(raw_history) != len(prepared):
         raise ValueError("HOLD_HISTORY_PREPARED_ROW_COUNT")
+    race_conditions={}
     for raw, row in zip(raw_history, prepared):
         if raw["surface"] not in ("turf", "dirt"):
             raise ValueError("HOLD_HISTORY_SURFACE_UNVERIFIED")
@@ -240,6 +241,10 @@ def _history_with_conditions(raw_history: list[dict], prepared: list[dict]):
             raise ValueError("HOLD_HISTORY_DISTANCE_UNVERIFIED") from None
         if not 600 <= distance <= 4000:
             raise ValueError("HOLD_HISTORY_DISTANCE_UNVERIFIED")
+        conditions=(row["start"],raw["surface"],distance,raw["course_id"])
+        if row["race"] in race_conditions and race_conditions[row["race"]]!=conditions:
+            raise ValueError("HOLD_HISTORIC_RACE_CONDITIONS_CONFLICT")
+        race_conditions[row["race"]]=conditions
         if row["start"] >= row["known"]:
             # Equal times are not reliable published results.
             raise ValueError("HOLD_RACE_RESULT_PUBLICATION_NOT_AFTER_RACE")
@@ -263,6 +268,10 @@ def freeze(entries: list[dict], pedigree: list[dict], history: list[dict],
     if not asof <= clock < start:
         raise ValueError("HOLD_NOT_ACTUALLY_FROZEN_BEFORE_FIRST_RACE")
     for row in e:
+        raw=next((x for x in entries if x["race_id"]==row["race"]
+                  and x["horse_id"]==row["horse"]),None)
+        if raw is None or any(not raw.get(k) for k in ("course_id","jockey_id","trainer_id")):
+            raise ValueError("HOLD_ENTRY_COURSE_JOCKEY_TRAINER_NOT_KNOWN")
         if row["cutoff"] > asof:
             raise ValueError("HOLD_ENTRY_NOT_PUBLISHED_AT_ASOF")
         if parents[row["horse"]][2] >= asof:
@@ -278,6 +287,9 @@ def freeze(entries: list[dict], pedigree: list[dict], history: list[dict],
     raw_entry = {(x["race_id"],x["horse_id"]):x for x in entries}
     if len(raw_entry) != len(e):
         raise ValueError("HOLD_PRIVATE_FORECAST_DUPLICATE_ENTRY")
+    entries_per_race=Counter(row["race"] for row in e)
+    if any(n<2 or n>30 for n in entries_per_race.values()):
+        raise ValueError("HOLD_INCOMPLETE_OR_UNSUPPORTED_FROZEN_RACE_ENTRIES")
     predictions=[]
     supports=Counter()
     for row in sorted(e,key=lambda r:(r["start"],r["race"],r["horse"])):
