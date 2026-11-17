@@ -530,12 +530,12 @@ def score(private:dict, manifest:dict, final_rows:list[dict]):
             r["other_dam_peer_count"]>0]),
     ):
         uniq=len({r["horse_id"] for r in subset})
-        races=len({r["race_id"] for r in subset})
-        if len(subset)>=30 and uniq>=10 and races>=10:
+        subgroup_races=len({r["race_id"] for r in subset})
+        if len(subset)>=30 and uniq>=10 and subgroup_races>=10:
             sc=_weighted_metrics(subset)
             strata[label]={
                 "status":"DESCRIPTIVE_NOT_PROSPECTIVE_CAUSAL",
-                "starts":len(subset),"horses":uniq,"races":races,
+                "starts":len(subset),"horses":uniq,"races":subgroup_races,
                 "RMSE_equal_horse_weight":sc,
                 "gain_M1_minus_M2":sc["M1"]-sc["M2"],
             }
