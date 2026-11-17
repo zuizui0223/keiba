@@ -542,7 +542,7 @@ def score(private:dict, manifest:dict, final_rows:list[dict]):
         else:
             strata[label]={
                 "status":"HOLD_SUBGROUP_LOW_SUPPORT",
-                "starts":len(subset),"horses":uniq,"races":races,
+                "starts":len(subset),"horses":uniq,"races":subgroup_races,
             }
     return {
         "status":"PROVISIONAL_PROSPECTIVE_2027_AGGREGATE_NOT_INDEPENDENTLY_ATTESTED"
