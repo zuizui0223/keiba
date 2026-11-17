@@ -35,12 +35,17 @@ OWN = (
     "own_mean", "log_own_count", "context_mean", "log_context_n",
     "last3", "log_days_since_last", "surface_turf", "distance_km",
     "age", "sex_female", "sex_gelding", "sex_unknown",
+    "course_mean", "log_course_count",
+    "jockey_mean", "log_jockey_count",
+    "trainer_mean", "log_trainer_count",
 )
 KIN = (
     "sire_kin_history", "dam_kin_history",
     "log_sire_relative_count", "log_dam_relative_count",
 )
-HISTORICAL_INPUT = HISTORY_REQUIRED + ("surface", "distance_m")
+HISTORICAL_INPUT = HISTORY_REQUIRED + (
+    "surface", "distance_m", "course_id", "jockey_id", "trainer_id",
+)
 FROZEN_2027_START = datetime(2027, 1, 1, tzinfo=JST_ZONE)
 FROZEN_2027_END = datetime(2027, 7, 1, tzinfo=JST_ZONE)
 MIN_ROWS, MIN_HORSES, MIN_RACING_DAYS = 100, 30, 30
@@ -123,7 +128,8 @@ def _avg(values: list[float]) -> float:
 
 
 def asof_features(entry: dict, entry_raw: dict, parents: dict,
-                  history_by_horse: dict, asof: datetime):
+                  history_by_horse: dict, all_history: list[dict],
+                  asof: datetime):
     """All dated input must already be known at the single forecast cutoff."""
     if not entry["cutoff"] <= asof < entry["start"]:
         raise ValueError("HOLD_ENTRY_NOT_KNOWN_ASOF_OR_RACE_STARTED")
@@ -171,6 +177,21 @@ def asof_features(entry: dict, entry_raw: dict, parents: dict,
         "sex_gelding": float(sex=="G"),
         "sex_unknown": float(sex=="U"),
     }
+    # Competitor-adjusted CONTEXT without using parent identities: pretarget
+    # prior JRA course, jockey and trainer records from the same ID namespace.
+    # Absent category IDs never create artificial shared groups.
+    for field, candidate in (
+        ("course", entry_raw["course_id"]),
+        ("jockey", entry_raw["jockey_id"]),
+        ("trainer", entry_raw["trainer_id"]),
+    ):
+        values=[h["y"] for h in all_history
+                if candidate and h[field+"_id"] == candidate
+                and h["known"] < asof and h["start"] < asof
+                and h["race"] != race]
+        n_group=len(values)
+        f[field+"_mean"] = .5 + n_group/(n_group+5)*(_avg(values)-.5)
+        f["log_"+field+"_count"] = math.log1p(n_group)
     support = Counter()
     support["own_history_known"] += bool(n)
     support["own_races_prior_to_cutoff"] += n
@@ -222,7 +243,12 @@ def _history_with_conditions(raw_history: list[dict], prepared: list[dict]):
         if row["start"] >= row["known"]:
             # Equal times are not reliable published results.
             raise ValueError("HOLD_RACE_RESULT_PUBLICATION_NOT_AFTER_RACE")
-        out[row["horse"]].append(dict(row,surface=raw["surface"],distance=distance))
+        if any(not raw[field] for field in ("course_id","jockey_id","trainer_id")):
+            raise ValueError("HOLD_HISTORIC_CONDITION_OR_JOCKEY_TRAINER_UNCERTIFIED")
+        out[row["horse"]].append(dict(
+            row,surface=raw["surface"],distance=distance,
+            course_id=raw["course_id"],jockey_id=raw["jockey_id"],
+            trainer_id=raw["trainer_id"]))
     return out
 
 
@@ -248,6 +274,7 @@ def freeze(entries: list[dict], pedigree: list[dict], history: list[dict],
             raise ValueError("HOLD_HISTORICAL_PUBLICATION_NOT_AFTER_START")
     validate_models(model, clock, start)
     by_horse = _history_with_conditions(history,hist)
+    all_hist = [one for rows in by_horse.values() for one in rows]
     raw_entry = {(x["race_id"],x["horse_id"]):x for x in entries}
     if len(raw_entry) != len(e):
         raise ValueError("HOLD_PRIVATE_FORECAST_DUPLICATE_ENTRY")
@@ -255,7 +282,8 @@ def freeze(entries: list[dict], pedigree: list[dict], history: list[dict],
     supports=Counter()
     for row in sorted(e,key=lambda r:(r["start"],r["race"],r["horse"])):
         feature, support = asof_features(
-            row,raw_entry[(row["race"],row["horse"])],parents,by_horse,asof
+            row,raw_entry[(row["race"],row["horse"])],parents,by_horse,
+            all_hist,asof
         )
         supports.update(support)
         p1=linear_predict(model["models"]["M1"],feature)
