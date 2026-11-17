@@ -163,7 +163,7 @@ def accepted_2026_races(c):
     return ok, dict(status)
 
 
-def three_source_cohort(a_path: Path, b_path: Path, c_path: Path):
+def three_source_cohort(a_path: Path, b_path: Path, c_path: Path, *, private_research_context: bool=False):
     if sha256(a_path) != SOURCE_SHA or sha256(b_path) != SQLITE_SHA:
         raise ValueError("HOLD_OLD_OR_INTERMEDIATE_SOURCE_HASH")
     c, c_quality = load_jra_csv(c_path)
@@ -281,7 +281,10 @@ def three_source_cohort(a_path: Path, b_path: Path, c_path: Path):
     f["dam_id"] = f.horse.map(parent_lookup.dam_id)
     if f[["sire_id", "dam_id"]].isna().any().any():
         raise ValueError("HOLD_2026_SOURCE_A_PARENT_LINK_INCOMPLETE")
-    return (raw, old, f), qa
+    # Optional in-runner context for post-hoc historical replay only.
+    # Keep horse/name bridge and raw C rows private; never serialize this tuple.
+    return ((raw, old, f, bridge, c) if private_research_context
+            else (raw, old, f)), qa
 
 
 def score_model_family(old, f, raw, *, strong):
