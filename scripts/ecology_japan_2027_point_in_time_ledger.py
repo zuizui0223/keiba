@@ -462,14 +462,18 @@ def score(private:dict, manifest:dict, final_rows:list[dict]):
         if len(rr)!=n:
             quality["pending_or_partially_reported_races"]+=1
             continue
+        # A withdrawal/DNF is a distinct observed nonfinish, not a missing
+        # numeric rank. Count it explicitly rather than fabricating a rank.
+        if any(rr[h]["finish_status"]!="CLASSIFIED" for h in pdict):
+            quality["incomplete_tied_dnf_or_denominator_races"]+=1
+            continue
         try:
             ranks=[int(rr[h]["finish_rank"]) for h in pdict]
             sizes=[int(rr[h]["classified_field_size"]) for h in pdict]
         except (KeyError,ValueError,TypeError):
             quality["invalid_or_unclassified_races"]+=1
             continue
-        if (any(rr[h]["finish_status"]!="CLASSIFIED" for h in pdict)
-                or sorted(ranks)!=list(range(1,n+1))
+        if (sorted(ranks)!=list(range(1,n+1))
                 or any(sz!=n for sz in sizes)):
             quality["incomplete_tied_dnf_or_denominator_races"]+=1
             continue
