@@ -1,0 +1,203 @@
+{
+  "status": "POSTHOC_2026_OWN_VS_KIN_HISTORY_FRESHNESS_FACTORIAL_NOT_CAUSAL",
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/44009989972",
+  "run_id": 44009989972,
+  "job_id": 133794426168,
+  "source_head_commit_sha": "80f42c163d2f964d84bce95bf67039c47a8187eb",
+  "aggregate_artifact": {
+    "name": "japan-2026-own-family-factorial-aggregate-only",
+    "id": 14295713998,
+    "digest": "sha256:faad40e295301f55bdad3fbb5ecd6ddabca09f101205c0357d86c59470bb6d00",
+    "created_at": "2026-11-17T03:31:11Z",
+    "expired": false
+  },
+  "source_SHA256": {
+    "sourceA": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "sourceB": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "sourceC": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f"
+  },
+  "design": {
+    "historical_identity_crosswalk_A_B": "2021 or earlier, at least 2 matching race dates",
+    "historical_identity_crosswalk_B_C": "2023-2024 only, at least 2 matching race dates",
+    "target_year": "2026 partial through 2026-05-17",
+    "no_same_day_or_future_outcomes_in_predictors": true,
+    "fixed_original_2018_2021_training_coefficients": true,
+    "parent_peer_scores_focal_count_attenuation_reweighted": true,
+    "factual_CAUSAL_GENETIC_EFFECT_NOT_IDENTIFIED": true,
+    "exploratory_after_outcomes_inspected": true,
+    "no_verified_historic_publication_timestamps": true,
+    "individual_horse_names_IDs_predictions_or_races_distributed": false
+  },
+  "combined_from_successful_aggregated_job_stdout": {
+    "status": "POSTHOC_2026_OWN_VS_KIN_HISTORY_FRESHNESS_FACTORIAL_NOT_CAUSAL",
+    "same_2026_focals_and_dates": [
+      480,
+      232,
+      259,
+      42
+    ],
+    "sourceC_new_history_coverage": {
+      "target_rows_with_prior_C_own": 480,
+      "target_rows_with_prior_C_other_relatives": 477,
+      "target_rows_with_both_sources": 477,
+      "target_rows_without_prior_C": 0,
+      "sourceC_own_prior_rows_used_sum_across_target_dates": 7794,
+      "sourceC_relatives_prior_rows_used_sum_across_target_dates": 127315
+    },
+    "by_model": {
+      "ordinary": {
+        "SS": {
+          "rmse_own": 0.31968177229350314,
+          "rmse_kin": 0.32030160640717187,
+          "family_increment": -0.0006198341136687269
+        },
+        "FS": {
+          "rmse_own": 0.2747824093514717,
+          "rmse_kin": 0.27689935636572444,
+          "family_increment": -0.002116947014252746
+        },
+        "SF": {
+          "rmse_own": 0.31968177229350314,
+          "rmse_kin": 0.3182103456708225,
+          "family_increment": 0.0014714266226806272
+        },
+        "FF": {
+          "rmse_own": 0.2747824093514717,
+          "rmse_kin": 0.2764268976888031,
+          "family_increment": -0.0016444883373313846
+        }
+      },
+      "strong": {
+        "SS": {
+          "rmse_own": 0.3215185305911257,
+          "rmse_kin": 0.3180747501712821,
+          "family_increment": 0.003443780419843556
+        },
+        "FS": {
+          "rmse_own": 0.27470562307974966,
+          "rmse_kin": 0.2749292035644704,
+          "family_increment": -0.00022358048472076453
+        },
+        "SF": {
+          "rmse_own": 0.3215185305911257,
+          "rmse_kin": 0.3159250570509557,
+          "family_increment": 0.00559347354016998
+        },
+        "FF": {
+          "rmse_own": 0.27470562307974966,
+          "rmse_kin": 0.274422587127491,
+          "family_increment": 0.00028303595225864786
+        }
+      }
+    },
+    "factorial_contrasts": {
+      "ordinary": {
+        "refresh_own_given_stale_family": {
+          "RMSE_improvement": 0.04340225004144743,
+          "horse_cluster_CI95": [
+            0.032949557584489496,
+            0.05456684678394495
+          ],
+          "race_day_cluster_CI95": [
+            0.03518271266783972,
+            0.05129592603521232
+          ]
+        },
+        "refresh_family_given_stale_own": {
+          "RMSE_improvement": 0.002091260736349354,
+          "horse_cluster_CI95": [
+            0.001265396470618535,
+            0.0030081632071760765
+          ],
+          "race_day_cluster_CI95": [
+            0.001310087225948578,
+            0.0029008800013717723
+          ]
+        },
+        "refresh_family_given_fresh_own": {
+          "RMSE_improvement": 0.00047245867692136123,
+          "horse_cluster_CI95": [
+            0.00012948913425153696,
+            0.0008187760672627888
+          ],
+          "race_day_cluster_CI95": [
+            0.00013346073684911974,
+            0.000771000297878699
+          ]
+        },
+        "refresh_own_given_fresh_family": {
+          "RMSE_improvement": 0.04178344798201944,
+          "horse_cluster_CI95": [
+            0.031748666252835005,
+            0.05251442144994975
+          ],
+          "race_day_cluster_CI95": [
+            0.033721421644329015,
+            0.0494243585117035
+          ]
+        },
+        "descriptive_RMSE_interaction": {
+          "difference_of_improvements": 0.0016188020594279928,
+          "CAUTION": "Nonlinear RMSE interaction, not a causal estimand"
+        }
+      },
+      "strong": {
+        "refresh_own_given_stale_family": {
+          "RMSE_improvement": 0.04314554660681169,
+          "horse_cluster_CI95": [
+            0.033233654922543286,
+            0.053515729118763775
+          ],
+          "race_day_cluster_CI95": [
+            0.03484959652806715,
+            0.05080080584392299
+          ]
+        },
+        "refresh_family_given_stale_own": {
+          "RMSE_improvement": 0.0021496931203264236,
+          "horse_cluster_CI95": [
+            0.0013257823630444727,
+            0.003050280179367515
+          ],
+          "race_day_cluster_CI95": [
+            0.0014070165086116305,
+            0.0029411512011546736
+          ]
+        },
+        "refresh_family_given_fresh_own": {
+          "RMSE_improvement": 0.0005066164369794124,
+          "horse_cluster_CI95": [
+            0.0001811770227932441,
+            0.0008460741666368649
+          ],
+          "race_day_cluster_CI95": [
+            0.0001724094711470281,
+            0.0007911329453246325
+          ]
+        },
+        "refresh_own_given_fresh_family": {
+          "RMSE_improvement": 0.04150246992346468,
+          "horse_cluster_CI95": [
+            0.03196701913292389,
+            0.05163093816819121
+          ],
+          "race_day_cluster_CI95": [
+            0.03355705744263868,
+            0.048811084342275254
+          ]
+        },
+        "descriptive_RMSE_interaction": {
+          "difference_of_improvements": 0.0016430766833470112,
+          "CAUTION": "Nonlinear RMSE interaction, not a causal estimand"
+        }
+      }
+    }
+  },
+  "interpretation": [
+    "Most predictive improvement comes from refreshing focal horses' own histories, not their relatives.",
+    "Refreshing relative history is better than leaving relatives stale conditional on identical own-history features, but need not improve over a no-family model.",
+    "CI values are one-way horse and race-day resampling of post-hoc descriptive RMSE differences, not causal or independent-replication significance.",
+    "Cohort is selected on historic cross-source racing matches; 2025 and 2026 target outcomes are not used for identity matching.",
+    "Source rights and official blood registration identities remain unverified; not a JRA/NAR national genetic relatedness sample."
+  ]
+}
