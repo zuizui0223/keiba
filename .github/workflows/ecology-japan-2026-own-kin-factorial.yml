@@ -1,0 +1,87 @@
+name: "Japan 2026 own-history versus family-history freshness factorial"
+
+on:
+  push:
+    branches: [analysis/2026-own-kin-information-factorial-20261117]
+    paths:
+      - ".github/workflows/ecology-japan-2026-own-kin-factorial.yml"
+      - "scripts/ecology_japan_2026_own_kin_factorial.py"
+      - "tests/test_ecology_japan_2026_own_kin_factorial.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  posthoc-own-family-factorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned source and modeling dependencies
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Synthetic kin attenuation and day-leakage tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2026_own_kin_factorial.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2026_day_rolling.py" -v
+      - name: Download older official-derived source A in private CI area only
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Obtain older intermediate source B SQLite transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",repo_type="dataset",
+              filename="all_races_1990-2025.db",local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Fetch SHA-pinned third public source C CSV transiently
+        run: |
+          curl --fail --location --silent --show-error --retry 2 --max-time 150 \
+            https://raw.githubusercontent.com/whitedogk/jra-condition-app/main/jra-results-actual.csv \
+            --output tmp/private/jra-results-actual.csv
+          test -s tmp/private/jra-results-actual.csv
+      - name: Reproduce earlier 2026 scores and run four-way factorial
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2026_own_kin_factorial.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --jra-csv tmp/private/jra-results-actual.csv \
+            --output tmp/japan-2026-own-kin-factorial-aggregate.json
+      - name: Fail closed on source, predictions and non-disclosure
+        run: |
+          python - <<'PY'
+          import json
+          with open("tmp/japan-2026-own-kin-factorial-aggregate.json",encoding="utf-8") as f:
+              j=json.load(f)
+          assert j["status"]=="POSTHOC_2026_OWN_VS_KIN_HISTORY_FRESHNESS_FACTORIAL_NOT_CAUSAL"
+          assert tuple(j["same_2026_focals_and_dates"])==(480,232,259,42)
+          assert j["pre2025_two_event_B_to_C_horses"]==1945
+          assert j["family_peer_signals_rescaled_for_own_count"]
+          assert j["all_original_and_updated_score_parity_1e8_passed"]
+          assert j["scientific_status"]["no_same_day_or_later_result_used"]
+          assert j["scientific_status"]["no_raw_IDs_names_race_rows_or_individual_forecasts_exported"]
+          for kind in ("ordinary","strong"):
+              assert sorted(k for k in j["mode_results"][kind] if len(k)==2)==["FF","FS","SF","SS"]
+          print("2026_OWN_KIN_FOUR_WAY_SOURCE_SCORE_AND_TEMPORAL_GATES_PASSED")
+          PY
+      - name: Remove third-party source rows before artifact upload
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2026-own-family-factorial-aggregate-only
+          path: tmp/japan-2026-own-kin-factorial-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14
