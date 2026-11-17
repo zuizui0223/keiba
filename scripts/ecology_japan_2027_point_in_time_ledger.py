@@ -304,6 +304,10 @@ def freeze(entries: list[dict], pedigree: list[dict], history: list[dict],
             "race_id":row["race"],
             "horse_id":row["horse"],
             "race_start_at_jst":row["start"].isoformat(),
+            # PRIVATE source-known support only. No name or row leaves this file.
+            "prior_classified_race_count":int(round(math.expm1(feature["log_own_count"]))),
+            "other_sire_peer_count":int(round(math.expm1(feature["log_sire_relative_count"]))),
+            "other_dam_peer_count":int(round(math.expm1(feature["log_dam_relative_count"]))),
             "M0":0.5,"M1":p1,"M2":p2,
         })
     private={
@@ -433,6 +437,10 @@ def score(private:dict, manifest:dict, final_rows:list[dict]):
             raise ValueError("HOLD_FORECAST_TIMESTAMP_NOT_BEFORE_RACE")
         if not all(0<=finite_number(p[model])<=1 for model in ("M0","M1","M2")):
             raise ValueError("HOLD_PROBABILITY_RANGE_FOR_RANK_PREDICTION")
+        if any(not isinstance(p.get(field),int) or p[field]<0 for field in (
+            "prior_classified_race_count","other_sire_peer_count",
+            "other_dam_peer_count")):
+            raise ValueError("HOLD_PRIVATE_HISTORY_SUPPORT_FIELDS_CHANGED")
         by_pair[k]=p
         races[p["race_id"]][p["horse_id"]]=p
     if (len(races)!=manifest["races"]
@@ -506,6 +514,36 @@ def score(private:dict, manifest:dict, final_rows:list[dict]):
         else:
             monthly_scores[month]={"status":"DESCRIPTIVE",
                                    "starts":len(v),"scores":_weighted_metrics(v)}
+    # Pre-race-defined strata, not outcome-selected subgroups. Missing
+    # classified history does NOT prove this is the horse's actual debut.
+    strata={}
+    for label,subset in (
+        ("no_prior_classified_result",[
+            r for r in complete if r["prior_classified_race_count"]==0]),
+        ("with_prior_classified_result",[
+            r for r in complete if r["prior_classified_race_count"]>0]),
+        ("no_documented_other_parent_peer",[
+            r for r in complete if r["other_sire_peer_count"]+
+            r["other_dam_peer_count"]==0]),
+        ("with_documented_other_parent_peer",[
+            r for r in complete if r["other_sire_peer_count"]+
+            r["other_dam_peer_count"]>0]),
+    ):
+        uniq=len({r["horse_id"] for r in subset})
+        races=len({r["race_id"] for r in subset})
+        if len(subset)>=30 and uniq>=10 and races>=10:
+            sc=_weighted_metrics(subset)
+            strata[label]={
+                "status":"DESCRIPTIVE_NOT_PROSPECTIVE_CAUSAL",
+                "starts":len(subset),"horses":uniq,"races":races,
+                "RMSE_equal_horse_weight":sc,
+                "gain_M1_minus_M2":sc["M1"]-sc["M2"],
+            }
+        else:
+            strata[label]={
+                "status":"HOLD_SUBGROUP_LOW_SUPPORT",
+                "starts":len(subset),"horses":uniq,"races":races,
+            }
     return {
         "status":"PROVISIONAL_PROSPECTIVE_2027_AGGREGATE_NOT_INDEPENDENTLY_ATTESTED"
             if support else "HOLD_2027_AGGREGATE_LOW_SUPPORT",
@@ -527,6 +565,8 @@ def score(private:dict, manifest:dict, final_rows:list[dict]):
         "horse_cluster_bootstrap":_bootstrap(complete,"horse"),
         "race_day_cluster_bootstrap":_bootstrap(complete,"race_day"),
         "monthly_descriptive_scores":monthly_scores,
+        "pretimestep_history_subgroups":strata,
+        "no_recorded_history_is_NOT_official_first_start":True,
         "cannot_prove_model_or_manifest_pre_race_Git_commit":True,
         "official_provider_rights_and_IDs_must_be_independently_verified":True,
         "causal_genetic_or_betting_claims_NOT_licensed":True,
