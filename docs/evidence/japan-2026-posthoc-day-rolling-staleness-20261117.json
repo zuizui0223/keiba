@@ -1,0 +1,534 @@
+{
+  "date_utc": "2026-11-17",
+  "status": "POSTHOC_2026_DAY_LAGGED_SOURCE_C_RECENCY_REPLAY_NOT_CAUSAL",
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/44007279933",
+  "run_id": 44007279933,
+  "job_id": 133785550303,
+  "source_commit_sha": "48ee00f8c10e8d6fc6aed40ffeed2075032a5452",
+  "artifact": {
+    "id": 14294719430,
+    "name": "japan-2026-posthoc-day-rolling-aggregate-only",
+    "digest": "sha256:11324361180b1c5e30b78c82fb96bd0eb6e908817dadeeb672de08e4d7ad2e3d",
+    "created_at": "2026-11-17T03:10:06Z",
+    "expired": false
+  },
+  "analysis_from_successful_job_stdout": {
+    "status": "POSTHOC_2026_DAY_LAGGED_SOURCE_C_RECENCY_REPLAY_NOT_CAUSAL",
+    "source_sha256": {
+      "sourceA": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+      "sourceB": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+      "sourceC": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f"
+    },
+    "original_2026_source_gate": {
+      "status": "THREE_SOURCE_LINKAGE_2026_FEASIBILITY",
+      "sourceA_full_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+      "sourceB_full_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+      "sourceC_full_sha256": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f",
+      "sourceC": {
+        "csv_sha256": "ca14ff253018433e8e14bc583628f85ca909195d5e4edb42c6d1e2ade939ba6f",
+        "valid_rows": 137860,
+        "date_min": "2023-05-20",
+        "date_max": "2026-05-17",
+        "valid_rows_by_year": {
+          "2023": 27705,
+          "2024": 45600,
+          "2025": 46333,
+          "2026": 18222
+        },
+        "horse_id_column_present": false,
+        "sire_dam_id_column_present": false,
+        "csv_source_rights_verified": false
+      },
+      "sourceA_to_B": {
+        "two_pre2022_event_horses": 20400,
+        "ambiguous_labels_old": 875,
+        "ambiguous_labels_B": 5531,
+        "used_2025_or_2026_results_for_ID": false
+      },
+      "sourceB_to_C": {
+        "at_least_one_day": 2223,
+        "two_day_horses": 1945,
+        "two_day_events": 12125,
+        "ambiguous_normalized_names": 0
+      },
+      "sourceC_2026_race_quality": {
+        "source_complete_races": 1264,
+        "incomplete_tied_or_gapped_results": 25
+      },
+      "sourceC_2026_valid_complete_race_rows": 17864,
+      "sourceC_2026_linked_rows": 480,
+      "sourceC_2026_linked_horses": 232,
+      "sourceC_2026_linked_distinct_dates": 42,
+      "sourceC_2026_linked_races": 259,
+      "thresholds": {
+        "min_2026_horses": 30,
+        "min_2026_rows": 100,
+        "min_2026_distinct_race_dates": 30,
+        "fixed_before_2026_scoring": true
+      },
+      "rights_of_original_racing_records_unverified": true,
+      "no_names_IDs_or_individual_races_exported": true
+    },
+    "parity": {
+      "locked_focal_rows": 480,
+      "locked_focal_horses": 232,
+      "locked_focal_races": 259,
+      "locked_focal_days": 42,
+      "locked_B_to_C_pre2025_two_day_horses": 1945,
+      "frozen_original_models_reproduced_to_1e8": true,
+      "reduced_sourceA_family_features_reproduce_original_to_1e10": true,
+      "sourceA_rows_original": 2092836,
+      "sourceA_rows_relevant": 688571,
+      "all_original_feature_columns_exactly_reproduced": true
+    },
+    "historic_sourceC_qa": {
+      "all_complete_race_count_by_year": {
+        "2023": 975,
+        "2024": 1394,
+        "2025": 968,
+        "2026": 259
+      },
+      "target_or_relative_linked_history_rows_by_year": {
+        "2023": 5535,
+        "2024": 5394,
+        "2025": 2220,
+        "2026": 480
+      },
+      "prior_2026_sourceC_history_rows": 13149,
+      "prior_2026_distinct_C_horses": 1655,
+      "2025_prior_history_horse_coverage": {
+        "unique_focal_horses_with_2025_C_runs": 226,
+        "all_2026_focal_horses": 232,
+        "focal_2026_start_rows_with_2025_C_runs": 467
+      },
+      "rolling_2026_sourceC_horse_coverage": {
+        "unique_target_horses_with_any_2026_C_rows": 232
+      },
+      "stale_sourceA_last_race_days": {
+        "median_days": 1562,
+        "q25_days": 1525,
+        "q75_days": 1610
+      },
+      "original_C_complete_race_quality": {
+        "source_complete_races": 9771,
+        "excluded_nonconsecutive_or_tied": 249
+      },
+      "no_same_day_sourceC_result_used": true,
+      "no_publication_time_at_day_resolution": true
+    },
+    "frozen_ridge_alpha": 100,
+    "training_sourceA_2018_2021_only": true,
+    "mode_results": {
+      "stale_2021": {
+        "ordinary": {
+          "rows": 480,
+          "unique_horses": 232,
+          "races": 259,
+          "RMSE_unchanged_midpoint": 0.31214627917891946,
+          "RMSE_portable_no_kin": 0.31968177229350314,
+          "RMSE_portable_kin": 0.32030160640717187,
+          "M0_minus_kin_gain": -0.0006198341136687269,
+          "midpoint_minus_kin_gain": -0.008155327228252407
+        },
+        "strong": {
+          "rows": 480,
+          "unique_horses": 232,
+          "races": 259,
+          "RMSE_unchanged_midpoint": 0.31214627917891946,
+          "RMSE_portable_no_kin": 0.3215185305911257,
+          "RMSE_portable_kin": 0.3180747501712821,
+          "M0_minus_kin_gain": 0.003443780419843556,
+          "midpoint_minus_kin_gain": -0.0059284709923626555
+        }
+      },
+      "through2025": {
+        "ordinary": {
+          "rows": 480,
+          "unique_horses": 232,
+          "races": 259,
+          "RMSE_unchanged_midpoint": 0.31214627917891946,
+          "RMSE_portable_no_kin": 0.2768474931602333,
+          "RMSE_portable_kin": 0.27846240907036934,
+          "M0_minus_kin_gain": -0.0016149159101360167,
+          "midpoint_minus_kin_gain": 0.03368387010855012,
+          "singleway_399_bootstrap": {
+            "horse": {
+              "clusters": 232,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.004253200151575434,
+                0.0007486442434294089
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.025449676403722445,
+                0.0407998337530011
+              ],
+              "single_way_approximation_only": true
+            },
+            "race_day": {
+              "clusters": 42,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.003931194793348117,
+                0.000426146265938674
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.02728450216458379,
+                0.0400996377856228
+              ],
+              "single_way_approximation_only": true
+            }
+          },
+          "monthly": {
+            "2026-01": {
+              "rows": 133,
+              "unique_horses": 118,
+              "races": 63,
+              "RMSE_unchanged_midpoint": 0.30905945072279944,
+              "RMSE_portable_no_kin": 0.2686063242156094,
+              "RMSE_portable_kin": 0.26849346850584355,
+              "M0_minus_kin_gain": 0.00011285570976588,
+              "midpoint_minus_kin_gain": 0.0405659822169559
+            },
+            "2026-02": {
+              "rows": 113,
+              "unique_horses": 102,
+              "races": 59,
+              "RMSE_unchanged_midpoint": 0.3127810682715239,
+              "RMSE_portable_no_kin": 0.2811984007129843,
+              "RMSE_portable_kin": 0.28267987132885053,
+              "M0_minus_kin_gain": -0.0014814706158662316,
+              "midpoint_minus_kin_gain": 0.03010119694267338
+            },
+            "2026-03": {
+              "rows": 109,
+              "unique_horses": 98,
+              "races": 62,
+              "RMSE_unchanged_midpoint": 0.29819800495144266,
+              "RMSE_portable_no_kin": 0.26964793694509565,
+              "RMSE_portable_kin": 0.27212663118422165,
+              "M0_minus_kin_gain": -0.0024786942391260003,
+              "midpoint_minus_kin_gain": 0.026071373767221018
+            },
+            "2026-04": {
+              "rows": 73,
+              "unique_horses": 70,
+              "races": 41,
+              "RMSE_unchanged_midpoint": 0.2872752158075845,
+              "RMSE_portable_no_kin": 0.2644410914501623,
+              "RMSE_portable_kin": 0.2645496550107496,
+              "M0_minus_kin_gain": -0.00010856356058730476,
+              "midpoint_minus_kin_gain": 0.02272556079683491
+            },
+            "2026-05": {
+              "rows": 52,
+              "unique_horses": 50,
+              "races": 34,
+              "RMSE_unchanged_midpoint": 0.2920707172554364,
+              "RMSE_portable_no_kin": 0.2616429568748063,
+              "RMSE_portable_kin": 0.2641179254297594,
+              "M0_minus_kin_gain": -0.0024749685549531053,
+              "midpoint_minus_kin_gain": 0.027952791825676948
+            }
+          },
+          "no_kin_rmse_gain_vs_stale": 0.042834279133269815,
+          "kin_rmse_gain_vs_stale": 0.041839197336802525
+        },
+        "strong": {
+          "rows": 480,
+          "unique_horses": 232,
+          "races": 259,
+          "RMSE_unchanged_midpoint": 0.31214627917891946,
+          "RMSE_portable_no_kin": 0.276846444400225,
+          "RMSE_portable_kin": 0.27642927951914353,
+          "M0_minus_kin_gain": 0.00041716488108145544,
+          "midpoint_minus_kin_gain": 0.03571699965977593,
+          "singleway_399_bootstrap": {
+            "horse": {
+              "clusters": 232,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.0023029646594407427,
+                0.0029502435332141824
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.027202961592746246,
+                0.043717615295132434
+              ],
+              "single_way_approximation_only": true
+            },
+            "race_day": {
+              "clusters": 42,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.0019462753797884647,
+                0.002639765423701615
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.029438404962673227,
+                0.04192631844845168
+              ],
+              "single_way_approximation_only": true
+            }
+          },
+          "monthly": {
+            "2026-01": {
+              "rows": 133,
+              "unique_horses": 118,
+              "races": 63,
+              "RMSE_unchanged_midpoint": 0.30905945072279944,
+              "RMSE_portable_no_kin": 0.2725602761721649,
+              "RMSE_portable_kin": 0.27055641463662816,
+              "M0_minus_kin_gain": 0.0020038615355367217,
+              "midpoint_minus_kin_gain": 0.03850303608617128
+            },
+            "2026-02": {
+              "rows": 113,
+              "unique_horses": 102,
+              "races": 59,
+              "RMSE_unchanged_midpoint": 0.3127810682715239,
+              "RMSE_portable_no_kin": 0.2795055090934632,
+              "RMSE_portable_kin": 0.2792442182062264,
+              "M0_minus_kin_gain": 0.00026129088723680916,
+              "midpoint_minus_kin_gain": 0.0335368500652975
+            },
+            "2026-03": {
+              "rows": 109,
+              "unique_horses": 98,
+              "races": 62,
+              "RMSE_unchanged_midpoint": 0.29819800495144266,
+              "RMSE_portable_no_kin": 0.2693688872982815,
+              "RMSE_portable_kin": 0.2701799832274165,
+              "M0_minus_kin_gain": -0.0008110959291349751,
+              "midpoint_minus_kin_gain": 0.028018021724026176
+            },
+            "2026-04": {
+              "rows": 73,
+              "unique_horses": 70,
+              "races": 41,
+              "RMSE_unchanged_midpoint": 0.2872752158075845,
+              "RMSE_portable_no_kin": 0.26224619179494346,
+              "RMSE_portable_kin": 0.2612172304951639,
+              "M0_minus_kin_gain": 0.001028961299779585,
+              "midpoint_minus_kin_gain": 0.02605798531242065
+            },
+            "2026-05": {
+              "rows": 52,
+              "unique_horses": 50,
+              "races": 34,
+              "RMSE_unchanged_midpoint": 0.2920707172554364,
+              "RMSE_portable_no_kin": 0.2628681414394874,
+              "RMSE_portable_kin": 0.26313825056405665,
+              "M0_minus_kin_gain": -0.00027010912456926217,
+              "midpoint_minus_kin_gain": 0.02893246669137972
+            }
+          },
+          "no_kin_rmse_gain_vs_stale": 0.044672086190900684,
+          "kin_rmse_gain_vs_stale": 0.04164547065213858
+        }
+      },
+      "prior_day": {
+        "ordinary": {
+          "rows": 480,
+          "unique_horses": 232,
+          "races": 259,
+          "RMSE_unchanged_midpoint": 0.31214627917891946,
+          "RMSE_portable_no_kin": 0.2747824093514717,
+          "RMSE_portable_kin": 0.2764268976888031,
+          "M0_minus_kin_gain": -0.0016444883373313846,
+          "midpoint_minus_kin_gain": 0.035719381490116386,
+          "singleway_399_bootstrap": {
+            "horse": {
+              "clusters": 232,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.004240418570246859,
+                0.0007108019569830982
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.026940506900923682,
+                0.04336615421490624
+              ],
+              "single_way_approximation_only": true
+            },
+            "race_day": {
+              "clusters": 42,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.0039820811273196975,
+                0.0003500794230292731
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.028994820354384727,
+                0.04249503257377789
+              ],
+              "single_way_approximation_only": true
+            }
+          },
+          "monthly": {
+            "2026-01": {
+              "rows": 133,
+              "unique_horses": 118,
+              "races": 63,
+              "RMSE_unchanged_midpoint": 0.30905945072279944,
+              "RMSE_portable_no_kin": 0.268660505653674,
+              "RMSE_portable_kin": 0.2685631705855889,
+              "M0_minus_kin_gain": 0.00009733506808512482,
+              "midpoint_minus_kin_gain": 0.04049628013721057
+            },
+            "2026-02": {
+              "rows": 113,
+              "unique_horses": 102,
+              "races": 59,
+              "RMSE_unchanged_midpoint": 0.3127810682715239,
+              "RMSE_portable_no_kin": 0.27657998648106996,
+              "RMSE_portable_kin": 0.2783367932908059,
+              "M0_minus_kin_gain": -0.0017568068097359446,
+              "midpoint_minus_kin_gain": 0.034444274980718004
+            },
+            "2026-03": {
+              "rows": 109,
+              "unique_horses": 98,
+              "races": 62,
+              "RMSE_unchanged_midpoint": 0.29819800495144266,
+              "RMSE_portable_no_kin": 0.26899233148042584,
+              "RMSE_portable_kin": 0.27147211160549967,
+              "M0_minus_kin_gain": -0.002479780125073827,
+              "midpoint_minus_kin_gain": 0.026725893345942997
+            },
+            "2026-04": {
+              "rows": 73,
+              "unique_horses": 70,
+              "races": 41,
+              "RMSE_unchanged_midpoint": 0.2872752158075845,
+              "RMSE_portable_no_kin": 0.2573323371196373,
+              "RMSE_portable_kin": 0.25724743311653325,
+              "M0_minus_kin_gain": 0.00008490400310406931,
+              "midpoint_minus_kin_gain": 0.030027782691051275
+            },
+            "2026-05": {
+              "rows": 52,
+              "unique_horses": 50,
+              "races": 34,
+              "RMSE_unchanged_midpoint": 0.2920707172554364,
+              "RMSE_portable_no_kin": 0.2614116478761531,
+              "RMSE_portable_kin": 0.264274837009668,
+              "M0_minus_kin_gain": -0.002863189133514854,
+              "midpoint_minus_kin_gain": 0.0277958802457684
+            }
+          },
+          "no_kin_rmse_gain_vs_stale": 0.04489936294203145,
+          "kin_rmse_gain_vs_stale": 0.04387470871836879
+        },
+        "strong": {
+          "rows": 480,
+          "unique_horses": 232,
+          "races": 259,
+          "RMSE_unchanged_midpoint": 0.31214627917891946,
+          "RMSE_portable_no_kin": 0.27470562307974966,
+          "RMSE_portable_kin": 0.274422587127491,
+          "M0_minus_kin_gain": 0.00028303595225864786,
+          "midpoint_minus_kin_gain": 0.03772369205142845,
+          "singleway_399_bootstrap": {
+            "horse": {
+              "clusters": 232,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.002333193083395044,
+                0.0026393190313887646
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.02902986649194826,
+                0.04614055011561475
+              ],
+              "single_way_approximation_only": true
+            },
+            "race_day": {
+              "clusters": 42,
+              "bootstrap_draws": 399,
+              "CI95_M0_minus_kin_gain": [
+                -0.0021378397395912683,
+                0.0024663417446749284
+              ],
+              "CI95_neutral_minus_kin_gain": [
+                0.03141733743899105,
+                0.04445775165568143
+              ],
+              "single_way_approximation_only": true
+            }
+          },
+          "monthly": {
+            "2026-01": {
+              "rows": 133,
+              "unique_horses": 118,
+              "races": 63,
+              "RMSE_unchanged_midpoint": 0.30905945072279944,
+              "RMSE_portable_no_kin": 0.2726717254135873,
+              "RMSE_portable_kin": 0.27067715926794,
+              "M0_minus_kin_gain": 0.001994566145647303,
+              "midpoint_minus_kin_gain": 0.03838229145485944
+            },
+            "2026-02": {
+              "rows": 113,
+              "unique_horses": 102,
+              "races": 59,
+              "RMSE_unchanged_midpoint": 0.3127810682715239,
+              "RMSE_portable_no_kin": 0.2750174884170755,
+              "RMSE_portable_kin": 0.27511198052623154,
+              "M0_minus_kin_gain": -0.00009449210915601913,
+              "midpoint_minus_kin_gain": 0.03766908774529237
+            },
+            "2026-03": {
+              "rows": 109,
+              "unique_horses": 98,
+              "races": 62,
+              "RMSE_unchanged_midpoint": 0.29819800495144266,
+              "RMSE_portable_no_kin": 0.2686399774595981,
+              "RMSE_portable_kin": 0.2695818815393932,
+              "M0_minus_kin_gain": -0.0009419040797951084,
+              "midpoint_minus_kin_gain": 0.028616123412049443
+            },
+            "2026-04": {
+              "rows": 73,
+              "unique_horses": 70,
+              "races": 41,
+              "RMSE_unchanged_midpoint": 0.2872752158075845,
+              "RMSE_portable_no_kin": 0.2543814646508941,
+              "RMSE_portable_kin": 0.25343563676997694,
+              "M0_minus_kin_gain": 0.0009458278809171827,
+              "midpoint_minus_kin_gain": 0.03383957903760759
+            },
+            "2026-05": {
+              "rows": 52,
+              "unique_horses": 50,
+              "races": 34,
+              "RMSE_unchanged_midpoint": 0.2920707172554364,
+              "RMSE_portable_no_kin": 0.26262142456250714,
+              "RMSE_portable_kin": 0.26359842387149923,
+              "M0_minus_kin_gain": -0.000976999308992088,
+              "midpoint_minus_kin_gain": 0.02847229338393714
+            }
+          },
+          "no_kin_rmse_gain_vs_stale": 0.04681290751137601,
+          "kin_rmse_gain_vs_stale": 0.0436521630437911
+        }
+      }
+    },
+    "interpretation_limits": [
+      "Post-hoc after original 2026 outcome inspection; no untouched evaluation.",
+      "Only earlier calendar days, not independently verified result_known_at timestamps.",
+      "All focal and family C history identities fixed from pre2025 two-event crosswalk.",
+      "C source rank is classified-finisher normalization and differs from old source's selection.",
+      "Cannot separate race-history aging from source/coverage/cohort changes.",
+      "The 2026 target is a small group of previously active horses; 2026 data stops May 17.",
+      "H: official studbook, pedigree A, anonymous genotype G and odds market are not provided.",
+      "Third-party upstream racing-data rights and license not independently cleared."
+    ],
+    "no_horse_names_ids_race_rows_or_predictions_exported": true
+  },
+  "derivation": "SHA locked aggregate recovered from successful CI log; original race/horse data transient and deleted",
+  "source_rights_independently_verified": false,
+  "genetic_causal_inference_performed": false,
+  "model_spec_selected_after_inspecting_original_2026_results": true,
+  "individual_horse_names_ids_race_rows_predictions_saved": false
+}
