@@ -263,6 +263,37 @@ class FrozenForecastTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"JOCKEY_TRAINER_UNCERTIFIED"):
             self.frozen()
 
+    def test_private_pretarget_history_support_and_relative_counts(self):
+        private,manifest=self.frozen()
+        self.assertTrue(all(p["prior_classified_race_count"]==1
+                            for p in private["predictions"]))
+        for p in private["predictions"]:
+            if p["horse_id"] in ("H:111","H:112"):
+                self.assertEqual(p["other_sire_peer_count"],1)
+            else:
+                self.assertEqual(p["other_sire_peer_count"],0)
+        # Public manifest reports only aggregate support; never IDs.
+        self.assertTrue(manifest["no_horse_or_race_IDs_in_public_manifest"])
+
+    def test_no_previous_record_is_explicit_not_assumed_official_debut(self):
+        private,manifest=freeze(self.entries,self.parents,[],self.model,
+            asof=ASOF,clock=CLOCK,source_sha=fake_sha())
+        self.assertTrue(all(p["prior_classified_race_count"]==0
+                            for p in private["predictions"]))
+        report=score(private,manifest,completed_results(self.entries))
+        self.assertEqual(report["pretimestep_history_subgroups"][
+            "no_prior_classified_result"]["starts"],6)
+        self.assertEqual(report["pretimestep_history_subgroups"][
+            "with_prior_classified_result"]["starts"],0)
+        self.assertTrue(report["no_recorded_history_is_NOT_official_first_start"])
+
+    def test_modified_private_cohort_flags_invalidate_public_digest(self):
+        private,manifest=self.frozen()
+        edited=copy.deepcopy(private)
+        edited["predictions"][0]["prior_classified_race_count"]=77
+        with self.assertRaisesRegex(ValueError,"DIGEST_MISMATCH"):
+            score(edited,manifest,completed_results(self.entries))
+
     def test_all_model_feature_values_are_finite(self):
         private,manifest=self.frozen()
         self.assertEqual(private["schema"],SCHEMA)
