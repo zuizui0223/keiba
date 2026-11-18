@@ -1,3 +1,15 @@
+## 2026-11-18 additional audit: source-ready only, official time provenance still HOLD
+
+A new [read-only jrvltsql SQLite source gate](../../scripts/ecology_japan_jrvltsql_sqlite_qa.py) audits the *real named* JRA-VAN-derived NL_RA/NL_SE/NL_UM/NL_SK/NL_HN table/column contract using any user-authorized local SQLite export, **without downloading race records**. It counts horse-ID master joins, explicit parent breeding IDs and mapped breeding-to-blood parent IDs, rank completeness versus declared starters, and missing/ambiguous lineage paths. It cannot claim a published-at timestamp from JV-Data MakeDate alone. Detailed [source intake and legal/temporal limits](JAPAN_2027_JRAVAN_SQLITE_READONLY_QA.md).
+
+The historical model fitter now **rejects different entry-known timestamps within the same source race** and **quarantines entire target races when the official result's rider/trainer IDs differ from those of the original pre-race entrant snapshot**; neither substitutions nor other late information may silently masquerade as known pre-race covariates. Historical 2025–26 validation is now stratified by whether a focal horse had a recorded past race, whether any same-parent other horse has recorded prior results, and whether both parents' typed IDs are known. Insufficient subgroups are labeled HOLD; absent recorded history is not proof of official debut or genetic unrelatedness.
+
+**Actual CI evidence:** [#44236547282](https://github.com/zuizui0223/keiba/actions/runs/44236547282) passed **60 fictional-only tests** (24 historical trainer, 24 prospectively frozen score ledger, 12 typed known-on preflight), and [#44237531926](https://github.com/zuizui0223/keiba/actions/runs/44237531926) passed **9 additional fictional SQLite source tests**. They cover different code paths, so the evidence is **69 passing test cases across two completed workflows**, *not* 69 real racing observations. [Combined aggregate test provenance JSON](../evidence/japan-2027-training-source-readiness-qa-20261118.json).
+
+**Data blocker unchanged:** licensed real NL_* SQLite original, independently source-certified historical entry/result known-at timestamps, complete official H:/B: parent bridge and actual trained 2027 model are still absent. M1/M2 numerical scores for actual licensed JRA/NAR racehorses, genome-linked inheritance, and 2027 forward prediction remain HOLD.
+
+---
+
 # JRA 2027: Point-in-time historical coefficient training — implementation validation
 
 **2026-11-18 STATUS: SYNTHETIC TESTS PASS, REAL OFFICIAL-ID DATA UNAVAILABLE.**
