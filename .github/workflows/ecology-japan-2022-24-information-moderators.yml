@@ -1,0 +1,88 @@
+name: "Japan 2022-24 fixed strict horse-family information moderators"
+
+on:
+  push:
+    branches: [analysis/2022-2024-kin-information-moderators-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-information-moderators.yml"
+      - "scripts/ecology_japan_2022_2024_kin_information_moderators.py"
+      - "tests/test_ecology_japan_2022_2024_kin_information_moderators.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  posthoc-strict-kin-moderators:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned scientific and public-source reader libraries
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Synthetic source A feature, self-peering, recency and subset tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_2024_kin_information_moderators.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_joint_strict_strong.py" -v
+      - name: Download exact previously SHA-pinned source A privately
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download exact previously SHA-pinned historic source B privately
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          path=Path(hf_hub_download(
+              repo_id="KBlueLeaf/jp-racing-horse",repo_type="dataset",
+              filename="all_races_1990-2025.db",
+              local_dir="tmp/private"))
+          assert path.is_file() and path.stat().st_size>0
+          PY
+      - name: Reconstruct locked 2022-24 244147 strict scored starts and moderating information
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_2024_kin_information_moderators.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/posthoc-2022-24-kin-moderators-aggregate.json \
+            > tmp/summary-only.log
+      - name: Fail-closed identity, source, past-only, strict-score and privacy checks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path("tmp/posthoc-2022-24-kin-moderators-aggregate.json")
+          j=json.loads(f.read_text(encoding="utf-8"))
+          assert j["status"]=="POSTHOC_2022_2024_STRICT_KIN_INFORMATION_MODERATORS_NOT_CAUSAL"
+          assert j["strict_source_qa"]["strict_focal_rows"]==244147
+          assert j["strict_source_qa"]["strict_focal_horses"]==12887
+          assert j["strict_source_qa"]["strict_races"]==35333
+          assert j["2024_midpoint_beats_strong_family_model"]
+          assert j["hypothesis_derived_after_inspecting_2022_24_and_2026_results"]
+          assert j["no_source_rows_race_or_horse_names_IDs_individual_predictions_exported"]
+          assert j["shared_stable_breeding_environment_not_measured"]
+          assert j["family_record_recency_is_prior_to_2022_because_coefficients_frozen"]
+          assert j["no_genomic_G_horse_ID_join_or_heritability"]
+          assert "posthoc_interactions_not_causal" in j
+          print("2022_24_STRICT_STRONG_MODERATORS_LOCKED_PREHISTORIC_INFO_ALL_GATES_PASSED")
+          PY
+      - name: Purge all original third-party source records
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-kin-information-moderators-aggregate-only
+          path: tmp/posthoc-2022-24-kin-moderators-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14
