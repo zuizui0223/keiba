@@ -15,7 +15,24 @@
     "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
     "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
     "source_publication_timestamp_verified": false,
-    "actual_official_registered_ID_master_joined": false
+    "actual_official_registered_ID_master_joined": false,
+    "subsequent_full_recomputation_success": {
+      "run_id": 44285674465,
+      "job_id": 134737600155,
+      "run_url": "https://github.com/zuizui0223/keiba/actions/runs/44285674465",
+      "final_conclusion": "success",
+      "aggregate_artifact_id": 14418924526,
+      "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/44285674465/artifacts/14418924526",
+      "aggregate_zip_digest_sha256": "2ec3fd3050ac87b07d57f853f7bf4d4dcd35883ad4abfbf2359476ff648affed",
+      "uncompressed_aggregate_sha256": "0d5d6b63ef403b2f2f776075e0a4a89e68831163269bcb7bdb7bc7e2fdd635a3",
+      "prior_initial_output_numeric_parity_checked": true,
+      "compared_numeric_cells": 1250,
+      "max_absolute_numeric_delta": 9.922618282587337e-16,
+      "strict_sample_and_model_parity": true,
+      "python_synthetic_tests": 14,
+      "actual_records_uploaded_or_redistributed": false
+    },
+    "current_source_locked_run_finally_successful": true
   },
   "locked_strict_sample": {
     "horses": 12887,
