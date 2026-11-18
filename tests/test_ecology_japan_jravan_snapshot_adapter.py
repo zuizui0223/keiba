@@ -178,18 +178,14 @@ class PrePostAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"SYNTHETIC_CLOCK_NOT_ACCEPTED"):
             pre_aggregate(pre,receipt,self.track,SOURCE_RACE)
 
-    def test_pre_snapshot_timestamp_cannot_switch_race(self):
+    def test_pre_receipt_start_must_equal_actual_source_header(self):
+        with sqlite3.connect(self.source) as con:
+            con.execute("UPDATE NL_RA SET HassoTime='1520' WHERE RaceNum=1")
+            con.commit()
         pre,receipt=self.captured_pre()
         with self.assertRaisesRegex(ValueError,"RACE_START_MISMATCH"):
-            pre_aggregate(pre,receipt,self.track,
-                          "2027,109,05,1,1,1",
-                          allow_synthetic_clock=True) if False else (
-                          # Change receipt metadata only after hashing? Instead
-                          # change source RA after capture invalidates SHA;
-                          # bad key has no race and is correctly held.
-                          pre_aggregate(pre,receipt,self.track,
-                          "2027,110,05,1,1,1",
-                          allow_synthetic_clock=True))
+            pre_aggregate(pre,receipt,self.track,SOURCE_RACE,
+                          allow_synthetic_clock=True)
 
     def test_post_result_ties_or_rank_gaps_cannot_get_2027_scores(self):
         (rows,parents,meta),pre,pre_m=self.pre()
