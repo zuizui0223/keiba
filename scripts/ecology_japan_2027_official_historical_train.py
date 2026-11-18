@@ -147,9 +147,12 @@ def parse_licensed_panel(entries:list[dict], parents:list[dict],
             raise ValueError("HOLD_INVALID_TRAINING_SURFACE_OR_SEX")
         if any(not raw[key] for key in ("course_id","jockey_id","trainer_id")):
             raise ValueError("HOLD_UNCERTIFIED_TRAINING_CONTEXT")
-        cond=(start,raw["surface"],distance,raw["course_id"])
+        # Every horse in one race must come from the SAME certified pre-race
+        # snapshot. Mixing publication cutoffs across entrants gives them
+        # different accessible history windows within one outcome.
+        cond=(start,raw["surface"],distance,raw["course_id"],cutoff)
         if race in entrant_conditions and entrant_conditions[race]!=cond:
-            raise ValueError("HOLD_INCONSISTENT_ENTERED_RACE_CONDITIONS")
+            raise ValueError("HOLD_INCONSISTENT_ENTERED_RACE_CONDITIONS_OR_CUTOFF")
         entrant_conditions[race]=cond
         sire,dam,_=parent[horse]
         record={
@@ -175,6 +178,15 @@ def parse_licensed_panel(entries:list[dict], parents:list[dict],
                h["course_id"]!=e["raw"]["course_id"]
                for e,h in zip(erows,selected)):
             raise ValueError("HOLD_ENTRY_OUTCOME_RACE_METADATA_CONFLICT")
+        # Replaced jockeys or inconsistent trainer mappings invalidate the
+        # PRE-RACE covariate comparison, so quarantine the WHOLE target race.
+        # A final result may truthfully report a later replacement; it must
+        # not be silently backfilled into the pre-race entrant predictors.
+        if any(h["jockey_id"]!=e["raw"]["jockey_id"] or
+               h["trainer_id"]!=e["raw"]["trainer_id"]
+               for e,h in zip(erows,selected)):
+            eligible_groups["changed_rider_or_trainer_after_entry"]+=1
+            continue
         if any(e["start"]<SPLIT_AT and h["known"]>=SPLIT_AT
                for e,h in zip(erows,selected)):
             eligible_groups["cross_split_result_publication"]+=1
