@@ -1,0 +1,145 @@
+{
+  "status": "POSTHOC_EMPIRICAL_2022_2024_OWN_KIN_INFORMATION_MODERATION_LOCKED_STRICT_SAMPLE",
+  "date_jst": "2026-11-18",
+  "only_existing_real_2022_2024_source_outcomes": true,
+  "scientific_claim_scope": "descriptive conditional prediction, no independent replication or genetic causality",
+  "empirical_action_run_source": {
+    "first_complete_aggregate_produced_in_run": 44284912350,
+    "first_aggregate_job_id": 134734962922,
+    "first_aggregate_artifact_id": 14419480112,
+    "first_aggregate_artifact_zip_sha256": "d3c71b4c81d728011345bd5b7d744c499a44707b266675ecc08ce5cf111d3495",
+    "first_aggregate_url": "https://github.com/zuizui0223/keiba/actions/runs/44284912350/artifacts/14419480112",
+    "full_aggregate_result_model_and_strict_cohort_parity": "succeeded",
+    "full_workflow_initial_conclusion": "failure",
+    "initial_failure_reason": "Last CI QA step referenced strict_source_qa instead of actual strict_sample_QA; the numeric results already completed and artifact uploaded",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "source_publication_timestamp_verified": false,
+    "actual_official_registered_ID_master_joined": false
+  },
+  "locked_strict_sample": {
+    "horses": 12887,
+    "starts": 244147,
+    "races": 35333,
+    "M0_midpoint_rmse": 0.3217441421829057,
+    "M1_own_strong_rmse": 0.31242944828841407,
+    "M2_own_plus_recorded_parent_other_horse_rmse": 0.3121678685067159,
+    "M1_minus_M2_gain": 0.00026157978169816243,
+    "source_A_training_only_through_year": 2021,
+    "results_2024_family_failed_vs_midpoint": true
+  },
+  "own_record_count_2021_source_A_bins": {
+    "0-3": {
+      "starts": 31043,
+      "horses": 1701,
+      "gain_M1_minus_M2": 0.0008706929786845841,
+      "horse_oneway_CI95": [
+        0.00006309388078347414,
+        0.0016654103352363718
+      ]
+    },
+    "4-7": {
+      "starts": 37405,
+      "horses": 2041,
+      "gain_M1_minus_M2": 0.0005326328166392336,
+      "horse_oneway_CI95": [
+        -0.00010951152218635906,
+        0.0010760225124281308
+      ]
+    },
+    "8-15": {
+      "starts": 60242,
+      "horses": 3351,
+      "gain_M1_minus_M2": 0.00033506502409619277,
+      "horse_oneway_CI95": [
+        -0.000046904904870617715,
+        0.000647133540038602
+      ]
+    },
+    "16+": {
+      "starts": 115457,
+      "horses": 5794,
+      "gain_M1_minus_M2": -0.00006967767009175008,
+      "horse_oneway_CI95": [
+        -0.00023583065612607645,
+        0.00006576185237258665
+      ]
+    }
+  },
+  "year_by_own_history_M1_minus_M2": {
+    "2022": {
+      "0-3": 0.001129915,
+      "4-7": 0.000571275,
+      "8-15": 0.000343504,
+      "16+": -0.000180246
+    },
+    "2023": {
+      "0-3": 0.000497016,
+      "4-7": 0.000317374,
+      "8-15": 0.000390115,
+      "16+": 0.000222011
+    },
+    "2024": {
+      "0-3": 0.000304289,
+      "4-7": 0.000957871,
+      "8-15": 0.000648561,
+      "16+": 0.00052853
+    }
+  },
+  "parent_other_horse_eligible_record_count": {
+    "none": {
+      "starts": 573,
+      "gain": -0.00464506187408209
+    },
+    "one": {
+      "starts": 558,
+      "gain": -0.0034463529287835915
+    },
+    "two_four": {
+      "starts": 2488,
+      "gain": 0.002116522168760626
+    },
+    "five_plus": {
+      "starts": 240528,
+      "gain": 0.00023869981671470475
+    }
+  },
+  "parent_other_horse_record_age_since_last_old_source_race": {
+    "0_365_days": {
+      "starts": 118599,
+      "gain": 0.0002617929901213567
+    },
+    "366_1095_days": {
+      "starts": 124071,
+      "gain": 0.00029196499246780805
+    },
+    "1096_plus_days": {
+      "starts": 904,
+      "gain": 0.0018636172372829551
+    },
+    "no_recorded_date": {
+      "starts": 573,
+      "gain": -0.00464506187408209
+    }
+  },
+  "original_history_source_coverage": {
+    "median_focal_recorded_prior_starts": 14,
+    "sourceA_focal_rows_with_one_eligible_race": 956,
+    "sourceA_focal_rows_with_zero_eligible_races": 0,
+    "sourceA_peer_counts_median_largest_parent_channel": 219,
+    "sourceA_focal_last_history_median_lag_days": 414,
+    "sourceA_other_parent_peers_last_history_median_lag_days": 379
+  },
+  "critical_negative_results": [
+    "Pooled old-own-history bins decrease monotonically in 2022-24 descriptive summary, but 2024 year reverses 0-3 vs 16+ ordering.",
+    "No monotone negative relationship with stale recorded family history is detected.",
+    "2024 parent model fails the fixed 0.5 midpoint benchmark even when it beats own-history M1.",
+    "Parent-record count equals largest same-sire or same-dam cohort after within-context filter, NOT pedigree relatedness A.",
+    "Same sire/dam racing performance is confounded by management, selection and race environment.",
+    "Counts of event-matched pre-2022 races do not certify official debut or full lifetime racing history.",
+    "Results were inspected before subgroup analysis; no independent p values or causal conclusion."
+  ],
+  "no_individual_horse_ids_names_results_or_race_rows_exported": true,
+  "genome_G_A_full_pedigree_market_time_series_not_joined": true,
+  "real_2027_future_prospective_validation_done": false
+}
