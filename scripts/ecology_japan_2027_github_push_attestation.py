@@ -87,9 +87,19 @@ def _sha_check(value) -> str:
 
 
 def _json_bytes(data:bytes) -> dict:
+    def reject_duplicate_keys(pairs):
+        obj={}
+        for key,value in pairs:
+            if key in obj:
+                raise ValueError("HOLD_DUPLICATE_AGGREGATE_JSON_KEY")
+            obj[key]=value
+        return obj
     try:
-        obj=json.loads(data)
-    except (ValueError,TypeError,UnicodeError):
+        obj=json.loads(data,object_pairs_hook=reject_duplicate_keys)
+    except (ValueError,TypeError,UnicodeError) as exc:
+        if isinstance(exc,ValueError) and str(exc)==(
+                "HOLD_DUPLICATE_AGGREGATE_JSON_KEY"):
+            raise
         raise ValueError("HOLD_INVALID_AGGREGATE_JSON") from None
     if not isinstance(obj,dict):
         raise ValueError("HOLD_NOT_AGGREGATE_MANIFEST_OBJECT")
