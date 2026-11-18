@@ -1,0 +1,30 @@
+name: "2022-only family gate historical transfer empirical negatives and source QA"
+
+on:
+  push:
+    branches: [main, analysis/2022-trained-kin-information-gate-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2022-family-gate-evidence.yml"
+      - "tests/test_ecology_japan_2022_family_gate_transfer_evidence.py"
+      - "docs/evidence/japan-2022-trained-kin-gate-2023-24-transfer-20261118.json"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-family-gate-evidence.yml"
+      - "tests/test_ecology_japan_2022_family_gate_transfer_evidence.py"
+      - "docs/evidence/japan-2022-trained-kin-gate-2023-24-transfer-20261118.json"
+
+permissions:
+  contents: read
+
+jobs:
+  lock-actual-negative-calendar-year-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify historical 2023-24 rule transfer actual negative evidence is never silently removed
+        run: |
+          python -m unittest discover -s tests -p "test_ecology_japan_2022_family_gate_transfer_evidence.py" -v
