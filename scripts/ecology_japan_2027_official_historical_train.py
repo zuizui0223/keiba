@@ -25,7 +25,8 @@ from ecology_japan_2027_official_knownon_preflight import (
 from ecology_japan_2027_point_in_time_ledger import (
     OWN, KIN, HISTORICAL_INPUT, JST_ZONE, MODEL_SCHEMA,
     FROZEN_2027_START, asof_features, validate_models,
-    linear_predict, digest_file, canonical_bytes, _private_destination,
+    linear_predict, digest_file, digest_bytes, canonical_bytes,
+    _private_destination, _bootstrap,
 )
 
 TRAIN_START = datetime(2018, 1, 1, tzinfo=JST_ZONE)
@@ -296,28 +297,38 @@ def fit_ridge(rows, *, alpha=ALPHA):
     return models
 
 
-def cohort_scores(rows, models):
+def cohort_scores(rows, models, *, with_bootstrap=False):
     if not rows:
         raise ValueError("HOLD_EMPTY_VALIDATION")
     n=Counter(r["horse"] for r in rows)
+    observed=[]
     den=0.0
     sums=[0.,0.,0.]
     for r in rows:
         y=r["y"]
         p=[.5,linear_predict(models["M1"],r["features"]),
            linear_predict(models["M2"],r["features"])]
+        observed.append({
+            "horse_id":r["horse"],
+            "race_start_at_jst":r["start"].isoformat(),
+            "y":y,"M0":p[0],"M1":p[1],"M2":p[2],
+        })
         wt=1/n[r["horse"]]
         den+=wt
         for i in range(3):
             sums[i]+=wt*(y-p[i])**2
     rmse=[float(np.sqrt(v/den)) for v in sums]
-    return {
+    answer = {
         "M0_midpoint":rmse[0],"M1_own_context":rmse[1],
         "M2_own_context_plus_family":rmse[2],
         "gain_M1_minus_M2":rmse[1]-rmse[2],
         "gain_M0_minus_M2":rmse[0]-rmse[2],
         "M2_beats_both":bool(rmse[2]<rmse[1] and rmse[2]<rmse[0]),
     }
+    if with_bootstrap:
+        answer["one_way_horse_cluster"]=_bootstrap(observed,"horse",B=399)
+        answer["one_way_race_day_cluster"]=_bootstrap(observed,"race_day",B=399)
+    return answer
 
 
 def train(entries:list[dict],parents:list[dict],history:list[dict],
@@ -350,11 +361,12 @@ def train(entries:list[dict],parents:list[dict],history:list[dict],
     scores={
         "training_descriptive":cohort_scores(training,models),
         "2025_2026_out_of_training_temporal_validation":cohort_scores(
-            validation,models)
+            validation,models,with_bootstrap=True)
     }
     return model,{
         "status":"PRIVATE_OFFICIAL_ID_HISTORIC_M1_M2_MODEL_TRAINED_NOT_2027_PROSPECTIVE",
         "historical_source_file_SHA256":source_sha,
+        "private_fitted_model_file_SHA256":digest_bytes(canonical_bytes(model)),
         "time_split":{
             "train_start":"2018-01-01T00:00:00+09:00",
             "train_end_exclusive":"2025-01-01T00:00:00+09:00",
@@ -375,6 +387,7 @@ def train(entries:list[dict],parents:list[dict],history:list[dict],
             "equal_horse_training_weights":True,
             "M1_and_M2_same_own_features_and_scalers":True,
             "not_tuned_to_validation_labels":True,
+            "one_way_validation_resampling_not_two_way_CI":True,
             "target_2027_outcomes_used":False,
             "genetic_causality_estimated":False,
         },
