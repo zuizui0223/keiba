@@ -313,9 +313,9 @@ def _write_new(path:Path,value:dict):
     if path.exists():
         raise ValueError("HOLD_NEVER_OVERWRITE_PUBLIC_PRE_RACE_COMMITMENT")
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.open("x",encoding="utf-8").write(
-        json.dumps(value,sort_keys=True,ensure_ascii=False,
-                   indent=2,allow_nan=False)+"\n")
+    with path.open("x",encoding="utf-8") as f:
+        f.write(json.dumps(value,sort_keys=True,ensure_ascii=False,
+                           indent=2,allow_nan=False)+"\n")
 
 
 def _fetch_current_run() -> tuple[dict,str,str]:
@@ -351,7 +351,10 @@ def _cli():
     package.add_argument("--pre-source-receipt",type=Path,required=True)
     package.add_argument("--pre-adapter-summary",type=Path,required=True)
     package.add_argument("--forecast-public-commitment",type=Path,required=True)
-    package.add_argument("--bundle-out",type=Path,required=True)
+    dest=package.add_mutually_exclusive_group(required=True)
+    dest.add_argument("--bundle-out",type=Path)
+    dest.add_argument("--commit-directory",type=Path,
+                      help="Write anonymous SHA-derived filename to 2027 commitment directory")
     inspect=sub.add_parser("inspect",help="No external proof")
     inspect.add_argument("--bundle",type=Path,required=True)
     attest=sub.add_parser("attest-push",help="Only real GitHub Actions push")
@@ -368,8 +371,16 @@ def _cli():
         b=build_bundle(_bytes(args.pre_source_receipt),
                        _bytes(args.pre_adapter_summary),
                        _bytes(args.forecast_public_commitment))
-        _write_new(args.bundle_out,b)
-        result=validate_bundle(b)
+        if args.commit_directory is not None:
+            # Opaque, deterministic filename binds to the whole aggregate
+            # content; no horse/race name or provider IDs in public path.
+            digest=_sha(json.dumps(b,sort_keys=True,ensure_ascii=False,
+                                   separators=(",",":"),allow_nan=False).encode("utf-8"))
+            out=args.commit_directory/(digest[:32]+".json")
+        else:
+            out=args.bundle_out
+        _write_new(out,b)
+        result={**validate_bundle(b),"aggregate_commitment_path":str(out)}
     elif args.operation=="inspect":
         result=validate_bundle(_json_bytes(_bytes(args.bundle)))
     elif args.operation=="attest-push":
