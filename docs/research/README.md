@@ -13,6 +13,10 @@ Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GEN
 
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
+## Real 2022–24 family-information moderation (post-hoc)
+
+The [source-locked 244,147-start descriptive stratification](JAPAN_2022_2024_KIN_INFORMATION_MODERATORS_RESULTS.md) explores how the **incremental prediction value** of recorded same-parent other-horse history changes with the focal horse's own qualifying historical observations. Positive pooled differences decline across 0–3, 4–7, 8–15, 16+ own-start bins, but **2024 reverses the low-vs-high ordering** and the relative-history-age gradient is not monotone. These are earlier-inspected historical results, not a fresh source evaluation, genetic heritability, a complete pedigree matrix A, genomic G joined by registered ID, or evidence of market herding. [Aggregate-only evidence with positive/negative strata](../evidence/japan-2022-24-posthoc-kin-information-moderators-20261118.json).
+
 ## Central ecological question
 
 **Under which observational conditions does an individual horse's previous
