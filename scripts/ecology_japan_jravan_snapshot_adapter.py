@@ -15,8 +15,8 @@ import argparse
 import csv
 from datetime import datetime, timedelta
 import json
+import os
 from pathlib import Path
-import re
 import sqlite3
 
 from ecology_japan_jravan_asof_snapshot import (
@@ -343,11 +343,13 @@ def _write_private_csv(path:Path,columns:tuple[str,...],rows:list[dict]):
     if path.exists():
         raise ValueError("HOLD_NEVER_OVERWRITE_PRIVATE_SOURCE_EXPORT")
     path.parent.mkdir(parents=True,exist_ok=True)
-    with path.open("x",encoding="utf-8",newline="") as fd:
-        writer=csv.DictWriter(fd,fieldnames=columns,extrasaction="raise")
+    # Restrict permissions atomically AT CREATION; chmod after writing
+    # would leave a potentially readable window on some host machines.
+    fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+    with os.fdopen(fd,"w",encoding="utf-8",newline="") as handle:
+        writer=csv.DictWriter(handle,fieldnames=columns,extrasaction="raise")
         writer.writeheader()
         writer.writerows(rows)
-    path.chmod(0o600)
 
 
 def _write_public(path:Path,qa:dict, private_outputs:dict):
