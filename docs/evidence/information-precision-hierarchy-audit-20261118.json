@@ -1,0 +1,63 @@
+{
+  "status": "OBSERVED_AGGREGATE_PARITY_PLUS_ANALYTIC_SYNTHETIC_INFORMATION_MODEL",
+  "source_aggregate_SHA256": {
+    "integrated": "0a37a05c1e1886a6f66b2eff386fb828e4baa3e0086aff6a85078a19edda29b9",
+    "factorial": "47124ec49228b652472394df606ae8f7f82f188c2fd3027098886afdf02d6066",
+    "strict_race_outcome": "69076a0f7f28d21f2adf5f71dbf46c8dee2ec2bee27faa654985df80ca6b6b3f",
+    "market_snapshot": "94c24b4d2c1d84a153c19e812e092abf5dc4c406097922a194a2aa8bba8fbb52"
+  },
+  "Japan_2026_one_selected_posthoc_cohort": {
+    "observed_horses": 232,
+    "observed_starts": 480,
+    "same_sample_original_source_2026_kin_increment": -0.0006198340000000413,
+    "ordinary_and_strong_model_contrasts": {
+      "ordinary": {
+        "updated_focal_own_history_only_RMSE_gain_with_family_fixed": 0.04340225004144743,
+        "updated_relative_history_only_RMSE_gain_with_own_fixed": 0.002091260736349354,
+        "updated_family_given_updated_own_conditional_RMSE_gain": 0.00047245867692136123,
+        "own_only_gain_to_family_only_gain_ratio_DESCRIPTIVE": 20.754107456353495,
+        "full_updated_family_increment_over_updated_no_family_RMSE": -0.0016444883373313846,
+        "full_updated_no_family_RMSE": 0.2747824093514717,
+        "full_updated_with_family_RMSE": 0.2764268976888031
+      },
+      "strong": {
+        "updated_focal_own_history_only_RMSE_gain_with_family_fixed": 0.04314554660681169,
+        "updated_relative_history_only_RMSE_gain_with_own_fixed": 0.0021496931203264236,
+        "updated_family_given_updated_own_conditional_RMSE_gain": 0.0005066164369794124,
+        "own_only_gain_to_family_only_gain_ratio_DESCRIPTIVE": 20.07056086231517,
+        "full_updated_family_increment_over_updated_no_family_RMSE": 0.00028303595225864786,
+        "full_updated_no_family_RMSE": 0.27470562307974966,
+        "full_updated_with_family_RMSE": 0.274422587127491
+      }
+    },
+    "subgroup_and_model_selection_already_inspected": true,
+    "family_freshness_comparison_does_NOT_establish_kin_deployable_value": true
+  },
+  "Japan_2022_2024_separate_period": {
+    "focal_horses": 12919,
+    "observed_starts": 255484,
+    "portable_original_family_increment_RMSE": 0.0003224538494249751,
+    "strict_race_with_strong_own_history_observed_starts": 244147,
+    "strict_race_with_strong_own_history_family_increment_RMSE": 0.00026157978169816243,
+    "strict_2024_midpoint_better_than_family_RMSE": true,
+    "parent_shuffled_controls": 19,
+    "controls_exceeding_true_increment": 0,
+    "minimum_one_sided_plus_one_p_no_confirmatory_test": 0.05,
+    "posthoc_reanalysis_same_period_not_independent_replication": true
+  },
+  "market_real_cross_section_not_trajectory": {
+    "race_count": 9,
+    "horse_quotes": 117,
+    "min_field_normalized_effective_horses": 0.17470087553623304,
+    "max_field_normalized_effective_horses": 0.7588409043439542,
+    "min_top_favorite_normalized_inverse_odds_weight": 0.13752616518663655,
+    "max_top_favorite_normalized_inverse_odds_weight": 0.5615880057583282,
+    "time_trajectory_measured": false,
+    "actual_votes_or_market_social_contagion_identified": false,
+    "horse_genotype_or_pedigree_JOIN": false
+  },
+  "toy_own0_recent_family_variance_gain": 0.371619471842189,
+  "toy_own10_recent_family_variance_gain": 0.009340952773628522,
+  "toy_fully_redundant_family_variance_gain": 0,
+  "not_an_empirical_market_or_genetic_effect": true
+}
