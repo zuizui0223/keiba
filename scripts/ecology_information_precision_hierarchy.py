@@ -347,7 +347,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root",type=Path,default=Path(__file__).resolve().parents[1])
     parser.add_argument("--output",type=Path,required=True)
+    parser.add_argument("--audit-output",type=Path,
+                        help="Optional compact deterministic source-only QA evidence")
     args=parser.parse_args()
+    if args.audit_output is not None and args.audit_output.resolve()==args.output.resolve():
+        raise ValueError("HOLD_FULL_MODEL_AND_COMPACT_AUDIT_SAME_PATH")
     obj={
         "status":"OBSERVED_AGGREGATE_PARITY_PLUS_ANALYTIC_SYNTHETIC_INFORMATION_MODEL",
         "observational_evidence":extract_real_evidence(args.repo_root),
@@ -366,7 +370,7 @@ def main():
     args.output.write_text(json.dumps(obj,indent=2,ensure_ascii=False,allow_nan=False)+"\n",encoding="utf-8")
     # Only robust aggregate result, no full case-by-case source records.
     o=obj["observational_evidence"]
-    print(json.dumps({
+    audit={
         "status":obj["status"],
         "source_aggregate_SHA256":o["source_aggregate_SHA256"],
         "Japan_2026_one_selected_posthoc_cohort":o["Japan_2026_one_selected_posthoc_cohort"],
@@ -380,7 +384,12 @@ def main():
             "correlated_noise_redundant_proxy_counterexample"][
                 "ideal_additional_family_variance_improvement"],
         "not_an_empirical_market_or_genetic_effect":True,
-    },indent=2,ensure_ascii=False))
+    }
+    emitted=json.dumps(audit,indent=2,ensure_ascii=False,allow_nan=False)+"\n"
+    if args.audit_output is not None:
+        args.audit_output.parent.mkdir(parents=True,exist_ok=True)
+        args.audit_output.write_text(emitted,encoding="utf-8")
+    print(emitted,end="")
 
 
 if __name__=="__main__":
