@@ -1,0 +1,51 @@
+name: "JRA 2027 pre-race SQLite capture and receipt-chain synthetic QA"
+
+on:
+  push:
+    branches: [analysis/jravan-asof-capture-ledger-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2027-snapshot-receipts.yml"
+      - "scripts/ecology_japan_jravan_asof_snapshot.py"
+      - "tests/test_ecology_japan_jravan_asof_snapshot.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-chain-test-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile private SQLite receipt source without downloading JRA data
+        run: |
+          python -m py_compile scripts/ecology_japan_jravan_asof_snapshot.py
+          python -m py_compile scripts/ecology_japan_jrvltsql_sqlite_qa.py
+      - name: Synthetic-only race-before/after time gates, SHA chain and SQLite row-delta tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_jravan_asof_snapshot.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_jrvltsql_sqlite_qa.py" -v
+      - name: Check source receipt does not conflate observed clock with official publication
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("scripts/ecology_japan_jravan_asof_snapshot.py").read_text()
+          for token in (
+              "LOCAL_SNAPSHOT_RECEIVED_NO_INDEPENDENT_PUBLIC_TIME_ATTESTATION",
+              "HOLD_PRE_RACE_BACKUP_NOT_FINISHED_BEFORE_RACE",
+              "no_horse_ids_names_race_rows_or_individual_predictions_in_receipt",
+              "local_clock_NOT_external_timestamp_proof",
+              "receiver_possession_not_JRA_publication",
+              "MakeDate_NOT_actual_provider_publish_time",
+              "PRAGMA query_only=ON",
+          ):
+              assert token in s, token
+          print("JRA_SQLITE_RECEIPT_SYNTHETIC_ONLY_NO_REAL_DATA_NO_PUBLISH_TIME_CLAIM")
+          PY
