@@ -141,7 +141,8 @@ def delta_aggregate(prior:Path,new:Path):
 
 
 def receipt_verify(snapshot:Path, manifest_path:Path, *,
-                   prev_manifest:Path|None=None):
+                   prev_manifest:Path|None=None,
+                   validate_immediate_parent:bool=True):
     if not snapshot.is_file() or not manifest_path.is_file():
         raise ValueError("HOLD_MISSING_LOCAL_RECEIPT_OR_PRIVATE_SNAPSHOT")
     r=json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -152,13 +153,14 @@ def receipt_verify(snapshot:Path, manifest_path:Path, *,
     if snapshot.stat().st_size!=r.get("private_snapshot_bytes"):
         raise ValueError("HOLD_PRIVATE_SQLITE_SNAPSHOT_SIZE_DRIFT")
     if r.get("previous_receipt_sha256") is not None:
-        if prev_manifest is None or not prev_manifest.is_file():
-            raise ValueError("HOLD_PREVIOUS_RECEIPT_REQUIRED_FOR_CHAIN")
-        if sha256(prev_manifest)!=r["previous_receipt_sha256"]:
-            raise ValueError("HOLD_PREVIOUS_RECEIPT_HASH_DRIFT")
-        prev=json.loads(prev_manifest.read_text(encoding="utf-8"))
-        if prev.get("schema")!=SCHEMA:
-            raise ValueError("HOLD_PREVIOUS_RECEIPT_SCHEMA")
+        if validate_immediate_parent or prev_manifest is not None:
+            if prev_manifest is None or not prev_manifest.is_file():
+                raise ValueError("HOLD_PREVIOUS_RECEIPT_REQUIRED_FOR_CHAIN")
+            if sha256(prev_manifest)!=r["previous_receipt_sha256"]:
+                raise ValueError("HOLD_PREVIOUS_RECEIPT_HASH_DRIFT")
+            prev=json.loads(prev_manifest.read_text(encoding="utf-8"))
+            if prev.get("schema")!=SCHEMA:
+                raise ValueError("HOLD_PREVIOUS_RECEIPT_SCHEMA")
     return {
         "status":"LOCAL_SQLITE_RECEIPT_DIGEST_MATCHES_NOT_EXTERNALLY_TIME_ATTESTED",
         "snapshot_sha256":r["private_snapshot_sha256"],
@@ -199,7 +201,11 @@ def capture(source:Path, private:Path, public:Path, *,
     prev=None
     previous_hash=None
     if previous_receipt is not None:
-        receipt_verify(previous_private,previous_receipt)
+        # Verify the immediate private snapshot SHA. An earlier chain link
+        # can be audited separately with its own receipt; no grandparent
+        # path is available from an aggregate receipt alone.
+        receipt_verify(previous_private,previous_receipt,
+                       validate_immediate_parent=False)
         prev=json.loads(previous_receipt.read_text(encoding="utf-8"))
         previous_hash=sha256(previous_receipt)
         if not _utc(datetime.fromisoformat(prev["capture_finished_utc"]))<t0:
@@ -244,6 +250,7 @@ def capture(source:Path, private:Path, public:Path, *,
             "private_snapshot_sha256":snapshot_sha,
             "private_snapshot_bytes":tmp.stat().st_size,
             "previous_receipt_sha256":previous_hash,
+            "only_immediate_previous_snapshot_verified_on_new_capture":True,
             "prior_source_table_deltas_counts_only":delta,
             "source_schema_and_coverage_aggregate":qa,
             "source_was_opened_read_only":True,
