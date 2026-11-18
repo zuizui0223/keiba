@@ -19,6 +19,7 @@ before the declared race start, not JRA publication time or source license.
 from __future__ import annotations
 
 import argparse
+import base64
 from datetime import datetime, timezone, timedelta
 import hashlib
 import json
@@ -26,11 +27,14 @@ import os
 from pathlib import Path
 import re
 import urllib.request
+from urllib.parse import quote
 
 SOURCE_SCHEMA = "JRA_LOCAL_SQLITE_ASOF_RECEIPT_V1"
 ADAPTER_SCHEMA = "JRA_2027_PRIVATE_PRE_POST_SNAPSHOT_CSV_ADAPTER_V1"
 FORECAST_SCHEMA = "JRA_2027_H1_PREDICTION_COMMITMENT_V1"
 BUNDLE_SCHEMA = "JRA_2027_GITHUB_PRE_RACE_AGGREGATE_COMMITMENT_V1"
+PRODUCTION_WORKFLOW_PATH = ".github/workflows/ecology-japan-2027-immutable-push-attestation.yml"
+SYNTHETIC_REHEARSAL_WORKFLOW_PATH = ".github/workflows/ecology-japan-2027-server-rehearsal.yml"
 JST = timezone(timedelta(hours=9))
 REQUIRED_SHA = re.compile(r"^[0-9a-f]{64}$")
 TARGET_FROM = datetime(2027, 1, 1, tzinfo=JST)
@@ -283,6 +287,14 @@ def attest_run(bundle:dict, run:dict, *, repo:str, sha:str,
             or run.get("repository",{}).get("full_name")!=repo
             or type(run.get("id")) is not int):
         raise ValueError("HOLD_GITHUB_PUSH_REPO_OR_CHECKOUT_SHA_MISMATCH")
+    # GitHub Actions reruns inherit the original run's created_at: accepting
+    # run_attempt > 1 would let a post-race rerun appear pre-race.
+    if type(run.get("run_attempt")) is not int or run["run_attempt"]!=1:
+        raise ValueError("HOLD_GITHUB_RERUN_CANNOT_ATTEST_NEW_PRE_RACE_PLEDGE")
+    expected=(PRODUCTION_WORKFLOW_PATH,) if not allow_synthetic else (
+        PRODUCTION_WORKFLOW_PATH,SYNTHETIC_REHEARSAL_WORKFLOW_PATH)
+    if run.get("path") not in expected:
+        raise ValueError("HOLD_GITHUB_UNTRUSTED_WORKFLOW_PATH")
     server=_time(run.get("created_at"))
     begin=_time(bundle["frozen_prediction_commitment"]["frozen_at_utc"])
     target=_time(bundle["source_capture"]["target_race_start_jst"])
@@ -389,6 +401,91 @@ def _fetch_current_run() -> tuple[dict,str,str]:
     return obj,repo,sha
 
 
+def attest_original_server_file(bundle_raw:bytes,*,commit_sha:str,
+                                run_id:int,relative_path:str,
+                                github_json_get=None,
+                                allow_synthetic:bool=False):
+    """Later independent audit: server-held bundle BY exact original Git SHA.
+
+    A successfully completed FIRST production push run is required. Verify
+    original commit's exact byte content, opaque content address and server
+    run metadata. Does not access private racehorse data nor source JRA.
+    """
+    repo="zuizui0223/keiba"
+    if (not re.fullmatch(r"[0-9a-f]{40}",commit_sha)
+            or commit_sha=="0"*40
+            or type(run_id) is not int or run_id<1):
+        raise ValueError("HOLD_INVALID_ORIGINAL_GITHUB_COMMIT_OR_RUN")
+    if not re.fullmatch(r"docs/commitments/2027/[0-9a-f]{32}\.json",
+                        relative_path):
+        raise ValueError("HOLD_ORIGINAL_COMMITMENT_NOT_OPAQUE_ALLOWED_PATH")
+    bundle=_json_bytes(bundle_raw)
+    if relative_path.rsplit("/",1)[-1]!=content_addressed_bundle_filename(bundle):
+        raise ValueError("HOLD_ORIGINAL_SERVER_FILE_CONTENT_ADDRESS_DRIFT")
+    validate_bundle(bundle,allow_synthetic=allow_synthetic)
+    base="https://api.github.com/repos/"+repo+"/"
+    url_run=base+"actions/runs/"+str(run_id)
+    url_contents=base+"contents/"+quote(relative_path,safe="/")+"?ref="+commit_sha
+
+    def real_get(url):
+        if not url.startswith(base):
+            raise ValueError("HOLD_OUTBOUND_HOST_NOT_FIXED_TO_GITHUB")
+        headers={"Accept":"application/vnd.github+json",
+                 "User-Agent":"JRA-immutable-commit-original/1.0",
+                 "X-GitHub-Api-Version":"2022-11-28"}
+        token=os.environ.get("GITHUB_TOKEN")
+        if token:
+            headers["Authorization"]="Bearer "+token
+        req=urllib.request.Request(url,headers=headers)
+        with urllib.request.urlopen(req,timeout=15) as response:
+            payload=response.read(1024*1024+1)
+        if len(payload)>1024*1024:
+            raise ValueError("HOLD_GITHUB_ORIGINAL_CONTENT_RESPONSE_TOO_LARGE")
+        return _json_bytes(payload)
+
+    getter=github_json_get if github_json_get is not None else real_get
+    run=getter(url_run)
+    if type(run) is not dict or run.get("id")!=run_id:
+        raise ValueError("HOLD_GITHUB_ORIGINAL_RUN_ID_DRIFT")
+    if (run.get("status")!="completed" or run.get("conclusion")!="success"):
+        raise ValueError("HOLD_ORIGINAL_GITHUB_PRODUCTION_ATTESTATION_NOT_SUCCESS")
+    att=attest_run(bundle,run,repo=repo,sha=commit_sha,
+                   allow_synthetic=allow_synthetic)
+    returned=getter(url_contents)
+    if (type(returned) is not dict or returned.get("type")!="file"
+            or returned.get("encoding")!="base64"
+            or returned.get("path")!=relative_path):
+        raise ValueError("HOLD_GITHUB_CONTENTS_NOT_EXACT_TARGET_BLOB")
+    try:
+        original=base64.b64decode(returned["content"],validate=False)
+    except (ValueError,KeyError,TypeError):
+        raise ValueError("HOLD_GITHUB_ORIGINAL_BLOB_CANNOT_BE_DECODED") from None
+    if len(original)>512*1024 or original!=bundle_raw:
+        raise ValueError("HOLD_GITHUB_ORIGINAL_BUNDLE_BYTES_CHANGED")
+    # GitHub contents API SHA is a git-blob digest; verify independently.
+    git_blob_sha=hashlib.sha1(
+        ("blob "+str(len(original))+"\0").encode()+original
+    ).hexdigest()
+    if returned.get("sha")!=git_blob_sha:
+        raise ValueError("HOLD_GITHUB_ORIGINAL_GIT_BLOB_SHA_DRIFT")
+    return {
+        "status":("SYNTHETIC_ONLY_GITHUB_ORIGINAL_API_PROVENANCE_REHEARSAL"
+                  if allow_synthetic else
+                  "ORIGINAL_GITHUB_PRE_RACE_COMMIT_AND_SUCCESSFUL_RUN_VERIFIED"),
+        "git_original_sha":commit_sha,
+        "github_server_created_at_utc":att[
+            "github_push_run_created_at_utc"],
+        "github_original_run_id":run_id,
+        "original_bundle_bytes_SHA256":_sha(original),
+        "original_git_blob_SHA1":git_blob_sha,
+        "published_pledge_past_race_proof_only_conditional":True,
+        "source_JRA_publication_time_NOT_attested":True,
+        "authorized_source_private_history_not_opened_here":True,
+        "no_identifiable_licensed_horse_rows_returned":True,
+        "real_future_predicted_effect_NOT_established":True,
+    }
+
+
 def _cli():
     p=argparse.ArgumentParser(description=__doc__)
     sub=p.add_subparsers(dest="operation",required=True)
@@ -404,6 +501,11 @@ def _cli():
     inspect.add_argument("--bundle",type=Path,required=True)
     attest=sub.add_parser("attest-push",help="Only real GitHub Actions push")
     attest.add_argument("--bundle",type=Path,required=True)
+    orig=sub.add_parser("verify-original",help="Verify the original GitHub server-held pledge by exact SHA after race")
+    orig.add_argument("--original-commit-sha",required=True)
+    orig.add_argument("--original-run-id",required=True,type=int)
+    orig.add_argument("--original-bundle",type=Path,required=True)
+    orig.add_argument("--aggregate-out",type=Path,required=True)
     opening=sub.add_parser("open-private",help="Postrace verify private bytes")
     opening.add_argument("--bundle",type=Path,required=True)
     opening.add_argument("--pre-source-receipt",type=Path,required=True)
@@ -434,6 +536,14 @@ def _cli():
     elif args.operation=="attest-push":
         run,repo,sha=_fetch_current_run()
         result=attest_run(_json_bytes(_bytes(args.bundle)),run,repo=repo,sha=sha)
+    elif args.operation=="verify-original":
+        raw=_bytes(args.original_bundle)
+        name=content_addressed_bundle_filename(_json_bytes(raw))
+        result=attest_original_server_file(
+            raw,commit_sha=args.original_commit_sha,
+            run_id=args.original_run_id,
+            relative_path="docs/commitments/2027/"+name)
+        _write_new(args.aggregate_out,result)
     else:
         result=open_originals(
             _json_bytes(_bytes(args.bundle)),
