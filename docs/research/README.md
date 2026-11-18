@@ -5,6 +5,12 @@
 > predictions, odds and wagering are a separate technical track:
 > [betting-methods index](../betting/README.md).
 
+## Integrated November 2026 Japan / genotype / market research
+
+Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
+
+Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
+
 ## Central ecological question
 
 **Under which observational conditions does an individual horse's previous
