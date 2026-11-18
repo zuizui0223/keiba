@@ -343,6 +343,46 @@ def cohort_scores(rows, models, *, with_bootstrap=False):
     return answer
 
 
+def pretarget_support_subgroups(rows,models):
+    """Pre-specified stratification by ONLY pre-race-known source coverage.
+
+    Insufficient strata expose counts but not unstable performance metrics.
+    No documented past start is NOT proof of an official career debut;
+    no documented same-parent peer is NOT proof of genetic unrelatedness.
+    """
+    tests={
+        "no_documented_own_past":lambda r:r["features"]["log_own_count"]<1e-12,
+        "has_documented_own_past":lambda r:r["features"]["log_own_count"]>=1e-12,
+        "no_recorded_same_parent_peer":lambda r:(
+            r["features"]["log_sire_relative_count"]+
+            r["features"]["log_dam_relative_count"])<1e-12,
+        "has_recorded_same_parent_peer":lambda r:(
+            r["features"]["log_sire_relative_count"]+
+            r["features"]["log_dam_relative_count"])>=1e-12,
+        "both_parent_IDs_recorded":lambda r:(r["known_sire"] and r["known_dam"]),
+        "at_least_one_parent_ID_unrecorded":lambda r:not (
+            r["known_sire"] and r["known_dam"]),
+    }
+    out={}
+    for name,check in tests.items():
+        selected=[r for r in rows if check(r)]
+        supported,qa=required_support(selected,(30,10,10))
+        out[name]={
+            "status":"SOURCE_COHORT_DESCRIPTIVE_ONLY" if supported
+                     else "HOLD_SOURCE_COHORT_LOW_SUPPORT",
+            **qa,
+            "historical_scores":cohort_scores(selected,models)
+                                 if supported else None,
+        }
+    return {
+        "status":"PRETARGET_SOURCE_COVERAGE_CONDITIONAL_NOT_GENETIC_CAUSATION",
+        "subgroups":out,
+        "no_documented_past_NOT_official_first_debut":True,
+        "no_documented_family_peer_NOT_genetically_unrelated":True,
+        "subgroups_specified_before_real_data":True,
+    }
+
+
 def train(entries:list[dict],parents:list[dict],history:list[dict],
           *, clock:datetime, source_sha:dict[str,str]):
     """Returns private model file and public aggregate QA; no real source in CI."""
@@ -375,6 +415,7 @@ def train(entries:list[dict],parents:list[dict],history:list[dict],
         "2025_2026_out_of_training_temporal_validation":cohort_scores(
             validation,models,with_bootstrap=True)
     }
+    pretart=pretarget_support_subgroups(validation,models)
     return model,{
         "status":"PRIVATE_OFFICIAL_ID_HISTORIC_M1_M2_MODEL_TRAINED_NOT_2027_PROSPECTIVE",
         "historical_source_file_SHA256":source_sha,
@@ -404,6 +445,7 @@ def train(entries:list[dict],parents:list[dict],history:list[dict],
             "genetic_causality_estimated":False,
         },
         "historical_scores":scores,
+        "pretimestep_2025_2026_validation_strata":pretart,
         "no_Horse_ID_parent_ID_model_coefficients_or_source_rows_exported":True,
         "provider_rights_and_ID_authenticity_require_external_verification":True,
         "not_yet_2027_future_forecast":True,
