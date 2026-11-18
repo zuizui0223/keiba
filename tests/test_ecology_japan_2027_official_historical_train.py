@@ -131,7 +131,7 @@ class Pre2027TrainingTests(unittest.TestCase):
             "one_way_validation_resampling_not_two_way_CI"])
 
     def test_validation_strata_use_pretarget_features_and_suppress_sparse(self):
-        s=self.summary["pretimestep_2025_2026_validation_strata"]
+        s=self.summary["pretarget_2025_2026_validation_strata"]
         self.assertEqual(s["status"],
            "PRETARGET_SOURCE_COVERAGE_CONDITIONAL_NOT_GENETIC_CAUSATION")
         groups=s["subgroups"]
@@ -154,7 +154,7 @@ class Pre2027TrainingTests(unittest.TestCase):
             p["sire_id"]=""
         model,qa=train(self.entries,parents,self.results,
                        clock=NOW,source_sha=SOURCES)
-        subs=qa["pretimestep_2025_2026_validation_strata"]["subgroups"]
+        subs=qa["pretarget_2025_2026_validation_strata"]["subgroups"]
         self.assertEqual(subs["no_recorded_same_parent_peer"]["starts"],120)
         self.assertEqual(subs["has_recorded_same_parent_peer"]["starts"],0)
         self.assertEqual(subs["both_parent_IDs_recorded"]["starts"],0)
