@@ -1,0 +1,54 @@
+{
+  "audit_date_jst": "2026-11-18",
+  "status": "SYNTHETIC_ONLY_PRE2027_KNOWON_CUTOFF_AND_JRAVAN_SQLITE_SOURCE_READINESS_AUDIT",
+  "branch": "analysis/2027-licensed-history-fit-gate-20261118",
+  "linked_existing_pr": 52,
+  "verified_ci": [
+    {
+      "run_id": 44236547282,
+      "url": "https://github.com/zuizui0223/keiba/actions/runs/44236547282",
+      "head_sha": "35b5c8f8f64b3d7c6d2a82b2c160083b5d5e1e67",
+      "category": "historical_2027_model_trainer",
+      "synthetic_tests": 24,
+      "original_frozen_forecast_synthetic_tests": 24,
+      "original_source_knownon_synthetic_tests": 12,
+      "passed": true
+    },
+    {
+      "run_id": 44237531926,
+      "url": "https://github.com/zuizui0223/keiba/actions/runs/44237531926",
+      "head_sha": "cab750b0aef8242ba5b7793066bc773281df4d7e",
+      "category": "authorized_jrvltsql_SQLite_schema_source_QA",
+      "synthetic_tests": 9,
+      "passed": true
+    }
+  ],
+  "total_synthetic_test_cases_across_passing_workflows": 69,
+  "gaps_fixed": [
+    "Source-A trainer had allowed mixed entrant known-on cutoffs within the same race; now strict race-snapshot cutoff match.",
+    "Source-B trainer had not checked that race results and entry information agreed on pre-race jockey/trainer IDs; now quarantines the entire changed-context race.",
+    "Time-split historical validation now reports source-known own history, shared parent peer history, and parent ID coverage separately, with sparse stratum HOLD.",
+    "A private read-only upstream jrvltsql SQLite input scanner uses actual NL_RA/NL_SE/NL_UM/NL_SK/NL_HN column names.",
+    "The scanner counts official blood-ID and breeding-ID crosswalk support via KettoNum, FNum, MNum and HansyokuNum without equating namespaces.",
+    "The scanner rejects assuming MakeDate equals actual race result-known or entrant-known timestamp."
+  ],
+  "official_and_upstream_source_urls": {
+    "JRA_VAN_RACE_RCOV_guide": "https://support.jra-van.jp/jravan/detail?category=16&id=226&site=SVKNEGBV",
+    "JRA_VAN_distribution_schedule": "https://jra-van.jp/dlb/ddata.html",
+    "jrvltsql_open_source_SQLite_importer": "https://github.com/miyamamoto/jrvltsql",
+    "jrvltsql_source_contract": "https://github.com/miyamamoto/jrvltsql/blob/master/src/database/schema.py"
+  },
+  "actually_accessed_or_downloaded_licensed_JRA_VAN_2027_racing_records": false,
+  "JRA_VAN_DataLab_credentials_or_subscription_provisioned": false,
+  "actual_official_studbook_parent_IDs_or_NAR_registry_retrieved": false,
+  "actual_2027_train_or_validation_scores_produced": false,
+  "official_historical_knownon_timestamps_verified": false,
+  "source_reproduction_rights_verified": false,
+  "no_actual_horse_ID_names_or_individual_race_rows_exported": true,
+  "scientific_limits": [
+    "Passing schema tests against fictional SQLite data does not verify JRA-VAN source coverage, license, foreign parent lines, or 2027 results.",
+    "MakeDate and schedule release slots cannot establish the actual row's receipt time before a race.",
+    "Full JRA+NAR kinship A, race-ID-linked genomic G, genetic causality and betting returns remain HOLD.",
+    "Historical 2025-26 time-split is not prospective 2027 replication."
+  ]
+}
