@@ -2,25 +2,25 @@
   "status": "SYNTHETIC_ONLY_JRAVAN_PREPOST_CAPTURE_TO_PRIVATE_2027_PREDICTION_CODE_PATH_VALIDATED",
   "audit_date_jst": "2026-11-18",
   "source_branch": "analysis/jravan-asof-capture-ledger-20261118",
-  "distinct_synthetic_test_cases": 49,
+  "distinct_synthetic_test_cases": 50,
   "successful_ci_runs": [
     {
-      "run_id": 44244453014,
-      "url": "https://github.com/zuizui0223/keiba/actions/runs/44244453014",
+      "run_id": 44246411071,
+      "url": "https://github.com/zuizui0223/keiba/actions/runs/44246411071",
       "result": "success",
-      "source_sha": "f59bf6abad2b6610ece8b713f44af729cd3933d1",
-      "capture_and_receipt_cases": 22,
+      "source_sha": "50a1c29d160302d18cb2313ff3affa7c11fb5a13",
+      "capture_and_receipt_cases": 23,
       "source_table_schema_cases": 9,
-      "case_total": 31
+      "case_total": 32
     },
     {
-      "run_id": 44245790368,
-      "url": "https://github.com/zuizui0223/keiba/actions/runs/44245790368",
+      "run_id": 44246515952,
+      "url": "https://github.com/zuizui0223/keiba/actions/runs/44246515952",
       "result": "success",
-      "source_sha": "c56f51813703f8ca986f007a5d594bcc91ab7868",
+      "source_sha": "e6b77d96e0d24cd075c884791e74ff07aacd15de",
       "typed_pre_post_adapter_cases": 18,
-      "capture_and_receipt_cases_repeated": 22,
-      "case_total": 40
+      "capture_and_receipt_cases_repeated": 23,
+      "case_total": 41
     }
   ],
   "implemented": {
@@ -41,7 +41,10 @@
     "outcome_full_1_through_N_rank_and_field_size_required": true,
     "private_pre_CSVs_match_future_point_in_time_ledger_entry_parent_schema": true,
     "private_post_CSV_matches_future_result_scoring_schema": true,
-    "end_to_end_three_fictional_horse_pre_race_freeze_and_post_result_score_passed": true
+    "end_to_end_three_fictional_horse_pre_race_freeze_and_post_result_score_passed": true,
+    "private_SQLite_atomic_install_does_not_clobber_concurrent_destination": true,
+    "pre_race_CSV_created_with_owner_only_permissions_at_file_creation": true,
+    "adapter_CI_reruns_when_capture_source_or_tests_change": true
   },
   "cannot_claim": {
     "provider_publication_timestamp_is_independently_attested": false,
