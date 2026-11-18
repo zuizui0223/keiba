@@ -1,0 +1,122 @@
+{
+  "status": "POSTHOC_2022_ONLY_FAMILY_GATE_2023_2024_TRANSFER_DID_NOT_BEAT_ALWAYS_KIN",
+  "date_jst": "2026-11-18",
+  "evidence_run": {
+    "id": 44289780591,
+    "job_id": 134751680306,
+    "status": "success",
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44289780591",
+    "artifact_id": 14419759987,
+    "zip_digest_sha256": "1e853d3adc0f3edf7ac4c30c7caf4ed1c44a593d6824b9dbed053d767a7598f7",
+    "full_aggregate_JSON_SHA256": "f7403d9c3250c7ecb0b6c3129d9ed2d4bbe5c77096c8f34f9205976ead22744a",
+    "sourceA_SHA256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "sourceB_SHA256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+  },
+  "source_locked_population": {
+    "strict_starts": 244147,
+    "horse_ID_candidates": 12887,
+    "complete_races": 35333,
+    "model_training_years": "2018-2021",
+    "sourceA_histories_cutoff_year": 2021,
+    "official_JRA_NAR_identity_certified": false
+  },
+  "choice_from_already_inspected_2022": {
+    "candidate_rules": 14,
+    "selected": "own_upto_8to15__peer_from_one_recorded_peer",
+    "explanation": "Switch to M2 when old-source A focal eligible starts <= 15 and >=1 same-parent other-horse pre2022 race record; otherwise M1",
+    "only_2022_labels_used_for_rule_selection": true,
+    "later_year_labels_not_used_for_fit": true,
+    "actual_future_prospective_confirmation": false
+  },
+  "calendar_scores": [
+    {
+      "year": "2022",
+      "role": "RULE_SELECTION_2022_NOT_VALIDATION",
+      "starts": 120381,
+      "horses": 12755,
+      "selected_M2_starts": 57914,
+      "selected_fraction": 0.4810892084299017,
+      "M0": 0.3221321594881176,
+      "M1": 0.3100595066614328,
+      "M2": 0.309804310250263,
+      "gate": 0.30972684214623947,
+      "improvement_vs_M1": 0.00033266451519331497,
+      "improvement_vs_M2": 0.00007746810402353699,
+      "improvement_vs_M0": 0.012405317341878108
+    },
+    {
+      "year": "2023",
+      "role": "HISTORICAL_TRANSFER_2023_ALREADY_INSPECTED",
+      "starts": 80939,
+      "horses": 8778,
+      "selected_M2_starts": 44667,
+      "selected_fraction": 0.5518600427482425,
+      "M0": 0.3204516628348531,
+      "M1": 0.31789412624407515,
+      "M2": 0.3175663502644569,
+      "gate": 0.31765341385178414,
+      "improvement_vs_M1": 0.00024071239229100927,
+      "improvement_vs_M2": -0.00008706358732724073,
+      "improvement_vs_M0": 0.0027982489830689627,
+      "horse_CI95_vs_M2": [
+        -0.00018711267529867293,
+        0.000010365119136368507
+      ]
+    },
+    {
+      "year": "2024",
+      "role": "HISTORICAL_TRANSFER_2024_ALREADY_INSPECTED",
+      "starts": 42827,
+      "horses": 5225,
+      "selected_M2_starts": 25612,
+      "selected_fraction": 0.5980339505452168,
+      "M0": 0.3180587844880855,
+      "M1": 0.3198657266599239,
+      "M2": 0.31925671437194697,
+      "gate": 0.3194679718134001,
+      "improvement_vs_M1": 0.0003977548465238234,
+      "improvement_vs_M2": -0.00021125744145311653,
+      "improvement_vs_M0": -0.001409187325314587,
+      "horse_CI95_vs_M2": [
+        -0.00033271535154887343,
+        -0.0000811256848679803
+      ]
+    }
+  ],
+  "unchanged_gate_combined_2023_2024": {
+    "starts": 123766,
+    "horses": 8852,
+    "rmse_M0": 0.3207287879197227,
+    "rmse_M1": 0.3188024794216654,
+    "rmse_M2": 0.3184432371516205,
+    "rmse_gate": 0.31856908475681944,
+    "improvement_M1_minus_gate": 0.00023339466484595395,
+    "improvement_M2_minus_gate": -0.00012584760519895877,
+    "improvement_M0_minus_gate": 0.0021597031629032593,
+    "horse_CI95_M2_minus_gate": [
+      -0.000216883758377881,
+      -0.00003487559326623694
+    ],
+    "day_CI95_M2_minus_gate": [
+      -0.00020015392708674638,
+      -0.00005743880791598541
+    ],
+    "conditional_oneway_bootstrap_399": true
+  },
+  "negative_and_HOLD": {
+    "historical_gate_does_not_beat_always_M2_in_2023": true,
+    "historical_gate_does_not_beat_always_M2_in_2024": true,
+    "gate_2024_worse_than_fixed_midpoint": true,
+    "yearly_direction_not_stable": true,
+    "earlier_outcome_inspection_makes_all_followups_posthoc": true,
+    "horse_ID_studbook_link_missing": true,
+    "source_published_at_timestamp_missing": true,
+    "source_data_redistribution_rights_unverified": true,
+    "full_JRA_NAR_A_missing": true,
+    "genomic_G_ID_link_missing": true,
+    "market_odds_trajectory_missing": true,
+    "breeding_stable_shared_environment_not_identified": true,
+    "real_2027_pre_race_pledges": 0,
+    "source_originals_individual_racehorse_rows_not_uploaded": true
+  }
+}
