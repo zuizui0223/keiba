@@ -293,6 +293,45 @@ def matched_horse_risk_change(first:dict,later:dict, *,
     }
 
 
+def observed_participant_set_accounting(first_year_full:dict,
+                                        later_year_full:dict,
+                                        same_horse_pair:dict) -> dict:
+    """Exact 3-way MSE accounting, with NO causal attrition interpretation.
+
+    D_later_full-D_first_full =
+      D_first_matched-D_first_full
+      + D_later_matched-D_first_matched
+      + D_later_full-D_later_matched.
+
+    "First matched" selects horse IDs *post hoc* based on later source B
+    participation. This is not prospective sampling, survival or fitness.
+    """
+    d0=first_year_full["MSE_advantage_GATE_over_always_M2"]
+    d1=later_year_full["MSE_advantage_GATE_over_always_M2"]
+    m0=same_horse_pair["mean_MSE_advantage_GATE_over_M2_first_year"]
+    m1=same_horse_pair["mean_MSE_advantage_GATE_over_M2_later_year"]
+    selection=m0-d0
+    same_horse=m1-m0
+    later_nonmatched=d1-m1
+    total=d1-d0
+    if not np.isclose(selection+same_horse+later_nonmatched,total,
+                      rtol=0,atol=ABS_TOL):
+        raise ValueError("HOLD_PARTICIPATION_COMPONENTS_NOT_ALGEBRAICALLY_EXACT")
+    return {
+        "status":"EXACT_DESCRIPTIVE_PARTICIPATION_ACCOUNTING_NOT_SURVIVAL_CAUSALITY",
+        "full_year_change_in_MSE_gate_advantage":float(total),
+        "2022_later_participant_subset_vs_all_2022_MSE_difference":float(selection),
+        "same_observed_horses_later_minus_2022_MSE_difference":float(same_horse),
+        "later_year_whole_vs_matched_participants_MSE_difference":float(
+            later_nonmatched),
+        "three_terms_sum_to_full_year_change":True,
+        "matched_horses":int(same_horse_pair["matched_horses"]),
+        "the_2022_participant_subset_is_selected_using_later_observation":True,
+        "missing_in_later_year_NOT_certified_dead_retired_or_unfit":True,
+        "within_matched_horses_changes_not_causal_individual_senescence":True,
+    }
+
+
 def analyze(archive:Path, sqlite:Path) -> dict:
     raw,old,f,_,gate,qa=load_sources(archive,sqlite)
     m1_all,m2_all,_,_=predictions_stronger_old_history(raw,old,f)
@@ -373,6 +412,12 @@ def analyze(archive:Path, sqlite:Path) -> dict:
         expected=overlap["pairs"][k]["same_candidate_horse_in_both_years"]
         if q["matched_horses"]!=expected:
             raise ValueError("HOLD_MATCHED_SOURCE_CANDIDATE_HORSE_COUNT_DRIFT")
+    participation={
+        "2022_to_2023":observed_participant_set_accounting(
+            scored["2022"],scored["2023"],matched["2022_to_2023"]),
+        "2022_to_2024":observed_participant_set_accounting(
+            scored["2022"],scored["2024"],matched["2022_to_2024"])
+    }
     if not (original_year["2022"]["RMSE_2022_chosen_gate"] <
             original_year["2022"]["RMSE_always_family_M2"] and
             original_year["2024"]["RMSE_2022_chosen_gate"] >
@@ -398,6 +443,7 @@ def analyze(archive:Path, sqlite:Path) -> dict:
         "ref_2022_exact_MSE_decomposition":comparisons,
         "observed_horse_participation_overlap":overlap,
         "same_horse_year_paired_risk_change_not_causal":matched,
+        "later_observed_participation_accounting_not_causal":participation,
         "no_experimental_intervention_or_causal_attribution":True,
         "no_genetic_A_G_or_MSTN_outcome_link":True,
         "no_breeder_stable_jockey_environment_separated":True,
@@ -426,6 +472,8 @@ def main():
         "observed_horse_participation_overlap":result["observed_horse_participation_overlap"],
         "same_horse_year_paired_risk_change_not_causal":
             result["same_horse_year_paired_risk_change_not_causal"],
+        "later_observed_participation_accounting_not_causal":
+            result["later_observed_participation_accounting_not_causal"],
         "2024_gate_worse_than_M2_and_M0_remains":True,
         "not_causal_genetics_or_independent_prospective_validation":True,
     },ensure_ascii=False,sort_keys=True,indent=2,allow_nan=False),flush=True)
