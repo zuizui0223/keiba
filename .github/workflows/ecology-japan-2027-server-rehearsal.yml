@@ -36,6 +36,8 @@ jobs:
         run: |
           PYTHONPATH=scripts python -m unittest discover \
              -s tests -p "test_ecology_japan_2027_github_push_attestation.py" -v
+          PYTHONPATH=scripts python -m unittest discover \
+             -s tests -p "test_ecology_japan_2027_push_workflow_contract.py" -v
       - name: Read actual GitHub REST Actions run.created_at and validate synthetic-only bundle
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
