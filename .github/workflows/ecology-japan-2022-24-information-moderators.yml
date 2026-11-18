@@ -33,7 +33,7 @@ jobs:
           PYTHONPATH=scripts python -m unittest discover -s tests \
             -p "test_ecology_japan_2022_2024_kin_information_moderators.py" -v
           PYTHONPATH=scripts python -m unittest discover -s tests \
-            -p "test_ecology_japan_2022_joint_strict_strong.py" -v
+            -p "test_ecology_japan_2022_strong_portable_baseline.py" -v
       - name: Download exact previously SHA-pinned source A privately
         run: |
           mkdir -p tmp/private
