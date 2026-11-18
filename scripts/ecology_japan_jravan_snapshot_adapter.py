@@ -31,7 +31,7 @@ JRA_TRACK_SURFACE = ("turf","dirt")
 KEY = ("Year","MonthDay","JyoCD","Kaiji","Nichiji","RaceNum")
 PRE_COLUMNS = (
     "KettoNum","Umaban","KisyuCode","ChokyosiCode",
-    "SexCD","Barei","KakuteiJyuni"
+    "SexCD","Barei","KakuteiJyuni","NyusenJyuni"
 )
 POST_COLUMNS = PRE_COLUMNS+("IJyoCD",)
 SCHEMA = "JRA_2027_PRIVATE_PRE_POST_SNAPSHOT_CSV_ADAPTER_V1"
@@ -161,13 +161,14 @@ def _pre_data(con,key,track_map,rec,done,start):
             number=int(row["Umaban"])
             age=int(row["Barei"])
             final=int(row["KakuteiJyuni"] or 0)
+            arrived=int(row["NyusenJyuni"] or 0)
         except (TypeError,ValueError):
             raise ValueError("HOLD_INVALID_PRE_RACE_AGE_NUMBER_RANK") from None
         if not 1<=number<=declared or not 2<=age<=20:
             raise ValueError("HOLD_INVALID_PRE_RACE_AGE_OR_HORSE_NUMBER")
-        if final>0:
-            # Source C had final results in the supposedly PRE-race snapshot.
-            # This indicates leakage, incorrect start time, or data fabrication.
+        if final>0 or arrived>0:
+            # No recorded arriving/final finishing rank is permissible in a
+            # locally captured snapshot claimed to precede the race.
             raise ValueError("HOLD_FINAL_RANK_ALREADY_IN_PRE_RACE_SNAPSHOT")
         code=str(row["SexCD"]).strip()
         sex={"1":"M","2":"F","3":"G","0":"U"}.get(code)
@@ -343,7 +344,6 @@ def _write_private_csv(path:Path,columns:tuple[str,...],rows:list[dict]):
         raise ValueError("HOLD_NEVER_OVERWRITE_PRIVATE_SOURCE_EXPORT")
     path.parent.mkdir(parents=True,exist_ok=True)
     with path.open("x",encoding="utf-8",newline="") as fd:
-        os=None
         writer=csv.DictWriter(fd,fieldnames=columns,extrasaction="raise")
         writer.writeheader()
         writer.writerows(rows)
