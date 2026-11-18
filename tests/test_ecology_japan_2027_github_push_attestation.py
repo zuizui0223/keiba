@@ -298,6 +298,40 @@ class PreRaceServerAttestationTests(unittest.TestCase):
                 _write_new(p,b)
             self.assertNotIn("H:SYN",p.read_text(encoding="utf-8"))
 
+    def test_cli_opaque_sha_filename_for_public_bundle(self):
+        from unittest.mock import patch
+        from io import StringIO
+        from ecology_japan_2027_github_push_attestation import _cli
+        source,adapter,forecast,_ = fixture(synthetic=False)
+        with tempfile.TemporaryDirectory() as root:
+            folder=Path(root)
+            a,b,c=(folder/"source.json",folder/"adapter.json",folder/"forecast.json")
+            for path,raw in ((a,source),(b,adapter),(c,forecast)):
+                path.write_bytes(raw)
+            out=folder/"docs"/"commitments"/"2027"
+            args=["command","bundle","--pre-source-receipt",str(a),
+                  "--pre-adapter-summary",str(b),
+                  "--forecast-public-commitment",str(c),
+                  "--commit-directory",str(out)]
+            with patch.object(sys,"argv",args),patch("sys.stdout",new=StringIO()):
+                _cli()
+            files=list(out.glob("*.json"))
+            self.assertEqual(len(files),1)
+            import re
+            self.assertRegex(files[0].name,r"^[a-f0-9]{32}\.json$")
+            text=files[0].read_text(encoding="utf-8")
+            self.assertNotIn("H:SYN001",text)
+            self.assertNotIn("JRA:SYN",text)
+            self.assertEqual(json.loads(text)["schema"],BUNDLE_SCHEMA)
+            with patch.object(sys,"argv",args),patch("sys.stdout",new=StringIO()):
+                with self.assertRaisesRegex(ValueError,"NEVER_OVERWRITE"):
+                    _cli()
+
+    def test_duplicate_json_keys_are_rejected_as_ambiguous(self):
+        from ecology_japan_2027_github_push_attestation import _json_bytes
+        with self.assertRaisesRegex(ValueError,"DUPLICATE_AGGREGATE_JSON_KEY"):
+            _json_bytes(b'{"schema":"a","schema":"b"}')
+
     def test_real_github_attestation_requires_push_environment(self):
         from unittest.mock import patch
         with patch.dict("os.environ",{},clear=True):
