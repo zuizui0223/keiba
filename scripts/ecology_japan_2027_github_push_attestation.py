@@ -31,6 +31,8 @@ SOURCE_SCHEMA = "JRA_LOCAL_SQLITE_ASOF_RECEIPT_V1"
 ADAPTER_SCHEMA = "JRA_2027_PRIVATE_PRE_POST_SNAPSHOT_CSV_ADAPTER_V1"
 FORECAST_SCHEMA = "JRA_2027_H1_PREDICTION_COMMITMENT_V1"
 BUNDLE_SCHEMA = "JRA_2027_GITHUB_PRE_RACE_AGGREGATE_COMMITMENT_V1"
+PRODUCTION_WORKFLOW_PATH = ".github/workflows/ecology-japan-2027-immutable-push-attestation.yml"
+SYNTHETIC_REHEARSAL_WORKFLOW_PATH = ".github/workflows/ecology-japan-2027-server-rehearsal.yml"
 JST = timezone(timedelta(hours=9))
 REQUIRED_SHA = re.compile(r"^[0-9a-f]{64}$")
 TARGET_FROM = datetime(2027, 1, 1, tzinfo=JST)
@@ -283,6 +285,14 @@ def attest_run(bundle:dict, run:dict, *, repo:str, sha:str,
             or run.get("repository",{}).get("full_name")!=repo
             or type(run.get("id")) is not int):
         raise ValueError("HOLD_GITHUB_PUSH_REPO_OR_CHECKOUT_SHA_MISMATCH")
+    # GitHub Actions reruns inherit the original run's created_at: accepting
+    # run_attempt > 1 would let a post-race rerun appear pre-race.
+    if type(run.get("run_attempt")) is not int or run["run_attempt"]!=1:
+        raise ValueError("HOLD_GITHUB_RERUN_CANNOT_ATTEST_NEW_PRE_RACE_PLEDGE")
+    expected=(PRODUCTION_WORKFLOW_PATH,) if not allow_synthetic else (
+        PRODUCTION_WORKFLOW_PATH,SYNTHETIC_REHEARSAL_WORKFLOW_PATH)
+    if run.get("path") not in expected:
+        raise ValueError("HOLD_GITHUB_UNTRUSTED_WORKFLOW_PATH")
     server=_time(run.get("created_at"))
     begin=_time(bundle["frozen_prediction_commitment"]["frozen_at_utc"])
     target=_time(bundle["source_capture"]["target_race_start_jst"])
