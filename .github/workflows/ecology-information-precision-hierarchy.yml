@@ -2,7 +2,13 @@ name: "Equine own-family information precision and real-aggregate evidence gates
 
 on:
   push:
-    branches: [analysis/information-precision-ecology-20261118]
+    branches: [main, analysis/information-precision-ecology-20261118]
+    paths:
+      - ".github/workflows/ecology-information-precision-hierarchy.yml"
+      - "scripts/ecology_information_precision_hierarchy.py"
+      - "tests/test_ecology_information_precision_hierarchy.py"
+      - "docs/evidence/information-precision-hierarchy-audit-20261118.json"
+  pull_request:
     paths:
       - ".github/workflows/ecology-information-precision-hierarchy.yml"
       - "scripts/ecology_information_precision_hierarchy.py"
