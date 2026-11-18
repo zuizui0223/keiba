@@ -1,0 +1,47 @@
+name: "JRA 2027 pre-race GitHub commitment attestation contract tests"
+
+on:
+  push:
+    branches: [analysis/2027-github-push-attestation-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2027-github-attest-tests.yml"
+      - "scripts/ecology_japan_2027_github_push_attestation.py"
+      - "tests/test_ecology_japan_2027_github_push_attestation.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-commitment-test-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile code without accessing JRA or any private data
+        run: python -m py_compile scripts/ecology_japan_2027_github_push_attestation.py
+      - name: Fictional-only source and forecast SHA time binding tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover \
+            -s tests -p "test_ecology_japan_2027_github_push_attestation.py" -v
+      - name: Confirm this run is NOT a real 2027 pre-race commitment
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("scripts/ecology_japan_2027_github_push_attestation.py").read_text()
+          for label in (
+              "AGGREGATE_COMMITMENT_UNATTESTED_UNTIL_GITHUB_PUSH",
+              "HOLD_GITHUB_SERVER_RUN_CREATED_AFTER_RACE_OR_PRE_FORECAST",
+              "HOLD_SYNTHETIC_CLOCK_OR_SOURCE_IN_REAL_COMMITMENT",
+              "not_jra_provider_publish_time",
+              "no_identifying_horse_or_race_rows_embedded",
+          ):
+              assert label in s, label
+          print("JRA_2027_GITHUB_ATTESTATION_SYNTHETIC_ONLY_NO_REAL_PREDICTION")
+          PY
