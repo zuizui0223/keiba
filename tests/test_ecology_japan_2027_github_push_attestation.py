@@ -378,6 +378,18 @@ class PreRaceServerAttestationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,"NEVER_OVERWRITE"):
                     _cli()
 
+    def test_committed_opaque_filename_is_exact_content_digest(self):
+        from ecology_japan_2027_github_push_attestation import (
+            content_addressed_bundle_filename
+        )
+        original=self.bundle()
+        name=content_addressed_bundle_filename(original)
+        self.assertRegex(name,r"^[a-f0-9]{32}\.json$")
+        changed=copy.deepcopy(original)
+        changed["frozen_prediction_commitment"]["private_prediction_file_SHA256"]="f"*64
+        self.assertNotEqual(name,content_addressed_bundle_filename(changed))
+        self.assertNotIn("H:SYN",name)
+
     def test_duplicate_json_keys_are_rejected_as_ambiguous(self):
         from ecology_japan_2027_github_push_attestation import _json_bytes
         with self.assertRaisesRegex(ValueError,"DUPLICATE_AGGREGATE_JSON_KEY"):
