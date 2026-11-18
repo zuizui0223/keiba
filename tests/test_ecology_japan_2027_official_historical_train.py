@@ -111,6 +111,25 @@ class Pre2027TrainingTests(unittest.TestCase):
         self.assertNotIn('"coefficient":',text)
         self.assertNotIn("private_horse_level_predictions",text)
 
+    def test_public_model_digest_chains_to_private_coefficients(self):
+        from ecology_japan_2027_point_in_time_ledger import (
+            canonical_bytes,digest_bytes
+        )
+        self.assertEqual(
+            self.summary["private_fitted_model_file_SHA256"],
+            digest_bytes(canonical_bytes(self.model))
+        )
+        self.assertNotIn('"intercept":',json.dumps(self.summary))
+
+    def test_historical_validation_one_way_uncertainty_is_source_scoped(self):
+        v=self.summary["historical_scores"][
+            "2025_2026_out_of_training_temporal_validation"]
+        self.assertEqual(v["one_way_horse_cluster"]["bootstrap_draws"],399)
+        self.assertEqual(v["one_way_race_day_cluster"]["bootstrap_draws"],399)
+        self.assertEqual(v["one_way_race_day_cluster"]["cluster_count"],20)
+        self.assertTrue(self.summary["methodology"][
+            "one_way_validation_resampling_not_two_way_CI"])
+
     def test_temporal_split_and_pre2027_validation(self):
         t=self.summary["source_qa"]["training_support"]
         v=self.summary["source_qa"]["validation_support"]
