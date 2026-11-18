@@ -81,10 +81,10 @@ No source-specific subscription token is sent to this repository. No provider AP
 
 ## Synthetic QA evidence
 
-- [Private consistent SQLite capture and source revision chain CI](https://github.com/zuizui0223/keiba/actions/runs/44244453014): 22 capture/receipt tests + 9 independent SQLite-source-schema tests. Source bytes, exact race/parent join, source-change detection, three successive receipts, SHA tamper detection, pre/post time cutoffs and refusal to publish raw horse records are tested with **fictional** data.
-- [Pre/post adapter to the real 2027 freeze/scorer SOFTWARE CI](https://github.com/zuizui0223/keiba/actions/runs/44245790368): 18 direct adapter tests + 22 capture/receipt tests. The new end-to-end software test feeds **three imaginary horses** through an artificial pre-race SQLite capture, typed M0/M1/M2 private forecast freeze, later post-race result capture, and separate scorer; its tiny score is correctly HOLD for insufficient support. No live JRA outcome or empirical forecast effectiveness is inferred.
+- [Private consistent SQLite capture and source revision chain CI](https://github.com/zuizui0223/keiba/actions/runs/44246411071): 23 capture/receipt tests + 9 independent SQLite-source-schema tests. Source bytes, exact race/parent join, source-change detection, three successive receipts, SHA tamper detection, pre/post time cutoffs and refusal to publish raw horse records are tested with **fictional** data.
+- [Pre/post adapter to the real 2027 freeze/scorer SOFTWARE CI](https://github.com/zuizui0223/keiba/actions/runs/44246515952): 18 direct adapter tests + 23 capture/receipt tests. The new end-to-end software test feeds **three imaginary horses** through an artificial pre-race SQLite capture, typed M0/M1/M2 private forecast freeze, later post-race result capture, and separate scorer; its tiny score is correctly HOLD for insufficient support. No live JRA outcome or empirical forecast effectiveness is inferred.
 
-**Distinct test families:** 22 snapshot/receipt + 9 underlying source schema + 18 pre/post adapter = **49 synthetic test cases** across the successful workflows, with snapshot tests run in both. These are NOT 49 registered horses or 49 real race starts. [Provenance and guardrails](../evidence/japan-2027-jravan-snapshot-chain-synthetic-qa-20261118.json).
+**Distinct test families:** 23 snapshot/receipt + 9 underlying source schema + 18 pre/post adapter = **50 synthetic test cases** across the successful workflows, with snapshot tests run in both. These are NOT 50 registered horses or 50 real race starts. [Provenance and guardrails](../evidence/japan-2027-jravan-snapshot-chain-synthetic-qa-20261118.json).
 
 ## Research status
 
