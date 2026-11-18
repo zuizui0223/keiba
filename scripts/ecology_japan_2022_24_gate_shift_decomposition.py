@@ -206,6 +206,93 @@ def shared_eligible_horse_coverage(by_year):
     }
 
 
+def matched_horse_risk_change(first:dict,later:dict, *,
+                              draws:int=399) -> dict:
+    """Paired horse averages across years; NEVER a matched race/aging effect.
+
+    Repeated candidates have changing race rivals, surfaces, ages and possibly
+    gate decisions. Each horse gets equal weight in each observed year.
+    """
+    def one_year(p):
+        t=p["t"]
+        x=np.asarray(p["p2"],float)
+        y=np.asarray(p["pg"],float)
+        bins=pd.Series(p["ownbin"]).astype(str).reset_index(drop=True)
+        if len(t)!=len(x) or len(x)!=len(y) or len(y)!=len(bins):
+            raise ValueError("HOLD_MATCHED_HORSE_SCORE_SHAPE")
+        d=(t.y.to_numpy(float)-x)**2-(t.y.to_numpy(float)-y)**2
+        rows=pd.DataFrame({
+            "horse":t.horse.astype(str).to_numpy(),
+            "ownbin":bins.to_numpy(),
+            "gain":d,
+            "gate_applied":np.asarray(p["selected"],float),
+        })
+        if rows.ownbin.isna().any() or not rows.ownbin.isin(OWN_NAMES).all():
+            raise ValueError("HOLD_MATCHED_HORSE_BIN_INVALID")
+        if rows.groupby("horse",observed=True).ownbin.nunique().max()!=1:
+            raise ValueError("HOLD_PRE2022_OWN_HISTORY_BIN_CHANGED_WITHIN_HORSE")
+        grouped=rows.groupby("horse",observed=True,sort=False).agg(
+            ownbin=("ownbin","first"),
+            mean_gain=("gain","mean"),
+            gate_fraction=("gate_applied","mean"),
+            starts=("gain","size"),
+        )
+        return grouped.reset_index()
+    a=one_year(first)
+    b=one_year(later)
+    m=a.merge(b,on="horse",how="inner",validate="one_to_one",
+              suffixes=("_first","_later"))
+    if not len(m) or not m.ownbin_first.equals(m.ownbin_later):
+        raise ValueError("HOLD_MATCHED_HORSE_YEAR_INFORMATION_BIN_CONFLICT")
+    delta=(m.mean_gain_later-m.mean_gain_first).to_numpy(float)
+    if not np.isfinite(delta).all():
+        raise ValueError("HOLD_MATCHED_HORSE_NONFINITE_PAIR_DIFFERENCE")
+    rng=np.random.default_rng(20221118)
+    if draws<10:
+        raise ValueError("HOLD_MATCHED_HORSE_TOO_FEW_BOOTSTRAP_DRAWS")
+    n=len(m)
+    bootstrap=np.empty(draws,float)
+    for i in range(draws):
+        bootstrap[i]=float(delta[rng.integers(0,n,size=n)].mean())
+    cells={}
+    for binname in OWN_NAMES:
+        s=m.loc[m.ownbin_first.eq(binname)]
+        if len(s)<30:
+            cells[binname]={"status":"HOLD_MATCHED_HORSE_BIN_LT30",
+                             "matched_horses":len(s)}
+            continue
+        cells[binname]={
+            "status":"DESCRIPTIVE_PAIRED_HORSE_AVERAGE_NOT_CAUSAL",
+            "matched_horses":int(len(s)),
+            "first_year_MSE_advantage_gate_over_M2":float(s.mean_gain_first.mean()),
+            "later_year_MSE_advantage_gate_over_M2":float(s.mean_gain_later.mean()),
+            "within_same_horse_average_MSE_advantage_change":float(
+                (s.mean_gain_later-s.mean_gain_first).mean()),
+            "first_year_gate_application_fraction_horse_equal":float(
+                s.gate_fraction_first.mean()),
+            "later_year_gate_application_fraction_horse_equal":float(
+                s.gate_fraction_later.mean()),
+        }
+    return {
+        "status":"SAME_CANDIDATE_HORSES_OBSERVED_BOTH_YEARS_NO_CAUSAL_AGING",
+        "matched_horses":n,
+        "mean_MSE_advantage_GATE_over_M2_first_year":float(m.mean_gain_first.mean()),
+        "mean_MSE_advantage_GATE_over_M2_later_year":float(m.mean_gain_later.mean()),
+        "same_horse_year_average_MSE_advantage_change":float(delta.mean()),
+        "paired_horse_oneway_399_resampling_95pct":[
+            float(np.quantile(bootstrap,.025)),float(np.quantile(bootstrap,.975))
+        ],
+        "first_year_gate_application_fraction_horse_equal":float(
+            m.gate_fraction_first.mean()),
+        "later_year_gate_application_fraction_horse_equal":float(
+            m.gate_fraction_later.mean()),
+        "by_pre2022_focal_own_history_bin":cells,
+        "observed_yearly_race_context_and_horse_age_not_held_fixed":True,
+        "race_day_two_way_dependence_not_modeled":True,
+        "no_individual_horse_ids_or_gains_exported":True,
+    }
+
+
 def analyze(archive:Path, sqlite:Path) -> dict:
     raw,old,f,_,gate,qa=load_sources(archive,sqlite)
     m1_all,m2_all,_,_=predictions_stronger_old_history(raw,old,f)
@@ -235,6 +322,7 @@ def analyze(archive:Path, sqlite:Path) -> dict:
     scored={}
     original_year={}
     by_year={}
+    private_year_arrays={}
     for year in EXPECTED_YEARS:
         name=str(year)
         ix=t.year.eq(year).to_numpy()
@@ -247,6 +335,11 @@ def analyze(archive:Path, sqlite:Path) -> dict:
             year_t,year_ctx.own_record_count_bin,
             p2[ix],pg
         )
+        private_year_arrays[name]={
+            "t":year_t,"p2":p2[ix],"pg":pg,
+            "ownbin":year_ctx.own_record_count_bin,
+            "selected":g,
+        }
         numeric=year_fixed_comparison(
             year_t,p1[ix],p2[ix],g,with_ci=False)
         original_year[name]=numeric
@@ -269,6 +362,17 @@ def analyze(archive:Path, sqlite:Path) -> dict:
     }
     if any(x["status"].startswith("HOLD") for x in comparisons.values()):
         raise ValueError("HOLD_2022_REFERENCE_BIN_MISSING_FOR_TRANSFER")
+    matched={
+        "2022_to_2023":matched_horse_risk_change(
+            private_year_arrays["2022"],private_year_arrays["2023"]),
+        "2022_to_2024":matched_horse_risk_change(
+            private_year_arrays["2022"],private_year_arrays["2024"])
+    }
+    overlap=shared_eligible_horse_coverage(by_year)
+    for k,q in matched.items():
+        expected=overlap["pairs"][k]["same_candidate_horse_in_both_years"]
+        if q["matched_horses"]!=expected:
+            raise ValueError("HOLD_MATCHED_SOURCE_CANDIDATE_HORSE_COUNT_DRIFT")
     if not (original_year["2022"]["RMSE_2022_chosen_gate"] <
             original_year["2022"]["RMSE_always_family_M2"] and
             original_year["2024"]["RMSE_2022_chosen_gate"] >
@@ -292,7 +396,8 @@ def analyze(archive:Path, sqlite:Path) -> dict:
         "actual_all_year_M0_M1_M2_gate_RMSE_parity":original_year,
         "within_year_own_history_cells":scored,
         "ref_2022_exact_MSE_decomposition":comparisons,
-        "observed_horse_participation_overlap":shared_eligible_horse_coverage(by_year),
+        "observed_horse_participation_overlap":overlap,
+        "same_horse_year_paired_risk_change_not_causal":matched,
         "no_experimental_intervention_or_causal_attribution":True,
         "no_genetic_A_G_or_MSTN_outcome_link":True,
         "no_breeder_stable_jockey_environment_separated":True,
@@ -319,6 +424,8 @@ def main():
         "selected_rule_2022_only":result["selected_rule_2022_only"],
         "ref_2022_exact_MSE_decomposition":result["ref_2022_exact_MSE_decomposition"],
         "observed_horse_participation_overlap":result["observed_horse_participation_overlap"],
+        "same_horse_year_paired_risk_change_not_causal":
+            result["same_horse_year_paired_risk_change_not_causal"],
         "2024_gate_worse_than_M2_and_M0_remains":True,
         "not_causal_genetics_or_independent_prospective_validation":True,
     },ensure_ascii=False,sort_keys=True,indent=2,allow_nan=False),flush=True)
