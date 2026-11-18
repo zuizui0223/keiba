@@ -203,6 +203,38 @@ class SnapshotReceiptTests(unittest.TestCase):
                 stamp(9,17,0),stamp(9,17,1)
             ),previous_receipt=m0,previous_private=p0)
 
+    def test_three_stage_chain_pre_post_master_preserves_each_snapshot(self):
+        p0,m0,_=self.receipt(1,clock=clock_at(
+            stamp(9,12,0),stamp(9,12,1)
+        ))
+        p1,m1,_=self.receipt(2,phase="post_race",clock=clock_at(
+            stamp(9,17,0),stamp(9,17,1)
+        ),previous_receipt=m0,previous_private=p0)
+        p2,m2,r=self.receipt(3,phase="master",clock=clock_at(
+            stamp(9,18,0),stamp(9,18,1)
+        ),previous_receipt=m1,previous_private=p1)
+        self.assertIsNotNone(r["previous_receipt_sha256"])
+        self.assertTrue(r["only_immediate_previous_snapshot_verified_on_new_capture"])
+        self.assertTrue(receipt_verify(p2,m2,prev_manifest=m1)[
+            "prior_receipt_chain_present"])
+        # The prior link must itself be verified separately; the most recent
+        # manifest cannot attest all earlier ancestors without their files.
+        self.assertTrue(receipt_verify(p1,m1,prev_manifest=m0)[
+            "prior_receipt_chain_present"])
+        with self.assertRaisesRegex(ValueError,"PREVIOUS_RECEIPT_REQUIRED_FOR_CHAIN"):
+            receipt_verify(p2,m2)
+
+    def test_capture_rejects_private_path_inside_git_checkout(self):
+        # Prevent accidentally uploading private JRA data into public repo.
+        from ecology_japan_jravan_asof_snapshot import _safe_private_output
+        in_checkout=Path.cwd()/"DO_NOT_CREATE_CAPTURE_IN_REPO.sqlite"
+        if not (Path.cwd()/".git").exists():
+            self.skipTest("Git checkout only")
+        with self.assertRaisesRegex(ValueError,"INSIDE_GIT_TREE"):
+            _safe_private_output(self.source,in_checkout,
+                                 self.root/"public-aggregate-only.json")
+        self.assertFalse(in_checkout.exists())
+
     def test_chain_with_unchanged_source_reports_zero_revisions(self):
         p0,m0,_=self.receipt(1)
         _,_,m=self.receipt(2,phase="post_race",clock=clock_at(
