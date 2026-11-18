@@ -1,0 +1,52 @@
+{
+  "review_date_jst": "2026-11-18",
+  "status": "SYNTHETIC_ONLY_JRA_2027_M1_M2_FIT_TO_FORECAST_VERIFIED_NO_ACTUAL_SOURCE",
+  "workflow_url": "https://github.com/zuizui0223/keiba/actions/runs/44224429954",
+  "workflow_run_id": 44224429954,
+  "workflow_job_id": 134533993433,
+  "code_commit_sha": "80f718663be773eac684e297502bd1cce9d356f7",
+  "completion": "success",
+  "synthetic_tests": {
+    "official_historical_trainer": 19,
+    "pre_race_freeze_and_later_score": 24,
+    "official_known_on_preflight": 12,
+    "total": 55,
+    "all_passed": true,
+    "synthetic_generator": {
+      "number_training_dates": 40,
+      "number_validation_dates": 20,
+      "fictional_horses": 42,
+      "entrants_per_race": 6,
+      "training_rows": 240,
+      "validation_rows": 120,
+      "source_identities": "fake typed H:/B: IDs only",
+      "source_provider_data_downloaded": false
+    }
+  },
+  "software_implemented": [
+    "Train M1 using 18 source-known own, course, rider, trainer and competition features",
+    "Train M2 on identical training cohort and shared standardization with four additional historical same-parent other-horse features",
+    "2018-2024 train, 2025-2026 temporal validation; alpha fixed 100",
+    "Each historical feature constructed strictly before that historical target entry known-at timestamp",
+    "Reject incomplete tied, missing, nonclassified or unmatched full-race results",
+    "Equal-horse weight ridge estimator with one-way horse/day historical validation bootstrap",
+    "Private model coefficients immutable SHA256 included in source-aggregate summary and 2027 forecast commitment",
+    "Fictional end-to-end model train to future forecast freeze to official outcome score",
+    "No raw source rows, horse names or identifiable predictions in public summary"
+  ],
+  "current_actual_external_data": {
+    "authorized_official_JRA_2027_entrant_IDs": false,
+    "historical_JRA_stable_ID_pedigree_results_panel": false,
+    "trained_licensed_empirical_coefficients": false,
+    "future_2027_race_outcomes": false,
+    "actual_2027_forecast_scores": false
+  },
+  "limits": [
+    "Successful tests verify only software behavior, not race prediction efficacy.",
+    "The 2025-26 temporal validation source was already historically available; this would not by itself constitute prospective validation.",
+    "Self-reported timestamps and local SHA do not prove that predictions were committed pre-race; an independent time-stamped public commitment is still required.",
+    "Access, lineage authenticity and redistribution rights of official source records remain unknown until user supplies authorized data.",
+    "No genetic causal effects, genomic G link, national JRA/NAR full pedigree A, or betting return are established."
+  ],
+  "individual_horse_IDs_names_outcomes_and_coefficients_released": false
+}

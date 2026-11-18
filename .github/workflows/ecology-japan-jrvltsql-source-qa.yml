@@ -1,0 +1,40 @@
+name: "2027 JRA authorized jrvltsql SQLite schema and pedigree-ID readiness QA"
+
+on:
+  push:
+    branches: [analysis/2027-licensed-history-fit-gate-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-jrvltsql-source-qa.yml"
+      - "scripts/ecology_japan_jrvltsql_sqlite_qa.py"
+      - "tests/test_ecology_japan_jrvltsql_sqlite_qa.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authorized-SQLite-schema-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit-test READ-ONLY SQLite schema on fictional JRA table names
+        run: |
+          python -m py_compile scripts/ecology_japan_jrvltsql_sqlite_qa.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_jrvltsql_sqlite_qa.py" -v
+      - name: Check source gate preserves missing known-on publication-time HOLD
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          x=Path("scripts/ecology_japan_jrvltsql_sqlite_qa.py").read_text()
+          assert "HOLD_NO_EXTERNAL_ENTRY_AND_RESULT_PUBLISHED_AT_TIMESTAMPS" in x
+          assert "JV_Data_MakeDate_is_NOT_result_publication_timestamp" in x
+          assert "no_row_level_horse_race_IDs_or_names_exported" in x
+          assert "PRAGMA query_only=ON" in x
+          print("SYNTHETIC_ONLY_JRAVAN_SQLITE_SCHEMA_NO_KNOWNON_LEAKAGE")
+          PY
