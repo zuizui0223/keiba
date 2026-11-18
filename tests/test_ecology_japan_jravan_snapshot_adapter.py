@@ -262,6 +262,31 @@ class PrePostAdapterTests(unittest.TestCase):
         self.assertTrue(public["privacy_no_source_horse_IDs_names_or_race_rows_in_public"])
         self.assertIn("entries",public["private_normalized_CSV_SHA256"])
 
+    def test_synthetic_end_to_end_pre_capture_forecast_post_capture_score(self):
+        # A fully fictional software flow, not an actual JRA race or an
+        # empirically fitted prediction model.
+        from ecology_japan_2027_point_in_time_ledger import freeze,score
+        from test_ecology_japan_2027_point_in_time_ledger import fictional,fake_sha
+        (entries,parents,s),pre,pre_m=self.pre()
+        _,_,_,fictional_model=fictional()
+        predictions,manifest=freeze(
+            entries,parents,[],fictional_model,
+            asof=stamp(12,2),clock=stamp(12,3),source_sha=fake_sha()
+        )
+        self.assertEqual(manifest["starts"],3)
+        post,post_m=self.captured_post(pre,pre_m)
+        after,meta=post_aggregate(
+            pre,pre_m,post,post_m,self.track,SOURCE_RACE,
+            allow_synthetic_clock=True
+        )
+        result=score(predictions,manifest,after)
+        self.assertEqual(result["status"],"HOLD_2027_AGGREGATE_LOW_SUPPORT")
+        self.assertEqual(result["starts_scored"],3)
+        self.assertEqual(result["races_scored"],1)
+        self.assertTrue(result["no_individual_results_exported"])
+        self.assertNotIn("H:2000000001",json.dumps(result))
+        self.assertIn("gain_M1_minus_M2",result)
+
     def test_no_overwrite_private_CSV_output(self):
         (entries,parents,meta),pre,pre_m=self.pre()
         e_path=self.root/"existing_private.csv"
