@@ -1,0 +1,27 @@
+{
+  "evidence_class": "REAL_ARCHIVED_MARKET_SOURCE_READINESS_NOT_KIN_PREDICTIVE_EFFECT",
+  "status": "HOLD_NO_ID_LINKED_CERTIFIED_TIME_SERIES_FOR_GENEALOGY_MARKET",
+  "audit_date": "2026-11-15",
+  "source_path": "data/2026-10-18/ticket-odds-snapshot.json",
+  "source_sha256": "5423270f25ce79cd393116ab944dc3fe5d709a67ed169711d3e1eb93bef77e8e",
+  "source_run": "https://github.com/zuizui0223/keiba/actions/runs/43695388711",
+  "quote_received_at_window": [
+    "2026-10-18T12:31:24.061+09:00",
+    "2026-10-18T12:31:27.499+09:00"
+  ],
+  "num_races": 9,
+  "horse_quote_rows": 117,
+  "stable_horse_ID_rows": 0,
+  "source_sire_ID_rows": 0,
+  "source_dam_ID_rows": 0,
+  "source_official_update_time_horse_rows": 0,
+  "source_official_update_time_race_count": 0,
+  "description": "The saved Yahoo intermediary prices are a single receipt-time snapshot of separate races, NOT a certified multipoint win-odds time series and NOT linked to canonical pedigree IDs.",
+  "source_licenses_not_verified_for_new_linked_panel": true,
+  "actual_market_kin_effect_estimated": false,
+  "genetic_gene_to_named_horse_link_estimated": false,
+  "genome_branch": "https://github.com/zuizui0223/keiba/pull/44",
+  "prior_performance_branch": "https://github.com/zuizui0223/keiba/pull/45",
+  "archival_public_race_results_not_pedigree_market_joint_dataset": true,
+  "cannot_infer_genome_from_sire_name_or_owner_prefix": true
+}

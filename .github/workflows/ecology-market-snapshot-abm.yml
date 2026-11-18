@@ -1,0 +1,67 @@
+name: "Observed Japanese market concentration and simulated social-vote ABM"
+
+on:
+  push:
+    branches: [analysis/genetics-breeding-odds-market-20261115]
+    paths:
+      - "scripts/ecology_market_snapshot_structure.py"
+      - "scripts/ecology_market_voter_abm_anchor.py"
+      - "tests/test_ecology_market_snapshot_structure.py"
+      - "tests/test_ecology_market_voter_abm_anchor.py"
+      - ".github/workflows/ecology-market-snapshot-abm.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-separated-markets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test observed cross-sectional market support and fake-vote ABM
+        run: |
+          python -m unittest discover -s tests -p "test_ecology_market_snapshot_structure.py" -v
+          python -m unittest discover -s tests -p "test_ecology_market_voter_abm_anchor.py" -v
+      - name: Calculate actual 9-race support concentration without kin attribution
+        run: |
+          python scripts/ecology_market_snapshot_structure.py \
+            --snapshot data/2026-10-18/ticket-odds-snapshot.json \
+            --out tmp/actual-odds-market-concentration.json
+      - name: Continue source market states using fabricated voter flows
+        run: |
+          python scripts/ecology_market_voter_abm_anchor.py \
+            --snapshot data/2026-10-18/ticket-odds-snapshot.json \
+            --out tmp/synthetic-voter-social-feedback.json \
+            --repetitions 40
+      - name: Require evidence-boundary QA and retained counts
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open("tmp/actual-odds-market-concentration.json"))
+          b=json.load(open("tmp/synthetic-voter-social-feedback.json"))
+          assert a["status"]=="OBSERVED_SINGLE_SNAPSHOT_MARKET_CONCENTRATION_NOT_GENETICS"
+          assert b["status"]=="REAL_NINE_INITIAL_SUPPORT_STATES_SYNTHETIC_FUTURE_VOTER_ABM"
+          assert a["data_quality"]["source_sha256"]==b["source_sha256"]
+          assert a["data_quality"]["races"]==9
+          assert a["data_quality"]["horse_price_rows"]==117
+          assert a["data_quality"]["total_canonical_horse_ID_rows"]==0
+          assert not a["genetic_market_effect_estimated"]
+          assert not a["herding_time_series_observed"]
+          assert b["no_real_market_social_herding_or_critical_threshold_detected"]
+          assert all(1<=r["effective_horses_simpson"]<=r["horse_count"]+1e-9 for r in a["markets"])
+          print("REAL_SOURCE_SNAPSHOT_OBSERVED; FUTURE_STATES_SYNTHETIC_ONLY")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: market-9-observed-race-summary-and-separate-synthetic-voter-ABM
+          path: |
+            tmp/actual-odds-market-concentration.json
+            tmp/synthetic-voter-social-feedback.json
+          retention-days: 7
