@@ -1,0 +1,79 @@
+name: Japan real race archive schema audit
+on:
+  push:
+    branches: [analysis/japan-race-history-forward-20261114]
+    paths: ['.github/workflows/japan-race-archive-inspect.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-inspection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect original metadata and bounded archive schemas
+        run: |
+          python - <<'PY'
+          import csv,hashlib,io,json,pathlib,tempfile,urllib.request,zipfile
+          from collections import Counter
+          SOURCES=['ayuser/horse-racing-in-japan','takamotoki/jra-horse-racing-dataset']
+          out=[]
+          for slug in SOURCES:
+              report={'dataset':slug,'source_url':'https://www.kaggle.com/datasets/'+slug,'raw_data_redistributed':False}
+              try:
+                  req=urllib.request.Request('https://www.kaggle.com/api/v1/datasets/list?search='+slug.split('/')[1],headers={'User-Agent':'keiba-academic-source-audit/1.0'})
+                  with urllib.request.urlopen(req,timeout=45) as f:
+                      meta=json.load(f)
+                  matches=[x for x in meta if x.get('ref','').lower()==slug.lower()]
+                  report['original_metadata']=[{k:x.get(k) for k in ['id','ref','title','licenseName','totalBytes','lastUpdated','subtitle']} for x in matches]
+              except Exception as e:
+                  report['metadata_error']=type(e).__name__+':'+str(e)[:180]
+              try:
+                  req=urllib.request.Request('https://www.kaggle.com/api/v1/datasets/download/'+slug,headers={'User-Agent':'keiba-academic-source-audit/1.0'})
+                  with tempfile.TemporaryDirectory() as td:
+                      p=pathlib.Path(td)/'source.zip'; h=hashlib.sha256(); total=0
+                      with urllib.request.urlopen(req,timeout=80) as f,p.open('wb') as w:
+                          while True:
+                              b=f.read(1024*1024)
+                              if not b:break
+                              total+=len(b)
+                              if total>700_000_000:raise ValueError('ARCHIVE_OVER_700MB_STOP')
+                              h.update(b);w.write(b)
+                      report['archive_bytes']=total;report['archive_sha256']=h.hexdigest()
+                      with zipfile.ZipFile(p) as z:
+                          infos=[x for x in z.infolist() if not x.is_dir()]
+                          report['members']=[{'name':x.filename,'bytes':x.file_size} for x in infos]
+                          report['csv_schemas']=[]
+                          for item in infos:
+                              if not item.filename.lower().endswith('.csv'):continue
+                              with z.open(item) as b:
+                                  header=b.readline(150000)
+                              enc='utf-8-sig'
+                              try:header.decode(enc)
+                              except UnicodeDecodeError:enc='cp932'
+                              with z.open(item) as b:
+                                  reader=csv.DictReader(io.TextIOWrapper(b,encoding=enc,errors='strict'))
+                                  rec={'file':item.filename,'encoding':enc,'columns':reader.fieldnames,'inspected_rows':0,'populated_by_column':{k:0 for k in reader.fieldnames}}
+                                  for i,row in enumerate(reader):
+                                      for k,v in row.items():
+                                          if k in rec['populated_by_column'] and v and v.strip():rec['populated_by_column'][k]+=1
+                                      rec['inspected_rows']+=1
+                                      if i>=9999:break
+                                  report['csv_schemas'].append(rec)
+                      report['status']='ACTUAL_ARCHIVE_BYTES_AND_SCHEMA_INSPECTED_NOT_ANALYZED'
+              except Exception as e:
+                  report['status']='SOURCE_DOWNLOAD_OR_SCHEMA_HOLD';report['error']=type(e).__name__+':'+str(e)[:200]
+              out.append(report)
+          pathlib.Path('tmp').mkdir(exist_ok=True)
+          pathlib.Path('tmp/race-archive-source-audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-race-archive-schema-only
+          path: tmp/race-archive-source-audit.json
+          retention-days: 5

@@ -1,0 +1,79 @@
+name: "Japan 2022-2024 family-history permutation falsification"
+
+on:
+  push:
+    branches: [analysis/japan-independent-2022-anchor-gate-20261115]
+    paths:
+      - ".github/workflows/ecology-japan-2022-parent-placebo.yml"
+      - "scripts/ecology_japan_2022_parent_placebo.py"
+      - "tests/test_ecology_japan_2022_parent_placebo.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  historical-parent-placebo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned modeling dependencies and public-source download support
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Test identity parity, parent missingness, deterministic sham and no self-peer
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_parent_placebo.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_independent_forward.py" -v
+      - name: Download old source transiently (SHA locked in analysis)
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download independent later source transiently
+        run: |
+          python - <<'PY'
+          from huggingface_hub import hf_hub_download
+          from pathlib import Path
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+                                 repo_type="dataset",
+                                 filename="all_races_1990-2025.db",
+                                 local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size > 0
+          PY
+      - name: Frozen real-model parity and 19 independent parent-pair placebos
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_parent_placebo.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --permutations 19 \
+            --output tmp/japan-2022-2024-parent-placebo-aggregate.json
+      - name: Fail closed if frozen source or metric parity not established
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('tmp/japan-2022-2024-parent-placebo-aggregate.json',encoding='utf-8'))
+          assert d['status']=='POSTHOC_REAL_SOURCE_2022_2024_PARENT_PAIR_PLACEBO_NOT_GENETIC_CAUSATION'
+          assert d['frozen_primary']['rows']==255484
+          assert d['frozen_primary']['horses']==12919
+          assert d['negative_controls']['n']==19
+          assert d['no_horse_names_ids_raw_rows_or_predictions_exported']
+          assert d['parent_shuffling_protocol']['not_preregistered']
+          print('PARENT_ID_PLACEBO_HOLDOUT_LOCK_VERIFIED')
+          PY
+      - name: Remove third-party datasets before aggregate-artifact upload
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-2024-parent-placebo-aggregate-only
+          path: tmp/japan-2022-2024-parent-placebo-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14

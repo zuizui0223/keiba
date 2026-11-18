@@ -1,0 +1,53 @@
+{
+  "date_jst": "2026-11-18",
+  "status": "SYNTHETIC_ONLY_GITHUB_SERVER_CREATED_AT_PRE_RACE_COMMITMENT_PROTOCOL_VERIFIED_NO_REAL_2027_PLEDGE",
+  "source_branch": "analysis/2027-github-push-attestation-20261118",
+  "synthetic_ci": {
+    "run_id": 44250171941,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44250171941",
+    "job_id": 134618623239,
+    "head_sha": "612d82b75d69e3529f0d77c69e7de730d1c3080c",
+    "conclusion": "success",
+    "synthetic_server_time_and_source_forecast_checks": 29,
+    "production_workflow_source_contract_checks": 4,
+    "distinct_total": 33
+  },
+  "proposed_real_push_workflow": {
+    "file": ".github/workflows/ecology-japan-2027-immutable-push-attestation.yml",
+    "event": "push ONLY",
+    "files": "docs/commitments/2027/<opaque-32hex>.json new additions only",
+    "server_source": "GitHub REST actions/runs/{GITHUB_RUN_ID}.created_at",
+    "exact_git_sha_required": true,
+    "server_event_type_required": "push",
+    "reject_modified_preexisting_bundle": true,
+    "require_opaque_filename_bound_to_full_bundle_SHA": true,
+    "only_read_permissions": true,
+    "no_actual_real_pledge_yet": true
+  },
+  "capabilities_tested": [
+    "Aggregate source receipt SHA linked to private normalized entry and parent CSV hashes",
+    "Exactly one race per pre-race source-to-forecast pledge, complete fields",
+    "Same target race-start across source receipt, adapter and forecast",
+    "Source capture finished < first observed entry known at <= forecast asof <= forecast freeze <= GitHub push run created_at < race start",
+    "Never use Git author/committer timestamps or JV-Data MakeDate as independent server timestamp",
+    "No source/forecast bundle from synthetic capture accepted in real attestation",
+    "No user-provided private horse or race IDs, rows, or model coefficients embedded in public bundle",
+    "Postrace opening recomputes and verifies original receipt, adapter, forecast manifest and private prediction file hashes",
+    "Postrace opening additionally checks private SQLite backup, entrants, parents, known-on history and private frozen model hashes",
+    "SHA-derived opaque commitment filenames prevent silent content substitution at fixed paths",
+    "Duplicate JSON manifest keys, parent-source hash mismatch and multi-race scope rejected"
+  ],
+  "source_and_study_limits": {
+    "official_JRA_VAN_data_acquired": false,
+    "official_forecast_and_result_release_time_certified": false,
+    "real_2027_start_pre_race_Git_server_commitment_created": false,
+    "real_2027_individual_predictions_frozen": false,
+    "independent_original_source_content_audited": false,
+    "actual_2027_data_or_genetic_effect_evaluated": false,
+    "true_national_JRA_NAR_pedigree_A_completed": false,
+    "identity_linked_DNA_G_completed": false,
+    "betting_profit_evaluated": false,
+    "private_horse_ID_names_race_rows_prediction_files_committed": false
+  },
+  "user_facing_scientific_conclusion": "Pre-race evidence timing is a future auditable software contract, not a real prospective racing result or proof of genetic heredity."
+}

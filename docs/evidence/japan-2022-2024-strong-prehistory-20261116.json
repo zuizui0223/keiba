@@ -1,0 +1,144 @@
+{
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/43893149680",
+  "run_id": 43893149680,
+  "job_id": 133389441870,
+  "head_sha": "2644d7d959a8d6930bb39e32dc9339a66f1b425c",
+  "artifact": {
+    "id": 14237956921,
+    "name": "japan-2022-24-strong-portable-prehistory-aggregate-only",
+    "digest": "sha256:4e478bd82028feab3d1353634908bbd49120515f9b91960197402e9a7aff76da",
+    "created_at": "2026-11-16T15:10:41Z"
+  },
+  "analysis_from_actions_stdout": {
+    "status": "POSTHOC_2022_2024_PRE2022_AGE_SEX_RECENCY_HISTORY_BASELINE_NOT_CAUSAL",
+    "pooled": {
+      "rows": 255484,
+      "unique_horses": 12919,
+      "races": 36955,
+      "RMSE_unchanged_midpoint": 0.3209768069633041,
+      "RMSE_portable_no_kin": 0.31169267268761647,
+      "RMSE_portable_kin": 0.31143282328331967,
+      "M0_minus_kin_gain": 0.0002598494042967969,
+      "midpoint_minus_kin_gain": 0.009543983679984436,
+      "CI95_singleway_sensitivity": {
+        "horse": {
+          "clusters": 12919,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            0.000059320685687591634,
+            0.00045107821802259926
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            0.008690885061994206,
+            0.010323507474044665
+          ],
+          "single_way_approximation_only": true
+        },
+        "race_day": {
+          "clusters": 1067,
+          "bootstrap_draws": 399,
+          "CI95_M0_minus_kin_gain": [
+            0.00012674962843629844,
+            0.0003917911404799552
+          ],
+          "CI95_neutral_minus_kin_gain": [
+            0.00853797856272863,
+            0.0105155073292955
+          ],
+          "single_way_approximation_only": true
+        }
+      },
+      "RMSE_frozen_original_no_kin": 0.31277751588017505,
+      "RMSE_frozen_original_kin": 0.3124550620307501,
+      "extra_no_kin_vs_frozen_no_kin": 0.0010848431925585822
+    },
+    "by_year": {
+      "2022": {
+        "rows": 126031,
+        "unique_horses": 12789,
+        "races": 14905,
+        "RMSE_unchanged_midpoint": 0.32152696129625824,
+        "RMSE_portable_no_kin": 0.30945271447032996,
+        "RMSE_portable_kin": 0.30916304405510314,
+        "M0_minus_kin_gain": 0.000289670415226817,
+        "midpoint_minus_kin_gain": 0.012363917241155098,
+        "extra_no_kin_vs_frozen_no_kin": 0.001460159575821074
+      },
+      "2023": {
+        "rows": 84768,
+        "unique_horses": 8806,
+        "races": 11993,
+        "RMSE_unchanged_midpoint": 0.3196080234403829,
+        "RMSE_portable_no_kin": 0.3170229896694541,
+        "RMSE_portable_kin": 0.3167318068850572,
+        "M0_minus_kin_gain": 0.0002911827843968817,
+        "midpoint_minus_kin_gain": 0.002876216555325717,
+        "extra_no_kin_vs_frozen_no_kin": 0.001410194454358471
+      },
+      "2024": {
+        "rows": 44685,
+        "unique_horses": 5249,
+        "races": 10057,
+        "RMSE_unchanged_midpoint": 0.3172121463882306,
+        "RMSE_portable_no_kin": 0.319104176599574,
+        "RMSE_portable_kin": 0.31854248676764835,
+        "M0_minus_kin_gain": 0.0005616898319256713,
+        "midpoint_minus_kin_gain": -0.0013303403794177604,
+        "extra_no_kin_vs_frozen_no_kin": 0.0006208584821502106
+      }
+    },
+    "source_meta_qa": {
+      "training": {
+        "2018": {
+          "rows": 173191,
+          "age_available_fraction": 0.8388022472299369,
+          "age_pre2022_birthyear_conflict_fraction": 0,
+          "sourceA_sex_known_fraction": 0.8388022472299369,
+          "unknown_lifetime_last_race_fraction": 0.16175782806265915,
+          "feature_cutoff": "2018-01-01",
+          "no_future_sourceB_outcome_or_race_class_in_features": true
+        },
+        "2019": {
+          "rows": 175593,
+          "age_available_fraction": 0.8273450536183106,
+          "age_pre2022_birthyear_conflict_fraction": 0,
+          "sourceA_sex_known_fraction": 0.8273450536183106,
+          "unknown_lifetime_last_race_fraction": 0.17386228380402408,
+          "feature_cutoff": "2019-01-01",
+          "no_future_sourceB_outcome_or_race_class_in_features": true
+        },
+        "2020": {
+          "rows": 176921,
+          "age_available_fraction": 0.8304497487579202,
+          "age_pre2022_birthyear_conflict_fraction": 0,
+          "sourceA_sex_known_fraction": 0.8304497487579202,
+          "unknown_lifetime_last_race_fraction": 0.17006460510623386,
+          "feature_cutoff": "2020-01-01",
+          "no_future_sourceB_outcome_or_race_class_in_features": true
+        },
+        "2021": {
+          "rows": 172484,
+          "age_available_fraction": 0.8360601563043528,
+          "age_pre2022_birthyear_conflict_fraction": 0,
+          "sourceA_sex_known_fraction": 0.8360601563043528,
+          "unknown_lifetime_last_race_fraction": 0.16590524338489368,
+          "feature_cutoff": "2021-01-01",
+          "no_future_sourceB_outcome_or_race_class_in_features": true
+        }
+      },
+      "heldout_2022_2024": {
+        "rows": 255484,
+        "age_available_fraction": 1,
+        "age_pre2022_birthyear_conflict_fraction": 0,
+        "sourceA_sex_known_fraction": 1,
+        "unknown_lifetime_last_race_fraction": 0,
+        "feature_cutoff": "2022-01-01",
+        "no_future_sourceB_outcome_or_race_class_in_features": true
+      }
+    }
+  },
+  "original_source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "independent_source_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "posthoc": true,
+  "raw_individual_records_distributed": false
+}

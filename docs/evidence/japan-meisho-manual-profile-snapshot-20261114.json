@@ -1,0 +1,137 @@
+{
+  "title": "Small manually verified Japanese Meisho/connected-horse demonstration cohort",
+  "snapshot_recorded_on": "2026-11-14",
+  "source": "JBIS Search (Japan Bloodhorse Breeders' Association), individual public profile pages",
+  "source_type": "hand-checked factual profile excerpt, NOT BULK INGESTION",
+  "scope": "PURPOSELY SELECTED PEDIGREE CONTRASTS; NOT JAPAN OR MEISHO REPRESENTATIVE",
+  "explicit_provenance_limits": [
+    "Not historical-as-of owner/trainer: these fields are the latest owner/trainer/breeder labels displayed on these profile pages, and cannot be backfilled into past races.",
+    "A missing dam_jbis_id does not mean unknown mother: it means the identifier was NOT independently cross-linked in this limited demonstration.",
+    "Only direct dam IDs were verified as identical JBIS profile identifiers. Sire names have not been resolved to canonical sire IDs.",
+    "No raw race outcomes, dates, speed or odds are included; this cannot estimate any predictive gain or heritability.",
+    "JBIS records can change and ownership can transfer. No automated JBIS crawling or bulk redistribution is authorized by this file."
+  ],
+  "profiles": [
+    {
+      "jbis_id": "0001335651",
+      "horse_name": "メイショウタバル",
+      "sire_label": "ゴールドシップ",
+      "dam_jbis_id": "0001121214",
+      "dam_label": "メイショウツバクロ",
+      "displayed_owner": "松本 好隆",
+      "displayed_trainer": "石橋 守",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001335651/"
+    },
+    {
+      "jbis_id": "0001267813",
+      "horse_name": "メイショウメイスイ",
+      "sire_label": "ノヴェリスト(IRE)",
+      "dam_jbis_id": "0001121214",
+      "dam_label": "メイショウツバクロ",
+      "displayed_owner": "鈴木 雅俊",
+      "displayed_trainer": "菅原 勲",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001267813/"
+    },
+    {
+      "jbis_id": "0001121214",
+      "horse_name": "メイショウツバクロ",
+      "sire_label": "フレンチデピュティ(USA)",
+      "dam_jbis_id": "0000613233",
+      "dam_label": "ダンシングハピネス",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "松永 幹夫",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001121214/"
+    },
+    {
+      "jbis_id": "0001046777",
+      "horse_name": "メイショウカンパク",
+      "sire_label": "グラスワンダー(USA)",
+      "dam_jbis_id": "0000613233",
+      "dam_label": "ダンシングハピネス",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "荒川 義之",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001046777/"
+    },
+    {
+      "jbis_id": "0000613233",
+      "horse_name": "ダンシングハピネス",
+      "sire_label": "ダンスインザダーク",
+      "dam_jbis_id": null,
+      "dam_label": "メイショウサチカゼ",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "安田 伊佐夫",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0000613233/"
+    },
+    {
+      "jbis_id": "0001234732",
+      "horse_name": "メイショウハリオ",
+      "sire_label": "パイロ(USA)",
+      "dam_jbis_id": "0001096629",
+      "dam_label": "メイショウオウヒ",
+      "displayed_owner": "松本 好隆",
+      "displayed_trainer": "岡田 稲男",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001234732/"
+    },
+    {
+      "jbis_id": "0001266566",
+      "horse_name": "テーオーロイヤル",
+      "sire_label": "リオンディーズ",
+      "dam_jbis_id": "0001096629",
+      "dam_label": "メイショウオウヒ",
+      "displayed_owner": "小笹 公也",
+      "displayed_trainer": "岡田 稲男",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001266566/"
+    },
+    {
+      "jbis_id": "0001096629",
+      "horse_name": "メイショウオウヒ",
+      "sire_label": "マンハッタンカフェ",
+      "dam_jbis_id": null,
+      "dam_label": "アルペンローズ(USA)",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "西浦 勝一",
+      "displayed_breeder": "三嶋牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001096629/"
+    },
+    {
+      "jbis_id": "0000760084",
+      "horse_name": "メイショウサムソン",
+      "sire_label": "オペラハウス(GB)",
+      "dam_jbis_id": null,
+      "dam_label": "マイヴィヴィアン",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "高橋 成忠",
+      "displayed_breeder": "林 孝輝",
+      "profile_url": "https://www.jbis.or.jp/horse/0000760084/"
+    },
+    {
+      "jbis_id": "0000310442",
+      "horse_name": "メイショウドトウ(IRE)",
+      "sire_label": "Bigstone(IRE)",
+      "dam_jbis_id": null,
+      "dam_label": "プリンセスリーマ(USA)",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "安田伊佐夫",
+      "displayed_breeder": "P. Hardy",
+      "profile_url": "https://www.jbis.or.jp/horse/0000310442/"
+    },
+    {
+      "jbis_id": "0001123893",
+      "horse_name": "メイショウマンボ",
+      "sire_label": "スズカマンボ",
+      "dam_jbis_id": null,
+      "dam_label": "メイショウモモカ",
+      "displayed_owner": "松本 好雄",
+      "displayed_trainer": "飯田 祐史",
+      "displayed_breeder": "高昭牧場",
+      "profile_url": "https://www.jbis.or.jp/horse/0001123893/"
+    }
+  ]
+}

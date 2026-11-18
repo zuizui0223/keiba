@@ -1,0 +1,115 @@
+{
+  "study": "Japanese Wikipedia racehorse infobox article pedigree A, 2026-11-14 fixed source snapshot",
+  "status": "REAL_SOURCE_CONDITIONAL_ALL_WITHIN_ARTICLE_PAIRS_NOT_FULL_JRA_NAR",
+  "provenance": {
+    "action_url": "https://github.com/zuizui0223/keiba/actions/runs/43583807454",
+    "source_url": "https://ja.wikipedia.org/wiki/Template:競走馬",
+    "input_sha256": "e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57",
+    "license": "Wikipedia CC BY-SA",
+    "upstream_code": "https://github.com/Sheep-Meadow-Road-Games/open-horse-data",
+    "upstream_credit": "Sheep Meadow Road Games and Horse Racing Manager",
+    "credit_url": "https://store.steampowered.com/app/2740170/Horse_Racing_Manager/",
+    "numeric_measure": "expected partial pedigree numerator A, based on direct unique Wikipedia parent-page links",
+    "reproduced_second_action_url": "https://github.com/zuizui0223/keiba/actions/runs/43584355462",
+    "second_run_same_source_sha256": true
+  },
+  "subsets": {
+    "japanese_language_horse_articles": {
+      "registered_horses": 5878,
+      "scored_pairs": 17272503,
+      "nonzero_known_path_pairs": 5327594,
+      "zero_or_unresolved_path_pairs": 11944909,
+      "horses_any_documented_path": 4559,
+      "documented_sire_links": 4304,
+      "documented_dam_links": 642,
+      "both_sire_and_dam": 546,
+      "full_sibling_pairs_both_canonical_parent_links": 86,
+      "paternal_half_pairs_both_other_parent_links": 3426,
+      "maternal_half_pairs_both_other_parent_links": 165,
+      "A_bins": {
+        "A>=0.5": 4739,
+        "0.25<=A<0.5": 50447,
+        "0.125<=A<0.25": 146608,
+        "0.0625<=A<0.125": 306000,
+        "0.03125<=A<0.0625": 285368,
+        "0.01<=A<0.03125": 411730,
+        "0.001<=A<0.01": 1875674,
+        "0<A<0.001": 2247028
+      },
+      "source_meisho_named_articles": 38,
+      "known_positive_pairs_among_meisho_named": 311,
+      "known_positive_cross_meisho_non_meisho": 82634
+    },
+    "explicitly_japan_born_according_to_infobox_country": {
+      "registered_horses": 3411,
+      "scored_pairs": 5815755,
+      "nonzero_known_path_pairs": 2555223,
+      "zero_or_unresolved_path_pairs": 3260532,
+      "horses_any_documented_path": 2802,
+      "documented_sire_links": 2822,
+      "documented_dam_links": 472,
+      "both_sire_and_dam": 411,
+      "full_sibling_pairs_both_canonical_parent_links": 68,
+      "paternal_half_pairs_both_other_parent_links": 3279,
+      "maternal_half_pairs_both_other_parent_links": 131,
+      "A_bins": {
+        "A>=0.5": 1759,
+        "0.25<=A<0.5": 41622,
+        "0.125<=A<0.25": 119726,
+        "0.0625<=A<0.125": 234692,
+        "0.03125<=A<0.0625": 163713,
+        "0.01<=A<0.03125": 165204,
+        "0.001<=A<0.01": 800200,
+        "0<A<0.001": 1028307
+      }
+    },
+    "meisho_named_article_only": {
+      "title_prefix": "メイショウ",
+      "named_articles": 38,
+      "explicitly_japan_born_named_articles": 37,
+      "identified_sire_links": 32,
+      "identified_dam_links": 2,
+      "within_meisho_name_pairs_all": 703,
+      "within_meisho_name_pairs_nonzero_known_paths": 311,
+      "within_meisho_name_pairs_unresolved_paths": 392,
+      "named_horses_with_any_documented_path": 26,
+      "A_bins": {
+        "A>=0.5": 3,
+        "0.25<=A<0.5": 7,
+        "0.125<=A<0.25": 0,
+        "0.0625<=A<0.125": 84,
+        "0.03125<=A<0.0625": 0,
+        "0.01<=A<0.03125": 21,
+        "0.001<=A<0.01": 99,
+        "0<A<0.001": 97
+      },
+      "explicitly_japan_born_name_only": {
+        "named_articles": 37,
+        "pairs": 666,
+        "nonzero_known_paths": 286
+      },
+      "owner_id_not_verified_in_source": true,
+      "description": "Meisho is a name prefix, not a biological kin group"
+    }
+  },
+  "data_quality": {
+    "wikipedia_total_source_articles": 5878,
+    "explicitly_japan_born_infoboxes": 3411,
+    "meisho_titles_in_all_articles": 38,
+    "parsed_birth_year_in_article": 5711,
+    "rejected_unambiguous_sire_link_count": 603,
+    "rejected_unambiguous_dam_link_count": 5233,
+    "rejections_parent_same_person_or_page": 2,
+    "rejected_paternal_age_mismatch": 1,
+    "parent_placeholders_outside_article_pool": 243,
+    "all_pairs_recalculation_runtime_seconds": 78.91
+  },
+  "interpretation_limits": [
+    "Japanese-language Wikipedia includes foreign racehorses; explicitly Japan-born is not all horses racing in Japan",
+    "Wikipedia article appearance strongly selects for noteworthy horses and is not representative of all JRA+NAR starts",
+    "A>0 can be extremely small due to deep historical shared ancestry and does not indicate close breeding",
+    "A=0 signifies no known path in truncated article-linked pedigree, not proven zero genetic relatedness",
+    "Most dam links are absent, which can strongly bias estimates of relatedness, inbreeding F and maternal lines",
+    "Not estimated: nationwide population coverage, complete genetic variance, predictive gain on race outcomes, heritability"
+  ]
+}

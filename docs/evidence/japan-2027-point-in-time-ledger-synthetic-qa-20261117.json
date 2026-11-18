@@ -1,0 +1,44 @@
+{
+  "date_utc": "2026-11-17",
+  "status": "SYNTHETIC_ONLY_2027_PROSPECTIVE_LEDGER_CONTRACT_PASSED_NO_ACTUAL_2027_OUTCOME",
+  "successful_workflow_url": "https://github.com/zuizui0223/keiba/actions/runs/44013284488",
+  "workflow_run_id": 44013284488,
+  "workflow_job_id": 133805110418,
+  "code_head_sha": "7a96c329f26ea57949bb2a64f536da86fb452b3f",
+  "synthetic_tests": {
+    "new_private_forecast_and_scoring": 24,
+    "previous_official_ID_knownon_preflight": 12,
+    "total": 36,
+    "conclusion": "success",
+    "scope": [
+      "model trained-through and frozen timestamps",
+      "strict official typed H:/B: ID namespace",
+      "parent IDs and historic result-known timestamps",
+      "future result and same-race outcome exclusion",
+      "frozen private predictions digest verification",
+      "complete race rank and field-size verification",
+      "DNF vs incomplete publication handling",
+      "jockey, trainer, course pre-race historical controls",
+      "no recorded previous result vs documented previous starts",
+      "source-conditional same-parent other-horse support",
+      "no raw horse IDs or race IDs in public aggregate",
+      "thresholds and explicit LOW_SUPPORT labels"
+    ],
+    "source_records_are_fictional": true
+  },
+  "available_source_data": {
+    "actual_2027_JRA_entered_horses": false,
+    "authorized_actual_2027_final_results": false,
+    "licensed_ID_linked_pedigree_and_historical_feed": false,
+    "genuinely_fitted_historical_M1_M2_coefficients": false
+  },
+  "limitations": [
+    "This proves test contract behavior, not actual 2027 prediction performance.",
+    "Local file digest and self-reported time cannot prove that predictions were committed before first race.",
+    "Public Git commitment must precede the first race for independent auditing.",
+    "Official data rights and registration ID authenticity require independent verification.",
+    "Genetic heritability, full national pedigree A and anonymous genomic G not identified.",
+    "No odds, wagering profitability or causal biological result is supported."
+  ],
+  "no_real_horse_names_ids_outcomes_or_individual_predictions_exported": true
+}

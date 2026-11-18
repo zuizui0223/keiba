@@ -1,0 +1,46 @@
+name: "JRA 2027 point-in-time forecast commitment and outcome ledger tests"
+
+on:
+  push:
+    branches: [analysis/2027-point-in-time-ledger-20261117]
+    paths:
+      - ".github/workflows/ecology-japan-2027-point-in-time-ledger.yml"
+      - "scripts/ecology_japan_2027_point_in_time_ledger.py"
+      - "tests/test_ecology_japan_2027_point_in_time_ledger.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  future-official-id-no-leakage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile source code, no live data
+        run: |
+          python -m py_compile scripts/ecology_japan_2027_point_in_time_ledger.py
+          python -m py_compile scripts/ecology_japan_2027_official_knownon_preflight.py
+      - name: Fictional-only forecast freeze, SHA immutability and result scoring
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2027_point_in_time_ledger.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2027_official_knownon_preflight.py" -v
+      - name: Confirm no live data or unsupported prospective claims
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source=Path("scripts/ecology_japan_2027_point_in_time_ledger.py").read_text(encoding="utf-8")
+          for flag in (
+              "local_timestamp_and_digest_alone_NOT_trusted_external_proof",
+              "HOLD_NO_FULLY_PUBLISHED_COMPLETE_RACES",
+              "HOLD_2027_AGGREGATE_LOW_SUPPORT",
+              "HOLD_PRIVATE_FORECAST_PATH_INSIDE_WORKING_REPOSITORY",
+              "cannot_prove_model_or_manifest_pre_race_Git_commit",
+          ):
+              assert flag in source, flag
+          print("SYNTHETIC_ONLY_2027_PROSPECTIVE_LEDGER_CONTRACT_PASSED")
+          PY

@@ -1,0 +1,90 @@
+name: "Japan Meisho matched-coverage kinship real source diagnostic"
+
+on:
+  push:
+    branches: [analysis/ecology-pedigree-forward-20261114]
+    paths:
+      - "scripts/ecology_japan_meisho_matched_null.py"
+      - "tests/test_ecology_japan_meisho_matched_null.py"
+      - ".github/workflows/ecology-meisho-matched-null.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_japan_meisho_matched_null.py"
+      - "tests/test_ecology_japan_meisho_matched_null.py"
+      - ".github/workflows/ecology-meisho-matched-null.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-source-pedigree-name-group-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test matched null on fabricated horse graphs only
+        run: python -m unittest discover -s tests -p "test_ecology_japan_meisho_matched_null.py" -v
+      - name: Clone only licensed Wikimedia fetcher source
+        run: |
+          git clone --depth 1 https://github.com/Sheep-Meadow-Road-Games/open-horse-data.git tmp/open-horse-data
+          echo "Credit: Sheep Meadow Road Games / Horse Racing Manager — https://store.steampowered.com/app/2740170/Horse_Racing_Manager/"
+      - name: Fetch original 5,878-style Wikimedia horse article inputs
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0, "tmp/open-horse-data")
+          import fetch_ja_wikipedia as up
+          try:
+              titles=up.list_titles()
+              if len(titles)<100: raise ValueError("HOLD_FEW_WIKIPEDIA_ARTICLES")
+              boxes=up.fetch_infoboxes(titles)
+              if len(boxes)<100: raise ValueError("HOLD_FEW_PARSED_INFOBOXES")
+              Path("tmp/ja_wikipedia.json").write_text(
+                  json.dumps(boxes,ensure_ascii=False),encoding="utf-8")
+              print(json.dumps({"source":"ja-Wikipedia CC BY-SA",
+                  "title_count":len(titles),"infobox_count":len(boxes)}))
+          except Exception as ex:
+              print(json.dumps({"status":"HOLD_ORIGINAL_WIKIPEDIA_DOWNLOAD",
+                  "error_type":type(ex).__name__}))
+          PY
+      - name: Compare 38 Meisho names with birth-decade, country, and parent-link matched controls
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_meisho_matched_null.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/meisho-matched-source-kinship.json \
+              --n-random 999 \
+              --reference-sha e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57
+          else
+            echo 'HOLD_UNAVAILABLE_REAL_WIKIPEDIA_ARTICLE_INPUT'
+          fi
+      - name: Confirm no causal or all-Japan biological claim is made
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("tmp/meisho-matched-source-kinship.json")
+          if not path.exists():
+              print("HOLD_NO_REAL_MEISHO_MATCHED_RESULT")
+          else:
+              r=json.loads(path.read_text(encoding="utf-8"))
+              assert r["status"] in {
+                  "SOURCE_CONDITIONAL_REAL_MEISHO_NAME_GROUP_MATCHED_PEDIGREE_DIAGNOSTIC",
+                  "HOLD_INSUFFICIENT_EXACT_BIRTH_DECADE_AND_PARENTS_MATCHING_SUPPORT",
+                  "HOLD_SOURCE_SHA_CHANGED_CANNOT_COMPARE_FIXED_BASELINE",
+                  "HOLD_TOO_FEW_MEISHO_NAME_ARTICLES",
+              }
+              print("SOURCE_CONDITIONAL_MATCHED_DIAGNOSTIC_STATUS",r["status"])
+          PY
+      # No original source archive or raw horse-level artifacts uploaded.

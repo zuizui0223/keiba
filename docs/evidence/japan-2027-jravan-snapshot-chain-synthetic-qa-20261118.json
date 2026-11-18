@@ -1,0 +1,68 @@
+{
+  "status": "SYNTHETIC_ONLY_JRAVAN_PREPOST_CAPTURE_TO_PRIVATE_2027_PREDICTION_CODE_PATH_VALIDATED",
+  "audit_date_jst": "2026-11-18",
+  "source_branch": "analysis/jravan-asof-capture-ledger-20261118",
+  "distinct_synthetic_test_cases": 50,
+  "successful_ci_runs": [
+    {
+      "run_id": 44246411071,
+      "url": "https://github.com/zuizui0223/keiba/actions/runs/44246411071",
+      "result": "success",
+      "source_sha": "50a1c29d160302d18cb2313ff3affa7c11fb5a13",
+      "capture_and_receipt_cases": 23,
+      "source_table_schema_cases": 9,
+      "case_total": 32
+    },
+    {
+      "run_id": 44246515952,
+      "url": "https://github.com/zuizui0223/keiba/actions/runs/44246515952",
+      "result": "success",
+      "source_sha": "e6b77d96e0d24cd075c884791e74ff07aacd15de",
+      "typed_pre_post_adapter_cases": 18,
+      "capture_and_receipt_cases_repeated": 23,
+      "case_total": 41
+    }
+  ],
+  "implemented": {
+    "original_source_is_read_only": true,
+    "private_SQLite_uses_consistent_online_backup": true,
+    "SHA256_digest_and_local_observed_capture_start_end": true,
+    "pre_race_copy_must_complete_strictly_before_start": true,
+    "post_race_copy_must_start_after_declared_race_start": true,
+    "changed_inserted_removed_row_counts_per_NL_table_only": true,
+    "multi_capture_receipt_SHA_chain": true,
+    "rejects_modified_private_snapshot_or_receipt": true,
+    "rejects_private_backup_or_csv_inside_git_working_tree": true,
+    "pre_race_NL_SE_final_arrival_and_rank_leakage_rejected": true,
+    "typed_H_blood_and_B_breeding_parent_namespace_separation": true,
+    "explicit_private_TrackCD_to_surface_mapping_required": true,
+    "source_RACE_ID_race_key_selects_exact_six_parts": true,
+    "post_race_same_horse_rider_trainer_surface_distance_and_start_required": true,
+    "outcome_full_1_through_N_rank_and_field_size_required": true,
+    "private_pre_CSVs_match_future_point_in_time_ledger_entry_parent_schema": true,
+    "private_post_CSV_matches_future_result_scoring_schema": true,
+    "end_to_end_three_fictional_horse_pre_race_freeze_and_post_result_score_passed": true,
+    "private_SQLite_atomic_install_does_not_clobber_concurrent_destination": true,
+    "pre_race_CSV_created_with_owner_only_permissions_at_file_creation": true,
+    "adapter_CI_reruns_when_capture_source_or_tests_change": true
+  },
+  "cannot_claim": {
+    "provider_publication_timestamp_is_independently_attested": false,
+    "local_system_clock_external_attestation": false,
+    "pre_race_public_git_commit_happened_for_real_race": false,
+    "actual_JRA_VAN_data_or_subscription_available": false,
+    "licensed_JRA_blood_and_breeding_parent_input_collected": false,
+    "completed_future_2027_real_race_forecasts": false,
+    "historical_2018_2024_source_first_seen_reconstructed": false,
+    "full_JRA_NAR_official_pedigree_A": false,
+    "individually_genotyped_racehorse_G_matched": false,
+    "demonstrated_genetic_heritability": false,
+    "demonstrated_betting_edge": false
+  },
+  "source_table_metadata_origins": [
+    "https://github.com/miyamamoto/jrvltsql/blob/master/src/database/schema.py",
+    "https://support.jra-van.jp/jravan/detail?category=16&id=226&site=SVKNEGBV"
+  ],
+  "no_original_individual_horse_names_ids_races_outcomes_or_forecasts_uploaded": true,
+  "test_data_all_fictional": true
+}

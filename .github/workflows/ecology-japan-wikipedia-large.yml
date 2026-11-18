@@ -1,0 +1,144 @@
+name: "Japan racehorse Wikipedia CC-BY-SA large pedigree A analysis"
+on:
+  push:
+    branches:
+      - analysis/ecology-pedigree-forward-20261114
+    paths:
+      - "scripts/ecology_japan_wikipedia_large.py"
+      - "scripts/ecology_japan_wikipedia_parent_ablation.py"
+      - "scripts/ecology_japan_wikimedia_parent_crosscheck.py"
+      - "tests/test_ecology_japan_wikimedia_parent_crosscheck.py"
+      - "tests/test_ecology_japan_wikipedia_parent_ablation.py"
+      - "tests/test_ecology_japan_wikipedia_large.py"
+      - ".github/workflows/ecology-japan-wikipedia-large.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_japan_wikipedia_large.py"
+      - "scripts/ecology_japan_wikipedia_parent_ablation.py"
+      - "scripts/ecology_japan_wikimedia_parent_crosscheck.py"
+      - "tests/test_ecology_japan_wikimedia_parent_crosscheck.py"
+      - "tests/test_ecology_japan_wikipedia_parent_ablation.py"
+      - "tests/test_ecology_japan_wikipedia_large.py"
+      - ".github/workflows/ecology-japan-wikipedia-large.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wikipedia-real-article-pedigree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline pedigree identity and full pairwise A test
+        run: |
+          python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_large.py" -v
+          python -m unittest discover -s tests -p "test_ecology_japan_wikipedia_parent_ablation.py" -v
+          python -m unittest discover -s tests -p "test_ecology_japan_wikimedia_parent_crosscheck.py" -v
+      - name: Obtain upstream licensed Japanese Wikipedia fetcher code
+        shell: bash
+        run: |
+          git clone --depth=1 https://github.com/Sheep-Meadow-Road-Games/open-horse-data.git tmp/upstream
+          git -C tmp/upstream rev-parse HEAD > tmp/upstream-source-revision.txt
+          echo "CREDIT: Sheep Meadow Road Games / Horse Racing Manager"
+          echo "https://store.steampowered.com/app/2740170/Horse_Racing_Manager/"
+          echo "SOURCE: Japanese Wikipedia CC BY-SA; upstream MIT with additional attribution requirement"
+      - name: Download only Wikimedia licensed {{競走馬}} infoboxes, not the restricted archives
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          from datetime import date
+          sys.path.insert(0, "tmp/upstream")
+          import fetch_ja_wikipedia as up
+          try:
+              titles=up.list_titles()
+              if len(titles)<100:
+                  raise ValueError("HOLD_FEWER_THAN_100_TEMPLATE_RACEHORSE_ARTICLES")
+              boxes=up.fetch_infoboxes(titles)
+              if len(boxes)<100:
+                  raise ValueError("HOLD_TOO_FEW_PARSED_INFOBOXES")
+              Path("tmp/ja_wikipedia.json").write_text(
+                  json.dumps(boxes, ensure_ascii=False), encoding="utf-8"
+              )
+              print(json.dumps({"status":"SOURCE_AVAILABLE_FOR_LARGE_PEDIGREE","listed_titles":len(titles),"parsed_infoboxes":len(boxes)}))
+          except Exception as e:
+              print(json.dumps({"status":"HOLD_EXTERNAL_WIKIPEDIA_SOURCE_FETCH","error_class":type(e).__name__}))
+          PY
+      - name: Score all pairwise partial pedigree A among licensed, actually fetched articles
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_wikipedia_large.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/japan-large-kinship-source-report.json \
+              --max-pairs 20000000
+          else
+            echo 'HOLD_NO_VERIFIED_REAL_LARGE_JAPAN_INFOBOX_COHORT'
+          fi
+      - name: Compare father-only and mother-only source relationships on identical real horse pairs
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_wikipedia_parent_ablation.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/japan-parent-source-ablation.json \
+              --expected-source-sha e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57 \
+              --max-pairs 20000000
+          else
+            echo 'HOLD_SOURCE_UNAVAILABLE_NO_PAIRED_MATERNAL_SENSITIVITY'
+          fi
+      - name: Secondary Wikimedia QID mother-link pilot, Meisho-first 200 selected articles
+        shell: bash
+        run: |
+          if test -s tmp/ja_wikipedia.json; then
+            python scripts/ecology_japan_wikimedia_parent_crosscheck.py \
+              --infobox-json tmp/ja_wikipedia.json \
+              --summary tmp/wikimedia-parent-QID-crosscheck.json \
+              --max-titles 200 \
+              --max-requests 16
+          else
+            echo 'HOLD_NO_WIKIMEDIA_PARENT_CROSSCHECK_NO_ORIGINAL_COHORT'
+          fi
+      - name: Declare source and scope on all outcomes
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("tmp/japan-large-kinship-source-report.json")
+          if not p.exists():
+              print("HOLD_LARGE_DATA_SOURCE_UNAVAILABLE_NOT_AN_EMPTY_PEDIGREE")
+          else:
+              r=json.loads(p.read_text(encoding="utf-8"))
+              assert r["status"]=="REAL_JA_WIKIPEDIA_INFOBOXES_ANALYZED_NOT_ALL_JAPANESE_RACEHORSES"
+              assert r["not_jra_or_nar_population"]
+              assert r["unknown_parent_article_is_assumed_unrelated_FOUNDER_for_partial_A_only"]
+              for cohort in ("all_japanese_language_articles","explicit_japan_country_articles"):
+                  q=r[cohort]["all_pairs"]
+                  assert q["status"].startswith("EXACT_ALL_") or q["status"].startswith("HOLD_")
+              print("SUCCESS_SOURCE_CONDITIONAL_ACTUAL_HORSE_PEDIGREE_ONLY")
+              extra=Path("tmp/japan-parent-source-ablation.json")
+              if extra.exists():
+                  a=json.loads(extra.read_text(encoding="utf-8"))
+                  assert a["status"]=="REAL_JAPANESE_WIKIPEDIA_PARENTS_INFORMATION_SENSITIVITY_NOT_NATIONAL"
+                  assert a["source_sha256"]==r["input_sha256"]
+                  for sub in ("all_language_articles","japan_origin_infobox_articles","meisho_named_articles"):
+                      assert a["cohorts"][sub]["per_pair_genealogical_monotonicity_pass"]
+                  print("SUCCESS_MATERNAL_INFORMATION_INCREMENT_NOT_GENETIC_HERITABILITY")
+              second=Path("tmp/wikimedia-parent-QID-crosscheck.json")
+              if second.exists():
+                  c=json.loads(second.read_text(encoding="utf-8"))
+                  assert c["sampled_titles"]<=200
+                  assert c["no_JRA_NAR_complete_census_or_biological_heritability_estimated"]
+                  assert c["no_individual_ids_or_rows_in_output"]
+                  print("SECONDARY_PARENT_QID_SOURCE_STATUS",c["status"])
+          PY
+      # NO source raw/CSV artifact upload; only aggregation in ephemeral CI logs.

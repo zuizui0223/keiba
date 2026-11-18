@@ -1,0 +1,149 @@
+{
+  "created_date_jst": "2026-11-18",
+  "status": "INTEGRATED_SCIENTIFIC_EVIDENCE_REGISTRY_NOT_NEW_EXPERIMENT",
+  "research_report": "docs/research/INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md",
+  "source_branches": {
+    "pedigree_to_2027_provenance_chain": {
+      "original_tip": "analysis/jravan-github-server-rehearsal-20261118",
+      "original_tip_commit": "1592be86ab3b1a13a73d02358816871ffd2c2d34",
+      "source_pr_sequence": [
+        43,
+        45,
+        46,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    "independent_japan_genomics": {
+      "source_pr": 44,
+      "source_head_sha": "489aba321cc1635c79e1295ee28d974ee3676628",
+      "source_filenames_copied_as_git_blobs": 8,
+      "joint_individual_identity_with_race_records": false
+    },
+    "market_ABM_and_actual_odds": {
+      "source_pr": 47,
+      "source_head_sha": "f203e6835c92489b42516cf663252582b4e6ea29",
+      "source_filenames_copied_as_git_blobs": 15,
+      "real_market_time_series_with_stable_horse_ID": false
+    }
+  },
+  "real_observations": {
+    "Australian_repeated_first_GPS": {
+      "one_Cannon_Park_horse_ID_ICC_about": 0.43,
+      "later_scored_horses": 36,
+      "later_scored_rows": 46,
+      "own_history_RMSE_seconds": 0.255809,
+      "other_horse_RMSE_seconds": 0.303195,
+      "source": "docs/research/README.md",
+      "evidence_status": "SOURCE_CONDITIONAL_ASSOCIATION_NOT_HERITABILITY"
+    },
+    "Japan_racing_2010_2021": {
+      "analyzed_horses": 90962,
+      "qualified_flat_starts": 2092836,
+      "early_history_sparse_test_rows": 89233,
+      "fixed_midpoint_RMSE": 0.324699,
+      "same_parent_other_horse_RMSE": 0.319341,
+      "trainer_plus_kin_RMSE": 0.317007,
+      "source": "docs/research/JAPAN_REAL_RANK_RESULTS.md",
+      "evidence_status": "SELECTED_HISTORICAL_HOLDOUT_NOT_OFFICIAL_FIRST_START"
+    },
+    "Japan_2022_2024": {
+      "later_source_horses": 12919,
+      "observed_starts": 255484,
+      "no_parent_RMSE": 0.31277751588017505,
+      "with_parent_RMSE": 0.3124550620307501,
+      "gain": 0.0003224538494249751,
+      "fake_parent_pair_shuffles": 19,
+      "shuffles_exceeding_true_gain": 0,
+      "min_attainable_one_sided_plus_one_p": 0.05,
+      "strict_complete_starts": 244147,
+      "strict_enhanced_conditional_family_gain": 0.0002615799999999999,
+      "posthoc_sensitivity_not_independent_replication": true,
+      "source": "docs/research/JAPAN_2022_2024_JOINT_STRICT_STRONG_RESULTS.md"
+    },
+    "Japan_2026_external_and_replay": {
+      "horses": 232,
+      "observed_starts": 480,
+      "original_source_separated_no_kin_RMSE": 0.319681772,
+      "original_source_separated_kin_RMSE": 0.320301606,
+      "historical_2021_only_models_lost_to_midpoint": true,
+      "posthoc_prior_day_updated_no_kin_RMSE": 0.274782409,
+      "own_info_only_refresh_gain_in_family_model_RMSE": 0.04340225,
+      "kin_info_only_refresh_gain_in_family_model_RMSE": 0.002091261,
+      "updated_ordinary_kin_vs_updated_no_kin_negative": true,
+      "year_2026_replay_posthoc_after_inspecting_outcomes": true,
+      "source": "docs/research/JAPAN_2026_OWN_KIN_FACTORIAL_RESULTS.md"
+    },
+    "partial_Wikipedia_A": {
+      "article_horses": 5878,
+      "pairs": 17272503,
+      "documented_positive_paths": 5327594,
+      "explicitly_recorded_dam_parent_links": 642,
+      "removed_positive_paths_when_dams_ablated": 2049634,
+      "nationally_complete_JRA_NAR": false,
+      "source": "docs/research/JAPAN_NATIONAL_PEDIGREE_SCALING.md"
+    },
+    "Meisho_matched_controls": {
+      "actual_names": 38,
+      "within_group_pairs": 703,
+      "matched_controls": 999,
+      "mean_partial_A": 0.0132771,
+      "control_mean_partial_A": 0.011337,
+      "real_A_ge_0_125_pairs": 10,
+      "control_average_A_ge_0_125_pairs": 22.77,
+      "special_kinship_clan_evidence_supported": false,
+      "source": "docs/research/JAPAN_MEISHO_MATCHED_CONTROLS.md"
+    },
+    "Japan_genomic_G": {
+      "original_sample_horses": 370,
+      "post_QC_autosomal_SNPs": 353249,
+      "computed_sample_pairs": 68265,
+      "same_registered_horse_IDs_matched_to_racing_data": false,
+      "source": "docs/research/JAPAN_GENOMIC_RELATIONSHIPS.md"
+    },
+    "market_one_snapshot": {
+      "source_date": "2026-10-18",
+      "races": 9,
+      "starter_quotes": 117,
+      "average_effective_support_horses": 7.8587,
+      "mean_top_favorite_relative_inverse_odds_weight": 0.2448,
+      "genuine_multiple_timestamps_and_votes": false,
+      "source": "docs/research/GENETICS_ODDS_MARKET_REAL_SIM_RESULTS.md"
+    }
+  },
+  "implemented_but_not_empirically_proven": {
+    "investor_voter_ABM": true,
+    "market_odds_threshold_verified": false,
+    "horse_ABM_or_PDE_as_causal_real_behavior_model_verified": false,
+    "genetic_MSTN_effect_in_same_horse_population": false,
+    "JRA_NAR_full_A": false,
+    "joined_genomic_G": false,
+    "true_2027_forward_pre_race_predictions_submitted": 0,
+    "raw_JRA_VAN_license_access_in_repo": false,
+    "trained_2027_real_coefficients": false,
+    "future_2027_actual_horse_predictions": false,
+    "causal_heritable_effect_identified": false,
+    "betting_profit_validated": false
+  },
+  "scholarly_prior_art": {
+    "Japanese_racehorse_mixed_effects": "https://doi.org/10.1111/jbg.12822",
+    "British_speed_animal_model": "https://doi.org/10.1038/s41437-023-00623-8",
+    "MSTN_distance_association": "https://doi.org/10.1111/evj.13058",
+    "ecology_information_use": "https://doi.org/10.1016/j.tree.2005.01.010",
+    "Japan_market_OU_2025": "https://doi.org/10.1016/j.physa.2025.130982",
+    "Japan_last_minute_odds_info": "https://doi.org/10.11167/jbef.18.S1.pp.S1-S4"
+  },
+  "integration_policy": {
+    "no_original_racing_rows_or_named_horses_exported": true,
+    "no_individual_DNA_samples_or_genotypes_redistributed": true,
+    "no_claim_market_ABM_is_measured_human_behavior": true,
+    "former_open_draft_PRs_not_independent_replications": true,
+    "must_preserve_negative_results_and_selection_bias": true
+  }
+}

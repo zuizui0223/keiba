@@ -1,0 +1,35 @@
+name: "JRA 2027 official ID and pre-race known-on private-data preflight tests"
+on:
+  push:
+    branches: [analysis/2026-day-rolling-staleness-20261117]
+    paths:
+      - ".github/workflows/ecology-japan-2027-knownon-tests.yml"
+      - "scripts/ecology_japan_2027_official_knownon_preflight.py"
+      - "tests/test_ecology_japan_2027_official_knownon_preflight.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  official-knownon-private-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate private official source semantics on fictional-only horse and race IDs
+        run: python -m unittest discover -s tests -p "test_ecology_japan_2027_official_knownon_preflight.py" -v
+      - name: Confirm official data is NOT obtained by this source-only test
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("scripts/ecology_japan_2027_official_knownon_preflight.py").read_text()
+          assert "HOLD_ACTUAL_2027_OFFICIAL_RESULTS_AND_FROZEN_MODEL" in p
+          assert "no_raw_horse_ids_names_or_race_rows_serialized" in p
+          assert "result_publication_before_entry_cutoff_required" in p
+          assert "license_and_source_permissions_not_verified_by_code" in p
+          print("OFFICIAL_2027_DATA_UNAVAILABLE_TESTED_SOURCE_CONTRACT_ONLY")
+          PY

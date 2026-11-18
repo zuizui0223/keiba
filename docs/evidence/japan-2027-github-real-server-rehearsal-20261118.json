@@ -1,0 +1,61 @@
+{
+  "status": "REAL_GITHUB_PUSH_SERVER_API_INTEGRATION_SUCCESS_WITH_FICTIONAL_JRA_INPUT_ONLY",
+  "audited_at_jst": "2026-11-18",
+  "successful_live_github_api_run": {
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44255047320",
+    "id": 44255047320,
+    "job_id": 134634603607,
+    "github_server_created_at_utc": "2026-11-18T06:56:27Z",
+    "github_server_created_at_jst": "2026-11-18T15:56:27+09:00",
+    "real_event": "push",
+    "first_attempt": 1,
+    "real_repo": "zuizui0223/keiba",
+    "head_sha": "e1ef76be45b939555fff107d4e1249e0ece6329b",
+    "workflow": ".github/workflows/ecology-japan-2027-server-rehearsal.yml",
+    "real_github_rest_run_endpoint_read": true,
+    "exact_original_commit_file_via_github_contents_endpoint_read": true,
+    "verified_original_git_blob_SHA1": true,
+    "exact_local_and_remote_content_sha256_match": true,
+    "conclusion": "success"
+  },
+  "synthetic_test_results": {
+    "source_manifest_and_server_time_unit_tests": 36,
+    "production_push_workflow_static_security_tests": 4,
+    "total_distinct_test_cases": 40,
+    "all_passed": true,
+    "synthetic_target_start": "2027-01-09T15:15:00+09:00",
+    "synthetic_source_first_observed_on_fake_record": "2026-11-17",
+    "only_simulated_horse_cohort": true,
+    "fictitious_source_rejected_by_production_attestation": true
+  },
+  "implementation_hardening": {
+    "reject_GitHub_run_attempt_gt_1": true,
+    "require_exact_production_workflow_path_for_real_attestation": true,
+    "staging_workflow_path_permitted_only_with_allow_synthetic": true,
+    "separate_original_GitHub_commit_SHA_and_successful_run_attestation_after_race": true,
+    "require_actual_original_GitHub_contents_API_blob_matches_local_bytes": true,
+    "verify_original_git_blob_sha1_and_private_source_sha256": true,
+    "no_real_future_commitment_created_in_docs_commitments_2027": true
+  },
+  "scientific_limits": {
+    "actual_JRA_VAN_source_retrieved": false,
+    "licensed_registry_bloodID_and_pedigree_input": false,
+    "genuine_fitted_M1_M2_coefficient_file": false,
+    "true_2027_pre_race_prediction": false,
+    "true_2027_race_outcome": false,
+    "actual_provider_result_publication_time_proven": false,
+    "official_race_start_verified": false,
+    "actual_future_family_history_predictive_effect_established": false,
+    "causal_genetic_effect_established": false,
+    "complete_national_JRA_NAR_kinship_A": false,
+    "genomic_G_horse_ID_join": false,
+    "wagering_profit_established": false
+  },
+  "disclosures": [
+    "GitHub server created_at is real; all horse/race data and target start are fabricated for the staging rehearsal.",
+    "A synthetic source cannot pass the production source validation gate.",
+    "A pre-race commit's GitHub run can attest its server-side existence, not JRA's first publication time or a source license.",
+    "A post-race original-commit checker requires a completed successful first production push run and exact committed Git blob bytes.",
+    "No real 2027 forecast results, horse-identifying rows, or proprietary licensed racing data are published."
+  ]
+}

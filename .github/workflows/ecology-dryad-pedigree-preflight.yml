@@ -1,0 +1,56 @@
+name: Pedigree Dryad source feasibility (aggregate-only)
+
+on:
+  push:
+    branches: [analysis/ecology-pedigree-forward-20261114]
+    paths:
+      - "scripts/ecology_dryad_kin_source_preflight.py"
+      - "scripts/ecology_pedigree_ablation.py"
+      - "scripts/ecology_pedigree_stress.py"
+      - "tests/test_ecology_pedigree_ablation.py"
+      - "tests/test_ecology_dryad_kin_source_preflight.py"
+      - ".github/workflows/ecology-dryad-pedigree-preflight.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_dryad_kin_source_preflight.py"
+      - "scripts/ecology_pedigree_ablation.py"
+      - "scripts/ecology_pedigree_stress.py"
+      - "tests/test_ecology_pedigree_ablation.py"
+      - "tests/test_ecology_dryad_kin_source_preflight.py"
+      - ".github/workflows/ecology-dryad-pedigree-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-structure-readiness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Synthetic source privacy controls
+        run: python -m unittest discover -s tests -p 'test_ecology_dryad_kin_source_preflight.py' -v
+      - name: Test genetic versus shared-stable identifiability with fabricated cohorts
+        run: python scripts/ecology_pedigree_stress.py --output tmp/kin-confounding-stress.json
+      - name: Fetch only first-party public Dryad sources into volatile job memory
+        run: python scripts/ecology_dryad_kin_source_preflight.py --output tmp/kin-source-preflight.json
+      - name: Assert no claims of empirical kin predictive effects
+        run: |
+          python - <<'PY'
+          import json
+          data=json.load(open('tmp/kin-source-preflight.json'))
+          assert not data['real_relationship_predictive_gain_estimated']
+          assert not data['focal_first_gps_phenotype_available']
+          assert data['no_input_rows_logged_or_committed']
+          assert data['status'] in {
+            'SCHEMA_PREVIEW_ONLY_NO_KIN_PREDICTION',
+            'HOLD_SOURCE_DOWNLOAD_OR_SCHEMA'
+          }
+          PY
+      # Absolutely no source upload/artifact/cache: this is a transient source probe.

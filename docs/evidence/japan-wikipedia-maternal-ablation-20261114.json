@@ -1,0 +1,410 @@
+{
+  "status": "REAL_JAPANESE_WIKIPEDIA_PARENTS_INFORMATION_SENSITIVITY_NOT_NATIONAL",
+  "source": "Japanese Wikipedia Template:競走馬 CC BY-SA",
+  "source_sha256": "e4e25ba13754d8dc60a6160126b30c97641edea043c51be1c1120509d15c1a57",
+  "matches_previous_source_sha": true,
+  "upstream_fetcher_credit": "Sheep Meadow Road Games / Horse Racing Manager",
+  "upstream_credit_url": "https://store.steampowered.com/app/2740170/Horse_Racing_Manager/",
+  "source_horses": 5878,
+  "source_sire_links": 4304,
+  "source_dam_links": 642,
+  "cohorts": {
+    "all_language_articles": {
+      "status": "SOURCE_CONDITIONAL_MATCHED_PAIRS_PARENT_LINK_ABLATION",
+      "horses": 5878,
+      "same_target_pairs": 17272503,
+      "counts": {
+        "full_documented_path": 5327594,
+        "sire_documented_path": 3277960,
+        "dam_documented_path": 1186,
+        "path_lost_if_mother_removed": 2049634,
+        "A_increases_from_mother_links": 4912213,
+        "either_one_parent_graph_path": 3278695,
+        "full_A_at_least_0.5": 4739,
+        "sire_A_at_least_0.5": 4093,
+        "dam_A_at_least_0.5": 557,
+        "crosses_0.5_when_mother_added": 646,
+        "full_A_at_least_0.25": 55186,
+        "sire_A_at_least_0.25": 52114,
+        "dam_A_at_least_0.25": 980,
+        "crosses_0.25_when_mother_added": 3072,
+        "full_A_at_least_0.125": 201794,
+        "sire_A_at_least_0.125": 181259,
+        "dam_A_at_least_0.125": 1135,
+        "crosses_0.125_when_mother_added": 20535,
+        "full_A_at_least_0.0625": 507794,
+        "sire_A_at_least_0.0625": 429102,
+        "dam_A_at_least_0.0625": 1178,
+        "crosses_0.0625_when_mother_added": 78692
+      },
+      "sums_of_A_across_identical_pairs": {
+        "both_available_parent_links": 77225.92545879932,
+        "sire_links_only": 57113.66068032384,
+        "dam_links_only": 406.5625,
+        "increment_from_available_mother_links": 20112.264779014433
+      },
+      "no_underlying_genetic_paternal_maternal_variance_estimated": true,
+      "per_pair_genealogical_monotonicity_pass": true
+    },
+    "japan_origin_infobox_articles": {
+      "status": "SOURCE_CONDITIONAL_MATCHED_PAIRS_PARENT_LINK_ABLATION",
+      "horses": 3411,
+      "same_target_pairs": 5815755,
+      "counts": {
+        "full_documented_path": 2555223,
+        "sire_documented_path": 1675440,
+        "dam_documented_path": 721,
+        "path_lost_if_mother_removed": 879783,
+        "A_increases_from_mother_links": 2358532,
+        "either_one_parent_graph_path": 1675835,
+        "full_A_at_least_0.5": 1759,
+        "sire_A_at_least_0.5": 1423,
+        "dam_A_at_least_0.5": 266,
+        "crosses_0.5_when_mother_added": 336,
+        "full_A_at_least_0.25": 43381,
+        "sire_A_at_least_0.25": 42002,
+        "dam_A_at_least_0.25": 554,
+        "crosses_0.25_when_mother_added": 1379,
+        "full_A_at_least_0.125": 163107,
+        "sire_A_at_least_0.125": 149641,
+        "dam_A_at_least_0.125": 678,
+        "crosses_0.125_when_mother_added": 13466,
+        "full_A_at_least_0.0625": 397799,
+        "sire_A_at_least_0.0625": 344261,
+        "dam_A_at_least_0.0625": 714,
+        "crosses_0.0625_when_mother_added": 53538
+      },
+      "sums_of_A_across_identical_pairs": {
+        "both_available_parent_links": 52930.870459242346,
+        "sire_links_only": 42249.05625896063,
+        "dam_links_only": 222.96875,
+        "increment_from_available_mother_links": 10681.814200555382
+      },
+      "no_underlying_genetic_paternal_maternal_variance_estimated": true,
+      "per_pair_genealogical_monotonicity_pass": true
+    },
+    "meisho_named_articles": {
+      "status": "SOURCE_CONDITIONAL_MATCHED_PAIRS_PARENT_LINK_ABLATION",
+      "horses": 38,
+      "same_target_pairs": 703,
+      "counts": {
+        "full_documented_path": 311,
+        "sire_documented_path": 277,
+        "dam_documented_path": 3,
+        "path_lost_if_mother_removed": 34,
+        "A_increases_from_mother_links": 268,
+        "either_one_parent_graph_path": 277,
+        "full_A_at_least_0.5": 3,
+        "sire_A_at_least_0.5": 1,
+        "dam_A_at_least_0.5": 2,
+        "crosses_0.5_when_mother_added": 2,
+        "full_A_at_least_0.25": 10,
+        "sire_A_at_least_0.25": 7,
+        "dam_A_at_least_0.25": 3,
+        "crosses_0.25_when_mother_added": 3,
+        "full_A_at_least_0.125": 10,
+        "sire_A_at_least_0.125": 7,
+        "dam_A_at_least_0.125": 3,
+        "crosses_0.125_when_mother_added": 3,
+        "full_A_at_least_0.0625": 94,
+        "sire_A_at_least_0.0625": 92,
+        "dam_A_at_least_0.0625": 3,
+        "crosses_0.0625_when_mother_added": 2
+      },
+      "sums_of_A_across_identical_pairs": {
+        "both_available_parent_links": 9.333827059484321,
+        "sire_links_only": 7.7911376953125,
+        "dam_links_only": 1.25,
+        "increment_from_available_mother_links": 1.542689364171821
+      },
+      "no_underlying_genetic_paternal_maternal_variance_estimated": true,
+      "per_pair_genealogical_monotonicity_pass": true
+    }
+  },
+  "parent_data_completeness_by_foal_decade": {
+    "1610s": {
+      "horses": 1,
+      "verified_sire_page_link": 0,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1630s": {
+      "horses": 1,
+      "verified_sire_page_link": 1,
+      "verified_dam_page_link": 1,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1660s": {
+      "horses": 1,
+      "verified_sire_page_link": 0,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1670s": {
+      "horses": 3,
+      "verified_sire_page_link": 0,
+      "verified_dam_page_link": 1,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1690s": {
+      "horses": 2,
+      "verified_sire_page_link": 0,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1700s": {
+      "horses": 5,
+      "verified_sire_page_link": 2,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1710s": {
+      "horses": 5,
+      "verified_sire_page_link": 4,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1720s": {
+      "horses": 6,
+      "verified_sire_page_link": 3,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1730s": {
+      "horses": 6,
+      "verified_sire_page_link": 5,
+      "verified_dam_page_link": 2,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1740s": {
+      "horses": 7,
+      "verified_sire_page_link": 6,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1750s": {
+      "horses": 6,
+      "verified_sire_page_link": 2,
+      "verified_dam_page_link": 1,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1760s": {
+      "horses": 5,
+      "verified_sire_page_link": 3,
+      "verified_dam_page_link": 1,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1770s": {
+      "horses": 8,
+      "verified_sire_page_link": 5,
+      "verified_dam_page_link": 1,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1780s": {
+      "horses": 8,
+      "verified_sire_page_link": 5,
+      "verified_dam_page_link": 1,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1790s": {
+      "horses": 12,
+      "verified_sire_page_link": 9,
+      "verified_dam_page_link": 1,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1800s": {
+      "horses": 5,
+      "verified_sire_page_link": 3,
+      "verified_dam_page_link": 1,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1810s": {
+      "horses": 5,
+      "verified_sire_page_link": 4,
+      "verified_dam_page_link": 1,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1820s": {
+      "horses": 4,
+      "verified_sire_page_link": 3,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1830s": {
+      "horses": 11,
+      "verified_sire_page_link": 5,
+      "verified_dam_page_link": 2,
+      "both_parents": 2,
+      "meisho_name": 0
+    },
+    "1840s": {
+      "horses": 9,
+      "verified_sire_page_link": 8,
+      "verified_dam_page_link": 2,
+      "both_parents": 2,
+      "meisho_name": 0
+    },
+    "1850s": {
+      "horses": 5,
+      "verified_sire_page_link": 3,
+      "verified_dam_page_link": 1,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1860s": {
+      "horses": 12,
+      "verified_sire_page_link": 7,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1870s": {
+      "horses": 15,
+      "verified_sire_page_link": 6,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1880s": {
+      "horses": 16,
+      "verified_sire_page_link": 11,
+      "verified_dam_page_link": 0,
+      "both_parents": 0,
+      "meisho_name": 0
+    },
+    "1890s": {
+      "horses": 29,
+      "verified_sire_page_link": 21,
+      "verified_dam_page_link": 4,
+      "both_parents": 4,
+      "meisho_name": 0
+    },
+    "1900s": {
+      "horses": 43,
+      "verified_sire_page_link": 26,
+      "verified_dam_page_link": 3,
+      "both_parents": 1,
+      "meisho_name": 0
+    },
+    "1910s": {
+      "horses": 37,
+      "verified_sire_page_link": 24,
+      "verified_dam_page_link": 2,
+      "both_parents": 2,
+      "meisho_name": 0
+    },
+    "1920s": {
+      "horses": 55,
+      "verified_sire_page_link": 34,
+      "verified_dam_page_link": 7,
+      "both_parents": 7,
+      "meisho_name": 0
+    },
+    "1930s": {
+      "horses": 87,
+      "verified_sire_page_link": 66,
+      "verified_dam_page_link": 19,
+      "both_parents": 18,
+      "meisho_name": 0
+    },
+    "1940s": {
+      "horses": 110,
+      "verified_sire_page_link": 86,
+      "verified_dam_page_link": 7,
+      "both_parents": 7,
+      "meisho_name": 0
+    },
+    "1950s": {
+      "horses": 166,
+      "verified_sire_page_link": 110,
+      "verified_dam_page_link": 19,
+      "both_parents": 14,
+      "meisho_name": 0
+    },
+    "1960s": {
+      "horses": 268,
+      "verified_sire_page_link": 190,
+      "verified_dam_page_link": 35,
+      "both_parents": 32,
+      "meisho_name": 0
+    },
+    "1970s": {
+      "horses": 323,
+      "verified_sire_page_link": 238,
+      "verified_dam_page_link": 39,
+      "both_parents": 31,
+      "meisho_name": 0
+    },
+    "1980s": {
+      "horses": 578,
+      "verified_sire_page_link": 465,
+      "verified_dam_page_link": 41,
+      "both_parents": 37,
+      "meisho_name": 2
+    },
+    "1990s": {
+      "horses": 928,
+      "verified_sire_page_link": 766,
+      "verified_dam_page_link": 123,
+      "both_parents": 113,
+      "meisho_name": 7
+    },
+    "2000s": {
+      "horses": 1256,
+      "verified_sire_page_link": 952,
+      "verified_dam_page_link": 136,
+      "both_parents": 117,
+      "meisho_name": 15
+    },
+    "2010s": {
+      "horses": 1251,
+      "verified_sire_page_link": 962,
+      "verified_dam_page_link": 141,
+      "both_parents": 122,
+      "meisho_name": 12
+    },
+    "2020s": {
+      "horses": 422,
+      "verified_sire_page_link": 189,
+      "verified_dam_page_link": 33,
+      "both_parents": 14,
+      "meisho_name": 2
+    },
+    "unknown": {
+      "horses": 167,
+      "verified_sire_page_link": 80,
+      "verified_dam_page_link": 17,
+      "both_parents": 16,
+      "meisho_name": 0
+    }
+  },
+  "limits": [
+    "Both sex-specific sensitivity graphs remove observed parent LINKS, not true biological parental inheritance.",
+    "The three comparisons are made on identical within-cohort pairs; all are subject to source missingness.",
+    "Wikipedia article existence selects notable horses and does not define all JRA/NAR runners.",
+    "Unobserved maternal paths are not true unrelatedness; parent link ablation cannot correct missing mothers.",
+    "No horse-specific output, genome data, random mating assumptions, heritability, or predictive race gains."
+  ],
+  "calculation_seconds": 292.094,
+  "provenance_action": "https://github.com/zuizui0223/keiba/actions/runs/43585740000",
+  "confirmation": "same SHA as 2026-11-14 baseline; identical horses and pair roster for each separate graph",
+  "analysis_goal": "source-information ablation, not genetic paternal/maternal effect identification"
+}

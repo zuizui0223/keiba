@@ -158,5 +158,14 @@ or profitable wagering. Those are different estimands.
 | P2 | Build fixed class/going per-horse exposure census | Count of repeated cross-going strata and measured missingness, then power/design audit |
 | P3 | Validate pre-race rival exposures and complete outcome selection | Only then fit real opponent models |
 | P4 | Update English manuscript claims and replication ledger without moving source versions | Traceable evidence-to-figure links and transparent limitations |
+| P5 | [Pedigree prediction](PEDIGREE_FORWARD.md): acquire authorized sire/dam IDs and reconcile original HORSES ID, then evaluate relatives' predictive contribution | **Currently empirical HOLD**; report true cold-start vs own-history future RMSE and stable/trainer confounding, not heritability |
+
+| P6 | [Japan Meisho owner/name/kin comparison](JAPAN_MEISHO_DESIGN.md): verify a complete time-stamped Japanese race × stable horse ID × as-of owner panel and legally reconcile pedigree sources | **11 manually verified registry profiles only (actual pedigree links); race prediction HOLD**. Fit predeclared five-channel M0/name/owner/kin/owner+kin, test matched exact future rows and independent family/management overlap |
+
+| P7 | [National JRA+NAR exact pedigree A](JAPAN_NATIONAL_PEDIGREE_SCALING.md) using an authorized official registry export and a separate registered-horse cohort list | **Two small real QID/JBIS cohorts computed only**; full national source/access/coverage gate **HOLD**. Use per-horse F/sibling counts and selective pair queries, not a dense N×N dump |
+
+| P8 | [Maternal source sensitivity and Wikidata QID audit](JAPAN_PEDIGREE_MATERNAL_SOURCE_SENSITIVITY.md): quantify missing maternal links on identical known horse pairs and screen exact page-to-QID supplementary parent claims | **Real same-source paired ablation completed** (5,878 Wiki articles; 2,049,634 lost known A paths when mother links removed). QID pilot is bounded and secondary; neither is nationwide genetic heritability |
+
+| P9 | [Meisho matched-coverage bloodline comparison](JAPAN_MEISHO_MATCHED_CONTROLS.md): verify name group versus exact decade/country/sire/dam-documentation-matched control groups and stress source drift | **DONE on REAL selected articles**, 38 Meisho-name articles vs 999 source-control sets; mean A 0.01328 vs 0.01134, **NOT a genetic family/heritability result**, national owner histories and official pedigrees still HOLD |
 
 **Do not infer successful execution from items in this queue.**

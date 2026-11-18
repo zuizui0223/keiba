@@ -1,0 +1,70 @@
+name: "Integrated Japanese pedigree, SNP-G and odds/market source-only research QA"
+
+on:
+  push:
+    branches: [analysis/integrate-ecology-evidence-20261118]
+    paths:
+      - ".github/workflows/integration-genomic-market-qa.yml"
+      - "scripts/ecology_japan_eva_genomic.py"
+      - "scripts/ecology_genetics_market_bridge.py"
+      - "scripts/ecology_market_snapshot_structure.py"
+      - "scripts/ecology_market_voter_abm_anchor.py"
+      - "tests/test_ecology_japan_eva_genomic.py"
+      - "tests/test_ecology_japan_eva_provenance.py"
+      - "tests/test_ecology_genetics_market_bridge.py"
+      - "tests/test_ecology_market_snapshot_structure.py"
+      - "tests/test_ecology_market_voter_abm_anchor.py"
+      - "docs/evidence/integrated-ecology-kinship-genome-market-20261118.json"
+  pull_request:
+    paths:
+      - ".github/workflows/integration-genomic-market-qa.yml"
+      - "scripts/ecology_japan_eva_genomic.py"
+      - "scripts/ecology_genetics_market_bridge.py"
+      - "scripts/ecology_market_snapshot_structure.py"
+      - "scripts/ecology_market_voter_abm_anchor.py"
+      - "docs/evidence/integrated-ecology-kinship-genome-market-20261118.json"
+
+permissions:
+  contents: read
+
+jobs:
+  research-source-evidence-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned open-source analytical runtime
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Real-study identity safety and strictly synthetic G/market tests
+        run: |
+          for pattern in \
+            test_ecology_japan_eva_genomic.py \
+            test_ecology_japan_eva_provenance.py \
+            test_ecology_genetics_market_bridge.py \
+            test_ecology_market_snapshot_structure.py \
+            test_ecology_market_voter_abm_anchor.py
+          do
+            PYTHONPATH=scripts python -m unittest discover -s tests -p "$pattern" -v
+          done
+      - name: Validate integrated status markers without reusing 2026 holdout
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("docs/evidence/integrated-ecology-kinship-genome-market-20261118.json")
+          j=json.loads(p.read_text(encoding="utf-8"))
+          assert j["real_observations"]["Japan_genomic_G"]["same_registered_horse_IDs_matched_to_racing_data"] is False
+          assert j["real_observations"]["Meisho_matched_controls"]["special_kinship_clan_evidence_supported"] is False
+          assert j["implemented_but_not_empirically_proven"]["genetic_MSTN_effect_in_same_horse_population"] is False
+          assert j["implemented_but_not_empirically_proven"]["market_odds_threshold_verified"] is False
+          assert j["real_observations"]["Japan_2026_external_and_replay"]["year_2026_replay_posthoc_after_inspecting_outcomes"] is True
+          assert j["implemented_but_not_empirically_proven"]["true_2027_forward_pre_race_predictions_submitted"] == 0
+          assert j["integration_policy"]["no_original_racing_rows_or_named_horses_exported"]
+          print("INTEGRATED_ECOLOGY_POSITIVES_NEGATIVES_SYNTHETIC_HOLD_SEPARATION_PASS")
+          PY

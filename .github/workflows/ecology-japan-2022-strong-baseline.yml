@@ -1,0 +1,73 @@
+name: "Japan 2022-24 older-horse stronger prehistory versus family"
+on:
+  push:
+    branches: [analysis/japan-independent-2022-anchor-gate-20261115]
+    paths:
+      - ".github/workflows/ecology-japan-2022-strong-baseline.yml"
+      - "scripts/ecology_japan_2022_strong_portable_baseline.py"
+      - "tests/test_ecology_japan_2022_strong_portable_baseline.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-strong-prehistory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fixed models and download dependencies
+        run: python -m pip install pandas==2.2.3 numpy==2.2.6 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Unit test no future information and age-sex-proxy missingness
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_strong_portable_baseline.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_denominator_audit.py" -v
+      - name: Download pinned old source transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download pinned post-2021 source transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Audit original score parity and evaluate the post-hoc stronger baseline
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_strong_portable_baseline.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --output tmp/japan-2022-2024-strong-prehistory-aggregate.json
+      - name: Fail closed if denominator cohort or interpretation gate is violated
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open("tmp/japan-2022-2024-strong-prehistory-aggregate.json",encoding="utf-8"))
+          assert j["status"]=="POSTHOC_2022_2024_PRE2022_AGE_SEX_RECENCY_HISTORY_BASELINE_NOT_CAUSAL"
+          assert j["pooled"]["rows"]==255484 and j["pooled"]["unique_horses"]==12919
+          assert j["model_features"]["posthoc_not_preregistered"]
+          assert j["no_names_ids_or_individual_results_exported"]
+          print("POSTHOC_STRONG_SOURCE_HISTORY_GATE",j["status"])
+          PY
+      - name: Delete private original data before publishing only summary
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-strong-portable-prehistory-aggregate-only
+          path: tmp/japan-2022-2024-strong-prehistory-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14

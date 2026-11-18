@@ -5,6 +5,12 @@
 > predictions, odds and wagering are a separate technical track:
 > [betting-methods index](../betting/README.md).
 
+## Integrated November 2026 Japan / genotype / market research
+
+Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
+
+Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
+
 ## Central ecological question
 
 **Under which observational conditions does an individual horse's previous
@@ -71,6 +77,76 @@ and [synthetic absolute-speed stress audit](../ecology-h2-absolute-stress-audit.
 positive pooled horse-ID ICCs use different first-section marker
 distributions and have **no jointly estimable identical-marker
 ICC subgroup**. [Source audit](../ecology-rq-eagle-farm-real-icc-cross-site-audit.md).
+
+## New, not-yet-empirical extension: pedigree-based future prediction
+
+[**Pedigree forward protocol and offline scorer**](PEDIGREE_FORWARD.md) tests
+whether relatives' earlier absolute first-GPS timing provides incremental
+future predictive information beyond a horse's own history. The as-of
+pedigree coefficients, cold-start split and synthetic regression tests
+are implemented; a [**simulation-only trainer-confounding falsification**](PEDIGREE_FALSIFICATION.md) demonstrates why predictive gains are not heritability; **no validated original HORSES-ID × sire/dam crosswalk exists**
+for the current real cohort, so its kinship predictive effect remains
+**HOLD / UNTESTED**. This is not heritability or a horse-racing odds model.
+
+## Japan case study — Meisho name is not a pedigree
+
+[**Japan Meisho study / real JBIS maternal-kin evidence**](JAPAN_MEISHO_DESIGN.md)
+adds 11 hand-verified public JBIS profiles (9 named メイショウ), three
+different-sire shared-dam pairs, and 13 pairs linked through documented
+maternal paths (including parents). This is **real identity evidence,
+not actual timing prediction**. The separate strictly time-forward
+**synthetic** scorer compares a common name prefix, documented pre-race
+owner IDs, known kin, and combined owner+kin on the SAME future targets.
+The real Japanese name/owner/kin predictive improvement remains **HOLD**:
+original race-level GPS, pre-race owner versions, stable JRA/JBIS crosswalk
+and licensed longitudinal outcomes are not yet joined.
+
+## Meisho naming-group matched null: real-source negative/control evidence
+
+[**Meisho name group versus 999 coverage-matched real horse sets**](JAPAN_MEISHO_MATCHED_CONTROLS.md): in a **new 5,879-article Wikipedia source version** (different SHA from the earlier frozen 5,878-article study), 38 named Meisho horses had 703 within-group pairs and mean partial pedigree A **0.01328**, vs **0.01134** for decade/country/parent-link-coverage-matched control sets. This is **not compelling evidence of a systematically special high-kinship clan**; among the same control sets the frequency of A>=0.125 pairs was actually lower for Meisho (10 vs mean 22.77). The source cohort is selected, dam IDs sparse, and no breeding causal or racing-performance prediction is justified. [Reproducible aggregate result](../evidence/japan-meisho-coverage-matched-kinship-20261114.json).
+
+## Nationwide pedigree computation: source gate still OPEN
+
+[**Japan JRA/NAR full-registry kinship method**](JAPAN_NATIONAL_PEDIGREE_SCALING.md)
+adds exact pedigree numerator A, partial inbreeding F, per-horse shared
+parent/full-sib/half-sib counts, a bounded Wikidata CC0 check, and sparse
+pair-query output. It was **actually run** on 11 manually checked real
+profiles (all 55 pairs, 13 nonzero documented maternal paths) and 12
+Wikidata Japan-origin QIDs (all 66 pairs, 2 nonzero documented paths;
+deeper ancestors HTTP 429). **Neither is the complete JRA+NAR register.**
+No complete national pedigree export was obtained; a countrywide genetic
+matrix, inbreeding distribution or speed prediction must NOT be claimed.
+
+## Large real public-data pedigree benchmark (2026-11-14)
+
+The source-conditional [Japan national scaling report](JAPAN_NATIONAL_PEDIGREE_SCALING.md)
+now also includes an **actual large-source subset**: 5,878 Japanese-language
+Wikipedia racehorse article IDs with **17,272,503 exact partial-pedigree A
+pair calculations** (5,327,594 with a documented positive ancestral path).
+Among 3,411 entries explicitly labelled Japanese-born, 5,815,755 pairs
+were scored (2,555,223 positive documented paths). The mother link is
+available for only 642/5,878 article IDs, so a positive A does not
+establish close kin, and missing paths cannot be treated as non-kin.
+The 38 メイショウ-prefixed Wikipedia articles form **703 within-prefix
+pairs (311 with documented paths)**, not a Japanese ownership or breeding
+census. [Frozen source SHA, both reruns, denominators and bins](../evidence/japan-wikipedia-actual-kinship-20261114.json).
+**New real-data source-information contrast:** removing the 642 documented
+maternal page links from the SAME 5,878-horse source removes **2,049,634**
+of the previously documented positive A paths (**38.5%**), and reduces
+A for **4,912,213** same-target pairs. Among Japan-born-infobox
+articles the missing-path count is **879,783**, and among 38 Meisho-name
+articles **34**. This quantifies pedigree-source sensitivity, **not**
+a maternal genetic variance or predictive racing effect.
+[Fixed-SHA paired source-ablation evidence](../evidence/japan-wikipedia-maternal-ablation-20261114.json)
+and [protocol](JAPAN_PEDIGREE_MATERNAL_SOURCE_SENSITIVITY.md).
+
+A separate exact Japanese Wikipedia page → Wikidata QID cross-check on
+**200 selected real articles** (all 38 Meisho titles included) found
+**12 candidate new mother QID links** absent from the article baseline;
+none was silently merged into the main pedigree.
+[Secondary parent audit](../evidence/japan-wikimedia-200-parent-qid-audit-20261114.json).
+
+**JRA+NAR population-complete A and prediction effects remain HOLD.**
 
 ## Practical directory map (preserves working imports)
 

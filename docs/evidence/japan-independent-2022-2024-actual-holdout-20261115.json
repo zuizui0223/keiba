@@ -1,0 +1,87 @@
+{
+  "status": "ACTUAL_INDEPENDENT_2022_2024_SOURCE_HOLDOUT_SCORE_NOT_GENETIC_CAUSATION",
+  "evidence_type": "summary_recovered_from_successful_GitHub_Actions_job_stdout",
+  "source_run_url": "https://github.com/zuizui0223/keiba/actions/runs/43693232874",
+  "source_run_id": 43693232874,
+  "source_job_id": 132748074793,
+  "source_commit_sha": "4bbb295f01e29af445aec2d4659749b4570f4111",
+  "source_artifact_id": 14153256321,
+  "source_artifact_name": "japan-independent-2022-sqlite-metadata-only",
+  "source_artifact_zip_digest": "sha256:497eaf0ada05982ae7802c8f1d0379947eb2748d99b19824445cfacfde83ca8e",
+  "independent_sqlite_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "identity_gate": {
+    "historically_two_event_matched_horses": 20400,
+    "pre_2022_only": true,
+    "independent_future_raw_rows_2022_2025": 262343
+  },
+  "training_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "evaluations": {
+    "2022": {
+      "rows": 126031,
+      "horses": 12789,
+      "rmse_midpoint": 0.32152696129625824,
+      "rmse_no_kin": 0.31091287404615103,
+      "rmse_kin": 0.3104409974713198,
+      "gain": 0.00047187657483122036
+    },
+    "2023": {
+      "rows": 84768,
+      "horses": 8806,
+      "rmse_midpoint": 0.3196080234403829,
+      "rmse_no_kin": 0.31843318412381255,
+      "rmse_kin": 0.31822087585184033,
+      "gain": 0.0002123082719722169
+    },
+    "2024": {
+      "rows": 44685,
+      "horses": 5249,
+      "rmse_midpoint": 0.3172121463882306,
+      "rmse_no_kin": 0.31972503508172423,
+      "rmse_kin": 0.31965555395469836,
+      "gain": 0.00006948112702587217
+    },
+    "pooled_2022_2024": {
+      "rows": 255484,
+      "unique_horses": 12919,
+      "races": 36955,
+      "rmse_midpoint": 0.3209768069633041,
+      "rmse_portable_no_kin": 0.31277751588017505,
+      "rmse_portable_kin": 0.3124550620307501,
+      "gain_no_kin_minus_kin": 0.0003224538494249751,
+      "ci95_horse_cluster": [
+        0.00011701761195821447,
+        0.0005079423598408962
+      ],
+      "horse_clusters": 12919,
+      "ci95_race_day_cluster": [
+        0.00018888280070835373,
+        0.0004595155289942449
+      ],
+      "race_day_clusters": 1067,
+      "bootstrap_draws": 399
+    },
+    "2025_partial": {
+      "rows": 6837,
+      "horses": 2475,
+      "rmse_midpoint": 0.31231884932857235,
+      "rmse_no_kin": 0.31505513564593146,
+      "rmse_kin": 0.3154154799085583,
+      "gain": -0.0003603442626268216
+    }
+  },
+  "claims_restricted": [
+    "direct-parent shared-other-horse history, not pedigree A or genomic G",
+    "selected surviving older horses, not all JRA/NAR starters",
+    "source rights not independently verified",
+    "old-source classified-finishers outcome vs new-source declared-runners outcome mismatch",
+    "bootstrap intervals are one-way, not causal",
+    "2025 partial, exploratory; no profitable-betting implication"
+  ],
+  "rights_clear": false,
+  "pre_2022_frozen_model": true
+}
