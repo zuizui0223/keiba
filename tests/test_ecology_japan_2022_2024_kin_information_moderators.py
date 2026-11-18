@@ -65,6 +65,26 @@ class KinshipInformationModeratorTests(unittest.TestCase):
         self.assertEqual(q.iloc[1],pd.Timestamp("2021-12-01"))
         self.assertTrue(pd.isna(q.iloc[2]))
 
+    def test_two_event_identity_can_have_zero_eligible_old_history(self):
+        old,t=old_future()
+        # D could have a valid two-date raw-source A/B identity witness but
+        # no race rows surviving this specific source-A eligibility filter.
+        # Its parent proxy still exists and must NOT be thrown away.
+        d=t.iloc[0].copy()
+        d["horse"]="D"
+        d["dam_id"]="DD"
+        d["race"]="target-D"
+        t=pd.concat([t,pd.DataFrame([d])],ignore_index=True)
+        ctx,qa=fixed_sourceA_context(old,t)
+        self.assertEqual(ctx["own_record_count_bin"].iloc[-1],"0-3")
+        self.assertEqual(ctx["sourceA_own_record_age_bin"].iloc[-1],
+                         "NO_RECORDED_DATE")
+        self.assertEqual(ctx["other_same_parent_horse_count_bin"].iloc[-1],
+                         "2-4_peers")
+        self.assertEqual(qa["focal_rows_with_zero_eligible_A_history"],1)
+        self.assertTrue(qa[
+            "raw_cross_source_identity_two_events_NOT_guaranteed_eligible_model_history"])
+
     def test_unmatched_dam_record_is_not_pseudo_relative(self):
         old,t=old_future()
         q=peer_last_day_excluding_self(old,t,"dam_id")
