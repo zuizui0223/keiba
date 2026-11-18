@@ -152,6 +152,26 @@ class GateShiftDecompositionTests(unittest.TestCase):
                 {"t":a,"p2":m2a,"pg":ga,"ownbin":ba,"selected":np.ones(len(a),bool)},
                 {"t":b,"p2":m2b,"pg":gb,"ownbin":bb,"selected":np.ones(len(b),bool)})
 
+    def test_participation_selection_matched_year_and_later_remaining_add_exactly(self):
+        from ecology_japan_2022_24_gate_shift_decomposition import (
+            observed_participant_set_accounting
+        )
+        first={"MSE_advantage_GATE_over_always_M2":0.00005}
+        later={"MSE_advantage_GATE_over_always_M2":-0.00013}
+        matched={
+            "mean_MSE_advantage_GATE_over_M2_first_year":-0.00003,
+            "mean_MSE_advantage_GATE_over_M2_later_year":-0.00012,
+            "matched_horses":100
+        }
+        result=observed_participant_set_accounting(first,later,matched)
+        self.assertTrue(result["three_terms_sum_to_full_year_change"])
+        self.assertAlmostEqual(result["full_year_change_in_MSE_gate_advantage"],-0.00018)
+        self.assertAlmostEqual(result["2022_later_participant_subset_vs_all_2022_MSE_difference"],-0.00008)
+        self.assertAlmostEqual(result["same_observed_horses_later_minus_2022_MSE_difference"],-0.00009)
+        self.assertAlmostEqual(result["later_year_whole_vs_matched_participants_MSE_difference"],-0.00001)
+        self.assertTrue(result["the_2022_participant_subset_is_selected_using_later_observation"])
+        self.assertTrue(result["missing_in_later_year_NOT_certified_dead_retired_or_unfit"])
+
     def test_historical_reference_scores_preserved_as_original_results(self):
         self.assertTrue(STATUS.startswith("POSTHOC_"))
         self.assertTrue(
