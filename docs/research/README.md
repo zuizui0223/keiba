@@ -9,6 +9,8 @@
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
 
+**New explicit information-precision hypotheses:** [own-history vs family-history posterior precision and a correlated-context falsification](INFORMATION_PRECISION_HIERARCHY_ECOLOGY_20261118.md), with [regenerable real aggregate signs plus analytic-only toy audit](../evidence/information-precision-hierarchy-audit-20261118.json). The toy parameters are not estimates of additive genetic covariance, and the cross-section market source contains no market-odds time trajectory. A future biological vs human-market information test requires separate real race-ID and known-on time series.
+
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
 ## Central ecological question
