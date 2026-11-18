@@ -1,0 +1,31 @@
+name: "2022-24 racehorse kin gate failure: empirical selection accounting evidence guards"
+
+on:
+  push:
+    branches: [main, analysis/2022-24-gate-failure-decomposition-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-gate-decomp-evidence.yml"
+      - "tests/test_ecology_japan_2022_24_gate_shift_evidence.py"
+      - "docs/evidence/japan-2022-24-gate-shift-composition-paired-20261118.json"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-gate-decomp-evidence.yml"
+      - "tests/test_ecology_japan_2022_24_gate_shift_evidence.py"
+      - "docs/evidence/japan-2022-24-gate-shift-composition-paired-20261118.json"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-signed-positive-and-negative-empirical-aggregates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify signed group composition and matched-horse evidence, without source records
+        run: |
+          python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_gate_shift_evidence.py" -v

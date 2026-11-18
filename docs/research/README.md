@@ -21,6 +21,8 @@ The [source-locked 244,147-start descriptive stratification](JAPAN_2022_2024_KIN
 
 The [real-source calendar-forward diagnostic](JAPAN_2022_KIN_GATE_2023_24_TRANSFER_RESULTS.md) selected a conditional family-history-use rule using 2022 results alone, then evaluated it unchanged on 2023 and 2024. The selected rule was best among 14 candidates in 2022 but **did not outperform always-family M2 in either later year** and lost to the fixed midpoint in 2024. This demonstrates instability of a decision rule in previously inspected historical source data; **not** an untouched future holdout, a pedigree A/genomic G causal effect or observed human-market information transmission. [Aggregate-only negative evidence](../evidence/japan-2022-trained-kin-gate-2023-24-transfer-20261118.json).
 
+**Why the 2022-selected family-information gate fails over years:** the [locked real 244,147-start cohort decomposition](JAPAN_2022_24_GATE_FAILURE_DECOMPOSITION_RESULTS.md) separates changing focal-own-history-bin composition from differences within those bins (2022→24 descriptive MSE-accounting 5.7% vs 94.3%), and separately examines which horses appear in the later year (42.3% of signed degradation) vs changes in race-year forecast errors among the same 5,163 horse-ID candidates (57.6%). These are exact algebraic descriptive shares, **not causal selection or genetic effects**; the paired-horse single-way bootstrap interval includes zero. [Source-hash-locked aggregate](../evidence/japan-2022-24-gate-shift-composition-paired-20261118.json).
+
 ## Central ecological question
 
 **Under which observational conditions does an individual horse's previous

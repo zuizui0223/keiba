@@ -1,0 +1,96 @@
+name: "2022-24 family-information gate failure: cohort composition vs within-bin drift"
+
+on:
+  push:
+    branches: [analysis/2022-24-gate-failure-decomposition-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-gate-shift.yml"
+      - "scripts/ecology_japan_2022_24_gate_shift_decomposition.py"
+      - "tests/test_ecology_japan_2022_24_gate_shift_decomposition.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  decompose-original-2022-24-strong-fixed-predictions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin numerical and source acquisition packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Run synthetic exact-composition and conditional-change tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_gate_shift_decomposition.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_trained_family_gate.py" -v
+      - name: Download SHA-pinned historical source A transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download SHA-pinned historical source B transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",
+              local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Recompute original strict cohort and exact year decomposition
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_24_gate_shift_decomposition.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/2022-24-gate-shift-decomposition-aggregate.json \
+            > tmp/summary-only.txt
+      - name: Fail-closed source identity, year scores, exact MSE parity, negatives and privacy
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/2022-24-gate-shift-decomposition-aggregate.json").read_text())
+          assert j["status"]=="POSTHOC_2022_TO_2024_KIN_GATE_COMPOSITION_VS_WITHIN_BIN_MSE_NOT_CAUSAL"
+          assert j["strict_source_qa"]["strict_focal_rows"]==244147
+          assert j["strict_source_qa"]["strict_focal_horses"]==12887
+          assert j["strict_source_qa"]["strict_races"]==35333
+          assert j["selected_rule_2022_only"]=="own_upto_8to15__peer_from_one_recorded_peer"
+          assert j["outcomes_2023_2024_previously_inspected_so_NOT_independent_test"]
+          assert j["source_A_modifiers_from_pre2022_only"]
+          assert j["2027_real_pre_race_predictions_submitted"]==0
+          assert j["no_individual_horse_names_race_IDs_predictions_or_raw_rows_exported"]
+          for period in ("2022_to_2023","2022_to_2024"):
+              d=j["ref_2022_exact_MSE_decomposition"][period]
+              assert d["status"]=="EXACT_ALGEBRAIC_DESCRIPTIVE_STANDARDIZATION_NOT_CAUSAL"
+              assert d["composition_plus_within_equals_total"]
+              err=abs(d["MSE_advantage_change_from_2022"]-
+                  (d["composition_change_using_2022_bin_effects"]+
+                   d["within_bin_prediction_effect_change_at_later_weights"]))
+              assert err<5e-12
+          scores=j["actual_all_year_M0_M1_M2_gate_RMSE_parity"]
+          assert scores["2024"]["RMSE_midpoint"]<scores["2024"]["RMSE_2022_chosen_gate"]
+          assert scores["2024"]["RMSE_always_family_M2"]<scores["2024"]["RMSE_2022_chosen_gate"]
+          assert scores["2023"]["RMSE_always_family_M2"]<scores["2023"]["RMSE_2022_chosen_gate"]
+          print("STRICT_REAL_2022_24_EXACT_COMPOSITION_VS_WITHIN_BIN_DRIFT_TEST_PASSED")
+          PY
+      - name: Remove original racing data even on failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-gate-shift-aggregate-only
+          path: tmp/2022-24-gate-shift-decomposition-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14

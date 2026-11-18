@@ -1,0 +1,101 @@
+{
+  "status": "POSTHOC_2022_24_EXACT_MSE_COMPOSITION_AND_MATCHED_HORSE_DECOMPOSITION_NOT_CAUSAL",
+  "source": {
+    "SHA_A": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "SHA_B": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "strict_starts": 244147,
+    "horse_candidates": 12887,
+    "strict_races": 35333,
+    "fixed_old_source_2018_2021_ridge": true,
+    "original_2022_gate": "own_upto_8to15__peer_from_one_recorded_peer"
+  },
+  "successful_run": {
+    "id": 44294790802,
+    "job_id": 134768890092,
+    "conclusion": "success",
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44294790802",
+    "source_sha": "f7b1c9acdf87ab1f203c9c7216ba0bbcf2ceed4c",
+    "artifact_id": 14422134348,
+    "zip_sha256": "92627e8be318d0ed1df83806fbb3c1aac31e16a93d64108ea363b6ef2f25aef6",
+    "original_aggregate_json_sha256": "c2e06e5f7600bb7a4ec92413b05a6ca6f6ef4635074858b5aacc11a5641b65fc",
+    "new_synthetic_tests": 12,
+    "older_2022_gate_tests": 11,
+    "all_passed": true
+  },
+  "MSE_advantage_gate_over_M2": {
+    "2022": 0.00004799390375970816,
+    "2023": -0.00005530451140512883,
+    "2024": -0.00013493534299645175
+  },
+  "four_focal_history_bin_standardization": {
+    "2022_to_2023": {
+      "total": -0.00010329841516483698,
+      "composition": -0.000005423552255801363,
+      "within": -0.00009787486290903564,
+      "composition_fraction": 0.052503731515597854,
+      "within_fraction": 0.9474962684844024
+    },
+    "2022_to_2024": {
+      "total": -0.0001829292467561599,
+      "composition": -0.000010422788238683802,
+      "within": -0.0001725064585174761,
+      "composition_fraction": 0.05697715605081519,
+      "within_fraction": 0.9430228439491848,
+      "bin_16plus_within_component": -0.0001560228667730877,
+      "bin_16plus_signed_total_fraction": 0.8529137332591888
+    },
+    "MSE_not_RMSE_exact_reconstruction_passed": true
+  },
+  "same_horse_year_pair": {
+    "2022_to_2023": {
+      "matched": 8659,
+      "first_year_advantage": 0.000002319370783528612,
+      "later_advantage": -0.000046389165991412854,
+      "paired_change": -0.00004870853677494145,
+      "oneway_bootstrap_95pct": [
+        -0.0001178404300745331,
+        0.000023722976275283276
+      ]
+    },
+    "2022_to_2024": {
+      "matched": 5163,
+      "later_year_horse_candidates": 5225,
+      "later_horse_fraction_also_2022": 0.988133971291866,
+      "first_year_advantage": -0.00002946697610885394,
+      "later_advantage": -0.00013487253474598834,
+      "paired_change": -0.00010540555863713439,
+      "oneway_bootstrap_95pct": [
+        -0.00020993192868058762,
+        0.00000460438300793871
+      ],
+      "matched_bin_16plus": 1818,
+      "matched_bin_16plus_change": -0.00024615201052024296,
+      "gate_usage_first_year": 0.6450532202856433,
+      "gate_usage_later_year": 0.6441795684045402
+    }
+  },
+  "participation_selection_three_term": {
+    "total": -0.0001829292467561599,
+    "later_participating_subset_baseline_2022_difference": -0.0000774608798685621,
+    "same_horse_year_change": -0.00010540555863713439,
+    "later_full_vs_matched_residual": -6.280825046341143e-8,
+    "signed_fractions": [
+      0.423447213838996,
+      0.5762094389293438,
+      0.00034334723166019074
+    ],
+    "three_components_exactly_sum_to_total": true
+  },
+  "holds": {
+    "gate_and_always_M2_lost_to_midpoint_in_2024": true,
+    "posthoc_after_all_years_inspected": true,
+    "same_horse_bootstrap_2024_interval_includes_zero": true,
+    "selected_later_participants_NOT_biological_survival": true,
+    "within_bin_and_within_horse_NOT_causal_age_environment_effect": true,
+    "no_source_publication_timestamps_or_official_studbook_ID": true,
+    "no_linked_kinship_A_genomic_G_MSTN": true,
+    "no_market_time_series_or_betting_profit_evidence": true,
+    "actual_prospective_2027_pledge_count": 0,
+    "no_private_ID_names_individual_races_or_genotypes_uploaded": true
+  }
+}
