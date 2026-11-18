@@ -7,6 +7,9 @@ on:
       - ".github/workflows/ecology-japan-2027-prepost-adapter.yml"
       - "scripts/ecology_japan_jravan_snapshot_adapter.py"
       - "tests/test_ecology_japan_jravan_snapshot_adapter.py"
+      - "scripts/ecology_japan_jravan_asof_snapshot.py"
+      - "tests/test_ecology_japan_jravan_asof_snapshot.py"
+      - "scripts/ecology_japan_jrvltsql_sqlite_qa.py"
   workflow_dispatch:
 
 permissions:
