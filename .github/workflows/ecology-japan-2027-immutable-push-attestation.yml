@@ -38,7 +38,8 @@ jobs:
           import re
           import subprocess
           from ecology_japan_2027_github_push_attestation import (
-              _json_bytes, _fetch_current_run, attest_run
+              _json_bytes, _fetch_current_run, attest_run,
+              content_addressed_bundle_filename
           )
 
           if os.environ.get("GITHUB_EVENT_NAME") != "push":
@@ -75,6 +76,8 @@ jobs:
               raise ValueError("HOLD_CURRENT_SERVER_RUN_COMMIT_MISMATCH")
           for path in sorted(paths):
               bundle=_json_bytes(Path(path).read_bytes())
+              if Path(path).name!=content_addressed_bundle_filename(bundle):
+                  raise ValueError("HOLD_COMMITMENT_FILENAME_NOT_CONTENT_ADDRESSED")
               checked=attest_run(bundle,run,repo=repo,sha=sha)
               if not checked["external_pre_race_timestamp_verified"]:
                   raise ValueError("HOLD_NO_EXTERNAL_GITHUB_PRE_RACE_EVIDENCE")
