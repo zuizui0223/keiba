@@ -1,0 +1,93 @@
+name: Japanese Thoroughbred real genomic G analysis
+on:
+  push:
+    branches: [analysis/japan-genomic-relatedness-20261114]
+    paths:
+      - scripts/ecology_japan_eva_genomic.py
+      - tests/test_ecology_japan_eva_genomic.py
+      - .github/workflows/japan-eva-genomic-analysis.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: japanese-eva-genomic-analysis
+  cancel-in-progress: false
+jobs:
+  real-genomic-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical and existing ecology test dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'statsmodels>=0.14,<0.15'
+      - name: All ecology unit tests including new genotype tests
+        run: python -m unittest discover -s tests -p 'test_ecology_*.py' -v
+      - name: Fetch and verify original public genotype data and official reference mapping
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import urllib.request,hashlib,json
+          root=Path('tmp/eva');root.mkdir(parents=True,exist_ok=True)
+          files=[
+            ('https://ftp.ebi.ac.uk/pub/databases/eva/PRJEB32686/ThoroughbredsJpn_670K_Fawcett2019.vcf.gz','original.vcf.gz','f8ca6056b897fe2d3fc0e9cabdf866794933034a57ede2948428451f4826fd9e'),
+            ('https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/002/305/GCA_000002305.1_EquCab2.0/GCA_000002305.1_EquCab2.0_assembly_report.txt','assembly.txt','376246dc4dac2bd8873594f5d40a1109781da550cdbfa794779d5bfd0a9eaa53'),
+          ]
+          audit=[]
+          for url,name,expected in files:
+              req=urllib.request.Request(url,headers={'User-Agent':'keiba-public-genotype-analysis/1.0 (+https://github.com/zuizui0223/keiba)'})
+              digest=hashlib.sha256();size=0
+              with urllib.request.urlopen(req,timeout=90) as response,(root/name).open('wb') as out:
+                  while block:=response.read(1024*1024):
+                      size+=len(block)
+                      if size>150000000:raise ValueError('SOURCE_SIZE_LIMIT')
+                      digest.update(block);out.write(block)
+              if digest.hexdigest()!=expected:raise ValueError('SOURCE_SHA256_CHANGED:'+name)
+              audit.append({'url':url,'bytes':size,'sha256':expected})
+          (root/'download_manifest.json').write_text(json.dumps(audit,indent=2))
+          print(json.dumps(audit,indent=2))
+          PY
+      - name: All-pair genomic G with missingness and marker-set sensitivity
+        run: |
+          python scripts/ecology_japan_eva_genomic.py \
+            --vcf tmp/eva/original.vcf.gz \
+            --assembly-report tmp/eva/assembly.txt \
+            --output tmp/derived-genomic-results \
+            --expected-md5 39e14c07fe332b2875da9b945d16bba4
+      - name: Verify measured counts, identities and numerical properties
+        run: |
+          python - <<'PY'
+          import csv,json
+          from pathlib import Path
+          import numpy as np
+          root=Path('tmp/derived-genomic-results')
+          j=json.loads((root/'analysis_summary.json').read_text())
+          assert j['sample_count_retained']==370
+          assert j['all_unique_sample_pairs']==370*369//2
+          assert j['variants_retained_by_panel']['all_maf01']==353249
+          assert j['variants_retained_by_panel']['maf05']==305671
+          assert j['matches_official_md5']
+          g=np.load(root/'G_all_maf01.npy');assert g.shape==(370,370)
+          np.testing.assert_allclose(g,g.T,atol=1e-12)
+          np.testing.assert_allclose(g.sum(axis=1),0,atol=1e-9)
+          assert np.linalg.eigvalsh(g).min()>-1e-8
+          with (root/'genomic_relationship_all_pairs.csv').open() as f:
+              assert sum(1 for _ in csv.DictReader(f))==68265
+          print('REAL_370_HORSES_ALL_68265_PAIRS_VERIFIED_NOT_NATIONAL_CENSUS')
+          PY
+      - name: Retain derived data and original source checksum record
+        uses: actions/upload-artifact@v4
+        with:
+          name: japanese-thoroughbred-genomic-370-derived
+          path: |
+            tmp/derived-genomic-results/
+            tmp/eva/download_manifest.json
+          retention-days: 7
+          compression-level: 6
+          if-no-files-found: error

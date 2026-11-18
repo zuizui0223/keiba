@@ -1,0 +1,90 @@
+name: Japan EVA public genomic source audit
+on:
+  push:
+    branches: [analysis/japan-genomic-relatedness-20261114]
+    paths: [.github/workflows/japan-eva-genomic-source.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: japan-eva-source
+  cancel-in-progress: false
+jobs:
+  original-genotype-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover official public EVA study files and inspect actual VCF header
+        run: |
+          python - <<'PY'
+          import gzip, hashlib, json, re, urllib.request, urllib.parse
+          from pathlib import Path
+          root=Path('tmp/eva-source'); root.mkdir(parents=True,exist_ok=True)
+          sources=[
+            'https://www.ebi.ac.uk/ena/browser/api/xml/ERZ936110',
+            'https://ftp.ebi.ac.uk/pub/databases/eva/PRJEB32686/',
+            'https://www.ebi.ac.uk/eva/webservices/rest/v1/studies/PRJEB32686/files?species=ecaballus_equcab2',
+          ]
+          audit={'study':'PRJEB32686','analysis':'ERZ936110','publication':'10.1371/journal.pone.0218407','source_attempts':[],'files':[]}
+          found=set()
+          def get(url):
+              p=urllib.parse.urlparse(url)
+              if p.scheme!='https' or p.hostname not in ('www.ebi.ac.uk','ftp.ebi.ac.uk'):
+                  raise ValueError('UNEXPECTED_SOURCE_HOST')
+              req=urllib.request.Request(url,headers={'User-Agent':'keiba-public-genotype-audit/1.0 (+https://github.com/zuizui0223/keiba)'})
+              return urllib.request.urlopen(req,timeout=90)
+          for i,url in enumerate(sources):
+              try:
+                  with get(url) as r: body=r.read(3000000)
+                  text=body.decode('utf-8'); (root/f'metadata_{i}.txt').write_text(text)
+                  audit['source_attempts'].append({'url':url,'status':'FETCHED','bytes':len(body),'sha256':hashlib.sha256(body).hexdigest()})
+                  for link in re.findall(r'(?:href|filename)=[\"\x27]([^\"\x27]+)[\"\x27]',text):
+                      if '.vcf' in link and not link.endswith(('.tbi','.md5','.csi')):
+                          candidate=urllib.parse.urljoin(url,link)
+                          if candidate.startswith('https://ftp.ebi.ac.uk/') and candidate.endswith(('.vcf','.vcf.gz')): found.add(candidate)
+                  for link in re.findall(r'(?:ftp|https?)://[^\s<>\"\x27]+\.vcf(?:\.gz)?',text):
+                      candidate=link.replace('ftp://','https://').replace('http://','https://')
+                      if urllib.parse.urlparse(candidate).hostname=='ftp.ebi.ac.uk': found.add(candidate)
+              except Exception as e:
+                  audit['source_attempts'].append({'url':url,'status':'UNAVAILABLE','error':type(e).__name__,'detail':str(e)[:200]})
+          audit['candidate_files']=sorted(found)
+          for j,url in enumerate(sorted(found)[:4]):
+              name=Path(urllib.parse.urlparse(url).path).name
+              dest=root/name; h=hashlib.sha256(); total=0
+              try:
+                  with get(url) as response, dest.open('wb') as out:
+                      while chunk:=response.read(1024*1024):
+                          total+=len(chunk)
+                          if total>400000000: raise ValueError('SOURCE_SIZE_EXCEEDS_400MB')
+                          h.update(chunk);out.write(chunk)
+                  reader=gzip.open if name.endswith('.gz') else open
+                  entry={'url':url,'name':name,'bytes':total,'sha256':h.hexdigest(),'header':[],'locus_preview':[]}
+                  with reader(dest,'rt',encoding='utf-8') as f:
+                      for line in f:
+                          if line.startswith('##'): entry['header'].append(line.rstrip())
+                          elif line.startswith('#CHROM'):
+                              fields=line.rstrip().split('\t'); entry['samples']=fields[9:];entry['sample_count']=len(fields)-9
+                          elif not line.startswith('#'):
+                              fields=line.rstrip().split('\t');entry['locus_preview'].append(fields[:9])
+                              if len(entry['locus_preview'])>=3: break
+                  audit['files'].append(entry)
+                  if entry.get('sample_count',0)>=2: break
+              except Exception as e:
+                  dest.unlink(missing_ok=True)
+                  audit['files'].append({'url':url,'error':type(e).__name__,'detail':str(e)[:200]})
+          audit['status']='ACTUAL_VCF_RETRIEVED' if any(x.get('sample_count',0)>1 for x in audit['files']) else 'NO_USABLE_GENOTYPE_FILE_YET'
+          (root/'source_audit.json').write_text(json.dumps(audit,indent=2))
+          print(json.dumps(audit,indent=2))
+          PY
+      - name: Retain public original study file and metadata for reproducible local analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-eva-PRJEB32686-public-source
+          path: tmp/eva-source/
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error

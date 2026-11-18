@@ -1,0 +1,50 @@
+name: "Genetics, bloodline and pre-race odds market source gates"
+
+on:
+  push:
+    branches: [analysis/genetics-breeding-odds-market-20261115]
+    paths:
+      - ".github/workflows/ecology-genetics-odds-market.yml"
+      - "scripts/ecology_genetics_market_bridge.py"
+      - "tests/test_ecology_genetics_market_bridge.py"
+      - "docs/research/GENETICS_BREEDING_MARKET.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kin-market-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test synthetic causal/time leakage controls and sibling-market semantics
+        run: python -m unittest discover -s tests -p "test_ecology_genetics_market_bridge.py" -v
+      - name: Inspect actual archived 2026 betting snapshot without inventing pedigrees
+        run: |
+          python scripts/ecology_genetics_market_bridge.py \
+            --audit-repo-snapshot data/2026-10-18/ticket-odds-snapshot.json \
+            --output tmp/genetics-market-existing-snapshot-readiness.json
+      - name: Reject false actual market-gene effect estimates
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open("tmp/genetics-market-existing-snapshot-readiness.json"))
+          assert p["status"]=="HOLD_NO_ID_LINKED_CERTIFIED_TIME_SERIES_FOR_GENEALOGY_MARKET"
+          assert p["saved_horse_price_rows"]>0
+          assert p["stable_horse_ID_rows"]==0
+          assert p["sire_ID_rows"]==0
+          assert p["dam_ID_rows"]==0
+          assert p["source_updated_at_per_horse"]==0
+          assert p["source_name_only_pairing_not_authorized"]
+          assert p["no_genotype_or_market_prediction_tested"]
+          print("MARKET_KINSHIP_REAL_LINKAGE_HOLD",p["saved_races"],p["saved_horse_price_rows"])
+          PY
+      # Source prices already stored in the repository remain unchanged.
+      # No third-party market source, individual predictions, or live odds uploaded.

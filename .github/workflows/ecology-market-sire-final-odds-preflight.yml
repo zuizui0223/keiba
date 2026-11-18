@@ -1,0 +1,82 @@
+name: "Independent Japanese sire and final-odds source schema preflight"
+on:
+  push:
+    branches: [analysis/genetics-breeding-odds-market-20261115]
+    paths: [".github/workflows/ecology-market-sire-final-odds-preflight.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-data-readonly-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Inspect actual public repo CSV without committing or redistributing records
+        run: |
+          python - <<'PY'
+          from collections import Counter
+          from pathlib import Path
+          import csv,hashlib,json,urllib.request,urllib.error
+          url="https://raw.githubusercontent.com/whitedogk/jra-condition-app/main/jra-results-actual.csv"
+          report={"source":url,"raw_rows_exported":False,
+                  "not_certified_pre_start_time_series":True,
+                  "source_rights_review_pending":True}
+          try:
+              req=urllib.request.Request(url,headers={"User-Agent":"keiba-academic-source-check/1.0"})
+              h=hashlib.sha256()
+              Path("tmp").mkdir(exist_ok=True)
+              p=Path("tmp")/"external-source-readonly.csv"
+              total=0
+              with urllib.request.urlopen(req,timeout=60) as source,p.open("wb") as out:
+                  while True:
+                      block=source.read(1024*1024)
+                      if not block: break
+                      total+=len(block)
+                      if total>70_000_000:raise ValueError("SOURCE_OVER_70MB_HOLD")
+                      h.update(block);out.write(block)
+              report["source_sha256"]=h.hexdigest()
+              report["bytes"]=total
+              for enc in ("utf-8-sig","cp932"):
+                  try:
+                      with p.open(encoding=enc,newline="") as fd:
+                          reader=csv.DictReader(fd)
+                          head=list(reader.fieldnames or [])
+                          year=Counter()
+                          nonblank=Counter()
+                          rows=0
+                          for row in reader:
+                              rows+=1
+                              yr=(row.get("date") or "")[:4]
+                              if yr:year[yr]+=1
+                              for k,v in row.items():
+                                  if k and v and v.strip():nonblank[k]+=1
+                      report["encoding"]=enc
+                      break
+                  except UnicodeDecodeError:
+                      pass
+              report["rows"]=rows
+              report["columns"]=head
+              report["years"]=dict(sorted(year.items()))
+              report["nonempty_columns"]=dict(nonblank)
+              report["status"]="SOURCE_ORIGINAL_HEADER_AND_VALUE_COUNTS_AUDITED"
+          except Exception as e:
+              report["status"]="HOLD_EXTERNAL_SOURCE_SCHEMA"
+              report["error_class"]=type(e).__name__
+          Path("tmp")/"external-source-readonly.csv"
+          (Path("tmp")/"market-final-odds-source-schema.json").write_text(
+              json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Remove original external CSV before artifact upload
+        if: always()
+        run: rm -f tmp/external-source-readonly.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-market-sire-final-odds-schema-aggregate-only
+          path: tmp/market-final-odds-source-schema.json
+          if-no-files-found: error
+          retention-days: 7
