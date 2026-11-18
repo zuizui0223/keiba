@@ -415,7 +415,7 @@ def train(entries:list[dict],parents:list[dict],history:list[dict],
         "2025_2026_out_of_training_temporal_validation":cohort_scores(
             validation,models,with_bootstrap=True)
     }
-    pretart=pretarget_support_subgroups(validation,models)
+    strata_qa=pretarget_support_subgroups(validation,models)
     return model,{
         "status":"PRIVATE_OFFICIAL_ID_HISTORIC_M1_M2_MODEL_TRAINED_NOT_2027_PROSPECTIVE",
         "historical_source_file_SHA256":source_sha,
@@ -445,7 +445,7 @@ def train(entries:list[dict],parents:list[dict],history:list[dict],
             "genetic_causality_estimated":False,
         },
         "historical_scores":scores,
-        "pretimestep_2025_2026_validation_strata":pretart,
+        "pretarget_2025_2026_validation_strata":strata_qa,
         "no_Horse_ID_parent_ID_model_coefficients_or_source_rows_exported":True,
         "provider_rights_and_ID_authenticity_require_external_verification":True,
         "not_yet_2027_future_forecast":True,
