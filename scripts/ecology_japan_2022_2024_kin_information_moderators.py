@@ -117,9 +117,12 @@ def fixed_sourceA_context(old:pd.DataFrame,strict:pd.DataFrame):
     own=np.rint(np.expm1(feat["log_own_count"].to_numpy(float))).astype(int)
     sire=np.rint(feat["sire_relative_count"].to_numpy(float)).astype(int)
     dam=np.rint(feat["dam_relative_count"].to_numpy(float)).astype(int)
-    if np.any(own<2):
-        # Cross-source witness requires >=2 pre2022 historic race dates.
-        raise ValueError("HOLD_FOCAL_COHORT_NOT_TWO_EVENT_PRE2022_ANCHORED")
+    # Cross-source identity is established by >=2 raw pre-2022 events,
+    # but historical SOURCE-A data cleaning can exclude those events.
+    # An eligible-history count of 0 or 1 is therefore VALID and is NOT
+    # an official maiden/debut designation. This distinction is essential.
+    if np.any(own<0):
+        raise ValueError("HOLD_NEGATIVE_ELIGIBLE_FOCAL_HISTORY")
     if np.any(sire<0) or np.any(dam<0):
         raise ValueError("HOLD_NEGATIVE_RECORDED_PEER_COUNT")
     # Highest cardinality single recorded parent channel; avoid calling
@@ -127,8 +130,12 @@ def fixed_sourceA_context(old:pd.DataFrame,strict:pd.DataFrame):
     peer_count=np.maximum(sire,dam)
     own_last=old.groupby("horse",observed=True).day.max()
     own_day=strict.horse.astype(str).map(own_last)
-    if own_day.isna().any():
-        raise ValueError("HOLD_MISSING_SOURCE_A_OWN_HISTORY")
+    if bool(((own>0)&own_day.isna().to_numpy()).any()):
+        raise ValueError("HOLD_POSITIVE_OWN_RECORDS_WITHOUT_DATE")
+    if bool(((own==0)&own_day.notna().to_numpy()).any()):
+        raise ValueError("HOLD_ZERO_OWN_RECORDS_WITH_HISTORIC_DATE")
+    # A horse may have a raw A/B crosswalk but zero ELIGIBLE A race rows.
+    # Keep that individual as NO_RECORDED_DATE instead of dropping it.
     own_lag=(strict.day.reset_index(drop=True)-own_day.reset_index(drop=True)).dt.days
 
     sire_last=peer_last_day_excluding_self(old,strict,"sire_id")
@@ -167,7 +174,11 @@ def fixed_sourceA_context(old:pd.DataFrame,strict:pd.DataFrame):
         },
         "focal_rows_with_any_peer_history":int((peer_count>0).sum()),
         "focal_rows_with_zero_peer_history":int((peer_count==0).sum()),
-        "sourceA_last_focal_history_lag_days_median":float(np.median(own_lag)),
+        "sourceA_last_focal_history_lag_days_median_or_null":
+            (float(np.median(own_lag.dropna())) if own_lag.notna().any() else None),
+        "focal_rows_with_zero_eligible_A_history":int((own==0).sum()),
+        "focal_rows_with_one_eligible_A_history":int((own==1).sum()),
+        "raw_cross_source_identity_two_events_NOT_guaranteed_eligible_model_history":True,
         "sourceA_last_other_horse_history_lag_days_median_or_null":
             (float(np.median(kin_lag.dropna())) if kin_lag.notna().any() else None),
         "last_other_horse_excludes_focal":True,
