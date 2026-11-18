@@ -1,0 +1,49 @@
+name: "2027 JRA licensed historical model fitting leakage tests"
+
+on:
+  push:
+    branches: [analysis/2027-licensed-history-fit-gate-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2027-history-fit.yml"
+      - "scripts/ecology_japan_2027_official_historical_train.py"
+      - "tests/test_ecology_japan_2027_official_historical_train.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixed-2027-training-contract-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned numerical dependency
+        run: python -m pip install numpy==2.2.6
+      - name: Compile official point-in-time trainer and prospective freeze/score ledger
+        run: |
+          python -m py_compile scripts/ecology_japan_2027_official_historical_train.py
+          python -m py_compile scripts/ecology_japan_2027_point_in_time_ledger.py
+      - name: Fictional-only temporal training, validation and look-ahead rejection tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2027_official_historical_train.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2027_point_in_time_ledger.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2027_official_knownon_preflight.py" -v
+      - name: Verify that neither real JRA data nor fitted live coefficients were published
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          src=Path("scripts/ecology_japan_2027_official_historical_train.py").read_text()
+          assert "HOLD_INSUFFICIENT_COMPLETE_TRAIN_OR_VALIDATION_SUPPORT" in src
+          assert "HOLD_FUTURE_OR_PRE_RACE_HISTORICAL_RESULT" in src
+          assert "PRIVATE_OFFICIAL_ID_HISTORIC_M1_M2_MODEL_TRAINED_NOT_2027_PROSPECTIVE" in src
+          assert "no_Horse_ID_parent_ID_model_coefficients_or_source_rows_exported" in src
+          assert "2027" in src
+          print("HISTORIC_FIT_SYNTHETIC_ONLY_SOURCE_ID_KNOWNON_LEAKAGE_GATES_PASSED")
+          PY
