@@ -17,6 +17,10 @@ Original Australian early-GPS animal-individuality studies below are **a separat
 
 The [source-locked 244,147-start descriptive stratification](JAPAN_2022_2024_KIN_INFORMATION_MODERATORS_RESULTS.md) explores how the **incremental prediction value** of recorded same-parent other-horse history changes with the focal horse's own qualifying historical observations. Positive pooled differences decline across 0–3, 4–7, 8–15, 16+ own-start bins, but **2024 reverses the low-vs-high ordering** and the relative-history-age gradient is not monotone. These are earlier-inspected historical results, not a fresh source evaluation, genetic heritability, a complete pedigree matrix A, genomic G joined by registered ID, or evidence of market herding. [Aggregate-only evidence with positive/negative strata](../evidence/japan-2022-24-posthoc-kin-information-moderators-20261118.json).
 
+## 2022-selected family-information rule: historical 2023–24 transfer failure
+
+The [real-source calendar-forward diagnostic](JAPAN_2022_KIN_GATE_2023_24_TRANSFER_RESULTS.md) selected a conditional family-history-use rule using 2022 results alone, then evaluated it unchanged on 2023 and 2024. The selected rule was best among 14 candidates in 2022 but **did not outperform always-family M2 in either later year** and lost to the fixed midpoint in 2024. This demonstrates instability of a decision rule in previously inspected historical source data; **not** an untouched future holdout, a pedigree A/genomic G causal effect or observed human-market information transmission. [Aggregate-only negative evidence](../evidence/japan-2022-trained-kin-gate-2023-24-transfer-20261118.json).
+
 ## Central ecological question
 
 **Under which observational conditions does an individual horse's previous
