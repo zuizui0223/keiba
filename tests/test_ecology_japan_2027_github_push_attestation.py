@@ -418,6 +418,114 @@ class PreRaceServerAttestationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"DUPLICATE_AGGREGATE_JSON_KEY"):
             _json_bytes(b'{"schema":"a","schema":"b"}')
 
+    def test_postrace_original_github_sha_and_first_push_success_verified(self):
+        import base64
+        from ecology_japan_2027_github_push_attestation import (
+            attest_original_server_file,content_addressed_bundle_filename
+        )
+        src,adapter,forecast,_=fixture(synthetic=False)
+        b=build_bundle(src,adapter,forecast)
+        raw=dump(b)
+        name=content_addressed_bundle_filename(b)
+        path="docs/commitments/2027/"+name
+        sha=EXPECTED_SHA
+        git_blob=hashlib.sha1(("blob "+str(len(raw))+"\0").encode()+raw).hexdigest()
+        entry={
+            "type":"file","encoding":"base64","path":path,
+            "sha":git_blob,"content":base64.b64encode(raw).decode()
+        }
+        run=fake_run()
+        run["status"]="completed"
+        run["conclusion"]="success"
+        urls=[]
+        def mock_api(url):
+            urls.append(url)
+            return run if "/actions/runs/" in url else entry
+        result=attest_original_server_file(
+            raw,commit_sha=sha,run_id=run["id"],
+            relative_path=path,github_json_get=mock_api
+        )
+        self.assertEqual(result["status"],
+            "ORIGINAL_GITHUB_PRE_RACE_COMMIT_AND_SUCCESSFUL_RUN_VERIFIED")
+        self.assertTrue(result["authorized_source_private_history_not_opened_here"])
+        self.assertTrue(result["source_JRA_publication_time_NOT_attested"])
+        self.assertEqual(result["original_git_blob_SHA1"],git_blob)
+        self.assertEqual(len(urls),2)
+        self.assertTrue(urls[0].startswith(
+            "https://api.github.com/repos/zuizui0223/keiba/actions/runs/"))
+        self.assertIn("?ref="+sha,urls[1])
+        self.assertNotIn("H:SYN",json.dumps(result))
+
+    def test_postrace_original_github_api_refuses_failed_or_late_rerun(self):
+        import base64
+        from ecology_japan_2027_github_push_attestation import (
+            attest_original_server_file,content_addressed_bundle_filename
+        )
+        src,adapter,forecast,_=fixture(synthetic=False)
+        b=build_bundle(src,adapter,forecast)
+        raw=dump(b)
+        path="docs/commitments/2027/"+content_addressed_bundle_filename(b)
+        blob=hashlib.sha1(("blob "+str(len(raw))+"\0").encode()+raw).hexdigest()
+        entry={"type":"file","encoding":"base64","path":path,
+               "sha":blob,"content":base64.b64encode(raw).decode()}
+        for change,code in (
+            ({"conclusion":"failure"},"NOT_SUCCESS"),
+            ({"run_attempt":2},"RERUN_CANNOT_ATTEST"),
+            ({"path":".github/workflows/elsewhere.yml"},"UNTRUSTED_WORKFLOW_PATH"),
+        ):
+            run=fake_run()
+            run.update(change)
+            run["status"]="completed"
+            def g(url):
+                return run if "/actions/runs/" in url else entry
+            with self.subTest(change=change):
+                with self.assertRaisesRegex(ValueError,code):
+                    attest_original_server_file(
+                        raw,commit_sha=EXPECTED_SHA,run_id=run["id"],
+                        relative_path=path,github_json_get=g)
+
+    def test_postrace_server_blob_changed_detected_even_when_run_success(self):
+        import base64
+        from ecology_japan_2027_github_push_attestation import (
+            attest_original_server_file,content_addressed_bundle_filename
+        )
+        src,adapter,forecast,_=fixture(synthetic=False)
+        b=build_bundle(src,adapter,forecast)
+        raw=dump(b)
+        path="docs/commitments/2027/"+content_addressed_bundle_filename(b)
+        modified=raw.replace(b"AGGREGATE_COMMITMENT_UNATTESTED",b"AGGREGATE_COMMITMENT_TAMPERED_")
+        blob=hashlib.sha1(("blob "+str(len(modified))+"\0").encode()+modified).hexdigest()
+        entry={"type":"file","encoding":"base64","path":path,
+               "sha":blob,"content":base64.b64encode(modified).decode()}
+        run=fake_run()
+        run.update(status="completed",conclusion="success")
+        def g(url):
+            return run if "/actions/runs/" in url else entry
+        with self.assertRaisesRegex(ValueError,"BUNDLE_BYTES_CHANGED"):
+            attest_original_server_file(
+                raw,commit_sha=EXPECTED_SHA,run_id=run["id"],
+                relative_path=path,github_json_get=g)
+
+    def test_postrace_server_git_blob_hash_tamper_detected(self):
+        import base64
+        from ecology_japan_2027_github_push_attestation import (
+            attest_original_server_file,content_addressed_bundle_filename
+        )
+        src,adapter,forecast,_=fixture(synthetic=False)
+        b=build_bundle(src,adapter,forecast)
+        raw=dump(b)
+        path="docs/commitments/2027/"+content_addressed_bundle_filename(b)
+        entry={"type":"file","encoding":"base64","path":path,
+               "sha":"0"*40,"content":base64.b64encode(raw).decode()}
+        run=fake_run()
+        run.update(status="completed",conclusion="success")
+        def g(url):
+            return run if "/actions/runs/" in url else entry
+        with self.assertRaisesRegex(ValueError,"GIT_BLOB_SHA_DRIFT"):
+            attest_original_server_file(
+                raw,commit_sha=EXPECTED_SHA,run_id=run["id"],
+                relative_path=path,github_json_get=g)
+
     def test_real_github_attestation_requires_push_environment(self):
         from unittest.mock import patch
         with patch.dict("os.environ",{},clear=True):
