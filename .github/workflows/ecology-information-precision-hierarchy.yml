@@ -33,7 +33,8 @@ jobs:
         run: |
           PYTHONPATH=scripts python scripts/ecology_information_precision_hierarchy.py \
             --repo-root . \
-            --output /tmp/ecology-information-precision-aggregate.json
+            --output /tmp/ecology-information-precision-aggregate.json \
+            --audit-output /tmp/ecology-information-precision-compact-audit.json
       - name: Stop unsupported independent 2026, inherited genes or market-social claims
         run: |
           python - <<'PY'
@@ -56,7 +57,7 @@ jobs:
           if [ -f docs/evidence/information-precision-hierarchy-audit-20261118.json ]; then
             diff -u \
               docs/evidence/information-precision-hierarchy-audit-20261118.json \
-              /tmp/ecology-information-precision-aggregate.json
+              /tmp/ecology-information-precision-compact-audit.json
           fi
       - uses: actions/upload-artifact@v4
         with:
