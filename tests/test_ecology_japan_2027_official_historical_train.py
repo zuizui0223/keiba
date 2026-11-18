@@ -205,6 +205,36 @@ class Pre2027TrainingTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"CONFLICTING_HISTORICAL_RACE"):
             train(self.entries,self.parents,results,clock=NOW,source_sha=SOURCES)
 
+    def test_one_race_cannot_mix_different_entry_knownon_cutoffs(self):
+        entries=copy.deepcopy(self.entries)
+        # Entry for the second runner is not from the same certified
+        # pre-race information snapshot as the first runner.
+        e=entries[1]
+        when=datetime.fromisoformat(e["entry_known_at_jst"])
+        e["entry_known_at_jst"]=(when-timedelta(hours=1)).isoformat()
+        with self.assertRaisesRegex(ValueError,
+                "INCONSISTENT_ENTERED_RACE_CONDITIONS_OR_CUTOFF"):
+            train(entries,self.parents,self.results,
+                  clock=NOW,source_sha=SOURCES)
+
+    def test_rider_replacement_after_entry_is_quarantined_whole_race(self):
+        results=copy.deepcopy(self.results)
+        results[0]["jockey_id"]="J:SYN_REPLACEMENT_AFTER_ENTRY"
+        model,info=train(self.entries,self.parents,results,
+                         clock=NOW,source_sha=SOURCES)
+        self.assertEqual(info["source_qa"]["training_support"]["starts"],234)
+        self.assertEqual(info["source_qa"]["training_target_races"][
+            "changed_rider_or_trainer_after_entry"],1)
+
+    def test_trainer_record_conflict_excludes_full_race(self):
+        results=copy.deepcopy(self.results)
+        results[0]["trainer_id"]="T:SYN_CHANGED_AFTER_ENTRY"
+        model,info=train(self.entries,self.parents,results,
+                         clock=NOW,source_sha=SOURCES)
+        self.assertEqual(info["source_qa"]["training_support"]["starts"],234)
+        self.assertEqual(info["source_qa"]["training_target_races"][
+            "changed_rider_or_trainer_after_entry"],1)
+
     def test_duplicate_race_horse_hold(self):
         results=copy.deepcopy(self.results)
         results.append(copy.deepcopy(results[0]))
