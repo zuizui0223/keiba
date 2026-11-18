@@ -64,9 +64,9 @@ jobs:
           f=Path("tmp/posthoc-2022-24-kin-moderators-aggregate.json")
           j=json.loads(f.read_text(encoding="utf-8"))
           assert j["status"]=="POSTHOC_2022_2024_STRICT_KIN_INFORMATION_MODERATORS_NOT_CAUSAL"
-          assert j["strict_source_qa"]["strict_focal_rows"]==244147
-          assert j["strict_source_qa"]["strict_focal_horses"]==12887
-          assert j["strict_source_qa"]["strict_races"]==35333
+          assert j["strict_sample_QA"]["strict_focal_rows"]==244147
+          assert j["strict_sample_QA"]["strict_focal_horses"]==12887
+          assert j["strict_sample_QA"]["strict_races"]==35333
           assert j["2024_midpoint_beats_strong_family_model"]
           assert j["hypothesis_derived_after_inspecting_2022_24_and_2026_results"]
           assert j["no_source_rows_race_or_horse_names_IDs_individual_predictions_exported"]
