@@ -93,9 +93,11 @@ def fixture(synthetic=True):
 
 
 def fake_run(created=RUN_CREATED, *, event="push", head_sha=EXPECTED_SHA,
-             repo=REPO):
+             repo=REPO, attempt=1, path=None):
     return {
         "id":1234567890,
+        "run_attempt":attempt,
+        "path":path or ".github/workflows/ecology-japan-2027-immutable-push-attestation.yml",
         "event":event,
         "head_sha":head_sha,
         "repository":{"full_name":repo},
@@ -162,6 +164,27 @@ class PreRaceServerAttestationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,"GITHUB_PUSH_REPO"):
                     attest_run(self.bundle(),fake_run(event=event),
                                repo=REPO,sha=EXPECTED_SHA,allow_synthetic=True)
+
+    def test_postrace_rerun_cannot_use_original_pre_race_run_created_at(self):
+        with self.assertRaisesRegex(ValueError,"RERUN_CANNOT_ATTEST"):
+            attest_run(self.bundle(),fake_run(attempt=2),
+                       repo=REPO,sha=EXPECTED_SHA,allow_synthetic=True)
+
+    def test_other_workflow_push_does_not_attest_production_forecast(self):
+        bad=fake_run(path=".github/workflows/fake-cheaper-check.yml")
+        with self.assertRaisesRegex(ValueError,"UNTRUSTED_WORKFLOW_PATH"):
+            attest_run(self.bundle(),bad,
+                       repo=REPO,sha=EXPECTED_SHA,allow_synthetic=True)
+
+    def test_staging_workflow_cannot_produce_real_prediction_attestation(self):
+        a,b,c,_=fixture(synthetic=False)
+        real_shape=build_bundle(a,b,c)
+        staging=fake_run(path=".github/workflows/ecology-japan-2027-server-rehearsal.yml")
+        with self.assertRaisesRegex(ValueError,"UNTRUSTED_WORKFLOW_PATH"):
+            attest_run(real_shape,staging,repo=REPO,sha=EXPECTED_SHA)
+        result=attest_run(self.bundle(),staging,
+                          repo=REPO,sha=EXPECTED_SHA,allow_synthetic=True)
+        self.assertTrue(result["external_pre_race_timestamp_verified"])
 
     def test_github_repo_and_exact_committed_head_sha_required(self):
         for bad in (fake_run(head_sha="c"*40),fake_run(repo="other/keiba")):
