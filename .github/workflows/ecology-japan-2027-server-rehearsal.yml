@@ -1,0 +1,47 @@
+name: "2027 JRA server-time integration rehearsal (FICTIONAL ONLY)"
+
+on:
+  push:
+    branches: [analysis/jravan-github-server-rehearsal-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2027-server-rehearsal.yml"
+      - "scripts/ecology_japan_2027_github_server_rehearsal.py"
+      - "scripts/ecology_japan_2027_github_push_attestation.py"
+      - "tests/test_ecology_japan_2027_github_push_attestation.py"
+  # No manual event. Re-runs are forbidden by the attestation parser.
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  check-real-github-api-but-fictional-jra-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Confirm server checked out EXACT push SHA
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$GITHUB_EVENT_NAME" = "push"
+      - name: Synthetic-only attestation parser tests, no JRA provider data
+        run: |
+          PYTHONPATH=scripts python -m unittest discover \
+             -s tests -p "test_ecology_japan_2027_github_push_attestation.py" -v
+      - name: Read actual GitHub REST Actions run.created_at and validate synthetic-only bundle
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2027_github_server_rehearsal.py
+      - name: Confirm that no real future-race pledge is produced in staging
+        run: |
+          test ! -d docs/commitments/2027
+          echo "REHEARSAL_ONLY_REAL_SERVER_API_NOT_PROOF_OF_JRA_PUBLISHED_DATA"
