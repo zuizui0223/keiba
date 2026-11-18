@@ -7,6 +7,8 @@ on:
       - ".github/workflows/ecology-japan-2027-github-attest-tests.yml"
       - "scripts/ecology_japan_2027_github_push_attestation.py"
       - "tests/test_ecology_japan_2027_github_push_attestation.py"
+      - "tests/test_ecology_japan_2027_push_workflow_contract.py"
+      - ".github/workflows/ecology-japan-2027-immutable-push-attestation.yml"
   workflow_dispatch:
 
 permissions:
@@ -30,6 +32,8 @@ jobs:
         run: |
           PYTHONPATH=scripts python -m unittest discover \
             -s tests -p "test_ecology_japan_2027_github_push_attestation.py" -v
+          PYTHONPATH=scripts python -m unittest discover \
+            -s tests -p "test_ecology_japan_2027_push_workflow_contract.py" -v
       - name: Confirm this run is NOT a real 2027 pre-race commitment
         run: |
           python - <<'PY'
