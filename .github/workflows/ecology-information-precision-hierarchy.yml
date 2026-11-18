@@ -1,0 +1,65 @@
+name: "Equine own-family information precision and real-aggregate evidence gates"
+
+on:
+  push:
+    branches: [analysis/information-precision-ecology-20261118]
+    paths:
+      - ".github/workflows/ecology-information-precision-hierarchy.yml"
+      - "scripts/ecology_information_precision_hierarchy.py"
+      - "tests/test_ecology_information_precision_hierarchy.py"
+      - "docs/evidence/information-precision-hierarchy-audit-20261118.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-false-genetic-or-market-claim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run analytic Gaussian and original evidence source-parity tests
+        run: |
+          python -m py_compile scripts/ecology_information_precision_hierarchy.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_information_precision_hierarchy.py" -v
+      - name: Recompute real aggregate contrasts and theoretical synthetic grid
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_information_precision_hierarchy.py \
+            --repo-root . \
+            --output /tmp/ecology-information-precision-aggregate.json
+      - name: Stop unsupported independent 2026, inherited genes or market-social claims
+        run: |
+          python - <<'PY'
+          import json
+          with open("/tmp/ecology-information-precision-aggregate.json",encoding="utf-8") as f:
+              r=json.load(f)
+          a=r["observational_evidence"]
+          assert a["status"]=="RECOMPUTED_FROM_PREVIOUSLY_COMMITTED_AGGREGATES_NOT_NEW_INDEPENDENT_EMPIRICS"
+          assert a["Japan_2022_2024_separate_period"]["minimum_one_sided_plus_one_p_no_confirmatory_test"]==0.05
+          assert a["Japan_2022_2024_separate_period"]["strict_2024_midpoint_better_than_family_RMSE"]
+          assert a["Japan_2026_one_selected_posthoc_cohort"]["subgroup_and_model_selection_already_inspected"]
+          assert a["market_real_cross_section_not_trajectory"]["time_trajectory_measured"] is False
+          assert a["genomic_G_coverage"]["same_registered_horse_linked_to_race_performance"] is False
+          assert r["theoretical_counterfactual"]["dimensionless_no_horse_OR_market_data_fitted"]
+          assert r["scientific_interpretation"]["real_heritable_effect_or_MSTN_genotype_link_is_HOLD"]
+          print("INFORMATION_PRECISION_ANALYTIC_TOY_AND_PREEXISTING_REAL_AGGREGATE_GATES_PASSED")
+          PY
+      - name: If a research aggregate was committed, verify exact re-computation
+        run: |
+          if [ -f docs/evidence/information-precision-hierarchy-audit-20261118.json ]; then
+            diff -u \
+              docs/evidence/information-precision-hierarchy-audit-20261118.json \
+              /tmp/ecology-information-precision-aggregate.json
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: information-precision-toy-plus-aggregate-only
+          path: /tmp/ecology-information-precision-aggregate.json
+          retention-days: 14
