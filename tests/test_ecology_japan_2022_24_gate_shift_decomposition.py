@@ -121,6 +121,37 @@ class GateShiftDecompositionTests(unittest.TestCase):
             "OBSERVED_COHORT_PARTICIPATION_OVERLAP_NOT_SURVIVAL_OR_BREEDING")
         self.assertEqual(q["pairs"]["2022_to_2024"]["same_candidate_horse_in_both_years"],0)
 
+    def test_same_horse_paired_year_change_cannot_be_population_turnover_only(self):
+        from ecology_japan_2022_24_gate_shift_decomposition import (
+            matched_horse_risk_change
+        )
+        a,ba,m2a,ga=rows(2022)
+        b,bb,m2b,gb=rows(2024,shift=True)
+        # Force exact same fictional horse identities in both years.
+        b["horse"]=b.horse.str.replace(":2024:",":2022:",regex=False)
+        q=matched_horse_risk_change(
+            {"t":a,"p2":m2a,"pg":ga,"ownbin":ba,"selected":np.ones(len(a),bool)},
+            {"t":b,"p2":m2b,"pg":gb,"ownbin":bb,"selected":np.ones(len(b),bool)})
+        self.assertEqual(q["matched_horses"],160)
+        self.assertLess(q["same_horse_year_average_MSE_advantage_change"],0)
+        self.assertLess(max(q["paired_horse_oneway_399_resampling_95pct"]),0)
+        self.assertEqual(q["by_pre2022_focal_own_history_bin"]["16+"]["matched_horses"],40)
+        self.assertTrue(q["observed_yearly_race_context_and_horse_age_not_held_fixed"])
+        self.assertTrue(q["race_day_two_way_dependence_not_modeled"])
+
+    def test_matched_horse_history_bin_changed_between_years_holds(self):
+        from ecology_japan_2022_24_gate_shift_decomposition import (
+            matched_horse_risk_change
+        )
+        a,ba,m2a,ga=rows(2022)
+        b,bb,m2b,gb=rows(2024)
+        b["horse"]=b.horse.str.replace(":2024:",":2022:",regex=False)
+        bb[0]="16+"
+        with self.assertRaisesRegex(ValueError,"BIN_CHANGED_WITHIN_HORSE"):
+            matched_horse_risk_change(
+                {"t":a,"p2":m2a,"pg":ga,"ownbin":ba,"selected":np.ones(len(a),bool)},
+                {"t":b,"p2":m2b,"pg":gb,"ownbin":bb,"selected":np.ones(len(b),bool)})
+
     def test_historical_reference_scores_preserved_as_original_results(self):
         self.assertTrue(STATUS.startswith("POSTHOC_"))
         self.assertTrue(
