@@ -345,6 +345,15 @@ def open_originals(bundle:dict, *, source:bytes,adapter:bytes,forecast:bytes,
     }
 
 
+def content_addressed_bundle_filename(bundle:dict) -> str:
+    """Opaque identifier binds the whole whitelisted aggregate content."""
+    if not isinstance(bundle,dict) or bundle.get("schema")!=BUNDLE_SCHEMA:
+        raise ValueError("HOLD_BAD_AGGREGATE_BUNDLE_FOR_CONTENT_ADDRESS")
+    original=json.dumps(bundle,sort_keys=True,ensure_ascii=False,
+                        separators=(",",":"),allow_nan=False).encode("utf-8")
+    return _sha(original)[:32]+".json"
+
+
 def _write_new(path:Path,value:dict):
     if path.exists():
         raise ValueError("HOLD_NEVER_OVERWRITE_PUBLIC_PRE_RACE_COMMITMENT")
@@ -415,9 +424,7 @@ def _cli():
         if args.commit_directory is not None:
             # Opaque, deterministic filename binds to the whole aggregate
             # content; no horse/race name or provider IDs in public path.
-            digest=_sha(json.dumps(b,sort_keys=True,ensure_ascii=False,
-                                   separators=(",",":"),allow_nan=False).encode("utf-8"))
-            out=args.commit_directory/(digest[:32]+".json")
+            out=args.commit_directory/content_addressed_bundle_filename(b)
         else:
             out=args.bundle_out
         _write_new(out,b)
