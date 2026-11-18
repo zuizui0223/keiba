@@ -80,6 +80,16 @@ def _sha(data:bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _sha_file(path:Path) -> str:
+    if not path.is_file():
+        raise ValueError("HOLD_MISSING_PRIVATE_COMMITTED_SOURCE_FILE")
+    h=hashlib.sha256()
+    with path.open("rb") as fd:
+        for block in iter(lambda:fd.read(4*1024*1024),b""):
+            h.update(block)
+    return h.hexdigest()
+
+
 def _sha_check(value) -> str:
     if not isinstance(value,str) or not REQUIRED_SHA.fullmatch(value):
         raise ValueError("HOLD_INVALID_OR_MISSING_SOURCE_OR_PREDICTION_SHA")
@@ -292,7 +302,8 @@ def attest_run(bundle:dict, run:dict, *, repo:str, sha:str,
 
 
 def open_originals(bundle:dict, *, source:bytes,adapter:bytes,forecast:bytes,
-                   private_predictions:bytes,allow_synthetic:bool=False) -> dict:
+                   private_predictions:bytes,allow_synthetic:bool=False,
+                   opened_private_file_sha256:dict|None=None) -> dict:
     """Private AFTER-race opening against immutable bundle; no source export."""
     q=validate_bundle(bundle,allow_synthetic=allow_synthetic)
     for k,data in (
@@ -310,8 +321,23 @@ def open_originals(bundle:dict, *, source:bytes,adapter:bytes,forecast:bytes,
     if private_obj.get("model_spec_sha256")!=(
             bundle["frozen_prediction_commitment"]["input_SHA256"]["model"]):
         raise ValueError("HOLD_OPENED_PRIVATE_FORECAST_MODEL_HASH_DRIFT")
+    if opened_private_file_sha256 is not None:
+        if type(opened_private_file_sha256) is not dict or set(opened_private_file_sha256)!={
+                "source_snapshot","entries","parents","history","model"}:
+            raise ValueError("HOLD_PRIVATE_SOURCE_FILE_OPENING_FIELDS")
+        expected={
+            "source_snapshot":bundle["source_capture"]["private_snapshot_sha256"],
+            **bundle["frozen_prediction_commitment"]["input_SHA256"],
+        }
+        for name in expected:
+            if _sha_check(opened_private_file_sha256[name])!=expected[name]:
+                raise ValueError("HOLD_OPENED_PRIVATE_SOURCE_OR_MODEL_SHA_DRIFT")
     return {
-        "status":"ORIGINAL_PRIVATE_FORECAST_AND_SOURCE_MANIFEST_SHA_OPENING_PASSED",
+        "status":("ALL_PRIVATE_SOURCE_AND_FORECAST_SHA_OPENED_NOT_TIME_ATTESTED"
+                  if opened_private_file_sha256 is not None else
+                  "ORIGINAL_PRIVATE_FORECAST_AND_SOURCE_MANIFEST_SHA_OPENING_PASSED"),
+        "all_private_source_and_model_bytes_opened":bool(
+            opened_private_file_sha256 is not None),
         "private_prediction_file_SHA256":_sha(private_predictions),
         "aggregate_bundle_timing_independently_attested_here":False,
         "licensed_source_accuracy_or_racing_outcomes_scored_here":False,
@@ -375,6 +401,11 @@ def _cli():
     opening.add_argument("--pre-adapter-summary",type=Path,required=True)
     opening.add_argument("--forecast-public-commitment",type=Path,required=True)
     opening.add_argument("--private-forecast",type=Path,required=True)
+    opening.add_argument("--private-source-snapshot",type=Path,required=True)
+    opening.add_argument("--private-entries",type=Path,required=True)
+    opening.add_argument("--private-parents",type=Path,required=True)
+    opening.add_argument("--private-history",type=Path,required=True)
+    opening.add_argument("--private-model",type=Path,required=True)
     opening.add_argument("--result-aggregate",type=Path,required=True)
     args=p.parse_args()
     if args.operation=="bundle":
@@ -402,7 +433,14 @@ def _cli():
             source=_bytes(args.pre_source_receipt),
             adapter=_bytes(args.pre_adapter_summary),
             forecast=_bytes(args.forecast_public_commitment),
-            private_predictions=_bytes(args.private_forecast))
+            private_predictions=_bytes(args.private_forecast),
+            opened_private_file_sha256={
+                "source_snapshot":_sha_file(args.private_source_snapshot),
+                "entries":_sha_file(args.private_entries),
+                "parents":_sha_file(args.private_parents),
+                "history":_sha_file(args.private_history),
+                "model":_sha_file(args.private_model),
+            })
         _write_new(args.result_aggregate,result)
     print(json.dumps(result,sort_keys=True,ensure_ascii=False,indent=2))
 
