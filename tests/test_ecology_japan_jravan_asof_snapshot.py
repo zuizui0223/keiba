@@ -98,6 +98,16 @@ class SnapshotReceiptTests(unittest.TestCase):
         self.assertTrue(private.is_file())
         self.assertTrue(public.is_file())
 
+    def test_private_backup_atomic_install_cannot_overwrite_concurrent_destination(self):
+        from unittest.mock import patch
+        with patch("ecology_japan_jravan_asof_snapshot.os.link",
+                   side_effect=FileExistsError):
+            with self.assertRaisesRegex(ValueError,"CONCURRENT_PRIVATE_SNAPSHOT"):
+                self.receipt(1)
+        self.assertFalse((self.root/"1.private.sqlite").exists())
+        self.assertFalse((self.root/"1.aggregate.json").exists())
+        self.assertFalse(list(self.root.glob(".jra-private-backup-*.sqlite")))
+
     def test_pre_race_capture_must_finish_strictly_before_start(self):
         with self.assertRaisesRegex(ValueError,"NOT_FINISHED_BEFORE_RACE"):
             self.receipt(1,clock=clock_at(stamp(9,14,0),stamp(9,15,15)))
