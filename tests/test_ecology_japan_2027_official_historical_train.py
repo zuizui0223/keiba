@@ -239,6 +239,52 @@ class Pre2027TrainingTests(unittest.TestCase):
         # History of target race is in the source file but never in own feature.
         self.assertEqual(first["features"]["log_own_count"],0.0)
 
+    def test_privately_trained_coefficients_reach_2027_freeze_and_later_score(self):
+        # End-to-end from synthetic historical official-ID panel to the very
+        # same 2027 future forecast ledger, with zero actual JRA data.
+        from ecology_japan_2027_point_in_time_ledger import (
+            freeze,score,canonical_bytes,digest_bytes
+        )
+        forecast_start=datetime(2027,1,9,15,15,tzinfo=JST_ZONE)
+        asof=datetime(2027,1,8,19,0,tzinfo=JST_ZONE)
+        actual_freeze=datetime(2027,1,8,20,0,tzinfo=JST_ZONE)
+        allowed=[]
+        for i in range(3):
+            horse=f"H:SYN{i:03d}"
+            allowed.append({
+                "race_id":"JRA:SYN20270109","horse_id":horse,
+                "race_start_at_jst":forecast_start.isoformat(),
+                "entry_known_at_jst":"2027-01-08T18:00:00+09:00",
+                "course_id":"KYOTO","surface":"dirt",
+                "distance_m":"1800","sex":("M","F","G")[i],
+                "age":"6","jockey_id":f"J:SYN{i%9}",
+                "trainer_id":f"T:SYN{i//5}",
+            })
+        from ecology_japan_2027_point_in_time_ledger import HISTORICAL_INPUT
+        pr,commit=freeze(allowed,self.parents,self.results,self.model,
+                         asof=asof,clock=actual_freeze,
+                         source_sha={**SOURCES,
+                           "model":digest_bytes(canonical_bytes(self.model))})
+        self.assertEqual(commit["starts"],3)
+        self.assertEqual(commit["input_SHA256"]["model"],
+                         self.summary["private_fitted_model_file_SHA256"])
+        self.assertNotIn("H:SYN",json.dumps(commit))
+        after=[]
+        for rank,horse in enumerate(("H:SYN000","H:SYN001","H:SYN002"),start=1):
+            after.append({
+                "race_id":"JRA:SYN20270109","horse_id":horse,
+                "race_start_at_jst":forecast_start.isoformat(),
+                "result_known_at_jst":"2027-01-09T17:00:00+09:00",
+                "finish_rank":str(rank), "classified_field_size":"3",
+                "finish_status":"CLASSIFIED",
+            })
+        scored=score(pr,commit,after)
+        self.assertEqual(scored["status"],"HOLD_2027_AGGREGATE_LOW_SUPPORT")
+        self.assertEqual(scored["starts_scored"],3)
+        self.assertIn("gain_M1_minus_M2",scored)
+        self.assertFalse(scored["conditional_operational_gain"])
+        self.assertNotIn("H:SYN",json.dumps(scored))
+
     def test_no_2027_future_model_pretense_from_fake_data(self):
         self.assertFalse(self.summary["methodology"]["target_2027_outcomes_used"])
         self.assertFalse(self.summary["methodology"]["genetic_causality_estimated"])
