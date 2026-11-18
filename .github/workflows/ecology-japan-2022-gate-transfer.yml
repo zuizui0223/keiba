@@ -1,0 +1,88 @@
+name: "Japanese 2022-learned family-history gate: historical 2023/24 transfer"
+
+on:
+  push:
+    branches: [analysis/2022-trained-kin-information-gate-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2022-gate-transfer.yml"
+      - "scripts/ecology_japan_2022_trained_family_gate.py"
+      - "tests/test_ecology_japan_2022_trained_family_gate.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-2022-choice-2023-24-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned transparent numerical/source reader dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Synthetic 2022-only model usage gate choice and leak rejection
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_trained_family_gate.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_2024_kin_information_moderators.py" -v
+      - name: Acquire previously checked Source A original ZIP transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Acquire previously checked Source B SQLite transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(
+              repo_id="KBlueLeaf/jp-racing-horse",repo_type="dataset",
+              filename="all_races_1990-2025.db",local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Reconstruct strict 244147 starts and train solely 2022 decision gate
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_trained_family_gate.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/japan-2022-gate-2023-24-historical-transfer.json \
+            > tmp/aggregate-stdout.json
+      - name: Fail-closed registered populations, 2024 negative comparator and future-label exclusion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/japan-2022-gate-2023-24-historical-transfer.json").read_text(encoding="utf-8"))
+          assert j["status"]=="POSTHOC_2022_TRAINED_KIN_GATE_2023_2024_CALENDAR_TRANSFER_NOT_PROSPECTIVE"
+          assert j["original_strict_source_QA"]["strict_focal_rows"]==244147
+          assert j["original_strict_source_QA"]["strict_focal_horses"]==12887
+          assert j["original_strict_source_QA"]["strict_races"]==35333
+          assert j["2022_gate_choice_from_historically_observed_labels"]["selection_uses_2023_or_2024_labels"] is False
+          assert j["calendar_order_is_not_untouched_prospective_test"]
+          assert j["test_years_scored_without_reranking_or_retraining"]
+          assert j["no_2023_24_outcome_driven_rule_change"]
+          assert j["source_record_publication_timestamp_not_certified"]
+          assert j["shared_environment_breeding_management_not_separated"]
+          assert j["no_horse_names_IDs_source_rows_or_individual_predictions_exported"]
+          assert j["fixed_rule_2022_and_calendar_year_transfer"]["2024"]["RMSE_always_family_M2"] > j["fixed_rule_2022_and_calendar_year_transfer"]["2024"]["RMSE_midpoint"]
+          assert sum(x["starts"] for x in j["fixed_rule_2022_and_calendar_year_transfer"].values())==244147
+          print("ACTUAL_2022_TRAINED_GATE_HISTORIC_2023_24_TRANSFER_SCORED_NEGATIVES_RETAINED")
+          PY
+      - name: Remove all third-party raw racing-data files
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-locked-2022-choice-2023-24-transfer-aggregate-only
+          path: tmp/japan-2022-gate-2023-24-historical-transfer.json
+          if-no-files-found: warn
+          retention-days: 14
