@@ -267,7 +267,14 @@ def capture(source:Path, private:Path, public:Path, *,
         }
         # Only after every gate passes do the atomic private rename and
         # immutable public receipt write occur. No source data in the latter.
-        os.replace(tmp,private)
+        # Atomic no-clobber install: unlike os.replace(), a hard link
+        # fails if a concurrent process already created the destination.
+        # Temporary backup and destination share the same private directory.
+        try:
+            os.link(tmp,private)
+        except FileExistsError:
+            raise ValueError("HOLD_CONCURRENT_PRIVATE_SNAPSHOT_DESTINATION_EXISTS") from None
+        tmp.unlink()
         os.chmod(private,0o600)
         try:
             with public.open("xb") as f:
