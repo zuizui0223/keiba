@@ -1,0 +1,93 @@
+name: "JRA 2027 server-timestamped immutable pre-race commitment (PUSH only)"
+
+# REAL attestation is separate from fictional CI.
+# No PR/workflow_dispatch/re-run can establish a NEW backdated pledge.
+on:
+  push:
+    paths:
+      - "docs/commitments/2027/*.json"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  check-new-aggregate-commitments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out the server-recorded pushed commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Only NEW opaque aggregate bundles, pushed before their races
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          from ecology_japan_2027_github_push_attestation import (
+              _json_bytes, _fetch_current_run, attest_run
+          )
+
+          if os.environ.get("GITHUB_EVENT_NAME") != "push":
+              raise ValueError("HOLD_ONLY_SERVER_TIMED_PUSH_COUNTS")
+          if os.environ.get("GITHUB_REPOSITORY") != "zuizui0223/keiba":
+              raise ValueError("HOLD_NON_CANONICAL_REPOSITORY_FOR_JRA_PLEDGE")
+          event=json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+          before=event.get("before","")
+          after=event.get("after","")
+          sha=os.environ.get("GITHUB_SHA","")
+          if (not re.fullmatch(r"[a-f0-9]{40}", before)
+                  or before=="0"*40 or after!=sha):
+              raise ValueError("HOLD_UNVERIFIABLE_NEW_BRANCH_OR_PUSH_RANGE")
+          head=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+          if head!=sha:
+              raise ValueError("HOLD_CHECKOUT_NOT_EXACT_GITHUB_PUSH_SHA")
+          changed=subprocess.check_output([
+              "git","diff","--no-renames","--name-status",
+              before,sha,"--","docs/commitments/2027/"
+          ],text=True)
+          paths=[]
+          for line in changed.splitlines():
+              status, sep, path=line.partition("\t")
+              if not sep or status!="A" or not re.fullmatch(
+                      r"docs/commitments/2027/[a-f0-9]{32}\.json",path):
+                  raise ValueError("HOLD_ATTEMPT_TO_REWRITE_EXISTING_OR_IDENTIFY_PLEDGE")
+              paths.append(path)
+          if not 1<=len(paths)<=20 or len(paths)!=len(set(paths)):
+              raise ValueError("HOLD_NO_NEW_OPAQUE_COMMITMENTS_OR_TOO_MANY")
+          # GitHub REST created_at is server-maintained; never substitute the
+          # user-editable Git commit author or committer timestamps.
+          run,repo,current_sha=_fetch_current_run()
+          if current_sha!=sha:
+              raise ValueError("HOLD_CURRENT_SERVER_RUN_COMMIT_MISMATCH")
+          for path in sorted(paths):
+              bundle=_json_bytes(Path(path).read_bytes())
+              checked=attest_run(bundle,run,repo=repo,sha=sha)
+              if not checked["external_pre_race_timestamp_verified"]:
+                  raise ValueError("HOLD_NO_EXTERNAL_GITHUB_PRE_RACE_EVIDENCE")
+              print(json.dumps({
+                  "status":checked["status"],
+                  "commitment_opaque_file":path,
+                  "github_run":checked["github_run_id"],
+                  "github_push_run_created_at_utc":
+                      checked["github_push_run_created_at_utc"],
+                  "first_race_start_jst":checked["first_race_start_jst"],
+                  "private_prediction_SHA256":
+                      checked["private_prediction_sha256"],
+                  "official_data_and_provider_publication_still_UNVERIFIED":True,
+              },sort_keys=True,ensure_ascii=False))
+          print("SERVER_CREATED_PUSH_PRE_RACE_COMMITMENT_CONDITIONAL_CHECK_SUCCEEDED")
+          PY
