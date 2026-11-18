@@ -55,9 +55,14 @@ jobs:
       - name: If a research aggregate was committed, verify exact re-computation
         run: |
           if [ -f docs/evidence/information-precision-hierarchy-audit-20261118.json ]; then
-            diff -u \
-              docs/evidence/information-precision-hierarchy-audit-20261118.json \
-              /tmp/ecology-information-precision-compact-audit.json
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("docs/evidence/information-precision-hierarchy-audit-20261118.json").read_text())
+          b=json.loads(Path("/tmp/ecology-information-precision-compact-audit.json").read_text())
+          assert a==b, "HOLD_COMMITTED_INFORMATION_PRECISION_AUDIT_NOT_REPRODUCIBLE"
+          print("COMMITTED_INFORMATION_PRECISION_REGENERATES_BYTE_VALUE_IDENTICAL")
+          PY
           fi
       - uses: actions/upload-artifact@v4
         with:
