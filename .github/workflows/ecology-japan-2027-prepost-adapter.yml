@@ -1,0 +1,50 @@
+name: "JRA 2027 private pre/post SQLite snapshot-to-forecast adapter QA"
+
+on:
+  push:
+    branches: [analysis/jravan-asof-capture-ledger-20261118]
+    paths:
+      - ".github/workflows/ecology-japan-2027-prepost-adapter.yml"
+      - "scripts/ecology_japan_jravan_snapshot_adapter.py"
+      - "tests/test_ecology_japan_jravan_snapshot_adapter.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  private-source-prepost-adapter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile two private source snapshot converters
+        run: |
+          python -m py_compile scripts/ecology_japan_jravan_snapshot_adapter.py
+          python -m py_compile scripts/ecology_japan_jravan_asof_snapshot.py
+      - name: Synthetic-only pre/post source identity and correct known-on bounds
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_jravan_snapshot_adapter.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_jravan_asof_snapshot.py" -v
+      - name: Prove output is not source-certified publication or a prospective score
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("scripts/ecology_japan_jravan_snapshot_adapter.py").read_text(encoding="utf-8")
+          for token in (
+              "PRIVATE_PRE_RACE_EXTRACTED_LOCAL_FIRST_OBSERVED_NOT_PROVIDER_ATTESTED",
+              "PRIVATE_POST_RACE_EXTRACTED_LOCAL_FIRST_OBSERVED_NOT_PROVIDER_ATTESTED",
+              "HOLD_FINAL_RANK_ALREADY_IN_PRE_RACE_SNAPSHOT",
+              "HOLD_POST_RECEIPT_NOT_CHAINED_TO_PRE_RACE_SNAPSHOT",
+              "HOLD_TIED_GAPPED_OR_INVALID_FINAL_SOURCE_RANKS",
+              "source_licensing_and_received_at_clock_not_third_party_attested",
+          ):
+              assert token in s, token
+          print("PREPOST_SQLITE_ADAPTER_SYNTHETIC_ONLY_NO_LICENSED_HORSE_DATA")
+          PY
