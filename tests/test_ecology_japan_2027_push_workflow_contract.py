@@ -39,6 +39,8 @@ class ProductionPushGateTests(unittest.TestCase):
             'status!="A"',
             'docs/commitments/2027/[a-f0-9]{32}',
             'HOLD_ATTEMPT_TO_REWRITE_EXISTING_OR_IDENTIFY_PLEDGE',
+            'content_addressed_bundle_filename(bundle)',
+            'HOLD_COMMITMENT_FILENAME_NOT_CONTENT_ADDRESSED',
         ):
             self.assertIn(v,s,v)
 
