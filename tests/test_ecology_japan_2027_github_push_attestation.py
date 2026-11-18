@@ -288,6 +288,57 @@ class PreRaceServerAttestationTests(unittest.TestCase):
                            forecast=dump(f),private_predictions=dump(bad),
                            allow_synthetic=True)
 
+    def test_postrace_open_every_original_private_input_sha(self):
+        from ecology_japan_2027_github_push_attestation import _sha_file
+        files={
+            "source_snapshot":b"fictional sqlite backup bytes",
+            "entries":b"fake,entrant\\n",
+            "parents":b"fake,parent\\n",
+            "history":b"fake,historical-results\\n",
+            "model":b"fictional linear model coefficients",
+        }
+        s=json.loads(self.src)
+        a=json.loads(self.ada)
+        f=json.loads(self.fore)
+        p=json.loads(self.private)
+        s["private_snapshot_sha256"]=_sha(files["source_snapshot"])
+        raw_s=dump(s)
+        a["source_pre_receipt_SHA256"]=_sha(raw_s)
+        a["source_pre_private_snapshot_SHA256"]=s["private_snapshot_sha256"]
+        for key in ("entries","parents"):
+            a["private_normalized_CSV_SHA256"][key]=_sha(files[key])
+            f["input_SHA256"][key]=_sha(files[key])
+        for key in ("history","model"):
+            f["input_SHA256"][key]=_sha(files[key])
+        p["model_spec_sha256"]=f["input_SHA256"]["model"]
+        private=dump(p)
+        f["private_prediction_file_SHA256"]=_sha(private)
+        raw_a,raw_f=dump(a),dump(f)
+        bundle=build_bundle(raw_s,raw_a,raw_f,allow_synthetic=True)
+        hashes={k:_sha(v) for k,v in files.items()}
+        opened=open_originals(
+            bundle,source=raw_s,adapter=raw_a,forecast=raw_f,
+            private_predictions=private,allow_synthetic=True,
+            opened_private_file_sha256=hashes)
+        self.assertEqual(opened["status"],
+            "ALL_PRIVATE_SOURCE_AND_FORECAST_SHA_OPENED_NOT_TIME_ATTESTED")
+        self.assertTrue(opened["all_private_source_and_model_bytes_opened"])
+        self.assertFalse(opened["aggregate_bundle_timing_independently_attested_here"])
+        bad=dict(hashes,model="a"*64)
+        with self.assertRaisesRegex(ValueError,"PRIVATE_SOURCE_OR_MODEL_SHA_DRIFT"):
+            open_originals(bundle,source=raw_s,adapter=raw_a,forecast=raw_f,
+                           private_predictions=private,allow_synthetic=True,
+                           opened_private_file_sha256=bad)
+        with self.assertRaisesRegex(ValueError,"OPENING_FIELDS"):
+            open_originals(bundle,source=raw_s,adapter=raw_a,forecast=raw_f,
+                           private_predictions=private,allow_synthetic=True,
+                           opened_private_file_sha256={"model":_sha(files["model"])})
+        with tempfile.TemporaryDirectory() as root:
+            for name,raw in files.items():
+                fpath=Path(root)/name
+                fpath.write_bytes(raw)
+                self.assertEqual(_sha_file(fpath),hashes[name])
+
     def test_public_bundle_file_write_is_no_overwrite(self):
         b=self.bundle()
         with tempfile.TemporaryDirectory() as tmp:
