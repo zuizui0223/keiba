@@ -130,6 +130,36 @@ class Pre2027TrainingTests(unittest.TestCase):
         self.assertTrue(self.summary["methodology"][
             "one_way_validation_resampling_not_two_way_CI"])
 
+    def test_validation_strata_use_pretarget_features_and_suppress_sparse(self):
+        s=self.summary["pretimestep_2025_2026_validation_strata"]
+        self.assertEqual(s["status"],
+           "PRETARGET_SOURCE_COVERAGE_CONDITIONAL_NOT_GENETIC_CAUSATION")
+        groups=s["subgroups"]
+        self.assertEqual(groups["no_documented_own_past"]["starts"]+
+            groups["has_documented_own_past"]["starts"],120)
+        self.assertEqual(groups["no_recorded_same_parent_peer"]["starts"]+
+            groups["has_recorded_same_parent_peer"]["starts"],120)
+        self.assertEqual(groups["both_parent_IDs_recorded"]["starts"]+
+            groups["at_least_one_parent_ID_unrecorded"]["starts"],120)
+        self.assertEqual(groups["no_documented_own_past"]["status"],
+            "HOLD_SOURCE_COHORT_LOW_SUPPORT")
+        self.assertIsNone(groups["no_documented_own_past"]["historical_scores"])
+        self.assertTrue(s["no_documented_past_NOT_official_first_debut"])
+        self.assertTrue(s["no_documented_family_peer_NOT_genetically_unrelated"])
+
+    def test_validation_subgroups_include_no_source_family_without_imputation(self):
+        parents=copy.deepcopy(self.parents)
+        for p in parents:
+            p["dam_id"]=""
+            p["sire_id"]=""
+        model,qa=train(self.entries,parents,self.results,
+                       clock=NOW,source_sha=SOURCES)
+        subs=qa["pretimestep_2025_2026_validation_strata"]["subgroups"]
+        self.assertEqual(subs["no_recorded_same_parent_peer"]["starts"],120)
+        self.assertEqual(subs["has_recorded_same_parent_peer"]["starts"],0)
+        self.assertEqual(subs["both_parent_IDs_recorded"]["starts"],0)
+        self.assertIsNone(subs["has_recorded_same_parent_peer"]["historical_scores"])
+
     def test_temporal_split_and_pre2027_validation(self):
         t=self.summary["source_qa"]["training_support"]
         v=self.summary["source_qa"]["validation_support"]
