@@ -74,6 +74,14 @@ def dependency_audit(panels: dict[int, pd.DataFrame], *, min_horses: int = 30,
     no unjustified three-way variance formula is attempted.
     """
     p = validate_panels(panels)
+    # The parent 3-year validator intentionally drops the parent ID. Restore
+    # only the already supplied Source-A sire label, in unchanged row order.
+    for year in (2022, 2023, 2024):
+        if "sire_id" not in panels[year]:
+            raise ValueError("HOLD_SIRE_SOURCE_A_PARENT_ID_ABSENT")
+        if len(p[year]) != len(panels[year]):
+            raise ValueError("HOLD_SIRE_ROW_ALIGNMENT_CHANGED")
+        p[year]["sire_id"] = panels[year]["sire_id"].reset_index(drop=True)
     if draws < 30 or min_days < 2 or min_sires < 2 or min_horses < 2:
         raise ValueError("HOLD_DEPENDENCE_MIN_CLUSTER_OR_DRAW_GATE")
     family = _family_map(p)
