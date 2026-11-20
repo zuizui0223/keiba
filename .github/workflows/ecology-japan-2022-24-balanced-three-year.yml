@@ -1,0 +1,99 @@
+name: "Racehorse ecology: balanced 2022-24 horse-context time and observed-participation selection"
+
+on:
+  push:
+    branches: [analysis/2022-24-balanced-three-year-selection-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-balanced-three-year.yml"
+      - "scripts/ecology_japan_2022_24_balanced_three_year.py"
+      - "tests/test_ecology_japan_2022_24_balanced_three_year.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-balanced-three-year.yml"
+      - "scripts/ecology_japan_2022_24_balanced_three_year.py"
+      - "tests/test_ecology_japan_2022_24_balanced_three_year.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  three-year-same-horse-same-coarse-context-and-future-participation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin numeric and source-only dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Run fictional exact balance, selection, ID and privacy falsification tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_balanced_three_year.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_matched_context.py" -v
+      - name: Download SHA-pinned historical source A transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download historical source B transiently, not to Git
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id='KBlueLeaf/jp-racing-horse',
+              repo_type='dataset',filename='all_races_1990-2025.db',
+              local_dir='tmp/private'))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Actual 2022-24 strict source, three year common support and selection audit
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_24_balanced_three_year.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/three-year-balanced-selection-aggregate.json \
+            > tmp/summary-only.txt
+      - name: Guard source SHA, all three year scores, expected populations, truthfully declared HOLD and privacy
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('tmp/three-year-balanced-selection-aggregate.json').read_text())
+          assert j['status']=='POSTHOC_BALANCED_THREE_YEAR_HORSE_CONTEXT_AND_FUTURE_PARTICIPATION_NOT_CAUSAL'
+          assert j['original_strict_horses']==12887
+          assert j['original_strict_starts']==244147
+          assert j['original_strict_races']==35333
+          assert j['source_A_sha256']=='c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f'
+          assert j['source_B_sha256']=='7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9'
+          assert j['frozen_2018_21_model_2022_chosen_rule_and_2022_24_year_scores_preserved']
+          b=j['three_year_balanced_horse_context']
+          assert b['year_start_counts']=={'2022':120381,'2023':80939,'2024':42827}
+          assert b['horses_observed_2022_and_2024_any_context']==5163
+          assert b['uses_same_horses_and_same_strata_for_all_three_contrasts']
+          assert b['source_horse_race_or_individual_gain_values_never_exported']
+          if not b['status'].startswith('HOLD'):
+              assert b['balanced_2022_to_2024_difference_equals_sum_of_two_steps']
+          s=j['2022_observation_selection_by_future_2024_presence']
+          assert s['2022_horses_observed_again_in_2024']==5163
+          assert s['source_2024_records_missing_do_NOT_mean_dead_or_retired']
+          assert s['no_source_horse_IDs_individual_predictions_or_rows_exported']
+          assert j['all_years_posthoc_inspected_not_confirmatory']
+          print('THREE_YEAR_REAL_SOURCE_AND_FUTURE_PARTICIPATION_AGGREGATE_VERIFIED')
+          PY
+      - name: Delete source A/B private racing records even on failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-balanced-three-year-aggregate-only
+          path: tmp/three-year-balanced-selection-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14
