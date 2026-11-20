@@ -89,8 +89,7 @@ def dependency_audit(panels: dict[int, pd.DataFrame], *, min_horses: int = 30,
     if n_horses < min_horses:
         return {"status": "HOLD_DEPENDENCE_BALANCED_HORSE_SUPPORT",
                 "balanced_horses": n_horses}
-    if n_horses != int(family.reindex(cells.horse).notna().sum() /
-                       (len(cells) / n_horses)) and not cells.horse.isin(family.index).all():
+    if not cells.horse.isin(family.index).all():
         raise ValueError("HOLD_MISSING_FROZEN_SIRE_LABEL")
     # Each horse's 2022 context mix is kept identical in 2023 and 2024.
     cells["mix22"] = cells.starts_2022 / cells.groupby(
@@ -160,7 +159,7 @@ def dependency_audit(panels: dict[int, pd.DataFrame], *, min_horses: int = 30,
             "horse_CR0_normal_95pct_sensitivity_interval":
                 _interval(estimate, float(np.sqrt(vh)), 1.959963984540054),
             "horse_day_two_way_formula": "V_horse + V_calendar_day - V_horse_x_calendar_day",
-            "two_way_CGМ_sensitivity_only_not_an_independent_prospective_test": True,
+            "two_way_CGM_sensitivity_only_not_an_independent_prospective_test": True,
         }
         if nd < min_days or nh < min_horses or nhd < min_horses:
             check["two_way_status"] = "HOLD_TOO_FEW_DEPENDENCE_CLUSTERS"
@@ -168,7 +167,7 @@ def dependency_audit(panels: dict[int, pd.DataFrame], *, min_horses: int = 30,
             var = vh + vd - vhd
             check["day_only_CR0_se"] = float(np.sqrt(vd))
             check["two_way_raw_variance"] = float(var)
-            if var <= 0 or not np.isfinite(var):
+            if var <= 1e-24 or not np.isfinite(var):
                 check["two_way_status"] = "HOLD_NONPOSITIVE_TWO_WAY_SANDWICH_VARIANCE"
             else:
                 se = float(np.sqrt(var))
