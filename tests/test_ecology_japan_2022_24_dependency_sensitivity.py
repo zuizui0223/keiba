@@ -54,12 +54,16 @@ class DependenceTests(unittest.TestCase):
         self.assertAlmostEqual(r["results"]["2022_to_2024"]["point_change_MSE_MG_vs_M2"],.02)
         self.assertTrue(r["full_three_year_old_differences_preserved"])
 
-    def test_no_fabricated_two_way_interval_for_zero_variance(self):
+    def test_zero_paired_horse_variance_does_not_force_calendar_variance_zero(self):
         r=dependency_audit(toy(),draws=100)
         v=r["results"]["2023_to_2024"]
-        self.assertEqual(v["two_way_status"],"HOLD_NONPOSITIVE_TWO_WAY_SANDWICH_VARIANCE")
-        self.assertNotIn("two_way_normal_95pct_sensitivity_interval",v)
+        # Every horse has an identical two-year difference. Treating that
+        # alone as proof of zero date-cluster uncertainty is not valid:
+        # the later and prior records were on separate calendar dates.
         self.assertAlmostEqual(v["horse_CR0_se"],0,places=12)
+        self.assertEqual(v["two_way_status"],
+                         "POSTHOC_TWO_WAY_HORSE_AND_CALENDAR_DAY_SANDWICH")
+        self.assertGreater(v["two_way_horse_date_CR0_se"],0)
 
     def test_calendar_date_shock_changes_dependence_uncertainty(self):
         r=dependency_audit(toy(day_pattern=True),draws=100)
