@@ -1,0 +1,96 @@
+name: "Racehorse 2022-24: same horse and shared race-context kin gate audit"
+
+on:
+  push:
+    branches: [analysis/2022-24-matched-horse-context-20261120]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-matched-context.yml"
+      - "scripts/ecology_japan_2022_24_matched_context.py"
+      - "tests/test_ecology_japan_2022_24_matched_context.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-matched-context.yml"
+      - "scripts/ecology_japan_2022_24_matched_context.py"
+      - "tests/test_ecology_japan_2022_24_matched_context.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  matched-horse-surface-distance-retrospective-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fixed numeric and source packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Test exact paired context and selection logic on invented horses
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_matched_context.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_gate_shift_decomposition.py" -v
+      - name: Transiently fetch source A with original SHA requirement
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Transiently fetch source B SQLite
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id='KBlueLeaf/jp-racing-horse',
+              repo_type='dataset',filename='all_races_1990-2025.db',
+              local_dir='tmp/private'))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Strict actual sources and horse-context matched comparison
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_24_matched_context.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/matched-context-aggregate.json > tmp/summary-only.txt
+      - name: Check original population, frozen gate and truthful HOLD outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('tmp/matched-context-aggregate.json').read_text())
+          assert j['status'] in (
+              'POSTHOC_2022_24_MATCHED_HORSE_COMMON_CONTEXT_NOT_CAUSAL',
+              'HOLD_MATCHED_HORSE_COMMON_CONTEXT_INSUFFICIENT_SUPPORT')
+          assert j['original_strict_2022_24_starts']==244147
+          assert j['original_strict_2022_24_horses']==12887
+          assert j['original_strict_2022_24_races']==35333
+          assert j['same_candidate_horses_both_years_all_contexts']==5163
+          assert j['source_B_2022_2024_starts']=={'2022':120381,'2024':42827}
+          assert j['frozen_pre2022_trained_model_and_2022_selected_rule_verified']
+          assert j['2024_results_previously_inspected_NOT_external_holdout']
+          assert j['no_individual_horse_ID_race_ID_day_or_gain_exported']
+          assert j['cohort_selected_using_future_year_and_context_overlap']
+          if not j['status'].startswith('HOLD'):
+              assert j['native_mix_decomposition_exact']
+              assert abs(j['common_context_native_mix_year_change']-(
+                  j['2022_reference_within_horse_context_mix_component']+
+                  j['within_common_context_component_at_2024_mix']))<1e-12
+          print('ACTUAL_SAME_HORSE_CONTEXT_SOURCE_LOCK_AND_NEGATIVES_VERIFIED')
+          PY
+      - name: Delete third-party race records on success or failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-same-horse-context-aggregate-only
+          path: tmp/matched-context-aggregate.json
+          if-no-files-found: warn
+          retention-days: 14

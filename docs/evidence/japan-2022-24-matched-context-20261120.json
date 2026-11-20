@@ -1,0 +1,59 @@
+{
+  "status": "POSTHOC_2022_24_MATCHED_HORSE_COMMON_CONTEXT_NOT_CAUSAL",
+  "source_A_SHA256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_SHA256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "full_strict_cohort": {
+    "horses": 12887,
+    "starts": 244147,
+    "races": 35333,
+    "starts_2022": 120381,
+    "starts_2024": 42827
+  },
+  "common_support": {
+    "horse_candidates_both_years_any_context": 5163,
+    "matched_same_horse_same_surface_distance_band_horses": 4777,
+    "same_horse_context_cells": 6499,
+    "multiple_common_context_horses": 1602,
+    "matched_horses_fraction": 0.9252372651559171,
+    "common_2022_starts": 40050,
+    "common_2024_starts": 35059,
+    "common_2022_starts_fraction_all": 0.33269369751040445,
+    "common_2024_starts_fraction_all": 0.8186190954304527
+  },
+  "mean_squared_error_gate_over_always_M2": {
+    "sign_definition": "positive=MG_better_than_M2",
+    "year_2022_common_context": -0.00007430166715773995,
+    "year_2024_2022_mix_standardized": -0.000145179006681266,
+    "standardized_paired_year_change": -0.00007087733952352603,
+    "horse_bootstrap_399_95pct": [
+      -0.00018658004929173426,
+      0.000027066248220186177
+    ],
+    "year_2024_native_common_context": -0.00013299680769017882,
+    "native_mix_year_change": -0.00005869514053243888,
+    "composition_component": -0.000013748917537145633,
+    "within_context_component": -0.000044946222995293244,
+    "identity_exact": true
+  },
+  "source_reproduction": {
+    "push_run": 44759811119,
+    "push_source_sha": "9f7cb4ab81800a8c56c70fb79c24e8d39ab925e6",
+    "push_artifact_id": 14639034869,
+    "push_artifact_zip_sha256": "5b430e95676481b04356429c185b7a5310d1e3264d95cad6ce85eb429a8019ab",
+    "pull_request_run": 44759987731,
+    "pr_source_sha": "870255ac67eb5fe5f0d19f4c6706835faf2e059e",
+    "pr_artifact_id": 14639399908,
+    "pr_artifact_zip_sha256": "10b94877a6a683cbbd59a14d1e55b26c44de5c342932eebc2ca3fdb084226ff7",
+    "two_artifact_json_byte_identical_sha256": "b564f3c34f95ecc3b95bacd02f3186fb0c6d0f00b294cf12250abdb1965392be",
+    "both_actions_success": true
+  },
+  "interpretation": {
+    "point_estimate_negative": true,
+    "bootstrap_interval_contains_zero": true,
+    "not_independent_holdout": true,
+    "coarse_context_not_same_environment": true,
+    "followup_selection": true,
+    "genetic_causation_unidentified": true,
+    "individual_records_not_published": true
+  }
+}
