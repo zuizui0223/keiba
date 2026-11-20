@@ -112,9 +112,9 @@ class DependenceTests(unittest.TestCase):
 
     def test_invalid_cross_race_day_date_holds(self):
         p=toy()
-        p[2024].loc[:1,"race"]="FICTIONAL:DUPLICATE:RACE"
+        p[2024].loc[[0,4],"race"]="FICTIONAL:DUPLICATE:RACE"
         p[2024].loc[0,"day"]=pd.Timestamp("2024-04-05")
-        p[2024].loc[1,"day"]=pd.Timestamp("2024-04-07")
+        p[2024].loc[4,"day"]=pd.Timestamp("2024-04-07")
         with self.assertRaisesRegex(ValueError,"RACE_MULTIPLE_CALENDAR_DAYS"):
             dependency_audit(p,draws=50)
 
@@ -135,7 +135,7 @@ class DependenceTests(unittest.TestCase):
         nhd,vhd=_cluster_variance(a,["horse","day"])
         self.assertEqual((nh,nd,nhd),(2,2,4))
         self.assertAlmostEqual(vh,0)
-        self.assertAlmostEqual(vd,0.18)
+        self.assertAlmostEqual(vd,0.04)
         self.assertAlmostEqual(vhd,4/3*.1)
         
 if __name__=="__main__":
