@@ -1,0 +1,93 @@
+{
+  "status": "POSTHOC_REAL_2022_24_THREE_YEAR_BALANCED_AND_OBSERVATION_SELECTION_NOT_CAUSAL",
+  "source_A_SHA256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_SHA256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "locked": {
+    "horses": 12887,
+    "starts": 244147,
+    "races": 35333,
+    "source_year_starts": {
+      "2022": 120381,
+      "2023": 80939,
+      "2024": 42827
+    },
+    "frozen_old_model_2022_gate_all_year_scores_reproduced": true
+  },
+  "balanced": {
+    "horses_all_three_years": 4636,
+    "common_horse_context_cells": 5895,
+    "horses_all_years_any_context": 5102,
+    "starts_2022": 38480,
+    "starts_2023": 43888,
+    "starts_2024": 33644,
+    "matched_starts_fraction_2022": 0.31965177228964703,
+    "matched_starts_fraction_2023": 0.5422355106932382,
+    "matched_starts_fraction_2024": 0.7855791906974572,
+    "signed_MSE_gain_positive_means_MG_better": true,
+    "year_gain": {
+      "2022": -0.00007344056478406923,
+      "2023": -0.000023659862378542124,
+      "2024": -0.00014448376938873883
+    },
+    "paired_year_change": {
+      "2022_to_2023": 0.0000497807024055271,
+      "2023_to_2024": -0.0001208239070101967,
+      "2022_to_2024": -0.00007104320460466962
+    },
+    "horse_399_bootstrap_95pct": {
+      "2022_to_2023": [
+        -0.000048091555318582484,
+        0.00013994505523557888
+      ],
+      "2023_to_2024": [
+        -0.00021400743741224472,
+        -0.000024613888368339794
+      ],
+      "2022_to_2024": [
+        -0.00018699234085592413,
+        0.000047428727137362306
+      ]
+    },
+    "two_steps_exactly_add_to_2022_2024": true,
+    "2023_to_2024_interval_does_not_cross_zero": true
+  },
+  "observation_selection": {
+    "year_2022_horses": 12755,
+    "with_2024_record": 5163,
+    "without_2024_record": 7592,
+    "2022_MG_minus_M2_MSE_gain_all": 0.00004799390375970815,
+    "with_2024_record_gain": -0.00002946697610885394,
+    "without_2024_record_gain": 0.00010067179137316787,
+    "group_contrast_with_minus_without": -0.0001301387674820218,
+    "stratified_horse_399_bootstrap_95pct": [
+      -0.00021702061145686743,
+      -0.000035517236001935787
+    ],
+    "own_history_4bin_composition": -0.00003182718071070432,
+    "within_own_history_4bin": -0.0000983115867713175,
+    "decomposition_exact": true,
+    "record_fraction_by_pre2022_history": {
+      "0-3": 0.5332936979785969,
+      "4-7": 0.5176353700943865,
+      "8-15": 0.42567363003330305,
+      "16+": 0.3157894736842105
+    }
+  },
+  "evidence": {
+    "run_id": 44762798731,
+    "run_success": true,
+    "source_sha": "d3f7771b54f72d70be599434fe6cf16f4ef2dc2d",
+    "artifact_id": 14642157677,
+    "artifact_zip_sha256": "cc4afc54d7d1df06bf002a6ef2a9425e317d1bc5dee1fc18b5b2e7d56073c511",
+    "aggregate_json_sha256": "81740758dc0bcbbd0d8d22d1a0f5a575126d041bdad2e5f163dca464980fb796"
+  },
+  "holds": {
+    "retrospective_already_inspected_all_years": true,
+    "not_official_JRA_studbook_crosswalk": true,
+    "subsequent_absence_not_survival_or_fitness": true,
+    "same_coarse_context_not_identical_race_environment": true,
+    "race_day_and_sire_cluster_uncertainty_unassessed": true,
+    "no_bloodline_A_genomic_G_MSTN_or_real_odds_link": true,
+    "no_individual_records_exported": true
+  }
+}
