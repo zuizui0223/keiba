@@ -13,6 +13,12 @@ Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GEN
 
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
+## 2026-11-21: Dependence audit downgrades robustness of temporal kin-information shift
+
+**Correction to the preceding post-hoc three-year result:** The [actual-source horse × race-day, sire-family and 3-comparison audit](JAPAN_2022_24_DEPENDENCE_SENSITIVITY_RESULTS.md) reproduced the **same 4,636 animals, 5,895 animal×context cells and frozen 2022 model**. The 2023→2024 MG-vs-always-M2 MSE difference remains **−0.000120824**. Its horse×calendar-day normal 95% sensitivity interval was negative (**[−0.000223736, −0.000017911]**), but the three-comparison Bonferroni interval **[−0.000246525, +0.000004878]** and recorded-sire-cluster interval (**280 groups; [−0.000265776, +0.000007552]**) **both cross zero**. Thus the prior horse-only significant direction **does not support robust or universal temporal decay**.
+
+This is an observational correlation correction, not evidence that genetics, heritability, breeding fitness or real odds-market behavior caused an effect. The earlier **2022 future-2024-observation selection contrast was not given multiway/sire uncertainty in this audit** and retains its descriptive-only status. Preserve the 2024 loss of MG and M2 against midpoint M0. [Anonymous source-verified result](../evidence/japan-2022-24-dependence-sensitivity-20261121.json) · [reproducible code](../../scripts/ecology_japan_2022_24_dependency_sensitivity.py).
+
 ## 2026-11-21: Balanced three-year horse-context and observed-participation selection (real, post-hoc)
 
 The [actual-source 2022–24 balanced three-year audit](JAPAN_2022_24_BALANCED_THREE_YEAR_SELECTION_RESULTS.md) holds **4,636 observed horses and 5,895 horse × turf/dirt/400-m band cells** constant throughout 2022, 2023 and 2024, with each horse's 2022 context weights unchanged. The 2022-selected individual/kin gate (MG) relative to always-family M2 deteriorated **2023→2024 (horse-equal MSE difference change −0.000120824, 399 horse-bootstrap 95% sensitivity interval [−0.000214007, −0.000024614])**. However 2022→2023 and 2022→2024 sensitivity intervals span zero: do not infer a universal monotonic decay.
