@@ -1,0 +1,95 @@
+name: "Ecology 2022-24 real horse-date two-way and sire dependence audit"
+
+on:
+  push:
+    branches: [analysis/2022-24-multiway-cluster-audit-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-dependence-audit.yml"
+      - "scripts/ecology_japan_2022_24_dependency_sensitivity.py"
+      - "tests/test_ecology_japan_2022_24_dependency_sensitivity.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-dependence-audit.yml"
+      - "scripts/ecology_japan_2022_24_dependency_sensitivity.py"
+      - "tests/test_ecology_japan_2022_24_dependency_sensitivity.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-sha-locked-multiway-and-sire-uncertainty-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fixed numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Fictional clustered controls, zero-variance HOLD, labels and private source tests
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_dependency_sensitivity.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_balanced_three_year.py" -v
+      - name: Download original SHA-locked source A only inside temporary workspace
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Retrieve original source B SQLite transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",
+              local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size>0
+          PY
+      - name: Recompute all strict original races and multiway/sire cluster result
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_24_dependency_sensitivity.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/dependence-aggregate-only.json > tmp/summary-only.txt
+      - name: Check locked source, unchanged fixed cohort and honest inference status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/dependence-aggregate-only.json").read_text())
+          assert j["status"]=="POSTHOC_THREE_YEAR_HORSE_RACE_DAY_SIRE_DEPENDENCE_SENSITIVITY_NOT_CAUSAL"
+          assert j["source_A_SHA256"]=="c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f"
+          assert j["source_B_SHA256"]=="7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+          assert j["source_strict_starts"]==244147 and j["source_strict_horses"]==12887
+          assert j["source_strict_races"]==35333 and j["balanced_horses"]==4636
+          assert j["balanced_context_cells"]==5895
+          assert j["race_starts_by_year"]=={"2022":38480,"2023":43888,"2024":33644}
+          assert j["model_coefficients_old_M1_M2_2022_MG_frozen"]
+          assert j["three_previously_examined_contrasts_bonferroni_corrected"]
+          for k in ("2022_to_2023","2023_to_2024","2022_to_2024"):
+              a=j["results"][k]
+              assert a["matched_horses"]==4636
+              assert a["two_way_status"].startswith(("POSTHOC_","HOLD_"))
+              assert a["sire_cluster_bootstrap_status"].startswith(("POSTHOC_","HOLD_"))
+              assert "horse_CR0_se" in a
+          assert j["no_sire_horse_day_race_or_individual_effects_exported"]
+          print("SOURCE_LOCKED_HORSE_DAY_SIRE_DEPENDENCE_AUDIT_PASSED")
+          PY
+      - name: Destroy all third-party individual data even after error
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: keiba-2022-24-dependence-aggregate-only
+          path: tmp/dependence-aggregate-only.json
+          retention-days: 14
+          if-no-files-found: warn

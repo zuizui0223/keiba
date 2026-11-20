@@ -1,0 +1,86 @@
+{
+  "status": "POSTHOC_REAL_2022_24_DEPENDENCE_SENSITIVITY_NOT_CAUSAL",
+  "population": {
+    "horses": 4636,
+    "contexts": 5895,
+    "source_starts": 244147,
+    "source_horses": 12887
+  },
+  "source_sha": {
+    "A": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "B": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+  },
+  "source_run": {
+    "id": 44769284658,
+    "artifact_id": 14645743344,
+    "artifact_zip_sha256": "21dd83ca47e13246194dd88aef047936359152fc07e9632fee4482cc04157243",
+    "inner_json_sha256": "33fa5613890a40e4b0965e6da9370e02be383ecd19c7cbacbca0cfc01ee145bb",
+    "outcome": "success"
+  },
+  "effects": [
+    {
+      "comparison": "2022_to_2023",
+      "point": 0.0000497807024,
+      "horse_day_95pct": [
+        -0.00004010134,
+        0.0001396627448
+      ],
+      "three_comparison_bonferroni_95pct": [
+        -0.0000600048833,
+        0.0001595662881
+      ],
+      "sire_bootstrap_95pct": [
+        -0.0000368445986,
+        0.0001418395858
+      ],
+      "calendar_days": 729
+    },
+    {
+      "comparison": "2023_to_2024",
+      "point": -0.000120823907,
+      "horse_day_95pct": [
+        -0.0002237363505,
+        -0.0000179114635
+      ],
+      "three_comparison_bonferroni_95pct": [
+        -0.000246525355,
+        0.000004877541
+      ],
+      "sire_bootstrap_95pct": [
+        -0.0002657761013,
+        0.0000075522216
+      ],
+      "calendar_days": 702
+    },
+    {
+      "comparison": "2022_to_2024",
+      "point": -0.0000710432046,
+      "horse_day_95pct": [
+        -0.000190017807,
+        0.0000479313978
+      ],
+      "three_comparison_bonferroni_95pct": [
+        -0.0002163636274,
+        0.0000742772182
+      ],
+      "sire_bootstrap_95pct": [
+        -0.0002277378146,
+        0.0000757913827
+      ],
+      "calendar_days": 701
+    }
+  ],
+  "family": {
+    "recorded_paternal_groups": 280,
+    "max_horses_in_group": 111,
+    "unresolved_sire_horses": 0
+  },
+  "inference": {
+    "all_years_retrospective_posthoc": true,
+    "three_year_changes_not_robust_to_sire_and_multiplicity": true,
+    "year2024_M0_beats_M2_and_MG": true,
+    "no_genetic_heritability_or_biological_selection_causation": true,
+    "no_real_odds_market_time_series": true,
+    "no_private_horse_names_ids_or_individual_predictions_exported": true
+  }
+}
