@@ -136,9 +136,13 @@ class ConcentrationTests(unittest.TestCase):
         self.assertEqual(r["minimum_joint_deletion"]["status"], "ALREADY_NONPOSITIVE")
 
     def test_row_order_and_tied_group_labels_do_not_change_minimum_count(self):
-        p, g = fixture((1, 1, 1, 1), (3/64, 3/64, 3/64, -4/64))
+        # Equal positive mass, unequal group sizes: remove the larger group first.
+        p, g = fixture((1, 2, 1), (1/8, 1/16, -1/8))
         r = run_case(p, g)
-        p["sire_id"] = p.sire_id.map({"s0":"z", "s1":"y", "s2":"x", "s3":"a"})
+        self.assertEqual(r["minimum_joint_deletion"]["groups_removed"], 1)
+        self.assertEqual(r["minimum_joint_deletion"]["horses_removed"], 2)
+        self.assertEqual(r["minimum_joint_deletion"]["remaining_gain"], 0.)
+        p["sire_id"] = p.sire_id.map({"s0":"z", "s1":"a", "s2":"y"})
         order = [3, 1, 0, 2]
         r2 = run_case(p.iloc[order], g[order])
         self.assertEqual(r["minimum_joint_deletion"], r2["minimum_joint_deletion"])
