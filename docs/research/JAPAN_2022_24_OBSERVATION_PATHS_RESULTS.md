@@ -84,6 +84,7 @@
 - [解析コード](../../scripts/ecology_japan_2022_24_observation_paths.py)、[架空データの7+2件の反証試験](../../tests/test_ecology_japan_2022_24_observation_paths.py)、[事前に記録した事後解析仕様](JAPAN_2022_24_OBSERVATION_PATHS_PROTOCOL.md)。
 - [最初の真正ソース実行 GitHub Actions #44849313719](https://github.com/zuizui0223/keiba/actions/runs/44849313719) SUCCESS（4経路・二方向・父系・観測機会の数値）。artifact ID **14685150287**、ZIP SHA256 **f2f449951db1e6cf937fb0920f0daa3e5287aacbf84fa66c02950778b629fada**、内部JSON SHA256 **108468d928e30c1a2f1fe64081812986f71f6d0f5fa2025f40fec9ce8aad2a9e**。
 - [より広いSource B有効レコードを追加した元資料実行 #44849530922](https://github.com/zuizui0223/keiba/actions/runs/44849530922) SUCCESS。artifact ID **14684199060**、ZIP SHA256 **199db81731f12d34d0f9f94361d941ef2dd65e7a7b616ab3050dd3f27c7ecb5a**、内部JSON SHA256 **f8fcbb7d8808a7f5e88bca5643c1e70e2ef711e190f1ac9f7175e83af1963d5f**。
+- [同じコードコミットの独立したPR実データ実行 #44849535037](https://github.com/zuizui0223/keiba/actions/runs/44849535037) もSUCCESS。artifact ID **14683779703**、ZIP SHA256 **6351da60951da3dc93d8de44adf9a81a4dfa7102372f14ab2b0b352c4026f5ed**、JSON SHA256 **09cbba44ccfa0448b7cf39db523f9b86ab1e90ce6372534899aba1581faf9719**。同じソースとコードで2回の数値集計を全階層照合した結果、**馬数・全状態・各判定は同一、浮動小数点の絶対差の最大は3.27×10^-17**。JSONのバイト列は完全一致していないため、そのような主張はしない。科学的な点推定・区間の報告桁は一致。
 - 機械可読の主要数値・Source SHA・HOLDは[匿名集計証拠](../evidence/japan-2022-24-observation-paths-20261121.json)へ保存。元馬名・ID・系譜・競走明細と個体ごとの予測はGitHubに公開しない。
 
 **判定：観測経路の構成と初期の予測誤差には関連が観測されるが、2023年まで観測された集団内での2024年群間差は、父系・暦日の感度区間を考慮すると頑健ではない。後年記録なしを退役・死亡・適応度による選択と読むことはできない。**
