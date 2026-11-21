@@ -340,6 +340,10 @@ def selection_dependency_audit(
         horse, target, draws=sire_draws, seed=seed,
         min_sires=min_sires, min_bin_horses=max(2, min_group//10)
     )
+    loo = boot.get("leave_one_recorded_sire_cluster_out")
+    if loo and (abs(loo["full_data_unadjusted_gap"] - delta) > 1e-12
+                or abs(loo["full_data_2022_history_standardized_gap"] - standardized) > 1e-12):
+        raise ValueError("HOLD_FATHER_LOSO_VS_ORIGINAL_SELECTION_ESTIMAND_DRIFT")
     return {
         **base,
         "2022_recorded_horses_model_MSE_gain_mean_all": all_mean,
