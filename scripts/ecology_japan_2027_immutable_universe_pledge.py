@@ -267,6 +267,38 @@ def _github_get_json(url:str) -> dict:
     return _json_bytes(raw)
 
 
+def check_current_universe_push(pledge:dict, run:dict, *,
+                                repo:str,sha:str)->dict:
+    """Allow the active GitHub job to check creation time (not final success).
+
+    A workflow cannot certify itself as already completed SUCCESS. A later
+    independent original-commit check is required for the final attestation.
+    """
+    timing=_validated_pledge(pledge)
+    if (repo!=REPO or not COMMIT_REGEX.fullmatch(str(sha))
+            or sha=="0"*40 or type(run) is not dict
+            or run.get("head_sha")!=sha
+            or run.get("event")!="push"
+            or run.get("repository",{}).get("full_name")!=REPO
+            or run.get("path")!=WORKFLOW_PATH
+            or type(run.get("id")) is not int
+            or run.get("run_attempt")!=1
+            or run.get("status") not in ("in_progress","completed")
+            or run.get("conclusion") not in (None,"success")):
+        raise ValueError("HOLD_UNIVERSE_CURRENT_PUSH_EVENT_OR_SHA_NOT_TRUSTED")
+    server=_time(run["created_at"])
+    if not timing["forecast_frozen"]<=server<timing["first_declared_race"].astimezone(timezone.utc):
+        raise ValueError("HOLD_UNIVERSE_CURRENT_GITHUB_PUSH_NOT_BEFORE_RACE")
+    return {
+        "status":"CURRENT_NEW_UNIVERSE_PUSH_CREATED_PRE_RACE_FINAL_SUCCESS_STILL_UNVERIFIED",
+        "server_created_at_utc":server.isoformat(),
+        "original_commit_sha":sha,
+        "github_push_run_id":run["id"],
+        "workflow_must_complete_success_and_verify_exact_original_blob_later":True,
+        "official_source_ID_and_complete_schedule_not_certified":True,
+    }
+
+
 def attest_original_universe(pledge_raw:bytes, *, original_commit_sha:str,
                              original_run_id:int,relative_path:str,
                              github_json_get=None,allow_synthetic:bool=False)->dict:
