@@ -61,6 +61,7 @@ jobs:
           assert "git\",\"diff\",\"--no-renames\"" in source
           assert "run_attempt" not in source or "check_current_universe_push" in source
           assert "check_current_universe_push" in source
+          assert "HOLD_UNIVERSE_PUSH_MIXES_CODE_OR_UNRELATED_CHANGES" in source
           assert "content_addressed_filename" in source
           assert "status" in source and "GITHUB_TOKEN" in source
           assert not Path(PLEDGE_DIR).exists()
