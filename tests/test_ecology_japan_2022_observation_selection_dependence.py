@@ -33,7 +33,7 @@ def fiction(n=240, *, group_style="balanced", same_within=False,
         if later:
             observed.add(horse)
         for start in range(2):
-            day = (h % 25) + 1 + start
+            day = (h % 40) + 1 + start
             base = (.08 + .04*b
                     + .007 * ((h // 8) % 3 - 1))
             if not same_within:
