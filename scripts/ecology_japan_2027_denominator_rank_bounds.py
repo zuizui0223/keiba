@@ -287,8 +287,18 @@ def audit_universe(private:dict, manifest:dict, final_rows:list[dict], *,
         "frozen_starts":len(preds),
         "frozen_unique_horses":n_horses,
         "source_eligible_race_universe_coverage":universe,
-        "result_availability_counts_races":dict(race_quality),
-        "result_availability_counts_frozen_starts":dict(starts),
+        # Preserve all four denominator states with explicit zeros even when
+        # the source reported no races in a particular status.
+        "result_availability_counts_races":{
+            key:int(race_quality[key]) for key in (
+                "complete_classified_race", "no_reported_result",
+                "partially_reported_result",
+                "undefined_rank_target_or_source_conflict")},
+        "result_availability_counts_frozen_starts":{
+            key:int(starts[key]) for key in (
+                "complete_classified_race", "no_reported_result",
+                "partially_reported_result",
+                "undefined_rank_target_or_source_conflict")},
         "reported_partial_race_rank_values_ignored_for_conservative_bounds":
             partial_rank_information_ignored,
         "original_local_scorer_status":prior["status"],
