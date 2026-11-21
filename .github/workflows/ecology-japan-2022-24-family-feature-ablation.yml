@@ -1,0 +1,80 @@
+name: "Japan 2022-24 family performance and explicit count ablation"
+
+on:
+  push:
+    branches: [analysis/2022-24-family-performance-count-ablation-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-family-feature-ablation.yml"
+      - "scripts/ecology_japan_2022_24_family_feature_ablation.py"
+      - "tests/test_ecology_japan_2022_24_family_feature_ablation.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-source-feature-ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the existing pinned scientific stack
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Check feature exclusion and paired-loss arithmetic on fictional rows
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_japan_2022_24_family_feature_ablation.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2022_strong_portable_baseline.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2022_denominator_audit.py' -v
+      - name: Download both exact historical sources into the private runner
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from ecology_japan_archive_forward import download
+          from ecology_japan_2022_parent_placebo import SQLITE_SHA
+          download(Path('tmp/private/old.zip'))
+          url = ('https://huggingface.co/datasets/KBlueLeaf/jp-racing-horse/resolve/'
+                 '7bad21b3be3eba550f262abcf4e682a94cb85d4d/all_races_1990-2025.db')
+          target = Path('tmp/private/all_races_1990-2025.db')
+          h = hashlib.sha256()
+          size = 0
+          with urlopen(Request(url, headers={'User-Agent': 'keiba-research/1.0'}), timeout=120) as r, target.open('wb') as f:
+              while chunk := r.read(8 * 1024 * 1024):
+                  size += len(chunk)
+                  if size > 1_100_000_000:
+                      raise ValueError('HOLD_SOURCE_B_SIZE')
+                  h.update(chunk)
+                  f.write(chunk)
+          if h.hexdigest() != SQLITE_SHA:
+              raise ValueError('HOLD_SOURCE_B_SHA')
+          target.chmod(0o600)
+          print('SOURCE_A_AND_SOURCE_B_EXACT_SHA_VERIFIED')
+          PY
+      - name: Fit four historical models and score the identical strict real cohort
+        run: |
+          python scripts/ecology_japan_2022_24_family_feature_ablation.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --output tmp/japan-2022-24-family-feature-ablation-aggregate.json \
+            > tmp/family-feature-ablation-summary.log
+          cat tmp/family-feature-ablation-summary.log
+      - name: Remove all original third-party records
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: japan-2022-24-family-feature-ablation-aggregate-only
+          path: tmp/japan-2022-24-family-feature-ablation-aggregate.json
+          if-no-files-found: error
+          retention-days: 14
