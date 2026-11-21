@@ -83,6 +83,12 @@ jobs:
           assert j["frozen_2018_21_ridge_2022_gate_and_all_2022_24_year_errors"]
           assert j["no_private_horse_parent_race_day_or_model_prediction_rows_exported"]
           assert j["not_causal_survival_retirement_aging_or_breeding_selection"]
+          coverage=j["broader_valid_source_vs_strict_2024_record_coverage"]
+          groups=coverage["three_record_coverage_groups"]
+          assert coverage["source_B_parse_validation_and_race_eligibility_still_applies"]
+          assert coverage["absence_of_valid_record_does_not_certify_no_raw_race_or_retirement"]
+          assert groups["strict_2024"]["2022_horses"]==5163
+          assert sum(v["2022_horses"] for v in groups.values())==12755
           assert len(j["2022_observation_opportunity_sensitivity"])==6
           for v in j["2022_observation_opportunity_sensitivity"].values():
               assert v["status"].startswith(("HOLD_","POSTHOC_"))
