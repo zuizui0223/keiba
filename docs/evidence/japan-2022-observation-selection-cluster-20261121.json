@@ -1,0 +1,119 @@
+{
+  "status": "POSTHOC_ACTUAL_2022_FUTURE_OBSERVATION_HORSE_DAY_SIRE_HISTORY_NEGATIVE_BUT_NOT_CAUSAL",
+  "population": {
+    "strict_horses": 12887,
+    "strict_starts": 244147,
+    "strict_races": 35333,
+    "year2022_horses": 12755,
+    "year2022_starts": 120381,
+    "recorded_again_2024": 5163,
+    "no_record_2024": 7592
+  },
+  "source_SHA256": {
+    "A": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "B": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+  },
+  "outcome": "2022 MG-vs-M2 normalized rank MSE difference; positive favors MG; future group defined by 2024 observed source record, not actual survival",
+  "means": {
+    "all2022": 0.00004799390375970815,
+    "present2024": -0.00002946697610885394,
+    "absent2024": 0.00010067179137316787
+  },
+  "estimands": {
+    "unadjusted": {
+      "difference": -0.0001301387674820218,
+      "two_way_horse_date_normal_95pct": [
+        -0.00022979061346927493,
+        -0.00003048692149476868
+      ],
+      "bonferroni_two_estimands_95pct": [
+        -0.0002441000041009249,
+        -0.000016177530863118714
+      ],
+      "recorded_sire_999_bootstrap_95pct": [
+        -0.0002515368855086518,
+        -0.000007187440282375062
+      ],
+      "sire_leave_one_out_min": -0.00014143074347133794,
+      "max_sire_LOSO": -0.00009754916317546371,
+      "sign_reversals": 0,
+      "largest_sire_removed": -0.00013099804746885449
+    },
+    "historical_own_bin_standardized": {
+      "difference": -0.00012628594862936927,
+      "two_way_horse_date_normal_95pct": [
+        -0.00023630449396602271,
+        -0.00001626740329271583
+      ],
+      "bonferroni_two_estimands_95pct": [
+        -0.00025210247870329936,
+        -4.694185554392075e-7
+      ],
+      "recorded_sire_999_bootstrap_95pct": [
+        -0.0002484639058732508,
+        -0.000001586214395590282
+      ],
+      "sire_leave_one_out_min": -0.00013806995547187287,
+      "max_sire_LOSO": -0.00009892571125493436,
+      "sign_reversals": 0,
+      "largest_sire_removed": -0.00012707730812485998
+    }
+  },
+  "historical_bins": {
+    "names": [
+      "0-3",
+      "4-7",
+      "8-15",
+      "16+"
+    ],
+    "target_all2022_horse_weights": [
+      0.13186985495883968,
+      0.1578204625637005,
+      0.2589572716581733,
+      0.45135241081928656
+    ],
+    "previous_Oaxaca_composition": -0.00003182718071070432,
+    "previous_Oaxaca_within": -0.0000983115867713175,
+    "original_decomposition_reproduced": true
+  },
+  "dependency": {
+    "calendar_days_2022": 364,
+    "horses": 12755,
+    "horse_day_intersections": 120381,
+    "recorded_sire_clusters": 381,
+    "max_sire_group_horses": 311,
+    "unknown_sire_singletons": 0,
+    "sire_bootstrap_requested": 999,
+    "sire_bootstrap_missing_group_bin_draws": 0,
+    "LOSO_clusters": 381,
+    "LOSO_unsupported": 0,
+    "horse_day_and_sire_sensitivities_not_joint_three_way": true
+  },
+  "reproducibility": {
+    "initial_run": {
+      "id": 44847689597,
+      "conclusion": "success",
+      "artifact_id": 14684111379,
+      "artifact_zip_sha256": "744a1e1ca3264904c44d984ee9d27f3c042e7378d98660be4a7ee593d3ba8c78",
+      "inner_json_sha256": "928dab570f364967dc7e2c66c372b5a3e097f1007623c35cbf308db3e91553ac"
+    },
+    "post_result_sire_LOSO_run": {
+      "id": 44848122157,
+      "conclusion": "success",
+      "artifact_id": 14684815213,
+      "artifact_zip_sha256": "3e764c032f38514e10dc872f8ce19f40df5beccf720a0e77e2e563111e2f7cb0",
+      "inner_json_sha256": "2f609769033e6d93289299aa5a9768057aefc2f1776e8ed480cc7a93ee2e61e8"
+    }
+  },
+  "holds": {
+    "posthoc_exploration": true,
+    "bonferroni_only_two_selected_estimands": true,
+    "LOSO_added_after_inspecting_near_zero_upper_CI": true,
+    "no_verified_official_studbook_id_or_original_known_on_time": true,
+    "subsequent_absence_not_death_retirement_or_fitness": true,
+    "shared_farm_trainer_age_distance_and_selection_uncontrolled": true,
+    "genomic_A_G_MSTN_market_odds_unlinked": true,
+    "year2024_midpoint_beats_family_and_gate": true,
+    "private_individual_IDs_and_predictions_not_uploaded": true
+  }
+}
