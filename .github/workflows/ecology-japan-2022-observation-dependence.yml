@@ -1,0 +1,101 @@
+name: "Racehorse ecology: 2022 future-observation selection horse-day-sire sensitivity"
+
+on:
+  push:
+    branches: [analysis/2022-selection-day-sire-history-audit-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-observation-dependence.yml"
+      - "scripts/ecology_japan_2022_observation_selection_dependence.py"
+      - "tests/test_ecology_japan_2022_observation_selection_dependence.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-observation-dependence.yml"
+      - "scripts/ecology_japan_2022_observation_selection_dependence.py"
+      - "tests/test_ecology_japan_2022_observation_selection_dependence.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  strict-2022-observation-dependence-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin numeric and source-only dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Synthetic falsifications of selection, date, sire, historical standardization and privacy
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_observation_selection_dependence.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_dependency_sensitivity.py" -v
+      - name: Fetch source A with historical checksum
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download official-license-unverified source B transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",
+              local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size > 0
+          PY
+      - name: Recompute old 2018-21 model and 2022-24 exact strict source, then new dependency sensitivity
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_observation_selection_dependence.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/selection-dependence-aggregate-only.json \
+            > tmp/summary-only.txt
+      - name: Verify frozen cohorts, old effect and conditional vs causal HOLD status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/selection-dependence-aggregate-only.json").read_text())
+          assert j["status"]=="POSTHOC_2022_FUTURE_OBSERVATION_HORSE_DAY_SIRE_INFO_STRATIFIED_NOT_CAUSAL"
+          assert j["full_strict_horses"]==12887
+          assert j["full_strict_starts"]==244147
+          assert j["full_strict_races"]==35333
+          assert j["2022_starts"]==120381
+          assert j["2022_horses"]==12755
+          assert j["with_2024_observed_record"]==5163
+          assert j["without_2024_observed_record"]==7592
+          assert abs(j["unadjusted_future_observed_minus_unobserved"]-(-0.0001301387674820218))<1e-10
+          assert abs(j["four_2021_history_bin_composition_component"]-(-0.00003182718071070432))<1e-10
+          assert abs(j["within_2021_history_bin_component_at_future_observed_shares"]-(-0.0000983115867713175))<1e-10
+          assert j["composition_plus_within_equals_unadjusted_exact"]
+          assert j["source_A_SHA256"]=="c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f"
+          assert j["source_B_SHA256"]=="7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+          assert j["2022_chosen_rule_and_2018_21_fixed_model_preserved"]
+          assert j["all_original_year_model_errors_reproduced"]
+          assert j["not_retirement_mortality_breeding_fitness_or_genetic_selection"]
+          assert j["no_private_individual_horse_race_sire_date_or_prediction_rows_exported"]
+          for name in ("unadjusted_horse_by_2022_day","historical_bin_standardized_horse_by_2022_day"):
+              assert j[name]["two_way_status"].startswith(("POSTHOC_","HOLD_"))
+          assert j["recorded_sire_group_resampling"]["status"].startswith(("POSTHOC_","HOLD_"))
+          print("REAL_2022_FUTURE_OBSERVATION_CLUSTER_DEPENDENCE_AND_HISTORY_QA_PASSED")
+          PY
+      - name: Erase original third-party racing data on success or failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-future-observation-cluster-aggregate-only
+          path: tmp/selection-dependence-aggregate-only.json
+          if-no-files-found: warn
+          retention-days: 14
