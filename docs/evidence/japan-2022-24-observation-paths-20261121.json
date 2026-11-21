@@ -1,0 +1,195 @@
+{
+  "status": "POSTHOC_REAL_2022_2023_2024_SOURCE_OBSERVATION_PATHS_NOT_CAUSAL",
+  "source_sha256": {
+    "A": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "B": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+  },
+  "original_cohort": {
+    "strict_horses": 12887,
+    "strict_starts": 244147,
+    "strict_races": 35333,
+    "year2022_horses": 12755,
+    "year2022_starts": 120381,
+    "all_year_frozen_model_scores_verified": true
+  },
+  "2022_MSE_gain_definition": "(y - M2)^2 - (y - MG)^2; positive favors 2022-chosen MG",
+  "four_future_strict_evaluation_record_paths": [
+    {
+      "future": "both_2023_and_2024",
+      "horses": 5102,
+      "mean_2022_MG_over_M2_gain": -0.000029011101618075012
+    },
+    {
+      "future": "2023_only",
+      "horses": 3557,
+      "mean_2022_MG_over_M2_gain": 0.00004725838405116473
+    },
+    {
+      "future": "2024_only",
+      "horses": 61,
+      "mean_2022_MG_over_M2_gain": -0.00006759601958351098
+    },
+    {
+      "future": "neither_2023_nor_2024",
+      "horses": 4035,
+      "mean_2022_MG_over_M2_gain": 0.0001477576624622299
+    }
+  ],
+  "2024_observed_minus_unobserved_effect": {
+    "original_2022_horse_equal": -0.0001301387674820218,
+    "2023_record_group_mix_component": -0.00005222602479574419,
+    "within_2023_record_group_component": -0.00007791274268627763,
+    "sum_exact": true,
+    "composition_signed_fraction": 0.4013
+  },
+  "stage_comparisons": [
+    {
+      "target": "2023_record_yes_vs_no_in_full_2022",
+      "horse_n": 12755,
+      "record_yes": 8659,
+      "U": -0.0001422311201443287,
+      "S_pre2022_own_bin": -0.00011470863665016455,
+      "two_way_horse_day_95pct_U": [
+        -0.0002536454573964398,
+        -0.00003081678289221763
+      ],
+      "sire_999_95pct_U": [
+        -0.0003179228378166642,
+        0.000029338769204380078
+      ],
+      "sire_999_95pct_S": [
+        -0.00025699034247492105,
+        0.0000339848967016079
+      ]
+    },
+    {
+      "target": "2024_record_yes_vs_no_in_full_2022",
+      "horse_n": 12755,
+      "record_yes": 5163,
+      "U": -0.0001301387674820218,
+      "S_pre2022_own_bin": -0.00012628594862936927,
+      "two_way_horse_day_95pct_U": [
+        -0.00022979061346927493,
+        -0.00003048692149476868
+      ],
+      "sire_999_95pct_U": [
+        -0.0002515368855086518,
+        -0.000007187440282375062
+      ],
+      "sire_999_95pct_S": [
+        -0.0002484639058732508,
+        -0.000001586214395590282
+      ]
+    },
+    {
+      "target": "2024_record_yes_vs_no_given_2023_record",
+      "horse_n": 8659,
+      "record_yes": 5102,
+      "record_no": 3557,
+      "U": -0.00007626948566923974,
+      "S_pre2022_own_bin": -0.00007402627208891138,
+      "two_way_horse_day_95pct_U": [
+        -0.00019015563639929542,
+        0.000037616665060815935
+      ],
+      "two_way_horse_day_95pct_S": [
+        -0.00018645489785732084,
+        0.0000384023536794981
+      ],
+      "sire_999_95pct_U": [
+        -0.00017524994745247042,
+        0.000027008277722453277
+      ],
+      "sire_999_95pct_S": [
+        -0.00017343562577108756,
+        0.0000278084833683257
+      ],
+      "dependent_uncertainty_intervals_cross_zero": true
+    }
+  ],
+  "posthoc_2022_opportunity_standardizations": [
+    {
+      "scope": "all2022",
+      "controls": "old own 4bin + last 2022 record half",
+      "delta": -0.00007740339889992373,
+      "state": "posthoc_point_only"
+    },
+    {
+      "scope": "all2022",
+      "controls": "old own 4bin + number of 2022 starts <=4 or 5+",
+      "delta": -0.00007692714652507203,
+      "state": "posthoc_point_only"
+    },
+    {
+      "scope": "all2022",
+      "controls": "old own 4bin + last half + 2022 start count",
+      "state": "HOLD",
+      "unsupported_cells": 4,
+      "planned_cells": 16
+    },
+    {
+      "scope": "2023_recorded",
+      "controls": "old own 4bin + last 2022 record half",
+      "state": "HOLD",
+      "unsupported_cells": 2,
+      "planned_cells": 8
+    },
+    {
+      "scope": "2023_recorded",
+      "controls": "old own 4bin + number of 2022 starts <=4 or 5+",
+      "delta": -0.0000751566374547203,
+      "state": "posthoc_point_only"
+    },
+    {
+      "scope": "2023_recorded",
+      "controls": "old own 4bin + last half + starts count",
+      "state": "HOLD",
+      "unsupported_cells": 7,
+      "planned_cells": 16
+    }
+  ],
+  "broader_2024_valid_eligible_source_coverage": [
+    {
+      "state": "strict_2024_evaluated",
+      "horses": 5163,
+      "mean_2022_MG_over_M2_gain": -0.00002946697610885394
+    },
+    {
+      "state": "valid_broader_2024_source_record_but_not_strict",
+      "horses": 23,
+      "mean_2022_MG_over_M2_gain": -0.00020991545618987914
+    },
+    {
+      "state": "no_joined_valid_2024_source_record",
+      "horses": 7569,
+      "mean_2022_MG_over_M2_gain": 0.00010161557611275702
+    }
+  ],
+  "reproducibility": {
+    "initial_run": {
+      "id": 44849313719,
+      "conclusion": "success",
+      "artifact_id": 14685150287,
+      "artifact_zip_sha256": "f2f449951db1e6cf937fb0920f0daa3e5287aacbf84fa66c02950778b629fada",
+      "json_sha256": "108468d928e30c1a2f1fe64081812986f71f6d0f5fa2025f40fec9ce8aad2a9e"
+    },
+    "broader_source_run": {
+      "id": 44849530922,
+      "conclusion": "success",
+      "artifact_id": 14684199060,
+      "artifact_zip_sha256": "199db81731f12d34d0f9f94361d941ef2dd65e7a7b616ab3050dd3f27c7ecb5a",
+      "json_sha256": "f8fcbb7d8808a7f5e88bca5643c1e70e2ef711e190f1ac9f7175e83af1963d5f"
+    }
+  },
+  "holds": {
+    "all_data_posthoc_and_gate_2022_selected_on_same_outcomes": true,
+    "record_absence_not_survival_retirement_or_fitness": true,
+    "strict_2024_records_are_subset_of_source_B_joined_eligible_records": true,
+    "broader_source_not_unfiltered_all_races": true,
+    "sourceA_B_horse_IDs_not_official_studbook": true,
+    "source_publication_known_on_not_certified": true,
+    "all_2022_opportunity_standardization_is_post_event_not_prerace": true,
+    "no_identified_genetic_A_G_MSTN_or_odds_market_effect": true,
+    "no_individual_horse_sire_race_predictions_uploaded": true
+  }
+}
