@@ -1,0 +1,106 @@
+name: "JRA 2027 immutable eligible-race universe original-push attestation (REAL PUSH only)"
+
+# A locally saved schedule/forecast timestamp is NOT proof of a preregistration.
+# This production workflow runs only when a NEW opaque aggregate universe
+# pledge is pushed. No PR, dispatch, rerun or synthetic fixture can
+# establish a new external time attestation.
+on:
+  push:
+    paths:
+      - "docs/commitments/2027-universe/*.json"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  server-original-eligible-race-list:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout exact externally observed pushed commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Only NEW opaque SHA-bound eligible-universe pledges before first declared start
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          from ecology_japan_2027_github_push_attestation import (
+              _json_bytes, _fetch_current_run
+          )
+          from ecology_japan_2027_point_in_time_ledger import canonical_bytes
+          from ecology_japan_2027_immutable_universe_pledge import (
+              check_current_universe_push, content_addressed_filename,
+              _validated_pledge, PLEDGE_DIR, WORKFLOW_PATH, REPO
+          )
+
+          if os.environ.get("GITHUB_EVENT_NAME") != "push":
+              raise ValueError("HOLD_ONLY_NEW_GITHUB_SERVER_TIMED_PUSH_COUNTS")
+          if os.environ.get("GITHUB_REPOSITORY") != REPO:
+              raise ValueError("HOLD_NOT_CANONICAL_REPOSITORY_FOR_UNIVERSE")
+          event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+          before, after = event.get("before",""), event.get("after","")
+          sha = os.environ.get("GITHUB_SHA","")
+          if (not re.fullmatch(r"[0-9a-f]{40}", before)
+                  or before=="0"*40 or after!=sha
+                  or subprocess.check_output(["git","rev-parse","HEAD"],
+                      text=True).strip()!=sha):
+              raise ValueError("HOLD_NOT_EXACT_ORIGINAL_PERSISTENT_PUSH_RANGE")
+          change = subprocess.check_output(
+              ["git","diff","--no-renames","--name-status",before,sha,
+               "--",PLEDGE_DIR+"/"],text=True)
+          paths = []
+          for line in change.splitlines():
+              kind,sep,path = line.partition("\t")
+              if not sep or kind!="A" or not re.fullmatch(
+                  r"docs/commitments/2027-universe/[0-9a-f]{32}\.json",path):
+                  raise ValueError("HOLD_ORIGINAL_UNIVERSE_PLEDGE_EDIT_OR_REPLAY")
+              paths.append(path)
+          if not 1<=len(paths)<=20 or len(paths)!=len(set(paths)):
+              raise ValueError("HOLD_UNIVERSE_NEW_AGGREGATE_PLEDGE_COUNT")
+          run,repo,run_sha=_fetch_current_run()
+          if repo!=REPO or run_sha!=sha:
+              raise ValueError("HOLD_GITHUB_RUN_CHECKOUT_OR_REPO_MISMATCH")
+          for path in paths:
+              raw=Path(path).read_bytes()
+              item=_json_bytes(raw)
+              _validated_pledge(item)
+              if raw!=canonical_bytes(item):
+                  raise ValueError("HOLD_NONCANONICAL_ORIGINAL_PUBLIC_UNIVERSE_BYTES")
+              if Path(path).name!=content_addressed_filename(item):
+                  raise ValueError("HOLD_PUBLIC_RACE_UNIVERSE_CONTENT_ADDRESS_MISMATCH")
+              witness=check_current_universe_push(
+                  item,run,repo=repo,sha=sha)
+              # Original Git blob and completed-success must be checked again
+              # later using verify-original. This active job cannot certify
+              # its own completed conclusion.
+              print(json.dumps({
+                  "status":witness["status"],
+                  "opaque_new_universe_pledge_path":path,
+                  "server_created_at_utc":witness["server_created_at_utc"],
+                  "forecast_bundle_sha256":
+                      item["original_forecast_bundle_bytes_sha256"],
+                  "private_universe_digest_sha256":
+                      item["private_eligible_universe_csv_sha256"],
+                  "eligible_races_declared":
+                      item["pretarget_eligible_races_declared"],
+                  "eligible_races_not_forecast":
+                      item["pretarget_eligible_races_not_forecast"],
+                  "source_schedule_and_provider_still_UNVERIFIED":True,
+              },ensure_ascii=False,sort_keys=True))
+          print("FIRST_PUSH_UNIVERSE_CREATION_TIME_CONDITIONAL_CHECK_PASSED")
+          PY
