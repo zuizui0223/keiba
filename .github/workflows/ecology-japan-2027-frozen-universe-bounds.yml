@@ -41,7 +41,7 @@ jobs:
             -s tests -p "test_ecology_japan_2027_github_push_attestation.py" -v
       - name: Ensure no real prospectively attested 2027 JRA commitments or raw licensed horse data
         run: |
-          python - <<'PY'
+          PYTHONPATH=scripts python - <<'PY'
           from pathlib import Path
           assert not Path("docs/commitments/2027").exists(), (
               "HOLD_EXPECTED_ZERO_REAL_2027_RACE_PLEDGES"
