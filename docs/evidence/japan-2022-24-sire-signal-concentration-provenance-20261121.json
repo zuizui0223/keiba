@@ -1,0 +1,93 @@
+{
+  "status": "ACTUAL_HISTORICAL_SOURCE_SIRE_SIGNAL_CONCENTRATION_REPRODUCED_NOT_PROSPECTIVE",
+  "analysis_date": "2026-11-21",
+  "base_main_sha": "e6a5cab7cb5e14bdaa219f5a873c6f145e87ddb8",
+  "specification_commit_sha": "5447e1f3f65612651d0a40d921f9990a4d4be312",
+  "analysis_implementation_commit_sha": "4d5f1b9f7a3eba4cbf1dd6b9fc550e63d23ea827",
+  "final_analysis_and_test_head_sha": "c3c5da39ee14ea73da06b9ef3b88839a5b58d882",
+  "reference_artifact": "japan-2022-24-family-feature-ablation-20261121.json",
+  "reference_artifact_sha256": "66c0e45fa3870b5ee3350ca21fb28cfe5e3331cfa835d7207dc39d7ed2dee619",
+  "sources": {
+    "A": {
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ayuser/horse-racing-in-japan",
+      "sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+      "bytes": 182084424
+    },
+    "B": {
+      "url": "https://huggingface.co/datasets/KBlueLeaf/jp-racing-horse/resolve/7bad21b3be3eba550f262abcf4e682a94cb85d4d/all_races_1990-2025.db",
+      "sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+      "bytes": 1036701696
+    }
+  },
+  "final_actions_run": {
+    "id": 44913240983,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44913240983",
+    "conclusion": "success",
+    "head_sha": "c3c5da39ee14ea73da06b9ef3b88839a5b58d882",
+    "created_at_utc": "2026-11-21T14:18:24Z",
+    "completed_by_utc": "2026-11-21T14:21:21Z",
+    "artifact_id": 14710697670,
+    "artifact_zip_sha256": "7e509a8d1b696a794531d3ea35f578278a700570360ce792f76cefe12c7037cd",
+    "aggregate_json_sha256": "ad33e23d1f261f73c918bfcca0377f06c9bacd502c4cb102df0a60fbca2415a2",
+    "python": "3.12",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3"
+  },
+  "earlier_actions_run": {
+    "id": 44913078553,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44913078553",
+    "conclusion": "success",
+    "head_sha": "4d5f1b9f7a3eba4cbf1dd6b9fc550e63d23ea827",
+    "artifact_id": 14710487103,
+    "artifact_zip_sha256": "787dfe01259ec05f915c410b61e9bd26a5951553f263f4f0e280ba3ae0061f2e",
+    "aggregate_json_sha256": "45a92dff21ffff4106f0995cd424b318afaa4694cce2a95a924eb18b8df7d079"
+  },
+  "local_execution": {
+    "exit_code": 0,
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "numeric_cells": 261,
+    "max_absolute_difference": 3.810285420513537e-13,
+    "largest_difference_path": ".by_year.2024.contribution_mass.positive_total",
+    "all_keys_and_nonnumeric_values_equal": true,
+    "exact_all_values_equal": false,
+    "input_sha256": "9713e667084edd66944c43dee18681593de0121abb12409a8bcf8379be8b71ee"
+  },
+  "two_actions_runs_comparison": {
+    "numeric_cells": 261,
+    "max_absolute_difference": 1.1901590823981678e-13,
+    "largest_difference_path": ".by_year.2024.contribution_mass.positive_total",
+    "all_keys_and_nonnumeric_values_equal": true,
+    "exact_all_values_equal": false,
+    "input_sha256": "45a92dff21ffff4106f0995cd424b318afaa4694cce2a95a924eb18b8df7d079"
+  },
+  "comparison_absolute_tolerance": 1e-12,
+  "all_three_executions_match_within_tolerance": true,
+  "test_only_refinement": "Final head strengthens the unequal-size tied-contribution regression fixture. Production analysis and workflow are unchanged from the first successful source execution.",
+  "validation": {
+    "new_concentration_tests": 14,
+    "unchanged_ablation_tests": 14,
+    "ecology_suite_tests": 890,
+    "non_ecology_suite_tests": 176,
+    "all_passed": true,
+    "focused_concentration_suite_passed_after_tie_fixture_refinement": true,
+    "repository_navigation_passed": true,
+    "independent_code_and_scientific_claim_reviews_completed": true,
+    "original_PR70_all_aggregate_parity_checked_before_new_statistics": true
+  },
+  "scientific_status": {
+    "historical_outcomes_previously_viewed": true,
+    "new_group_summary_protocol_fixed_before_inspecting_group_statistics": true,
+    "technical_reexecution_is_not_independent_biological_replication": true,
+    "sire_equal_weighting_changes_target_population": true,
+    "deletion_order_uses_observed_losses": true,
+    "deletion_horse_count_separately_minimized": false,
+    "bootstrap_intervals_are_pointwise_sensitivity_only": true,
+    "genetic_causation_or_biological_fitness_identified": false,
+    "sire_equal_M2_vs_M0_evaluated": false,
+    "official_registry_and_source_publication_timestamps_verified": false,
+    "source_redistribution_rights_verified": false,
+    "raw_source_rows_parent_identifiers_rankings_or_individual_predictions_published": false
+  }
+}

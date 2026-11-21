@@ -1,0 +1,469 @@
+{
+  "status": "POSTHOC_STRICT_SIRE_SIGNAL_CONCENTRATION",
+  "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "reference_sha256": "66c0e45fa3870b5ee3350ca21fb28cfe5e3331cfa835d7207dc39d7ed2dee619",
+  "primary_contrast": "performance_given_counts",
+  "training_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "ridge_alpha": 100.0,
+  "parity": {
+    "status": "OK",
+    "absolute_tolerance": 1e-12,
+    "strong_all_row_scores": true,
+    "strict_source_qa": true,
+    "all_pr70_pooled_and_yearly_statistics": true,
+    "known_sire_horse_equal_intervals": true
+  },
+  "pooled": {
+    "status": "OK",
+    "starts": 244147,
+    "horses": 12887,
+    "races": 35333,
+    "recorded_sires": 383,
+    "coverage": {
+      "total_horses": 12887,
+      "known_sire_horses": 12887,
+      "unknown_sire_horses": 0,
+      "known_sire_fraction": 1.0
+    },
+    "all_horse_gain": 0.00014090982179304113,
+    "horse_equal_gain": 0.00014090982179304113,
+    "sire_equal_gain": 0.0002468696400262573,
+    "size_association_gap": -0.00010595981823321616,
+    "covariance_identity_gap": -0.00010595981823321612,
+    "sign_counts": {
+      "positive": 215,
+      "zero": 0,
+      "negative": 168
+    },
+    "support_bins": {
+      "1-4": {
+        "sires": 171,
+        "horses": 302,
+        "sign_counts": {
+          "positive": 90,
+          "zero": 0,
+          "negative": 81
+        },
+        "horse_equal_gain": 0.00037068447460703713,
+        "sire_equal_gain": 0.00032095281961850035
+      },
+      "5-19": {
+        "sires": 77,
+        "horses": 731,
+        "sign_counts": {
+          "positive": 39,
+          "zero": 0,
+          "negative": 38
+        },
+        "horse_equal_gain": 0.0003233755711023271,
+        "sire_equal_gain": 0.0002463727997886631
+      },
+      "20+": {
+        "sires": 135,
+        "horses": 11854,
+        "sign_counts": {
+          "positive": 86,
+          "zero": 0,
+          "negative": 49
+        },
+        "horse_equal_gain": 0.0001238038315876324,
+        "sire_equal_gain": 0.00015331432882641417
+      }
+    },
+    "contribution_mass": {
+      "positive_total": 5.768286588461266,
+      "negative_total_magnitude": 3.952381715014345,
+      "positive_MSE_mass": 0.00044760507398628586,
+      "negative_MSE_magnitude": 0.00030669525219324475,
+      "positive_top_shares": {
+        "1": 0.04265382977762733,
+        "5": 0.18958603582975664,
+        "10": 0.3118585933456702
+      },
+      "negative_top_shares": {
+        "1": 0.10103307807481325,
+        "5": 0.31442830464839655,
+        "10": 0.4829794659033316
+      }
+    },
+    "leave_one_sire_out": {
+      "status": "OK",
+      "minimum_remaining_gain": 0.00012338798704661822,
+      "maximum_remaining_gain": 0.00017575580481128447,
+      "nonpositive_remaining_count": 0
+    },
+    "minimum_joint_deletion": {
+      "status": "OK",
+      "groups_removed": 11,
+      "horses_removed": 1567,
+      "remaining_gain": -9.556726067372188e-06
+    },
+    "bootstrap": {
+      "clusters": 383,
+      "draws": 999,
+      "seed": 20261121,
+      "min_clusters": 30,
+      "status": "OK",
+      "CI95": {
+        "horse_equal_gain": [
+          -3.33247040246507e-05,
+          0.0002923102611054862
+        ],
+        "sire_equal_gain": [
+          -5.6892836206433615e-06,
+          0.0005186430922831456
+        ],
+        "size_association_gap": [
+          -0.00037644071222127183,
+          0.0001660452911383176
+        ]
+      }
+    }
+  },
+  "by_year": {
+    "2022": {
+      "status": "OK",
+      "starts": 120381,
+      "horses": 12755,
+      "races": 14238,
+      "recorded_sires": 381,
+      "coverage": {
+        "total_horses": 12755,
+        "known_sire_horses": 12755,
+        "unknown_sire_horses": 0,
+        "known_sire_fraction": 1.0
+      },
+      "all_horse_gain": 0.00013561637316543177,
+      "horse_equal_gain": 0.00013561637316543177,
+      "sire_equal_gain": 0.00019659510310953438,
+      "size_association_gap": -6.097872994410261e-05,
+      "covariance_identity_gap": -6.097872994410266e-05,
+      "sign_counts": {
+        "positive": 201,
+        "zero": 0,
+        "negative": 180
+      },
+      "support_bins": {
+        "1-4": {
+          "sires": 170,
+          "horses": 303,
+          "sign_counts": {
+            "positive": 89,
+            "zero": 0,
+            "negative": 81
+          },
+          "horse_equal_gain": 0.0003895842115715671,
+          "sire_equal_gain": 0.0003552842358750759
+        },
+        "5-19": {
+          "sires": 78,
+          "horses": 754,
+          "sign_counts": {
+            "positive": 37,
+            "zero": 0,
+            "negative": 41
+          },
+          "horse_equal_gain": 9.883245017763347e-05,
+          "sire_equal_gain": 9.152116862210382e-05
+        },
+        "20+": {
+          "sires": 133,
+          "horses": 11698,
+          "sign_counts": {
+            "positive": 75,
+            "zero": 0,
+            "negative": 58
+          },
+          "horse_equal_gain": 0.00013140905763249803,
+          "sire_equal_gain": 5.5381676943199965e-05
+        }
+      },
+      "contribution_mass": {
+        "positive_total": 5.645364321220394,
+        "negative_total_magnitude": 3.9155774814953115,
+        "positive_MSE_mass": 0.00044260010358450753,
+        "negative_MSE_magnitude": 0.0003069837304190758,
+        "positive_top_shares": {
+          "1": 0.06310379165945926,
+          "5": 0.21726039032017927,
+          "10": 0.35272880538759827
+        },
+        "negative_top_shares": {
+          "1": 0.09674648240967897,
+          "5": 0.29501664858636817,
+          "10": 0.41986984989247
+        }
+      },
+      "leave_one_sire_out": {
+        "status": "OK",
+        "minimum_remaining_gain": 0.00010915862240777604,
+        "maximum_remaining_gain": 0.0001658360352074167,
+        "nonpositive_remaining_count": 0
+      },
+      "minimum_joint_deletion": {
+        "status": "OK",
+        "groups_removed": 9,
+        "horses_removed": 1430,
+        "remaining_gain": -9.898446369357411e-06
+      },
+      "bootstrap": {
+        "clusters": 381,
+        "draws": 999,
+        "seed": 20261121,
+        "min_clusters": 30,
+        "status": "OK",
+        "CI95": {
+          "horse_equal_gain": [
+            -3.184799061400834e-05,
+            0.000280868630520547
+          ],
+          "sire_equal_gain": [
+            -0.00011306855259621333,
+            0.0004911590194005696
+          ],
+          "size_association_gap": [
+            -0.00035304562798525485,
+            0.00021355485402545717
+          ]
+        }
+      }
+    },
+    "2023": {
+      "status": "OK",
+      "starts": 80939,
+      "horses": 8778,
+      "races": 11469,
+      "recorded_sires": 336,
+      "coverage": {
+        "total_horses": 8778,
+        "known_sire_horses": 8778,
+        "unknown_sire_horses": 0,
+        "known_sire_fraction": 1.0
+      },
+      "all_horse_gain": 0.00017753168870031437,
+      "horse_equal_gain": 0.0001775316887003144,
+      "sire_equal_gain": 0.00031224470653286,
+      "size_association_gap": -0.0001347130178325456,
+      "covariance_identity_gap": -0.00013471301783254556,
+      "sign_counts": {
+        "positive": 180,
+        "zero": 0,
+        "negative": 156
+      },
+      "support_bins": {
+        "1-4": {
+          "sires": 154,
+          "horses": 271,
+          "sign_counts": {
+            "positive": 72,
+            "zero": 0,
+            "negative": 82
+          },
+          "horse_equal_gain": 0.00031910284664938627,
+          "sire_equal_gain": 0.00026316114526655723
+        },
+        "5-19": {
+          "sires": 67,
+          "horses": 669,
+          "sign_counts": {
+            "positive": 39,
+            "zero": 0,
+            "negative": 28
+          },
+          "horse_equal_gain": 0.00028877437540953034,
+          "sire_equal_gain": 0.0003818335531320691
+        },
+        "20+": {
+          "sires": 115,
+          "horses": 7838,
+          "sign_counts": {
+            "positive": 69,
+            "zero": 0,
+            "negative": 46
+          },
+          "horse_equal_gain": 0.00016314190288599134,
+          "sire_equal_gain": 0.00033743093012297826
+        }
+      },
+      "contribution_mass": {
+        "positive_total": 4.925235233786383,
+        "negative_total_magnitude": 3.3668620703750234,
+        "positive_MSE_mass": 0.000561088543379629,
+        "negative_MSE_magnitude": 0.0003835568546793146,
+        "positive_top_shares": {
+          "1": 0.05989429474890396,
+          "5": 0.20582958304095833,
+          "10": 0.3223175684704842
+        },
+        "negative_top_shares": {
+          "1": 0.05758186649642241,
+          "5": 0.26720345307486776,
+          "10": 0.4233267261326147
+        }
+      },
+      "leave_one_sire_out": {
+        "status": "OK",
+        "minimum_remaining_gain": 0.00014630916880269498,
+        "maximum_remaining_gain": 0.0002037730333448537,
+        "nonpositive_remaining_count": 0
+      },
+      "minimum_joint_deletion": {
+        "status": "OK",
+        "groups_removed": 10,
+        "horses_removed": 916,
+        "remaining_gain": -3.703470018802377e-06
+      },
+      "bootstrap": {
+        "clusters": 336,
+        "draws": 999,
+        "seed": 20261121,
+        "min_clusters": 30,
+        "status": "OK",
+        "CI95": {
+          "horse_equal_gain": [
+            -5.614571657435136e-06,
+            0.00039423565203295876
+          ],
+          "sire_equal_gain": [
+            -8.365615998554379e-05,
+            0.000734287727663315
+          ],
+          "size_association_gap": [
+            -0.000529372968846753,
+            0.00027041656583892915
+          ]
+        }
+      }
+    },
+    "2024": {
+      "status": "OK",
+      "starts": 42827,
+      "horses": 5225,
+      "races": 9626,
+      "recorded_sires": 288,
+      "coverage": {
+        "total_horses": 5225,
+        "known_sire_horses": 5225,
+        "unknown_sire_horses": 0,
+        "known_sire_fraction": 1.0
+      },
+      "all_horse_gain": 0.00033897476913398114,
+      "horse_equal_gain": 0.00033897476913398114,
+      "sire_equal_gain": 0.0008753254577825655,
+      "size_association_gap": -0.0005363506886485843,
+      "covariance_identity_gap": -0.0005363506886485842,
+      "sign_counts": {
+        "positive": 171,
+        "zero": 0,
+        "negative": 117
+      },
+      "support_bins": {
+        "1-4": {
+          "sires": 135,
+          "horses": 236,
+          "sign_counts": {
+            "positive": 75,
+            "zero": 0,
+            "negative": 60
+          },
+          "horse_equal_gain": 0.0013533490139731985,
+          "sire_equal_gain": 0.001252569600362904
+        },
+        "5-19": {
+          "sires": 66,
+          "horses": 701,
+          "sign_counts": {
+            "positive": 41,
+            "zero": 0,
+            "negative": 25
+          },
+          "horse_equal_gain": 0.0008994498792464316,
+          "sire_equal_gain": 0.0008747904426144227
+        },
+        "20+": {
+          "sires": 87,
+          "horses": 4288,
+          "sign_counts": {
+            "positive": 55,
+            "zero": 0,
+            "negative": 32
+          },
+          "horse_equal_gain": 0.00019152015766689084,
+          "sire_equal_gain": 0.0002903524894233898
+        }
+      },
+      "contribution_mass": {
+        "positive_total": 5.0907564968042,
+        "negative_total_magnitude": 3.3196133280791487,
+        "positive_MSE_mass": 0.0009743074635031962,
+        "negative_MSE_magnitude": 0.0006353326943692151,
+        "positive_top_shares": {
+          "1": 0.07377746988649275,
+          "5": 0.22827539294947424,
+          "10": 0.3468755249954143
+        },
+        "negative_top_shares": {
+          "1": 0.1483990578488977,
+          "5": 0.38780682428478114,
+          "10": 0.5890921367387052
+        }
+      },
+      "leave_one_sire_out": {
+        "status": "OK",
+        "minimum_remaining_gain": 0.00027145692172390824,
+        "maximum_remaining_gain": 0.00044153904018619873,
+        "nonpositive_remaining_count": 0
+      },
+      "minimum_joint_deletion": {
+        "status": "OK",
+        "groups_removed": 11,
+        "horses_removed": 521,
+        "remaining_gain": -1.919971982227716e-05
+      },
+      "bootstrap": {
+        "clusters": 288,
+        "draws": 999,
+        "seed": 20261121,
+        "min_clusters": 30,
+        "status": "OK",
+        "CI95": {
+          "horse_equal_gain": [
+            -6.149681904572607e-05,
+            0.0007352448125295366
+          ],
+          "sire_equal_gain": [
+            0.0003511929750204555,
+            0.0014096082689602947
+          ],
+          "size_association_gap": [
+            -0.0010478786722074996,
+            9.577796328520576e-06
+          ]
+        }
+      }
+    }
+  },
+  "bootstrap_settings": {
+    "draws": 999,
+    "seed": 20261121,
+    "min_clusters": 30
+  },
+  "scope": {
+    "posthoc_fixed_fit_diagnostic": true,
+    "unknown_sires_excluded_from_group_estimands": true,
+    "group_size_counts_evaluated_horses": true,
+    "minimum_joint_deletion_is_outcome_selected_worst_case": true,
+    "horses_removed_minimized_separately": false,
+    "sire_bootstrap_intervals_are_pointwise_sensitivity_only": true,
+    "official_studbook_identity_and_source_publication_times_verified": false,
+    "underlying_source_redistribution_rights_verified": false,
+    "genetic_causation_heritability_or_fitness_identified": false,
+    "raw_records_horse_parent_identifiers_or_individual_predictions_exported": false
+  }
+}

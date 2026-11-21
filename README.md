@@ -26,7 +26,7 @@
 
 **2026-11-21進捗**：[MG情報切替率](docs/research/JAPAN_2022_INFORMATION_SWITCH_EXPOSURE_RESULTS.md)の−16.56ポイント差は本人履歴構成を揃えると+0.033ポイントへ縮小。2027年向けに[結果欠測・全予測分母の監査](docs/research/JAPAN_2027_FROZEN_UNIVERSE_RANK_BOUNDS_RESULTS.md)と[対象レース一覧自体のGitHub事前封印](docs/research/JAPAN_2027_IMMUTABLE_UNIVERSE_PLEDGE_RESULTS.md)を実装。**94件の架空試験成功、実馬の2027年予測0件。** 血統の遺伝因果・死亡・引退はHOLD。
 
-**[親族成績・頭数の4条件比較](docs/research/JAPAN_2022_24_FAMILY_FEATURE_ABLATION_RESULTS.md)**：244,147出走の改善点推定は親族成績側に大きく配分。ただし**父群・8比較調整の区間はいずれもゼロを含み、2024年は4モデルとも中間順位に負ける**。頭数縮約を含む事後解析で、遺伝因果は未同定。
+**[親族改善の父群分布](docs/research/JAPAN_2022_24_SIRE_SIGNAL_CONCENTRATION_RESULTS.md)**：383群中215群で改善。1群除外では正が残り、寄与上位11群の同時除外で負へ。通期の馬均等・父群均等区間はゼロを含む。2024年は馬均等で全4モデルが中間順位に負け、遺伝因果は未同定。
 
 ## 入口を2つに整理
 
