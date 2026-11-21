@@ -24,7 +24,7 @@
 
 **[2022→24年の同一馬×芝ダート×400m距離帯の実測追検証](docs/research/JAPAN_2022_24_MATCHED_CONTEXT_RESULTS.md)**：元12,887頭244,147出走から、同一馬かつ共通出走条件のある**4,777頭・6,499馬×条件セル**を再集計。MGと常用親族M2の馬均等MSE差は、2022年構成固定で**−0.00007088**変化したが、馬単位399回再標本化95%感度区間 **[−0.00018658, +0.00002707]** は0を含む。異なる2回のActionsで集計JSON SHAは完全一致。**負方向の点推定はあるが、同一条件での一般的な時間減衰・遺伝因果はHOLD**。2024年の既存の否定結果を維持します。
 
-**2026-11-21研究更新**：[情報モデル切替](docs/research/JAPAN_2022_INFORMATION_SWITCH_EXPOSURE_RESULTS.md)の未調整−16.56ポイント差は、本人履歴を揃えると+0.033ポイントへ縮小。[2022年観測機会の感度](docs/research/JAPAN_2022_OPPORTUNITY_CLUSTER_RESULTS.md)も父系・開催日区間が0を含む。新しい[2027年・予測対象と欠測の分母監査](docs/research/JAPAN_2027_FROZEN_UNIVERSE_RANK_BOUNDS_RESULTS.md)は**架空試験のみ、実馬予測0件**。記録なし≠死亡・引退・遺伝選択。
+**2026-11-21進捗**：[MG情報切替率](docs/research/JAPAN_2022_INFORMATION_SWITCH_EXPOSURE_RESULTS.md)の−16.56ポイント差は本人履歴構成を揃えると+0.033ポイントへ縮小。2027年向けに[結果欠測・全予測分母の監査](docs/research/JAPAN_2027_FROZEN_UNIVERSE_RANK_BOUNDS_RESULTS.md)と[対象レース一覧自体のGitHub事前封印](docs/research/JAPAN_2027_IMMUTABLE_UNIVERSE_PLEDGE_RESULTS.md)を実装。**94件の架空試験成功、実馬の2027年予測0件。** 血統の遺伝因果・死亡・引退はHOLD。
 
 ## 入口を2つに整理
 
