@@ -81,6 +81,34 @@ class ModelSwitchExposureTests(unittest.TestCase):
             self.assertIn("frozen_M1_vs_M2_all_starts_gap",
                           v["sire_cluster_999_draw_95pct_sensitivity"])
 
+    def test_gate_exposure_standardized_on_pre2022_horse_history(self):
+        z=evaluate(make_case())
+        a=z["reported_scopes"]["all_2022"]["pre2022_own_history_bin_exposure_adjustment"]
+        self.assertEqual(a["status"],
+                         "POSTHOC_PRE2022_HISTORY_BIN_COMPOSITION_AND_WITHIN_EXPOSURE")
+        self.assertAlmostEqual(
+            a["pre2022_own_bin_composition_component"]+
+            a["within_pre2022_own_bin_M1_selection_component"],
+            z["reported_scopes"]["all_2022"]["M1_activation_rate_group_difference"],
+            places=12)
+        self.assertAlmostEqual(a["pre2022_own_bin_composition_component"],0,places=12)
+        self.assertAlmostEqual(
+            a["M1_selection_gap_standardized_to_all_pre2022_own_bin_mix"],.5,places=12)
+        self.assertEqual(a["sire_bootstrap_status"],
+            "POSTHOC_WHOLE_SIRE_CLUSTER_HISTORY_ADJUSTED_EXPOSURE_SENSITIVITY")
+        self.assertIn("fixed_all_2022_ownbin_standardized_M1_selection_gap",
+                      a["sire_bootstrap_95pct"])
+
+    def test_sparse_pre2022_history_cell_holds_instead_of_zero_imputation(self):
+        p,a,b,g,m1,m2,y=make_case()
+        b={horse for horse in b if int(horse.split(":")[-1])%4!=0}
+        z=audit_switches(p,a,b,chosen_family=g,frozen_m1=m1,frozen_m2=m2,
+                         y=y,draws=49,benchmark=False)
+        q=z["reported_scopes"]["all_2022"]["pre2022_own_history_bin_exposure_adjustment"]
+        self.assertEqual(q["status"],"HOLD_SPARSE_PRE2022_HISTORY_BIN_EXPOSURE")
+        self.assertIn("0-3",q["unsupported_bins"])
+        self.assertNotIn("M1_selection_gap_standardized_to_all_pre2022_own_bin_mix",q)
+
     def test_2022_chosen_family_everywhere_holds_without_fabricating_active_gain(self):
         z=evaluate(make_case(gate_mode="all_family"))
         for v in z["reported_scopes"].values():
