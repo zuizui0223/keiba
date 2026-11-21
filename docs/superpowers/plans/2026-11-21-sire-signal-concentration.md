@@ -1,6 +1,6 @@
 # Sire signal concentration implementation plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Measure how PR70's fixed conditional performance-block gain is distributed across recorded sire groups.
 
@@ -34,19 +34,19 @@
 **Interfaces:** `sire_summary(panel, gain, draws=999, seed=20261121, min_clusters=30)`;
 `analyze(archive, db)` with CLI `--archive --sqlite --output`.
 
-- [ ] Write failing tests for weighted versus group-equal means, covariance identity, LOSO,
+- [x] Write failing tests for weighted versus group-equal means, covariance identity, LOSO,
       two-group failure despite positive LOSO, exact zero boundary, all-positive and all-zero
       cases, support-bin edges, repeated-start invariance, unknown parents and scalar bootstrap.
-- [ ] Run the new unittest module; confirm absent implementation fails.
-- [ ] Implement the aggregate estimator and source/PR70 parity gates; run tests to pass.
-- [ ] Retain original PR70 test suite unchanged; commit the protocol and implementation.
+- [x] Run the new unittest module; confirm absent implementation fails.
+- [x] Implement the aggregate estimator and source/PR70 parity gates; run tests to pass.
+- [x] Retain original PR70 test suite unchanged; commit the protocol and implementation.
 
 ### Task 2: Actual-source execution and integration
 
 **Files:** a dedicated Actions workflow, anonymous evidence/provenance JSON, result report,
 research index, evidence matrix and concise root README entry.
 
-- [ ] Execute locally and in Actions on exact sources; compare numerical aggregates.
-- [ ] Independently review the estimator and claims, correcting material issues.
-- [ ] Run full ecology/non-ecology suites and repository navigation checks.
+- [x] Execute locally and in Actions on exact sources; compare numerical aggregates.
+- [x] Independently review the estimator and claims, correcting material issues.
+- [x] Run full ecology/non-ecology suites and repository navigation checks.
 - [ ] Publish the result PR and integrate after its final-head checks under existing authorization.

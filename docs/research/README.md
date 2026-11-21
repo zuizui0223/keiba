@@ -13,6 +13,12 @@ Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GEN
 
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
+## 2026-11-21: Recorded-sire distribution — positive in 215 of 383 groups, selected joint deletion remains influential
+
+The [fixed-prediction concentration analysis](JAPAN_2022_24_SIRE_SIGNAL_CONCENTRATION_RESULTS.md) reproduces PR70 on the same **244,147 starts / 12,887 horses**. P-after-C improvement is positive in **215 of 383 recorded sire groups** and negative in 168. Every single-group deletion retains a positive horse-equal mean; the minimum jointly deleted set that makes a nonempty remainder nonpositive is **11 groups / 1,567 horses (12.16%)**, chosen by observed contribution. This is an outcome-selected sensitivity diagnostic without refitting, not a deployable family-selection rule or a minimum number of horses.
+
+Pooled horse-equal gain is **+0.000140910**, sire-equal **+0.000246870**; both whole-sire pointwise 95% intervals and their difference's interval cross zero. **Only 2024 sire-equal gain has a wholly positive pointwise interval** among the four periods × three estimands. That changes the target weighting and does not undo the known 2024 horse-equal loss of all learned models against M0; sire-equal M2 versus M0 was not assessed. Group size counts evaluated horses, and P includes both paternal and maternal histories. [Protocol](JAPAN_2022_24_SIRE_SIGNAL_CONCENTRATION_PROTOCOL.md) · [full anonymous aggregates](../evidence/japan-2022-24-sire-signal-concentration-20261121.json).
+
 ## 2026-11-21: Actual family-feature ablation — larger performance-block point estimate, family-cluster uncertainty remains
 
 The [new four-model analysis](JAPAN_2022_24_FAMILY_FEATURE_ABLATION_RESULTS.md) keeps the same **244,147 starts, 12,887 horses and 35,333 strict races**, original 2018–21 training blocks and ridge penalty 100. Horse-equal RMSE is **0.312429448** for M1, **0.312393483** after adding explicit log peer counts C, **0.312194516** after adding shrunk peer performance P, and **0.312167869** for full M2. The order-averaged allocation of M1→M2 MSE improvement is **+0.000143827 to P** and **+0.000019555 to C**. These are refitted-model loss allocations; P itself already contains own- and peer-count shrinkage.
