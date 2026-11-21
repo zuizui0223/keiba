@@ -179,6 +179,21 @@
       "artifact_id": 14684199060,
       "artifact_zip_sha256": "199db81731f12d34d0f9f94361d941ef2dd65e7a7b616ab3050dd3f27c7ecb5a",
       "json_sha256": "f8fcbb7d8808a7f5e88bca5643c1e70e2ef711e190f1ac9f7175e83af1963d5f"
+    },
+    "second_independent_same_code_pr_run": {
+      "id": 44849535037,
+      "conclusion": "success",
+      "artifact_id": 14683779703,
+      "artifact_zip_sha256": "6351da60951da3dc93d8de44adf9a81a4dfa7102372f14ab2b0b352c4026f5ed",
+      "json_sha256": "09cbba44ccfa0448b7cf39db523f9b86ab1e90ce6372534899aba1581faf9719"
+    },
+    "two_independent_same_SHA_runs": {
+      "all_support_counts_and_statuses_identical": true,
+      "float_max_absolute_difference": 3.268869550043796e-17,
+      "numeric_values_identical_at_reported_precision": true,
+      "json_byte_identical": false,
+      "publication_error_tolerance": 1e-12,
+      "disclaimer": "Floating point differences at ~1e-17 are not source changes or biologically meaningful effects."
     }
   },
   "holds": {
