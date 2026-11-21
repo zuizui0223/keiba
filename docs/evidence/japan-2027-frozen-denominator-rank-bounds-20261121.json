@@ -1,0 +1,54 @@
+{
+  "status": "SOFTWARE_FICTIONAL_TESTS_PASS_REAL_JRA_2027_FORECAST_AND_SOURCE_HOLD",
+  "recorded_on": "2026-11-21",
+  "project": "zuizui0223/keiba",
+  "no_actual_forecast_claim": true,
+  "real_2027_licensed_JRA_NAR_race_records_obtained": 0,
+  "real_2027_pre_race_predictions_externally_attested": 0,
+  "real_2027_race_results_scored": 0,
+  "official_entire_race_universe_certified": false,
+  "original_commit_and_model_freeze_server_attestation_from_this_new_module": false,
+  "source_2022_24_posthoc_scores_not_reused_as_real_2027": true,
+  "software": {
+    "new_script": "scripts/ecology_japan_2027_denominator_rank_bounds.py",
+    "protocol": "docs/research/JAPAN_2027_FROZEN_UNIVERSE_RANK_BOUNDS_PROTOCOL.md",
+    "fictional_test_file": "tests/test_ecology_japan_2027_denominator_rank_bounds.py",
+    "workflow": ".github/workflows/ecology-japan-2027-frozen-universe-bounds.yml",
+    "frozen_manifest_sha256_must_match_private_forecast": true,
+    "planned_source_race_denominator_conditional_on_user_supplied_private_eligibility_list": true,
+    "missing_predeclared_races_trigger_HOLD": true,
+    "all_four_result_stages_explicit_even_zero": true,
+    "normal_rank_target_undefined_for_DNF_cancellation_and_invalid_rank": true,
+    "minmax_permutation_formula": "w * ((y-p_base)^2-(y-p_M2)^2) = 2*w*(p_M2-p_base)*y + w*(p_base^2-p_M2^2)",
+    "exact_permutation_minmax_for_missing_all_finishers": true,
+    "partial_rank_information_ignored_for_conservative_bounds": true,
+    "model_comparisons": [
+      "M1_minus_M2",
+      "M0_minus_M2"
+    ],
+    "fixed_equal_horse_weights_from_all_frozen_forecast_starts": true,
+    "full_result_collapsed_bounds_equal_existing_scorer_RMSE_squared_difference": true,
+    "partial_missing_completion_bounds_not_frequentist_CI": true,
+    "public_aggregate_omits_private_race_horse_parent_ids_and_forecast_rows": true
+  },
+  "fictional_tests": {
+    "new_falsifications": 14,
+    "original_2027_point_in_time_tests": 24,
+    "original_2027_github_push_attestation_tests": 36,
+    "total": 74,
+    "expected_zero_actual_future_pledges": true,
+    "first_confirmed_successful_gitHub_action_run_id": 44901751178,
+    "second_confirmed_successful_gitHub_action_run_id": 44901812272,
+    "test_status": "success",
+    "no_real_JRA_source_download_or_license_claim": true
+  },
+  "holds": {
+    "source_universe_is_user_supplied_not_authoritative_coverage": true,
+    "known_on_is_user_supplied_until_independent_provenance": true,
+    "separate_Github_server_created_at_attestation_required": true,
+    "withdrawal_DNF_rank_undefined_not_imputed": true,
+    "no_2027_prospective_M1_M2_model_comparison_yet": true,
+    "no_multilevel_sire_race_day_inference_until_real_future_results": true,
+    "no_genetic_heritability_evolution_or_betting_profit_inferred": true
+  }
+}
