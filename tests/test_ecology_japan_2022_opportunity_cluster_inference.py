@@ -87,7 +87,7 @@ class OpportunityClusterTests(unittest.TestCase):
                 x["standardized_2022_MSE_gain_present_minus_absent"],0,places=10)
 
     def test_sparse_2023_subcohort_holds_without_imputing(self):
-        p,ids23,ids24=invented(each=50, selected2023=.32)
+        p,ids23,ids24=invented(each=50, selected2023=.24)
         z=evaluate_opportunity(p,ids23,ids24,draws=35)
         self.assertTrue(z["results"]["observed_2023__own_bin__last_2022_half"][
             "status"].startswith("HOLD_"))
