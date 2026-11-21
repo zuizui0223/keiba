@@ -297,7 +297,7 @@ def selection_dependency_audit(
         raise ValueError("HOLD_2022_OBSERVATION_INFLUENCE_SUM_NOT_ZERO")
     boot = _sire_bootstrap(
         horse, target, draws=sire_draws, seed=seed,
-        min_sires=min_sires, min_bin_horses=min_group
+        min_sires=min_sires, min_bin_horses=max(2, min_group//10)
     )
     return {
         **base,
