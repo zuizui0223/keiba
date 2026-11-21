@@ -88,7 +88,8 @@ class FrozenDenominatorTests(unittest.TestCase):
         self.assertTrue(o["original_scorer_scored_only_conditional_not_a_population_estimate"])
 
     def test_partial_result_reports_do_not_become_fabricated_complete_rank(self):
-        part=self.complete[:2]
+        first=self.eligible[0]["race_id"]
+        part=[x for x in self.complete if x["race_id"]==first][:2]
         o=self.audit(part)
         self.assertGreater(o["result_availability_counts_races"]["partially_reported_result"],0)
         self.assertEqual(
