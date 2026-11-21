@@ -223,6 +223,16 @@ def _check_score(actual, locked):
         raise ValueError("HOLD_LOCKED_RMSE_PARITY")
 
 
+def canonical_parity_scores(scores):
+    """Name legacy endpoints explicitly; its old M0 gain actually used M1."""
+    return {
+        "starts": scores["rows"], "horses": scores["unique_horses"], "races": scores["races"],
+        "RMSE_M0_midpoint": scores["RMSE_unchanged_midpoint"],
+        "RMSE_M1_own": scores["RMSE_portable_no_kin"],
+        "RMSE_M2_family": scores["RMSE_portable_kin"],
+    }
+
+
 def analyze(archive: Path, db: Path):
     raw, old, future, _, gate, _ = load_sources(archive, db)
     if not old.year.lt(2022).all() or set(future.year.unique()) != set(TEST_YEARS):
@@ -253,10 +263,19 @@ def analyze(archive: Path, db: Path):
         "source_A_sha256": SOURCE_SHA, "source_B_sha256": SQLITE_SHA,
         "training_years": list(TRAIN_YEARS), "ridge_alpha": RIDGE_ALPHA,
         "performance_features": list(PERFORMANCE), "explicit_count_features": list(COUNTS),
-        "strong_all_row_parity": all_scores, "strict_source_qa": qa,
+        "strong_all_row_parity": canonical_parity_scores(all_scores), "strict_source_qa": qa,
         "pooled": pooled, "by_year": by_year,
         "uncertainty_settings": {"primary_contrasts": list(CONDITIONAL), "comparisons": COMPARISONS,
                                  "min_clusters": MIN_CLUSTERS, "bootstrap_draws": DRAWS, "seed": SEED},
+        "scope": {
+            "retrospective_not_an_independent_prospective_test": True,
+            "performance_block_contains_count_dependent_shrinkage": True,
+            "official_studbook_identity_and_source_publication_times_verified": False,
+            "underlying_source_redistribution_rights_verified": False,
+            "genetic_causation_heritability_or_fitness_identified": False,
+            "raw_records_horse_parent_identifiers_or_individual_predictions_exported": False,
+            "sire_bootstrap_intervals_are_pointwise_sensitivity_only": True,
+        },
         "interpretation": [
             "Positive paired MSE gains indicate improved equal-horse rank prediction within the period.",
             "The performance features include own-count and peer-count shrinkage.",

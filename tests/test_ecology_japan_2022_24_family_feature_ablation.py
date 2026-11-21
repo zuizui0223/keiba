@@ -11,10 +11,10 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from ecology_japan_2022_24_family_feature_ablation import (
     fit_factorial, predict_factorial, paired_loss_terms,
-    paired_uncertainty, summarize_period,
+    paired_uncertainty, summarize_period, canonical_parity_scores,
 )
 from ecology_japan_2022_strong_portable_baseline import STRONG_NO_KIN, STRONG_KIN
-from ecology_japan_2022_independent_forward import fit_weighted_ridge, predict_weighted_ridge
+from ecology_japan_2022_independent_forward import fit_weighted_ridge, predict_weighted_ridge, _scores
 
 
 def design():
@@ -36,6 +36,14 @@ def panel():
 
 
 class FeatureAblationTests(unittest.TestCase):
+    def test_parity_output_names_midpoint_and_own_history_unambiguously(self):
+        d = panel()
+        r = canonical_parity_scores(_scores(d, np.zeros(6), d.y.to_numpy()))
+        self.assertAlmostEqual(r["RMSE_M0_midpoint"], np.sqrt(7/60))
+        self.assertAlmostEqual(r["RMSE_M1_own"], np.sqrt(31/60))
+        self.assertEqual(r["RMSE_M2_family"], 0.)
+        self.assertNotIn("M0_minus_kin_gain", r)
+
     def test_endpoints_reproduce_existing_ridge_with_original_column_order(self):
         x, y, h = design()
         models = fit_factorial(x, y, h)
