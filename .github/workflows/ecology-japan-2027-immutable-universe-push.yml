@@ -72,6 +72,15 @@ jobs:
               paths.append(path)
           if not 1<=len(paths)<=20 or len(paths)!=len(set(paths)):
               raise ValueError("HOLD_UNIVERSE_NEW_AGGREGATE_PLEDGE_COUNT")
+          # Freeze the verifier implementation separately. An actual pledge
+          # push must be a pure ADDITION of new opaque JSON files; never
+          # change the workflow, its Python checker, or unrelated code in the
+          # very same push that claims an independent pre-race timestamp.
+          all_changes=subprocess.check_output(
+              ["git","diff","--no-renames","--name-status",before,sha],
+              text=True).splitlines()
+          if sorted(all_changes)!=sorted("A\t"+p for p in paths):
+              raise ValueError("HOLD_UNIVERSE_PUSH_MIXES_CODE_OR_UNRELATED_CHANGES")
           run,repo,run_sha=_fetch_current_run()
           if repo!=REPO or run_sha!=sha:
               raise ValueError("HOLD_GITHUB_RUN_CHECKOUT_OR_REPO_MISMATCH")
