@@ -91,7 +91,8 @@ def _opportunity_standardization(horse: pd.DataFrame, mask: np.ndarray,
 
 def analyze_paths(p22: pd.DataFrame, observed_2023: set[str],
                   observed_2024: set[str], *, expected_states=None,
-                  sire_draws: int = 999, source_lock: bool = False) -> dict:
+                  sire_draws: int = 999, source_lock: bool = False,
+                  all_valid_2024_source_ids: set[str] | None = None) -> dict:
     """All population assertions enforced before any candidate inference."""
     p = _validated_2022_panel(p22)
     ids23 = set(str(x) for x in observed_2023)
@@ -185,6 +186,37 @@ def analyze_paths(p22: pd.DataFrame, observed_2023: set[str],
         "not_causal_survival_retirement_aging_or_breeding_selection":True,
         "no_private_horse_parent_race_day_or_model_prediction_rows_exported":True,
     }
+    if all_valid_2024_source_ids is not None:
+        valid = set(str(x) for x in all_valid_2024_source_ids)
+        if ids24 - valid:
+            raise ValueError("HOLD_STRICT_2024_IDS_NOT_IN_BROADER_VALID_SOURCE")
+        broad = h.horse.isin(valid)
+        stages = {
+            "strict_2024": h.observed2024.to_numpy(bool),
+            "2024_valid_joined_source_but_not_strict": (
+                broad.to_numpy(bool) & ~h.observed2024.to_numpy(bool)),
+            "no_valid_joined_2024_outcome_in_broader_source": (
+                ~broad.to_numpy(bool)),
+        }
+        detail = {}
+        for label, flag in stages.items():
+            selected = h.loc[flag]
+            detail[label] = {
+                "2022_horses":int(flag.sum()),
+                "2022_horse_equal_MG_vs_M2_gain": (
+                    float(selected.gain.mean()) if len(selected) else None),
+            }
+        if sum(z["2022_horses"] for z in detail.values()) != n:
+            raise ValueError("HOLD_BROADER_SOURCE_2024_COVERAGE_DOES_NOT_PARTITION")
+        if detail["strict_2024"]["2022_horses"] != n24:
+            raise ValueError("HOLD_STRICT_2024_BROADER_SOURCE_COUNT_DRIFT")
+        out["broader_valid_source_vs_strict_2024_record_coverage"] = {
+            "status": "POSTHOC_BROADER_JOINED_ELIGIBLE_OUTCOMES_NOT_RAW_SOURCE_ALL_RACES",
+            "source_B_parse_validation_and_race_eligibility_still_applies": True,
+            "absence_of_valid_record_does_not_certify_no_raw_race_or_retirement": True,
+            "three_record_coverage_groups": detail,
+            "strict_2024_absent_split_exact": True,
+        }
     for label, mask in (("all_2022",np.ones(n,bool)),
                         ("2023_observed_2022",h.observed2023.to_numpy(bool))):
         for dims in (("own_bin","last_2022_half"),
@@ -240,7 +272,8 @@ def run(archive: Path, sqlite: Path) -> dict:
     cur["own_bin"]=ctx.loc[y22,"own_record_count_bin"].reset_index(drop=True)
     d=analyze_paths(cur,set(t.loc[t.year.eq(2023)].horse.astype(str)),
                     set(t.loc[t.year.eq(2024)].horse.astype(str)),
-                    expected_states=EXPECTED_STATES, source_lock=True)
+                    expected_states=EXPECTED_STATES, source_lock=True,
+                    all_valid_2024_source_ids=set(f.loc[f.year.eq(2024)].horse.astype(str)))
     if len(cur)!=120381 or len(t)!=244147:
         raise ValueError("HOLD_UNCHANGED_2022_24_STARTS")
     return {
