@@ -1,0 +1,134 @@
+{
+  "status": "POSTHOC_2022_MODEL_SWITCH_EXPOSURE_HISTORY_BIN_COMPOSITION_NOT_CAUSAL",
+  "original_sources": {
+    "source_A_SHA256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_SHA256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "strict_horses": 12887,
+    "strict_starts": 244147,
+    "strict_races": 35333,
+    "year_2022_horses": 12755,
+    "year_2022_starts": 120381,
+    "frozen_2018_21_M1_M2_and_2022_selected_MG_reproduced": true
+  },
+  "definition": {
+    "positive_MSE_gain_favors_MG_over_always_M2": true,
+    "MG_uses_M2_when_gate_true_else_M1": true,
+    "per_start_identity": "MG−M2 gain=1[MG uses M1]*{(y−M2)^2−(y−M1)^2}",
+    "horse_equal_two_stage_D_equals_R_times_A": true,
+    "results_are_posthoc_not_biological_traits": true
+  },
+  "scopes": {
+    "all_2022": {
+      "horses": 12755,
+      "recorded_2024": 5163,
+      "unrecorded_2024": 7592,
+      "M1_selected_rate_recorded": 0.35494677971435673,
+      "M1_selected_rate_unrecorded": 0.5205537447299287,
+      "raw_rate_difference": -0.16560696501557193,
+      "raw_rate_difference_sire_999_95pct": [
+        -0.18603344143534298,
+        -0.14573900830427608
+      ],
+      "pre2022_own_history_bin_standardized_rate_difference": 0.00033104173646816495,
+      "history_standardized_rate_difference_sire_999_95pct": [
+        -0.0008755778225324872,
+        0.001531674873341303
+      ],
+      "history_bin_composition_component": -0.1659954006975744,
+      "within_own_bin_rate_difference_component": 0.000388435682002441,
+      "exact_history_bin_additive_identity": true,
+      "sire_history_bin_composition_95pct": [
+        -0.18663007369606963,
+        -0.14575381788423367
+      ],
+      "sire_within_history_bin_95pct": [
+        -0.0010950360987926826,
+        0.001862168004523983
+      ],
+      "MG_vs_M2_mean_gain_recorded": -0.00002946697610885394,
+      "MG_vs_M2_mean_gain_unrecorded": 0.00010067179137316787,
+      "MG_gap_recorded_minus_unrecorded": -0.0001301387674820218,
+      "MG_gap_sire_999_95pct": [
+        -0.0002466896832637765,
+        -0.000011892002794720265
+      ],
+      "MG_gap_switch_frequency_component": -0.00003202733627560557,
+      "MG_gap_switch_conditional_gain_component": -0.00009811143120641623,
+      "switch_frequency_component_sire_999_95pct": [
+        -0.0000673773100358493,
+        -0.0000016304014059354382
+      ],
+      "switch_conditional_gain_component_sire_999_95pct": [
+        -0.0001920834360970474,
+        0.000003121765906841023
+      ],
+      "frozen_M1_over_M2_full_starts_record_group_gap": -0.0003884991032070005,
+      "frozen_M1_vs_M2_sire_399_95pct": [
+        -0.0008639804945222998,
+        0.00012734696816585326
+      ],
+      "future_2024_observed_pre2022_16plus_horses": 1818,
+      "future_2024_unobserved_pre2022_16plus_horses": 3939,
+      "recorded_parent_sire_groups": 381,
+      "max_horses_per_recorded_sire": 311
+    },
+    "year2023_recorded_2022": {
+      "horses": 8659,
+      "recorded_2024": 5102,
+      "unrecorded_2024": 3557,
+      "M1_selected_rate_recorded": 0.3562396448666539,
+      "M1_selected_rate_unrecorded": 0.4712238302470487,
+      "raw_rate_difference": -0.11498418538039484,
+      "raw_rate_difference_sire_999_95pct": [
+        -0.13614581712571885,
+        -0.09015284438021115
+      ],
+      "pre2022_own_history_bin_standardized_rate_difference": -0.00005871700367037161,
+      "history_standardized_rate_difference_sire_999_95pct": [
+        -0.0014602794918174159,
+        0.0013270455651338273
+      ],
+      "history_bin_composition_component": -0.11493851780499013,
+      "within_own_bin_rate_difference_component": -0.00004566757540472256,
+      "exact_history_bin_additive_identity": true,
+      "MG_gap_recorded_minus_unrecorded": -0.00007626948566923974,
+      "MG_gap_switch_frequency_component": -0.000011531604396297513,
+      "MG_gap_switch_conditional_gain_component": -0.00006473788127294222,
+      "MG_gap_sire_999_95pct": [
+        -0.0001758849973305801,
+        0.000022552336329366094
+      ],
+      "frozen_M1_over_M2_full_starts_record_group_gap": -0.0003725008063869385,
+      "frozen_M1_vs_M2_sire_399_95pct": [
+        -0.0007955521235720993,
+        0.00002961257934391282
+      ],
+      "recorded_parent_sire_groups": 334,
+      "max_horses_per_recorded_sire": 229
+    }
+  },
+  "source_reproducibility": {
+    "initial_real_source_run_id": 44854512465,
+    "initial_status": "success",
+    "extended_first_real_run_id": 44854908181,
+    "extended_first_artifact_id": 14687750005,
+    "extended_first_zip_sha256": "bb708c53beaf31301543076120cf43d204f0e478ceb33d0bc801519d9e6f9b6e",
+    "extended_second_real_run_id": 44854912623,
+    "extended_second_artifact_id": 14686993312,
+    "extended_second_zip_sha256": "04cc4cc16c5b9b7b6698bbdeb9fe23e1e87f18eef160e14196d2605ef22ac5a3",
+    "extended_both_internal_json_sha256": "a64c71d0d6cedd6ed10fa14f510de4c9204e2891fdc01bb7f810f44fcfceb9ee",
+    "internal_json_bytes": 24734,
+    "identical_internal_json_bytes_on_two_runs": true
+  },
+  "limits": {
+    "retrospective_MG_chosen_using_2022_outcomes": true,
+    "own_history_bin_is_direct_input_to_gate": true,
+    "pre2022_bin_adjustment_added_after_first_result": true,
+    "only_2022_source_B_eligible_observation_not_certified_lifetime_survival": true,
+    "family_ID_proxy_not_official_pedigree_A_or_genomic_G": true,
+    "horse_date_vs_sire_bootstrap_are_distinct_sensitivities_not_joint_three_way": true,
+    "no_genetic_heritability_fitness_or_market_odds_learned": true,
+    "year_2024_MG_and_M2_worse_than_midpoint_M0": true,
+    "no_individual_horse_sire_race_day_prediction_rows_exported": true
+  }
+}

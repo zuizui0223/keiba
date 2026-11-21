@@ -1,0 +1,116 @@
+name: "Ecology 2022: selection-model information-switch exposure versus gain"
+
+on:
+  push:
+    branches: [analysis/2022-gate-exposure-observation-decomp-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-gate-exposure.yml"
+      - "scripts/ecology_japan_2022_gate_exposure_selection.py"
+      - "tests/test_ecology_japan_2022_gate_exposure_selection.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-gate-exposure.yml"
+      - "scripts/ecology_japan_2022_gate_exposure_selection.py"
+      - "tests/test_ecology_japan_2022_gate_exposure_selection.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  locked-2022-family-gate-observation-exposure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fixed numerical and source-only dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Test exact switch identities and source-locked model gates with fictional horses
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_gate_exposure_selection.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_observation_paths.py" -v
+      - name: Download pinned historical source A transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download known SHA source B SQLite transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id='KBlueLeaf/jp-racing-horse',
+              repo_type='dataset',filename='all_races_1990-2025.db',
+              local_dir='tmp/private'))
+          assert p.is_file() and p.stat().st_size > 0
+          PY
+      - name: Recompute frozen 2018-21 M1/M2 2022-selected MG and exact information-switch source audit
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_gate_exposure_selection.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/japan-2022-model-switch-exposure-aggregate-only.json \
+            > tmp/summary-only.txt
+      - name: Check old score, 2024 observation groups, exact decompositions, and no invented genetics
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/japan-2022-model-switch-exposure-aggregate-only.json").read_text())
+          assert j["status"]=="POSTHOC_2022_INFORMATION_SWITCH_EXPOSURE_VS_CONDITIONAL_MODEL_GAIN_NOT_CAUSAL"
+          assert j["original_strict_horses"]==12887 and j["original_strict_starts"]==244147
+          assert j["original_strict_races"]==35333
+          assert j["source_population_2022_horses"]==12755 and j["source_population_2022_starts"]==120381
+          assert j["source_A_SHA256"]=="c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f"
+          assert j["source_B_SHA256"]=="7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+          assert j["original_training_2018_21_and_2022_gate_preserved"]
+          assert j["MG_selects_M2_when_gate_true_otherwise_M1"]
+          assert j["gate_2022_chosen_from_already_inspected_outcomes"]
+          assert j["no_individual_source_horse_sire_race_day_or_predictions_exported"]
+          assert j["year2024_M2_and_MG_worse_than_fixed_midpoint_M0"]
+          scopes=j["reported_scopes"]
+          assert set(scopes)=={"all_2022","2023_recorded_2022"}
+          assert scopes["all_2022"]["horses"]==12755
+          assert scopes["all_2022"]["with_2024_record_horses"]==5163
+          assert scopes["all_2022"]["without_2024_record_horses"]==7592
+          assert scopes["2023_recorded_2022"]["horses"]==8659
+          assert scopes["2023_recorded_2022"]["with_2024_record_horses"]==5102
+          assert scopes["2023_recorded_2022"]["without_2024_record_horses"]==3557
+          assert abs(scopes["all_2022"]["MG_minus_M2_2024_recorded_vs_unrecorded_gap"] - (-0.0001301387674820218))<1e-10
+          assert abs(scopes["2023_recorded_2022"]["MG_minus_M2_2024_recorded_vs_unrecorded_gap"] - (-0.00007626948566923974))<1e-10
+          for scope in scopes.values():
+              assert scope["status"]=="POSTHOC_2022_INFORMATION_SWITCH_EXPOSURE_VS_CONDITIONAL_MODEL_GAIN_NOT_CAUSAL"
+              assert scope["exposure_plus_conditional_exactly_equals_original_MG_gap"]
+              assert scope["sire_bootstrap_status"].startswith(("POSTHOC_","HOLD_"))
+              own=scope["pre2022_own_history_bin_exposure_adjustment"]
+              assert own["status"].startswith(("POSTHOC_","HOLD_"))
+              assert own["weights_are_fixed_to_all_2022_horses_in_the_scoped_cohort"]
+              if own["status"].startswith("POSTHOC_"):
+                  assert own["own_bin_composition_plus_within_equals_exposure_gap"]
+                  assert abs(own["pre2022_own_bin_composition_component"] +
+                             own["within_pre2022_own_bin_M1_selection_component"] -
+                             scope["M1_activation_rate_group_difference"])<1e-12
+              assert own["sire_bootstrap_draws_missing_pre2022_bin_support"]>=0
+          assert set(j["frozen_M1_vs_M2_group_observation_benchmark"])==set(scopes)
+          assert j["information_switch_identity_not_mechanism_of_biological_aging_or_genetic_selection"]
+          print("SOURCE_LOCKED_2022_MG_SWITCH_EXPOSURE_AND_CONDITIONAL_GAIN_AUDIT_PASSED")
+          PY
+      - name: Destroy temporary third-party horse data on success or failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-model-switch-exposure-aggregate-only
+          path: tmp/japan-2022-model-switch-exposure-aggregate-only.json
+          if-no-files-found: warn
+          retention-days: 14
