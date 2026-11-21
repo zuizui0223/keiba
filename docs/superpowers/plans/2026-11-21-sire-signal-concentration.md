@@ -49,4 +49,4 @@ research index, evidence matrix and concise root README entry.
 - [x] Execute locally and in Actions on exact sources; compare numerical aggregates.
 - [x] Independently review the estimator and claims, correcting material issues.
 - [x] Run full ecology/non-ecology suites and repository navigation checks.
-- [ ] Publish the result PR and integrate after its final-head checks under existing authorization.
+- [x] Publish result PR #71 for integration after its final-head checks under existing authorization.
