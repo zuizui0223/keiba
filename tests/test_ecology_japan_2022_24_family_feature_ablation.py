@@ -52,8 +52,8 @@ class FeatureAblationTests(unittest.TestCase):
         changed_p[["sire_kin_history", "dam_kin_history"]] += 100
         changed_c = x.copy()
         changed_c[["log_sire_relative_count", "log_dam_relative_count"]] += 100
-        np.testing.assert_array_equal(p["MC"], predict_factorial(models, changed_p)["MC"])
-        np.testing.assert_array_equal(p["MP"], predict_factorial(models, changed_c)["MP"])
+        np.testing.assert_allclose(p["MC"], predict_factorial(models, changed_p)["MC"], atol=1e-14, rtol=0)
+        np.testing.assert_allclose(p["MP"], predict_factorial(models, changed_c)["MP"], atol=1e-14, rtol=0)
         self.assertGreater(np.max(np.abs(p["M2"] - predict_factorial(models, changed_p)["M2"])), .01)
 
     def test_loss_decomposition_has_hand_checked_signed_values(self):
@@ -104,6 +104,47 @@ class FeatureAblationTests(unittest.TestCase):
         order = [5, 2, 0, 4, 1, 3]
         b = paired_uncertainty(d.iloc[order], g[order], draws=99, min_clusters=2)
         np.testing.assert_allclose(a["sire_bootstrap"]["CI95"], b["sire_bootstrap"]["CI95"], atol=1e-15)
+
+    def test_positive_two_way_interval_matches_independent_numeric_oracle(self):
+        r = paired_uncertainty(panel(), np.array([.1, .4, -.2, .3, .2, -.5]),
+                               draws=99, min_clusters=2)
+        theta, se = .025, .22942409783339382
+        self.assertAlmostEqual(r["mean_MSE_gain"], theta)
+        for key, z in (("CI95", 1.959963984540054),
+                       ("CI95_bonferroni_8", 2.734368786533176)):
+            np.testing.assert_allclose(r["two_way"][key],
+                                       [theta-z*se, theta+z*se], atol=1e-14)
+
+    def test_whole_sire_bootstrap_uses_total_horses_not_equal_family_means(self):
+        sizes = [1, 2, 3, 4, 5]
+        values = [-.4, -.1, .2, .5, .8]
+        sires = [f"s{i}" for i, n in enumerate(sizes) for _ in range(n)]
+        gain = np.repeat(values, sizes)
+        n = len(gain)
+        d = pd.DataFrame({"horse": [f"h{i}" for i in range(n)],
+                          "race": [f"r{i}" for i in range(n)],
+                          "day": pd.date_range("2022-01-01", periods=n),
+                          "sire_id": sires, "y": np.repeat(.5, n)})
+        r = paired_uncertainty(d, gain, draws=99, seed=11, min_clusters=2)
+        rng = np.random.default_rng(11)
+        oracle = []
+        for _ in range(99):
+            selected = rng.integers(0, 5, size=5)
+            numerator = sum(sizes[i]*values[i] for i in selected)
+            denominator = sum(sizes[i] for i in selected)
+            oracle.append(numerator/denominator)
+        np.testing.assert_allclose(r["sire_bootstrap"]["CI95"],
+                                   np.quantile(oracle, [.025, .975]), atol=1e-14)
+
+    def test_same_horse_day_multiple_starts_share_intersection_cluster(self):
+        d = panel()
+        d.loc[[1, 4], "day"] = pd.Timestamp("2022-01-01")
+        r = paired_uncertainty(d, np.array([.1, .4, -.2, .3, .2, -.5]),
+                               draws=99, min_clusters=2)
+        # Independent rational arithmetic: 31/960 + 9/100 - 41/1280.
+        half_width = 1.959963984540054 * np.sqrt(.09026041666666666)
+        np.testing.assert_allclose(r["two_way"]["CI95"],
+                                   [.025-half_width, .025+half_width], atol=1e-14)
 
     def test_duplicate_or_conflicting_source_rows_are_rejected(self):
         for mutate in ("duplicate", "sire", "day", "missing_day"):
