@@ -1,0 +1,123 @@
+{
+  "status": "POSTHOC_REAL_2022_OBSERVATION_OPPORTUNITY_DEPENDENCE_NOT_CAUSAL",
+  "source_A_SHA256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_SHA256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "locked_population": {
+    "strict_horses": 12887,
+    "strict_starts": 244147,
+    "strict_races": 35333,
+    "year_2022_horses": 12755,
+    "year_2022_starts": 120381,
+    "recorded_2023_horses": 8659,
+    "recorded_2024_horses": 5163,
+    "sire_groups": 381,
+    "max_horses_in_sire_group": 311
+  },
+  "sign": "MSE_y_minus_M2_square - MSE_y_minus_2022_chosen_MG_square; positive means MG better",
+  "unadjusted_2022_future_observation_gap": -0.0001301387674820218,
+  "pre_2022_four_own_bin_standardized_gap": -0.00012628594862936927,
+  "six_previously_inspected_specs_familywise_normal_Z": 2.638257273476751,
+  "results": [
+    {
+      "key": "all_2022__own_bin__last_2022_half",
+      "status": "POSTHOC",
+      "point": -0.00007740339889990339,
+      "horse_date_normal_95pct": [
+        -0.000246660384722937,
+        0.0000918535869231302
+      ],
+      "bonferroni_six_95pct": [
+        -0.0003052358884031023,
+        0.00015042909060329547
+      ],
+      "recorded_sire_999_95pct": [
+        -0.00022641299206869954,
+        0.00007952256269349869
+      ],
+      "calendar_days": 364,
+      "sire_bootstrap_invalid_draws": 0,
+      "all_intervals_include_zero": true
+    },
+    {
+      "key": "all_2022__own_bin__recorded_2022_starts_bin",
+      "status": "POSTHOC",
+      "point": -0.00007692714652505345,
+      "horse_date_normal_95pct": [
+        -0.00020952840703260427,
+        0.00005567411398249737
+      ],
+      "bonferroni_six_95pct": [
+        -0.00025541830389615573,
+        0.00010156401084604881
+      ],
+      "recorded_sire_999_95pct": [
+        -0.00021774093327819828,
+        0.00005196355926879961
+      ],
+      "calendar_days": 364,
+      "sire_bootstrap_invalid_draws": 0,
+      "all_intervals_include_zero": true
+    },
+    {
+      "key": "all_2022__own_bin__last_2022_half__recorded_2022_starts_bin",
+      "status": "HOLD_OPPORTUNITY_STANDARDIZATION_SPARSE_STRATA",
+      "unsupported_cells": 4
+    },
+    {
+      "key": "observed_2023__own_bin__last_2022_half",
+      "status": "HOLD_OPPORTUNITY_STANDARDIZATION_SPARSE_STRATA",
+      "unsupported_cells": 2
+    },
+    {
+      "key": "observed_2023__own_bin__recorded_2022_starts_bin",
+      "status": "POSTHOC",
+      "point": -0.00007515663745471233,
+      "horse_date_normal_95pct": [
+        -0.00018365089766851558,
+        0.000033337622759090915
+      ],
+      "bonferroni_six_95pct": [
+        -0.00022119797974331403,
+        0.00007088470483388937
+      ],
+      "recorded_sire_999_95pct": [
+        -0.00016943634582463498,
+        0.00002877573312014799
+      ],
+      "calendar_days": 364,
+      "sire_bootstrap_invalid_draws": 0,
+      "all_intervals_include_zero": true
+    },
+    {
+      "key": "observed_2023__own_bin__last_2022_half__recorded_2022_starts_bin",
+      "status": "HOLD_OPPORTUNITY_STANDARDIZATION_SPARSE_STRATA",
+      "unsupported_cells": 7
+    }
+  ],
+  "source_reproduction": {
+    "push_run": 44850716726,
+    "push_artifact_id": 14685266729,
+    "push_artifact_zip_sha256": "d2eaef4ee7d5c26b329cdced934d87d5803ec4fa2f5e57ea3eec6ac67d1c3491",
+    "pull_request_run": 44850720060,
+    "pr_artifact_id": 14684644008,
+    "pr_artifact_zip_sha256": "b402846cb46de4aa29054dcef7361415919322f7254ccff90e927811e80c5dea",
+    "both_actions_conclusion": "success",
+    "same_source_head_commit": "725fb9ed5d1b3d859b0da0b0e962470d757946cc",
+    "two_aggregate_json_byte_identical": true,
+    "aggregate_json_bytes": 7842,
+    "aggregate_json_SHA256": "3c1a6380aeb8d6905030c7bd0fcaf21351629b32b3344b6015864c060e775088"
+  },
+  "scientific_holds": {
+    "all_years_reexamined_posthoc": true,
+    "MG_selected_using_2022_outcomes": true,
+    "no_official_studbook_registered_ID_verification": true,
+    "last_2022_record_date_and_annual_starts_post_event_not_race_pre_known_on": true,
+    "future_record_absence_not_mortality_retirement_or_breeding_fitness": true,
+    "horse_date_and_paternal_resampling_not_joint_three_way_covariance": true,
+    "six_spec_bonferroni_does_not_correct_all_historical_exploration": true,
+    "no_complete_pedigree_A_genomic_G_MSTN_or_real_market_odds_link": true,
+    "no_individual_source_records_published": true,
+    "only_M2_relative_MG_MSE_not_absolute_betting_performance": true,
+    "year_2024_midpoint_M0_beats_M2_and_MG": true
+  }
+}
