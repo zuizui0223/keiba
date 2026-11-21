@@ -91,6 +91,15 @@ jobs:
               assert scope["status"]=="POSTHOC_2022_INFORMATION_SWITCH_EXPOSURE_VS_CONDITIONAL_MODEL_GAIN_NOT_CAUSAL"
               assert scope["exposure_plus_conditional_exactly_equals_original_MG_gap"]
               assert scope["sire_bootstrap_status"].startswith(("POSTHOC_","HOLD_"))
+              own=scope["pre2022_own_history_bin_exposure_adjustment"]
+              assert own["status"].startswith(("POSTHOC_","HOLD_"))
+              assert own["weights_are_fixed_to_all_2022_horses_in_the_scoped_cohort"]
+              if own["status"].startswith("POSTHOC_"):
+                  assert own["own_bin_composition_plus_within_equals_exposure_gap"]
+                  assert abs(own["pre2022_own_bin_composition_component"] +
+                             own["within_pre2022_own_bin_M1_selection_component"] -
+                             scope["M1_activation_rate_group_difference"])<1e-12
+              assert own["sire_bootstrap_draws_missing_pre2022_bin_support"]>=0
           assert set(j["frozen_M1_vs_M2_group_observation_benchmark"])==set(scopes)
           assert j["information_switch_identity_not_mechanism_of_biological_aging_or_genetic_selection"]
           print("SOURCE_LOCKED_2022_MG_SWITCH_EXPOSURE_AND_CONDITIONAL_GAIN_AUDIT_PASSED")
