@@ -1,0 +1,99 @@
+name: "Ecology 2022 observation opportunity stratification and clustered inference"
+
+on:
+  push:
+    branches: [analysis/2022-opportunity-adjusted-cluster-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-opportunity-cluster.yml"
+      - "scripts/ecology_japan_2022_opportunity_cluster_inference.py"
+      - "tests/test_ecology_japan_2022_opportunity_cluster_inference.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-opportunity-cluster.yml"
+      - "scripts/ecology_japan_2022_opportunity_cluster_inference.py"
+      - "tests/test_ecology_japan_2022_opportunity_cluster_inference.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  same-source-frozen-opportunity-dependence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fixed numerical and source dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Synthetic falsification and source-record path regression
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_opportunity_cluster_inference.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_ecology_japan_2022_24_observation_paths.py" -v
+      - name: Download pinned historical archive only in private temporary workspace
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download fixed source B SQLite only transiently
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(
+              repo_id='KBlueLeaf/jp-racing-horse', repo_type='dataset',
+              filename='all_races_1990-2025.db', local_dir='tmp/private'))
+          assert p.is_file() and p.stat().st_size > 0
+          PY
+      - name: Recompute original 2018-2021 fitted model and all strict source outcomes then opportunity-cluster sensitivity
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_opportunity_cluster_inference.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/opportunity-cluster-aggregate-only.json \
+            > tmp/summary-only.txt
+      - name: Reconcile previous cohort, six specifications and fail-closed output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/opportunity-cluster-aggregate-only.json").read_text())
+          assert j["status"]=="POSTHOC_2022_OPPORTUNITY_HORSE_DATE_SIRE_CLUSTERS_NOT_CAUSAL"
+          assert j["2022_horses"]==12755 and j["2022_starts"]==120381
+          assert j["2023_observed_horses"]==8659 and j["2024_observed_horses"]==5163
+          assert (j["source_2022_2024_strict_horses"],j["source_2022_2024_strict_starts"],
+                  j["source_2022_2024_strict_races"])==(12887,244147,35333)
+          assert j["source_A_SHA256"]=="c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f"
+          assert j["source_B_SHA256"]=="7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+          assert j["original_2018_21_coefficients_and_2022_chosen_gate_fixed"]
+          assert j["historical_2024_M2_and_MG_both_worse_than_M0"]
+          assert j["prior_four_observation_paths_verified"]
+          assert j["year_2022_last_record_and_2022_starts_not_known_on_earlier_races"]
+          assert j["year_2024_record_absence_not_retirement_death_or_breeding_fitness"]
+          assert len(j["results"])==6
+          assert sum(v["status"].startswith("HOLD_") for v in j["results"].values())==3
+          assert sum(v["status"].startswith("POSTHOC_") for v in j["results"].values())==3
+          for result in j["results"].values():
+              assert result["status"].startswith(("HOLD_","POSTHOC_"))
+              if result["status"].startswith("POSTHOC_"):
+                  assert result["two_way_status"].startswith(("HOLD_","POSTHOC_"))
+                  assert result["sire_status"].startswith(("HOLD_","POSTHOC_"))
+          assert j["no_sire_horse_race_day_individual_predictions_or_residuals_exported"]
+          print("SOURCE_LOCKED_2022_OPPORTUNITY_CLUSTER_INFERENCE_QA_PASSED")
+          PY
+      - name: Erase all transient source horse records, even after failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-opportunity-cluster-aggregate-only
+          path: tmp/opportunity-cluster-aggregate-only.json
+          if-no-files-found: warn
+          retention-days: 14
