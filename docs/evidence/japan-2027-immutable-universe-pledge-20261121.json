@@ -1,0 +1,72 @@
+{
+  "status": "SOFTWARE_SYNTHETIC_ONLY_2027_PRETARGET_UNIVERSE_GITHUB_ORIGINAL_HASH_PLEDGE",
+  "created_on": "2026-11-21",
+  "repo": "zuizui0223/keiba",
+  "actual_JRA_2027_pre_race_forecasts_submitted": 0,
+  "actual_JRA_2027_schedule_pledges_submitted": 0,
+  "source_license_and_official_ID_crosswalk_verified": false,
+  "provenance": {
+    "implementation": "scripts/ecology_japan_2027_immutable_universe_pledge.py",
+    "new_push_only_workflow": ".github/workflows/ecology-japan-2027-immutable-universe-push.yml",
+    "synthetic_test_workflow": ".github/workflows/ecology-japan-2027-universe-pledge-synthetic.yml",
+    "private_source_universe_CSV_bytes_SHA256_binds_into_new_public_pledge": true,
+    "private_frozen_predictions_SHA256_binds_into_new_public_pledge": true,
+    "public_frozen_forecast_manifest_bytes_SHA256_binds_into_new_public_pledge": true,
+    "existing_source_and_forecast_bundle_bytes_SHA256_binds_into_new_public_pledge": true,
+    "original_universe_bundle_git_sha_and_first_run_success_required": true,
+    "original_forecast_source_bundle_git_sha_and_first_run_success_required": true,
+    "GitHub_created_at_before_earliest_declared_target_race": true,
+    "github_workflow_dispatch_PR_and_reruns_not_pre_race_proof": true,
+    "local_clock_or_MakeDate_not_provider_publication_proof": true,
+    "server_push_current_job_cannot_attest_its_own_completed_success": true,
+    "public_sensitivity_fields_race_horse_parent_IDs_omitted": true,
+    "private_race_universe_is_NOT_officially_verified_complete": true,
+    "private_universe_rows_race_start_known_on_fields_required": [
+      "race_id",
+      "race_start_at_jst",
+      "eligibility_known_at_jst"
+    ],
+    "per_race_forecast_bundle_single_race_from_existing_source_attestor": true,
+    "max_eligible_private_race_list": 500,
+    "original_pre_target_forecast_universe_divergence_explicit_HOLD": true,
+    "score_after_original_universe_AND_original_forecast_git_blob_open": true,
+    "official_source_and_provider_time_require_independent_verification": true,
+    "prospectively_confirmed_genetic_effect": false,
+    "no_individual_race_or_prediction_records_exported": true
+  },
+  "synthetics": {
+    "github_actions_run_id": 44903130236,
+    "github_actions_status": "completed_success",
+    "new_immutable_universe_tests": 20,
+    "prior_frozen_universe_bounds_tests": 14,
+    "prior_2027_private_freeze_score_tests": 24,
+    "prior_github_source_model_bundle_attestation_tests": 36,
+    "total_fictional_tests": 94,
+    "use_fake_github_REST_only_in_explicit_synthetic_testing": true,
+    "real_github_actions_runner_not_actual_real_forecast_registration": true,
+    "current_production_commitment_paths_exist": false,
+    "spoof_or_mutation_rejections": [
+      "private schedule bytes changed",
+      "private forecast values modified",
+      "forecast manifest or source bundle bytes changed",
+      "original Git blob digest mismatch",
+      "wrong GitHub workflow",
+      "GitHub server created at after earliest declared race",
+      "Actions rerun attempt is not first run",
+      "original forecast push failed",
+      "eligible schedule added a never-predicted target race",
+      "future schedule eligibility known after forecast cutoff",
+      "missing runner result, nonfinishing rank undefined",
+      "synthetic REST injection prohibited in production"
+    ]
+  },
+  "scientific_limitations": {
+    "source_provider_publication_not_external_attested": true,
+    "official_denominator_completeness_NOT_proven": true,
+    "source_authorization_license_NOT_proven": true,
+    "unverified_JRA_NAR_studbook_IDs": true,
+    "no_2027_real_forecast_performance": true,
+    "no_ABM_market_or_genomic_effect_inferred": true,
+    "future_rank_loss_bounds_are_conditional_permutation_not_95CI": true
+  }
+}
