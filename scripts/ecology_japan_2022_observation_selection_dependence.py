@@ -145,6 +145,47 @@ def _sire_bootstrap(horse: pd.DataFrame, bin_weights: dict[str, float], *,
         column = ci[(row.own_bin, bool(row.in2024))]
         sizes[group, column] = row.size
         sums[group, column] = row.sum
+    # Added as a deterministic post-result influence stress test: a single
+    # heavily represented recorded sire must not decide the sign by itself.
+    # Unlike a confidence interval, leave-one-sire-out has no sampling coverage.
+    all_n, all_s = sizes.sum(axis=0), sums.sum(axis=0)
+    def two_estimates(n, s):
+        m = (s / n).reshape(len(BINS), 2)
+        u = float(s[1::2].sum()/n[1::2].sum() -
+                  s[0::2].sum()/n[0::2].sum())
+        standardized = float(sum(bin_weights[b]*(m[i, 1]-m[i, 0])
+                                 for i, b in enumerate(BINS)))
+        return (u, standardized)
+    full_u, full_s = two_estimates(all_n, all_s)
+    valid_loso = []
+    invalid_loso = 0
+    for k in range(n_sires):
+        remaining_n, remaining_s = all_n-sizes[k], all_s-sums[k]
+        if (remaining_n < min_bin_horses).any():
+            invalid_loso += 1
+            continue
+        valid_loso.append((k, *two_estimates(remaining_n, remaining_s)))
+    largest_k = int(np.argmax(sizes.sum(axis=1)))
+    out["leave_one_recorded_sire_cluster_out"] = {
+        "status": ("POSTHOC_DETERMINISTIC_SIRE_INFLUENCE_NOT_A_CI"
+                   if not invalid_loso else "HOLD_UNSUPPORTED_SIRE_LOSO_CELLS"),
+        "recorded_sire_clusters_attempted": n_sires,
+        "unsupported_removed_clusters": invalid_loso,
+        "full_data_unadjusted_gap": full_u,
+        "full_data_2022_history_standardized_gap": full_s,
+        "no_sire_IDs_or_individual_effects_exported": True,
+    }
+    if not invalid_loso:
+        a = np.asarray(valid_loso, float)
+        for k, name, full in ((1, "unadjusted", full_u),
+                              (2, "2022_own_bin_standardized", full_s)):
+            v = a[:, k]
+            out["leave_one_recorded_sire_cluster_out"][name] = {
+                "min_gap": float(v.min()), "max_gap": float(v.max()),
+                "clusters_reversing_full_point_sign": int(np.sum(v * full < 0)),
+                "largest_sire_cluster_removed_gap": float(
+                    v[int(np.where(a[:, 0] == largest_k)[0][0])]),
+            }
     rng = np.random.default_rng(seed)
     vals = []
     invalid = 0
