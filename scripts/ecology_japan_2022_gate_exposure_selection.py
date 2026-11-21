@@ -114,6 +114,55 @@ def _audit_scope(h: pd.DataFrame, *, seed: int, draws: int,
         "frozen_M1_minus_M2_full_2022_recorded_vs_unrecorded_gap":float(rawcontrast),
         "switch_conditional_gain_is_not_an_observed_biological_trait":True,
     }
+    # The gate itself is defined from pre-2022 own-record counts; report
+    # whether differences in those bins account for the frequency contrast.
+    from ecology_japan_2022_observation_selection_dependence import BINS
+    bin_stats={}
+    bin_comp=0.
+    bin_within=0.
+    bin_std=0.
+    sparse=[]
+    for b in BINS:
+        xx=x.loc[x.own_bin.eq(b)]
+        yy=y.loc[y.own_bin.eq(b)]
+        n1b,n0b=len(xx),len(yy)
+        cell={
+            "2022_horses_2024_observed":n1b,
+            "2022_horses_2024_not_observed":n0b,
+        }
+        if min(n1b,n0b)<min_group:
+            cell["status"]="HOLD_PRE2022_OWN_COUNT_BIN_EXPOSURE_SUPPORT"
+            sparse.append(b)
+        else:
+            rb1,rb0=float(xx.M1_selected_fraction.mean()),float(yy.M1_selected_fraction.mean())
+            cell.update({
+                "status":"POSTHOC_EXPOSURE_IN_PRE2022_OWN_COUNT_BIN",
+                "recorded_M1_selection_fraction":rb1,
+                "not_recorded_M1_selection_fraction":rb0,
+                "within_history_bin_M1_selection_gap":rb1-rb0,
+            })
+            bin_comp+=(n1b/len(x)-n0b/len(y))*rb0
+            bin_within+=(n1b/len(x))*(rb1-rb0)
+            bin_std+=((n1b+n0b)/len(h))*(rb1-rb0)
+        bin_stats[b]=cell
+    adjustment={
+        "status":("POSTHOC_PRE2022_HISTORY_BIN_COMPOSITION_AND_WITHIN_EXPOSURE"
+                  if not sparse else "HOLD_SPARSE_PRE2022_HISTORY_BIN_EXPOSURE"),
+        "pre2022_own_history_bin_support_and_M1_selection_rates":bin_stats,
+        "unsupported_bins":sparse,
+        "weights_are_fixed_to_all_2022_horses_in_the_scoped_cohort":True,
+        "not_a_genetic_or_causal_decomposition":True,
+    }
+    if not sparse:
+        if abs(bin_comp+bin_within-(r1-r0))>1e-12:
+            raise ValueError("HOLD_PRE2022_HISTORY_EXPOSURE_EXACT_IDENTITY")
+        adjustment.update({
+            "M1_selection_gap_standardized_to_all_pre2022_own_bin_mix":float(bin_std),
+            "pre2022_own_bin_composition_component":float(bin_comp),
+            "within_pre2022_own_bin_M1_selection_component":float(bin_within),
+            "own_bin_composition_plus_within_equals_exposure_gap":True,
+        })
+    summary["pre2022_own_history_bin_exposure_adjustment"]=adjustment
     h = h.copy()
     h["sire_cluster"]=_sire_label(h)
     groups = sorted(h.sire_cluster.unique())
@@ -128,13 +177,16 @@ def _audit_scope(h: pd.DataFrame, *, seed: int, draws: int,
     # 2 future-observation groups x (n, gate activation, MG gain, frozen M1 gain).
     columns=("n","r","d","raw")
     arrays=np.zeros((ng,2,len(columns)),float)
+    bin_arrays=np.zeros((ng,2,len(BINS),2),float)
     sire_idx={s:i for i,s in enumerate(groups)}
+    bin_to_idx={b:i for i,b in enumerate(BINS)}
     for row in h.itertuples(index=False):
         i=sire_idx[row.sire_cluster]
         j=1 if row.observed2024 else 0
         arrays[i,j,:]+=np.array([1,row.M1_selected_fraction,
                                   row.MG_minus_M2_mean_gain,
                                   row.frozen_M1_minus_M2_mean_gain],float)
+        bin_arrays[i,j,bin_to_idx[row.own_bin],:]+=[1,row.M1_selected_fraction]
     def vector(totals):
         counts=totals[:,0]
         if (counts<min_group).any():
@@ -159,9 +211,16 @@ def _audit_scope(h: pd.DataFrame, *, seed: int, draws: int,
     needed=np.array([delta,r1-r0,a1-a0,exposure,conditional,rawcontrast],float)
     if not np.allclose(truth,needed,rtol=0,atol=1e-12):
         raise ValueError("HOLD_INFORMATION_SWITCH_CLUSTER_MATRIX_POINT_PARITY")
+    # Fixed 2022 target distribution; do not allow random sire draws to
+    # silently change the intended history-standardized estimand.
+    fixed_ownbin_target=(bin_arrays[:,:,:,0].sum(axis=(0,1))/len(h))
+    if abs(float(fixed_ownbin_target.sum())-1.)>1e-12:
+        raise ValueError("HOLD_SIRE_HISTORY_WEIGHT_SUM")
     rng=np.random.default_rng(seed)
     reps=[]
+    bin_reps=[]
     bad=0
+    unsupported_bin_draws=0
     for _ in range(draws):
         idx=rng.integers(0,ng,size=ng)
         v=vector(arrays[idx].sum(axis=0))
@@ -169,7 +228,20 @@ def _audit_scope(h: pd.DataFrame, *, seed: int, draws: int,
             bad+=1
         else:
             reps.append(v)
+        if not sparse:
+            bc=bin_arrays[idx].sum(axis=0)
+            if np.any(bc[:,:,0]<max(2,min_group//10)):
+                unsupported_bin_draws+=1
+            else:
+                rbin=bc[:,:,1]/bc[:,:,0]
+                weighted_bin=float(np.dot(fixed_ownbin_target,rbin[1]-rbin[0]))
+                nf=bc[1,:,0].sum()
+                nu=bc[0,:,0].sum()
+                cb=float(np.sum((bc[1,:,0]/nf-bc[0,:,0]/nu)*rbin[0]))
+                wb=float(np.sum((bc[1,:,0]/nf)*(rbin[1]-rbin[0])))
+                bin_reps.append([weighted_bin,cb,wb])
     summary["sire_resamples_requested"]=draws
+    adjustment["sire_bootstrap_draws_missing_pre2022_bin_support"]=unsupported_bin_draws
     summary["sire_resamples_invalid_for_group_or_activation_support"]=bad
     if len(reps)<.99*draws:
         return {**summary,"sire_bootstrap_status":"HOLD_SIRE_CLUSTER_RESAMPLED_SUPPORT"}
@@ -183,6 +255,18 @@ def _audit_scope(h: pd.DataFrame, *, seed: int, draws: int,
     summary["sire_cluster_999_draw_95pct_sensitivity"]={
         n:_qinterval(zz[:,i]) for i,n in enumerate(names)
     }
+    if not sparse:
+        if len(bin_reps)<.99*draws:
+            adjustment["sire_bootstrap_status"]="HOLD_SIRE_RESAMPLED_PRE2022_BIN_SUPPORT"
+        else:
+            br=np.asarray(bin_reps,float)
+            adjustment["sire_bootstrap_status"]="POSTHOC_WHOLE_SIRE_CLUSTER_HISTORY_ADJUSTED_EXPOSURE_SENSITIVITY"
+            adjustment["sire_bootstrap_95pct"]={
+                name:_qinterval(br[:,i]) for i,name in enumerate((
+                    "fixed_all_2022_ownbin_standardized_M1_selection_gap",
+                    "pre2022_ownbin_composition_component",
+                    "within_pre2022_ownbin_component"))
+            }
     summary["sire_cluster_source_labeled_horses_not_genetic_effects"]=True
     return summary
 
