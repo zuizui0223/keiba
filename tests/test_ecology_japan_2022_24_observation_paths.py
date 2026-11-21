@@ -89,6 +89,23 @@ class ObservationPathTests(unittest.TestCase):
         self.assertTrue(z["status"].startswith(("HOLD_","POSTHOC_")))
         self.assertNotIn("genetic_selection_fitness",str(q))
 
+    def test_broader_valid_source_can_contain_2024_races_excluded_by_strict_gate(self):
+        p,a,b=invented()
+        extra={f"FICT:H:{i}" for i in range(160,170)}
+        q=analyze_paths(p,a,b,sire_draws=35,
+                        all_valid_2024_source_ids=b|extra)
+        z=q["broader_valid_source_vs_strict_2024_record_coverage"]
+        groups=z["three_record_coverage_groups"]
+        self.assertEqual(groups["strict_2024"]["2022_horses"],300)
+        self.assertEqual(groups["2024_valid_joined_source_but_not_strict"]["2022_horses"],10)
+        self.assertEqual(groups["no_valid_joined_2024_outcome_in_broader_source"]["2022_horses"],330)
+        self.assertTrue(z["absence_of_valid_record_does_not_certify_no_raw_race_or_retirement"])
+
+    def test_broader_source_coverage_must_include_all_strict_source_records(self):
+        p,a,b=invented()
+        with self.assertRaisesRegex(ValueError,"STRICT_2024_IDS_NOT_IN_BROADER_VALID_SOURCE"):
+            analyze_paths(p,a,b,sire_draws=35,all_valid_2024_source_ids=set())
+
     def test_source_lock_rejects_wrong_four_path_membership(self):
         p,a,b=invented()
         with self.assertRaisesRegex(ValueError,"MEMBERSHIP_CHANGED"):
