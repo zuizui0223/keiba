@@ -1,0 +1,100 @@
+name: "Racehorse ecology: 2022 source observation pathways via 2023 and 2024"
+
+on:
+  push:
+    branches: [analysis/2022-24-observation-path-opportunity-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-observation-paths.yml"
+      - "scripts/ecology_japan_2022_24_observation_paths.py"
+      - "tests/test_ecology_japan_2022_24_observation_paths.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-observation-paths.yml"
+      - "scripts/ecology_japan_2022_24_observation_paths.py"
+      - "tests/test_ecology_japan_2022_24_observation_paths.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-2022-horse-source-observation-paths:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin source and numerical packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 'huggingface_hub>=0.30' 'hf_xet>=1.0'
+      - name: Test source-record path falsifications without any real private horse ID
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_24_observation_paths.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2022_observation_selection_dependence.py" -v
+      - name: Download pinned historical source A transiently
+        run: |
+          mkdir -p tmp/private
+          PYTHONPATH=scripts python -c "from pathlib import Path; from ecology_japan_archive_forward import download; download(Path('tmp/private/old.zip'))"
+      - name: Download source B SQLite transiently, no redistribution
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          p=Path(hf_hub_download(repo_id="KBlueLeaf/jp-racing-horse",
+              repo_type="dataset",filename="all_races_1990-2025.db",
+              local_dir="tmp/private"))
+          assert p.is_file() and p.stat().st_size > 0
+          PY
+      - name: Strict real 2022 model, source 2023-24 paths, date and sire sensitivity
+        run: |
+          PYTHONPATH=scripts python scripts/ecology_japan_2022_24_observation_paths.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --aggregate-out tmp/japan-2022-24-observation-path-aggregate-only.json \
+            > tmp/summary-only.txt
+      - name: Fail closed source, four-path and model parity, context and no survival causality
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("tmp/japan-2022-24-observation-path-aggregate-only.json").read_text())
+          assert j["status"]=="POSTHOC_OBSERVED_2022_TO_2023_2024_SOURCE_PATH_AND_OPPORTUNITY_NOT_CAUSAL"
+          assert (j["original_strict_horses"],j["original_strict_starts"],j["original_strict_races"])==(12887,244147,35333)
+          assert j["source_A_SHA256"]=="c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f"
+          assert j["source_B_SHA256"]=="7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+          assert j["same_source_2022_horses"]==12755 and j["original_2022_starts"]==120381
+          assert j["observed_2023_count"]==8659 and j["observed_2024_count"]==5163
+          states={k:v["2022_horses"] for k,v in j["four_source_record_paths"].items()}
+          assert states=={"neither_2023_nor_2024":4035,"2023_only":3557,"2024_only":61,"both_2023_and_2024":5102}
+          assert abs(j["2024_gap"]-(-0.0001301387674820218))<1e-10
+          assert abs(j["2024_gap"]-(
+              j["2024_gap_ref_2023_status_composition_MSE_component"]+
+              j["2024_gap_within_2023_status_MSE_component"]))<1e-12
+          assert j["year_2024_observation_conditioned_on_2023_record"]["2022_horses"]==8659
+          assert j["year_2024_observation_conditioned_on_2023_record"]["with_2024_observed_record"]==5102
+          assert j["frozen_2018_21_ridge_2022_gate_and_all_2022_24_year_errors"]
+          assert j["no_private_horse_parent_race_day_or_model_prediction_rows_exported"]
+          assert j["not_causal_survival_retirement_aging_or_breeding_selection"]
+          assert len(j["2022_observation_opportunity_sensitivity"])==6
+          for v in j["2022_observation_opportunity_sensitivity"].values():
+              assert v["status"].startswith(("HOLD_","POSTHOC_"))
+          print("SOURCE_LOCKED_SOURCE_RECORD_PATHS_AND_OPPORTUNITY_QA_PASSED")
+          PY
+      - name: Erase transient third-party racing data even on failure
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-observation-path-aggregate-only
+          path: tmp/japan-2022-24-observation-path-aggregate-only.json
+          if-no-files-found: warn
+          retention-days: 14
