@@ -1,0 +1,75 @@
+name: "Racehorse ecology 2027: immutable race-universe pledge synthetic-only audit"
+
+on:
+  push:
+    branches: [analysis/2027-immutable-universe-github-pledge-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2027-universe-pledge-synthetic.yml"
+      - ".github/workflows/ecology-japan-2027-immutable-universe-push.yml"
+      - "scripts/ecology_japan_2027_immutable_universe_pledge.py"
+      - "tests/test_ecology_japan_2027_immutable_universe_pledge.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2027-universe-pledge-synthetic.yml"
+      - ".github/workflows/ecology-japan-2027-immutable-universe-push.yml"
+      - "scripts/ecology_japan_2027_immutable_universe_pledge.py"
+      - "tests/test_ecology_japan_2027_immutable_universe_pledge.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fictional-only-immutable-universe-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Replay fictional race/forecast ORIGINAL SHA proofs without calling GitHub or JRA
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2027_immutable_universe_pledge.py" -v
+      - name: Regress prior 2027 fixed-denominator, forecast and GitHub bundle validators
+        run: |
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2027_denominator_rank_bounds.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2027_point_in_time_ledger.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests \
+            -p "test_ecology_japan_2027_github_push_attestation.py" -v
+      - name: Reject manual or PR event as real independent 2027 clock and assert zero real pledges
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          import re
+          from ecology_japan_2027_immutable_universe_pledge import (
+              WORKFLOW_PATH, PLEDGE_DIR, SCHEMA, STATUS,
+          )
+          p=Path(WORKFLOW_PATH)
+          source=p.read_text()
+          assert re.search(r"(?m)^on:\s*\n  push:\s*\n",source)
+          assert "  pull_request:" not in source
+          assert "  workflow_dispatch:" not in source
+          assert "git\",\"diff\",\"--no-renames\"" in source
+          assert "run_attempt" not in source or "check_current_universe_push" in source
+          assert "check_current_universe_push" in source
+          assert "HOLD_UNIVERSE_PUSH_MIXES_CODE_OR_UNRELATED_CHANGES" in source
+          assert "content_addressed_filename" in source
+          assert "status" in source and "GITHUB_TOKEN" in source
+          assert not Path(PLEDGE_DIR).exists()
+          assert not Path("docs/commitments/2027").exists()
+          print("REHEARSAL_ONLY__REAL_JRA_RACE_UNIVERSE_PLEDGES_ZERO__MODEL_ABILITY_HOLD")
+          PY
+      - name: Compile and show private-input command contract; do not write race or horse data into repository
+        run: |
+          python -m py_compile scripts/ecology_japan_2027_immutable_universe_pledge.py
+          python scripts/ecology_japan_2027_immutable_universe_pledge.py --help >/dev/null
+          test -z "$(git status --porcelain)"
