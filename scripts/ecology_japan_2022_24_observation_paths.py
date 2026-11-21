@@ -91,7 +91,7 @@ def _opportunity_standardization(horse: pd.DataFrame, mask: np.ndarray,
 
 def analyze_paths(p22: pd.DataFrame, observed_2023: set[str],
                   observed_2024: set[str], *, expected_states=None,
-                  sire_draws: int = 999) -> dict:
+                  sire_draws: int = 999, source_lock: bool = False) -> dict:
     """All population assertions enforced before any candidate inference."""
     p = _validated_2022_panel(p22)
     ids23 = set(str(x) for x in observed_2023)
@@ -119,13 +119,14 @@ def analyze_paths(p22: pd.DataFrame, observed_2023: set[str],
     if expected_states is not None:
         if {k:v["2022_horses"] for k,v in states.items()} != expected_states:
             raise ValueError("HOLD_ORIGINAL_2022_2023_2024_HORSE_MEMBERSHIP_CHANGED")
-    if n != 12755 or n24 != 5163 or n23 != 8659:
-        raise ValueError("HOLD_PRIOR_2022_FUTURE_OBSERVATION_MEMBERSHIP_DRIFT")
-    if int(states["both_2023_and_2024"]["2022_horses"]) != 5102:
-        raise ValueError("HOLD_LOCKED_THREE_YEAR_ID_OVERLAP_DRIFT")
+    if source_lock:
+        if n != 12755 or n24 != 5163 or n23 != 8659:
+            raise ValueError("HOLD_PRIOR_2022_FUTURE_OBSERVATION_MEMBERSHIP_DRIFT")
+        if int(states["both_2023_and_2024"]["2022_horses"]) != 5102:
+            raise ValueError("HOLD_LOCKED_THREE_YEAR_ID_OVERLAP_DRIFT")
     mean1 = float(h.loc[h.observed2024,"gain"].mean())
     mean0 = float(h.loc[~h.observed2024,"gain"].mean())
-    if abs((mean1-mean0)-EXPECTED["contrast"]) > 1e-10:
+    if source_lock and abs((mean1-mean0)-EXPECTED["contrast"]) > 1e-10:
         raise ValueError("HOLD_PREVIOUSLY_REPRODUCED_2022_MG_M2_GAP_CHANGED")
     # Exactly partition the previously observed 2024 gap by whether a 2023
     # source record was present. This is arithmetic, not mediation/causality.
@@ -151,7 +152,7 @@ def analyze_paths(p22: pd.DataFrame, observed_2023: set[str],
     full2023 = selection_dependency_audit(
         p, ids23, sire_draws=sire_draws)
     full2024 = selection_dependency_audit(
-        p, ids24, expected=EXPECTED, sire_draws=sire_draws)
+        p, ids24, expected=EXPECTED if source_lock else None, sire_draws=sire_draws)
     subset23 = p.loc[p.horse.isin(ids23)].reset_index(drop=True)
     conditional = selection_dependency_audit(
         subset23, ids24, sire_draws=sire_draws)
@@ -159,7 +160,8 @@ def analyze_paths(p22: pd.DataFrame, observed_2023: set[str],
         raise ValueError("HOLD_2024_PRIOR_DEPENDENCE_PARENT_STATUS_CHANGED")
     if full2023["with_2024_observed_record"] != n23:
         raise ValueError("HOLD_2023_COHORT_RECOUNT_CHANGED")
-    if conditional["2022_horses"] != n23 or conditional["with_2024_observed_record"] != 5102:
+    if (conditional["2022_horses"] != n23 or
+            conditional["with_2024_observed_record"] != states["both_2023_and_2024"]["2022_horses"]):
         raise ValueError("HOLD_2024_CONDITIONAL_ON_2023_ID_COHORT_CHANGED")
     out = {
         "status": STATUS,
@@ -238,7 +240,7 @@ def run(archive: Path, sqlite: Path) -> dict:
     cur["own_bin"]=ctx.loc[y22,"own_record_count_bin"].reset_index(drop=True)
     d=analyze_paths(cur,set(t.loc[t.year.eq(2023)].horse.astype(str)),
                     set(t.loc[t.year.eq(2024)].horse.astype(str)),
-                    expected_states=EXPECTED_STATES)
+                    expected_states=EXPECTED_STATES, source_lock=True)
     if len(cur)!=120381 or len(t)!=244147:
         raise ValueError("HOLD_UNCHANGED_2022_24_STARTS")
     return {
