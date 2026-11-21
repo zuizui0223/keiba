@@ -86,7 +86,13 @@ jobs:
           assert j["no_private_individual_horse_race_sire_date_or_prediction_rows_exported"]
           for name in ("unadjusted_horse_by_2022_day","historical_bin_standardized_horse_by_2022_day"):
               assert j[name]["two_way_status"].startswith(("POSTHOC_","HOLD_"))
-          assert j["recorded_sire_group_resampling"]["status"].startswith(("POSTHOC_","HOLD_"))
+          parent=j["recorded_sire_group_resampling"]
+          assert parent["status"].startswith(("POSTHOC_","HOLD_"))
+          loo=parent["leave_one_recorded_sire_cluster_out"]
+          assert loo["recorded_sire_clusters_attempted"]==parent["recorded_sire_plus_missing_singleton_clusters"]
+          assert abs(loo["full_data_unadjusted_gap"]-j["unadjusted_future_observed_minus_unobserved"])<1e-12
+          assert abs(loo["full_data_2022_history_standardized_gap"]-j["2022_historical_own_count_bin_standardized_gap"])<1e-12
+          assert loo["no_sire_IDs_or_individual_effects_exported"]
           print("REAL_2022_FUTURE_OBSERVATION_CLUSTER_DEPENDENCE_AND_HISTORY_QA_PASSED")
           PY
       - name: Erase original third-party racing data on success or failure
