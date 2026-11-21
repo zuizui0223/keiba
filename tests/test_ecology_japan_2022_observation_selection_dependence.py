@@ -152,6 +152,22 @@ class SelectionDependenceTests(unittest.TestCase):
         r=selection_dependency_audit(p,later,sire_draws=50)
         self.assertEqual(r["status"],"HOLD_MISSING_ONE_OF_FOUR_HISTORICAL_BINS")
 
+    def test_sire_leave_one_out_catches_single_dominant_paternal_group(self):
+        p, later = fiction()
+        p["gain"] = np.where(p.horse.isin(later), .005, 0.0)
+        # One invented paternal cluster carries all of the apparent adverse
+        # MG-vs-M2 association; deleting that group flips the point direction.
+        p.loc[p.sire_id.eq("FICTION:SIRE:0"),"gain"] = -.9
+        r = selection_dependency_audit(p, later, sire_draws=50)
+        loo = r["recorded_sire_group_resampling"]["leave_one_recorded_sire_cluster_out"]
+        self.assertEqual(loo["status"], "POSTHOC_DETERMINISTIC_SIRE_INFLUENCE_NOT_A_CI")
+        self.assertEqual(loo["recorded_sire_clusters_attempted"],60)
+        self.assertEqual(loo["unsupported_removed_clusters"],0)
+        self.assertLess(loo["unadjusted"]["min_gap"],0)
+        self.assertGreater(loo["unadjusted"]["max_gap"],0)
+        self.assertGreater(loo["unadjusted"]["clusters_reversing_full_point_sign"],0)
+        self.assertTrue(loo["no_sire_IDs_or_individual_effects_exported"])
+
     def test_no_private_individual_identifier_in_aggregates(self):
         p,later=fiction()
         r=selection_dependency_audit(p,later,sire_draws=50)
