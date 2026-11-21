@@ -1,0 +1,480 @@
+{
+  "status": "POSTHOC_STRICT_FAMILY_FEATURE_ABLATION",
+  "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "training_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "ridge_alpha": 100.0,
+  "performance_features": [
+    "sire_kin_history",
+    "dam_kin_history"
+  ],
+  "explicit_count_features": [
+    "log_sire_relative_count",
+    "log_dam_relative_count"
+  ],
+  "strong_all_row_parity": {
+    "starts": 255484,
+    "horses": 12919,
+    "races": 36955,
+    "RMSE_M0_midpoint": 0.3209768069633041,
+    "RMSE_M1_own": 0.3116926726876164,
+    "RMSE_M2_family": 0.31143282328331967
+  },
+  "strict_source_qa": {
+    "all_frozen_races": 36955,
+    "strict_races": 35333,
+    "strict_focal_rows": 244147,
+    "strict_focal_horses": 12887,
+    "race_qa_counts": {
+      "STRICT_COMPLETE_CLASSIFIED_RACE": 35333,
+      "CLASSIFIED_PROXY_INCOMPLETE_DECLARED": 1050,
+      "TIED_OR_DUPLICATED_RANKS": 569,
+      "GAPPED_CLASSIFIED_RANKS": 3
+    },
+    "excluded_focal_rows": {
+      "non_strict_race": 11337
+    },
+    "same_new_source_horse_ID_and_rank_verified": true
+  },
+  "pooled": {
+    "starts": 244147,
+    "horses": 12887,
+    "races": 35333,
+    "models": {
+      "M0": {
+        "MSE": 0.10351929302901393,
+        "RMSE": 0.3217441421829058
+      },
+      "M1": {
+        "MSE": 0.09761216015780286,
+        "RMSE": 0.3124294482884142
+      },
+      "MC": {
+        "MSE": 0.09758968794981931,
+        "RMSE": 0.31239348256616895
+      },
+      "MP": {
+        "MSE": 0.09746541610950615,
+        "RMSE": 0.3121945164629035
+      },
+      "M2": {
+        "MSE": 0.0974487781280263,
+        "RMSE": 0.31216786850671596
+      }
+    },
+    "loss_decomposition_MSE": {
+      "full_gain": 0.0001633820297765549,
+      "performance_alone": 0.00014674404829667517,
+      "counts_alone": 2.24722079835192e-05,
+      "performance_given_counts": 0.00014090982179303568,
+      "counts_given_performance": 1.6637981479879696e-05,
+      "shapley_performance": 0.00014382693504485546,
+      "shapley_counts": 1.9555094731699442e-05
+    },
+    "conditional_uncertainty": {
+      "performance_given_counts": {
+        "mean_MSE_gain": 0.00014090982179303568,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 3.43030013752613e-09,
+          "status": "OK",
+          "SE": 5.856876417960456e-05,
+          "CI95": [
+            2.611715338199117e-05,
+            0.0002557024902040802
+          ],
+          "CI95_bonferroni_8": [
+            -1.9238778845497354e-05,
+            0.0003010584224315687
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "unknown_sire_singleton_horses": 0,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261121,
+          "CI95": [
+            -3.3324704024651316e-05,
+            0.00029231026110548066
+          ]
+        }
+      },
+      "counts_given_performance": {
+        "mean_MSE_gain": 1.6637981479879696e-05,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 1.5693959555272155e-10,
+          "status": "OK",
+          "SE": 1.2527553454394899e-05,
+          "CI95": [
+            -7.915572105134644e-06,
+            4.1191535064894036e-05
+          ],
+          "CI95_bonferroni_8": [
+            -1.7616969657443578e-05,
+            5.0892932617202974e-05
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "unknown_sire_singleton_horses": 0,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261121,
+          "CI95": [
+            -2.478636520704028e-05,
+            5.9078837157376284e-05
+          ]
+        }
+      }
+    }
+  },
+  "by_year": {
+    "2022": {
+      "starts": 120381,
+      "horses": 12755,
+      "races": 14238,
+      "models": {
+        "M0": {
+          "MSE": 0.10376912817647795,
+          "RMSE": 0.32213215948811746
+        },
+        "M1": {
+          "MSE": 0.09613689767113112,
+          "RMSE": 0.31005950666143284
+        },
+        "MC": {
+          "MSE": 0.09611432702280667,
+          "RMSE": 0.3100231072401002
+        },
+        "MP": {
+          "MSE": 0.09599647650530672,
+          "RMSE": 0.3098329816293074
+        },
+        "M2": {
+          "MSE": 0.09597871064964124,
+          "RMSE": 0.30980431025026306
+        }
+      },
+      "loss_decomposition_MSE": {
+        "full_gain": 0.00015818702148986036,
+        "performance_alone": 0.000140421165824374,
+        "counts_alone": 2.25706483244299e-05,
+        "performance_given_counts": 0.0001356163731654304,
+        "counts_given_performance": 1.7765855665486335e-05,
+        "shapley_performance": 0.0001380187694949022,
+        "shapley_counts": 2.0168251994958114e-05
+      },
+      "conditional_uncertainty": {
+        "performance_given_counts": {
+          "mean_MSE_gain": 0.0001356163731654304,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 4.4718892143085526e-09,
+            "status": "OK",
+            "SE": 6.68721856552375e-05,
+            "CI95": [
+              4.549297713688893e-06,
+              0.00026668344861717193
+            ],
+            "CI95_bonferroni_8": [
+              -4.723684397750261e-05,
+              0.00031846959030836343
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "unknown_sire_singleton_horses": 0,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261121,
+            "CI95": [
+              -3.1847990614011876e-05,
+              0.0002808686305205452
+            ]
+          }
+        },
+        "counts_given_performance": {
+          "mean_MSE_gain": 1.7765855665486335e-05,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 1.927627365410877e-10,
+            "status": "OK",
+            "SE": 1.388390206466063e-05,
+            "CI95": [
+              -9.446092346129791e-06,
+              4.497780367710246e-05
+            ],
+            "CI95_bonferroni_8": [
+              -2.019785277540521e-05,
+              5.572956410637788e-05
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "unknown_sire_singleton_horses": 0,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261121,
+            "CI95": [
+              -2.0143650438049948e-05,
+              5.6431531598560957e-05
+            ]
+          }
+        }
+      }
+    },
+    "2023": {
+      "starts": 80939,
+      "horses": 8778,
+      "races": 11469,
+      "models": {
+        "M0": {
+          "MSE": 0.10268926821362237,
+          "RMSE": 0.3204516628348531
+        },
+        "M1": {
+          "MSE": 0.10105667550048389,
+          "RMSE": 0.317894126244075
+        },
+        "MC": {
+          "MSE": 0.10102591850898797,
+          "RMSE": 0.31784574640694496
+        },
+        "MP": {
+          "MSE": 0.10088248415118012,
+          "RMSE": 0.31762003109246767
+        },
+        "M2": {
+          "MSE": 0.10084838682028767,
+          "RMSE": 0.3175663502644568
+        }
+      },
+      "loss_decomposition_MSE": {
+        "full_gain": 0.0002082886801962283,
+        "performance_alone": 0.00017419134930378785,
+        "counts_alone": 3.075699149591861e-05,
+        "performance_given_counts": 0.00017753168870030976,
+        "counts_given_performance": 3.4097330892440546e-05,
+        "shapley_performance": 0.00017586151900204878,
+        "shapley_counts": 3.242716119417958e-05
+      },
+      "conditional_uncertainty": {
+        "performance_given_counts": {
+          "mean_MSE_gain": 0.00017753168870030976,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 9.222313034750541e-09,
+            "status": "OK",
+            "SE": 9.603287476042015e-05,
+            "CI95": [
+              -1.0689287161959256e-05,
+              0.0003657526645625788
+            ],
+            "CI95_bonferroni_8": [
+              -8.505760652563276e-05,
+              0.0004401209839262523
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "unknown_sire_singleton_horses": 0,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261121,
+            "CI95": [
+              -5.614571657438789e-06,
+              0.0003942356520329531
+            ]
+          }
+        },
+        "counts_given_performance": {
+          "mean_MSE_gain": 3.4097330892440546e-05,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 4.6182602795947803e-10,
+            "status": "OK",
+            "SE": 2.1490137923230694e-05,
+            "CI95": [
+              -8.022565459889997e-06,
+              7.621722724477109e-05
+            ],
+            "CI95_bonferroni_8": [
+              -2.4664631463134352e-05,
+              9.285929324801544e-05
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "unknown_sire_singleton_horses": 0,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261121,
+            "CI95": [
+              -2.8199025025156706e-05,
+              9.713262124189071e-05
+            ]
+          }
+        }
+      }
+    },
+    "2024": {
+      "starts": 42827,
+      "horses": 5225,
+      "races": 9626,
+      "models": {
+        "M0": {
+          "MSE": 0.10116139039003844,
+          "RMSE": 0.31805878448808556
+        },
+        "M1": {
+          "MSE": 0.10231408309168083,
+          "RMSE": 0.3198657266599234
+        },
+        "MC": {
+          "MSE": 0.1022638244407046,
+          "RMSE": 0.319787154902608
+        },
+        "MP": {
+          "MSE": 0.10196676777396012,
+          "RMSE": 0.31932235714706875
+        },
+        "M2": {
+          "MSE": 0.10192484967157066,
+          "RMSE": 0.3192567143719465
+        }
+      },
+      "loss_decomposition_MSE": {
+        "full_gain": 0.00038923342011018406,
+        "performance_alone": 0.0003473153177206921,
+        "counts_alone": 5.025865097620893e-05,
+        "performance_given_counts": 0.00033897476913397523,
+        "counts_given_performance": 4.1918102389492095e-05,
+        "shapley_performance": 0.0003431450434273336,
+        "shapley_counts": 4.608837668285052e-05
+      },
+      "conditional_uncertainty": {
+        "performance_given_counts": {
+          "mean_MSE_gain": 0.00033897476913397523,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 1.8735075511381765e-08,
+            "status": "OK",
+            "SE": 0.00013687613200036655,
+            "CI95": [
+              7.070248007010646e-05,
+              0.000607247058197844
+            ],
+            "CI95_bonferroni_8": [
+              -3.529505382922186e-05,
+              0.0007132445920971723
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "unknown_sire_singleton_horses": 0,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261121,
+            "CI95": [
+              -6.149681904571411e-05,
+              0.0007352448125295134
+            ]
+          }
+        },
+        "counts_given_performance": {
+          "mean_MSE_gain": 4.1918102389492095e-05,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 8.100158368377822e-10,
+            "status": "OK",
+            "SE": 2.846077716503508e-05,
+            "CI95": [
+              -1.3863995825996634e-05,
+              9.770020060498083e-05
+            ],
+            "CI95_bonferroni_8": [
+              -3.5904158331056e-05,
+              0.0001197403631100402
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "unknown_sire_singleton_horses": 0,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261121,
+            "CI95": [
+              -3.4938914819849075e-05,
+              0.0001291254711735768
+            ]
+          }
+        }
+      }
+    }
+  },
+  "uncertainty_settings": {
+    "primary_contrasts": [
+      "performance_given_counts",
+      "counts_given_performance"
+    ],
+    "comparisons": 8,
+    "min_clusters": 30,
+    "bootstrap_draws": 999,
+    "seed": 20261121
+  },
+  "scope": {
+    "retrospective_not_an_independent_prospective_test": true,
+    "performance_block_contains_count_dependent_shrinkage": true,
+    "official_studbook_identity_and_source_publication_times_verified": false,
+    "underlying_source_redistribution_rights_verified": false,
+    "genetic_causation_heritability_or_fitness_identified": false,
+    "raw_records_horse_parent_identifiers_or_individual_predictions_exported": false,
+    "sire_bootstrap_intervals_are_pointwise_sensitivity_only": true
+  },
+  "interpretation": [
+    "Positive paired MSE gains indicate improved equal-horse rank prediction within the period.",
+    "The performance features include own-count and peer-count shrinkage.",
+    "Order-averaged allocations describe refitted model losses; family associations can reflect rearing and selection.",
+    "Intervals condition on the observed cohort and fitted coefficients. The sire bootstrap is a separate sensitivity.",
+    "The outcome period was previously examined. Repeat execution demonstrates technical reproducibility."
+  ]
+}

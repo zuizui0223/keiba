@@ -28,6 +28,12 @@
 
 一次証拠： [研究エビデンス全体](EVIDENCE_MATRIX.md)・[日本実競走](JAPAN_REAL_RANK_RESULTS.md)・[強い親族対照](JAPAN_STRONG_KIN_CONTROLS_RESULTS.md)・[2022–24](JAPAN_2022_2024_JOINT_STRICT_STRONG_RESULTS.md)・[2026外部期間](JAPAN_2026_THREE_SOURCE_HOLDOUT_RESULTS.md)・[2026個体×親族更新](JAPAN_2026_OWN_KIN_FACTORIAL_RESULTS.md)・[Wikipedia系譜](JAPAN_NATIONAL_PEDIGREE_SCALING.md)・[ゲノムG](JAPAN_GENOMIC_RELATIONSHIPS.md)・[オッズ/ABMの区別](GENETICS_ODDS_MARKET_REAL_SIM_RESULTS.md)。
 
+### 2026-11-21追記：親族の成績特徴と頭数特徴を分けた実測比較
+
+[固定244,147出走の4条件比較](JAPAN_2022_24_FAMILY_FEATURE_ABLATION_RESULTS.md)で、本人M1のRMSE **0.312429448**に対し、明示的な親族対数頭数Cだけを加えたMCは **0.312393483**、縮約親族成績Pだけを加えたMPは **0.312194516**、両方のM2は **0.312167869**。追加順序を平均したMSE改善の配分はP **+0.000143827**、C **+0.000019555**で、成績側の点推定が大きい。ただし**父群をまとめた区間と8比較調整後の区間は全てゼロを含み**、2024年は4学習モデル全てが中間順位M0より悪い。
+
+これにより情報階層の検証を「親族ラベルや記録の多さ」と「関連個体の観測成績を使うこと」に分けられたが、P自身にも頭数による縮約がある。**遺伝情報を純粋に取り出したわけではなく、同じ過去資料の事後解析である。** 将来の固定4条件比較で再現性を確かめる必要がある。
+
 ## 第二層：生態学として成立する核となる問い
 
 ### 1. 個体の反復可能性と情報の価値（現在最も実証が近い）

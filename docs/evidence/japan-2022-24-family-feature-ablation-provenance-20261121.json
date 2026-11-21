@@ -1,0 +1,71 @@
+{
+  "status": "ACTUAL_HISTORICAL_SOURCE_FAMILY_FEATURE_ABLATION_REPRODUCED_NOT_PROSPECTIVE",
+  "analysis_date": "2026-11-21",
+  "base_main_sha": "9c076631d44d2e5612962ef96a513f5e6a69f2e6",
+  "specification_commit_sha": "f664b3ddbb35f978dc51dc228b5a7dfa3c3ab393",
+  "final_analysis_code_sha": "513a0cb2d48422bc47cba13035836b7f4a0f96e3",
+  "sources": {
+    "A": {
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ayuser/horse-racing-in-japan",
+      "sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+      "bytes": 182084424
+    },
+    "B": {
+      "url": "https://huggingface.co/datasets/KBlueLeaf/jp-racing-horse/resolve/7bad21b3be3eba550f262abcf4e682a94cb85d4d/all_races_1990-2025.db",
+      "sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+      "bytes": 1036701696
+    }
+  },
+  "final_actions_run": {
+    "id": 44906298446,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44906298446",
+    "conclusion": "success",
+    "head_sha": "513a0cb2d48422bc47cba13035836b7f4a0f96e3",
+    "created_at_utc": "2026-11-21T12:55:40Z",
+    "completed_by_utc": "2026-11-21T12:58:13Z",
+    "artifact_id": 14708261036,
+    "artifact_zip_sha256": "6e3f26b6cfb38754d7614c7a8acd076a0e414bcbc007ed05430959cf52544cba",
+    "aggregate_json_sha256": "66c0e45fa3870b5ee3350ca21fb28cfe5e3331cfa835d7207dc39d7ed2dee619",
+    "python": "3.12",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3"
+  },
+  "earlier_actions_run": {
+    "id": 44906025441,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44906025441",
+    "conclusion": "success",
+    "head_sha": "1e26caaaef25f413d1e249c3bbb051b4c4804e6e",
+    "artifact_id": 14707453131,
+    "artifact_zip_sha256": "d0dc4b3de272adc9399649f9abdfeffe8e534b283f70050ec5970e22be9d6d01",
+    "aggregate_json_sha256": "900fd3d3b05bed1ab8438313deae9911ed55d910b8227b55e0e4d9f3998bf7e3"
+  },
+  "local_execution": {
+    "exit_code": 0,
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "aggregate_json_sha256": "2dca7370ebc927bc6cdbe8a4c8d9dc06b7298b7d7658594c26168ad9b3b81d9d",
+    "initial_CI_numeric_cells_compared": 250,
+    "final_CI_scored_section_numeric_cells_compared": 224,
+    "max_absolute_difference": 2.7755575615628914e-16
+  },
+  "two_CI_runs_pooled_and_yearly_results_identical": true,
+  "reporting_only_fix": "Legacy M0_minus_kin_gain actually represented M1 minus M2; final all-row parity uses explicit model-specific endpoint RMSE names. No strict-period statistic changed.",
+  "validation": {
+    "new_ablation_tests": 14,
+    "ecology_suite_tests": 876,
+    "non_ecology_suite_tests": 176,
+    "all_passed": true,
+    "numeric_and_scientific_claim_review_completed": true,
+    "local_full_suite_initial_missing_statsmodels_resolved_with_repo_local_environment": true
+  },
+  "scientific_status": {
+    "historical_results_previously_viewed": true,
+    "technical_reexecution_is_not_independent_biological_replication": true,
+    "full_pedigree_A_or_genomic_G_linked": false,
+    "genetic_causation_or_biological_fitness_identified": false,
+    "official_registry_and_source_publication_timestamps_verified": false,
+    "source_redistribution_rights_verified": false,
+    "raw_source_rows_or_individual_predictions_published": false
+  }
+}
