@@ -1,0 +1,58 @@
+name: "Racehorse ecology 2027 frozen universe and unobserved rank bounds (fictional only)"
+
+on:
+  push:
+    branches: [analysis/2027-frozen-denominator-permutation-bounds-20261121]
+    paths:
+      - ".github/workflows/ecology-japan-2027-frozen-universe-bounds.yml"
+      - "scripts/ecology_japan_2027_denominator_rank_bounds.py"
+      - "tests/test_ecology_japan_2027_denominator_rank_bounds.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2027-frozen-universe-bounds.yml"
+      - "scripts/ecology_japan_2027_denominator_rank_bounds.py"
+      - "tests/test_ecology_japan_2027_denominator_rank_bounds.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-frozen-universe-rank-envelope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 2027 frozen-denominator, missing outcome, exact rank-permutation and privacy falsifications
+        run: |
+          PYTHONPATH=scripts python -m unittest discover \
+            -s tests -p "test_ecology_japan_2027_denominator_rank_bounds.py" -v
+          PYTHONPATH=scripts python -m unittest discover \
+            -s tests -p "test_ecology_japan_2027_point_in_time_ledger.py" -v
+          PYTHONPATH=scripts python -m unittest discover \
+            -s tests -p "test_ecology_japan_2027_github_push_attestation.py" -v
+      - name: Ensure no real prospectively attested 2027 JRA commitments or raw licensed horse data
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          assert not Path("docs/commitments/2027").exists(), (
+              "HOLD_EXPECTED_ZERO_REAL_2027_RACE_PLEDGES"
+          )
+          from ecology_japan_2027_denominator_rank_bounds import STATUS, PAIRINGS
+          assert STATUS=="HOLD_NOT_INDEPENDENTLY_ATTESTED_PROSPECTIVE_SOURCE_AND_UNIVERSE"
+          assert PAIRINGS==(("M1","M2"),("M0","M2"))
+          print("SOFTWARE_SYNTHETIC_ONLY__REAL_2027_FORECASTS_ZERO__SOURCE_DENOMINATOR_HOLD")
+          PY
+      - name: Validate compile and private-input-only score contract
+        run: |
+          python -m py_compile scripts/ecology_japan_2027_denominator_rank_bounds.py
+          python scripts/ecology_japan_2027_denominator_rank_bounds.py --help > /dev/null
+          test -z "$(git status --porcelain)"
