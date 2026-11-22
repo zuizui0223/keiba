@@ -1,0 +1,60 @@
+name: Ticket forward Fukushima1R strict win-wide market parser
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ticket_forward_market_capture.py"
+      - "tests/test_ticket_forward_market_capture.py"
+      - ".github/workflows/ticket-forward-market-parser-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quote-parser-coverage-no-forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test all 16 win + 120 wide synthetic quotes against pinned forecaster
+        run: python -m unittest discover -s tests -p "test_ticket_forward_market_capture.py" -v
+      - name: One read-only live coverage audit, no price export or forecast
+        run: |
+          mkdir -p output
+          if python scripts/ticket_forward_market_capture.py \
+              --audit-only --timeout 10 --output-dir /tmp/market-capture-audit-only \
+              > output/market-source-coverage.json; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("output/market-source-coverage.json").read_text())
+          assert data["status"]=="LIVE_QUOTES_PARSED_STRUCTURE_ONLY_NOT_FROZEN"
+          assert data["horse_count"]==16
+          assert data["wide_quotes"]==120
+          assert data["JRA_numbered_rows"]==16
+          assert data["future_predictions"]==0
+          assert data["raw_source_files_written"] is False
+          print(json.dumps({
+            "status":"LIVE_WIN_WIDE_COVERAGE_PARSED_NO_PROSPECTIVE_FREEZE",
+            "horse_count":data["horse_count"],
+            "wide_quotes":data["wide_quotes"],
+            "source_updated_times":[data["updated_win_jst"],data["updated_wide_jst"]],
+            "source_raw_sha256":[data["JRA_card_sha256"]],
+            "win_wide_receipt_jst":[data["observed_win_jst"],data["observed_wide_jst"]],
+            "prospective_predictions":0
+          },indent=2,ensure_ascii=False))
+          PY
+          else
+            printf '{"status":"HOLD_LIVE_MARKET_PARSE_OR_SOURCE","future_predictions":0}\n' > output/market-source-coverage.json
+            echo 'HOLD: live quote parsing or official source unavailable; no forecast constructed'
+          fi
+      - name: Upload summary only, never raw market pages or full odds
+        uses: actions/upload-artifact@v4
+        with:
+          name: ticket-forward-fukushima1r-early-market-coverage
+          path: output/market-source-coverage.json
+          retention-days: 7
