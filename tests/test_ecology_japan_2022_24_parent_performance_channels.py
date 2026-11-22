@@ -110,14 +110,14 @@ class ParentChannelTests(unittest.TestCase):
         before = channels.summarize_period(p, pred, s, draws=99, min_clusters=2)
         extra = p.iloc[:3].copy()
         extra['race'] = ['repeat1', 'repeat2', 'repeat3']
-        after = channels.summarize_period(pd.concat([p, extra]),
-            {k: np.r_[v, v[:3]] for k, v in pred.items()}, pd.concat([s, s.iloc[:3]]),
+        after = channels.summarize_period(pd.concat([p, extra], ignore_index=True),
+            {k: np.r_[v, v[:3]] for k, v in pred.items()}, pd.concat([s, s.iloc[:3]], ignore_index=True),
             draws=99, min_clusters=2)
         for name, score in before['models'].items():
             self.assertAlmostEqual(score['MSE'], after['models'][name]['MSE'])
         for name in before['loss_decomposition_MSE']:
             self.assertAlmostEqual(before['loss_decomposition_MSE'][name], after['loss_decomposition_MSE'][name])
-        a, b = channels.support_summary(p, s), channels.support_summary(pd.concat([p, extra]), pd.concat([s, s.iloc[:3]]))
+        a, b = channels.support_summary(p, s), channels.support_summary(pd.concat([p, extra], ignore_index=True), pd.concat([s, s.iloc[:3]], ignore_index=True))
         for key in a['joint_support']:
             self.assertAlmostEqual(a['joint_support'][key]['horse_equal_share'], b['joint_support'][key]['horse_equal_share'])
 
@@ -207,6 +207,14 @@ class ParentChannelTests(unittest.TestCase):
             else:s.loc[5,'dam_relative_count']=1
             with self.subTest(mutate=mutate),self.assertRaises(ValueError):
                 channels.support_summary(panel(),s)
+
+    def test_duplicate_index_cannot_hide_reordered_support(self):
+        p, s = panel(), support()
+        p.index = s.index = [4, 8, 9, 4, 10, 11]
+        swapped = s.iloc[[3, 1, 2, 0, 4, 5]]
+        self.assertTrue(p.index.equals(swapped.index))
+        with self.assertRaises(ValueError):
+            channels.support_summary(p, swapped)
 
     def test_conflicting_parent_mapping_or_duplicate_rows_is_rejected(self):
         for mutate in ('dam','sire','duplicate','day'):

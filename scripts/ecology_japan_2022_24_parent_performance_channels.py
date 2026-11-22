@@ -145,7 +145,8 @@ def paired_uncertainty(panel, gain, draws=DRAWS, seed=SEED, min_clusters=MIN_CLU
 
 def _support_summary(p, support, coverage, panel_index):
     if (not isinstance(support, pd.DataFrame) or not support.columns.is_unique
-            or not set(SUPPORT_COLUMNS).issubset(support) or not support.index.equals(panel_index)):
+            or not set(SUPPORT_COLUMNS).issubset(support) or not panel_index.is_unique
+            or not support.index.equals(panel_index)):
         raise ValueError("HOLD_INCOMPLETE_PARENT_SUPPORT")
     weights = p.weight.to_numpy()
 
