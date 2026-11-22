@@ -10,7 +10,7 @@ from scripts.ticket_forward_freeze import REPO_ROOT, canonical, git_blob_sha1, s
 from scripts.ticket_forward_universe import plan_day
 
 DAY = "2026-11-28"
-SOURCE_RAW = b"<html>synthetic complete 12-race official table (not a real source)</html>"
+SOURCE_RAW = b"<html>synthetic complete 24-race official table (not a real source)</html>"
 
 
 def schedule_fixture():
@@ -23,16 +23,16 @@ def schedule_fixture():
         "source_text_sha256": sha256_bytes(SOURCE_RAW),
         "races": [
             {
-                "race_id": f"{DAY}-TOKYO-{i:02d}",
-                "venue": "東京",
+                "race_id": f"{DAY}-{'TOKYO' if i % 2 else 'KYOTO'}-{(i+1)//2:02d}",
+                "venue": "東京" if i % 2 else "京都",
                 "date": DAY,
-                "race_number": i,
+                "race_number": (i+1)//2,
                 "scheduled_start_jst": (start + timedelta(minutes=25 * (i-1))).isoformat(),
                 "surface": "芝" if i % 2 else "ダ",
                 "declared_runner_count": 12,
                 "status": "RUNNING",
             }
-            for i in range(1, 13)
+            for i in range(1, 25)
         ],
     }
 
@@ -53,7 +53,7 @@ class DaySealTests(unittest.TestCase):
         proof = validate_day_evidence(raw, source, stored_plan, manifest)
         self.assertEqual(proof["status"], "DAY_EVIDENCE_CONSISTENT_BUT_NOT_SERVER_ATTESTED")
         self.assertEqual(proof["planned_races"], 10)
-        self.assertEqual(proof["schedule_races"], 12)
+        self.assertEqual(proof["schedule_races"], 24)
         self.assertEqual(proof["source_text_sha256"], sha256_bytes(source))
         self.assertEqual(proof["day_plan_file_sha256"], sha256_bytes(stored_plan))
 
