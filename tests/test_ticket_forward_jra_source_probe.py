@@ -53,7 +53,7 @@ class JraConnectivityMetadataTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             inspect_response(**common, response_url=url, content=b"X"*3_000_001, http_status=200)
         with self.assertRaises(ValueError):
-            inspect_response(**common, response_url=url, content=b"\xff\xff\xfe\xfe", http_status=200)
+            inspect_response(**common, response_url=url, content=b"\x81", http_status=200)
 
 
 if __name__ == "__main__":
