@@ -8,9 +8,11 @@ on:
       - "scripts/ticket_type_historical_audit.py"
       - "scripts/ticket_wide_cross_market.py"
       - "scripts/ticket_wide_second_day.py"
+      - "scripts/ticket_wide_sensitivity_summary.py"
       - "docs/evidence/ticket-type-20261018-official-top3.json"
       - "tests/test_ticket_wide_cross_market.py"
       - "tests/test_ticket_wide_second_day.py"
+      - "tests/test_ticket_wide_sensitivity_summary.py"
       - "tests/test_ticket_type_*.py"
       - ".github/workflows/ticket-type-historical-audit.yml"
   workflow_dispatch:
@@ -87,6 +89,26 @@ jobs:
               "source_hash_count": len(d["source_sha256"]),
           }, indent=2))
           PY
+      - name: Sensitivity across dates, fixed alpha grid, quote bounds
+        run: |
+          python scripts/ticket_wide_sensitivity_summary.py             --first output/kyoto_20261012_wide_cross_market.json             --second output/kyoto_tokyo_niigata_20261018_wide_transfer.json             --output output/two_date_wide_residual_sensitivity.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("output/two_date_wide_residual_sensitivity.json").read_text())
+          assert result["status"] == "POSTHOC_SENSITIVITY_NOT_INDEPENDENT_EVIDENCE"
+          assert not result["hypothesis_test_p_value_produced"]
+          print(json.dumps({
+             kind: {
+               "dev": v["primary_20261012_delta"],
+               "new_date": v["primary_20261018_delta"],
+               "worsening_config_count_dev": v["n_positive_brier_change_configs_20261012"],
+               "worsening_config_count_new_date": v["n_positive_brier_change_configs_20261018"],
+               "configs_per_date": v["n_configs_each_day"],
+             }
+             for kind, v in result["ticket_types"].items()
+          }, indent=2))
+          PY
       - name: Upload anonymous aggregate and source hashes
         uses: actions/upload-artifact@v4
         with:
@@ -95,4 +117,5 @@ jobs:
             output/kyoto_20261012_ticket_types.json
             output/kyoto_20261012_wide_cross_market.json
             output/kyoto_tokyo_niigata_20261018_wide_transfer.json
+            output/two_date_wide_residual_sensitivity.json
           retention-days: 30
