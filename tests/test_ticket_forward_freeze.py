@@ -11,7 +11,13 @@ import unittest
 from scripts.ticket_forward_freeze import (
     REPO_ROOT, _attest_github_run, canonical, freeze_forecast, git_blob_sha1,
     score_frozen, validate_capture, validate_manifest, verify_forecast_integrity,
+    sha256_bytes,
 )
+
+SOURCE_PAGES = {
+    "win": b"<html>synthetic pre-race win source</html>",
+    "wide": b"<html>synthetic pre-race wide source</html>",
+}
 
 MANIFEST_PATH = REPO_ROOT / "docs/betting/ticket-forward-v1-manifest.json"
 FORECAST_ASOF = "2026-11-28T14:40:00+09:00"
@@ -34,7 +40,7 @@ def make_capture():
                 "observed_at_jst": "2026-11-28T14:39:05+09:00",
                 "updated_at_jst": "2026-11-28T14:36:00+09:00",
                 "updated_time_basis": "source_visible",
-                "raw_page_sha256": "a"*64,
+                "raw_page_sha256": sha256_bytes(SOURCE_PAGES["win"]),
                 "quotes": [
                     {"selection": [n], "odds_low": 2.5 + n, "odds_high": 2.5 + n}
                     for n in nums
@@ -45,7 +51,7 @@ def make_capture():
                 "observed_at_jst": "2026-11-28T14:39:10+09:00",
                 "updated_at_jst": "2026-11-28T14:37:00+09:00",
                 "updated_time_basis": "source_visible",
-                "raw_page_sha256": "b"*64,
+                "raw_page_sha256": sha256_bytes(SOURCE_PAGES["wide"]),
                 "quotes": [
                     {"selection": [i, j],
                      "odds_low": 6.0+i+j,
@@ -74,7 +80,8 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
 
     def freeze(self, capture=None, asof=FORECAST_ASOF):
         c = make_capture() if capture is None else capture
-        return freeze_forecast(c, self.manifest, asof, capture_raw=canonical(c))
+        return freeze_forecast(c, self.manifest, asof,
+                               capture_raw=canonical(c), source_pages=SOURCE_PAGES)
 
     def test_manifest_pins_actual_source_blobs_and_controls(self):
         validate_manifest(self.manifest)
@@ -109,6 +116,16 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         c["markets"]["wide"]["quotes"][0]["payouts"] = {"win": 1000}
         with self.assertRaises(ValueError):
             self.freeze(c)
+
+    def test_raw_source_evidence_must_reproduce_captured_digest(self):
+        c = make_capture()
+        with self.assertRaises(ValueError):
+            freeze_forecast(c, self.manifest, FORECAST_ASOF,
+                            capture_raw=canonical(c),
+                            source_pages={"win": b"changed", "wide": SOURCE_PAGES["wide"]})
+        with self.assertRaises(ValueError):
+            freeze_forecast(c, self.manifest, FORECAST_ASOF,
+                            capture_raw=canonical(c), source_pages={})
 
     def test_fixed_post_window_and_no_future_market(self):
         with self.assertRaises(ValueError):
@@ -229,8 +246,23 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
             "content": base64.b64encode(payload).decode(),
             "sha": git_blob_sha1(payload),
         }
+        source_files = {
+            "forecast.json": payload,
+            "capture.json": canonical(make_capture()),
+            "win-source.txt": SOURCE_PAGES["win"],
+            "wide-source.txt": SOURCE_PAGES["wide"],
+        }
         def getter(url):
-            return run if "/actions/runs/" in url else file_info
+            if "/actions/runs/" in url:
+                return run
+            for name, content in source_files.items():
+                if f"/{name}?ref=" in url:
+                    return {
+                        "encoding": "base64", "path": path.replace("forecast.json", name),
+                        "content": base64.b64encode(content).decode(),
+                        "sha": git_blob_sha1(content),
+                    }
+            raise ValueError("unknown_test_url")
         args = {"owner_repo": "zuizui0223/keiba", "run_id": 123, "committed_path": path}
         verified = _attest_github_run(payload, frozen, getter=getter, **args)
         self.assertEqual(verified["status"], "GITHUB_SERVER_PREPOST_RECEIPT_VERIFIED")
@@ -246,6 +278,12 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             _attest_github_run(payload, frozen, getter=lambda u: run if "/actions/runs/" in u else changed,
                                **args)
+        with self.assertRaises(ValueError):
+            _attest_github_run(payload, frozen,
+                getter=lambda u: {
+                    "encoding": "base64", "path": path.replace("forecast.json", "win-source.txt"),
+                    "content": base64.b64encode(b"tampered").decode(), "sha": git_blob_sha1(b"tampered"),
+                } if "/win-source.txt?ref=" in u else getter(u), **args)
         with self.assertRaises(ValueError):
             _attest_github_run(payload, frozen, owner_repo="evil/repo", run_id=123,
                                committed_path=path, getter=getter)
