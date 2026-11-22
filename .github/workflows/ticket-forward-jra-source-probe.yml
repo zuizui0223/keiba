@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - "scripts/ticket_forward_jra_source_probe.py"
+      - "scripts/ticket_forward_jra_full_day_readonly.py"
+      - "tests/test_ticket_forward_jra_full_day_readonly.py"
+      - "docs/evidence/ticket-forward-20261123-program-staging.json"
       - "tests/test_ticket_forward_jra_source_probe.py"
       - ".github/workflows/ticket-forward-jra-source-probe.yml"
   workflow_dispatch:
@@ -44,9 +47,35 @@ jobs:
               print("TABLE_NUMERIC_SHAPES", key, json.dumps(result.get("html_numeric_table_shapes", []), separators=(",",":")))
           print("NO REAL FORWARD FORECAST, NO FULL CARD COHORT, NO MARKET ODDS SNAPSHOT")
           PY
+      - name: One bounded pass over 24 discovered official JRA racecards (metadata only)
+        run: |
+          python -m unittest discover -s tests -p "test_ticket_forward_jra_full_day_readonly.py" -v
+          python scripts/ticket_forward_jra_full_day_readonly.py \
+            --staging docs/evidence/ticket-forward-20261123-program-staging.json \
+            --timeout 8 \
+            --output output/jra-nov23-24-cards-rownumbers.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/jra-nov23-24-cards-rownumbers.json").read_text())
+          assert r["expected_cards"] == 24
+          assert r["future_prospective_forecasts"] == 0
+          assert r["official_program_day_git_server_seal"] is False
+          print("SOURCE_STATUS",r["status"],
+                "CARDS_NUMBERED",r.get("number_sequence_card_count"),
+                "COUNT_DISAGREEMENTS",r.get("preliminary_count_disagreement_count"))
+          for row in r.get("races",[]):
+              print("OFFICIAL_CARD_ROSTER",row["race_id"],
+                    row["parse_status"],row.get("strict_numbered_horse_rows"),
+                    "third_party",row.get("third_party_preliminary_count"),
+                    "raw_sha256",row.get("raw_page_sha256"))
+          print("No raw JRA HTML archived in the public artifact")
+          PY
       - name: Upload metadata only, never source HTML
         uses: actions/upload-artifact@v4
         with:
           name: jra-20261123-official-readonly-metadata
-          path: output/jra-nov23-http-preflight.json
+          path: |
+            output/jra-nov23-http-preflight.json
+            output/jra-nov23-24-cards-rownumbers.json
           retention-days: 7
