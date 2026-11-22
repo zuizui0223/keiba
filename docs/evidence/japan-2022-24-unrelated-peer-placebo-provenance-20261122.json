@@ -32,8 +32,8 @@
     "completed_by_utc": "2026-11-22T04:32:28Z",
     "verified_original_run_sha_and_conclusion": true,
     "verified_aggregate_byte_sha256": true,
-    "verified_all_PR73_period_outcomes_and_8_adjusted_intervals": true,
-    "source_data_downloaded_for_publication": false
+    "source_data_downloaded_for_publication": false,
+    "verified_PR73_side_difference_all_periods_and_8_adjusted_intervals": true
   },
   "implementation_git_blobs": {
     "scripts/ecology_japan_unrelated_peer_control.py": "bd7d805be736cbb255739a0ef06e0f59c087c240",
