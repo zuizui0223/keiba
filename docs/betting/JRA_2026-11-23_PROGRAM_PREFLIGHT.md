@@ -36,6 +36,15 @@ Preliminary participant counts have been cross-checked with accessible third-par
 
 **制約はそのまま：** ①出走取消等を反映した最終の実出走馬集合、②同一時点・公式24出馬表原資料との確実な内容照合、③最初の発走9:45より前のGitHubでの「日別対象分母」サーバー封印、④15〜25分前の真正な単勝・ワイド更新時刻と全価格、が揃っていない。現状は将来モデルの予測0件・独立評価0件。翌朝の評価で条件を満たせない場合は**HOLD**とし、後から日時・出走馬を埋めない。
 
+## 2026-11-22 23:11 JST：候補選択をGitHubサーバー時刻で事前記録
+
+[JRA公式24レースの馬番行数・URL・ソースSHA](../evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json)から、**公式の馬番連続表で9〜18行を満たす平地レースの最初の10件**を再選択した。
+
+- [10候補の事前選択JSON](../evidence/ticket-forward-20261123-prestart-intent.json)は、元の24レースプログラム、24公式表メタデータ、固定したコード・マニフェストのGit blob SHAを参照する。
+- [サーバー時刻の検証記録](../evidence/ticket-forward-20261123-intent-receipt.json)：GitHub Actions [run #45031414549](https://github.com/zuizui0223/keiba/actions/runs/45031414549) は **2026-11-22 14:11 UTC（23:11 JST）**に開始、成功。実行コミット \`9fb8e2a617d89a6b5c11869fd4c51d5f5013f7a5\` に対象の候補ファイル（Git blob \`4d3fde7d6269b86472b409719077aca556dc4ac1\`）が存在したことを照合済み。
+- **これは候補選択の事前記録に限る**。元の公式HTML24件、最新取消、全単勝・全ワイドの出典更新時刻、3ファイルの正式day-plan封印がまだないため、正式なholdout day-planではない。前向き予測・採点は0件。
+- 2026-11-23の朝の公式出馬表に変更があっても、古い候補ファイルを黙って書き換えてはいけない。実際の結果より前に新しい公式データを保存して資格判定を更新し、変更点とHOLDを独立に記録する。
+
 **Protection against hindsight:** The code cannot yet register this table as the first prospectively eligible day. The universe script now refuses incomplete meeting lists: it requires full **1R–12R for each of exactly 2 or 3 venues**, a declared positive runner count for every active race, and a result-free schedule source. The first-day plan must then be sealed **before 09:45 JST** by GitHub server receipt, together with the *actual* raw official day source and parsed schedule; independent source-page completeness review remains necessary. If that deadline, roster validation or receipt is missed, do not backfill from this preliminary table.
 
 **Crucially, a provisional table created the night before is not yet a scientifically valid freeze.** A missing source should generate a transparent HOLD; it should never be replaced with estimated odds or later results.
