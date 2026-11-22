@@ -53,6 +53,73 @@ class CardLinks(HTMLParser):
             self.links.add(href)
 
 
+
+class TableStructure(HTMLParser):
+    """Capture bounded HTML numeric-column shapes, never horse names or raw pages."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.tables = []
+        self.current_table = None
+        self.table_stack = []
+        self.current_row = None
+        self.current_cell = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "table":
+            self.table_stack.append((self.current_table, self.current_row, self.current_cell))
+            self.current_table, self.current_row, self.current_cell = [], None, None
+        elif tag == "tr" and self.current_table is not None:
+            self.current_row = []
+        elif tag in {"td", "th"} and self.current_row is not None:
+            self.current_cell = []
+
+    def handle_data(self, data):
+        if self.current_cell is not None:
+            self.current_cell.append(data)
+
+    def handle_endtag(self, tag):
+        if tag in {"td", "th"} and self.current_cell is not None:
+            if self.current_row is not None:
+                self.current_row.append(" ".join("".join(self.current_cell).split()))
+            self.current_cell = None
+        elif tag == "tr" and self.current_row is not None:
+            if self.current_table is not None:
+                self.current_table.append(self.current_row)
+            self.current_row = None
+        elif tag == "table" and self.current_table is not None:
+            self.tables.append(self.current_table)
+            if self.table_stack:
+                self.current_table, self.current_row, self.current_cell = self.table_stack.pop()
+            else:
+                self.current_table, self.current_row, self.current_cell = None, None, None
+
+
+def numeric_table_shapes(text: str) -> list[dict]:
+    parser = TableStructure()
+    parser.feed(text)
+    result = []
+    for table in parser.tables:
+        if len(table) < 5:
+            continue
+        widest = min(12, max((len(row) for row in table), default=0))
+        numeric = []
+        for col in range(widest):
+            values = [int(row[col]) for row in table
+                      if len(row) > col and re.fullmatch(r"0?[1-9]|1[0-8]", row[col])]
+            if 5 <= len(values) <= 24:
+                unique = sorted(set(values))
+                numeric.append({
+                    "column": col, "integer_cell_count": len(values),
+                    "unique": len(unique), "min": min(unique), "max": max(unique),
+                    "contiguous_from_one": unique == list(range(1, max(unique)+1)),
+                })
+        if numeric:
+            result.append({"html_row_count": len(table), "max_columns": widest,
+                           "numeric_columns": numeric})
+    return result[:15]
+
+
+
 def inspect_response(*, requested_url: str, response_url: str,
                      content: bytes, http_status: int, recorded_at_utc: str) -> dict:
     require_official(requested_url)
@@ -74,6 +141,7 @@ def inspect_response(*, requested_url: str, response_url: str,
         raise ValueError("unrecognized_JRA_charset")
     parser = CardLinks()
     parser.feed(decoded)
+    table_shape = numeric_table_shapes(decoded)
     card_links = set()
     for href in parser.links:
         resolved = urljoin(response_url, href)
@@ -92,6 +160,7 @@ def inspect_response(*, requested_url: str, response_url: str,
         "raw_bytes": len(content),
         "codec": codec,
         "html_a_jra_card_link_count": len(card_links),
+        "html_numeric_table_shapes": table_shape,
         "html_a_jra_card_links_sample": sorted(card_links)[:40],
         "raw_has_year_2026": "2026" in decoded,
         "raw_has_racedate_20261123": ("20261123" in decoded or
