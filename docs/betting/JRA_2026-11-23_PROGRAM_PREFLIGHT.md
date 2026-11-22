@@ -22,6 +22,20 @@ Preliminary participant counts have been cross-checked with accessible third-par
 | 9 | Tokyo 5R | 12:20 | 14 | 2yo newcomer, turf |
 | 10 | Fukushima 6R | 12:35 | 16 | 2yo maiden, turf |
 
+## 2026-11-22 夜：JRA公式出馬表24件を読み取った追加監査
+
+[24公式出馬表のURL・取得元SHA256・連番馬番行数の匿名メタデータ](../evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json)を保存した。GitHub Actionsは[JRA公式の福島/東京1Rのナビゲーション](https://github.com/zuizui0223/keiba/actions/runs/45029846692)から両場の**全24レースURL**を発見し、[各ページを1回ずつ読み取った実行記録](https://github.com/zuizui0223/keiba/actions/runs/45030215026)で全24レースのHTMLテーブルから連続する馬番列を抽出した。**元HTML全文は公開していない**。
+
+- 福島1〜12R：今回抽出した馬番行数は暫定頭数とすべて一致（ただし4Rは障害なので券種別実験から除外）。
+- 東京1R：**公式表13行、暫定サイト14頭**。
+- 東京4R：**公式表14行、暫定サイト15頭**。
+- 東京6R：**公式表13行、暫定サイト14頭**。
+- 他の東京9レースは一致。差の原因を出走取消と決めつけない。馬番行数がそのまま発走時の実出走頭数とは限らない。
+
+[専用の突き合わせコード](../../scripts/ticket_forward_jra_reconcile.py)は、この公式24ページの読み取り数を使って仮の先頭10レースを改めて計算し、暫定頭数との不一致を全件記録する。**暫定先頭10レースの組合せ自体は変わらない**が、東京1R/4Rの候補頭数を第三者の値と同一視してはいけない。
+
+**制約はそのまま：** ①出走取消等を反映した最終の実出走馬集合、②同一時点・公式24出馬表原資料との確実な内容照合、③最初の発走9:45より前のGitHubでの「日別対象分母」サーバー封印、④15〜25分前の真正な単勝・ワイド更新時刻と全価格、が揃っていない。現状は将来モデルの予測0件・独立評価0件。翌朝の評価で条件を満たせない場合は**HOLD**とし、後から日時・出走馬を埋めない。
+
 **Protection against hindsight:** The code cannot yet register this table as the first prospectively eligible day. The universe script now refuses incomplete meeting lists: it requires full **1R–12R for each of exactly 2 or 3 venues**, a declared positive runner count for every active race, and a result-free schedule source. The first-day plan must then be sealed **before 09:45 JST** by GitHub server receipt, together with the *actual* raw official day source and parsed schedule; independent source-page completeness review remains necessary. If that deadline, roster validation or receipt is missed, do not backfill from this preliminary table.
 
 **Crucially, a provisional table created the night before is not yet a scientifically valid freeze.** A missing source should generate a transparent HOLD; it should never be replaced with estimated odds or later results.
