@@ -37,6 +37,9 @@ jobs:
               print(key, result["status"],
                     result.get("raw_bytes"), result.get("raw_sha256"),
                     "official_card_links", result.get("html_a_jra_card_link_count"))
+          for key, result in o["results"].items():
+              for u in result.get("html_a_jra_card_links_sample", []):
+                  print("CARD_NAV_LINK",key,u)
           print("NO REAL FORWARD FORECAST, NO FULL CARD COHORT, NO MARKET ODDS SNAPSHOT")
           PY
       - name: Upload metadata only, never source HTML
