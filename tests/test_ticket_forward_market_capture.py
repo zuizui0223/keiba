@@ -4,7 +4,7 @@ import math
 from pathlib import Path
 import unittest
 
-from scripts.ticket_forward_market_capture import parse_win, parse_wide, parse_sources
+from scripts.ticket_forward_market_capture import parse_win, parse_wide, parse_sources, _allowed_same_resource, CARD_URL, TARGETS
 from scripts.ticket_forward_freeze import REPO_ROOT, freeze_forecast, canonical
 
 
@@ -105,6 +105,14 @@ class YahooFullMarketCaptureTests(unittest.TestCase):
         censored=example_win().replace(b"<td>3.0</td>",b"<td>999.9</td>",1)
         with self.assertRaisesRegex(ValueError,"censored_win_price"):
             parse_win(censored)
+
+    def test_official_card_redirect_percent_encoding_is_not_new_resource(self):
+        self.assertTrue(_allowed_same_resource(CARD_URL,CARD_URL.replace("%2F","/")))
+        self.assertTrue(_allowed_same_resource(TARGETS["wide"],TARGETS["wide"]))
+        self.assertFalse(_allowed_same_resource(CARD_URL,CARD_URL.replace("20261123","20261122")))
+        self.assertFalse(_allowed_same_resource(
+            TARGETS["wide"],"https://evil.example/keiba/race/odds/wide/2603030601?ninki=0"
+        ))
 
     def test_jra_card_count_and_quote_time_must_match(self):
         with self.assertRaisesRegex(ValueError,"JRA_card_number_rows_disagree"):
