@@ -33,5 +33,13 @@
     "scripts/ticket_type_models.py": "4c74cb5cc8a9c5e3a801f3f24675afb5b9dfcec0",
     "scripts/ticket_wide_cross_market.py": "6566d9e6b669c03525aef9020270806ede0d123a",
     "scripts/ticket_type_historical_audit.py": "ac7b14c9f5bb56a02d54103ef740787209e536e0"
-  }
+  },
+  "pinned_pipeline_git_blob_sha1": {
+    "scripts/ticket_forward_freeze.py": "761f77940fd96e443dfe4fb1d4103c6130726ed3",
+    "scripts/ticket_forward_universe.py": "169448e8297ff7d0589494cce156c10b44eb0dd1",
+    "scripts/ticket_forward_day_proof.py": "6a96f2dd74b160e196a9f3a6a9dd3cdb4afeafc9",
+    "scripts/ticket_forward_result_capture.py": "6cb6f39c2a623f1ffb7f1dc48b0020b3e01cf2ef"
+  },
+  "security_gate_status": "FULL_FUTURE_WRAPPER_AND_EVIDENCE_GATE_PINNED_BEFORE_FIRST_2026_11_23_RACE",
+  "security_gate_note": "Original market-marginal functions remain pinned; wrapper/source/denominator/result code pinned before any prospective forecast. Updating any file requires a new pre-first-race manifest version and cannot be retroactively applied to earlier attempts."
 }
