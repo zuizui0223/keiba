@@ -92,7 +92,16 @@ def _run_files_match(manifest: dict, repo_root: Path):
         "scripts/ticket_type_historical_audit.py",
     }:
         raise ValueError("incomplete_pinned_code_set")
-    for path, digest in expected.items():
+    pipeline = manifest.get("pinned_pipeline_git_blob_sha1")
+    required = {
+        "scripts/ticket_forward_freeze.py",
+        "scripts/ticket_forward_universe.py",
+        "scripts/ticket_forward_day_proof.py",
+        "scripts/ticket_forward_result_capture.py",
+    }
+    if not isinstance(pipeline, dict) or set(pipeline) != required:
+        raise ValueError("incomplete_pinned_pipeline_code_set")
+    for path, digest in {**expected, **pipeline}.items():
         if not valid_hex(digest, 40):
             raise ValueError("invalid_pinned_git_sha")
         actual = git_blob_sha1((repo_root / path).read_bytes())
@@ -359,6 +368,37 @@ def _attest_github_run(forecast_raw: bytes, forecast: dict, *,
         payload = base64.b64decode(companion["content"], validate=False)
         if sha256_bytes(payload) != digest or companion.get("sha") != git_blob_sha1(payload):
             raise ValueError(f"github_seal_companion_sha_mismatch:{filename}")
+    # Prove that this exact GitHub head also carries the pre-registered protocol
+    # and every predictive + evidence-gate source blob, not just a hand-authored
+    # forecast JSON that reproduces a local calculation.
+    manifest_path = "docs/betting/ticket-forward-v1-manifest.json"
+    stamped = getter(
+        f"https://api.github.com/repos/{owner_repo}/contents/"
+        f"{manifest_path}?ref={commit_sha}"
+    )
+    if stamped.get("encoding") != "base64" or stamped.get("path") != manifest_path:
+        raise ValueError("github_run_head_manifest_missing")
+    manifest_raw = base64.b64decode(stamped["content"], validate=False)
+    if stamped.get("sha") != git_blob_sha1(manifest_raw):
+        raise ValueError("github_run_head_manifest_blob_mismatch")
+    try:
+        frozen_manifest = json.loads(manifest_raw)
+    except (ValueError, TypeError) as exc:
+        raise ValueError("github_run_head_manifest_json_invalid") from exc
+    if sha256_bytes(canonical(frozen_manifest)) != forecast["manifest_sha256"]:
+        raise ValueError("github_run_head_manifest_changed")
+    for code_path, digest in {
+        **forecast["model_codes_git_blob_sha1"],
+        **frozen_manifest["pinned_pipeline_git_blob_sha1"],
+    }.items():
+        if not valid_hex(digest, 40):
+            raise ValueError("github_run_head_invalid_source_digest")
+        recorded = getter(
+            f"https://api.github.com/repos/{owner_repo}/contents/"
+            f"{quote(code_path, safe='/')}?ref={commit_sha}"
+        )
+        if recorded.get("path") != code_path or recorded.get("sha") != digest:
+            raise ValueError(f"github_run_head_source_code_changed:{code_path}")
     return {
         "status": "GITHUB_SERVER_PREPOST_RECEIPT_VERIFIED",
         "github_actions_run_id": run_id, "server_created_at": run["created_at"],
