@@ -22,9 +22,11 @@ from urllib.request import Request, urlopen
 try:
     from scripts.ticket_type_models import KINDS, _time, event_selection, predict_tickets
     from scripts.ticket_wide_cross_market import tilt_wide_joint
+    from scripts.ticket_forward_result_capture import parse_result_source
 except ModuleNotFoundError:
     from ticket_type_models import KINDS, _time, event_selection, predict_tickets
     from ticket_wide_cross_market import tilt_wide_joint
+    from ticket_forward_result_capture import parse_result_source
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 VERSION = "ticket-forward-v1"
@@ -367,7 +369,7 @@ def _attest_github_run(forecast_raw: bytes, forecast: dict, *,
 
 
 def score_frozen(forecast: dict, manifest: dict, result: dict, *,
-                 forecast_raw: bytes, result_raw: bytes,
+                 forecast_raw: bytes, result_raw: bytes, result_source_raw: bytes,
                  repo_root: Path = REPO_ROOT, github_receipt: dict | None = None,
                  github_getter=None) -> dict:
     verify_forecast_integrity(forecast, manifest, repo_root)
@@ -377,6 +379,14 @@ def score_frozen(forecast: dict, manifest: dict, result: dict, *,
     _http_host(result["source_url"], RESULT_HOSTS)
     if not valid_hex(result["source_text_sha256"]):
         raise ValueError("official_result_missing_raw_evidence")
+    parsed_source = parse_result_source(
+        race_id=result["race_id"],
+        source_url=result["source_url"],
+        source_text=result_source_raw,
+    )
+    if (parsed_source["source_text_sha256"] != result["source_text_sha256"] or
+            parsed_source["top3"] != result["top3"]):
+        raise ValueError("official_result_source_and_result_file_disagree")
     if not _jst(result["observed_at_jst"]) > _jst(forecast["scheduled_start_jst"]):
         raise ValueError("result_observed_before_start")
     top3 = result["top3"]
@@ -425,6 +435,8 @@ def score_frozen(forecast: dict, manifest: dict, result: dict, *,
         "race_id": forecast["race_id"], "race_date": forecast["race_date"],
         "forecast_sha256": sha256_bytes(forecast_raw),
         "result_source_sha256": result["source_text_sha256"],
+        "result_source_parse_status": parsed_source["status"],
+        "result_source_authenticity_independently_verified": False,
         "result_file_sha256": sha256_bytes(result_raw),
         "server_attestation": verified,
         "ordered_top3_log_loss": ordered_scores,
@@ -456,6 +468,7 @@ def main() -> int:
     score = modes.add_parser("score")
     score.add_argument("--forecast", type=Path, required=True)
     score.add_argument("--result", type=Path, required=True)
+    score.add_argument("--result-source-text", type=Path, required=True)
     score.add_argument("--manifest", type=Path, required=True)
     score.add_argument("--output", type=Path, required=True)
     score.add_argument("--github-run-id", type=int)
@@ -483,6 +496,7 @@ def main() -> int:
             } if args.github_run_id else None)
             data = score_frozen(json.loads(f_raw), manifest, json.loads(r_raw),
                                 forecast_raw=f_raw, result_raw=r_raw,
+                                result_source_raw=args.result_source_text.read_bytes(),
                                 github_receipt=receipt)
     except (ValueError, KeyError, TypeError, OSError, OverflowError, ZeroDivisionError) as exc:
         parser.error(str(exc))
