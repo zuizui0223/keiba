@@ -1,5 +1,6 @@
 """Exact ticket-event oracle and strict pre-race timestamp regression tests."""
 import copy
+import json
 import math
 from pathlib import Path
 import sys
@@ -137,6 +138,18 @@ class MarketSnapshotTests(unittest.TestCase):
         self.assertTrue(all('hypothetical_ev_low_per_100_yen' not in row
                             for row in report['ticket_types']['trifecta']['top_by_probability']
                             if row['selection'] != [1,2,3]))
+
+    def test_saved_kyoto8_real_market_snapshot_integration(self):
+        snapshot = json.loads((ROOT / 'data/2026-10-12/r8_markets_latest.json').read_text(encoding='utf-8'))
+        forecast = forecast_snapshot(snapshot, '2026-10-12T13:45:00+09:00', top=3)
+        self.assertEqual(forecast['horse_count'], 11)
+        self.assertEqual({kind: row['selection_count'] for kind, row in forecast['ticket_types'].items()},
+                         {'win': 11, 'place': 11, 'frame': 31, 'quinella': 55,
+                          'wide': 55, 'exacta': 110, 'trio': 165, 'trifecta': 990})
+        self.assertEqual(forecast['ticket_types']['trifecta']['quoted_count'], 400)
+        self.assertFalse(forecast['ticket_types']['trifecta']['quoted_market_complete'])
+        self.assertAlmostEqual(forecast['ticket_types']['win']['top_by_probability'][0]['probability'],
+                               0.20287, places=4)
 
     def test_time_leakage_refused(self):
         for time in ('2026-10-12T13:40:00+09:00', '2026-10-12T14:00:00+09:00'):
