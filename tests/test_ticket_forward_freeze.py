@@ -22,6 +22,15 @@ SOURCE_PAGES = {
 MANIFEST_PATH = REPO_ROOT / "docs/betting/ticket-forward-v1-manifest.json"
 FORECAST_ASOF = "2026-11-28T14:40:00+09:00"
 POST_TIME = "2026-11-28T15:00:00+09:00"
+RESULT_SOURCE = """# レース結果2026年11月28日（土曜）5回東京7日 11レース
+
+| 着順 | 枠 | 馬 番 | 馬名 | タイム |
+| --- | --- | --- | --- | --- |
+| 1 |  | 9 | 架空甲 | 1:33.5 |
+| 2 |  | 2 | 架空乙 | 1:33.6 |
+| 3 |  | 3 | 架空丙 | 1:33.7 |
+| 4 |  | 1 | 架空丁 | 1:34.1 |
+""".encode("utf-8")
 
 
 def make_capture():
@@ -68,7 +77,7 @@ def make_result():
         "race_id": "2026-11-28-TOKYO-11",
         "observed_at_jst": "2026-11-28T15:35:00+09:00",
         "source_url": "https://jra.jp/JRADB/accessS.html?synthetic=yes",
-        "source_text_sha256": "c"*64,
+        "source_text_sha256": sha256_bytes(RESULT_SOURCE),
         "top3": [9, 2, 3],
     }
 
@@ -202,7 +211,7 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         scored = score_frozen(
             out, self.manifest, result,
             forecast_raw=(json.dumps(out, ensure_ascii=False, sort_keys=True)+"\n").encode(),
-            result_raw=canonical(result),
+            result_raw=canonical(result), result_source_raw=RESULT_SOURCE,
         )
         self.assertEqual(scored["status"], "SCORED_BUT_PROSPECTIVE_STATUS_UNVERIFIED")
         self.assertIsNone(scored["server_attestation"])
@@ -211,23 +220,37 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         self.assertTrue(all(math.isfinite(r["delta_wide_minus_win"])
                             for r in scored["ticket_type_brier"].values()))
 
+    def test_scoring_refuses_result_text_that_disagrees_with_top3(self):
+        frozen = self.freeze()
+        result = make_result()
+        result["top3"] = [2, 9, 3]
+        with self.assertRaisesRegex(ValueError, "source_and_result_file_disagree"):
+            score_frozen(frozen, self.manifest, result,
+                         forecast_raw=canonical(frozen), result_raw=canonical(result),
+                         result_source_raw=RESULT_SOURCE)
+        result = make_result()
+        with self.assertRaisesRegex(ValueError, "source_and_result_file_disagree"):
+            score_frozen(frozen, self.manifest, result,
+                         forecast_raw=canonical(frozen), result_raw=canonical(result),
+                         result_source_raw=RESULT_SOURCE + b"manipulated")
+
     def test_refuse_mismatched_or_early_result(self):
         out = self.freeze()
         result = make_result()
         result["race_id"] = "wrong_race"
         with self.assertRaises(ValueError):
             score_frozen(out, self.manifest, result,
-                         forecast_raw=canonical(out), result_raw=canonical(result))
+                         forecast_raw=canonical(out), result_raw=canonical(result), result_source_raw=RESULT_SOURCE)
         result = make_result()
         result["observed_at_jst"] = "2026-11-28T14:40:00+09:00"
         with self.assertRaises(ValueError):
             score_frozen(out, self.manifest, result,
-                         forecast_raw=canonical(out), result_raw=canonical(result))
+                         forecast_raw=canonical(out), result_raw=canonical(result), result_source_raw=RESULT_SOURCE)
         result = make_result()
         result["top3"] = [9, 9, 2]
         with self.assertRaises(ValueError):
             score_frozen(out, self.manifest, result,
-                         forecast_raw=canonical(out), result_raw=canonical(result))
+                         forecast_raw=canonical(out), result_raw=canonical(result), result_source_raw=RESULT_SOURCE)
 
     def test_github_server_created_pre_post_and_exact_bytes_are_required(self):
         frozen = self.freeze()
@@ -267,7 +290,7 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         verified = _attest_github_run(payload, frozen, getter=getter, **args)
         self.assertEqual(verified["status"], "GITHUB_SERVER_PREPOST_RECEIPT_VERIFIED")
         scored = score_frozen(frozen, self.manifest, result,
-                              forecast_raw=payload, result_raw=canonical(result),
+                              forecast_raw=payload, result_raw=canonical(result), result_source_raw=RESULT_SOURCE,
                               github_receipt=args, github_getter=getter)
         self.assertEqual(scored["status"], "SCORED_PROSPECTIVE_SERVER_SEALED")
         changed = dict(run, created_at="2026-11-28T06:00:00Z")
