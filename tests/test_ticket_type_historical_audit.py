@@ -49,6 +49,14 @@ class HistoricalMarketAuditTests(unittest.TestCase):
             self.assertIsNone(trifecta["direct_same_ticket_market"])
             self.assertTrue(0 < trifecta["PL_win_odds_only"]["brier_mean_per_ticket"] < 1)
         self.assertEqual(data["by_ticket_type"]["trifecta"]["races_with_complete_direct_market"], 0)
+        self.assertEqual(data["by_ticket_type"]["win"]["paired_races_tied_within_numeric_tolerance"], 5)
+        self.assertEqual(data["by_ticket_type"]["win"]["paired_races_direct_lower_brier"], 0)
+        for kind in ("place", "wide"):
+            self.assertEqual(set(data["by_ticket_type"][kind]["price_bound_sensitivity"]), {"low", "high"})
+            for bound in ("low", "high"):
+                s = data["by_ticket_type"][kind]["price_bound_sensitivity"][bound]
+                self.assertLessEqual(s["supported_race_count"], 5)
+                self.assertGreaterEqual(s["supported_race_count"], 0)
 
     def test_partial_and_duplicate_market_quotes_are_refused(self):
         base = [((1,), 2.0), ((2,), 4.0), ((3,), 6.0)]
@@ -66,6 +74,22 @@ class HistoricalMarketAuditTests(unittest.TestCase):
         odds[0]["odds_high"] = 1.9
         with self.assertRaises(ValueError):
             direct_own_market(odds, "win", allkeys)
+
+    def test_own_market_low_and_high_price_bound_proxies(self):
+        quotes = [
+            {"selection": [i], "odds_low": 2.0 + 0.3*i, "odds_high": 2.5 + 0.5*i}
+            for i in range(1, 6)
+        ]
+        keys = {(i,) for i in range(1, 6)}
+        low, meta_low = direct_own_market(quotes, "place", keys, odds_position="low")
+        high, meta_high = direct_own_market(quotes, "place", keys, odds_position="high")
+        self.assertEqual(meta_low["status"], "AVAILABLE_UNCALIBRATED_PROXY")
+        self.assertEqual(meta_high["status"], "AVAILABLE_UNCALIBRATED_PROXY")
+        self.assertAlmostEqual(sum(low.values()), 3)
+        self.assertAlmostEqual(sum(high.values()), 3)
+        self.assertNotEqual(low[(1,)], high[(1,)])
+        with self.assertRaises(ValueError):
+            direct_own_market(quotes, "place", keys, odds_position="midpoint_assumed_final")
 
     def test_market_probabilities_not_automatically_calibrated(self):
         direct, meta = direct_own_market([
