@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "intent_kind": "pre_first_race_candidate_selection_from_official_numbered_card_rows",
+  "status": "PRE_FIRST_RACE_INTENT_NOT_FORMAL_SCHEDULE_OR_FORECAST",
+  "race_date": "2026-11-23",
+  "protocol": "ticket-forward-v1",
+  "manifest_git_blob_sha1": "ca2639dff334c5b65cda9aadf8eaf1605a4a63d6",
+  "source_git_blobs": {
+    "program_stage": "a796c5bd0ca9160559bc01427b6da9b3fbc8007a",
+    "official_numbered_rows_metadata": "ce994f33bb029e1be3b671760ee8254b3ea56a68"
+  },
+  "official_card_evidence_actions_run_id": 45030215026,
+  "whole_day_card_pages": 24,
+  "eligible_flat_races_with_official_numbered_rows": 23,
+  "selected_first_ten": [
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-01",
+      "venue": "福島",
+      "race_number": 1,
+      "scheduled_start_jst": "2026-11-23T09:45:00+09:00",
+      "official_numbered_rows": 16,
+      "secondary_count": 16,
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060120261123/EC",
+      "official_card_sha256": "ab2c23d288f3bee38eb588d3dde24c59fb657133be05ff74ea20c5e670081163"
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-01",
+      "venue": "東京",
+      "race_number": 1,
+      "scheduled_start_jst": "2026-11-23T10:00:00+09:00",
+      "official_numbered_rows": 13,
+      "secondary_count": 14,
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060120261123/A9",
+      "official_card_sha256": "e5892475213d33539116755d17741b76ae58261e3603ad34bad49e343d54315d"
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-02",
+      "venue": "福島",
+      "race_number": 2,
+      "scheduled_start_jst": "2026-11-23T10:15:00+09:00",
+      "official_numbered_rows": 15,
+      "secondary_count": 15,
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060220261123/A1",
+      "official_card_sha256": "8f263a2d20ca366fa8f3aa376f877a0b914fa7667d3622693559496dd6556d5a"
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-02",
+      "venue": "東京",
+      "race_number": 2,
+      "scheduled_start_jst": "2026-11-23T10:30:00+09:00",
+      "official_numbered_rows": 17,
+      "secondary_count": 17,
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060220261123/5E",
+      "official_card_sha256": "fee1d0d50633107af74f03b1337f37126226ed625c86ef7369afc6f9642517b2"
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-03",
+      "venue": "福島",
+      "race_number": 3,
+      "scheduled_start_jst": "2026-11-23T10:45:00+09:00",
+      "official_numbered_rows": 15,
+      "secondary_count": 15,
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060320261123/56",
+      "official_card_sha256": "df524e17c72f47fb404fa846e49efd0a02be84d3270cccafa38d8a5771d1661e"
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-03",
+      "venue": "東京",
+      "race_number": 3,
+      "scheduled_start_jst": "2026-11-23T11:00:00+09:00",
+      "official_numbered_rows": 11,
+      "secondary_count": 11,
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060320261123/13",
+      "official_card_sha256": "089298abba8537973687ec5acd781e5c8bff165d19fd079803a6b126bb9086e9"
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-04",
+      "venue": "東京",
+      "race_number": 4,
+      "scheduled_start_jst": "2026-11-23T11:30:00+09:00",
+      "official_numbered_rows": 14,
+      "secondary_count": 15,
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060420261123/C8",
+      "official_card_sha256": "39b6b85da110b099f974f749d49263a0fdbff57266f9adb7c76843248a8aab79"
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-05",
+      "venue": "福島",
+      "race_number": 5,
+      "scheduled_start_jst": "2026-11-23T12:05:00+09:00",
+      "official_numbered_rows": 16,
+      "secondary_count": 16,
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060520261123/C0",
+      "official_card_sha256": "0a1d0d5cf6607a65198d4b7435fa9f4fedf9ed2987366ecf88c905d9922d80bb"
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-05",
+      "venue": "東京",
+      "race_number": 5,
+      "scheduled_start_jst": "2026-11-23T12:20:00+09:00",
+      "official_numbered_rows": 14,
+      "secondary_count": 14,
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060520261123/7D",
+      "official_card_sha256": "5e9788caa8a7896586a0dde6e6d31a6e17256e4354d15c6d4ab1f427be72a487"
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-06",
+      "venue": "福島",
+      "race_number": 6,
+      "scheduled_start_jst": "2026-11-23T12:35:00+09:00",
+      "official_numbered_rows": 16,
+      "secondary_count": 16,
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060620261123/75",
+      "official_card_sha256": "2a7a65e6d74b72ee816a4bb0c13fb7fb4f0869339ea67232761ef17471960f63"
+    }
+  ],
+  "selected_by": "Programmed flat; 9–18 numbered JRA card rows; earliest start then venue then race number; first 10. No target-race outcomes used",
+  "per_race_market_snapshots_frozen": 0,
+  "actual_start_list_verified_for_scratches": false,
+  "official_24_source_html_redistrubuted": false,
+  "same_source_timestamp_verified_for_all_cards": false,
+  "formal_github_day_plan_receipt": false,
+  "true_prospective_scores": 0,
+  "note": "The selected ten are preregistered as intent before Nov23 first start, but the official complete-card raw source and day-plan server proof are not yet satisfied. The attempt universe must not be silently promoted from this file."
+}
