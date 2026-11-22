@@ -30,7 +30,7 @@ class SmoothBiasNegativeControlTests(unittest.TestCase):
 
     def test_full_node_pattern_not_universally_smooth(self):
         strength,weights=synthetic()
-        x={i:math.sin(i*6.3)*0.6 for i in strength}
+        x={i:math.sin(i*2.13)*0.6 for i in strength}
         y={(i,j):x[i]+x[j] for (i,j) in weights}
         d1=weighted_linear_edge_cv(y,weights,feature_map(strength,1))
         d4=weighted_linear_edge_cv(y,weights,feature_map(strength,4))
