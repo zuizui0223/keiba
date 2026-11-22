@@ -18,6 +18,10 @@ or enter its formal holdout ledger.
 
 **Latest cross-market test:** [Wide pair information transfer: 2026-10-12 vs 2026-10-18, nine races](WIDE_PAIR_INFORMATION_TRANSFER_RESULTS.md). A coherent 8-ticket distribution can use wide-pair residuals, but the two calendar dates show different signs for ordered-pair outcomes; place/wide Brier worsened on both dates across all nine price/strength sensitivity settings. **All retrospective**, not a prospectively validated forecasting edge or real odds arbitrage.
 
+## New future validation track (2026-11-22, no real forecasts yet)
+
+[Ticket-forward-v1 protocol, source-pinned manifest, 30 attempted races, server-sealed prediction and post-race scoring](TICKET_FORWARD_V1_PROTOCOL.md) adds a **separate prospective evaluation** of win-only PL versus coherent win+wide pair-residual forecasts across eight ticket types. The 2026-10-12 and 10-18 archived outcomes are explicitly excluded from its future denominator. The frozen v3.1 candidate-score and attempt ledgers are unchanged. The code uses synthetic-only tests; first future real forecast is **0** until new pre-race source snapshots are available.
+
 ## What belongs here
 
 - JRA racecards, dated actual win/place/quinella/wide/etc.
