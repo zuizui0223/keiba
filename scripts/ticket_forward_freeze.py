@@ -214,9 +214,16 @@ def validate_capture(capture: dict, manifest: dict, as_of_jst: str) -> tuple[dic
 
 
 def freeze_forecast(capture: dict, manifest: dict, as_of_jst: str,
-                    *, capture_raw: bytes, repo_root: Path = REPO_ROOT) -> dict:
+                    *, capture_raw: bytes, source_pages: dict[str, bytes],
+                    repo_root: Path = REPO_ROOT) -> dict:
     validate_manifest(manifest, repo_root=repo_root)
     race, odds, frames, wide = validate_capture(capture, manifest, as_of_jst)
+    if not isinstance(source_pages, dict) or set(source_pages) != {"win", "wide"}:
+        raise ValueError("missing_archived_source_page_bytes")
+    for kind in ("win", "wide"):
+        raw = source_pages[kind]
+        if not isinstance(raw, bytes) or not raw or sha256_bytes(raw) != capture["markets"][kind]["raw_page_sha256"]:
+            raise ValueError(f"source_page_sha256_mismatch:{kind}")
     strength = {n: 1.0 / odd for n, odd in odds.items()}
     base = predict_tickets(strength, frames)
     tilt = tilt_wide_joint(strength, frames, wide,
@@ -320,7 +327,7 @@ def _attest_github_run(forecast_raw: bytes, forecast: dict, *,
     if (run.get("event") not in {"push", "workflow_dispatch", "pull_request"} or
             run.get("conclusion") != "success" or
             run.get("repository", {}).get("full_name") != owner_repo or
-            not created < start or
+            not _jst(forecast["forecast_as_of_jst"]) <= created < start or
             not isinstance(run.get("head_sha"), str) or not valid_hex(run["head_sha"], 40)):
         raise ValueError("github_receipt_not_successful_before_post")
     commit_sha = run["head_sha"]
@@ -333,6 +340,23 @@ def _attest_github_run(forecast_raw: bytes, forecast: dict, *,
     actual = base64.b64decode(file_data["content"], validate=False)
     if actual != forecast_raw or file_data.get("sha") != git_blob_sha1(forecast_raw):
         raise ValueError("github_seal_forecast_bytes_mismatch")
+    base_dir = committed_path[: -len("forecast.json")]
+    companion_hashes = {
+        "capture.json": forecast["capture_sha256"],
+        "win-source.txt": forecast["source_evidence"]["win"]["raw_page_sha256"],
+        "wide-source.txt": forecast["source_evidence"]["wide"]["raw_page_sha256"],
+    }
+    for filename, digest in companion_hashes.items():
+        companion_path = base_dir + filename
+        companion = getter(
+            f"https://api.github.com/repos/{owner_repo}/contents/"
+            f"{quote(companion_path, safe='/')}?ref={commit_sha}"
+        )
+        if companion.get("encoding") != "base64" or companion.get("path") != companion_path:
+            raise ValueError(f"github_seal_companion_missing:{filename}")
+        payload = base64.b64decode(companion["content"], validate=False)
+        if sha256_bytes(payload) != digest or companion.get("sha") != git_blob_sha1(payload):
+            raise ValueError(f"github_seal_companion_sha_mismatch:{filename}")
     return {
         "status": "GITHUB_SERVER_PREPOST_RECEIPT_VERIFIED",
         "github_actions_run_id": run_id, "server_created_at": run["created_at"],
@@ -426,6 +450,8 @@ def main() -> int:
     freeze.add_argument("--capture", type=Path, required=True)
     freeze.add_argument("--manifest", type=Path, required=True)
     freeze.add_argument("--as-of-jst", required=True)
+    freeze.add_argument("--win-source-page", type=Path, required=True)
+    freeze.add_argument("--wide-source-page", type=Path, required=True)
     freeze.add_argument("--output", type=Path, required=True)
     score = modes.add_parser("score")
     score.add_argument("--forecast", type=Path, required=True)
@@ -439,8 +465,14 @@ def main() -> int:
         manifest = json.loads(args.manifest.read_bytes())
         if args.command == "freeze":
             capture_raw = args.capture.read_bytes()
-            data = freeze_forecast(json.loads(capture_raw), manifest, args.as_of_jst,
-                                   capture_raw=capture_raw)
+            data = freeze_forecast(
+                json.loads(capture_raw), manifest, args.as_of_jst,
+                capture_raw=capture_raw,
+                source_pages={
+                    "win": args.win_source_page.read_bytes(),
+                    "wide": args.wide_source_page.read_bytes(),
+                },
+            )
         else:
             f_raw, r_raw = args.forecast.read_bytes(), args.result.read_bytes()
             if bool(args.github_run_id) != bool(args.github_committed_path):
