@@ -294,8 +294,10 @@ def run_analysis() -> dict:
         part = [r for r in races if r["date"] == date]
         by_date[date] = {
             "race_count": len(part),
-            "mean_" + key: math.fsum(r[key] for r in part) / len(part)
-            for key in keys
+            **{
+                "mean_" + key: math.fsum(r[key] for r in part) / len(part)
+                for key in keys
+            },
         }
         by_date[date]["races_node_R2_above_edge_shuffle_median"] = sum(
             r["edge_label_shuffle_reference"]["actual_minus_shuffled_median"] > 0
