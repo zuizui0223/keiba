@@ -1,0 +1,180 @@
+{
+  "status": "ACTUAL_HISTORICAL_SOURCE_PARENT_CHANNELS_REPRODUCED_NOT_PROSPECTIVE",
+  "analysis_date": "2026-11-22",
+  "base_main_sha": "40f50fbe2bc4eb0cfdc874a762d9c7a7e3f84e60",
+  "specification_commit_sha": "7c5c5fa1bcbc2e47d2889c4c89217f18b62f4cb2",
+  "analysis_implementation_commit_sha": "f0ade0da0ee5200c43de3b1bfcc9cf4aff09e379",
+  "final_analysis_and_test_head_sha": "158fc66c1e388c4ff107ea37226e99b4fa421202",
+  "final_analysis_script_sha256": "2276dd471016cd129ded39d3653b8db017bd9f1d483a1a3f10a2fd031422cc13",
+  "final_analysis_tests_sha256": "4d7d1ba0fad4af93dd8b1a5629de3d550c6d1f00a550443baa4c52c3d2c101ef",
+  "reference_artifact": "japan-2022-24-family-feature-ablation-20261121.json",
+  "reference_artifact_sha256": "66c0e45fa3870b5ee3350ca21fb28cfe5e3331cfa835d7207dc39d7ed2dee619",
+  "sources": {
+    "A": {
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ayuser/horse-racing-in-japan",
+      "sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+      "bytes": 182084424
+    },
+    "B": {
+      "url": "https://huggingface.co/datasets/KBlueLeaf/jp-racing-horse/resolve/7bad21b3be3eba550f262abcf4e682a94cb85d4d/all_races_1990-2025.db",
+      "sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+      "bytes": 1036701696
+    }
+  },
+  "final_actions_run": {
+    "id": 44970707062,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44970707062",
+    "conclusion": "success",
+    "head_sha": "158fc66c1e388c4ff107ea37226e99b4fa421202",
+    "created_at_utc": "2026-11-22T01:16:54Z",
+    "completed_by_utc": "2026-11-22T01:28:56Z",
+    "artifact_id": 14733344430,
+    "artifact_zip_sha256": "350168d7e1fa5249204e5a9e14e6e354fdf4e3896fb59df81417c8378a437346",
+    "python": "3.12",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "aggregate_json_sha256": "18caad41d66257cc064de13051fbf65241493f869960cff2d05d7fde2968657f"
+  },
+  "earlier_actions_run": {
+    "id": 44970399994,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44970399994",
+    "conclusion": "success",
+    "head_sha": "f0ade0da0ee5200c43de3b1bfcc9cf4aff09e379",
+    "artifact_id": 14733735936,
+    "artifact_zip_sha256": "b85a5c6b859726ac09edadbc2af0a316e2103055394ead8c5ff489bd343f4e28",
+    "aggregate_json_sha256": "387be1252eeebe2d17ba0ccd8d25c43bb25353281f2d04cea83f0779ecb22a9e"
+  },
+  "local_execution": {
+    "numeric_cells": 563,
+    "floating_cells": 270,
+    "integer_cells": 293,
+    "max_absolute_difference": 1.1368683772161603e-13,
+    "largest_difference_path": ".pooled.support.by_parent.sire.mean_peer_count",
+    "all_keys_and_nonnumeric_values_equal": true,
+    "all_integer_values_exactly_equal": true,
+    "exact_all_values_equal": false,
+    "input_sha256": "0149c04d86552f7f5e6f1dced5457d46eff7cf997eb2480f64ff72a8f26f546a",
+    "exit_code": 0,
+    "head_sha": "f0ade0da0ee5200c43de3b1bfcc9cf4aff09e379",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "final_local_execution": {
+    "numeric_cells": 563,
+    "floating_cells": 270,
+    "integer_cells": 293,
+    "max_absolute_difference": 1.1368683772161603e-13,
+    "largest_difference_path": ".pooled.support.by_parent.sire.mean_peer_count",
+    "all_keys_and_nonnumeric_values_equal": true,
+    "all_integer_values_exactly_equal": true,
+    "exact_all_values_equal": false,
+    "input_sha256": "0149c04d86552f7f5e6f1dced5457d46eff7cf997eb2480f64ff72a8f26f546a",
+    "exit_code": 0,
+    "head_sha": "158fc66c1e388c4ff107ea37226e99b4fa421202",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "two_actions_runs_comparison": {
+    "numeric_cells": 563,
+    "floating_cells": 270,
+    "integer_cells": 293,
+    "max_absolute_difference": 5.551115123125783e-16,
+    "largest_difference_path": ".by_year.2024.models.MS.RMSE",
+    "all_keys_and_nonnumeric_values_equal": true,
+    "all_integer_values_exactly_equal": true,
+    "exact_all_values_equal": false,
+    "input_sha256": "387be1252eeebe2d17ba0ccd8d25c43bb25353281f2d04cea83f0779ecb22a9e"
+  },
+  "comparison_absolute_tolerance": 1e-12,
+  "all_four_executions_match_within_tolerance": true,
+  "final_code_refinement": "Reject duplicate evaluation/support row indexes that could hide a support-row swap. Real-source extraction already produces unique indexes. The model, features, fitted coefficients and aggregate formulae are unchanged; final guarded Actions results are compared to both earlier executions and the final-code local execution.",
+  "validation": {
+    "new_parent_channel_tests": 19,
+    "unchanged_ablation_tests": 14,
+    "unchanged_concentration_tests": 14,
+    "ecology_suite_tests": 909,
+    "non_ecology_suite_tests": 176,
+    "all_passed": true,
+    "independent_code_and_scientific_claim_reviews_completed": true,
+    "independently_reconstructed_report_numeric_rows": 47,
+    "independently_checked_CI_endpoints": 96,
+    "original_PR70_all_aggregate_parity_checked_before_new_statistics": true,
+    "original_all_row_parity_models": [
+      "M0",
+      "M1",
+      "M2"
+    ],
+    "original_strict_period_parity_fitted_models": [
+      "M1",
+      "MC",
+      "MP",
+      "M2"
+    ],
+    "repository_navigation_passed": true,
+    "relative_markdown_links_passed": true,
+    "root_readme_characters": 4975,
+    "independent_final_whole_branch_review": {
+      "reviewed_local_head_sha": "4cfa31329cacbc07f398123a9e3fc28905b20273",
+      "ready_to_merge": true,
+      "critical_or_important_findings": 0,
+      "declined_behaviors": [],
+      "deferred_minor": "The reused PR70 uncertainty helper computes a sire bootstrap that is superseded by the explicitly gated parent bootstrap. This adds 12 x 999 unused draws but does not affect estimates or intervals. Optional efficiency refactor deferred to preserve the established helper and numerical parity."
+    }
+  },
+  "interval_audit": {
+    "number_of_primary_comparisons": 12,
+    "intervals_excluding_zero_by_route": {
+      "two_way_pointwise": 1,
+      "two_way_bonferroni_12": 0,
+      "sire_bootstrap": 1,
+      "dam_bootstrap": 1
+    },
+    "pointwise_exceptions": [
+      {
+        "period": "pooled",
+        "contrast": "sire_given_dam",
+        "route": "two_way_pointwise",
+        "interval": [
+          1.0032769521650924e-05,
+          0.00019653454356918028
+        ]
+      },
+      {
+        "period": "pooled",
+        "contrast": "sire_given_dam",
+        "route": "dam_bootstrap",
+        "interval": [
+          4.03192594941908e-06,
+          0.00020522146888843462
+        ]
+      },
+      {
+        "period": "2024",
+        "contrast": "dam_given_sire",
+        "route": "sire_bootstrap",
+        "interval": [
+          5.393652546071645e-06,
+          0.00021700676530199794
+        ]
+      }
+    ],
+    "all_direct_sire_minus_dam_intervals_include_zero": true,
+    "all_six_learned_models_lose_to_2024_M0": true
+  },
+  "scientific_status": {
+    "historical_outcomes_previously_viewed": true,
+    "new_parent_split_protocol_fixed_before_inspecting_new_statistics": true,
+    "technical_reexecution_is_not_independent_biological_replication": true,
+    "both_count_features_in_MC_MS_MD_M2": true,
+    "raw_peer_counts_matched_or_manipulated": false,
+    "support_shares_are_period_equal_horse_weighted_starts_not_unique_horse_prevalence": true,
+    "parent_bootstrap_intervals_are_separate_pointwise_sensitivities": true,
+    "twelve_comparison_correction_covers_all_past_explorations": false,
+    "parent_genetic_contributions_heritability_maternal_effect_or_fitness_identified": false,
+    "official_registry_and_source_publication_timestamps_verified": false,
+    "source_redistribution_rights_verified": false,
+    "raw_source_rows_parent_identifiers_rankings_or_individual_predictions_published": false
+  }
+}
