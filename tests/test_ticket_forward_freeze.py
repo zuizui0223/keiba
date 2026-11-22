@@ -104,6 +104,10 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         m["pinned_source_git_blob_sha1"]["scripts/ticket_type_models.py"] = "0"*40
         with self.assertRaises(ValueError):
             validate_manifest(m)
+        m = copy.deepcopy(self.manifest)
+        m["pinned_pipeline_git_blob_sha1"]["scripts/ticket_forward_freeze.py"] = "0"*40
+        with self.assertRaisesRegex(ValueError, "model_code_changed_since_manifest"):
+            validate_manifest(m)
 
     def test_freeze_contains_immutable_complete_order_distribution(self):
         out = self.freeze()
@@ -275,9 +279,23 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
             "win-source.txt": SOURCE_PAGES["win"],
             "wide-source.txt": SOURCE_PAGES["wide"],
         }
+        manifest_path = "docs/betting/ticket-forward-v1-manifest.json"
+        manifest_data = MANIFEST_PATH.read_bytes()
         def getter(url):
             if "/actions/runs/" in url:
                 return run
+            if f"/{manifest_path}?ref=" in url:
+                return {
+                    "encoding": "base64", "path": manifest_path,
+                    "content": base64.b64encode(manifest_data).decode(),
+                    "sha": git_blob_sha1(manifest_data),
+                }
+            for script_path, digest in {
+                **self.manifest["pinned_source_git_blob_sha1"],
+                **self.manifest["pinned_pipeline_git_blob_sha1"],
+            }.items():
+                if f"/{script_path}?ref=" in url:
+                    return {"path": script_path, "sha": digest}
             for name, content in source_files.items():
                 if f"/{name}?ref=" in url:
                     return {
@@ -289,6 +307,25 @@ class FutureEightTicketProtocolTests(unittest.TestCase):
         args = {"owner_repo": "zuizui0223/keiba", "run_id": 123, "committed_path": path}
         verified = _attest_github_run(payload, frozen, getter=getter, **args)
         self.assertEqual(verified["status"], "GITHUB_SERVER_PREPOST_RECEIPT_VERIFIED")
+        with self.assertRaisesRegex(ValueError, "github_run_head_manifest_changed"):
+            altered = dict(self.manifest, wide_alpha=0.65)
+            bad_manifest = canonical(altered)
+            _attest_github_run(
+                payload, frozen, **args,
+                getter=lambda u: ({
+                    "encoding": "base64", "path": manifest_path,
+                    "content": base64.b64encode(bad_manifest).decode(),
+                    "sha": git_blob_sha1(bad_manifest),
+                } if f"/{manifest_path}?ref=" in u else getter(u))
+            )
+        with self.assertRaisesRegex(ValueError, "github_run_head_source_code_changed"):
+            _attest_github_run(
+                payload, frozen, **args,
+                getter=lambda u: (
+                    {"path": "scripts/ticket_forward_freeze.py", "sha": "f" * 40}
+                    if "/scripts/ticket_forward_freeze.py?ref=" in u else getter(u)
+                )
+            )
         scored = score_frozen(frozen, self.manifest, result,
                               forecast_raw=payload, result_raw=canonical(result), result_source_raw=RESULT_SOURCE,
                               github_receipt=args, github_getter=getter)
