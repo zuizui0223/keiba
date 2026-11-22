@@ -7,7 +7,10 @@ on:
       - "scripts/ticket_rank_trainer.py"
       - "scripts/ticket_type_historical_audit.py"
       - "scripts/ticket_wide_cross_market.py"
+      - "scripts/ticket_wide_second_day.py"
+      - "docs/evidence/ticket-type-20261018-official-top3.json"
       - "tests/test_ticket_wide_cross_market.py"
+      - "tests/test_ticket_wide_second_day.py"
       - "tests/test_ticket_type_*.py"
       - ".github/workflows/ticket-type-historical-audit.yml"
   workflow_dispatch:
@@ -25,7 +28,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Unit tests (stdlib only)
-        run: python -m unittest discover -s tests -p "test_ticket_type_*.py" -v
+        run: python -m unittest discover -s tests -p "test_ticket_*.py" -v
       - name: Recompute descriptive market-only audit from frozen sources
         run: |
           mkdir -p output
@@ -64,6 +67,26 @@ jobs:
             "source_file_count": len(r["input_file_sha256"]),
           }, indent=2))
           PY
+      - name: Check 2026-10-18 calendar-day-separated historical data (four races)
+        run: |
+          python scripts/ticket_wide_second_day.py --output output/kyoto_tokyo_niigata_20261018_wide_transfer.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path("output/kyoto_tokyo_niigata_20261018_wide_transfer.json").read_text())
+          assert d["status"] == "SECOND_DATE_RETROSPECTIVE_NOT_PROSPECTIVE"
+          assert d["market_only_eligibility"]["included"] == 4
+          assert d["market_only_eligibility"]["total_races"] == 9
+          assert d["design_frozen_before_result"] is False
+          assert d["quote_upstream_times_verified"] is False
+          assert d["positive_expected_value_established"] is False
+          print(json.dumps({
+              "date": d["date"], "eligible": d["market_only_eligibility"],
+              "exact_order_log_loss_delta_mean": d["joint_ordered_top3_logloss_delta_mean"],
+              "results": d["primary_summary"],
+              "source_hash_count": len(d["source_sha256"]),
+          }, indent=2))
+          PY
       - name: Upload anonymous aggregate and source hashes
         uses: actions/upload-artifact@v4
         with:
@@ -71,4 +94,5 @@ jobs:
           path: |
             output/kyoto_20261012_ticket_types.json
             output/kyoto_20261012_wide_cross_market.json
+            output/kyoto_tokyo_niigata_20261018_wide_transfer.json
           retention-days: 30
