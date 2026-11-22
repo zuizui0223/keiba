@@ -33,7 +33,7 @@ FORBIDDEN_INPUT_KEYS = frozenset({
     "finish", "finishing_order", "result", "results", "payout", "payouts",
     "top3", "winner", "actual_top3", "actual_winner", "final_odds",
 })
-OFFICIAL_HOSTS = frozenset({"www.jra.go.jp", "jra.go.jp", "app.jra.jp", "sp.jra.jp"})
+OFFICIAL_HOSTS = frozenset({"www.jra.go.jp", "jra.go.jp", "jra.jp", "app.jra.jp", "sp.jra.jp"})
 SECONDARY_HOSTS = frozenset({"sports.yahoo.co.jp"})
 RESULT_HOSTS = OFFICIAL_HOSTS
 
