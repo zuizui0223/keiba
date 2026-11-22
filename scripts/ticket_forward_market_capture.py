@@ -234,6 +234,7 @@ def main() -> int:
     p.add_argument("--manifest",type=Path,default=REPO_ROOT/"docs/betting/ticket-forward-v1-manifest.json")
     p.add_argument("--output-dir",type=Path,required=True)
     p.add_argument("--timeout",type=int,default=10)
+    p.add_argument("--audit-only",action="store_true",help="inspect 16/120 market coverage without emitting quotes, pages or forecast")
     args=p.parse_args()
     if not 1<=args.timeout<=30:
         p.error("invalid_timeout")
@@ -248,11 +249,25 @@ def main() -> int:
             observed_win_jst=win_observed,observed_wide_jst=wide_observed,
             manifest=manifest,
         )
-        from scripts.ticket_forward_freeze import validate_capture
+        if args.audit_only:
+            print(json.dumps({
+                **evidence,
+                "status":"LIVE_QUOTES_PARSED_STRUCTURE_ONLY_NOT_FROZEN",
+                "observed_win_jst":win_observed,
+                "observed_wide_jst":wide_observed,
+                "JRA_card_received_jst":card_received,
+                "model_market_quote_recency_not_certified":True,
+                "raw_source_files_written":False,
+                "future_predictions":0,
+            },ensure_ascii=False))
+            return 0
         if max(_jst(win_observed),_jst(wide_observed)) > _jst(START_JST):
             raise ValueError("after_race_start")
         asof=datetime.now(timezone.utc).astimezone(JST).isoformat(timespec="seconds")
-        from scripts.ticket_forward_freeze import canonical
+        try:
+            from scripts.ticket_forward_freeze import canonical
+        except ModuleNotFoundError:
+            from ticket_forward_freeze import canonical
         f=freeze_forecast(
             capture,manifest,asof,
             capture_raw=canonical(capture),
