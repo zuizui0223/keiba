@@ -1,0 +1,75 @@
+{
+  "status": "POSTHOC_ACTUAL_SOURCE_NONKIN_NEGATIVE_CONTROL_VERIFIED_NOT_PROSPECTIVE",
+  "analysis_date": "2026-11-22",
+  "original_main_sha": "5bf0368ddb747bf41cce4219f25c811cdc4f9fb9",
+  "protocol_before_placebo_results_commit": "6c724b1e0fe88f28e04eab04c8b94edce6d94949",
+  "source_calculation_head_sha": "277d7c1bfa56740e22c697d6764b67c05a54a0e8",
+  "publication_workflow_head_sha": "44c44d97f3f24d880b6d912e0b29344d97b44205",
+  "published_aggregate_bot_commit_sha": "21c9db149f36ad811674ae24a02d1ec4d53e618a",
+  "original_data": {
+    "A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "pr73_aggregate_sha256": "d24ba47a6a618411cbdc14e728d6de18a20602bfb7533a73cbf491ca1a8d4c01"
+  },
+  "actual_source_run": {
+    "id": 44984557016,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44984557016",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at_utc": "2026-11-22T04:19:45Z",
+    "completed_by_utc": "2026-11-22T04:30:17Z",
+    "artifact_id": 14739184603,
+    "artifact_zip_sha256": "1eaca9e59145a9781bb84501d8587e6ee0823973e92f4d5db5ad042facec4632",
+    "artifact_single_member": "japan-2022-24-unrelated-peer-placebo-aggregate.json",
+    "aggregate_bytes": 51114,
+    "aggregate_sha256": "45f78eeee82b6a125632d6794de6282c25d0a0daa14220a85353d90ccdd79e46"
+  },
+  "publication_run": {
+    "id": 44985480973,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/44985480973",
+    "conclusion": "success",
+    "created_at_utc": "2026-11-22T04:32:10Z",
+    "completed_by_utc": "2026-11-22T04:32:28Z",
+    "verified_original_run_sha_and_conclusion": true,
+    "verified_aggregate_byte_sha256": true,
+    "source_data_downloaded_for_publication": false,
+    "verified_PR73_side_difference_all_periods_and_8_adjusted_intervals": true
+  },
+  "implementation_git_blobs": {
+    "scripts/ecology_japan_unrelated_peer_control.py": "bd7d805be736cbb255739a0ef06e0f59c087c240",
+    "scripts/ecology_japan_2022_24_peer_identity_placebo.py": "b8ed398fb4a67be8a3a55dcdaac3dba5fc2beac2",
+    "tests/test_ecology_japan_unrelated_peer_control.py": "f7e7aaca8a4deddc6c1be332be369d97b0f07ddc",
+    "tests/test_ecology_japan_2022_24_peer_identity_placebo.py": "debf74e1cd6282433873a18666517052b5cafde6",
+    ".github/workflows/ecology-japan-2022-24-unrelated-peer-placebo.yml": "c0cb15ee7a9bcc4ace46abc8e9dbcbaec8d6388d",
+    ".github/workflows/ecology-japan-2022-24-unrelated-placebo-publish.yml": "18af176d4bf0efd3c17992df2b60ee6045eef768"
+  },
+  "method": {
+    "strict_starts": 244147,
+    "strict_horses": 12887,
+    "strict_races": 35333,
+    "seeds_first": 2026112200,
+    "seeds_last": 2026112231,
+    "draws": 32,
+    "new_pseudokin_refits": 32,
+    "original_equal_peer_refits_reproduced": 64,
+    "primary_contrasts": [
+      "sire_over_unrelated",
+      "dam_over_unrelated"
+    ],
+    "primary_comparisons": 8,
+    "pointwise_family_bootstrap_draws": 999,
+    "known_on_target_publication_times_verified": false
+  },
+  "validation": {
+    "new_fictional_sampler_tests": 6,
+    "new_fictional_estimator_tests": 4,
+    "source_locked_pr70_pr72_pr73_full_parity_before_control_refits": true,
+    "per_draw_and_per_period_identity_verified": true,
+    "all_eight_bonferroni_95pct_intervals_include_zero": true,
+    "whole_source_original_records_published": false,
+    "underlying_data_redistribution_rights_verified": false,
+    "genetic_effect_or_fitness_established": false,
+    "independent_prospective_holdout_completed": false
+  },
+  "memo": "This provenance is machine-readable metadata. It does not constitute new biological replication or official pedigree certification. Final PR-head CI and main merge must be confirmed separately."
+}

@@ -1,0 +1,85 @@
+name: "Publish SHA-verified unrelated-peer aggregate from finished source run"
+
+on:
+  push:
+    branches: [analysis/2022-24-unrelated-peer-placebo-20261122]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-unrelated-placebo-publish.yml"
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish-reviewed-anonymous-aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_RUN: "44984557016"
+      ORIGINAL_SHA: "277d7c1bfa56740e22c697d6764b67c05a54a0e8"
+      EXPECTED_AGGREGATE_SHA: "45f78eeee82b6a125632d6794de6282c25d0a0daa14220a85353d90ccdd79e46"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verify exact prior successful run and extract its original aggregate
+        run: |
+          set -euo pipefail
+          gh run view "$ORIGINAL_RUN" --repo zuizui0223/keiba --json status,conclusion,headSha > /tmp/run-metadata.json
+          python - <<'PY'
+          import json,os
+          d=json.load(open('/tmp/run-metadata.json'))
+          if (d["status"]!="completed" or d["conclusion"]!="success"
+                  or d["headSha"]!=os.environ["ORIGINAL_SHA"]):
+              raise ValueError("HOLD_SOURCE_RUN_SHA_OR_CONCLUSION")
+          PY
+          mkdir -p tmp/aggregate
+          gh run download "$ORIGINAL_RUN" --repo zuizui0223/keiba \
+            --name japan-2022-24-unrelated-peer-placebo-aggregate-only --dir tmp/aggregate
+      - name: Audit complete anonymous artifact and match PR73 before publishing exact bytes
+        run: |
+          python - <<'PY'
+          import hashlib,json,math,os
+          from pathlib import Path
+          data=Path('tmp/aggregate/japan-2022-24-unrelated-peer-placebo-aggregate.json').read_bytes()
+          if hashlib.sha256(data).hexdigest()!=os.environ['EXPECTED_AGGREGATE_SHA']:
+              raise ValueError('HOLD_CHANGED_UNRELATED_AGGREGATE_BYTES')
+          d=json.loads(data)
+          prev=json.loads(Path('docs/evidence/japan-2022-24-equal-peer-information-20261122.json').read_text())
+          assert d['status']=='POSTHOC_STRICT_UNRELATED_PEER_NEGATIVE_CONTROL'
+          assert d['source_A_sha256']==prev['source_A_sha256']
+          assert d['source_B_sha256']==prev['source_B_sha256']
+          assert d['pr73_reference_sha256']=='d24ba47a6a618411cbdc14e728d6de18a20602bfb7533a73cbf491ca1a8d4c01'
+          assert d['parity']['status']=='OK' and len(d['seeds'])==32
+          assert d['scope']['raw_records_horse_parent_ids_or_predictions_exported'] is False
+          for period, result, past in [('pooled',d['pooled'],prev['pooled'])]+[
+               (yr,d['by_year'][yr],prev['by_year'][yr]) for yr in ('2022','2023','2024')]:
+              assert (result['starts'],result['horses'],result['races'])==(
+                    past['starts'],past['horses'],past['races'])
+              s=result['mean_MSE_contrasts']
+              assert abs(s['sire_over_unrelated']-s['dam_over_unrelated']-
+                         past['mean_MSE_contrasts']['balanced_sire_advantage'])<1e-12
+              assert abs(s['unrelated_over_MC']-result['models']['MC']['MSE']+
+                         result['models']['unrelated_N']['MSE'])<1e-12
+              assert len(result['per_draw'])==32
+              for side in ('sire_over_unrelated','dam_over_unrelated'):
+                  e=[x[side] for x in result['per_draw']]
+                  assert abs(sum(e)/32-s[side])<1e-12
+                  ci=result['primary_uncertainty'][side]['two_way']['CI95_bonferroni_8']
+                  assert ci[0]<0<ci[1]
+          target=Path('docs/evidence/japan-2022-24-unrelated-peer-placebo-20261122.json')
+          if target.exists():
+              raise ValueError('HOLD_NONIMMUTABLE_AGGREGATE_TARGET')
+          target.write_bytes(data)
+          print('ORIGINAL_ANONYMOUS_AGGREGATE_SHA_AND_PR73_IDENTITIES_VERIFIED')
+          PY
+      - name: Publish verified historical aggregate to the research branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/evidence/japan-2022-24-unrelated-peer-placebo-20261122.json
+          git diff --cached --check
+          git commit -m 'Publish SHA-locked anonymous unrelated-peer placebo aggregate'
+          git push origin HEAD:analysis/2022-24-unrelated-peer-placebo-20261122
