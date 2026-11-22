@@ -13,6 +13,12 @@ Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GEN
 
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
+## 2026-11-22 · Comparing sire-side and dam-side performance histories
+
+On the same **244,147 starts, 12,887 horses and 35,333 races**, all four models in the parent comparison retained both historical peer counts. Adding sire-side performance after dam-side performance reduced pooled horse-equal MSE by **103.28 × 10⁻⁶**. Adding dam-side performance after sire-side performance reduced it by **20.89 × 10⁻⁶**. The direct advantage for sire-only over dam-only performance was **82.39 × 10⁻⁶ MSE**, with a 12-comparison Bonferroni 95% interval of **[−78.43, +243.21] × 10⁻⁶**. All 12 adjusted intervals included zero. The direct comparison included zero under every interval method in each period. In 2024 the constant midpoint had lower error than all six fitted models.
+
+Both parents were recorded for every evaluated horse. Within the same surface and 400 m distance band, the horse-equal mean count of distinct historical peers was **317.193 sharing the sire** and **2.805 sharing the dam**. Starts with peers on both sides accounted for **82.315% of evaluation weight** after giving each horse equal total weight. This retrospective comparison measures predictive performance under unequal coverage. [Results](JAPAN_2022_24_PARENT_PERFORMANCE_CHANNELS_RESULTS.md) · [protocol](JAPAN_2022_24_PARENT_PERFORMANCE_CHANNELS_PROTOCOL.md) · [anonymous aggregates](../evidence/japan-2022-24-parent-performance-channels-20261122.json).
+
 ## 2026-11-21: Recorded-sire distribution — positive in 215 of 383 groups, selected joint deletion remains influential
 
 The [fixed-prediction concentration analysis](JAPAN_2022_24_SIRE_SIGNAL_CONCENTRATION_RESULTS.md) reproduces PR70 on the same **244,147 starts / 12,887 horses**. P-after-C improvement is positive in **215 of 383 recorded sire groups** and negative in 168. Every single-group deletion retains a positive horse-equal mean; the minimum jointly deleted set that makes a nonempty remainder nonpositive is **11 groups / 1,567 horses (12.16%)**, chosen by observed contribution. This is an outcome-selected sensitivity diagnostic without refitting, not a deployable family-selection rule or a minimum number of horses.

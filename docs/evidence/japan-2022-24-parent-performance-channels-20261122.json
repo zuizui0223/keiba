@@ -1,0 +1,1087 @@
+{
+  "status": "POSTHOC_STRICT_PARENT_PERFORMANCE_CHANNELS",
+  "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "reference_sha256": "66c0e45fa3870b5ee3350ca21fb28cfe5e3331cfa835d7207dc39d7ed2dee619",
+  "training_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "ridge_alpha": 100.0,
+  "parity": {
+    "status": "OK",
+    "absolute_tolerance": 1e-12,
+    "strong_all_row_scores": true,
+    "strict_source_qa": true,
+    "all_pr70_pooled_and_yearly_statistics": true
+  },
+  "pooled": {
+    "starts": 244147,
+    "horses": 12887,
+    "races": 35333,
+    "models": {
+      "M1": {
+        "MSE": 0.09761216015780286,
+        "RMSE": 0.3124294482884142
+      },
+      "MC": {
+        "MSE": 0.09758968794981934,
+        "RMSE": 0.312393482566169
+      },
+      "MP": {
+        "MSE": 0.09746541610950615,
+        "RMSE": 0.3121945164629035
+      },
+      "M2": {
+        "MSE": 0.09744877812802628,
+        "RMSE": 0.3121678685067159
+      },
+      "MS": {
+        "MSE": 0.09746967087512678,
+        "RMSE": 0.3122013306748176
+      },
+      "MD": {
+        "MSE": 0.09755206178457172,
+        "RMSE": 0.31233325436874587
+      },
+      "M0": {
+        "MSE": 0.10351929302901393,
+        "RMSE": 0.3217441421829058
+      }
+    },
+    "loss_decomposition_MSE": {
+      "combined_gain": 0.00014090982179304116,
+      "sire_alone": 0.00012001707469256546,
+      "dam_alone": 3.762616524762555e-05,
+      "sire_given_dam": 0.0001032836565454156,
+      "dam_given_sire": 2.0892747100475674e-05,
+      "sire_minus_dam": 8.23909094449399e-05
+    },
+    "primary_uncertainty": {
+      "sire_given_dam": {
+        "mean_MSE_gain": 0.0001032836565454156,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 2.263652517599464e-09,
+          "status": "OK",
+          "SE": 4.757785742968534e-05,
+          "CI95": [
+            1.0032769521650924e-05,
+            0.00019653454356918028
+          ],
+          "CI95_bonferroni_12": [
+            -3.303928658241246e-05,
+            0.00023960659967324366
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -3.878242747854574e-05,
+            0.00023669396785788884
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 383
+        },
+        "dam_bootstrap": {
+          "clusters": 8276,
+          "largest_cluster_horses": 5,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            4.03192594941908e-06,
+            0.00020522146888843462
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 8276
+        }
+      },
+      "dam_given_sire": {
+        "mean_MSE_gain": 2.0892747100475674e-05,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 6.948227033492701e-10,
+          "status": "OK",
+          "SE": 2.635948981580012e-05,
+          "CI95": [
+            -3.0770903589342894e-05,
+            7.255639779029424e-05
+          ],
+          "CI95_bonferroni_12": [
+            -5.463405097672911e-05,
+            9.641954517768045e-05
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -3.629903204742088e-05,
+            8.090991135329588e-05
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 383
+        },
+        "dam_bootstrap": {
+          "clusters": 8276,
+          "largest_cluster_horses": 5,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -3.317958524707065e-05,
+            7.474824759284767e-05
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 8276
+        }
+      },
+      "sire_minus_dam": {
+        "mean_MSE_gain": 8.23909094449399e-05,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 3.1501776260906646e-09,
+          "status": "OK",
+          "SE": 5.612644319828814e-05,
+          "CI95": [
+            -2.761489780403791e-05,
+            0.0001923967166939177
+          ],
+          "CI95_bonferroni_12": [
+            -7.842595658134739e-05,
+            0.0002432077754712272
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -6.644691618481734e-05,
+            0.0002280435360508842
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 383
+        },
+        "dam_bootstrap": {
+          "clusters": 8276,
+          "largest_cluster_horses": 5,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -3.4087667186976694e-05,
+            0.00020180584496127122
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 8276
+        }
+      }
+    },
+    "support": {
+      "joint_support": {
+        "neither": {
+          "starts": 573,
+          "horse_equal_share": 0.0027274215356216133
+        },
+        "sire_only": {
+          "starts": 41041,
+          "horse_equal_share": 0.17263721479928956
+        },
+        "dam_only": {
+          "starts": 269,
+          "horse_equal_share": 0.001490191849763508
+        },
+        "both": {
+          "starts": 202264,
+          "horse_equal_share": 0.8231451718153253
+        }
+      },
+      "by_parent": {
+        "sire": {
+          "mean_peer_count": 317.1931244482744,
+          "bins": {
+            "0": {
+              "starts": 842,
+              "horse_equal_share": 0.004217613385385122
+            },
+            "1": {
+              "starts": 602,
+              "horse_equal_share": 0.002927383351531798
+            },
+            "2-4": {
+              "starts": 2606,
+              "horse_equal_share": 0.011098654530214127
+            },
+            "5+": {
+              "starts": 240097,
+              "horse_equal_share": 0.9817563487328689
+            }
+          }
+        },
+        "dam": {
+          "mean_peer_count": 2.8052160523078817,
+          "bins": {
+            "0": {
+              "starts": 41614,
+              "horse_equal_share": 0.17536463633491117
+            },
+            "1": {
+              "starts": 42321,
+              "horse_equal_share": 0.17849690645605515
+            },
+            "2-4": {
+              "starts": 103004,
+              "horse_equal_share": 0.4202917510882542
+            },
+            "5+": {
+              "starts": 57208,
+              "horse_equal_share": 0.22584670612077956
+            }
+          }
+        }
+      },
+      "parent_coverage": {
+        "sire": {
+          "known_parent_horses": 12887,
+          "unknown_parent_horses": 0,
+          "recorded_parent_groups": 383,
+          "recorded_singleton_groups": 92
+        },
+        "dam": {
+          "known_parent_horses": 12887,
+          "unknown_parent_horses": 0,
+          "recorded_parent_groups": 8276,
+          "recorded_singleton_groups": 4820
+        }
+      }
+    }
+  },
+  "by_year": {
+    "2022": {
+      "starts": 120381,
+      "horses": 12755,
+      "races": 14238,
+      "models": {
+        "M1": {
+          "MSE": 0.09613689767113104,
+          "RMSE": 0.3100595066614327
+        },
+        "MC": {
+          "MSE": 0.09611432702280663,
+          "RMSE": 0.3100231072401001
+        },
+        "MP": {
+          "MSE": 0.09599647650530668,
+          "RMSE": 0.30983298162930734
+        },
+        "M2": {
+          "MSE": 0.0959787106496412,
+          "RMSE": 0.30980431025026295
+        },
+        "MS": {
+          "MSE": 0.09600858222597658,
+          "RMSE": 0.3098525168946939
+        },
+        "MD": {
+          "MSE": 0.0960652366112385,
+          "RMSE": 0.309943924946495
+        },
+        "M0": {
+          "MSE": 0.10376912817647795,
+          "RMSE": 0.32213215948811746
+        }
+      },
+      "loss_decomposition_MSE": {
+        "combined_gain": 0.0001356163731654317,
+        "sire_alone": 0.00010574479683004357,
+        "dam_alone": 4.9090411568119204e-05,
+        "sire_given_dam": 8.652596159731253e-05,
+        "dam_given_sire": 2.987157633538816e-05,
+        "sire_minus_dam": 5.665438526192436e-05
+      },
+      "primary_uncertainty": {
+        "sire_given_dam": {
+          "mean_MSE_gain": 8.652596159731253e-05,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 2.9831736282029025e-09,
+            "status": "OK",
+            "SE": 5.4618436705959485e-05,
+            "CI95": [
+              -2.0524207238248543e-05,
+              0.0001935761304328736
+            ],
+            "CI95_bonferroni_12": [
+              -6.997007338705717e-05,
+              0.00024302199658168225
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -6.969078533684377e-05,
+              0.00022875199679235424
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 381
+          },
+          "dam_bootstrap": {
+            "clusters": 8234,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -2.9494068922157623e-05,
+              0.00018914130507554497
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 8234
+          }
+        },
+        "dam_given_sire": {
+          "mean_MSE_gain": 2.987157633538816e-05,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 8.604390300888129e-10,
+            "status": "OK",
+            "SE": 2.933324104303534e-05,
+            "CI95": [
+              -2.7620519658793227e-05,
+              8.736367232956954e-05
+            ],
+            "CI95_bonferroni_12": [
+              -5.417579289249984e-05,
+              0.00011391894556327616
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -3.6395411014446605e-05,
+              9.590734175035008e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 381
+          },
+          "dam_bootstrap": {
+            "clusters": 8234,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -3.460665485901681e-05,
+              8.784368789786047e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 8234
+          }
+        },
+        "sire_minus_dam": {
+          "mean_MSE_gain": 5.665438526192436e-05,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 4.090065652825318e-09,
+            "status": "OK",
+            "SE": 6.395362110799761e-05,
+            "CI95": [
+              -6.86924087906715e-05,
+              0.00018200117931452023
+            ],
+            "CI95_bonferroni_12": [
+              -0.00012658938240897054,
+              0.00023989815293281927
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00012601638555785665,
+              0.0002316319575190103
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 381
+          },
+          "dam_bootstrap": {
+            "clusters": 8234,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -7.787070628082675e-05,
+              0.00018277440778557592
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 8234
+          }
+        }
+      },
+      "support": {
+        "joint_support": {
+          "neither": {
+            "starts": 213,
+            "horse_equal_share": 0.002683967812982963
+          },
+          "sire_only": {
+            "starts": 19382,
+            "horse_equal_share": 0.17351028850091946
+          },
+          "dam_only": {
+            "starts": 153,
+            "horse_equal_share": 0.0014779501608196237
+          },
+          "both": {
+            "starts": 100633,
+            "horse_equal_share": 0.8223277935252779
+          }
+        },
+        "by_parent": {
+          "sire": {
+            "mean_peer_count": 316.2580714199622,
+            "bins": {
+              "0": {
+                "starts": 366,
+                "horse_equal_share": 0.0041619179738025865
+              },
+              "1": {
+                "starts": 308,
+                "horse_equal_share": 0.0029164637148697305
+              },
+              "2-4": {
+                "starts": 1250,
+                "horse_equal_share": 0.010716214462985634
+              },
+              "5+": {
+                "starts": 118457,
+                "horse_equal_share": 0.982205403848342
+              }
+            }
+          },
+          "dam": {
+            "mean_peer_count": 2.796609373680429,
+            "bins": {
+              "0": {
+                "starts": 19595,
+                "horse_equal_share": 0.17619425631390243
+              },
+              "1": {
+                "starts": 20483,
+                "horse_equal_share": 0.17910471659587288
+              },
+              "2-4": {
+                "starts": 51246,
+                "horse_equal_share": 0.42000562488416787
+              },
+              "5+": {
+                "starts": 29057,
+                "horse_equal_share": 0.22469540220605683
+              }
+            }
+          }
+        },
+        "parent_coverage": {
+          "sire": {
+            "known_parent_horses": 12755,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 381,
+            "recorded_singleton_groups": 90
+          },
+          "dam": {
+            "known_parent_horses": 12755,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 8234,
+            "recorded_singleton_groups": 4828
+          }
+        }
+      }
+    },
+    "2023": {
+      "starts": 80939,
+      "horses": 8778,
+      "races": 11469,
+      "models": {
+        "M1": {
+          "MSE": 0.10105667550048396,
+          "RMSE": 0.3178941262440751
+        },
+        "MC": {
+          "MSE": 0.10102591850898802,
+          "RMSE": 0.3178457464069451
+        },
+        "MP": {
+          "MSE": 0.10088248415118017,
+          "RMSE": 0.3176200310924677
+        },
+        "M2": {
+          "MSE": 0.10084838682028772,
+          "RMSE": 0.3175663502644569
+        },
+        "MS": {
+          "MSE": 0.10086917539216159,
+          "RMSE": 0.31759907964627604
+        },
+        "MD": {
+          "MSE": 0.1009877137469757,
+          "RMSE": 0.3177856411906864
+        },
+        "M0": {
+          "MSE": 0.10268926821362237,
+          "RMSE": 0.3204516628348531
+        }
+      },
+      "loss_decomposition_MSE": {
+        "combined_gain": 0.0001775316887003144,
+        "sire_alone": 0.00015674311682644637,
+        "dam_alone": 3.8204762012324634e-05,
+        "sire_given_dam": 0.00013932692668798975,
+        "dam_given_sire": 2.0788571873868008e-05,
+        "sire_minus_dam": 0.00011853835481412178
+      },
+      "primary_uncertainty": {
+        "sire_given_dam": {
+          "mean_MSE_gain": 0.00013932692668798975,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 6.155328217417375e-09,
+            "status": "OK",
+            "SE": 7.84558998254266e-05,
+            "CI95": [
+              -1.4443811344528695e-05,
+              0.0002930976647205082
+            ],
+            "CI95_bonferroni_12": [
+              -8.546964356006526e-05,
+              0.0003641234969360448
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -1.9140410529046805e-05,
+              0.000320553467245128
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 336
+          },
+          "dam_bootstrap": {
+            "clusters": 6443,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -1.5325446197239906e-05,
+              0.00029215705861163754
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 6443
+          }
+        },
+        "dam_given_sire": {
+          "mean_MSE_gain": 2.0788571873868008e-05,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 1.9354225162963406e-09,
+            "status": "OK",
+            "SE": 4.399343719574933e-05,
+            "CI95": [
+              -6.543698058592545e-05,
+              0.00010701412433366147
+            ],
+            "CI95_bonferroni_12": [
+              -0.00010526407447947313,
+              0.00014684121822720913
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -6.622126363211474e-05,
+              0.00010225941393017795
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 336
+          },
+          "dam_bootstrap": {
+            "clusters": 6443,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -6.827280333521072e-05,
+              0.00010241801417634572
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 6443
+          }
+        },
+        "sire_minus_dam": {
+          "mean_MSE_gain": 0.00011853835481412178,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 8.699102503342167e-09,
+            "status": "OK",
+            "SE": 9.326897931971898e-05,
+            "CI95": [
+              -6.426548552733848e-05,
+              0.00030134219515558203
+            ],
+            "CI95_bonferroni_12": [
+              -0.00014870154311914482,
+              0.00038577825274738837
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -7.324886457367889e-05,
+              0.00034128390830569087
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 336
+          },
+          "dam_bootstrap": {
+            "clusters": 6443,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -5.257610900567788e-05,
+              0.0003036795876246667
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 6443
+          }
+        }
+      },
+      "support": {
+        "joint_support": {
+          "neither": {
+            "starts": 199,
+            "horse_equal_share": 0.003254775084918625
+          },
+          "sire_only": {
+            "starts": 13906,
+            "horse_equal_share": 0.1862358710834871
+          },
+          "dam_only": {
+            "starts": 89,
+            "horse_equal_share": 0.0014384355432320829
+          },
+          "both": {
+            "starts": 66745,
+            "horse_equal_share": 0.8090709182883623
+          }
+        },
+        "by_parent": {
+          "sire": {
+            "mean_peer_count": 305.7300115656836,
+            "bins": {
+              "0": {
+                "starts": 288,
+                "horse_equal_share": 0.004693210628150708
+              },
+              "1": {
+                "starts": 200,
+                "horse_equal_share": 0.003203724148430412
+              },
+              "2-4": {
+                "starts": 904,
+                "horse_equal_share": 0.013169725620093086
+              },
+              "5+": {
+                "starts": 79547,
+                "horse_equal_share": 0.9789333396033257
+              }
+            }
+          },
+          "dam": {
+            "mean_peer_count": 2.700185191961335,
+            "bins": {
+              "0": {
+                "starts": 14105,
+                "horse_equal_share": 0.18949064616840572
+              },
+              "1": {
+                "starts": 14034,
+                "horse_equal_share": 0.18477339288049854
+              },
+              "2-4": {
+                "starts": 34424,
+                "horse_equal_share": 0.415158774145194
+              },
+              "5+": {
+                "starts": 18376,
+                "horse_equal_share": 0.2105771868059018
+              }
+            }
+          }
+        },
+        "parent_coverage": {
+          "sire": {
+            "known_parent_horses": 8778,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 336,
+            "recorded_singleton_groups": 89
+          },
+          "dam": {
+            "known_parent_horses": 8778,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 6443,
+            "recorded_singleton_groups": 4517
+          }
+        }
+      }
+    },
+    "2024": {
+      "starts": 42827,
+      "horses": 5225,
+      "races": 9626,
+      "models": {
+        "M1": {
+          "MSE": 0.10231408309168112,
+          "RMSE": 0.31986572665992385
+        },
+        "MC": {
+          "MSE": 0.10226382444070489,
+          "RMSE": 0.31978715490260845
+        },
+        "MP": {
+          "MSE": 0.10196676777396044,
+          "RMSE": 0.31932235714706925
+        },
+        "M2": {
+          "MSE": 0.10192484967157092,
+          "RMSE": 0.31925671437194697
+        },
+        "MS": {
+          "MSE": 0.10203971393253383,
+          "RMSE": 0.31943655697576917
+        },
+        "MD": {
+          "MSE": 0.1020999863544635,
+          "RMSE": 0.3195308848209567
+        },
+        "M0": {
+          "MSE": 0.10116139039003844,
+          "RMSE": 0.31805878448808556
+        }
+      },
+      "loss_decomposition_MSE": {
+        "combined_gain": 0.00033897476913398114,
+        "sire_alone": 0.00022411050817108306,
+        "dam_alone": 0.00016383808624140247,
+        "sire_given_dam": 0.00017513668289257875,
+        "dam_given_sire": 0.00011486426096289817,
+        "sire_minus_dam": 6.0272421929680554e-05
+      },
+      "primary_uncertainty": {
+        "sire_given_dam": {
+          "mean_MSE_gain": 0.00017513668289257875,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 1.1642742754141254e-08,
+            "status": "OK",
+            "SE": 0.00010790154194515134,
+            "CI95": [
+              -3.6346453196255785e-05,
+              0.0003866198189814133
+            ],
+            "CI95_bonferroni_12": [
+              -0.00013402931491917058,
+              0.00048430268070432807
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.0001637009132139168,
+              0.0005264026408473241
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 288
+          },
+          "dam_bootstrap": {
+            "clusters": 4284,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -4.543158323176511e-05,
+              0.00039061558782963824
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 4284
+          }
+        },
+        "dam_given_sire": {
+          "mean_MSE_gain": 0.00011486426096289817,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 3.771682006448504e-09,
+            "status": "OK",
+            "SE": 6.141402125287437e-05,
+            "CI95": [
+              -5.50500883851302e-06,
+              0.00023523353076430935
+            ],
+            "CI95_bonferroni_12": [
+              -6.110289222133014e-05,
+              0.0002908314141471265
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              5.393652546071645e-06,
+              0.00021700676530199794
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 288
+          },
+          "dam_bootstrap": {
+            "clusters": 4284,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -7.650260589114599e-06,
+              0.00023350489676141902
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 4284
+          }
+        },
+        "sire_minus_dam": {
+          "mean_MSE_gain": 6.0272421929680554e-05,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 1.6066492607085842e-08,
+            "status": "OK",
+            "SE": 0.00012675366900837958,
+            "CI95": [
+              -0.00018816020423505418,
+              0.00030870504809441527
+            ],
+            "CI95_bonferroni_12": [
+              -0.0003029098259680922,
+              0.00042345466982745324
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.0002755540425577557,
+              0.00039391354654909474
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 288
+          },
+          "dam_bootstrap": {
+            "clusters": 4284,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00020605643579252507,
+              0.0003338272493188436
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 4284
+          }
+        }
+      },
+      "support": {
+        "joint_support": {
+          "neither": {
+            "starts": 161,
+            "horse_equal_share": 0.003976340387260737
+          },
+          "sire_only": {
+            "starts": 7753,
+            "horse_equal_share": 0.19469497902915567
+          },
+          "dam_only": {
+            "starts": 27,
+            "horse_equal_share": 0.001246753246753247
+          },
+          "both": {
+            "starts": 34886,
+            "horse_equal_share": 0.8000819273368304
+          }
+        },
+        "by_parent": {
+          "sire": {
+            "mean_peer_count": 298.918801769832,
+            "bins": {
+              "0": {
+                "starts": 188,
+                "horse_equal_share": 0.0052230936340139835
+              },
+              "1": {
+                "starts": 94,
+                "horse_equal_share": 0.0032370912697397363
+              },
+              "2-4": {
+                "starts": 452,
+                "horse_equal_share": 0.014359388004447037
+              },
+              "5+": {
+                "starts": 42093,
+                "horse_equal_share": 0.9771804270917992
+              }
+            }
+          },
+          "dam": {
+            "mean_peer_count": 2.65340894172093,
+            "bins": {
+              "0": {
+                "starts": 7914,
+                "horse_equal_share": 0.19867131941641636
+              },
+              "1": {
+                "starts": 7804,
+                "horse_equal_share": 0.18767570801927214
+              },
+              "2-4": {
+                "starts": 17334,
+                "horse_equal_share": 0.40247246028595496
+              },
+              "5+": {
+                "starts": 9775,
+                "horse_equal_share": 0.21118051227835655
+              }
+            }
+          }
+        },
+        "parent_coverage": {
+          "sire": {
+            "known_parent_horses": 5225,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 288,
+            "recorded_singleton_groups": 79
+          },
+          "dam": {
+            "known_parent_horses": 5225,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 4284,
+            "recorded_singleton_groups": 3447
+          }
+        }
+      }
+    }
+  },
+  "uncertainty_settings": {
+    "primary_contrasts": [
+      "sire_given_dam",
+      "dam_given_sire",
+      "sire_minus_dam"
+    ],
+    "comparisons": 12,
+    "min_clusters": 30,
+    "min_recorded_parent_groups": 30,
+    "bootstrap_draws": 999,
+    "seed": 20261122
+  },
+  "scope": {
+    "retrospective_not_an_independent_prospective_test": true,
+    "performance_features_contain_count_dependent_shrinkage": true,
+    "parent_bootstrap_intervals_are_separate_pointwise_sensitivities": true,
+    "genetic_causation_heritability_maternal_effect_or_fitness_identified": false,
+    "official_studbook_identity_and_source_publication_times_verified": false,
+    "underlying_source_redistribution_rights_verified": false,
+    "raw_records_horse_parent_identifiers_or_individual_predictions_exported": false
+  }
+}

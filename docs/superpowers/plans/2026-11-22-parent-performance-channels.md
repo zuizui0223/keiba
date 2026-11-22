@@ -33,17 +33,17 @@
 
 **Interfaces:** `FEATURES` maps all six model names to original-order subsets; `fit_factorial(features,y,horses)` and `predict_factorial(models,features)` return all six; `paired_loss_terms(y,predictions)` returns combined_gain,sire_alone,dam_alone,sire_given_dam,dam_given_sire,sire_minus_dam; `paired_uncertainty(panel,gain,draws=999,seed=20261122,min_clusters=30)`; `parent_bootstrap(panel,gain,parent,draws=999,seed=20261122,min_clusters=30)`; `support_summary(panel,support)`; `summarize_period(panel,predictions,support,draws=999,min_clusters=30)`; `analyze(archive,db)` with CLI --archive --sqlite --output.
 
-- [ ] Write exact tests for original-fit parity, feature exclusion, signed loss paths, direct parent difference, repeated-start weights, parent-bootstrap scalar oracle and unknown-group handling, 12-way interval width, all joint/depth support cells and invalid records.
-- [ ] Run `python -m unittest discover -s tests -p 'test_ecology_japan_2022_24_parent_performance_channels.py' -v` and observe absent-module RED.
-- [ ] Implement the new module, reusing existing PR70 features/fits/variance and PR71 reference-parity helper. Keep original analysis modules unchanged.
-- [ ] Run new tests and unchanged PR70/71 tests to pass; obtain independent task review.
+- [x] Write exact tests for original-fit parity, feature exclusion, signed loss paths, direct parent difference, repeated-start weights, parent-bootstrap scalar oracle and unknown-group handling, 12-way interval width, all joint/depth support cells and invalid records.
+- [x] Run `python -m unittest discover -s tests -p 'test_ecology_japan_2022_24_parent_performance_channels.py' -v` and observe absent-module RED.
+- [x] Implement the new module, reusing existing PR70 features/fits/variance and PR71 reference-parity helper. Keep original analysis modules unchanged.
+- [x] Run new tests and unchanged PR70/71 tests to pass; obtain independent task review.
 
 ### Task 2: Actual sources, evidence and integration
 
 **Files:** dedicated `.github/workflows/ecology-japan-2022-24-parent-performance-channels.yml`; aggregate/provenance JSON in docs/evidence; result report; research entrypoints.
 
-- [ ] Commit protocol/tests before inspecting new actual parent-channel results.
-- [ ] Run exact sources locally and in Actions; archive aggregate only and compare every numerical/status field.
-- [ ] Report all periods, both conditional gains, their paired difference, support and uncertain/negative outcomes; review numerical and scientific claims independently.
-- [ ] Run full ecology/non-ecology tests, navigation, relative-link checks and final branch review.
+- [x] Commit protocol/tests before inspecting new actual parent-channel results.
+- [x] Run exact sources locally and in Actions; archive aggregate only and compare every numerical/status field.
+- [x] Report all periods, both conditional gains, their paired difference, support and uncertain/negative outcomes; review numerical and scientific claims independently.
+- [x] Run full ecology/non-ecology tests, navigation, relative-link checks and final branch review.
 - [ ] Publish measured result PR for integration after final-head checks under existing authorization.
