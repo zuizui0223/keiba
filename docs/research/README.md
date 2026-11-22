@@ -17,7 +17,7 @@ Original Australian early-GPS animal-individuality studies below are **a separat
 
 元の**244,147出走・12,887頭・35,333競走**を維持し、PR73で固定した各側の過去馬数kを使って、**記録上どちらの親も共有しない過去馬**を同じ芝/ダート・距離帯から32回抽出して一つの非親族モデルNを毎回再学習した。通期で真の同数父方MSがNを上回るMSE点推定は**+1.57×10⁻⁶**、真の同数母方MDは**+33.97×10⁻⁶**。8比較Bonferroni区間はそれぞれ**[−22.32,+25.46]**、**[−58.49,+126.44]**で、**全8区間が0を含んだ**。2024年母方だけ父群・母群の**点別**区間は正だが、補正後は0を含み、**同年N/MS/MDは全てM0より悪い**。
 
-非親族Nと本人＋父母頭数MCの通期RMSEは**0.312392706/0.312393483**で近かった。これは共有する記録上の直接の親を除いた、出走年や厩舎まで一致しない**不完全な非親族対照**であり、血縁度A/G、遺伝率、母性効果、馬自身の情報利用を識別しない。古い2022–24結果の**事後的な**比較である。[全8区間と絶対性能](JAPAN_2022_24_UNRELATED_PEER_PLACEBO_RESULTS.md)・[結果前に固定した仕様](JAPAN_2022_24_UNRELATED_PEER_PLACEBO_PROTOCOL.md)・[SHA固定の匿名全集計](../evidence/japan-2022-24-unrelated-peer-placebo-20261122.json)。
+非親族Nと本人＋父母頭数MCの通期RMSEは**0.312392706/0.312393483**で近かった。これは共有する記録上の直接の親を除いた、出走年や厩舎まで一致しない**不完全な非親族対照**であり、血縁度A/G、遺伝率、母性効果、馬自身の情報利用を識別しない。古い2022–24結果の**事後的な**比較である。[全8区間と絶対性能](JAPAN_2022_24_UNRELATED_PEER_PLACEBO_RESULTS.md)・[結果前に固定した仕様](JAPAN_2022_24_UNRELATED_PEER_PLACEBO_PROTOCOL.md)・[SHA固定の匿名全集計](../evidence/japan-2022-24-unrelated-peer-placebo-20261122.json)・[再現来歴](../evidence/japan-2022-24-unrelated-peer-placebo-provenance-20261122.json)。
 
 ## 2026-11-22 · 父母の他馬履歴数をそろえる感度分析（PR #73）
 
