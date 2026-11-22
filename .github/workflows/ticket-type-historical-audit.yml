@@ -6,6 +6,8 @@ on:
       - "scripts/ticket_type_models.py"
       - "scripts/ticket_rank_trainer.py"
       - "scripts/ticket_type_historical_audit.py"
+      - "scripts/ticket_wide_cross_market.py"
+      - "tests/test_ticket_wide_cross_market.py"
       - "tests/test_ticket_type_*.py"
       - ".github/workflows/ticket-type-historical-audit.yml"
   workflow_dispatch:
@@ -43,9 +45,30 @@ jobs:
               "source_file_count": len(data["file_sha256"]),
           }, indent=2))
           PY
+      - name: Recompute coherent wide-pair residual transfer (development only)
+        run: |
+          python scripts/ticket_wide_cross_market.py --output output/kyoto_20261012_wide_cross_market.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("output/kyoto_20261012_wide_cross_market.json").read_text())
+          assert r["status"] == "RETROSPECTIVE_DEVELOPMENT_NO_PROSPECTIVE_SKILL_CLAIM"
+          assert r["pre_registered_before_outcome"] is False
+          assert r["independent_period_validation"] is False
+          assert r["positive_expected_value_established"] is False
+          assert len(r["races"]) == 5
+          print(json.dumps({
+            "scope": r["data_scope"],
+            "joint_top3_mean_log_loss_change": r["primary_exact_order_logloss_delta_mean"],
+            "primary_ticket_results": r["primary_equal_race_summary"],
+            "source_file_count": len(r["input_file_sha256"]),
+          }, indent=2))
+          PY
       - name: Upload anonymous aggregate and source hashes
         uses: actions/upload-artifact@v4
         with:
           name: ticket-type-kyoto-five-race-development
-          path: output/kyoto_20261012_ticket_types.json
+          path: |
+            output/kyoto_20261012_ticket_types.json
+            output/kyoto_20261012_wide_cross_market.json
           retention-days: 30
