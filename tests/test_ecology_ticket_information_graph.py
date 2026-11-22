@@ -4,7 +4,7 @@ import unittest
 
 from scripts.ecology_ticket_information_graph import (
     decompose_edges, graph_inputs, joint_transferred_logloss,
-    permutation_reference, run_analysis,
+    leave_one_pair_out_predictability, permutation_reference, run_analysis,
 )
 from scripts.ticket_type_models import predict_tickets
 
@@ -22,6 +22,10 @@ class MarketInformationGraphTests(unittest.TestCase):
         fitted = decompose_edges(data, weights)
         self.assertAlmostEqual(fitted["R2_node_vs_constant"], 1.0, places=11)
         self.assertLess(fitted["weighted_residual_rms"],1e-12)
+        edge_cv=leave_one_pair_out_predictability(data, weights)
+        self.assertEqual(edge_cv["status"],"TRUE_EDGE_HELDOUT_SAME_RACE_ONLY")
+        self.assertAlmostEqual(edge_cv["leave_one_pair_out_R2_vs_train_edge_mean"],1.0,places=10)
+        self.assertTrue(0 < edge_cv["max_edge_leverage"] < 1)
         self.assertLess(max(abs(v) for v in fitted["dyadic_residual"].values()),1e-12)
         self.assertLess(max(abs(v) for v in fitted["residual_weighted_sum_orthogonality"].values()),1e-12)
 
@@ -30,6 +34,9 @@ class MarketInformationGraphTests(unittest.TestCase):
         y = {e: 0.01*(e[0]+e[1]) + (4 if e == (1,2) else 0) for e in w}
         r = decompose_edges(y, w)
         self.assertTrue(0 < r["R2_node_vs_constant"] < 1)
+        cv=leave_one_pair_out_predictability(y,w)
+        self.assertTrue(math.isfinite(cv["leave_one_pair_out_R2_vs_train_edge_mean"]))
+        self.assertLess(cv["leave_one_pair_out_R2_vs_train_edge_mean"],r["R2_node_vs_constant"])
         self.assertGreater(abs(r["dyadic_residual"][(1,2)]), 0.01)
         self.assertLess(max(abs(v) for v in r["residual_weighted_sum_orthogonality"].values()),1e-10)
 
@@ -90,6 +97,8 @@ class MarketInformationGraphTests(unittest.TestCase):
         for race in data["races"]:
             self.assertEqual(race["pair_count"],race["horse_count"]*(race["horse_count"]-1)//2)
             self.assertTrue(0<=race["weighted_node_explained_fraction_R2"]<=1)
+            self.assertTrue(math.isfinite(race["within_race_leave_one_pair_out_R2"]))
+            self.assertLess(race["within_race_leave_one_pair_out_R2"],race["weighted_node_explained_fraction_R2"]+1e-6)
             self.assertLess(race["max_abs_node_orthogonality_error"],1e-9)
             self.assertTrue(all(math.isfinite(z) for z in race["retrospective_correct_order_log_losses"].values()))
             self.assertAlmostEqual(
