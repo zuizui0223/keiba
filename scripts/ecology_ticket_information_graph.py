@@ -134,6 +134,66 @@ def decompose_edges(values: dict[tuple[int, int], float],
     }
 
 
+
+def leave_one_pair_out_predictability(
+    values: dict[tuple[int, int], float],
+    weights: dict[tuple[int, int], float],
+) -> dict:
+    """True held-out edge score for the *same horses in the same race*.
+
+    Exact weighted least-squares PRESS:
+       e_LOO = e_in_sample / (1 - h_e)
+    where h_e = w_e x_e' (X'WX)^(-1) x_e.
+    Each dyadic price is predicted without using its own observation, but
+    the other pairs from the same race remain known. This is not a new-race,
+    new-horse, time-forward, or biological interaction validation.
+    """
+    fitted = decompose_edges(values, weights)
+    nodes = sorted(set(n for e in values for n in e))
+    index = {node: i for i, node in enumerate(nodes)}
+    n = len(nodes)
+    mat = [[0.] * n for _ in nodes]
+    for (i, j), w in weights.items():
+        a, b = index[i], index[j]
+        mat[a][a] += w
+        mat[b][b] += w
+        mat[a][b] += w
+        mat[b][a] += w
+    total_w = math.fsum(weights.values())
+    total_y = math.fsum(weights[e] * y for e, y in values.items())
+    press = 0.0
+    constant_press = 0.0
+    leverages = []
+    for (i, j), y in values.items():
+        x = [0.] * n
+        x[index[i]] = x[index[j]] = 1.
+        inverse_times_x = _solve(mat, x)
+        h = weights[(i, j)] * (
+            inverse_times_x[index[i]] + inverse_times_x[index[j]]
+        )
+        if not 0 <= h < 1 - 1e-11:
+            raise ValueError("invalid_edge_leverage_or_unidentified_holdout")
+        e = fitted["dyadic_residual"][(i, j)]
+        loo_residual = e / (1 - h)
+        w = weights[(i, j)]
+        press += w * loo_residual**2
+        mean_without = (total_y - w * y) / (total_w - w)
+        constant_press += w * (y - mean_without)**2
+        leverages.append(h)
+    return {
+        "status": "TRUE_EDGE_HELDOUT_SAME_RACE_ONLY",
+        "leave_one_pair_out_R2_vs_train_edge_mean":
+            None if constant_press < 1e-20 else 1. - press / constant_press,
+        "max_edge_leverage": max(leverages),
+        "mean_edge_leverage": math.fsum(leverages) / len(leverages),
+        "press_error_weighted_mean": press / total_w,
+        "null_edge_mean_press_error_weighted_mean": constant_press / total_w,
+        "no_future_race_data_used": True,
+        "not_a_new_date_or_horse_prediction": True,
+    }
+
+
+
 def graph_inputs(strengths: dict[int, float], frames: dict[int, int],
                  quotes: list[dict]) -> tuple[dict, dict, dict]:
     baseline = predict_tickets(strengths, frames)
@@ -219,6 +279,7 @@ def one_race(*, date: str, race_id: str, venue: str,
     residuals, weights, base = graph_inputs(strengths, frames, wide_quotes)
     proj = decompose_edges(residuals, weights)
     eq = decompose_edges(residuals, {edge: 1. for edge in residuals})
+    pair_heldout = leave_one_pair_out_predictability(residuals, weights)
     null = permutation_reference(residuals, weights, seed=seed)
     losses = {
         "win_only_PL": -math.log(base["trifecta"][tuple(top3)]),
@@ -234,6 +295,8 @@ def one_race(*, date: str, race_id: str, venue: str,
         "horse_count": len(strengths), "pair_count": len(residuals),
         "node_effects_parameter_count": len(strengths),
         "weighted_node_explained_fraction_R2": proj["R2_node_vs_constant"],
+        "within_race_leave_one_pair_out_R2": pair_heldout["leave_one_pair_out_R2_vs_train_edge_mean"],
+        "max_pair_leverage": pair_heldout["max_edge_leverage"],
         "equal_edge_weight_node_R2_sensitivity": eq["R2_node_vs_constant"],
         "weighted_pair_only_RMS_log_odds_proxy": proj["weighted_residual_rms"],
         "weighted_crossmarket_logratio_SD": proj["weighted_original_sd"],
@@ -286,6 +349,7 @@ def run_analysis() -> dict:
     by_date = {}
     keys = [
         "weighted_node_explained_fraction_R2",
+        "within_race_leave_one_pair_out_R2",
         "equal_edge_weight_node_R2_sensitivity",
         "delta_loss_node_vs_PL", "delta_loss_pair_vs_PL",
         "delta_loss_full_vs_PL", "delta_loss_pair_added_to_node",
@@ -318,6 +382,7 @@ def run_analysis() -> dict:
         "outcomes_used_only_for_retrospective_score": True,
         "real_market_time_series_observed": False,
         "biological_pair_interactions_identified": False,
+        "within_race_pair_exclusion_is_independent_new_race_validation": False,
         "genealogical_horse_id_join_identified": False,
         "odds_true_probabilities_identified": False,
         "prospective_validation": False,
