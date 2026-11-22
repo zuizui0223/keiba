@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-23",
+  "status": "PRE_RACE_JRA_READONLY_NUMBERED_TABLE_AUDIT_NOT_FULL_DAY_SEALED",
+  "page_capture_kind": "JRA official 24 card pages fetched once via public URL navigation; raw HTML was not published",
+  "observed_git_actions_run_id": 45030215026,
+  "official_raw_metadata_artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45030215026/artifacts/14757148604",
+  "metadata_artifact_zip_sha256": "377934c7ddd4fc04e4ce0495b49541302e3d15eaa95d05686402c5669715b0da",
+  "logged_at_utc": "2026-11-22T13:58:31Z",
+  "source_program_url": "https://jra.jp/keiba/calendar2026/2026/11/1123.html",
+  "source_preliminary_counts": "https://uma5.com/races/20261123/",
+  "official_card_pages_with_contiguous_numbered_table": 24,
+  "total_card_pages": 24,
+  "discrepancies_count": 3,
+  "discrepancies": [
+    {
+      "race_id": "2026-11-23-TOKYO-01",
+      "jra_numbered_rows": 13,
+      "secondary_displayed_count": 14
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-04",
+      "jra_numbered_rows": 14,
+      "secondary_displayed_count": 15
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-06",
+      "jra_numbered_rows": 13,
+      "secondary_displayed_count": 14
+    }
+  ],
+  "official_scratch_status_verified": false,
+  "source_page_publication_timestamp_verified": false,
+  "official_day_schedule_server_sealed": false,
+  "complete_win_wide_odds_frozen": false,
+  "forward_scored_races": 0,
+  "notes": [
+    "Numbers are contiguous horse-number rows found in captured HTML tables, not necessarily final active starters at post time",
+    "Third-party counts are not substituted for JRA table rows",
+    "Published program times and secondary displayed counts are provisional; future day-schedule must separately satisfy full JRA source and GitHub server pre-first-start proof",
+    "This file contains no full HTML, no final race outcomes, and no wagering decisions"
+  ],
+  "races": [
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-01",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060120261123/EC",
+      "raw_page_sha256": "ab2c23d288f3bee38eb588d3dde24c59fb657133be05ff74ea20c5e670081163",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-01",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060120261123/A9",
+      "raw_page_sha256": "e5892475213d33539116755d17741b76ae58261e3603ad34bad49e343d54315d",
+      "numbered_card_rows": 13,
+      "third_party_preliminary_count": 14,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": false,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-02",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060220261123/A1",
+      "raw_page_sha256": "8f263a2d20ca366fa8f3aa376f877a0b914fa7667d3622693559496dd6556d5a",
+      "numbered_card_rows": 15,
+      "third_party_preliminary_count": 15,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-02",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060220261123/5E",
+      "raw_page_sha256": "fee1d0d50633107af74f03b1337f37126226ed625c86ef7369afc6f9642517b2",
+      "numbered_card_rows": 17,
+      "third_party_preliminary_count": 17,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-03",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060320261123/56",
+      "raw_page_sha256": "df524e17c72f47fb404fa846e49efd0a02be84d3270cccafa38d8a5771d1661e",
+      "numbered_card_rows": 15,
+      "third_party_preliminary_count": 15,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-03",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060320261123/13",
+      "raw_page_sha256": "089298abba8537973687ec5acd781e5c8bff165d19fd079803a6b126bb9086e9",
+      "numbered_card_rows": 11,
+      "third_party_preliminary_count": 11,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-04",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060420261123/0B",
+      "raw_page_sha256": "dcd0739009334b7456c832c18c83a8ba394dc982a0d1704a4ec4838527546697",
+      "numbered_card_rows": 14,
+      "third_party_preliminary_count": 14,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-04",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060420261123/C8",
+      "raw_page_sha256": "39b6b85da110b099f974f749d49263a0fdbff57266f9adb7c76843248a8aab79",
+      "numbered_card_rows": 14,
+      "third_party_preliminary_count": 15,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": false,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-05",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060520261123/C0",
+      "raw_page_sha256": "0a1d0d5cf6607a65198d4b7435fa9f4fedf9ed2987366ecf88c905d9922d80bb",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-05",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060520261123/7D",
+      "raw_page_sha256": "5e9788caa8a7896586a0dde6e6d31a6e17256e4354d15c6d4ab1f427be72a487",
+      "numbered_card_rows": 14,
+      "third_party_preliminary_count": 14,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-06",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060620261123/75",
+      "raw_page_sha256": "2a7a65e6d74b72ee816a4bb0c13fb7fb4f0869339ea67232761ef17471960f63",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-06",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060620261123/32",
+      "raw_page_sha256": "6c6a795787567df3427d4f5035c19fc79d5d53e82bff0d3ea503e9b4a2fdc597",
+      "numbered_card_rows": 13,
+      "third_party_preliminary_count": 14,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": false,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-07",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060720261123/2A",
+      "raw_page_sha256": "2faafca3e041eda1e0c9bd5db24c6de871aa3c6edc57ffe78a1b086f394fc10f",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-07",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060720261123/E7",
+      "raw_page_sha256": "816e88e093a7c892f4248142054afd12e33155b71e7e5ea30124a9b47c3de6af",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-08",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060820261123/DF",
+      "raw_page_sha256": "0e7084379a756ae0aaa112844d05198a678db76089010278be161589bc904483",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-08",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060820261123/9C",
+      "raw_page_sha256": "e991c17dce4a419d1c566c5a8a0be297dd79900ef760f27d374a2bc9f06e4b9d",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-09",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603060920261123/94",
+      "raw_page_sha256": "7c37b8d367ef90176862ff2d674cbc7cf0287a17c927834557b4449adb176960",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-09",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605060920261123/51",
+      "raw_page_sha256": "e84e75a4aca413194e96201258b89fb3e8443cd6fc219306595310fe8607ecbc",
+      "numbered_card_rows": 12,
+      "third_party_preliminary_count": 12,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-10",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603061020261123/89",
+      "raw_page_sha256": "b7ca421b2cf92ed89da1d67ef217ab171aeaa2d2f957f4074c52dd44251d4997",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-10",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605061020261123/46",
+      "raw_page_sha256": "f8f35db5344605f9c39e8517f5eab81c5f07a5b88100b08e02d73492fae95d30",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-11",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603061120261123/3E",
+      "raw_page_sha256": "ef320c2f9550b85805a5381efc136130ae442b52750e76782e54e0389cf654bd",
+      "numbered_card_rows": 15,
+      "third_party_preliminary_count": 15,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-11",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605061120261123/FB",
+      "raw_page_sha256": "e0a4f0075bd6ce7aeb158ae7de39e50b6206a4f8b1f6ac57429b3a295e5a0159",
+      "numbered_card_rows": 12,
+      "third_party_preliminary_count": 12,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-12",
+      "official_card_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0103202603061220261123/F3",
+      "raw_page_sha256": "76df447738a539dc240e9bd753f13d875a356012646dc5f2bb7b73a6a581bcff",
+      "numbered_card_rows": 16,
+      "third_party_preliminary_count": 16,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-12",
+      "official_card_url": "https://app.jra.jp/JRADB/accessD.html?CNAME=sw01ddd0105202605061220261123/B0",
+      "raw_page_sha256": "9db09dc6d096570dda738d5d7f3be683e11961aa0f3f21cd728fd5b1820fd2a9",
+      "numbered_card_rows": 18,
+      "third_party_preliminary_count": 18,
+      "parse_status": "OFFICIAL_NUMBER_SEQUENCE_EXTRACTED",
+      "agrees_with_secondary_display": true,
+      "independent_scratches_and_actual_active_runner_count_verified": false
+    }
+  ]
+}
