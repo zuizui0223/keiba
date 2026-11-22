@@ -114,6 +114,17 @@ class YahooFullMarketCaptureTests(unittest.TestCase):
             TARGETS["wide"],"https://evil.example/keiba/race/odds/wide/2603030601?ninki=0"
         ))
 
+    def test_cp932_official_card_decoding_is_accepted(self):
+        source=example_jra().decode("utf-8").encode("cp932")
+        capture,detail=parse_sources(
+            win_raw=example_win(),wide_raw=example_wide(),card_raw=source,
+            observed_win_jst="2026-11-23T09:24:05+09:00",
+            observed_wide_jst="2026-11-23T09:24:15+09:00",
+            manifest=self.manifest,
+        )
+        self.assertEqual(detail["JRA_numbered_rows"],16)
+        self.assertEqual(len(capture["markets"]["wide"]["quotes"]),120)
+
     def test_jra_card_count_and_quote_time_must_match(self):
         with self.assertRaisesRegex(ValueError,"JRA_card_number_rows_disagree"):
             parse_sources(
