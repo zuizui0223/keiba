@@ -16,6 +16,8 @@ or enter its formal holdout ledger.
 
 **New measured archive:** [2026-10-12 Kyoto 8R–12R odds-by-ticket audit](KYOTO_20261012_TICKET_TYPE_AUDIT.md) compared coherent win-odds-to-tickets probabilities with each ticket market’s simple normalized inverse-odds baseline. Five same-day retrospective races only; **not** a forward skill or profitable betting claim. The historical audit CI produces an inspectable source-hashed artifact.
 
+**Latest cross-market test:** [Wide pair information transfer: 2026-10-12 vs 2026-10-18, nine races](WIDE_PAIR_INFORMATION_TRANSFER_RESULTS.md). A coherent 8-ticket distribution can use wide-pair residuals, but the two calendar dates show different signs for ordered-pair outcomes; place/wide Brier worsened on both dates across all nine price/strength sensitivity settings. **All retrospective**, not a prospectively validated forecasting edge or real odds arbitrage.
+
 ## What belongs here
 
 - JRA racecards, dated actual win/place/quinella/wide/etc.
