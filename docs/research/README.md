@@ -13,6 +13,8 @@
 
 [9競走の匿名実測証拠](../evidence/ticket-market-node-dyad-empirical-20261123.json) · [再計算CIとグラフ解析コード](https://github.com/zuizui0223/keiba/actions/runs/45083421066) · [結果前の本人・親族情報精度研究](INFORMATION_PRECISION_HIERARCHY_ECOLOGY_20261118.md)。
 
+**追加の反証検定（2026-11-23）**：馬ノードの価格乖離構造を、単勝人気の**全馬共通の単調非線形価格補正**で説明できるかを、βのみ31条件とβ・曲率γの93条件で比較した。ペアを1組ずつ除外すると共通補正のR²はそれぞれ**0.134／0.125**と**0.164／0.150**、馬ノードの**0.505／0.656**に及ばず、2パラメータ補正後にもノード成分が残った（9/9レース）。ただしγが9レース中7レースで負側の探索境界に達しており、*任意*の価格形成補正を否定したわけではない。生物学的個体性、A/G遺伝構造や集団模倣の証拠でもない。[研究解釈と2種の負の対照](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [1パラメータの実測台帳](../evidence/ticket-market-temperature-null-20261123.json) · [2パラメータの実測台帳](../evidence/ticket-market-curvature-null-20261123.json)。
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
