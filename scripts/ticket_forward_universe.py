@@ -62,6 +62,7 @@ def plan_day(schedule: dict, manifest: dict, *, schedule_raw: bytes) -> dict:
     observed = _jst(schedule["captured_at_jst"])
     all_entries = []
     seen = set()
+    venue_numbers = {}
     races = schedule["races"]
     if not isinstance(races, list) or not races:
         raise ValueError("missing_complete_schedule_roster")
@@ -81,10 +82,21 @@ def plan_day(schedule: dict, manifest: dict, *, schedule_raw: bytes) -> dict:
                 not isinstance(row["venue"], str) or not row["venue"] or
                 type(row["declared_runner_count"]) is not int or
                 not 0 <= row["declared_runner_count"] <= 18 or
+                (row["status"] == "RUNNING" and row["declared_runner_count"] == 0) or
                 row["surface"] not in {"芝", "ダ", "障"} or
                 row["status"] not in {"RUNNING", "CANCELLED"}):
             raise ValueError("invalid_schedule_race_values")
         all_entries.append(row)
+        venue_numbers.setdefault(row["venue"], set())
+        if row["race_number"] in venue_numbers[row["venue"]]:
+            raise ValueError("duplicate_venue_race_number")
+        venue_numbers[row["venue"]].add(row["race_number"])
+    # A partial venue listing permits after-the-fact favorable-race cherry-picking.
+    # Ordinary JRA dates here must contain every 1R--12R for 2 or 3 venues.
+    if (len(venue_numbers) not in (2, 3) or
+            any(nums != set(range(1, 13)) for nums in venue_numbers.values()) or
+            len(all_entries) != 12 * len(venue_numbers)):
+        raise ValueError("incomplete_day_universe_by_venue")
     first_start = min(_jst(row["scheduled_start_jst"]) for row in all_entries)
     if not observed < first_start:
         raise ValueError("schedule_captured_after_first_race_start")
@@ -107,6 +119,7 @@ def plan_day(schedule: dict, manifest: dict, *, schedule_raw: bytes) -> dict:
         "source_text_sha256": schedule["source_text_sha256"],
         "schedule_file_sha256": sha256_bytes(schedule_raw),
         "raw_schedule_count": len(all_entries),
+        "venue_rosters_verified_for_12_numbered_races": sorted(venue_numbers),
         "eligible_races_before_cap": len(eligible),
         "included_first_ten": [ {
             "race_id": row["race_id"],
