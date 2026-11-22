@@ -1,0 +1,116 @@
+name: "Japan 2022-24 source-locked exact historical recency-depth matched nonkin"
+
+on:
+  push:
+    branches: [analysis/2022-24-time-depth-matched-nonkin-20261122]
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-time-depth-nonkin.yml"
+      - "scripts/ecology_japan_time_depth_nonkin_match.py"
+      - "scripts/ecology_japan_2022_24_time_depth_matched.py"
+      - "tests/test_ecology_japan_time_depth_nonkin_match.py"
+      - "tests/test_ecology_japan_2022_24_time_depth_matched.py"
+  pull_request:
+    paths:
+      - ".github/workflows/ecology-japan-2022-24-time-depth-nonkin.yml"
+      - "scripts/ecology_japan_time_depth_nonkin_match.py"
+      - "scripts/ecology_japan_2022_24_time_depth_matched.py"
+      - "tests/test_ecology_japan_time_depth_nonkin_match.py"
+      - "tests/test_ecology_japan_2022_24_time_depth_matched.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-sha-real-source-and-frozen-matched-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fixed scientific stack
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Synthetic exact age-depth oracle, HOLD, and previous study model regression tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_japan_time_depth_nonkin_match.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2022_24_time_depth_matched.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_unrelated_peer_control.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2022_24_peer_identity_placebo.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2022_24_equal_peer_information.py' -v
+      - name: Download exact SHA-locked original sources transiently
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          from ecology_japan_archive_forward import download
+          from ecology_japan_2022_parent_placebo import SQLITE_SHA
+          download(Path('tmp/private/old.zip'))
+          url=('https://huggingface.co/datasets/KBlueLeaf/jp-racing-horse/resolve/'
+               '7bad21b3be3eba550f262abcf4e682a94cb85d4d/all_races_1990-2025.db')
+          target=Path('tmp/private/all_races_1990-2025.db')
+          size=0
+          h=hashlib.sha256()
+          with urlopen(Request(url,headers={'User-Agent':'keiba-research/1.0'}),timeout=120) as res, target.open('wb') as dest:
+              while chunk:=res.read(8*1024*1024):
+                  size+=len(chunk)
+                  if size>1_100_000_000:
+                      raise ValueError('HOLD_SOURCE_B_SIZE')
+                  dest.write(chunk)
+                  h.update(chunk)
+          if h.hexdigest()!=SQLITE_SHA:
+              raise ValueError('HOLD_SOURCE_B_SHA')
+          target.chmod(0o600)
+          print('SOURCE_A_AND_SOURCE_B_SHA256_VERIFIED')
+          PY
+      - name: Strict 2018-21 as-of models and 32-draw actual historical matching overlap audit
+        run: |
+          python scripts/ecology_japan_2022_24_time_depth_matched.py \
+            --archive tmp/private/old.zip \
+            --sqlite tmp/private/all_races_1990-2025.db \
+            --output tmp/time-depth-matched-aggregate-only.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("tmp/time-depth-matched-aggregate-only.json").read_text())
+          assert x["original_PR70_PR72_PR73_parity"]
+          assert (x["strict_starts"],x["strict_horses"],x["strict_races"])==(244147,12887,35333)
+          assert x["source_A_sha256"]=="c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f"
+          assert x["source_B_sha256"]=="7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9"
+          q=x["matching_support"]
+          assert q["fixed_draws"]==32 and q["total_draw_block_side_checks"]==320
+          assert q["one_unmatched_target_invalidates_full_population_model_comparison"]
+          if x["status"].startswith("HOLD_"):
+              assert x["pooled"] is None and x["by_year"] is None
+              assert q["unsupported_draw_block_side_checks"]>0
+              print("HOLD_HISTORICAL_EXACT_MATCH_SUPPORT__NO_MODEL_EFFECT_CLAIM")
+          else:
+              assert x["status"].startswith("POSTHOC_")
+              assert q["unsupported_draw_block_side_checks"]==0
+              assert set(x["by_year"])=={"2022","2023","2024"}
+              for z in [x["pooled"],*x["by_year"].values()]:
+                  assert set(z["main_uncertainty"])=={"sire_over_matched_nonkin","dam_over_matched_nonkin"}
+              print("POSTHOC_MATCHED_PREDICTIONS_CALCULATED__NOT_GENETIC_CAUSALITY")
+          assert x["scientific_holds"]["genetic_causation"] if "genetic_causation" in x["scientific_holds"] else x["scientific_holds"]["strict_matching_does_not_identify_genetic_causation"]
+          PY
+      - name: Always erase original private source horse data
+        if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-2022-24-history-year-depth-nonkin-anonymous-aggregate
+          path: tmp/time-depth-matched-aggregate-only.json
+          if-no-files-found: warn
+          retention-days: 14

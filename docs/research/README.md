@@ -13,6 +13,10 @@ Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GEN
 
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
+## 2026-11-22 · 年代と履歴量まで一致する非親族の支持域監査（PR #75）
+
+[厳格な実資料照合](JAPAN_2022_24_TIME_DEPTH_MATCHED_NONKIN_RESULTS.md)では、PR73で選んだ真親族の各他馬と同じ**最終記録年・同条件歴史出走数（1／2–4／5+）**の非親族を探した。PR70–73の再計算・SHA照合に成功し、**32seed×5履歴cutoff×父母2側＝320の照合組合せ中319組が完全一致、2021年学習用の父方・5走以上だけ1seedで1枠不足**。全26,464,320の選択馬×抽出枠のうち不足は1枠。ただし重複したモデル抽出枠であって独立馬数ではなく、**学習入力の1件不足がRidge係数を変え得る**ため、新しい全標本の親族−非親族MSE差と8比較CIは**HOLD**（計算・補完なし）。**親族効果ゼロとは言っていない**。[実測前に固定した仕様](JAPAN_2022_24_TIME_DEPTH_MATCHED_NONKIN_PROTOCOL.md) · [匿名の支持域台帳](../evidence/japan-2022-24-time-depth-matched-nonkin-20261122.json) · [実資料Actions #45010304245](https://github.com/zuizui0223/keiba/actions/runs/45010304245)。
+
 ## 2026-11-22 · 親族 vs 同数の非親族を使った負の対照（PR #74）
 
 元の**244,147出走・12,887頭・35,333競走**を維持し、PR73で固定した各側の過去馬数kを使って、**記録上どちらの親も共有しない過去馬**を同じ芝/ダート・距離帯から32回抽出して一つの非親族モデルNを毎回再学習した。通期で真の同数父方MSがNを上回るMSE点推定は**+1.57×10⁻⁶**、真の同数母方MDは**+33.97×10⁻⁶**。8比較Bonferroni区間はそれぞれ**[−22.32,+25.46]**、**[−58.49,+126.44]**で、**全8区間が0を含んだ**。2024年母方だけ父群・母群の**点別**区間は正だが、補正後は0を含み、**同年N/MS/MDは全てM0より悪い**。
