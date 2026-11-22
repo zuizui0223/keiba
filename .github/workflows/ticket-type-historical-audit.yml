@@ -11,6 +11,8 @@ on:
       - "scripts/ticket_wide_sensitivity_summary.py"
       - "scripts/ticket_forward_freeze.py"
       - "scripts/ticket_forward_universe.py"
+      - "scripts/ticket_forward_program_preflight.py"
+      - "docs/evidence/ticket-forward-20261123-program-staging.json"
       - "scripts/ticket_forward_day_proof.py"
       - "scripts/ticket_forward_result_capture.py"
       - "docs/betting/JRA_2026-11-23_PROGRAM_PREFLIGHT.md"
@@ -39,6 +41,24 @@ jobs:
           python-version: "3.12"
       - name: Unit tests (stdlib only)
         run: python -m unittest discover -s tests -p "test_ticket_*.py" -v
+      - name: Audit tomorrow's complete *provisional* JRA program without forward claims
+        run: |
+          mkdir -p output
+          python scripts/ticket_forward_program_preflight.py \
+            --staging docs/evidence/ticket-forward-20261123-program-staging.json \
+            --output output/ticket-forward-20261123-provisional-program-audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/ticket-forward-20261123-provisional-program-audit.json").read_text())
+          assert r["program_full_day_rows"] == 24
+          assert r["program_flat_rows"] == 23
+          assert r["official_entrant_counts_verified"] == 0
+          assert r["market_snapshots_frozen"] == 0
+          assert r["future_prospective_scores"] == 0
+          assert r["day_plan_pre_first_race_server_sealed"] is False
+          print(json.dumps({k:v for k,v in r.items() if k!="provisional_first_ten"},indent=2))
+          PY
       - name: Verify initial future protocol is empty, pinned and distinct from v3.1
         run: |
           python scripts/ticket_forward_universe.py init \
@@ -144,4 +164,5 @@ jobs:
             output/kyoto_tokyo_niigata_20261018_wide_transfer.json
             output/two_date_wide_residual_sensitivity.json
             output/ticket-forward-empty-attempt-ledger.json
+            output/ticket-forward-20261123-provisional-program-audit.json
           retention-days: 30
