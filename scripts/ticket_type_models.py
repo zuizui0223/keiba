@@ -141,8 +141,10 @@ def forecast_basket(strengths: dict[int, float], frames: dict[int, int],
         if type(stake) is not int or stake <= 0 or stake % 100:
             raise ValueError('stake_must_be_positive_100_yen_multiple')
         odds = ticket.get('odds_low')
-        if odds is not None and _positive(odds, 'odds_low') < 1:
-            raise ValueError('invalid_ticket_price')
+        if odds is not None:
+            odds = _positive(odds, 'odds_low')
+            if odds < 1:
+                raise ValueError('invalid_ticket_price')
         normalized.append((kind, key, stake, odds))
     if len({(kind, key) for kind, key, _, _ in normalized}) != len(normalized):
         raise ValueError('duplicate_ticket_selection')
