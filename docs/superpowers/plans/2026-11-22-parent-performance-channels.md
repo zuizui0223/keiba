@@ -46,4 +46,4 @@
 - [x] Run exact sources locally and in Actions; archive aggregate only and compare every numerical/status field.
 - [x] Report all periods, both conditional gains, their paired difference, support and uncertain/negative outcomes; review numerical and scientific claims independently.
 - [x] Run full ecology/non-ecology tests, navigation, relative-link checks and final branch review.
-- [ ] Publish measured result PR for integration after final-head checks under existing authorization.
+- [x] Publish measured result PR for integration after final-head checks under existing authorization.
