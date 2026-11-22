@@ -77,7 +77,7 @@ class TicketTypeProbabilityTests(unittest.TestCase):
         strengths = {i: 1.0 for i in range(1, 5)}
         frames = {i: i for i in strengths}
         basket = forecast_basket(strengths, frames, [
-            {'kind': 'wide', 'selection': [1, 2], 'odds_low': 3.0, 'stake_yen': 100},
+            {'kind': 'wide', 'selection': [1, 2], 'odds_low': '3.0', 'stake_yen': 100},
             {'kind': 'wide', 'selection': [1, 3], 'odds_low': 3.0, 'stake_yen': 100},
         ])
         self.assertAlmostEqual(basket['expected_winning_ticket_count'], 1)
