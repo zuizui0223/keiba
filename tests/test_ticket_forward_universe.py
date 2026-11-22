@@ -10,16 +10,16 @@ from scripts.ticket_forward_universe import (
 )
 
 
-def synthetic_schedule(date="2026-11-28", count=13):
+def synthetic_schedule(date="2026-11-28", count=24):
     import datetime
     start = datetime.datetime.fromisoformat(f"{date}T10:00:00+09:00")
     races = []
     for i in range(count):
         t = start + datetime.timedelta(minutes=15 * i)
         races.append({
-            "race_id": f"{date}-TOKYO-{i+1:02d}" if i < 12 else f"{date}-KYOTO-01",
-            "venue": "東京" if i < 12 else "京都",
-            "race_number": i + 1 if i < 12 else 1,
+            "race_id": f"{date}-{'TOKYO' if i % 2 == 0 else 'KYOTO'}-{i//2+1:02d}",
+            "venue": "東京" if i % 2 == 0 else "京都",
+            "race_number": i // 2 + 1,
             "date": date,
             "scheduled_start_jst": t.isoformat(),
             "surface": "芝" if i % 2 else "ダ",
@@ -44,11 +44,12 @@ class FutureUniverseTests(unittest.TestCase):
     def test_first_ten_from_complete_schedule_before_earliest_start(self):
         source = synthetic_schedule()
         planned = plan_day(source, self.manifest, schedule_raw=canonical(source))
-        self.assertEqual(planned["eligible_races_before_cap"], 13)
-        self.assertEqual(planned["raw_schedule_count"], 13)
+        self.assertEqual(planned["eligible_races_before_cap"], 24)
+        self.assertEqual(planned["raw_schedule_count"], 24)
+        self.assertEqual(planned["venue_rosters_verified_for_12_numbered_races"], ["京都", "東京"])
         self.assertEqual(len(planned["included_first_ten"]), 10)
         self.assertEqual(planned["included_first_ten"][0]["race_number"], 1)
-        self.assertEqual(planned["included_first_ten"][-1]["race_number"], 10)
+        self.assertEqual(planned["included_first_ten"][-1]["race_number"], 5)
         self.assertEqual(planned["status"], "PRE_RACE_SCHEDULE_PLAN_UNATTESTED")
         ledger = new_attempt_ledger(self.manifest)
         self.assertEqual(len(ledger["attempts"]), 0)
@@ -65,10 +66,10 @@ class FutureUniverseTests(unittest.TestCase):
         source["races"][1]["surface"] = "障"
         source["races"][2]["declared_runner_count"] = 8
         planned = plan_day(source, self.manifest, schedule_raw=canonical(source))
-        self.assertEqual(planned["eligible_races_before_cap"], 10)
+        self.assertEqual(planned["eligible_races_before_cap"], 21)
         self.assertEqual(len(planned["included_first_ten"]), 10)
-        self.assertEqual(planned["included_first_ten"][0]["race_number"], 4)
-        self.assertEqual(planned["included_first_ten"][-1]["venue"], "京都")
+        self.assertEqual(planned["included_first_ten"][0]["race_number"], 2)
+        self.assertEqual(planned["included_first_ten"][-1]["venue"], "東京")
 
     def test_hold_recorded_before_next_attempt_and_cannot_be_overwritten(self):
         source = synthetic_schedule()
@@ -111,6 +112,21 @@ class FutureUniverseTests(unittest.TestCase):
         c = synthetic_schedule(date="2026-10-18")
         with self.assertRaises(ValueError):
             plan_day(c, self.manifest, schedule_raw=canonical(c))
+
+    def test_incomplete_or_partial_venue_day_is_rejected(self):
+        base = synthetic_schedule()
+        one_missing = copy.deepcopy(base)
+        one_missing["races"].pop()
+        with self.assertRaisesRegex(ValueError, "incomplete_day_universe_by_venue"):
+            plan_day(one_missing, self.manifest, schedule_raw=canonical(one_missing))
+        missing_venue = copy.deepcopy(base)
+        missing_venue["races"] = [r for r in missing_venue["races"] if r["venue"] == "東京"]
+        with self.assertRaisesRegex(ValueError, "incomplete_day_universe_by_venue"):
+            plan_day(missing_venue, self.manifest, schedule_raw=canonical(missing_venue))
+        unknown_runner_count = copy.deepcopy(base)
+        unknown_runner_count["races"][1]["declared_runner_count"] = 0
+        with self.assertRaises(ValueError):
+            plan_day(unknown_runner_count, self.manifest, schedule_raw=canonical(unknown_runner_count))
 
     def test_different_days_append_and_no_retroactive_reordering(self):
         ledger = new_attempt_ledger(self.manifest)
