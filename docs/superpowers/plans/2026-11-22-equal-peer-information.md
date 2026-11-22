@@ -55,6 +55,6 @@ Golden priority for seed2026112200,cutoff2022,stratum`turf:4`,horse`peer-a`: `61
 - [x] Run exact private sources locally and Actions; verify archive member/digest and all aggregate fields across executions within1e−12 with exact integer/type/status equality.
 - [x] Report all4 periods, both primary intervals, per-side point changes,32-draw MC precision, support and M0; independently verify science/numbers.
 - [x] Run full ecology and other tests, navigation/links and whole-branch review.
-- [ ] Publish measured results and provenance after review under prior main-merge authorization.
+- [x] Publish measured results and provenance after review under prior main-merge authorization.
 
 **Final integration gate:** require all four standard workflows on the final published head, merge with that exact expected head, then verify the merged tree, artifact hashes and clean primary checkout. These final commit/merge-dependent checks are recorded after completion in [PR #73](https://github.com/zuizui0223/keiba/pull/73); checked authoring steps above do not assert a future CI or merge result.
