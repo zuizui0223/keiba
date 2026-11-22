@@ -40,6 +40,8 @@ jobs:
           for key, result in o["results"].items():
               for u in result.get("html_a_jra_card_links_sample", []):
                   print("CARD_NAV_LINK",key,u)
+          for key, result in o["results"].items():
+              print("TABLE_NUMERIC_SHAPES", key, json.dumps(result.get("html_numeric_table_shapes", []), separators=(",",":")))
           print("NO REAL FORWARD FORECAST, NO FULL CARD COHORT, NO MARKET ODDS SNAPSHOT")
           PY
       - name: Upload metadata only, never source HTML
