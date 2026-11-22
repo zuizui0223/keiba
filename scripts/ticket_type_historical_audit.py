@@ -50,6 +50,7 @@ def market_race(race_number: int, hashes: dict) -> dict:
         raise ValueError("racecard_identity_mismatch")
     start = _time(racecard["start_jst"])
     markets = {}
+    market_observation_times = {}
     if race_number == 8:
         snapshot = read_json(base / "r8_markets_latest.json", hashes)
         frames = {int(n): f for n, f in snapshot["horse_frames"].items()}
@@ -62,6 +63,7 @@ def market_race(race_number: int, hashes: dict) -> dict:
             if updated > observed or observed > receipt or receipt >= start:
                 raise ValueError("post_start_market_r8")
             markets[kind] = raw["quotes"]
+            market_observation_times[kind] = observed.isoformat()
     else:
         prefix = base / "remaining-snapshots"
         receipt = None
@@ -85,6 +87,7 @@ def market_race(race_number: int, hashes: dict) -> dict:
                 if kind not in KINDS or kind in markets:
                     raise ValueError("duplicate_or_unknown_market_kind")
                 markets[kind] = quotes
+                market_observation_times[kind] = observed.isoformat()
     if receipt is None or frames is None or receipt >= start:
         raise ValueError("invalid_snapshot_receipt")
     if set(markets) != set(KINDS):
@@ -110,6 +113,7 @@ def market_race(race_number: int, hashes: dict) -> dict:
         "win_odds": win_odds,
         "frames": frames,
         "markets": markets,
+        "market_observation_times": market_observation_times,
     }
 
 
