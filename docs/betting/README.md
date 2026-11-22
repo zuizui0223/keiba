@@ -5,6 +5,15 @@ of `keiba`, not the biological evidence base.
 Return to [ecological research](../research/README.md) or
 [repository home](../../README.md).
 
+## New: eight ticket-type probability prototype (2026-11-22)
+
+[Ticket-type joint model and validation plan](TICKET_TYPE_MODELS.md) adds a
+separate, **uncalibrated** Plackett–Luce probability baseline for win/place,
+frame/quinella/wide/exacta/trio/trifecta, with optional pre-race feature
+training, strict snapshot cutoff checks and exact box/flow basket hit
+probabilities. It does **not** replace or unfreeze v3.1, establish profit,
+or enter its formal holdout ledger.
+
 ## What belongs here
 
 - JRA racecards, dated actual win/place/quinella/wide/etc.
