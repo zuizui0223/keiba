@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "version": "ticket-forward-v1",
+  "protocol_date_jst": "2026-11-22",
+  "start_eligible_on_or_after_jst_date": "2026-11-23",
+  "min_runners": 9,
+  "max_runners": 18,
+  "market_sources": [
+    "win",
+    "wide"
+  ],
+  "forecast_lead_minutes": [
+    15,
+    25
+  ],
+  "source_receipt_max_age_minutes": 5,
+  "source_updated_max_age_minutes": 10,
+  "win_wide_receipt_gap_seconds": 90,
+  "wide_alpha": 0.5,
+  "wide_quote_midpoint": "geometric",
+  "baseline": "win_only_PL",
+  "alternative": "wide_pair_tilt_alpha_0.5_geometric",
+  "primary_loss": "ordered_top3_log_loss",
+  "primary_comparison": "wide_pair_tilt_minus_win_only_PL",
+  "holdout_attempts": 30,
+  "max_attempts_per_race_date": 10,
+  "eligible_universe": "Earliest ten eligible JRA flat 9-18 runner races on each of first three eligible race dates AFTER the protocol was server-received; tie ordered by scheduled post time, venue name, race number; no post-result selection",
+  "official_market_policy": "Use archived source text SHA256, source-visible update timestamp, and market receipt time; deny stale/missing; exact pre-start GitHub server receipt is required to claim prospective validation",
+  "mandatory_exclusion_register": "Record unavailable or failed price captures as HOLD in attempted-race denominator; never replace missed attempts after outcomes",
+  "evaluation_status": "NOT_STARTED_NO_REAL_FORWARD_RACES",
+  "pre_registration_note": "Designed after 2026-10-12 and 2026-10-18 outcomes; those dates are excluded from prospective primary evaluation",
+  "pinned_source_git_blob_sha1": {
+    "scripts/ticket_type_models.py": "4c74cb5cc8a9c5e3a801f3f24675afb5b9dfcec0",
+    "scripts/ticket_wide_cross_market.py": "6566d9e6b669c03525aef9020270806ede0d123a",
+    "scripts/ticket_type_historical_audit.py": "ac7b14c9f5bb56a02d54103ef740787209e536e0"
+  }
+}
