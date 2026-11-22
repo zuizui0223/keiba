@@ -9,6 +9,11 @@ on:
       - "scripts/ticket_wide_cross_market.py"
       - "scripts/ticket_wide_second_day.py"
       - "scripts/ticket_wide_sensitivity_summary.py"
+      - "scripts/ticket_forward_freeze.py"
+      - "scripts/ticket_forward_universe.py"
+      - "docs/betting/ticket-forward-v1-manifest.json"
+      - "docs/betting/TICKET_FORWARD_V1_PROTOCOL.md"
+      - "tests/test_ticket_forward_*.py"
       - "docs/evidence/ticket-type-20261018-official-top3.json"
       - "tests/test_ticket_wide_cross_market.py"
       - "tests/test_ticket_wide_second_day.py"
@@ -31,6 +36,23 @@ jobs:
           python-version: "3.12"
       - name: Unit tests (stdlib only)
         run: python -m unittest discover -s tests -p "test_ticket_*.py" -v
+      - name: Verify initial future protocol is empty, pinned and distinct from v3.1
+        run: |
+          python scripts/ticket_forward_universe.py init \
+            --manifest docs/betting/ticket-forward-v1-manifest.json \
+            --output output/ticket-forward-empty-attempt-ledger.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path("docs/betting/ticket-forward-v1-manifest.json").read_text())
+          ledger = json.loads(Path("output/ticket-forward-empty-attempt-ledger.json").read_text())
+          frozen_v31 = json.loads(Path("docs/v31-holdout-ledger.json").read_text())
+          assert manifest["holdout_attempts"] == 30
+          assert len(ledger["attempts"]) == len(ledger["events"]) == 0
+          assert ledger["status"] == "NO_PROSPECTIVE_ATTEMPTS_REGISTERED"
+          assert ledger["version"] != frozen_v31["version"]
+          print("Future forward-protocol gates PASS; real future forecast 0")
+          PY
       - name: Recompute descriptive market-only audit from frozen sources
         run: |
           mkdir -p output
@@ -118,4 +140,5 @@ jobs:
             output/kyoto_20261012_wide_cross_market.json
             output/kyoto_tokyo_niigata_20261018_wide_transfer.json
             output/two_date_wide_residual_sensitivity.json
+            output/ticket-forward-empty-attempt-ledger.json
           retention-days: 30
