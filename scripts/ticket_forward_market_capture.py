@@ -154,10 +154,15 @@ def parse_sources(*, win_raw: bytes, wide_raw: bytes, card_raw: bytes,
     validate_manifest(manifest)
     frames, prices, updated_win=parse_win(win_raw)
     wide, updated_wide=parse_wide(wide_raw,len(prices))
-    try:
-        official_html=card_raw.decode("utf-8")
-    except UnicodeDecodeError as exc:
-        raise ValueError("JRA_card_charset_unreadable") from exc
+    official_html=None
+    for encoding in ("utf-8", "cp932", "shift_jis", "euc-jp"):
+        try:
+            official_html=card_raw.decode(encoding)
+            break
+        except UnicodeDecodeError:
+            continue
+    if official_html is None:
+        raise ValueError("JRA_card_charset_unreadable")
     if "2026" not in official_html or "福島" not in official_html:
         raise ValueError("JRA_card_wrong_race")
     official_n, _ = numbered_card_rows(official_html)
