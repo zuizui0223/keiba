@@ -1,0 +1,57 @@
+name: Ecology market temperature-vs-horse-node negative control
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_temperature_null.py"
+      - "tests/test_ecology_ticket_market_temperature_null.py"
+      - ".github/workflows/ecology-ticket-market-temperature-null.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nine-race-nonlinear-market-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test nonlinear null, pair holdout and normalization invariance
+        run: python -m unittest discover -s tests -p "test_ecology_ticket_market_temperature_null.py" -v
+      - name: Recompute exact favorite-longshot temperature and horse-node graph comparisons
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_temperature_null.py \
+            --output output/market-temperature-vs-node-nine-races.json
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          d=json.loads(Path('output/market-temperature-vs-node-nine-races.json').read_text())
+          assert d['status']=='SAME_NINE_ARCHIVED_RACES_EXPLORATORY_NEGATIVE_CONTROL'
+          assert d['outcome_labels_used'] is False
+          assert d['strict_race_level_independent_validation'] is False
+          assert d['voter_behavior_or_biological_interaction_identified'] is False
+          assert len(d['races'])==9 and len(d['beta_grid'])==31
+          print(json.dumps({
+            'groups':d['groups'],
+            'races':[{
+              'date':r['race_date'],'race':r['race_id'],'n':r['runner_count'],
+              'beta':r['beta_in_sample'],
+              'node_R2_LOO':r['node_heldout_edge_R2'],
+              'temp_R2_LOO':r['temperature_heldout_edge_R2'],
+              'temp_plus_node_R2_LOO':r['temperature_plus_node_heldout_edge_R2'],
+              'gain_node_vs_temp':r['node_vs_temperature_heldout_delta_R2']
+            } for r in d['races']],
+            'source_sha_count':len(d['input_file_sha256'])
+          },indent=2,ensure_ascii=False))
+          PY
+      - name: Publish aggregate and source digest provenance only
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-ticket-temperature-negative-control-nine-races
+          path: output/market-temperature-vs-node-nine-races.json
+          retention-days: 30
