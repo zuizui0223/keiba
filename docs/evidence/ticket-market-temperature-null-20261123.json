@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "OBSERVED_9_RACE_NONLINEAR_WIN_PRICE_NEGATIVE_CONTROL_RETROSPECTIVE",
+  "report_date": "2026-11-23",
+  "source_action_run_id": 45084689088,
+  "source_action_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45084689088",
+  "source_artifact_id": 14778746778,
+  "source_artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45084689088/artifacts/14778746778",
+  "source_zip_sha256": "c712776a2baf24095001f039b94a3781195e1785bad25c1ab3ca10ddd68bad83",
+  "source_hash_count": 31,
+  "sample_race_count": 9,
+  "sample_calendar_dates": 2,
+  "data_used": "same archived historical complete win and wide market pair quotes from 2026-10-12/18; no target finish labels used",
+  "price_target": "log(normalized inverse geometrical wide odds / win PL wide marginal); one-market-normalization offset fitted from other pairs",
+  "null_model": {
+    "family": "nonlinear one-dimensional shared favorite-longshot temperature transform",
+    "formula": "new strength s_i(beta) = (s_i / max(s)) ** beta; compute coherent PL top-3 wide pair marginals; fit shared intercept from training pairs",
+    "beta_grid_size": 31,
+    "beta_grid_range": [
+      0.5,
+      2
+    ],
+    "heldout": "for each edge, beta and intercept optimized on all other same-race edges"
+  },
+  "empirical_by_day": {
+    "2026-10-12": {
+      "race_count": 5,
+      "weighted_node_in_sample_R2_mean": 0.6856388982719771,
+      "temperature_in_sample_R2_mean": 0.17272413126955974,
+      "node_leave_one_pair_out_R2_mean": 0.5052462030892677,
+      "temperature_leave_one_pair_out_R2_mean": 0.13408318672126465,
+      "temperature_plus_node_leave_one_pair_out_R2_mean": 0.5146339711033872,
+      "node_minus_temperature_leave_one_pair_out_R2_mean": 0.3711630163680031,
+      "node_loo_better_than_temperature": 5
+    },
+    "2026-10-18": {
+      "race_count": 4,
+      "weighted_node_in_sample_R2_mean": 0.7786752016246417,
+      "temperature_in_sample_R2_mean": 0.13814121816648517,
+      "node_leave_one_pair_out_R2_mean": 0.6559056080200102,
+      "temperature_leave_one_pair_out_R2_mean": 0.12534476435080502,
+      "temperature_plus_node_leave_one_pair_out_R2_mean": 0.6642455989471998,
+      "node_minus_temperature_leave_one_pair_out_R2_mean": 0.5305608436692052,
+      "node_loo_better_than_temperature": 4
+    }
+  },
+  "caveats": {
+    "observed_price_representation_not_private_info": true,
+    "single_1_parameter_transform_does_not_exclude_all_nonlinear_market_mechanisms": true,
+    "same_horses_other_pairs_in_training": true,
+    "race_count_nonindependent_within_two_days": true,
+    "no_strict_outcome_test_or_voter_time_series": true,
+    "no_genetic_pedigree_or_individual_temporal_join": true,
+    "odds_range_and_payout_takeout_may_generate_cross_market_differences": true
+  },
+  "scientific_next_step": "Fit more flexible monotonic nonlinear price transforms and correct for market quote ranges, examine source times, and test new race dates with predeclared selection before interpreting node coefficients as any individual trait."
+}
