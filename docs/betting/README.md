@@ -14,6 +14,8 @@ training, strict snapshot cutoff checks and exact box/flow basket hit
 probabilities. It does **not** replace or unfreeze v3.1, establish profit,
 or enter its formal holdout ledger.
 
+**New measured archive:** [2026-10-12 Kyoto 8R–12R odds-by-ticket audit](KYOTO_20261012_TICKET_TYPE_AUDIT.md) compared coherent win-odds-to-tickets probabilities with each ticket market’s simple normalized inverse-odds baseline. Five same-day retrospective races only; **not** a forward skill or profitable betting claim. The historical audit CI produces an inspectable source-hashed artifact.
+
 ## What belongs here
 
 - JRA racecards, dated actual win/place/quinella/wide/etc.
