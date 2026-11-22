@@ -1,0 +1,57 @@
+name: Ecology ticket 2D monotone pricing null
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_curvature_null.py"
+      - "tests/test_ecology_ticket_market_curvature_null.py"
+      - ".github/workflows/ecology-ticket-market-curvature-null.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-backed-monotone-curvature-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run synthetic curvature oracle and real nine-race source tests
+        run: python -m unittest discover -s tests -p "test_ecology_ticket_market_curvature_null.py" -v
+      - name: Recompute 31x3 monotone pricing fits with actual edge-holdout
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_curvature_null.py \
+            --output output/market-2d-curvature-vs-node-nine-races.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('output/market-2d-curvature-vs-node-nine-races.json').read_text())
+          assert x['status']=='EXPLORATORY_CURVED_MONOTONE_FAVORITE_LONGSHOT_NULL_NO_CAUSAL_EFFECT'
+          assert x['outcome_labels_used'] is False
+          assert x['future_market_validation'] is False
+          assert x['causal_biological_individuality_identified'] is False
+          assert len(x['races'])==9
+          print(json.dumps({
+            "date_groups":x["by_date"],
+            "races":[{
+              "race_id":r["race_id"],"date":r["race_date"],
+              "n":r["runner_count"],"beta_gamma":r["two_parameter_beta_gamma_in_sample"],
+              "temp_1d_R2_LOO":r["one_parameter_heldout_R2"],
+              "temp_2d_R2_LOO":r["two_parameter_heldout_R2"],
+              "node_R2_LOO":r["horse_node_only_heldout_R2"],
+              "temp2d_plus_node_R2_LOO":r["two_parameter_plus_node_heldout_R2"],
+            } for r in x["races"]],
+            "hashed_files":len(x["input_file_sha256"])
+          },indent=2,ensure_ascii=False))
+          PY
+      - name: Archive only analysis aggregates and source fingerprints
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-ticket-2d-curvature-negative-control-nine-races
+          path: output/market-2d-curvature-vs-node-nine-races.json
+          retention-days: 30
