@@ -27,19 +27,19 @@ P(i,j,k)=\frac{s_i}{S}\frac{s_j}{S-s_i}\frac{s_k}{S-s_i-s_j},
 
 | 券種（プログラム内キー） | 求める確率 | 完全な組合せの確率和 |
 | --- | --- | --- |
-| 単勝 \`win\` | \(P(i\text{ が1着})\) | 1 |
-| 複勝 \`place\` | \(P(i\text{ が払戻対象着順})\) | 5〜7頭は2、8頭以上は3 |
-| 枠連 \`frame\` | \(P(\{\mathrm{枠}(1着),\mathrm{枠}(2着)\}=\{a,b\})\) | 1 |
-| 馬連 \`quinella\` | \(P(\{1着,2着\}=\{i,j\})\) | 1 |
-| 馬単 \`exacta\` | \(P(1着=i,2着=j)\) | 1 |
-| ワイド \`wide\` | \(P(i,j\text{ がともに上位3頭})\) | 3 |
-| 三連複 \`trio\` | \(P(\{1,2,3着\}=\{i,j,k\})\) | 1 |
-| 三連単 \`trifecta\` | \(P(1着=i,2着=j,3着=k)\) | 1 |
+| 単勝 `win` | \(P(i\text{ が1着})\) | 1 |
+| 複勝 `place` | \(P(i\text{ が払戻対象着順})\) | 5〜7頭は2、8頭以上は3 |
+| 枠連 `frame` | \(P(\{\mathrm{枠}(1着),\mathrm{枠}(2着)\}=\{a,b\})\) | 1 |
+| 馬連 `quinella` | \(P(\{1着,2着\}=\{i,j\})\) | 1 |
+| 馬単 `exacta` | \(P(1着=i,2着=j)\) | 1 |
+| ワイド `wide` | \(P(i,j\text{ がともに上位3頭})\) | 3 |
+| 三連複 `trio` | \(P(\{1,2,3着\}=\{i,j,k\})\) | 1 |
+| 三連単 `trifecta` | \(P(1着=i,2着=j,3着=k)\) | 1 |
 
 JRA発売条件：単勝2頭以上、複勝5頭以上、馬連・馬単3頭以上、
 ワイド・三連複・三連単4頭以上、枠連原則9頭以上
 （8頭以下でも同枠に複数の出走馬がいる場合は例外）。
-発売**開始時**の頭数が判明すれば \`on_sale_field_size\` で渡す。
+発売**開始時**の頭数が判明すれば `on_sale_field_size` で渡す。
 <https://www.jra.go.jp/kouza/baken/index.html>
 
 同着、事後失格・返還、発売後の複雑な取消、WIN5をこの第一版では識別・評価しない。
@@ -54,10 +54,10 @@ JRA発売条件：単勝2頭以上、複勝5頭以上、馬連・馬単3頭以�
 
 **M1 条件・個体履歴モデル**：予測レースより前に終了し、
 予測時点までに結果が利用可能だったレースだけを使い、
-\`ticket_rank_trainer.py\` が上位3着の部分順位尤度で正則化つき
+`ticket_rank_trainer.py` が上位3着の部分順位尤度で正則化つき
 Plackett–Luceを学習する。独自特徴量はデータ入力時に
-\`features_as_of_jst\` とともに保存し、特徴量の後出し・結果混入を拒否。
-学習した \`log_scores\` を8券種共通エンジンへ渡す。
+`features_as_of_jst` とともに保存し、特徴量の後出し・結果混入を拒否。
+学習した `log_scores` を8券種共通エンジンへ渡す。
 
 M2候補として過去自己成績・条件別反復・同条件父方／母方履歴・騎手／馬場適性、
 M3候補として**実際に時刻が異なる複数スナップショット**からの市場変動
@@ -70,18 +70,18 @@ M3候補として**実際に時刻が異なる複数スナップショット**�
 既存の京都8R・2026年10月12日13:44頃に保存した中間オッズを使って
 同日13:45に**観測済みだった情報のみ**で探索的に再演する：
 
-\`\`\`bash
+```bash
 python scripts/ticket_type_models.py \
   --market-snapshot data/2026-10-12/r8_markets_latest.json \
   --as-of '2026-10-12T13:45:00+09:00' \
   --top 5 \
   --output /tmp/kyoto8-ticket-type-baseline.json
-\`\`\`
+```
 
 外部特徴量での学習は、時刻付きの履歴ファイルと未来出走表（結果なし）を
 用意した場合に限り可能：
 
-\`\`\`bash
+```bash
 python scripts/ticket_rank_trainer.py \
   --training-races /private/pre_race_training.json \
   --features 'own_form,venue_distance,jockey_history,sire_peer_form' \
@@ -96,7 +96,7 @@ python scripts/ticket_type_models.py \
   --as-of '2026-10-12T13:45:00+09:00' \
   --strength-source external \
   --external-scores /tmp/pl-pre-race-scores.json
-\`\`\`
+```
 
 この例で指定した特徴量の名前は**入力契約の例**であり、
 実際に利用可能であったり学習済みであったりすることは意味しない。
@@ -104,7 +104,7 @@ python scripts/ticket_type_models.py \
 
 ## 保存済み京都8Rの市場ベースライン（実オッズ、未較正）
 
-\`data/2026-10-12/r8_markets_latest.json\` に記録された、
+`data/2026-10-12/r8_markets_latest.json` に記録された、
 11頭の単勝オッズの逆数から計算した確率順位：
 
 | 券種 | 最確率選択 | 推定確率 |
@@ -126,8 +126,8 @@ python scripts/ticket_type_models.py \
 
 ## ボックス・流し・フォーメーション（券種の組合せ）
 
-利用者が列挙した買い目 \`[{kind, selection, stake_yen, odds_low},...]\`
-を \`forecast_basket(...)\` に渡す。各着順で「1件以上当たり」を
+利用者が列挙した買い目 `[{kind, selection, stake_yen, odds_low},...]`
+を `forecast_basket(...)` に渡す。各着順で「1件以上当たり」を
 確認して**和事象確率**を求める。複数ワイドは同時的中し得るので、
 個別の的中確率を単純加算しない。価格が全券に与えられた場合のみ
 中間オッズ下限に条件づけた*仮想*平均払い戻しと黒字確率も算出する。
@@ -147,5 +147,5 @@ python scripts/ticket_type_models.py \
 5. フォワードでの多日・多数レース較正を通るまでは
    券種別の推奨購入、確実な「プラス期待値」、血縁の適応的遺伝効果を主張しない。
 
-単体テスト：\`python -m unittest discover -s tests -p 'test_ticket_*.py' -v\`。
+単体テスト：`python -m unittest discover -s tests -p 'test_ticket_*.py' -v`。
 これらは計算の整合性検定であり、実レース予測の科学的妥当性を示すものではない。
