@@ -35,6 +35,37 @@ JRA中央平地（芝・ダート）、事前出走予定9〜18頭。2026年11�
 
 欠測がある場合でも、対象レースはHOLDとして登録する。状態は HOLD_NO_WIN_WIDE_SNAPSHOT, HOLD_INCOMPLETE_MARKET, HOLD_STALE_QUOTE, HOLD_INVALID_ROSTER, HOLD_MISSING_SERVER_RECEIPT、提出した場合は SUBMITTED_FOR_GITHUB_PROOF。イベントは順序固定で二重登録不可。
 
+## 日別の完全な分母・サーバー封印（追加監査）
+
+[2026-11-23の実際のJRA予定から作った暫定10レース](JRA_2026-11-23_PROGRAM_PREFLIGHT.md) は、公式出馬表の全馬・当日全レースが同一時点で照合済みではないため、正式ホールドアウト台帳には入れない。
+
+正式な日別スケジュールは、**2または3競馬場について各1R〜12Rの全24〜36行**を必須とし、出走予定の各レースには正の頭数が必要。1レース・1競馬場だけを都合よく掲載したファイル、8頭以下の取消・障害レースを不当に隠したファイル、頭数未確認の0頭レースは不正として拒否する。JRA公式当日番組自体に例外のある日は無理に対象選択を続けずHOLDし、別の事前仕様を検討する。
+
+日別プランの根拠になる**3つのバイト列**（公式スケジュール原文、24/36行に転記したJSON、当日選択プランJSON）について、[予定表サーバー証明コード](../../scripts/ticket_forward_day_proof.py)を追加した。
+
+- 解析上の確認：原文SHA256、予定表JSONのハッシュ、対象選択プランJSONを元のコードで再計算し、最初の10レースが改変されていないか検査する。
+- GitHubサーバー上の確認：予定表の最初の発走**以前**に開始された成功runのコミットに、同じ3バイト列が共存したことを、GitHub APIで実バイト・Git blob SHA1を照合する。
+- 科学的限界：元公式ページからの転記が正しいか／全24または36行を本当に原資料から拾ったかは**別途独立監査**が必要。サーバー記録は公式データの真正性までは証明しない。
+
+必要な配置：
+
+    holdout/ticket-forward-v1/YYYY-MM-DD/day-schedule.json
+    holdout/ticket-forward-v1/YYYY-MM-DD/day-schedule-source.txt
+    holdout/ticket-forward-v1/YYYY-MM-DD/day-plan.json
+
+発走前に3ファイルがコミットされた後、成功したActions run IDを添えて確認する。
+
+    python scripts/ticket_forward_day_proof.py \
+      --schedule holdout/ticket-forward-v1/YYYY-MM-DD/day-schedule.json \
+      --source-page holdout/ticket-forward-v1/YYYY-MM-DD/day-schedule-source.txt \
+      --day-plan holdout/ticket-forward-v1/YYYY-MM-DD/day-plan.json \
+      --manifest docs/betting/ticket-forward-v1-manifest.json \
+      --github-run-id RUN_ID \
+      --github-plan-path holdout/ticket-forward-v1/YYYY-MM-DD/day-plan.json \
+      --output /tmp/day-server-proof.json
+
+run IDがない場合は**DAY_EVIDENCE_CONSISTENT_BUT_NOT_SERVER_ATTESTED**と表示し、正式な前向き日別分母に昇格させない。サーバー検査が成功して初めて**DAY_PLAN_SERVER_SEALED_PRE_FIRST_RACE**になる。
+
 ## 予測時点の情報ゲート
 
 単勝全頭、ワイド全n(n−1)/2組合せ、馬番号・枠・予定発走時刻が一致すること。オッズソースは許可されたJRA公式URLまたは記録可能な仲介URL。単勝とワイドのページに**出典上の更新時刻が表示されている**必要がある（推定した時刻を代入しない）。
