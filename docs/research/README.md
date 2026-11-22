@@ -15,6 +15,8 @@
 
 **追加の反証検定（2026-11-23）**：馬ノードの価格乖離構造を、単勝人気の**全馬共通の単調非線形価格補正**で説明できるかを、βのみ31条件とβ・曲率γの93条件で比較した。ペアを1組ずつ除外すると共通補正のR²はそれぞれ**0.134／0.125**と**0.164／0.150**、馬ノードの**0.505／0.656**に及ばず、2パラメータ補正後にもノード成分が残った（9/9レース）。ただしγが9レース中7レースで負側の探索境界に達しており、*任意*の価格形成補正を否定したわけではない。生物学的個体性、A/G遺伝構造や集団模倣の証拠でもない。[研究解釈と2種の負の対照](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [1パラメータの実測台帳](../evidence/ticket-market-temperature-null-20261123.json) · [2パラメータの実測台帳](../evidence/ticket-market-curvature-null-20261123.json)。
 
+**より柔軟な市場補正で再点検（2026-11-23）**：全馬に共通する単勝人気の**1〜4次の滑らかな価格関数**でもペア除外予測を実施。4次まで許すと同一競走内 \(R^2\) は京都5Rで**0.310**、別日3場4Rで**0.230**まで改善するが、馬ノードの**0.505／0.656**には平均で及ばなかった。ただし馬ノードが全レースで勝つわけではなく**9レース中8レース**、京都9Rでは共通の3/4次価格関数が僅かに上回る。**共有された市場価格関数と、馬インデックス別の残差構造を区別した探索的結果**であり、反復する生物学的個体性・社会学習・遺伝的因果を示さない。[本文に全モデルと例外](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [4次までの実測証拠](../evidence/ticket-market-smooth-null-20261123.json)。
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
