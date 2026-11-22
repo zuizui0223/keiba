@@ -24,6 +24,8 @@ or enter its formal holdout ledger.
 
 **Next race-day preflight:** [JRA 2026-11-23 Tokyo/Fukushima preliminary first ten](JRA_2026-11-23_PROGRAM_PREFLIGHT.md) is a **provisional program**, not a prospectively sealed sample. The new [GitHub day-universe proof](../../scripts/ticket_forward_day_proof.py) and full 24/36-entry venue-roster guard demand the actual official whole-day source, a before-first-race server receipt and frozen day selection; no real day has passed that gate yet.
 
+**Official-card read-only evidence (Nov 22 night):** [all 24 Nov23 JRA source URL / SHA256 / numbered-horse-row observations](../evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json) and [strict reconciliation](../../scripts/ticket_forward_jra_reconcile.py) document 24/24 extracted numeric card tables and three discrepancies against an explicitly third-party provisional roster (Tokyo 1R, 4R, 6R). This is **not** source-complete live active runners, post-scratch confirmation, synchronized win/wide odds or a pre-first-race server-sealed cohort. The signed forward denominator remains 0.
+
 ## What belongs here
 
 - JRA racecards, dated actual win/place/quinella/wide/etc.
