@@ -92,7 +92,7 @@ def inspect_response(*, requested_url: str, response_url: str,
         "raw_bytes": len(content),
         "codec": codec,
         "html_a_jra_card_link_count": len(card_links),
-        "html_a_jra_card_links_sample": sorted(card_links)[:8],
+        "html_a_jra_card_links_sample": sorted(card_links)[:40],
         "raw_has_year_2026": "2026" in decoded,
         "raw_has_racedate_20261123": ("20261123" in decoded or
                                      ("11月23日" in decoded and "2026" in decoded)),
