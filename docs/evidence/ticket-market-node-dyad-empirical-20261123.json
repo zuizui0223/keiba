@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "report_date_jst": "2026-11-23",
+  "title": "Ticket-market cross-sectional horse-node versus pair-edge price structure",
+  "status": "EMPIRICAL_NINE_RACE_GRAPH_DECOMPOSITION_POSTHOC_NOT_CAUSAL",
+  "source_workflow_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45083421066",
+  "source_workflow_run_id": 45083421066,
+  "source_artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45083421066/artifacts/14777604637",
+  "source_artifact_id": 14777604637,
+  "source_artifact_zip_sha256": "801423ee2f9693f5fd72f8ff2ec1e47bdc257d499edaba112099dc078bf6fdb2",
+  "source_file_sha_count": 33,
+  "source_scripts": [
+    "scripts/ecology_ticket_information_graph.py",
+    "scripts/ticket_type_historical_audit.py",
+    "scripts/ticket_wide_second_day.py"
+  ],
+  "data_dates": [
+    "2026-10-12",
+    "2026-10-18"
+  ],
+  "observed_races": 9,
+  "observed_days": 2,
+  "unit_of_analysis": "race (nine in two days); edges not independent replicates",
+  "measurement": "log(normalized inverse wide quoted midpoint / win-PL marginal wide top3 probability), PL mass weighting",
+  "empirical_by_date": {
+    "2026-10-12": {
+      "race_count": 5,
+      "mean_weighted_node_R2": 0.6856388982719771,
+      "mean_equal_edge_weight_node_R2": 0.6364379738312775,
+      "mean_leave_one_pair_out_R2": 0.5052462030892677,
+      "mean_order_logloss_node_only_minus_PL": 0.05328219918321144,
+      "mean_order_logloss_dyad_added_to_node": 0.01782177203089459,
+      "mean_order_logloss_full_minus_PL": 0.07110397121410603,
+      "races_above_shuffle_median_R2": 5,
+      "races_pair_remainder_improved_logloss": 1
+    },
+    "2026-10-18": {
+      "race_count": 4,
+      "mean_weighted_node_R2": 0.7786752016246417,
+      "mean_equal_edge_weight_node_R2": 0.6657073032675339,
+      "mean_leave_one_pair_out_R2": 0.6559056080200102,
+      "mean_order_logloss_node_only_minus_PL": 0.021519762793147823,
+      "mean_order_logloss_dyad_added_to_node": 0.004025084374775556,
+      "mean_order_logloss_full_minus_PL": 0.02554484716792338,
+      "races_above_shuffle_median_R2": 4,
+      "races_pair_remainder_improved_logloss": 2
+    }
+  },
+  "descriptive_edge_null": {
+    "type": "199 shuffles of pair log ratio labels within each race; PL weights and complete graph held fixed",
+    "observed_R2_above_shuffled_median_races": 9,
+    "repetitions_per_race": 199,
+    "no_inferential_p_value": true,
+    "no_null_of_actual_social_learning": true
+  },
+  "negative_controls_and_limits": {
+    "nine_real_odds_cross_sections_not_time_series": true,
+    "odds_inverse_probability_proxy_not_true_bettor_belief": true,
+    "trainer_fitted_on_excluded_pair_only_same_race_horses": true,
+    "repeated_individual_horse_ID_market_joint_data_missing": true,
+    "own_history_kinship_A_genomic_G_not_joined_with_ticket_graph": true,
+    "gene_causal_effect_not_identified": true,
+    "biological_pair_interaction_not_identified": true,
+    "actual_social_herding_not_identified": true,
+    "transfer_to_future_market_dates_not_validated": true,
+    "purchase_roi_not_tested": true,
+    "two_dates_only_and_complete_wide_board_selectivity": true
+  },
+  "next_confirmatory_goals": [
+    "test horse node effect repeatability across distinct races and date using stable horse IDs and identical marginal definition",
+    "compare pair-residual persistence across multiple timestamped market snapshots controlling for race and quote structure",
+    "separate own-history, pedigree A, genomic G, and market perception using join-verified same horse pre-race known-on data",
+    "benchmark cross-race node/dyad prediction against pair-label shuffles, horse relabeling, popularity/field effects and takeout sensitivity"
+  ]
+}
