@@ -5,6 +5,14 @@
 > predictions, odds and wagering are a separate technical track:
 > [betting-methods index](../betting/README.md).
 
+## 2026-11-23 · 券種別市場を個体ノードとペアの情報構造として解析（研究主線）
+
+**[ワイド市場の9レース実測グラフ分解](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md)**：単勝由来のワイド同時上位3着確率との対数価格比を「馬ノード評価成分＋ペア残差」に分解した。重み付き当てはめ \(R^2\) は10/12京都5Rで**0.686**、10/18の3場4Rで**0.779**。各ペアを1つずつ隠して、同一レース内の残るペアから予測した \(R^2\) も**0.505／0.656**。ただし個体の先天的能力や遺伝価ではなく、**市場における馬単位の価格成分**である。
+
+残差のペア固有成分をさらに足しても、正確な1→2→3着の負対数確率は両日とも平均悪化（追加損失 +0.0178／+0.0040）。これは買い目や利益の評価ではなく、**多層の集合判断が個体成分としてどの程度圧縮できるか**という観測的な情報生態学の問い。まだ**2日・9R・中間オッズ横断面**しかなく、見かけのノード構造が単勝強度の非線形市場補正で説明されないかを反証する必要がある。個体反復・血縁A・ゲノムG・市場情報を同じ個体IDで連結できていない。生物間相互作用、社会学習、遺伝因果は**HOLD**。
+
+[9競走の匿名実測証拠](../evidence/ticket-market-node-dyad-empirical-20261123.json) · [再計算CIとグラフ解析コード](https://github.com/zuizui0223/keiba/actions/runs/45083421066) · [結果前の本人・親族情報精度研究](INFORMATION_PRECISION_HIERARCHY_ECOLOGY_20261118.md)。
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
