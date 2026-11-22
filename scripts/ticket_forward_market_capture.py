@@ -21,7 +21,7 @@ import json
 import math
 from pathlib import Path
 import re
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, parse_qs, unquote
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
@@ -210,6 +210,24 @@ def parse_sources(*, win_raw: bytes, wide_raw: bytes, card_raw: bytes,
     }
 
 
+def _allowed_same_resource(requested: str, final: str) -> bool:
+    before, after=urlsplit(requested),urlsplit(final)
+    jra={"www.jra.go.jp","jra.jp","app.jra.jp","sp.jra.jp"}
+    if (before.scheme!="https" or after.scheme!="https" or
+            before.hostname not in (jra | {"sports.yahoo.co.jp"}) or
+            after.hostname not in (jra | {"sports.yahoo.co.jp"}) or
+            before.username or before.password or before.port or
+            after.username or after.password or after.port):
+        return False
+    if before.hostname=="sports.yahoo.co.jp" and after.hostname!="sports.yahoo.co.jp":
+        return False
+    if before.hostname in jra and after.hostname not in jra:
+        return False
+    return (unquote(before.path)==unquote(after.path) and
+            parse_qs(before.query, keep_blank_values=True)==
+            parse_qs(after.query, keep_blank_values=True))
+
+
 def read_one(url: str, *, timeout: int) -> tuple[bytes,str]:
     parts=urlsplit(url)
     if parts.scheme!="https" or parts.hostname not in {
@@ -220,7 +238,7 @@ def read_one(url: str, *, timeout: int) -> tuple[bytes,str]:
         "Accept":"text/html","Accept-Language":"ja,en;q=0.7",
         "User-Agent":"Mozilla/5.0 (compatible; keiba-research-limited/1.0)",
     }),timeout=timeout) as r:
-        if r.status!=200 or r.geturl()!=url:
+        if r.status!=200 or not _allowed_same_resource(url,r.geturl()):
             raise ValueError("source_http_or_redirect_error")
         raw=r.read(3_000_001)
     if len(raw)>3_000_000 or not raw:
