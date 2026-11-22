@@ -1,0 +1,1773 @@
+{
+  "status": "POSTHOC_STRICT_EQUAL_PEER_INFORMATION",
+  "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "pr70_reference_sha256": "66c0e45fa3870b5ee3350ca21fb28cfe5e3331cfa835d7207dc39d7ed2dee619",
+  "pr72_reference_sha256": "18caad41d66257cc064de13051fbf65241493f869960cff2d05d7fde2968657f",
+  "training_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "evaluation_cutoff_year": 2022,
+  "ridge_alpha": 100.0,
+  "seeds": [
+    2026112200,
+    2026112201,
+    2026112202,
+    2026112203,
+    2026112204,
+    2026112205,
+    2026112206,
+    2026112207,
+    2026112208,
+    2026112209,
+    2026112210,
+    2026112211,
+    2026112212,
+    2026112213,
+    2026112214,
+    2026112215,
+    2026112216,
+    2026112217,
+    2026112218,
+    2026112219,
+    2026112220,
+    2026112221,
+    2026112222,
+    2026112223,
+    2026112224,
+    2026112225,
+    2026112226,
+    2026112227,
+    2026112228,
+    2026112229,
+    2026112230,
+    2026112231
+  ],
+  "parity": {
+    "status": "OK",
+    "absolute_tolerance": 1e-12,
+    "strong_all_row_scores": true,
+    "strict_source_qa": true,
+    "all_pr70_pooled_and_yearly_statistics": true,
+    "all_pr72_pooled_and_yearly_statistics": true,
+    "all_native_peer_counts": true
+  },
+  "pooled": {
+    "starts": 244147,
+    "horses": 12887,
+    "races": 35333,
+    "full_models": {
+      "M1": {
+        "MSE": 0.09761216015780286,
+        "RMSE": 0.3124294482884142
+      },
+      "MC": {
+        "MSE": 0.09758968794981931,
+        "RMSE": 0.31239348256616895
+      },
+      "MP": {
+        "MSE": 0.09746541610950615,
+        "RMSE": 0.3121945164629035
+      },
+      "M2": {
+        "MSE": 0.0974487781280263,
+        "RMSE": 0.31216786850671596
+      },
+      "MS": {
+        "MSE": 0.09746967087512674,
+        "RMSE": 0.3122013306748175
+      },
+      "MD": {
+        "MSE": 0.09755206178457168,
+        "RMSE": 0.3123332543687458
+      },
+      "M0": {
+        "MSE": 0.10351929302901393,
+        "RMSE": 0.3217441421829058
+      }
+    },
+    "balanced_models": {
+      "MS": {
+        "MSE": 0.09758763161490994,
+        "RMSE": 0.3123901912911318
+      },
+      "MD": {
+        "MSE": 0.09755522914798383,
+        "RMSE": 0.3123383248145892
+      }
+    },
+    "mean_MSE_contrasts": {
+      "full_sire_advantage": 8.239090944493677e-05,
+      "balanced_sire_advantage": -3.2402466926078516e-05,
+      "change_in_sire_advantage": 0.0001147933763710153,
+      "sire_loss_increase": 0.00011796073978314817,
+      "dam_loss_increase": 3.167363412132731e-06
+    },
+    "primary_uncertainty": {
+      "balanced_sire_advantage": {
+        "mean_MSE_gain": -3.2402466926078516e-05,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 1.1283591553260565e-09,
+          "status": "OK",
+          "SE": 3.3591057669059135e-05,
+          "CI95": [
+            -9.823973016004239e-05,
+            3.343479630788535e-05
+          ],
+          "CI95_bonferroni_8": [
+            -0.00012425280652298969,
+            5.9447872670832646e-05
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -0.00010243373171622255,
+            3.27974599074403e-05
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 383
+        },
+        "dam_bootstrap": {
+          "clusters": 8276,
+          "largest_cluster_horses": 5,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -0.00010108612490019598,
+            3.3331071190122295e-05
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 8276
+        }
+      },
+      "change_in_sire_advantage": {
+        "mean_MSE_gain": 0.0001147933763710153,
+        "horses": 12887,
+        "two_way": {
+          "horses": 12887,
+          "days": 1067,
+          "horse_day_intersections": 244147,
+          "variance": 2.030056876811017e-09,
+          "status": "OK",
+          "SE": 4.505615248565968e-05,
+          "CI95": [
+            2.648494021717751e-05,
+            0.00020310181252485308
+          ],
+          "CI95_bonferroni_8": [
+            -8.406760627051714e-06,
+            0.0002379935133690823
+          ]
+        },
+        "sire_bootstrap": {
+          "clusters": 383,
+          "largest_cluster_horses": 313,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            -1.855689724743593e-05,
+            0.00024070354334753218
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 383
+        },
+        "dam_bootstrap": {
+          "clusters": 8276,
+          "largest_cluster_horses": 5,
+          "status": "OK",
+          "draws": 999,
+          "seed": 20261122,
+          "CI95": [
+            1.9151324551941213e-05,
+            0.00020860986188612576
+          ],
+          "unknown_parent_singleton_horses": 0,
+          "recorded_parent_groups": 8276
+        }
+      }
+    },
+    "monte_carlo": {
+      "balanced_sire_advantage": {
+        "mean": -3.240246692607852e-05,
+        "SD": 2.220737126991121e-05,
+        "MCSE": 3.925745704320382e-06,
+        "min": -6.847668923727186e-05,
+        "max": 3.0294996884820394e-05
+      },
+      "change_in_sire_advantage": {
+        "mean": 0.0001147933763710153,
+        "SD": 2.220737126991121e-05,
+        "MCSE": 3.925745704320382e-06,
+        "min": 5.2095912560116376e-05,
+        "max": 0.00015086759868220863
+      }
+    },
+    "per_draw": [
+      {
+        "seed": 2026112200,
+        "balanced_sire_advantage": -2.3425013273575283e-05,
+        "change_in_sire_advantage": 0.00010581592271851206
+      },
+      {
+        "seed": 2026112201,
+        "balanced_sire_advantage": -5.2505567607774096e-05,
+        "change_in_sire_advantage": 0.00013489647705271088
+      },
+      {
+        "seed": 2026112202,
+        "balanced_sire_advantage": 3.0294996884820394e-05,
+        "change_in_sire_advantage": 5.2095912560116376e-05
+      },
+      {
+        "seed": 2026112203,
+        "balanced_sire_advantage": -1.2422993453285977e-05,
+        "change_in_sire_advantage": 9.481390289822276e-05
+      },
+      {
+        "seed": 2026112204,
+        "balanced_sire_advantage": 1.7712686040317645e-06,
+        "change_in_sire_advantage": 8.061964084090501e-05
+      },
+      {
+        "seed": 2026112205,
+        "balanced_sire_advantage": -2.4215267288881242e-05,
+        "change_in_sire_advantage": 0.00010660617673381801
+      },
+      {
+        "seed": 2026112206,
+        "balanced_sire_advantage": -4.91343757054888e-06,
+        "change_in_sire_advantage": 8.730434701548566e-05
+      },
+      {
+        "seed": 2026112207,
+        "balanced_sire_advantage": -1.796847566124611e-05,
+        "change_in_sire_advantage": 0.00010035938510618288
+      },
+      {
+        "seed": 2026112208,
+        "balanced_sire_advantage": -5.120397731987679e-05,
+        "change_in_sire_advantage": 0.00013359488676481355
+      },
+      {
+        "seed": 2026112209,
+        "balanced_sire_advantage": -5.308702298512323e-05,
+        "change_in_sire_advantage": 0.00013547793243006
+      },
+      {
+        "seed": 2026112210,
+        "balanced_sire_advantage": -6.599106577502778e-05,
+        "change_in_sire_advantage": 0.00014838197521996457
+      },
+      {
+        "seed": 2026112211,
+        "balanced_sire_advantage": -2.399504979303497e-05,
+        "change_in_sire_advantage": 0.00010638595923797175
+      },
+      {
+        "seed": 2026112212,
+        "balanced_sire_advantage": -3.0969104341425604e-05,
+        "change_in_sire_advantage": 0.00011336001378636238
+      },
+      {
+        "seed": 2026112213,
+        "balanced_sire_advantage": -4.4843258200334395e-05,
+        "change_in_sire_advantage": 0.00012723416764527117
+      },
+      {
+        "seed": 2026112214,
+        "balanced_sire_advantage": -1.975587438698026e-05,
+        "change_in_sire_advantage": 0.00010214678383191704
+      },
+      {
+        "seed": 2026112215,
+        "balanced_sire_advantage": -3.9854842579160375e-05,
+        "change_in_sire_advantage": 0.00012224575202409715
+      },
+      {
+        "seed": 2026112216,
+        "balanced_sire_advantage": -1.9261093442207965e-05,
+        "change_in_sire_advantage": 0.00010165200288714474
+      },
+      {
+        "seed": 2026112217,
+        "balanced_sire_advantage": -2.6060135793719288e-05,
+        "change_in_sire_advantage": 0.00010845104523865606
+      },
+      {
+        "seed": 2026112218,
+        "balanced_sire_advantage": -4.106343163051599e-05,
+        "change_in_sire_advantage": 0.00012345434107545277
+      },
+      {
+        "seed": 2026112219,
+        "balanced_sire_advantage": -3.27739506436483e-05,
+        "change_in_sire_advantage": 0.00011516486008858508
+      },
+      {
+        "seed": 2026112220,
+        "balanced_sire_advantage": -4.376795580150245e-05,
+        "change_in_sire_advantage": 0.00012615886524643921
+      },
+      {
+        "seed": 2026112221,
+        "balanced_sire_advantage": -4.3922581259233356e-05,
+        "change_in_sire_advantage": 0.00012631349070417014
+      },
+      {
+        "seed": 2026112222,
+        "balanced_sire_advantage": -2.735440672874914e-05,
+        "change_in_sire_advantage": 0.0001097453161736859
+      },
+      {
+        "seed": 2026112223,
+        "balanced_sire_advantage": -6.212218479699685e-05,
+        "change_in_sire_advantage": 0.00014451309424193362
+      },
+      {
+        "seed": 2026112224,
+        "balanced_sire_advantage": -4.18086830814504e-05,
+        "change_in_sire_advantage": 0.0001241995925263872
+      },
+      {
+        "seed": 2026112225,
+        "balanced_sire_advantage": -6.558732194967903e-05,
+        "change_in_sire_advantage": 0.00014797823139461581
+      },
+      {
+        "seed": 2026112226,
+        "balanced_sire_advantage": -3.290053694140125e-05,
+        "change_in_sire_advantage": 0.00011529144638633803
+      },
+      {
+        "seed": 2026112227,
+        "balanced_sire_advantage": -3.390023770176681e-05,
+        "change_in_sire_advantage": 0.00011629114714670358
+      },
+      {
+        "seed": 2026112228,
+        "balanced_sire_advantage": -2.9756981724342134e-05,
+        "change_in_sire_advantage": 0.00011214789116927891
+      },
+      {
+        "seed": 2026112229,
+        "balanced_sire_advantage": -4.508377468514902e-05,
+        "change_in_sire_advantage": 0.00012747468413008579
+      },
+      {
+        "seed": 2026112230,
+        "balanced_sire_advantage": -6.847668923727186e-05,
+        "change_in_sire_advantage": 0.00015086759868220863
+      },
+      {
+        "seed": 2026112231,
+        "balanced_sire_advantage": 1.0045708530544031e-05,
+        "change_in_sire_advantage": 7.234520091439275e-05
+      }
+    ],
+    "support": {
+      "joint_support": {
+        "neither": {
+          "starts": 573,
+          "horse_equal_share": 0.0027274215356216133
+        },
+        "sire_only": {
+          "starts": 41041,
+          "horse_equal_share": 0.17263721479928956
+        },
+        "dam_only": {
+          "starts": 269,
+          "horse_equal_share": 0.001490191849763508
+        },
+        "both": {
+          "starts": 202264,
+          "horse_equal_share": 0.8231451718153253
+        }
+      },
+      "by_parent": {
+        "sire": {
+          "mean_peer_count": 317.1931244482744,
+          "bins": {
+            "0": {
+              "starts": 842,
+              "horse_equal_share": 0.004217613385385122
+            },
+            "1": {
+              "starts": 602,
+              "horse_equal_share": 0.002927383351531798
+            },
+            "2-4": {
+              "starts": 2606,
+              "horse_equal_share": 0.011098654530214127
+            },
+            "5+": {
+              "starts": 240097,
+              "horse_equal_share": 0.9817563487328689
+            }
+          }
+        },
+        "dam": {
+          "mean_peer_count": 2.8052160523078817,
+          "bins": {
+            "0": {
+              "starts": 41614,
+              "horse_equal_share": 0.17536463633491117
+            },
+            "1": {
+              "starts": 42321,
+              "horse_equal_share": 0.17849690645605515
+            },
+            "2-4": {
+              "starts": 103004,
+              "horse_equal_share": 0.4202917510882542
+            },
+            "5+": {
+              "starts": 57208,
+              "horse_equal_share": 0.22584670612077956
+            }
+          }
+        }
+      },
+      "parent_coverage": {
+        "sire": {
+          "known_parent_horses": 12887,
+          "unknown_parent_horses": 0,
+          "recorded_parent_groups": 383,
+          "recorded_singleton_groups": 92
+        },
+        "dam": {
+          "known_parent_horses": 12887,
+          "unknown_parent_horses": 0,
+          "recorded_parent_groups": 8276,
+          "recorded_singleton_groups": 4820
+        }
+      },
+      "balanced": {
+        "mean_peer_count": 2.7944248357355357,
+        "bins": {
+          "0": {
+            "starts": 41883,
+            "horse_equal_share": 0.17685482818467466
+          },
+          "1": {
+            "starts": 42365,
+            "horse_equal_share": 0.1786990928584895
+          },
+          "2-4": {
+            "starts": 103122,
+            "horse_equal_share": 0.4203205780960083
+          },
+          "5+": {
+            "starts": 56777,
+            "horse_equal_share": 0.22412550086082764
+          }
+        }
+      }
+    }
+  },
+  "by_year": {
+    "2022": {
+      "starts": 120381,
+      "horses": 12755,
+      "races": 14238,
+      "full_models": {
+        "M1": {
+          "MSE": 0.09613689767113112,
+          "RMSE": 0.31005950666143284
+        },
+        "MC": {
+          "MSE": 0.09611432702280667,
+          "RMSE": 0.3100231072401002
+        },
+        "MP": {
+          "MSE": 0.09599647650530672,
+          "RMSE": 0.3098329816293074
+        },
+        "M2": {
+          "MSE": 0.09597871064964124,
+          "RMSE": 0.30980431025026306
+        },
+        "MS": {
+          "MSE": 0.09600858222597665,
+          "RMSE": 0.309852516894694
+        },
+        "MD": {
+          "MSE": 0.09606523661123856,
+          "RMSE": 0.30994392494649503
+        },
+        "M0": {
+          "MSE": 0.10376912817647795,
+          "RMSE": 0.32213215948811746
+        }
+      },
+      "balanced_models": {
+        "MS": {
+          "MSE": 0.09611072557031086,
+          "RMSE": 0.3100172988242928
+        },
+        "MD": {
+          "MSE": 0.09606466247124158,
+          "RMSE": 0.3099429987453202
+        }
+      },
+      "mean_MSE_contrasts": {
+        "full_sire_advantage": 5.6654385261923156e-05,
+        "balanced_sire_advantage": -4.606309906927203e-05,
+        "change_in_sire_advantage": 0.00010271748433119518,
+        "sire_loss_increase": 0.000102143344334229,
+        "dam_loss_increase": -5.741399969661991e-07
+      },
+      "primary_uncertainty": {
+        "balanced_sire_advantage": {
+          "mean_MSE_gain": -4.606309906927203e-05,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 1.4105769751884807e-09,
+            "status": "OK",
+            "SE": 3.7557648690892255e-05,
+            "CI95": [
+              -0.00011967473784742874,
+              2.754853970888468e-05
+            ],
+            "CI95_bonferroni_8": [
+              -0.00014875956134522642,
+              5.663336320668235e-05
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00013033847252596058,
+              4.020822055884076e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 381
+          },
+          "dam_bootstrap": {
+            "clusters": 8234,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00012330142645732993,
+              3.2822777935022524e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 8234
+          }
+        },
+        "change_in_sire_advantage": {
+          "mean_MSE_gain": 0.00010271748433119518,
+          "horses": 12755,
+          "two_way": {
+            "horses": 12755,
+            "days": 364,
+            "horse_day_intersections": 120381,
+            "variance": 2.638702852386877e-09,
+            "status": "OK",
+            "SE": 5.1368305913149176e-05,
+            "CI95": [
+              2.0374547945869266e-06,
+              0.00020339751386780344
+            ],
+            "CI95_bonferroni_8": [
+              -3.774240797480748e-05,
+              0.00024317737663719785
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 381,
+            "largest_cluster_horses": 311,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -4.572773635902047e-05,
+              0.0002414654735972282
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 381
+          },
+          "dam_bootstrap": {
+            "clusters": 8234,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -6.257435673784766e-06,
+              0.00020399524953856112
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 8234
+          }
+        }
+      },
+      "monte_carlo": {
+        "balanced_sire_advantage": {
+          "mean": -4.606309906927203e-05,
+          "SD": 2.154315722878248e-05,
+          "MCSE": 3.8083281411600206e-06,
+          "min": -8.913090734220714e-05,
+          "max": -7.992059304793585e-06
+        },
+        "change_in_sire_advantage": {
+          "mean": 0.00010271748433119518,
+          "SD": 2.154315722878248e-05,
+          "MCSE": 3.8083281411600206e-06,
+          "min": 6.464644456671674e-05,
+          "max": 0.0001457852926041303
+        }
+      },
+      "per_draw": [
+        {
+          "seed": 2026112200,
+          "balanced_sire_advantage": -4.834840789269114e-05,
+          "change_in_sire_advantage": 0.00010500279315461429
+        },
+        {
+          "seed": 2026112201,
+          "balanced_sire_advantage": -7.760943720938779e-05,
+          "change_in_sire_advantage": 0.00013426382247131095
+        },
+        {
+          "seed": 2026112202,
+          "balanced_sire_advantage": -3.4232800552093746e-05,
+          "change_in_sire_advantage": 9.08871858140169e-05
+        },
+        {
+          "seed": 2026112203,
+          "balanced_sire_advantage": -9.781623728534813e-06,
+          "change_in_sire_advantage": 6.643600899045797e-05
+        },
+        {
+          "seed": 2026112204,
+          "balanced_sire_advantage": -2.5619125695575543e-05,
+          "change_in_sire_advantage": 8.22735109574987e-05
+        },
+        {
+          "seed": 2026112205,
+          "balanced_sire_advantage": -5.055385570326779e-05,
+          "change_in_sire_advantage": 0.00010720824096519094
+        },
+        {
+          "seed": 2026112206,
+          "balanced_sire_advantage": -5.66262367002785e-05,
+          "change_in_sire_advantage": 0.00011328062196220166
+        },
+        {
+          "seed": 2026112207,
+          "balanced_sire_advantage": -3.459515413251702e-05,
+          "change_in_sire_advantage": 9.124953939444017e-05
+        },
+        {
+          "seed": 2026112208,
+          "balanced_sire_advantage": -7.992059304793585e-06,
+          "change_in_sire_advantage": 6.464644456671674e-05
+        },
+        {
+          "seed": 2026112209,
+          "balanced_sire_advantage": -7.699575382722653e-05,
+          "change_in_sire_advantage": 0.00013365013908914967
+        },
+        {
+          "seed": 2026112210,
+          "balanced_sire_advantage": -6.71444435903298e-05,
+          "change_in_sire_advantage": 0.00012379882885225294
+        },
+        {
+          "seed": 2026112211,
+          "balanced_sire_advantage": -3.870207096892805e-05,
+          "change_in_sire_advantage": 9.535645623085121e-05
+        },
+        {
+          "seed": 2026112212,
+          "balanced_sire_advantage": -3.923715105185301e-05,
+          "change_in_sire_advantage": 9.589153631377617e-05
+        },
+        {
+          "seed": 2026112213,
+          "balanced_sire_advantage": -3.755899398830951e-05,
+          "change_in_sire_advantage": 9.421337925023267e-05
+        },
+        {
+          "seed": 2026112214,
+          "balanced_sire_advantage": -7.381369533371631e-05,
+          "change_in_sire_advantage": 0.00013046808059563947
+        },
+        {
+          "seed": 2026112215,
+          "balanced_sire_advantage": -2.4719183161944794e-05,
+          "change_in_sire_advantage": 8.137356842386795e-05
+        },
+        {
+          "seed": 2026112216,
+          "balanced_sire_advantage": -4.721103892952731e-05,
+          "change_in_sire_advantage": 0.00010386542419145046
+        },
+        {
+          "seed": 2026112217,
+          "balanced_sire_advantage": -7.673092607617543e-05,
+          "change_in_sire_advantage": 0.00013338531133809858
+        },
+        {
+          "seed": 2026112218,
+          "balanced_sire_advantage": -6.229852816068815e-05,
+          "change_in_sire_advantage": 0.00011895291342261131
+        },
+        {
+          "seed": 2026112219,
+          "balanced_sire_advantage": -6.458537495846515e-05,
+          "change_in_sire_advantage": 0.0001212397602203883
+        },
+        {
+          "seed": 2026112220,
+          "balanced_sire_advantage": -2.1871182434080993e-05,
+          "change_in_sire_advantage": 7.852556769600415e-05
+        },
+        {
+          "seed": 2026112221,
+          "balanced_sire_advantage": -2.063122845779813e-05,
+          "change_in_sire_advantage": 7.728561371972129e-05
+        },
+        {
+          "seed": 2026112222,
+          "balanced_sire_advantage": -3.2010977535497596e-05,
+          "change_in_sire_advantage": 8.866536279742075e-05
+        },
+        {
+          "seed": 2026112223,
+          "balanced_sire_advantage": -4.7670995291574576e-05,
+          "change_in_sire_advantage": 0.00010432538055349773
+        },
+        {
+          "seed": 2026112224,
+          "balanced_sire_advantage": -7.196069769692557e-05,
+          "change_in_sire_advantage": 0.00012861508295884872
+        },
+        {
+          "seed": 2026112225,
+          "balanced_sire_advantage": -6.650762536347573e-05,
+          "change_in_sire_advantage": 0.0001231620106253989
+        },
+        {
+          "seed": 2026112226,
+          "balanced_sire_advantage": -2.752980624795454e-05,
+          "change_in_sire_advantage": 8.41841915098777e-05
+        },
+        {
+          "seed": 2026112227,
+          "balanced_sire_advantage": -4.0101917457487804e-05,
+          "change_in_sire_advantage": 9.675630271941096e-05
+        },
+        {
+          "seed": 2026112228,
+          "balanced_sire_advantage": -8.913090734220714e-05,
+          "change_in_sire_advantage": 0.0001457852926041303
+        },
+        {
+          "seed": 2026112229,
+          "balanced_sire_advantage": -2.8495170923130905e-05,
+          "change_in_sire_advantage": 8.514955618505406e-05
+        },
+        {
+          "seed": 2026112230,
+          "balanced_sire_advantage": -4.7352467507575956e-05,
+          "change_in_sire_advantage": 0.0001040068527694991
+        },
+        {
+          "seed": 2026112231,
+          "balanced_sire_advantage": -2.6400332992692066e-05,
+          "change_in_sire_advantage": 8.305471825461523e-05
+        }
+      ],
+      "support": {
+        "joint_support": {
+          "neither": {
+            "starts": 213,
+            "horse_equal_share": 0.002683967812982963
+          },
+          "sire_only": {
+            "starts": 19382,
+            "horse_equal_share": 0.17351028850091946
+          },
+          "dam_only": {
+            "starts": 153,
+            "horse_equal_share": 0.0014779501608196237
+          },
+          "both": {
+            "starts": 100633,
+            "horse_equal_share": 0.8223277935252779
+          }
+        },
+        "by_parent": {
+          "sire": {
+            "mean_peer_count": 316.2580714199622,
+            "bins": {
+              "0": {
+                "starts": 366,
+                "horse_equal_share": 0.0041619179738025865
+              },
+              "1": {
+                "starts": 308,
+                "horse_equal_share": 0.0029164637148697305
+              },
+              "2-4": {
+                "starts": 1250,
+                "horse_equal_share": 0.010716214462985634
+              },
+              "5+": {
+                "starts": 118457,
+                "horse_equal_share": 0.982205403848342
+              }
+            }
+          },
+          "dam": {
+            "mean_peer_count": 2.796609373680429,
+            "bins": {
+              "0": {
+                "starts": 19595,
+                "horse_equal_share": 0.17619425631390243
+              },
+              "1": {
+                "starts": 20483,
+                "horse_equal_share": 0.17910471659587288
+              },
+              "2-4": {
+                "starts": 51246,
+                "horse_equal_share": 0.42000562488416787
+              },
+              "5+": {
+                "starts": 29057,
+                "horse_equal_share": 0.22469540220605683
+              }
+            }
+          }
+        },
+        "parent_coverage": {
+          "sire": {
+            "known_parent_horses": 12755,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 381,
+            "recorded_singleton_groups": 90
+          },
+          "dam": {
+            "known_parent_horses": 12755,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 8234,
+            "recorded_singleton_groups": 4828
+          }
+        },
+        "balanced": {
+          "mean_peer_count": 2.7863859075969435,
+          "bins": {
+            "0": {
+              "starts": 19748,
+              "horse_equal_share": 0.17767220647472207
+            },
+            "1": {
+              "starts": 20510,
+              "horse_equal_share": 0.17926669179998844
+            },
+            "2-4": {
+              "starts": 51266,
+              "horse_equal_share": 0.41988012351999426
+            },
+            "5+": {
+              "starts": 28857,
+              "horse_equal_share": 0.22318097820529528
+            }
+          }
+        }
+      }
+    },
+    "2023": {
+      "starts": 80939,
+      "horses": 8778,
+      "races": 11469,
+      "full_models": {
+        "M1": {
+          "MSE": 0.10105667550048389,
+          "RMSE": 0.317894126244075
+        },
+        "MC": {
+          "MSE": 0.10102591850898797,
+          "RMSE": 0.31784574640694496
+        },
+        "MP": {
+          "MSE": 0.10088248415118012,
+          "RMSE": 0.31762003109246767
+        },
+        "M2": {
+          "MSE": 0.10084838682028767,
+          "RMSE": 0.3175663502644568
+        },
+        "MS": {
+          "MSE": 0.1008691753921615,
+          "RMSE": 0.31759907964627593
+        },
+        "MD": {
+          "MSE": 0.10098771374697563,
+          "RMSE": 0.3177856411906863
+        },
+        "M0": {
+          "MSE": 0.10268926821362237,
+          "RMSE": 0.3204516628348531
+        }
+      },
+      "balanced_models": {
+        "MS": {
+          "MSE": 0.10102082481390164,
+          "RMSE": 0.3178377334645804
+        },
+        "MD": {
+          "MSE": 0.10100331437401362,
+          "RMSE": 0.3178101860765536
+        }
+      },
+      "mean_MSE_contrasts": {
+        "full_sire_advantage": 0.00011853835481411885,
+        "balanced_sire_advantage": -1.7510439888015424e-05,
+        "change_in_sire_advantage": 0.0001360487947021343,
+        "sire_loss_increase": 0.00015164942174012564,
+        "dam_loss_increase": 1.560062703799145e-05
+      },
+      "primary_uncertainty": {
+        "balanced_sire_advantage": {
+          "mean_MSE_gain": -1.7510439888015424e-05,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 3.066406296264992e-09,
+            "status": "OK",
+            "SE": 5.537514150108325e-05,
+            "CI95": [
+              -0.00012604372286894783,
+              9.1022843092917e-05
+            ],
+            "CI95_bonferroni_8": [
+              -0.00016892649835843535,
+              0.00013390561858240448
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00011358527052062587,
+              8.9837495054806e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 336
+          },
+          "dam_bootstrap": {
+            "clusters": 6443,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00011503300315325127,
+              9.288436362098106e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 6443
+          }
+        },
+        "change_in_sire_advantage": {
+          "mean_MSE_gain": 0.0001360487947021343,
+          "horses": 8778,
+          "two_way": {
+            "horses": 8778,
+            "days": 365,
+            "horse_day_intersections": 80939,
+            "variance": 5.631137599034374e-09,
+            "status": "OK",
+            "SE": 7.50409061714634e-05,
+            "CI95": [
+              -1.1028678761183385e-05,
+              0.000283126268165452
+            ],
+            "CI95_bonferroni_8": [
+              -6.914071684627999e-05,
+              0.0003412383062505486
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 336,
+            "largest_cluster_horses": 231,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -1.6923119460923152e-05,
+              0.00031046322552464933
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 336
+          },
+          "dam_bootstrap": {
+            "clusters": 6443,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -7.301399523537394e-06,
+              0.00027649950744273885
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 6443
+          }
+        }
+      },
+      "monte_carlo": {
+        "balanced_sire_advantage": {
+          "mean": -1.751043988801542e-05,
+          "SD": 4.3744070169965575e-05,
+          "MCSE": 7.732932163470707e-06,
+          "min": -0.0001210228225127801,
+          "max": 5.1446279460415877e-05
+        },
+        "change_in_sire_advantage": {
+          "mean": 0.00013604879470213425,
+          "SD": 4.3744070169965575e-05,
+          "MCSE": 7.732932163470707e-06,
+          "min": 6.709207535370297e-05,
+          "max": 0.00023956117732689894
+        }
+      },
+      "per_draw": [
+        {
+          "seed": 2026112200,
+          "balanced_sire_advantage": -6.712000742564274e-06,
+          "change_in_sire_advantage": 0.00012525035555668312
+        },
+        {
+          "seed": 2026112201,
+          "balanced_sire_advantage": -4.240109012866178e-05,
+          "change_in_sire_advantage": 0.00016093944494278062
+        },
+        {
+          "seed": 2026112202,
+          "balanced_sire_advantage": 4.156696552310635e-05,
+          "change_in_sire_advantage": 7.697138929101249e-05
+        },
+        {
+          "seed": 2026112203,
+          "balanced_sire_advantage": -1.963229038313181e-05,
+          "change_in_sire_advantage": 0.00013817064519725067
+        },
+        {
+          "seed": 2026112204,
+          "balanced_sire_advantage": 5.0737111254716735e-05,
+          "change_in_sire_advantage": 6.780124355940212e-05
+        },
+        {
+          "seed": 2026112205,
+          "balanced_sire_advantage": 4.483798839339463e-06,
+          "change_in_sire_advantage": 0.00011405455597477939
+        },
+        {
+          "seed": 2026112206,
+          "balanced_sire_advantage": 3.8114661444518435e-05,
+          "change_in_sire_advantage": 8.042369336960041e-05
+        },
+        {
+          "seed": 2026112207,
+          "balanced_sire_advantage": 3.05866415617778e-05,
+          "change_in_sire_advantage": 8.795171325234104e-05
+        },
+        {
+          "seed": 2026112208,
+          "balanced_sire_advantage": -0.0001210228225127801,
+          "change_in_sire_advantage": 0.00023956117732689894
+        },
+        {
+          "seed": 2026112209,
+          "balanced_sire_advantage": -6.247263702192442e-05,
+          "change_in_sire_advantage": 0.00018101099183604326
+        },
+        {
+          "seed": 2026112210,
+          "balanced_sire_advantage": -6.203303193860895e-05,
+          "change_in_sire_advantage": 0.0001805713867527278
+        },
+        {
+          "seed": 2026112211,
+          "balanced_sire_advantage": -4.295968360817729e-05,
+          "change_in_sire_advantage": 0.00016149803842229615
+        },
+        {
+          "seed": 2026112212,
+          "balanced_sire_advantage": -4.1177103617323085e-06,
+          "change_in_sire_advantage": 0.00012265606517585117
+        },
+        {
+          "seed": 2026112213,
+          "balanced_sire_advantage": -3.4856898693960036e-05,
+          "change_in_sire_advantage": 0.00015339525350807889
+        },
+        {
+          "seed": 2026112214,
+          "balanced_sire_advantage": 2.5659739173420964e-05,
+          "change_in_sire_advantage": 9.287861564069789e-05
+        },
+        {
+          "seed": 2026112215,
+          "balanced_sire_advantage": -3.758952046663089e-05,
+          "change_in_sire_advantage": 0.00015612787528074973
+        },
+        {
+          "seed": 2026112216,
+          "balanced_sire_advantage": 5.1446279460415877e-05,
+          "change_in_sire_advantage": 6.709207535370297e-05
+        },
+        {
+          "seed": 2026112217,
+          "balanced_sire_advantage": 1.0246728427573163e-05,
+          "change_in_sire_advantage": 0.00010829162638654568
+        },
+        {
+          "seed": 2026112218,
+          "balanced_sire_advantage": -1.5429226596700236e-06,
+          "change_in_sire_advantage": 0.00012008127747378888
+        },
+        {
+          "seed": 2026112219,
+          "balanced_sire_advantage": 6.954626684623708e-06,
+          "change_in_sire_advantage": 0.00011158372812949514
+        },
+        {
+          "seed": 2026112220,
+          "balanced_sire_advantage": -6.629082353965375e-05,
+          "change_in_sire_advantage": 0.0001848291783537726
+        },
+        {
+          "seed": 2026112221,
+          "balanced_sire_advantage": -3.908003948715256e-05,
+          "change_in_sire_advantage": 0.00015761839430127142
+        },
+        {
+          "seed": 2026112222,
+          "balanced_sire_advantage": -1.0652118285457445e-05,
+          "change_in_sire_advantage": 0.0001291904730995763
+        },
+        {
+          "seed": 2026112223,
+          "balanced_sire_advantage": -5.026904722303763e-05,
+          "change_in_sire_advantage": 0.00016880740203715648
+        },
+        {
+          "seed": 2026112224,
+          "balanced_sire_advantage": -3.2410096515718374e-05,
+          "change_in_sire_advantage": 0.00015094845132983722
+        },
+        {
+          "seed": 2026112225,
+          "balanced_sire_advantage": -1.4156271352568519e-05,
+          "change_in_sire_advantage": 0.00013269462616668736
+        },
+        {
+          "seed": 2026112226,
+          "balanced_sire_advantage": -3.264537280348924e-05,
+          "change_in_sire_advantage": 0.00015118372761760808
+        },
+        {
+          "seed": 2026112227,
+          "balanced_sire_advantage": -6.723988224612811e-06,
+          "change_in_sire_advantage": 0.00012526234303873165
+        },
+        {
+          "seed": 2026112228,
+          "balanced_sire_advantage": 2.709550018288326e-05,
+          "change_in_sire_advantage": 9.144285463123558e-05
+        },
+        {
+          "seed": 2026112229,
+          "balanced_sire_advantage": -6.253230474683901e-05,
+          "change_in_sire_advantage": 0.00018107065956095785
+        },
+        {
+          "seed": 2026112230,
+          "balanced_sire_advantage": -0.00011769640494892478,
+          "change_in_sire_advantage": 0.00023623475976304365
+        },
+        {
+          "seed": 2026112231,
+          "balanced_sire_advantage": 2.0570946676426772e-05,
+          "change_in_sire_advantage": 9.796740813769208e-05
+        }
+      ],
+      "support": {
+        "joint_support": {
+          "neither": {
+            "starts": 199,
+            "horse_equal_share": 0.003254775084918625
+          },
+          "sire_only": {
+            "starts": 13906,
+            "horse_equal_share": 0.1862358710834871
+          },
+          "dam_only": {
+            "starts": 89,
+            "horse_equal_share": 0.0014384355432320829
+          },
+          "both": {
+            "starts": 66745,
+            "horse_equal_share": 0.8090709182883623
+          }
+        },
+        "by_parent": {
+          "sire": {
+            "mean_peer_count": 305.7300115656836,
+            "bins": {
+              "0": {
+                "starts": 288,
+                "horse_equal_share": 0.004693210628150708
+              },
+              "1": {
+                "starts": 200,
+                "horse_equal_share": 0.003203724148430412
+              },
+              "2-4": {
+                "starts": 904,
+                "horse_equal_share": 0.013169725620093086
+              },
+              "5+": {
+                "starts": 79547,
+                "horse_equal_share": 0.9789333396033257
+              }
+            }
+          },
+          "dam": {
+            "mean_peer_count": 2.700185191961335,
+            "bins": {
+              "0": {
+                "starts": 14105,
+                "horse_equal_share": 0.18949064616840572
+              },
+              "1": {
+                "starts": 14034,
+                "horse_equal_share": 0.18477339288049854
+              },
+              "2-4": {
+                "starts": 34424,
+                "horse_equal_share": 0.415158774145194
+              },
+              "5+": {
+                "starts": 18376,
+                "horse_equal_share": 0.2105771868059018
+              }
+            }
+          }
+        },
+        "parent_coverage": {
+          "sire": {
+            "known_parent_horses": 8778,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 336,
+            "recorded_singleton_groups": 89
+          },
+          "dam": {
+            "known_parent_horses": 8778,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 6443,
+            "recorded_singleton_groups": 4517
+          }
+        },
+        "balanced": {
+          "mean_peer_count": 2.687452936654897,
+          "bins": {
+            "0": {
+              "starts": 14194,
+              "horse_equal_share": 0.1909290817116378
+            },
+            "1": {
+              "starts": 14045,
+              "horse_equal_share": 0.18498527309921403
+            },
+            "2-4": {
+              "starts": 34496,
+              "horse_equal_share": 0.415704273594405
+            },
+            "5+": {
+              "starts": 18204,
+              "horse_equal_share": 0.20838137159474318
+            }
+          }
+        }
+      }
+    },
+    "2024": {
+      "starts": 42827,
+      "horses": 5225,
+      "races": 9626,
+      "full_models": {
+        "M1": {
+          "MSE": 0.10231408309168083,
+          "RMSE": 0.3198657266599234
+        },
+        "MC": {
+          "MSE": 0.1022638244407046,
+          "RMSE": 0.319787154902608
+        },
+        "MP": {
+          "MSE": 0.10196676777396012,
+          "RMSE": 0.31932235714706875
+        },
+        "M2": {
+          "MSE": 0.10192484967157066,
+          "RMSE": 0.3192567143719465
+        },
+        "MS": {
+          "MSE": 0.10203971393253347,
+          "RMSE": 0.3194365569757686
+        },
+        "MD": {
+          "MSE": 0.10209998635446314,
+          "RMSE": 0.31953088482095615
+        },
+        "M0": {
+          "MSE": 0.10116139039003844,
+          "RMSE": 0.31805878448808556
+        }
+      },
+      "balanced_models": {
+        "MS": {
+          "MSE": 0.10225743045672062,
+          "RMSE": 0.31977715749678026
+        },
+        "MD": {
+          "MSE": 0.10210333824635189,
+          "RMSE": 0.31953612979810575
+        }
+      },
+      "mean_MSE_contrasts": {
+        "full_sire_advantage": 6.027242192968108e-05,
+        "balanced_sire_advantage": -0.00015409221036874138,
+        "change_in_sire_advantage": 0.0002143646322984225,
+        "sire_loss_increase": 0.00021771652418714433,
+        "dam_loss_increase": 3.3518918887217083e-06
+      },
+      "primary_uncertainty": {
+        "balanced_sire_advantage": {
+          "mean_MSE_gain": -0.00015409221036874138,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 6.216903118174057e-09,
+            "status": "OK",
+            "SE": 7.884734059037158e-05,
+            "CI95": [
+              -0.00030863015820263275,
+              4.4573746514999565e-07
+            ],
+            "CI95_bonferroni_8": [
+              -0.00036968991738020373,
+              6.150549664272098e-05
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.0002792498984959415,
+              -2.5536994915277758e-05
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 288
+          },
+          "dam_bootstrap": {
+            "clusters": 4284,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -0.00030242369317430627,
+              6.682388763597399e-06
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 4284
+          }
+        },
+        "change_in_sire_advantage": {
+          "mean_MSE_gain": 0.0002143646322984225,
+          "horses": 5225,
+          "two_way": {
+            "horses": 5225,
+            "days": 338,
+            "horse_day_intersections": 42827,
+            "variance": 1.0780913083956365e-08,
+            "status": "OK",
+            "SE": 0.00010383117587678743,
+            "CI95": [
+              1.0859267107475107e-05,
+              0.00041786999748936993
+            ],
+            "CI95_bonferroni_8": [
+              -6.954809408810149e-05,
+              0.0004982773586849465
+            ]
+          },
+          "sire_bootstrap": {
+            "clusters": 288,
+            "largest_cluster_horses": 141,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -9.920521951930812e-05,
+              0.0005487913113903087
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 288
+          },
+          "dam_bootstrap": {
+            "clusters": 4284,
+            "largest_cluster_horses": 5,
+            "status": "OK",
+            "draws": 999,
+            "seed": 20261122,
+            "CI95": [
+              -1.9775282102456575e-06,
+              0.0004253430058949456
+            ],
+            "unknown_parent_singleton_horses": 0,
+            "recorded_parent_groups": 4284
+          }
+        }
+      },
+      "monte_carlo": {
+        "balanced_sire_advantage": {
+          "mean": -0.0001540922103687414,
+          "SD": 6.239579914844879e-05,
+          "MCSE": 1.1030123173855487e-05,
+          "min": -0.00026412682258280016,
+          "max": -7.4851795021107185e-06
+        },
+        "change_in_sire_advantage": {
+          "mean": 0.00021436463229842248,
+          "SD": 6.23957991484488e-05,
+          "MCSE": 1.1030123173855489e-05,
+          "min": 6.77576014317918e-05,
+          "max": 0.00032439924451248123
+        }
+      },
+      "per_draw": [
+        {
+          "seed": 2026112200,
+          "balanced_sire_advantage": -0.00012139499512445694,
+          "change_in_sire_advantage": 0.00018166741705413802
+        },
+        {
+          "seed": 2026112201,
+          "balanced_sire_advantage": -0.00011165644695962634,
+          "change_in_sire_advantage": 0.0001719288688893074
+        },
+        {
+          "seed": 2026112202,
+          "balanced_sire_advantage": -7.4851795021107185e-06,
+          "change_in_sire_advantage": 6.77576014317918e-05
+        },
+        {
+          "seed": 2026112203,
+          "balanced_sire_advantage": -0.00015271064101107245,
+          "change_in_sire_advantage": 0.00021298306294075352
+        },
+        {
+          "seed": 2026112204,
+          "balanced_sire_advantage": -9.665186714335473e-05,
+          "change_in_sire_advantage": 0.00015692428907303582
+        },
+        {
+          "seed": 2026112205,
+          "balanced_sire_advantage": -0.00016342286054920515,
+          "change_in_sire_advantage": 0.00022369528247888622
+        },
+        {
+          "seed": 2026112206,
+          "balanced_sire_advantage": -7.599555250147944e-05,
+          "change_in_sire_advantage": 0.00013626797443116052
+        },
+        {
+          "seed": 2026112207,
+          "balanced_sire_advantage": -0.00017349772784706972,
+          "change_in_sire_advantage": 0.0002337701497767508
+        },
+        {
+          "seed": 2026112208,
+          "balanced_sire_advantage": -0.00026412418773260785,
+          "change_in_sire_advantage": 0.00032439660966228893
+        },
+        {
+          "seed": 2026112209,
+          "balanced_sire_advantage": -0.00018471970806567694,
+          "change_in_sire_advantage": 0.00024499212999535804
+        },
+        {
+          "seed": 2026112210,
+          "balanced_sire_advantage": -0.00022827624457280512,
+          "change_in_sire_advantage": 0.0002885486665024862
+        },
+        {
+          "seed": 2026112211,
+          "balanced_sire_advantage": -0.00012117268721305623,
+          "change_in_sire_advantage": 0.00018144510914273732
+        },
+        {
+          "seed": 2026112212,
+          "balanced_sire_advantage": -0.0001688418306693628,
+          "change_in_sire_advantage": 0.00022911425259904388
+        },
+        {
+          "seed": 2026112213,
+          "balanced_sire_advantage": -0.0002071573861353602,
+          "change_in_sire_advantage": 0.0002674298080650413
+        },
+        {
+          "seed": 2026112214,
+          "balanced_sire_advantage": -8.294088635918168e-05,
+          "change_in_sire_advantage": 0.00014321330828886275
+        },
+        {
+          "seed": 2026112215,
+          "balanced_sire_advantage": -0.00019578926049347283,
+          "change_in_sire_advantage": 0.00025606168242315393
+        },
+        {
+          "seed": 2026112216,
+          "balanced_sire_advantage": -0.0001164532507518228,
+          "change_in_sire_advantage": 0.00017672567268150387
+        },
+        {
+          "seed": 2026112217,
+          "balanced_sire_advantage": -0.00012262361415456987,
+          "change_in_sire_advantage": 0.00018289603608425095
+        },
+        {
+          "seed": 2026112218,
+          "balanced_sire_advantage": -0.00018500896388242916,
+          "change_in_sire_advantage": 0.00024528138581211026
+        },
+        {
+          "seed": 2026112219,
+          "balanced_sire_advantage": -0.00013357700146215953,
+          "change_in_sire_advantage": 0.0001938494233918406
+        },
+        {
+          "seed": 2026112220,
+          "balanced_sire_advantage": -0.00016731387864760898,
+          "change_in_sire_advantage": 0.00022758630057729005
+        },
+        {
+          "seed": 2026112221,
+          "balanced_sire_advantage": -0.00018354018936653,
+          "change_in_sire_advantage": 0.00024381261129621107
+        },
+        {
+          "seed": 2026112222,
+          "balanced_sire_advantage": -0.0001805453985173335,
+          "change_in_sire_advantage": 0.00024081782044701458
+        },
+        {
+          "seed": 2026112223,
+          "balanced_sire_advantage": -0.00026412682258280016,
+          "change_in_sire_advantage": 0.00032439924451248123
+        },
+        {
+          "seed": 2026112224,
+          "balanced_sire_advantage": -0.00015150005453215223,
+          "change_in_sire_advantage": 0.0002117724764618333
+        },
+        {
+          "seed": 2026112225,
+          "balanced_sire_advantage": -0.00017150218885226946,
+          "change_in_sire_advantage": 0.00023177461078195054
+        },
+        {
+          "seed": 2026112226,
+          "balanced_sire_advantage": -0.00017829491937326048,
+          "change_in_sire_advantage": 0.00023856734130294155
+        },
+        {
+          "seed": 2026112227,
+          "balanced_sire_advantage": -0.0001571309140178568,
+          "change_in_sire_advantage": 0.00021740333594753787
+        },
+        {
+          "seed": 2026112228,
+          "balanced_sire_advantage": -8.39197169392421e-05,
+          "change_in_sire_advantage": 0.0001441921388689232
+        },
+        {
+          "seed": 2026112229,
+          "balanced_sire_advantage": -0.0002525118424130488,
+          "change_in_sire_advantage": 0.00031278426434272987
+        },
+        {
+          "seed": 2026112230,
+          "balanced_sire_advantage": -0.00021491611977571368,
+          "change_in_sire_advantage": 0.0002751885417053948
+        },
+        {
+          "seed": 2026112231,
+          "balanced_sire_advantage": -1.2148394651028064e-05,
+          "change_in_sire_advantage": 7.242081658070915e-05
+        }
+      ],
+      "support": {
+        "joint_support": {
+          "neither": {
+            "starts": 161,
+            "horse_equal_share": 0.003976340387260737
+          },
+          "sire_only": {
+            "starts": 7753,
+            "horse_equal_share": 0.19469497902915567
+          },
+          "dam_only": {
+            "starts": 27,
+            "horse_equal_share": 0.001246753246753247
+          },
+          "both": {
+            "starts": 34886,
+            "horse_equal_share": 0.8000819273368304
+          }
+        },
+        "by_parent": {
+          "sire": {
+            "mean_peer_count": 298.918801769832,
+            "bins": {
+              "0": {
+                "starts": 188,
+                "horse_equal_share": 0.0052230936340139835
+              },
+              "1": {
+                "starts": 94,
+                "horse_equal_share": 0.0032370912697397363
+              },
+              "2-4": {
+                "starts": 452,
+                "horse_equal_share": 0.014359388004447037
+              },
+              "5+": {
+                "starts": 42093,
+                "horse_equal_share": 0.9771804270917992
+              }
+            }
+          },
+          "dam": {
+            "mean_peer_count": 2.65340894172093,
+            "bins": {
+              "0": {
+                "starts": 7914,
+                "horse_equal_share": 0.19867131941641636
+              },
+              "1": {
+                "starts": 7804,
+                "horse_equal_share": 0.18767570801927214
+              },
+              "2-4": {
+                "starts": 17334,
+                "horse_equal_share": 0.40247246028595496
+              },
+              "5+": {
+                "starts": 9775,
+                "horse_equal_share": 0.21118051227835655
+              }
+            }
+          }
+        },
+        "parent_coverage": {
+          "sire": {
+            "known_parent_horses": 5225,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 288,
+            "recorded_singleton_groups": 79
+          },
+          "dam": {
+            "known_parent_horses": 5225,
+            "unknown_parent_horses": 0,
+            "recorded_parent_groups": 4284,
+            "recorded_singleton_groups": 3447
+          }
+        },
+        "balanced": {
+          "mean_peer_count": 2.6420063416628277,
+          "bins": {
+            "0": {
+              "starts": 7941,
+              "horse_equal_share": 0.1999180726631696
+            },
+            "1": {
+              "starts": 7810,
+              "horse_equal_share": 0.18777150536387333
+            },
+            "2-4": {
+              "starts": 17360,
+              "horse_equal_share": 0.4034411423216226
+            },
+            "5+": {
+              "starts": 9716,
+              "horse_equal_share": 0.20886927965133445
+            }
+          }
+        }
+      }
+    }
+  },
+  "uncertainty_settings": {
+    "primary_contrasts": [
+      "balanced_sire_advantage",
+      "change_in_sire_advantage"
+    ],
+    "comparisons": 8,
+    "min_clusters": 30,
+    "min_recorded_parent_groups": 30,
+    "bootstrap_draws": 999,
+    "seed": 20261122
+  },
+  "scope": {
+    "retrospective_not_an_independent_prospective_test": true,
+    "evaluation_intervals_condition_on_the_32_draws_and_fits": true,
+    "parent_bootstrap_intervals_are_separate_pointwise_sensitivities": true,
+    "monte_carlo_precision_is_conditional_on_observed_records": true,
+    "genetic_causation_heritability_maternal_effect_or_fitness_identified": false,
+    "official_studbook_identity_and_source_publication_times_verified": false,
+    "underlying_source_redistribution_rights_verified": false,
+    "raw_records_horse_parent_identifiers_or_individual_predictions_exported": false
+  }
+}

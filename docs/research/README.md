@@ -13,6 +13,14 @@ Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GEN
 
 Original Australian early-GPS animal-individuality studies below are **a separate measured phenotype**; do not silently pool their first-150m GPS elapsed seconds with Japanese normalized finishing ranks.
 
+## 2026-11-22 · 父母の他馬履歴数をそろえる感度分析（PR #73）
+
+同じ **244,147出走・12,887頭・35,333競走**の全行を残し、本人を除く同父・同母の過去馬数を両側とも `k=min(s,d)` にした。元の父母双方の頭数特徴と本人・条件情報を保持し、固定32抽出で父方のみ・母方のみを計64回再学習した。抽出ごとの二乗誤差を平均するため、予測のアンサンブルとは異なる。
+
+通期の父方優位Fは **+82.39 → B −32.40 ×10⁻⁶ MSE**へ符号が変わり、変化C=F−Bは **+114.79**。馬×暦日の8比較Bonferroni区間はB **[−124.25,+59.45]**、C **[−8.41,+237.99]**（同じ単位）。**通期・年別の主比較8区間は全て0を含む。** 母方優位の確定や、元の差の何%が履歴量で生じたかという因果分解にはならない。
+
+評価区間は固定した32組の抽出・学習を条件とし、BとCの抽出MCSEは通期 **3.926**、2024年 **11.030 ×10⁻⁶ MSE**。区間のゼロ付近の境界を、無限回抽出でも確定した符号と読めない。等頭数でも他馬の独立性・精度・環境は揃わず、遺伝的寄与も識別しない。**2024年の均等頭数2モデルはともに中間順位M0より悪い。** ローカルとActionsの960数値項目は最大差1.14×10⁻¹³で再現した。[実測結果](JAPAN_2022_24_EQUAL_PEER_INFORMATION_RESULTS.md)・[手順](JAPAN_2022_24_EQUAL_PEER_INFORMATION_PROTOCOL.md)・[匿名集計](../evidence/japan-2022-24-equal-peer-information-20261122.json)・[再現来歴](../evidence/japan-2022-24-equal-peer-information-provenance-20261122.json)。
+
 ## 2026-11-22 · Comparing sire-side and dam-side performance histories
 
 On the same **244,147 starts, 12,887 horses and 35,333 races**, all four models in the parent comparison retained both historical peer counts. Adding sire-side performance after dam-side performance reduced pooled horse-equal MSE by **103.28 × 10⁻⁶**. Adding dam-side performance after sire-side performance reduced it by **20.89 × 10⁻⁶**. The direct advantage for sire-only over dam-only performance was **82.39 × 10⁻⁶ MSE**, with a 12-comparison Bonferroni 95% interval of **[−78.43, +243.21] × 10⁻⁶**. All 12 adjusted intervals included zero. The direct comparison included zero under every interval method in each period. In 2024 the constant midpoint had lower error than all six fitted models.
