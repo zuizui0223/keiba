@@ -114,10 +114,13 @@ def market_race(race_number: int, hashes: dict) -> dict:
 
 
 def direct_own_market(quotes: list, kind: str,
-                      probability_keys: set[tuple[int, ...]]) -> tuple[dict, dict]:
-    """Proxy p proportional to 1 / geometric midpoint quote, no trained model."""
+                      probability_keys: set[tuple[int, ...]],
+                      *, odds_position: str = "geometric") -> tuple[dict, dict]:
+    """Proxy p proportional to inverse low/mid/high quote, no trained model."""
     if kind not in KINDS:
         raise ValueError("invalid_kind")
+    if odds_position not in {"low", "geometric", "high"}:
+        raise ValueError("invalid_odds_position")
     mapped = {}
     for q in quotes:
         key = _normalized_key(kind, q["selection"])
@@ -127,7 +130,8 @@ def direct_own_market(quotes: list, kind: str,
         if any(isinstance(o, bool) or not isinstance(o, (int, float)) or not math.isfinite(o) or o < 1
                for o in (low, high)) or high < low:
             raise ValueError("invalid_market_odds_range")
-        mapped[key] = 1 / math.sqrt(low * high)
+        odds = {"low": low, "geometric": math.sqrt(low * high), "high": high}[odds_position]
+        mapped[key] = 1 / odds
     if not set(mapped) <= probability_keys:
         raise ValueError("quote_not_in_probability_support")
     coverage = {
@@ -178,6 +182,19 @@ def audit_race(race_number: int, official: dict, hashes: dict) -> dict:
         # All possible combinatorial tickets have a valid market-odds-only PL p.
         pl_score = score_binary_events(dist, winning)
         own_score = score_binary_events(own, winning) if own else None
+        bound_sensitivity = {}
+        if kind in ("place", "wide"):
+            for bound in ("low", "high"):
+                direct, info = direct_own_market(
+                    snapshot["markets"][kind], kind, set(dist), odds_position=bound
+                )
+                bscore = score_binary_events(direct, winning) if direct else None
+                bound_sensitivity[bound] = {
+                    "status": info["status"],
+                    "brier_direct_minus_PL":
+                        bscore["brier_mean_per_ticket"] - pl_score["brier_mean_per_ticket"]
+                        if bscore else None,
+                }
         ranked = sorted(dist, key=lambda key: (-dist[key], key))
         market_summaries[kind] = {
             "possible": len(dist),
@@ -189,6 +206,7 @@ def audit_race(race_number: int, official: dict, hashes: dict) -> dict:
             } for x in winning),
             "PL_win_odds_only": pl_score,
             "direct_same_ticket_market": own_score,
+            "direct_price_bound_sensitivity": bound_sensitivity,
             "delta_brier_direct_minus_PL":
                 own_score["brier_mean_per_ticket"] - pl_score["brier_mean_per_ticket"]
                 if own_score else None,
@@ -233,8 +251,24 @@ def run_backtest() -> dict:
                 math.fsum(r["delta_brier_direct_minus_PL"] for r in paired) / len(paired)
                 if paired else None,
             "paired_races_direct_lower_brier":
-                sum(r["delta_brier_direct_minus_PL"] < 0 for r in paired),
+                sum(r["delta_brier_direct_minus_PL"] < -1e-12 for r in paired),
+            "paired_races_tied_within_numeric_tolerance":
+                sum(abs(r["delta_brier_direct_minus_PL"]) <= 1e-12 for r in paired),
         }
+        if kind in ("place", "wide"):
+            sensitivity = {}
+            for bound in ("low", "high"):
+                supported = [
+                    r["ticket_types"][kind]["direct_price_bound_sensitivity"][bound]["brier_direct_minus_PL"]
+                    for r in races
+                ]
+                valid = [value for value in supported if value is not None]
+                sensitivity[bound] = {
+                    "supported_race_count": len(valid),
+                    "mean_delta_direct_minus_PL": math.fsum(valid) / len(valid) if valid else None,
+                    "races_PL_lower_brier": sum(value > 1e-12 for value in valid),
+                }
+            aggregate[kind]["price_bound_sensitivity"] = sensitivity
     return {
         "schema_version": 1,
         "data_scope": "2026-10-12 Kyoto 8R-12R, retrospective development only",
