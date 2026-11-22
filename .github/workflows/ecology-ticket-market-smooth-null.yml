@@ -1,0 +1,58 @@
+name: Ecology ticket smooth global pricing null
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_smooth_null.py"
+      - "tests/test_ecology_ticket_market_smooth_null.py"
+      - ".github/workflows/ecology-ticket-market-smooth-null.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nonparametric-like-price-negative-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Smooth polynomial and exact pair-holdout source tests
+        run: python -m unittest discover -s tests -p "test_ecology_ticket_market_smooth_null.py" -v
+      - name: Evaluate all 1–4 degree global win-price function controls
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_smooth_null.py \
+            --output output/ticket-smooth-global-bias-nine-races.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("output/ticket-smooth-global-bias-nine-races.json").read_text())
+          assert x["status"] == "EMPIRICAL_SMOOTH_GLOBAL_PRICE_BIAS_CONTROL_NINE_RACES_RETROSPECTIVE"
+          assert len(x["races"])==9
+          assert x["degrees_tested"]==[1,2,3,4]
+          assert x["outcome_labels_used"] is False
+          assert x["genomic_A_G_or_biological_individual_trait_identified"] is False
+          print(json.dumps({
+            "date_groups":x["by_date"],
+            "races":[{
+              "id":r["race_id"],"date":r["date"],
+              "runner_count":r["runner_count"],
+              "node_heldout_R2":r["node_pair_holdout_R2"],
+              "polynomials_heldout_R2":{
+                  str(d):r["global_smooth_models"][f"degree_{d}"]["pair_holdout_R2"]
+                  for d in range(1,5)
+              }
+            } for r in x["races"]],
+            "source_sha_count":len(x["input_file_sha256"])
+          },ensure_ascii=False,indent=2))
+          PY
+      - name: Upload aggregate artifact, no horse names or wagers
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-ticket-smooth-null-nine-races
+          path: output/ticket-smooth-global-bias-nine-races.json
+          retention-days: 30
