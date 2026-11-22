@@ -65,7 +65,7 @@ def reconcile(stage: dict, raw_meta: dict) -> dict:
             or type(count) is not int or not 1<=count<=18
             or not isinstance(row.get("raw_page_sha256"),str)
             or re.fullmatch(r"[0-9a-f]{64}",row["raw_page_sha256"]) is None
-            or row.get("official_active_runner_count_independently_verified") is not False
+            or row.get("independent_scratches_and_actual_active_runner_count_verified") is not False
             or row.get("third_party_preliminary_count") != base["third_party_displayed_runner_count"]
             or row.get("agrees_with_secondary_display") is not (
                count == base["third_party_displayed_runner_count"]
