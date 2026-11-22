@@ -83,8 +83,8 @@ class PlaceboEstimatorTests(unittest.TestCase):
                     experiment.summarize_period(p,full,losses,ctrl,bad,draws=30,min_clusters=2)
 
     def test_reference_sha_fails_before_opening_actual_sources(self):
-        with patch.object(experiment,"PR73_SHA256","invalid-digest"), \\
-             patch.object(ablation,"load_sources") as sources:
+        with (patch.object(experiment,"PR73_SHA256","invalid-digest"),
+              patch.object(ablation,"load_sources") as sources):
             with self.assertRaisesRegex(ValueError,"PR73_REFERENCE"):
                 experiment.analyze(Path("not-an-archive"),Path("not-a-db"))
             sources.assert_not_called()
