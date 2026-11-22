@@ -10,7 +10,6 @@ intermediary quote's upstream update timestamp is unavailable.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import math
 from pathlib import Path
@@ -55,8 +54,6 @@ def extract_eligible_snapshot(source: dict, horse_race: dict) -> dict | None:
         seen_numbers.add(num)
         strengths[num] = 1.0 / odd
         frames[num] = frame
-    if len(set(frames)) != len(frames) and not all(1 <= i <= 8 for i in frames.values()):
-        raise ValueError("invalid_frame")
     if any(h.get("number") not in strengths for h in runners):
         raise ValueError("runner_mismatch")
     # 2026-10-18 source only states it received an intermediary view at 12:31,
