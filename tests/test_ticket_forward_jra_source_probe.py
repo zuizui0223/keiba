@@ -3,7 +3,7 @@ import hashlib
 import unittest
 
 from scripts.ticket_forward_jra_source_probe import (
-    TARGETS, inspect_response, require_official,
+    TARGETS, inspect_response, require_official, numeric_table_shapes,
 )
 
 
@@ -40,6 +40,20 @@ class JraConnectivityMetadataTests(unittest.TestCase):
         self.assertFalse(report["official_runner_count_verified"])
         self.assertFalse(report["source_updated_at_verified"])
         self.assertFalse(report["server_sealed_before_race"])
+
+    def test_numeric_tables_are_only_structural_hints(self):
+        rows = ["<tr><th>枠</th><th>馬番</th><th>馬名</th></tr>"]
+        for n in range(1, 10):
+            rows.append(f"<tr><td>{min(n,8)}</td><td>{n}</td><td>ignored</td></tr>")
+        text = "<table>" + "".join(rows) + "</table>"
+        shapes = numeric_table_shapes(text)
+        self.assertEqual(len(shapes), 1)
+        self.assertEqual(shapes[0]["html_row_count"], 10)
+        self.assertTrue(any(
+            col["column"] == 1 and col["unique"] == 9 and col["max"] == 9
+            and col["contiguous_from_one"]
+            for col in shapes[0]["numeric_columns"]
+        ))
 
     def test_rejects_non_jra_redirect_empty_http_error_and_invalid_bytes(self):
         url = TARGETS["jra_program_nov23"]
