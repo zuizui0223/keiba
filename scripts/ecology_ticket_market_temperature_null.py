@@ -41,7 +41,7 @@ try:
         ROOT, SOURCE_DATE, TARGET_RACES, market_race, read_json,
     )
     from scripts.ticket_wide_second_day import (
-        SECOND_DATE, SAVED_SNAPSHOT_PATH, eligible_four_market_only,
+        DATE as SECOND_DATE, SAVED_SNAPSHOT_PATH, eligible_four_market_only,
     )
 except (ImportError, ModuleNotFoundError):
     from ecology_ticket_information_graph import (
@@ -185,10 +185,7 @@ def compare_models(values:dict,weights:dict,curve:dict)->dict:
         adjusted={e:values[e]-effects[e] for e in keys}
         node_prediction=effects[omit]+_node_fit_omit(adjusted,weights,omit)
         temp_node_cv+=weights[omit]*(values[omit]-node_prediction)**2
-        node_prediction_only=node["node_pred"][omit] + (
-            node["dyadic_residual"][omit] /
-            (1. - _leverage(weights,omit))
-        ) if False else None  # computed directly via the existing PRESS oracle
+        # Raw node-only PRESS is computed separately by its exact OLS oracle.
     node_cv=node_loo["press_error_weighted_mean"] * total_w
     if baseline_cv<=1e-20 or constant_sse<=1e-20:
         raise ValueError("constant_price_graph_no_R2")
