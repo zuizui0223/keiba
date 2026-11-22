@@ -42,14 +42,8 @@ def prepare_temporal_match(history, target_context, source, *, cutoff_year):
     member["day"]=balanced._days(history).to_numpy()
     grouped=member.groupby(["horse","stratum"],sort=True,observed=True).agg(
         last_day=("day","max"),starts=("day","size")).reset_index()
-    if len(grouped)!=len(source.scores) or not np.array_equal(
-            grouped[["horse","stratum"]].to_numpy(),
-            np.column_stack([anchor.member_horse,
-                             np.asarray([v for v in source.key_suffixes])])[:,:0]):
-        # The actual identity/ordering guarantee comes from the validated
-        # source key suffixes below, not any NumPy structured-dtype coercion.
-        if len(grouped)!=len(source.scores):
-            raise ValueError("HOLD_MATCH_HISTORY_MEMBER_PARITY")
+    if len(grouped)!=len(source.scores):
+        raise ValueError("HOLD_MATCH_HISTORY_MEMBER_PARITY")
     keys=[balanced._key_suffix(cutoff_year,r.stratum,r.horse)
           for r in grouped.itertuples()]
     if keys!=source.key_suffixes:
