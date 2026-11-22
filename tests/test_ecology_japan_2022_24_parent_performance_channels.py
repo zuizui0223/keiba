@@ -197,12 +197,13 @@ class ParentChannelTests(unittest.TestCase):
         self.assertGreater(x.sire_kin_history.iloc[0], 0.)
 
     def test_invalid_support_or_nonzero_unknown_parent_support_is_rejected(self):
-        for mutate in ('negative','fraction','nan','length','unknown'):
+        for mutate in ('negative','fraction','nan','length','unknown','order'):
             s = support()
             if mutate=='negative':s.loc[0,'sire_relative_count']=-1
             elif mutate=='fraction':s=s.astype(float);s.loc[0,'sire_relative_count']=.5
             elif mutate=='nan':s.loc[0,'sire_relative_count']=np.nan
             elif mutate=='length':s=s.iloc[:-1]
+            elif mutate=='order':s=s.iloc[::-1]
             else:s.loc[5,'dam_relative_count']=1
             with self.subTest(mutate=mutate),self.assertRaises(ValueError):
                 channels.support_summary(panel(),s)
