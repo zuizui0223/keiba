@@ -82,16 +82,22 @@ class YahooFullMarketCaptureTests(unittest.TestCase):
         self.assertAlmostEqual(sum(row[3] for row in f["ordered_top3_probs"]),1,places=10)
         self.assertAlmostEqual(sum(row[4] for row in f["ordered_top3_probs"]),1,places=10)
         self.assertNotIn("result",capture)
-        with self.assertRaisesRegex(ValueError,"market_update_stale"):
+        with self.assertRaisesRegex(ValueError,"market_receipt_stale"):
             freeze_forecast(
-                capture,self.manifest,"2026-11-23T09:27:00+09:00",
+                capture,self.manifest,"2026-11-23T09:30:00+09:00",
                 capture_raw=canonical(capture),
                 source_pages={"win":w,"wide":u},
             )
 
     def test_missing_16th_or_wide_price_not_imputed(self):
-        with self.assertRaisesRegex(ValueError,"win_horse_board_incomplete"):
-            parse_win(example_win(n=15))
+        with self.assertRaisesRegex(ValueError,"JRA_card_number_rows_disagree"):
+            parse_sources(
+                win_raw=example_win(n=15),wide_raw=example_wide(n=15),
+                card_raw=example_jra(n=16),
+                observed_win_jst="2026-11-23T09:24:05+09:00",
+                observed_wide_jst="2026-11-23T09:24:15+09:00",
+                manifest=self.manifest,
+            )
         incomplete=example_wide().replace(
             b"<tr><td>16</td><td>32.0 - 33.0</td></tr>",b"",1)
         with self.assertRaises(ValueError):
