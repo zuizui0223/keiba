@@ -64,7 +64,7 @@ class JraOfficialCardReconciliationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"claims_unobserved_prospective"):
             reconcile(self.stage,bad)
         bad=copy.deepcopy(self.metadata)
-        bad["races"][0]["official_active_runner_count_independently_verified"]=True
+        bad["races"][0]["independent_scratches_and_actual_active_runner_count_verified"]=True
         with self.assertRaisesRegex(ValueError,"unverified_or_invalid"):
             reconcile(self.stage,bad)
 
