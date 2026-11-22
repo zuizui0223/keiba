@@ -32,6 +32,9 @@ class MatchedBlock:
     history_last_year: np.ndarray
     history_start_bin: np.ndarray
     groups: dict
+    sire_counts: Counter
+    dam_counts: Counter
+    parent_pair_counts: Counter
 
 
 def prepare_temporal_match(history, target_context, source, *, cutoff_year):
@@ -52,12 +55,20 @@ def prepare_temporal_match(history, target_context, source, *, cutoff_year):
     counts=grouped.starts.to_numpy(int)
     bins=np.array([_bin(v) for v in counts],dtype=object)
     groups=defaultdict(list)
-    for i, (stratum, year, nbin) in enumerate(zip(
+    sire_counts=Counter()
+    dam_counts=Counter()
+    pair_counts=Counter()
+    for i,(stratum,year,nbin) in enumerate(zip(
             grouped.stratum.to_numpy(),years,bins)):
         if anchor.member_sire[i] and anchor.member_dam[i]:
-            groups[(stratum,int(year),nbin)].append(i)
+            cat=(stratum,int(year),nbin)
+            groups[cat].append(i)
+            sire_counts[(cat,anchor.member_sire[i])]+=1
+            dam_counts[(cat,anchor.member_dam[i])]+=1
+            pair_counts[(cat,anchor.member_sire[i],anchor.member_dam[i])]+=1
     return MatchedBlock(anchor,years,bins,{k:np.asarray(v,dtype=np.intp)
-                                          for k,v in groups.items()})
+                                          for k,v in groups.items()},
+                        sire_counts,dam_counts,pair_counts)
 
 
 def _select_true(block, side, ranks):
@@ -140,10 +151,17 @@ def sample_matched(block, *, seed, side):
                 unsupported_slots+=needed
                 missing_by_bin[nbin]+=needed
                 continue
-            good=((anchor.member_horse[candidates]!=focal) &
-                  (anchor.member_sire[candidates]!=target_sire) &
-                  (anchor.member_dam[candidates]!=target_dam))
-            available=int(good.sum())
+            # Exact inclusion-exclusion over the fixed candidate category:
+            # both-parent-known pool minus same sire minus same dam, plus
+            # full siblings counted twice. The focal is excluded through
+            # its own parent IDs if present in the history.
+            cat=(stratum,year,nbin)
+            available=(len(candidates)
+                       -block.sire_counts[(cat,target_sire)]
+                       -block.dam_counts[(cat,target_dam)]
+                       +block.parent_pair_counts[(cat,target_sire,target_dam)])
+            if available<0 or available>len(candidates):
+                raise ValueError("HOLD_MATCHED_COUNT_INCLUSION_EXCLUSION")
             if available<needed:
                 failed=True
                 unsupported_slots+=needed-available
