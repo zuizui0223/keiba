@@ -1,0 +1,47 @@
+name: JRA Nov23 official source reachability preflight
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ticket_forward_jra_source_probe.py"
+      - "tests/test_ticket_forward_jra_source_probe.py"
+      - ".github/workflows/ticket-forward-jra-source-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  official-source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline safety tests before network access
+        run: python -m unittest discover -s tests -p "test_ticket_forward_jra_source_probe.py" -v
+      - name: Fetch no more than 3 public official source pages, only hashes and metadata
+        run: |
+          python scripts/ticket_forward_jra_source_probe.py \
+            --timeout 10 --output output/jra-nov23-http-preflight.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o = json.loads(Path("output/jra-nov23-http-preflight.json").read_text())
+          assert o["target_count"] == 3
+          assert o["forecast_count"] == 0
+          assert o["formal_day_schedule_seal"] is False
+          for key, result in o["results"].items():
+              print(key, result["status"],
+                    result.get("raw_bytes"), result.get("raw_sha256"),
+                    "official_card_links", result.get("html_a_jra_card_link_count"))
+          print("NO REAL FORWARD FORECAST, NO FULL CARD COHORT, NO MARKET ODDS SNAPSHOT")
+          PY
+      - name: Upload metadata only, never source HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: jra-20261123-official-readonly-metadata
+          path: output/jra-nov23-http-preflight.json
+          retention-days: 7
