@@ -1,0 +1,136 @@
+{
+  "status": "HOLD_INCOMPLETE_EXACT_YEAR_AND_START_DEPTH_NONKIN_SUPPORT",
+  "source": "Original two SHAs pinned and validated on real-source GitHub Actions",
+  "date": "2026-11-22",
+  "research_protocol_committed_before_new_outcomes": "8af2b64fea84a64d44050de0599913a715bd7de0",
+  "action": {
+    "run_id": 45010304245,
+    "conclusion": "success",
+    "artifact_id": 14749623249,
+    "artifact_zip_sha256": "2849aac6172d1ea130d5d9780002e94cde8523ad2a409cf6e9eaaa1d400cc6b5",
+    "artifact_json_sha256": "22c15699307a3fe9cfbacb55acc9276b5078179f967ee86f1d9fa94f39c4eeaa",
+    "artifact_json_bytes": 7002
+  },
+  "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+  "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+  "pr73_reference_sha256": "d24ba47a6a618411cbdc14e728d6de18a20602bfb7533a73cbf491ca1a8d4c01",
+  "pr74_reference_sha256": "45f78eeee82b6a125632d6794de6282c25d0a0daa14220a85353d90ccdd79e46",
+  "strict_population": {
+    "starts": 244147,
+    "horses": 12887,
+    "races": 35333
+  },
+  "training_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "evaluation_cutoff_year": 2022,
+  "original_pr70_pr72_pr73_parity": true,
+  "fixed_seeds": [
+    2026112200,
+    2026112201,
+    2026112202,
+    2026112203,
+    2026112204,
+    2026112205,
+    2026112206,
+    2026112207,
+    2026112208,
+    2026112209,
+    2026112210,
+    2026112211,
+    2026112212,
+    2026112213,
+    2026112214,
+    2026112215,
+    2026112216,
+    2026112217,
+    2026112218,
+    2026112219,
+    2026112220,
+    2026112221,
+    2026112222,
+    2026112223,
+    2026112224,
+    2026112225,
+    2026112226,
+    2026112227,
+    2026112228,
+    2026112229,
+    2026112230,
+    2026112231
+  ],
+  "audit": {
+    "fixed_draws": 32,
+    "cutoffs": 5,
+    "parent_sides": 2,
+    "comparisons": 320,
+    "fully_matched": 319,
+    "unsupported": 1,
+    "total_true_peer_by_draw_slots": 26464320,
+    "matched_peer_by_draw_slots": 26464319,
+    "minimum_missing_peer_slots": 1,
+    "number_of_unmatched_request_draws": 1,
+    "unsupported_group": {
+      "training_cutoff": 2021,
+      "parent_side": "sire",
+      "historical_stratum_starts_bin": "5+",
+      "other_identifiers_private": true
+    },
+    "yearly": {
+      "2018": {
+        "positive_k_requests": 27810,
+        "per_side_required_slots": 2519808,
+        "sire_missing_slots": 0,
+        "dam_missing_slots": 0
+      },
+      "2019": {
+        "positive_k_requests": 28635,
+        "per_side_required_slots": 2685120,
+        "sire_missing_slots": 0,
+        "dam_missing_slots": 0
+      },
+      "2020": {
+        "positive_k_requests": 29430,
+        "per_side_required_slots": 2846624,
+        "sire_missing_slots": 0,
+        "dam_missing_slots": 0
+      },
+      "2021": {
+        "positive_k_requests": 29663,
+        "per_side_required_slots": 2947072,
+        "sire_missing_slots": 1,
+        "dam_missing_slots": 0
+      },
+      "2022": {
+        "positive_k_requests": 22422,
+        "per_side_required_slots": 2233536,
+        "sire_missing_slots": 0,
+        "dam_missing_slots": 0
+      }
+    },
+    "original_true_peer_selection_frozen": true,
+    "exact_same_year_same_stratum_starts_bin": true,
+    "no_borrowing_from_other_year_bin_or_peers": true,
+    "all_matched_training_input_required_before_refitting": true
+  },
+  "prediction_effect": {
+    "new_full_cohort_sire_advantage_MSE": null,
+    "new_full_cohort_dam_advantage_MSE": null,
+    "new_eight_comparison_CI": null,
+    "reason": "One missing matched peer in 2021 training: refitting can affect model coefficients and all evaluation forecasts",
+    "not_evidence_of_zero_kin_prediction_effect": true
+  },
+  "restrictions": {
+    "retrospective_historical_sources_already_inspected": true,
+    "not_complete_genetic_unrelatedness": true,
+    "not_matched_on_birth_cohort_training_environment_or_trainer": true,
+    "no_official_registered_horse_id_crosswalk": true,
+    "no_genomic_causal_effect_or_breeding_fitness": true,
+    "source_licensing_and_provider_known_on_not_verified": true,
+    "no_horse_parent_race_individual_ids_or_predictions_published": true,
+    "repeated_slots_not_independent_horses": true
+  }
+}
