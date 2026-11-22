@@ -105,15 +105,25 @@ capture.json は schema_version=1, race, markets の3要素を持つ。raceに�
 
 ## レース終了後に別ファイルで採点
 
-JRA公式の上位3着、結果ページ、結果を見た時刻と元ページSHA256を別のresult.jsonに記録（同着や取消など、この版が扱えない事象はHOLD）。
+JRA公式の上位3着、結果ページ、結果を見た時刻と元ページSHA256を別のresult.jsonに記録（同着や取消など、この版が扱えない事象はHOLD）。**手入力した3つの馬番号だけでは採点を確定させない。** JRA公式結果ページの見出し（日付・競馬場・レース番号）と1〜3着の3行が確認できる元テキストを別途保存し、検証器がページから上位3着を独立に取り出してresult.jsonと一致することを必須とする。ページ形式を認識できない場合は無理に類推せずHOLD。
+
+    python scripts/ticket_forward_result_capture.py \
+      --race-id RACE_ID \
+      --official-url 'https://www.jra.go.jp/JRADB/accessS.html?SOURCE_ID' \
+      --source-text holdout/ticket-forward-v1/RACE_ID/result-source.txt \
+      --observed-at-jst 'YYYY-MM-DDTHH:MM:SS+09:00' \
+      --output holdout/ticket-forward-v1/RACE_ID/result.json
 
     python scripts/ticket_forward_freeze.py score \
       --forecast holdout/ticket-forward-v1/RACE_ID/forecast.json \
       --result holdout/ticket-forward-v1/RACE_ID/result.json \
+      --result-source-text holdout/ticket-forward-v1/RACE_ID/result-source.txt \
       --manifest docs/betting/ticket-forward-v1-manifest.json \
       --github-run-id 123456789 \
       --github-committed-path holdout/ticket-forward-v1/RACE_ID/forecast.json \
       --output holdout/ticket-forward-v1/RACE_ID/score.json
+
+source-textの実バイトSHA256・レース日付・競馬場・レース番号・着順3行が一致しなければ採点自体を拒否する。ただしこの検査も元ページの取得元の真正性までは証明しない。
 
 GitHub証明がなければ採点しても SCORED_BUT_PROSPECTIVE_STATUS_UNVERIFIED。証明が成功した場合のみ SCORED_PROSPECTIVE_SERVER_SEALED。予測に結果を混ぜての再計算はしない。
 
