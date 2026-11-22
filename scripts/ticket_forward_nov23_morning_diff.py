@@ -7,7 +7,10 @@ import json
 from pathlib import Path
 import re
 
-from scripts.ticket_forward_program_preflight import audit_preliminary_program
+try:
+    from scripts.ticket_forward_program_preflight import audit_preliminary_program
+except ModuleNotFoundError:
+    from ticket_forward_program_preflight import audit_preliminary_program
 
 
 def compare(previous: dict, morning: dict, staged: dict, odds: dict) -> dict:
