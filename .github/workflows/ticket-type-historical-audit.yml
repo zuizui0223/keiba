@@ -12,6 +12,7 @@ on:
       - "scripts/ticket_forward_freeze.py"
       - "scripts/ticket_forward_universe.py"
       - "scripts/ticket_forward_day_proof.py"
+      - "scripts/ticket_forward_result_capture.py"
       - "docs/betting/JRA_2026-11-23_PROGRAM_PREFLIGHT.md"
       - "docs/betting/ticket-forward-v1-manifest.json"
       - "docs/betting/TICKET_FORWARD_V1_PROTOCOL.md"
