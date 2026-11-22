@@ -60,9 +60,24 @@ def prepare_unrelated_block(history, targets, source, *, cutoff_year):
     keys = [balanced._key_suffix(cutoff, r.stratum, r.horse) for r in h.itertuples()]
     if keys != source.key_suffixes:
         raise ValueError("HOLD_UNRELATED_HISTORY_ORDER_MISMATCH")
-    if not np.array_equal(t.loc[:, cols[:2]].to_numpy(),
-                          _normalized(targets, cols).drop_duplicates(cols[:2]).loc[:, cols[:2]].to_numpy()):
+    # Independently recover historical membership, target order, parent groups,
+    # and focal exclusion from the supplied contexts; reject cross-block swaps.
+    hkey = pd.MultiIndex.from_frame(h[cols[:2]])
+    tkey = pd.MultiIndex.from_frame(t[cols[:2]])
+    target_rows = pd.MultiIndex.from_frame(_normalized(targets, cols)[cols[:2]])
+    if (not np.array_equal(source.inverse, tkey.get_indexer(target_rows))
+            or not np.array_equal(source.focal, hkey.get_indexer(tkey))):
         raise ValueError("HOLD_UNRELATED_REQUEST_ORDER_MISMATCH")
+    for side, pool in zip(("sire_id", "dam_id"), source.pools):
+        known = np.flatnonzero(h[side].ne("").to_numpy())
+        group_keys = pd.MultiIndex.from_frame(h.iloc[known][[side, "stratum"]])
+        unique_groups = group_keys.unique()
+        requested_groups = pd.MultiIndex.from_frame(t[[side, "stratum"]])
+        if (not np.array_equal(known, pool.members)
+                or not np.array_equal(unique_groups.get_indexer(group_keys) + 1, pool.groups)
+                or not np.array_equal(unique_groups.get_indexer(requested_groups) + 1,
+                                       pool.target_group)):
+            raise ValueError("HOLD_UNRELATED_PARENT_GROUP_MISMATCH")
     # No horse with unrecorded sire OR dam can be certified as unrelated.
     eligible = h.sire_id.ne("") & h.dam_id.ne("")
     codes, strata = pd.factorize(h.stratum, sort=True)
