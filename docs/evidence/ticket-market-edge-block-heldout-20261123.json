@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "created_jst_date": "2026-11-23",
+  "status": "EMPIRICAL_SAME_RACE_EDGE_BLOCK_HOLDOUT_NOT_REGISTERED_HORSE_REPEATABILITY",
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/45095555652",
+  "run_id": 45095555652,
+  "artifact_id": 14782598711,
+  "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45095555652/artifacts/14782598711",
+  "artifact_zip_sha256": "cb0cd2e6982585c77ff2e5b5ce176f523c7b1b2eb0c2e541e5561a12470698d4",
+  "source_sha256_count": 31,
+  "n_races": 9,
+  "n_calendar_dates": 2,
+  "block_splits_per_race": 80,
+  "train_pair_share": 0.6,
+  "test_pair_share": 0.4,
+  "method": "Within race hold out 40% wide pairs and learn race-local horse node coefficients from the remaining 60%, comparing the same test pairs against global fourth-degree price curve and a fixed 0.1 ridge node model. Prices/labels not used to partition.",
+  "by_date": {
+    "2026-10-12": {
+      "race_count": 5,
+      "node_test_R2_mean": 0.36676137348927,
+      "ridge_node_test_R2_mean": 0.42799585911578986,
+      "global_degree4_test_R2_mean": 0.24774730701093528,
+      "node_beats_global_races": 4,
+      "ridge_node_beats_global_races": 4
+    },
+    "2026-10-18": {
+      "race_count": 4,
+      "node_test_R2_mean": 0.5896268438231741,
+      "ridge_node_test_R2_mean": 0.6133552698623688,
+      "global_degree4_test_R2_mean": 0.18100654645688893,
+      "node_beats_global_races": 4,
+      "ridge_node_beats_global_races": 4
+    }
+  },
+  "limitations": {
+    "race_local_horse_numbers_not_stable_registry_ID": true,
+    "train_test_edges_share_horses": true,
+    "dependent_80_resplits_not_new_races": true,
+    "not_out_of_date_or_new_horse_validation": true,
+    "market_quote_ratio_proxy_not_belief": true,
+    "race_outcomes_not_used": true,
+    "not_genetic_or_behavioral_individuality": true,
+    "model_complexities_differ": true
+  }
+}
