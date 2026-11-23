@@ -52,9 +52,43 @@ jobs:
             printf '{"status":"HOLD_LIVE_MARKET_PARSE_OR_SOURCE","future_predictions":0}\n' > output/market-source-coverage.json
             echo 'HOLD: live quote parsing or official source unavailable; no forecast constructed'
           fi
+      - name: Metadata-only live win and wide raw SHA witness (never export prices)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.ticket_forward_market_capture import read_one, CARD_URL, parse_sources
+          from scripts.ticket_forward_odds_structure_probe import TARGETS
+          from scripts.ticket_forward_freeze import sha256_bytes
+          manifest=json.loads(Path("docs/betting/ticket-forward-v1-manifest.json").read_text())
+          try:
+              card, card_time=read_one(CARD_URL,timeout=10)
+              win, win_time=read_one(TARGETS["win_place"],timeout=10)
+              wide, wide_time=read_one(TARGETS["wide"],timeout=10)
+              capture, audit=parse_sources(win_raw=win,wide_raw=wide,card_raw=card,observed_win_jst=win_time,observed_wide_jst=wide_time,manifest=manifest)
+              out={
+                  "status":"MARKET_METADATA_WITNESSED_NO_PROSPECTIVE_SEAL",
+                  "horse_count":audit["horse_count"],"wide_quotes":audit["wide_quotes"],
+                  "official_card_sha256":audit["JRA_card_sha256"],
+                  "official_card_receipt_jst":card_time,
+                  "win_raw_sha256":capture["markets"]["win"]["raw_page_sha256"],
+                  "wide_raw_sha256":capture["markets"]["wide"]["raw_page_sha256"],
+                  "win_updated_at_jst":audit["updated_win_jst"],
+                  "wide_updated_at_jst":audit["updated_wide_jst"],
+                  "win_received_at_jst":win_time,"wide_received_at_jst":wide_time,
+                  "republication_rights_verified":False,
+                  "official_24_horses_all_verified":False,
+                  "formal_full_day_plan_sealed":False,
+                  "forecast_or_bet_count":0,
+              }
+          except Exception as e:
+              out={"status":"HOLD_LIVE_SOURCE_WITNESS_FAILED","error":type(e).__name__+":"+str(e),"forecast_or_bet_count":0}
+          Path("output/market-source-sha-witness.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\\n")
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
       - name: Upload summary only, never raw market pages or full odds
         uses: actions/upload-artifact@v4
         with:
           name: ticket-forward-fukushima1r-early-market-coverage
-          path: output/market-source-coverage.json
+          path: |\n            output/market-source-coverage.json\n            output/market-source-sha-witness.json
           retention-days: 7
