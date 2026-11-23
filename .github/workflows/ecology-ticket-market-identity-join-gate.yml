@@ -1,0 +1,50 @@
+name: Ecology ticket market stable horse-ID join readiness
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_identity_join_gate.py"
+      - "tests/test_ecology_ticket_market_identity_join_gate.py"
+      - ".github/workflows/ecology-ticket-market-identity-join-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-specific-id-readiness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test strict directory ID parsing and forbid name-only genetic joins
+        run: python -m unittest discover -s tests -p "test_ecology_ticket_market_identity_join_gate.py" -v
+      - name: Recompute Kyoto five-card and Oct18 nine-quote identity coverage
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_identity_join_gate.py \
+            --output output/market-identity-join-readiness.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/market-identity-join-readiness.json").read_text())
+          assert r["status"]=="HOLD_UNVERIFIED_DIRECTORY_ID_PARTIAL_COVERAGE_NO_CROSS_DATE_MARKET_GENETICS_JOIN"
+          assert r["actual_verified_same_horse_ID_between_market_dates"]==0
+          assert r["Oct12_Kyoto_five_races"]["directory_ID_candidate_rows"]==30
+          assert r["Oct18_9_race_quote_archive"]["rows_with_explicit_stable_registry_ID"]==0
+          print(json.dumps({
+            "Oct12":r["Oct12_Kyoto_five_races"],
+            "Oct18":r["Oct18_9_race_quote_archive"],
+            "cross_date_verified_ID_joins":0,
+            "source_sha_count":len(r["source_file_sha256"])
+          },indent=2,ensure_ascii=False))
+          PY
+      - name: Archive only aggregate ID coverage and source SHA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-market-identity-coverage-not-a-registry-join
+          path: output/market-identity-join-readiness.json
+          retention-days: 30
