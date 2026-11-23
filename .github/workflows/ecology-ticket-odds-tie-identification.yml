@@ -1,0 +1,55 @@
+name: Ecology market same-win-odds identification test
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_odds_tie_identification.py"
+      - "tests/test_ecology_ticket_market_odds_tie_identification.py"
+      - ".github/workflows/ecology-ticket-odds-tie-identification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  observational-identification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test equal-odds opponent symmetry and absence of horse-ID proof
+        run: python -m unittest discover -s tests -p 'test_ecology_ticket_market_odds_tie_identification.py' -v
+      - name: Count equal win quotes and matched-opponent wide-price contrasts across archived 9 races
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_odds_tie_identification.py \
+            --output output/market-equal-win-odds-9-races.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          v=json.loads(Path("output/market-equal-win-odds-9-races.json").read_text())
+          assert v["status"] == "OBSERVED_DISPLAY_WIN_QUOTE_TIE_FALSIFICATION_NOT_BIOLOGICAL_IDENTIFICATION"
+          assert v["no_registered_horse_identity_repeatability_tested"]
+          assert v["no_independent_time_series_or_outcome_validation"]
+          assert len(v["races"]) == 9
+          print(json.dumps({
+            "by_date":v["by_date"],
+            "per_race":[{
+              "race_id":r["race_id"], "date":r["date"], "n":r["runners"],
+              "exact_display_win_ties":r["tied_horse_pair_count"],
+              "opponent_comparisons":r["same_win_quote_opponent_pair_comparisons"],
+              "opponent_price_contrasts_nonzero":r["same_win_quote_opponent_price_difference_count"],
+              "max_abs_log_difference":r["maximum_abs_matched_logprice_contrast"]
+            } for r in v["races"]],
+            "input_sha_count":len(v["input_file_sha256"])
+          },indent=2,ensure_ascii=False))
+          PY
+      - name: Archive fingerprinted research aggregates, never animal IDs or tickets
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-market-equal-win-odds-nine-races
+          path: output/market-equal-win-odds-9-races.json
+          retention-days: 30
