@@ -28,6 +28,7 @@ from pathlib import Path
 
 try:
     from scripts.ecology_ticket_information_graph import graph_inputs, decompose_edges
+    from scripts.ticket_type_models import predict_tickets
     from scripts.ticket_type_historical_audit import (
         SOURCE_DATE, TARGET_RACES, market_race, read_json,
     )
@@ -36,6 +37,7 @@ try:
     )
 except (ImportError, ModuleNotFoundError):
     from ecology_ticket_information_graph import graph_inputs, decompose_edges
+    from ticket_type_models import predict_tickets
     from ticket_type_historical_audit import (
         SOURCE_DATE, TARGET_RACES, market_race, read_json,
     )
@@ -70,6 +72,17 @@ def analyze_tied_quotes(race_id:str,date:str,strength:dict[int,float],
     if set(quoted)!=set(strength):
         raise ValueError("win_quote_coverage_lost")
     fitted=decompose_edges(deviations,weights)
+    quote_ranges={}
+    for quote in wide_quotes:
+        pair=tuple(sorted(quote["selection"]))
+        if pair in quote_ranges:
+            raise ValueError("duplicate_quote_interval")
+        low,high=quote["odds_low"],quote["odds_high"]
+        if not (math.isfinite(low) and math.isfinite(high) and 1<=low<=high):
+            raise ValueError("invalid_quote_interval")
+        quote_ranges[pair]=(low,high)
+    if set(quote_ranges)!=set(deviations):
+        raise ValueError("incomplete_quote_intervals")
     groups={}
     for number,odds in quoted.items():
         groups.setdefault(odds,[]).append(number)
@@ -79,6 +92,20 @@ def analyze_tied_quotes(race_id:str,date:str,strength:dict[int,float],
     for group in tied:
         for i,j in combinations(group,2):
             differences=[]
+            interval_disjoint=0
+            rounding_PL_incompatible=0
+            observed = quoted[i]
+            lower=max(1.0, observed-0.05)
+            upper=observed+0.05
+            # Two win-odds rounding extremes provide the PL pair ratio
+            # bounds for every third horse. All other win odds are held at
+            # their displayed values: conditional, not universal, bounds.
+            conditional_pl_extremes=[]
+            for odds_i,odds_j in ((lower,upper),(upper,lower)):
+                src=dict(strength)
+                src[i]=1./odds_i
+                src[j]=1./odds_j
+                conditional_pl_extremes.append(predict_tickets(src,frames)["wide"])
             for k in sorted(quoted):
                 if k in (i,j):
                     continue
@@ -93,6 +120,19 @@ def analyze_tied_quotes(race_id:str,date:str,strength:dict[int,float],
                 if not math.isfinite(d):
                     raise ValueError("invalid_opponent_matched_pair_difference")
                 differences.append(d)
+                lo_i,hi_i=quote_ranges[e1]
+                lo_j,hi_j=quote_ranges[e2]
+                if hi_i < lo_j or hi_j < lo_i:
+                    interval_disjoint += 1
+                # Wide price interval implies the support-ratio interval
+                # [lo_j/hi_i, hi_j/lo_i], invariant to quote normalization.
+                qmin, qmax=lo_j/hi_i,hi_j/lo_i
+                pl_ratios=[
+                    p[e1]/p[e2] for p in conditional_pl_extremes
+                ]
+                rmin,rmax=min(pl_ratios),max(pl_ratios)
+                if qmax < rmin-1e-12 or qmin > rmax+1e-12:
+                    rounding_PL_incompatible += 1
             comparisons.append({
                 "two_horses_share_same_display_win_odds":True,
                 "same_display_price":quoted[i],
@@ -101,12 +141,20 @@ def analyze_tied_quotes(race_id:str,date:str,strength:dict[int,float],
                     math.fsum(abs(x) for x in differences)/len(differences),
                 "max_abs_wide_logprice_contrast":max(abs(x) for x in differences),
                 "opponent_comparisons_nonzero":sum(abs(d)>TOL for d in differences),
+                "opponent_wide_price_ranges_nonoverlapping": interval_disjoint,
+                "opponent_price_ranges_outside_conditional_PL_win_rounding_bound":
+                    rounding_PL_incompatible,
                 "fitted_horse_node_offset_difference_abs":
                     abs(fitted["node_effect"][i]-fitted["node_effect"][j]),
                 "not_a_biological_trait":True
             })
     all_opponent_count=sum(r["other_horses_compared"] for r in comparisons)
     nonzero_count=sum(r["opponent_comparisons_nonzero"] for r in comparisons)
+    interval_count=sum(r["opponent_wide_price_ranges_nonoverlapping"] for r in comparisons)
+    rounding_count=sum(
+        r["opponent_price_ranges_outside_conditional_PL_win_rounding_bound"]
+        for r in comparisons
+    )
     return {
         "race_id":race_id,"date":date,
         "runners":len(strength),
@@ -115,6 +163,8 @@ def analyze_tied_quotes(race_id:str,date:str,strength:dict[int,float],
         "tied_horse_pair_count":len(comparisons),
         "same_win_quote_opponent_pair_comparisons":all_opponent_count,
         "same_win_quote_opponent_price_difference_count":nonzero_count,
+        "opponent_wide_price_range_nonoverlap_count":interval_count,
+        "opponent_outside_conditional_PL_win_rounding_bound_count":rounding_count,
         "same_win_quote_opponent_differences_are_all_exactly_zero":
             nonzero_count==0 if all_opponent_count else None,
         "mean_abs_matched_logprice_contrast_across_tied_pairs":
@@ -164,6 +214,10 @@ def run_analysis()->dict:
                 r["same_win_quote_opponent_pair_comparisons"] for r in sub),
             "total_nonzero_opponent_matched_price_contrasts":sum(
                 r["same_win_quote_opponent_price_difference_count"] for r in sub),
+            "total_nonoverlapping_wide_quote_ranges":sum(
+                r["opponent_wide_price_range_nonoverlap_count"] for r in sub),
+            "total_opponent_ranges_outside_conditional_PL_win_rounding_bounds":sum(
+                r["opponent_outside_conditional_PL_win_rounding_bound_count"] for r in sub),
         }
     return {
         "schema_version":1,"status":STATUS,
@@ -172,6 +226,8 @@ def run_analysis()->dict:
         "tie_null":"For two equal-display-win-odd horses, all other-opponent wide price deviations must match under any identical-quote-only function with symmetric PL baseline.",
         "display_quote_resolution":EQUAL_PRICE_QUANTIZATION,
         "source_quoted_odds_are_not_latent_exact_probabilities":True,
+        "rounding_sensitivity_is_conditional_on_fixed_other_win_prices_and_P_L_model":True,
+        "wide_price_quote_ranges_robustly_separated_when_nonoverlapping":True,
         "no_registered_horse_identity_repeatability_tested":True,
         "no_independent_time_series_or_outcome_validation":True,
         "no_inference_about_heritability_or_actual_voter_behavior":True,
