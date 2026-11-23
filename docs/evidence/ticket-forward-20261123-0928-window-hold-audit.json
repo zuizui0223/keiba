@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "target_date_jst": "2026-11-23",
+  "record_type": "LIVE_0928_MARKET_SOURCE_METADATA_ONLY_NO_PROSPECTIVE_FORECAST",
+  "audit_decision": "HOLD",
+  "no_result_or_payout_data_used": true,
+  "betting_or_auto_voting": false,
+  "pr_url": "https://github.com/zuizui0223/keiba/pull/76",
+  "branch": "analysis/ticket-type-joint-model-20261122",
+  "manifest": {
+    "path": "docs/betting/ticket-forward-v1-manifest.json",
+    "git_blob_sha1": "ca2639dff334c5b65cda9aadf8eaf1605a4a63d6",
+    "fixed_model_and_pipeline_blob_sha_matches": 7,
+    "total_pinned": 7,
+    "decision": "PASS_PINNED_SOURCE_ONLY"
+  },
+  "official_calendar": {
+    "url": "https://jra.jp/keiba/calendar2026/2026/11/1123.html",
+    "venue_races_expected": 24,
+    "scheduled_first_post_jst": "2026-11-23T09:45:00+09:00",
+    "source_type": "published_plan_not_guaranteed_current_starters",
+    "decision": "PASS_PUBLISHED_SLOTS_ONLY"
+  },
+  "official_cards": {
+    "run_id": 45088966188,
+    "run_url": "https://github.com/zuizui0223/keiba/actions/runs/45088966188",
+    "paired_morning_run_id": 45088966193,
+    "paired_morning_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45088966193",
+    "observed_at_utc": "2026-11-23T00:28:50Z",
+    "source_card_links": 24,
+    "number_sequences_parsed": 24,
+    "complete_24_name_number_roster_verified": false,
+    "active_scratch_status_verified": false,
+    "secondary_mismatch_races": [
+      {
+        "race_id": "2026-11-23-TOKYO-01",
+        "official_numbered_rows": 13,
+        "secondary_preliminary": 14
+      },
+      {
+        "race_id": "2026-11-23-TOKYO-04",
+        "official_numbered_rows": 14,
+        "secondary_preliminary": 15
+      },
+      {
+        "race_id": "2026-11-23-TOKYO-06",
+        "official_numbered_rows": 13,
+        "secondary_preliminary": 14
+      }
+    ],
+    "decision": "HOLD_ALL_HORSE_NAME_AND_ACTIVE_STARTER_VALIDATION"
+  },
+  "fukushima_1r": {
+    "run_id": 45088966023,
+    "run_url": "https://github.com/zuizui0223/keiba/actions/runs/45088966023",
+    "artifact_id": 14780332719,
+    "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45088966023/artifacts/14780332719",
+    "artifact_zip_sha256": "598ec58dbecac63dc3f387a3595298d5519de5895ee2a029bf3d0853dbe81fae",
+    "official_card_sha256": "030178aa1e0f06d97dd808faeeff87d894aa80cf5493b5ea73c73097a7224485",
+    "official_card_received_jst": "2026-11-23T09:28:28+09:00",
+    "win_raw_sha256": "47881e3f118f27258ed6d73786db02a9cadf67dc8286c897cc48cc436006fb44",
+    "wide_raw_sha256": "9a9bf3adbb85fd237be6bfb58894a31dfd8b561e9471fc38a1db6909436b8891",
+    "win_source_visible_updated_jst": "2026-11-23T09:28:00+09:00",
+    "wide_source_visible_updated_jst": "2026-11-23T09:27:00+09:00",
+    "win_received_jst": "2026-11-23T09:28:29+09:00",
+    "wide_received_jst": "2026-11-23T09:28:30+09:00",
+    "source_visible_update_verified_by_live_parser": true,
+    "numbered_jra_card_rows": 16,
+    "complete_win_quote_count": 16,
+    "complete_wide_pairs": 120,
+    "received_gap_seconds": 1,
+    "read_only_source_capture_in_fixed_0920_0930_window": true,
+    "market_raw_bodies_publicly_distributed": false,
+    "source_rights_to_redistribute_original_market_html_verified": false,
+    "pre_race_model_baseline_computed": false,
+    "pre_race_model_pair_residual_computed": false,
+    "predictions_frozen_to_github": 0,
+    "decision": "HOLD_RIGHTS_DAY_PLAN_AND_FOUR_FILE_SERVER_RECEIPT"
+  },
+  "server_seal": {
+    "required_day_paths": [
+      "holdout/ticket-forward-v1/2026-11-23/day-schedule.json",
+      "holdout/ticket-forward-v1/2026-11-23/day-schedule-source.txt",
+      "holdout/ticket-forward-v1/2026-11-23/day-plan.json"
+    ],
+    "valid_three_file_day_plan_server_attestation_found": false,
+    "valid_four_file_fukushima_1r_source_and_forecast_attestation_found": false,
+    "forecast_commit_sha": null,
+    "day_plan_commit_sha": null,
+    "prospective_candidates": 0,
+    "prospective_scores": 0
+  },
+  "summary": "Live win+wide quotes with true 09:28 receipts, source-visible updates and both market raw SHA were verified in 09:20-09:30 time window. This proves market coverage only. Official 24-card numbered rows do not verify all horse names or active scratches. Rights to republish original source pages and required pre-first-post three-file GitHub day-plan / four-file forecast proof are unavailable. Consequently HOLD, no PL/wide evaluation, no predictions, no wagers.",
+  "next_validation": "On a later eligible date, obtain a legally archivable licensed original 24-card official source and full horse-name/active runner validation, seal all 3 day files on a successful GitHub Actions head before the FIRST post, then for predeclared races seal 4 forecast/source files during 15-25-minute window before post; never backfill this date after the deadline."
+}
