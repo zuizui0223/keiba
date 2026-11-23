@@ -17,6 +17,10 @@
 
 **より柔軟な市場補正で再点検（2026-11-23）**：全馬に共通する単勝人気の**1〜4次の滑らかな価格関数**でもペア除外予測を実施。4次まで許すと同一競走内 \(R^2\) は京都5Rで**0.310**、別日3場4Rで**0.230**まで改善するが、馬ノードの**0.505／0.656**には平均で及ばなかった。ただし馬ノードが全レースで勝つわけではなく**9レース中8レース**、京都9Rでは共通の3/4次価格関数が僅かに上回る。**共有された市場価格関数と、馬インデックス別の残差構造を区別した探索的結果**であり、反復する生物学的個体性・社会学習・遺伝的因果を示さない。[本文に全モデルと例外](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [4次までの実測証拠](../evidence/ticket-market-smooth-null-20261123.json)。
 
+**追加の独立した反証（2026-11-23）**：[市場ノードの60/40ペアブロック検証](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md#3d-ワイドの40を隠すブロック外挿馬単位の構造はどこまで頑健か)では、未使用40%のワイドペアに対するノードR²は京都5Rで**0.367**、別日4Rで**0.590**（固定ridgeを入れると**0.428／0.613**）。共通4次価格関数は**0.248／0.181**で、馬ノードは**8/9レース**で優位。ただし馬番はレース固有であり、異なる競走で同一馬が反復する個体差ではない。[証拠](../evidence/ticket-market-edge-block-heldout-20261123.json)。
+
+**理論上の識別限界と観測的反例**：単勝オッズが全て異なるなら、馬別の価格係数を任意に柔軟な人気関数でも補間できる。これに対して単勝表示オッズが**同一**の馬2組（10/18東京11R・新潟11R）を自然な対照とすると、第三馬とのワイド表示価格は**19/19で違い**、そのうち**18/19で表示価格範囲が非重複**だった。標準PLと表示丸め±0.05を条件付きで許しても18/19が区間外。配信時刻のずれ・未表示値・異なる市場価格形成で説明される可能性は残り、これは遺伝的・反復個体差の証拠ではない。[同じ資料の出典と限界](../evidence/ticket-market-odds-tie-identification-20261123.json)。
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
