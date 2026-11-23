@@ -90,5 +90,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ticket-forward-fukushima1r-early-market-coverage
-          path: |\n            output/market-source-coverage.json\n            output/market-source-sha-witness.json
+          path: |
+            output/market-source-coverage.json
+            output/market-source-sha-witness.json
           retention-days: 7
