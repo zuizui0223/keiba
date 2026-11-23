@@ -34,6 +34,8 @@ class OddsTieIdentificationTests(unittest.TestCase):
         self.assertEqual(report["same_win_quote_opponent_pair_comparisons"],7)
         self.assertGreater(report["same_win_quote_opponent_price_difference_count"],0)
         self.assertGreater(report["maximum_abs_matched_logprice_contrast"],0)
+        self.assertGreater(report["opponent_wide_price_range_nonoverlap_count"],0)
+        self.assertGreater(report["opponent_outside_conditional_PL_win_rounding_bound_count"],0)
         self.assertFalse(report["distinct_win_odds_can_always_support_arbitrary_finite_function_interpolation"])
         self.assertFalse(report["stable_registry_horse_IDs_available_for_this_test"])
 
@@ -43,6 +45,8 @@ class OddsTieIdentificationTests(unittest.TestCase):
         self.assertEqual(report["same_win_quote_opponent_pair_comparisons"],7)
         self.assertTrue(report["same_win_quote_opponent_differences_are_all_exactly_zero"])
         self.assertEqual(report["same_win_quote_opponent_price_difference_count"],0)
+        self.assertEqual(report["opponent_wide_price_range_nonoverlap_count"],0)
+        self.assertEqual(report["opponent_outside_conditional_PL_win_rounding_bound_count"],0)
 
     def test_unique_win_prices_do_not_identify_horse_specific_effects(self):
         s,frames,wide=setup(tied=False)
@@ -77,6 +81,10 @@ class OddsTieIdentificationTests(unittest.TestCase):
             if race["tied_horse_pair_count"]:
                 self.assertGreater(race["same_win_quote_opponent_pair_comparisons"],0)
                 self.assertTrue(math.isfinite(race["maximum_abs_matched_logprice_contrast"]))
+                self.assertLessEqual(
+                    race["opponent_outside_conditional_PL_win_rounding_bound_count"],
+                    race["same_win_quote_opponent_pair_comparisons"]
+                )
         self.assertGreaterEqual(len(result["input_file_sha256"]),30)
 
 
