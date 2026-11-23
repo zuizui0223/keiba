@@ -55,7 +55,7 @@ class EdgeBlockHoldoutTests(unittest.TestCase):
     def test_normalization_constant_does_not_create_out_of_block_skill(self):
         import random
         y,w,s=make_synthetic()
-        train,test=partition_edges(y,random.Random(250))
+        train,test=partition_edges(y,random.Random(112))
         graph=node_features(sorted(s))
         smooth=feature_map(s,4)
         one=evaluate_partition(y,w,graph,smooth,train,test)
