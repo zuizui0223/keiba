@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "created_jst_date": "2026-11-23",
+  "status": "TWO_ARCHIVED_MARKET_STATES_ONE_KYOTO_RACE_EARLY_WIN_WIDE_ASYNCHRONOUS",
+  "source_action_run_id": 45096420984,
+  "source_action_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45096420984",
+  "artifact_id": 14782914399,
+  "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45096420984/artifacts/14782914399",
+  "artifact_zip_sha256": "4138b3f8d2ff2499f545b6f5d40e4fd352a62fdef74513fb09c89ddaaa1d7385",
+  "source_file_SHA256_count": 2,
+  "race_id": "2608040508",
+  "race_date": "2026-10-12",
+  "venue": "京都",
+  "race": 8,
+  "horses": 11,
+  "wide_pairs": 55,
+  "start_jst": "2026-10-12T14:00:00+09:00",
+  "first": {
+    "saved_at_jst": "2026-10-12T13:35:59+09:00",
+    "win_updated_at_jst": "2026-10-12T13:22:00+09:00",
+    "wide_updated_at_jst": "2026-10-12T13:33:00+09:00",
+    "cross_market_update_gap_seconds": 660
+  },
+  "second": {
+    "saved_at_jst": "2026-10-12T13:44:55.955326+09:00",
+    "win_updated_at_jst": "2026-10-12T13:44:00+09:00",
+    "wide_updated_at_jst": "2026-10-12T13:44:00+09:00",
+    "cross_market_update_gap_seconds": 0
+  },
+  "observed_changes": {
+    "win_odds_changed_horses": 11,
+    "wide_midpoint_changed_pairs": 55
+  },
+  "observed_price_network_structure": {
+    "node_score_correlation_across_snapshots": 0.7867216797980361,
+    "complete_crossmarket_pair_logratio_correlation_across_snapshots": 0.8414657454702203,
+    "dyadic_remainder_correlation_across_snapshots": 0.9215710376561026,
+    "weighted_node_fraction_of_logprice_update_R2": 0.6657128337825096,
+    "early_node_to_late_price_deviation_R2_relative_to_early_mean": 0.08342108987048646,
+    "early_global_degree4_to_late_price_deviation_R2_relative_to_early_mean": -0.03356558990780312
+  },
+  "limitations": {
+    "one_race_only": true,
+    "early_win_and_wide_upstream_timestamps_11_minutes_apart": true,
+    "early_snapshot_market_observation_per_quote_timestamp_unverified": true,
+    "prior_result_inspection_and_posthoc_model": true,
+    "correlation_not_independent_time_series_test": true,
+    "repeated_horse_numbers_same_race_not_same_horse_across_races": true,
+    "actual_voter_decision_social_causality_not_identified": true,
+    "hereditary_or_genomic_effect_not_identified": true,
+    "market_price_not_actual_private_belief": true,
+    "not_a_betting_accuracy_or_roi_test": true
+  }
+}
