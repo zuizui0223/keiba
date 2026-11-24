@@ -169,7 +169,9 @@ def report_two_snapshots(early:dict,late:dict,*,n_permutations:int=N_PERMUTATION
     if set(early_wide)!=set(late_wide):
         raise ValueError("missing_time_pair")
     return {
-        "schema_version":1, "status":STATUS,
+        "schema_version":1,
+        "status":(STATUS if a["source_win_wide_update_gap_seconds"]>0
+                  else "ONE_RACE_TWO_ARCHIVED_SYNCHRONIZED_SOURCE_UPDATED_PRICE_STATES"),
         "race_id":RACE_ID,
         "horse_count":len(nodes),"full_wide_pairs":len(edge_order),
         "early_checked_jst":a["receipt_jst"],
@@ -181,7 +183,10 @@ def report_two_snapshots(early:dict,late:dict,*,n_permutations:int=N_PERMUTATION
             a["source_win_wide_update_gap_seconds"],
         "late_win_wide_source_update_gap_seconds":
             b["source_win_wide_update_gap_seconds"],
-        "early_source_market_mismatched_11_min":True,
+        "early_source_market_mismatched_11_min":
+            a["source_win_wide_update_gap_seconds"]==660,
+        "early_quote_channels_source_updated_at_identical":
+            a["source_win_wide_update_gap_seconds"]==0,
         "win_prices_changed_horses":sum(
             a["win_odds"][n]!=b["win_odds"][n] for n in nodes),
         "wide_pair_geometric_midpoint_changed":sum(
@@ -209,11 +214,14 @@ def report_two_snapshots(early:dict,late:dict,*,n_permutations:int=N_PERMUTATION
         },
         "independent_horse_ID_across_multiple_races":False,
         "multiple_independent_races_repeated_at_multiple_quote_times":False,
-        "synchronized_early_win_wide_market_state":False,
+        "synchronized_early_win_wide_market_state":
+            a["source_win_wide_update_gap_seconds"]==0,
         "actual_voter_or_horse_learning_identified":False,
         "true_replicated_population_market_time_series_available":False,
         "model_frozen_before_2026_10_12":False,
-        "interpretation":"This is exactly one historical race with two retained states, early price timestamps 11m apart; measured market quote coefficient persistence can arise from price update/margin mechanics and is not dynamic causality.",
+        "interpretation":("Exactly one historical race with two pre-race archived price states. "
+                          "Time-aligned quote update stamps still do not identify voters, "
+                          "causal social learning, nonlinear thresholds, or heritable horse traits."),
     }
 
 
