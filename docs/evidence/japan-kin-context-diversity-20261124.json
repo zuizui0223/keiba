@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "source": "GitHub Actions completed job stdout; aggregate-only artifact metadata separately checked, ZIP contents not independently opened",
+  "run_id": 45328700713,
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/45328700713",
+  "job_id": 138224361496,
+  "source_commit": "97dcaad33de8e05f33f5792587a47df5a4d771cc",
+  "artifact": {
+    "id": 14890822686,
+    "name": "kin-context-diversity-aggregate-only",
+    "digest": "sha256:bee6e212c6dd93b19214b881ada2807aa37299374a6fda3d43a3a1a84bf0d66f",
+    "size_in_bytes": 3142,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45328700713/artifacts/14890822686"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_KIN_CONTEXT_DIVERSITY_NOT_CAUSAL_OR_PROSPECTIVE",
+    "groups": {
+      "all": {
+        "starts": 244147,
+        "horses": 12887,
+        "races": 35333,
+        "days": 1067,
+        "RMSE": {
+          "M2": 0.3121678685067158,
+          "M3": 0.3122525859863123,
+          "M4": 0.31224652356150645,
+          "M5": 0.31224231462406044,
+          "M0": 0.3217441421829057
+        },
+        "MSE_gain_M4_minus_M5": 0.0000026284344556426475,
+        "MSE_gain_M3_minus_M4": 0.000003785978892958952,
+        "MSE_gain_M2_minus_M5": -0.000046484913764535674,
+        "MSE_gain_M0_minus_M5": 0.006024029987223081
+      },
+      "novel_supported": {
+        "starts": 40130,
+        "horses": 5729,
+        "races": 20122,
+        "days": 1067,
+        "RMSE": {
+          "M2": 0.3189503252919441,
+          "M3": 0.3179885629753458,
+          "M4": 0.31797444680472187,
+          "M5": 0.31797481158412827,
+          "M0": 0.327105514901725
+        },
+        "MSE_gain_M4_minus_M5": -2.3198119296352626e-7,
+        "MSE_gain_M3_minus_M4": 0.000008977362356527019,
+        "MSE_gain_M2_minus_M5": 0.0006213292018751038,
+        "MSE_gain_M0_minus_M5": 0.005890037077160765
+      },
+      "seen_supported": {
+        "starts": 203972,
+        "horses": 12520,
+        "races": 34601,
+        "days": 1066,
+        "RMSE": {
+          "M2": 0.3099961542886192,
+          "M3": 0.310074862990722,
+          "M4": 0.3100677721135981,
+          "M5": 0.3100642749583328,
+          "M0": 0.3198297718390399
+        },
+        "MSE_gain_M4_minus_M5": 0.0000021686980536256284,
+        "MSE_gain_M3_minus_M4": 0.000004397355224824984,
+        "MSE_gain_M2_minus_M5": -0.000042238931703172944,
+        "MSE_gain_M0_minus_M5": 0.006151228349175711
+      },
+      "no_off_context_peers": {
+        "starts": 45,
+        "horses": 2,
+        "races": 45,
+        "days": 45,
+        "RMSE": {
+          "M2": 0.36474102875295145,
+          "M3": 0.3683173572019606,
+          "M4": 0.36848249062238114,
+          "M5": 0.36856045784140207,
+          "M0": 0.3376606249764802
+        },
+        "MSE_gain_M4_minus_M5": -0.00005746518899071851,
+        "MSE_gain_M3_minus_M4": -0.00012167027903656202,
+        "MSE_gain_M2_minus_M5": -0.002800793028502585,
+        "MSE_gain_M0_minus_M5": -0.02182211342475672
+      }
+    },
+    "primary_uncertainty": {
+      "mean_MSE_gain": -2.3198119298807497e-7,
+      "horses": 5729,
+      "two_way": {
+        "horses": 5729,
+        "days": 1067,
+        "horse_day_intersections": 40130,
+        "variance": 8.871870233572993e-11,
+        "status": "OK",
+        "SE": 0.000009419060586689627,
+        "CI95": [
+          -0.000018693000711100455,
+          0.0000182290383251243
+        ],
+        "CI95_bonferroni_8": [
+          -0.000025987166459697053,
+          0.000025523204073720907
+        ]
+      },
+      "sire_bootstrap": {
+        "clusters": 279,
+        "unknown_sire_singleton_horses": 0,
+        "largest_cluster_horses": 168,
+        "status": "OK",
+        "draws": 999,
+        "seed": 20261121,
+        "CI95": [
+          -0.000030161537102477,
+          0.00003295346311035835
+        ]
+      }
+    }
+  },
+  "derived_from_printed_rmse": {
+    "all": {
+      "MSE_gain_M2_minus_M3": -0.00005289932711313727,
+      "RMSE_gain_M2_minus_M3": -0.00008471747959648557,
+      "relative_RMSE_gain_M2_minus_M3": -0.00027138436765365877
+    },
+    "novel_supported": {
+      "MSE_gain_M2_minus_M3": 0.0006125838207115125,
+      "RMSE_gain_M2_minus_M3": 0.0009617623165983358,
+      "relative_RMSE_gain_M2_minus_M3": 0.0030153984502696712
+    },
+    "seen_supported": {
+      "MSE_gain_M2_minus_M3": -0.000048804984981623556,
+      "RMSE_gain_M2_minus_M3": -0.00007870870210280323,
+      "relative_RMSE_gain_M2_minus_M3": -0.0002539021888301304
+    },
+    "no_off_context_peers": {
+      "MSE_gain_M2_minus_M3": -0.0026216575604753045,
+      "RMSE_gain_M2_minus_M3": -0.0035763284490091807,
+      "relative_RMSE_gain_M2_minus_M3": -0.009805116965416909
+    }
+  },
+  "scope": "historical fixed sources, previously inspected 2022-24 cohort; no causal or prospective claim. Year-specific estimates, coefficients and distribution by count are in runner artifact, not verified from printed log."
+}
