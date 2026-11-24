@@ -50,6 +50,16 @@ class TwoSynchronizedKyoto8RStatesTests(unittest.TestCase):
         self.assertTrue(math.isfinite(compare["same_race_55_dyadic_residual_correlation"]))
         self.assertEqual(out["asynchronous_early_source_sensitivity"]
                          ["early_win_wide_update_gap_seconds"],660)
+        self.assertFalse(out["three_archived_price_bundles_form_strict_monotone_source_time_series"])
+        self.assertTrue(out["older_mid_state_should_not_be_interpreted_as_clean_time_intermediate"])
+        self.assertEqual(len(out["recorded_quote_source_update_time_regressions"]),1)
+        regression=out["recorded_quote_source_update_time_regressions"][0]
+        self.assertEqual(regression["source_kind"],"win")
+        self.assertEqual(regression["source_update_change_minutes"],-4.0)
+        self.assertEqual(
+            out["three_receipt_order_source_update_time_changes_minutes"]["wide"][0]
+            ["source_update_change_minutes"],7.0
+        )
         effects=out["arithmetic_source_channel_splits"]
         self.assertLess(effects["max_total_equals_win_plus_wide_delta_error"],1e-10)
         self.assertLess(effects["max_fixed_weight_node_delta_additivity_error"],1e-10)
