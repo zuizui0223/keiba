@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "created_jst_date": "2026-11-24",
+  "status": "OBSERVED_ONE_RACE_TWO_ARCHIVED_PRICE_STATES_MIXED_SOURCE_ARITHMETIC_NOT_CAUSAL",
+  "source_action_run_id": 45311053338,
+  "source_action_url": "https://github.com/zuizui0223/keiba/actions/runs/45311053338",
+  "artifact_id": 14882513262,
+  "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45311053338/artifacts/14882513262",
+  "artifact_zip_sha256": "f034d97339c4f51669261ade7d649e749f944f237409279b561fc832eced5a2b",
+  "original_sources": {
+    "race_id": "2608040508",
+    "date": "2026-10-12",
+    "start_jst": "2026-10-12T14:00:00+09:00",
+    "runners": 11,
+    "wide_pair_count": 55,
+    "earlier_win_updated_jst": "2026-10-12T13:22:00+09:00",
+    "earlier_wide_updated_jst": "2026-10-12T13:33:00+09:00",
+    "later_win_updated_jst": "2026-10-12T13:44:00+09:00",
+    "later_wide_updated_jst": "2026-10-12T13:44:00+09:00",
+    "early_source_gap_seconds": 660,
+    "later_source_gap_seconds": 0,
+    "original_source_file_sha256_count": 2
+  },
+  "factorization": {
+    "algebra": "Let r_ij=log(qwide_ij / pPLwin_ij). Source-specific difference Δr=Δr_win_source + Δr_wide_source exactly. Reproject onto horse nodes and pair residual with one fixed later-PL edge weighting. No random intervention.",
+    "max_log_ratio_identity_error": 2.636779683484747e-16,
+    "total_change_weighted_SD": 0.2535799444340753,
+    "win_source_change_weighted_SD": 0.2803529238179572,
+    "wide_source_change_weighted_SD": 0.2132853777664515,
+    "win_source_variance_covariance_share": 0.7574313683836481,
+    "wide_source_variance_covariance_share": 0.24256863161635187,
+    "win_vs_wide_source_change_weighted_correlation": -0.49992011712739065,
+    "horse_node_explained_R2_with_total_change": 0.6657128337825096,
+    "horse_node_explained_R2_with_win_source_only": 0.9998605043279679,
+    "horse_node_explained_R2_with_wide_source_only": 0.5255057268024474,
+    "win_source_dyadic_remainder_delta_RMS": 0.0033112003285087764,
+    "wide_source_dyadic_remainder_delta_RMS": 0.14691852855613788,
+    "total_dyadic_remainder_delta_RMS": 0.14661376761299064
+  },
+  "dispersion": {
+    "early_win_inverse_odds_effective_support": 8.369558821716993,
+    "later_win_inverse_odds_effective_support": 8.086975443254174,
+    "early_wide_inverse_geometric_odds_effective_support": 27.075825099138825,
+    "later_wide_inverse_geometric_odds_effective_support": 31.295247886038474,
+    "win_relative_price_distribution_JSD_nats": 0.005917471188913329,
+    "wide_relative_price_distribution_JSD_nats": 0.005867169843581426
+  },
+  "four_states": {
+    "observed_archived_combinations": [
+      "early_win_early_wide",
+      "late_win_late_wide"
+    ],
+    "unobserved_arithmetic_recombinations": [
+      "early_win_late_wide",
+      "late_win_early_wide"
+    ],
+    "early_to_late_same_race_node_correlation_fixed_weight": 0.7829364194249415,
+    "early_to_late_same_race_dyad_correlation_fixed_weight": 0.9246994197962275,
+    "counterfactual_early_win_late_wide_dyad_corr_to_late_state": 0.9999277298816381
+  },
+  "caveats": {
+    "only_one_race_two_archived_states": true,
+    "early_win_wide_source_times_not_synchronized": true,
+    "mixed_two_other_combinations_not_observed": true,
+    "covariance_shares_sum_to_one_by_algebra_and_are_not_causal": true,
+    "PL_market_node_dominance_may_be_structural_arithmetic_not_social_behavior": true,
+    "actual_voter_information_sharing_not_identified": true,
+    "no_stable_horse_ID_link_to_other_races": true,
+    "no_kinship_A_or_genomic_G_observed_in_same_market_horses": true,
+    "not_joint_belief_distribution_or_real_vote_shares": true,
+    "jensen_shannon_metric_is_on_normalized_inverse_display_odds_proxy": true,
+    "no_betting_or_roi_model": true
+  }
+}
