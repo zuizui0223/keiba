@@ -8,9 +8,10 @@
     "pr84": "92b4490c221934f053ba043efeeddcf3a2329510",
     "pr87": "3612c93a6dcbb11e8a58419c9897a5cea8e55bec",
     "pr88": "0e873931af9f3bd12dc1f2e46e8f413b69408414",
-    "pr89": "4e6b056c97bbbc77d7fb8781b50677d7769d501b"
+    "pr89": "4e6b056c97bbbc77d7fb8781b50677d7769d501b",
+    "pr91": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693"
   },
-  "original_files_preserved": 65,
+  "original_files_preserved": 70,
   "previous_main_files_changed": [
     "README.md",
     "docs/research/README.md"
@@ -136,6 +137,15 @@
       "protocol": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_PROTOCOL.md",
       "result": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_RESULTS.md",
       "evidence": "docs/evidence/japan-context-distance-generalization-20261124.json"
+    },
+    {
+      "pr": 91,
+      "topic": "Historical surface-supply balance",
+      "status": "Primary association not supported; all estimated intervals cross zero, within-horse support HOLD",
+      "run_id": 45386135942,
+      "protocol": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-opportunity-diversity-20261124.json"
     }
   ],
   "original_blobs": [
@@ -158,6 +168,10 @@
     {
       "path": ".github/workflows/ecology-japan-context-occupancy-refresh.yml",
       "sha": "2733b6d042dc27f988debdfe3d1bd21ee755ca09"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-opportunity-diversity.yml",
+      "sha": "c7adf7d68b0e80219e4c207a8f0fcb1b1e46c3ff"
     },
     {
       "path": ".github/workflows/ecology-japan-context-within-individual.yml",
@@ -210,6 +224,10 @@
     {
       "path": "docs/evidence/japan-context-occupancy-refresh-20261124.json",
       "sha": "a699763f6f3ccf3c01e1bcb081d437b178b541cb"
+    },
+    {
+      "path": "docs/evidence/japan-context-opportunity-diversity-20261124.json",
+      "sha": "31dee4ae476855f9c23c607b4a7d8c73f68eb415"
     },
     {
       "path": "docs/evidence/japan-context-within-individual-20261124.json",
@@ -282,6 +300,14 @@
     {
       "path": "docs/research/JAPAN_CONTEXT_OCCUPANCY_REFRESH_RESULTS.md",
       "sha": "9c5c616638510b8f3cea51ac95272210585c6cb0"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_PROTOCOL.md",
+      "sha": "860d7d96dcf8e4532a1ec64084e22d6b6eace16a"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_RESULTS.md",
+      "sha": "3a513a9e083cc18977a4b3cc667a4b7b1aa4afc4"
     },
     {
       "path": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_PROTOCOL.md",
@@ -368,6 +394,10 @@
       "sha": "c5c6236235b2f1e687c32ffa33ef78a62da128fe"
     },
     {
+      "path": "scripts/ecology_japan_context_opportunity_diversity.py",
+      "sha": "26a4795774b36fdf7adc1b8d61a852953c90195e"
+    },
+    {
       "path": "scripts/ecology_japan_context_within_individual.py",
       "sha": "f67f77aa27e64887ace1d3ffe9cf61eea4a848e8"
     },
@@ -420,6 +450,14 @@
       45383674160
     ],
     "successful_ecological_run": 45383674118,
-    "diagnosis": "Root README 5275 characters exceeds pre-existing 5000-character cap; three shared navigation tests failed. Shorten root entry, preserve detailed text in research index/synthesis; do not change test or frozen classifier."
+    "diagnosis": "Root README 5275 characters exceeds pre-existing 5000-character cap; three shared navigation tests failed. Shorten root entry, preserve detailed text in research index/synthesis; do not change test or frozen classifier.",
+    "repair_commit": "f16731d3a1d46f23fe3bb707aa2d0120b00ec8a9",
+    "repair_runs": [
+      45384930767,
+      45384930944,
+      45384931056,
+      45384930859
+    ],
+    "repair_conclusion": "All four succeeded on prior integration; new revision requires CI"
   }
 }
