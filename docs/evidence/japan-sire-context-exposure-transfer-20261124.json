@@ -1,0 +1,1504 @@
+{
+  "schema_version": 1,
+  "source": "Completed GitHub Actions job stdout; artifact metadata verified separately (ZIP contents not independently opened)",
+  "run_id": 45332342678,
+  "job_id": 138236207219,
+  "source_commit": "e29c1c083be466398d1edac275d10d2c64741058",
+  "artifact": {
+    "id": 14892328333,
+    "digest": "sha256:a9ceeb8dc8f6daed8da4f8cf1c3c8e55b06e1ebd0f50fde423214344fea19393",
+    "size_in_bytes": 10795,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45332342678/artifacts/14892328333"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_FAMILY_CONTEXT_OCCUPANCY_TRANSFER",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "candidate_starts": 57208,
+    "candidate_horses": 15129,
+    "primary": "horse_disjoint/20261124/2021/own_history/all_targets/M0_minus_M1",
+    "results": {
+      "horse_disjoint": {
+        "20261124": {
+          "occupancy_support": {
+            "2019": {
+              "horse_years": 7265,
+              "sires": 374,
+              "starts": 19065,
+              "turf_only": 3013,
+              "dirt_only": 3257,
+              "both_surfaces": 995,
+              "no_own_prior": 3894,
+              "with_prior_trainer_peers": 3371,
+              "horse_equal_mean_turf_fraction": 0.48098993573529014
+            },
+            "2020": {
+              "horse_years": 7381,
+              "sires": 363,
+              "starts": 19238,
+              "turf_only": 3007,
+              "dirt_only": 3323,
+              "both_surfaces": 1051,
+              "no_own_prior": 3852,
+              "with_prior_trainer_peers": 3527,
+              "horse_equal_mean_turf_fraction": 0.4761549500643119
+            },
+            "2021": {
+              "horse_years": 7276,
+              "sires": 349,
+              "starts": 18905,
+              "turf_only": 2862,
+              "dirt_only": 3429,
+              "both_surfaces": 985,
+              "no_own_prior": 3737,
+              "with_prior_trainer_peers": 3538,
+              "horse_equal_mean_turf_fraction": 0.4578336951515896
+            }
+          },
+          "own_history": {
+            "2020": {
+              "total_targets": 7381,
+              "supported_targets": 6485,
+              "matched_targets": 6026,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.4231757075649425,
+                  "M0": 0.42336533494564493,
+                  "M1": 0.4008404636254338
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01856512955418547,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.01153595289727792,
+                      0.025709469573838673
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6026,
+                "sires": 148,
+                "RMSE": {
+                  "zero": 0.41818658392005836,
+                  "M0": 0.4187532353082432,
+                  "M1": 0.3953623629578152,
+                  "P": 0.44069892707336433
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01904287403753373,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.01152771851887971,
+                      0.0265479101582409
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.037904146280027314,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.025854234416883358,
+                      0.04977747500060918
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 7276,
+              "supported_targets": 6589,
+              "matched_targets": 6358,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.42303988023577105,
+                  "M0": 0.4232463747043911,
+                  "M1": 0.4054954640117183
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01471092236633107,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007144376414687958,
+                      0.02324582542753721
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6358,
+                "sires": 182,
+                "RMSE": {
+                  "zero": 0.4200970063972473,
+                  "M0": 0.4203585769997442,
+                  "M1": 0.39974016656868433,
+                  "P": 0.45208442399559834
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016909132488890425,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007793922512579086,
+                      0.025608401111549134
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.04458812565107245,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.032807635510348473,
+                      0.05881956089149982
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "own_and_last_trainer_history": {
+            "2020": {
+              "total_targets": 7381,
+              "supported_targets": 6485,
+              "matched_targets": 6026,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.42140677098211815,
+                  "M0": 0.4215686347844987,
+                  "M1": 0.40098384323269076
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01693207130040694,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.010536714097193707,
+                      0.023591992093561054
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6026,
+                "sires": 148,
+                "RMSE": {
+                  "zero": 0.41660716209489806,
+                  "M0": 0.41709503863651926,
+                  "M1": 0.3951567124667787,
+                  "P": 0.43923399907618815
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.017819443847647068,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.01042392271590408,
+                      0.02524606091037636
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.036777678536908394,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.02494948879994461,
+                      0.048204425405762724
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 7276,
+              "supported_targets": 6589,
+              "matched_targets": 6358,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.4212163178747684,
+                  "M0": 0.42139218603096673,
+                  "M1": 0.40576012899948827
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.012930092162275522,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005640695075157364,
+                      0.020795058182038768
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6358,
+                "sires": 182,
+                "RMSE": {
+                  "zero": 0.41798938972238364,
+                  "M0": 0.4182117434900289,
+                  "M1": 0.40000170663656065,
+                  "P": 0.44969827114854743
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014899697080808575,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.006457460885068427,
+                      0.023021847823661002
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.04222716976183138,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.030412303804721454,
+                      0.055881065673434135
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "20261125": {
+          "occupancy_support": {
+            "2019": {
+              "horse_years": 7265,
+              "sires": 374,
+              "starts": 19065,
+              "turf_only": 3013,
+              "dirt_only": 3257,
+              "both_surfaces": 995,
+              "no_own_prior": 3894,
+              "with_prior_trainer_peers": 3371,
+              "horse_equal_mean_turf_fraction": 0.48098993573529014
+            },
+            "2020": {
+              "horse_years": 7381,
+              "sires": 363,
+              "starts": 19238,
+              "turf_only": 3007,
+              "dirt_only": 3323,
+              "both_surfaces": 1051,
+              "no_own_prior": 3852,
+              "with_prior_trainer_peers": 3527,
+              "horse_equal_mean_turf_fraction": 0.4761549500643119
+            },
+            "2021": {
+              "horse_years": 7276,
+              "sires": 349,
+              "starts": 18905,
+              "turf_only": 2862,
+              "dirt_only": 3429,
+              "both_surfaces": 985,
+              "no_own_prior": 3737,
+              "with_prior_trainer_peers": 3538,
+              "horse_equal_mean_turf_fraction": 0.4578336951515896
+            }
+          },
+          "own_history": {
+            "2020": {
+              "total_targets": 7381,
+              "supported_targets": 6501,
+              "matched_targets": 6000,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.42317045416770127,
+                  "M0": 0.4233106104063673,
+                  "M1": 0.40181888220733575
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.017733458784258527,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.010968339723507548,
+                      0.024246457375973956
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6000,
+                "sires": 149,
+                "RMSE": {
+                  "zero": 0.4196418371214059,
+                  "M0": 0.42002344028211613,
+                  "M1": 0.39799178599043195,
+                  "P": 0.44255066195853654
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.018022228670570635,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.010990060825311487,
+                      0.026298925744018577
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.03745362668408509,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.024624605169532358,
+                      0.051669457836930416
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 7276,
+              "supported_targets": 6593,
+              "matched_targets": 6240,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.4230354343554434,
+                  "M0": 0.42315960125311497,
+                  "M1": 0.4053185773231921
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014780899009398784,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007111746538430283,
+                      0.022138710429980533
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6240,
+                "sires": 180,
+                "RMSE": {
+                  "zero": 0.4202041152947506,
+                  "M0": 0.4203687026870349,
+                  "M1": 0.4002012753977377,
+                  "P": 0.4385825298124876
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.0165487853688049,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.008390899311236846,
+                      0.026379617434786055
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.03219357462674565,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.021125989318046427,
+                      0.04596937516952249
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "own_and_last_trainer_history": {
+            "2020": {
+              "total_targets": 7381,
+              "supported_targets": 6501,
+              "matched_targets": 6000,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.42141251265271756,
+                  "M0": 0.42157163554226584,
+                  "M1": 0.40201667453363465
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016105237290698685,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.009672288294369032,
+                      0.022386226427166405
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6000,
+                "sires": 149,
+                "RMSE": {
+                  "zero": 0.4180992603137268,
+                  "M0": 0.4184720253476358,
+                  "M1": 0.39785634554543714,
+                  "P": 0.4411912519462141
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016829164307782023,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.00991308360510603,
+                      0.024633902336798134
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.036360049103097536,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.023816461042128666,
+                      0.05013754601780537
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 7276,
+              "supported_targets": 6593,
+              "matched_targets": 6240,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.42120745762919676,
+                  "M0": 0.42132449236529024,
+                  "M1": 0.4055832175784695
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013016581485565391,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.006040861241813583,
+                      0.02027854315693123
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6240,
+                "sires": 180,
+                "RMSE": {
+                  "zero": 0.41837211951551767,
+                  "M0": 0.4185237005135774,
+                  "M1": 0.40049490448408126,
+                  "P": 0.43692880832074216
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014765919373865262,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007191291699543406,
+                      0.023945599555372087
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.030510615022870433,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.020025968912179445,
+                      0.043764455119754964
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "20261126": {
+          "occupancy_support": {
+            "2019": {
+              "horse_years": 7265,
+              "sires": 374,
+              "starts": 19065,
+              "turf_only": 3013,
+              "dirt_only": 3257,
+              "both_surfaces": 995,
+              "no_own_prior": 3894,
+              "with_prior_trainer_peers": 3371,
+              "horse_equal_mean_turf_fraction": 0.48098993573529014
+            },
+            "2020": {
+              "horse_years": 7381,
+              "sires": 363,
+              "starts": 19238,
+              "turf_only": 3007,
+              "dirt_only": 3323,
+              "both_surfaces": 1051,
+              "no_own_prior": 3852,
+              "with_prior_trainer_peers": 3527,
+              "horse_equal_mean_turf_fraction": 0.4761549500643119
+            },
+            "2021": {
+              "horse_years": 7276,
+              "sires": 349,
+              "starts": 18905,
+              "turf_only": 2862,
+              "dirt_only": 3429,
+              "both_surfaces": 985,
+              "no_own_prior": 3737,
+              "with_prior_trainer_peers": 3538,
+              "horse_equal_mean_turf_fraction": 0.4578336951515896
+            }
+          },
+          "own_history": {
+            "2020": {
+              "total_targets": 7381,
+              "supported_targets": 6511,
+              "matched_targets": 6161,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.42318175867825664,
+                  "M0": 0.4231873659814698,
+                  "M1": 0.4011126356093129
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.018196200280885026,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.011169341569979637,
+                      0.025602578531755904
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6161,
+                "sires": 154,
+                "RMSE": {
+                  "zero": 0.41881687425433944,
+                  "M0": 0.4190095489889302,
+                  "M1": 0.3940804681675777,
+                  "P": 0.44365416297910915
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.020269586752729513,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.01229741252166546,
+                      0.028692366715129067
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.04152960093751675,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.025374616354384656,
+                      0.061087072322554906
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 7276,
+              "supported_targets": 6597,
+              "matched_targets": 6376,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.423030686772877,
+                  "M0": 0.4231446572251071,
+                  "M1": 0.40481420850128513
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01517685753363142,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0075339674489345206,
+                      0.022880084859204182
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6376,
+                "sires": 179,
+                "RMSE": {
+                  "zero": 0.4208055625313219,
+                  "M0": 0.42100354514305,
+                  "M1": 0.4009406890910581,
+                  "P": 0.4441868214336645
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016490548854203615,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.008272584517872399,
+                      0.025780735850361
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.036548496166529616,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.02439087240022351,
+                      0.049650898340987404
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "own_and_last_trainer_history": {
+            "2020": {
+              "total_targets": 7381,
+              "supported_targets": 6511,
+              "matched_targets": 6161,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.4214109239376031,
+                  "M0": 0.4214365135811637,
+                  "M1": 0.4013267543836784
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016545571195309066,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0098743761865315,
+                      0.023598804853264578
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6161,
+                "sires": 154,
+                "RMSE": {
+                  "zero": 0.41706557544936285,
+                  "M0": 0.4172557555559416,
+                  "M1": 0.39434567839735274,
+                  "P": 0.44239995410768673
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.018593851473891275,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.011135630583811233,
+                      0.026620293169158718
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.04020920532381496,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.024465530761751928,
+                      0.05926925686729063
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 7276,
+              "supported_targets": 6597,
+              "matched_targets": 6376,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.4212052506146276,
+                  "M0": 0.421310646153935,
+                  "M1": 0.40512469675324375
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013376640643238463,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.00640043583044043,
+                      0.020757772621464755
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 6376,
+                "sires": 179,
+                "RMSE": {
+                  "zero": 0.4189417442299674,
+                  "M0": 0.4191095501075912,
+                  "M1": 0.40108772916481683,
+                  "P": 0.44265245262023356
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01478144850479802,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.006833527647857488,
+                      0.0236807981617024
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.03506982732411865,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.023169635831311573,
+                      0.04783792544457845
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "horse_and_trainer_disjoint": {
+        "20261124": {
+          "occupancy_support": {
+            "2019": {
+              "horse_years": 3773,
+              "sires": 293,
+              "starts": 9814,
+              "turf_only": 1591,
+              "dirt_only": 1683,
+              "both_surfaces": 499,
+              "no_own_prior": 2110,
+              "with_prior_trainer_peers": 1663,
+              "horse_equal_mean_turf_fraction": 0.4849422244863538
+            },
+            "2020": {
+              "horse_years": 3801,
+              "sires": 302,
+              "starts": 9888,
+              "turf_only": 1528,
+              "dirt_only": 1744,
+              "both_surfaces": 529,
+              "no_own_prior": 2039,
+              "with_prior_trainer_peers": 1761,
+              "horse_equal_mean_turf_fraction": 0.46937109851474496
+            },
+            "2021": {
+              "horse_years": 3649,
+              "sires": 289,
+              "starts": 9414,
+              "turf_only": 1417,
+              "dirt_only": 1724,
+              "both_surfaces": 508,
+              "no_own_prior": 1922,
+              "with_prior_trainer_peers": 1727,
+              "horse_equal_mean_turf_fraction": 0.4556433913518046
+            }
+          },
+          "own_history": {
+            "2020": {
+              "total_targets": 3801,
+              "supported_targets": 3204,
+              "matched_targets": 3069,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3801,
+                "sires": 302,
+                "RMSE": {
+                  "zero": 0.42477860540934825,
+                  "M0": 0.425331198441007,
+                  "M1": 0.4061412407867264
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.015955920899481533,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.00903782763949508,
+                      0.02333211788945775
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3069,
+                "sires": 119,
+                "RMSE": {
+                  "zero": 0.4209250376586388,
+                  "M0": 0.4216434007667079,
+                  "M1": 0.40051008944249755,
+                  "P": 0.4384555806324425
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.017374825664877278,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.00932140629624846,
+                      0.02515537015376011
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.03183496444249491,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.01650350349407191,
+                      0.04640736700414701
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 3649,
+              "supported_targets": 3195,
+              "matched_targets": 3003,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3649,
+                "sires": 289,
+                "RMSE": {
+                  "zero": 0.42256553816601167,
+                  "M0": 0.4229186966760422,
+                  "M1": 0.4061477393543748
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013904237815493018,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007027583158139984,
+                      0.021769318390248343
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3003,
+                "sires": 137,
+                "RMSE": {
+                  "zero": 0.42013390834359865,
+                  "M0": 0.4206471426362133,
+                  "M1": 0.4025818131868072,
+                  "P": 0.42895748454376365
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01487190229923345,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.006623103487732615,
+                      0.023555837272491602
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.021932407237335923,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.014263310264972245,
+                      0.03064963277744566
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "own_and_last_trainer_history": {
+            "2020": {
+              "total_targets": 3801,
+              "supported_targets": 3204,
+              "matched_targets": 3069,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3801,
+                "sires": 302,
+                "RMSE": {
+                  "zero": 0.42377149270906306,
+                  "M0": 0.4243099487065357,
+                  "M1": 0.40668677587098334
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014644798903007497,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.00809194764722356,
+                      0.021832754178567712
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3069,
+                "sires": 119,
+                "RMSE": {
+                  "zero": 0.4201045463352503,
+                  "M0": 0.4208195425134656,
+                  "M1": 0.40103603344287153,
+                  "P": 0.43756350917679554
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016259187241650437,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.008278216960168323,
+                      0.02386126990877287
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.030631924443519677,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.015974844462766837,
+                      0.045013283232216164
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 3649,
+              "supported_targets": 3195,
+              "matched_targets": 3003,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3649,
+                "sires": 289,
+                "RMSE": {
+                  "zero": 0.4208916846286831,
+                  "M0": 0.4212309359633367,
+                  "M1": 0.40616431565467576
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.012466050101317575,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005749165587811853,
+                      0.020172727588990937
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3003,
+                "sires": 137,
+                "RMSE": {
+                  "zero": 0.41896355385859374,
+                  "M0": 0.4194462582901042,
+                  "M1": 0.4026200634383101,
+                  "P": 0.42810879681499653
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013832248110499984,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005753185861775267,
+                      0.022512007651902494
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.02117422642731517,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.013502416466612308,
+                      0.029534436136158485
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "20261125": {
+          "occupancy_support": {
+            "2019": {
+              "horse_years": 3656,
+              "sires": 299,
+              "starts": 9293,
+              "turf_only": 1532,
+              "dirt_only": 1622,
+              "both_surfaces": 502,
+              "no_own_prior": 2077,
+              "with_prior_trainer_peers": 1579,
+              "horse_equal_mean_turf_fraction": 0.48387173548552104
+            },
+            "2020": {
+              "horse_years": 3747,
+              "sires": 292,
+              "starts": 9610,
+              "turf_only": 1526,
+              "dirt_only": 1704,
+              "both_surfaces": 517,
+              "no_own_prior": 2023,
+              "with_prior_trainer_peers": 1724,
+              "horse_equal_mean_turf_fraction": 0.4751820822477348
+            },
+            "2021": {
+              "horse_years": 3730,
+              "sires": 278,
+              "starts": 9393,
+              "turf_only": 1470,
+              "dirt_only": 1792,
+              "both_surfaces": 468,
+              "no_own_prior": 1998,
+              "with_prior_trainer_peers": 1731,
+              "horse_equal_mean_turf_fraction": 0.4538884469715569
+            }
+          },
+          "own_history": {
+            "2020": {
+              "total_targets": 3747,
+              "supported_targets": 3167,
+              "matched_targets": 3151,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3747,
+                "sires": 292,
+                "RMSE": {
+                  "zero": 0.4272099130921798,
+                  "M0": 0.4272793008263955,
+                  "M1": 0.4073411908987816
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016640755111855664,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.010271133080032073,
+                      0.023887655265725147
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3151,
+                "sires": 114,
+                "RMSE": {
+                  "zero": 0.42264612744070695,
+                  "M0": 0.42284290525138757,
+                  "M1": 0.39874156290715523,
+                  "P": 0.44692143925155203
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.019801288531793092,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.012562902346736108,
+                      0.027501301092493432
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.04074393887303787,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.026803678791705268,
+                      0.055471602085473276
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 3730,
+              "supported_targets": 3305,
+              "matched_targets": 3199,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3730,
+                "sires": 278,
+                "RMSE": {
+                  "zero": 0.42835025979365,
+                  "M0": 0.42874639945752874,
+                  "M1": 0.41232289104973735
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013813308564181233,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005386641057364797,
+                      0.022169475174772267
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3199,
+                "sires": 140,
+                "RMSE": {
+                  "zero": 0.4253378400639456,
+                  "M0": 0.425998747333441,
+                  "M1": 0.4080794201760058,
+                  "P": 0.4504777016061357
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01494611955847578,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005229077371328846,
+                      0.025227221702658374
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.03640134647316154,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.02284129394023557,
+                      0.049614987511087734
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "own_and_last_trainer_history": {
+            "2020": {
+              "total_targets": 3747,
+              "supported_targets": 3167,
+              "matched_targets": 3151,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3747,
+                "sires": 292,
+                "RMSE": {
+                  "zero": 0.4257117007663499,
+                  "M0": 0.4258219866208978,
+                  "M1": 0.4074707744234453
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.015291932280525791,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.00934532879672504,
+                      0.02207198029009269
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3151,
+                "sires": 114,
+                "RMSE": {
+                  "zero": 0.42084135180740384,
+                  "M0": 0.42109032042371675,
+                  "M1": 0.398886575213475,
+                  "P": 0.44591429658323967
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.018206558069013157,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.011229261605035094,
+                      0.025736615886634576
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.0397290600117902,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.025926849015148228,
+                      0.054373712386054256
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 3730,
+              "supported_targets": 3305,
+              "matched_targets": 3199,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3730,
+                "sires": 278,
+                "RMSE": {
+                  "zero": 0.4269980848743553,
+                  "M0": 0.42738963123610113,
+                  "M1": 0.41307203639659074
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.012033389635304117,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.004097023527286389,
+                      0.01993336755188624
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3199,
+                "sires": 140,
+                "RMSE": {
+                  "zero": 0.4241737983279319,
+                  "M0": 0.4248044491008214,
+                  "M1": 0.4089112504432388,
+                  "P": 0.4493176651595202
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013250409236799186,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.003971542298296234,
+                      0.022844434413066293
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.03467795348534952,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.022044032453733712,
+                      0.04774903662919475
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "20261126": {
+          "occupancy_support": {
+            "2019": {
+              "horse_years": 3697,
+              "sires": 293,
+              "starts": 9742,
+              "turf_only": 1525,
+              "dirt_only": 1658,
+              "both_surfaces": 514,
+              "no_own_prior": 2054,
+              "with_prior_trainer_peers": 1643,
+              "horse_equal_mean_turf_fraction": 0.47892547524005463
+            },
+            "2020": {
+              "horse_years": 3759,
+              "sires": 279,
+              "starts": 9774,
+              "turf_only": 1549,
+              "dirt_only": 1656,
+              "both_surfaces": 554,
+              "no_own_prior": 2011,
+              "with_prior_trainer_peers": 1748,
+              "horse_equal_mean_turf_fraction": 0.48370915094777817
+            },
+            "2021": {
+              "horse_years": 3668,
+              "sires": 269,
+              "starts": 9482,
+              "turf_only": 1412,
+              "dirt_only": 1767,
+              "both_surfaces": 489,
+              "no_own_prior": 1943,
+              "with_prior_trainer_peers": 1725,
+              "horse_equal_mean_turf_fraction": 0.4487362654006602
+            }
+          },
+          "own_history": {
+            "2020": {
+              "total_targets": 3759,
+              "supported_targets": 3216,
+              "matched_targets": 3088,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3759,
+                "sires": 279,
+                "RMSE": {
+                  "zero": 0.424025926299627,
+                  "M0": 0.4241604543067629,
+                  "M1": 0.4067423571230951
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014472745919668146,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.008587067831927241,
+                      0.02018719916398778
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3088,
+                "sires": 117,
+                "RMSE": {
+                  "zero": 0.41987910713807847,
+                  "M0": 0.4202339224425795,
+                  "M1": 0.3995424266599093,
+                  "P": 0.4291939784977988
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.016962398870186905,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.009701243577126597,
+                      0.024675908345104112
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.024573320477480003,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.015299825301807537,
+                      0.034923000632802674
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 3668,
+              "supported_targets": 3249,
+              "matched_targets": 3178,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3668,
+                "sires": 269,
+                "RMSE": {
+                  "zero": 0.4229681403229337,
+                  "M0": 0.4237174827739401,
+                  "M1": 0.4068972010767956
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013971172964154004,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005704520209447659,
+                      0.02289348368463732
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3178,
+                "sires": 140,
+                "RMSE": {
+                  "zero": 0.4196875733607818,
+                  "M0": 0.4207518915791206,
+                  "M1": 0.4013400464585451,
+                  "P": 0.43510614242480605
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.015958321376060913,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.006379776782801557,
+                      0.02582682947376022
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.028243522284448482,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.016868695969948836,
+                      0.04027797804308076
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "own_and_last_trainer_history": {
+            "2020": {
+              "total_targets": 3759,
+              "supported_targets": 3216,
+              "matched_targets": 3088,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3759,
+                "sires": 279,
+                "RMSE": {
+                  "zero": 0.42169902150069954,
+                  "M0": 0.42184326276850403,
+                  "M1": 0.40601988992548743
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013099587328072192,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0074023998167159705,
+                      0.01885642628683243
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3088,
+                "sires": 117,
+                "RMSE": {
+                  "zero": 0.4174179792282424,
+                  "M0": 0.417754990590822,
+                  "M1": 0.3988498576768013,
+                  "P": 0.4268669898515929
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.015438023194733122,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.008442120822646037,
+                      0.02314050708710659
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.02313421805615522,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.014247646633882689,
+                      0.03349957159670975
+                    ]
+                  }
+                }
+              }
+            },
+            "2021": {
+              "total_targets": 3668,
+              "supported_targets": 3249,
+              "matched_targets": 3178,
+              "all_targets": {
+                "status": "DESCRIPTIVE",
+                "horses": 3668,
+                "sires": 269,
+                "RMSE": {
+                  "zero": 0.4220116078816326,
+                  "M0": 0.42275390567104737,
+                  "M1": 0.4073767520094574
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.012765046682349937,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0050301833444504835,
+                      0.021791837072619336
+                    ]
+                  }
+                }
+              },
+              "matched_targets_scores": {
+                "status": "DESCRIPTIVE",
+                "horses": 3178,
+                "sires": 140,
+                "RMSE": {
+                  "zero": 0.41853995681163164,
+                  "M0": 0.4195754803465366,
+                  "M1": 0.40169097265984954,
+                  "P": 0.4347021732512221
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014687946191610906,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005577643921923325,
+                      0.024136777161560055
+                    ]
+                  },
+                  "P_minus_M1": {
+                    "MSE_gain": 0.02761034191291952,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.016559505506701506,
+                      0.039524831499089925
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "derived": {
+    "conditions": 24,
+    "positive_gain": 24,
+    "positive_ci": 24,
+    "positive_placebo": 24,
+    "positive_placebo_ci": 24,
+    "primary_rmse_relative_gain": 0.04193990014697835
+  }
+}
