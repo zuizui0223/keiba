@@ -141,11 +141,11 @@ def analysis()->dict:
         raise ValueError("not_two_source_timestamp_synchronized_states")
     if e["frames"]!=l["frames"] or set(e["win_odds"])!=set(l["win_odds"]):
         raise ValueError("early_late_roster_not_identical")
-    comparison=report_two_snapshots(e,l,n_permutations=499)
+    comparison=report_two_snapshots(early_normalized,late_raw,n_permutations=499)
     if comparison["status"]!="ONE_RACE_TWO_ARCHIVED_SYNCHRONIZED_SOURCE_UPDATED_PRICE_STATES":
         raise ValueError("incorrect_synchronized_status")
     decomposition=effect_splits(e,l)
-    prior_async=report_two_snapshots(older,l,n_permutations=49)
+    prior_async=report_two_snapshots(original_async,late_raw,n_permutations=49)
     if prior_async["early_win_wide_source_update_gap_seconds"]!=660:
         raise ValueError("previous_asynchronous_archive_modified")
     source_stages=[
