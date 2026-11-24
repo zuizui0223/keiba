@@ -286,3 +286,8 @@ r_{ij}(t)=\log q_{ij}^{\mathrm{wide}}(t)-\log p_{ij}^{\mathrm{PL,win}}(t),\qquad
 - [匿名集計・解釈上の禁止事項](../evidence/ticket-market-node-dyad-empirical-20261123.json)
 
 **技術と本研究の分離：** 購入方法・確定配当・ROIは主成果に含めない。既存の発走前HOLD・時刻監査は、将来の研究データの観測過程を再現するための補助技術であり、「馬券が当たる」という目的関数ではない。現在のv3.1 20レース台帳は変更していない。
+
+
+## 2026-11-24: individual-history bridge and source-clock sensitivity
+
+[Retrospective bridge audit](MARKET_HISTORY_BRIDGE_AUDIT_20261124.md): 67/67 card-market race-local number/name matches and 67 history number keys; 62 unambiguous candidate tokens (28 multi-provider, one conflict, four missing), but zero verified registry IDs or independently verified pre-race history captures. Three same-update-minute races have substantial in-sample additive node structure (37 horses / 220 pairs; mean unweighted R² 0.620). No new independent date or biological effect claimed.
