@@ -20,6 +20,7 @@ No race outcomes, voting volume, payouts or horse names are processed.
 from __future__ import annotations
 
 import argparse
+from datetime import timezone, timedelta
 import json
 import math
 from pathlib import Path
@@ -50,6 +51,7 @@ EARLY = ROOT / "data" / SOURCE_DATE / "r8_markets.json"
 LATE = ROOT / "data" / SOURCE_DATE / "r8_markets_latest.json"
 EXPECTED_N = 11
 N_PERMUTATIONS = 499
+JST = timezone(timedelta(hours=9))
 STATUS = "ONE_RACE_TWO_ARCHIVED_PRICE_STATES_EARLY_MARKETS_ASYNCHRONOUS"
 
 
@@ -87,9 +89,9 @@ def read_market_snapshot(data: dict) -> dict:
         raise ValueError("wide_55_pairs_incomplete")
     return {
         "race_id":RACE_ID,
-        "start_jst":actual_start.isoformat(),
-        "receipt_jst":checked.isoformat(),
-        "source_updated_jst":{k:v.isoformat() for k,v in timestamp.items()},
+        "start_jst":actual_start.astimezone(JST).isoformat(),
+        "receipt_jst":checked.astimezone(JST).isoformat(),
+        "source_updated_jst":{k:v.astimezone(JST).isoformat() for k,v in timestamp.items()},
         "source_win_wide_update_gap_seconds":abs((timestamp["win"]-timestamp["wide"]).total_seconds()),
         "frames":frames,"win_odds":win,"strength":strength,
         "wide_quotes":wide,"edge_y":discrepancies,"edge_w":weights,
