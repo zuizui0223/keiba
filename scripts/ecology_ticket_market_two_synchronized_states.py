@@ -148,6 +148,33 @@ def analysis()->dict:
     prior_async=report_two_snapshots(older,l,n_permutations=49)
     if prior_async["early_win_wide_source_update_gap_seconds"]!=660:
         raise ValueError("previous_asynchronous_archive_modified")
+    source_stages=[
+        ("source_aligned_early",e),
+        ("mixed_source_middle",older),
+        ("source_aligned_late",l),
+    ]
+    if not all(_time(source_stages[i][1]["receipt_jst"]) <
+                   _time(source_stages[i+1][1]["receipt_jst"])
+               for i in range(len(source_stages)-1)):
+        raise ValueError("archive_receipt_order_not_chronological")
+    source_changes={}
+    regressions=[]
+    for kind in ("win","wide"):
+        row=[]
+        for i in range(len(source_stages)-1):
+            first_name,first=source_stages[i]
+            second_name,second=source_stages[i+1]
+            delta=(_time(second["source_updated_jst"][kind])-
+                   _time(first["source_updated_jst"][kind])).total_seconds()/60
+            step={
+                "source_kind":kind, "first_saved_state":first_name,
+                "second_saved_state":second_name,
+                "source_update_change_minutes":delta,
+            }
+            row.append(step)
+            if delta < 0:
+                regressions.append(step)
+        source_changes[kind]=row
     align={
         "status":STATUS,"race_id":RACE_ID,
         "date":"2026-10-12",
@@ -162,6 +189,12 @@ def analysis()->dict:
         "earlier_and_later_market_roster_equal":True,
         "observed_primary_snapshot_comparison":comparison,
         "arithmetic_source_channel_splits":decomposition,
+        "three_receipt_order_source_update_time_changes_minutes":source_changes,
+        "recorded_quote_source_update_time_regressions":regressions,
+        "three_archived_price_bundles_form_strict_monotone_source_time_series":
+            len(regressions)==0,
+        "older_mid_state_should_not_be_interpreted_as_clean_time_intermediate":
+            len(regressions)>0,
         "asynchronous_early_source_sensitivity":{
             "early_win_wide_update_gap_seconds":
                 prior_async["early_win_wide_source_update_gap_seconds"],
