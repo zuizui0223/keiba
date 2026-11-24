@@ -1,0 +1,60 @@
+name: Ecology Kyoto8R synchronized paired market states
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_two_synchronized_states.py"
+      - "tests/test_ecology_ticket_market_two_synchronized_states.py"
+      - "scripts/ecology_ticket_market_two_snapshot_time.py"
+      - ".github/workflows/ecology-ticket-market-two-sync-states.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  1326-vs-1344-synchronized-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate actual paired pre-start win and wide sources and no-causality gates
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_ticket_market_two_synchronized_states.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_ticket_market_two_snapshot_time.py' -v
+      - name: Compare 13:26 and 13:44 markets, and previous 11-minute asynchronous case
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_two_synchronized_states.py \
+            --output output/kyoto8r-two-synchronized-source-market-states.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('output/kyoto8r-two-synchronized-source-market-states.json').read_text())
+          assert d["status"]=="ONE_KYOTO_R8_TWO_SOURCE_TIMESTAMP_ALIGNED_MARKET_STATES_OBSERVED_NOT_CAUSAL"
+          assert d["source_timestamp_aligned_quote_update_states"]==2
+          assert d["actual_source_updated_elapsed_minutes"]==18
+          assert d["observed_primary_snapshot_comparison"]["early_win_wide_source_update_gap_seconds"]==0
+          assert d["observed_primary_snapshot_comparison"]["late_win_wide_source_update_gap_seconds"]==0
+          assert d["asynchronous_early_source_sensitivity"]["early_win_wide_update_gap_seconds"]==660
+          assert d["nonlinear_social_feedback_threshold_not_identified"]
+          assert not d["independent_two_race_or_named_individual_repeatability"]
+          print(json.dumps({
+            "early_source":d["source_matched_earlier_snapshot"],
+            "later_source":d["late_market_source_updates"],
+            "time_elapsed_minutes":d["actual_source_updated_elapsed_minutes"],
+            "aligned_market_model":d["observed_primary_snapshot_comparison"],
+            "source_only_factorization":d["arithmetic_source_channel_splits"],
+            "previous_async_early_sensitivity":d["asynchronous_early_source_sensitivity"],
+            "source_sha_count":len(d["source_file_sha256"])
+          },ensure_ascii=False,indent=2))
+          PY
+      - name: Upload source-hashed aggregate, no raw market pages or horse names
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-kyoto8r-two-synchronized-source-states
+          path: output/kyoto8r-two-synchronized-source-market-states.json
+          retention-days: 30
