@@ -1,0 +1,3624 @@
+{
+  "schema_version": 1,
+  "source": "Completed Actions stdout; artifact metadata separately checked, ZIP not independently extracted",
+  "run_id": 45383198727,
+  "job_id": 138407281987,
+  "source_commit": "eb51fda64809617794f552d016040969589c78a6",
+  "artifact": {
+    "id": 14913743564,
+    "digest": "sha256:3ef804fa03cb5ddb3ade39030a3f7666773ba53286c4422f806d715a2abf27c5",
+    "size_in_bytes": 16879,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45383198727/artifacts/14913743564"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_DISTANCE_BAND_GENERALIZATION",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "primary": "1200-1599/20261124/2022-2024/pair_intersections/own_information_update_shift",
+    "bands": [
+      [
+        1200,
+        1599
+      ],
+      [
+        1600,
+        1999
+      ],
+      [
+        2000,
+        2399
+      ]
+    ],
+    "minimum_surface_starts_per_year": 20,
+    "minimum_target_horses_per_year": 100,
+    "circuit_gate": {
+      "verified_JRA_codes": 10,
+      "supporting_JRA_races": 25878,
+      "verified_NAR_codes": 14,
+      "supporting_NAR_races": 59978,
+      "matched_distinct_pre2022_source_B_races": 85856,
+      "conflicting_pre2022_races": 0,
+      "two_event_anchor_horses": 20400,
+      "future_race_code_mapping_uses_only_pre2022_records": true
+    },
+    "strict_gate": {
+      "all_frozen_races": 36955,
+      "strict_races": 35333,
+      "strict_focal_rows": 244147,
+      "strict_focal_horses": 12887,
+      "race_qa_counts": {
+        "STRICT_COMPLETE_CLASSIFIED_RACE": 35333,
+        "CLASSIFIED_PROXY_INCOMPLETE_DECLARED": 1050,
+        "TIED_OR_DUPLICATED_RANKS": 569,
+        "GAPPED_CLASSIFIED_RANKS": 3
+      },
+      "excluded_focal_rows": {
+        "non_strict_race": 11337
+      },
+      "same_new_source_horse_ID_and_rank_verified": true
+    },
+    "results": {
+      "1200-1599": {
+        "source_A_support": {
+          "2019": {
+            "starts": 16554,
+            "horses": 6039,
+            "turf_starts": 7056,
+            "dirt_starts": 9498
+          },
+          "2020": {
+            "starts": 16362,
+            "horses": 5953,
+            "turf_starts": 7037,
+            "dirt_starts": 9325
+          },
+          "2021": {
+            "starts": 16451,
+            "horses": 5870,
+            "turf_starts": 6913,
+            "dirt_starts": 9538
+          }
+        },
+        "source_B_support": {
+          "2022": {
+            "starts": 8431,
+            "horses": 2538,
+            "turf_starts": 3561,
+            "dirt_starts": 4870
+          },
+          "2023": {
+            "starts": 4614,
+            "horses": 1352,
+            "turf_starts": 2175,
+            "dirt_starts": 2439
+          },
+          "2024": {
+            "starts": 1939,
+            "horses": 688,
+            "turf_starts": 922,
+            "dirt_starts": 1017
+          }
+        },
+        "source_B_scope": {
+          "2022": {
+            "source_starts": 78789,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 8431,
+            "eligible_starts": 8431,
+            "eligible_horses": 2538
+          },
+          "2023": {
+            "source_starts": 52980,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 4614,
+            "eligible_starts": 4614,
+            "eligible_horses": 1352
+          },
+          "2024": {
+            "source_starts": 28290,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 1939,
+            "eligible_starts": 1939,
+            "eligible_horses": 688
+          }
+        },
+        "status": "EVALUATED_RETROSPECTIVE",
+        "results": {
+          "20261124": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 5953,
+                "sires": 367,
+                "RMSE": {
+                  "zero": 0.4136133509074643,
+                  "M0": 0.41329652350888213,
+                  "M1": 0.39473798869426757
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01499593662613228,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.009974654937665311,
+                      0.02067601107131675
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 5870,
+                "sires": 356,
+                "RMSE": {
+                  "zero": 0.40930182891032035,
+                  "M0": 0.40885254013558664,
+                  "M1": 0.39409836714510005
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.011846876588887398,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.006058911017138072,
+                      0.017830724690308494
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 2538,
+                "sires": 223,
+                "stale_own_stale_profile": {
+                  "alignment": 0.011334859737217234,
+                  "correction_energy": 0.020289527915751494,
+                  "gain": 0.002380191558682975,
+                  "descriptive_oracle_weight_0_1": 0.558655666326153
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011334859737217234,
+                  "correction_energy": 0.020289527915751494,
+                  "gain": 0.002380191558682975,
+                  "descriptive_oracle_weight_0_1": 0.558655666326153
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.011334859737217234,
+                  "correction_energy": 0.020289527915751494,
+                  "gain": 0.002380191558682975,
+                  "descriptive_oracle_weight_0_1": 0.558655666326153
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011334859737217234,
+                  "correction_energy": 0.020289527915751494,
+                  "gain": 0.002380191558682975,
+                  "descriptive_oracle_weight_0_1": 0.558655666326153
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 223,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 223,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 1352,
+                "sires": 164,
+                "stale_own_stale_profile": {
+                  "alignment": 0.014795728206100773,
+                  "correction_energy": 0.021415433243119043,
+                  "gain": 0.008176023169082502,
+                  "descriptive_oracle_weight_0_1": 0.6908909120881205
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.01127870708980532,
+                  "correction_energy": 0.021415433243119043,
+                  "gain": 0.0011419809364915968,
+                  "descriptive_oracle_weight_0_1": 0.5266625690810743
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.014819556493231287,
+                  "correction_energy": 0.01875463929087416,
+                  "gain": 0.010884473695588412,
+                  "descriptive_oracle_weight_0_1": 0.7901808327735926
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011342572621400386,
+                  "correction_energy": 0.018754639290874165,
+                  "gain": 0.003930505951926608,
+                  "descriptive_oracle_weight_0_1": 0.6047875645851306
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.0070340422325909065,
+                  "sires": 164,
+                  "CI95_pointwise": [
+                    -0.009766298101004996,
+                    -0.0047322163092572145
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.0069539677436617955,
+                  "sires": 164,
+                  "CI95_pointwise": [
+                    -0.009533344916913784,
+                    -0.004808869222125195
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 688,
+                "sires": 131,
+                "stale_own_stale_profile": {
+                  "alignment": 0.015510644273951301,
+                  "correction_energy": 0.02014667501008007,
+                  "gain": 0.010874613537822531,
+                  "descriptive_oracle_weight_0_1": 0.7698860614066984
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.008340226912567094,
+                  "correction_energy": 0.02014667501008007,
+                  "gain": -0.0034662211849458835,
+                  "descriptive_oracle_weight_0_1": 0.4139753536697342
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.015639554604481683,
+                  "correction_energy": 0.016978490876441345,
+                  "gain": 0.014300618332522021,
+                  "descriptive_oracle_weight_0_1": 0.9211392648673201
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.008590602797709485,
+                  "correction_energy": 0.016978490876441345,
+                  "gain": 0.00020271471897762364,
+                  "descriptive_oracle_weight_0_1": 0.505969750799787
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.014340834722768413,
+                  "sires": 131,
+                  "CI95_pointwise": [
+                    -0.02115212311345741,
+                    -0.008603737710982372
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.014097903613544396,
+                  "sires": 131,
+                  "CI95_pointwise": [
+                    -0.020384799768368277,
+                    -0.008788918930695853
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 483,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 2538,
+                "late_all": 1352,
+                "common_horses": 1098,
+                "common_sires": 155,
+                "early_only_relative_to_common": 1440,
+                "late_only_relative_to_common": 254,
+                "common_early_gain": 0.006547162559718375,
+                "common_late_gain": -0.004723703425077857,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.002609640940658794,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.006663027892839752,
+                    0.0014412027507092102
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.008661225044137437,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.012116006691961221,
+                    -0.005743895801686676
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.011270865984796232,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.017052372385161645,
+                    -0.005833724401487986
+                  ]
+                },
+                "full_population_gain_change": -0.0012382106221913807,
+                "membership_remainder": 0.01003265536260485,
+                "mean_history_count_early": 5.9116575591985425,
+                "mean_history_count_late": 10.329690346083789,
+                "mean_absolute_occupancy_change": 0.14899055609438122
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 2538,
+                "late_all": 688,
+                "common_horses": 531,
+                "common_sires": 120,
+                "early_only_relative_to_common": 2007,
+                "late_only_relative_to_common": 157,
+                "common_early_gain": 0.010317200836014477,
+                "common_late_gain": -0.01055907961157671,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.005838751901254819,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.013811710428310161,
+                    0.0008297410362046341
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.01503752854633637,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.022124892552485273,
+                    -0.008753320074282442
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.02087628044759119,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.0327983169561356,
+                    -0.010225673116982211
+                  ]
+                },
+                "full_population_gain_change": -0.005846412743628859,
+                "membership_remainder": 0.015029867703962328,
+                "mean_history_count_early": 5.209039548022599,
+                "mean_history_count_late": 14.389830508474576,
+                "mean_absolute_occupancy_change": 0.17132245239589874
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 1352,
+                "late_all": 688,
+                "common_horses": 571,
+                "common_sires": 118,
+                "early_only_relative_to_common": 781,
+                "late_only_relative_to_common": 117,
+                "common_early_gain": 0.006574955887923666,
+                "common_late_gain": -0.006523164476497839,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.005460947696883422,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.012430598671350664,
+                    0.0017780389967515134
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.007637172667538082,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.011240340010320113,
+                    -0.004186098401237514
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.013098120364421503,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.021404998581763965,
+                    -0.003990295599878316
+                  ]
+                },
+                "full_population_gain_change": -0.004608202121437478,
+                "membership_remainder": 0.008489918242984028,
+                "mean_history_count_early": 8.805604203152365,
+                "mean_history_count_late": 13.516637478108581,
+                "mean_absolute_occupancy_change": 0.1328256925016995
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 2538,
+              "late_all": 688,
+              "common_horses": 483,
+              "common_sires": 116,
+              "early_only_relative_to_common": 2055,
+              "late_only_relative_to_common": 205,
+              "common_early_gain": 0.010912149809355785,
+              "common_late_gain": -0.010812085648926079,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.005853656555468358,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.013064558821636653,
+                  0.001619614717632059
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.015870578902813508,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.022658105804748817,
+                  -0.009205873641955527
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.021724235458281865,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.03316049468612115,
+                  -0.010672947729625423
+                ]
+              },
+              "full_population_gain_change": -0.005846412743628859,
+              "membership_remainder": 0.015877822714653003,
+              "mean_history_count_early": 5.374741200828157,
+              "mean_history_count_late": 15.20703933747412,
+              "mean_absolute_occupancy_change": 0.1736139866574649
+            }
+          },
+          "20261125": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 5953,
+                "sires": 367,
+                "RMSE": {
+                  "zero": 0.4136264381260918,
+                  "M0": 0.41342355901464073,
+                  "M1": 0.39680756218447766
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.013462797741544052,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007663615518364998,
+                      0.019158310854666592
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 5870,
+                "sires": 356,
+                "RMSE": {
+                  "zero": 0.4093038918724132,
+                  "M0": 0.4089015846520761,
+                  "M1": 0.39425354847599986
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.011764645445061346,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005580742010629508,
+                      0.01769448693726359
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 2538,
+                "sires": 223,
+                "stale_own_stale_profile": {
+                  "alignment": 0.011547602818545149,
+                  "correction_energy": 0.020218647742187918,
+                  "gain": 0.0028765578949023797,
+                  "descriptive_oracle_weight_0_1": 0.5711362582597499
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011547602818545149,
+                  "correction_energy": 0.020218647742187918,
+                  "gain": 0.0028765578949023797,
+                  "descriptive_oracle_weight_0_1": 0.5711362582597499
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.011547602818545149,
+                  "correction_energy": 0.020218647742187918,
+                  "gain": 0.0028765578949023797,
+                  "descriptive_oracle_weight_0_1": 0.5711362582597499
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011547602818545149,
+                  "correction_energy": 0.020218647742187918,
+                  "gain": 0.0028765578949023797,
+                  "descriptive_oracle_weight_0_1": 0.5711362582597499
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 223,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 223,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 1352,
+                "sires": 164,
+                "stale_own_stale_profile": {
+                  "alignment": 0.014476135477796892,
+                  "correction_energy": 0.020984296302990948,
+                  "gain": 0.007967974652602836,
+                  "descriptive_oracle_weight_0_1": 0.6898556553327723
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011126972420951705,
+                  "correction_energy": 0.020984296302990948,
+                  "gain": 0.0012696485389124615,
+                  "descriptive_oracle_weight_0_1": 0.5302523496756834
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.014727666694284887,
+                  "correction_energy": 0.01806380049644169,
+                  "gain": 0.011391532892128083,
+                  "descriptive_oracle_weight_0_1": 0.8153138481121969
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011373987532589972,
+                  "correction_energy": 0.01806380049644169,
+                  "gain": 0.004684174568738254,
+                  "descriptive_oracle_weight_0_1": 0.62965639677157
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.0066983261136903775,
+                  "sires": 164,
+                  "CI95_pointwise": [
+                    -0.009365456502130807,
+                    -0.0041073037644923085
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.006707358323389828,
+                  "sires": 164,
+                  "CI95_pointwise": [
+                    -0.009258947431306624,
+                    -0.004304567726789401
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 688,
+                "sires": 131,
+                "stale_own_stale_profile": {
+                  "alignment": 0.01496748105927185,
+                  "correction_energy": 0.020350869165640145,
+                  "gain": 0.009584092952903557,
+                  "descriptive_oracle_weight_0_1": 0.7354713421548864
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.008130461771529941,
+                  "correction_energy": 0.020350869165640145,
+                  "gain": -0.004089945622580263,
+                  "descriptive_oracle_weight_0_1": 0.3995142273951224
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.015178123545094374,
+                  "correction_energy": 0.016707812380035558,
+                  "gain": 0.01364843471015319,
+                  "descriptive_oracle_weight_0_1": 0.9084446964002879
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.00839289343911693,
+                  "correction_energy": 0.016707812380035558,
+                  "gain": 0.00007797449819830354,
+                  "descriptive_oracle_weight_0_1": 0.5023334741983181
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.01367403857548381,
+                  "sires": 131,
+                  "CI95_pointwise": [
+                    -0.02061938168907447,
+                    -0.007951026360387227
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.013570460211954885,
+                  "sires": 131,
+                  "CI95_pointwise": [
+                    -0.019979760600979894,
+                    -0.008464331116824805
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 483,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 2538,
+                "late_all": 1352,
+                "common_horses": 1098,
+                "common_sires": 155,
+                "early_only_relative_to_common": 1440,
+                "late_only_relative_to_common": 254,
+                "common_early_gain": 0.006463571510481433,
+                "common_late_gain": -0.004167357983497097,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0023830816745710713,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.006190303385464671,
+                    0.0016704426057108095
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.00824784781940746,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.011650634262111706,
+                    -0.0052501311861804754
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.01063092949397853,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.016294138823251206,
+                    -0.004987236994743804
+                  ]
+                },
+                "full_population_gain_change": -0.0016069093559899239,
+                "membership_remainder": 0.009024020137988606,
+                "mean_history_count_early": 5.9116575591985425,
+                "mean_history_count_late": 10.329690346083789,
+                "mean_absolute_occupancy_change": 0.14899055609438122
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 2538,
+                "late_all": 688,
+                "common_horses": 531,
+                "common_sires": 120,
+                "early_only_relative_to_common": 2007,
+                "late_only_relative_to_common": 157,
+                "common_early_gain": 0.010109434383179678,
+                "common_late_gain": -0.011086642094556377,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.006705452901904266,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.013793957240334226,
+                    0.0009700627618582242
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.014490623575831788,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.02244121762397169,
+                    -0.008318163918808307
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.021196076477736053,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.03227189327112074,
+                    -0.010378115110413214
+                  ]
+                },
+                "full_population_gain_change": -0.006966503517482642,
+                "membership_remainder": 0.014229572960253411,
+                "mean_history_count_early": 5.209039548022599,
+                "mean_history_count_late": 14.389830508474576,
+                "mean_absolute_occupancy_change": 0.17132245239589874
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 1352,
+                "late_all": 688,
+                "common_horses": 571,
+                "common_sires": 118,
+                "early_only_relative_to_common": 781,
+                "late_only_relative_to_common": 117,
+                "common_early_gain": 0.005508160219187002,
+                "common_late_gain": -0.007208004698566121,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.005537349497445674,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.011987152285113906,
+                    0.0009092023088797041
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0071788154203074475,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.011321619889545526,
+                    -0.003856356053466123
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.012716164917753124,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.021098393910367594,
+                    -0.004749908785827908
+                  ]
+                },
+                "full_population_gain_change": -0.005359594161492719,
+                "membership_remainder": 0.007356570756260404,
+                "mean_history_count_early": 8.805604203152365,
+                "mean_history_count_late": 13.516637478108581,
+                "mean_absolute_occupancy_change": 0.1328256925016995
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 2538,
+              "late_all": 688,
+              "common_horses": 483,
+              "common_sires": 116,
+              "early_only_relative_to_common": 2055,
+              "late_only_relative_to_common": 205,
+              "common_early_gain": 0.010698917801276277,
+              "common_late_gain": -0.011466579961525286,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.006983159462585402,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.014404875808220871,
+                  0.0004909215756588074
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.01518233830021616,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.02290512928194075,
+                  -0.008558274755205285
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.022165497762801564,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.03387401160227544,
+                  -0.011493742801365371
+                ]
+              },
+              "full_population_gain_change": -0.006966503517482642,
+              "membership_remainder": 0.015198994245318918,
+              "mean_history_count_early": 5.374741200828157,
+              "mean_history_count_late": 15.20703933747412,
+              "mean_absolute_occupancy_change": 0.1736139866574649
+            }
+          },
+          "20261126": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 5953,
+                "sires": 367,
+                "RMSE": {
+                  "zero": 0.41363167709137577,
+                  "M0": 0.4135366754809173,
+                  "M1": 0.39587807198978675
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014293134085458731,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.008755875190547012,
+                      0.019855987054487337
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 5870,
+                "sires": 356,
+                "RMSE": {
+                  "zero": 0.4092827744544661,
+                  "M0": 0.4089979940057502,
+                  "M1": 0.3941827616203314
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.011899309542096599,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.005705068153979379,
+                      0.017645662705909636
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 2538,
+                "sires": 223,
+                "stale_own_stale_profile": {
+                  "alignment": 0.011320864054268583,
+                  "correction_energy": 0.020412272285077273,
+                  "gain": 0.0022294558234598923,
+                  "descriptive_oracle_weight_0_1": 0.5546106722544989
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011320864054268583,
+                  "correction_energy": 0.020412272285077273,
+                  "gain": 0.0022294558234598923,
+                  "descriptive_oracle_weight_0_1": 0.5546106722544989
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.011320864054268583,
+                  "correction_energy": 0.020412272285077273,
+                  "gain": 0.0022294558234598923,
+                  "descriptive_oracle_weight_0_1": 0.5546106722544989
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011320864054268583,
+                  "correction_energy": 0.020412272285077273,
+                  "gain": 0.0022294558234598923,
+                  "descriptive_oracle_weight_0_1": 0.5546106722544989
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 223,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 223,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 1352,
+                "sires": 164,
+                "stale_own_stale_profile": {
+                  "alignment": 0.01478317208966692,
+                  "correction_energy": 0.02135194376616871,
+                  "gain": 0.00821440041316513,
+                  "descriptive_oracle_weight_0_1": 0.6923572041759616
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.01141977866037608,
+                  "correction_energy": 0.02135194376616871,
+                  "gain": 0.0014876135545834508,
+                  "descriptive_oracle_weight_0_1": 0.534835553401478
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.014714129063994413,
+                  "correction_energy": 0.018439212372040846,
+                  "gain": 0.01098904575594798,
+                  "descriptive_oracle_weight_0_1": 0.7979803457497604
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011405855214355548,
+                  "correction_energy": 0.018439212372040846,
+                  "gain": 0.004372498056670251,
+                  "descriptive_oracle_weight_0_1": 0.618565206811659
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.006726786858581681,
+                  "sires": 164,
+                  "CI95_pointwise": [
+                    -0.009553507657468275,
+                    -0.004274689081139252
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.006616547699277727,
+                  "sires": 164,
+                  "CI95_pointwise": [
+                    -0.00929962715923079,
+                    -0.004363875133367102
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 688,
+                "sires": 131,
+                "stale_own_stale_profile": {
+                  "alignment": 0.015172080173612459,
+                  "correction_energy": 0.020731084044746086,
+                  "gain": 0.009613076302478832,
+                  "descriptive_oracle_weight_0_1": 0.7318517517398009
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.008391507255625026,
+                  "correction_energy": 0.020731084044746086,
+                  "gain": -0.003948069533496034,
+                  "descriptive_oracle_weight_0_1": 0.4047789897292756
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.01484406343292397,
+                  "correction_energy": 0.017168926492059675,
+                  "gain": 0.012519200373788265,
+                  "descriptive_oracle_weight_0_1": 0.864588909492337
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.008333232386941386,
+                  "correction_energy": 0.017168926492059675,
+                  "gain": -0.0005024617181769025,
+                  "descriptive_oracle_weight_0_1": 0.48536711895151735
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.01356114583597487,
+                  "sires": 131,
+                  "CI95_pointwise": [
+                    -0.020415955388975927,
+                    -0.00783273566344166
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.01302166209196517,
+                  "sires": 131,
+                  "CI95_pointwise": [
+                    -0.019316923403697575,
+                    -0.007921136293481705
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 483,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 2538,
+                "late_all": 1352,
+                "common_horses": 1098,
+                "common_sires": 155,
+                "early_only_relative_to_common": 1440,
+                "late_only_relative_to_common": 254,
+                "common_early_gain": 0.005721604808846996,
+                "common_late_gain": -0.0045073096829501835,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0019460221121956945,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.0057021869291403,
+                    0.0021748908673870334
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.008282892379601487,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.011766238983032098,
+                    -0.005312960619734681
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.010228914491797182,
+                  "sires": 155,
+                  "CI95_pointwise": [
+                    -0.01604691917043011,
+                    -0.004188967106837024
+                  ]
+                },
+                "full_population_gain_change": -0.0007418422688764447,
+                "membership_remainder": 0.009487072222920735,
+                "mean_history_count_early": 5.9116575591985425,
+                "mean_history_count_late": 10.329690346083789,
+                "mean_absolute_occupancy_change": 0.14899055609438125
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 2538,
+                "late_all": 688,
+                "common_horses": 531,
+                "common_sires": 120,
+                "early_only_relative_to_common": 2007,
+                "late_only_relative_to_common": 157,
+                "common_early_gain": 0.0069317872176979925,
+                "common_late_gain": -0.010532350751700151,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.003340005017710943,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.01086063490886279,
+                    0.0038224645731656302
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0141241329516872,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.02140914418831681,
+                    -0.0073284974023004705
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.017464137969398146,
+                  "sires": 120,
+                  "CI95_pointwise": [
+                    -0.02931063996225062,
+                    -0.0061749088515264255
+                  ]
+                },
+                "full_population_gain_change": -0.0061775253569559315,
+                "membership_remainder": 0.011286612612442213,
+                "mean_history_count_early": 5.209039548022599,
+                "mean_history_count_late": 14.389830508474576,
+                "mean_absolute_occupancy_change": 0.17132245239589872
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 1352,
+                "late_all": 688,
+                "common_horses": 571,
+                "common_sires": 118,
+                "early_only_relative_to_common": 781,
+                "late_only_relative_to_common": 117,
+                "common_early_gain": 0.006222250664992765,
+                "common_late_gain": -0.0063603932354632355,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.004867467198583968,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.01166984357515126,
+                    0.00214840209122555
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.007715176701872032,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.011746850427168595,
+                    -0.004116590472272021
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.012582643900455999,
+                  "sires": 118,
+                  "CI95_pointwise": [
+                    -0.021077430192818925,
+                    -0.0035243248864303364
+                  ]
+                },
+                "full_population_gain_change": -0.005435683088079487,
+                "membership_remainder": 0.007146960812376514,
+                "mean_history_count_early": 8.805604203152365,
+                "mean_history_count_late": 13.516637478108581,
+                "mean_absolute_occupancy_change": 0.1328256925016995
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 2538,
+              "late_all": 688,
+              "common_horses": 483,
+              "common_sires": 116,
+              "early_only_relative_to_common": 2055,
+              "late_only_relative_to_common": 205,
+              "common_early_gain": 0.007484411842208181,
+              "common_late_gain": -0.010542040071796354,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.0030218850808393584,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.011019181114688083,
+                  0.005095588697991387
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.015004566833165174,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.021754874771837854,
+                  -0.008343290585172055
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.018026451914004534,
+                "sires": 116,
+                "CI95_pointwise": [
+                  -0.030078166017042093,
+                  -0.00681579911239524
+                ]
+              },
+              "full_population_gain_change": -0.0061775253569559315,
+              "membership_remainder": 0.011848926557048604,
+              "mean_history_count_early": 5.374741200828157,
+              "mean_history_count_late": 15.20703933747412,
+              "mean_absolute_occupancy_change": 0.1736139866574649
+            }
+          }
+        }
+      },
+      "1600-1999": {
+        "source_A_support": {
+          "2019": {
+            "starts": 19065,
+            "horses": 7265,
+            "turf_starts": 8036,
+            "dirt_starts": 11029
+          },
+          "2020": {
+            "starts": 19238,
+            "horses": 7381,
+            "turf_starts": 7995,
+            "dirt_starts": 11243
+          },
+          "2021": {
+            "starts": 18905,
+            "horses": 7276,
+            "turf_starts": 7367,
+            "dirt_starts": 11538
+          }
+        },
+        "source_B_support": {
+          "2022": {
+            "starts": 9379,
+            "horses": 3011,
+            "turf_starts": 3374,
+            "dirt_starts": 6005
+          },
+          "2023": {
+            "starts": 4824,
+            "horses": 1588,
+            "turf_starts": 1815,
+            "dirt_starts": 3009
+          },
+          "2024": {
+            "starts": 1863,
+            "horses": 743,
+            "turf_starts": 684,
+            "dirt_starts": 1179
+          }
+        },
+        "source_B_scope": {
+          "2022": {
+            "source_starts": 26504,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 9379,
+            "eligible_starts": 9379,
+            "eligible_horses": 3011
+          },
+          "2023": {
+            "source_starts": 17320,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 4824,
+            "eligible_starts": 4824,
+            "eligible_horses": 1588
+          },
+          "2024": {
+            "source_starts": 8659,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 1863,
+            "eligible_starts": 1863,
+            "eligible_horses": 743
+          }
+        },
+        "status": "EVALUATED_RETROSPECTIVE",
+        "results": {
+          "20261124": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.4231757075649425,
+                  "M0": 0.42336533494564493,
+                  "M1": 0.4008404636254338
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01856512955418547,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.01153595289727792,
+                      0.025709469573838673
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.42303988023577105,
+                  "M0": 0.4232463747043911,
+                  "M1": 0.4054954640117183
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01471092236633107,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007144376414687958,
+                      0.02324582542753721
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 3011,
+                "sires": 205,
+                "stale_own_stale_profile": {
+                  "alignment": 0.015206529840735922,
+                  "correction_energy": 0.028451760264918857,
+                  "gain": 0.0019612994165529862,
+                  "descriptive_oracle_weight_0_1": 0.5344671014779229
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.015206529840735922,
+                  "correction_energy": 0.028451760264918857,
+                  "gain": 0.0019612994165529862,
+                  "descriptive_oracle_weight_0_1": 0.5344671014779229
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.015206529840735922,
+                  "correction_energy": 0.028451760264918857,
+                  "gain": 0.0019612994165529862,
+                  "descriptive_oracle_weight_0_1": 0.5344671014779229
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.015206529840735922,
+                  "correction_energy": 0.028451760264918857,
+                  "gain": 0.0019612994165529862,
+                  "descriptive_oracle_weight_0_1": 0.5344671014779229
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 205,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 205,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 1588,
+                "sires": 172,
+                "stale_own_stale_profile": {
+                  "alignment": 0.015561495452658166,
+                  "correction_energy": 0.02917933227146557,
+                  "gain": 0.001943658633850761,
+                  "descriptive_oracle_weight_0_1": 0.5333053994479419
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011737341819102137,
+                  "correction_energy": 0.02917933227146557,
+                  "gain": -0.005704648633261297,
+                  "descriptive_oracle_weight_0_1": 0.4022484719631527
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.015584293072819371,
+                  "correction_energy": 0.025306719345763073,
+                  "gain": 0.0058618667998756695,
+                  "descriptive_oracle_weight_0_1": 0.6158164106493931
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011818221711815268,
+                  "correction_energy": 0.025306719345763073,
+                  "gain": -0.0016702759221325358,
+                  "descriptive_oracle_weight_0_1": 0.4669993589585491
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.007648307267112056,
+                  "sires": 172,
+                  "CI95_pointwise": [
+                    -0.011257890511354885,
+                    -0.0041352496999857566
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.007532142722008209,
+                  "sires": 172,
+                  "CI95_pointwise": [
+                    -0.010728597893354987,
+                    -0.004219845853330933
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 743,
+                "sires": 132,
+                "stale_own_stale_profile": {
+                  "alignment": 0.014250745436587418,
+                  "correction_energy": 0.02951875228108499,
+                  "gain": -0.0010172614079101555,
+                  "descriptive_oracle_weight_0_1": 0.48276923431208174
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.007199630995514414,
+                  "correction_energy": 0.02951875228108499,
+                  "gain": -0.015119490290056162,
+                  "descriptive_oracle_weight_0_1": 0.24390024778004554
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.013968239721501031,
+                  "correction_energy": 0.023748559260932268,
+                  "gain": 0.0041879201820697945,
+                  "descriptive_oracle_weight_0_1": 0.5881720894319505
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.0072221315858964855,
+                  "correction_energy": 0.023748559260932268,
+                  "gain": -0.009304296089139297,
+                  "descriptive_oracle_weight_0_1": 0.3041081990088259
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.014102228882146007,
+                  "sires": 132,
+                  "CI95_pointwise": [
+                    -0.021583318470885505,
+                    -0.006518769843427679
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.013492216271209093,
+                  "sires": 132,
+                  "CI95_pointwise": [
+                    -0.020193783504968033,
+                    -0.0065637959234143535
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 527,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 3011,
+                "late_all": 1588,
+                "common_horses": 1287,
+                "common_sires": 159,
+                "early_only_relative_to_common": 1724,
+                "late_only_relative_to_common": 301,
+                "common_early_gain": 0.004585496928667954,
+                "common_late_gain": -0.008622875680216462,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0037713003942970447,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.008545239993302443,
+                    0.0014638606024407084
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.009437072214587372,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.013790200297447723,
+                    -0.0047991982923924524
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.013208372608884415,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.02075770075766959,
+                    -0.004853740556886039
+                  ]
+                },
+                "full_population_gain_change": -0.00766594804981428,
+                "membership_remainder": 0.005542424559070135,
+                "mean_history_count_early": 5.452991452991453,
+                "mean_history_count_late": 9.416472416472416,
+                "mean_absolute_occupancy_change": 0.11950836438015927
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 3011,
+                "late_all": 743,
+                "common_horses": 599,
+                "common_sires": 122,
+                "early_only_relative_to_common": 2412,
+                "late_only_relative_to_common": 144,
+                "common_early_gain": 0.01171190673357505,
+                "common_late_gain": -0.01586561591266177,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.011471708090919618,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.021104756311850895,
+                    -0.0023865266603224017
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.016105814555317205,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.02505673490984123,
+                    -0.007781647181813746
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.027577522646236825,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.041841201575205794,
+                    -0.014803970897794047
+                  ]
+                },
+                "full_population_gain_change": -0.017080789706609156,
+                "membership_remainder": 0.010496732939627666,
+                "mean_history_count_early": 4.500834724540901,
+                "mean_history_count_late": 12.38397328881469,
+                "mean_absolute_occupancy_change": 0.14346066194981055
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 1588,
+                "late_all": 743,
+                "common_horses": 616,
+                "common_sires": 123,
+                "early_only_relative_to_common": 972,
+                "late_only_relative_to_common": 127,
+                "common_early_gain": -0.002992510516062651,
+                "common_late_gain": -0.015286705443753615,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.006252139625054816,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.011686143134670207,
+                    -0.0007469070631744705
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.006042055302636148,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.009953387743933517,
+                    -0.0026987528353860073
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.012294194927690965,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.019102685971849494,
+                    -0.00574784250621338
+                  ]
+                },
+                "full_population_gain_change": -0.009414841656794874,
+                "membership_remainder": 0.00287935327089609,
+                "mean_history_count_early": 8.14935064935065,
+                "mean_history_count_late": 12.185064935064934,
+                "mean_absolute_occupancy_change": 0.10218040887683745
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 3011,
+              "late_all": 743,
+              "common_horses": 527,
+              "common_sires": 115,
+              "early_only_relative_to_common": 2484,
+              "late_only_relative_to_common": 216,
+              "common_early_gain": 0.01149267179627036,
+              "common_late_gain": -0.017617195217782693,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.011881069841912367,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.02006957232979291,
+                  -0.003520431664261334
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.017228797172140684,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.027039367462580666,
+                  -0.007962467457067489
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.029109867014053055,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.043492792906228414,
+                  -0.01540047236789856
+                ]
+              },
+              "full_population_gain_change": -0.017080789706609156,
+              "membership_remainder": 0.0120290773074439,
+              "mean_history_count_early": 4.667931688804554,
+              "mean_history_count_late": 13.225806451612904,
+              "mean_absolute_occupancy_change": 0.13674814011626157
+            }
+          },
+          "20261125": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.42317045416770127,
+                  "M0": 0.4233106104063673,
+                  "M1": 0.40181888220733575
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.017733458784258527,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.010968339723507548,
+                      0.024246457375973956
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.4230354343554434,
+                  "M0": 0.42315960125311497,
+                  "M1": 0.4053185773231921
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.014780899009398784,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.007111746538430283,
+                      0.022138710429980533
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 3011,
+                "sires": 205,
+                "stale_own_stale_profile": {
+                  "alignment": 0.014870018960872004,
+                  "correction_energy": 0.02878195967758491,
+                  "gain": 0.0009580782441590968,
+                  "descriptive_oracle_weight_0_1": 0.5166437284829017
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.014870018960872004,
+                  "correction_energy": 0.02878195967758491,
+                  "gain": 0.0009580782441590968,
+                  "descriptive_oracle_weight_0_1": 0.5166437284829017
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.014870018960872004,
+                  "correction_energy": 0.02878195967758491,
+                  "gain": 0.0009580782441590968,
+                  "descriptive_oracle_weight_0_1": 0.5166437284829017
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.014870018960872004,
+                  "correction_energy": 0.02878195967758491,
+                  "gain": 0.0009580782441590968,
+                  "descriptive_oracle_weight_0_1": 0.5166437284829017
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 205,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 205,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 1588,
+                "sires": 172,
+                "stale_own_stale_profile": {
+                  "alignment": 0.01554345777253167,
+                  "correction_energy": 0.02950364758113201,
+                  "gain": 0.00158326796393133,
+                  "descriptive_oracle_weight_0_1": 0.5268317325777686
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011635246455184106,
+                  "correction_energy": 0.02950364758113201,
+                  "gain": -0.0062331546707638,
+                  "descriptive_oracle_weight_0_1": 0.39436637192700896
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.015431605392905081,
+                  "correction_energy": 0.025627226605290737,
+                  "gain": 0.005235984180519425,
+                  "descriptive_oracle_weight_0_1": 0.602156668397322
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011647128486570646,
+                  "correction_energy": 0.025627226605290737,
+                  "gain": -0.0023329696321494446,
+                  "descriptive_oracle_weight_0_1": 0.45448259641822103
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.007816422634695131,
+                  "sires": 172,
+                  "CI95_pointwise": [
+                    -0.011589112550839805,
+                    -0.004409794021085711
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.00756895381266887,
+                  "sires": 172,
+                  "CI95_pointwise": [
+                    -0.010954486805846089,
+                    -0.004402550401635129
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 743,
+                "sires": 132,
+                "stale_own_stale_profile": {
+                  "alignment": 0.01487124071811517,
+                  "correction_energy": 0.02981556160881982,
+                  "gain": -0.0000730801725894771,
+                  "descriptive_oracle_weight_0_1": 0.49877446258520486
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.007764502055632208,
+                  "correction_energy": 0.02981556160881982,
+                  "gain": -0.014286557497555401,
+                  "descriptive_oracle_weight_0_1": 0.2604177696701635
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.014483499829678519,
+                  "correction_energy": 0.024056809882994468,
+                  "gain": 0.00491018977636257,
+                  "descriptive_oracle_weight_0_1": 0.6020540503966308
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.007619053640731177,
+                  "correction_energy": 0.024056809882994468,
+                  "gain": -0.008818702601532113,
+                  "descriptive_oracle_weight_0_1": 0.31671088884137605
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.014213477324965924,
+                  "sires": 132,
+                  "CI95_pointwise": [
+                    -0.0220744294381104,
+                    -0.006918705930326659
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.013728892377894686,
+                  "sires": 132,
+                  "CI95_pointwise": [
+                    -0.02106450622863331,
+                    -0.007093957326667394
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 527,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 3011,
+                "late_all": 1588,
+                "common_horses": 1287,
+                "common_sires": 159,
+                "early_only_relative_to_common": 1724,
+                "late_only_relative_to_common": 301,
+                "common_early_gain": 0.003761121372104574,
+                "common_late_gain": -0.009087370330491302,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.003203985763282846,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.008575064515088542,
+                    0.001808404328451434
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.009644505939313031,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.014303073069350601,
+                    -0.0055230990520578685
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.012848491702595876,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.02117603943467007,
+                    -0.004970419467513663
+                  ]
+                },
+                "full_population_gain_change": -0.007191232914922898,
+                "membership_remainder": 0.005657258787672977,
+                "mean_history_count_early": 5.452991452991453,
+                "mean_history_count_late": 9.416472416472416,
+                "mean_absolute_occupancy_change": 0.11950836438015924
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 3011,
+                "late_all": 743,
+                "common_horses": 599,
+                "common_sires": 122,
+                "early_only_relative_to_common": 2412,
+                "late_only_relative_to_common": 144,
+                "common_early_gain": 0.011376982523570719,
+                "common_late_gain": -0.015140289495428807,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.010316354750384534,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.020943884286572595,
+                    -0.0009745534517481607
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.016200917268614994,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.026100814247028495,
+                    -0.00768752810818185
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.026517272018999526,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.04203640920052349,
+                    -0.01316271600900854
+                  ]
+                },
+                "full_population_gain_change": -0.0152446357417145,
+                "membership_remainder": 0.011272636277285026,
+                "mean_history_count_early": 4.500834724540901,
+                "mean_history_count_late": 12.38397328881469,
+                "mean_absolute_occupancy_change": 0.14346066194981053
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 1588,
+                "late_all": 743,
+                "common_horses": 616,
+                "common_sires": 123,
+                "early_only_relative_to_common": 972,
+                "late_only_relative_to_common": 127,
+                "common_early_gain": -0.0034913573885977838,
+                "common_late_gain": -0.0146867644057147,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.005058387386455098,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.010322595964662394,
+                    0.001092607244260519
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.006137019630661819,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.00958344865314979,
+                    -0.002964307878175578
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.011195407017116918,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.017990035309154603,
+                    -0.004119035090716502
+                  ]
+                },
+                "full_population_gain_change": -0.008053402826791602,
+                "membership_remainder": 0.003142004190325315,
+                "mean_history_count_early": 8.14935064935065,
+                "mean_history_count_late": 12.185064935064934,
+                "mean_absolute_occupancy_change": 0.10218040887683745
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 3011,
+              "late_all": 743,
+              "common_horses": 527,
+              "common_sires": 115,
+              "early_only_relative_to_common": 2484,
+              "late_only_relative_to_common": 216,
+              "common_early_gain": 0.010913154644317573,
+              "common_late_gain": -0.01713777644502729,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.010757392370515614,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.018958765248549975,
+                  -0.0028530420120525973
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.01729353871882925,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.02701335886831347,
+                  -0.009018912506998662
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.028050931089344866,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.0418385800903659,
+                  -0.01554900727708914
+                ]
+              },
+              "full_population_gain_change": -0.0152446357417145,
+              "membership_remainder": 0.012806295347630363,
+              "mean_history_count_early": 4.667931688804554,
+              "mean_history_count_late": 13.225806451612904,
+              "mean_absolute_occupancy_change": 0.13674814011626157
+            }
+          },
+          "20261126": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 7381,
+                "sires": 363,
+                "RMSE": {
+                  "zero": 0.42318175867825664,
+                  "M0": 0.4231873659814698,
+                  "M1": 0.4011126356093129
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.018196200280885026,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.011169341569979637,
+                      0.025602578531755904
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 7276,
+                "sires": 349,
+                "RMSE": {
+                  "zero": 0.423030686772877,
+                  "M0": 0.4231446572251071,
+                  "M1": 0.40481420850128513
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.01517685753363142,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0075339674489345206,
+                      0.022880084859204182
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 3011,
+                "sires": 205,
+                "stale_own_stale_profile": {
+                  "alignment": 0.015254127481944425,
+                  "correction_energy": 0.028333451225410963,
+                  "gain": 0.002174803738477886,
+                  "descriptive_oracle_weight_0_1": 0.5383787298126147
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.015254127481944425,
+                  "correction_energy": 0.028333451225410963,
+                  "gain": 0.002174803738477886,
+                  "descriptive_oracle_weight_0_1": 0.5383787298126147
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.015254127481944425,
+                  "correction_energy": 0.028333451225410963,
+                  "gain": 0.002174803738477886,
+                  "descriptive_oracle_weight_0_1": 0.5383787298126147
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.015254127481944425,
+                  "correction_energy": 0.028333451225410963,
+                  "gain": 0.002174803738477886,
+                  "descriptive_oracle_weight_0_1": 0.5383787298126147
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 205,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 205,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 1588,
+                "sires": 172,
+                "stale_own_stale_profile": {
+                  "alignment": 0.01575912884533212,
+                  "correction_energy": 0.02905740664431744,
+                  "gain": 0.0024608510463468014,
+                  "descriptive_oracle_weight_0_1": 0.5423446434237801
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.011854669243325943,
+                  "correction_energy": 0.02905740664431744,
+                  "gain": -0.005348068157665555,
+                  "descriptive_oracle_weight_0_1": 0.40797409722193084
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.01549691312987403,
+                  "correction_energy": 0.025277627277128144,
+                  "gain": 0.005716198982619915,
+                  "descriptive_oracle_weight_0_1": 0.6130683453781297
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.011688784498034305,
+                  "correction_energy": 0.025277627277128144,
+                  "gain": -0.001900058281059533,
+                  "descriptive_oracle_weight_0_1": 0.4624162058363216
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.007808919204012355,
+                  "sires": 172,
+                  "CI95_pointwise": [
+                    -0.011457815324206404,
+                    -0.004280955480205839
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.007616257263679446,
+                  "sires": 172,
+                  "CI95_pointwise": [
+                    -0.010961511340454566,
+                    -0.0043605711202161
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 743,
+                "sires": 132,
+                "stale_own_stale_profile": {
+                  "alignment": 0.014668341129415348,
+                  "correction_energy": 0.0292519783279509,
+                  "gain": 0.00008470393087979533,
+                  "descriptive_oracle_weight_0_1": 0.5014478325180294
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.007512575610575573,
+                  "correction_energy": 0.0292519783279509,
+                  "gain": -0.014226827106799754,
+                  "descriptive_oracle_weight_0_1": 0.25682282156612785
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.014280487350825115,
+                  "correction_energy": 0.023614050490975345,
+                  "gain": 0.004946924210674886,
+                  "descriptive_oracle_weight_0_1": 0.6047453551555136
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.007490248470270097,
+                  "correction_energy": 0.023614050490975348,
+                  "gain": -0.008633553550435154,
+                  "descriptive_oracle_weight_0_1": 0.31719456486860087
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.014311531037679548,
+                  "sires": 132,
+                  "CI95_pointwise": [
+                    -0.022716571863537496,
+                    -0.006873847717944028
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.013580477761110038,
+                  "sires": 132,
+                  "CI95_pointwise": [
+                    -0.021303306241798964,
+                    -0.006803205011090047
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 527,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 3011,
+                "late_all": 1588,
+                "common_horses": 1287,
+                "common_sires": 159,
+                "early_only_relative_to_common": 1724,
+                "late_only_relative_to_common": 301,
+                "common_early_gain": 0.0053006563891267715,
+                "common_late_gain": -0.0080351622154076,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0037005709775167965,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.008657103471875226,
+                    0.0013458502333997741
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.009635247627017576,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.013920187886526082,
+                    -0.005129924745047557
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.013335818604534375,
+                  "sires": 159,
+                  "CI95_pointwise": [
+                    -0.02126765314898408,
+                    -0.004883085196885618
+                  ]
+                },
+                "full_population_gain_change": -0.007522871896143446,
+                "membership_remainder": 0.005812946708390925,
+                "mean_history_count_early": 5.452991452991453,
+                "mean_history_count_late": 9.416472416472416,
+                "mean_absolute_occupancy_change": 0.11950836438015927
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 3011,
+                "late_all": 743,
+                "common_horses": 599,
+                "common_sires": 122,
+                "early_only_relative_to_common": 2412,
+                "late_only_relative_to_common": 144,
+                "common_early_gain": 0.012195545492939643,
+                "common_late_gain": -0.015350008382576127,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.011391590737826635,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.020373240624117477,
+                    -0.002296243542741565
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.016153963137689128,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.025243598259836894,
+                    -0.00741635363591258
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.02754555387551577,
+                  "sires": 122,
+                  "CI95_pointwise": [
+                    -0.04162026648766327,
+                    -0.014460205441118187
+                  ]
+                },
+                "full_population_gain_change": -0.016401630845277647,
+                "membership_remainder": 0.011143923030238123,
+                "mean_history_count_early": 4.500834724540901,
+                "mean_history_count_late": 12.38397328881469,
+                "mean_absolute_occupancy_change": 0.14346066194981053
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 1588,
+                "late_all": 743,
+                "common_horses": 616,
+                "common_sires": 123,
+                "early_only_relative_to_common": 972,
+                "late_only_relative_to_common": 127,
+                "common_early_gain": -0.0010399744332698043,
+                "common_late_gain": -0.014134507420244021,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.006674081436584774,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.012103822552760326,
+                    -0.0006008478687627381
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.006420451550389443,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.010155963229556421,
+                    -0.0031523809978565047
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.013094532986974217,
+                  "sires": 123,
+                  "CI95_pointwise": [
+                    -0.019923168264396496,
+                    -0.006310315458332562
+                  ]
+                },
+                "full_population_gain_change": -0.0088787589491342,
+                "membership_remainder": 0.004215774037840016,
+                "mean_history_count_early": 8.14935064935065,
+                "mean_history_count_late": 12.185064935064934,
+                "mean_absolute_occupancy_change": 0.10218040887683745
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 3011,
+              "late_all": 743,
+              "common_horses": 527,
+              "common_sires": 115,
+              "early_only_relative_to_common": 2484,
+              "late_only_relative_to_common": 216,
+              "common_early_gain": 0.01211499363285769,
+              "common_late_gain": -0.01672587073492909,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.011576476998306516,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.019757085198712065,
+                  -0.003678787374439402
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.017264387369480265,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.0279414213142533,
+                  -0.00854422563939302
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.028840864367786784,
+                "sires": 115,
+                "CI95_pointwise": [
+                  -0.04305509116996447,
+                  -0.016111171682723247
+                ]
+              },
+              "full_population_gain_change": -0.016401630845277647,
+              "membership_remainder": 0.012439233522509134,
+              "mean_history_count_early": 4.667931688804554,
+              "mean_history_count_late": 13.225806451612904,
+              "mean_absolute_occupancy_change": 0.13674814011626157
+            }
+          }
+        }
+      },
+      "2000-2399": {
+        "source_A_support": {
+          "2019": {
+            "starts": 5609,
+            "horses": 2825,
+            "turf_starts": 4863,
+            "dirt_starts": 746
+          },
+          "2020": {
+            "starts": 5848,
+            "horses": 2901,
+            "turf_starts": 5014,
+            "dirt_starts": 834
+          },
+          "2021": {
+            "starts": 5949,
+            "horses": 2875,
+            "turf_starts": 5073,
+            "dirt_starts": 876
+          }
+        },
+        "source_B_support": {
+          "2022": {
+            "starts": 3248,
+            "horses": 1410,
+            "turf_starts": 2688,
+            "dirt_starts": 560
+          },
+          "2023": {
+            "starts": 1695,
+            "horses": 750,
+            "turf_starts": 1353,
+            "dirt_starts": 342
+          },
+          "2024": {
+            "starts": 679,
+            "horses": 356,
+            "turf_starts": 557,
+            "dirt_starts": 122
+          }
+        },
+        "source_B_scope": {
+          "2022": {
+            "source_starts": 5203,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 3248,
+            "eligible_starts": 3248,
+            "eligible_horses": 1410
+          },
+          "2023": {
+            "source_starts": 3098,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 1695,
+            "eligible_starts": 1695,
+            "eligible_horses": 750
+          },
+          "2024": {
+            "source_starts": 1641,
+            "unknown_circuit_starts": 0,
+            "JRA_starts": 679,
+            "eligible_starts": 679,
+            "eligible_horses": 356
+          }
+        },
+        "status": "EVALUATED_RETROSPECTIVE",
+        "results": {
+          "20261124": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 2901,
+                "sires": 234,
+                "RMSE": {
+                  "zero": 0.34274265223322065,
+                  "M0": 0.34152276703835194,
+                  "M1": 0.3306604930380742
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.007301438749350071,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0035443157206181772,
+                      0.012094716589979907
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 2875,
+                "sires": 235,
+                "RMSE": {
+                  "zero": 0.3322814219676045,
+                  "M0": 0.33184284448383433,
+                  "M1": 0.31824753478108514
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.008838180040884252,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.004533071652713443,
+                      0.014740686998389804
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 1410,
+                "sires": 150,
+                "stale_own_stale_profile": {
+                  "alignment": 0.009855635243814635,
+                  "correction_energy": 0.010189481981554817,
+                  "gain": 0.009521788506074453,
+                  "descriptive_oracle_weight_0_1": 0.9672361422941306
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.009855635243814635,
+                  "correction_energy": 0.010189481981554817,
+                  "gain": 0.009521788506074453,
+                  "descriptive_oracle_weight_0_1": 0.9672361422941306
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.009855635243814635,
+                  "correction_energy": 0.010189481981554817,
+                  "gain": 0.009521788506074453,
+                  "descriptive_oracle_weight_0_1": 0.9672361422941306
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.009855635243814635,
+                  "correction_energy": 0.010189481981554817,
+                  "gain": 0.009521788506074453,
+                  "descriptive_oracle_weight_0_1": 0.9672361422941306
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 150,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 150,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 750,
+                "sires": 121,
+                "stale_own_stale_profile": {
+                  "alignment": 0.009490036743630276,
+                  "correction_energy": 0.010517235798044259,
+                  "gain": 0.008462837689216293,
+                  "descriptive_oracle_weight_0_1": 0.9023318413565476
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.008358010720816786,
+                  "correction_energy": 0.010517235798044259,
+                  "gain": 0.006198785643589312,
+                  "descriptive_oracle_weight_0_1": 0.7946965230513331
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.011590874794454722,
+                  "correction_energy": 0.011575309511140086,
+                  "gain": 0.011606440077769358,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.010129573459695477,
+                  "correction_energy": 0.011575309511140086,
+                  "gain": 0.008683837408250869,
+                  "descriptive_oracle_weight_0_1": 0.8751017370159103
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.0022640520456269813,
+                  "sires": 121,
+                  "CI95_pointwise": [
+                    -0.003732046397433294,
+                    -0.0009822346606931137
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.0029226026695184904,
+                  "sires": 121,
+                  "CI95_pointwise": [
+                    -0.0048589297628127215,
+                    -0.0013733479472370438
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 356,
+                "sires": 84,
+                "stale_own_stale_profile": {
+                  "alignment": 0.007702297050867824,
+                  "correction_energy": 0.00895036384424618,
+                  "gain": 0.006454230257489469,
+                  "descriptive_oracle_weight_0_1": 0.8605568650507224
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.006862134402229622,
+                  "correction_energy": 0.00895036384424618,
+                  "gain": 0.004773904960213064,
+                  "descriptive_oracle_weight_0_1": 0.7666877594748291
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.010608624022251392,
+                  "correction_energy": 0.0097386224315631,
+                  "gain": 0.011478625612939684,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.009096763738284216,
+                  "correction_energy": 0.0097386224315631,
+                  "gain": 0.008454905045005331,
+                  "descriptive_oracle_weight_0_1": 0.9340914284551576
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.001680325297276403,
+                  "sires": 84,
+                  "CI95_pointwise": [
+                    -0.004077714058700064,
+                    0.0005739753065527589
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.0030237205679343533,
+                  "sires": 84,
+                  "CI95_pointwise": [
+                    -0.00629587439789887,
+                    -0.00031649032574941664
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 216,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 1410,
+                "late_all": 750,
+                "common_horses": 547,
+                "common_sires": 98,
+                "early_only_relative_to_common": 863,
+                "late_only_relative_to_common": 203,
+                "common_early_gain": 0.0049795378109847395,
+                "common_late_gain": 0.0013242257068486571,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0005510359903879358,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.0067844528542218285,
+                    0.006263192802303546
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.003104276113748147,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.0053990245056738636,
+                    -0.0013443640307679798
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.003655312104136082,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.009994653766482144,
+                    0.0027491863667239032
+                  ]
+                },
+                "full_population_gain_change": -0.0033230028624851426,
+                "membership_remainder": 0.00033230924165093996,
+                "mean_history_count_early": 3.9104204753199268,
+                "mean_history_count_late": 6.868372943327239,
+                "mean_absolute_occupancy_change": 0.08790371724558196
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 1410,
+                "late_all": 356,
+                "common_horses": 267,
+                "common_sires": 63,
+                "early_only_relative_to_common": 1143,
+                "late_only_relative_to_common": 89,
+                "common_early_gain": -0.001519639817889843,
+                "common_late_gain": -0.0039244588537385725,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0008163278892824035,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.004512669556465355,
+                    0.0027548646221965227
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0015884911465663262,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.004958298833105594,
+                    0.0009264520584104085
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.0024048190358487297,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.007359457708972689,
+                    0.0025822914399378895
+                  ]
+                },
+                "full_population_gain_change": -0.004747883545861385,
+                "membership_remainder": -0.002343064510012656,
+                "mean_history_count_early": 3.50187265917603,
+                "mean_history_count_late": 9.063670411985019,
+                "mean_absolute_occupancy_change": 0.08957553058676655
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 750,
+                "late_all": 356,
+                "common_horses": 252,
+                "common_sires": 63,
+                "early_only_relative_to_common": 498,
+                "late_only_relative_to_common": 104,
+                "common_early_gain": 0.00037468992503074194,
+                "common_late_gain": -0.0032640174894375163,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.002336472877249912,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.005727248400141581,
+                    0.0003114237173846686
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0013022345372183462,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.0034066090051132615,
+                    0.00026910212210921885
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.0036387074144682585,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.0073787580448112,
+                    -0.00044714942803363744
+                  ]
+                },
+                "full_population_gain_change": -0.0014248806833762426,
+                "membership_remainder": 0.0022138267310920154,
+                "mean_history_count_early": 6.226190476190476,
+                "mean_history_count_late": 9.13888888888889,
+                "mean_absolute_occupancy_change": 0.04411375661375662
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 1410,
+              "late_all": 356,
+              "common_horses": 216,
+              "common_sires": 55,
+              "early_only_relative_to_common": 1194,
+              "late_only_relative_to_common": 140,
+              "common_early_gain": -0.0007259411067989149,
+              "common_late_gain": -0.004505838813346731,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.0017160643039850745,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.00692791461332354,
+                  0.0033586538259755255
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.002063833402562743,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.00578753886188937,
+                  0.0011476672563784632
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.003779897706547817,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.01036379214799805,
+                  0.002845106703893994
+                ]
+              },
+              "full_population_gain_change": -0.004747883545861385,
+              "membership_remainder": -0.0009679858393135676,
+              "mean_history_count_early": 3.7175925925925926,
+              "mean_history_count_late": 10.046296296296296,
+              "mean_absolute_occupancy_change": 0.08834876543209876
+            }
+          },
+          "20261125": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 2901,
+                "sires": 234,
+                "RMSE": {
+                  "zero": 0.3426177673209395,
+                  "M0": 0.34144878145905416,
+                  "M1": 0.332043319140112
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.006334504574290651,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0027949493503505326,
+                      0.01138509008868711
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 2875,
+                "sires": 235,
+                "RMSE": {
+                  "zero": 0.3323069678120491,
+                  "M0": 0.3314095514460983,
+                  "M1": 0.31772737277923535
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.008881607376508874,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.004789085702118023,
+                      0.01498331064341151
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 1410,
+                "sires": 150,
+                "stale_own_stale_profile": {
+                  "alignment": 0.010343203985995626,
+                  "correction_energy": 0.010215241878737472,
+                  "gain": 0.01047116609325378,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.010343203985995626,
+                  "correction_energy": 0.010215241878737472,
+                  "gain": 0.01047116609325378,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.010343203985995626,
+                  "correction_energy": 0.010215241878737472,
+                  "gain": 0.01047116609325378,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.010343203985995626,
+                  "correction_energy": 0.010215241878737472,
+                  "gain": 0.01047116609325378,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 150,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 150,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 750,
+                "sires": 121,
+                "stale_own_stale_profile": {
+                  "alignment": 0.011174103635611653,
+                  "correction_energy": 0.010802919375246169,
+                  "gain": 0.011545287895977138,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.009601236125829518,
+                  "correction_energy": 0.010802919375246169,
+                  "gain": 0.008399552876412867,
+                  "descriptive_oracle_weight_0_1": 0.8887631011881668
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.012540725105604632,
+                  "correction_energy": 0.011588078118054552,
+                  "gain": 0.013493372093154711,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.010755342848096485,
+                  "correction_energy": 0.011588078118054549,
+                  "gain": 0.00992260757813842,
+                  "descriptive_oracle_weight_0_1": 0.928138621307649
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.0031457350195642727,
+                  "sires": 121,
+                  "CI95_pointwise": [
+                    -0.0053714966472789985,
+                    -0.0014539250948505601
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.003570764515016293,
+                  "sires": 121,
+                  "CI95_pointwise": [
+                    -0.006535107340714572,
+                    -0.0015974365882120505
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 356,
+                "sires": 84,
+                "stale_own_stale_profile": {
+                  "alignment": 0.00956389050773478,
+                  "correction_energy": 0.009529949483982931,
+                  "gain": 0.009597831531486628,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.007949094896288596,
+                  "correction_energy": 0.009529949483982931,
+                  "gain": 0.00636824030859426,
+                  "descriptive_oracle_weight_0_1": 0.8341172122316817
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.012478882278324109,
+                  "correction_energy": 0.010502002957059388,
+                  "gain": 0.01445576159958883,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.010366915503533705,
+                  "correction_energy": 0.010502002957059385,
+                  "gain": 0.010231828050008026,
+                  "descriptive_oracle_weight_0_1": 0.987136981956868
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.0032295912228923643,
+                  "sires": 84,
+                  "CI95_pointwise": [
+                    -0.006684905339729624,
+                    -0.0008368681675896162
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.00422393354958081,
+                  "sires": 84,
+                  "CI95_pointwise": [
+                    -0.008808586042177697,
+                    -0.00122991505657698
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 216,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 1410,
+                "late_all": 750,
+                "common_horses": 547,
+                "common_sires": 98,
+                "early_only_relative_to_common": 863,
+                "late_only_relative_to_common": 203,
+                "common_early_gain": 0.008850064619144197,
+                "common_late_gain": 0.0025133142806083733,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0020235853208517224,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.007686420041777648,
+                    0.003560333438442953
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.004313165017684102,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.007642945764889771,
+                    -0.001996859007141922
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.006336750338535825,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.01236277693570717,
+                    -0.0009347204227307179
+                  ]
+                },
+                "full_population_gain_change": -0.002071613216840915,
+                "membership_remainder": 0.004265137121694909,
+                "mean_history_count_early": 3.9104204753199268,
+                "mean_history_count_late": 6.868372943327239,
+                "mean_absolute_occupancy_change": 0.08790371724558198
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 1410,
+                "late_all": 356,
+                "common_horses": 267,
+                "common_sires": 63,
+                "early_only_relative_to_common": 1143,
+                "late_only_relative_to_common": 89,
+                "common_early_gain": 0.0017502822956486745,
+                "common_late_gain": -0.0031815697507074727,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0014736870194992948,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.004927496941620837,
+                    0.002034903781697793
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0034581650268568536,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.00829616559028684,
+                    -0.000359914988222108
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.004931852046356147,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.011258981326734587,
+                    0.00013534681697732723
+                  ]
+                },
+                "full_population_gain_change": -0.004102925784659517,
+                "membership_remainder": 0.0008289262616966303,
+                "mean_history_count_early": 3.50187265917603,
+                "mean_history_count_late": 9.063670411985019,
+                "mean_absolute_occupancy_change": 0.08957553058676655
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 750,
+                "late_all": 356,
+                "common_horses": 252,
+                "common_sires": 63,
+                "early_only_relative_to_common": 498,
+                "late_only_relative_to_common": 104,
+                "common_early_gain": 0.0028028658786763464,
+                "common_late_gain": -0.002041357991005136,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0028337977930404695,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.006024138863236311,
+                    -0.000006384666098873546
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0020104260766410135,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.003991608356040971,
+                    -0.0006222736274212599
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.004844223869681482,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.008517151042179932,
+                    -0.0017003196111254764
+                  ]
+                },
+                "full_population_gain_change": -0.0020313125678186024,
+                "membership_remainder": 0.0028129113018628797,
+                "mean_history_count_early": 6.226190476190476,
+                "mean_history_count_late": 9.13888888888889,
+                "mean_absolute_occupancy_change": 0.04411375661375662
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 1410,
+              "late_all": 356,
+              "common_horses": 216,
+              "common_sires": 55,
+              "early_only_relative_to_common": 1194,
+              "late_only_relative_to_common": 140,
+              "common_early_gain": 0.003846568023279848,
+              "common_late_gain": -0.0042229915235957914,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.0036256207072167257,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.00847957107615797,
+                  0.0009765849468946267
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.004443938839658912,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.010362420872196881,
+                  -0.0005336086060275675
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.008069559546875639,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.016038826112838234,
+                  -0.0012662420324793628
+                ]
+              },
+              "full_population_gain_change": -0.004102925784659517,
+              "membership_remainder": 0.0039666337622161225,
+              "mean_history_count_early": 3.7175925925925926,
+              "mean_history_count_late": 10.046296296296296,
+              "mean_absolute_occupancy_change": 0.08834876543209878
+            }
+          },
+          "20261126": {
+            "source_A": {
+              "2020": {
+                "status": "DESCRIPTIVE",
+                "horses": 2901,
+                "sires": 234,
+                "RMSE": {
+                  "zero": 0.3425791386146313,
+                  "M0": 0.34142501876987463,
+                  "M1": 0.3303970592588301
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.00740882667512635,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0038048269121229443,
+                      0.012358761787928161
+                    ]
+                  }
+                }
+              },
+              "2021": {
+                "status": "DESCRIPTIVE",
+                "horses": 2875,
+                "sires": 235,
+                "RMSE": {
+                  "zero": 0.33218360917762824,
+                  "M0": 0.33118568713289215,
+                  "M1": 0.3183036334331949
+                },
+                "contrasts": {
+                  "M0_minus_M1": {
+                    "MSE_gain": 0.008366756304912203,
+                    "whole_sire_bootstrap_pointwise_CI95": [
+                      0.0035687203362354293,
+                      0.014190855482729123
+                    ]
+                  }
+                }
+              }
+            },
+            "source_B_annual": {
+              "2022": {
+                "horses": 1410,
+                "sires": 150,
+                "stale_own_stale_profile": {
+                  "alignment": 0.010452419423114754,
+                  "correction_energy": 0.010210217747125473,
+                  "gain": 0.010694621099104035,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.010452419423114754,
+                  "correction_energy": 0.010210217747125473,
+                  "gain": 0.010694621099104035,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.010452419423114754,
+                  "correction_energy": 0.010210217747125473,
+                  "gain": 0.010694621099104035,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.010452419423114754,
+                  "correction_energy": 0.010210217747125473,
+                  "gain": 0.010694621099104035,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": 0,
+                  "sires": 150,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": 0,
+                  "sires": 150,
+                  "CI95_pointwise": [
+                    0,
+                    0
+                  ]
+                }
+              },
+              "2023": {
+                "horses": 750,
+                "sires": 121,
+                "stale_own_stale_profile": {
+                  "alignment": 0.011098468550717288,
+                  "correction_energy": 0.010705716556900167,
+                  "gain": 0.011491220544534409,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.009653895895042874,
+                  "correction_energy": 0.010705716556900167,
+                  "gain": 0.008602075233185581,
+                  "descriptive_oracle_weight_0_1": 0.9017514935813089
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.012147703432954415,
+                  "correction_energy": 0.011609493014729237,
+                  "gain": 0.012685913851179592,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.010563537397545687,
+                  "correction_energy": 0.011609493014729237,
+                  "gain": 0.009517581780362137,
+                  "descriptive_oracle_weight_0_1": 0.9099051426400342
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.0028891453113488244,
+                  "sires": 121,
+                  "CI95_pointwise": [
+                    -0.004846980361395344,
+                    -0.0014242582417879179
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.0031683320708174563,
+                  "sires": 121,
+                  "CI95_pointwise": [
+                    -0.005628525404273299,
+                    -0.001423430780513018
+                  ]
+                }
+              },
+              "2024": {
+                "horses": 356,
+                "sires": 84,
+                "stale_own_stale_profile": {
+                  "alignment": 0.010038135029570565,
+                  "correction_energy": 0.009158313640519429,
+                  "gain": 0.010917956418621701,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_stale_profile": {
+                  "alignment": 0.008585320657896484,
+                  "correction_energy": 0.009158313640519429,
+                  "gain": 0.00801232767527354,
+                  "descriptive_oracle_weight_0_1": 0.9374346626339775
+                },
+                "stale_own_fresh_profile": {
+                  "alignment": 0.011820170505947867,
+                  "correction_energy": 0.00994753052541278,
+                  "gain": 0.013692810486482953,
+                  "descriptive_oracle_weight_0_1": 1
+                },
+                "fresh_own_fresh_profile": {
+                  "alignment": 0.009930142641274176,
+                  "correction_energy": 0.00994753052541278,
+                  "gain": 0.00991275475713557,
+                  "descriptive_oracle_weight_0_1": 0.9982520401325551
+                },
+                "own_update_fixed_profile": {
+                  "MSE_gain": -0.002905628743348157,
+                  "sires": 84,
+                  "CI95_pointwise": [
+                    -0.006065348343851123,
+                    -0.0006379755036656841
+                  ]
+                },
+                "own_update_fresh_profile": {
+                  "MSE_gain": -0.003780055729347386,
+                  "sires": 84,
+                  "CI95_pointwise": [
+                    -0.008061847126715194,
+                    -0.0009610542773537431
+                  ]
+                }
+              }
+            },
+            "common_three_year_horses": 216,
+            "pair_intersections": {
+              "2022-2023": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2023,
+                "early_all": 1410,
+                "late_all": 750,
+                "common_horses": 547,
+                "common_sires": 98,
+                "early_only_relative_to_common": 863,
+                "late_only_relative_to_common": 203,
+                "common_early_gain": 0.008764764575983873,
+                "common_late_gain": 0.00421602588411416,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0005873877165285444,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.006011764858434432,
+                    0.005453959397233708
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.003961350975341167,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.006536745966744227,
+                    -0.0018065955865549461
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.004548738691869711,
+                  "sires": 98,
+                  "CI95_pointwise": [
+                    -0.010070945226184149,
+                    0.0013723963648854724
+                  ]
+                },
+                "full_population_gain_change": -0.0020925458659184545,
+                "membership_remainder": 0.002456192825951258,
+                "mean_history_count_early": 3.9104204753199268,
+                "mean_history_count_late": 6.868372943327239,
+                "mean_absolute_occupancy_change": 0.08790371724558195
+              },
+              "2022-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2022,
+                "late_year": 2024,
+                "early_all": 1410,
+                "late_all": 356,
+                "common_horses": 267,
+                "common_sires": 63,
+                "early_only_relative_to_common": 1143,
+                "late_only_relative_to_common": 89,
+                "common_early_gain": 0.0016484776334096374,
+                "common_late_gain": -0.0018550593186065494,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.000291607229461354,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.0038672984129828943,
+                    0.003545397753985338
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0032119297225548325,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.00724023091076609,
+                    -0.00018132794399042528
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.0035035369520161866,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.008990503909029831,
+                    0.0016612769210908262
+                  ]
+                },
+                "full_population_gain_change": -0.002682293423830492,
+                "membership_remainder": 0.0008212435281856958,
+                "mean_history_count_early": 3.50187265917603,
+                "mean_history_count_late": 9.063670411985019,
+                "mean_absolute_occupancy_change": 0.08957553058676654
+              },
+              "2023-2024": {
+                "status": "DESCRIPTIVE",
+                "early_year": 2023,
+                "late_year": 2024,
+                "early_all": 750,
+                "late_all": 356,
+                "common_horses": 252,
+                "common_sires": 63,
+                "early_only_relative_to_common": 498,
+                "late_only_relative_to_common": 104,
+                "common_early_gain": 0.002538971383566081,
+                "common_late_gain": -0.0016627518617178972,
+                "observed_occupancy_shift": {
+                  "MSE_gain": -0.0023818340750268196,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.005535402971907881,
+                    0.0001991804071470436
+                  ]
+                },
+                "own_information_update_shift": {
+                  "MSE_gain": -0.0018198891702571592,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.0037085089276293667,
+                    -0.0004859201386446107
+                  ]
+                },
+                "within_common_total": {
+                  "MSE_gain": -0.004201723245283979,
+                  "sires": 63,
+                  "CI95_pointwise": [
+                    -0.007610357781921453,
+                    -0.001087107170839113
+                  ]
+                },
+                "full_population_gain_change": -0.0005897475579120376,
+                "membership_remainder": 0.0036119756873719405,
+                "mean_history_count_early": 6.226190476190476,
+                "mean_history_count_late": 9.13888888888889,
+                "mean_absolute_occupancy_change": 0.04411375661375662
+              }
+            },
+            "three_year_intersection_2022_2024": {
+              "status": "DESCRIPTIVE",
+              "early_year": 2022,
+              "late_year": 2024,
+              "early_all": 1410,
+              "late_all": 356,
+              "common_horses": 216,
+              "common_sires": 55,
+              "early_only_relative_to_common": 1194,
+              "late_only_relative_to_common": 140,
+              "common_early_gain": 0.0031132567679472843,
+              "common_late_gain": -0.002724868034786482,
+              "observed_occupancy_shift": {
+                "MSE_gain": -0.0018313433418418942,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.006452815707189473,
+                  0.0029643703263530145
+                ]
+              },
+              "own_information_update_shift": {
+                "MSE_gain": -0.004006781460891872,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.008416592991234083,
+                  -0.00038161937013089575
+                ]
+              },
+              "within_common_total": {
+                "MSE_gain": -0.005838124802733767,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.012428355888130663,
+                  0.0005543212546919546
+                ]
+              },
+              "full_population_gain_change": -0.002682293423830492,
+              "membership_remainder": 0.003155831378903273,
+              "mean_history_count_early": 3.7175925925925926,
+              "mean_history_count_late": 10.046296296296296,
+              "mean_absolute_occupancy_change": 0.08834876543209878
+            }
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Predeclared adjacent distance bands in previously inspected archives; not prospective replication.",
+      "Horse and sire membership can overlap bands, years and seeds; estimates dependent.",
+      "Support-conditioned observations of annual turf fraction, not physiology or animal choice.",
+      "Source B anchored continuing horses and strictly classified starts only; not all entries.",
+      "Fixed additive correction loss and model-input updates, not causal biological learning or genetic effects.",
+      "Pointwise sire bootstrap; no simultaneous or all-dependence inference. No individual records exported."
+    ]
+  },
+  "derived": {
+    "bands": {
+      "1200-1599": {
+        "status": "EVALUATED_RETROSPECTIVE",
+        "primary_pairs": [
+          {
+            "seed": "20261124",
+            "horses": 531,
+            "sires": 120,
+            "update": {
+              "MSE_gain": -0.01503752854633637,
+              "sires": 120,
+              "CI95_pointwise": [
+                -0.022124892552485273,
+                -0.008753320074282442
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.02087628044759119,
+              "sires": 120,
+              "CI95_pointwise": [
+                -0.0327983169561356,
+                -0.010225673116982211
+              ]
+            },
+            "membership": 0.015029867703962328
+          },
+          {
+            "seed": "20261125",
+            "horses": 531,
+            "sires": 120,
+            "update": {
+              "MSE_gain": -0.014490623575831788,
+              "sires": 120,
+              "CI95_pointwise": [
+                -0.02244121762397169,
+                -0.008318163918808307
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.021196076477736053,
+              "sires": 120,
+              "CI95_pointwise": [
+                -0.03227189327112074,
+                -0.010378115110413214
+              ]
+            },
+            "membership": 0.014229572960253411
+          },
+          {
+            "seed": "20261126",
+            "horses": 531,
+            "sires": 120,
+            "update": {
+              "MSE_gain": -0.0141241329516872,
+              "sires": 120,
+              "CI95_pointwise": [
+                -0.02140914418831681,
+                -0.0073284974023004705
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.017464137969398146,
+              "sires": 120,
+              "CI95_pointwise": [
+                -0.02931063996225062,
+                -0.0061749088515264255
+              ]
+            },
+            "membership": 0.011286612612442213
+          }
+        ],
+        "negative_update_ci": 12,
+        "pair_conditions": 12,
+        "positive_A2021_ci": 3
+      },
+      "1600-1999": {
+        "status": "EVALUATED_RETROSPECTIVE",
+        "primary_pairs": [
+          {
+            "seed": "20261124",
+            "horses": 599,
+            "sires": 122,
+            "update": {
+              "MSE_gain": -0.016105814555317205,
+              "sires": 122,
+              "CI95_pointwise": [
+                -0.02505673490984123,
+                -0.007781647181813746
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.027577522646236825,
+              "sires": 122,
+              "CI95_pointwise": [
+                -0.041841201575205794,
+                -0.014803970897794047
+              ]
+            },
+            "membership": 0.010496732939627666
+          },
+          {
+            "seed": "20261125",
+            "horses": 599,
+            "sires": 122,
+            "update": {
+              "MSE_gain": -0.016200917268614994,
+              "sires": 122,
+              "CI95_pointwise": [
+                -0.026100814247028495,
+                -0.00768752810818185
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.026517272018999526,
+              "sires": 122,
+              "CI95_pointwise": [
+                -0.04203640920052349,
+                -0.01316271600900854
+              ]
+            },
+            "membership": 0.011272636277285026
+          },
+          {
+            "seed": "20261126",
+            "horses": 599,
+            "sires": 122,
+            "update": {
+              "MSE_gain": -0.016153963137689128,
+              "sires": 122,
+              "CI95_pointwise": [
+                -0.025243598259836894,
+                -0.00741635363591258
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.02754555387551577,
+              "sires": 122,
+              "CI95_pointwise": [
+                -0.04162026648766327,
+                -0.014460205441118187
+              ]
+            },
+            "membership": 0.011143923030238123
+          }
+        ],
+        "negative_update_ci": 12,
+        "pair_conditions": 12,
+        "positive_A2021_ci": 3
+      },
+      "2000-2399": {
+        "status": "EVALUATED_RETROSPECTIVE",
+        "primary_pairs": [
+          {
+            "seed": "20261124",
+            "horses": 267,
+            "sires": 63,
+            "update": {
+              "MSE_gain": -0.0015884911465663262,
+              "sires": 63,
+              "CI95_pointwise": [
+                -0.004958298833105594,
+                0.0009264520584104085
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.0024048190358487297,
+              "sires": 63,
+              "CI95_pointwise": [
+                -0.007359457708972689,
+                0.0025822914399378895
+              ]
+            },
+            "membership": -0.002343064510012656
+          },
+          {
+            "seed": "20261125",
+            "horses": 267,
+            "sires": 63,
+            "update": {
+              "MSE_gain": -0.0034581650268568536,
+              "sires": 63,
+              "CI95_pointwise": [
+                -0.00829616559028684,
+                -0.000359914988222108
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.004931852046356147,
+              "sires": 63,
+              "CI95_pointwise": [
+                -0.011258981326734587,
+                0.00013534681697732723
+              ]
+            },
+            "membership": 0.0008289262616966303
+          },
+          {
+            "seed": "20261126",
+            "horses": 267,
+            "sires": 63,
+            "update": {
+              "MSE_gain": -0.0032119297225548325,
+              "sires": 63,
+              "CI95_pointwise": [
+                -0.00724023091076609,
+                -0.00018132794399042528
+              ]
+            },
+            "within": {
+              "MSE_gain": -0.0035035369520161866,
+              "sires": 63,
+              "CI95_pointwise": [
+                -0.008990503909029831,
+                0.0016612769210908262
+              ]
+            },
+            "membership": 0.0008212435281856958
+          }
+        ],
+        "negative_update_ci": 9,
+        "pair_conditions": 12,
+        "positive_A2021_ci": 3
+      }
+    }
+  }
+}
