@@ -157,7 +157,10 @@ def effect_splits(early_market:dict,late_market:dict)->dict:
         "win_vs_wide_source_change_correlation":
             (weighted_cov(delta_win,delta_wide,w) /
              math.sqrt(weighted_cov(delta_win,delta_win,w)*
-                       weighted_cov(delta_wide,delta_wide,w))),
+                       weighted_cov(delta_wide,delta_wide,w))
+             if (weighted_cov(delta_win,delta_win,w) > 1e-18 and
+                 weighted_cov(delta_wide,delta_wide,w) > 1e-18)
+             else None),
     }
     if abs(sum(v for k,v in variance_sources.items() if "share_of_total" in k)-1)>1e-10:
         raise ValueError("two_source_covariance_shares_not_complete")
