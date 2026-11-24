@@ -19,6 +19,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import unicodedata
 from urllib.parse import urlsplit
 
 try:
@@ -75,10 +76,20 @@ def audit_card(card:dict, race:int)->tuple[dict,list[str]]:
     },candidates
 
 
+def _name_key(record:dict)->str:
+    value=record.get("name")
+    if not isinstance(value,str) or not value.strip():
+        raise ValueError("missing_named_horse_in_source")
+    # Disclose only counts, never horse names. Name matching is a candidate
+    # identity check, not an authoritative registry equivalence.
+    return unicodedata.normalize("NFKC",value).replace(" ","").replace("\u3000","")
+
+
 def audit_all()->dict:
     out=[]
     hashes={}
     seen=[]
+    oct12_names=[]
     for r in TARGET_RACES:
         path=ROOT/"data"/SOURCE_DATE/f"kyoto_{r:02d}.json"
         raw=path.read_bytes()
@@ -87,12 +98,18 @@ def audit_all()->dict:
         summary,candidates=audit_card(card,r)
         out.append(summary)
         seen+=candidates
+        oct12_names += [_name_key(h) for h in card["horses"]]
     raw=SAVED_SNAPSHOT_PATH.read_bytes()
     hashes[str(SAVED_SNAPSHOT_PATH.relative_to(ROOT))]=hashlib.sha256(raw).hexdigest()
     later=json.loads(raw)
     if len(later.get("races",[]))!=9:
         raise ValueError("later_race_count_changed")
     all_horses=[h for race in later["races"] for h in race["horses"]]
+    oct18_names=[_name_key(h) for h in all_horses]
+    if (len(set(oct12_names)) != len(oct12_names) or
+            len(set(oct18_names)) != len(oct18_names)):
+        raise ValueError("duplicated_horse_name_inside_two_date_market_cohort")
+    exact_name_intersection=len(set(oct12_names) & set(oct18_names))
     stable_rows=sum(bool(h.get("horse_id") or h.get("registry_id"))
                     for h in all_horses)
     candidate_rows=sum(bool(h.get("directory_id") or h.get("directory_url"))
@@ -119,6 +136,9 @@ def audit_all()->dict:
             "rows_with_explicit_directory_ID_or_URL":candidate_rows,
             "name_to_ID_lookup_without_verified_source_forbidden":True,
         },
+        "exact_NFKC_normalized_horse_name_matches_across_2026_10_12_18":exact_name_intersection,
+        "nondisclosed_horse_names_in_both_cohorts_unique":True,
+        "nonoverlapping_names_not_proof_of_authoritative_registry_absence":True,
         "actual_verified_same_horse_ID_between_market_dates":0,
         "cross_date_registered_ID_join_possible_from_current_quote_sources":False,
         "genomic_G_or_pedigree_A_same_individual_verified_join":False,
