@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "created_jst_date": "2026-11-23",
+  "status": "OBSERVED_DISPLAY_WIN_QUOTE_TIES_WITH_OPPONENT_WIDE_PRICE_RANGE_CONTRAST_NOT_BIOLOGICAL_IDENTITY",
+  "run_id": 45095907129,
+  "run_url": "https://github.com/zuizui0223/keiba/actions/runs/45095907129",
+  "artifact_id": 14783117633,
+  "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45095907129/artifacts/14783117633",
+  "artifact_zip_sha256": "8dfa1633c808764afbb5effdcb39732142a94e40ed2c40da3078d23edc6731d1",
+  "source_file_sha256_count": 31,
+  "race_count": 9,
+  "dates": 2,
+  "October12": {
+    "races": 5,
+    "races_with_exact_display_win_odds_tie": 0,
+    "equal_odds_horse_pairs": 0
+  },
+  "October18": {
+    "races": 4,
+    "races_with_exact_display_win_odds_tie": 2,
+    "equal_odds_horse_pairs": 2,
+    "opponent_matched_wide_comparisons": 19,
+    "midpoint_log_price_contrast_nonzero": 19,
+    "wide_quoted_price_ranges_nonoverlapping": 18,
+    "outside_conditional_PL_win_rounding_bounds": 18,
+    "compared_races": [
+      {
+        "race_id": "2605040711",
+        "venue": "東京",
+        "race_number": 11,
+        "runner_count": 13,
+        "opponent_comparisons": 11,
+        "price_midpoint_disagreements": 11,
+        "max_abs_log_price_ratio": 0.7864159798158493
+      },
+      {
+        "race_id": "2604040211",
+        "venue": "新潟",
+        "race_number": 11,
+        "runner_count": 10,
+        "opponent_comparisons": 8,
+        "price_midpoint_disagreements": 8,
+        "max_abs_log_price_ratio": 0.7312417497387191
+      }
+    ]
+  },
+  "identification": {
+    "theorem": "If every displayed win strength is unique, any arbitrary finite set of horse-indexed node coefficients can be written as some unrestricted function of win strength, e.g. interpolating polynomial of degree at most N-1. Therefore cross-sectional node fit alone does not identify biological individual effects.",
+    "exact_display_win_quote_tie_test": "Equal displayed win quotes impose identical values under any exact displayed-win-quote-only common pricing function. For a matched third horse, PL wide marginals also coincide under tied strengths.",
+    "robust_nonoverlapping_wide_ranges": "18 of 19 opponent matched comparisons have disjoint observed wide quote intervals, which is stronger than midpoint disagreement but cannot eliminate source timing or latent rounding effects.",
+    "conditional_PL_rounding": "PL-only range from same displayed win quote ±0.05 with other horses' win odds fixed, and actual wide quote payout interval.",
+    "cannot_rule_out_arbitrarily_flexible_latent_win_pricing": true,
+    "lacks_upstream_win_wide_update_time_on_Oct18": true,
+    "no_stable_individual_horse_ID_join": true,
+    "comparisons_share_tied_horses_and_are_not_independent": true,
+    "not_proof_of_actual_votes_or_heritable_trait": true,
+    "no_race_outcome_used_in_tie_test": true
+  }
+}

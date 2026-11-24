@@ -5,6 +5,27 @@ of `keiba`, not the biological evidence base.
 Return to [ecological research](../research/README.md) or
 [repository home](../../README.md).
 
+## New: eight ticket-type probability prototype (2026-11-22)
+
+[Ticket-type joint model and validation plan](TICKET_TYPE_MODELS.md) adds a
+separate, **uncalibrated** Plackett–Luce probability baseline for win/place,
+frame/quinella/wide/exacta/trio/trifecta, with optional pre-race feature
+training, strict snapshot cutoff checks and exact box/flow basket hit
+probabilities. It does **not** replace or unfreeze v3.1, establish profit,
+or enter its formal holdout ledger.
+
+**New measured archive:** [2026-10-12 Kyoto 8R–12R odds-by-ticket audit](KYOTO_20261012_TICKET_TYPE_AUDIT.md) compared coherent win-odds-to-tickets probabilities with each ticket market’s simple normalized inverse-odds baseline. Five same-day retrospective races only; **not** a forward skill or profitable betting claim. The historical audit CI produces an inspectable source-hashed artifact.
+
+**Latest cross-market test:** [Wide pair information transfer: 2026-10-12 vs 2026-10-18, nine races](WIDE_PAIR_INFORMATION_TRANSFER_RESULTS.md). A coherent 8-ticket distribution can use wide-pair residuals, but the two calendar dates show different signs for ordered-pair outcomes; place/wide Brier worsened on both dates across all nine price/strength sensitivity settings. **All retrospective**, not a prospectively validated forecasting edge or real odds arbitrage.
+
+## New future validation track (2026-11-22, no real forecasts yet)
+
+[Ticket-forward-v1 protocol, source-pinned manifest, 30 attempted races, server-sealed prediction and post-race scoring](TICKET_FORWARD_V1_PROTOCOL.md) adds a **separate prospective evaluation** of win-only PL versus coherent win+wide pair-residual forecasts across eight ticket types. The 2026-10-12 and 10-18 archived outcomes are explicitly excluded from its future denominator. The frozen v3.1 candidate-score and attempt ledgers are unchanged. The code uses synthetic-only tests; first future real forecast is **0** until new pre-race source snapshots are available.
+
+**Next race-day preflight:** [JRA 2026-11-23 Tokyo/Fukushima preliminary first ten](JRA_2026-11-23_PROGRAM_PREFLIGHT.md) is a **provisional program**, not a prospectively sealed sample. The new [GitHub day-universe proof](../../scripts/ticket_forward_day_proof.py) and full 24/36-entry venue-roster guard demand the actual official whole-day source, a before-first-race server receipt and frozen day selection; no real day has passed that gate yet.
+
+**Official-card read-only evidence (Nov 22 night):** [all 24 Nov23 JRA source URL / SHA256 / numbered-horse-row observations](../evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json) and [strict reconciliation](../../scripts/ticket_forward_jra_reconcile.py) document 24/24 extracted numeric card tables and three discrepancies against an explicitly third-party provisional roster (Tokyo 1R, 4R, 6R). This is **not** source-complete live active runners, post-scratch confirmation, synchronized win/wide odds or a pre-first-race server-sealed cohort. The signed forward denominator remains 0.
+
 ## What belongs here
 
 - JRA racecards, dated actual win/place/quinella/wide/etc.

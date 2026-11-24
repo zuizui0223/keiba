@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "created_jst_date": "2026-11-23",
+  "status": "HOLD_PARTIAL_YAHOO_DIRECTORY_KEYS_NO_VERIFIED_REGISTERED_HORSE_JOIN",
+  "data_scope": "2026-10-12 Kyoto R8-R12 candidate ID links; 2026-10-18 all 9 market snapshot races",
+  "source_run_id": 45096756502,
+  "source_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45096756502",
+  "source_artifact_id": 14783114367,
+  "source_artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45096756502/artifacts/14783114367",
+  "artifact_zip_sha256": "a4e2c4300caf8491e0c9d88296f88e6f2587f7a0b79c99937a16e9b54a16f816",
+  "Oct12": {
+    "races": 5,
+    "horses": 67,
+    "Yahoo_horse_directory_ID_candidate_rows": 30,
+    "without_candidate_directory_ID": 37,
+    "verified_JRA_registered_ID_rows": 0,
+    "candidate_directory_tokens_not_independently_identity_verified": true
+  },
+  "Oct18": {
+    "races": 9,
+    "horse_quote_rows": 117,
+    "explicit_registry_ID_rows": 0,
+    "explicit_directory_ID_URL_rows": 0,
+    "names_and_race_local_numbers_not_valid_identity_join": true
+  },
+  "certified_same_horse_ID_cross_date_market_matches": 0,
+  "certified_same_horse_market_genomic_G_or_pedigree_A_joins": 0,
+  "biological_repeatability_from_current_market_graphs_identified": false,
+  "technical_next_step": "Audit authoritative Japanese racehorse registry key mapping for same horse and race dates, collect date-stamped IDs in both market sources; never match by name alone.",
+  "no_names_or_IDs_exported": true
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "provenance": "JRA public official results crosschecked from dated pages on 2026-11-22; not available at pre-race forecast time; used only for retrospective scoring",
+  "race_date": "2026-10-18",
+  "freeze_design_status": "POSTHOC_NOT_PROSPECTIVE",
+  "source_market_file": "data/2026-10-18/ticket-odds-snapshot.json",
+  "official_results": [
+    {
+      "race_id": "2608040711",
+      "venue": "京都",
+      "race": 11,
+      "top3": [
+        8,
+        1,
+        13
+      ],
+      "source_type": "JRA_official",
+      "source_url": "https://jra.jp/JRADB/accessS.html?CNAME=pw01sde0108202604071120261018%2FEC"
+    },
+    {
+      "race_id": "2605040711",
+      "venue": "東京",
+      "race": 11,
+      "top3": [
+        9,
+        11,
+        6
+      ],
+      "source_type": "JRA_official",
+      "source_url": "https://app.jra.jp/JRADB/accessS.html?CNAME=sw01sde0105202604071120261018%2F9B"
+    },
+    {
+      "race_id": "2604040210",
+      "venue": "新潟",
+      "race": 10,
+      "top3": [
+        16,
+        15,
+        9
+      ],
+      "source_type": "JRA_official",
+      "source_url": "https://jra.jp/JRADB/accessS.html?CNAME=pw01sde0104202604021020261018%2FD0"
+    },
+    {
+      "race_id": "2604040211",
+      "venue": "新潟",
+      "race": 11,
+      "top3": [
+        3,
+        1,
+        5
+      ],
+      "source_type": "JRA_official",
+      "source_url": "https://app.jra.jp/JRADB/accessS.html?CNAME=sw01sde1004202604021120261018%2FF1"
+    }
+  ],
+  "guardrails": [
+    "Do not use official top3 for input features, coefficients, hyperparameter selection or quote filtering",
+    "Market received 12:31 JST with unknown upstream publication/update times: no independently verified contemporaneous price synchronization",
+    "A second past date is not prospective validation because code/model were designed after 2026-10-18"
+  ]
+}

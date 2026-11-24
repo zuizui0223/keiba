@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "GITHUB_SERVER_RECORDED_PRESTART_CANDIDATE_INTENT_NOT_FORMAL_DAY_SEAL",
+  "race_date": "2026-11-23",
+  "time_boundary": "2026-11-23T09:45:00+09:00",
+  "github_actions_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45031414549",
+  "github_actions_run_id": 45031414549,
+  "event": "pull_request",
+  "result": "success",
+  "github_server_created_at_utc": "2026-11-22T14:11:00Z",
+  "source_commit_sha": "9fb8e2a617d89a6b5c11869fd4c51d5f5013f7a5",
+  "candidate_intent_path": "docs/evidence/ticket-forward-20261123-prestart-intent.json",
+  "candidate_intent_git_blob_sha1": "4d3fde7d6269b86472b409719077aca556dc4ac1",
+  "candidate_intent_count": 10,
+  "same_commit_file_verified_by_github_connector": true,
+  "zero_forecast_outputs": true,
+  "formal_full_day_source_capture_verified": false,
+  "official_active_scratch_status_verified": false,
+  "complete_market_odds_frozen": false,
+  "actual_prospective_scored_races": 0,
+  "limitation": "GitHub run creation proves this candidate-intent file and ten chosen race IDs existed before 11/23 09:45 JST. It does not verify official all-card active starters, source content validity, market prices, or the required 3-file formal day-plan proof."
+}

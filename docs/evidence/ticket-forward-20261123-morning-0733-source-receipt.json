@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "PRESTART_ACTUAL_JRA_CARD_AND_EARLY_MARKET_METADATA_NO_FORMAL_FREEZE",
+  "target_race_date": "2026-11-23",
+  "target_venue_ids": [
+    "福島",
+    "東京"
+  ],
+  "server_run_id": 45078257446,
+  "server_started_at_utc": "2026-11-22T22:32:08Z",
+  "server_completed_at_utc": "2026-11-22T22:33:42Z",
+  "git_run_head_sha": "f6d7a56983ad3059127e7811802583b11fbf1531",
+  "github_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45078257446",
+  "original_json_artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45078257446/artifacts/14776675177",
+  "artifact_zip_sha256": "c01b8c97703678c8e64ff8279d5518d75d7efd9d4c3b1f771f8d8595d32c272f",
+  "previous_night_24_card_source": "docs/evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json",
+  "official_racecards": {
+    "expected": 24,
+    "fetched_card_tables": 24,
+    "count_changed_since_nov22": 0,
+    "changed_page_raw_sha256": 24,
+    "unavailable_or_unparseable": 0,
+    "actual_active_scratch_status_independently_verified": false,
+    "per_card_urls_and_sha256": "See immutable artifact jra-20261123-current-cards.json"
+  },
+  "early_fukushima_1r_win_market": {
+    "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/tfw/2603030601?ninki=0",
+    "observed_at_jst": "2026-11-23T07:33:37.696150+09:00",
+    "source_visible_update_at_jst": "2026-11-23T07:32:00+09:00",
+    "source_page_raw_sha256": "65d098c68a817335cf683b141668830a9071b71786975ebb8c66110b2778b573",
+    "structural_row_count": 16,
+    "quoted_value_extraction_validated": false
+  },
+  "early_fukushima_1r_wide_market": {
+    "source_url": "https://sports.yahoo.co.jp/keiba/race/odds/wide/2603030601?ninki=0",
+    "observed_at_jst": "2026-11-23T07:33:38.536474+09:00",
+    "source_visible_update_at_jst": "2026-11-23T07:33:00+09:00",
+    "source_page_raw_sha256": "7ad234ff637aeabece8b02d37b7a641dadc7d0ebf1f27c21050c10bef483a740",
+    "triangular_tables": 15,
+    "expected_pairs_if_16_runners": 120,
+    "quoted_value_extraction_validated": false
+  },
+  "prepost_window_for_fukushima_1r_jst": [
+    "2026-11-23T09:20:00+09:00",
+    "2026-11-23T09:30:00+09:00"
+  ],
+  "source_updated_max_age_minutes": 10,
+  "source_receipt_max_age_minutes": 5,
+  "pre_first_race_official_day_source_git_seal": false,
+  "prepost_market_books_frozen": false,
+  "true_prospective_predictions": 0,
+  "raw_JRA_or_Yahoo_HTML_publicly_redistributed": false,
+  "caution": "Morning page digests changed without any numbered-row count changes. Hash changes are not proof of scratches. These early quotes are not the required 09:20–09:30 JST prepost frozen odds. Raw site HTML preserved neither here nor in public artifact; formal proof remains HOLD."
+}

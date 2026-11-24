@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "EXPLORATORY_SOURCE_BACKED_NINE_RACE_TWO_PARAMETER_MONOTONE_MARKET_PRICE_NEGATIVE_CONTROL",
+  "report_date_jst": "2026-11-23",
+  "source_run_id": 45084920959,
+  "source_run_url": "https://github.com/zuizui0223/keiba/actions/runs/45084920959",
+  "source_artifact_id": 14778617615,
+  "source_artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45084920959/artifacts/14778617615",
+  "zip_sha256": "3e7c3dea24a1d1b204b660050baf28bccc0c424490e39ac8cabeb354c1fe5ffc",
+  "sources_sha256_count": 31,
+  "input_dates": [
+    "2026-10-12",
+    "2026-10-18"
+  ],
+  "total_races": 9,
+  "market_only_price_target": "log(inverse wide midpoint odds normalized to 3 / PL wide marginal of observed win odds)",
+  "negative_control": {
+    "model": "strictly monotone common 2-parameter log-strength curvature, transformed log s = β*x + γ*x²/maxabs(x) with x mean-centered log s",
+    "beta_grid": [
+      0.5,
+      2,
+      0.05
+    ],
+    "gamma_grid": [
+      -0.15,
+      0,
+      0.15
+    ],
+    "same_race_leave_one_pair_out": true,
+    "beta_and_gamma_selected_using_training_pairs_only": true,
+    "common_nuisance_offset_fitted_using_training_pairs_only": true,
+    "original_win_PL_in_grid": true,
+    "biological_observation_not_involved": true
+  },
+  "by_day": {
+    "2026-10-12": {
+      "n_races": 5,
+      "mean_one_param_temperature_edge_cv_R2": 0.13408318672126465,
+      "mean_two_param_temperature_edge_cv_R2": 0.1635707145395184,
+      "mean_horse_node_edge_cv_R2": 0.5052462030892677,
+      "mean_two_param_plus_node_edge_cv_R2": 0.5175181021322881,
+      "node_minus_two_param_edge_cv_R2": 0.34167548854974933,
+      "node_beats_two_param_races": 5,
+      "two_param_plus_node_beats_two_param_races": 5
+    },
+    "2026-10-18": {
+      "n_races": 4,
+      "mean_one_param_temperature_edge_cv_R2": 0.12534476435080502,
+      "mean_two_param_temperature_edge_cv_R2": 0.14964362177790905,
+      "mean_horse_node_edge_cv_R2": 0.6559056080200102,
+      "mean_two_param_plus_node_edge_cv_R2": 0.6644567607777254,
+      "node_minus_two_param_edge_cv_R2": 0.5062619862421012,
+      "node_beats_two_param_races": 4,
+      "two_param_plus_node_beats_two_param_races": 4
+    }
+  },
+  "gamma_in_sample_at_negative_tested_boundary_count": 7,
+  "boundary_warning": "Seven of nine in-sample curved controls selected gamma=-0.15 (tested negative edge). This is a limited-family sensitivity analysis; cannot exclude stronger or differently structured market pricing curvature.",
+  "no_race_outcomes_or_betting_returns_used": true,
+  "no_new_race_independent_validation": true,
+  "no_true_vote_count_or_social_learning_identification": true,
+  "no_per_horse_biological_trait_or_genetic_A_G_join": true,
+  "true_source_update_times_for_every_race_not_always_verified": true,
+  "note": "The strongest claim is that the within-race same-horse pair-price network retains a horse-indexed component beyond these tested shared monotone price transforms. It remains a price-market descriptor, not innate horse behavior or causal information transfer."
+}

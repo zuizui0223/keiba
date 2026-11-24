@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "race_date": "2026-11-23",
+  "source": {
+    "official_program_url": "https://jra.jp/keiba/calendar2026/2026/11/1123.html",
+    "secondary_runner_counts_url": "https://uma5.com/races/20261123/",
+    "check_as_of_date_jst": "2026-11-22",
+    "source_role": "JRA published meeting program for start time, course and obstacle status; third-party indicative runner counts only",
+    "status": "PRELIMINARY_NOT_OFFICIAL_COMPLETE_DAY_CARD_NOT_SERVER_SEALED"
+  },
+  "meeting_codes": [
+    "3回福島6日",
+    "5回東京6日"
+  ],
+  "full_program_count": 24,
+  "official_card_count_confirmed": 0,
+  "official_page_raw_bytes_archived": false,
+  "day_plan_git_server_attested": false,
+  "day_universe_status": "HOLD_AWAITING_OFFICIAL_24_CARD_COUNTS_AND_PRE_FIRST_RACE_PROOF",
+  "races": [
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-01",
+      "venue": "福島",
+      "race_number": 1,
+      "scheduled_start_jst": "2026-11-23T09:45:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1150,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-01",
+      "venue": "東京",
+      "race_number": 1,
+      "scheduled_start_jst": "2026-11-23T10:00:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1600,
+      "third_party_displayed_runner_count": 14,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-02",
+      "venue": "福島",
+      "race_number": 2,
+      "scheduled_start_jst": "2026-11-23T10:15:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1700,
+      "third_party_displayed_runner_count": 15,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-02",
+      "venue": "東京",
+      "race_number": 2,
+      "scheduled_start_jst": "2026-11-23T10:30:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1600,
+      "third_party_displayed_runner_count": 17,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-03",
+      "venue": "福島",
+      "race_number": 3,
+      "scheduled_start_jst": "2026-11-23T10:45:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1700,
+      "third_party_displayed_runner_count": 15,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-03",
+      "venue": "東京",
+      "race_number": 3,
+      "scheduled_start_jst": "2026-11-23T11:00:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 2000,
+      "third_party_displayed_runner_count": 11,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-04",
+      "venue": "福島",
+      "race_number": 4,
+      "scheduled_start_jst": "2026-11-23T11:15:00+09:00",
+      "programmed_surface": "障",
+      "programmed_distance_m": 2770,
+      "third_party_displayed_runner_count": 14,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-04",
+      "venue": "東京",
+      "race_number": 4,
+      "scheduled_start_jst": "2026-11-23T11:30:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1600,
+      "third_party_displayed_runner_count": 15,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-05",
+      "venue": "福島",
+      "race_number": 5,
+      "scheduled_start_jst": "2026-11-23T12:05:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1800,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-05",
+      "venue": "東京",
+      "race_number": 5,
+      "scheduled_start_jst": "2026-11-23T12:20:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1600,
+      "third_party_displayed_runner_count": 14,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-06",
+      "venue": "福島",
+      "race_number": 6,
+      "scheduled_start_jst": "2026-11-23T12:35:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1200,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-06",
+      "venue": "東京",
+      "race_number": 6,
+      "scheduled_start_jst": "2026-11-23T12:50:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1400,
+      "third_party_displayed_runner_count": 14,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-07",
+      "venue": "福島",
+      "race_number": 7,
+      "scheduled_start_jst": "2026-11-23T13:05:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1150,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-07",
+      "venue": "東京",
+      "race_number": 7,
+      "scheduled_start_jst": "2026-11-23T13:20:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1400,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-08",
+      "venue": "福島",
+      "race_number": 8,
+      "scheduled_start_jst": "2026-11-23T13:35:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1200,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-08",
+      "venue": "東京",
+      "race_number": 8,
+      "scheduled_start_jst": "2026-11-23T13:50:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1400,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-09",
+      "venue": "福島",
+      "race_number": 9,
+      "scheduled_start_jst": "2026-11-23T14:05:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 2600,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-09",
+      "venue": "東京",
+      "race_number": 9,
+      "scheduled_start_jst": "2026-11-23T14:20:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 2400,
+      "third_party_displayed_runner_count": 12,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-10",
+      "venue": "福島",
+      "race_number": 10,
+      "scheduled_start_jst": "2026-11-23T14:40:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 2000,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-10",
+      "venue": "東京",
+      "race_number": 10,
+      "scheduled_start_jst": "2026-11-23T14:55:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 2100,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-11",
+      "venue": "福島",
+      "race_number": 11,
+      "scheduled_start_jst": "2026-11-23T15:15:00+09:00",
+      "programmed_surface": "ダ",
+      "programmed_distance_m": 1700,
+      "third_party_displayed_runner_count": 15,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-11",
+      "venue": "東京",
+      "race_number": 11,
+      "scheduled_start_jst": "2026-11-23T15:30:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1800,
+      "third_party_displayed_runner_count": 12,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-FUKUSHIMA-12",
+      "venue": "福島",
+      "race_number": 12,
+      "scheduled_start_jst": "2026-11-23T15:55:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 2000,
+      "third_party_displayed_runner_count": 16,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    },
+    {
+      "race_id": "2026-11-23-TOKYO-12",
+      "venue": "東京",
+      "race_number": 12,
+      "scheduled_start_jst": "2026-11-23T16:05:00+09:00",
+      "programmed_surface": "芝",
+      "programmed_distance_m": 1600,
+      "third_party_displayed_runner_count": 18,
+      "official_current_card_runner_count": null,
+      "confirmed_official_card_source_url": null
+    }
+  ],
+  "provisional_first_ten_using_third_party_counts": [
+    "2026-11-23-FUKUSHIMA-01",
+    "2026-11-23-TOKYO-01",
+    "2026-11-23-FUKUSHIMA-02",
+    "2026-11-23-TOKYO-02",
+    "2026-11-23-FUKUSHIMA-03",
+    "2026-11-23-TOKYO-03",
+    "2026-11-23-TOKYO-04",
+    "2026-11-23-FUKUSHIMA-05",
+    "2026-11-23-TOKYO-05",
+    "2026-11-23-FUKUSHIMA-06"
+  ],
+  "no_results_used": true,
+  "note": "This is a planning dataset, not day-schedule.json, and must never be registered as an official prospectively validated cohort."
+}

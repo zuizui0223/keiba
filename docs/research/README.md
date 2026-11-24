@@ -5,6 +5,28 @@
 > predictions, odds and wagering are a separate technical track:
 > [betting-methods index](../betting/README.md).
 
+## 2026-11-23 · 券種別市場を個体ノードとペアの情報構造として解析（研究主線）
+
+**[ワイド市場の9レース実測グラフ分解](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md)**：単勝由来のワイド同時上位3着確率との対数価格比を「馬ノード評価成分＋ペア残差」に分解した。重み付き当てはめ \(R^2\) は10/12京都5Rで**0.686**、10/18の3場4Rで**0.779**。各ペアを1つずつ隠して、同一レース内の残るペアから予測した \(R^2\) も**0.505／0.656**。ただし個体の先天的能力や遺伝価ではなく、**市場における馬単位の価格成分**である。
+
+残差のペア固有成分をさらに足しても、正確な1→2→3着の負対数確率は両日とも平均悪化（追加損失 +0.0178／+0.0040）。これは買い目や利益の評価ではなく、**多層の集合判断が個体成分としてどの程度圧縮できるか**という観測的な情報生態学の問い。まだ**2日・9R・中間オッズ横断面**しかなく、見かけのノード構造が単勝強度の非線形市場補正で説明されないかを反証する必要がある。個体反復・血縁A・ゲノムG・市場情報を同じ個体IDで連結できていない。生物間相互作用、社会学習、遺伝因果は**HOLD**。
+
+[9競走の匿名実測証拠](../evidence/ticket-market-node-dyad-empirical-20261123.json) · [再計算CIとグラフ解析コード](https://github.com/zuizui0223/keiba/actions/runs/45083421066) · [結果前の本人・親族情報精度研究](INFORMATION_PRECISION_HIERARCHY_ECOLOGY_20261118.md)。
+
+**追加の反証検定（2026-11-23）**：馬ノードの価格乖離構造を、単勝人気の**全馬共通の単調非線形価格補正**で説明できるかを、βのみ31条件とβ・曲率γの93条件で比較した。ペアを1組ずつ除外すると共通補正のR²はそれぞれ**0.134／0.125**と**0.164／0.150**、馬ノードの**0.505／0.656**に及ばず、2パラメータ補正後にもノード成分が残った（9/9レース）。ただしγが9レース中7レースで負側の探索境界に達しており、*任意*の価格形成補正を否定したわけではない。生物学的個体性、A/G遺伝構造や集団模倣の証拠でもない。[研究解釈と2種の負の対照](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [1パラメータの実測台帳](../evidence/ticket-market-temperature-null-20261123.json) · [2パラメータの実測台帳](../evidence/ticket-market-curvature-null-20261123.json)。
+
+**より柔軟な市場補正で再点検（2026-11-23）**：全馬に共通する単勝人気の**1〜4次の滑らかな価格関数**でもペア除外予測を実施。4次まで許すと同一競走内 \(R^2\) は京都5Rで**0.310**、別日3場4Rで**0.230**まで改善するが、馬ノードの**0.505／0.656**には平均で及ばなかった。ただし馬ノードが全レースで勝つわけではなく**9レース中8レース**、京都9Rでは共通の3/4次価格関数が僅かに上回る。**共有された市場価格関数と、馬インデックス別の残差構造を区別した探索的結果**であり、反復する生物学的個体性・社会学習・遺伝的因果を示さない。[本文に全モデルと例外](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [4次までの実測証拠](../evidence/ticket-market-smooth-null-20261123.json)。
+
+**追加の独立した反証（2026-11-23）**：[市場ノードの60/40ペアブロック検証](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md#3d-ワイドの40を隠すブロック外挿馬単位の構造はどこまで頑健か)では、未使用40%のワイドペアに対するノードR²は京都5Rで**0.367**、別日4Rで**0.590**（固定ridgeを入れると**0.428／0.613**）。共通4次価格関数は**0.248／0.181**で、馬ノードは**8/9レース**で優位。ただし馬番はレース固有であり、異なる競走で同一馬が反復する個体差ではない。[証拠](../evidence/ticket-market-edge-block-heldout-20261123.json)。
+
+**理論上の識別限界と観測的反例**：単勝オッズが全て異なるなら、馬別の価格係数を任意に柔軟な人気関数でも補間できる。これに対して単勝表示オッズが**同一**の馬2組（10/18東京11R・新潟11R）を自然な対照とすると、第三馬とのワイド表示価格は**19/19で違い**、そのうち**18/19で表示価格範囲が非重複**だった。標準PLと表示丸め±0.05を条件付きで許しても18/19が区間外。配信時刻のずれ・未表示値・異なる市場価格形成で説明される可能性は残り、これは遺伝的・反復個体差の証拠ではない。[同じ資料の出典と限界](../evidence/ticket-market-odds-tie-identification-20261123.json)。
+
+**2つの実際の市場保存時点（京都8R・2026-10-12）**：発走14:00前の13:35:59と13:44:55の2保存資料を再照合。早い保存時点では単勝の配信更新13:22、ワイド13:33で**非同期11分**、後の資料は両市場13:44。11頭の単勝と55ペアのワイド中点が全て変わっても、同レース内の馬ノードの相関は**0.787**、ペア残差は**0.922**。価格乖離の2状態間変化に対する馬ノード説明率は**0.666**。**1競走・非同期を含む2資料だけ**なので、投票者の学習、臨界オッズ、別レースにおける生物個体反復を同定していない。[詳しい時刻監査・解釈限界](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md) · [2資料の匿名実測証拠](../evidence/ticket-market-two-snapshot-kyoto8-20261123.json) · [GitHub Actions](https://github.com/zuizui0223/keiba/actions/runs/45096420984)。
+
+**市場ノードから生物個体への接続のデータ欠測（2026-11-23）**：10/12京都5Rの67頭のうち30頭に**Yahooディレクトリの個別ページID候補**、37頭はリンク欠測。10/18の市場9R・117頭は**登録馬ID・同種のディレクトリIDの明示列0件**。現状で異なる市場日付の同一馬IDを照合した件数は0であり、血縁A・匿名ゲノムGとも対応する個体の結合は未達。**馬名・馬主冠名による推測結合を禁止**。[source SHA付き確認](../evidence/ticket-market-horse-identity-join-readiness-20261123.json) · [解析コード](../../scripts/ecology_ticket_market_identity_join_gate.py)。
+
+**2026-11-24 新しい更新時刻整合データ**：[京都8Rで単勝・ワイドとも13:26に更新された11頭・55組合せの元保存資料](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md#3h-更新時刻のそろった実測2状態を再発見京都8r132613442026-11-24)が見つかり、両市場13:44更新の後期資料と比較できた。受信差0.243秒、元の更新間隔18分。2時点の馬ノード価格相関は**0.784**、ペア残差は**0.921**、更新時の価格乖離のノード説明R²は**0.606**。ただし1競走だけで、実投票票数・模倣・血縁機構は未観測。保存時刻13:35の別資料は単勝の元更新時刻が13:26から**13:22へ逆行する記録上の問題**があるため、時系列の中間点には使わない。[元ファイルGit blob SHAと独立した数値検算](../evidence/ticket-market-kyoto8r-two-aligned-updates-20261124.json)。また、10/12の67頭と10/18の117頭には**馬名完全一致0件**で、確証ある登録馬IDの跨日結合0件が続く。
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.

@@ -1,0 +1,72 @@
+name: Ticket forward Nov23 morning source refresh
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ticket_forward_odds_structure_probe.py"
+      - "tests/test_ticket_forward_odds_structure_probe.py"
+      - "scripts/ticket_forward_nov23_morning_diff.py"
+      - "tests/test_ticket_forward_nov23_morning_diff.py"
+      - ".github/workflows/ticket-forward-nov23-morning.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  morning-metadata-no-forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Isolated safety tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ticket_forward_odds_structure_probe.py' -v
+          python -m unittest discover -s tests -p 'test_ticket_forward_nov23_morning_diff.py' -v
+      - name: Bounded re-read of official 24 JRA cards and 2 early market pages
+        run: |
+          mkdir -p output
+          python scripts/ticket_forward_jra_full_day_readonly.py \
+            --staging docs/evidence/ticket-forward-20261123-program-staging.json \
+            --timeout 8 \
+            --output output/jra-20261123-current-cards.json
+          python scripts/ticket_forward_odds_structure_probe.py \
+            --timeout 10 \
+            --output output/fukushima-1r-win-wide-source-structure.json
+      - name: Compute early official page digest and market time drift (not a formal day plan)
+        run: |
+          python scripts/ticket_forward_nov23_morning_diff.py \
+            --stage docs/evidence/ticket-forward-20261123-program-staging.json \
+            --previous docs/evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json \
+            --morning output/jra-20261123-current-cards.json \
+            --odds output/fukushima-1r-win-wide-source-structure.json \
+            --output output/nov23-morning-readiness.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          x=json.loads(Path('output/nov23-morning-readiness.json').read_text())
+          assert x['status']=='MORNING_SOURCE_DRIFT_NOT_PROSPECTIVE_DAY_SEAL'
+          assert not x['formal_pre_first_start_day_plan_sealed']
+          assert not x['full_win_and_wide_quote_board_archived']
+          assert x['actual_forward_predictions']==0
+          print(json.dumps({
+            'numbered_cards':x['morning_official_numbered_card_count'],
+            'count_changed':x['numbered_count_changes'],
+            'raw_page_sha_changed':len(x['changed_page_sha256_race_ids']),
+            'unusable':x['unavailable_or_unparseable_races'],
+            'market_pages':x['early_market_source_readiness'],
+            'formal_day_plan':False,'forward_predictions':0,
+          },indent=2,ensure_ascii=False))
+          PY
+      - name: Upload metadata only; not copyrighted page HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: ticket-forward-20261123-morning-readonly-metadata
+          path: |
+            output/jra-20261123-current-cards.json
+            output/fukushima-1r-win-wide-source-structure.json
+            output/nov23-morning-readiness.json
+          retention-days: 7

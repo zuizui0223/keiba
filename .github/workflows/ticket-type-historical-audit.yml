@@ -1,0 +1,194 @@
+name: Ticket-type historical odds audit
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ticket_type_models.py"
+      - "scripts/ticket_rank_trainer.py"
+      - "scripts/ticket_type_historical_audit.py"
+      - "scripts/ticket_wide_cross_market.py"
+      - "scripts/ticket_wide_second_day.py"
+      - "scripts/ticket_wide_sensitivity_summary.py"
+      - "scripts/ticket_forward_freeze.py"
+      - "scripts/ticket_forward_universe.py"
+      - "scripts/ticket_forward_program_preflight.py"
+      - "scripts/ticket_forward_jra_reconcile.py"
+      - "docs/evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json"
+      - "docs/evidence/ticket-forward-20261123-program-staging.json"
+      - "scripts/ticket_forward_day_proof.py"
+      - "scripts/ticket_forward_result_capture.py"
+      - "docs/betting/JRA_2026-11-23_PROGRAM_PREFLIGHT.md"
+      - "docs/betting/ticket-forward-v1-manifest.json"
+      - "docs/betting/TICKET_FORWARD_V1_PROTOCOL.md"
+      - "tests/test_ticket_forward_*.py"
+      - "docs/evidence/ticket-type-20261018-official-top3.json"
+      - "tests/test_ticket_wide_cross_market.py"
+      - "tests/test_ticket_wide_second_day.py"
+      - "tests/test_ticket_wide_sensitivity_summary.py"
+      - "tests/test_ticket_type_*.py"
+      - ".github/workflows/ticket-type-historical-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  five-race-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests (stdlib only)
+        run: python -m unittest discover -s tests -p "test_ticket_*.py" -v
+      - name: Audit tomorrow's complete *provisional* JRA program without forward claims
+        run: |
+          mkdir -p output
+          python scripts/ticket_forward_program_preflight.py \
+            --staging docs/evidence/ticket-forward-20261123-program-staging.json \
+            --output output/ticket-forward-20261123-provisional-program-audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/ticket-forward-20261123-provisional-program-audit.json").read_text())
+          assert r["program_full_day_rows"] == 24
+          assert r["program_flat_rows"] == 23
+          assert r["official_entrant_counts_verified"] == 0
+          assert r["market_snapshots_frozen"] == 0
+          assert r["future_prospective_scores"] == 0
+          assert r["day_plan_pre_first_race_server_sealed"] is False
+          print(json.dumps({k:v for k,v in r.items() if k!="provisional_first_ten"},indent=2))
+          PY
+      - name: Reconcile 24 official JRA numbered-card rows with provisional runner counts
+        run: |
+          python scripts/ticket_forward_jra_reconcile.py \
+            --staging docs/evidence/ticket-forward-20261123-program-staging.json \
+            --jra-card-meta docs/evidence/ticket-forward-20261123-jra-card-numbered-rows-20261122.json \
+            --output output/ticket-forward-20261123-jra-row-reconciliation.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("output/ticket-forward-20261123-jra-row-reconciliation.json").read_text())
+          assert r["official_card_number_sequences_parsed"] == 24
+          assert len(r["official_vs_secondary_count_discrepancies"]) == 3
+          assert r["first_ten_race_ids_unchanged"] is True
+          assert r["has_verified_current_active_runners_after_scratches"] is False
+          assert r["has_server_sealed_whole_day_forecast_universe"] is False
+          assert r["prospective_predictions"] == 0
+          print(json.dumps({
+            "read_only_JRA_rows":24,
+            "third_party_mismatches":r["official_vs_secondary_count_discrepancies"],
+            "no_formal_day_seal":True,
+            "prospective_predictions":0
+          },ensure_ascii=False,indent=2))
+          PY
+      - name: Verify initial future protocol is empty, pinned and distinct from v3.1
+        run: |
+          python scripts/ticket_forward_universe.py init \
+            --manifest docs/betting/ticket-forward-v1-manifest.json \
+            --output output/ticket-forward-empty-attempt-ledger.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path("docs/betting/ticket-forward-v1-manifest.json").read_text())
+          ledger = json.loads(Path("output/ticket-forward-empty-attempt-ledger.json").read_text())
+          frozen_v31 = json.loads(Path("docs/v31-holdout-ledger.json").read_text())
+          assert manifest["holdout_attempts"] == 30
+          assert len(ledger["attempts"]) == len(ledger["events"]) == 0
+          assert ledger["status"] == "NO_PROSPECTIVE_ATTEMPTS_REGISTERED"
+          assert ledger["version"] != frozen_v31["version"]
+          print("Future forward-protocol gates PASS; real future forecast 0")
+          PY
+      - name: Recompute descriptive market-only audit from frozen sources
+        run: |
+          mkdir -p output
+          python scripts/ticket_type_historical_audit.py --output output/kyoto_20261012_ticket_types.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("output/kyoto_20261012_ticket_types.json").read_text())
+          assert len(data["races"]) == 5
+          assert all(not data[key] for key in (
+              "probabilities_calibrated", "predictive_out_of_sample_validated",
+              "positive_EV_established", "market_ratio_causal_effect"
+          ))
+          print(json.dumps({
+              "status": "retrospective_only_no_prospective_claim",
+              "results": data["by_ticket_type"],
+              "source_file_count": len(data["file_sha256"]),
+          }, indent=2))
+          PY
+      - name: Recompute coherent wide-pair residual transfer (development only)
+        run: |
+          python scripts/ticket_wide_cross_market.py --output output/kyoto_20261012_wide_cross_market.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("output/kyoto_20261012_wide_cross_market.json").read_text())
+          assert r["status"] == "RETROSPECTIVE_DEVELOPMENT_NO_PROSPECTIVE_SKILL_CLAIM"
+          assert r["pre_registered_before_outcome"] is False
+          assert r["independent_period_validation"] is False
+          assert r["positive_expected_value_established"] is False
+          assert len(r["races"]) == 5
+          print(json.dumps({
+            "scope": r["data_scope"],
+            "joint_top3_mean_log_loss_change": r["primary_exact_order_logloss_delta_mean"],
+            "primary_ticket_results": r["primary_equal_race_summary"],
+            "source_file_count": len(r["input_file_sha256"]),
+          }, indent=2))
+          PY
+      - name: Check 2026-10-18 calendar-day-separated historical data (four races)
+        run: |
+          python scripts/ticket_wide_second_day.py --output output/kyoto_tokyo_niigata_20261018_wide_transfer.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path("output/kyoto_tokyo_niigata_20261018_wide_transfer.json").read_text())
+          assert d["status"] == "SECOND_DATE_RETROSPECTIVE_NOT_PROSPECTIVE"
+          assert d["market_only_eligibility"]["included"] == 4
+          assert d["market_only_eligibility"]["total_races"] == 9
+          assert d["design_frozen_before_result"] is False
+          assert d["quote_upstream_times_verified"] is False
+          assert d["positive_expected_value_established"] is False
+          print(json.dumps({
+              "date": d["date"], "eligible": d["market_only_eligibility"],
+              "exact_order_log_loss_delta_mean": d["joint_ordered_top3_logloss_delta_mean"],
+              "results": d["primary_summary"],
+              "source_hash_count": len(d["source_sha256"]),
+          }, indent=2))
+          PY
+      - name: Sensitivity across dates, fixed alpha grid, quote bounds
+        run: |
+          python scripts/ticket_wide_sensitivity_summary.py             --first output/kyoto_20261012_wide_cross_market.json             --second output/kyoto_tokyo_niigata_20261018_wide_transfer.json             --output output/two_date_wide_residual_sensitivity.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("output/two_date_wide_residual_sensitivity.json").read_text())
+          assert result["status"] == "POSTHOC_SENSITIVITY_NOT_INDEPENDENT_EVIDENCE"
+          assert not result["hypothesis_test_p_value_produced"]
+          print(json.dumps({
+             kind: {
+               "dev": v["primary_20261012_delta"],
+               "new_date": v["primary_20261018_delta"],
+               "worsening_config_count_dev": v["n_positive_brier_change_configs_20261012"],
+               "worsening_config_count_new_date": v["n_positive_brier_change_configs_20261018"],
+               "configs_per_date": v["n_configs_each_day"],
+             }
+             for kind, v in result["ticket_types"].items()
+          }, indent=2))
+          PY
+      - name: Upload anonymous aggregate and source hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: ticket-type-kyoto-five-race-development
+          path: |
+            output/kyoto_20261012_ticket_types.json
+            output/kyoto_20261012_wide_cross_market.json
+            output/kyoto_tokyo_niigata_20261018_wide_transfer.json
+            output/two_date_wide_residual_sensitivity.json
+            output/ticket-forward-empty-attempt-ledger.json
+            output/ticket-forward-20261123-provisional-program-audit.json
+            output/ticket-forward-20261123-jra-row-reconciliation.json
+          retention-days: 30

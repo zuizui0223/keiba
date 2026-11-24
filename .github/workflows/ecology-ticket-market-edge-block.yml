@@ -1,0 +1,57 @@
+name: Ecology ticket disjoint-edge block reproducibility
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_edge_block_holdout.py"
+      - "tests/test_ecology_ticket_market_edge_block_holdout.py"
+      - ".github/workflows/ecology-ticket-market-edge-block.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-backed-wide-edge-block:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Price-blind partitions and synthetic alternatives
+        run: python -m unittest discover -s tests -p 'test_ecology_ticket_market_edge_block_holdout.py' -v
+      - name: Compare fixed 60/40 edge blocks on 9 observed races
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_edge_block_holdout.py \
+            --splits 80 --output output/ecology-ticket-edge-block-nine-races.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('output/ecology-ticket-edge-block-nine-races.json').read_text())
+          assert x['status']=='OBSERVED_NINE_RACE_DISJOINT_EDGE_BLOCK_HOLDOUT_NOT_HORSE_REPEATS'
+          assert len(x['races'])==9
+          assert x['horse_number_not_stable_registry_id'] is True
+          assert x['new_date_or_race_validation'] is False
+          assert x['biological_individuality_identified'] is False
+          assert not x['outcome_labels_used']
+          print(json.dumps({
+            'by_date':x['by_date'],
+            'per_race':[{
+              'race_id':r['race_id'], 'date':r['date'],
+              'horses':r['horse_count'],'pairs':r['complete_wide_pair_count'],
+              'block_R2':r['pooled_heldout_R2_vs_train_mean'],
+              'node_win_fraction_of_splits':r['fraction_partitions_node_better_than_global_smooth'],
+              'identifiable_graph_retries':r['extra_draws_to_find_full_identifiable_train_graph']
+            } for r in x['races']],
+            'source_sha256_count':len(x['source_file_sha256']),
+          }, indent=2,ensure_ascii=False))
+          PY
+      - name: Archive source-hashed aggregate without IDs/odds
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-ticket-edge-block-nine-races
+          path: output/ecology-ticket-edge-block-nine-races.json
+          retention-days: 30

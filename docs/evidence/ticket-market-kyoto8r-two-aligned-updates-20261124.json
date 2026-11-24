@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "research_date_jst": "2026-11-24",
+  "status": "ONE_RACE_TWO_SOURCE_UPDATED_TIME_ALIGNED_MARKET_STATES_NUMERIC_CROSSCHECK_PENDING_PYTHON_ACTIONS",
+  "source": "2026-10-12 Kyoto 8R before 14:00 JST",
+  "horse_count": 11,
+  "complete_wide_pair_count": 55,
+  "actual_saved_sources": {
+    "13:26_paired": {
+      "source_win_updated_jst": "2026-10-12T13:26:00+09:00",
+      "source_wide_updated_jst": "2026-10-12T13:26:00+09:00",
+      "win_received_jst": "2026-10-12T13:27:02.145040+09:00",
+      "wide_received_jst": "2026-10-12T13:27:01.902287+09:00",
+      "receipt_gap_seconds": 0.242753,
+      "win_file_git_blob_sha1": "65fa640d6a07b7d94eb6e2904f6cc73f07a96448",
+      "wide_file_git_blob_sha1": "10bb0d0bcab6035eceaa4edda8c31999d83dae05",
+      "recorded_win_html_sha256": "43ae0ce553f4846515974b2f7b363729bda3907afac6f804165037549ad5dd59",
+      "recorded_wide_html_sha256": "01d4331da0390dcf9958b85ab5af747a068fff11ac0b9abec5204d9276f22f52"
+    },
+    "13:44_paired": {
+      "source_win_updated_jst": "2026-10-12T13:44:00+09:00",
+      "source_wide_updated_jst": "2026-10-12T13:44:00+09:00",
+      "receipt_utc": "2026-10-12T04:44:55.955326+00:00",
+      "file_git_blob_sha1": "5e84f3c445249564b2cd7ed358591ed02a8b2d88"
+    },
+    "13:35_mixed_provenance_not_valid_intermediate": {
+      "snapshot_receipt_utc": "2026-10-12T04:35:59+00:00",
+      "recorded_win_source_update_jst": "2026-10-12T13:22:00+09:00",
+      "recorded_wide_source_update_jst": "2026-10-12T13:33:00+09:00",
+      "win_source_time_regressed_minus_four_minutes_vs_earlier_capture": true,
+      "file_git_blob_sha1": "a01268d94b341e8d9e8b5f600e75579c7d22eb4a"
+    }
+  },
+  "paired_1326_to_1344_marginal_information": {
+    "fixed_later_PL_pair_weights": true,
+    "node_price_component_correlation": 0.7843321258941127,
+    "pair_price_logratio_correlation": 0.8463762951418369,
+    "dyadic_remainder_correlation": 0.9208437416170012,
+    "horse_node_explained_R2_of_total_price_ratio_change": 0.6062667822158343,
+    "win_only_source_update_node_R2": 0.9998568511914876,
+    "wide_only_source_update_node_R2": 0.46391278855993756,
+    "win_only_dyadic_change_rms": 0.003242282534385894,
+    "wide_only_dyadic_change_rms": 0.16953872277455043,
+    "win_source_variance_covariance_share": 0.6361975397238817,
+    "wide_source_variance_covariance_share": 0.3638024602761171,
+    "win_vs_wide_source_change_weighted_correlation": -0.43261419291652703,
+    "max_logratio_change_additive_identity_error": 2.1163626406917047e-16
+  },
+  "inverse_price_information_concentration": {
+    "win_effective_horses_earlier": 8.428001088380025,
+    "win_effective_horses_later": 8.086975443254174,
+    "wide_effective_pairs_earlier": 26.263578818214842,
+    "wide_effective_pairs_later": 31.29524788603846,
+    "win_JSD_nats": 0.00562480141162151,
+    "wide_JSD_nats": 0.007221346058050548,
+    "these_are_normalized_inverse_display_odds_not_real_vote_shares": true
+  },
+  "independent_calculation": {
+    "route": "Direct JavaScript PL ordered top-three enumeration and WLS decomposition from the three saved original GitHub JSON files; Python Actions audit of the new source parser and inferential labels pending.",
+    "GitHub_script": "scripts/ecology_ticket_market_two_synchronized_states.py",
+    "GitHub_tests": "tests/test_ecology_ticket_market_two_synchronized_states.py",
+    "Actions_verification_status": "NOT_YET_CONFIRMED"
+  },
+  "interpretation_limits": {
+    "two_measured_source_updated_states_of_one_race_only": true,
+    "up_to_date_original_market_html_not_published_or_independently_reverified": true,
+    "recorded_update_time_equal_not_proof_of_instantaneous_shared_market_clock": true,
+    "middle_capture_win_update_timestamp_nonmonotone": true,
+    "two_unobserved_mixed_source_counterfactual_combinations_are_algebraic_only": true,
+    "not_independent_55_pair_replicates": true,
+    "relative_quote_error_margins_not_calibrated_to_voting": true,
+    "no_actual_betting_votes_or_causal_social_contagion": true,
+    "no_stable_horse_ID_across_races": true,
+    "no_biological_interaction_kinship_genomic_effect": true,
+    "model_test_constructed_after_2026_10_12_outcomes": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "EMPIRICAL_SAME_NINE_RACES_SMOOTH_SHARED_WIN_PRICE_NEGATIVE_CONTROL",
+  "created_date_jst": "2026-11-23",
+  "source_actions_run_id": 45085261884,
+  "source_actions_url": "https://github.com/zuizui0223/keiba/actions/runs/45085261884",
+  "artifact_id": 14778508921,
+  "artifact_url": "https://github.com/zuizui0223/keiba/actions/runs/45085261884/artifacts/14778508921",
+  "artifact_zip_sha256": "e90a99b9bdc4fede62de918dcb61ff0d78c63c2f7d2d8125e2ab9e91ec53d741",
+  "source_input_sha256_count": 31,
+  "sample_races": 9,
+  "sample_days": 2,
+  "model": "Shared population-level Legendre degree 1 through 4 polynomial on each horse's normalized centered log win strength; sums horse scores within each wide pair plus fitted intercept; no free horse identity parameters",
+  "comparison_protocol": "Exactly leave one wide pair out within same race; weighted linear OLS refit from other pairs; no actual race outcomes used",
+  "empirical_by_date": {
+    "2026-10-12": {
+      "race_count": 5,
+      "node_loo_R2_mean": 0.5052462030892677,
+      "smooth_degree_1_loo_R2_mean": 0.15344286085386155,
+      "smooth_degree_2_loo_R2_mean": 0.211171010111714,
+      "smooth_degree_3_loo_R2_mean": 0.27855943728281896,
+      "smooth_degree_4_loo_R2_mean": 0.31047227950010153,
+      "node_better_than_degree_4": 4
+    },
+    "2026-10-18": {
+      "race_count": 4,
+      "node_loo_R2_mean": 0.6559056080200102,
+      "smooth_degree_1_loo_R2_mean": 0.13260696687901455,
+      "smooth_degree_2_loo_R2_mean": 0.15431784838847917,
+      "smooth_degree_3_loo_R2_mean": 0.17661729880004762,
+      "smooth_degree_4_loo_R2_mean": 0.23010601887560658,
+      "node_better_than_degree_4": 4
+    }
+  },
+  "one_counterexample": {
+    "race_id": "2608040509",
+    "date": "2026-10-12",
+    "node_heldout_R2": 0.6768175075003866,
+    "smooth_degree_4_heldout_R2": 0.6774117428165586,
+    "smooth_degree_3_heldout_R2": 0.681445792491181,
+    "result": "In this individual race, global smooth favorite pricing explains heldout pair prices at least as well as free horse-node model."
+  },
+  "guardrails": {
+    "degree_4_smooth_price_curve_not_constrained_monotone": true,
+    "same_race_heldout_pairs_share_horses_with_training": true,
+    "qwide_inverse_odds_proxy_not_true_market_belief": true,
+    "actual_outcomes_not_used": true,
+    "no_independent_future_race_generalization": true,
+    "horse_specific_price_term_not_equivalent_to_stable_individual_trait": true,
+    "breeding_A_or_genomic_G_joint_market_panel_absent": true,
+    "no_market_voter_behavior_dynamics_observed": true,
+    "cannot_reject_all_global_price_mechanisms": true,
+    "only_two_dates_sample": true
+  },
+  "next_tests": [
+    "Fit continuous shape constrained monotone and market margin models with training-only smoothness selection",
+    "Independent future race/date market quote panels and source-update times",
+    "Repeated same-horse registry IDs for node score stability",
+    "Source-backed own history, pedigree A, genomic G matched to identical horse IDs"
+  ]
+}

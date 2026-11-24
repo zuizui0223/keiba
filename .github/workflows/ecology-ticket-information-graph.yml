@@ -1,0 +1,58 @@
+name: Ecology of ticket-market information graphs
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_information_graph.py"
+      - "tests/test_ecology_ticket_information_graph.py"
+      - ".github/workflows/ecology-ticket-information-graph.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-backed-network-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Graph projection and outcome-safe oracle tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_ticket_information_graph.py' -v
+      - name: Recompute nine real cross-section node vs pair information decomposition
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_information_graph.py \
+            --output output/market-information-graph-nine-races.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('output/market-information-graph-nine-races.json').read_text())
+          assert x["status"]=="EMPIRICAL_QUOTE_NETWORK_DECOMPOSITION_POSTHOC_EXPLORATORY"
+          assert x["prospective_validation"] is False
+          assert x["biological_pair_interactions_identified"] is False
+          assert x["real_market_time_series_observed"] is False
+          assert x["genealogical_horse_id_join_identified"] is False
+          assert len(x["races"]) == 9
+          print(json.dumps({
+            "date_aggregate":x["by_date"],
+            "each_race":[{
+              "date":r["date"],"race_id":r["race_id"],"n":r["horse_count"],
+              "node_R2":r["weighted_node_explained_fraction_R2"],
+              "unweighted_node_R2":r["equal_edge_weight_node_R2_sensitivity"],
+              "shuffle_median_R2":r["edge_label_shuffle_reference"].get("shuffled_median_node_R2"),
+              "dyad_after_node_logloss_change":r["delta_loss_pair_added_to_node"],
+            } for r in x["races"]],
+            "source_file_sha_count":len(x["source_file_sha256"])
+          },ensure_ascii=False,indent=2))
+          PY
+      - name: Upload inspectable aggregate, source hashes, no names or ticket recommendations
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-ticket-information-graph-nine-races
+          path: output/market-information-graph-nine-races.json
+          retention-days: 30
