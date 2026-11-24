@@ -25,6 +25,8 @@
 
 **市場ノードから生物個体への接続のデータ欠測（2026-11-23）**：10/12京都5Rの67頭のうち30頭に**Yahooディレクトリの個別ページID候補**、37頭はリンク欠測。10/18の市場9R・117頭は**登録馬ID・同種のディレクトリIDの明示列0件**。現状で異なる市場日付の同一馬IDを照合した件数は0であり、血縁A・匿名ゲノムGとも対応する個体の結合は未達。**馬名・馬主冠名による推測結合を禁止**。[source SHA付き確認](../evidence/ticket-market-horse-identity-join-readiness-20261123.json) · [解析コード](../../scripts/ecology_ticket_market_identity_join_gate.py)。
 
+**2026-11-24 新しい更新時刻整合データ**：[京都8Rで単勝・ワイドとも13:26に更新された11頭・55組合せの元保存資料](TICKET_MARKET_INFORMATION_GRAPH_ECOLOGY_20261123.md#3h-更新時刻のそろった実測2状態を再発見京都8r132613442026-11-24)が見つかり、両市場13:44更新の後期資料と比較できた。受信差0.243秒、元の更新間隔18分。2時点の馬ノード価格相関は**0.784**、ペア残差は**0.921**、更新時の価格乖離のノード説明R²は**0.606**。ただし1競走だけで、実投票票数・模倣・血縁機構は未観測。保存時刻13:35の別資料は単勝の元更新時刻が13:26から**13:22へ逆行する記録上の問題**があるため、時系列の中間点には使わない。[元ファイルGit blob SHAと独立した数値検算](../evidence/ticket-market-kyoto8r-two-aligned-updates-20261124.json)。また、10/12の67頭と10/18の117頭には**馬名完全一致0件**で、確証ある登録馬IDの跨日結合0件が続く。
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
