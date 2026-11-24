@@ -7,9 +7,10 @@
     "pr83": "25b5ddddb0c31c66e7bd87cfc596c8bf4357a0f3",
     "pr84": "92b4490c221934f053ba043efeeddcf3a2329510",
     "pr87": "3612c93a6dcbb11e8a58419c9897a5cea8e55bec",
-    "pr88": "0e873931af9f3bd12dc1f2e46e8f413b69408414"
+    "pr88": "0e873931af9f3bd12dc1f2e46e8f413b69408414",
+    "pr89": "4e6b056c97bbbc77d7fb8781b50677d7769d501b"
   },
-  "original_files_preserved": 60,
+  "original_files_preserved": 65,
   "previous_main_files_changed": [
     "README.md",
     "docs/research/README.md"
@@ -126,9 +127,22 @@
       "protocol": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_PROTOCOL.md",
       "result": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_RESULTS.md",
       "evidence": "docs/evidence/japan-context-within-individual-20261124.json"
+    },
+    {
+      "pr": 89,
+      "topic": "Adjacent distance-band generalization",
+      "status": "Short-band primary supported; long-band main contrast uncertain",
+      "run_id": 45383198727,
+      "protocol": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-distance-generalization-20261124.json"
     }
   ],
   "original_blobs": [
+    {
+      "path": ".github/workflows/ecology-japan-context-distance-generalization.yml",
+      "sha": "f95cb2d6c37906ae3372d5f9e80f03cb748f2361"
+    },
     {
       "path": ".github/workflows/ecology-japan-context-information-substitution.yml",
       "sha": "579355dbcb1e5ff4b89087e71587a02ea3162e01"
@@ -178,6 +192,10 @@
       "sha": "edfd87ee70cf242acc05152dbfe7d75e859f38e9"
     },
     {
+      "path": "docs/evidence/japan-context-distance-generalization-20261124.json",
+      "sha": "5918ce018c5fb9e3304e0831d552de5096833a87"
+    },
+    {
       "path": "docs/evidence/japan-context-information-substitution-20261124.json",
       "sha": "4023a6f85add0336cc81848d8434db9df5a25009"
     },
@@ -224,6 +242,14 @@
     {
       "path": "docs/evidence/japan-sire-first-context-assignment-20261124.json",
       "sha": "50e89420fe5cc3b355e7dbe93bddedcf77353af4"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_PROTOCOL.md",
+      "sha": "1ae124e3ffbefcb17ee09156f479cfe509af8e95"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_RESULTS.md",
+      "sha": "05750ee8f6c3700429c3ee6256024744f8b205a5"
     },
     {
       "path": "docs/research/JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_PROTOCOL.md",
@@ -322,6 +348,10 @@
       "sha": "e563f89dbd710f1ea44194081e656a548224d3c8"
     },
     {
+      "path": "scripts/ecology_japan_context_distance_generalization.py",
+      "sha": "e468c6940eaef56b30ad12689da2ca9520ffcf21"
+    },
+    {
       "path": "scripts/ecology_japan_context_information_substitution.py",
       "sha": "bba22c494a884c1084a9242a37e5a243764ba2cf"
     },
@@ -374,10 +404,6 @@
     {
       "pr": 76,
       "reason": "Separate market track"
-    },
-    {
-      "pr": 89,
-      "reason": "Empirical run incomplete at snapshot"
     }
   ],
   "limitations": [
@@ -385,5 +411,15 @@
     "Artifact ZIP contents not independently extracted; receipts preserve printed aggregates",
     "No causal or prospective claim",
     "Original draft PRs left open; no main merge performed"
-  ]
+  ],
+  "integration_QA": {
+    "initial_commit": "7f43b0b1fb3985cd75d9c4ca360b6978b37e3600",
+    "failed_runs": [
+      45383674525,
+      45383674312,
+      45383674160
+    ],
+    "successful_ecological_run": 45383674118,
+    "diagnosis": "Root README 5275 characters exceeds pre-existing 5000-character cap; three shared navigation tests failed. Shorten root entry, preserve detailed text in research index/synthesis; do not change test or frozen classifier."
+  }
 }

@@ -7,7 +7,7 @@
 
 ## 2026-11-24 · Family information and realized environmental allocation
 
-[Integrated synthesis of completed PR #77–88](INTEGRATED_CONTEXT_INFORMATION_20261124.md) · [exact blob provenance](../evidence/context-information-consolidation-20261124.json). Four levels: unequal parent-channel observation support, allocation versus paired performance response, history-dependent incremental information, and population membership. Retains negative and HOLD primary tests; earlier-year calibration is retrospective and the 2024 primary remains uncertain. No causal adaptation or animal learning claim. Adjacent distance-band validation is separate and pending.
+[Integrated synthesis of completed PR #77–89](INTEGRATED_CONTEXT_INFORMATION_20261124.md) · [exact blob provenance](../evidence/context-information-consolidation-20261124.json). Four levels: unequal parent-channel observation support, allocation versus paired performance response, history-dependent incremental information, and population membership. Retains negative and HOLD primary tests; earlier-year calibration is retrospective and the 2024 primary remains uncertain. No causal adaptation or animal learning claim. Adjacent distance bands: 1200–1599m primary replicated, 2000–2399m main interval includes zero; no formal distance interaction.
 
 ## Integrated November 2026 Japan / genotype / market research
 
