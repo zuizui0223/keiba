@@ -5,6 +5,10 @@
 > predictions, odds and wagering are a separate technical track:
 > [betting-methods index](../betting/README.md).
 
+## 2026-11-24 · Family information and realized environmental allocation
+
+[Integrated synthesis of completed PR #77–88](INTEGRATED_CONTEXT_INFORMATION_20261124.md) · [exact blob provenance](../evidence/context-information-consolidation-20261124.json). Four levels: unequal parent-channel observation support, allocation versus paired performance response, history-dependent incremental information, and population membership. Retains negative and HOLD primary tests; earlier-year calibration is retrospective and the 2024 primary remains uncertain. No causal adaptation or animal learning claim. Adjacent distance-band validation is separate and pending.
+
 ## Integrated November 2026 Japan / genotype / market research
 
 Read the **[integrated evidence and future paper program](INTEGRATED_KINSHIP_GENOME_INFORMATION_MARKET_20261118.md)** first for a source-separated evaluation of measured positive, negative and not-yet-tested claims: selected Japanese parent-history forecasts in 2019–2026, partial Wikipedia numerator A, 370 anonymous Japanese Thoroughbred SNP samples and genomic G, nine observed odds snapshots and human-voter ABM on **synthetic** later ballots. The source data are not a combined pedigree × genome × market same-horse panel. In particular, the first 2026 external-period family signal did **not** transfer robustly, and the refreshed own-history results are explicitly post-hoc.
