@@ -1,0 +1,57 @@
+name: Ecology Kyoto8R market source channel factorization
+
+on:
+  pull_request:
+    paths:
+      - "scripts/ecology_ticket_market_source_channel_decomposition.py"
+      - "tests/test_ecology_ticket_market_source_channel_decomposition.py"
+      - ".github/workflows/ecology-ticket-source-channel-factorization.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  win-vs-wide-source-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-channel arithmetic, time and no-causality oracle tests
+        run: python -m unittest discover -s tests -p "test_ecology_ticket_market_source_channel_decomposition.py" -v
+      - name: Compute exact two-source additive price and node-dyad update decomposition
+        run: |
+          mkdir -p output
+          python scripts/ecology_ticket_market_source_channel_decomposition.py \
+            --output output/kyoto-r8-source-channel-update-decomposition.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o=json.loads(Path("output/kyoto-r8-source-channel-update-decomposition.json").read_text())
+          assert o["status"]=="ONE_RACE_TWO_SOURCE_ARITHMETIC_DECOMPOSITION_NOT_CAUSAL_TIME_SERIES"
+          assert o["race_id"]=="2608040508" and o["pair_count"]==55
+          assert o["early_win_wide_update_gap_seconds"]==660
+          assert o["later_win_wide_update_gap_seconds"]==0
+          assert o["max_total_equals_win_plus_wide_delta_error"]<1e-10
+          assert o["max_fixed_weight_node_delta_additivity_error"]<1e-10
+          assert o["max_fixed_weight_pair_residual_additivity_error"]<1e-10
+          assert o["two_archived_price_states_of_ONE_race_only"]
+          assert o["mixed_states_are_algebraic_counterfactual_combinations_not_joint_observations"]
+          print(json.dumps({
+            "source_covariance_shares":o["source_price_change_covariance_partition"],
+            "source_update_node_dyad":o["source_delta_node_vs_dyad_components"],
+            "four_combinations":o["four_combinations_relative_to_later_state"],
+            "market_concentration":o["effective_market_support_at_each_saved_time"],
+            "algebra_error":o["max_total_equals_win_plus_wide_delta_error"],
+            "hashed_archives":len(o["source_file_sha256"])
+          },indent=2,ensure_ascii=False))
+          PY
+      - name: Upload source-hashed ecological aggregate only, not market prices
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-kyoto8r-source-specific-update-decomposition
+          path: output/kyoto-r8-source-channel-update-decomposition.json
+          retention-days: 30
