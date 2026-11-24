@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "scripts/ecology_ticket_market_two_snapshot_time.py"
+      - "scripts/ecology_ticket_market_two_synchronized_states.py"
+      - "tests/test_ecology_ticket_market_two_synchronized_states.py"
       - "tests/test_ecology_ticket_market_two_snapshot_time.py"
       - ".github/workflows/ecology-ticket-market-two-snapshot-time.yml"
   workflow_dispatch:
@@ -51,9 +53,35 @@ jobs:
             "source_file_SHA256_count":len(r["source_file_sha256"])
           },ensure_ascii=False,indent=2))
           PY
+      - name: Recheck source-update-aligned 13:26 and 13:44 market states
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_ticket_market_two_synchronized_states.py' -v
+          python scripts/ecology_ticket_market_two_synchronized_states.py \
+            --output output/kyoto-r8-1326-1344-synchronized-market.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('output/kyoto-r8-1326-1344-synchronized-market.json').read_text())
+          assert j['source_timestamp_aligned_quote_update_states']==2
+          assert j['actual_source_updated_elapsed_minutes']==18
+          assert j['observed_primary_snapshot_comparison']['early_win_wide_source_update_gap_seconds']==0
+          assert j['observed_primary_snapshot_comparison']['late_win_wide_source_update_gap_seconds']==0
+          assert j['asynchronous_early_source_sensitivity']['early_win_wide_update_gap_seconds']==660
+          assert len(j['source_file_sha256'])==4
+          assert j['nonlinear_social_feedback_threshold_not_identified']
+          assert not j['independent_two_race_or_named_individual_repeatability']
+          print(json.dumps({
+            'times':j['source_matched_earlier_snapshot'],
+            'synchronized_price_network':j['observed_primary_snapshot_comparison'],
+            'source_channel_decomposition':j['arithmetic_source_channel_splits'],
+            'previous_async_sensitivity':j['asynchronous_early_source_sensitivity'],
+          },ensure_ascii=False,indent=2))
+          PY
       - name: Archive source-backed one-race results only
         uses: actions/upload-artifact@v4
         with:
           name: ecology-kyoto-r8-two-archived-market-states
-          path: output/kyoto-r8-mixed-time-node-dyad.json
+          path: |
+            output/kyoto-r8-mixed-time-node-dyad.json
+            output/kyoto-r8-1326-1344-synchronized-market.json
           retention-days: 30
