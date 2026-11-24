@@ -1,0 +1,47 @@
+name: "Sire context occupancy vs performance transfer"
+on:
+  push:
+    branches: [analysis/kin-context-exposure-transfer-20261124]
+    paths:
+      - "scripts/ecology_japan_sire_context_exposure_transfer.py"
+      - "docs/research/JAPAN_SIRE_CONTEXT_EXPOSURE_TRANSFER_PROTOCOL.md"
+      - ".github/workflows/ecology-japan-sire-context-exposure-transfer.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  occupancy-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Synthetic occupancy and prior-only checks
+        run: python scripts/ecology_japan_sire_context_exposure_transfer.py --self-test
+      - name: Download fixed source A
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          from ecology_japan_archive_forward import download
+          download(Path('tmp/private/old.zip'))
+          PY
+      - name: Run chronological context occupancy transfer
+        run: python scripts/ecology_japan_sire_context_exposure_transfer.py --archive tmp/private/old.zip --output tmp/sire-context-exposure-transfer.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sire-context-exposure-transfer-aggregate-only
+          path: tmp/sire-context-exposure-transfer.json
+          if-no-files-found: error
+          retention-days: 14
