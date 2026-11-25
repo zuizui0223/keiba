@@ -1,6 +1,6 @@
-# Manuscript v1 claim-to-evidence and submission gates
+# Manuscript claim-to-evidence and submission gates
 
-2026-11-25. This table records the actual evidence for the new allocation manuscript, not a collection of independent replications. All PRs below are completed retrospective studies, with analysis-specific support. Full protocol/result/receipt/run links are in [integrated synthesis](INTEGRATED_CONTEXT_INFORMATION_20261124.md). Manuscript: [v1](JAPAN_CONTEXT_INFORMATION_MANUSCRIPT_V1.md).
+2026-11-25. This table records the actual evidence for the new allocation manuscript, not a collection of independent replications. All PRs below are completed retrospective studies, with analysis-specific support. Full protocol/result/receipt/run links are in [integrated synthesis](INTEGRATED_CONTEXT_INFORMATION_20261124.md). Manuscript: [v2](JAPAN_CONTEXT_INFORMATION_MANUSCRIPT_V2.md), [supplement](JAPAN_CONTEXT_INFORMATION_SUPPLEMENT_V2.md), [v1 archive](JAPAN_CONTEXT_INFORMATION_MANUSCRIPT_V1.md).
 
 | Role | Exact evidence | Allowed claim | Forbidden shortcut |
 |---|---|---|---|
@@ -16,20 +16,18 @@
 | Mechanistic predictive contrast | [PR92](JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_RESULTS.md), 565 matched middle, +0.012457 [0.004123,0.023533] | Recorded-sire direction alignment at fixed magnitude | Genetic nonkin control or independent predictor |
 | Calibration | [PR87](JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_RESULTS.md), frozen A weights, 2024 N−G uncertain, F−G supported | Reduce excess correction; not all incremental gains supported | Universal monotonic law, prospective validation |
 | Latest season and coverage | [PR93](JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_RESULTS.md), primary +0.000427 [−0.004384,0.005061]; 194/2,839, 0/664 archive-first | Selected-cohort 2025 transfer uncertain; severe identity gap | New entrant replication, whole-country population |
-
 | Transitional heterogeneity | [PR95](JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md): same 527 horses, all 12 sequences decrease; primary 54<100 HOLD | Annual-cohort peak does not reproduce in selected common sample | Universal hump-shaped temporal law or proof of causal membership effect |
-
 | Direct membership alignment | [PR96](JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_RESULTS.md): 18/18 moment-parity conditions, 12/12 positive point directions, 12/12 support HOLD | Numerically verifies reconstruction; no new interval | Statistical confirmation of alignment mechanism, independent replication or biological selection |
 
 ## Manuscript decisions
 
-Core novelty is the combination of fixed-correction within-horse decomposition, direction-only matched alternative-sire diagnostic, and observation membership. The exact squared-loss identity is elementary algebra, not itself a novel mathematical theorem. The application and separation of quantities in the observed data are the contribution. Family resemblance alone, high prediction performance alone, ABM/PDE and market models, anonymous genomes and partial pedigrees are not sufficient to make a single causal paper; those projects remain separate. No pooled meta-analysis across the 16 overlapping analyses. This manuscript can be written before the 2027 study, but submission should not claim a positive prospective result.
+Core novelty is the combination of fixed-correction within-horse decomposition, direction-only matched alternative-sire diagnostic, and observation membership. The exact squared-loss identity is elementary algebra, not itself a novel mathematical theorem. The application and separation of quantities in the observed data are the contribution. Family resemblance alone, high prediction performance alone, ABM/PDE and market models, anonymous genomes and partial pedigrees are not sufficient to make a single causal paper; those projects remain separate. No pooled meta-analysis across the 18 overlapping analyses. This manuscript can be written before the 2027 study, but submission should not claim a positive prospective result.
 
 ## Remaining work before submission
 
 - Verify every manuscript number against archived stdout receipts and report denominators, seeds and estimands; retain adverse and HOLD results. Complete artifact-content/independent reproduction check, rather than claiming that metadata hashes alone are full verification.
-- Four quantitative vector figure drafts rendered directly from pinned aggregate receipts; [figures and numeric parity](figures/context-information/README.md). Selected claim checks passed in generator construction. New CI, independent visual review and publication-ready export still required.
-- Expand relevant literature review on longitudinal information redundancy, animal management, racing allocation and resource availability. Three verified foundational references in v1 do not establish priority, novelty against all literature, or a target journal's suitability.
+- Four quantitative vector figure drafts rendered directly from pinned aggregate receipts; [figures and numeric parity](figures/context-information/README.md). Selected claim checks passed in generator construction. Numerical regeneration CI succeeded at c81ea5246a1c0c942ec08531426ef638b03a79e2; independent visual review and publication-ready export still required.
+- Expand relevant literature review on longitudinal information redundancy, animal management, racing allocation and resource availability. v2 adds eight targeted checked references (eleven total); [literature audit](JAPAN_CONTEXT_INFORMATION_LITERATURE_POSITION_20261126.md). Full-text systematic or broader novelty review and journal fit remain outstanding.
 - Resolve upstream research/publication rights, appropriate ethics/data-use declarations, authorship/affiliations, archived version and data availability. [Source acquisition gate](https://github.com/zuizui0223/keiba/blob/14d58b6305fef8ab2c1733d9ec26049393d7f8ad/docs/research/JAPAN_CONTEXT_AUTHORIZED_SOURCE_ACQUISITION_20261125.md). No raw data or publication permission obtained in this writing task.
 - Formal inference about adaptive genetics, animal learning, individual opportunity, and all new entrants remains unavailable; if central to the intended paper, obtain new data rather than strengthen wording.
 
