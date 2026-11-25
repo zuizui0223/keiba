@@ -9,9 +9,10 @@
     "pr87": "3612c93a6dcbb11e8a58419c9897a5cea8e55bec",
     "pr88": "0e873931af9f3bd12dc1f2e46e8f413b69408414",
     "pr89": "4e6b056c97bbbc77d7fb8781b50677d7769d501b",
-    "pr91": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693"
+    "pr91": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693",
+    "pr92": "ea9fb01832dc968296401029b5c01ca0b08e1c38"
   },
-  "original_files_preserved": 70,
+  "original_files_preserved": 75,
   "previous_main_files_changed": [
     "README.md",
     "docs/research/README.md"
@@ -146,9 +147,22 @@
       "protocol": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_PROTOCOL.md",
       "result": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_RESULTS.md",
       "evidence": "docs/evidence/japan-context-opportunity-diversity-20261124.json"
+    },
+    {
+      "pr": 92,
+      "topic": "Same-sire alignment versus magnitude-matched other-sire sign",
+      "status": "Primary supported; 8/9 pointwise intervals positive; all 9 late full correction gains negative",
+      "run_id": 45387457638,
+      "protocol": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-alignment-identity-control-20261124.json"
     }
   ],
   "original_blobs": [
+    {
+      "path": ".github/workflows/ecology-japan-context-alignment-identity-control.yml",
+      "sha": "dde9eedae8d24789fc62278f049c327e79e61ce5"
+    },
     {
       "path": ".github/workflows/ecology-japan-context-distance-generalization.yml",
       "sha": "f95cb2d6c37906ae3372d5f9e80f03cb748f2361"
@@ -206,6 +220,10 @@
       "sha": "edfd87ee70cf242acc05152dbfe7d75e859f38e9"
     },
     {
+      "path": "docs/evidence/japan-context-alignment-identity-control-20261124.json",
+      "sha": "9f5e27e24073a318d07b5cf645ef781bbbbb56ad"
+    },
+    {
       "path": "docs/evidence/japan-context-distance-generalization-20261124.json",
       "sha": "5918ce018c5fb9e3304e0831d552de5096833a87"
     },
@@ -260,6 +278,14 @@
     {
       "path": "docs/evidence/japan-sire-first-context-assignment-20261124.json",
       "sha": "50e89420fe5cc3b355e7dbe93bddedcf77353af4"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_PROTOCOL.md",
+      "sha": "728a94a4fe6dc39a5edd3bba4a49629bf39db870"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_RESULTS.md",
+      "sha": "4c3c0707dba55495b38fc2ef83c33bdda267d520"
     },
     {
       "path": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_PROTOCOL.md",
@@ -374,6 +400,10 @@
       "sha": "e563f89dbd710f1ea44194081e656a548224d3c8"
     },
     {
+      "path": "scripts/ecology_japan_context_alignment_identity_control.py",
+      "sha": "c534c3a8c53c819f55efbaf2471e23dbb88296d7"
+    },
+    {
       "path": "scripts/ecology_japan_context_distance_generalization.py",
       "sha": "e468c6940eaef56b30ad12689da2ca9520ffcf21"
     },
@@ -458,6 +488,14 @@
       45384931056,
       45384930859
     ],
-    "repair_conclusion": "All four succeeded on prior integration; new revision requires CI"
+    "repair_conclusion": "All four succeeded on prior integration; new revision requires CI",
+    "pr91_integration_commit": "e0d7c7c87175d6842d3aa15658bfefeeb4025819",
+    "pr91_integration_runs": [
+      45387766866,
+      45387766898,
+      45387766935,
+      45387766820
+    ],
+    "pr91_integration_conclusion": "All four succeeded; new revision requires CI"
   }
 }
