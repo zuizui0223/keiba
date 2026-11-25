@@ -37,9 +37,13 @@ At each *distinct measured endpoint*, consider an own-history predictor B and a 
 
 [Bounded scalar and two-stratum arithmetic audit](INFORMATION_WEIGHT_BOUNDARY_AND_HETEROGENEITY_20261125.md) separates residual alignment, excess weighting, and energy-weighted heterogeneity (with a clipping penalty). In all three split sensitivities, both fixed and refreshed profiles show a descriptive intermediate-year peak in the extra two-stratum sample-optimal gain. Different yearly cohorts, no new intervals; not a market threshold or general law. Retain earlier-A actual calibration, not these evaluation-outcome-dependent weights.
 
+## Common-cohort refutation check (2026-11-26)
+
+PR95 tested the annual intermediate-year peak on the identical 527 horses/115 recorded sires in 2022–24. All 12 partition/profile/seed point sequences have H2022 > H2023 > H2024; no intermediate peak. Primary zero-versus-positive pre-2022 history group contains only 54 horses (37 sires), so the primary inference is HOLD. Predeclared 0–3 vs 4+ sensitivity has 288 and 239 horses (83 and 84 sires). Main fixed-profile H23−H22 −0.001436815, two-contrast adjusted interval [−0.003536112,−0.000153384]; H23−H24 +0.000136381 [−0.000557192,+0.000936206]. Two of six supported adjusted intervals for H23−H22 are negative; all H23−H24 intervals span zero. Thus the earlier annual-cohort peak is not reproduced on the selected common cohort; it is not a general individual-level law. This does not establish membership as the unique cause, because the nonlinear optimum and selected residual moments differ. Earlier-year scalar transfer has mixed signs and no new intervals. [Results](JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md).
+
 ## Publication decision
 
-Keep one main empirical paper on managed allocation (16 completed analyses), expand its discussion with the separate rank, GPS and parental-observation evidence, and keep a traceable repository-wide program and separate papers for GPS/phenotype, rank temporal transport, pedigree/genomic infrastructure and collective market representation. Neither combining incompatible response units nor appending unrelated positive metrics would strengthen the core. A larger single integrated biological mechanism paper needs same-horse joins, authorized data, new validation and measured observer behavior.
+Keep one main empirical paper on managed allocation (17 completed analyses), expand its discussion with the separate rank, GPS and parental-observation evidence, and keep a traceable repository-wide program and separate papers for GPS/phenotype, rank temporal transport, pedigree/genomic infrastructure and collective market representation. Neither combining incompatible response units nor appending unrelated positive metrics would strengthen the core. A larger single integrated biological mechanism paper needs same-horse joins, authorized data, new validation and measured observer behavior.
 
 ## Complete PR-level scope inventory
 

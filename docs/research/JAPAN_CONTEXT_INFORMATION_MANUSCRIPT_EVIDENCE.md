@@ -17,6 +17,8 @@
 | Calibration | [PR87](JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_RESULTS.md), frozen A weights, 2024 N−G uncertain, F−G supported | Reduce excess correction; not all incremental gains supported | Universal monotonic law, prospective validation |
 | Latest season and coverage | [PR93](JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_RESULTS.md), primary +0.000427 [−0.004384,0.005061]; 194/2,839, 0/664 archive-first | Selected-cohort 2025 transfer uncertain; severe identity gap | New entrant replication, whole-country population |
 
+| Transitional heterogeneity | [PR95](JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md): same 527 horses, all 12 sequences decrease; primary 54<100 HOLD | Annual-cohort peak does not reproduce in selected common sample | Universal hump-shaped temporal law or proof of causal membership effect |
+
 ## Manuscript decisions
 
 Core novelty is the combination of fixed-correction within-horse decomposition, direction-only matched alternative-sire diagnostic, and observation membership. The exact squared-loss identity is elementary algebra, not itself a novel mathematical theorem. The application and separation of quantities in the observed data are the contribution. Family resemblance alone, high prediction performance alone, ABM/PDE and market models, anonymous genomes and partial pedigrees are not sufficient to make a single causal paper; those projects remain separate. No pooled meta-analysis across the 16 overlapping analyses. This manuscript can be written before the 2027 study, but submission should not claim a positive prospective result.

@@ -11,9 +11,10 @@
     "pr89": "4e6b056c97bbbc77d7fb8781b50677d7769d501b",
     "pr91": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693",
     "pr92": "ea9fb01832dc968296401029b5c01ca0b08e1c38",
-    "pr93": "0b4dc77f744edfc3e40d18346f6f7d40f35bab51"
+    "pr93": "0b4dc77f744edfc3e40d18346f6f7d40f35bab51",
+    "pr95": "a2ef264152adc0ce4a3172dfc6f659ca0f016bda"
   },
-  "original_files_preserved": 80,
+  "original_files_preserved": 85,
   "previous_main_files_changed": [
     "README.md",
     "docs/research/README.md"
@@ -166,6 +167,15 @@
       "protocol": "docs/research/JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_PROTOCOL.md",
       "result": "docs/research/JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_RESULTS.md",
       "evidence": "docs/evidence/japan-context-seasonal-transfer-2025-20261125.json"
+    },
+    {
+      "pr": 95,
+      "topic": "Same-horse transitional heterogeneity peak",
+      "status": "Primary HOLD (54<100 low-history horses); all 12 point sequences decrease; six supported sensitivities do not establish peak",
+      "run_id": 45601408540,
+      "protocol": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-transitional-heterogeneity-20261126.json"
     }
   ],
   "original_blobs": [
@@ -200,6 +210,10 @@
     {
       "path": ".github/workflows/ecology-japan-context-seasonal-transfer-2025.yml",
       "sha": "d7f571f1b03757d0b9bdb4cbcdcda6ea8eef25ec"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-transitional-heterogeneity.yml",
+      "sha": "4ee5c4f1f01bbb56cf53df024ce7346fafe0c058"
     },
     {
       "path": ".github/workflows/ecology-japan-context-within-individual.yml",
@@ -264,6 +278,10 @@
     {
       "path": "docs/evidence/japan-context-seasonal-transfer-2025-20261125.json",
       "sha": "6ef4eb8f33a924231e8d602e034f57829538e5e0"
+    },
+    {
+      "path": "docs/evidence/japan-context-transitional-heterogeneity-20261126.json",
+      "sha": "bc6cf12589a36a86db46da3d1715b59310a5639f"
     },
     {
       "path": "docs/evidence/japan-context-within-individual-20261124.json",
@@ -362,6 +380,14 @@
       "sha": "c53ff104cf33724746b3ee635ae6a71e8857bd69"
     },
     {
+      "path": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_PROTOCOL.md",
+      "sha": "3285823a586dfd462c3c7e45121d1e9bca60fc13"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md",
+      "sha": "9ee60ff318b94547c929c749db8631f20f1a6670"
+    },
+    {
       "path": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_PROTOCOL.md",
       "sha": "ffa3477fa2170d15823e6d89a1446243717605ce"
     },
@@ -456,6 +482,10 @@
     {
       "path": "scripts/ecology_japan_context_seasonal_transfer_2025.py",
       "sha": "dacd7edca078b3faffc1dffced18919f253f84e2"
+    },
+    {
+      "path": "scripts/ecology_japan_context_transitional_heterogeneity.py",
+      "sha": "e73bf8ad37854f5e0d01f664895908a9a966118a"
     },
     {
       "path": "scripts/ecology_japan_context_within_individual.py",
