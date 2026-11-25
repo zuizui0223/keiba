@@ -1,0 +1,1113 @@
+{
+  "schema_version": 1,
+  "source": "Successful Actions complete aggregate stdout; artifact metadata verified; ZIP not independently extracted",
+  "source_commit": "4591c479232643f74049230d4a3f15cb830aef61",
+  "run_id": 45601408540,
+  "job_id": 139160975463,
+  "artifact": {
+    "id": 15016255784,
+    "digest": "sha256:50460e9fba3a7bacd535548b5a3e7fe837890c9cb53c8ec3bdbc440ec1170993",
+    "size_in_bytes": 5481,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45601408540/artifacts/15016255784"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_COMMON_COHORT_TRANSITIONAL_HETEROGENEITY",
+    "primary": "20261124/zero_vs_positive/fixed/both_peak_contrasts",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "target_scope": {
+      "2022": {
+        "source_starts": 120381,
+        "unknown_circuit_starts": 0,
+        "JRA_starts": 23285,
+        "eligible_starts": 9379,
+        "eligible_horses": 3011
+      },
+      "2023": {
+        "source_starts": 80939,
+        "unknown_circuit_starts": 0,
+        "JRA_starts": 12431,
+        "eligible_starts": 4824,
+        "eligible_horses": 1588
+      },
+      "2024": {
+        "source_starts": 42827,
+        "unknown_circuit_starts": 0,
+        "JRA_starts": 5053,
+        "eligible_starts": 1863,
+        "eligible_horses": 743
+      }
+    },
+    "support_gate": {
+      "horses_per_stratum": 100,
+      "sires_per_stratum": 30
+    },
+    "results": {
+      "20261124": {
+        "common_horses": 527,
+        "common_sires": 115,
+        "partitions": {
+          "zero_vs_positive": {
+            "fixed": {
+              "status": "HOLD_LOW_STRATUM_SUPPORT",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "no_prior_A",
+                "prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 54,
+                  "sires": 37
+                },
+                {
+                  "horses": 473,
+                  "sires": 109
+                }
+              ],
+              "H": [
+                0.0005797851957576941,
+                0.0002780615750896968,
+                0.000011155865883037902
+              ],
+              "stratified_weights": [
+                [
+                  1,
+                  0.6419423539819132
+                ],
+                [
+                  0.6771169321618872,
+                  0.37191258940079064
+                ],
+                [
+                  0.25833923152198734,
+                  0.19720677299390615
+                ]
+              ],
+              "pooled_weights": [
+                0.6930203195757138,
+                0.40641611130018807,
+                0.20411783167185793
+              ],
+              "stratified_oracle_gain": [
+                0.014877937384342841,
+                0.0051953967384890725,
+                0.0012515219164430675
+              ],
+              "pooled_oracle_gain": [
+                0.014298152188585147,
+                0.004917335163399376,
+                0.0012403660505600296
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0003017236206679973,
+                "2023_minus_2024": 0.0002669057092066589
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.0024719171647079974,
+                  "two_stratum_gain": 0.0029191707975198674,
+                  "stratified_minus_pooled": 0.00044725363281187007
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.00002201523757670651,
+                  "two_stratum_gain": -0.00014465481828595598,
+                  "stratified_minus_pooled": -0.00016667005586266248
+                }
+              },
+              "peak_inference": "HOLD"
+            },
+            "refreshed": {
+              "status": "HOLD_LOW_STRATUM_SUPPORT",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "no_prior_A",
+                "prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 54,
+                  "sires": 37
+                },
+                {
+                  "horses": 473,
+                  "sires": 109
+                }
+              ],
+              "H": [
+                0.0005797851957576941,
+                0.00021503157693350452,
+                0.00005416102285956846
+              ],
+              "stratified_weights": [
+                [
+                  1,
+                  0.6419423539819132
+                ],
+                [
+                  0.7308603928980367,
+                  0.4347985888024473
+                ],
+                [
+                  0.38686269283817426,
+                  0.2335758708331218
+                ]
+              ],
+              "pooled_weights": [
+                0.6930203195757138,
+                0.46693779603997815,
+                0.2501679617068035
+              ],
+              "stratified_oracle_gain": [
+                0.014877937384342841,
+                0.005742274626123696,
+                0.0015486659288175594
+              ],
+              "pooled_oracle_gain": [
+                0.014298152188585147,
+                0.005527243049190191,
+                0.001494504905957991
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0003647536188241896,
+                "2023_minus_2024": 0.00016087055407393606
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.004231483290570832,
+                  "two_stratum_gain": 0.004573252781068001,
+                  "stratified_minus_pooled": 0.00034176949049716937
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.0003724046633263773,
+                  "two_stratum_gain": 0.00038053933869735965,
+                  "stratified_minus_pooled": 0.000008134675370982366
+                }
+              },
+              "peak_inference": "HOLD"
+            }
+          },
+          "0_to_3_vs_4_plus": {
+            "fixed": {
+              "status": "DESCRIPTIVE",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "0_to_3_prior_A",
+                "4_plus_prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 288,
+                  "sires": 83
+                },
+                {
+                  "horses": 239,
+                  "sires": 84
+                }
+              ],
+              "H": [
+                0.001714534921457891,
+                0.0002777194691180457,
+                0.0001413383347239638
+              ],
+              "stratified_weights": [
+                [
+                  0.8970260046188682,
+                  0.41071693393631203
+                ],
+                [
+                  0.4885216142380443,
+                  0.2927983880780162
+                ],
+                [
+                  0.2626910500517915,
+                  0.12306412058065301
+                ]
+              ],
+              "pooled_weights": [
+                0.6930203195757134,
+                0.4064161113001879,
+                0.20411783167185804
+              ],
+              "stratified_oracle_gain": [
+                0.01601268711004302,
+                0.005195054632517416,
+                0.0013817043852839951
+              ],
+              "pooled_oracle_gain": [
+                0.01429815218858513,
+                0.0049173351633993705,
+                0.0012403660505600313
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0014368154523398454,
+                "2023_minus_2024": 0.0001363811343940819
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.0024719171647079965,
+                  "two_stratum_gain": 0.0021374688031029813,
+                  "stratified_minus_pooled": -0.00033444836160501524
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.000022015237576709562,
+                  "two_stratum_gain": 0.00014054017427693127,
+                  "stratified_minus_pooled": 0.0001185249367002217
+                }
+              },
+              "valid_draws": 999,
+              "pointwise_CI95": [
+                [
+                  -0.0031368406796109098,
+                  -0.00020340925408647253
+                ],
+                [
+                  -0.0004420538971105704,
+                  0.000770958574758636
+                ]
+              ],
+              "two_contrast_bonferroni_percentile_CI97_5": [
+                [
+                  -0.003536111685285142,
+                  -0.00015338373949533266
+                ],
+                [
+                  -0.0005571917025357167,
+                  0.0009362064000521461
+                ]
+              ],
+              "peak_inference": "NOT_ESTABLISHED"
+            },
+            "refreshed": {
+              "status": "DESCRIPTIVE",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "0_to_3_prior_A",
+                "4_plus_prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 288,
+                  "sires": 83
+                },
+                {
+                  "horses": 239,
+                  "sires": 84
+                }
+              ],
+              "H": [
+                0.001714534921457891,
+                0.00037980656155846716,
+                0.00019404003023078308
+              ],
+              "stratified_weights": [
+                [
+                  0.8970260046188682,
+                  0.41071693393631203
+                ],
+                [
+                  0.5718542511805883,
+                  0.32413774887569613
+                ],
+                [
+                  0.3271647583338044,
+                  0.1446358298148324
+                ]
+              ],
+              "pooled_weights": [
+                0.6930203195757134,
+                0.466937796039978,
+                0.25016796170680333
+              ],
+              "stratified_oracle_gain": [
+                0.01601268711004302,
+                0.005907049610748656,
+                0.0016885449361887723
+              ],
+              "pooled_oracle_gain": [
+                0.01429815218858513,
+                0.005527243049190189,
+                0.0014945049059579892
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.001334728359899424,
+                "2023_minus_2024": 0.00018576653132768408
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.004231483290570832,
+                  "two_stratum_gain": 0.0042813490118667795,
+                  "stratified_minus_pooled": 0.00004986572129594795
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.00037240466332637707,
+                  "two_stratum_gain": 0.0005373291192011463,
+                  "stratified_minus_pooled": 0.0001649244558747692
+                }
+              },
+              "valid_draws": 999,
+              "pointwise_CI95": [
+                [
+                  -0.0030669004355715138,
+                  -0.00002250449261696896
+                ],
+                [
+                  -0.0004399662655911234,
+                  0.0009611588704964079
+                ]
+              ],
+              "two_contrast_bonferroni_percentile_CI97_5": [
+                [
+                  -0.0034492235233184983,
+                  0.00011239751670508214
+                ],
+                [
+                  -0.0005705866159207297,
+                  0.0010611599545035948
+                ]
+              ],
+              "peak_inference": "NOT_ESTABLISHED"
+            }
+          }
+        }
+      },
+      "20261125": {
+        "common_horses": 527,
+        "common_sires": 115,
+        "partitions": {
+          "zero_vs_positive": {
+            "fixed": {
+              "status": "HOLD_LOW_STRATUM_SUPPORT",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "no_prior_A",
+                "prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 54,
+                  "sires": 37
+                },
+                {
+                  "horses": 473,
+                  "sires": 109
+                }
+              ],
+              "H": [
+                0.0004891410620959363,
+                0.00019040055819246043,
+                0.000009357622138031615
+              ],
+              "stratified_weights": [
+                [
+                  1,
+                  0.6365025665402285
+                ],
+                [
+                  0.6268889368119974,
+                  0.3710993287115121
+                ],
+                [
+                  0.2657724229522896,
+                  0.20906609306242244
+                ]
+              ],
+              "pooled_weights": [
+                0.6813463171874266,
+                0.3988481189437051,
+                0.21521775834951773
+              ],
+              "stratified_oracle_gain": [
+                0.014457564736174223,
+                0.004976995414480064,
+                0.0014030527461818087
+              ],
+              "pooled_oracle_gain": [
+                0.013968423674078287,
+                0.004786594856287603,
+                0.0013936951240437771
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.00029874050390347583,
+                "2023_minus_2024": 0.0001810429360544288
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.0023853141138146217,
+                  "two_stratum_gain": 0.002633054655971837,
+                  "stratified_minus_pooled": 0.00024774054215721516
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.00037908183200060467,
+                  "two_stratum_gain": 0.0002731015670659929,
+                  "stratified_minus_pooled": -0.00010598026493461178
+                }
+              },
+              "peak_inference": "HOLD"
+            },
+            "refreshed": {
+              "status": "HOLD_LOW_STRATUM_SUPPORT",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "no_prior_A",
+                "prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 54,
+                  "sires": 37
+                },
+                {
+                  "horses": 473,
+                  "sires": 109
+                }
+              ],
+              "H": [
+                0.0004891410620959363,
+                0.00013226905716484747,
+                0.000041955113258234375
+              ],
+              "stratified_weights": [
+                [
+                  1,
+                  0.6365025665402285
+                ],
+                [
+                  0.6621686091794362,
+                  0.43265590753236594
+                ],
+                [
+                  0.38029200021304804,
+                  0.24761344775268868
+                ]
+              ],
+              "pooled_weights": [
+                0.6813463171874266,
+                0.45767188513808127,
+                0.2621888081388514
+              ],
+              "stratified_oracle_gain": [
+                0.014457564736174223,
+                0.005548072476767387,
+                0.0017174081495588754
+              ],
+              "pooled_oracle_gain": [
+                0.013968423674078287,
+                0.00541580341960254,
+                0.001675453036300641
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0003568720049310888,
+                "2023_minus_2024": 0.0000903139439066131
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.004122241834824869,
+                  "two_stratum_gain": 0.004269151097032338,
+                  "stratified_minus_pooled": 0.00014690926220746817
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.0007440829331517788,
+                  "two_stratum_gain": 0.000761811164873575,
+                  "stratified_minus_pooled": 0.000017728231721796214
+                }
+              },
+              "peak_inference": "HOLD"
+            }
+          },
+          "0_to_3_vs_4_plus": {
+            "fixed": {
+              "status": "DESCRIPTIVE",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "0_to_3_prior_A",
+                "4_plus_prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 288,
+                  "sires": 83
+                },
+                {
+                  "horses": 239,
+                  "sires": 84
+                }
+              ],
+              "H": [
+                0.0019614060025241638,
+                0.0004124056567428678,
+                0.0002234550583218877
+              ],
+              "stratified_weights": [
+                [
+                  0.9006216752033199,
+                  0.3840660396074608
+                ],
+                [
+                  0.4993949495619374,
+                  0.26253280295727593
+                ],
+                [
+                  0.2892295936694736,
+                  0.11487698523572172
+                ]
+              ],
+              "pooled_weights": [
+                0.6813463171874267,
+                0.3988481189437052,
+                0.21521775834951787
+              ],
+              "stratified_oracle_gain": [
+                0.015929829676602454,
+                0.005199000513030474,
+                0.0016171501823656668
+              ],
+              "pooled_oracle_gain": [
+                0.01396842367407829,
+                0.004786594856287606,
+                0.001393695124043779
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.001549000345781296,
+                "2023_minus_2024": 0.0001889505984209801
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.0023853141138146243,
+                  "two_stratum_gain": 0.00222267983734175,
+                  "stratified_minus_pooled": -0.00016263427647287415
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.00037908183200060743,
+                  "two_stratum_gain": 0.0005738141499546076,
+                  "stratified_minus_pooled": 0.00019473231795400018
+                }
+              },
+              "valid_draws": 999,
+              "pointwise_CI95": [
+                [
+                  -0.003480855084709688,
+                  -0.00021894878799096247
+                ],
+                [
+                  -0.000461650381857465,
+                  0.0009690751021905428
+                ]
+              ],
+              "two_contrast_bonferroni_percentile_CI97_5": [
+                [
+                  -0.003972228547106988,
+                  -0.000014291991988362209
+                ],
+                [
+                  -0.0006012018312224344,
+                  0.0011330672991790736
+                ]
+              ],
+              "peak_inference": "NOT_ESTABLISHED"
+            },
+            "refreshed": {
+              "status": "DESCRIPTIVE",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "0_to_3_prior_A",
+                "4_plus_prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 288,
+                  "sires": 83
+                },
+                {
+                  "horses": 239,
+                  "sires": 84
+                }
+              ],
+              "H": [
+                0.0019614060025241638,
+                0.0005694500617229184,
+                0.0002590000527094144
+              ],
+              "stratified_weights": [
+                [
+                  0.9006216752033199,
+                  0.3840660396074608
+                ],
+                [
+                  0.5864538762683017,
+                  0.28665220666267494
+                ],
+                [
+                  0.3518056770347213,
+                  0.14361026066718693
+                ]
+              ],
+              "pooled_weights": [
+                0.6813463171874267,
+                0.45767188513808127,
+                0.2621888081388513
+              ],
+              "stratified_oracle_gain": [
+                0.015929829676602454,
+                0.005985253481325459,
+                0.0019344530890100535
+              ],
+              "pooled_oracle_gain": [
+                0.01396842367407829,
+                0.0054158034196025405,
+                0.001675453036300639
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0013919559408012453,
+                "2023_minus_2024": 0.000310450009013504
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.00412224183482487,
+                  "two_stratum_gain": 0.0044240992043088016,
+                  "stratified_minus_pooled": 0.0003018573694839313
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.0007440829331517754,
+                  "two_stratum_gain": 0.0009554772066137181,
+                  "stratified_minus_pooled": 0.0002113942734619427
+                }
+              },
+              "valid_draws": 999,
+              "pointwise_CI95": [
+                [
+                  -0.003340772026780848,
+                  0.00006002316361358122
+                ],
+                [
+                  -0.0004153032590843247,
+                  0.0012328833804023007
+                ]
+              ],
+              "two_contrast_bonferroni_percentile_CI97_5": [
+                [
+                  -0.0038853695267624263,
+                  0.000218654101489242
+                ],
+                [
+                  -0.0005224128481725863,
+                  0.0013902630052041933
+                ]
+              ],
+              "peak_inference": "NOT_ESTABLISHED"
+            }
+          }
+        }
+      },
+      "20261126": {
+        "common_horses": 527,
+        "common_sires": 115,
+        "partitions": {
+          "zero_vs_positive": {
+            "fixed": {
+              "status": "HOLD_LOW_STRATUM_SUPPORT",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "no_prior_A",
+                "prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 54,
+                  "sires": 37
+                },
+                {
+                  "horses": 473,
+                  "sires": 109
+                }
+              ],
+              "H": [
+                0.0006419952231198119,
+                0.00022662159362012244,
+                0.00000482053679577623
+              ],
+              "stratified_weights": [
+                [
+                  1,
+                  0.6509849394098587
+                ],
+                [
+                  0.6774378257654737,
+                  0.3965947928672635
+                ],
+                [
+                  0.25265748289737444,
+                  0.21169741093655844
+                ]
+              ],
+              "pooled_weights": [
+                0.70557649318729,
+                0.4273476052397314,
+                0.2161826117790885
+              ],
+              "stratified_oracle_gain": [
+                0.015311246510401519,
+                0.0056078607094034024,
+                0.001381907161023549
+              ],
+              "pooled_oracle_gain": [
+                0.014669251287281707,
+                0.00538123911578328,
+                0.0013770866242277728
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0004153736294996895,
+                "2023_minus_2024": 0.0002218010568243462
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.003100244915635757,
+                  "two_stratum_gain": 0.003574086674568312,
+                  "stratified_minus_pooled": 0.00047384175893255484
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.00006318276651660016,
+                  "two_stratum_gain": -0.00009733473552778737,
+                  "stratified_minus_pooled": -0.00016051750204438753
+                }
+              },
+              "peak_inference": "HOLD"
+            },
+            "refreshed": {
+              "status": "HOLD_LOW_STRATUM_SUPPORT",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "no_prior_A",
+                "prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 54,
+                  "sires": 37
+                },
+                {
+                  "horses": 473,
+                  "sires": 109
+                }
+              ],
+              "H": [
+                0.0006419952231198119,
+                0.0001690100916488706,
+                0.00003134363507715826
+              ],
+              "stratified_weights": [
+                [
+                  1,
+                  0.6509849394098587
+                ],
+                [
+                  0.7196809433776206,
+                  0.45647935452288435
+                ],
+                [
+                  0.3631915038630863,
+                  0.2465340729778917
+                ]
+              ],
+              "pooled_weights": [
+                0.70557649318729,
+                0.4850077421433258,
+                0.2591836187046145
+              ],
+              "stratified_oracle_gain": [
+                0.015311246510401519,
+                0.0061074074642169214,
+                0.0016317241887707115
+              ],
+              "pooled_oracle_gain": [
+                0.014669251287281707,
+                0.005938397372568051,
+                0.0016003805536935532
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0004729851314709413,
+                "2023_minus_2024": 0.00013766645657171234
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.004710223424515856,
+                  "two_stratum_gain": 0.005040842120667025,
+                  "stratified_minus_pooled": 0.00033061869615116923
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.0003854573307396391,
+                  "two_stratum_gain": 0.000367217244986724,
+                  "stratified_minus_pooled": -0.000018240085752915065
+                }
+              },
+              "peak_inference": "HOLD"
+            }
+          },
+          "0_to_3_vs_4_plus": {
+            "fixed": {
+              "status": "DESCRIPTIVE",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "0_to_3_prior_A",
+                "4_plus_prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 288,
+                  "sires": 83
+                },
+                {
+                  "horses": 239,
+                  "sires": 84
+                }
+              ],
+              "H": [
+                0.0011474974320014233,
+                0.00023305043512300734,
+                0.00017622598224436583
+              ],
+              "stratified_weights": [
+                [
+                  0.867758067543416,
+                  0.46545531302858123
+                ],
+                [
+                  0.5004363679369803,
+                  0.31913457287228336
+                ],
+                [
+                  0.27973920657824053,
+                  0.1220826216252767
+                ]
+              ],
+              "pooled_weights": [
+                0.7055764931872899,
+                0.4273476052397315,
+                0.21618261177908862
+              ],
+              "stratified_oracle_gain": [
+                0.01581674871928312,
+                0.005614289550906289,
+                0.0015533126064721397
+              ],
+              "pooled_oracle_gain": [
+                0.014669251287281698,
+                0.005381239115783282,
+                0.0013770866242277739
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0009144469968784159,
+                "2023_minus_2024": 0.00005682445287864151
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.0031002449156357615,
+                  "two_stratum_gain": 0.0029870100727875386,
+                  "stratified_minus_pooled": -0.00011323484284822289
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.00006318276651660269,
+                  "two_stratum_gain": 0.0002354447631892592,
+                  "stratified_minus_pooled": 0.0001722619966726565
+                }
+              },
+              "valid_draws": 999,
+              "pointwise_CI95": [
+                [
+                  -0.0023797237175135523,
+                  0.000025126676775408995
+                ],
+                [
+                  -0.0006165263018634463,
+                  0.0006395656049711057
+                ]
+              ],
+              "two_contrast_bonferroni_percentile_CI97_5": [
+                [
+                  -0.002859789926554334,
+                  0.0001372752733528278
+                ],
+                [
+                  -0.0007604774294483798,
+                  0.0007855267384302099
+                ]
+              ],
+              "peak_inference": "NOT_ESTABLISHED"
+            },
+            "refreshed": {
+              "status": "DESCRIPTIVE",
+              "years": [
+                2022,
+                2023,
+                2024
+              ],
+              "group_labels": [
+                "0_to_3_prior_A",
+                "4_plus_prior_A"
+              ],
+              "stratum_support": [
+                {
+                  "horses": 288,
+                  "sires": 83
+                },
+                {
+                  "horses": 239,
+                  "sires": 84
+                }
+              ],
+              "H": [
+                0.0011474974320014233,
+                0.00030796917111456865,
+                0.00016320880972671317
+              ],
+              "stratified_weights": [
+                [
+                  0.867758067543416,
+                  0.46545531302858123
+                ],
+                [
+                  0.5762733777477158,
+                  0.3513395579106484
+                ],
+                [
+                  0.3274095850166409,
+                  0.15877159157469883
+                ]
+              ],
+              "pooled_weights": [
+                0.7055764931872899,
+                0.48500774214332587,
+                0.2591836187046145
+              ],
+              "stratified_oracle_gain": [
+                0.01581674871928312,
+                0.006246366543682618,
+                0.0017635893634202662
+              ],
+              "pooled_oracle_gain": [
+                0.014669251287281698,
+                0.005938397372568049,
+                0.001600380553693553
+              ],
+              "peak_contrasts": {
+                "2023_minus_2022": -0.0008395282608868546,
+                "2023_minus_2024": 0.00014476036138785548
+              },
+              "both_point_positive": false,
+              "earlier_year_weight_transfer_selected_common_cohort": {
+                "2022_to_2023": {
+                  "pooled_gain": 0.004710223424515857,
+                  "two_stratum_gain": 0.004838370708276299,
+                  "stratified_minus_pooled": 0.00012814728376044256
+                },
+                "2023_to_2024": {
+                  "pooled_gain": 0.0003854573307396391,
+                  "two_stratum_gain": 0.0005276354723359987,
+                  "stratified_minus_pooled": 0.0001421781415963596
+                }
+              },
+              "valid_draws": 999,
+              "pointwise_CI95": [
+                [
+                  -0.002339563922206343,
+                  0.00015698146448503777
+                ],
+                [
+                  -0.000502922131672743,
+                  0.0008115737061655743
+                ]
+              ],
+              "two_contrast_bonferroni_percentile_CI97_5": [
+                [
+                  -0.0028066083674560312,
+                  0.000303160567276712
+                ],
+                [
+                  -0.0006437470361999225,
+                  0.0009367561104530802
+                ]
+              ],
+              "peak_inference": "NOT_ESTABLISHED"
+            }
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Prior annual aggregate peak already inspected; no prospective confirmation.",
+      "Identical 2022–24 eligible observed horses, not survival or national registry.",
+      "Pre-2022 own count groups are fixed, not current no-history or debut.",
+      "H is a sample-optimal diagnostic. Earlier-year weights conditional on future common membership are not genuine forecasts.",
+      "Paired sire resampling is conditional on selected cohort and fixed model; correction/profile estimates not refit. Two-contrast adjustment within one specification only.",
+      "No new data, causal genetic effect, animal learning, or market inference."
+    ]
+  },
+  "derived": {
+    "conditions": 12,
+    "monotone_decrease": 12,
+    "peak_point_supported": 0,
+    "low_support": 6,
+    "evaluable": 6,
+    "adjusted_negative_2023_minus_2022": 2,
+    "adjusted_positive_2023_minus_2024": 0,
+    "earlier_weight_transfer_positive": {
+      "2022_to_2023": 9,
+      "2023_to_2024": 8
+    }
+  }
+}
