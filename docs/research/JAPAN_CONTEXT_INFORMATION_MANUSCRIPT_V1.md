@@ -1,6 +1,6 @@
 # Individual history reshapes the predictive value of family information in managed environmental allocation
 
-**Research manuscript v1 · 25 November 2026 · retrospective observational study · not submitted.** Author list and affiliations to be confirmed. Main text draft; figures and publication-rights audit remain outstanding.
+**Research manuscript v1 · 25 November 2026 · retrospective observational study · not submitted.** Author list and affiliations to be confirmed. Main text draft; four aggregate-derived figure drafts are now available. Publication-rights audit and independent reproduction remain outstanding.
 
 ## Abstract
 
@@ -126,11 +126,13 @@ Johnson, D. H. (1980). The comparison of usage and availability measurements for
 
 Kruuk, L. E. B. (2004). Estimating genetic parameters in natural populations using the “animal model”. *Philosophical Transactions of the Royal Society B*, 359, 873–890. https://doi.org/10.1098/rstb.2003.1437
 
-## Figures (planned; not yet rendered)
+## Figures (vector drafts, aggregate-derived)
+
+[Four SVG figures and numeric parity audit](figures/context-information/README.md).
 
 1. Observation structure and initial allocation: equalized parental support, early/later allocation effects, no unsupported genetic interpretation.
 2. Longitudinal information substitution: common-cohort gains, update and outcome terms, membership remainder, plus fixed-correction three-year diagnostic.
 3. Recorded-sire direction control and generalization: magnitude-matched alignment contrasts, three distance-band intervals and unsupported opportunity proxy (different scales).
-4. Temporal transport and coverage: annual calibrated vs full comparison, same-season 2022–2025 estimates, 2025 coverage funnel. No combined effect-size meta-analysis or comparison of unlike endpoints on a common standardized scale.
+4. Temporal transport and coverage: annual calibrated vs full comparison, same-season 2022–2025 estimates, 2025 coverage and same-cohort model comparison. No combined effect-size meta-analysis or comparison of unlike endpoints on a common standardized scale.
 
 See [claim-to-evidence table](JAPAN_CONTEXT_INFORMATION_MANUSCRIPT_EVIDENCE.md) and [integrated evidence](INTEGRATED_CONTEXT_INFORMATION_20261124.md). 

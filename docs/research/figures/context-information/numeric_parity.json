@@ -1,0 +1,254 @@
+{
+  "status": "MANUSCRIPT_SELECTED_NUMERIC_PARITY_AND_FIGURE_DATA",
+  "primary_seed": 20261124,
+  "checks": [
+    {
+      "name": "A annual n",
+      "actual": 7276,
+      "expected": 7276,
+      "tolerance": 0
+    },
+    {
+      "name": "A annual gain",
+      "actual": 0.01471092236633107,
+      "expected": 0.014711,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "A annual baseline RMSE",
+      "actual": 0.4232463747043911,
+      "expected": 0.423246,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "A annual family RMSE",
+      "actual": 0.4054954640117183,
+      "expected": 0.405495,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "parent donor sire mean",
+      "actual": 190.65727251015048,
+      "expected": 190.6572725,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "parent donor dam mean",
+      "actual": 2.078098877477908,
+      "expected": 2.0780989,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "parent equal support",
+      "actual": 4187,
+      "expected": 4187,
+      "tolerance": 0
+    },
+    {
+      "name": "parent full gap",
+      "actual": 0.008982098378247259,
+      "expected": 0.008982,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "parent equal gap",
+      "actual": 0.0012578655448172297,
+      "expected": 0.001258,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "parent gap reduction",
+      "actual": 85.99586096870733,
+      "expected": 86,
+      "tolerance": 0.05
+    },
+    {
+      "name": "first gain",
+      "actual": 0.013750704256089798,
+      "expected": 0.013751,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "later gain",
+      "actual": 0.0020853028929635727,
+      "expected": 0.002085,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "paired response gain",
+      "actual": 0.000806000218706896,
+      "expected": 0.000806,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "cold B2022 gain",
+      "actual": 0.01978027965632606,
+      "expected": 0.01978,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "common horses",
+      "actual": 599,
+      "expected": 599,
+      "tolerance": 0
+    },
+    {
+      "name": "common early",
+      "actual": 0.01171190673357505,
+      "expected": 0.011712,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "common late",
+      "actual": -0.01586561591266177,
+      "expected": -0.015866,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "own update",
+      "actual": -0.016105814555317205,
+      "expected": -0.016106,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "outcome shift",
+      "actual": -0.011471708090919618,
+      "expected": -0.011472,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "membership",
+      "actual": 0.010496732939627666,
+      "expected": 0.010497,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "full change",
+      "actual": -0.017080789706609156,
+      "expected": -0.017081,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "decomposition exact closure",
+      "actual": -0.017080789706609156,
+      "expected": -0.017080789706609156,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "within common exact closure",
+      "actual": -0.02757752264623682,
+      "expected": -0.027577522646236825,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "primary alignment",
+      "actual": 0.012457149541242121,
+      "expected": 0.012457,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "primary matched n",
+      "actual": 565,
+      "expected": 565,
+      "tolerance": 0
+    },
+    {
+      "name": "matched magnitude 1200-1599",
+      "actual": 0.14035908398728655,
+      "expected": 0.14035908398728655,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "matched magnitude 1600-1999",
+      "actual": 0.17485698911918418,
+      "expected": 0.17485698911918418,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "matched magnitude 2000-2399",
+      "actual": 0.08903139146806198,
+      "expected": 0.08903139146806198,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "short own update",
+      "actual": -0.01503752854633637,
+      "expected": -0.015038,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "long own update",
+      "actual": -0.0015884911465663262,
+      "expected": -0.001588,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "opportunity adjusted",
+      "actual": 0.00044108365683818057,
+      "expected": 0.000441,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "annual 2024 gated",
+      "actual": 0.0022820052889808914,
+      "expected": 0.002282,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "annual 2024 full",
+      "actual": -0.009304296089139295,
+      "expected": -0.009304,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "season 2025 gated",
+      "actual": 0.000426926612878394,
+      "expected": 0.000427,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "season 2025 full vs gate",
+      "actual": 0.010335935202627973,
+      "expected": 0.010336,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "strict horses",
+      "actual": 2839,
+      "expected": 2839,
+      "tolerance": 0
+    },
+    {
+      "name": "anchored horses",
+      "actual": 194,
+      "expected": 194,
+      "tolerance": 0
+    },
+    {
+      "name": "archive-first horses",
+      "actual": 664,
+      "expected": 664,
+      "tolerance": 0
+    },
+    {
+      "name": "coverage count closure",
+      "actual": 2839,
+      "expected": 2839,
+      "tolerance": 0
+    },
+    {
+      "name": "scalar optimum primary 2022",
+      "actual": 0.01429815218858515,
+      "expected": 0.014298,
+      "tolerance": 6e-7
+    },
+    {
+      "name": "scalar optimum primary 2024",
+      "actual": 0.0012403660505600315,
+      "expected": 0.00124,
+      "tolerance": 6e-7
+    }
+  ],
+  "checks_passed": 41,
+  "scope": "Selected manuscript claims and plotted data only; archived aggregate receipts, not independent raw-data or ZIP reproduction."
+}
