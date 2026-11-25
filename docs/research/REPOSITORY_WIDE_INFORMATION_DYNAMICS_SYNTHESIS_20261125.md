@@ -33,6 +33,10 @@ At each *distinct measured endpoint*, consider an own-history predictor B and a 
 
 [New source-linked arithmetic crosswalk](INFORMATION_MEMBERSHIP_NONALIGNMENT_20261125.md): rank gate vs always-family deterioration is amplified by membership (1.735× the same-horse point change, paired interval uncertain); allocation fixed correction vs own-only deterioration is partly offset by membership (38.1% primary). Longer-distance allocation gives a boundary case with sign varying by split. The result compares different estimands, not a pooled effect or formal interaction. Rank gate exposure and signed family contribution mass are retained as separate observation-weight diagnostics.
 
+## Predictive weighting and heterogeneity
+
+[Bounded scalar and two-stratum arithmetic audit](INFORMATION_WEIGHT_BOUNDARY_AND_HETEROGENEITY_20261125.md) separates residual alignment, excess weighting, and energy-weighted heterogeneity (with a clipping penalty). In all three split sensitivities, both fixed and refreshed profiles show a descriptive intermediate-year peak in the extra two-stratum sample-optimal gain. Different yearly cohorts, no new intervals; not a market threshold or general law. Retain earlier-A actual calibration, not these evaluation-outcome-dependent weights.
+
 ## Publication decision
 
 Keep one main empirical paper on managed allocation (16 completed analyses), expand its discussion with the separate rank, GPS and parental-observation evidence, and keep a traceable repository-wide program and separate papers for GPS/phenotype, rank temporal transport, pedigree/genomic infrastructure and collective market representation. Neither combining incompatible response units nor appending unrelated positive metrics would strengthen the core. A larger single integrated biological mechanism paper needs same-horse joins, authorized data, new validation and measured observer behavior.

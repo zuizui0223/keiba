@@ -1,0 +1,27 @@
+name: "Information weighting and aggregation arithmetic"
+on:
+  push:
+    branches: [analysis/integrated-context-information-20261124]
+    paths:
+      - "scripts/ecology_information_weight_heterogeneity.mjs"
+      - "docs/evidence/information-weight-boundary-heterogeneity-20261125.json"
+      - ".github/workflows/ecology-information-weight-heterogeneity.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_information_weight_heterogeneity.mjs"
+      - "docs/evidence/information-weight-boundary-heterogeneity-20261125.json"
+      - ".github/workflows/ecology-information-weight-heterogeneity.yml"
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_information_weight_heterogeneity.mjs --check
