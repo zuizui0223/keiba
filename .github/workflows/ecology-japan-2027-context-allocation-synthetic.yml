@@ -1,0 +1,44 @@
+name: "2027 context allocation kernel: fictional-only audit"
+on:
+  push:
+    branches: [analysis/context-prospective-allocation-2027-20261125]
+    paths:
+      - "scripts/ecology_japan_2027_context_allocation_kernel.py"
+      - "scripts/ecology_japan_2027_context_history_fit.py"
+      - "tests/test_ecology_japan_2027_context_allocation_kernel.py"
+      - "tests/test_ecology_japan_2027_context_history_fit.py"
+      - "scripts/ecology_japan_2027_context_pledge.py"
+      - "scripts/ecology_japan_2027_context_source_adapter.py"
+      - "tests/test_ecology_japan_2027_context_source_adapter.py"
+      - "tests/test_ecology_japan_2027_context_pledge.py"
+      - ".github/workflows/ecology-japan-2027-context-allocation-synthetic.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_japan_2027_context_allocation_kernel.py"
+      - "scripts/ecology_japan_2027_context_history_fit.py"
+      - "tests/test_ecology_japan_2027_context_allocation_kernel.py"
+      - "tests/test_ecology_japan_2027_context_history_fit.py"
+      - "scripts/ecology_japan_2027_context_pledge.py"
+      - "scripts/ecology_japan_2027_context_source_adapter.py"
+      - "tests/test_ecology_japan_2027_context_source_adapter.py"
+      - "tests/test_ecology_japan_2027_context_pledge.py"
+      - ".github/workflows/ecology-japan-2027-context-allocation-synthetic.yml"
+permissions:
+  contents: read
+jobs:
+  fictional-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run fictional seasonal freeze and denominator tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_allocation_kernel.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_history_fit.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_pledge.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_source_adapter.py' -v
