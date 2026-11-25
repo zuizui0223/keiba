@@ -19,6 +19,8 @@
 
 | Transitional heterogeneity | [PR95](JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md): same 527 horses, all 12 sequences decrease; primary 54<100 HOLD | Annual-cohort peak does not reproduce in selected common sample | Universal hump-shaped temporal law or proof of causal membership effect |
 
+| Direct membership alignment | [PR96](JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_RESULTS.md): 18/18 moment-parity conditions, 12/12 positive point directions, 12/12 support HOLD | Numerically verifies reconstruction; no new interval | Statistical confirmation of alignment mechanism, independent replication or biological selection |
+
 ## Manuscript decisions
 
 Core novelty is the combination of fixed-correction within-horse decomposition, direction-only matched alternative-sire diagnostic, and observation membership. The exact squared-loss identity is elementary algebra, not itself a novel mathematical theorem. The application and separation of quantities in the observed data are the contribution. Family resemblance alone, high prediction performance alone, ABM/PDE and market models, anonymous genomes and partial pedigrees are not sufficient to make a single causal paper; those projects remain separate. No pooled meta-analysis across the 16 overlapping analyses. This manuscript can be written before the 2027 study, but submission should not claim a positive prospective result.

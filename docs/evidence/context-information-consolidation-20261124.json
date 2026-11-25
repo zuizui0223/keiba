@@ -12,9 +12,10 @@
     "pr91": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693",
     "pr92": "ea9fb01832dc968296401029b5c01ca0b08e1c38",
     "pr93": "0b4dc77f744edfc3e40d18346f6f7d40f35bab51",
-    "pr95": "a2ef264152adc0ce4a3172dfc6f659ca0f016bda"
+    "pr95": "a2ef264152adc0ce4a3172dfc6f659ca0f016bda",
+    "pr96": "70dba2ca1a7cebf9240582c2ab7c1282c384c283"
   },
-  "original_files_preserved": 85,
+  "original_files_preserved": 90,
   "previous_main_files_changed": [
     "README.md",
     "docs/research/README.md"
@@ -176,6 +177,15 @@
       "protocol": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_PROTOCOL.md",
       "result": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md",
       "evidence": "docs/evidence/japan-context-transitional-heterogeneity-20261126.json"
+    },
+    {
+      "pr": 96,
+      "topic": "Direct-source membership alignment parity and uncertainty",
+      "status": "All 18 recovered moment conditions reproduced; all 12 point directions positive; all 12 support HOLD; no intervals",
+      "run_id": 45657243849,
+      "protocol": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-membership-alignment-20261126.json"
     }
   ],
   "original_blobs": [
@@ -194,6 +204,10 @@
     {
       "path": ".github/workflows/ecology-japan-context-management-matched.yml",
       "sha": "f009691640663c088915e9d3782664b576cb4e42"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-membership-alignment.yml",
+      "sha": "99ef612ec3216810d961338bda2336d8f2950df2"
     },
     {
       "path": ".github/workflows/ecology-japan-context-occupancy-independent.yml",
@@ -262,6 +276,10 @@
     {
       "path": "docs/evidence/japan-context-management-matched-20261124.json",
       "sha": "9239de2233d3fde6d2068f9aeba16db7c752360e"
+    },
+    {
+      "path": "docs/evidence/japan-context-membership-alignment-20261126.json",
+      "sha": "0ad7dd277ebc35b0f5c3ad14b85f4b412a6fe580"
     },
     {
       "path": "docs/evidence/japan-context-occupancy-independent-20261124.json",
@@ -346,6 +364,14 @@
     {
       "path": "docs/research/JAPAN_CONTEXT_MANAGEMENT_MATCHED_RESULTS.md",
       "sha": "f9ca4813e69bc3ecc20b5c6c53d1df9997e46f54"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_PROTOCOL.md",
+      "sha": "4560a96a622fcf60bd6d2cb967656a0e7944d115"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_RESULTS.md",
+      "sha": "302673e25c634d795320dbc301b578257d833b30"
     },
     {
       "path": "docs/research/JAPAN_CONTEXT_OCCUPANCY_INDEPENDENT_PROTOCOL.md",
@@ -466,6 +492,10 @@
     {
       "path": "scripts/ecology_japan_context_management_matched.py",
       "sha": "b7cb3ebd4d236a3490965cfc5edbd6436ce77c11"
+    },
+    {
+      "path": "scripts/ecology_japan_context_membership_alignment.py",
+      "sha": "0a9d0799739b0bed0cde5a73a8f63ddd7dd510a6"
     },
     {
       "path": "scripts/ecology_japan_context_occupancy_independent.py",
