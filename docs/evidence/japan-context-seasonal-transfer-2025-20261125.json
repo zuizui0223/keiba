@@ -1,0 +1,4129 @@
+{
+  "schema_version": 1,
+  "source": "Completed Actions compact stdout (all-target scores, weights and coverage); artifact metadata checked; full ZIP/count-bin results not independently extracted",
+  "run_id": 45527759025,
+  "job_id": 138915223293,
+  "source_commit": "08f527ee365b237bae3de63fd178319dfaed8b26",
+  "artifact": {
+    "id": 14983651717,
+    "digest": "sha256:adcf17b1abcf915259bc93b67c509edf09d31b6836841b3c8769c5e1b7c70ce4",
+    "size_in_bytes": 48750,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45527759025/artifacts/14983651717"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_2025_SEASONAL_ALLOCATION_TRANSFER",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "primary": "20261124/2025/season_calibrated/refreshed/all/N_minus_G",
+    "window": "January 1–March 27 inclusive each year",
+    "source_2025_gate": {
+      "source_date_max": "20250327",
+      "eligible_races": 310,
+      "race_status": {
+        "STRICT_COMPLETE_CLASSIFIED_RACE": 280,
+        "TIED_OR_DUPLICATED_RANKS": 9,
+        "CLASSIFIED_PROXY_INCOMPLETE_DECLARED": 21
+      },
+      "candidate": {
+        "starts": 4370,
+        "native_horses": 3058,
+        "first_valid_B_record_in_2025_horses": 719
+      },
+      "strict_exact": {
+        "starts": 3939,
+        "native_horses": 2839,
+        "first_valid_B_record_in_2025_horses": 664
+      },
+      "anchored": {
+        "starts": 266,
+        "native_horses": 194,
+        "first_valid_B_record_in_2025_horses": 0
+      },
+      "anchored_known_sire": {
+        "starts": 266,
+        "native_horses": 194,
+        "first_valid_B_record_in_2025_horses": 0
+      },
+      "unanchored_strict": {
+        "starts": 3673,
+        "native_horses": 2645,
+        "first_valid_B_record_in_2025_horses": 664
+      },
+      "horse_table_columns": [
+        "id",
+        "hid",
+        "born",
+        "name",
+        "info",
+        "races"
+      ],
+      "explicit_direct_parent_id_columns": [],
+      "native_parent_identity_verified": false,
+      "strict_race_entries_missing_valid_matching_history": 0
+    },
+    "season_support": {
+      "2019": {
+        "horses": 3094,
+        "sires": 243,
+        "starts": 4732
+      },
+      "2020": {
+        "horses": 3152,
+        "sires": 269,
+        "starts": 4750
+      },
+      "2021": {
+        "horses": 3116,
+        "sires": 257,
+        "starts": 4780
+      },
+      "2022": {
+        "horses": 1861,
+        "sires": 181,
+        "starts": 2894
+      },
+      "2023": {
+        "horses": 1003,
+        "sires": 145,
+        "starts": 1574
+      },
+      "2024": {
+        "horses": 472,
+        "sires": 109,
+        "starts": 713
+      },
+      "2025": {
+        "horses": 194,
+        "sires": 81,
+        "starts": 266
+      }
+    },
+    "limitations": [
+      "2025 season not full year; same B source previously inspected for ranks, not prospective.",
+      "Only pre-2022 event-anchored horses can receive A parent IDs; native parent identity not verified; first recorded B season not official debut.",
+      "Target conditional on observed strict starts, not complete eligibility or choice. No current-season label in history.",
+      "No genetic, learning, physiological or fitness inference. Conditional pointwise sire intervals, dependent splits.",
+      "Season-specific calibration can HOLD on prespecified support. Annual-trained gate is separate sensitivity, not replacement primary."
+    ],
+    "results": {
+      "20261124": {
+        "season_weights_status": "EVALUATED",
+        "season_weights": {
+          "0": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 2791,
+            "monotone": [
+              1,
+              1,
+              0.8182548064926275,
+              0.35109271297994377
+            ],
+            "pooled": 0.9865452980940363,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 893,
+                "informative_horses": 620,
+                "informative_sires": 91,
+                "unconstrained": 1.3981540803891674
+              },
+              {
+                "bin": "1-3",
+                "rows": 1132,
+                "informative_horses": 835,
+                "informative_sires": 103,
+                "unconstrained": 1.1383279865142404
+              },
+              {
+                "bin": "4-7",
+                "rows": 506,
+                "informative_horses": 433,
+                "informative_sires": 82,
+                "unconstrained": 0.8182548064926275
+              },
+              {
+                "bin": "8+",
+                "rows": 640,
+                "informative_horses": 496,
+                "informative_sires": 99,
+                "unconstrained": 0.35109271297994377
+              }
+            ]
+          },
+          "1": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 2737,
+            "monotone": [
+              1,
+              0.9080126157434874,
+              0.6633320352248909,
+              0.2282495971139501
+            ],
+            "pooled": 0.9031912833290758,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 886,
+                "informative_horses": 663,
+                "informative_sires": 100,
+                "unconstrained": 1.4989746284148995
+              },
+              {
+                "bin": "1-3",
+                "rows": 1093,
+                "informative_horses": 849,
+                "informative_sires": 100,
+                "unconstrained": 0.9080126157434874
+              },
+              {
+                "bin": "4-7",
+                "rows": 469,
+                "informative_horses": 418,
+                "informative_sires": 99,
+                "unconstrained": 0.6633320352248909
+              },
+              {
+                "bin": "8+",
+                "rows": 649,
+                "informative_horses": 508,
+                "informative_sires": 95,
+                "unconstrained": 0.2282495971139501
+              }
+            ]
+          }
+        },
+        "annual_weights": {
+          "0": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 5743,
+            "monotone": [
+              1,
+              0.6144218709878442,
+              0.5867855599203917,
+              0.34489231358462374
+            ],
+            "pooled": 0.8943136928250573,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 3825,
+                "informative_horses": 3203,
+                "informative_sires": 146,
+                "unconstrained": 1.1362633426995294
+              },
+              {
+                "bin": "1-3",
+                "rows": 1868,
+                "informative_horses": 1689,
+                "informative_sires": 140,
+                "unconstrained": 0.6144218709878442
+              },
+              {
+                "bin": "4-7",
+                "rows": 821,
+                "informative_horses": 719,
+                "informative_sires": 112,
+                "unconstrained": 0.5867855599203917
+              },
+              {
+                "bin": "8+",
+                "rows": 924,
+                "informative_horses": 682,
+                "informative_sires": 122,
+                "unconstrained": 0.34489231358462374
+              }
+            ]
+          },
+          "1": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 5604,
+            "monotone": [
+              1,
+              0.4692017859858382,
+              0.3493226239737118,
+              0.2707484100449896
+            ],
+            "pooled": 0.8415164049297938,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 3764,
+                "informative_horses": 3179,
+                "informative_sires": 148,
+                "unconstrained": 1.1589563495166486
+              },
+              {
+                "bin": "1-3",
+                "rows": 1796,
+                "informative_horses": 1631,
+                "informative_sires": 149,
+                "unconstrained": 0.4692017859858382
+              },
+              {
+                "bin": "4-7",
+                "rows": 755,
+                "informative_horses": 684,
+                "informative_sires": 123,
+                "unconstrained": 0.3493226239737118
+              },
+              {
+                "bin": "8+",
+                "rows": 904,
+                "informative_horses": 666,
+                "informative_sires": 109,
+                "unconstrained": 0.2707484100449896
+              }
+            ]
+          }
+        },
+        "years": {
+          "2022": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37072454524440046,
+                  "F": 0.359146404308834,
+                  "P": 0.35820558220787685,
+                  "H": 0.36945592219363166,
+                  "G": 0.3589452345594306
+                },
+                "mean_gate_weight": 0.49783654739018074,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008450548718703094,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004006963116793197,
+                      0.012720488970681008
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.00912544932178351,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004721586750535072,
+                      0.013161889273376925
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009390100027207073,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.00019446617295212985,
+                      0.002190818072655249
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.008595007033742863,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004720977123321309,
+                      0.012181971263251844
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.00014445831503976945,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0014469472992177498,
+                      0.0017188014080278123
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.0005304422880406471,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.001748556714088751,
+                      0.0006261968931814464
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0076559970310221565,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004444535746034941,
+                      0.010776222638332847
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37072454524440046,
+                  "F": 0.359146404308834,
+                  "P": 0.358746285178305,
+                  "H": 0.36945592219363166,
+                  "G": 0.3562999595965481
+                },
+                "mean_gate_weight": 0.7208632413475019,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008450548718703094,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004006963116793197,
+                      0.012720488970681008
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008737791317433777,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004333011791507169,
+                      0.012895734977343164
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009390100027207073,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.00019446617295212985,
+                      0.002190818072655249
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.010487027238165704,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.005587819325233694,
+                      0.015061269612623118
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002036478519462609,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0009321061373271188,
+                      0.003442106164756296
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.001749235920731926,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0007963716386736883,
+                      0.002997160282624903
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009548017235444997,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.005389223883452821,
+                      0.0136938939277266
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37072454524440046,
+                  "F": 0.359146404308834,
+                  "P": 0.35820558220787685,
+                  "H": 0.36945592219363166,
+                  "G": 0.3589452345594306
+                },
+                "mean_gate_weight": 0.49783654739018074,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008450548718703094,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004006963116793197,
+                      0.012720488970681008
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.00912544932178351,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004721586750535072,
+                      0.013161889273376925
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009390100027207073,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.00019446617295212985,
+                      0.002190818072655249
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.008595007033742863,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004720977123321309,
+                      0.012181971263251844
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.00014445831503976945,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0014469472992177498,
+                      0.0017188014080278123
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.0005304422880406471,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.001748556714088751,
+                      0.0006261968931814464
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0076559970310221565,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004444535746034941,
+                      0.010776222638332847
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37072454524440046,
+                  "F": 0.359146404308834,
+                  "P": 0.358746285178305,
+                  "H": 0.36945592219363166,
+                  "G": 0.3562999595965481
+                },
+                "mean_gate_weight": 0.7208632413475019,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008450548718703094,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004006963116793197,
+                      0.012720488970681008
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008737791317433777,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004333011791507169,
+                      0.012895734977343164
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009390100027207073,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.00019446617295212985,
+                      0.002190818072655249
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.010487027238165704,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.005587819325233694,
+                      0.015061269612623118
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002036478519462609,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0009321061373271188,
+                      0.003442106164756296
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.001749235920731926,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0007963716386736883,
+                      0.002997160282624903
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009548017235444997,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.005389223883452821,
+                      0.0136938939277266
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2023": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.38400415883359,
+                  "F": 0.3696732602690538,
+                  "P": 0.3689509521453565,
+                  "H": 0.3805159350359149,
+                  "G": 0.36954463405497506
+                },
+                "mean_gate_weight": 0.5100470906506442,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.010800874643541455,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00456000291758082,
+                      0.017910913389968638
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.011334388912527893,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.005562028956993817,
+                      0.0183163708485677
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.002666817185236434,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0003888722765630371,
+                      0.004960312488437765
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.010895957442667607,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.006048599581977367,
+                      0.016980021225158636
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0000950827991261521,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.002103918542317912,
+                      0.002473159765448874
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.0004384314698602867,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0020811351737691085,
+                      0.001351587924560076
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.008229140257431171,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0049837412751151215,
+                      0.012438001012370718
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.38400415883359,
+                  "F": 0.3696732602690538,
+                  "P": 0.3694235403948837,
+                  "H": 0.3805159350359149,
+                  "G": 0.3668662251929942
+                },
+                "mean_gate_weight": 0.7271970296033416,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.010800874643541455,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00456000291758082,
+                      0.017910913389968638
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.010985441803602763,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.004887408102720536,
+                      0.01808340862614423
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.002666817185236434,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0003888722765630371,
+                      0.004960312488437765
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.012868366814136323,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.007134884951757286,
+                      0.019661502492010645
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002067492170594871,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0003814282543972283,
+                      0.003935779185098229
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0018829250105335624,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0002863446557246859,
+                      0.0036188216017326922
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.010201549628899891,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.005876191389655661,
+                      0.015240411353598327
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.3283645969834644,
+                  "F": 0.31984449341527776,
+                  "P": 0.31790595846096714,
+                  "H": 0.3263808133358785,
+                  "G": 0.3164014910640406
+                },
+                "mean_gate_weight": 0.4112483470173605,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.005522808584037326,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0007167171335382683,
+                      0.01005715669268807
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.006759110127126802,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0023415360700912015,
+                      0.011371129119425316
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0012988732383234405,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00014488019294080516,
+                      0.002590501023142211
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.00771340500456485,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.004563337337310844,
+                      0.011764400646867222
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0021905964205275233,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0005102132181222324,
+                      0.005127960914532489
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0009542948774380475,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0010009080978132308,
+                      0.003095362675930917
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.006414531766241409,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0038359893338229334,
+                      0.009565179699498806
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.3283645969834644,
+                  "F": 0.31984449341527776,
+                  "P": 0.31902406687274887,
+                  "H": 0.3263808133358785,
+                  "G": 0.31400351579543767
+                },
+                "mean_gate_weight": 0.5429933175475029,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.005522808584037326,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0007167171335382683,
+                      0.01005715669268807
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.006046953308084851,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.001269695818423182,
+                      0.010749312093641045
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0012988732383234405,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00014488019294080516,
+                      0.002590501023142211
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009225100620217308,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.005563850480086599,
+                      0.013745012674103734
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.003702292036179983,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0012048877128055602,
+                      0.006214117614437236
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0031781473121324576,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0009642118587291426,
+                      0.005489970554354027
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.00792622738189387,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00470601141906029,
+                      0.011513217872018708
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2024": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.4037357490810252,
+                  "F": 0.39647699017229415,
+                  "P": 0.39486935089909114,
+                  "H": 0.40341863574599357,
+                  "G": 0.3943882723681055
+                },
+                "mean_gate_weight": 0.5380789031425502,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.005808551349935153,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.005955398811638113,
+                      0.016264809416385945
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007080750806546964,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0033294881702693587,
+                      0.016879972621011787
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.00025595941885788863,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0033919749526619435,
+                      0.0038046337798128904
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.007460445704517555,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.000015969852304729596,
+                      0.014870800107758729
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0016518943545824015,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0019072393933406895,
+                      0.006343163958763722
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.00037969489797059147,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002272255020132271,
+                      0.0037332186047184714
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007204486285659668,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0016743302864755357,
+                      0.012458270123842017
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.4037357490810252,
+                  "F": 0.39647699017229415,
+                  "P": 0.3957019528850211,
+                  "H": 0.40341863574599357,
+                  "G": 0.393127208124004
+                },
+                "mean_gate_weight": 0.7752185745462821,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.005808551349935153,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.005955398811638113,
+                      0.016264809416385945
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.0064225195689970906,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.004848661388747254,
+                      0.0166933701314317
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.00025595941885788863,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0033919749526619435,
+                      0.0038046337798128904
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.008453553318642575,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0016310685635537157,
+                      0.017833010940177547
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.00264500196870742,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.000685261938306185,
+                      0.00490765269173905
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.002031033749645483,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0003815248328396185,
+                      0.004045726387364643
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.008197593899784686,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.00008745240234508707,
+                      0.01565221437318925
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.30476508704929667,
+                  "F": 0.3097907068500825,
+                  "P": 0.30607740107740383,
+                  "H": 0.3062521129760343,
+                  "G": 0.30071955901448366
+                },
+                "mean_gate_weight": 0.37049499962445565,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.0030885237665083626,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.01024929796330713,
+                      0.0025646235524623504
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.0008016171661325683,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.007097104692421181,
+                      0.004052195694884055
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": -0.0009085984181202768,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0021026044943927413,
+                      0.00011031082991164541
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.002449505110299873,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.001078501809343085,
+                      0.005449906947739607
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.005538028876808238,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0014528030866878003,
+                      0.010032498292143631
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0032511222764324424,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.00017569142548675158,
+                      0.006696931021838031
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0033581035284201495,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.00005697825133220399,
+                      0.006278547841632643
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.30476508704929667,
+                  "F": 0.3097907068500825,
+                  "P": 0.30820927797930425,
+                  "H": 0.3062521129760343,
+                  "G": 0.30060351835016774
+                },
+                "mean_gate_weight": 0.4384626669709619,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.0030885237665083626,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.01024929796330713,
+                      0.0025646235524623504
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.002111200748358674,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.009018451229925506,
+                      0.0032795362549797075
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": -0.0009085984181202768,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0021026044943927413,
+                      0.00011031082991164541
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0025192830396657553,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002495275120094672,
+                      0.006529142114549898
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.005607806806174119,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.001956697868677184,
+                      0.009632054678464282
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.00463048378802443,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0012956956832148323,
+                      0.008367678008496568
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0034278814577860315,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0011182240456127878,
+                      0.0072752857144308776
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2025": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.41642388576904504,
+                  "F": 0.40743571865034917,
+                  "P": 0.4062533351028718,
+                  "H": 0.4081401589707076,
+                  "G": 0.40251881868500616
+                },
+                "mean_gate_weight": 0.5663059386279174,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.007404987806864171,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.006135827508019172,
+                      0.020667684356928107
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008367080356784377,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.003571046635332335,
+                      0.020380821738446898
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.006830463274356212,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00013869480515591836,
+                      0.014429286104690811
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.011387453243417816,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0015654581634291132,
+                      0.021218301664942478
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.003982465436553645,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0012501599254220298,
+                      0.009194989110996636
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0030203728866334406,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0008834493649959289,
+                      0.007020483663927421
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.004556989969061605,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.001868837178794995,
+                      0.011009880688024621
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.41642388576904504,
+                  "F": 0.40743571865034917,
+                  "P": 0.40735776712233956,
+                  "H": 0.4081401589707076,
+                  "G": 0.4021099700288925
+                },
+                "mean_gate_weight": 0.808130592428954,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.007404987806864171,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.006135827508019172,
+                      0.020667684356928107
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007468502204092453,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.005680596368544656,
+                      0.020462682650007304
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.006830463274356212,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00013869480515591836,
+                      0.014429286104690811
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.011716424642353868,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0005443267704378594,
+                      0.02353062789710067
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.004311436835489695,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0014584454457005128,
+                      0.007112842602807588
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.004247922438261413,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0016077198553615722,
+                      0.0069124598722742426
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.004885961367997656,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00531591196081071,
+                      0.01483257991819284
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.3205152597241732,
+                  "F": 0.3356174016731012,
+                  "P": 0.33100625686891066,
+                  "H": 0.31947469704431225,
+                  "G": 0.3192170121607922
+                },
+                "mean_gate_weight": 0.35716529279676085,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.009909008589749576,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.019977689490274075,
+                      0.0006069399058707199
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.006835110370313051,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.015472726906356293,
+                      0.0020055527093446844
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0006659496644990802,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0006171191090718692,
+                      0.002237153580542255
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0008305308631908753,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.002823622898350823,
+                      0.00445143728158009
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.010739539452940452,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0031680311292247203,
+                      0.01783823065019733
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.007665641233503926,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0017733485139918566,
+                      0.013169908497163646
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.00016458119869179497,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.003262079261069729,
+                      0.0036527636147774714
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.3205152597241732,
+                  "F": 0.3356174016731012,
+                  "P": 0.3342091935498249,
+                  "H": 0.31947469704431225,
+                  "G": 0.31984856589201055
+                },
+                "mean_gate_weight": 0.40547761865640186,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.009909008589749576,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.019977689490274075,
+                      0.0006069399058707199
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.008965753337170087,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.01867961142395634,
+                      0.0011901827478731294
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0006659496644990802,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0006171191090718692,
+                      0.002237153580542255
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.000426926612878394,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0043837307731547,
+                      0.005060798211751093
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.010335935202627973,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.002580761573650943,
+                      0.017462786675784377
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.009392679950048482,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.002044104007929495,
+                      0.016389887050405623
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": -0.00023902305162068626,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.004820263143835202,
+                      0.004075802971613862
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "20261125": {
+        "season_weights_status": "EVALUATED",
+        "season_weights": {
+          "0": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 2716,
+            "monotone": [
+              1,
+              0.9760374450561229,
+              0.6857723640225402,
+              0.31542200223647027
+            ],
+            "pooled": 0.8988488334492999,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 868,
+                "informative_horses": 619,
+                "informative_sires": 92,
+                "unconstrained": 1.352945536678186
+              },
+              {
+                "bin": "1-3",
+                "rows": 1091,
+                "informative_horses": 824,
+                "informative_sires": 99,
+                "unconstrained": 0.9760374450561229
+              },
+              {
+                "bin": "4-7",
+                "rows": 482,
+                "informative_horses": 426,
+                "informative_sires": 92,
+                "unconstrained": 0.6857723640225402
+              },
+              {
+                "bin": "8+",
+                "rows": 645,
+                "informative_horses": 503,
+                "informative_sires": 95,
+                "unconstrained": 0.31542200223647027
+              }
+            ]
+          },
+          "1": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 2812,
+            "monotone": [
+              1,
+              0.955463605868284,
+              0.6517361279867436,
+              0.3035735743649729
+            ],
+            "pooled": 0.9033915853939863,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 911,
+                "informative_horses": 656,
+                "informative_sires": 98,
+                "unconstrained": 1.4148223440596606
+              },
+              {
+                "bin": "1-3",
+                "rows": 1134,
+                "informative_horses": 858,
+                "informative_sires": 102,
+                "unconstrained": 0.955463605868284
+              },
+              {
+                "bin": "4-7",
+                "rows": 493,
+                "informative_horses": 429,
+                "informative_sires": 91,
+                "unconstrained": 0.6517361279867436
+              },
+              {
+                "bin": "8+",
+                "rows": 644,
+                "informative_horses": 492,
+                "informative_sires": 92,
+                "unconstrained": 0.3035735743649729
+              }
+            ]
+          }
+        },
+        "annual_weights": {
+          "0": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 5718,
+            "monotone": [
+              1,
+              0.5366201032722732,
+              0.43570695563965106,
+              0.34619793662829795
+            ],
+            "pooled": 0.8444380146911353,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 3807,
+                "informative_horses": 3202,
+                "informative_sires": 150,
+                "unconstrained": 1.1086443292676549
+              },
+              {
+                "bin": "1-3",
+                "rows": 1815,
+                "informative_horses": 1649,
+                "informative_sires": 141,
+                "unconstrained": 0.5366201032722732
+              },
+              {
+                "bin": "4-7",
+                "rows": 788,
+                "informative_horses": 708,
+                "informative_sires": 115,
+                "unconstrained": 0.43570695563965106
+              },
+              {
+                "bin": "8+",
+                "rows": 918,
+                "informative_horses": 675,
+                "informative_sires": 116,
+                "unconstrained": 0.34619793662829795
+              }
+            ]
+          },
+          "1": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 5629,
+            "monotone": [
+              1,
+              0.5379321186512986,
+              0.46811010064211994,
+              0.2828325901023753
+            ],
+            "pooled": 0.8658254964047718,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 3782,
+                "informative_horses": 3195,
+                "informative_sires": 149,
+                "unconstrained": 1.1465941669485935
+              },
+              {
+                "bin": "1-3",
+                "rows": 1849,
+                "informative_horses": 1680,
+                "informative_sires": 144,
+                "unconstrained": 0.5379321186512986
+              },
+              {
+                "bin": "4-7",
+                "rows": 788,
+                "informative_horses": 699,
+                "informative_sires": 120,
+                "unconstrained": 0.46811010064211994
+              },
+              {
+                "bin": "8+",
+                "rows": 910,
+                "informative_horses": 668,
+                "informative_sires": 111,
+                "unconstrained": 0.2828325901023753
+              }
+            ]
+          }
+        },
+        "years": {
+          "2022": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37048493929435133,
+                  "F": 0.36095608926808953,
+                  "P": 0.3595530508874273,
+                  "H": 0.3696344640427695,
+                  "G": 0.35969244918927123
+                },
+                "mean_gate_weight": 0.49317430417503627,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.006969791864226182,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0024340186196470984,
+                      0.011311033342690431
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007980693841482324,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.00351021720767894,
+                      0.01230704911160873
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0006294532357537458,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.000786485696916174,
+                      0.0019981262568870128
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.00788043224016272,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.003968306232576064,
+                      0.011748624184517015
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0009106403759365368,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0004959611336774852,
+                      0.002338042761622862
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.00010026160131960557,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0011430395234904762,
+                      0.000902516663685331
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007250979004408973,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0040496851336533374,
+                      0.010344813939684623
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37048493929435133,
+                  "F": 0.36095608926808953,
+                  "P": 0.3598869794975657,
+                  "H": 0.3696344640427695,
+                  "G": 0.35708336250059114
+                },
+                "mean_gate_weight": 0.7140623329928936,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.006969791864226182,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0024340186196470984,
+                      0.011311033342690431
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007740452232057931,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0032561740120854764,
+                      0.012088346449222843
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0006294532357537458,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.000786485696916174,
+                      0.0019981262568870128
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009750562469210635,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004796284416186182,
+                      0.014617132714341136
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002780770604984452,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0013766160616217988,
+                      0.004297801202801734
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0020101102371527023,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0008639111051434033,
+                      0.0031685540828775313
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009121109233456888,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004793963738962983,
+                      0.013342421269743087
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37048493929435133,
+                  "F": 0.36095608926808953,
+                  "P": 0.3595530508874273,
+                  "H": 0.3696344640427695,
+                  "G": 0.35969244918927123
+                },
+                "mean_gate_weight": 0.49317430417503627,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.006969791864226182,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0024340186196470984,
+                      0.011311033342690431
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007980693841482324,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.00351021720767894,
+                      0.01230704911160873
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0006294532357537458,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.000786485696916174,
+                      0.0019981262568870128
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.00788043224016272,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.003968306232576064,
+                      0.011748624184517015
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0009106403759365368,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0004959611336774852,
+                      0.002338042761622862
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.00010026160131960557,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0011430395234904762,
+                      0.000902516663685331
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007250979004408973,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0040496851336533374,
+                      0.010344813939684623
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.37048493929435133,
+                  "F": 0.36095608926808953,
+                  "P": 0.3598869794975657,
+                  "H": 0.3696344640427695,
+                  "G": 0.35708336250059114
+                },
+                "mean_gate_weight": 0.7140623329928936,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.006969791864226182,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0024340186196470984,
+                      0.011311033342690431
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007740452232057931,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0032561740120854764,
+                      0.012088346449222843
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0006294532357537458,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.000786485696916174,
+                      0.0019981262568870128
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009750562469210635,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004796284416186182,
+                      0.014617132714341136
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002780770604984452,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0013766160616217988,
+                      0.004297801202801734
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0020101102371527023,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0008639111051434033,
+                      0.0031685540828775313
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009121109233456888,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004793963738962983,
+                      0.013342421269743087
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2023": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.38384263193430246,
+                  "F": 0.37050219011497976,
+                  "P": 0.3694931762147512,
+                  "H": 0.3802421236929703,
+                  "G": 0.3690708874875231
+                },
+                "mean_gate_weight": 0.5035759703873377,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.010063293210255833,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0021308312336004117,
+                      0.016744672238553367
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.010809958820987243,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.003851274909220388,
+                      0.016913986385459788
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0027510934597122687,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00032968452591028625,
+                      0.005227133293026877
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.011121846099424494,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0056691753604364474,
+                      0.016504957494068804
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0010585528891686603,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0014692226114888063,
+                      0.004244653048268222
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0003118872784372491,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.001530006812069395,
+                      0.0025822417125179933
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.008370752639712226,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.004615998986742329,
+                      0.012126466298580512
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.38384263193430246,
+                  "F": 0.37050219011497976,
+                  "P": 0.36963958954197895,
+                  "H": 0.3802421236929703,
+                  "G": 0.36594291526520195
+                },
+                "mean_gate_weight": 0.7175097493827497,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.010063293210255833,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0021308312336004117,
+                      0.016744672238553367
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.010701739933489753,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0034821916285688267,
+                      0.017033347821747886
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0027510934597122687,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00032968452591028625,
+                      0.005227133293026877
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.013420948857457636,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00683664405781881,
+                      0.019630075055471638
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0033576556472018045,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0014565245590370092,
+                      0.005713350553439843
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.002719208923967886,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0012256658761329341,
+                      0.004522725573885663
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.01066985539774537,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0056189228509356415,
+                      0.01545299330237201
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.328175593013378,
+                  "F": 0.32291789390869957,
+                  "P": 0.3202387919385907,
+                  "H": 0.32618118726236905,
+                  "G": 0.31665289962840304
+                },
+                "mean_gate_weight": 0.4083419269203783,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.003423253643252186,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.002280473921077616,
+                      0.00784826089963275
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.005146335987394358,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.00004696092758960776,
+                      0.009411025817768141
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.001305052925793666,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00012298682023136263,
+                      0.002578570644983179
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.007430161006606846,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.003990580141774058,
+                      0.011112400563625238
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.004006907363354661,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0011186520117842428,
+                      0.0073314417159073214
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.00228382501921249,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00022698667535205405,
+                      0.004672250922333932
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0061251080808131814,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00337568400467219,
+                      0.00896446602452318
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.328175593013378,
+                  "F": 0.32291789390869957,
+                  "P": 0.32090751978989934,
+                  "H": 0.32618118726236905,
+                  "G": 0.31390609204172254
+                },
+                "mean_gate_weight": 0.5331405706386689,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.003423253643252186,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.002280473921077616,
+                      0.00784826089963275
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.0047175835919776804,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0006741872292179693,
+                      0.009109403545438086
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.001305052925793666,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00012298682023136263,
+                      0.002578570644983179
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009162185228775934,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0048314957874048305,
+                      0.013478363585742493
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.005738931585523746,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0031911424651914835,
+                      0.008768743449535992
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.004444601636798254,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0025311898113808476,
+                      0.006780457039995858
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007857132302982269,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.004040540672373504,
+                      0.01141283380790389
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2024": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.4032684719527764,
+                  "F": 0.3953332166877899,
+                  "P": 0.39382290376722856,
+                  "H": 0.40226209691037956,
+                  "G": 0.3931384537513634
+                },
+                "mean_gate_weight": 0.5298662770594786,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.006337108254412175,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.003560672047425821,
+                      0.015948580971810376
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007528980939475395,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0012275785288148266,
+                      0.016458214203025654
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0008106658603915893,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002771470787543221,
+                      0.004168623422200257
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.00806761665311431,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0012180272646628095,
+                      0.015278835918098891
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.00173050839870214,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002350994258747086,
+                      0.00633662156968412
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0005386357136389163,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002405872222531748,
+                      0.0037965971890073303
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007256950792722722,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0025162137567850936,
+                      0.012464311881457567
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.4032684719527764,
+                  "F": 0.3953332166877899,
+                  "P": 0.39417668582290505,
+                  "H": 0.40226209691037956,
+                  "G": 0.3910540195138278
+                },
+                "mean_gate_weight": 0.7648845545991558,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.006337108254412175,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.003560672047425821,
+                      0.015948580971810376
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007250200824797998,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0018329909920984974,
+                      0.01641672766306404
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0008106658603915893,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002771470787543221,
+                      0.004168623422200257
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009702214293205988,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0005433954315011776,
+                      0.01878575940029842
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.003365106038793813,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0009939220742533736,
+                      0.00612787729541891
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.002452013468407987,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0005368262739696032,
+                      0.0047407274705417194
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.008891548432814396,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0016595917927985924,
+                      0.01636997566666433
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.3046197480891776,
+                  "F": 0.3109537440735857,
+                  "P": 0.30679633921592536,
+                  "H": 0.30588116254946696,
+                  "G": 0.3011539049614609
+                },
+                "mean_gate_weight": 0.36966984737937436,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.003899040027467068,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.010130539746935978,
+                      0.0013893738933351228
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.001330802830379119,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.006711171116528029,
+                      0.0033689801799091277
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": -0.0007700946766994199,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0020928245405922503,
+                      0.00026506710270123154
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0020995164523774034,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0008987737471915395,
+                      0.0049119677344434875
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.005998556479844473,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.002248040598240009,
+                      0.01013161654074531
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.003430319282756523,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0007322383737238707,
+                      0.006488196383375155
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.002869611129076823,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.00009025043367562339,
+                      0.005625090537944429
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.3046197480891776,
+                  "F": 0.3109537440735857,
+                  "P": 0.3079954169709859,
+                  "H": 0.30588116254946696,
+                  "G": 0.3009009264122215
+                },
+                "mean_gate_weight": 0.43792866844949874,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.003899040027467068,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.010130539746935978,
+                      0.0013893738933351228
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.0020679859492174915,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.007708951149104467,
+                      0.002949292235494253
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": -0.0007700946766994199,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0020928245405922503,
+                      0.00026506710270123154
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0022518234101808706,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.001816943904898519,
+                      0.0058791675435389745
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.006150863437647938,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.002870229843545752,
+                      0.009703470019473184
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.004319809359398362,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0015962888244940923,
+                      0.007241803132130172
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.00302191808688029,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0008046406092501127,
+                      0.006732774907479186
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2025": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.4158203516059454,
+                  "F": 0.4009074208266129,
+                  "P": 0.4001656231100523,
+                  "H": 0.4061257258201119,
+                  "G": 0.3971595972595007
+                },
+                "mean_gate_weight": 0.5559485985781802,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.012179804735845134,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0006477767395168982,
+                      0.024483893848847006
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.012774038890635579,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0026669631764598993,
+                      0.02366891496626835
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.007968459636779314,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.001790521581333712,
+                      0.014739008509364935
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.015170819114363248,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.006762310243372682,
+                      0.02433085872916418
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002991014378518118,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0023498145928161633,
+                      0.008320875529512432
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0023967802237276708,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0012750142327573215,
+                      0.006067827876192545
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007202359477583939,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0017910153999161566,
+                      0.01226345540485295
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.4158203516059454,
+                  "F": 0.4009074208266129,
+                  "P": 0.40033687492100073,
+                  "H": 0.4061257258201119,
+                  "G": 0.39508011776871105
+                },
+                "mean_gate_weight": 0.7949911893093886,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.012179804735845134,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0006477767395168982,
+                      0.024483893848847006
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.012636951388179047,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0019424069226009002,
+                      0.02401680572930746
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.007968459636779314,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.001790521581333712,
+                      0.014739008509364935
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.01681826535355343,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.006195746174882827,
+                      0.02828552069694766
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.004638460617708295,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.001002116064676402,
+                      0.00848500627652541
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.004181313965374384,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0011696250659081699,
+                      0.007296871171441547
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.008849805716774115,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0008696776734332043,
+                      0.01695926057510868
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.3204816526261878,
+                  "F": 0.3265936037394074,
+                  "P": 0.32244561627006263,
+                  "H": 0.3185974574899025,
+                  "G": 0.3154750322882571
+                },
+                "mean_gate_weight": 0.35516792345606124,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.00395489233348055,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.013158636290793084,
+                      0.005538957655466661
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.0012626857817679923,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.008911371428823091,
+                      0.00643384855904942
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0012041497509822881,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0,
+                      0.002809504723361097
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0031839936727356623,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.00003330233593594457,
+                      0.006573665553780135
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.007138886006216214,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00011645220557140743,
+                      0.014186457912894582
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.004446679454503655,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.001046353315943986,
+                      0.00973625054938652
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.001979843921753374,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0008050096939298706,
+                      0.004891025182659954
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.3204816526261878,
+                  "F": 0.3265936037394074,
+                  "P": 0.3236703507673212,
+                  "H": 0.3185974574899025,
+                  "G": 0.3146537399263804
+                },
+                "mean_gate_weight": 0.40616051420598925,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.00395489233348055,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.013158636290793084,
+                      0.005538957655466661
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.0020540062958282414,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.010064024976401615,
+                      0.00615924411479825
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0012041497509822881,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0,
+                      0.002809504723361097
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0037015136203542485,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0003243399112766821,
+                      0.007577187224666949
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.007656405953834799,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0001556033635867975,
+                      0.014887754828468597
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.005755519916182491,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0005655153372040041,
+                      0.011736588610412789
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0024973638693719605,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0011747690824083722,
+                      0.005903703082051168
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "20261126": {
+        "season_weights_status": "EVALUATED",
+        "season_weights": {
+          "0": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 2715,
+            "monotone": [
+              1,
+              1,
+              0.8644399279492734,
+              0.36226420605484144
+            ],
+            "pooled": 1,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 857,
+                "informative_horses": 609,
+                "informative_sires": 100,
+                "unconstrained": 1.5696203556594837
+              },
+              {
+                "bin": "1-3",
+                "rows": 1120,
+                "informative_horses": 831,
+                "informative_sires": 103,
+                "unconstrained": 1.1392226003921861
+              },
+              {
+                "bin": "4-7",
+                "rows": 474,
+                "informative_horses": 399,
+                "informative_sires": 88,
+                "unconstrained": 0.8644399279492734
+              },
+              {
+                "bin": "8+",
+                "rows": 598,
+                "informative_horses": 466,
+                "informative_sires": 88,
+                "unconstrained": 0.36226420605484144
+              }
+            ]
+          },
+          "1": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 2813,
+            "monotone": [
+              1,
+              1,
+              0.6225139082922971,
+              0.2786189938403904
+            ],
+            "pooled": 0.8680847164892463,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 922,
+                "informative_horses": 672,
+                "informative_sires": 96,
+                "unconstrained": 1.2702513224515344
+              },
+              {
+                "bin": "1-3",
+                "rows": 1105,
+                "informative_horses": 852,
+                "informative_sires": 100,
+                "unconstrained": 1.0256755969839026
+              },
+              {
+                "bin": "4-7",
+                "rows": 501,
+                "informative_horses": 455,
+                "informative_sires": 89,
+                "unconstrained": 0.6225139082922971
+              },
+              {
+                "bin": "8+",
+                "rows": 691,
+                "informative_horses": 537,
+                "informative_sires": 100,
+                "unconstrained": 0.2786189938403904
+              }
+            ]
+          }
+        },
+        "annual_weights": {
+          "0": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 5667,
+            "monotone": [
+              1,
+              0.5166924413744803,
+              0.5166924413744803,
+              0.36627457747682335
+            ],
+            "pooled": 0.8865111147281401,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 3795,
+                "informative_horses": 3165,
+                "informative_sires": 145,
+                "unconstrained": 1.188179903749617
+              },
+              {
+                "bin": "1-3",
+                "rows": 1851,
+                "informative_horses": 1695,
+                "informative_sires": 145,
+                "unconstrained": 0.5146596902303826
+              },
+              {
+                "bin": "4-7",
+                "rows": 783,
+                "informative_horses": 695,
+                "informative_sires": 120,
+                "unconstrained": 0.5223014143100377
+              },
+              {
+                "bin": "8+",
+                "rows": 873,
+                "informative_horses": 639,
+                "informative_sires": 109,
+                "unconstrained": 0.36627457747682335
+              }
+            ]
+          },
+          "1": {
+            "training_years": [
+              2020,
+              2021
+            ],
+            "calibration_horses": 5680,
+            "monotone": [
+              1,
+              0.5599635084646521,
+              0.4214579244097263,
+              0.26534809856622327
+            ],
+            "pooled": 0.842510867173665,
+            "support": [
+              {
+                "bin": "0",
+                "rows": 3794,
+                "informative_horses": 3239,
+                "informative_sires": 148,
+                "unconstrained": 1.0931643773063986
+              },
+              {
+                "bin": "1-3",
+                "rows": 1813,
+                "informative_horses": 1627,
+                "informative_sires": 143,
+                "unconstrained": 0.5599635084646521
+              },
+              {
+                "bin": "4-7",
+                "rows": 793,
+                "informative_horses": 711,
+                "informative_sires": 114,
+                "unconstrained": 0.4214579244097263
+              },
+              {
+                "bin": "8+",
+                "rows": 955,
+                "informative_horses": 714,
+                "informative_sires": 122,
+                "unconstrained": 0.26534809856622327
+              }
+            ]
+          }
+        },
+        "years": {
+          "2022": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.3705278093688634,
+                  "F": 0.359398967915882,
+                  "P": 0.3584036431869619,
+                  "H": 0.3692518428087146,
+                  "G": 0.35893623861139295
+                },
+                "mean_gate_weight": 0.4994489668024925,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008123239376687607,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.003130623868564631,
+                      0.013153917996237621
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008837686066001724,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004012462666732764,
+                      0.01379169038345798
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009439340980571154,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0002655649010237007,
+                      0.0022515802528155246
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.008455634127193946,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004418135944981822,
+                      0.012860906783688281
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0003323947505063382,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0014681296927981607,
+                      0.001816677686193304
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.00038205193880777713,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.001773855813274191,
+                      0.0007329351254960809
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0075117000291368315,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004259840780465805,
+                      0.011152661401028496
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.3705278093688634,
+                  "F": 0.359398967915882,
+                  "P": 0.35920112460317655,
+                  "H": 0.3692518428087146,
+                  "G": 0.35678384943091523
+                },
+                "mean_gate_weight": 0.7494943632567935,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008123239376687607,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.003130623868564631,
+                      0.013153917996237621
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008265409599502027,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0034991922679154246,
+                      0.013110289672437008
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009439340980571154,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0002655649010237007,
+                      0.0022515802528155246
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009996142300946783,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004867642510735637,
+                      0.01568810521246343
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0018729029242591738,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0008245847435481571,
+                      0.003106201453863525
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0017307327014447556,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0007407598191202521,
+                      0.0028795488882556747
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009052208202889668,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004675382795288673,
+                      0.013966732490084231
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.3705278093688634,
+                  "F": 0.359398967915882,
+                  "P": 0.3584036431869619,
+                  "H": 0.3692518428087146,
+                  "G": 0.35893623861139295
+                },
+                "mean_gate_weight": 0.4994489668024925,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008123239376687607,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.003130623868564631,
+                      0.013153917996237621
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008837686066001724,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004012462666732764,
+                      0.01379169038345798
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009439340980571154,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0002655649010237007,
+                      0.0022515802528155246
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.008455634127193946,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004418135944981822,
+                      0.012860906783688281
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0003323947505063382,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0014681296927981607,
+                      0.001816677686193304
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.00038205193880777713,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.001773855813274191,
+                      0.0007329351254960809
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0075117000291368315,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004259840780465805,
+                      0.011152661401028496
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1861,
+                "sires": 181,
+                "RMSE": {
+                  "N": 0.3705278093688634,
+                  "F": 0.359398967915882,
+                  "P": 0.35920112460317655,
+                  "H": 0.3692518428087146,
+                  "G": 0.35678384943091523
+                },
+                "mean_gate_weight": 0.7494943632567935,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.008123239376687607,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.003130623868564631,
+                      0.013153917996237621
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008265409599502027,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0034991922679154246,
+                      0.013110289672437008
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0009439340980571154,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      -0.0002655649010237007,
+                      0.0022515802528155246
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.009996142300946783,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004867642510735637,
+                      0.01568810521246343
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0018729029242591738,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0008245847435481571,
+                      0.003106201453863525
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0017307327014447556,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.0007407598191202521,
+                      0.0028795488882556747
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009052208202889668,
+                    "sires": 181,
+                    "CI95_pointwise": [
+                      0.004675382795288673,
+                      0.013966732490084231
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2023": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.3839412378798129,
+                  "F": 0.36948275005799075,
+                  "P": 0.3688783087656339,
+                  "H": 0.3799352652966876,
+                  "G": 0.3691565086143304
+                },
+                "mean_gate_weight": 0.5089335066953364,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.01089337155426743,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0038697186171869516,
+                      0.018261903577655683
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.011339667466888723,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00486134463112673,
+                      0.018063934002731923
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0030600683286186674,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0009578488629454176,
+                      0.005194489169800247
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.011134346292360885,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00610344046838032,
+                      0.016471130233994838
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.00024097473809345566,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.002523059318904432,
+                      0.003038086666298411
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": -0.00020532117452783528,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0022066475065464,
+                      0.0018913305151098533
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.00807427796374222,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.004529383096977583,
+                      0.011904741843598948
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.3839412378798129,
+                  "F": 0.36948275005799075,
+                  "P": 0.36976830813208506,
+                  "H": 0.3799352652966876,
+                  "G": 0.36672497673231014
+                },
+                "mean_gate_weight": 0.7523246006707887,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.01089337155426743,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0038697186171869516,
+                      0.018261903577655683
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.010682272445818456,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00392600718714743,
+                      0.0176602807950493
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0030600683286186674,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0009578488629454176,
+                      0.005194489169800247
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.012923665585369653,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.006727034003597167,
+                      0.019572186759368893
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.002030294031102224,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0003421399327287378,
+                      0.003778635336777673
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0022413931395511987,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0005156699900386494,
+                      0.003960474779602937
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.009863597256750987,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.005150930203235612,
+                      0.015070070793774943
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.32826001453599524,
+                  "F": 0.3222674472560325,
+                  "P": 0.32003886106487744,
+                  "H": 0.3264468999414433,
+                  "G": 0.3175009816790006
+                },
+                "mean_gate_weight": 0.41541956595462676,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.003898329582252089,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.001108830687043245,
+                      0.008972980307835304
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.005329764551467869,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0008513076282574606,
+                      0.010160266445941256
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.001187058661793071,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.00013544991148272702,
+                      0.002525428891919015
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.006947763776042753,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0038272278464163436,
+                      0.010364662958855374
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.003049434193790664,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.00022541075483726523,
+                      0.006140885627848811
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0016179992245748832,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0005132123031668181,
+                      0.0039715039626845895
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0057607051142496805,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.003235546545581318,
+                      0.008475539346345902
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 1003,
+                "sires": 145,
+                "RMSE": {
+                  "N": 0.32826001453599524,
+                  "F": 0.3222674472560325,
+                  "P": 0.3218528859891553,
+                  "H": 0.3264468999414433,
+                  "G": 0.31559581313208185
+                },
+                "mean_gate_weight": 0.5670930984900187,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.003898329582252089,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.001108830687043245,
+                      0.008972980307835304
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.0041653569236235945,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.0006957069835168813,
+                      0.00914773824755513
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.001187058661793071,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      -0.00013544991148272702,
+                      0.002525428891919015
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.00815391987667188,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.004160415663581846,
+                      0.012385356118501563
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.004255590294419793,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.001983454213613844,
+                      0.006826683674033842
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.003988562953048287,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.001760310302150728,
+                      0.0064819851075285494
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0069668612148788105,
+                    "sires": 145,
+                    "CI95_pointwise": [
+                      0.0034744265837096237,
+                      0.010638939021778163
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2024": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.403284805515122,
+                  "F": 0.3948146972487251,
+                  "P": 0.3935078502091531,
+                  "H": 0.4026373708631925,
+                  "G": 0.39345386618521955
+                },
+                "mean_gate_weight": 0.5321120842455459,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.0067599891957673365,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.003500809554378867,
+                      0.01751907502305656
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.00779020618314055,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0013058890656544191,
+                      0.017656570774150043
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0005217819437457925,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0030881619165442366,
+                      0.0044161260622148915
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.007832689543273206,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0007742631552581383,
+                      0.01579955071517054
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0010727003475058698,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0027953435231174253,
+                      0.0049345840893149605
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.00004248336013265763,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0027136230727836243,
+                      0.0028890834353997876
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.007310907599527414,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0023590939566518416,
+                      0.013081479137636062
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.403284805515122,
+                  "F": 0.3948146972487251,
+                  "P": 0.394287560902795,
+                  "H": 0.4026373708631925,
+                  "G": 0.39210104573215016
+                },
+                "mean_gate_weight": 0.7974423249463353,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.0067599891957673365,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.003500809554378867,
+                      0.01751907502305656
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007175953676694573,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0025829926990311156,
+                      0.01738050191326475
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0005217819437457925,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0030881619165442366,
+                      0.0044161260622148915
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.008895404295124105,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0003706028327802688,
+                      0.01911738647265015
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.0021354150993567692,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0005416363042525433,
+                      0.004086959537101996
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0017194506184295332,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0004595278844443551,
+                      0.003319184177755943
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.008373622351378314,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0009175558935973513,
+                      0.01728245261068802
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.30458577629292893,
+                  "F": 0.31075348036221473,
+                  "P": 0.3068249706924094,
+                  "H": 0.305573689098216,
+                  "G": 0.3008656818112016
+                },
+                "mean_gate_weight": 0.3745898116368773,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.003795230437263243,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.010108486341282426,
+                      0.0021963711989152032
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.0013690675204317158,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.00708257242845179,
+                      0.004056903013392648
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": -0.0006027843491270047,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0014096830262326251,
+                      0.00032341460173879356
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0022523366282469607,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0007893916782880937,
+                      0.005401301061243855
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.006047567065510205,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.0020263810857600794,
+                      0.010147331233458243
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.0036214041486786774,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.00046578686030181583,
+                      0.006758678645742742
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.002855120977373966,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.00026348733516849953,
+                      0.005802494553730337
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 472,
+                "sires": 109,
+                "RMSE": {
+                  "N": 0.30458577629292893,
+                  "F": 0.31075348036221473,
+                  "P": 0.30880954358485835,
+                  "H": 0.305573689098216,
+                  "G": 0.3009574575528543
+                },
+                "mean_gate_weight": 0.4641949788366775,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.003795230437263243,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.010108486341282426,
+                      0.0021963711989152032
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.0025908390891223616,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.00867625719836447,
+                      0.003046159520527329
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": -0.0006027843491270047,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.0014096830262326251,
+                      0.00032341460173879356
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0021971038632880584,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.002038871670434708,
+                      0.00615518204453333
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.005992334300551302,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.002496480127327131,
+                      0.009506480962902596
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.00478794295241042,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      0.001786803900778306,
+                      0.007991454563736169
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0027998882124150633,
+                    "sires": 109,
+                    "CI95_pointwise": [
+                      -0.00150744556353821,
+                      0.006870386256453635
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "2025": {
+            "stale": {
+              "annual_gate_on_season_profile": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.4158384258869202,
+                  "F": 0.40746027784054295,
+                  "P": 0.40562982671841996,
+                  "H": 0.40866860850850967,
+                  "G": 0.40160815986643067
+                },
+                "mean_gate_weight": 0.5559785115117454,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.0068977184262191404,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.006686378252153668,
+                      0.019758443880632855
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.008386040120496194,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0040313768864994265,
+                      0.019796670795868884
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.005911564863830072,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00087441764906771,
+                      0.013699536539387878
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.011632482372811084,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.001224935189873051,
+                      0.0214648569196181
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.004734763946591942,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00040595530864405964,
+                      0.009584833271955903
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.003246442252314888,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0005166791888625347,
+                      0.006750770830357403
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.00572091750898101,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.00008876278183440009,
+                      0.011133166331904969
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.4158384258869202,
+                  "F": 0.40746027784054295,
+                  "P": 0.406214864780201,
+                  "H": 0.40866860850850967,
+                  "G": 0.4011281026283265
+                },
+                "mean_gate_weight": 0.8256015563991715,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": 0.0068977184262191404,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.006686378252153668,
+                      0.019758443880632855
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": 0.007911080075714644,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.005529187197821676,
+                      0.020072676384417287
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.005911564863830072,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.00087441764906771,
+                      0.013699536539387878
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.012017841725910387,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.001487714120471919,
+                      0.02477478564136556
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.005120123299691247,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0017855445477295902,
+                      0.008853594330242657
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.004106761650195744,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.001818225759759311,
+                      0.006669769478954405
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.006106276862080315,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.002833829803553151,
+                      0.014679010613125385
+                    ]
+                  }
+                }
+              }
+            },
+            "refreshed": {
+              "annual_gate_on_season_profile": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.32055813654294657,
+                  "F": 0.33399246559945495,
+                  "P": 0.32896405321649685,
+                  "H": 0.31932081558134806,
+                  "G": 0.31767505377377186
+                },
+                "mean_gate_weight": 0.36775402737455454,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.008793448173316705,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.017796877614293792,
+                      0.0012314092844505754
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.005459829404739763,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.012891874635461001,
+                      0.0029602708963940992
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0007917356403490946,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0004927562965717408,
+                      0.002524570299704342
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0018400791137175494,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0016250772380146776,
+                      0.0052608291556560756
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.010633527287034256,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0026085797177987794,
+                      0.017576388414584088
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.007299908518457314,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0011486086388080698,
+                      0.012481716526364794
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0010483434733684553,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.002090548296507162,
+                      0.004260608384224097
+                    ]
+                  }
+                }
+              },
+              "season_calibrated": {
+                "horses": 194,
+                "sires": 81,
+                "RMSE": {
+                  "N": 0.32055813654294657,
+                  "F": 0.33399246559945495,
+                  "P": 0.33137758342390644,
+                  "H": 0.31932081558134806,
+                  "G": 0.31836453076337357
+                },
+                "mean_gate_weight": 0.4378364771475274,
+                "contrasts": {
+                  "N_minus_F": {
+                    "MSE_gain": -0.008793448173316705,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.017796877614293792,
+                      0.0012314092844505754
+                    ]
+                  },
+                  "N_minus_P": {
+                    "MSE_gain": -0.007053583891981652,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.015212881123995796,
+                      0.0021539666188008307
+                    ]
+                  },
+                  "N_minus_H": {
+                    "MSE_gain": 0.0007917356403490946,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0004927562965717408,
+                      0.002524570299704342
+                    ]
+                  },
+                  "N_minus_G": {
+                    "MSE_gain": 0.0014015444557033585,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.002982121574786053,
+                      0.005666406627902328
+                    ]
+                  },
+                  "F_minus_G": {
+                    "MSE_gain": 0.010194992629020063,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0014950343590026322,
+                      0.017305089654284022
+                    ]
+                  },
+                  "P_minus_G": {
+                    "MSE_gain": 0.00845512834768501,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      0.0009882485690091364,
+                      0.014554259631432974
+                    ]
+                  },
+                  "H_minus_G": {
+                    "MSE_gain": 0.0006098088153542636,
+                    "sires": 81,
+                    "CI95_pointwise": [
+                      -0.0034992458916963715,
+                      0.004616747225828967
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "derived": {
+    "coverage_horse": 0.0683339203945051,
+    "coverage_starts": 0.06752982990606753,
+    "refreshed_season_gate": 12,
+    "positive_NG": 12,
+    "positive_NG_CI": 6,
+    "yearly": {
+      "2022": {
+        "NG_CI": 3,
+        "FG_CI": 3,
+        "PG_CI": 3
+      },
+      "2023": {
+        "NG_CI": 3,
+        "FG_CI": 3,
+        "PG_CI": 3
+      },
+      "2024": {
+        "NG_CI": 0,
+        "FG_CI": 3,
+        "PG_CI": 3
+      },
+      "2025": {
+        "NG_CI": 0,
+        "FG_CI": 3,
+        "PG_CI": 2
+      }
+    },
+    "late_all_NF_negative": true,
+    "late_all_NG_positive": true
+  }
+}

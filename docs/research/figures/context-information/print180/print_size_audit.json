@@ -1,0 +1,39 @@
+{
+  "status": "SIZE_AND_PRIMITIVE_PARITY_PASS_VISUAL_QA_PENDING",
+  "width_mm": 180,
+  "figure_count": 4,
+  "figures": [
+    {
+      "name": "figure_1_observation_structure.svg",
+      "source_blob": "de7fb9bf7cbef2993a517290678715b4122a62a6",
+      "text_count": 55,
+      "old_minimum_pt": 5.580708661417323,
+      "new_minimum_pt": 7.175196850393701,
+      "plot_primitives_preserved": 65
+    },
+    {
+      "name": "figure_2_longitudinal_substitution.svg",
+      "source_blob": "85941ebaf0933007bbbe5082136b9cb7cde874d1",
+      "text_count": 54,
+      "old_minimum_pt": 5.580708661417323,
+      "new_minimum_pt": 7.175196850393701,
+      "plot_primitives_preserved": 57
+    },
+    {
+      "name": "figure_3_identity_alignment.svg",
+      "source_blob": "71900ddbf9d5a533c9fd3ad432abb68fe4e412f3",
+      "text_count": 56,
+      "old_minimum_pt": 5.580708661417323,
+      "new_minimum_pt": 7.175196850393701,
+      "plot_primitives_preserved": 71
+    },
+    {
+      "name": "figure_4_transfer_and_coverage.svg",
+      "source_blob": "6005d425c0f317af92ae6b6064577481bc3d8466",
+      "text_count": 59,
+      "old_minimum_pt": 5.580708661417323,
+      "new_minimum_pt": 7.175196850393701,
+      "plot_primitives_preserved": 95
+    }
+  ]
+}

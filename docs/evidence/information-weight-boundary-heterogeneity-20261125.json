@@ -1,0 +1,1121 @@
+{
+  "source_commit": "f84f8b3c0c320b88cc7a6968a520f8335081bb4b",
+  "inputs": [
+    {
+      "path": "docs/evidence/japan-context-within-individual-20261124.json",
+      "git_blob_sha": "435bc5135f4745eb16c287debbfadad58c397373"
+    },
+    {
+      "path": "docs/evidence/japan-context-information-substitution-20261124.json",
+      "git_blob_sha": "4023a6f85add0336cc81848d8434db9df5a25009"
+    }
+  ],
+  "status": "DESCRIPTIVE_AGGREGATE_OUTCOME_DEPENDENT_SCALAR_ORACLES",
+  "rows": [
+    {
+      "seed": "20261124",
+      "year": 2022,
+      "profile": "fresh_own_stale_profile",
+      "horses": 3011,
+      "all": {
+        "alignment": 0.015206529840735922,
+        "energy": 0.028451760264918857,
+        "unconstrained_weight": 0.5344671014779229,
+        "bounded_weight": 0.5344671014779229,
+        "positive_gain_boundary": 1.0689342029558457,
+        "full_gain": 0.0019612994165529862,
+        "optimum_gain": 0.00812738992751567,
+        "unbounded_optimum": 0.008127389927515669,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.006166090510962684
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 334,
+          "p": 0.11092660245765526,
+          "alignment": 0.025652605170851515,
+          "energy": 0.03152493068537699,
+          "unconstrained_weight": 0.8137243956812446,
+          "bounded_weight": 0.8137243956812446,
+          "positive_gain_boundary": 1.627448791362489,
+          "full_gain": 0.01978027965632604,
+          "optimum_gain": 0.020874150640300723,
+          "unbounded_optimum": 0.02087415064030072,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0010938709839746832
+        },
+        {
+          "group": "prior_A",
+          "n": 2677,
+          "p": 0.8890733975423447,
+          "alignment": 0.01390320927283954,
+          "energy": 0.028068331456389525,
+          "unconstrained_weight": 0.4953343697840147,
+          "bounded_weight": 0.4953343697840147,
+          "positive_gain_boundary": 0.9906687395680294,
+          "full_gain": -0.0002619129107104441,
+          "optimum_gain": 0.006886737403137243,
+          "unbounded_optimum": 0.006886737403137244,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.007148650313847687
+        }
+      ],
+      "stratified_oracle_gain": 0.00843831363070702,
+      "heterogeneity_gain": 0.00031092370319135004,
+      "unbounded_weight_variance_component": 0.0003109237031913528,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261124",
+      "year": 2022,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 3011,
+      "all": {
+        "alignment": 0.015206529840735922,
+        "energy": 0.028451760264918857,
+        "unconstrained_weight": 0.5344671014779229,
+        "bounded_weight": 0.5344671014779229,
+        "positive_gain_boundary": 1.0689342029558457,
+        "full_gain": 0.0019612994165529862,
+        "optimum_gain": 0.00812738992751567,
+        "unbounded_optimum": 0.008127389927515669,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.006166090510962684
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 334,
+          "p": 0.11092660245765526,
+          "alignment": 0.025652605170851515,
+          "energy": 0.03152493068537699,
+          "unconstrained_weight": 0.8137243956812446,
+          "bounded_weight": 0.8137243956812446,
+          "positive_gain_boundary": 1.627448791362489,
+          "full_gain": 0.01978027965632604,
+          "optimum_gain": 0.020874150640300723,
+          "unbounded_optimum": 0.02087415064030072,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0010938709839746832
+        },
+        {
+          "group": "prior_A",
+          "n": 2677,
+          "p": 0.8890733975423447,
+          "alignment": 0.01390320927283954,
+          "energy": 0.028068331456389525,
+          "unconstrained_weight": 0.4953343697840147,
+          "bounded_weight": 0.4953343697840147,
+          "positive_gain_boundary": 0.9906687395680294,
+          "full_gain": -0.0002619129107104441,
+          "optimum_gain": 0.006886737403137243,
+          "unbounded_optimum": 0.006886737403137244,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.007148650313847687
+        }
+      ],
+      "stratified_oracle_gain": 0.00843831363070702,
+      "heterogeneity_gain": 0.00031092370319135004,
+      "unbounded_weight_variance_component": 0.0003109237031913528,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.008616965652896177,
+        "ci": [
+          0.003683119737716577,
+          0.01394091119336414
+        ],
+        "gain_minus_two_stratum_oracle": 0.0001786520221891564
+      }
+    },
+    {
+      "seed": "20261124",
+      "year": 2023,
+      "profile": "fresh_own_stale_profile",
+      "horses": 1588,
+      "all": {
+        "alignment": 0.011737341819102137,
+        "energy": 0.02917933227146557,
+        "unconstrained_weight": 0.4022484719631527,
+        "bounded_weight": 0.4022484719631527,
+        "positive_gain_boundary": 0.8044969439263054,
+        "full_gain": -0.005704648633261297,
+        "optimum_gain": 0.004721327811643047,
+        "unbounded_optimum": 0.004721327811643046,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.010425976444904344
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 174,
+          "p": 0.10957178841309824,
+          "alignment": 0.02800009202892712,
+          "energy": 0.030550470759389863,
+          "unconstrained_weight": 0.9165191675588543,
+          "bounded_weight": 0.9165191675588543,
+          "positive_gain_boundary": 1.8330383351177086,
+          "full_gain": 0.025449713298464374,
+          "optimum_gain": 0.0256626210379236,
+          "unbounded_optimum": 0.025662621037923595,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.00021290773945922478
+        },
+        {
+          "group": "prior_A",
+          "n": 1414,
+          "p": 0.8904282115869018,
+          "alignment": 0.009736126446747435,
+          "energy": 0.029010606601805863,
+          "unconstrained_weight": 0.33560575207487653,
+          "bounded_weight": 0.33560575207487653,
+          "positive_gain_boundary": 0.6712115041497531,
+          "full_gain": -0.009538353708310993,
+          "optimum_gain": 0.003267500038456768,
+          "unbounded_optimum": 0.0032675000384567686,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.012805853746767761
+        }
+      ],
+      "stratified_oracle_gain": 0.005721373498096081,
+      "heterogeneity_gain": 0.001000045686453034,
+      "unbounded_weight_variance_component": 0.0010000456864530352,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261124",
+      "year": 2023,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 1588,
+      "all": {
+        "alignment": 0.011818221711815268,
+        "energy": 0.025306719345763073,
+        "unconstrained_weight": 0.4669993589585491,
+        "bounded_weight": 0.4669993589585491,
+        "positive_gain_boundary": 0.9339987179170982,
+        "full_gain": -0.0016702759221325358,
+        "optimum_gain": 0.0055191019634477385,
+        "unbounded_optimum": 0.005519101963447738,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.007189377885580274
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 174,
+          "p": 0.10957178841309824,
+          "alignment": 0.02606158880485754,
+          "energy": 0.02623566066868738,
+          "unconstrained_weight": 0.9933650665013517,
+          "bounded_weight": 0.9933650665013517,
+          "positive_gain_boundary": 1.9867301330027034,
+          "full_gain": 0.025887516941027696,
+          "optimum_gain": 0.02588867189626819,
+          "unbounded_optimum": 0.025888671896268194,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0000011549552404940822
+        },
+        {
+          "group": "prior_A",
+          "n": 1414,
+          "p": 0.8904282115869018,
+          "alignment": 0.01006550185736735,
+          "energy": 0.02519240832016984,
+          "unconstrained_weight": 0.39954504267496294,
+          "bounded_weight": 0.39954504267496294,
+          "positive_gain_boundary": 0.7990900853499259,
+          "full_gain": -0.0050614046054351415,
+          "optimum_gain": 0.004021621369146757,
+          "unbounded_optimum": 0.004021621369146756,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0090830259745819
+        }
+      ],
+      "stratified_oracle_gain": 0.006417633202723035,
+      "heterogeneity_gain": 0.0008985312392752968,
+      "unbounded_weight_variance_component": 0.0008985312392752979,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.0067216131889189885,
+        "ci": [
+          0.0034478100589981826,
+          0.010250894303084117
+        ],
+        "gain_minus_two_stratum_oracle": 0.00030397998619595325
+      }
+    },
+    {
+      "seed": "20261124",
+      "year": 2024,
+      "profile": "fresh_own_stale_profile",
+      "horses": 743,
+      "all": {
+        "alignment": 0.007199630995514414,
+        "energy": 0.02951875228108499,
+        "unconstrained_weight": 0.24390024778004554,
+        "bounded_weight": 0.24390024778004554,
+        "positive_gain_boundary": 0.4878004955600911,
+        "full_gain": -0.015119490290056162,
+        "optimum_gain": 0.0017559917837308616,
+        "unbounded_optimum": 0.0017559917837308616,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.016875482073787022
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 100,
+          "p": 0.13458950201884254,
+          "alignment": 0.009119136125339922,
+          "energy": 0.029059137045307402,
+          "unconstrained_weight": 0.3138130396343797,
+          "bounded_weight": 0.3138130396343797,
+          "positive_gain_boundary": 0.6276260792687594,
+          "full_gain": -0.010820864794627558,
+          "optimum_gain": 0.0028617038263326006,
+          "unbounded_optimum": 0.0028617038263326,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.013682568620960157
+        },
+        {
+          "group": "prior_A",
+          "n": 643,
+          "p": 0.8654104979811574,
+          "alignment": 0.00690110764717452,
+          "energy": 0.02959023210002397,
+          "unconstrained_weight": 0.2332224912547722,
+          "bounded_weight": 0.2332224912547722,
+          "positive_gain_boundary": 0.4664449825095444,
+          "full_gain": -0.01578801680567493,
+          "optimum_gain": 0.0016094935178914008,
+          "unbounded_optimum": 0.001609493517891401,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.01739751032356633
+        }
+      ],
+      "stratified_oracle_gain": 0.0017780278797273632,
+      "heterogeneity_gain": 0.000022036095996501564,
+      "unbounded_weight_variance_component": 0.00002203609599650276,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261124",
+      "year": 2024,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 743,
+      "all": {
+        "alignment": 0.0072221315858964855,
+        "energy": 0.023748559260932268,
+        "unconstrained_weight": 0.3041081990088259,
+        "bounded_weight": 0.3041081990088259,
+        "positive_gain_boundary": 0.6082163980176518,
+        "full_gain": -0.009304296089139297,
+        "optimum_gain": 0.002196309429591736,
+        "unbounded_optimum": 0.002196309429591736,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.011500605518731033
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 100,
+          "p": 0.13458950201884254,
+          "alignment": 0.009901856525132615,
+          "energy": 0.022965179387185772,
+          "unconstrained_weight": 0.4311682638393717,
+          "bounded_weight": 0.4311682638393717,
+          "positive_gain_boundary": 0.8623365276787434,
+          "full_gain": -0.0031614663369205417,
+          "optimum_gain": 0.0042693662867279835,
+          "unbounded_optimum": 0.0042693662867279835,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.007430832623648525
+        },
+        {
+          "group": "prior_A",
+          "n": 643,
+          "p": 0.8654104979811574,
+          "alignment": 0.006805378096124147,
+          "energy": 0.02387039127862223,
+          "unconstrained_weight": 0.2850970483344731,
+          "bounded_weight": 0.2850970483344731,
+          "positive_gain_boundary": 0.5701940966689462,
+          "full_gain": -0.010259635086373937,
+          "optimum_gain": 0.00194019320800507,
+          "unbounded_optimum": 0.0019401932080050702,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.012199828294379007
+        }
+      ],
+      "stratified_oracle_gain": 0.0022536754527860813,
+      "heterogeneity_gain": 0.00005736602319434542,
+      "unbounded_weight_variance_component": 0.000057366023194345884,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.0022820052889808914,
+        "ci": [
+          -0.0017149758758470998,
+          0.006517539952088338
+        ],
+        "gain_minus_two_stratum_oracle": 0.000028329836194810123
+      }
+    },
+    {
+      "seed": "20261125",
+      "year": 2022,
+      "profile": "fresh_own_stale_profile",
+      "horses": 3011,
+      "all": {
+        "alignment": 0.014870018960872004,
+        "energy": 0.02878195967758491,
+        "unconstrained_weight": 0.5166437284829017,
+        "bounded_weight": 0.5166437284829017,
+        "positive_gain_boundary": 1.0332874569658035,
+        "full_gain": 0.0009580782441590968,
+        "optimum_gain": 0.007682502038556354,
+        "unbounded_optimum": 0.007682502038556355,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.006724423794397257
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 334,
+          "p": 0.11092660245765526,
+          "alignment": 0.02491636121997089,
+          "energy": 0.03233097818026507,
+          "unconstrained_weight": 0.7706652449872338,
+          "bounded_weight": 0.7706652449872338,
+          "positive_gain_boundary": 1.5413304899744675,
+          "full_gain": 0.01750174425967671,
+          "optimum_gain": 0.019202173623779278,
+          "unbounded_optimum": 0.019202173623779278,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0017004293641025674
+        },
+        {
+          "group": "prior_A",
+          "n": 2677,
+          "p": 0.8890733975423447,
+          "alignment": 0.013616571701051674,
+          "energy": 0.028339160955173567,
+          "unconstrained_weight": 0.4804860568239882,
+          "bounded_weight": 0.4804860568239882,
+          "positive_gain_boundary": 0.9609721136479764,
+          "full_gain": -0.001106017553070219,
+          "optimum_gain": 0.006542572844099425,
+          "unbounded_optimum": 0.006542572844099425,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.007648590397169644
+        }
+      ],
+      "stratified_oracle_gain": 0.007946859347059595,
+      "heterogeneity_gain": 0.00026435730850324097,
+      "unbounded_weight_variance_component": 0.00026435730850323685,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261125",
+      "year": 2022,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 3011,
+      "all": {
+        "alignment": 0.014870018960872004,
+        "energy": 0.02878195967758491,
+        "unconstrained_weight": 0.5166437284829017,
+        "bounded_weight": 0.5166437284829017,
+        "positive_gain_boundary": 1.0332874569658035,
+        "full_gain": 0.0009580782441590968,
+        "optimum_gain": 0.007682502038556354,
+        "unbounded_optimum": 0.007682502038556355,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.006724423794397257
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 334,
+          "p": 0.11092660245765526,
+          "alignment": 0.02491636121997089,
+          "energy": 0.03233097818026507,
+          "unconstrained_weight": 0.7706652449872338,
+          "bounded_weight": 0.7706652449872338,
+          "positive_gain_boundary": 1.5413304899744675,
+          "full_gain": 0.01750174425967671,
+          "optimum_gain": 0.019202173623779278,
+          "unbounded_optimum": 0.019202173623779278,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0017004293641025674
+        },
+        {
+          "group": "prior_A",
+          "n": 2677,
+          "p": 0.8890733975423447,
+          "alignment": 0.013616571701051674,
+          "energy": 0.028339160955173567,
+          "unconstrained_weight": 0.4804860568239882,
+          "bounded_weight": 0.4804860568239882,
+          "positive_gain_boundary": 0.9609721136479764,
+          "full_gain": -0.001106017553070219,
+          "optimum_gain": 0.006542572844099425,
+          "unbounded_optimum": 0.006542572844099425,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.007648590397169644
+        }
+      ],
+      "stratified_oracle_gain": 0.007946859347059595,
+      "heterogeneity_gain": 0.00026435730850324097,
+      "unbounded_weight_variance_component": 0.00026435730850323685,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.008270008342384153,
+        "ci": [
+          0.003745497108080494,
+          0.013886133085997938
+        ],
+        "gain_minus_two_stratum_oracle": 0.0003231489953245577
+      }
+    },
+    {
+      "seed": "20261125",
+      "year": 2023,
+      "profile": "fresh_own_stale_profile",
+      "horses": 1588,
+      "all": {
+        "alignment": 0.011635246455184106,
+        "energy": 0.02950364758113201,
+        "unconstrained_weight": 0.39436637192700896,
+        "bounded_weight": 0.39436637192700896,
+        "positive_gain_boundary": 0.7887327438540179,
+        "full_gain": -0.0062331546707638,
+        "optimum_gain": 0.004588549931007548,
+        "unbounded_optimum": 0.004588549931007548,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.010821704601771348
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 174,
+          "p": 0.10957178841309824,
+          "alignment": 0.02849243044429263,
+          "energy": 0.030318250901442537,
+          "unconstrained_weight": 0.9397781731180596,
+          "bounded_weight": 0.9397781731180596,
+          "positive_gain_boundary": 1.8795563462361191,
+          "full_gain": 0.026666609987142723,
+          "optimum_gain": 0.026776564230630708,
+          "unbounded_optimum": 0.02677656423063071,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.00010995424348798563
+        },
+        {
+          "group": "prior_A",
+          "n": 1414,
+          "p": 0.8904282115869018,
+          "alignment": 0.00956088293742959,
+          "energy": 0.029403406437048536,
+          "unconstrained_weight": 0.3251624249013134,
+          "bounded_weight": 0.3251624249013134,
+          "positive_gain_boundary": 0.6503248498026268,
+          "full_gain": -0.010281640562189356,
+          "optimum_gain": 0.003108839880132198,
+          "unbounded_optimum": 0.003108839880132198,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.013390480442321554
+        }
+      ],
+      "stratified_oracle_gain": 0.005702154764884554,
+      "heterogeneity_gain": 0.0011136048338770063,
+      "unbounded_weight_variance_component": 0.0011136048338770063,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261125",
+      "year": 2023,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 1588,
+      "all": {
+        "alignment": 0.011647128486570646,
+        "energy": 0.025627226605290737,
+        "unconstrained_weight": 0.45448259641822103,
+        "bounded_weight": 0.45448259641822103,
+        "positive_gain_boundary": 0.9089651928364421,
+        "full_gain": -0.0023329696321494446,
+        "optimum_gain": 0.005293417195393253,
+        "unbounded_optimum": 0.005293417195393252,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.007626386827542697
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 174,
+          "p": 0.10957178841309824,
+          "alignment": 0.026787714248941778,
+          "energy": 0.02648802619353141,
+          "unconstrained_weight": 1.0113140954037396,
+          "bounded_weight": 1,
+          "positive_gain_boundary": 2.0226281908074792,
+          "full_gain": 0.027087402304352144,
+          "optimum_gain": 0.027087402304352144,
+          "unbounded_optimum": 0.02709079300360242,
+          "clipping_penalty": 0.0000033906992502741147,
+          "full_weight_regret": 0
+        },
+        {
+          "group": "prior_A",
+          "n": 1414,
+          "p": 0.8904282115869018,
+          "alignment": 0.009784001242827661,
+          "energy": 0.025521300771942878,
+          "unconstrained_weight": 0.38336608820439944,
+          "bounded_weight": 0.38336608820439944,
+          "positive_gain_boundary": 0.7667321764087989,
+          "full_gain": -0.005953298286287555,
+          "optimum_gain": 0.0037508542834498223,
+          "unbounded_optimum": 0.003750854283449823,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.009704152569737378
+        }
+      ],
+      "stratified_oracle_gain": 0.006307881585488237,
+      "heterogeneity_gain": 0.0010144643900949846,
+      "unbounded_weight_variance_component": 0.0010148359150758128,
+      "extra_clipping_penalty": 3.715249808234861e-7,
+      "earlier_A_count_gate": {
+        "gain": 0.006815555099608812,
+        "ci": [
+          0.003790450149926084,
+          0.010189141069098184
+        ],
+        "gain_minus_two_stratum_oracle": 0.0005076735141205744
+      }
+    },
+    {
+      "seed": "20261125",
+      "year": 2024,
+      "profile": "fresh_own_stale_profile",
+      "horses": 743,
+      "all": {
+        "alignment": 0.007764502055632208,
+        "energy": 0.02981556160881982,
+        "unconstrained_weight": 0.2604177696701635,
+        "bounded_weight": 0.2604177696701635,
+        "positive_gain_boundary": 0.520835539340327,
+        "full_gain": -0.014286557497555401,
+        "optimum_gain": 0.002022014307927139,
+        "unbounded_optimum": 0.0020220143079271394,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.01630857180548254
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 100,
+          "p": 0.13458950201884254,
+          "alignment": 0.011152821270768118,
+          "energy": 0.02856125352797815,
+          "unconstrained_weight": 0.39048780754118484,
+          "bounded_weight": 0.39048780754118484,
+          "positive_gain_boundary": 0.7809756150823697,
+          "full_gain": -0.0062556109864419125,
+          "optimum_gain": 0.004355040725920934,
+          "unbounded_optimum": 0.004355040725920934,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.010610651712362846
+        },
+        {
+          "group": "prior_A",
+          "n": 643,
+          "p": 0.8654104979811574,
+          "alignment": 0.0072375472787837,
+          "energy": 0.030010632850008254,
+          "unconstrained_weight": 0.24116609986056023,
+          "bounded_weight": 0.24116609986056023,
+          "positive_gain_boundary": 0.48233219972112046,
+          "full_gain": -0.015535538292440854,
+          "optimum_gain": 0.001745451049780676,
+          "unbounded_optimum": 0.0017454510497806758,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.01728098934222153
+        }
+      ],
+      "stratified_oracle_gain": 0.002096674424765906,
+      "heterogeneity_gain": 0.00007466011683876679,
+      "unbounded_weight_variance_component": 0.00007466011683876599,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261125",
+      "year": 2024,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 743,
+      "all": {
+        "alignment": 0.007619053640731177,
+        "energy": 0.024056809882994468,
+        "unconstrained_weight": 0.31671088884137605,
+        "bounded_weight": 0.31671088884137605,
+        "positive_gain_boundary": 0.6334217776827521,
+        "full_gain": -0.008818702601532113,
+        "optimum_gain": 0.002413037250686093,
+        "unbounded_optimum": 0.0024130372506860932,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.011231739852218207
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 100,
+          "p": 0.13458950201884254,
+          "alignment": 0.011886159714635218,
+          "energy": 0.023492142844943276,
+          "unconstrained_weight": 0.5059631976992569,
+          "bounded_weight": 0.5059631976992569,
+          "positive_gain_boundary": 1.0119263953985138,
+          "full_gain": 0.0002801765843271596,
+          "optimum_gain": 0.0060139593775809215,
+          "unbounded_optimum": 0.0060139593775809215,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.005733782793253762
+        },
+        {
+          "group": "prior_A",
+          "n": 643,
+          "p": 0.8654104979811574,
+          "alignment": 0.006955429056920284,
+          "energy": 0.024144627462784698,
+          "unconstrained_weight": 0.2880735711346563,
+          "bounded_weight": 0.2880735711346563,
+          "positive_gain_boundary": 0.5761471422693126,
+          "full_gain": -0.010233769348944129,
+          "optimum_gain": 0.002003675287200781,
+          "unbounded_optimum": 0.0020036752872007813,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.01223744463614491
+        }
+      ],
+      "stratified_oracle_gain": 0.0025434174258791306,
+      "heterogeneity_gain": 0.00013038017519303785,
+      "unbounded_weight_variance_component": 0.0001303801751930378,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.0027823919627713344,
+        "ci": [
+          -0.001372431879312689,
+          0.006636534930705577
+        ],
+        "gain_minus_two_stratum_oracle": 0.00023897453689220374
+      }
+    },
+    {
+      "seed": "20261126",
+      "year": 2022,
+      "profile": "fresh_own_stale_profile",
+      "horses": 3011,
+      "all": {
+        "alignment": 0.015254127481944425,
+        "energy": 0.028333451225410963,
+        "unconstrained_weight": 0.5383787298126147,
+        "bounded_weight": 0.5383787298126147,
+        "positive_gain_boundary": 1.0767574596252294,
+        "full_gain": 0.002174803738477886,
+        "optimum_gain": 0.008212497778128937,
+        "unbounded_optimum": 0.008212497778128937,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.006037694039651051
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 334,
+          "p": 0.11092660245765526,
+          "alignment": 0.025156098888061678,
+          "energy": 0.03110863933811716,
+          "unconstrained_weight": 0.8086531401981994,
+          "bounded_weight": 0.8086531401981994,
+          "positive_gain_boundary": 1.617306280396399,
+          "full_gain": 0.019203558438006196,
+          "optimum_gain": 0.02034255836096751,
+          "unbounded_optimum": 0.02034255836096751,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0011389999229613132
+        },
+        {
+          "group": "prior_A",
+          "n": 2677,
+          "p": 0.8890733975423447,
+          "alignment": 0.01401869287244007,
+          "energy": 0.027987200635331066,
+          "unconstrained_weight": 0.5008965725118953,
+          "bounded_weight": 0.5008965725118953,
+          "positive_gain_boundary": 1.0017931450237907,
+          "full_gain": 0.000050185109549075874,
+          "optimum_gain": 0.007021915210902168,
+          "unbounded_optimum": 0.007021915210902168,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.006971730101353092
+        }
+      ],
+      "stratified_oracle_gain": 0.008499528898089755,
+      "heterogeneity_gain": 0.0002870311199608174,
+      "unbounded_weight_variance_component": 0.00028703111996081367,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261126",
+      "year": 2022,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 3011,
+      "all": {
+        "alignment": 0.015254127481944425,
+        "energy": 0.028333451225410963,
+        "unconstrained_weight": 0.5383787298126147,
+        "bounded_weight": 0.5383787298126147,
+        "positive_gain_boundary": 1.0767574596252294,
+        "full_gain": 0.002174803738477886,
+        "optimum_gain": 0.008212497778128937,
+        "unbounded_optimum": 0.008212497778128937,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.006037694039651051
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 334,
+          "p": 0.11092660245765526,
+          "alignment": 0.025156098888061678,
+          "energy": 0.03110863933811716,
+          "unconstrained_weight": 0.8086531401981994,
+          "bounded_weight": 0.8086531401981994,
+          "positive_gain_boundary": 1.617306280396399,
+          "full_gain": 0.019203558438006196,
+          "optimum_gain": 0.02034255836096751,
+          "unbounded_optimum": 0.02034255836096751,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.0011389999229613132
+        },
+        {
+          "group": "prior_A",
+          "n": 2677,
+          "p": 0.8890733975423447,
+          "alignment": 0.01401869287244007,
+          "energy": 0.027987200635331066,
+          "unconstrained_weight": 0.5008965725118953,
+          "bounded_weight": 0.5008965725118953,
+          "positive_gain_boundary": 1.0017931450237907,
+          "full_gain": 0.000050185109549075874,
+          "optimum_gain": 0.007021915210902168,
+          "unbounded_optimum": 0.007021915210902168,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.006971730101353092
+        }
+      ],
+      "stratified_oracle_gain": 0.008499528898089755,
+      "heterogeneity_gain": 0.0002870311199608174,
+      "unbounded_weight_variance_component": 0.00028703111996081367,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.00875931068340448,
+        "ci": [
+          0.0041066025597960056,
+          0.014411949740011575
+        ],
+        "gain_minus_two_stratum_oracle": 0.0002597817853147253
+      }
+    },
+    {
+      "seed": "20261126",
+      "year": 2023,
+      "profile": "fresh_own_stale_profile",
+      "horses": 1588,
+      "all": {
+        "alignment": 0.011854669243325943,
+        "energy": 0.02905740664431744,
+        "unconstrained_weight": 0.40797409722193084,
+        "bounded_weight": 0.40797409722193084,
+        "positive_gain_boundary": 0.8159481944438617,
+        "full_gain": -0.005348068157665555,
+        "optimum_gain": 0.004836397982410492,
+        "unbounded_optimum": 0.004836397982410492,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.010184466140076048
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 174,
+          "p": 0.10957178841309824,
+          "alignment": 0.026133339489154882,
+          "energy": 0.029225863682323768,
+          "unconstrained_weight": 0.8941853617472633,
+          "bounded_weight": 0.8941853617472633,
+          "positive_gain_boundary": 1.7883707234945265,
+          "full_gain": 0.023040815295985995,
+          "optimum_gain": 0.023368049624774,
+          "unbounded_optimum": 0.023368049624774,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.00032723432878800293
+        },
+        {
+          "group": "prior_A",
+          "n": 1414,
+          "p": 0.8904282115869018,
+          "alignment": 0.01009760515366948,
+          "energy": 0.029036677136104493,
+          "unconstrained_weight": 0.3477534673247449,
+          "bounded_weight": 0.3477534673247449,
+          "positive_gain_boundary": 0.6955069346494898,
+          "full_gain": -0.008841466828765531,
+          "optimum_gain": 0.003511477203864775,
+          "unbounded_optimum": 0.0035114772038647756,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.012352944032630306
+        }
+      ],
+      "stratified_oracle_gain": 0.005687197355778002,
+      "heterogeneity_gain": 0.0008507993733675107,
+      "unbounded_weight_variance_component": 0.0008507993733675112,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261126",
+      "year": 2023,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 1588,
+      "all": {
+        "alignment": 0.011688784498034305,
+        "energy": 0.025277627277128144,
+        "unconstrained_weight": 0.4624162058363216,
+        "bounded_weight": 0.4624162058363216,
+        "positive_gain_boundary": 0.9248324116726432,
+        "full_gain": -0.001900058281059533,
+        "optimum_gain": 0.005405083378419436,
+        "unbounded_optimum": 0.005405083378419436,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.007305141659478969
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 174,
+          "p": 0.10957178841309824,
+          "alignment": 0.0242300354170806,
+          "energy": 0.025730509021813258,
+          "unconstrained_weight": 0.9416850399865537,
+          "bounded_weight": 0.9416850399865537,
+          "positive_gain_boundary": 1.8833700799731075,
+          "full_gain": 0.02272956181234794,
+          "optimum_gain": 0.022817061870609157,
+          "unbounded_optimum": 0.02281706187060916,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.00008750005826121607
+        },
+        {
+          "group": "prior_A",
+          "n": 1414,
+          "p": 0.8904282115869018,
+          "alignment": 0.010145518826242187,
+          "energy": 0.025221897840370572,
+          "unconstrained_weight": 0.4022504131312081,
+          "bounded_weight": 0.4022504131312081,
+          "positive_gain_boundary": 0.8045008262624161,
+          "full_gain": -0.004930860187886198,
+          "optimum_gain": 0.004081039139286369,
+          "unbounded_optimum": 0.004081039139286369,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.009011899327172567
+        }
+      ],
+      "stratified_oracle_gain": 0.006133978657705869,
+      "heterogeneity_gain": 0.0007288952792864328,
+      "unbounded_weight_variance_component": 0.0007288952792864323,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.006447609773359388,
+        "ci": [
+          0.0032939056591188066,
+          0.00977422783796319
+        ],
+        "gain_minus_two_stratum_oracle": 0.00031363111565351886
+      }
+    },
+    {
+      "seed": "20261126",
+      "year": 2024,
+      "profile": "fresh_own_stale_profile",
+      "horses": 743,
+      "all": {
+        "alignment": 0.007512575610575573,
+        "energy": 0.0292519783279509,
+        "unconstrained_weight": 0.25682282156612785,
+        "bounded_weight": 0.25682282156612785,
+        "positive_gain_boundary": 0.5136456431322557,
+        "full_gain": -0.014226827106799754,
+        "optimum_gain": 0.001929400865536895,
+        "unbounded_optimum": 0.0019294008655368945,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.016156227972336647
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 100,
+          "p": 0.13458950201884254,
+          "alignment": 0.009931854857825653,
+          "energy": 0.02881167171039837,
+          "unconstrained_weight": 0.3447163690346078,
+          "bounded_weight": 0.3447163690346078,
+          "positive_gain_boundary": 0.6894327380692156,
+          "full_gain": -0.008947961994747063,
+          "optimum_gain": 0.0034236729443683895,
+          "unbounded_optimum": 0.00342367294436839,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.012371634939115453
+        },
+        {
+          "group": "prior_A",
+          "n": 643,
+          "p": 0.8654104979811574,
+          "alignment": 0.0071363268940514545,
+          "energy": 0.029320455251364983,
+          "unconstrained_weight": 0.24339072612862075,
+          "bounded_weight": 0.24339072612862075,
+          "positive_gain_boundary": 0.4867814522572415,
+          "full_gain": -0.015047801463262074,
+          "optimum_gain": 0.0017369157846343884,
+          "unbounded_optimum": 0.0017369157846343882,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.01678471724789646
+        }
+      ],
+      "stratified_oracle_gain": 0.001963935590789705,
+      "heterogeneity_gain": 0.000034534725252809975,
+      "unbounded_weight_variance_component": 0.00003453472525281069,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": null
+    },
+    {
+      "seed": "20261126",
+      "year": 2024,
+      "profile": "fresh_own_fresh_profile",
+      "horses": 743,
+      "all": {
+        "alignment": 0.007490248470270097,
+        "energy": 0.023614050490975348,
+        "unconstrained_weight": 0.31719456486860087,
+        "bounded_weight": 0.31719456486860087,
+        "positive_gain_boundary": 0.6343891297372017,
+        "full_gain": -0.008633553550435154,
+        "optimum_gain": 0.002375866104285027,
+        "unbounded_optimum": 0.0023758661042850267,
+        "clipping_penalty": 0,
+        "full_weight_regret": 0.011009419654720182
+      },
+      "groups": [
+        {
+          "group": "no_prior_A",
+          "n": 100,
+          "p": 0.13458950201884254,
+          "alignment": 0.011200439786012942,
+          "energy": 0.02308266155266409,
+          "unconstrained_weight": 0.48523172947186594,
+          "bounded_weight": 0.48523172947186594,
+          "positive_gain_boundary": 0.9704634589437319,
+          "full_gain": -0.0006817819806382054,
+          "optimum_gain": 0.0054348087682125545,
+          "unbounded_optimum": 0.005434808768212555,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.00611659074885076
+        },
+        {
+          "group": "prior_A",
+          "n": 643,
+          "p": 0.8654104979811574,
+          "alignment": 0.006913235823964833,
+          "energy": 0.023696692627571188,
+          "unconstrained_weight": 0.29173842664951727,
+          "bounded_weight": 0.29173842664951727,
+          "positive_gain_boundary": 0.5834768532990345,
+          "full_gain": -0.009870220979641521,
+          "optimum_gain": 0.0020168565423405796,
+          "unbounded_optimum": 0.0020168565423405796,
+          "clipping_penalty": 0,
+          "full_weight_regret": 0.011887077521982101
+        }
+      ],
+      "stratified_oracle_gain": 0.002476877030344883,
+      "heterogeneity_gain": 0.00010101092605985587,
+      "unbounded_weight_variance_component": 0.00010101092605985614,
+      "extra_clipping_penalty": 0,
+      "earlier_A_count_gate": {
+        "gain": 0.0029038742589878653,
+        "ci": [
+          -0.0015841246295632285,
+          0.007393832667875865
+        ],
+        "gain_minus_two_stratum_oracle": 0.0004269972286429823
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "seed": "20261124",
+      "profile": "fresh_own_stale_profile",
+      "intermediate_peak": true,
+      "threshold_crossing": true,
+      "late_heterogeneity_reduction": 0.9779649107085705
+    },
+    {
+      "seed": "20261124",
+      "profile": "fresh_own_fresh_profile",
+      "intermediate_peak": true,
+      "threshold_crossing": true,
+      "late_heterogeneity_reduction": 0.9361557832528855
+    },
+    {
+      "seed": "20261125",
+      "profile": "fresh_own_stale_profile",
+      "intermediate_peak": true,
+      "threshold_crossing": true,
+      "late_heterogeneity_reduction": 0.9329563642617837
+    },
+    {
+      "seed": "20261125",
+      "profile": "fresh_own_fresh_profile",
+      "intermediate_peak": true,
+      "threshold_crossing": true,
+      "late_heterogeneity_reduction": 0.871478805499688
+    },
+    {
+      "seed": "20261126",
+      "profile": "fresh_own_stale_profile",
+      "intermediate_peak": true,
+      "threshold_crossing": true,
+      "late_heterogeneity_reduction": 0.9594090847574093
+    },
+    {
+      "seed": "20261126",
+      "profile": "fresh_own_fresh_profile",
+      "intermediate_peak": true,
+      "threshold_crossing": true,
+      "late_heterogeneity_reduction": 0.8614191517898941
+    }
+  ],
+  "arithmetic_checks": 207,
+  "limitations": [
+    "Weights and positive-gain boundaries use evaluation outcomes, not forecasting parameters.",
+    "Two groups defined by pre-2022 eligible source-A history, not contemporary no-history or debut status.",
+    "Annual cohorts change, no time-moderator or biological inference; splits overlap.",
+    "No new sampling intervals for oracles, thresholds or heterogeneity. Earlier-A fitted gate is distinct and retains original pointwise intervals.",
+    "2022 stale and refreshed profiles are identical, not independent conditions."
+  ]
+}

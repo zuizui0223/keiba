@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "status": "CONSOLIDATED_COMPLETED_RETROSPECTIVE_RECEIPTS_NOT_NEW_ANALYSIS",
+  "base_main": "e9f4f829d48facec163f8f9ec9a4c0189cc2654e",
+  "source_branch_tips": {
+    "pr77": "cc614b0f118be58a22800534ca13007fdf8e3283",
+    "pr83": "25b5ddddb0c31c66e7bd87cfc596c8bf4357a0f3",
+    "pr84": "92b4490c221934f053ba043efeeddcf3a2329510",
+    "pr87": "3612c93a6dcbb11e8a58419c9897a5cea8e55bec",
+    "pr88": "0e873931af9f3bd12dc1f2e46e8f413b69408414",
+    "pr89": "4e6b056c97bbbc77d7fb8781b50677d7769d501b",
+    "pr91": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693",
+    "pr92": "ea9fb01832dc968296401029b5c01ca0b08e1c38",
+    "pr93": "0b4dc77f744edfc3e40d18346f6f7d40f35bab51",
+    "pr95": "a2ef264152adc0ce4a3172dfc6f659ca0f016bda",
+    "pr96": "70dba2ca1a7cebf9240582c2ab7c1282c384c283"
+  },
+  "original_files_preserved": 90,
+  "previous_main_files_changed": [
+    "README.md",
+    "docs/research/README.md"
+  ],
+  "new_integration_files": [
+    "docs/research/INTEGRATED_CONTEXT_INFORMATION_20261124.md",
+    "docs/evidence/context-information-consolidation-20261124.json"
+  ],
+  "studies": [
+    {
+      "pr": 77,
+      "topic": "Off-context information",
+      "status": "Mixed: diversity interaction unsupported",
+      "run_id": 45328700713,
+      "protocol": "docs/research/JAPAN_KIN_CONTEXT_DIVERSITY_PROTOCOL.md",
+      "result": "docs/research/JAPAN_KIN_CONTEXT_DIVERSITY_RESULTS.md",
+      "evidence": "docs/evidence/japan-kin-context-diversity-20261124.json"
+    },
+    {
+      "pr": 78,
+      "topic": "Family-indexed surface contrast",
+      "status": "Positive conditional split-half resemblance",
+      "run_id": 45329113256,
+      "protocol": "docs/research/JAPAN_SIRE_CONTEXT_SPECIFICITY_PROTOCOL.md",
+      "result": "docs/research/JAPAN_SIRE_CONTEXT_SPECIFICITY_RESULTS.md",
+      "evidence": "docs/evidence/japan-sire-context-specificity-20261124.json"
+    },
+    {
+      "pr": 79,
+      "topic": "Within-horse and swapped-sire controls",
+      "status": "Within-horse support HOLD; swapped comparison split-sensitive",
+      "run_id": 45330108918,
+      "protocol": "docs/research/JAPAN_SIRE_CONTEXT_SELECTION_CONTROL_PROTOCOL.md",
+      "result": "docs/research/JAPAN_SIRE_CONTEXT_SELECTION_CONTROL_RESULTS.md",
+      "evidence": "docs/evidence/japan-sire-context-selection-control-20261124.json"
+    },
+    {
+      "pr": 80,
+      "topic": "Paired performance response transfer",
+      "status": "Primary useful-information gain uncertain",
+      "run_id": 45330597654,
+      "protocol": "docs/research/JAPAN_SIRE_CONTEXT_TIME_TRANSFER_PROTOCOL.md",
+      "result": "docs/research/JAPAN_SIRE_CONTEXT_TIME_TRANSFER_RESULTS.md",
+      "evidence": "docs/evidence/japan-sire-context-time-transfer-20261124.json"
+    },
+    {
+      "pr": 81,
+      "topic": "Annual observed allocation",
+      "status": "Positive conditional transfer",
+      "run_id": 45332342678,
+      "protocol": "docs/research/JAPAN_SIRE_CONTEXT_EXPOSURE_TRANSFER_PROTOCOL.md",
+      "result": "docs/research/JAPAN_SIRE_CONTEXT_EXPOSURE_TRANSFER_RESULTS.md",
+      "evidence": "docs/evidence/japan-sire-context-exposure-transfer-20261124.json"
+    },
+    {
+      "pr": 82,
+      "topic": "First vs later context allocation",
+      "status": "Positive conditional gains; descriptive cold-history concentration",
+      "run_id": 45360712301,
+      "protocol": "docs/research/JAPAN_SIRE_FIRST_CONTEXT_ASSIGNMENT_PROTOCOL.md",
+      "result": "docs/research/JAPAN_SIRE_FIRST_CONTEXT_ASSIGNMENT_RESULTS.md",
+      "evidence": "docs/evidence/japan-sire-first-context-assignment-20261124.json"
+    },
+    {
+      "pr": 83,
+      "topic": "Paternal/maternal equal-count channels",
+      "status": "Both useful; primary directional asymmetry uncertain",
+      "run_id": 45362299683,
+      "protocol": "docs/research/JAPAN_PARENT_CONTEXT_EQUALIZATION_PROTOCOL.md",
+      "result": "docs/research/JAPAN_PARENT_CONTEXT_EQUALIZATION_RESULTS.md",
+      "evidence": "docs/evidence/japan-parent-context-equalization-20261124.json"
+    },
+    {
+      "pr": 84,
+      "topic": "Observed management matched donor control",
+      "status": "Same-sire direction positive; primary placebo interval uncertain",
+      "run_id": 45367084420,
+      "protocol": "docs/research/JAPAN_CONTEXT_MANAGEMENT_MATCHED_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_MANAGEMENT_MATCHED_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-management-matched-20261124.json"
+    },
+    {
+      "pr": 85,
+      "topic": "Later source fixed-profile transfer",
+      "status": "Primary uncertain; all strict last-trainer gains negative",
+      "run_id": 45376549215,
+      "protocol": "docs/research/JAPAN_CONTEXT_OCCUPANCY_INDEPENDENT_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_OCCUPANCY_INDEPENDENT_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-occupancy-independent-20261124.json"
+    },
+    {
+      "pr": 86,
+      "topic": "Composition and chronological refresh",
+      "status": "Positive cold subgroup; negative late full correction",
+      "run_id": 45378664497,
+      "protocol": "docs/research/JAPAN_CONTEXT_OCCUPANCY_REFRESH_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_OCCUPANCY_REFRESH_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-occupancy-refresh-20261124.json"
+    },
+    {
+      "pr": 87,
+      "topic": "Experience-dependent weight",
+      "status": "Earlier conditional gains; late primary uncertain",
+      "run_id": 45381454655,
+      "protocol": "docs/research/JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-information-substitution-20261124.json"
+    },
+    {
+      "pr": 88,
+      "topic": "Within-horse fixed correction decomposition",
+      "status": "Negative primary update component; positive membership remainder",
+      "run_id": 45382057980,
+      "protocol": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-within-individual-20261124.json"
+    },
+    {
+      "pr": 89,
+      "topic": "Adjacent distance-band generalization",
+      "status": "Short-band primary supported; long-band main contrast uncertain",
+      "run_id": 45383198727,
+      "protocol": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-distance-generalization-20261124.json"
+    },
+    {
+      "pr": 91,
+      "topic": "Historical surface-supply balance",
+      "status": "Primary association not supported; all estimated intervals cross zero, within-horse support HOLD",
+      "run_id": 45386135942,
+      "protocol": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-opportunity-diversity-20261124.json"
+    },
+    {
+      "pr": 92,
+      "topic": "Same-sire alignment versus magnitude-matched other-sire sign",
+      "status": "Primary supported; 8/9 pointwise intervals positive; all 9 late full correction gains negative",
+      "run_id": 45387457638,
+      "protocol": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-alignment-identity-control-20261124.json"
+    },
+    {
+      "pr": 93,
+      "topic": "2025 season-matched allocation transfer and coverage",
+      "status": "Primary no-family gain uncertain; history-dependent correction beats full in all three intervals; 6.83% old-identity coverage",
+      "run_id": 45527759025,
+      "protocol": "docs/research/JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-seasonal-transfer-2025-20261125.json"
+    },
+    {
+      "pr": 95,
+      "topic": "Same-horse transitional heterogeneity peak",
+      "status": "Primary HOLD (54<100 low-history horses); all 12 point sequences decrease; six supported sensitivities do not establish peak",
+      "run_id": 45601408540,
+      "protocol": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-transitional-heterogeneity-20261126.json"
+    },
+    {
+      "pr": 96,
+      "topic": "Direct-source membership alignment parity and uncertainty",
+      "status": "All 18 recovered moment conditions reproduced; all 12 point directions positive; all 12 support HOLD; no intervals",
+      "run_id": 45657243849,
+      "protocol": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_PROTOCOL.md",
+      "result": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_RESULTS.md",
+      "evidence": "docs/evidence/japan-context-membership-alignment-20261126.json"
+    }
+  ],
+  "original_blobs": [
+    {
+      "path": ".github/workflows/ecology-japan-context-alignment-identity-control.yml",
+      "sha": "dde9eedae8d24789fc62278f049c327e79e61ce5"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-distance-generalization.yml",
+      "sha": "f95cb2d6c37906ae3372d5f9e80f03cb748f2361"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-information-substitution.yml",
+      "sha": "579355dbcb1e5ff4b89087e71587a02ea3162e01"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-management-matched.yml",
+      "sha": "f009691640663c088915e9d3782664b576cb4e42"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-membership-alignment.yml",
+      "sha": "99ef612ec3216810d961338bda2336d8f2950df2"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-occupancy-independent.yml",
+      "sha": "7e4fbafc7d8c6362e78e94d05d51669fbbb8755c"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-occupancy-refresh.yml",
+      "sha": "2733b6d042dc27f988debdfe3d1bd21ee755ca09"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-opportunity-diversity.yml",
+      "sha": "c7adf7d68b0e80219e4c207a8f0fcb1b1e46c3ff"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-seasonal-transfer-2025.yml",
+      "sha": "d7f571f1b03757d0b9bdb4cbcdcda6ea8eef25ec"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-transitional-heterogeneity.yml",
+      "sha": "4ee5c4f1f01bbb56cf53df024ce7346fafe0c058"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-context-within-individual.yml",
+      "sha": "eb3e1d5f6d23a6bf29142d5cbfb32fed459c06e7"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-kin-context-diversity.yml",
+      "sha": "d15df3bef863106255d7295b04b8112606b6182e"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-parent-context-equalization.yml",
+      "sha": "6a247628b4d364eee23e3340e5da154f65b752d6"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-sire-context-exposure-transfer.yml",
+      "sha": "8ac4bc90c16102e9b9b97cce7aca1038eaaf8b53"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-sire-context-selection-control.yml",
+      "sha": "03e78b7862e5853bc39c3d3360e52a1d394b92bd"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-sire-context-specificity.yml",
+      "sha": "142ea24ec602973a972f66ebb27d2a21e7ea241a"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-sire-context-time-transfer.yml",
+      "sha": "4fe95b0fddde48dabd5758d5f481f11e849610cf"
+    },
+    {
+      "path": ".github/workflows/ecology-japan-sire-first-context-assignment.yml",
+      "sha": "edfd87ee70cf242acc05152dbfe7d75e859f38e9"
+    },
+    {
+      "path": "docs/evidence/japan-context-alignment-identity-control-20261124.json",
+      "sha": "9f5e27e24073a318d07b5cf645ef781bbbbb56ad"
+    },
+    {
+      "path": "docs/evidence/japan-context-distance-generalization-20261124.json",
+      "sha": "5918ce018c5fb9e3304e0831d552de5096833a87"
+    },
+    {
+      "path": "docs/evidence/japan-context-information-substitution-20261124.json",
+      "sha": "4023a6f85add0336cc81848d8434db9df5a25009"
+    },
+    {
+      "path": "docs/evidence/japan-context-management-matched-20261124.json",
+      "sha": "9239de2233d3fde6d2068f9aeba16db7c752360e"
+    },
+    {
+      "path": "docs/evidence/japan-context-membership-alignment-20261126.json",
+      "sha": "0ad7dd277ebc35b0f5c3ad14b85f4b412a6fe580"
+    },
+    {
+      "path": "docs/evidence/japan-context-occupancy-independent-20261124.json",
+      "sha": "b2957a9efda6987eeeebf01c78ef2f63abd92db4"
+    },
+    {
+      "path": "docs/evidence/japan-context-occupancy-refresh-20261124.json",
+      "sha": "a699763f6f3ccf3c01e1bcb081d437b178b541cb"
+    },
+    {
+      "path": "docs/evidence/japan-context-opportunity-diversity-20261124.json",
+      "sha": "31dee4ae476855f9c23c607b4a7d8c73f68eb415"
+    },
+    {
+      "path": "docs/evidence/japan-context-seasonal-transfer-2025-20261125.json",
+      "sha": "6ef4eb8f33a924231e8d602e034f57829538e5e0"
+    },
+    {
+      "path": "docs/evidence/japan-context-transitional-heterogeneity-20261126.json",
+      "sha": "bc6cf12589a36a86db46da3d1715b59310a5639f"
+    },
+    {
+      "path": "docs/evidence/japan-context-within-individual-20261124.json",
+      "sha": "435bc5135f4745eb16c287debbfadad58c397373"
+    },
+    {
+      "path": "docs/evidence/japan-kin-context-diversity-20261124.json",
+      "sha": "bdc9b0225bdf82dbf43cb055210c038e91d156cc"
+    },
+    {
+      "path": "docs/evidence/japan-parent-context-equalization-20261124.json",
+      "sha": "58dfb6f0c2ebf1228addcfeca09883e5e0febd34"
+    },
+    {
+      "path": "docs/evidence/japan-sire-context-exposure-transfer-20261124.json",
+      "sha": "4690752d9f2723794ad47d722349fbf37d829b06"
+    },
+    {
+      "path": "docs/evidence/japan-sire-context-selection-control-20261124.json",
+      "sha": "6044bc238c33181f018e4ae6898c5a8c3939f834"
+    },
+    {
+      "path": "docs/evidence/japan-sire-context-specificity-20261124.json",
+      "sha": "1a345c19938549c72ab335c4a67d6526c2d8f6c2"
+    },
+    {
+      "path": "docs/evidence/japan-sire-context-time-transfer-20261124.json",
+      "sha": "824b940a08cdf45e7e8e28d1a7c833a212d14b61"
+    },
+    {
+      "path": "docs/evidence/japan-sire-first-context-assignment-20261124.json",
+      "sha": "50e89420fe5cc3b355e7dbe93bddedcf77353af4"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_PROTOCOL.md",
+      "sha": "728a94a4fe6dc39a5edd3bba4a49629bf39db870"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_ALIGNMENT_IDENTITY_CONTROL_RESULTS.md",
+      "sha": "4c3c0707dba55495b38fc2ef83c33bdda267d520"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_PROTOCOL.md",
+      "sha": "1ae124e3ffbefcb17ee09156f479cfe509af8e95"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_DISTANCE_GENERALIZATION_RESULTS.md",
+      "sha": "05750ee8f6c3700429c3ee6256024744f8b205a5"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_PROTOCOL.md",
+      "sha": "4f414bbe83b3678d24f950bfba2582abc4031214"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_INFORMATION_SUBSTITUTION_RESULTS.md",
+      "sha": "3779bdc101a9464bfa80d7582f9659c2f3fc681a"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_MANAGEMENT_MATCHED_PROTOCOL.md",
+      "sha": "21496d6b3861e588ad916e7fd91de2871fd7460b"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_MANAGEMENT_MATCHED_RESULTS.md",
+      "sha": "f9ca4813e69bc3ecc20b5c6c53d1df9997e46f54"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_PROTOCOL.md",
+      "sha": "4560a96a622fcf60bd6d2cb967656a0e7944d115"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_MEMBERSHIP_ALIGNMENT_RESULTS.md",
+      "sha": "302673e25c634d795320dbc301b578257d833b30"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OCCUPANCY_INDEPENDENT_PROTOCOL.md",
+      "sha": "005a3ea8eba93ae4cd030f28dd65559844a2daa9"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OCCUPANCY_INDEPENDENT_RESULTS.md",
+      "sha": "b6631759d60962ae9b51e8e3730380c0fb6e4b5e"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OCCUPANCY_REFRESH_PROTOCOL.md",
+      "sha": "ad45d84322216b22ac812013e67abc29ca2d6d97"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OCCUPANCY_REFRESH_RESULTS.md",
+      "sha": "9c5c616638510b8f3cea51ac95272210585c6cb0"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_PROTOCOL.md",
+      "sha": "860d7d96dcf8e4532a1ec64084e22d6b6eace16a"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_OPPORTUNITY_DIVERSITY_RESULTS.md",
+      "sha": "3a513a9e083cc18977a4b3cc667a4b7b1aa4afc4"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_PROTOCOL.md",
+      "sha": "15992a2991ad6840e6f067d0dba98d1ca2970716"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_SEASONAL_TRANSFER_2025_RESULTS.md",
+      "sha": "c53ff104cf33724746b3ee635ae6a71e8857bd69"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_PROTOCOL.md",
+      "sha": "3285823a586dfd462c3c7e45121d1e9bca60fc13"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_TRANSITIONAL_HETEROGENEITY_RESULTS.md",
+      "sha": "9ee60ff318b94547c929c749db8631f20f1a6670"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_PROTOCOL.md",
+      "sha": "ffa3477fa2170d15823e6d89a1446243717605ce"
+    },
+    {
+      "path": "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_RESULTS.md",
+      "sha": "ca40c6e74df5b7e76026131cec4a898af6822424"
+    },
+    {
+      "path": "docs/research/JAPAN_KIN_CONTEXT_DIVERSITY_PROTOCOL.md",
+      "sha": "b812fdda4faba767f988d092a3ccdd17bba45a4e"
+    },
+    {
+      "path": "docs/research/JAPAN_KIN_CONTEXT_DIVERSITY_RESULTS.md",
+      "sha": "1950e08102f73ed17b062a27933f2cfdb2077f96"
+    },
+    {
+      "path": "docs/research/JAPAN_PARENT_CONTEXT_EQUALIZATION_PROTOCOL.md",
+      "sha": "2d995e6277c913ba2443f986a2ef5af28d86740e"
+    },
+    {
+      "path": "docs/research/JAPAN_PARENT_CONTEXT_EQUALIZATION_RESULTS.md",
+      "sha": "4240f297dee10be5faa5f7e67b13fae1ad9682f6"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_EXPOSURE_TRANSFER_PROTOCOL.md",
+      "sha": "f63f29e22e87b1c03a057451929572d9a3930efe"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_EXPOSURE_TRANSFER_RESULTS.md",
+      "sha": "231e4b78f731ca71565562d2cdbf08e16268d0f7"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_SELECTION_CONTROL_PROTOCOL.md",
+      "sha": "4b3d6cdbcea395566b1563083f3e6205e573ae75"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_SELECTION_CONTROL_RESULTS.md",
+      "sha": "485f549e00e331b0f8501d3517367d7ce866f579"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_SPECIFICITY_PROTOCOL.md",
+      "sha": "ffabed352ce4d300ae3caacd83fc26fd1ce34d39"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_SPECIFICITY_RESULTS.md",
+      "sha": "ac528d79bc8a890b1cb98cd33c29b2559a0a31e9"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_TIME_TRANSFER_PROTOCOL.md",
+      "sha": "21892cc3050db074ad845291cf514e3e978aea55"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_CONTEXT_TIME_TRANSFER_RESULTS.md",
+      "sha": "2e6b53521d191d382b1c2b27edb1e679ee45aa18"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_FIRST_CONTEXT_ASSIGNMENT_PROTOCOL.md",
+      "sha": "2e5298bf89470ea502f1ec98a4d72e176af837e0"
+    },
+    {
+      "path": "docs/research/JAPAN_SIRE_FIRST_CONTEXT_ASSIGNMENT_RESULTS.md",
+      "sha": "e563f89dbd710f1ea44194081e656a548224d3c8"
+    },
+    {
+      "path": "scripts/ecology_japan_context_alignment_identity_control.py",
+      "sha": "c534c3a8c53c819f55efbaf2471e23dbb88296d7"
+    },
+    {
+      "path": "scripts/ecology_japan_context_distance_generalization.py",
+      "sha": "e468c6940eaef56b30ad12689da2ca9520ffcf21"
+    },
+    {
+      "path": "scripts/ecology_japan_context_information_substitution.py",
+      "sha": "bba22c494a884c1084a9242a37e5a243764ba2cf"
+    },
+    {
+      "path": "scripts/ecology_japan_context_management_matched.py",
+      "sha": "b7cb3ebd4d236a3490965cfc5edbd6436ce77c11"
+    },
+    {
+      "path": "scripts/ecology_japan_context_membership_alignment.py",
+      "sha": "0a9d0799739b0bed0cde5a73a8f63ddd7dd510a6"
+    },
+    {
+      "path": "scripts/ecology_japan_context_occupancy_independent.py",
+      "sha": "1f5a567c1969ad4ee11eacae5ff53db0addccb51"
+    },
+    {
+      "path": "scripts/ecology_japan_context_occupancy_refresh.py",
+      "sha": "c5c6236235b2f1e687c32ffa33ef78a62da128fe"
+    },
+    {
+      "path": "scripts/ecology_japan_context_opportunity_diversity.py",
+      "sha": "26a4795774b36fdf7adc1b8d61a852953c90195e"
+    },
+    {
+      "path": "scripts/ecology_japan_context_seasonal_transfer_2025.py",
+      "sha": "dacd7edca078b3faffc1dffced18919f253f84e2"
+    },
+    {
+      "path": "scripts/ecology_japan_context_transitional_heterogeneity.py",
+      "sha": "e73bf8ad37854f5e0d01f664895908a9a966118a"
+    },
+    {
+      "path": "scripts/ecology_japan_context_within_individual.py",
+      "sha": "f67f77aa27e64887ace1d3ffe9cf61eea4a848e8"
+    },
+    {
+      "path": "scripts/ecology_japan_kin_context_diversity.py",
+      "sha": "4e6e78f5c037a54b2a9ca1aa02cc4be8b3541b3d"
+    },
+    {
+      "path": "scripts/ecology_japan_parent_context_equalization.py",
+      "sha": "fb3d126c54a24ae146f58174e1615437787cae73"
+    },
+    {
+      "path": "scripts/ecology_japan_sire_context_exposure_transfer.py",
+      "sha": "48c88005418d067856d588c1e6cdd7b1754bc491"
+    },
+    {
+      "path": "scripts/ecology_japan_sire_context_selection_control.py",
+      "sha": "77669f98cfb00384cc298ed9285080724c414cb2"
+    },
+    {
+      "path": "scripts/ecology_japan_sire_context_specificity.py",
+      "sha": "543b3cafe15e9112fb9bac54873da34d640a7d3b"
+    },
+    {
+      "path": "scripts/ecology_japan_sire_context_time_transfer.py",
+      "sha": "f04c4f02357db263dd85b6a6103784a2fef0dd04"
+    },
+    {
+      "path": "scripts/ecology_japan_sire_first_context_assignment.py",
+      "sha": "d058edc06ab391139c267e0bc6bb77607ca21e32"
+    }
+  ],
+  "excluded": [
+    {
+      "pr": 76,
+      "reason": "Separate market track"
+    }
+  ],
+  "limitations": [
+    "No new effect estimated by consolidation",
+    "Artifact ZIP contents not independently extracted; receipts preserve printed aggregates",
+    "No causal or prospective claim",
+    "Original draft PRs left open; no main merge performed"
+  ],
+  "integration_QA": {
+    "initial_commit": "7f43b0b1fb3985cd75d9c4ca360b6978b37e3600",
+    "failed_runs": [
+      45383674525,
+      45383674312,
+      45383674160
+    ],
+    "successful_ecological_run": 45383674118,
+    "diagnosis": "Root README 5275 characters exceeds pre-existing 5000-character cap; three shared navigation tests failed. Shorten root entry, preserve detailed text in research index/synthesis; do not change test or frozen classifier.",
+    "repair_commit": "f16731d3a1d46f23fe3bb707aa2d0120b00ec8a9",
+    "repair_runs": [
+      45384930767,
+      45384930944,
+      45384931056,
+      45384930859
+    ],
+    "repair_conclusion": "All four succeeded on prior integration; new revision requires CI",
+    "pr91_integration_commit": "e0d7c7c87175d6842d3aa15658bfefeeb4025819",
+    "pr91_integration_runs": [
+      45387766866,
+      45387766898,
+      45387766935,
+      45387766820
+    ],
+    "pr91_integration_conclusion": "All four succeeded; new revision requires CI",
+    "pr92_integration_commit": "ef28e26e581e6ccfad16f8672ba323e83a816b6e",
+    "pr92_integration_runs": [
+      45525174371,
+      45525174501,
+      45525174270,
+      45525174242
+    ],
+    "pr92_integration_conclusion": "All four succeeded; new revision requires CI"
+  }
+}

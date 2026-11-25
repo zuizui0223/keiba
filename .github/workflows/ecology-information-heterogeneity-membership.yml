@@ -1,0 +1,27 @@
+name: "Information heterogeneity membership arithmetic"
+on:
+  push:
+    branches: [analysis/integrated-context-information-20261124]
+    paths:
+      - "scripts/ecology_information_heterogeneity_membership.mjs"
+      - "docs/evidence/information-heterogeneity-membership-mechanics-20261126.json"
+      - ".github/workflows/ecology-information-heterogeneity-membership.yml"
+  pull_request:
+    paths:
+      - "scripts/ecology_information_heterogeneity_membership.mjs"
+      - "docs/evidence/information-heterogeneity-membership-mechanics-20261126.json"
+      - ".github/workflows/ecology-information-heterogeneity-membership.yml"
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_information_heterogeneity_membership.mjs --check

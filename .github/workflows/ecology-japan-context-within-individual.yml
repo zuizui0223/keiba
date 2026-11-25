@@ -1,0 +1,65 @@
+name: "Within-horse fixed signal and membership decomposition"
+on:
+  push:
+    branches: [analysis/kin-context-within-individual-20261124]
+    paths:
+      - "scripts/ecology_japan_context_within_individual.py"
+      - "docs/research/JAPAN_CONTEXT_WITHIN_INDIVIDUAL_PROTOCOL.md"
+      - ".github/workflows/ecology-japan-context-within-individual.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  occupancy-refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Synthetic chronology and decomposition checks
+        run: python scripts/ecology_japan_context_within_individual.py --self-test
+      - name: Download fixed sources to private runner
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from ecology_japan_archive_forward import download
+          from ecology_japan_2022_parent_placebo import SQLITE_SHA
+          download(Path('tmp/private/old.zip'))
+          url = ('https://huggingface.co/datasets/KBlueLeaf/jp-racing-horse/resolve/'
+                 '7bad21b3be3eba550f262abcf4e682a94cb85d4d/all_races_1990-2025.db')
+          p=Path('tmp/private/all_races_1990-2025.db')
+          h=hashlib.sha256()
+          size=0
+          with urlopen(Request(url,headers={'User-Agent':'keiba-research/1.0'}),timeout=120) as r,p.open('wb') as f:
+              while chunk := r.read(8*1024*1024):
+                  size+=len(chunk)
+                  if size>1_100_000_000:
+                      raise ValueError('HOLD_SOURCE_B_SIZE')
+                  h.update(chunk)
+                  f.write(chunk)
+          if h.hexdigest()!=SQLITE_SHA:
+              raise ValueError('HOLD_SOURCE_B_SHA')
+          p.chmod(0o600)
+          PY
+      - name: Reproduce PR86 and decompose within-horse fixed-signal changes
+        run: python scripts/ecology_japan_context_within_individual.py --archive tmp/private/old.zip --sqlite tmp/private/all_races_1990-2025.db --output tmp/context-within-individual.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: context-within-individual-aggregate-only
+          path: tmp/context-within-individual.json
+          if-no-files-found: error
+          retention-days: 14

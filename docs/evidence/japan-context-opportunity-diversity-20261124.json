@@ -1,0 +1,840 @@
+{
+  "schema_version": 1,
+  "source": "Completed Actions stdout; artifact metadata checked separately; ZIP not independently extracted",
+  "run_id": 45386135942,
+  "job_id": 138417405902,
+  "source_commit": "01d79696e5c794a7595f118c2e16d807872601f4",
+  "artifact": {
+    "id": 14917270285,
+    "digest": "sha256:968b322ba9c94b7d47a4e99b2f015d777699cc732935f3a214ac11d68ac1a6df",
+    "size_in_bytes": 2949,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45386135942/artifacts/14917270285"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_HISTORICAL_SUPPLY_BALANCE_ASSOCIATION",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "primary": "20261124/fits/adjusted/beta_per_0_1",
+    "supply_years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "min_races_per_cell": 10,
+    "minimum_portfolio_coverage": 0.8,
+    "supply_summary": {
+      "1200-1599": {
+        "distinct_races": 5617,
+        "cells": 30,
+        "supported_cells": 30,
+        "turf_races": 2443,
+        "dirt_races": 3174
+      },
+      "1600-1999": {
+        "distinct_races": 7014,
+        "cells": 30,
+        "supported_cells": 30,
+        "turf_races": 2941,
+        "dirt_races": 4073
+      },
+      "2000-2399": {
+        "distinct_races": 2242,
+        "cells": 30,
+        "supported_cells": 29,
+        "turf_races": 1956,
+        "dirt_races": 286
+      }
+    },
+    "results": {
+      "20261124": {
+        "all_support": {
+          "rows": 1397,
+          "horses": 1199,
+          "sires": 158,
+          "by_band": {
+            "1200-1599": {
+              "rows": 531,
+              "horses": 531,
+              "sires": 120
+            },
+            "1600-1999": {
+              "rows": 599,
+              "horses": 599,
+              "sires": 122
+            },
+            "2000-2399": {
+              "rows": 267,
+              "horses": 267,
+              "sires": 63
+            }
+          }
+        },
+        "supported_opportunity": {
+          "rows": 1389,
+          "horses": 1191,
+          "sires": 158,
+          "by_band": {
+            "1200-1599": {
+              "rows": 525,
+              "horses": 525,
+              "sires": 120
+            },
+            "1600-1999": {
+              "rows": 599,
+              "horses": 599,
+              "sires": 122
+            },
+            "2000-2399": {
+              "rows": 265,
+              "horses": 265,
+              "sires": 62
+            }
+          }
+        },
+        "unsupported_rows": 8,
+        "band_summary": {
+          "1200-1599": {
+            "rows": 525,
+            "horses": 525,
+            "sires": 120,
+            "mean_prior_n": 5.268571428571429,
+            "mean_added_n": 9.217142857142857,
+            "mean_balance": 0.6918767194294495,
+            "sd_balance": 0.22378021927788472,
+            "mean_change": -0.014541846791808704,
+            "d_rms": 0.13991626414355463,
+            "u_rms": 0.18296446088335622,
+            "cosine_alignment": 0.28402373097603
+          },
+          "1600-1999": {
+            "rows": 599,
+            "horses": 599,
+            "sires": 122,
+            "mean_prior_n": 4.500834724540901,
+            "mean_added_n": 7.883138564273789,
+            "mean_balance": 0.9429361443431973,
+            "sd_balance": 0.046385288938654165,
+            "mean_change": -0.016105814555317205,
+            "d_rms": 0.1723779052642969,
+            "u_rms": 0.17177297584303697,
+            "cosine_alignment": 0.27196703098186314
+          },
+          "2000-2399": {
+            "rows": 265,
+            "horses": 265,
+            "sires": 62,
+            "mean_prior_n": 3.516981132075472,
+            "mean_added_n": 5.581132075471698,
+            "mean_balance": 0.32272734981800444,
+            "sd_balance": 0.21012038457616303,
+            "mean_change": -0.0016097134636224154,
+            "d_rms": 0.08724294745371748,
+            "u_rms": 0.1214741363172277,
+            "cosine_alignment": 0.07594591718747827
+          }
+        },
+        "fits": {
+          "adjusted": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.00044108365683818057,
+            "valid_bootstrap_draws": 999,
+            "mode": "adjusted",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.001228864895666619,
+              0.0020624716842588984
+            ]
+          },
+          "band_only": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": -0.0007341689299188166,
+            "valid_bootstrap_draws": 999,
+            "mode": "band_only",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0021665978335640313,
+              0.0006670718767464207
+            ]
+          },
+          "energy": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0008476204377921438,
+            "valid_bootstrap_draws": 999,
+            "mode": "energy",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0007108161076855593,
+              0.002522503438946559
+            ]
+          },
+          "within_horse": {
+            "status": "HOLD_BAND_SUPPORT",
+            "rows": 396,
+            "horses": 198,
+            "sires": 69,
+            "by_band": {
+              "1200-1599": {
+                "rows": 86,
+                "horses": 86,
+                "sires": 46
+              },
+              "1600-1999": {
+                "rows": 198,
+                "horses": 198,
+                "sires": 69
+              },
+              "2000-2399": {
+                "rows": 112,
+                "horses": 112,
+                "sires": 46
+              }
+            }
+          },
+          "equal_cell_weights": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0007263061863880205,
+            "valid_bootstrap_draws": 999,
+            "mode": "adjusted",
+            "balance_definition": "q_equal_cell",
+            "mean_balance": 0.7283911802167558,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0009909320281569173,
+              0.00234212451015467
+            ]
+          }
+        }
+      },
+      "20261125": {
+        "all_support": {
+          "rows": 1397,
+          "horses": 1199,
+          "sires": 158,
+          "by_band": {
+            "1200-1599": {
+              "rows": 531,
+              "horses": 531,
+              "sires": 120
+            },
+            "1600-1999": {
+              "rows": 599,
+              "horses": 599,
+              "sires": 122
+            },
+            "2000-2399": {
+              "rows": 267,
+              "horses": 267,
+              "sires": 63
+            }
+          }
+        },
+        "supported_opportunity": {
+          "rows": 1389,
+          "horses": 1191,
+          "sires": 158,
+          "by_band": {
+            "1200-1599": {
+              "rows": 525,
+              "horses": 525,
+              "sires": 120
+            },
+            "1600-1999": {
+              "rows": 599,
+              "horses": 599,
+              "sires": 122
+            },
+            "2000-2399": {
+              "rows": 265,
+              "horses": 265,
+              "sires": 62
+            }
+          }
+        },
+        "unsupported_rows": 8,
+        "band_summary": {
+          "1200-1599": {
+            "rows": 525,
+            "horses": 525,
+            "sires": 120,
+            "mean_prior_n": 5.268571428571429,
+            "mean_added_n": 9.217142857142857,
+            "mean_balance": 0.6918767194294495,
+            "sd_balance": 0.22378021927788472,
+            "mean_change": -0.013971766469844998,
+            "d_rms": 0.13982348417521834,
+            "u_rms": 0.18307242416614652,
+            "cosine_alignment": 0.2729092589837407
+          },
+          "1600-1999": {
+            "rows": 599,
+            "horses": 599,
+            "sires": 122,
+            "mean_prior_n": 4.500834724540901,
+            "mean_added_n": 7.883138564273789,
+            "mean_balance": 0.9429361443431975,
+            "sd_balance": 0.046385288938654165,
+            "mean_change": -0.016200917268614994,
+            "d_rms": 0.17350519867349298,
+            "u_rms": 0.17180646829472018,
+            "cosine_alignment": 0.27174252483059735
+          },
+          "2000-2399": {
+            "rows": 265,
+            "horses": 265,
+            "sires": 62,
+            "mean_prior_n": 3.516981132075472,
+            "mean_added_n": 5.581132075471698,
+            "mean_balance": 0.32272734981800444,
+            "sd_balance": 0.21012038457616303,
+            "mean_change": -0.00350718790771113,
+            "d_rms": 0.09064595154557824,
+            "u_rms": 0.12160705597543868,
+            "cosine_alignment": 0.1590822967591975
+          }
+        },
+        "fits": {
+          "adjusted": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0004946909885921815,
+            "valid_bootstrap_draws": 999,
+            "mode": "adjusted",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0015120776449189337,
+              0.0023210466414427034
+            ]
+          },
+          "band_only": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": -0.0007959651611183061,
+            "valid_bootstrap_draws": 999,
+            "mode": "band_only",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.002380854169868284,
+              0.0007767327372339189
+            ]
+          },
+          "energy": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.000954090659413393,
+            "valid_bootstrap_draws": 999,
+            "mode": "energy",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0006831820037725319,
+              0.0026036671477067007
+            ]
+          },
+          "within_horse": {
+            "status": "HOLD_BAND_SUPPORT",
+            "rows": 396,
+            "horses": 198,
+            "sires": 69,
+            "by_band": {
+              "1200-1599": {
+                "rows": 86,
+                "horses": 86,
+                "sires": 46
+              },
+              "1600-1999": {
+                "rows": 198,
+                "horses": 198,
+                "sires": 69
+              },
+              "2000-2399": {
+                "rows": 112,
+                "horses": 112,
+                "sires": 46
+              }
+            }
+          },
+          "equal_cell_weights": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0006260347231927449,
+            "valid_bootstrap_draws": 999,
+            "mode": "adjusted",
+            "balance_definition": "q_equal_cell",
+            "mean_balance": 0.7283911802167558,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0013513414340204527,
+              0.0024788028843253733
+            ]
+          }
+        }
+      },
+      "20261126": {
+        "all_support": {
+          "rows": 1397,
+          "horses": 1199,
+          "sires": 158,
+          "by_band": {
+            "1200-1599": {
+              "rows": 531,
+              "horses": 531,
+              "sires": 120
+            },
+            "1600-1999": {
+              "rows": 599,
+              "horses": 599,
+              "sires": 122
+            },
+            "2000-2399": {
+              "rows": 267,
+              "horses": 267,
+              "sires": 63
+            }
+          }
+        },
+        "supported_opportunity": {
+          "rows": 1389,
+          "horses": 1191,
+          "sires": 158,
+          "by_band": {
+            "1200-1599": {
+              "rows": 525,
+              "horses": 525,
+              "sires": 120
+            },
+            "1600-1999": {
+              "rows": 599,
+              "horses": 599,
+              "sires": 122
+            },
+            "2000-2399": {
+              "rows": 265,
+              "horses": 265,
+              "sires": 62
+            }
+          }
+        },
+        "unsupported_rows": 8,
+        "band_summary": {
+          "1200-1599": {
+            "rows": 525,
+            "horses": 525,
+            "sires": 120,
+            "mean_prior_n": 5.268571428571429,
+            "mean_added_n": 9.217142857142857,
+            "mean_balance": 0.6918767194294495,
+            "sd_balance": 0.22378021927788472,
+            "mean_change": -0.013711134866401338,
+            "d_rms": 0.14208300792353548,
+            "u_rms": 0.1829736597517164,
+            "cosine_alignment": 0.2637015543538607
+          },
+          "1600-1999": {
+            "rows": 599,
+            "horses": 599,
+            "sires": 122,
+            "mean_prior_n": 4.500834724540901,
+            "mean_added_n": 7.883138564273789,
+            "mean_balance": 0.9429361443431973,
+            "sd_balance": 0.046385288938654165,
+            "mean_change": -0.016153963137689128,
+            "d_rms": 0.17122566246024182,
+            "u_rms": 0.17172726339172997,
+            "cosine_alignment": 0.274688822417121
+          },
+          "2000-2399": {
+            "rows": 265,
+            "horses": 265,
+            "sires": 62,
+            "mean_prior_n": 3.516981132075472,
+            "mean_added_n": 5.581132075471698,
+            "mean_balance": 0.32272734981800444,
+            "sd_balance": 0.21012038457616303,
+            "mean_change": -0.0032551792512816287,
+            "d_rms": 0.08806891570615047,
+            "u_rms": 0.12152680237611141,
+            "cosine_alignment": 0.15207232741255647
+          }
+        },
+        "fits": {
+          "adjusted": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0003964899921297116,
+            "valid_bootstrap_draws": 999,
+            "mode": "adjusted",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0013929472436410297,
+              0.0021595190137512674
+            ]
+          },
+          "band_only": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": -0.0006325367427004859,
+            "valid_bootstrap_draws": 999,
+            "mode": "band_only",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0022187113629601653,
+              0.0009934955001311447
+            ]
+          },
+          "energy": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0008026263417292805,
+            "valid_bootstrap_draws": 999,
+            "mode": "energy",
+            "balance_definition": "q",
+            "mean_balance": 0.7311210984804598,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.0008075822859768063,
+              0.0023519587849129544
+            ]
+          },
+          "within_horse": {
+            "status": "HOLD_BAND_SUPPORT",
+            "rows": 396,
+            "horses": 198,
+            "sires": 69,
+            "by_band": {
+              "1200-1599": {
+                "rows": 86,
+                "horses": 86,
+                "sires": 46
+              },
+              "1600-1999": {
+                "rows": 198,
+                "horses": 198,
+                "sires": 69
+              },
+              "2000-2399": {
+                "rows": 112,
+                "horses": 112,
+                "sires": 46
+              }
+            }
+          },
+          "equal_cell_weights": {
+            "status": "DESCRIPTIVE",
+            "beta_per_0_1": 0.0007030171701003473,
+            "valid_bootstrap_draws": 999,
+            "mode": "adjusted",
+            "balance_definition": "q_equal_cell",
+            "mean_balance": 0.7283911802167559,
+            "rows": 1389,
+            "horses": 1191,
+            "sires": 158,
+            "by_band": {
+              "1200-1599": {
+                "rows": 525,
+                "horses": 525,
+                "sires": 120
+              },
+              "1600-1999": {
+                "rows": 599,
+                "horses": 599,
+                "sires": 122
+              },
+              "2000-2399": {
+                "rows": 265,
+                "horses": 265,
+                "sires": 62
+              }
+            },
+            "CI95_pointwise": [
+              -0.001153223631304492,
+              0.00242071656340381
+            ]
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Historical classified race supply near observed former venue-quarter portfolio is not an individual feasible choice set.",
+      "Portfolio is selected by past management and allocation; measured association is not an exogenous environmental cause.",
+      "Own-update outcome is an algebraic model-input contrast; 2024 occupancy is not used to construct it, but cohort selection conditions on 2024 observations.",
+      "Counts and energy terms are descriptive controls, some from earlier B history; not causal adjustment.",
+      "Same archives and overlapping horses, bands and seeds; no prospective independent validation.",
+      "Whole-sire refitted pointwise intervals are conditional on supplied histories and predictions, not all-dependence or simultaneous intervals.",
+      "No genetic, learning, habitat choice, physiological or fitness claim. No individual records exported."
+    ]
+  },
+  "derived": {
+    "estimated_fits": 12,
+    "intervals_include_zero": 12,
+    "within_horse_hold": 3,
+    "scale_decomposition": {
+      "20261124": {
+        "short_to_long": {
+          "change": 0.012932133328186289,
+          "d_rms": 0.002998522806815747,
+          "u_rms": 0.00262636872715856,
+          "alignment": 0.007307241794211983,
+          "identity_error": -1.734723475976807e-18
+        },
+        "middle_to_long": {
+          "change": 0.014496101091694786,
+          "d_rms": 0.004482824289578721,
+          "u_rms": 0.0024115327436677694,
+          "alignment": 0.007601744058448295,
+          "identity_error": 0
+        }
+      },
+      "20261125": {
+        "short_to_long": {
+          "change": 0.01046457856213387,
+          "d_rms": 0.0032936923285530207,
+          "u_rms": 0.003117116567888087,
+          "alignment": 0.00405376966569276,
+          "identity_error": 1.734723475976807e-18
+        },
+        "middle_to_long": {
+          "change": 0.012693729360903861,
+          "d_rms": 0.005315213071490045,
+          "u_rms": 0.0029345200825420716,
+          "alignment": 0.004443996206871744,
+          "identity_error": 1.734723475976807e-18
+        }
+      },
+      "20261126": {
+        "short_to_long": {
+          "change": 0.010455955615119706,
+          "d_rms": 0.003480931714686707,
+          "u_rms": 0.0030017099869237185,
+          "alignment": 0.003973313913509281,
+          "identity_error": 0
+        },
+        "middle_to_long": {
+          "change": 0.012898783886407498,
+          "d_rms": 0.005288820809784412,
+          "u_rms": 0.002862823070507758,
+          "alignment": 0.004747140006115329,
+          "identity_error": 0
+        }
+      }
+    }
+  }
+}

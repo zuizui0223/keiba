@@ -1,0 +1,528 @@
+{
+  "schema_version": 1,
+  "source": "Completed GitHub Actions job stdout, artifact metadata separately verified (ZIP contents not independently opened)",
+  "run_id": 45330108918,
+  "job_id": 138229027717,
+  "source_commit": "10abe66ab7f59fc8ad6e3d81e9eed5998375bd77",
+  "artifact": {
+    "id": 14891910568,
+    "digest": "sha256:2c6d06f2f8bd533a58a9dfbd2d77d6f16f27bafc557b9e303872f66be3927885",
+    "size_in_bytes": 3245,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45330108918/artifacts/14891910568"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_SELECTION_AND_CORRESPONDENCE_DIAGNOSTICS",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "baseline": {
+      "2019": {
+        "training_starts": 137926,
+        "JRA_evaluation_starts": 44493,
+        "JRA_evaluation_horses": 11218,
+        "own_trainer_RMSE": 0.29850962608347287,
+        "midrank_RMSE": 0.3209142607077742
+      },
+      "2020": {
+        "training_starts": 182419,
+        "JRA_evaluation_starts": 44870,
+        "JRA_evaluation_horses": 11340,
+        "own_trainer_RMSE": 0.3024388429482395,
+        "midrank_RMSE": 0.3213176318878251
+      },
+      "2021": {
+        "training_starts": 227289,
+        "JRA_evaluation_starts": 44603,
+        "JRA_evaluation_horses": 11226,
+        "own_trainer_RMSE": 0.3020871680657214,
+        "midrank_RMSE": 0.3204565440050149
+      }
+    },
+    "candidate_starts": 57208,
+    "candidate_horses": 15129,
+    "results": {
+      "horse_day_disjoint": {
+        "20261124": {
+          "original": {
+            "status": "DESCRIPTIVE",
+            "sires": 83,
+            "sire_years": 174,
+            "equal_sire_mean_split_product": 0.006530724376455442,
+            "positive_sire_year_products": 111,
+            "negative_sire_year_products": 63,
+            "whole_sire_bootstrap_pointwise_CI95": [
+              0.0036261295361410995,
+              0.009884187232988947
+            ]
+          },
+          "original_support": {
+            "supported_sire_years": 174,
+            "supported_sires": 83,
+            "retained_starts": 28521,
+            "retained_horses": 11640,
+            "retained_days": 325,
+            "retained_trainers": 231,
+            "horse_context_year_cells": 16970,
+            "possible_sire_years_before_four_cell_gate": 940
+          },
+          "within_horse": {
+            "status": "HOLD_FEW_SIRES",
+            "sires": 24,
+            "sire_years": 42,
+            "equal_sire_mean_split_product": 0.0074543403339846605,
+            "positive_sire_year_products": 25,
+            "negative_sire_year_products": 17
+          },
+          "within_horse_support": {
+            "paired_horse_year_cells": 1241,
+            "paired_distinct_horses": 1206,
+            "possible_sire_years": 347,
+            "supported_sire_years": 42,
+            "supported_sires": 24
+          },
+          "within_horse_by_year": {
+            "2019": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 14,
+              "sire_years": 14,
+              "equal_sire_mean_split_product": 0.006681791579259741,
+              "positive_sire_year_products": 9,
+              "negative_sire_year_products": 5
+            },
+            "2020": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 15,
+              "sire_years": 15,
+              "equal_sire_mean_split_product": 0.010145539735275428,
+              "positive_sire_year_products": 9,
+              "negative_sire_year_products": 6
+            },
+            "2021": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 13,
+              "sire_years": 13,
+              "equal_sire_mean_split_product": 0.0053163187900408075,
+              "positive_sire_year_products": 7,
+              "negative_sire_year_products": 6
+            }
+          },
+          "matched_other_sire_control": {
+            "status": "DESCRIPTIVE",
+            "eligible_sires": 83,
+            "matched_pairs": 20,
+            "matched_sires": 40,
+            "matched_fraction": 0.4819277108433735,
+            "same_sire_product": 0.006389426239373055,
+            "swapped_other_sire_product": -0.00023211469509626712,
+            "same_minus_swapped": 0.0066215409344693235,
+            "max_matched_cell_count_ratio": 1.9999999999999998,
+            "matched_pair_bootstrap_pointwise_CI95": [
+              0.0014803072160935503,
+              0.013577936370155134
+            ]
+          }
+        },
+        "20261125": {
+          "original": {
+            "status": "DESCRIPTIVE",
+            "sires": 87,
+            "sire_years": 181,
+            "equal_sire_mean_split_product": 0.006208811218652909,
+            "positive_sire_year_products": 115,
+            "negative_sire_year_products": 66,
+            "whole_sire_bootstrap_pointwise_CI95": [
+              0.0014506192161057802,
+              0.010241690366761305
+            ]
+          },
+          "original_support": {
+            "supported_sire_years": 181,
+            "supported_sires": 87,
+            "retained_starts": 28660,
+            "retained_horses": 11647,
+            "retained_days": 325,
+            "retained_trainers": 234,
+            "horse_context_year_cells": 17153,
+            "possible_sire_years_before_four_cell_gate": 959
+          },
+          "within_horse": {
+            "status": "HOLD_FEW_SIRES",
+            "sires": 24,
+            "sire_years": 48,
+            "equal_sire_mean_split_product": 0.009416745449418416,
+            "positive_sire_year_products": 25,
+            "negative_sire_year_products": 23
+          },
+          "within_horse_support": {
+            "paired_horse_year_cells": 1256,
+            "paired_distinct_horses": 1212,
+            "possible_sire_years": 347,
+            "supported_sire_years": 48,
+            "supported_sires": 24
+          },
+          "within_horse_by_year": {
+            "2019": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 14,
+              "sire_years": 14,
+              "equal_sire_mean_split_product": 0.0009745445304476303,
+              "positive_sire_year_products": 7,
+              "negative_sire_year_products": 7
+            },
+            "2020": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 17,
+              "sire_years": 17,
+              "equal_sire_mean_split_product": 0.007692483930147646,
+              "positive_sire_year_products": 10,
+              "negative_sire_year_products": 7
+            },
+            "2021": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 17,
+              "sire_years": 17,
+              "equal_sire_mean_split_product": 0.020902171949610797,
+              "positive_sire_year_products": 8,
+              "negative_sire_year_products": 9
+            }
+          },
+          "matched_other_sire_control": {
+            "status": "DESCRIPTIVE",
+            "eligible_sires": 87,
+            "matched_pairs": 24,
+            "matched_sires": 48,
+            "matched_fraction": 0.5517241379310345,
+            "same_sire_product": 0.00312451150311171,
+            "swapped_other_sire_product": 0.006973175066794766,
+            "same_minus_swapped": -0.003848663563683055,
+            "max_matched_cell_count_ratio": 2,
+            "matched_pair_bootstrap_pointwise_CI95": [
+              -0.012374476368270295,
+              0.002977598891999731
+            ]
+          }
+        },
+        "20261126": {
+          "original": {
+            "status": "DESCRIPTIVE",
+            "sires": 86,
+            "sire_years": 187,
+            "equal_sire_mean_split_product": 0.002676969856181996,
+            "positive_sire_year_products": 112,
+            "negative_sire_year_products": 75,
+            "whole_sire_bootstrap_pointwise_CI95": [
+              -0.0007838675376935533,
+              0.006493357405583402
+            ]
+          },
+          "original_support": {
+            "supported_sire_years": 187,
+            "supported_sires": 86,
+            "retained_starts": 28555,
+            "retained_horses": 11677,
+            "retained_days": 325,
+            "retained_trainers": 234,
+            "horse_context_year_cells": 17043,
+            "possible_sire_years_before_four_cell_gate": 964
+          },
+          "within_horse": {
+            "status": "HOLD_FEW_SIRES",
+            "sires": 25,
+            "sire_years": 44,
+            "equal_sire_mean_split_product": -0.003803633634779153,
+            "positive_sire_year_products": 22,
+            "negative_sire_year_products": 22
+          },
+          "within_horse_support": {
+            "paired_horse_year_cells": 1190,
+            "paired_distinct_horses": 1161,
+            "possible_sire_years": 353,
+            "supported_sire_years": 44,
+            "supported_sires": 25
+          },
+          "within_horse_by_year": {
+            "2019": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 14,
+              "sire_years": 14,
+              "equal_sire_mean_split_product": -0.02507881127868327,
+              "positive_sire_year_products": 6,
+              "negative_sire_year_products": 8
+            },
+            "2020": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 14,
+              "sire_years": 14,
+              "equal_sire_mean_split_product": 0.009142584209740259,
+              "positive_sire_year_products": 6,
+              "negative_sire_year_products": 8
+            },
+            "2021": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 16,
+              "sire_years": 16,
+              "equal_sire_mean_split_product": 0.0007117342635133911,
+              "positive_sire_year_products": 10,
+              "negative_sire_year_products": 6
+            }
+          },
+          "matched_other_sire_control": {
+            "status": "DESCRIPTIVE",
+            "eligible_sires": 86,
+            "matched_pairs": 20,
+            "matched_sires": 40,
+            "matched_fraction": 0.46511627906976744,
+            "same_sire_product": 0.003200800240122007,
+            "swapped_other_sire_product": 0.00283159651093682,
+            "same_minus_swapped": 0.00036920372918518746,
+            "max_matched_cell_count_ratio": 2.0000000000000004,
+            "matched_pair_bootstrap_pointwise_CI95": [
+              -0.008129085424090576,
+              0.00938334860296843
+            ]
+          }
+        }
+      },
+      "horse_day_trainer_disjoint": {
+        "20261124": {
+          "original": {
+            "status": "DESCRIPTIVE",
+            "sires": 57,
+            "sire_years": 105,
+            "equal_sire_mean_split_product": 0.005303531305547758,
+            "positive_sire_year_products": 58,
+            "negative_sire_year_products": 47,
+            "whole_sire_bootstrap_pointwise_CI95": [
+              0.0012790735343351013,
+              0.009780634190249087
+            ]
+          },
+          "original_support": {
+            "supported_sire_years": 105,
+            "supported_sires": 57,
+            "retained_starts": 14394,
+            "retained_horses": 5986,
+            "retained_days": 325,
+            "retained_trainers": 220,
+            "horse_context_year_cells": 8586,
+            "possible_sire_years_before_four_cell_gate": 763
+          },
+          "within_horse": {
+            "status": "HOLD_FEW_SIRES",
+            "sires": 10,
+            "sire_years": 12,
+            "equal_sire_mean_split_product": 0.022231535336422366,
+            "positive_sire_year_products": 7,
+            "negative_sire_year_products": 5
+          },
+          "within_horse_support": {
+            "paired_horse_year_cells": 616,
+            "paired_distinct_horses": 603,
+            "possible_sire_years": 255,
+            "supported_sire_years": 12,
+            "supported_sires": 10
+          },
+          "within_horse_by_year": {
+            "2019": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 3,
+              "sire_years": 3,
+              "equal_sire_mean_split_product": 0.009833877854735778,
+              "positive_sire_year_products": 2,
+              "negative_sire_year_products": 1
+            },
+            "2020": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 5,
+              "sire_years": 5,
+              "equal_sire_mean_split_product": 0.029571322811006478,
+              "positive_sire_year_products": 3,
+              "negative_sire_year_products": 2
+            },
+            "2021": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 4,
+              "sire_years": 4,
+              "equal_sire_mean_split_product": 0.0137814411788592,
+              "positive_sire_year_products": 2,
+              "negative_sire_year_products": 2
+            }
+          },
+          "matched_other_sire_control": {
+            "status": "HOLD_FEW_MATCHED_PAIRS",
+            "eligible_sires": 57,
+            "matched_pairs": 15,
+            "matched_sires": 30,
+            "matched_fraction": 0.5263157894736842,
+            "same_sire_product": 0.008069847725073713,
+            "swapped_other_sire_product": -0.007807853147419068,
+            "same_minus_swapped": 0.015877700872492784,
+            "max_matched_cell_count_ratio": 1.9999999999999998
+          }
+        },
+        "20261125": {
+          "original": {
+            "status": "DESCRIPTIVE",
+            "sires": 58,
+            "sire_years": 102,
+            "equal_sire_mean_split_product": 0.003122367044425639,
+            "positive_sire_year_products": 64,
+            "negative_sire_year_products": 38,
+            "whole_sire_bootstrap_pointwise_CI95": [
+              -0.0020107461764026207,
+              0.008996544271693822
+            ]
+          },
+          "original_support": {
+            "supported_sire_years": 102,
+            "supported_sires": 58,
+            "retained_starts": 14166,
+            "retained_horses": 5927,
+            "retained_days": 325,
+            "retained_trainers": 221,
+            "horse_context_year_cells": 8617,
+            "possible_sire_years_before_four_cell_gate": 767
+          },
+          "within_horse": {
+            "status": "HOLD_FEW_SIRES",
+            "sires": 11,
+            "sire_years": 15,
+            "equal_sire_mean_split_product": 0.003911843253516196,
+            "positive_sire_year_products": 8,
+            "negative_sire_year_products": 7
+          },
+          "within_horse_support": {
+            "paired_horse_year_cells": 627,
+            "paired_distinct_horses": 608,
+            "possible_sire_years": 245,
+            "supported_sire_years": 15,
+            "supported_sires": 11
+          },
+          "within_horse_by_year": {
+            "2019": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 4,
+              "sire_years": 4,
+              "equal_sire_mean_split_product": 0.004270858285790173,
+              "positive_sire_year_products": 2,
+              "negative_sire_year_products": 2
+            },
+            "2020": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 3,
+              "sire_years": 3,
+              "equal_sire_mean_split_product": -0.006110645757838398,
+              "positive_sire_year_products": 1,
+              "negative_sire_year_products": 2
+            },
+            "2021": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 8,
+              "sire_years": 8,
+              "equal_sire_mean_split_product": 0.00797216526299475,
+              "positive_sire_year_products": 5,
+              "negative_sire_year_products": 3
+            }
+          },
+          "matched_other_sire_control": {
+            "status": "HOLD_FEW_MATCHED_PAIRS",
+            "eligible_sires": 58,
+            "matched_pairs": 18,
+            "matched_sires": 36,
+            "matched_fraction": 0.6206896551724138,
+            "same_sire_product": 0.0023449991463721487,
+            "swapped_other_sire_product": 0.0011898303047807074,
+            "same_minus_swapped": 0.0011551688415914409,
+            "max_matched_cell_count_ratio": 2.0000000000000004
+          }
+        },
+        "20261126": {
+          "original": {
+            "status": "DESCRIPTIVE",
+            "sires": 58,
+            "sire_years": 107,
+            "equal_sire_mean_split_product": 0.006600178231404425,
+            "positive_sire_year_products": 66,
+            "negative_sire_year_products": 41,
+            "whole_sire_bootstrap_pointwise_CI95": [
+              0.001837239040477493,
+              0.012539909034006308
+            ]
+          },
+          "original_support": {
+            "supported_sire_years": 107,
+            "supported_sires": 58,
+            "retained_starts": 14506,
+            "retained_horses": 5987,
+            "retained_days": 325,
+            "retained_trainers": 220,
+            "horse_context_year_cells": 8667,
+            "possible_sire_years_before_four_cell_gate": 733
+          },
+          "within_horse": {
+            "status": "HOLD_FEW_SIRES",
+            "sires": 9,
+            "sire_years": 12,
+            "equal_sire_mean_split_product": -0.0024591754939173576,
+            "positive_sire_year_products": 8,
+            "negative_sire_year_products": 4
+          },
+          "within_horse_support": {
+            "paired_horse_year_cells": 630,
+            "paired_distinct_horses": 617,
+            "possible_sire_years": 270,
+            "supported_sire_years": 12,
+            "supported_sires": 9
+          },
+          "within_horse_by_year": {
+            "2019": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 3,
+              "sire_years": 3,
+              "equal_sire_mean_split_product": 0.012192641091532426,
+              "positive_sire_year_products": 2,
+              "negative_sire_year_products": 1
+            },
+            "2020": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 5,
+              "sire_years": 5,
+              "equal_sire_mean_split_product": -0.0003437502327626756,
+              "positive_sire_year_products": 4,
+              "negative_sire_year_products": 1
+            },
+            "2021": {
+              "status": "HOLD_FEW_SIRES",
+              "sires": 4,
+              "sire_years": 4,
+              "equal_sire_mean_split_product": -0.014718729218837961,
+              "positive_sire_year_products": 2,
+              "negative_sire_year_products": 2
+            }
+          },
+          "matched_other_sire_control": {
+            "status": "HOLD_FEW_MATCHED_PAIRS",
+            "eligible_sires": 58,
+            "matched_pairs": 14,
+            "matched_sires": 28,
+            "matched_fraction": 0.4827586206896552,
+            "same_sire_product": 0.010802007568183692,
+            "swapped_other_sire_product": -0.007437090754776483,
+            "same_minus_swapped": 0.018239098322960175,
+            "max_matched_cell_count_ratio": 2.0000000000000004
+          }
+        }
+      }
+    },
+    "primary_split": "horse_day_disjoint/20261124",
+    "minimum_paired_horses_each_half": 3,
+    "maximum_cell_count_ratio": 2,
+    "minimum_matched_sire_pairs": 20,
+    "limitations": [
+      "Same inspected historical source, not independent replication.",
+      "Within-horse surface contrast selects animals with both surfaces; changes over time and race composition remain.",
+      "Count-matched swapped sires are a negative control for correspondence, not genomic nonkin or randomized treatment.",
+      "Sire and pair bootstrap are conditional pointwise sensitivity; common fitted baseline and environmental dependence remain.",
+      "Matching only on support years and cell counts does not balance rearing, age, trainer composition or exposure selection.",
+      "No absolute speed, causal competition, heritability or individual records exported."
+    ]
+  }
+}

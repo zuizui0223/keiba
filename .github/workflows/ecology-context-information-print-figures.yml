@@ -1,0 +1,44 @@
+name: "Publication-size figure geometry"
+on:
+  push:
+    branches: [analysis/integrated-context-information-20261124]
+    paths:
+      - "docs/research/figures/context-information/print180/**"
+      - "scripts/prepare_context_information_print_figures.mjs"
+      - "scripts/audit_context_information_print_geometry.py"
+      - ".github/workflows/ecology-context-information-print-figures.yml"
+  pull_request:
+    paths:
+      - "docs/research/figures/context-information/print180/**"
+      - "scripts/prepare_context_information_print_figures.mjs"
+      - "scripts/audit_context_information_print_geometry.py"
+      - ".github/workflows/ecology-context-information-print-figures.yml"
+permissions:
+  contents: read
+jobs:
+  print-figures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/prepare_context_information_print_figures.mjs --check
+      - run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends inkscape fonts-liberation
+      - name: Render and check label geometry
+        run: |
+          mkdir -p tmp/print180
+          for f in docs/research/figures/context-information/print180/*.svg; do
+            inkscape "$f" --export-type=png --export-width=2126 --export-filename="tmp/print180/$(basename "$f" .svg).png"
+          done
+          python scripts/audit_context_information_print_geometry.py docs/research/figures/context-information/print180 > tmp/print180/geometry.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: manuscript-print180-review
+          path: tmp/print180
+          if-no-files-found: warn
+          retention-days: 14

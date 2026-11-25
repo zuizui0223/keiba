@@ -1,0 +1,1036 @@
+{
+  "schema_version": 1,
+  "source": "Completed Actions stdout; artifact metadata checked separately; full ZIP not independently extracted",
+  "run_id": 45387457638,
+  "job_id": 138422020749,
+  "source_commit": "9f55532aea63835ab2e8f0d2e82bef80c437443e",
+  "artifact": {
+    "id": 14915909441,
+    "digest": "sha256:bb9def96f12dc370ff5ada3c883a3fd5dddbee9d9856eae61b70d4f1d963484b",
+    "size_in_bytes": 5803,
+    "url": "https://github.com/zuizui0223/keiba/actions/runs/45387457638/artifacts/14915909441"
+  },
+  "stdout_aggregate": {
+    "status": "RETROSPECTIVE_FIXED_PROFILE_IDENTITY_ALIGNMENT_CONTROL",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "source_B_sha256": "7c6717f6f081f957721396d1e0e7296b4be3eeaa2fe1a657b41a4b5358474be9",
+    "primary": "1600-1999/20261124/alignment_true_minus_equal_magnitude_swap",
+    "results": {
+      "1200-1599": {
+        "20261124": {
+          "all_horses": 531,
+          "all_sires": 120,
+          "count_matched_horses": 490,
+          "matched_nonzero_horses": 490,
+          "matched_nonzero_sires": 107,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 228,
+          "true": {
+            "own_update_term": -0.01460470046137547,
+            "correction_rms": 0.14035908398728655,
+            "cosine": 0.28526363617052775
+          },
+          "swap": {
+            "own_update_term": 0.0007583606194516259,
+            "correction_rms": 0.13616103971462337,
+            "cosine": -0.015269232165450853
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": -0.00033571006962292924,
+            "correction_rms": 0.14035908398728655,
+            "cosine": 0.006557195432591473
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.015363061080827094,
+            "sires": 107,
+            "CI95_pointwise": [
+              0.0075174827128366125,
+              0.022980430289183826
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.014268990391752537,
+            "sires": 107,
+            "CI95_pointwise": [
+              0.006567605972429925,
+              0.02172786297331669
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.010022166339359605,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.00020153946540144718,
+                  0.022721983439648083
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.01861559244884307,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.031159022095258834,
+                  -0.007194909868846653
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.014700229404732293,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.027051482200282008,
+                  -0.0002576511948608196
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.0247223957440919,
+                "sires": 107,
+                "CI95_pointwise": [
+                  0.010087819263666815,
+                  0.03913046134476242
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.00983968480355047,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.01742754912159714,
+                  -0.0025089290761027947
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.019074755457832774,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.03025787249928607,
+                  -0.008581328562518555
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.01608987987987805,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.0250932323099172,
+                  -0.006851996854833235
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.00625019507632758,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.005832459447002806,
+                  0.01743946778570072
+                ]
+              }
+            }
+          }
+        },
+        "20261125": {
+          "all_horses": 531,
+          "all_sires": 120,
+          "count_matched_horses": 514,
+          "matched_nonzero_horses": 514,
+          "matched_nonzero_sires": 107,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 273,
+          "true": {
+            "own_update_term": -0.01480317733529387,
+            "correction_rms": 0.14178019026844596,
+            "cosine": 0.2833726351741081
+          },
+          "swap": {
+            "own_update_term": -0.0014882701940072743,
+            "correction_rms": 0.13426405262424557,
+            "cosine": 0.030084344567828113
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": -0.00026500295194325433,
+            "correction_rms": 0.14178019026844596,
+            "cosine": 0.005072869365824344
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.013314907141286594,
+            "sires": 107,
+            "CI95_pointwise": [
+              0.004002476489131093,
+              0.024960591079556272
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.01453817438335061,
+            "sires": 107,
+            "CI95_pointwise": [
+              0.005347395830331722,
+              0.026118931411104666
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.010184665544995204,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.00009099176162131676,
+                  0.022496081862666543
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.015890452414128505,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.026239183297732498,
+                  -0.005846351866403865
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.01958492691411799,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.0321678204272364,
+                  -0.009287137947246032
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.029769592459113196,
+                "sires": 107,
+                "CI95_pointwise": [
+                  0.01290319008971977,
+                  0.050789680574385224
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.011656369256408247,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.0194110035098421,
+                  -0.004142670320849955
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.018368433009560082,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.028479634098934975,
+                  -0.009029275441037883
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.017323975036319147,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.02750507444479917,
+                  -0.008992085167212449
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.005667605779910906,
+                "sires": 107,
+                "CI95_pointwise": [
+                  -0.006104036304052232,
+                  0.01971151432688811
+                ]
+              }
+            }
+          }
+        },
+        "20261126": {
+          "all_horses": 531,
+          "all_sires": 120,
+          "count_matched_horses": 492,
+          "matched_nonzero_horses": 492,
+          "matched_nonzero_sires": 109,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 243,
+          "true": {
+            "own_update_term": -0.015326155968150488,
+            "correction_rms": 0.14458125575523045,
+            "cosine": 0.29104628452072556
+          },
+          "swap": {
+            "own_update_term": -0.00088432410260232,
+            "correction_rms": 0.12758574225772326,
+            "cosine": 0.01903049691624393
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": -0.0012518844368326527,
+            "correction_rms": 0.14458125575523045,
+            "cosine": 0.0237734964166252
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.014441831865548168,
+            "sires": 109,
+            "CI95_pointwise": [
+              0.005662774632382873,
+              0.024100988845455196
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.014074271531317835,
+            "sires": 109,
+            "CI95_pointwise": [
+              0.004712918527899503,
+              0.024066771254049237
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.008231241566731037,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.0038242621068919668,
+                  0.020451897679461466
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.016711173656995076,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.028002863394848906,
+                  -0.005952219237587874
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.022330419198424437,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.035889534031767624,
+                  -0.009383857814289572
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.03056166076515547,
+                "sires": 109,
+                "CI95_pointwise": [
+                  0.009706074412420584,
+                  0.05262414362826462
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.009757694714210782,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.017919032551521476,
+                  -0.0023593622355005043
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.018922248175252534,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.027132551821299467,
+                  -0.011471696149798271
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.027544634056831257,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.03809977157427395,
+                  -0.018201346048964298
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.017786939342620475,
+                "sires": 109,
+                "CI95_pointwise": [
+                  0.0057086723280462826,
+                  0.031055953096332443
+                ]
+              }
+            }
+          }
+        }
+      },
+      "1600-1999": {
+        "20261124": {
+          "all_horses": 599,
+          "all_sires": 122,
+          "count_matched_horses": 565,
+          "matched_nonzero_horses": 565,
+          "matched_nonzero_sires": 109,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 221,
+          "true": {
+            "own_update_term": -0.01644308291847224,
+            "correction_rms": 0.17485698911918418,
+            "cosine": 0.2719232284153859
+          },
+          "swap": {
+            "own_update_term": -0.0020834162441379146,
+            "correction_rms": 0.15406183600590573,
+            "cosine": 0.03910452669048971
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": -0.003985933377230121,
+            "correction_rms": 0.17485698911918418,
+            "cosine": 0.065916341695719
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.014359666674334325,
+            "sires": 109,
+            "CI95_pointwise": [
+              0.005826308070356669,
+              0.02414419039310966
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.012457149541242121,
+            "sires": 109,
+            "CI95_pointwise": [
+              0.00412284758642764,
+              0.023532985497949632
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.011018243575451834,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.003099029586965393,
+                  0.026427092842260167
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.01613025278767257,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.029241388458020455,
+                  -0.0017895295914896806
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.020190986786949562,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.04275851234882204,
+                  0.0004615907876569022
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.031209230362401398,
+                "sires": 109,
+                "CI95_pointwise": [
+                  0.014064251252154112,
+                  0.05304172947109626
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.015500798536046497,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.023207401970806826,
+                  -0.006573491312346799
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.027052153888068347,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.03841803618870746,
+                  -0.015660116297970584
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.03170269625269602,
+                "sires": 109,
+                "CI95_pointwise": [
+                  -0.0439093485818787,
+                  -0.021008675170217126
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.016201897716649517,
+                "sires": 109,
+                "CI95_pointwise": [
+                  0.0056940561111254945,
+                  0.03000969639143337
+                ]
+              }
+            }
+          }
+        },
+        "20261125": {
+          "all_horses": 599,
+          "all_sires": 122,
+          "count_matched_horses": 559,
+          "matched_nonzero_horses": 559,
+          "matched_nonzero_sires": 113,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 198,
+          "true": {
+            "own_update_term": -0.013714910466458547,
+            "correction_rms": 0.16763992263033267,
+            "cosine": 0.23666446459184598
+          },
+          "swap": {
+            "own_update_term": 0.004482410693011315,
+            "correction_rms": 0.15102479480589273,
+            "cosine": -0.0858580299453928
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": 0.004050687054428064,
+            "correction_rms": 0.16763992263033267,
+            "cosine": -0.06989864682746866
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.018197321159469863,
+            "sires": 113,
+            "CI95_pointwise": [
+              0.009827596461485741,
+              0.02758848406808171
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.017765597520886613,
+            "sires": 113,
+            "CI95_pointwise": [
+              0.007019623435899985,
+              0.03072101343836281
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.006618423373007554,
+                "sires": 113,
+                "CI95_pointwise": [
+                  -0.003617933778114803,
+                  0.017385215513830116
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.03040085909100115,
+                "sires": 113,
+                "CI95_pointwise": [
+                  -0.04517632863381119,
+                  -0.017546989459135222
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.03227513366383947,
+                "sires": 113,
+                "CI95_pointwise": [
+                  -0.052388655693285616,
+                  -0.015629330982857518
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.03889355703684703,
+                "sires": 113,
+                "CI95_pointwise": [
+                  0.01792385545934847,
+                  0.06418742350998227
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.014798119173234384,
+                "sires": 113,
+                "CI95_pointwise": [
+                  -0.024284653901003928,
+                  -0.005727563248634042
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.029525850711953537,
+                "sires": 113,
+                "CI95_pointwise": [
+                  -0.039654259670821215,
+                  -0.020262112015579665
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.035229119434759676,
+                "sires": 113,
+                "CI95_pointwise": [
+                  -0.048747417193737055,
+                  -0.022937377341883912
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.020431000261525292,
+                "sires": 113,
+                "CI95_pointwise": [
+                  0.006725443650053414,
+                  0.03731977970194276
+                ]
+              }
+            }
+          }
+        },
+        "20261126": {
+          "all_horses": 599,
+          "all_sires": 122,
+          "count_matched_horses": 565,
+          "matched_nonzero_horses": 565,
+          "matched_nonzero_sires": 110,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 235,
+          "true": {
+            "own_update_term": -0.013884824925580406,
+            "correction_rms": 0.1669279757888456,
+            "cosine": 0.2413544383374571
+          },
+          "swap": {
+            "own_update_term": -0.0004525712720644644,
+            "correction_rms": 0.15160079946181074,
+            "cosine": 0.008662225787172254
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": 0.0033111848122590747,
+            "correction_rms": 0.1669279757888456,
+            "cosine": -0.05755702033534289
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.013432253653515941,
+            "sires": 110,
+            "CI95_pointwise": [
+              0.005256357291649977,
+              0.02296876990759548
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.01719600973783948,
+            "sires": 110,
+            "CI95_pointwise": [
+              0.006941159476336333,
+              0.03074421521189663
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.008233690173086497,
+                "sires": 110,
+                "CI95_pointwise": [
+                  -0.002332960551259319,
+                  0.02014699332742575
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.0192057751056152,
+                "sires": 110,
+                "CI95_pointwise": [
+                  -0.03132868829929628,
+                  -0.006666777666590236
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.029607860195395446,
+                "sires": 110,
+                "CI95_pointwise": [
+                  -0.04910630426502647,
+                  -0.012412793345187712
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.03784155036848195,
+                "sires": 110,
+                "CI95_pointwise": [
+                  0.017035624723746222,
+                  0.0643172354284115
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.016759175063129392,
+                "sires": 110,
+                "CI95_pointwise": [
+                  -0.025719789405998266,
+                  -0.007200327337673238
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.028397421951392447,
+                "sires": 110,
+                "CI95_pointwise": [
+                  -0.03760530847191184,
+                  -0.01837173750546274
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.03728434495311928,
+                "sires": 110,
+                "CI95_pointwise": [
+                  -0.0496278722578209,
+                  -0.024806350075710273
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.020525169889989897,
+                "sires": 110,
+                "CI95_pointwise": [
+                  0.009175212615507126,
+                  0.03682694799746805
+                ]
+              }
+            }
+          }
+        }
+      },
+      "2000-2399": {
+        "20261124": {
+          "all_horses": 267,
+          "all_sires": 63,
+          "count_matched_horses": 239,
+          "matched_nonzero_horses": 239,
+          "matched_nonzero_sires": 54,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 92,
+          "true": {
+            "own_update_term": -0.001935190011579785,
+            "correction_rms": 0.08903139146806198,
+            "cosine": 0.09734215639631914
+          },
+          "swap": {
+            "own_update_term": 0.0009390795831543285,
+            "correction_rms": 0.1033935393526302,
+            "cosine": -0.0406751821345494
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": 0.0005854782476326806,
+            "correction_rms": 0.08903139146806198,
+            "cosine": -0.02945019083742495
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.0028742695947341144,
+            "sires": 54,
+            "CI95_pointwise": [
+              -0.001743730793050236,
+              0.008276560913013126
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.002520668259212465,
+            "sires": 54,
+            "CI95_pointwise": [
+              -0.002687714549821706,
+              0.00962133669926902
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": -0.0010790602285962196,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.006826855526805987,
+                  0.0045669494989757295
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.009775316894747563,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.019844395852437854,
+                  -0.002021393318488814
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.0059737200229432325,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.01710819747225384,
+                  0.0014251232964950942
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.004894659794347014,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.006508384600645267,
+                  0.020366488682382847
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.004836858326107331,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.008324835404325277,
+                  -0.0005583734512055309
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.008113517928759641,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.015423347361491072,
+                  -0.0008108431666515233
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.0077368933094157585,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.015905387655141743,
+                  -0.0007835201825957285
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.0029000349833084287,
+                "sires": 54,
+                "CI95_pointwise": [
+                  -0.004702359775625688,
+                  0.011719544556956972
+                ]
+              }
+            }
+          }
+        },
+        "20261125": {
+          "all_horses": 267,
+          "all_sires": 63,
+          "count_matched_horses": 233,
+          "matched_nonzero_horses": 233,
+          "matched_nonzero_sires": 56,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 100,
+          "true": {
+            "own_update_term": -0.004083239098362937,
+            "correction_rms": 0.0901876626836672,
+            "cosine": 0.19020308798653218
+          },
+          "swap": {
+            "own_update_term": 0.0021659904631780975,
+            "correction_rms": 0.09280119460224633,
+            "cosine": -0.09805344515514379
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": 0.003253319793790791,
+            "correction_rms": 0.0901876626836672,
+            "cosine": -0.15154426573619065
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.006249229561541035,
+            "sires": 56,
+            "CI95_pointwise": [
+              0.0015144409676387043,
+              0.012458371225430663
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.007336558892153728,
+            "sires": 56,
+            "CI95_pointwise": [
+              0.00028567708690664694,
+              0.01754150299067605
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.0027473469854267405,
+                "sires": 56,
+                "CI95_pointwise": [
+                  -0.0037124619502543446,
+                  0.010420438515441204
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.011582409603606613,
+                "sires": 56,
+                "CI95_pointwise": [
+                  -0.02358710416564049,
+                  -0.002553810365308129
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.012625471761493165,
+                "sires": 56,
+                "CI95_pointwise": [
+                  -0.026927545167529304,
+                  -0.0013947476842673108
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.015372818746919906,
+                "sires": 56,
+                "CI95_pointwise": [
+                  0.0006139898959487633,
+                  0.035356022634060055
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.0036914030864429606,
+                "sires": 56,
+                "CI95_pointwise": [
+                  -0.0074680986567318385,
+                  0.0006224295600943413
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.012769451304157515,
+                "sires": 56,
+                "CI95_pointwise": [
+                  -0.022384974781504887,
+                  -0.00556936789671073
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.013408328796409259,
+                "sires": 56,
+                "CI95_pointwise": [
+                  -0.023265627181121944,
+                  -0.005794936398710956
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.009716925709966299,
+                "sires": 56,
+                "CI95_pointwise": [
+                  0.0012546475123985303,
+                  0.02055914225584991
+                ]
+              }
+            }
+          }
+        },
+        "20261126": {
+          "all_horses": 267,
+          "all_sires": 63,
+          "count_matched_horses": 246,
+          "matched_nonzero_horses": 246,
+          "matched_nonzero_sires": 55,
+          "status": "DESCRIPTIVE",
+          "sign_discordant": 104,
+          "true": {
+            "own_update_term": -0.0032867076756324,
+            "correction_rms": 0.08907869707460032,
+            "cosine": 0.1516274367471393
+          },
+          "swap": {
+            "own_update_term": 0.00038545994620207405,
+            "correction_rms": 0.10005186867111339,
+            "cosine": -0.015832322307720734
+          },
+          "equal_magnitude_swap": {
+            "own_update_term": 0.00210228085038741,
+            "correction_rms": 0.08907869707460032,
+            "cosine": -0.09698564281519363
+          },
+          "alignment_true_minus_swap": {
+            "MSE_gain": 0.003672167621834472,
+            "sires": 55,
+            "CI95_pointwise": [
+              -0.000601567093478262,
+              0.009021167010694666
+            ]
+          },
+          "alignment_true_minus_equal_magnitude_swap": {
+            "MSE_gain": 0.00538898852601981,
+            "sires": 55,
+            "CI95_pointwise": [
+              0.00016856734856641388,
+              0.013733726921417343
+            ]
+          },
+          "target_gain": {
+            "early": {
+              "true": {
+                "MSE_gain": 0.0018342522365857713,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.00470494035421519,
+                  0.008518207400668398
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.008162649977888854,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.01757219481237261,
+                  -0.0008536018403997659
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.010072412214373817,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.021320286104040048,
+                  -0.0017808969285749488
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.011906664450959588,
+                "sires": 55,
+                "CI95_pointwise": [
+                  0.0012926611674688715,
+                  0.027328477807959717
+                ]
+              }
+            },
+            "late": {
+              "true": {
+                "MSE_gain": -0.0024300734461455303,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.006935325293513287,
+                  0.0018952812590548496
+                ]
+              },
+              "swap": {
+                "MSE_gain": -0.009211953085655823,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.016974056180946148,
+                  -0.0025654615925786383
+                ]
+              },
+              "equal_magnitude_swap": {
+                "MSE_gain": -0.008261429625815168,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.014488982470585068,
+                  -0.003057714871633851
+                ]
+              },
+              "true_minus_equal_magnitude_swap": {
+                "MSE_gain": 0.005831356179669634,
+                "sires": 55,
+                "CI95_pointwise": [
+                  -0.0002781496089919839,
+                  0.013368455856030793
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Count-matched other sire is not verified genetically unrelated, and management may differ.",
+      "Equal-magnitude swap preserves true correction magnitude by design, not a deployable alternative predictor or independent effect estimate.",
+      "Primary contrast tests alignment of directions; it is not a test of positive predictive gain. Separate outcome comparisons retain negative gains.",
+      "Previously inspected archives, selected common observed horses and reused splits; not prospective.",
+      "Conditional whole-sire pointwise intervals do not capture all shared-history/deeper-pedigree dependence.",
+      "No genetic adaptation, animal learning, fitness, or wagering claim. Anonymous aggregates only."
+    ]
+  },
+  "derived": {
+    "conditions": 9,
+    "positive_equal_magnitude": 9,
+    "positive_equal_magnitude_ci": 8,
+    "positive_raw_ci": 7,
+    "negative_late_true": 9,
+    "negative_late_true_ci": 7,
+    "positive_early_true_ci": 0,
+    "positive_early_identity_ci": 8,
+    "positive_late_identity_ci": 5
+  }
+}

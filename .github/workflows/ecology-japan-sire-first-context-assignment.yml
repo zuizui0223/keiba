@@ -1,0 +1,47 @@
+name: "Sire first context assignment vs later use"
+on:
+  push:
+    branches: [analysis/kin-context-first-assignment-20261124]
+    paths:
+      - "scripts/ecology_japan_sire_first_context_assignment.py"
+      - "docs/research/JAPAN_SIRE_FIRST_CONTEXT_ASSIGNMENT_PROTOCOL.md"
+      - ".github/workflows/ecology-japan-sire-first-context-assignment.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Synthetic target and temporal leakage checks
+        run: python scripts/ecology_japan_sire_first_context_assignment.py --self-test
+      - name: Download fixed source A
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          from ecology_japan_archive_forward import download
+          download(Path('tmp/private/old.zip'))
+          PY
+      - name: Fit learned history-rich baseline and family assignment contrasts
+        run: python scripts/ecology_japan_sire_first_context_assignment.py --archive tmp/private/old.zip --output tmp/sire-first-context-assignment.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sire-first-context-assignment-aggregate-only
+          path: tmp/sire-first-context-assignment.json
+          if-no-files-found: error
+          retention-days: 14
