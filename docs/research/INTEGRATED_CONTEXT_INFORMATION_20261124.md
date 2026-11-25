@@ -6,6 +6,8 @@
 
 When can recorded family histories help predict the realized environmental allocation of a competitive animal, and how does their additional value change when individual history accumulates? The system is managed Thoroughbred racing. The strongest outcome here is the observed fraction of eligible JRA turf starts (or the first observed surface within a year), conditional on archive inclusion and classified starts. It is not physiological fitness, voluntary habitat preference, genetic causation, official debut, or a measurement of an animal using family information. Do not pool these endpoints with relative finishing ranks or Australian GPS timing.
 
+[Repository-wide synthesis and PR scope inventory](REPOSITORY_WIDE_INFORMATION_DYNAMICS_SYNTHESIS_20261125.md) connects the separate GPS, rank, pedigree/genomic and human-market research tracks. The empirical allocation paper retains its own estimand; no merged individual panel or pooled meta-analysis is asserted.
+
 ## Main findings: four connected levels
 
 1. **Observation structure.** PR83: among 4,187 supported 2021 horses, paternal/maternal distinct historical donor means 190.657/2.078; after equalizing to 2.071 per side, the directional MSE gap drops from 0.0089821 to 0.0012579 (86.0% arithmetic reduction). Both equal-count channels individually improve the count-adjusted model in six repeated conditions, both separate pointwise cluster intervals positive. Their primary difference is uncertain, with a reversal in one seed. Counts are not genetic contribution, independence or equal precision.

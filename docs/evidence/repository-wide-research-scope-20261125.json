@@ -1,0 +1,858 @@
+{
+  "schema_version": 1,
+  "status": "PR_SCOPE_INVENTORY_NOT_EXHAUSTIVE_METRIC_AUDIT",
+  "audited_ref": "f788f5c69dcfd917ccceb82ed828eb3a38cd814c",
+  "repository": "zuizui0223/keiba",
+  "api_scope": "all states, first page per_page=100; returned fewer than 100",
+  "pr_count": 92,
+  "tree_truncated": false,
+  "roles": {
+    "PROSPECTIVE_SOFTWARE_ONLY": 1,
+    "ALLOCATION_CORE": 16,
+    "CONSOLIDATION": 1,
+    "MARKET_CROSS_CHANNEL": 1,
+    "RANK_COMPARATIVE": 21,
+    "PROVENANCE_METHODS": 7,
+    "PRIOR_INTEGRATION_THEORY": 2,
+    "MARKET_OR_GENERATIVE_METHODS": 34,
+    "PEDIGREE_GENOME": 2,
+    "GPS_INDIVIDUALITY": 2,
+    "TECHNICAL_OR_WAGERING_ARCHIVE": 5
+  },
+  "prs": [
+    {
+      "pr": 94,
+      "title": "Predefine 2027 seasonal allocation validation and new-entrant coverage",
+      "state": "open",
+      "merged": false,
+      "head": "14d58b6305fef8ab2c1733d9ec26049393d7f8ad",
+      "role": "PROSPECTIVE_SOFTWARE_ONLY",
+      "url": "https://github.com/zuizui0223/keiba/pull/94"
+    },
+    {
+      "pr": 93,
+      "title": "Audit 2025 identity coverage and test season-matched allocation transfer",
+      "state": "open",
+      "merged": false,
+      "head": "0b4dc77f744edfc3e40d18346f6f7d40f35bab51",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/93"
+    },
+    {
+      "pr": 92,
+      "title": "Test whether own-information alignment is specific to the recorded sire",
+      "state": "open",
+      "merged": false,
+      "head": "ea9fb01832dc968296401029b5c01ca0b08e1c38",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/92"
+    },
+    {
+      "pr": 91,
+      "title": "Test historical surface-supply balance as a moderator of information substitution",
+      "state": "open",
+      "merged": false,
+      "head": "d6f1a0baffeb4142d63005c4f6bbb2b35af81693",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/91"
+    },
+    {
+      "pr": 90,
+      "title": "Integrate completed kinship information and environmental allocation research",
+      "state": "open",
+      "merged": false,
+      "head": "f788f5c69dcfd917ccceb82ed828eb3a38cd814c",
+      "role": "CONSOLIDATION",
+      "url": "https://github.com/zuizui0223/keiba/pull/90"
+    },
+    {
+      "pr": 89,
+      "title": "Test information substitution in two adjacent distance bands",
+      "state": "open",
+      "merged": false,
+      "head": "4e6b056c97bbbc77d7fb8781b50677d7769d501b",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/89"
+    },
+    {
+      "pr": 88,
+      "title": "Separate within-horse information substitution from cohort membership changes",
+      "state": "open",
+      "merged": false,
+      "head": "0e873931af9f3bd12dc1f2e46e8f413b69408414",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/88"
+    },
+    {
+      "pr": 87,
+      "title": "Calibrate family allocation information by own-history count using source A only",
+      "state": "open",
+      "merged": false,
+      "head": "3612c93a6dcbb11e8a58419c9897a5cea8e55bec",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/87"
+    },
+    {
+      "pr": 86,
+      "title": "Separate cohort composition and chronological information refresh in environmental occupancy",
+      "state": "open",
+      "merged": false,
+      "head": "5c9e8578b5897d857928965eccc6e264de8c1df1",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/86"
+    },
+    {
+      "pr": 85,
+      "title": "Test frozen environment occupancy transfer in independently archived 2022–24 races",
+      "state": "open",
+      "merged": false,
+      "head": "78b34b19adfa23145d72a018d7446c9808eec85b",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/85"
+    },
+    {
+      "pr": 84,
+      "title": "Match family information donors on observed management and demographic context",
+      "state": "open",
+      "merged": false,
+      "head": "92b4490c221934f053ba043efeeddcf3a2329510",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/84"
+    },
+    {
+      "pr": 83,
+      "title": "Equalize paternal and maternal peer counts in first observed context assignment",
+      "state": "open",
+      "merged": false,
+      "head": "25b5ddddb0c31c66e7bd87cfc596c8bf4357a0f3",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/83"
+    },
+    {
+      "pr": 82,
+      "title": "Test family-associated first context assignment against learned strong baseline",
+      "state": "open",
+      "merged": false,
+      "head": "ad3a2603ed8499189df9ffd3e049c0f69ebc1aff",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/82"
+    },
+    {
+      "pr": 81,
+      "title": "Separate family-associated environment occupancy from paired performance transfer",
+      "state": "open",
+      "merged": false,
+      "head": "ebf2a462d7a7ffe897134da3283ec3651d5c031f",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/81"
+    },
+    {
+      "pr": 80,
+      "title": "Test temporal transfer of paired-horse context differences without date thinning",
+      "state": "open",
+      "merged": false,
+      "head": "d76eec0cd0e06303fd2009102fb5c4b290a4033a",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/80"
+    },
+    {
+      "pr": 79,
+      "title": "Test within-horse context resemblance and count-matched other-sire correspondence",
+      "state": "open",
+      "merged": false,
+      "head": "7d7d51d09a0dd04d48ba8c62f682c5d0e20ab84b",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/79"
+    },
+    {
+      "pr": 78,
+      "title": "Separate context-specific family signal from redundant observation hypothesis",
+      "state": "open",
+      "merged": false,
+      "head": "3739911e1d6bc22540f8e16f0cb0f959b9e552be",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/78"
+    },
+    {
+      "pr": 77,
+      "title": "Test kin environmental information diversity beyond history quantity",
+      "state": "open",
+      "merged": false,
+      "head": "cc614b0f118be58a22800534ca13007fdf8e3283",
+      "role": "ALLOCATION_CORE",
+      "url": "https://github.com/zuizui0223/keiba/pull/77"
+    },
+    {
+      "pr": 76,
+      "title": "Study horse-level and pair-specific information structure across eight racing ticket markets",
+      "state": "open",
+      "merged": false,
+      "head": "4e4ea50d67cb5721eed537d5a9551d0c355f345c",
+      "role": "MARKET_CROSS_CHANNEL",
+      "url": "https://github.com/zuizui0223/keiba/pull/76"
+    },
+    {
+      "pr": 75,
+      "title": "親族情報の追加価値を記録年・出走履歴長まで一致する非親族で反証",
+      "state": "closed",
+      "merged": true,
+      "head": "5875005b023371a7ade1896a5ea84822f1dbe715",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/75"
+    },
+    {
+      "pr": 74,
+      "title": "Test equal-count parent histories against same-context unrelated peers",
+      "state": "closed",
+      "merged": true,
+      "head": "793ddd188ae7b2dfc351f24c2ffc0dec218384b2",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/74"
+    },
+    {
+      "pr": 73,
+      "title": "Equalize historical peer counts for the parent prediction comparison",
+      "state": "closed",
+      "merged": true,
+      "head": "32c3b7821455769212c0216e729ff5bc3d93900d",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/73"
+    },
+    {
+      "pr": 72,
+      "title": "Separate paternal and maternal historical performance value on the fixed real cohort",
+      "state": "closed",
+      "merged": true,
+      "head": "7990ecf95bda5efb219a41360a927e1643fb220b",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/72"
+    },
+    {
+      "pr": 71,
+      "title": "Diagnose concentration of conditional family prediction gains across recorded sires",
+      "state": "closed",
+      "merged": true,
+      "head": "1a80b03cadbba52ad3f21873456fbbea137d577a",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/71"
+    },
+    {
+      "pr": 70,
+      "title": "競走馬2022–24：親族成績・頭数の4条件実測、父群区間はゼロを含む",
+      "state": "closed",
+      "merged": true,
+      "head": "7d7ae253b80006aa6c8efb5dc93168497dc7e72b",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/70"
+    },
+    {
+      "pr": 69,
+      "title": "2027年前向き予測：対象レース一覧もGitHub元コミットSHA・サーバー時刻に封印し、事後の分母変更を拒否",
+      "state": "closed",
+      "merged": true,
+      "head": "f1fe0e66c25633f18ba0dbf0cc13976347fdcf8f",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/69"
+    },
+    {
+      "pr": 68,
+      "title": "2027年の事前予測：未予測レース・未取得結果を分母に残し、全着順からモデル優劣を監査",
+      "state": "closed",
+      "merged": true,
+      "head": "ae32c6d69709a72614902562eb8650dd7266bed9",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/68"
+    },
+    {
+      "pr": 67,
+      "title": "2022年の後年観測群の情報価値差を「M1切替頻度×切替時損失」に厳密分解",
+      "state": "closed",
+      "merged": true,
+      "head": "3d7b53f45ad6ab9c1a54bfafdff4a1631c199ea7",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/67"
+    },
+    {
+      "pr": 66,
+      "title": "2022年の観測機会調整後の親族モデル差：馬×暦日・同父系・6比較の実測頑健性を再検証",
+      "state": "closed",
+      "merged": true,
+      "head": "e5f0121f9dc898cf686f32217d2b37580ff3b15a",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/66"
+    },
+    {
+      "pr": 65,
+      "title": "2022→24の観測選択：2023年の記録状態と2022年の観測機会で情報モデルの差を分解",
+      "state": "closed",
+      "merged": true,
+      "head": "1d27efbe3edb78939544f477a30ffda051992415",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/65"
+    },
+    {
+      "pr": 64,
+      "title": "2022年の観測選択：親族情報モデル誤差を馬×開催日・父系・本人履歴層別で厳格再検証",
+      "state": "closed",
+      "merged": true,
+      "head": "c9086edbb09b49ec78ed5df4bde8026fbd24d3b1",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/64"
+    },
+    {
+      "pr": 63,
+      "title": "競走馬の親族情報価値：2022–24年の年差を馬×競走日・父系・多重比較で再監査",
+      "state": "closed",
+      "merged": true,
+      "head": "99686373753e5632f506c049f3f39659779ace0b",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/63"
+    },
+    {
+      "pr": 62,
+      "title": "2022–24競走馬：3年同一個体×距離条件で情報価値の年次変化と観測選択を反証",
+      "state": "closed",
+      "merged": true,
+      "head": "b2c44d7d6334d264ed4f17321ae0ede8603fc647",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/62"
+    },
+    {
+      "pr": 61,
+      "title": "2022→24 親族情報ゲート：同一馬×芝ダート×距離帯の実測反証を追加",
+      "state": "closed",
+      "merged": true,
+      "head": "7204daadcc652870dfe5ac9a6b739fa97a2dcf7a",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/61"
+    },
+    {
+      "pr": 60,
+      "title": "競走馬の情報生態：親族ルール失敗は履歴構成5.7%、同一区分94.3%；継続出走選択42%（実測事後）",
+      "state": "closed",
+      "merged": true,
+      "head": "6970878169c9ff04f41cc94172b153aff4e6f576",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/60"
+    },
+    {
+      "pr": 59,
+      "title": "競走馬の情報生態：2022年選択の親族利用ルールが2023・24年へ転移せず（実測、事後）",
+      "state": "closed",
+      "merged": true,
+      "head": "151497b1d455d9f314b8d572e66e52078479f75d",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/59"
+    },
+    {
+      "pr": 58,
+      "title": "競走馬2022–24：実測24.4万出走で本人履歴量×親族情報の勾配・年別逆転を検証（事後）",
+      "state": "closed",
+      "merged": true,
+      "head": "d9c3338630f679dd79b949f4bb55924a7f8540d0",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/58"
+    },
+    {
+      "pr": 57,
+      "title": "生態学：個体×親族の情報精度階層を数理化し実測集計で反証ゲート検証（遺伝・市場因果HOLD）",
+      "state": "closed",
+      "merged": true,
+      "head": "a90f9c025c13acfc17d75d02167270c0cc38ff78",
+      "role": "PRIOR_INTEGRATION_THEORY",
+      "url": "https://github.com/zuizui0223/keiba/pull/57"
+    },
+    {
+      "pr": 56,
+      "title": "生態学統合：競走馬の個体差・血縁A・SNP関係G・情報鮮度・市場ABMの実測／HOLDをmainへ",
+      "state": "closed",
+      "merged": true,
+      "head": "f28cf4ceb22c4155bc751a21993e8ecbd5fca98d",
+      "role": "PRIOR_INTEGRATION_THEORY",
+      "url": "https://github.com/zuizui0223/keiba/pull/56"
+    },
+    {
+      "pr": 55,
+      "title": "競走馬2027：本物のGitHubサーバー時刻・元コミットSHAを実接続検証（40合成テスト、実馬予測HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "1592be86ab3b1a13a73d02358816871ffd2c2d34",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/55"
+    },
+    {
+      "pr": 54,
+      "title": "競走馬2027：GitHubサーバー時刻によるレース前予測SHA事前登録（33合成テスト・実測HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "21a0b0a1b181a5ef0e4f094822995220af1e9f9e",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/54"
+    },
+    {
+      "pr": 53,
+      "title": "競走馬2027：JRA-VANレース前後SQLite保存・版差分・予測台帳接続（50合成テスト、実測HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "d31fad7e3584f73fb2db5f2e3ee0130f63e4a7a1",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/53"
+    },
+    {
+      "pr": 52,
+      "title": "競走馬2027：履歴学習・同一時点監査・JRA-VAN SQLite連結QA（69合成テスト成功／実測HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "b4efbe9388705f5a2c6b1f61affa8e8a6bb721ed",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/52"
+    },
+    {
+      "pr": 51,
+      "title": "競走馬2027：公式ID・情報公開時刻に基づく事前予測凍結／事後採点台帳（実データHOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "44e2036bbfe57ff8d6fb5cc1719cc4b091ce4d50",
+      "role": "PROVENANCE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/51"
+    },
+    {
+      "pr": 50,
+      "title": "競走馬2026：個体履歴の更新が主要効果、親族追加価値は未確定（4条件実測）",
+      "state": "open",
+      "merged": false,
+      "head": "f800f06725a8e216a3be33fa681c40b385677822",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/50"
+    },
+    {
+      "pr": 49,
+      "title": "競走馬2026：履歴を前日まで更新すると予測改善、親族の追加効果は未確定（事後検証）",
+      "state": "open",
+      "merged": false,
+      "head": "ec17068c73048aef2ecb7aa08384dbd1e07a0fda",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/49"
+    },
+    {
+      "pr": 48,
+      "title": "競走馬親族履歴：2026年第三資料232頭では予測改善を安定再現できず（遺伝因果HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "6e117e25c9014603c80f2aa3fe149548e07238a2",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/48"
+    },
+    {
+      "pr": 47,
+      "title": "生態学：血縁・育種とオッズの接続／実市場9レース117頭＋投票者ABM反証（遺伝効果HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "f203e6835c92489b42516cf663252582b4e6ea29",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/47"
+    },
+    {
+      "pr": 46,
+      "title": "競走馬親族履歴：2022–24厳格着順×強化個体履歴で微小改善（遺伝因果HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "78be06497321184a2f909aa090de1dde2685b95e",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/46"
+    },
+    {
+      "pr": 45,
+      "title": "実競走90,962頭：初回・JRAで親族履歴改善、全体・メイショウは中間順位基準未達",
+      "state": "open",
+      "merged": false,
+      "head": "6ddce14e680b1d59d296bdeab62b4d5bf87d5480",
+      "role": "RANK_COMPARATIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/45"
+    },
+    {
+      "pr": 44,
+      "title": "実DNA：日本サラブレッド370頭・353,249 SNP・全68,265ペアのゲノム関係G",
+      "state": "open",
+      "merged": false,
+      "head": "489aba321cc1635c79e1295ee28d974ee3676628",
+      "role": "PEDIGREE_GENOME",
+      "url": "https://github.com/zuizui0223/keiba/pull/44"
+    },
+    {
+      "pr": 43,
+      "title": "日本競走馬の血縁実測：5,878頭×1,727万ペア＋メイショウ38頭vs対照999組（全国HOLD）",
+      "state": "closed",
+      "merged": true,
+      "head": "aa9e7131b6211f80e5b539582ad999b7c1433785",
+      "role": "PEDIGREE_GENOME",
+      "url": "https://github.com/zuizui0223/keiba/pull/43"
+    },
+    {
+      "pr": 42,
+      "title": "天皇賞秋・22:25更新の全17頭公開単勝を新たに固定し、17:42との指数変化と136順位を厳密照合",
+      "state": "open",
+      "merged": false,
+      "head": "754338b920f38f63a903f6f4ae1502704a75bad7",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/42"
+    },
+    {
+      "pr": 41,
+      "title": "11/1天皇賞の未来単勝を前日17:42ニュース全17頭から事前SHA固定・別レーンで採点する",
+      "state": "open",
+      "merged": false,
+      "head": "19ddae21907977c05834c761b7cab3dbb18d6ca5",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/41"
+    },
+    {
+      "pr": 40,
+      "title": "京都8R元全11頭・3時点でオッズ非単調性を独立再検証し、連続速度の必要十分界と全頭C2市場帰無を構成",
+      "state": "open",
+      "merged": false,
+      "head": "71258662f56e1fe58df5adf57d6a8b120d52fb4f",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/40"
+    },
+    {
+      "pr": 39,
+      "title": "天皇賞前日5時点・5頭の相対オッズ非単調性を丸め3方式で検証し、集団自己強化の非識別性を構成的に反証",
+      "state": "open",
+      "merged": false,
+      "head": "fff978ad5464d7411a23af1cad27375083b84075",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/39"
+    },
+    {
+      "pr": 38,
+      "title": "天皇賞2026・前日7時点の公開部分オッズから繰り返す首位逆転を検証、丸めと欠測を厳密監査",
+      "state": "open",
+      "merged": false,
+      "head": "23826c8863a19294afc4acf9f373040685460722",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/38"
+    },
+    {
+      "pr": 37,
+      "title": "PR30元6モデルを保全し、馬ABM/PDE/市場と連続・閾値・無情報5候補を同じ未来q2で評価するB+接続",
+      "state": "open",
+      "merged": false,
+      "head": "5a6ba4661b4e1994336fbccca5226371cc87f0c4",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/37"
+    },
+    {
+      "pr": 36,
+      "title": "京都8R実13:44次オッズで連続・閾値価格モデルと無情報投票者ABMを比較（完全な事後検証）",
+      "state": "open",
+      "merged": false,
+      "head": "bc1f3b20528a0eafbdb322f2c0e31cf3ff8cd2f8",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/36"
+    },
+    {
+      "pr": 35,
+      "title": "天皇賞17/18時の公開17頭オッズ照合と、京都5競走の実時系列で人気順位の交差を反証",
+      "state": "open",
+      "merged": false,
+      "head": "2bf0752b97abe046056a99fdacf1fc543f83b78d",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/35"
+    },
+    {
+      "pr": 34,
+      "title": "天皇賞秋・前日M0市場の136ペア順位頑健性を厳密検査し、順位交差と投票者閾値を分離",
+      "state": "open",
+      "merged": false,
+      "head": "ea28819ffb427a02c1c0dacb757d663d3c67f9f3",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/34"
+    },
+    {
+      "pr": 33,
+      "title": "2026天皇賞秋・発走前17頭の公開オッズM0予測と馬ABM／PDE／投票者ABMの統合感度分析",
+      "state": "open",
+      "merged": false,
+      "head": "e1863c408b8c079c7edae61176591445b9078bb3",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/33"
+    },
+    {
+      "pr": 32,
+      "title": "元JRA-VAN CSVのバイトSHAと全馬オッズ再解析を取得チェーンへ拘束し、馬ABM/PDE・市場予測SHAまで一体化",
+      "state": "open",
+      "merged": false,
+      "head": "38a5b54f1b0bdc023955677556ba344d794c505c",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/32"
+    },
+    {
+      "pr": 31,
+      "title": "JRA-VANの許諾済みCSV出力を単勝/ワイドの取得チェーンへ接続し、未来情報と不完全ペアを拒否",
+      "state": "open",
+      "merged": false,
+      "head": "737477091c06193d77881f402a6bd1aa6a3b63b7",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/31"
+    },
+    {
+      "pr": 30,
+      "title": "JRA-VAN時系列にワイドがない制約を反映し、単勝のみ別枠で馬ABM・非局所PDE・投票者ABMを事前SHA検証",
+      "state": "open",
+      "merged": false,
+      "head": "2bb45c4bfd3ce7a6c94692242025d788a249c318",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/30"
+    },
+    {
+      "pr": 29,
+      "title": "Racing Queensland実GPS12開催日で馬ID反復性REMLを独立再検証・元ソースSHAと欠測を監査",
+      "state": "open",
+      "merged": false,
+      "head": "9e1ed64f1f635337e8afe952f13ade5a8af4a754",
+      "role": "GPS_INDIVIDUALITY",
+      "url": "https://github.com/zuizui0223/keiba/pull/29"
+    },
+    {
+      "pr": 28,
+      "title": "公開予測SHAを元WIN/WIDE取得チェーン・確定出馬表・馬ABM距離まで結合し、重賞/補助レースの二重計数を拒否",
+      "state": "open",
+      "merged": false,
+      "head": "4ff997c32a0baeee1e4bc667911b44763f30561c",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/28"
+    },
+    {
+      "pr": 27,
+      "title": "WIN/WIDE取得チェーン→馬ABM×投票者ABMのSHA固定→次市場採点→26/64枠の欠測台帳を一括接続",
+      "state": "open",
+      "merged": false,
+      "head": "a247b91b0539bc6def206d8c784123a1c42ef458",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/27"
+    },
+    {
+      "pr": 26,
+      "title": "同一馬の反復GPS個体差を非局所馬ABM/PDEと情報階層型オッズ市場へ接続",
+      "state": "open",
+      "merged": false,
+      "head": "b629bd48be90217e86012753c4cdfd6bd18cfb91",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/26"
+    },
+    {
+      "pr": 25,
+      "title": "権利確認済み単勝・ワイドをSHA連結ログで取得し、馬ABM×市場ABMの事前固定へ直接取り込む",
+      "state": "open",
+      "merged": false,
+      "head": "cbf42d4360498adf4389a6584c3c91b8c21b0318",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/25"
+    },
+    {
+      "pr": 24,
+      "title": "事前登録JRA26競走を固定分母に、馬ABM×投票者ABM次オッズ予測の欠測・SHA・15+5分窓を監査",
+      "state": "open",
+      "merged": false,
+      "head": "7fc4a9cee6e9e2dbcf9ec36b3bdec42cfa2eee93",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/24"
+    },
+    {
+      "pr": 23,
+      "title": "次市場予測のSHAをGitHub PRコメント時刻で外部照合し、発走前でも予測対象オッズ公開後の封印を拒否",
+      "state": "open",
+      "merged": false,
+      "head": "53a1f2951b601740fb55d72a495fb4bd34b01356",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/23"
+    },
+    {
+      "pr": 22,
+      "title": "単勝2時点＋同時刻ワイド全組で馬ABM×市場ABM予測をSHA固定し、将来の次市場へ複数レース採点する共通基盤",
+      "state": "open",
+      "merged": false,
+      "head": "f1eec5b1b43f8f56f216bdfbb8fad856e7c55b80",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/22"
+    },
+    {
+      "pr": 21,
+      "title": "京都8R実3時点WIN・WIDEを使い、馬ABM×投票者ABM×価格ノイズの次時点市場予測を検証",
+      "state": "open",
+      "merged": false,
+      "head": "c45dec4529662f70baf17658b63ff58675067af4",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/21"
+    },
+    {
+      "pr": 20,
+      "title": "馬ABM→市場モデルの新情報効果を投票量・過分散・時計の帰無分布で条件付き検証",
+      "state": "open",
+      "merged": false,
+      "head": "250417d6c00edd8a081ad1e8771d4c5695b34bcb",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/20"
+    },
+    {
+      "pr": 19,
+      "title": "市場の閾値を前提なしの連続モデル・情報ゼロの帰無投票と比較し、見かけの臨界性を反証",
+      "state": "open",
+      "merged": false,
+      "head": "15ce6143a1b337725d50fcd8c5e56bea35533e4a",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/19"
+    },
+    {
+      "pr": 18,
+      "title": "馬間相互作用c×投票者の情報到着時刻を統合し、閾値の見かけとPDE近似誤差を反証",
+      "state": "open",
+      "merged": false,
+      "head": "53d140830df5dcd8f0d3ccb28a9d93f3ecf234d7",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/18"
+    },
+    {
+      "pr": 17,
+      "title": "非局所混雑カーネルで馬のABM・周辺密度PDE・投票者ABM・M0を物理的に接続",
+      "state": "open",
+      "merged": false,
+      "head": "6bccd594ccf747c12151a123a08db99ba62f4459",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/17"
+    },
+    {
+      "pr": 16,
+      "title": "馬履歴のみのABMから市場情報を完全分離し、後続オッズへの情報増分を反証",
+      "state": "open",
+      "merged": false,
+      "head": "c0e9fc624dfeefc0a215bf27ef0470019a88c4f1",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/16"
+    },
+    {
+      "pr": 15,
+      "title": "馬の過去出走履歴を独立入力として馬ABM→投票者ABMへ接続・馬IDシャッフル反証",
+      "state": "open",
+      "merged": false,
+      "head": "7576949a27e34d9e40784d4f6e748ff1bfdb3e49",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/15"
+    },
+    {
+      "pr": 14,
+      "title": "馬ABM×投票者ABM×時系列閾値×PDEの統合生成モデル（合成と実6レース監査）",
+      "state": "open",
+      "merged": false,
+      "head": "039c150c2ab869022615866f191172f1514fa820",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/14"
+    },
+    {
+      "pr": 13,
+      "title": "オッズの三階層閾値：初期人気×変動速度×予測情報の独立検証（6実レース・HOLD）",
+      "state": "open",
+      "merged": false,
+      "head": "a31d6ee2e65c224e62b519fbc8fbc1cb93c38b4b",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/13"
+    },
+    {
+      "pr": 12,
+      "title": "菊花賞2026：発走前の券種間市場・確率質量監査（探索的）",
+      "state": "open",
+      "merged": false,
+      "head": "a62f6a85910fa830187de6d7db3cf4ae7993c362",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/12"
+    },
+    {
+      "pr": 11,
+      "title": "独立PR: 予測SHAのみを発走前にGitHub受付する基盤",
+      "state": "open",
+      "merged": false,
+      "head": "c5bb0692d4bec30a9c947d04cbd0a0519706bbec",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/11"
+    },
+    {
+      "pr": 10,
+      "title": "オッズの経路依存・閾値・券種間非同調性を検証する情報階層モデル",
+      "state": "open",
+      "merged": false,
+      "head": "eefebb237af64ac18bbbe1950697336ded5f8074",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/10"
+    },
+    {
+      "pr": 9,
+      "title": "単勝・複勝確率の厳密計算と初通過ABM／PDE感度検証",
+      "state": "open",
+      "merged": false,
+      "head": "87c0f8d4816d04c207088ef537cf6d0302255fc2",
+      "role": "MARKET_OR_GENERATIVE_METHODS",
+      "url": "https://github.com/zuizui0223/keiba/pull/9"
+    },
+    {
+      "pr": 8,
+      "title": "docs: 生態学研究を主役に整理／証拠HOLDマップと馬券v3.1を分離",
+      "state": "closed",
+      "merged": true,
+      "head": "6df16dc2443d8cbbf0f6b6301711fb2415ba4a29",
+      "role": "TECHNICAL_OR_WAGERING_ARCHIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/8"
+    },
+    {
+      "pr": 7,
+      "title": "10/18 3場投票案の再現計算と根拠監査（Mのみ・非正式）",
+      "state": "closed",
+      "merged": true,
+      "head": "f4f78e6af542b9f38e8199eeb50e654a9463dd2b",
+      "role": "TECHNICAL_OR_WAGERING_ARCHIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/7"
+    },
+    {
+      "pr": 5,
+      "title": "秋華賞2026：全券種オッズ比較で枠連3–4が馬連6–8を相対優位、v3.1は不変",
+      "state": "open",
+      "merged": false,
+      "head": "4843055934934cfc8fd3d37b237a253106166fb2",
+      "role": "TECHNICAL_OR_WAGERING_ARCHIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/5"
+    },
+    {
+      "pr": 4,
+      "title": "v3.1 Kyoto 10/17: Thursday JRA card audit + 59 historical profile caches (no freeze)",
+      "state": "closed",
+      "merged": true,
+      "head": "a1d9de7873e57996484b03bbecadc297da9bd3e6",
+      "role": "TECHNICAL_OR_WAGERING_ARCHIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/4"
+    },
+    {
+      "pr": 2,
+      "title": "生態学研究：同じ馬の年内・年越し比較は共通0頭／予測の時間変化は未識別",
+      "state": "closed",
+      "merged": true,
+      "head": "d02290c43ba9923d0aaf7dce97639156d6159ac0",
+      "role": "GPS_INDIVIDUALITY",
+      "url": "https://github.com/zuizui0223/keiba/pull/2"
+    },
+    {
+      "pr": 1,
+      "title": "京都10/12：8〜12Rの全8券種・オッズ価格差・京都と騎手の実績",
+      "state": "closed",
+      "merged": true,
+      "head": "d80969a050552554dd7bd833cc69b541ac1ca944",
+      "role": "TECHNICAL_OR_WAGERING_ARCHIVE",
+      "url": "https://github.com/zuizui0223/keiba/pull/1"
+    }
+  ],
+  "limitations": [
+    "PR title classification does not verify each metric or individual artifact",
+    "Only selected source reports and integration evidence reviewed",
+    "Separate datasets not linked by verified identity; no pooled effect or new empirical result",
+    "Main and historical branches unchanged"
+  ]
+}
