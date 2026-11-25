@@ -8,6 +8,8 @@ on:
       - "tests/test_ecology_japan_2027_context_allocation_kernel.py"
       - "tests/test_ecology_japan_2027_context_history_fit.py"
       - "scripts/ecology_japan_2027_context_pledge.py"
+      - "scripts/ecology_japan_2027_context_source_adapter.py"
+      - "tests/test_ecology_japan_2027_context_source_adapter.py"
       - "tests/test_ecology_japan_2027_context_pledge.py"
       - ".github/workflows/ecology-japan-2027-context-allocation-synthetic.yml"
   pull_request:
@@ -17,6 +19,8 @@ on:
       - "tests/test_ecology_japan_2027_context_allocation_kernel.py"
       - "tests/test_ecology_japan_2027_context_history_fit.py"
       - "scripts/ecology_japan_2027_context_pledge.py"
+      - "scripts/ecology_japan_2027_context_source_adapter.py"
+      - "tests/test_ecology_japan_2027_context_source_adapter.py"
       - "tests/test_ecology_japan_2027_context_pledge.py"
       - ".github/workflows/ecology-japan-2027-context-allocation-synthetic.yml"
 permissions:
@@ -37,3 +41,4 @@ jobs:
           python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_allocation_kernel.py' -v
           python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_history_fit.py' -v
           python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_pledge.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_source_adapter.py' -v
