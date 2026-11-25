@@ -179,7 +179,7 @@ function renderFigures(receipts){
  return {out,audit:{status:"MANUSCRIPT_SELECTED_NUMERIC_PARITY_AND_FIGURE_DATA",primary_seed:Number(seed),checks:check,checks_passed:check.length,scope:"Selected manuscript claims and plotted data only; archived aggregate receipts, not independent raw-data or ZIP reproduction."}};
 }
 const receipts={};
-for(const f of INPUTS){const b=fs.readFileSync(path.join(ROOT,f.path));const sha=crypto.createHash("sha1").update(Buffer.from("blob "+b.length+"\\0".replace("\\\\0","\\0"))).update(b).digest("hex");if(f.git_blob_sha&&sha!==f.git_blob_sha)throw Error("HOLD receipt blob drift "+f.path);receipts[f.id]=JSON.parse(b);}
+for(const f of INPUTS){const b=fs.readFileSync(path.join(ROOT,f.path));const sha=crypto.createHash("sha1").update(Buffer.from("blob "+b.length+"\0")).update(b).digest("hex");if(f.git_blob_sha&&sha!==f.git_blob_sha)throw Error("HOLD receipt blob drift "+f.path);receipts[f.id]=JSON.parse(b);}
 const result=renderFigures(receipts);const dir=path.join(ROOT,"docs/research/figures/context-information");fs.mkdirSync(dir,{recursive:true});const outputs={...result.out,"numeric_parity.json":JSON.stringify(result.audit,null,2)+"\n"};
 for(const [name,content] of Object.entries(outputs)){const dest=path.join(dir,name);if(process.argv.includes("--check")){if(fs.readFileSync(dest,"utf8")!==content)throw Error("HOLD figure drift: "+name);}else fs.writeFileSync(dest,content);}
 console.log(JSON.stringify({status:"FIGURES_MATCH_PINNED_RECEIPTS",figures:Object.keys(result.out).length,checks:result.audit.checks_passed}));
