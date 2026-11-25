@@ -7,6 +7,8 @@ on:
       - "scripts/ecology_japan_2027_context_history_fit.py"
       - "tests/test_ecology_japan_2027_context_allocation_kernel.py"
       - "tests/test_ecology_japan_2027_context_history_fit.py"
+      - "scripts/ecology_japan_2027_context_pledge.py"
+      - "tests/test_ecology_japan_2027_context_pledge.py"
       - ".github/workflows/ecology-japan-2027-context-allocation-synthetic.yml"
   pull_request:
     paths:
@@ -14,6 +16,8 @@ on:
       - "scripts/ecology_japan_2027_context_history_fit.py"
       - "tests/test_ecology_japan_2027_context_allocation_kernel.py"
       - "tests/test_ecology_japan_2027_context_history_fit.py"
+      - "scripts/ecology_japan_2027_context_pledge.py"
+      - "tests/test_ecology_japan_2027_context_pledge.py"
       - ".github/workflows/ecology-japan-2027-context-allocation-synthetic.yml"
 permissions:
   contents: read
@@ -32,3 +36,4 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_allocation_kernel.py' -v
           python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_history_fit.py' -v
+          python -m unittest discover -s tests -p 'test_ecology_japan_2027_context_pledge.py' -v

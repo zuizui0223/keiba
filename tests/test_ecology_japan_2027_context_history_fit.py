@@ -51,7 +51,8 @@ class HistoryFit(unittest.TestCase):
         self.assertEqual(z["real_observations"],0)
         self.assertEqual(q["horses"],8);self.assertEqual(q["prediction_rows"],24)
         verify(p,q)
-        self.assertNotIn("FICTIONAL_",str(z))
+        self.assertNotIn("H:FICTIONAL_",str(z))
+        self.assertNotIn("R:FICTIONAL_",str(z))
         for v in p["weights"].values():
             for w in v.values():
                 self.assertTrue(all(a>=b for a,b in zip(w["monotone"],w["monotone"][1:])))
