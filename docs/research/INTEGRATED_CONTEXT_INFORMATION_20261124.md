@@ -57,3 +57,6 @@ PR89 completed both predeclared adjacent bands, preserving the 1600–1999m pari
 ## Provenance
 
 [Consolidation manifest](../evidence/context-information-consolidation-20261124.json) records original source branch tips and exact Git blob SHAs. All 90 incoming files from completed PR77–89, PR91–93 and PR95–96 are preserved byte-for-byte. Existing main code, data, betting models and ledgers remain unchanged. This synthesis, manifest and navigation entries are new/edited; the English manuscript and claim-to-evidence table are additional drafting outputs. Original draft PRs remain open for review; do not merge duplicates separately after consolidation. No raw source records are included.
+
+
+[Print-size figure variants](figures/context-information/print180/README.md) · [External wild-ungulate feasibility](WILD_UNGULATE_INFORMATION_TRANSFER_FEASIBILITY_20261126.md).

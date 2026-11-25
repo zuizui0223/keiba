@@ -32,3 +32,6 @@ Core novelty is the combination of fixed-correction within-horse decomposition, 
 - Formal inference about adaptive genetics, animal learning, individual opportunity, and all new entrants remains unavailable; if central to the intended paper, obtain new data rather than strengthen wording.
 
 Draft title uses **family information** rather than genomic kinship because direct recorded-parent identities, not genome-linked kinship coefficients, define the main estimates. No journal or author list selected without user guidance.
+
+
+Publication-size audit: 180 mm chosen provisionally; minimum text 5.58→7.17 pt. [Print derivatives](figures/context-information/print180/README.md); new rendered QA pending. [External source candidate](WILD_UNGULATE_INFORMATION_TRANSFER_FEASIBILITY_20261126.md) is metadata-only; no linked external analysis yet.

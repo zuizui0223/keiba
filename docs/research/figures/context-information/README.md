@@ -28,3 +28,6 @@
 
 
 Legend: intervals are the original conditional pointwise cluster intervals; distinct endpoint scales are explicit. Open marks indicate descriptive quantities with no interval. Equalized parent count bars are on a log10 scale from one; equalized donor count does not establish equal genetic contribution. All figures show a selected primary split; the evidence receipts preserve other splits and negative/HOLD tests. Sample-optimal weights are computed using evaluated outcomes. Population membership is observation membership. Figure 4 coverage is not a complete national census, and first valid record in 2025 is not official debut.
+
+
+[180 mm print-size derivatives and font audit](print180/README.md), original figure geometry retained.

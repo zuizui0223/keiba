@@ -147,3 +147,8 @@ Young, S. S. Y. (1961). The use of sire's and dam's records in animal selection.
 ## Figures and supplementary material
 
 [Four current vector figure drafts](figures/context-information/README.md) are retained unchanged; their source and selected 41-point numerical parity replay pass CI. Publication-size inspection and final export remain required. Figure numbering matches the Results. See [Supplement v2](JAPAN_CONTEXT_INFORMATION_SUPPLEMENT_V2.md), [literature-position audit](JAPAN_CONTEXT_INFORMATION_LITERATURE_POSITION_20261126.md), and [source-linked evidence ledger](JAPAN_CONTEXT_INFORMATION_MANUSCRIPT_EVIDENCE.md). The original [v1](JAPAN_CONTEXT_INFORMATION_MANUSCRIPT_V1.md) remains intact.
+
+
+## Print-size derivative (26 November 2026)
+
+The original four SVGs are unchanged. At a chosen 180 mm double-column width, minimum original label size is 5.58 pt. [Print180 derivatives](figures/context-information/print180/) use at least 7.17 pt, with shortened labels where needed and identical line, rectangle and circle geometry. This is a journal-neutral design assumption, not a verified journal requirement. Rendered text-box and visual checks remain separate; new CI is pending. [Independent wild-ungulate feasibility](WILD_UNGULATE_INFORMATION_TRANSFER_FEASIBILITY_20261126.md) identifies an external genomic-habitat dataset, without implying that the files contain a valid longitudinal panel or that external validation has been performed.

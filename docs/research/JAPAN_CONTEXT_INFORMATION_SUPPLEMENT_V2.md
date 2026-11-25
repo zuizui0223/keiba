@@ -84,3 +84,6 @@ The earlier Australian GPS panel demonstrates source-conditional horse-ID recurr
 ## S8. Prospective and publication gates
 
 No future claims have been evaluated. [PR94](https://github.com/zuizui0223/keiba/pull/94) is a fictional-only software rehearsal and prospective protocol, not data acquisition or a real pledge. A stable authorized parent registry, timestamped predictors, denominator including unknown-parent/never-observed horses and independently frozen future predictions remain necessary. Upstream publication permissions, ethics/data-use statement, authorship, archive-release identifier and journal requirements are unresolved. The main result is observational predictive redundancy, not genetic adaptation. Do not keep adding retrospective gates to seek positive intervals in the already inspected sources.
+
+
+See [print-size derivatives](figures/context-information/print180/README.md) and [wild-ungulate source feasibility](WILD_UNGULATE_INFORMATION_TRANSFER_FEASIBILITY_20261126.md). No new empirical results.
