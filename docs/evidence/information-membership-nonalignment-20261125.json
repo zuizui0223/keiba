@@ -1,0 +1,214 @@
+{
+  "status": "AGGREGATE_ARITHMETIC_CROSS_ENDPOINT_DESCRIPTIVE_NOT_NEW_EMPIRICAL_FIT",
+  "source_commit": "b68bd5df41a433337d93cc6a270a73f15cda794b",
+  "inputs": [
+    {
+      "path": "docs/evidence/japan-2022-24-gate-shift-composition-paired-20261118.json",
+      "git_blob_sha": "0d17da552c4c3f5ae2025e3908e84220bc23c5ce"
+    },
+    {
+      "path": "docs/evidence/japan-2022-switch-exposure-20261121.json",
+      "git_blob_sha": "9538a173f6fea7f22a8520214b9a0ffe27155acc"
+    },
+    {
+      "path": "docs/evidence/japan-2022-24-sire-signal-concentration-20261121.json",
+      "git_blob_sha": "2fdf50a8f1a2562cef9c5233e0e24721bd023967"
+    },
+    {
+      "path": "docs/evidence/japan-context-within-individual-20261124.json",
+      "git_blob_sha": "435bc5135f4745eb16c287debbfadad58c397373"
+    },
+    {
+      "path": "docs/evidence/japan-context-distance-generalization-20261124.json",
+      "git_blob_sha": "5918ce018c5fb9e3304e0831d552de5096833a87"
+    }
+  ],
+  "rows": [
+    {
+      "name": "Rank: preselected history gate vs always-family",
+      "n": 5163,
+      "full_early": 0.00004799390375970816,
+      "full_late": -0.00013493534299645175,
+      "common_early": -0.00002946697610885394,
+      "common_late": -0.00013487253474598834,
+      "paired_change": -0.00010540555863713439,
+      "paired_ci": [
+        -0.00020993192868058762,
+        0.00000460438300793871
+      ],
+      "membership_at_early": -0.0000774608798685621,
+      "membership_at_late": -6.280825046341143e-8,
+      "membership_remainder": -0.00007752368811902552,
+      "total_change": -0.0001829292467561599,
+      "membership_fraction_of_paired": -0.7354800744987837,
+      "classification": "amplifies",
+      "details": "Fixed stale ridge models, retrospective gate selected on 2022; paired interval includes zero. Not the family increment itself."
+    },
+    {
+      "name": "Allocation: fixed sire correction, 20261124",
+      "n": 599,
+      "full_early": 0.0019612994165529862,
+      "full_late": -0.015119490290056162,
+      "common_early": 0.01171190673357505,
+      "common_late": -0.01586561591266177,
+      "paired_change": -0.02757752264623682,
+      "paired_ci": [
+        -0.041841201575205794,
+        -0.014803970897794047
+      ],
+      "membership_at_early": 0.009750607317022065,
+      "membership_at_late": 0.0007461256226056062,
+      "membership_remainder": 0.01049673293962767,
+      "total_change": -0.01708078970660915,
+      "membership_fraction_of_paired": 0.38062639180028146,
+      "classification": "opposes",
+      "details": "Own-history refreshed with fixed family correction; interval on paired change, no CI for membership remainder."
+    },
+    {
+      "name": "Allocation: fixed sire correction, 20261125",
+      "n": 599,
+      "full_early": 0.0009580782441590968,
+      "full_late": -0.014286557497555401,
+      "common_early": 0.011376982523570719,
+      "common_late": -0.015140289495428807,
+      "paired_change": -0.026517272018999526,
+      "paired_ci": [
+        -0.04203640920052349,
+        -0.01316271600900854
+      ],
+      "membership_at_early": 0.010418904279411622,
+      "membership_at_late": 0.0008537319978734054,
+      "membership_remainder": 0.011272636277285027,
+      "total_change": -0.015244635741714498,
+      "membership_fraction_of_paired": 0.4251054282359145,
+      "classification": "opposes",
+      "details": "Own-history refreshed with fixed family correction; interval on paired change, no CI for membership remainder."
+    },
+    {
+      "name": "Allocation: fixed sire correction, 20261126",
+      "n": 599,
+      "full_early": 0.002174803738477886,
+      "full_late": -0.014226827106799754,
+      "common_early": 0.012195545492939643,
+      "common_late": -0.015350008382576127,
+      "paired_change": -0.02754555387551577,
+      "paired_ci": [
+        -0.04162026648766327,
+        -0.014460205441118187
+      ],
+      "membership_at_early": 0.010020741754461757,
+      "membership_at_late": 0.001123181275776373,
+      "membership_remainder": 0.01114392303023813,
+      "total_change": -0.01640163084527764,
+      "membership_fraction_of_paired": 0.4045634036113375,
+      "classification": "opposes",
+      "details": "Own-history refreshed with fixed family correction; interval on paired change, no CI for membership remainder."
+    }
+  ],
+  "bandrows": [
+    {
+      "band": "1200-1599",
+      "seed": "20261124",
+      "common_horses": 531,
+      "within": -0.02087628044759119,
+      "membership": 0.015029867703962328,
+      "total": -0.005846412743628859,
+      "classification": "opposes"
+    },
+    {
+      "band": "1200-1599",
+      "seed": "20261125",
+      "common_horses": 531,
+      "within": -0.021196076477736053,
+      "membership": 0.014229572960253411,
+      "total": -0.006966503517482642,
+      "classification": "opposes"
+    },
+    {
+      "band": "1200-1599",
+      "seed": "20261126",
+      "common_horses": 531,
+      "within": -0.017464137969398146,
+      "membership": 0.011286612612442213,
+      "total": -0.0061775253569559315,
+      "classification": "opposes"
+    },
+    {
+      "band": "1600-1999",
+      "seed": "20261124",
+      "common_horses": 599,
+      "within": -0.027577522646236825,
+      "membership": 0.010496732939627666,
+      "total": -0.017080789706609156,
+      "classification": "opposes"
+    },
+    {
+      "band": "1600-1999",
+      "seed": "20261125",
+      "common_horses": 599,
+      "within": -0.026517272018999526,
+      "membership": 0.011272636277285026,
+      "total": -0.0152446357417145,
+      "classification": "opposes"
+    },
+    {
+      "band": "1600-1999",
+      "seed": "20261126",
+      "common_horses": 599,
+      "within": -0.02754555387551577,
+      "membership": 0.011143923030238123,
+      "total": -0.016401630845277647,
+      "classification": "opposes"
+    },
+    {
+      "band": "2000-2399",
+      "seed": "20261124",
+      "common_horses": 267,
+      "within": -0.0024048190358487297,
+      "membership": -0.002343064510012656,
+      "total": -0.004747883545861385,
+      "classification": "amplifies"
+    },
+    {
+      "band": "2000-2399",
+      "seed": "20261125",
+      "common_horses": 267,
+      "within": -0.004931852046356147,
+      "membership": 0.0008289262616966303,
+      "total": -0.004102925784659517,
+      "classification": "opposes"
+    },
+    {
+      "band": "2000-2399",
+      "seed": "20261126",
+      "common_horses": 267,
+      "within": -0.0035035369520161866,
+      "membership": 0.0008212435281856958,
+      "total": -0.002682293423830492,
+      "classification": "opposes"
+    }
+  ],
+  "derived": {
+    "rank_amplification_factor": 1.7354800744987837,
+    "allocation_primary_remaining_fraction": 0.6193736081997185,
+    "rank_switch_raw_pp": -16.560696501557192,
+    "rank_switch_standardized_pp": 0.0331041736468165,
+    "rank_switch_standardized_CI_pp": [
+      -0.08755778225324873,
+      0.1531674873341303
+    ],
+    "rank_gross_positive_mse": 0.00044760507398628586,
+    "rank_gross_negative_mse": 0.00030669525219324475,
+    "rank_negative_cancellation_fraction": 0.6851916343616818,
+    "rank_net_gain": 0.00014090982179304113,
+    "rank_sire_equal_gain": 0.0002468696400262573,
+    "rank_size_association_gap": -0.00010595981823321616
+  },
+  "limits": [
+    "rank gate versus full family and allocation fixed family versus no family are different estimands",
+    "rank paired interval includes zero",
+    "membership remainders have no new uncertainty interval",
+    "different endpoints and shared archives are not independent replicates",
+    "no survival or causal interpretation"
+  ]
+}
