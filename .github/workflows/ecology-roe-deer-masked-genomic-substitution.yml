@@ -1,0 +1,43 @@
+name: "Roe deer masked genomic information substitution"
+on:
+  push:
+    branches: [analysis/roe-deer-masked-genomic-substitution-20261126]
+    paths:
+      - "scripts/ecology_roe_deer_locked_source.py"
+      - "scripts/ecology_roe_deer_masked_genomic_substitution.R"
+      - ".github/workflows/ecology-roe-deer-masked-genomic-substitution.yml"
+      - "docs/research/ROE_DEER_MASKED_GENOMIC_SUBSTITUTION_PROTOCOL_20261126.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  masked-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          mkdir -p tmp/roe-deer-masked-aggregate
+          python scripts/ecology_roe_deer_locked_source.py --private tmp/roe-deer-masked-private --output tmp/roe-deer-masked-aggregate/source.json
+      - run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends r-base-core r-cran-jsonlite
+      - name: Synthetic fixed-correction checks
+        run: Rscript --vanilla scripts/ecology_roe_deer_masked_genomic_substitution.R --self-test
+      - name: Real POH records, fixed genomic correction and label controls
+        run: Rscript --vanilla scripts/ecology_roe_deer_masked_genomic_substitution.R tmp/roe-deer-masked-private/gervais2020 tmp/roe-deer-masked-aggregate/results.json
+      - if: always()
+        run: rm -rf tmp/roe-deer-masked-private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: roe-deer-masked-aggregate
+          path: tmp/roe-deer-masked-aggregate
+          if-no-files-found: warn
+          retention-days: 14
