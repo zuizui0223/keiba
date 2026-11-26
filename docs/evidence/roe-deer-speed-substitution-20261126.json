@@ -1,0 +1,340 @@
+{
+  "source_commit": "5a584eb28e6c29af4547b19b7f212a24ff644c29",
+  "run_id": 45759333457,
+  "job_id": 139705364137,
+  "artifact_id": 15088604725,
+  "artifact_digest": "sha256:30813b36373250775bbde28de490ef62ede5ec9f17fbbc233b1f3ca249c7b04d",
+  "verification": "JSON extracted from successful job log; metadata digest matches upload log; ZIP bytes not independently verified",
+  "source": {
+    "source": "gervais2020",
+    "doi": "10.5061/dryad.dbrv15dxg",
+    "published_listing": "2020-01-23",
+    "requests": [
+      {
+        "stage": "dataset",
+        "status": 200,
+        "bytes": 5435,
+        "sha256": "aa0987bd1160f3672dca36e7879fb0b05f8ef24d9feb47ccac5479065ceabe3a",
+        "final_host": "datadryad.org"
+      },
+      {
+        "stage": "versions",
+        "status": 200,
+        "bytes": 5751,
+        "sha256": "8d5f28c6eff8a97458fdab52075ac9611c15ac13fae220b3a10c84c8af901ca5",
+        "final_host": "datadryad.org"
+      },
+      {
+        "stage": "files",
+        "status": 200,
+        "bytes": 3373,
+        "sha256": "3d9f35174b8220d30526e3fa5f8b0e4940f8a9f15cd0bac369569272a2538d0d",
+        "final_host": "datadryad.org"
+      },
+      {
+        "stage": "download",
+        "status": 200,
+        "bytes": 1053964,
+        "sha256": "84e02dfd23f30547d4638ad9d8c38e262f8a2a66a53578e1385763d1d13f7070",
+        "final_host": "w27i4vubmmwkssdf6xpszafmhq0rffog.lambda-url.us-west-2.on.aws"
+      }
+    ],
+    "status": "ACQUIRED_FOR_SCHEMA_AUDIT",
+    "source_rights_basis": "Dryad public dataset terms, CC0; cite DOI; no source redistribution here",
+    "dataset_identifier": "doi:10.5061/dryad.dbrv15dxg",
+    "explicit_cc0_in_metadata": true,
+    "version_id": "49679",
+    "version_publication_fields": {
+      "versionNumber": 1,
+      "publicationDate": "2020-01-23",
+      "lastModificationDate": "2020-01-23"
+    },
+    "listed_files": [
+      "README.txt",
+      "data_movement_roedeer.csv",
+      "data_spaceuse_roedeer.csv",
+      "grm_readytouse.Rdata",
+      "space_use.R"
+    ],
+    "archive_sha256": "84e02dfd23f30547d4638ad9d8c38e262f8a2a66a53578e1385763d1d13f7070",
+    "files": [
+      {
+        "name": "README.txt",
+        "bytes": 1143,
+        "sha256": "5eaee5f739d83094dba25a4da51b7285b5d0410f442a41181db2dd56c32d6e94"
+      },
+      {
+        "name": "data_movement_roedeer.csv",
+        "bytes": 88175,
+        "sha256": "5679945a8dfed913b6f8a078557d7503fffc74021582e8eb726ff7e6294b2771"
+      },
+      {
+        "name": "data_spaceuse_roedeer.csv",
+        "bytes": 123408,
+        "sha256": "8dd311cd6f95a162d266928d44f07dd373d6af56cfe40af5cfd854f16d2ad2f4"
+      },
+      {
+        "name": "grm_readytouse.Rdata",
+        "bytes": 836090,
+        "sha256": "02fdc5ba2d999a60e70ecc6b79e31828bf03290f21614099560b170f5548976b"
+      },
+      {
+        "name": "space_use.R",
+        "bytes": 4248,
+        "sha256": "94bdf68729c9947dd8c23fe3e826456652972455553d5701f88722f1227537f1"
+      }
+    ],
+    "file_content_parity": true,
+    "archive_byte_parity": false
+  },
+  "result": {
+    "status": "RETROSPECTIVE_ROE_DEER_SPEED_MASKED_OBSERVATION_DEPTH",
+    "primary_seed": 20261124,
+    "source": "Dryad 10.5061/dryad.dbrv15dxg v1, locked content",
+    "qa": {
+      "raw_rows": 1856,
+      "raw_deer": 205,
+      "valid_rows": 1856,
+      "distinct_cells": 1848,
+      "duplicate_rows_collapsed": 8,
+      "animals": 205,
+      "eligible_ge4": 183,
+      "grm_n": 334,
+      "grm_min_eigenvalue": -0.060790281238610105,
+      "grm_max_eigenvalue": 4.99014218464961,
+      "ridge": 1,
+      "minimum_shifted_eigenvalue": 0.9392097187613899
+    },
+    "results": {
+      "20261124": {
+        "status": "OBSERVED_MASKED_DEPTH",
+        "n": 183,
+        "donors_per_fold": [
+          102,
+          103
+        ],
+        "targets_per_fold": [
+          93,
+          90
+        ],
+        "depth": [
+          0,
+          1,
+          3
+        ],
+        "N_RMSE": [
+          0.0853969443099328,
+          0.08351484676692575,
+          0.08254377633664504
+        ],
+        "F_RMSE": [
+          0.08492360956345756,
+          0.08303688450876112,
+          0.08221509112051265
+        ],
+        "full_gain": [
+          0.00008061863618718669,
+          0.00007960544158175479,
+          0.0000541538039598856
+        ],
+        "change_3_minus_0": -0.000026464832227301094,
+        "mean_du": 0.000013232416113650562,
+        "fixed_prediction_deer_bootstrap_97_5": [
+          [
+            -0.0001126810437303196,
+            0.0003213838097188532
+          ],
+          [
+            -0.00011314603816737774,
+            0.0000434894489825925
+          ]
+        ],
+        "permuted_label_summary": {
+          "draws": 199,
+          "quantiles": [
+            [
+              -0.00021423131799199908,
+              -0.00008134255964133655,
+              -0.000029665118956957493
+            ],
+            [
+              -0.0000356522264304674,
+              -0.0000011341449263870794,
+              5.670724631935762e-7
+            ],
+            [
+              0.00014071160590357773,
+              0.00005933023791391508,
+              0.00004067127982066832
+            ]
+          ],
+          "columns": [
+            "gain_0",
+            "change_3_minus_0",
+            "mean_du"
+          ],
+          "gain_0_exceeds_count": 180,
+          "more_negative_change_count": 152,
+          "descriptive_plus_one_tail_gain": 0.1,
+          "descriptive_plus_one_tail_change": 0.24
+        },
+        "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+      },
+      "20261125": {
+        "status": "OBSERVED_MASKED_DEPTH",
+        "n": 183,
+        "donors_per_fold": [
+          102,
+          103
+        ],
+        "targets_per_fold": [
+          90,
+          93
+        ],
+        "depth": [
+          0,
+          1,
+          3
+        ],
+        "N_RMSE": [
+          0.07421299066043303,
+          0.07350200925676628,
+          0.07007708625205672
+        ],
+        "F_RMSE": [
+          0.0741793531327345,
+          0.07379389845070923,
+          0.07073997203813806
+        ],
+        "full_gain": [
+          0.000004991551574593663,
+          -0.00004299408377182957,
+          -0.00009334562637835856
+        ],
+        "change_3_minus_0": -0.00009833717795295224,
+        "mean_du": 0.00004916858897647609,
+        "fixed_prediction_deer_bootstrap_97_5": [
+          [
+            -0.00020329993379324126,
+            0.0001926318693351208
+          ],
+          [
+            -0.0001958374948451303,
+            -0.00001753274807764364
+          ]
+        ],
+        "permuted_label_summary": {
+          "draws": 199,
+          "quantiles": [
+            [
+              -0.0002412176671828789,
+              -0.00006987005877308854,
+              -0.000036598633251602615
+            ],
+            [
+              -0.000060898993231192596,
+              -0.000001925066212489331,
+              9.625331062446866e-7
+            ],
+            [
+              0.00011203194327361899,
+              0.00007319726650320512,
+              0.00003493502938654419
+            ]
+          ],
+          "columns": [
+            "gain_0",
+            "change_3_minus_0",
+            "mean_du"
+          ],
+          "gain_0_exceeds_count": 152,
+          "more_negative_change_count": 199,
+          "descriptive_plus_one_tail_gain": 0.24,
+          "descriptive_plus_one_tail_change": 0.005
+        },
+        "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+      },
+      "20261126": {
+        "status": "OBSERVED_MASKED_DEPTH",
+        "n": 183,
+        "donors_per_fold": [
+          102,
+          103
+        ],
+        "targets_per_fold": [
+          90,
+          93
+        ],
+        "depth": [
+          0,
+          1,
+          3
+        ],
+        "N_RMSE": [
+          0.07722948156605769,
+          0.07627964233520115,
+          0.07524755961865134
+        ],
+        "F_RMSE": [
+          0.0768344926789421,
+          0.0760796626103555,
+          0.07536490016076705
+        ],
+        "full_gain": [
+          0.000060853557731637256,
+          0.000030468771880688923,
+          -0.0000176729476798971
+        ],
+        "change_3_minus_0": -0.00007852650541153436,
+        "mean_du": 0.00003926325270576724,
+        "fixed_prediction_deer_bootstrap_97_5": [
+          [
+            -0.0001262292756484998,
+            0.0002717944687144467
+          ],
+          [
+            -0.00014272188317618933,
+            -0.000014847739692288678
+          ]
+        ],
+        "permuted_label_summary": {
+          "draws": 199,
+          "quantiles": [
+            [
+              -0.00022974973587701344,
+              -0.00006894890720435995,
+              -0.00003540740725121134
+            ],
+            [
+              -0.00006384166993371336,
+              6.017332205894445e-7,
+              -3.008666102945748e-7
+            ],
+            [
+              0.00011333680865131179,
+              0.00007081481450242262,
+              0.00003447445360218002
+            ]
+          ],
+          "columns": [
+            "gain_0",
+            "change_3_minus_0",
+            "mean_du"
+          ],
+          "gain_0_exceeds_count": 178,
+          "more_negative_change_count": 197,
+          "descriptive_plus_one_tail_gain": 0.11,
+          "descriptive_plus_one_tail_change": 0.015
+        },
+        "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+      }
+    },
+    "limitations": [
+      "Not a chronological forecast; YEAR+MONTH only defines recorded candidate periods.",
+      "Different target masks and folds share the same source animals.",
+      "Genomic labels are not causal inheritance and may track space or management.",
+      "Regularized signed matrix prediction; no heritability estimated.",
+      "No individual IDs, records, GRM values or predictions exported."
+    ]
+  }
+}
