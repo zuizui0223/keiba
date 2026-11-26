@@ -1,0 +1,19 @@
+# Roe deer source readiness: acquired and joined 2020 release, 2022 revision HOLD
+
+26 November 2026 JST. [Protocol](ROE_DEER_INDEPENDENT_VALIDATION_SOURCE_PROTOCOL_20261126.md) · [successful job](https://github.com/zuizui0223/keiba/actions/runs/45758467980) · [aggregate receipt](../evidence/roe-deer-source-readiness-20261126.json).
+
+Actual public Dryad API acquisition and R schema inspection succeeded on Gervais et al. (2020), [dataset DOI](https://doi.org/10.5061/dryad.dbrv15dxg), version 49679, v1 published 2020-01-23. Explicit CC0 in provider metadata. All five expected file names matched; archive SHA256 31703191e683485748fd7255e7943087277528fc3a93f0df5d0fed925da75f55, exact file hashes in receipt. The 2022 dataset metadata also explicitly indicates CC0 but version-list response contains more than one entry; original one-version acquisition gate correctly returns HOLD_RELEASE_SELECTION_REQUIRES_REVIEW. Do not use a later revision without recording it. No 2022 data contents acquired. The two studies may overlap in deer and are not independent replication populations.
+
+| Actual source file/object | Rows | Unique candidate IDs | IDs with >=3 YEAR+MONTH candidates | IDs present in labeled GRM |
+|---|---:|---:|---:|---:|
+| data_spaceuse_roedeer.csv | 2,288 | 256 | 239 | 256/256 |
+| data_movement_roedeer.csv | 1,856 | 205 | 192 | 205/205 |
+| grm_readytouse.Rdata / b | 334 × 334 | 334 row/column labels | — | — |
+
+Space-use columns ANIMAL, AGE, SEX, MONTH, YEAR, POH, dist_road; movement ANIMAL, AGE, SEX, MONTH, YEAR, SPEED. All 2,288 and 1,856 rows have parseable candidate YEAR+MONTH. 150 and 143 distinct candidate periods, respectively. Only 43 space-use and 25 movement animals have >=2 different YEAR values; >=3 different years only 6 and 2, respectively. The original paper [10.1111/jeb.13594](https://doi.org/10.1111/jeb.13594) describes monthly behavior summaries and uses year effects; verify the release README to determine whether YEAR is actual observation year or capture year. Do not treat year/month syntax as proof of chronology or the 239 animals as a 3-year panel.
+
+The genomic matrix is numeric 334×334, finite, symmetric, and explicitly labeled with matching unique row and column IDs in identical order. Both table ANIMAL candidates exactly match the GRM labels, no row-order join. Reported min eigenvalue −0.0608 (R JSON rounded); cannot assume a PSD covariance. Require exact eigen audit and regularization or valid matrix correction prior to prediction. No claim that GRM resolves shared spatial environments or causal inheritance.
+
+The 2022 paper [10.1111/1365-2656.13677](https://doi.org/10.1111/1365-2656.13677) estimates similarity using spring habitat composition averaged across years when applicable, plus some VHF-derived home-range proxies. Such all-period matrices could leak future habitat outcomes into a retrospective forecast; only independently earlier-date information can be a genuine forecasting control. For the 2020 data, if observation dates cannot be confirmed, a predeclared masked-observation test on repeated monthly behavior is feasible: hold a target observation fixed, increase revealed own records, freeze donor-derived GRM correction, exclude target from every history and donor fit. This tests record-depth redundancy without claiming chronological decay, aging or survival. The main independent test should use real POH outcomes and explicitly separate a fitted genomic correction from its negative controls. No effect estimated in this source audit.
+
+Artifact metadata: 15088965390, sha256:a47f421c5275920a566699d35e596e8ff02feae34bcd3c27909051152c17bad7; full ZIP not independently extracted. No raw records, identifiers, coordinates, matrices or original author code redistributed. Source rights are documented for these Dryad data, not a resolution of horse source permissions.
