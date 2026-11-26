@@ -1,0 +1,41 @@
+name: "Roe deer public source and schema readiness"
+on:
+  push:
+    branches: [analysis/roe-deer-source-readiness-20261126]
+    paths:
+      - "scripts/ecology_roe_deer_public_source_audit.py"
+      - "scripts/ecology_roe_deer_schema_audit.R"
+      - ".github/workflows/ecology-roe-deer-source-readiness.yml"
+      - "docs/research/ROE_DEER_INDEPENDENT_VALIDATION_SOURCE_PROTOCOL_20261126.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/ecology_roe_deer_public_source_audit.py --self-test
+      - name: Public Dryad acquisition, no credentials
+        run: |
+          mkdir -p tmp/roe-deer-aggregate
+          python scripts/ecology_roe_deer_public_source_audit.py --private tmp/roe-deer-private --output tmp/roe-deer-aggregate/acquisition.json
+      - name: R and schema tooling
+        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends r-base-core r-cran-jsonlite r-cran-matrix
+      - name: Audit actual objects and dated/ID support
+        run: Rscript --vanilla scripts/ecology_roe_deer_schema_audit.R tmp/roe-deer-private tmp/roe-deer-aggregate/schema.json
+      - if: always()
+        run: rm -rf tmp/roe-deer-private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: roe-deer-aggregate-source-readiness
+          path: tmp/roe-deer-aggregate
+          if-no-files-found: warn
+          retention-days: 14
