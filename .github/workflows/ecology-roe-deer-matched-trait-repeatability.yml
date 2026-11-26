@@ -1,0 +1,43 @@
+name: "Roe deer matched trait repeatability and genomic information"
+on:
+  push:
+    branches: [analysis/roe-deer-matched-trait-repeatability-20261126]
+    paths:
+      - "scripts/ecology_roe_deer_locked_source.py"
+      - "scripts/ecology_roe_deer_matched_trait_repeatability.R"
+      - ".github/workflows/ecology-roe-deer-matched-trait-repeatability.yml"
+      - "docs/research/ROE_DEER_MATCHED_TRAIT_REPEATABILITY_PROTOCOL_20261126.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  masked-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          mkdir -p tmp/roe-deer-matched-trait-aggregate
+          python scripts/ecology_roe_deer_locked_source.py --private tmp/roe-deer-matched-trait-private --output tmp/roe-deer-matched-trait-aggregate/source.json
+      - run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends r-base-core r-cran-jsonlite
+      - name: Synthetic fixed-correction checks
+        run: Rscript --vanilla scripts/ecology_roe_deer_matched_trait_repeatability.R --self-test
+      - name: Real paired POH and SPEED with identical masks and donor-standardized losses
+        run: Rscript --vanilla scripts/ecology_roe_deer_matched_trait_repeatability.R tmp/roe-deer-matched-trait-private/gervais2020 tmp/roe-deer-matched-trait-aggregate/results.json
+      - if: always()
+        run: rm -rf tmp/roe-deer-matched-trait-private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: roe-deer-matched-trait-aggregate
+          path: tmp/roe-deer-matched-trait-aggregate
+          if-no-files-found: warn
+          retention-days: 14
