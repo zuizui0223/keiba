@@ -1,0 +1,43 @@
+name: "Roe deer POH recorded-road context sensitivity"
+on:
+  push:
+    branches: [analysis/roe-deer-road-context-20261126]
+    paths:
+      - "scripts/ecology_roe_deer_locked_source.py"
+      - "scripts/ecology_roe_deer_road_context.R"
+      - ".github/workflows/ecology-roe-deer-road-context.yml"
+      - "docs/research/ROE_DEER_ROAD_CONTEXT_PROTOCOL_20261126.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  masked-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          mkdir -p tmp/roe-deer-road-aggregate
+          python scripts/ecology_roe_deer_locked_source.py --private tmp/roe-deer-road-private --output tmp/roe-deer-road-aggregate/source.json
+      - run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends r-base-core r-cran-jsonlite
+      - name: Synthetic fixed-correction checks
+        run: Rscript --vanilla scripts/ecology_roe_deer_road_context.R --self-test
+      - name: Real matched POH records, road baseline and genomic correction
+        run: Rscript --vanilla scripts/ecology_roe_deer_road_context.R tmp/roe-deer-road-private/gervais2020 tmp/roe-deer-road-aggregate/results.json docs/evidence/roe-deer-masked-genomic-substitution-20261126.json
+      - if: always()
+        run: rm -rf tmp/roe-deer-road-private
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: roe-deer-road-aggregate
+          path: tmp/roe-deer-road-aggregate
+          if-no-files-found: warn
+          retention-days: 14
