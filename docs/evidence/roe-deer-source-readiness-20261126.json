@@ -1,0 +1,304 @@
+{
+  "status": "OBSERVED_2020_SOURCE_READY_SCHEMA_CANDIDATES_2022_VERSION_HOLD",
+  "source_commit": "5dcc95474707aa6291c21bcb30bbeda1576dd5c9",
+  "run_id": 45758467980,
+  "job_id": 139702589689,
+  "artifact": {
+    "id": 15088965390,
+    "digest": "sha256:a47f421c5275920a566699d35e596e8ff02feae34bcd3c27909051152c17bad7",
+    "size_in_bytes": 2529
+  },
+  "source": "Completed Actions stdout and artifact metadata; artifact ZIP not independently opened",
+  "acquisition": {
+    "status": "SOURCE_ACQUISITION_ATTEMPTS_NOT_ANALYSIS",
+    "sources": [
+      {
+        "source": "gervais2020",
+        "doi": "10.5061/dryad.dbrv15dxg",
+        "published_listing": "2020-01-23",
+        "requests": [
+          {
+            "stage": "dataset",
+            "status": 200,
+            "bytes": 5435,
+            "sha256": "aa0987bd1160f3672dca36e7879fb0b05f8ef24d9feb47ccac5479065ceabe3a",
+            "final_host": "datadryad.org"
+          },
+          {
+            "stage": "versions",
+            "status": 200,
+            "bytes": 5751,
+            "sha256": "8d5f28c6eff8a97458fdab52075ac9611c15ac13fae220b3a10c84c8af901ca5",
+            "final_host": "datadryad.org"
+          },
+          {
+            "stage": "files",
+            "status": 200,
+            "bytes": 3373,
+            "sha256": "3d9f35174b8220d30526e3fa5f8b0e4940f8a9f15cd0bac369569272a2538d0d",
+            "final_host": "datadryad.org"
+          },
+          {
+            "stage": "download",
+            "status": 200,
+            "bytes": 1053964,
+            "sha256": "31703191e683485748fd7255e7943087277528fc3a93f0df5d0fed925da75f55",
+            "final_host": "w27i4vubmmwkssdf6xpszafmhq0rffog.lambda-url.us-west-2.on.aws"
+          }
+        ],
+        "status": "ACQUIRED_FOR_SCHEMA_AUDIT",
+        "source_rights_basis": "Dryad public dataset terms, CC0; cite DOI; no source redistribution here",
+        "dataset_identifier": "doi:10.5061/dryad.dbrv15dxg",
+        "explicit_cc0_in_metadata": true,
+        "version_id": "49679",
+        "version_publication_fields": {
+          "versionNumber": 1,
+          "publicationDate": "2020-01-23",
+          "lastModificationDate": "2020-01-23"
+        },
+        "listed_files": [
+          "README.txt",
+          "data_movement_roedeer.csv",
+          "data_spaceuse_roedeer.csv",
+          "grm_readytouse.Rdata",
+          "space_use.R"
+        ],
+        "archive_sha256": "31703191e683485748fd7255e7943087277528fc3a93f0df5d0fed925da75f55",
+        "files": [
+          {
+            "name": "README.txt",
+            "bytes": 1143,
+            "sha256": "5eaee5f739d83094dba25a4da51b7285b5d0410f442a41181db2dd56c32d6e94"
+          },
+          {
+            "name": "data_movement_roedeer.csv",
+            "bytes": 88175,
+            "sha256": "5679945a8dfed913b6f8a078557d7503fffc74021582e8eb726ff7e6294b2771"
+          },
+          {
+            "name": "data_spaceuse_roedeer.csv",
+            "bytes": 123408,
+            "sha256": "8dd311cd6f95a162d266928d44f07dd373d6af56cfe40af5cfd854f16d2ad2f4"
+          },
+          {
+            "name": "grm_readytouse.Rdata",
+            "bytes": 836090,
+            "sha256": "02fdc5ba2d999a60e70ecc6b79e31828bf03290f21614099560b170f5548976b"
+          },
+          {
+            "name": "space_use.R",
+            "bytes": 4248,
+            "sha256": "94bdf68729c9947dd8c23fe3e826456652972455553d5701f88722f1227537f1"
+          }
+        ]
+      },
+      {
+        "source": "gervais2022",
+        "doi": "10.5061/dryad.6wwpzgn1j",
+        "published_listing": "2022-02-22",
+        "requests": [
+          {
+            "stage": "dataset",
+            "status": 200,
+            "bytes": 8780,
+            "sha256": "e59ef993d0c4b697d30470b7be29f7af1f17bfda62acf3176fd2e5513d2cf158",
+            "final_host": "datadryad.org"
+          },
+          {
+            "stage": "versions",
+            "status": 200,
+            "bytes": 17479,
+            "sha256": "4763dac3fb76e8ab6cc0675d1fbe8a8551c094adb97edce5b085433ee4463726",
+            "final_host": "datadryad.org"
+          }
+        ],
+        "status": "HOLD_RELEASE_SELECTION_REQUIRES_REVIEW",
+        "source_rights_basis": "Dryad public dataset terms, CC0; cite DOI; no source redistribution here",
+        "dataset_identifier": "doi:10.5061/dryad.6wwpzgn1j",
+        "explicit_cc0_in_metadata": true
+      }
+    ],
+    "no_credentials_or_access_bypass": true,
+    "no_source_data_uploaded": true
+  },
+  "schema": {
+    "status": "SCHEMA_AND_CANDIDATE_SUPPORT_ONLY",
+    "objects": [
+      {
+        "source": "gervais2020",
+        "file": "data_movement_roedeer.csv",
+        "object": "csv",
+        "class": "data.frame",
+        "dimensions": [
+          1856,
+          6
+        ],
+        "length": 6,
+        "columns": [
+          "ANIMAL",
+          "AGE",
+          "SEX",
+          "MONTH",
+          "YEAR",
+          "SPEED"
+        ],
+        "column_classes": {
+          "ANIMAL": "character",
+          "AGE": "character",
+          "SEX": "character",
+          "MONTH": "integer",
+          "YEAR": "integer",
+          "SPEED": "numeric"
+        },
+        "identifier_candidates": "ANIMAL",
+        "time_candidates": [
+          "MONTH",
+          "YEAR"
+        ],
+        "candidate_key_support": {
+          "ANIMAL": {
+            "candidate": "ANIMAL",
+            "nonmissing": 1856,
+            "unique_ids": 205,
+            "repeated_ids": 196,
+            "max_records": 30,
+            "dated": {
+              "YEAR": {
+                "kind": "calendar_year",
+                "valid_rows": 1856,
+                "distinct_periods": 13,
+                "individuals_with_periods": 205,
+                "individuals_ge2_periods": 25,
+                "individuals_ge3_periods": 2
+              },
+              "YEAR+MONTH": {
+                "kind": "year_month_candidate",
+                "valid_rows": 1856,
+                "distinct_periods": 143,
+                "individuals_with_periods": 205,
+                "individuals_ge2_periods": 196,
+                "individuals_ge3_periods": 192
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": "gervais2020",
+        "file": "data_spaceuse_roedeer.csv",
+        "object": "csv",
+        "class": "data.frame",
+        "dimensions": [
+          2288,
+          7
+        ],
+        "length": 7,
+        "columns": [
+          "ANIMAL",
+          "AGE",
+          "SEX",
+          "MONTH",
+          "YEAR",
+          "POH",
+          "dist_road"
+        ],
+        "column_classes": {
+          "ANIMAL": "character",
+          "AGE": "character",
+          "SEX": "character",
+          "MONTH": "integer",
+          "YEAR": "integer",
+          "POH": "numeric",
+          "dist_road": "numeric"
+        },
+        "identifier_candidates": "ANIMAL",
+        "time_candidates": [
+          "MONTH",
+          "YEAR"
+        ],
+        "candidate_key_support": {
+          "ANIMAL": {
+            "candidate": "ANIMAL",
+            "nonmissing": 2288,
+            "unique_ids": 256,
+            "repeated_ids": 249,
+            "max_records": 41,
+            "dated": {
+              "YEAR": {
+                "kind": "calendar_year",
+                "valid_rows": 2288,
+                "distinct_periods": 14,
+                "individuals_with_periods": 256,
+                "individuals_ge2_periods": 43,
+                "individuals_ge3_periods": 6
+              },
+              "YEAR+MONTH": {
+                "kind": "year_month_candidate",
+                "valid_rows": 2288,
+                "distinct_periods": 150,
+                "individuals_with_periods": 256,
+                "individuals_ge2_periods": 249,
+                "individuals_ge3_periods": 239
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": "gervais2020",
+        "file": "grm_readytouse.Rdata",
+        "object": "b",
+        "class": "data.frame",
+        "dimensions": [
+          334,
+          334
+        ],
+        "length": 334,
+        "matrix_check": {
+          "n": 334,
+          "finite": true,
+          "labels_unique": true,
+          "row_column_same_set": true,
+          "row_column_same_order": true,
+          "max_abs_asymmetry": 0,
+          "min_eigenvalue": -0.0608
+        }
+      }
+    ],
+    "table_matrix_candidate_joins": [
+      {
+        "table_source": "gervais2020",
+        "table_file": "data_movement_roedeer.csv",
+        "object": "csv",
+        "id_candidate": "ANIMAL",
+        "matrix_source": "gervais2020",
+        "matrix_file": "grm_readytouse.Rdata",
+        "matrix_object": "b",
+        "table_unique_ids": 205,
+        "matrix_n": 334,
+        "exact_string_overlap": 205,
+        "table_ids_all_in_matrix": true
+      },
+      {
+        "table_source": "gervais2020",
+        "table_file": "data_spaceuse_roedeer.csv",
+        "object": "csv",
+        "id_candidate": "ANIMAL",
+        "matrix_source": "gervais2020",
+        "matrix_file": "grm_readytouse.Rdata",
+        "matrix_object": "b",
+        "table_unique_ids": 256,
+        "matrix_n": 334,
+        "exact_string_overlap": 256,
+        "table_ids_all_in_matrix": true
+      }
+    ],
+    "cross_release_candidate_overlap": [],
+    "caveats": [
+      "Column names are candidates only; verify README semantics before analysis.",
+      "Calendar candidates not verified observation chronology.",
+      "Exact string overlap is not verified identity across releases.",
+      "No outcome values, animal IDs, raw files, or genetic effect exported."
+    ]
+  }
+}
