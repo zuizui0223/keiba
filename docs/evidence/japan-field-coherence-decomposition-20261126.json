@@ -1,0 +1,423 @@
+{
+  "source_commit": "7a2b3b2a4d33a345b0abc2ae40849a5fd8843f2b",
+  "run_id": 45779380969,
+  "job_id": 139770853893,
+  "artifact_id": 15097158538,
+  "artifact_digest": "sha256:921bf1cfb0d03509cf83c3309b96f63c0034240981b564b3f594f83eb18bcd67",
+  "verification": "Aggregate JSON from successful job log; artifact metadata and upload-log digest agree; ZIP bytes not independently extracted",
+  "result": {
+    "status": "RETROSPECTIVE_FIELD_COHERENCE_DECOMPOSITION",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR103_calibration_and_score_parity": true,
+    "pooled_counts": {
+      "starts": 89473,
+      "horses": 16076,
+      "races": 6459
+    },
+    "results": {
+      "2020": {
+        "own": {
+          "race_equal": {
+            "closure": 0.00481659398656627,
+            "guaranteed_mean_bias": 0.004816593986566271,
+            "within_race_weighting_cross_term": 8.708559129477618e-20,
+            "center_to_original_linear": 7.368242631556761e-7,
+            "linear_to_equal_energy": 0.0001048017677562215,
+            "equal_energy_linear_to_pair_shape": -0.0000014275675240846267,
+            "linear_to_pair_total": 0.00010337420023213686,
+            "raw_to_pair_total": 0.004920705011061564
+          },
+          "horse_equal": {
+            "closure": -0.0005588196091677582,
+            "guaranteed_mean_bias": 0.005070996678420489,
+            "within_race_weighting_cross_term": -0.005629816287588248,
+            "center_to_original_linear": 4.5470592907447545e-7,
+            "linear_to_equal_energy": 0.00009505681459334173,
+            "equal_energy_linear_to_pair_shape": 0.000011990072511794787,
+            "linear_to_pair_total": 0.00010704688710513653,
+            "raw_to_pair_total": -0.0004513180161335471
+          },
+          "unbounded_diagnostic_rows": {
+            "center": 4,
+            "equal_energy": 0
+          },
+          "date_race_equal": {
+            "clusters": 109,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000017228786811734162,
+                0.000013448842286797582
+              ],
+              [
+                -1.9922031738237396e-19,
+                4.56268187749509e-19
+              ]
+            ]
+          },
+          "horse_race_equal": {
+            "clusters": 11340,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.00001892503036850487,
+                0.000016299998796723298
+              ],
+              [
+                -0.0006003050433752317,
+                0.0006003407612231585
+              ]
+            ]
+          },
+          "horse_horse_equal": {
+            "clusters": 11340,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000005610704210493495,
+                0.000029537298027585827
+              ],
+              [
+                -0.006321931896980714,
+                -0.004913333812407715
+              ]
+            ]
+          }
+        },
+        "kin": {
+          "race_equal": {
+            "closure": 0.005057877684507239,
+            "guaranteed_mean_bias": 0.00505787768450724,
+            "within_race_weighting_cross_term": -1.6933309418428703e-19,
+            "center_to_original_linear": 0.0000011744416335035616,
+            "linear_to_equal_energy": 0.00009214330823317637,
+            "equal_energy_linear_to_pair_shape": -0.0000019413132704840484,
+            "linear_to_pair_total": 0.00009020199496269231,
+            "raw_to_pair_total": 0.005149254121103434
+          },
+          "horse_equal": {
+            "closure": -0.000233000216122348,
+            "guaranteed_mean_bias": 0.005275849197084132,
+            "within_race_weighting_cross_term": -0.00550884941320648,
+            "center_to_original_linear": 7.65967749256415e-7,
+            "linear_to_equal_energy": 0.0000746994429883529,
+            "equal_energy_linear_to_pair_shape": 0.000009741896556272579,
+            "linear_to_pair_total": 0.0000844413395446255,
+            "raw_to_pair_total": -0.00014779290882846582
+          },
+          "unbounded_diagnostic_rows": {
+            "center": 4,
+            "equal_energy": 0
+          },
+          "date_race_equal": {
+            "clusters": 109,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000019142349864361475,
+                0.000014555260498966569
+              ],
+              [
+                -4.976072441637752e-19,
+                2.723636382625556e-19
+              ]
+            ]
+          },
+          "horse_race_equal": {
+            "clusters": 11340,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000020507280846956038,
+                0.00001601119488629342
+              ],
+              [
+                -0.0006218934272664923,
+                0.0006230569182285315
+              ]
+            ]
+          },
+          "horse_horse_equal": {
+            "clusters": 11340,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000007189615783241254,
+                0.000028240228606358707
+              ],
+              [
+                -0.006206789804869092,
+                -0.004758444353081308
+              ]
+            ]
+          }
+        }
+      },
+      "2021": {
+        "own": {
+          "race_equal": {
+            "closure": 0.00457558177586622,
+            "guaranteed_mean_bias": 0.004575581775866219,
+            "within_race_weighting_cross_term": 3.8242279598808013e-20,
+            "center_to_original_linear": 0.0000014740894997107493,
+            "linear_to_equal_energy": 0.00007832484043563518,
+            "equal_energy_linear_to_pair_shape": 0.000010406244394863122,
+            "linear_to_pair_total": 0.00008873108483049833,
+            "raw_to_pair_total": 0.004665786950196428
+          },
+          "horse_equal": {
+            "closure": -0.00047405209250271315,
+            "guaranteed_mean_bias": 0.004908728633336119,
+            "within_race_weighting_cross_term": -0.005382780725838833,
+            "center_to_original_linear": 0.0000013363371895707096,
+            "linear_to_equal_energy": 0.00005969188042531157,
+            "equal_energy_linear_to_pair_shape": 0.00001273132683410736,
+            "linear_to_pair_total": 0.00007242320725941893,
+            "raw_to_pair_total": -0.0004002925480537237
+          },
+          "unbounded_diagnostic_rows": {
+            "center": 5,
+            "equal_energy": 0
+          },
+          "date_race_equal": {
+            "clusters": 106,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.0000051987747178242475,
+                0.00002538549298116946
+              ],
+              [
+                -3.1916465300084445e-19,
+                3.662802299851057e-19
+              ]
+            ]
+          },
+          "horse_race_equal": {
+            "clusters": 11226,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000007433814930548568,
+                0.00003056522565298311
+              ],
+              [
+                -0.0006171827894152373,
+                0.0005846089397457254
+              ]
+            ]
+          },
+          "horse_horse_equal": {
+            "clusters": 11226,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.0000049223485903254256,
+                0.00003146129634862242
+              ],
+              [
+                -0.006097743549929812,
+                -0.004755041300678859
+              ]
+            ]
+          }
+        },
+        "kin": {
+          "race_equal": {
+            "closure": 0.0047407104030401746,
+            "guaranteed_mean_bias": 0.004740710403040176,
+            "within_race_weighting_cross_term": 1.2640079783184964e-19,
+            "center_to_original_linear": 0.0000027180188650564677,
+            "linear_to_equal_energy": 0.00007468097180133544,
+            "equal_energy_linear_to_pair_shape": 0.000014972478908909096,
+            "linear_to_pair_total": 0.00008965345071024455,
+            "raw_to_pair_total": 0.004833081872615477
+          },
+          "horse_equal": {
+            "closure": -0.00024183193594851647,
+            "guaranteed_mean_bias": 0.005006734805028616,
+            "within_race_weighting_cross_term": -0.005248566740977133,
+            "center_to_original_linear": 0.0000022923683905760215,
+            "linear_to_equal_energy": 0.000051507015576807754,
+            "equal_energy_linear_to_pair_shape": 0.000011245642102357707,
+            "linear_to_pair_total": 0.00006275265767916544,
+            "raw_to_pair_total": -0.00017678690987877496
+          },
+          "unbounded_diagnostic_rows": {
+            "center": 7,
+            "equal_energy": 0
+          },
+          "date_race_equal": {
+            "clusters": 106,
+            "conditional_97_5_shape_cross": [
+              [
+                -5.978861514601399e-7,
+                0.000029877675372989917
+              ],
+              [
+                -1.9840949727455023e-19,
+                3.9977001800242985e-19
+              ]
+            ]
+          },
+          "horse_race_equal": {
+            "clusters": 11226,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000004182151294318901,
+                0.00003592916270848786
+              ],
+              [
+                -0.0006089743135198896,
+                0.0005759058915944425
+              ]
+            ]
+          },
+          "horse_horse_equal": {
+            "clusters": 11226,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000006927823491806682,
+                0.000030444169297701406
+              ],
+              [
+                -0.005953343667065127,
+                -0.004638088300408367
+              ]
+            ]
+          }
+        }
+      },
+      "pooled": {
+        "own": {
+          "race_equal": {
+            "closure": 0.004695994595796405,
+            "guaranteed_mean_bias": 0.004695994595796405,
+            "within_race_weighting_cross_term": 6.136930086092281e-20,
+            "center_to_original_linear": 0.0000011057422449711269,
+            "linear_to_equal_energy": 0.00009155305602063782,
+            "equal_energy_linear_to_pair_shape": 0.000004493918792998376,
+            "linear_to_pair_total": 0.00009604697481363619,
+            "raw_to_pair_total": 0.004793147312855012
+          },
+          "horse_equal": {
+            "closure": -0.0021902564510490356,
+            "guaranteed_mean_bias": 0.005133483762339735,
+            "within_race_weighting_cross_term": -0.00732374021338877,
+            "center_to_original_linear": 0.0000011004275081124298,
+            "linear_to_equal_energy": 0.00007660807274130108,
+            "equal_energy_linear_to_pair_shape": 0.000007919722974677035,
+            "linear_to_pair_total": 0.00008452779571597813,
+            "raw_to_pair_total": -0.002104628227824945
+          },
+          "unbounded_diagnostic_rows": {
+            "center": 9,
+            "equal_energy": 0
+          },
+          "date_race_equal": {
+            "clusters": 215,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000006933400692169935,
+                0.000016022351070802813
+              ],
+              [
+                -1.4476314020157898e-19,
+                3.3094492221220107e-19
+              ]
+            ]
+          },
+          "horse_race_equal": {
+            "clusters": 16076,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000008498776430233442,
+                0.00001839491788164764
+              ],
+              [
+                -0.00040463752515468765,
+                0.0004092111624760313
+              ]
+            ]
+          },
+          "horse_horse_equal": {
+            "clusters": 16076,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000005954744553304797,
+                0.000021596613823823623
+              ],
+              [
+                -0.007860694670814431,
+                -0.006777506842235705
+              ]
+            ]
+          }
+        },
+        "kin": {
+          "race_equal": {
+            "closure": 0.004899171282014353,
+            "guaranteed_mean_bias": 0.004899171282014353,
+            "within_race_weighting_cross_term": -1.087727214383971e-20,
+            "center_to_original_linear": 0.0000019468277013745933,
+            "linear_to_equal_energy": 0.00008340538110084785,
+            "equal_energy_linear_to_pair_shape": 0.000006522129417826627,
+            "linear_to_pair_total": 0.00008992751051867449,
+            "raw_to_pair_total": 0.0049910456202344015
+          },
+          "horse_equal": {
+            "closure": -0.0018280240770255233,
+            "guaranteed_mean_bias": 0.005294504237389459,
+            "within_race_weighting_cross_term": -0.007122528314414982,
+            "center_to_original_linear": 0.0000019038957382015738,
+            "linear_to_equal_energy": 0.00006618280255658972,
+            "equal_energy_linear_to_pair_shape": 0.000005440470610138969,
+            "linear_to_pair_total": 0.00007162327316672869,
+            "raw_to_pair_total": -0.0017544969081205928
+          },
+          "unbounded_diagnostic_rows": {
+            "center": 11,
+            "equal_energy": 0
+          },
+          "date_race_equal": {
+            "clusters": 215,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000005116702643124914,
+                0.000018738721889621728
+              ],
+              [
+                -2.581569243613348e-19,
+                2.2107371036063837e-19
+              ]
+            ]
+          },
+          "horse_race_equal": {
+            "clusters": 16076,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000005458333854873736,
+                0.00001979655792737566
+              ],
+              [
+                -0.0004145177239162632,
+                0.00040872725708429624
+              ]
+            ]
+          },
+          "horse_horse_equal": {
+            "clusters": 16076,
+            "conditional_97_5_shape_cross": [
+              [
+                -0.000007832816651245435,
+                0.00001914626138577203
+              ],
+              [
+                -0.007655336331595299,
+                -0.006553459408549158
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "limits": [
+      "Same inspected source and model; post-result diagnostic, not new independent validation.",
+      "Unbounded centered/equal-energy linear counterfactuals are arithmetic controls, not probabilities or deployable forecasts.",
+      "Per-race equal-energy control distinguishes shape from scale conditional on original pair projection; not physical interaction.",
+      "Horse weighting uses observed test participation and changes the estimand; not a causal participation mechanism.",
+      "Fixed-fit single-axis conditional intervals omit crossed dependence. No source raw records exported."
+    ]
+  }
+}
