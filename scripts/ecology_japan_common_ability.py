@@ -117,7 +117,7 @@ def weights(t):
     return 1/t.groupby("race",observed=True).race.transform("size").to_numpy(float)
 
 def calibrate(t,k):
-    t=t.loc[t.connected&t.first]
+    t=t.loc[t.connected&t["first"]]
     if t.empty:raise ValueError("HOLD_CALIBRATION")
     x=t[k].to_numpy(float);y=t.y.to_numpy(float);w=weights(t)
     loss=[float(np.average((y-expit(a*x))**2,weights=w)) for a in SLOPES]
@@ -127,10 +127,10 @@ def calibrate(t,k):
 def evaluate(t,cal):
     # Cross-component comparisons cannot identify data-supported relative offsets.
     q=t.loc[t.connected].copy()
-    masks={"all_connected":np.ones(len(q),bool),"first_meeting":q.first,
-           "first_both_one_win":q.first&q.both_one_win,
-           "first_both_one_start_one_win":q.first&q.both_one_start,
-           "first_naive_tie":q.first&q.naive_tie}
+    masks={"all_connected":np.ones(len(q),bool),"first_meeting":q["first"],
+           "first_both_one_win":q["first"]&q.both_one_win,
+           "first_both_one_start_one_win":q["first"]&q.both_one_start,
+           "first_naive_tie":q["first"]&q.naive_tie}
     out={}
     for name,mask in masks.items():
         z=q.loc[mask]
@@ -155,9 +155,9 @@ def evaluate(t,cal):
             r["conditional_day_97_5_gain"]=np.quantile(draws[:,1]/draws[:,0],[.0125,.9875]).tolist()
         out[name]=r
     return {"all_pairs":len(t),"connected_pairs":len(q),"both_seen_pairs":int(t.seen_both.sum()),
-        "first_pairs":int(t.first.sum()),"first_connected_pairs":int((t.first&t.connected).sum()),
-        "first_both_one_win_pairs_all":int((t.first&t.both_one_win).sum()),
-        "first_both_one_start_one_win_pairs_all":int((t.first&t.both_one_start).sum()),"groups":out}
+        "first_pairs":int(t["first"].sum()),"first_connected_pairs":int((t["first"]&t.connected).sum()),
+        "first_both_one_win_pairs_all":int((t["first"]&t.both_one_win).sum()),
+        "first_both_one_start_one_win_pairs_all":int((t["first"]&t.both_one_start).sum()),"groups":out}
 
 def analyze(archive):
     with archive.open("rb") as f:
@@ -202,7 +202,19 @@ def self_test():
     g=prior_day_counts(t,N)
     assert g.loc[(g.id==0)&g.day.eq(pd.Timestamp("2018-02-01")),"prior_wins"].iloc[0]==2
     assert g.loc[g.day.eq(pd.Timestamp("2018-01-01")),"prior_wins"].eq(0).all()
-    print("Synthetic indirect comparison, disconnected component and strict prior-day count checks passed")
+    # Regression: exercise the actual calibration/evaluation path, including
+    # the column named first (DataFrame.first is a method).
+    z=pd.DataFrame({"a":[0,0,1],"b":[1,2,2],"key":[1,2,8],
+        "race":["r"]*3,"day":pd.to_datetime(["2019-02-01"]*3),
+        "y":[1.,1.,0.],"connected":[True,True,False],"seen_both":[True]*3,
+        "first":[True,False,True],"both_one_win":[True]*3,
+        "both_one_start":[True]*3,"naive_tie":[True]*3,
+        "naive":[0.,0.,0.],"graph":[1.,.5,-.5]})
+    cal={k:calibrate(z,k) for k in ("naive","graph")}
+    result=evaluate(z,cal)
+    assert cal["graph"]["pairs"]==1 and result["first_connected_pairs"]==1
+    assert result["groups"]["first_both_one_win"]["pairs"]==1
+    print("Synthetic indirect comparison, disconnected components, prior-day counts and calibration/evaluation regression passed")
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument("--self-test",action="store_true");p.add_argument("--archive",type=Path);p.add_argument("--output",type=Path);a=p.parse_args()
     if a.self_test:self_test();return
