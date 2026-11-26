@@ -1,0 +1,293 @@
+{
+  "source_commit": "82a2993c99889a53b00997315e5117d83c71983e",
+  "run_id": 45780514187,
+  "job_id": 139774544067,
+  "artifact_id": 15097578347,
+  "artifact_digest": "sha256:17efd9ac8be92bf0c0cee326639cbb2503410201af9a81c8fd4062e655b1f5e4",
+  "verification": "Aggregate JSON extracted from completed job log; artifact metadata and upload log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_OPPONENT_EVIDENCE_REVISION",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR107_parity": true,
+    "primary": "2021 both one-start-one-win; broader one-win second contrast",
+    "calibration": {
+      "first_both_one_start_one_win": {
+        "status": "CALIBRATED",
+        "selected": 2,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.5,
+          2
+        ],
+        "Brier": [
+          0.2509506834766538,
+          0.24964803690256523,
+          0.24853430549445685,
+          0.24760698787545174,
+          0.2468616862714753,
+          0.2458912711528203,
+          0.2455583927614588
+        ],
+        "pairs": 279,
+        "days": 55
+      },
+      "first_both_one_win": {
+        "status": "CALIBRATED",
+        "selected": 0.75,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.5,
+          2
+        ],
+        "Brier": [
+          0.21820284764818476,
+          0.21803832515340849,
+          0.2179553888033326,
+          0.2179537836075092,
+          0.21803270365792501,
+          0.21842630608830027,
+          0.21912014427185017
+        ],
+        "pairs": 41179,
+        "days": 110
+      }
+    },
+    "results": {
+      "2020": {
+        "first_both_one_start_one_win": {
+          "all": {
+            "status": "OBSERVED",
+            "pairs": 291,
+            "denominator": 291,
+            "distinct_pairs": 291,
+            "days": 58,
+            "races": 79,
+            "horses": 231,
+            "both_anchor_pairs": 291,
+            "either_actual_opponent_updated_pairs": 291,
+            "control_matched_pairs": 257,
+            "mean_abs_revision_gap": 0.04980768489149064,
+            "baseline_Brier": 0.24949749327405932,
+            "fixed_weight_1_gain": 0.0022459316272711895,
+            "weight": 2,
+            "corrected_Brier": 0.2471393959122361,
+            "gain": 0.0023580973618232324,
+            "conditional_day_97_5_gain": [
+              -0.009175330942064647,
+              0.01570054351032386
+            ]
+          },
+          "matched_control": {
+            "status": "OBSERVED",
+            "pairs": 257,
+            "denominator": 291,
+            "distinct_pairs": 257,
+            "days": 55,
+            "races": 74,
+            "horses": 212,
+            "both_anchor_pairs": 257,
+            "either_actual_opponent_updated_pairs": 257,
+            "control_matched_pairs": 257,
+            "mean_abs_revision_gap": 0.04994307505898106,
+            "baseline_Brier": 0.24914689279279953,
+            "fixed_weight_1_gain": 0.003434345092157309,
+            "mean_abs_control_anchor_rating_mismatch": 0.14167510925831933,
+            "either_control_opponent_updated_pairs": 257,
+            "weight": 2,
+            "corrected_Brier": 0.24447827804037442,
+            "gain": 0.004668614752425078,
+            "conditional_day_97_5_gain": [
+              -0.007592260947125926,
+              0.019093909444282086
+            ],
+            "control_Brier": 0.24381403568617083,
+            "actual_minus_control_gain": -0.000664242354203581,
+            "conditional_day_97_5_actual_minus_control": [
+              -0.016862780301622058,
+              0.01607134588720234
+            ]
+          }
+        },
+        "first_both_one_win": {
+          "all": {
+            "status": "OBSERVED",
+            "pairs": 41617,
+            "denominator": 41617,
+            "distinct_pairs": 41617,
+            "days": 109,
+            "races": 1247,
+            "horses": 2939,
+            "both_anchor_pairs": 41617,
+            "either_actual_opponent_updated_pairs": 40968,
+            "control_matched_pairs": 34462,
+            "mean_abs_revision_gap": 0.04114011667298847,
+            "baseline_Brier": 0.22290199103774394,
+            "fixed_weight_1_gain": -0.00020113653910551506,
+            "weight": 0.75,
+            "corrected_Brier": 0.22293283486194482,
+            "gain": -0.00003084382420087837,
+            "conditional_day_97_5_gain": [
+              -0.0006224959489934869,
+              0.0005200112273135412
+            ]
+          },
+          "matched_control": {
+            "status": "OBSERVED",
+            "pairs": 34462,
+            "denominator": 41617,
+            "distinct_pairs": 34462,
+            "days": 109,
+            "races": 1202,
+            "horses": 2849,
+            "both_anchor_pairs": 34462,
+            "either_actual_opponent_updated_pairs": 33918,
+            "control_matched_pairs": 34462,
+            "mean_abs_revision_gap": 0.04120509488664038,
+            "baseline_Brier": 0.22400905615674485,
+            "fixed_weight_1_gain": -0.00021070127374342147,
+            "mean_abs_control_anchor_rating_mismatch": 0.17211515463438462,
+            "either_control_opponent_updated_pairs": 33815,
+            "weight": 0.75,
+            "corrected_Brier": 0.2240467318189636,
+            "gain": -0.00003767566221879857,
+            "conditional_day_97_5_gain": [
+              -0.0006614555023593154,
+              0.0005354704798681999
+            ],
+            "control_Brier": 0.22458581621836643,
+            "actual_minus_control_gain": 0.0005390843994027966,
+            "conditional_day_97_5_actual_minus_control": [
+              -0.00019916312863110913,
+              0.0012491735067717037
+            ]
+          }
+        }
+      },
+      "2021": {
+        "first_both_one_start_one_win": {
+          "all": {
+            "status": "OBSERVED",
+            "pairs": 280,
+            "denominator": 280,
+            "distinct_pairs": 280,
+            "days": 47,
+            "races": 66,
+            "horses": 209,
+            "both_anchor_pairs": 280,
+            "either_actual_opponent_updated_pairs": 280,
+            "control_matched_pairs": 235,
+            "mean_abs_revision_gap": 0.055234842751875714,
+            "baseline_Brier": 0.25090392653592436,
+            "fixed_weight_1_gain": -0.0001388347607628712,
+            "weight": 2,
+            "corrected_Brier": 0.2535086320121907,
+            "gain": -0.00260470547626631,
+            "conditional_day_97_5_gain": [
+              -0.018765394460259856,
+              0.011785744115309651
+            ]
+          },
+          "matched_control": {
+            "status": "OBSERVED",
+            "pairs": 235,
+            "denominator": 280,
+            "distinct_pairs": 235,
+            "days": 44,
+            "races": 62,
+            "horses": 188,
+            "both_anchor_pairs": 235,
+            "either_actual_opponent_updated_pairs": 235,
+            "control_matched_pairs": 235,
+            "mean_abs_revision_gap": 0.05544229016560019,
+            "baseline_Brier": 0.2506933714267071,
+            "fixed_weight_1_gain": -0.001180790406465432,
+            "mean_abs_control_anchor_rating_mismatch": 0.16490059225234668,
+            "either_control_opponent_updated_pairs": 235,
+            "weight": 2,
+            "corrected_Brier": 0.25542305878689175,
+            "gain": -0.004729687360184594,
+            "conditional_day_97_5_gain": [
+              -0.02316577620874558,
+              0.011617513506288573
+            ],
+            "control_Brier": 0.2506234475515865,
+            "actual_minus_control_gain": -0.004799611235305231,
+            "conditional_day_97_5_actual_minus_control": [
+              -0.030436898168458442,
+              0.01681970139712838
+            ]
+          }
+        },
+        "first_both_one_win": {
+          "all": {
+            "status": "OBSERVED",
+            "pairs": 44446,
+            "denominator": 44446,
+            "distinct_pairs": 44446,
+            "days": 106,
+            "races": 1255,
+            "horses": 2977,
+            "both_anchor_pairs": 44446,
+            "either_actual_opponent_updated_pairs": 43760,
+            "control_matched_pairs": 35866,
+            "mean_abs_revision_gap": 0.040682641436661296,
+            "baseline_Brier": 0.22322824248641718,
+            "fixed_weight_1_gain": 0.0003334072790161817,
+            "weight": 0.75,
+            "corrected_Brier": 0.22286509346104225,
+            "gain": 0.0003631490253749191,
+            "conditional_day_97_5_gain": [
+              -0.000164380072740444,
+              0.0009279221243036199
+            ]
+          },
+          "matched_control": {
+            "status": "OBSERVED",
+            "pairs": 35866,
+            "denominator": 44446,
+            "distinct_pairs": 35866,
+            "days": 106,
+            "races": 1221,
+            "horses": 2872,
+            "both_anchor_pairs": 35866,
+            "either_actual_opponent_updated_pairs": 35337,
+            "control_matched_pairs": 35866,
+            "mean_abs_revision_gap": 0.04143356510959355,
+            "baseline_Brier": 0.22577770232250804,
+            "fixed_weight_1_gain": 0.0003227429575399572,
+            "mean_abs_control_anchor_rating_mismatch": 0.1660956414878671,
+            "either_control_opponent_updated_pairs": 35088,
+            "weight": 0.75,
+            "corrected_Brier": 0.22541829308771835,
+            "gain": 0.0003594092347896545,
+            "conditional_day_97_5_gain": [
+              -0.00018709520433318928,
+              0.0009184666406705907
+            ],
+            "control_Brier": 0.22640111872128574,
+            "actual_minus_control_gain": 0.0009828256335673831,
+            "conditional_day_97_5_actual_minus_control": [
+              0.0002203496029784402,
+              0.0018283287798623931
+            ]
+          }
+        }
+      }
+    },
+    "limits": [
+      "Post-PR107 diagnostic; frozen before new revision fits, not an independent sample.",
+      "One-hop change in former opponents' online ratings since last focal race, removing passive decay, not full graph refit or causal ability change.",
+      "Same-day alternate-race controls matched on surface/distance band, available count and post-day ratings; neither randomized nor fully matched on future opportunities or earlier encounters.",
+      "Conditional date intervals omit crossed horse, graph and training dependence. Historical complete classified fields, not official career/debut.",
+      "No absolute speed, genetic, prospective or wagering claim. No raw data exported."
+    ]
+  }
+}
