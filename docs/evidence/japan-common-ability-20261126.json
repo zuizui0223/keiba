@@ -1,0 +1,422 @@
+{
+  "source_commit": "f5648beb82e06af01caff61e76b7da5cdbdc8355",
+  "run_id": 45779906967,
+  "job_id": 139772561386,
+  "artifact_id": 15097518371,
+  "artifact_digest": "sha256:7b61fe8184abaacea0b06c49b4fc6eeeb07f8fd72f07022f80ec127aec276ab1",
+  "verification": "Aggregate JSON extracted from completed job log; artifact metadata and upload log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_COMMON_ABILITY_NETWORK",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "JRA_starts": 550062,
+    "JRA_horses": 62199,
+    "primary": "2021/first_both_one_win, with first_meeting general comparator",
+    "calibration": {
+      "naive": {
+        "slope": 1.5,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          2,
+          3,
+          4
+        ],
+        "Brier": [
+          0.25,
+          0.2430262098168472,
+          0.2376435721601936,
+          0.23381546103378537,
+          0.23141475842132936,
+          0.23026177250371535,
+          0.2301576539879866,
+          0.2323341455288908,
+          0.24207972977223072,
+          0.25421439459648704
+        ],
+        "pairs": 114359,
+        "races": 2550
+      },
+      "graph": {
+        "slope": 1.25,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          2,
+          3,
+          4
+        ],
+        "Brier": [
+          0.25,
+          0.24182613321635896,
+          0.2356476450898768,
+          0.23139898738668851,
+          0.22888375691029977,
+          0.22783945077200765,
+          0.22799000887280846,
+          0.2308793480158556,
+          0.24200428336896115,
+          0.2549727171129766
+        ],
+        "pairs": 114359,
+        "races": 2550
+      }
+    },
+    "results": {
+      "2019": {
+        "graph": {
+          "active_horses": 47872,
+          "unique_edges": 2538726,
+          "components": 16,
+          "largest_component_horses": 44739,
+          "optimizer_iterations": 21,
+          "max_abs_gradient": 0.000025714269987764382,
+          "objective": 46494.526568609646
+        },
+        "calibration": {
+          "naive": {
+            "slope": 1.5,
+            "grid": [
+              0,
+              0.25,
+              0.5,
+              0.75,
+              1,
+              1.25,
+              1.5,
+              2,
+              3,
+              4
+            ],
+            "Brier": [
+              0.25,
+              0.2430262098168472,
+              0.2376435721601936,
+              0.23381546103378537,
+              0.23141475842132936,
+              0.23026177250371535,
+              0.2301576539879866,
+              0.2323341455288908,
+              0.24207972977223072,
+              0.25421439459648704
+            ],
+            "pairs": 114359,
+            "races": 2550
+          },
+          "graph": {
+            "slope": 1.25,
+            "grid": [
+              0,
+              0.25,
+              0.5,
+              0.75,
+              1,
+              1.25,
+              1.5,
+              2,
+              3,
+              4
+            ],
+            "Brier": [
+              0.25,
+              0.24182613321635896,
+              0.2356476450898768,
+              0.23139898738668851,
+              0.22888375691029977,
+              0.22783945077200765,
+              0.22799000887280846,
+              0.2308793480158556,
+              0.24200428336896115,
+              0.2549727171129766
+            ],
+            "pairs": 114359,
+            "races": 2550
+          }
+        }
+      },
+      "2020": {
+        "graph": {
+          "active_horses": 52761,
+          "unique_edges": 2800548,
+          "components": 18,
+          "largest_component_horses": 49459,
+          "optimizer_iterations": 20,
+          "max_abs_gradient": 0.00005137195210513923,
+          "objective": 46770.822624805616
+        },
+        "evaluation": {
+          "all_pairs": 301810,
+          "connected_pairs": 151551,
+          "both_seen_pairs": 184264,
+          "first_pairs": 267198,
+          "first_connected_pairs": 123229,
+          "first_both_one_win_pairs_all": 41928,
+          "first_both_one_start_one_win_pairs_all": 330,
+          "groups": {
+            "all_connected": {
+              "status": "OBSERVED",
+              "pairs": 151551,
+              "distinct_pairs": 135879,
+              "races": 2552,
+              "days": 109,
+              "horses": 6379,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.23565715590389122,
+                "graph": 0.2332300350585645
+              },
+              "gain": 0.0024271208453267227,
+              "accuracy_half_for_ties": {
+                "naive": 0.5992822529859029,
+                "graph": 0.6054001335930045
+              },
+              "mean_abs_graph_ability_gap": 0.3732971002988775,
+              "conditional_day_97_5_gain": [
+                0.0020520908278387384,
+                0.002761726973999561
+              ]
+            },
+            "first_meeting": {
+              "status": "OBSERVED",
+              "pairs": 123229,
+              "distinct_pairs": 123229,
+              "races": 2551,
+              "days": 109,
+              "horses": 6298,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.23584445457143352,
+                "graph": 0.23339370863246708
+              },
+              "gain": 0.0024507459389663884,
+              "accuracy_half_for_ties": {
+                "naive": 0.5983125588878344,
+                "graph": 0.6045362675208923
+              },
+              "mean_abs_graph_ability_gap": 0.3754822116249369,
+              "conditional_day_97_5_gain": [
+                0.002021710580191269,
+                0.0028389939258120487
+              ]
+            },
+            "first_both_one_win": {
+              "status": "OBSERVED",
+              "pairs": 23801,
+              "distinct_pairs": 23801,
+              "races": 1166,
+              "days": 109,
+              "horses": 2308,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.24192308939003696,
+                "graph": 0.23874925880173423
+              },
+              "gain": 0.0031738305883026964,
+              "accuracy_half_for_ties": {
+                "naive": 0.5766091710104827,
+                "graph": 0.5905665893187731
+              },
+              "mean_abs_graph_ability_gap": 0.37819229487104217,
+              "conditional_day_97_5_gain": [
+                0.0018550374874918537,
+                0.004423932352533666
+              ]
+            },
+            "first_both_one_start_one_win": {
+              "status": "HOLD_SUPPORT",
+              "pairs": 24,
+              "distinct_pairs": 24,
+              "races": 16,
+              "days": 11,
+              "horses": 36,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.25,
+                "graph": 0.24966617950929226
+              },
+              "gain": 0.0003338204907077583,
+              "accuracy_half_for_ties": {
+                "naive": 0.5,
+                "graph": 0.4791666666666667
+              },
+              "mean_abs_graph_ability_gap": 0.01400914586817387
+            },
+            "first_naive_tie": {
+              "status": "OBSERVED",
+              "pairs": 206,
+              "distinct_pairs": 206,
+              "races": 133,
+              "days": 70,
+              "horses": 208,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.25,
+                "graph": 0.250177310260751
+              },
+              "gain": -0.00017731026075103914,
+              "accuracy_half_for_ties": {
+                "naive": 0.5100250626566417,
+                "graph": 0.49674185463659143
+              },
+              "mean_abs_graph_ability_gap": 0.023671755345320046,
+              "conditional_day_97_5_gain": [
+                -0.0017483375518734907,
+                0.0012929464687852499
+              ]
+            }
+          }
+        }
+      },
+      "2021": {
+        "graph": {
+          "active_horses": 57573,
+          "unique_edges": 3067746,
+          "components": 20,
+          "largest_component_horses": 54200,
+          "optimizer_iterations": 21,
+          "max_abs_gradient": 0.00007725598891072938,
+          "objective": 47209.71031088379
+        },
+        "evaluation": {
+          "all_pairs": 298135,
+          "connected_pairs": 152916,
+          "both_seen_pairs": 187944,
+          "first_pairs": 264062,
+          "first_connected_pairs": 124751,
+          "first_both_one_win_pairs_all": 44618,
+          "first_both_one_start_one_win_pairs_all": 301,
+          "groups": {
+            "all_connected": {
+              "status": "OBSERVED",
+              "pairs": 152916,
+              "distinct_pairs": 137483,
+              "races": 2555,
+              "days": 106,
+              "horses": 6448,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.2352176944102733,
+                "graph": 0.23346624004651656
+              },
+              "gain": 0.0017514543637567337,
+              "accuracy_half_for_ties": {
+                "naive": 0.6008791818000245,
+                "graph": 0.6049451338309157
+              },
+              "mean_abs_graph_ability_gap": 0.3644881427935793,
+              "conditional_day_97_5_gain": [
+                0.0014515269233426865,
+                0.002081788781579765
+              ]
+            },
+            "first_meeting": {
+              "status": "OBSERVED",
+              "pairs": 124751,
+              "distinct_pairs": 124751,
+              "races": 2555,
+              "days": 106,
+              "horses": 6341,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.2353389901272792,
+                "graph": 0.23353568241333347
+              },
+              "gain": 0.0018033077139457709,
+              "accuracy_half_for_ties": {
+                "naive": 0.6005024668383204,
+                "graph": 0.605068949064849
+              },
+              "mean_abs_graph_ability_gap": 0.36640225416317473,
+              "conditional_day_97_5_gain": [
+                0.0014894139431254189,
+                0.0021596404612967226
+              ]
+            },
+            "first_both_one_win": {
+              "status": "OBSERVED",
+              "pairs": 25677,
+              "distinct_pairs": 25677,
+              "races": 1168,
+              "days": 106,
+              "horses": 2341,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.24488815700212202,
+                "graph": 0.2422733886364855
+              },
+              "gain": 0.002614768365636613,
+              "accuracy_half_for_ties": {
+                "naive": 0.5711250089106885,
+                "graph": 0.5767139121125195
+              },
+              "mean_abs_graph_ability_gap": 0.3457852374369505,
+              "conditional_day_97_5_gain": [
+                0.0012707508976703935,
+                0.0038244414415153573
+              ]
+            },
+            "first_both_one_start_one_win": {
+              "status": "HOLD_SUPPORT",
+              "pairs": 18,
+              "distinct_pairs": 18,
+              "races": 10,
+              "days": 8,
+              "horses": 24,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.25,
+                "graph": 0.24556252363971764
+              },
+              "gain": 0.0044374763602823535,
+              "accuracy_half_for_ties": {
+                "naive": 0.5,
+                "graph": 0.8666666666666665
+              },
+              "mean_abs_graph_ability_gap": 0.020654376372796705
+            },
+            "first_naive_tie": {
+              "status": "OBSERVED",
+              "pairs": 142,
+              "distinct_pairs": 142,
+              "races": 110,
+              "days": 52,
+              "horses": 176,
+              "Brier": {
+                "neutral": 0.25,
+                "naive": 0.25,
+                "graph": 0.25025682085232465
+              },
+              "gain": -0.00025682085232459377,
+              "accuracy_half_for_ties": {
+                "naive": 0.509090909090909,
+                "graph": 0.5492424242424242
+              },
+              "mean_abs_graph_ability_gap": 0.027508923667299838,
+              "conditional_day_97_5_gain": [
+                -0.0028451368849006084,
+                0.0024556697180614317
+              ]
+            }
+          }
+        }
+      }
+    },
+    "limits": [
+      "Only JRA complete classified finishers and recorded meetings; no official debut/total career win or full entry claims.",
+      "Historical graph uses all JRA flat surfaces and distances; ability is scalar and context averaged, year-start frozen. No within-year feature refresh.",
+      "First meeting and prior-win counts are strictly before target date for evaluation stratification, not inputs to ratings.",
+      "Disconnected and unseen comparisons are excluded from supported inference and retained in coverage denominators.",
+      "Ridge regularization sets scale/anchor within fit; year-to-year absolute rating change not identified. Conditional date intervals omit repeated-horse/graph-fit dependence.",
+      "No absolute speed, genetic causation, physical interference, prospective forecast or wagering claim. No individual records exported."
+    ]
+  }
+}
