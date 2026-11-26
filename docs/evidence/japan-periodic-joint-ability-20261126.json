@@ -1,0 +1,746 @@
+{
+  "source_commit": "45d8013e8cccdcc74137d0ee89a68b763c177992",
+  "run_id": 45788791473,
+  "job_id": 139802249437,
+  "artifact_id": 15102136211,
+  "artifact_digest": "sha256:0974f14565cac75f9439634316ed0e1917810bf98af849a73bc2f37b39e1a139",
+  "verification": "Aggregate JSON from completed job log; artifact metadata and upload-log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_MONTHLY_JOINT_ABILITY",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR107_parity": true,
+    "primary": "2021/first_both_one_start_one_win, batch vs same-cutoff online and actual daily online",
+    "monthly_fits": {
+      "2019-01-01": {
+        "history_pairs": 2869514,
+        "active_horses": 47872,
+        "components": 16,
+        "largest_component": 44739,
+        "edges": 2538726,
+        "iterations": 19,
+        "max_abs_gradient": 0.00014617536682146048
+      },
+      "2019-02-01": {
+        "history_pairs": 2893126,
+        "active_horses": 48313,
+        "components": 11,
+        "largest_component": 44741,
+        "edges": 2559555,
+        "iterations": 15,
+        "max_abs_gradient": 0.00023679345420857256
+      },
+      "2019-03-01": {
+        "history_pairs": 2918260,
+        "active_horses": 48715,
+        "components": 11,
+        "largest_component": 44742,
+        "edges": 2581797,
+        "iterations": 16,
+        "max_abs_gradient": 0.00025356270768506217
+      },
+      "2019-04-01": {
+        "history_pairs": 2947774,
+        "active_horses": 49016,
+        "components": 2,
+        "largest_component": 44742,
+        "edges": 2607833,
+        "iterations": 16,
+        "max_abs_gradient": 0.000009396265487793265
+      },
+      "2019-05-01": {
+        "history_pairs": 2973359,
+        "active_horses": 49200,
+        "components": 2,
+        "largest_component": 44743,
+        "edges": 2630450,
+        "iterations": 15,
+        "max_abs_gradient": 0.00007333217854688101
+      },
+      "2019-06-01": {
+        "history_pairs": 2996708,
+        "active_horses": 49297,
+        "components": 2,
+        "largest_component": 44743,
+        "edges": 2650681,
+        "iterations": 15,
+        "max_abs_gradient": 0.00004616103829413465
+      },
+      "2019-07-01": {
+        "history_pairs": 3022587,
+        "active_horses": 49737,
+        "components": 15,
+        "largest_component": 49375,
+        "edges": 2673904,
+        "iterations": 15,
+        "max_abs_gradient": 0.00016598406272178012
+      },
+      "2019-08-01": {
+        "history_pairs": 3045060,
+        "active_horses": 50194,
+        "components": 17,
+        "largest_component": 49410,
+        "edges": 2693749,
+        "iterations": 15,
+        "max_abs_gradient": 0.00023709662408613608
+      },
+      "2019-09-01": {
+        "history_pairs": 3073134,
+        "active_horses": 50666,
+        "components": 13,
+        "largest_component": 49439,
+        "edges": 2718259,
+        "iterations": 15,
+        "max_abs_gradient": 0.0001347532619948022
+      },
+      "2019-10-01": {
+        "history_pairs": 3093009,
+        "active_horses": 51108,
+        "components": 14,
+        "largest_component": 49449,
+        "edges": 2735831,
+        "iterations": 15,
+        "max_abs_gradient": 0.00008827985774473301
+      },
+      "2019-11-01": {
+        "history_pairs": 3115113,
+        "active_horses": 51748,
+        "components": 20,
+        "largest_component": 49453,
+        "edges": 2755543,
+        "iterations": 16,
+        "max_abs_gradient": 0.000018446095659430117
+      },
+      "2019-12-01": {
+        "history_pairs": 3140986,
+        "active_horses": 52274,
+        "components": 16,
+        "largest_component": 49457,
+        "edges": 2778824,
+        "iterations": 16,
+        "max_abs_gradient": 0.00002922597690018132
+      },
+      "2020-01-01": {
+        "history_pairs": 3165031,
+        "active_horses": 52761,
+        "components": 18,
+        "largest_component": 49459,
+        "edges": 2800548,
+        "iterations": 15,
+        "max_abs_gradient": 0.0001370155844813703
+      },
+      "2020-02-01": {
+        "history_pairs": 3188587,
+        "active_horses": 53194,
+        "components": 11,
+        "largest_component": 49460,
+        "edges": 2821546,
+        "iterations": 15,
+        "max_abs_gradient": 0.00007918906679121873
+      },
+      "2020-03-01": {
+        "history_pairs": 3216541,
+        "active_horses": 53529,
+        "components": 9,
+        "largest_component": 49463,
+        "edges": 2846265,
+        "iterations": 16,
+        "max_abs_gradient": 0.000011857221435852827
+      },
+      "2020-04-01": {
+        "history_pairs": 3243343,
+        "active_horses": 53811,
+        "components": 4,
+        "largest_component": 49466,
+        "edges": 2870121,
+        "iterations": 15,
+        "max_abs_gradient": 0.00006302037224933943
+      },
+      "2020-05-01": {
+        "history_pairs": 3267546,
+        "active_horses": 53955,
+        "components": 2,
+        "largest_component": 49469,
+        "edges": 2891462,
+        "iterations": 15,
+        "max_abs_gradient": 0.00011242890131457628
+      },
+      "2020-06-01": {
+        "history_pairs": 3297750,
+        "active_horses": 54052,
+        "components": 2,
+        "largest_component": 49470,
+        "edges": 2917292,
+        "iterations": 15,
+        "max_abs_gradient": 0.00014374552002074936
+      },
+      "2020-07-01": {
+        "history_pairs": 3322512,
+        "active_horses": 54431,
+        "components": 16,
+        "largest_component": 54120,
+        "edges": 2939313,
+        "iterations": 16,
+        "max_abs_gradient": 0.0000200913258555091
+      },
+      "2020-08-01": {
+        "history_pairs": 3344207,
+        "active_horses": 54889,
+        "components": 19,
+        "largest_component": 54156,
+        "edges": 2958560,
+        "iterations": 16,
+        "max_abs_gradient": 0.000015718305829970358
+      },
+      "2020-09-01": {
+        "history_pairs": 3371398,
+        "active_horses": 55408,
+        "components": 18,
+        "largest_component": 54182,
+        "edges": 2982900,
+        "iterations": 16,
+        "max_abs_gradient": 0.000013354638735196822
+      },
+      "2020-10-01": {
+        "history_pairs": 3391716,
+        "active_horses": 55875,
+        "components": 20,
+        "largest_component": 54187,
+        "edges": 3000726,
+        "iterations": 16,
+        "max_abs_gradient": 0.000012657184306763547
+      },
+      "2020-11-01": {
+        "history_pairs": 3415924,
+        "active_horses": 56517,
+        "components": 17,
+        "largest_component": 54191,
+        "edges": 3022103,
+        "iterations": 15,
+        "max_abs_gradient": 0.00006977359422311036
+      },
+      "2020-12-01": {
+        "history_pairs": 3441712,
+        "active_horses": 57095,
+        "components": 24,
+        "largest_component": 54193,
+        "edges": 3045162,
+        "iterations": 14,
+        "max_abs_gradient": 0.0006886350975648381
+      },
+      "2021-01-01": {
+        "history_pairs": 3466841,
+        "active_horses": 57573,
+        "components": 20,
+        "largest_component": 54200,
+        "edges": 3067746,
+        "iterations": 15,
+        "max_abs_gradient": 0.0000413397341358368
+      },
+      "2021-02-01": {
+        "history_pairs": 3495367,
+        "active_horses": 58031,
+        "components": 15,
+        "largest_component": 54204,
+        "edges": 3093080,
+        "iterations": 16,
+        "max_abs_gradient": 0.000021039404207140455
+      },
+      "2021-03-01": {
+        "history_pairs": 3521109,
+        "active_horses": 58330,
+        "components": 5,
+        "largest_component": 54206,
+        "edges": 3115842,
+        "iterations": 15,
+        "max_abs_gradient": 0.00023688601012494814
+      },
+      "2021-04-01": {
+        "history_pairs": 3545639,
+        "active_horses": 58492,
+        "components": 2,
+        "largest_component": 54208,
+        "edges": 3137516,
+        "iterations": 15,
+        "max_abs_gradient": 0.00007314475613157123
+      },
+      "2021-05-01": {
+        "history_pairs": 3569027,
+        "active_horses": 58653,
+        "components": 2,
+        "largest_component": 54214,
+        "edges": 3158284,
+        "iterations": 15,
+        "max_abs_gradient": 0.00004090401605261196
+      },
+      "2021-06-01": {
+        "history_pairs": 3598320,
+        "active_horses": 58762,
+        "components": 2,
+        "largest_component": 54214,
+        "edges": 3183776,
+        "iterations": 15,
+        "max_abs_gradient": 0.00009818216175744299
+      },
+      "2021-07-01": {
+        "history_pairs": 3620477,
+        "active_horses": 59140,
+        "components": 15,
+        "largest_component": 58828,
+        "edges": 3203611,
+        "iterations": 16,
+        "max_abs_gradient": 0.00005931846832796239
+      },
+      "2021-08-01": {
+        "history_pairs": 3644097,
+        "active_horses": 59627,
+        "components": 19,
+        "largest_component": 58870,
+        "edges": 3224691,
+        "iterations": 15,
+        "max_abs_gradient": 0.00015466136138447828
+      },
+      "2021-09-01": {
+        "history_pairs": 3669196,
+        "active_horses": 60105,
+        "components": 19,
+        "largest_component": 58901,
+        "edges": 3246976,
+        "iterations": 15,
+        "max_abs_gradient": 0.00005729106765203773
+      },
+      "2021-10-01": {
+        "history_pairs": 3688877,
+        "active_horses": 60550,
+        "components": 20,
+        "largest_component": 58913,
+        "edges": 3264367,
+        "iterations": 15,
+        "max_abs_gradient": 0.00007209057323648294
+      },
+      "2021-11-01": {
+        "history_pairs": 3715474,
+        "active_horses": 61256,
+        "components": 19,
+        "largest_component": 58920,
+        "edges": 3287774,
+        "iterations": 16,
+        "max_abs_gradient": 0.00002847175355263909
+      },
+      "2021-12-01": {
+        "history_pairs": 3738932,
+        "active_horses": 61694,
+        "components": 21,
+        "largest_component": 58927,
+        "edges": 3308687,
+        "iterations": 15,
+        "max_abs_gradient": 0.00012186561956309405
+      }
+    },
+    "calibration": {
+      "pairs": 200890,
+      "days": 110,
+      "models": {
+        "frozen_naive": {
+          "slope": 2,
+          "grid": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1,
+            1.25,
+            1.5,
+            2,
+            3,
+            4
+          ],
+          "Brier": [
+            0.25,
+            0.24059425927702882,
+            0.23278428712599059,
+            0.22656793876656764,
+            0.22185007423904932,
+            0.21847714577000094,
+            0.2162690383015264,
+            0.21462418559099164,
+            0.21826352887589465,
+            0.22599939288528206
+          ]
+        },
+        "frozen_online": {
+          "slope": 2,
+          "grid": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1,
+            1.25,
+            1.5,
+            2,
+            3,
+            4
+          ],
+          "Brier": [
+            0.25,
+            0.2402816811596444,
+            0.23223392860755634,
+            0.22584636985829754,
+            0.22100376719504222,
+            0.21752962778545049,
+            0.21522440415406618,
+            0.21335044644116025,
+            0.21632478047564643,
+            0.22325592774209418
+          ]
+        },
+        "batch": {
+          "slope": 2,
+          "grid": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1,
+            1.25,
+            1.5,
+            2,
+            3,
+            4
+          ],
+          "Brier": [
+            0.25,
+            0.2390888664439612,
+            0.23014384066552376,
+            0.2231521789546703,
+            0.2179696906286918,
+            0.214376983880488,
+            0.21212783262286622,
+            0.21071911027685888,
+            0.21519150116667016,
+            0.2235607020512688
+          ]
+        },
+        "daily_naive": {
+          "slope": 2,
+          "frozen_PR107": true
+        },
+        "daily_online": {
+          "slope": 2,
+          "frozen_PR107": true
+        },
+        "daily_surface": {
+          "slope": 2,
+          "frozen_PR107": true
+        }
+      }
+    },
+    "results": {
+      "2020": {
+        "first_both_one_start_one_win": {
+          "status": "OBSERVED",
+          "daily_connected_pairs": 291,
+          "matched_pairs": 197,
+          "coverage": 0.6769759450171822,
+          "distinct_pairs": 197,
+          "days": 51,
+          "races": 66,
+          "horses": 183,
+          "Brier": {
+            "frozen_naive": 0.24845735547808406,
+            "frozen_online": 0.24877158068279656,
+            "batch": 0.24866341537886633,
+            "daily_naive": 0.24846178086500142,
+            "daily_online": 0.2487766338471152,
+            "daily_surface": 0.2492793224725289
+          },
+          "accuracy": {
+            "frozen_naive": 0.5474747474747474,
+            "frozen_online": 0.5537878787878787,
+            "batch": 0.5165223665223665,
+            "daily_naive": 0.5474747474747474,
+            "daily_online": 0.5537878787878787,
+            "daily_surface": 0.5588383838383838
+          },
+          "gain": {
+            "batch_vs_frozen_online": 0.00010816530393027947,
+            "batch_vs_daily_online": 0.00011321846824890518,
+            "batch_vs_frozen_naive": -0.00020605990078227033,
+            "daily_vs_frozen_online": -0.000005053164318625856
+          },
+          "curvature_diagnostic": {
+            "mean_absolute_batch_gap": 0.017862484782499494,
+            "mean_lower_bound_laplace_sd": 1.2802487450345104,
+            "upper_bound_laplace_sd": 1.4142135623730951,
+            "fraction_exceeds_1_96_lower_sd": 0,
+            "fraction_exceeds_1_96_upper_sd": 0
+          },
+          "conditional_day_97_5_gain": {
+            "batch_vs_frozen_online": [
+              -0.001674407414713723,
+              0.002146081296120038
+            ],
+            "batch_vs_daily_online": [
+              -0.0016746055082508362,
+              0.0021602016862221013
+            ]
+          }
+        },
+        "first_both_one_win": {
+          "status": "OBSERVED",
+          "daily_connected_pairs": 41617,
+          "matched_pairs": 39487,
+          "coverage": 0.9488189922387485,
+          "distinct_pairs": 39487,
+          "days": 109,
+          "races": 1245,
+          "horses": 2911,
+          "Brier": {
+            "frozen_naive": 0.22986331850660327,
+            "frozen_online": 0.2249498406411761,
+            "batch": 0.22581012981205292,
+            "daily_naive": 0.2283052266186929,
+            "daily_online": 0.22306409177173409,
+            "daily_surface": 0.22287003899463567
+          },
+          "accuracy": {
+            "frozen_naive": 0.6191742944173318,
+            "frozen_online": 0.6285831112216578,
+            "batch": 0.629205165214031,
+            "daily_naive": 0.6207528169700864,
+            "daily_online": 0.6331589039763723,
+            "daily_surface": 0.6374891288060557
+          },
+          "gain": {
+            "batch_vs_frozen_online": -0.0008602891708768525,
+            "batch_vs_daily_online": -0.0027460380403188014,
+            "batch_vs_frozen_naive": 0.004053188694550351,
+            "daily_vs_frozen_online": 0.0018857488694419492
+          },
+          "curvature_diagnostic": {
+            "mean_absolute_batch_gap": 0.35229787534695944,
+            "mean_lower_bound_laplace_sd": 0.8823120435558753,
+            "upper_bound_laplace_sd": 1.4142135623730951,
+            "fraction_exceeds_1_96_lower_sd": 0.007509170443586023,
+            "fraction_exceeds_1_96_upper_sd": 0
+          },
+          "conditional_day_97_5_gain": {
+            "batch_vs_frozen_online": [
+              -0.002791533261589625,
+              0.001233671419169602
+            ],
+            "batch_vs_daily_online": [
+              -0.004937307297527839,
+              -0.00037176972646518476
+            ]
+          }
+        },
+        "first_meeting": {
+          "status": "OBSERVED",
+          "daily_connected_pairs": 224065,
+          "matched_pairs": 207271,
+          "coverage": 0.9250485350233191,
+          "distinct_pairs": 207271,
+          "days": 109,
+          "races": 2913,
+          "horses": 9502,
+          "Brier": {
+            "frozen_naive": 0.22030839821787965,
+            "frozen_online": 0.2181547013301538,
+            "batch": 0.21684073162709955,
+            "daily_naive": 0.21781059434069994,
+            "daily_online": 0.21524115436987212,
+            "daily_surface": 0.2127507385475352
+          },
+          "accuracy": {
+            "frozen_naive": 0.6418512657969658,
+            "frozen_online": 0.6486040465964669,
+            "batch": 0.6502719480319792,
+            "daily_naive": 0.646987639988068,
+            "daily_online": 0.6552877106666962,
+            "daily_surface": 0.6628962277926163
+          },
+          "gain": {
+            "batch_vs_frozen_online": 0.001313969703054322,
+            "batch_vs_daily_online": -0.0015995772572273937,
+            "batch_vs_frozen_naive": 0.0034676665907801456,
+            "daily_vs_frozen_online": 0.002913546960281716
+          },
+          "curvature_diagnostic": {
+            "mean_absolute_batch_gap": 0.3652082987156492,
+            "mean_lower_bound_laplace_sd": 0.9481510810679284,
+            "upper_bound_laplace_sd": 1.4142135623730951,
+            "fraction_exceeds_1_96_lower_sd": 0.0016709636203488492,
+            "fraction_exceeds_1_96_upper_sd": 0
+          },
+          "conditional_day_97_5_gain": {
+            "batch_vs_frozen_online": [
+              0.0006915704040919019,
+              0.0019495698182631792
+            ],
+            "batch_vs_daily_online": [
+              -0.002786469495369844,
+              -0.0004253013267422996
+            ]
+          }
+        }
+      },
+      "2021": {
+        "first_both_one_start_one_win": {
+          "status": "OBSERVED",
+          "daily_connected_pairs": 280,
+          "matched_pairs": 184,
+          "coverage": 0.6571428571428571,
+          "distinct_pairs": 184,
+          "days": 37,
+          "races": 50,
+          "horses": 150,
+          "Brier": {
+            "frozen_naive": 0.2505512394373065,
+            "frozen_online": 0.25052313806290066,
+            "batch": 0.24985888331485234,
+            "daily_naive": 0.25054639435360626,
+            "daily_online": 0.2505165848348874,
+            "daily_surface": 0.24738623847583494
+          },
+          "accuracy": {
+            "frozen_naive": 0.41595238095238096,
+            "frozen_online": 0.41595238095238096,
+            "batch": 0.4975238095238095,
+            "daily_naive": 0.41595238095238096,
+            "daily_online": 0.41595238095238096,
+            "daily_surface": 0.4672857142857143
+          },
+          "gain": {
+            "batch_vs_frozen_online": 0.0006642547480482929,
+            "batch_vs_daily_online": 0.0006577015200350558,
+            "batch_vs_frozen_naive": 0.000692356122454146,
+            "daily_vs_frozen_online": 0.000006553228013236509
+          },
+          "curvature_diagnostic": {
+            "mean_absolute_batch_gap": 0.018023892833620287,
+            "mean_lower_bound_laplace_sd": 1.278471807162589,
+            "upper_bound_laplace_sd": 1.4142135623730951,
+            "fraction_exceeds_1_96_lower_sd": 0,
+            "fraction_exceeds_1_96_upper_sd": 0
+          },
+          "conditional_day_97_5_gain": {
+            "batch_vs_frozen_online": [
+              -0.0017483586351957508,
+              0.0033006733292973607
+            ],
+            "batch_vs_daily_online": [
+              -0.001749901607191159,
+              0.003291658810978302
+            ]
+          }
+        },
+        "first_both_one_win": {
+          "status": "OBSERVED",
+          "daily_connected_pairs": 44446,
+          "matched_pairs": 42491,
+          "coverage": 0.9560140395086172,
+          "distinct_pairs": 42491,
+          "days": 106,
+          "races": 1253,
+          "horses": 2948,
+          "Brier": {
+            "frozen_naive": 0.2301264941087334,
+            "frozen_online": 0.22620610003765576,
+            "batch": 0.227032022551727,
+            "daily_naive": 0.22814573233503813,
+            "daily_online": 0.2235016214950105,
+            "daily_surface": 0.2225043076223143
+          },
+          "accuracy": {
+            "frozen_naive": 0.6156558334623694,
+            "frozen_online": 0.6288141359966966,
+            "batch": 0.6253702479841582,
+            "daily_naive": 0.6201876422627582,
+            "daily_online": 0.6331101955408234,
+            "daily_surface": 0.6419404027005969
+          },
+          "gain": {
+            "batch_vs_frozen_online": -0.000825922514071254,
+            "batch_vs_daily_online": -0.003530401056716496,
+            "batch_vs_frozen_naive": 0.003094471557006459,
+            "daily_vs_frozen_online": 0.0027044785426452423
+          },
+          "curvature_diagnostic": {
+            "mean_absolute_batch_gap": 0.33945968469330945,
+            "mean_lower_bound_laplace_sd": 0.8818913063222839,
+            "upper_bound_laplace_sd": 1.4142135623730951,
+            "fraction_exceeds_1_96_lower_sd": 0.0021069918793382323,
+            "fraction_exceeds_1_96_upper_sd": 0
+          },
+          "conditional_day_97_5_gain": {
+            "batch_vs_frozen_online": [
+              -0.0028953649387655693,
+              0.0011650157977118874
+            ],
+            "batch_vs_daily_online": [
+              -0.0059034274897450155,
+              -0.0014942467094094262
+            ]
+          }
+        },
+        "first_meeting": {
+          "status": "OBSERVED",
+          "daily_connected_pairs": 223211,
+          "matched_pairs": 208453,
+          "coverage": 0.9338831867605091,
+          "distinct_pairs": 208453,
+          "days": 106,
+          "races": 2927,
+          "horses": 9488,
+          "Brier": {
+            "frozen_naive": 0.21959516301659915,
+            "frozen_online": 0.21852401173135222,
+            "batch": 0.21635829495301034,
+            "daily_naive": 0.2171394154603572,
+            "daily_online": 0.2156035444250771,
+            "daily_surface": 0.21283805516412133
+          },
+          "accuracy": {
+            "frozen_naive": 0.6452960611853306,
+            "frozen_online": 0.6506532992208425,
+            "batch": 0.6523595078398989,
+            "daily_naive": 0.6510684836730934,
+            "daily_online": 0.6575724300978834,
+            "daily_surface": 0.6640167915513423
+          },
+          "gain": {
+            "batch_vs_frozen_online": 0.0021657167783419137,
+            "batch_vs_daily_online": -0.0007547505279332625,
+            "batch_vs_frozen_naive": 0.0032368680635888603,
+            "daily_vs_frozen_online": 0.0029204673062751757
+          },
+          "curvature_diagnostic": {
+            "mean_absolute_batch_gap": 0.3643794690844784,
+            "mean_lower_bound_laplace_sd": 0.9520261863650445,
+            "upper_bound_laplace_sd": 1.4142135623730951,
+            "fraction_exceeds_1_96_lower_sd": 0.0009772924106605954,
+            "fraction_exceeds_1_96_upper_sd": 0
+          },
+          "conditional_day_97_5_gain": {
+            "batch_vs_frozen_online": [
+              0.001604329001486284,
+              0.002709078980355024
+            ],
+            "batch_vs_daily_online": [
+              -0.0016208370354349306,
+              0.00002553920453882518
+            ]
+          }
+        }
+      }
+    },
+    "limits": [
+      "Monthly static joint fit versus fixed and actual daily online; difference also reflects objective, regularization and recency implementation, not pure indirect information.",
+      "Both strict one-start winners must already be seen and connected at month start; report missing coverage.",
+      "Curvature bounds on a formal inverse penalized composite-likelihood Hessian, not validated individual uncertainty or confidence intervals; 1.96 multiples are diagnostics.",
+      "Conditional day intervals omit shared horse/graph/fitting dependence. Source previously examined; no prospective or physical/causal ability claim.",
+      "Classified JRA finishers and observed histories only; no complete career or entry census. No raw IDs exported."
+    ]
+  }
+}
