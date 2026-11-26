@@ -1,0 +1,202 @@
+{
+  "source_commit": "acf6a4d16abf3287db39c2e3946864b9180aa116",
+  "run_id": 45778143527,
+  "job_id": 139766753556,
+  "artifact_id": 15097156568,
+  "artifact_digest": "sha256:d9e783da3c1a29032c753ccc9520fd89bc566f2c1455d95cf0c1088b59d0b4e1",
+  "verification": "successful stdout aggregate and matching API/upload digest; ZIP not independently extracted",
+  "result": {
+    "status": "RETROSPECTIVE_REPEATED_COMPETITION",
+    "source_A_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "primary": "2021/one_or_more/dyad_increment",
+    "calibration_years": [
+      2017,
+      2018
+    ],
+    "baseline_features": [
+      "broad",
+      "context",
+      "family",
+      "log_n",
+      "log_nc"
+    ],
+    "coefficients": [
+      1.1885085933473167,
+      2.1292044729416446,
+      1.7016127274384252,
+      0.3408185192643047,
+      -0.2036699442763163
+    ],
+    "pair_counts": {
+      "2017": 132512,
+      "2018": 125536,
+      "2019": 124276,
+      "2020": 127085,
+      "2021": 123210
+    },
+    "results": {
+      "2020": {
+        "donor_rows": 124276,
+        "target_rows": 127085,
+        "prior_meeting_rows": 3588,
+        "prior_two_meeting_rows": 474,
+        "all": {
+          "status": "OBSERVED_DESCRIPTIVE",
+          "rows": 127085,
+          "distinct_surface_dyads": 120719,
+          "horses": 7381,
+          "days": 109,
+          "races": 1406,
+          "prior_meeting_mean": 0.03267104693708935,
+          "race_equal_brier": {
+            "N": 0.23754479780485663,
+            "H": 0.23859928470614625,
+            "D": 0.23901622862889232
+          },
+          "horse_correction_gain": -0.0010544869012891218,
+          "dyad_increment": -0.0004169439227460665,
+          "unclipped_dyad_increment": -0.0004191188599180432,
+          "conditional_day_95_dyad_increment": [
+            -0.0005424294809504329,
+            -0.0002931868991422206
+          ],
+          "conditional_day_95_horse_increment": [
+            -0.002155343955284925,
+            0.00007235049894828237
+          ]
+        },
+        "one_or_more": {
+          "status": "OBSERVED_DESCRIPTIVE",
+          "rows": 3588,
+          "distinct_surface_dyads": 3056,
+          "horses": 1790,
+          "days": 109,
+          "races": 729,
+          "prior_meeting_mean": 1.157190635451505,
+          "race_equal_brier": {
+            "N": 0.23049540381422176,
+            "H": 0.2315382967699706,
+            "D": 0.24580325601685496
+          },
+          "horse_correction_gain": -0.0010428929557486778,
+          "dyad_increment": -0.014264959246884293,
+          "unclipped_dyad_increment": -0.014513578727540086,
+          "conditional_day_95_dyad_increment": [
+            -0.020089641363082396,
+            -0.008764326039458384
+          ],
+          "conditional_day_95_horse_increment": [
+            -0.006303958231064507,
+            0.003562926808831659
+          ]
+        },
+        "two_or_more": {
+          "status": "HOLD_SUPPORT",
+          "rows": 474,
+          "distinct_surface_dyads": 372,
+          "horses": 438,
+          "days": 98,
+          "races": 261,
+          "prior_meeting_mean": 2.189873417721519,
+          "race_equal_brier": {
+            "N": 0.2335176717631862,
+            "H": 0.2268559337176621,
+            "D": 0.2331699337832712
+          },
+          "horse_correction_gain": 0.006661738045524157,
+          "dyad_increment": -0.006314000065609079,
+          "unclipped_dyad_increment": -0.006404039342466665
+        }
+      },
+      "2021": {
+        "donor_rows": 251361,
+        "target_rows": 123210,
+        "prior_meeting_rows": 4022,
+        "prior_two_meeting_rows": 724,
+        "all": {
+          "status": "OBSERVED_DESCRIPTIVE",
+          "rows": 123210,
+          "distinct_surface_dyads": 117120,
+          "horses": 7276,
+          "days": 106,
+          "races": 1402,
+          "prior_meeting_mean": 0.04004545085626167,
+          "race_equal_brier": {
+            "N": 0.23721507920963433,
+            "H": 0.23911905251372406,
+            "D": 0.23938596556328046
+          },
+          "horse_correction_gain": -0.0019039733040887882,
+          "dyad_increment": -0.00026691304955613575,
+          "unclipped_dyad_increment": -0.0002742394591025713,
+          "conditional_day_95_dyad_increment": [
+            -0.00041617689484711647,
+            -0.00011497898134080531
+          ],
+          "conditional_day_95_horse_increment": [
+            -0.0030408244363512495,
+            -0.0008802959168333196
+          ]
+        },
+        "one_or_more": {
+          "status": "OBSERVED_DESCRIPTIVE",
+          "rows": 4022,
+          "distinct_surface_dyads": 3440,
+          "horses": 1849,
+          "days": 106,
+          "races": 750,
+          "prior_meeting_mean": 1.2267528592739931,
+          "race_equal_brier": {
+            "N": 0.2312753314493447,
+            "H": 0.2296699828387486,
+            "D": 0.23889478677519796
+          },
+          "horse_correction_gain": 0.0016053486105964397,
+          "dyad_increment": -0.009224803936449678,
+          "unclipped_dyad_increment": -0.009693568809161487,
+          "conditional_day_95_dyad_increment": [
+            -0.014224443272107737,
+            -0.004067037245194657
+          ],
+          "conditional_day_95_horse_increment": [
+            -0.0037248919863264733,
+            0.005817069718142631
+          ]
+        },
+        "two_or_more": {
+          "status": "OBSERVED_DESCRIPTIVE",
+          "rows": 724,
+          "distinct_surface_dyads": 593,
+          "horses": 585,
+          "days": 96,
+          "races": 288,
+          "prior_meeting_mean": 2.2596685082872927,
+          "race_equal_brier": {
+            "N": 0.2362072534883096,
+            "H": 0.23523666919455144,
+            "D": 0.249440479147755
+          },
+          "horse_correction_gain": 0.0009705842937582291,
+          "dyad_increment": -0.014203809953203726,
+          "unclipped_dyad_increment": -0.015364963839595977,
+          "conditional_day_95_dyad_increment": [
+            -0.026216111004656584,
+            -0.0022405238893742174
+          ],
+          "conditional_day_95_horse_increment": [
+            -0.008607215518454028,
+            0.009736807759401127
+          ]
+        }
+      }
+    },
+    "limitations": [
+      "Observed relative finishing order and repeated dyad correspondence; not physiological speed, physical interaction or genetic causation.",
+      "Calendar-year frozen inputs, only earlier donor outcomes; retrospective inspected archive, no prospective validation.",
+      "Selected rematches and complete classified fields; no actual race-entry alternatives, class or jockey adjustment.",
+      "Day-block interval conditional on fixed predictions ignores horse, pedigree and donor-fit dependence; no independent pair inference.",
+      "Shared horse residual fitted on same donor records as dyad residual; conservative nested comparator, not a causal interaction model.",
+      "Unknown publisher license; no raw data or individual IDs exported."
+    ]
+  }
+}
