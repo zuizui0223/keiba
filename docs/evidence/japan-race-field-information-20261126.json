@@ -1,0 +1,341 @@
+{
+  "source_commit": "13491edd38dea9a71ffa343e39f7cbccb62fb08a",
+  "run_id": 45778138898,
+  "job_id": 139766738778,
+  "artifact_id": 15097421029,
+  "artifact_digest": "sha256:503d3d5e2882b8605a85f1d295aa1746d56df3e2e346861af19b73849e147d01",
+  "verification": "Aggregate JSON from successful job log; artifact metadata and upload-log digest agree; ZIP bytes not independently extracted",
+  "result": {
+    "status": "RETROSPECTIVE_CLASSIFIED_FIELD_INFORMATION",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "primary": "pooled 2020-21 race-equal; two directional conditional contrasts",
+    "results": {
+      "training": {
+        "2016": {
+          "starts": 46546,
+          "races": 3219
+        },
+        "2017": {
+          "starts": 46106,
+          "races": 3241
+        },
+        "2018": {
+          "starts": 45274,
+          "races": 3233
+        }
+      },
+      "calibration": {
+        "year": 2019,
+        "starts": 44493,
+        "races": 3247,
+        "models": {
+          "own": {
+            "linear": {
+              "selected": 1,
+              "grid": [
+                0,
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5,
+                2,
+                3,
+                4
+              ],
+              "validation_race_equal_MSE": [
+                0.09733887282971053,
+                0.09290717707223792,
+                0.08968481167353291,
+                0.08767177663359552,
+                0.08686828603278227,
+                0.08725297818006902,
+                0.08866207322000172,
+                0.09324434546181923,
+                0.10113552179651165,
+                0.10474485877901044
+              ]
+            },
+            "pair": {
+              "selected": 4,
+              "grid": [
+                0,
+                0.5,
+                1,
+                2,
+                3,
+                4,
+                6,
+                8,
+                12,
+                16,
+                24,
+                32,
+                48,
+                64
+              ],
+              "validation_race_equal_MSE": [
+                0.09733887282971053,
+                0.09478458803298372,
+                0.09260476538049309,
+                0.0893692289169737,
+                0.08750864142204888,
+                0.08677517829079455,
+                0.08761700517879031,
+                0.09013489883955554,
+                0.09651353959569182,
+                0.10242976179119875,
+                0.11115495551883871,
+                0.1167411022583397,
+                0.12300675072090368,
+                0.12622120344632792
+              ]
+            }
+          },
+          "kin": {
+            "linear": {
+              "selected": 1,
+              "grid": [
+                0,
+                0.25,
+                0.5,
+                0.75,
+                1,
+                1.25,
+                1.5,
+                2,
+                3,
+                4
+              ],
+              "validation_race_equal_MSE": [
+                0.09733887282971053,
+                0.09247813325730375,
+                0.08890705417461316,
+                0.08662563558163873,
+                0.08563409131377654,
+                0.08591133366230934,
+                0.08728754552611936,
+                0.09205724666329232,
+                0.10042602409473923,
+                0.10420135592968989
+              ]
+            },
+            "pair": {
+              "selected": 4,
+              "grid": [
+                0,
+                0.5,
+                1,
+                2,
+                3,
+                4,
+                6,
+                8,
+                12,
+                16,
+                24,
+                32,
+                48,
+                64
+              ],
+              "validation_race_equal_MSE": [
+                0.09733887282971053,
+                0.09454146207294795,
+                0.0921445924958226,
+                0.08855658470986348,
+                0.08644841025555429,
+                0.08555872662647379,
+                0.08628973396743012,
+                0.08885409147040678,
+                0.09545743827357464,
+                0.101545893894708,
+                0.11030750708124915,
+                0.11569040961913712,
+                0.12142476636440862,
+                0.12422503053476676
+              ]
+            }
+          }
+        }
+      },
+      "years": {
+        "2020": {
+          "scores": {
+            "starts": 44870,
+            "races": 3227,
+            "horses": 11340,
+            "race_equal_RMSE": {
+              "neutral": 0.31156068224112876,
+              "own_raw": 0.3056148714985496,
+              "kin_raw": 0.3042700822415052,
+              "own_linear": 0.29762916333962547,
+              "kin_linear": 0.2958398736159673,
+              "own_pair": 0.2974554498912624,
+              "kin_pair": 0.2956873836100364
+            },
+            "horse_equal_RMSE": {
+              "neutral": 0.3213176318878251,
+              "own_raw": 0.30199604999453816,
+              "kin_raw": 0.3001474144182794,
+              "own_linear": 0.30291909665047906,
+              "kin_linear": 0.3005340323995794,
+              "own_pair": 0.3027423528818476,
+              "kin_pair": 0.30039351406248244
+            },
+            "mean_absolute_race_mean_deviation": {
+              "neutral": 0,
+              "own_raw": 0.06087262495368759,
+              "kin_raw": 0.06096803235735285,
+              "own_linear": 4.224833821629043e-17,
+              "kin_linear": 4.070014992660552e-17,
+              "own_pair": 1.7890175791914515e-18,
+              "kin_pair": 1.3761673686088088e-18
+            }
+          },
+          "contrasts": {
+            "race_equal_MSE_gain": {
+              "nonlinear_beyond_linear_no_kin": 0.00010337420023214115,
+              "kin_given_pairwise_field": 0.001048715843864483,
+              "linear_field_beyond_raw_no_kin": 0.004817330810829542,
+              "kin_raw": 0.0008201667338226261,
+              "kin_given_linear_field": 0.0010618880491339276,
+              "nonlinear_beyond_linear_kin": 0.0000902019949626966
+            },
+            "date_clusters": 109,
+            "status": "OBSERVED_CONDITIONAL_DATE_BOOTSTRAP",
+            "primary_conditional_97_5": {
+              "nonlinear_beyond_linear_no_kin": [
+                0.00006956665746200155,
+                0.00013632131926853927
+              ],
+              "kin_given_pairwise_field": [
+                0.0008299728749738821,
+                0.0012688464373934016
+              ]
+            }
+          }
+        },
+        "2021": {
+          "scores": {
+            "starts": 44603,
+            "races": 3232,
+            "horses": 11226,
+            "race_equal_RMSE": {
+              "neutral": 0.31178547685512964,
+              "own_raw": 0.30472280156500203,
+              "kin_raw": 0.3031723723985534,
+              "own_linear": 0.29711770382839453,
+              "kin_linear": 0.2952457602809256,
+              "own_pair": 0.29696834653448684,
+              "kin_pair": 0.29509389270730685
+            },
+            "horse_equal_RMSE": {
+              "neutral": 0.3204565440050149,
+              "own_raw": 0.30126971577191475,
+              "kin_raw": 0.2992905392083105,
+              "own_linear": 0.30205323603067624,
+              "kin_linear": 0.29969045101097097,
+              "own_pair": 0.30193332739090595,
+              "kin_pair": 0.29958573692597584
+            },
+            "mean_absolute_race_mean_deviation": {
+              "neutral": 0,
+              "own_raw": 0.059099620375998516,
+              "kin_raw": 0.0588137391493861,
+              "own_linear": 4.3058928260137185e-17,
+              "kin_linear": 4.062001010579355e-17,
+              "own_pair": 1.5286177164548102e-18,
+              "kin_pair": 1.391213876773479e-18
+            }
+          },
+          "contrasts": {
+            "race_equal_MSE_gain": {
+              "nonlinear_beyond_linear_no_kin": 0.00008873108483050261,
+              "kin_given_pairwise_field": 0.0011097933302755207,
+              "linear_field_beyond_raw_no_kin": 0.004577055865366046,
+              "kin_raw": 0.0009424984078564877,
+              "kin_given_linear_field": 0.0011088709643957743,
+              "nonlinear_beyond_linear_kin": 0.00008965345071024879
+            },
+            "date_clusters": 106,
+            "status": "OBSERVED_CONDITIONAL_DATE_BOOTSTRAP",
+            "primary_conditional_97_5": {
+              "nonlinear_beyond_linear_no_kin": [
+                0.00005947963296426395,
+                0.00012021908230316683
+              ],
+              "kin_given_pairwise_field": [
+                0.0009095639045978289,
+                0.0013193943156346337
+              ]
+            }
+          }
+        }
+      },
+      "pooled": {
+        "scores": {
+          "starts": 89473,
+          "races": 6459,
+          "horses": 16076,
+          "race_equal_RMSE": {
+            "neutral": 0.31167318682307515,
+            "own_raw": 0.30516881721252004,
+            "kin_raw": 0.3037212983620677,
+            "own_linear": 0.29737334557899936,
+            "kin_linear": 0.29554273628195354,
+            "own_pair": 0.29721180946596537,
+            "kin_pair": 0.29539055749719834
+          },
+          "horse_equal_RMSE": {
+            "neutral": 0.32198772886149907,
+            "own_raw": 0.2998776971175007,
+            "kin_raw": 0.29790170167790825,
+            "own_linear": 0.3035058306722235,
+            "kin_linear": 0.30095106586267606,
+            "own_pair": 0.3033665463697677,
+            "kin_pair": 0.3008320474462686
+          },
+          "mean_absolute_race_mean_deviation": {
+            "neutral": 0,
+            "own_raw": 0.05998543641132947,
+            "kin_raw": 0.059890051919491184,
+            "own_linear": 4.2653946982618455e-17,
+            "kin_linear": 4.0660048997535346e-17,
+            "own_pair": 1.6587168582803469e-18,
+            "kin_pair": 1.3836964465447453e-18
+          }
+        },
+        "contrasts": {
+          "race_equal_MSE_gain": {
+            "nonlinear_beyond_linear_no_kin": 0.00009604697481364049,
+            "kin_given_pairwise_field": 0.001079278227527662,
+            "linear_field_beyond_raw_no_kin": 0.0046971003380414916,
+            "kin_raw": 0.0008813799201482864,
+            "kin_given_linear_field": 0.0010853976918226238,
+            "nonlinear_beyond_linear_kin": 0.00008992751051867874
+          },
+          "date_clusters": 215,
+          "status": "OBSERVED_CONDITIONAL_DATE_BOOTSTRAP",
+          "primary_conditional_97_5": {
+            "nonlinear_beyond_linear_no_kin": [
+              0.0000716437168985483,
+              0.00011851338103532801
+            ],
+            "kin_given_pairwise_field": [
+              0.0009259873509067704,
+              0.001232273068013387
+            ]
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Field is retrospectively classified finishers, not independently confirmed pre-race entrants.",
+      "Year-start historical features, previous years only; same-year outcomes excluded. Fixed fit 2016-18 and projection calibration 2019.",
+      "Pairwise logistic scores are a coherent relative-rank representation, not fitted physical interaction, speed, causal effect or joint outcome probabilities.",
+      "Race-day conditional intervals ignore all repeated horse, kin and trainer dependence and fitting uncertainty. Horse-equal secondary scores descriptive.",
+      "Same inspected archive; no independent prospective or wagering claim. No raw data exported."
+    ]
+  }
+}
