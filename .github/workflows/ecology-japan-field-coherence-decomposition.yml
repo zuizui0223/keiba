@@ -1,0 +1,47 @@
+name: "Horse field coherence and weighting decomposition"
+on:
+  push:
+    branches: [analysis/horse-field-coherence-decomposition-20261126]
+    paths:
+      - "scripts/ecology_japan_field_coherence_decomposition.py"
+      - "docs/research/JAPAN_FIELD_COHERENCE_DECOMPOSITION_PROTOCOL_20261126.md"
+      - ".github/workflows/ecology-japan-field-coherence-decomposition.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  occupancy-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Synthetic full-field coherence and opponent distribution
+        run: python scripts/ecology_japan_field_coherence_decomposition.py --self-test
+      - name: Download fixed source A
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          from ecology_japan_archive_forward import download
+          download(Path('tmp/private/old.zip'))
+          PY
+      - name: Run chronological field-coherent rank transfer
+        run: python scripts/ecology_japan_field_coherence_decomposition.py --archive tmp/private/old.zip --receipt docs/evidence/japan-race-field-information-20261126.json --output tmp/field-coherence-decomposition.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: field-coherence-decomposition-aggregate-only
+          path: tmp/field-coherence-decomposition.json
+          if-no-files-found: error
+          retention-days: 14
