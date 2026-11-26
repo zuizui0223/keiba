@@ -1,0 +1,701 @@
+{
+  "source_commit": "6a1263f4a9eb096f7af41574ed91b0238a34b4ed",
+  "run_id": 45824570098,
+  "job_id": 139925311031,
+  "artifact_id": 15120335662,
+  "artifact_digest": "sha256:ad1c71a001f285ef8c76ea8a953a4c451b6c923a62951aff3feda5accc4e65dd",
+  "verification": "Aggregate JSON from completed job log; artifact metadata and upload-log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_DAILY_FAMILY_ABILITY_COMPLEMENT",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR107_parity": true,
+    "JRA_starts": 550062,
+    "JRA_horses": 62199,
+    "parent_QA": {
+      "sire": {
+        "known_final": 62199,
+        "conflict_quarantine_final": 0,
+        "no_recorded_label_final": 0,
+        "distinct_source_labels": 1132
+      },
+      "dam": {
+        "known_final": 62199,
+        "conflict_quarantine_final": 0,
+        "no_recorded_label_final": 0,
+        "distinct_source_labels": 19734
+      }
+    },
+    "primary": "2021 first_both_one_start_one_win and first_both_one_win, F vs N",
+    "calibration": {
+      "year": 2019,
+      "pairs": 217613,
+      "ridge": 0.001,
+      "fits": {
+        "O": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284
+          ],
+          "beta": [
+            0.4443129306121057,
+            -1.1543816416294344,
+            1.6980829311782153,
+            -0.002547761027781495
+          ],
+          "raw_scale_beta": [
+            1.0130220568999733,
+            -2.580554488913519,
+            2.9695284031516187,
+            -0.003593108603193468
+          ],
+          "max_abs_gradient": 1.5984656239701606e-9
+        },
+        "N": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992
+          ],
+          "beta": [
+            0.44221643809514016,
+            -1.1509390511845252,
+            1.6935770754444177,
+            -0.0006432792857748758,
+            0,
+            0,
+            0.06530721805159029,
+            -0.04036300328709381
+          ],
+          "raw_scale_beta": [
+            1.0082421078697121,
+            -2.5728587738174595,
+            2.961648772341873,
+            -0.0009072170862062843,
+            0,
+            0,
+            0.03600189243498573,
+            -0.043619714673217465
+          ],
+          "max_abs_gradient": 5.834478620381791e-9
+        },
+        "F": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_ability",
+            "dam_ability"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.04818603803939379,
+            0.03315057973942845
+          ],
+          "beta": [
+            0.39112229800654563,
+            -1.0887027503162126,
+            1.656963575739366,
+            0.04426556285384625,
+            0,
+            0,
+            0.006902221945995203,
+            -0.04458331244335443,
+            0.18006918572064545,
+            0.11988458644407649
+          ],
+          "raw_scale_beta": [
+            0.8917487822832224,
+            -2.4337330637512458,
+            2.897620788009273,
+            0.06242774458868791,
+            0,
+            0,
+            0.003804986025676624,
+            -0.04818054182276008,
+            3.7369576966139557,
+            3.616364702711031
+          ],
+          "max_abs_gradient": 5.53499463412855e-9
+        }
+      }
+    },
+    "results": {
+      "2020": {
+        "first_both_one_start_one_win": {
+          "status": "OBSERVED",
+          "pairs": 291,
+          "distinct_pairs": 291,
+          "days": 58,
+          "races": 79,
+          "horses": 231,
+          "support": {
+            "sire_both_supported": 283,
+            "dam_both_supported": 189,
+            "sire_either_supported": 291,
+            "dam_either_supported": 279,
+            "either_parent_supported": 291
+          },
+          "Brier": {
+            "O": 0.2503220863687832,
+            "N": 0.24819677453853714,
+            "F": 0.23558344155539118,
+            "daily_surface": 0.249924519297095,
+            "daily_global": 0.24949749327405932
+          },
+          "accuracy": {
+            "O": 0.5130450070323488,
+            "N": 0.5665561583283102,
+            "F": 0.6232067510548525,
+            "daily_surface": 0.5130450070323488,
+            "daily_global": 0.5084739803094234
+          },
+          "gain": {
+            "family_signal_given_counts": 0.012613332983145981,
+            "family_count_given_own": 0.002125311830246058,
+            "family_all_given_own": 0.01473864481339204,
+            "family_model_vs_daily_surface": 0.014341077741703822
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              -0.005131509648423805,
+              0.027860661510719083
+            ],
+            "family_count_given_own": [
+              -0.0014265305485809871,
+              0.005709277455626375
+            ],
+            "family_all_given_own": [
+              -0.0033662780572156913,
+              0.03088352984190466
+            ],
+            "family_model_vs_daily_surface": [
+              -0.004628404380310762,
+              0.030370396150087426
+            ]
+          }
+        },
+        "first_both_one_win": {
+          "status": "OBSERVED",
+          "pairs": 41617,
+          "distinct_pairs": 41617,
+          "days": 109,
+          "races": 1247,
+          "horses": 2939,
+          "support": {
+            "sire_both_supported": 41276,
+            "dam_both_supported": 30147,
+            "sire_either_supported": 41616,
+            "dam_either_supported": 40533,
+            "either_parent_supported": 41616
+          },
+          "Brier": {
+            "O": 0.2199370574890007,
+            "N": 0.21990092187435079,
+            "F": 0.21785219636953346,
+            "daily_surface": 0.22250110046312574,
+            "daily_global": 0.22290199103774394
+          },
+          "accuracy": {
+            "O": 0.6385288242734495,
+            "N": 0.6393591758218712,
+            "F": 0.6461331115710351,
+            "daily_surface": 0.6392022403437259,
+            "daily_global": 0.6346702647710203
+          },
+          "gain": {
+            "family_signal_given_counts": 0.0020487255048173966,
+            "family_count_given_own": 0.00003613561464989165,
+            "family_all_given_own": 0.002084861119467288,
+            "family_model_vs_daily_surface": 0.004648904093592296
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.0010980332618738178,
+              0.0030788565289898723
+            ],
+            "family_count_given_own": [
+              -0.00037001909856515405,
+              0.000455139732955585
+            ],
+            "family_all_given_own": [
+              0.0010157721955658964,
+              0.003221336777394869
+            ],
+            "family_model_vs_daily_surface": [
+              0.002872139949932053,
+              0.006558014920861625
+            ]
+          }
+        },
+        "first_meeting": {
+          "status": "OBSERVED",
+          "pairs": 224065,
+          "distinct_pairs": 224065,
+          "days": 109,
+          "races": 2925,
+          "horses": 9983,
+          "support": {
+            "sire_both_supported": 222334,
+            "dam_both_supported": 160978,
+            "sire_either_supported": 224059,
+            "dam_either_supported": 217725,
+            "either_parent_supported": 224060
+          },
+          "Brier": {
+            "O": 0.21078380925890688,
+            "N": 0.21078356746457283,
+            "F": 0.20891549703934284,
+            "daily_surface": 0.21301815494002746,
+            "daily_global": 0.21561760530951254
+          },
+          "accuracy": {
+            "O": 0.6648922548971679,
+            "N": 0.6658988876815539,
+            "F": 0.6707154100543413,
+            "daily_surface": 0.6628478495870737,
+            "daily_global": 0.655471157063942
+          },
+          "gain": {
+            "family_signal_given_counts": 0.0018680704252299744,
+            "family_count_given_own": 2.4179433407619394e-7,
+            "family_all_given_own": 0.00186831221956405,
+            "family_model_vs_daily_surface": 0.004102657900684589
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.0013943026426974172,
+              0.002307643911445897
+            ],
+            "family_count_given_own": [
+              -0.0001516081786718282,
+              0.00014678206758735117
+            ],
+            "family_all_given_own": [
+              0.0013052146416999402,
+              0.0023547217562764145
+            ],
+            "family_model_vs_daily_surface": [
+              0.0034620720842944842,
+              0.004700066846480037
+            ]
+          }
+        },
+        "first_both_1_to_3_starts": {
+          "status": "OBSERVED",
+          "pairs": 44417,
+          "distinct_pairs": 44417,
+          "days": 109,
+          "races": 1450,
+          "horses": 5708,
+          "support": {
+            "sire_both_supported": 43980,
+            "dam_both_supported": 27137,
+            "sire_either_supported": 44416,
+            "dam_either_supported": 42209,
+            "either_parent_supported": 44416
+          },
+          "Brier": {
+            "O": 0.2103346712957483,
+            "N": 0.2104685578244967,
+            "F": 0.20751822758313077,
+            "daily_surface": 0.2105124385193781,
+            "daily_global": 0.21593244200050274
+          },
+          "accuracy": {
+            "O": 0.6670147527754503,
+            "N": 0.6670774162327643,
+            "F": 0.6724710796321882,
+            "daily_surface": 0.6688279354964933,
+            "daily_global": 0.6642380579028062
+          },
+          "gain": {
+            "family_signal_given_counts": 0.002950330241365893,
+            "family_count_given_own": -0.00013388652874835613,
+            "family_all_given_own": 0.0028164437126175375,
+            "family_model_vs_daily_surface": 0.0029942109362473073
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.0013159157492063237,
+              0.004687801143941064
+            ],
+            "family_count_given_own": [
+              -0.0006042420161143045,
+              0.0003258235367342218
+            ],
+            "family_all_given_own": [
+              0.0010853150384458048,
+              0.004524209740911253
+            ],
+            "family_model_vs_daily_surface": [
+              0.001225120281716311,
+              0.0048825510400363
+            ]
+          }
+        },
+        "first_both_4_plus_starts": {
+          "status": "OBSERVED",
+          "pairs": 129466,
+          "distinct_pairs": 129466,
+          "days": 109,
+          "races": 2648,
+          "horses": 6590,
+          "support": {
+            "sire_both_supported": 128585,
+            "dam_both_supported": 101122,
+            "sire_either_supported": 129462,
+            "dam_either_supported": 127348,
+            "either_parent_supported": 129463
+          },
+          "Brier": {
+            "O": 0.21145686315256015,
+            "N": 0.2116433371892378,
+            "F": 0.21061290747400313,
+            "daily_surface": 0.2137461597692341,
+            "daily_global": 0.21527091130055634
+          },
+          "accuracy": {
+            "O": 0.6630886136870745,
+            "N": 0.6637292110612033,
+            "F": 0.6657394296556854,
+            "daily_surface": 0.66116520298246,
+            "daily_global": 0.6522903201427703
+          },
+          "gain": {
+            "family_signal_given_counts": 0.0010304297152346992,
+            "family_count_given_own": -0.00018647403667772057,
+            "family_all_given_own": 0.0008439556785569785,
+            "family_model_vs_daily_surface": 0.003133252295231022
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.0004493212455113473,
+              0.001587498491825441
+            ],
+            "family_count_given_own": [
+              -0.0004246774810620191,
+              0.000053471673098387164
+            ],
+            "family_all_given_own": [
+              0.0002241842400356331,
+              0.001438931427837425
+            ],
+            "family_model_vs_daily_surface": [
+              0.0022273442448335675,
+              0.003991614785334086
+            ]
+          }
+        }
+      },
+      "2021": {
+        "first_both_one_start_one_win": {
+          "status": "OBSERVED",
+          "pairs": 280,
+          "distinct_pairs": 280,
+          "days": 47,
+          "races": 66,
+          "horses": 209,
+          "support": {
+            "sire_both_supported": 274,
+            "dam_both_supported": 173,
+            "sire_either_supported": 280,
+            "dam_either_supported": 266,
+            "either_parent_supported": 280
+          },
+          "Brier": {
+            "O": 0.24741087853765048,
+            "N": 0.25099898506966406,
+            "F": 0.23864774138440126,
+            "daily_surface": 0.2485764678597979,
+            "daily_global": 0.25090392653592436
+          },
+          "accuracy": {
+            "O": 0.4547619047619048,
+            "N": 0.4384920634920635,
+            "F": 0.5519119769119768,
+            "daily_surface": 0.4547619047619048,
+            "daily_global": 0.4158730158730159
+          },
+          "gain": {
+            "family_signal_given_counts": 0.012351243685262735,
+            "family_count_given_own": -0.0035881065320135393,
+            "family_all_given_own": 0.008763137153249197,
+            "family_model_vs_daily_surface": 0.009928726475396622
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              -0.004162098121339322,
+              0.02937841191670229
+            ],
+            "family_count_given_own": [
+              -0.008857526626708407,
+              0.0011727998167788843
+            ],
+            "family_all_given_own": [
+              -0.007170532586475522,
+              0.025406544522671912
+            ],
+            "family_model_vs_daily_surface": [
+              -0.00605374714399084,
+              0.026740669555409873
+            ]
+          }
+        },
+        "first_both_one_win": {
+          "status": "OBSERVED",
+          "pairs": 44446,
+          "distinct_pairs": 44446,
+          "days": 106,
+          "races": 1255,
+          "horses": 2977,
+          "support": {
+            "sire_both_supported": 44029,
+            "dam_both_supported": 32486,
+            "sire_either_supported": 44445,
+            "dam_either_supported": 43381,
+            "either_parent_supported": 44446
+          },
+          "Brier": {
+            "O": 0.21887447636507265,
+            "N": 0.2187467669614085,
+            "F": 0.2178295842727623,
+            "daily_surface": 0.2222336621956664,
+            "daily_global": 0.22322824248641718
+          },
+          "accuracy": {
+            "O": 0.647299102030006,
+            "N": 0.6467144466552638,
+            "F": 0.650591804711033,
+            "daily_surface": 0.6423231113848666,
+            "daily_global": 0.633841053710996
+          },
+          "gain": {
+            "family_signal_given_counts": 0.0009171826886462047,
+            "family_count_given_own": 0.00012770940366418877,
+            "family_all_given_own": 0.0010448920923103934,
+            "family_model_vs_daily_surface": 0.004404077922904131
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              -0.00006541118412454488,
+              0.001961872159726698
+            ],
+            "family_count_given_own": [
+              -0.0002659360658747759,
+              0.0005187828404844185
+            ],
+            "family_all_given_own": [
+              -0.000007566669930535615,
+              0.002215301691020652
+            ],
+            "family_model_vs_daily_surface": [
+              0.0028638393682670384,
+              0.005986468101020346
+            ]
+          }
+        },
+        "first_meeting": {
+          "status": "OBSERVED",
+          "pairs": 223211,
+          "distinct_pairs": 223211,
+          "days": 106,
+          "races": 2938,
+          "horses": 9882,
+          "support": {
+            "sire_both_supported": 221151,
+            "dam_both_supported": 159310,
+            "sire_either_supported": 223205,
+            "dam_either_supported": 216743,
+            "either_parent_supported": 223206
+          },
+          "Brier": {
+            "O": 0.21000426112987683,
+            "N": 0.20997861569985246,
+            "F": 0.20843608906648556,
+            "daily_surface": 0.21286735910079738,
+            "daily_global": 0.2157291960346226
+          },
+          "accuracy": {
+            "O": 0.668596278625626,
+            "N": 0.6683390901172249,
+            "F": 0.6720176902160101,
+            "daily_surface": 0.6642461286535634,
+            "daily_global": 0.65751086862388
+          },
+          "gain": {
+            "family_signal_given_counts": 0.001542526633366854,
+            "family_count_given_own": 0.00002564543002437024,
+            "family_all_given_own": 0.0015681720633912242,
+            "family_model_vs_daily_surface": 0.004431270034311754
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.0011771286185675413,
+              0.0019256077731496688
+            ],
+            "family_count_given_own": [
+              -0.000114801505276496,
+              0.00019547107774116375
+            ],
+            "family_all_given_own": [
+              0.001130629031036714,
+              0.002020120014261173
+            ],
+            "family_model_vs_daily_surface": [
+              0.003923141271424915,
+              0.004968580193224159
+            ]
+          }
+        },
+        "first_both_1_to_3_starts": {
+          "status": "OBSERVED",
+          "pairs": 43339,
+          "distinct_pairs": 43339,
+          "days": 106,
+          "races": 1489,
+          "horses": 5697,
+          "support": {
+            "sire_both_supported": 42791,
+            "dam_both_supported": 26616,
+            "sire_either_supported": 43339,
+            "dam_either_supported": 41230,
+            "either_parent_supported": 43339
+          },
+          "Brier": {
+            "O": 0.207939932381475,
+            "N": 0.20802234537242464,
+            "F": 0.20556221047320503,
+            "daily_surface": 0.20783257569726088,
+            "daily_global": 0.2135803823031007
+          },
+          "accuracy": {
+            "O": 0.6749549200499476,
+            "N": 0.6735317296950066,
+            "F": 0.679470453398449,
+            "daily_surface": 0.673561438957916,
+            "daily_global": 0.6684673171862047
+          },
+          "gain": {
+            "family_signal_given_counts": 0.002460134899219631,
+            "family_count_given_own": -0.00008241299094962421,
+            "family_all_given_own": 0.0023777219082700067,
+            "family_model_vs_daily_surface": 0.002270365224055872
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.0009866112146650649,
+              0.0038955197834554824
+            ],
+            "family_count_given_own": [
+              -0.0005060120928873944,
+              0.00037319116460674494
+            ],
+            "family_all_given_own": [
+              0.0008996620997111834,
+              0.0038917045489168358
+            ],
+            "family_model_vs_daily_surface": [
+              0.0006327589088816535,
+              0.003973668419854641
+            ]
+          }
+        },
+        "first_both_4_plus_starts": {
+          "status": "OBSERVED",
+          "pairs": 129728,
+          "distinct_pairs": 129728,
+          "days": 106,
+          "races": 2629,
+          "horses": 6581,
+          "support": {
+            "sire_both_supported": 128821,
+            "dam_both_supported": 100826,
+            "sire_either_supported": 129725,
+            "dam_either_supported": 127570,
+            "either_parent_supported": 129725
+          },
+          "Brier": {
+            "O": 0.21062317005387973,
+            "N": 0.2107857078162994,
+            "F": 0.2099655212835983,
+            "daily_surface": 0.21330549130221765,
+            "daily_global": 0.2150002934045165
+          },
+          "accuracy": {
+            "O": 0.668092082774012,
+            "N": 0.6670459970226096,
+            "F": 0.6687011395667464,
+            "daily_surface": 0.6651438215308165,
+            "daily_global": 0.6577454215096084
+          },
+          "gain": {
+            "family_signal_given_counts": 0.0008201865327012281,
+            "family_count_given_own": -0.00016253776241972675,
+            "family_all_given_own": 0.0006576487702815013,
+            "family_model_vs_daily_surface": 0.003339970018619392
+          },
+          "conditional_day_97_5_gain": {
+            "family_signal_given_counts": [
+              0.00029977018354471923,
+              0.0013194162464914363
+            ],
+            "family_count_given_own": [
+              -0.0003968295748739763,
+              0.00008588934512013123
+            ],
+            "family_all_given_own": [
+              0.00012129184481192936,
+              0.00122750926884935
+            ],
+            "family_model_vs_daily_surface": [
+              0.0026167839281306554,
+              0.004049913627005384
+            ]
+          }
+        }
+      }
+    },
+    "limits": [
+      "Parent labels learned from earlier recorded classified JRA rows; missing not grouped, conflicting prior labels quarantined. Not verified pedigree or genomic relationship.",
+      "Other-horse current pre-day ratings share historical competitions with focal horses; excluding focal as donor does not make donor scores independent.",
+      "Counts and prior labels controlled in nested model, but management, environment, deeper kin and selection remain.",
+      "History-dependent shrinkage imposed; subgroup contrasts descriptive, no formal moderation or calibrated individual uncertainty.",
+      "Same inspected archive and conditional date intervals omit shared horse/graph/fit dependence. No official debut, full entry census, absolute speed, causal genetics, prospective or wagering claim. No raw IDs exported."
+    ]
+  }
+}
