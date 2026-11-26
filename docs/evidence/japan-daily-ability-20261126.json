@@ -1,0 +1,495 @@
+{
+  "source_commit": "6c38cb57fc593faedecb86f60262d42fe5ffddf5",
+  "run_id": 45780051832,
+  "job_id": 139773036101,
+  "artifact_id": 15098181496,
+  "artifact_digest": "sha256:745c840a921f0e5e482138299507ae4373f01d8de432740abf2f26e2b1c3946f",
+  "verification": "Aggregate JSON extracted from completed job log; artifact metadata and upload log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_DAILY_COMMON_ABILITY",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "JRA_starts": 550062,
+    "JRA_horses": 62199,
+    "primary": "2021/first_both_one_win/daily_network_vs_naive and first_meeting/surface_vs_daily_network",
+    "parameters": {
+      "half_life_days": 730,
+      "global_step": 0.5,
+      "surface_step": 0.25
+    },
+    "calibration": {
+      "naive": {
+        "slope": 2,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          2,
+          3,
+          4
+        ],
+        "Brier": [
+          0.25,
+          0.24031775625909457,
+          0.23224718031419836,
+          0.22578844822094327,
+          0.2208468361322257,
+          0.2172680287356308,
+          0.2148706010595129,
+          0.21289110323707902,
+          0.21600386988791787,
+          0.22335612176635575
+        ],
+        "pairs": 217613
+      },
+      "graph": {
+        "slope": 2,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          2,
+          3,
+          4
+        ],
+        "Brier": [
+          0.25,
+          0.23998482778183725,
+          0.23165120287649943,
+          0.2249923619241801,
+          0.21989520069839064,
+          0.21618397883640753,
+          0.21365888673681666,
+          0.21139308660132253,
+          0.21374230171918882,
+          0.22020613423274119
+        ],
+        "pairs": 217613
+      },
+      "context": {
+        "slope": 2,
+        "grid": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          2,
+          3,
+          4
+        ],
+        "Brier": [
+          0.25,
+          0.23690481851927211,
+          0.2265765994116199,
+          0.21892787061441116,
+          0.21364892460788124,
+          0.21033663503511466,
+          0.20858647339142586,
+          0.20839762838748266,
+          0.21486473221282507,
+          0.2241779503605535
+        ],
+        "pairs": 217613
+      }
+    },
+    "results": {
+      "2020": {
+        "all_pairs": 301810,
+        "connected_pairs": 258677,
+        "first_pairs": 267198,
+        "first_connected_pairs": 224065,
+        "first_both_one_win_pairs_all": 41928,
+        "first_both_one_start_one_win_pairs_all": 330,
+        "groups": {
+          "all_connected": {
+            "status": "OBSERVED",
+            "pairs": 258677,
+            "distinct_pairs": 238459,
+            "races": 2929,
+            "days": 109,
+            "horses": 10035,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.2182758259078798,
+              "graph": 0.21583943872167416,
+              "context": 0.21337848329264014
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.0024363871862056897,
+              "surface_vs_daily_network": 0.002460955429034012
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.6471006280733194,
+              "graph": 0.6558350397323897,
+              "context": 0.6624500105793708
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.33149698924216475,
+              "graph": 0.3333382479849632,
+              "context": 0.42972422362410895
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                0.001886129446186164,
+                0.0029319567753430076
+              ],
+              "surface_vs_daily_network": [
+                0.002005304486269263,
+                0.002934392581234798
+              ]
+            }
+          },
+          "first_meeting": {
+            "status": "OBSERVED",
+            "pairs": 224065,
+            "distinct_pairs": 224065,
+            "races": 2925,
+            "days": 109,
+            "horses": 9983,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.21804654660606312,
+              "graph": 0.21561760530951254,
+              "context": 0.21301815494002746
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.0024289412965506395,
+              "surface_vs_daily_network": 0.002599450369485126
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.647137226882784,
+              "graph": 0.655471157063942,
+              "context": 0.6628478495870737
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.33325599770412767,
+              "graph": 0.33399555427066885,
+              "context": 0.4310634024340796
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                0.001887669852488263,
+                0.0029591634339335344
+              ],
+              "surface_vs_daily_network": [
+                0.0020738200491148846,
+                0.0031061729682951844
+              ]
+            }
+          },
+          "first_both_one_win": {
+            "status": "OBSERVED",
+            "pairs": 41617,
+            "distinct_pairs": 41617,
+            "races": 1247,
+            "days": 109,
+            "horses": 2939,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.22823456827227376,
+              "graph": 0.22290199103774394,
+              "context": 0.22250110046312574
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.005332577234529796,
+              "surface_vs_daily_network": 0.0004008905746182226
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.6209495562848822,
+              "graph": 0.6346702647710203,
+              "context": 0.6392022403437259
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.33213112953480356,
+              "graph": 0.35548106613556274,
+              "context": 0.4536894774830745
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                0.003042542907360925,
+                0.0071845946807259494
+              ],
+              "surface_vs_daily_network": [
+                -0.0010741453952461278,
+                0.0017409224197298667
+              ]
+            }
+          },
+          "first_both_one_start_one_win": {
+            "status": "OBSERVED",
+            "pairs": 291,
+            "distinct_pairs": 291,
+            "races": 79,
+            "days": 58,
+            "horses": 231,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.24931703538807834,
+              "graph": 0.24949749327405932,
+              "context": 0.249924519297095
+            },
+            "gain": {
+              "daily_network_vs_naive": -0.00018045788598098847,
+              "surface_vs_daily_network": -0.0004270260230356642
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.5031997187060478,
+              "graph": 0.5084739803094234,
+              "context": 0.5130450070323488
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.010417415014576364,
+              "graph": 0.008805457307202245,
+              "context": 0.018994923770475163
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                -0.0005561568030494626,
+                0.00009502222108316039
+              ],
+              "surface_vs_daily_network": [
+                -0.0028960347061821063,
+                0.0020800380389789917
+              ]
+            }
+          },
+          "first_naive_tie": {
+            "status": "HOLD_SUPPORT",
+            "pairs": 29,
+            "distinct_pairs": 29,
+            "races": 25,
+            "days": 23,
+            "horses": 58,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.25,
+              "graph": 0.24973162615652086,
+              "context": 0.24507734404315712
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.0002683738434791183,
+              "surface_vs_daily_network": 0.00465428211336377
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.5,
+              "graph": 0.53,
+              "context": 0.57
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0,
+              "graph": 0.0022866696523476822,
+              "context": 0.016149467132668596
+            }
+          }
+        }
+      },
+      "2021": {
+        "all_pairs": 298135,
+        "connected_pairs": 257284,
+        "first_pairs": 264062,
+        "first_connected_pairs": 223211,
+        "first_both_one_win_pairs_all": 44618,
+        "first_both_one_start_one_win_pairs_all": 301,
+        "groups": {
+          "all_connected": {
+            "status": "OBSERVED",
+            "pairs": 257284,
+            "distinct_pairs": 237512,
+            "races": 2941,
+            "days": 106,
+            "horses": 9943,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.21695146002819504,
+              "graph": 0.21553010450599439,
+              "context": 0.2127496717693358
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.0014213555222006371,
+              "surface_vs_daily_network": 0.0027804327366585794
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.6522578783817663,
+              "graph": 0.6585682100154149,
+              "context": 0.6649013061070553
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.33088271260291746,
+              "graph": 0.33200253651036316,
+              "context": 0.43032648156536135
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                0.0009002486852161821,
+                0.0018976907455312442
+              ],
+              "surface_vs_daily_network": [
+                0.0023820814355328176,
+                0.003163431700220753
+              ]
+            }
+          },
+          "first_meeting": {
+            "status": "OBSERVED",
+            "pairs": 223211,
+            "distinct_pairs": 223211,
+            "races": 2938,
+            "days": 106,
+            "horses": 9882,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.21706298260148468,
+              "graph": 0.2157291960346226,
+              "context": 0.21286735910079738
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.001333786566862116,
+              "surface_vs_daily_network": 0.0028618369338252424
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.651687345746581,
+              "graph": 0.65751086862388,
+              "context": 0.6642461286535634
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.33213864111653585,
+              "graph": 0.33250937257398233,
+              "context": 0.43138496044487684
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                0.0008131780509192217,
+                0.0018454914538844655
+              ],
+              "surface_vs_daily_network": [
+                0.0024147716878034162,
+                0.003311930956063756
+              ]
+            }
+          },
+          "first_both_one_win": {
+            "status": "OBSERVED",
+            "pairs": 44446,
+            "distinct_pairs": 44446,
+            "races": 1255,
+            "days": 106,
+            "horses": 2977,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.22777781437265648,
+              "graph": 0.22322824248641718,
+              "context": 0.2222336621956664
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.0045495718862392604,
+              "surface_vs_daily_network": 0.0009945802907507478
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.6203101656505908,
+              "graph": 0.633841053710996,
+              "context": 0.6423231113848666
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.3177329812831116,
+              "graph": 0.344931813800404,
+              "context": 0.44494004659954256
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                0.002634581442878056,
+                0.00661311293074616
+              ],
+              "surface_vs_daily_network": [
+                -0.00023012220938543068,
+                0.0022904293098040744
+              ]
+            }
+          },
+          "first_both_one_start_one_win": {
+            "status": "OBSERVED",
+            "pairs": 280,
+            "distinct_pairs": 280,
+            "races": 66,
+            "days": 47,
+            "horses": 209,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.2510130430857663,
+              "graph": 0.25090392653592436,
+              "context": 0.2485764678597979
+            },
+            "gain": {
+              "daily_network_vs_naive": 0.00010911654984191308,
+              "surface_vs_daily_network": 0.0023274586761264406
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.4158730158730159,
+              "graph": 0.4158730158730159,
+              "context": 0.4547619047619048
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0.008990971312569679,
+              "graph": 0.00820530179428478,
+              "context": 0.02037563288570489
+            },
+            "conditional_day_97_5_gain": {
+              "daily_network_vs_naive": [
+                -0.0002625575540827907,
+                0.00038793690547830016
+              ],
+              "surface_vs_daily_network": [
+                -0.00009903133612219875,
+                0.00521385064776183
+              ]
+            }
+          },
+          "first_naive_tie": {
+            "status": "HOLD_SUPPORT",
+            "pairs": 17,
+            "distinct_pairs": 17,
+            "races": 14,
+            "days": 13,
+            "horses": 31,
+            "Brier": {
+              "neutral": 0.25,
+              "naive": 0.25,
+              "graph": 0.2505986518052855,
+              "context": 0.24483805590714589
+            },
+            "gain": {
+              "daily_network_vs_naive": -0.0005986518052855225,
+              "surface_vs_daily_network": 0.00576059589813963
+            },
+            "accuracy_half_for_ties": {
+              "naive": 0.5,
+              "graph": 0.4642857142857143,
+              "context": 0.5714285714285714
+            },
+            "mean_abs_ability_gap": {
+              "naive": 0,
+              "graph": 0.0016284540785058514,
+              "context": 0.02440623913527657
+            }
+          }
+        }
+      }
+    },
+    "limits": [
+      "Historical complete classified fields, not confirmed entries, all career records or wagers.",
+      "Daily ratings use outcomes strictly before the target date. Context residual is only turf/dirt; no exact distance, going or age.",
+      "Online gradients do not retrospectively propagate new opponent evidence to an inactive horse; batch graph refit is a distinct model.",
+      "Historical graph connectivity does not guarantee well-identified ability; no individual rating intervals.",
+      "Conditional calendar-day bootstrap excludes repeated horse and fit dependence. No physiological or genetic inference, no raw export."
+    ]
+  }
+}
