@@ -1,0 +1,694 @@
+{
+  "source_commit": "b477354a0361f5ea18177343e299fea4324b689d",
+  "run_id": 45776547567,
+  "job_id": 139761462575,
+  "artifact_id": 15095529084,
+  "artifact_digest": "sha256:f10c809b0c6d9984089a1453ec3318f84b4119e66a422f3828d1ba2d303c5672",
+  "verification": "JSON extracted from successful job log; metadata digest matches upload log; ZIP bytes not independently verified",
+  "source": {
+    "source": "gervais2020",
+    "doi": "10.5061/dryad.dbrv15dxg",
+    "published_listing": "2020-01-23",
+    "requests": [
+      {
+        "stage": "dataset",
+        "status": 200,
+        "bytes": 5435,
+        "sha256": "aa0987bd1160f3672dca36e7879fb0b05f8ef24d9feb47ccac5479065ceabe3a",
+        "final_host": "datadryad.org"
+      },
+      {
+        "stage": "versions",
+        "status": 200,
+        "bytes": 5751,
+        "sha256": "8d5f28c6eff8a97458fdab52075ac9611c15ac13fae220b3a10c84c8af901ca5",
+        "final_host": "datadryad.org"
+      },
+      {
+        "stage": "files",
+        "status": 200,
+        "bytes": 3373,
+        "sha256": "3d9f35174b8220d30526e3fa5f8b0e4940f8a9f15cd0bac369569272a2538d0d",
+        "final_host": "datadryad.org"
+      },
+      {
+        "stage": "download",
+        "status": 200,
+        "bytes": 1053959,
+        "sha256": "74315d5abbcdf621ef23541591f836c11f9b0036420fb992fe6d9326beec159d",
+        "final_host": "w27i4vubmmwkssdf6xpszafmhq0rffog.lambda-url.us-west-2.on.aws"
+      }
+    ],
+    "status": "ACQUIRED_FOR_SCHEMA_AUDIT",
+    "source_rights_basis": "Dryad public dataset terms, CC0; cite DOI; no source redistribution here",
+    "dataset_identifier": "doi:10.5061/dryad.dbrv15dxg",
+    "explicit_cc0_in_metadata": true,
+    "version_id": "49679",
+    "version_publication_fields": {
+      "versionNumber": 1,
+      "publicationDate": "2020-01-23",
+      "lastModificationDate": "2020-01-23"
+    },
+    "listed_files": [
+      "README.txt",
+      "data_movement_roedeer.csv",
+      "data_spaceuse_roedeer.csv",
+      "grm_readytouse.Rdata",
+      "space_use.R"
+    ],
+    "archive_sha256": "74315d5abbcdf621ef23541591f836c11f9b0036420fb992fe6d9326beec159d",
+    "files": [
+      {
+        "name": "README.txt",
+        "bytes": 1143,
+        "sha256": "5eaee5f739d83094dba25a4da51b7285b5d0410f442a41181db2dd56c32d6e94"
+      },
+      {
+        "name": "data_movement_roedeer.csv",
+        "bytes": 88175,
+        "sha256": "5679945a8dfed913b6f8a078557d7503fffc74021582e8eb726ff7e6294b2771"
+      },
+      {
+        "name": "data_spaceuse_roedeer.csv",
+        "bytes": 123408,
+        "sha256": "8dd311cd6f95a162d266928d44f07dd373d6af56cfe40af5cfd854f16d2ad2f4"
+      },
+      {
+        "name": "grm_readytouse.Rdata",
+        "bytes": 836090,
+        "sha256": "02fdc5ba2d999a60e70ecc6b79e31828bf03290f21614099560b170f5548976b"
+      },
+      {
+        "name": "space_use.R",
+        "bytes": 4248,
+        "sha256": "94bdf68729c9947dd8c23fe3e826456652972455553d5701f88722f1227537f1"
+      }
+    ],
+    "file_content_parity": true,
+    "archive_byte_parity": false
+  },
+  "result": {
+    "status": "RETROSPECTIVE_POH_ROAD_CONTEXT_SENSITIVITY",
+    "primary_seed": 20261124,
+    "qa": {
+      "raw_rows": 2288,
+      "raw_horses": 256,
+      "valid_rows": 2288,
+      "distinct_cells": 2288,
+      "duplicate_rows_collapsed": 0,
+      "animals": 256,
+      "eligible_ge4": 228,
+      "grm_n": 334,
+      "grm_min_eigenvalue": -0.060790281238610105,
+      "grm_max_eigenvalue": 4.99014218464961,
+      "ridge": 1,
+      "minimum_shifted_eigenvalue": 0.9392097187613899,
+      "road_valid_rows": 2288,
+      "road_invalid_rows": 0,
+      "road_deer": 256,
+      "road_deer_constant": 7,
+      "road_ge4": 228
+    },
+    "source": "Dryad 10.5061/dryad.dbrv15dxg v1 locked file content",
+    "results": {
+      "20261124": {
+        "base": {
+          "status": "OBSERVED_MASKED_DEPTH",
+          "n": 228,
+          "donors_per_fold": [
+            128,
+            128
+          ],
+          "targets_per_fold": [
+            115,
+            113
+          ],
+          "depth": [
+            0,
+            1,
+            3
+          ],
+          "N_RMSE": [
+            0.2711632653535747,
+            0.23348900400216593,
+            0.20213512855705662
+          ],
+          "F_RMSE": [
+            0.26302875424362643,
+            0.22710765357106147,
+            0.19880530600219476
+          ],
+          "full_gain": [
+            0.0043453909182591495,
+            0.0029392286793701915,
+            0.0013350605021515089
+          ],
+          "change_3_minus_0": -0.003010330416107641,
+          "mean_du": 0.0015051652080538204,
+          "clipped_gain": [
+            0.0043453909182591495,
+            0.0029392286793701915,
+            0.001434214683319992
+          ],
+          "fixed_prediction_deer_bootstrap_97_5": [
+            [
+              0.0008326905388029871,
+              0.008008970996067764
+            ],
+            [
+              -0.00507858545939722,
+              -0.0013187875766812471
+            ]
+          ],
+          "permuted_label_summary": {
+            "draws": 199,
+            "quantiles": [
+              [
+                -0.0047733229565969214,
+                -0.0019046343316973904,
+                -0.0008782749225879786
+              ],
+              [
+                -0.0013358988462480927,
+                0.0000668921762707286,
+                -0.0000334460881353638
+              ],
+              [
+                0.0023538743972732214,
+                0.0017565498451759555,
+                0.0009523171658486931
+              ]
+            ],
+            "columns": [
+              "gain_0",
+              "change_3_minus_0",
+              "mean_du"
+            ],
+            "gain_0_exceeds_count": 199,
+            "more_negative_change_count": 199,
+            "descriptive_plus_one_tail_gain": 0.005,
+            "descriptive_plus_one_tail_change": 0.005
+          },
+          "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+        },
+        "road": {
+          "status": "OBSERVED_MASKED_DEPTH",
+          "n": 228,
+          "donors_per_fold": [
+            128,
+            128
+          ],
+          "targets_per_fold": [
+            115,
+            113
+          ],
+          "depth": [
+            0,
+            1,
+            3
+          ],
+          "N_RMSE": [
+            0.26193656068914284,
+            0.22951927794025262,
+            0.20276651925808456
+          ],
+          "F_RMSE": [
+            0.2605553416461266,
+            0.22859644549425379,
+            0.2031428626440892
+          ],
+          "full_gain": [
+            0.0007216757653272615,
+            0.00042276405360758257,
+            -0.00015276131119611367
+          ],
+          "change_3_minus_0": -0.0008744370765233751,
+          "mean_du": 0.0004372185382616872,
+          "clipped_gain": [
+            0.0007343366148723752,
+            0.0004263399107185803,
+            -0.00003650705029837894
+          ],
+          "fixed_prediction_deer_bootstrap_97_5": [
+            [
+              -0.0018468632931598046,
+              0.003459444139602328
+            ],
+            [
+              -0.0023918744514789814,
+              0.00040634413560827894
+            ]
+          ],
+          "permuted_label_summary": {
+            "draws": 199,
+            "quantiles": [
+              [
+                -0.004189374505860284,
+                -0.0013491155007822777,
+                -0.000687861565617522
+              ],
+              [
+                -0.0011305877068552269,
+                0.0000406589113018795,
+                -0.00002032945565093947
+              ],
+              [
+                0.001798487460055242,
+                0.0013757231312350414,
+                0.0006745577503911381
+              ]
+            ],
+            "columns": [
+              "gain_0",
+              "change_3_minus_0",
+              "mean_du"
+            ],
+            "gain_0_exceeds_count": 178,
+            "more_negative_change_count": 172,
+            "descriptive_plus_one_tail_gain": 0.11,
+            "descriptive_plus_one_tail_change": 0.14
+          },
+          "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+        },
+        "paired": {
+          "columns": [
+            "gain0_road_minus_base",
+            "change_road_minus_base"
+          ],
+          "mean": [
+            -0.003623715152931888,
+            0.0021358933395842655
+          ],
+          "conditional_97_5": [
+            [
+              -0.005666368300989907,
+              -0.0016774432197115769
+            ],
+            [
+              0.0012078347223002431,
+              0.003231715406549997
+            ]
+          ],
+          "base_own_rmse_change": [
+            -0.009226704664431873,
+            -0.0039697260619133146,
+            0.0006313907010279396
+          ],
+          "genome_rmse_change": [
+            -0.0024734125974998356,
+            0.0014887919231923175,
+            0.004337556641894447
+          ]
+        },
+        "original_gain_parity": true
+      },
+      "20261125": {
+        "base": {
+          "status": "OBSERVED_MASKED_DEPTH",
+          "n": 228,
+          "donors_per_fold": [
+            128,
+            128
+          ],
+          "targets_per_fold": [
+            115,
+            113
+          ],
+          "depth": [
+            0,
+            1,
+            3
+          ],
+          "N_RMSE": [
+            0.26500960877215995,
+            0.23130588373931868,
+            0.20329994010354527
+          ],
+          "F_RMSE": [
+            0.2535593051662923,
+            0.2226106652531603,
+            0.19879170045261488
+          ],
+          "full_gain": [
+            0.005937771505160302,
+            0.003946903567972619,
+            0.0018127254772629343
+          ],
+          "change_3_minus_0": -0.004125046027897368,
+          "mean_du": 0.0020625230139486857,
+          "clipped_gain": [
+            0.005937771505160302,
+            0.003946903567972619,
+            0.0018190168320523516
+          ],
+          "fixed_prediction_deer_bootstrap_97_5": [
+            [
+              0.0016772043213773842,
+              0.0096588364853658
+            ],
+            [
+              -0.005764498223743714,
+              -0.0025773938748978467
+            ]
+          ],
+          "permuted_label_summary": {
+            "draws": 199,
+            "quantiles": [
+              [
+                -0.005231454522964287,
+                -0.0015624711377146463,
+                -0.0006956626838020444
+              ],
+              [
+                -0.0016359273652477339,
+                -0.000031368132033152805,
+                0.00001568406601657687
+              ],
+              [
+                0.002034359514930725,
+                0.0013913253676040873,
+                0.000781235568857323
+              ]
+            ],
+            "columns": [
+              "gain_0",
+              "change_3_minus_0",
+              "mean_du"
+            ],
+            "gain_0_exceeds_count": 199,
+            "more_negative_change_count": 199,
+            "descriptive_plus_one_tail_gain": 0.005,
+            "descriptive_plus_one_tail_change": 0.005
+          },
+          "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+        },
+        "road": {
+          "status": "OBSERVED_MASKED_DEPTH",
+          "n": 228,
+          "donors_per_fold": [
+            128,
+            128
+          ],
+          "targets_per_fold": [
+            115,
+            113
+          ],
+          "depth": [
+            0,
+            1,
+            3
+          ],
+          "N_RMSE": [
+            0.2491025231639837,
+            0.21923947514332523,
+            0.19566195676271955
+          ],
+          "F_RMSE": [
+            0.24306694574515772,
+            0.2151206033599692,
+            0.19373554297615356
+          ],
+          "full_gain": [
+            0.0029705269327835937,
+            0.0017890734711635335,
+            0.0007501407119512939
+          ],
+          "change_3_minus_0": -0.0022203862208323,
+          "mean_du": 0.00111019311041615,
+          "clipped_gain": [
+            0.0029825855127956565,
+            0.0018322026045617253,
+            0.0008154531579126656
+          ],
+          "fixed_prediction_deer_bootstrap_97_5": [
+            [
+              -0.00017759760827328354,
+              0.006003575365626819
+            ],
+            [
+              -0.0033860400790469577,
+              -0.0012287894221497519
+            ]
+          ],
+          "permuted_label_summary": {
+            "draws": 199,
+            "quantiles": [
+              [
+                -0.004081370001482111,
+                -0.0013232372012645076,
+                -0.000652537518611479
+              ],
+              [
+                -0.0014883008872782827,
+                -0.000011152295468386976,
+                0.000005576147734193971
+              ],
+              [
+                0.0014759589063487323,
+                0.0013050750372229577,
+                0.0006616186006322539
+              ]
+            ],
+            "columns": [
+              "gain_0",
+              "change_3_minus_0",
+              "mean_du"
+            ],
+            "gain_0_exceeds_count": 198,
+            "more_negative_change_count": 199,
+            "descriptive_plus_one_tail_gain": 0.01,
+            "descriptive_plus_one_tail_change": 0.005
+          },
+          "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+        },
+        "paired": {
+          "columns": [
+            "gain0_road_minus_base",
+            "change_road_minus_base"
+          ],
+          "mean": [
+            -0.002967244572376709,
+            0.0019046598070650684
+          ],
+          "conditional_97_5": [
+            [
+              -0.005011561988283727,
+              -0.0011020421851875733
+            ],
+            [
+              0.0010373922365409223,
+              0.002899899744329561
+            ]
+          ],
+          "base_own_rmse_change": [
+            -0.015907085608176247,
+            -0.01206640859599345,
+            -0.007637983340825716
+          ],
+          "genome_rmse_change": [
+            -0.010492359421134606,
+            -0.0074900618931911245,
+            -0.00505615747646132
+          ]
+        },
+        "original_gain_parity": true
+      },
+      "20261126": {
+        "base": {
+          "status": "OBSERVED_MASKED_DEPTH",
+          "n": 228,
+          "donors_per_fold": [
+            128,
+            128
+          ],
+          "targets_per_fold": [
+            113,
+            115
+          ],
+          "depth": [
+            0,
+            1,
+            3
+          ],
+          "N_RMSE": [
+            0.26825963645798107,
+            0.23012035652879034,
+            0.19879532754143742
+          ],
+          "F_RMSE": [
+            0.25983631320265493,
+            0.22326753377925662,
+            0.19526837522923973
+          ],
+          "full_gain": [
+            0.004448322893819976,
+            0.003106986849066084,
+            0.0013898438876402187
+          ],
+          "change_3_minus_0": -0.0030584790061797575,
+          "mean_du": 0.001529239503089879,
+          "clipped_gain": [
+            0.004448322893819976,
+            0.0031091414850495263,
+            0.0014358278164212908
+          ],
+          "fixed_prediction_deer_bootstrap_97_5": [
+            [
+              0.00041346997286722056,
+              0.008631557156096453
+            ],
+            [
+              -0.004817592698939707,
+              -0.0014173687868374377
+            ]
+          ],
+          "permuted_label_summary": {
+            "draws": 199,
+            "quantiles": [
+              [
+                -0.004568049299390445,
+                -0.0013762304289197944,
+                -0.0007294705530808675
+              ],
+              [
+                -0.0014289796208804904,
+                -0.00011024733117678207,
+                0.00005512366558839083
+              ],
+              [
+                0.0016252115062561515,
+                0.0014589411061617344,
+                0.0006881152144598965
+              ]
+            ],
+            "columns": [
+              "gain_0",
+              "change_3_minus_0",
+              "mean_du"
+            ],
+            "gain_0_exceeds_count": 199,
+            "more_negative_change_count": 199,
+            "descriptive_plus_one_tail_gain": 0.005,
+            "descriptive_plus_one_tail_change": 0.005
+          },
+          "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+        },
+        "road": {
+          "status": "OBSERVED_MASKED_DEPTH",
+          "n": 228,
+          "donors_per_fold": [
+            128,
+            128
+          ],
+          "targets_per_fold": [
+            113,
+            115
+          ],
+          "depth": [
+            0,
+            1,
+            3
+          ],
+          "N_RMSE": [
+            0.2540411104083619,
+            0.21991559525503582,
+            0.19647227401394696
+          ],
+          "F_RMSE": [
+            0.25489470004948644,
+            0.22124591037866817,
+            0.1989751578669964
+          ],
+          "full_gain": [
+            -0.0004344223358041188,
+            -0.0005868838229089243,
+            -0.0009897589919846837
+          ],
+          "change_3_minus_0": -0.0005553366561805649,
+          "mean_du": 0.0002776683280902825,
+          "clipped_gain": [
+            -0.00043388434145550005,
+            -0.0005789180954821489,
+            -0.0009313244651898224
+          ],
+          "fixed_prediction_deer_bootstrap_97_5": [
+            [
+              -0.003933929289814485,
+              0.00299259655241659
+            ],
+            [
+              -0.0017344408528941076,
+              0.0005705431215341876
+            ]
+          ],
+          "permuted_label_summary": {
+            "draws": 199,
+            "quantiles": [
+              [
+                -0.003888711954323186,
+                -0.0013538668003263714,
+                -0.0005784338004907551
+              ],
+              [
+                -0.0011223074413779068,
+                -0.00008889355208270425,
+                0.00004444677604135235
+              ],
+              [
+                0.0013888466325416968,
+                0.0011568676009815057,
+                0.000676933400163185
+              ]
+            ],
+            "columns": [
+              "gain_0",
+              "change_3_minus_0",
+              "mean_du"
+            ],
+            "gain_0_exceeds_count": 139,
+            "more_negative_change_count": 154,
+            "descriptive_plus_one_tail_gain": 0.305,
+            "descriptive_plus_one_tail_change": 0.23
+          },
+          "qualification": "Retrospective, artificial record revelation, not chronological forecasts; bootstrap conditional, permutation exchangeability not established."
+        },
+        "paired": {
+          "columns": [
+            "gain0_road_minus_base",
+            "change_road_minus_base"
+          ],
+          "mean": [
+            -0.004882745229624095,
+            0.0025031423499991923
+          ],
+          "conditional_97_5": [
+            [
+              -0.006870081345037577,
+              -0.002841538565699969
+            ],
+            [
+              0.001543527543396685,
+              0.0034382775328391938
+            ]
+          ],
+          "base_own_rmse_change": [
+            -0.014218526049619151,
+            -0.010204761273754526,
+            -0.0023230535274904596
+          ],
+          "genome_rmse_change": [
+            -0.004941613153168489,
+            -0.0020216234005884515,
+            0.0037067826377566726
+          ]
+        },
+        "original_gain_parity": true
+      }
+    },
+    "limitations": [
+      "Recorded road distance can be a contemporaneous or outcome-associated variable; not a causal or future-known environmental covariate.",
+      "Same-source, post-POH-result sensitivity; no independent replication. Conditional deer bootstrap excludes shared kin/spatial/donor fit dependence.",
+      "No claim that road distance exhausts shared spatial environment. No raw values, masks or IDs exported."
+    ]
+  }
+}

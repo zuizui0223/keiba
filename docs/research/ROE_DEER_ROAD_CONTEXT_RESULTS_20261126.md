@@ -1,0 +1,17 @@
+# Matched POH recorded-road context sensitivity: initial genomic gain strongly attenuated
+
+26 November 2026. [Frozen protocol](ROE_DEER_ROAD_CONTEXT_PROTOCOL_20261126.md) · [successful source run](https://github.com/zuizui0223/keiba/actions/runs/45776547567) · [aggregate log receipt](../evidence/roe-deer-road-context-20261126.json).
+
+All 2,288 POH records/256 deer had finite nonnegative recorded road distance; 228 focal deer with identical masks and donor sets across arms. Original PR98 gain and RMSE parity passed for every split. Only 7 deer had constant observed road-distance values over their records (including single-record deer); this is not a static environmental proxy. Road scaling and coefficients learned from donors only; the focal record's contemporaneous distance is included in the baseline. Genomic correction refitted from the road-adjusted residuals and held fixed across depths within each arm.
+
+| Seed | Base gain 0 | Road gain 0 | Road gain 3 | Road change 3−0 | Paired gain-0 attenuation (road−base), conditional 97.5% interval | Paired change contrast (road−base), conditional 97.5% interval |
+|---|---:|---:|---:|---:|---|---|
+| 20261124 | 0.004345391 | 0.000721676 | -0.000152761 | -0.000874437 | -0.003623715 [-0.005666368, -0.001677443] | 0.002135893 [0.001207835, 0.003231715] |
+| 20261125 | 0.005937772 | 0.002970527 | 0.000750141 | -0.002220386 | -0.002967245 [-0.005011562, -0.001102042] | 0.001904660 [0.001037392, 0.002899900] |
+| 20261126 | 0.004448323 | -0.000434422 | -0.000989759 | -0.000555337 | -0.004882745 [-0.006870081, -0.002841539] | 0.002503142 [0.001543528, 0.003438278] |
+
+Primary gain-0 attenuation 83.39%; road-adjusted gain0 conditional interval [-0.001846863, 0.003459444] and change interval [-0.002391874, 0.000406344] both span zero. All three road-adjusted gain0 intervals span zero, only seed 20261125 has a negative change interval excluding zero. All paired attenuation intervals are negative and all paired change contrasts positive, consistent with smaller genomic gain and weaker depth-related decline conditional on recorded distance. Three dependent mask/split sensitivities, not independent replicates. Road improves zero-depth no-genome RMSE in all splits; at depth 3 one split worsens. The result is not a percentage of genetic variance or causal mediation. Concurrent road distance may proxy individual realized behavior, not independently measured habitat availability. Conditioning can remove a genuine genetically mediated behavior pathway as well as spatial confounding. Therefore label as **observed-covariate sensitivity: positive attenuation; HOLD residual useful genomic substitution**. PR98 remains valid for its more limited baseline; SPEED remains HOLD. No genetic/spatial causal separation or chronological inference.
+
+Next: compare POH and SPEED only on shared deer and exact recorded period cells, using outcome-blind identical masks, standardized losses and paired repeatability diagnostics. Treat the result as a two-trait within-source comparison rather than a general law; if matched support is insufficient, HOLD. Read source README semantics before claiming true chronology or exogenous environmental availability.
+
+Provenance: head b477354a0361f5ea18177343e299fea4324b689d; artifact 15095529084; sha256:f10c809b0c6d9984089a1453ec3318f84b4119e66a422f3828d1ba2d303c5672; metadata and upload-log parity, not independent ZIP extraction. No raw data redistributed.
