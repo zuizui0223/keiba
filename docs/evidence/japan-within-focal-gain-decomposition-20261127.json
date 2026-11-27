@@ -1,0 +1,458 @@
+{
+  "source_commit": "315e2aaa7994eb943451d974ebc2637d1240c4b8",
+  "run_id": 45934968545,
+  "job_id": 140295954942,
+  "artifact_id": 15170148802,
+  "artifact_digest": "sha256:e10e83016f5f2b04e54a3803b3453d5ccb9d102b7427d91fbd49d62cddfc774c",
+  "verification": "Aggregate JSON from successful job log; artifact metadata and upload-log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_WITHIN_FOCAL_GAIN_DECOMPOSITION",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR112_parity": true,
+    "original_PR113_parity": true,
+    "parent_QA": {
+      "sire": {
+        "known_final": 62199,
+        "conflict_quarantine_final": 0,
+        "no_recorded_label_final": 0,
+        "distinct_source_labels": 1132
+      },
+      "dam": {
+        "known_final": 62199,
+        "conflict_quarantine_final": 0,
+        "no_recorded_label_final": 0,
+        "distinct_source_labels": 19734
+      }
+    },
+    "primary": "2021 matched alignment change and carry-forward gain change, conditional diagnostic",
+    "parameters": {
+      "max_gap_days": 120,
+      "min_opponents_per_depth_bin": 2,
+      "min_horses": 100,
+      "min_dates_each_arm": 30
+    },
+    "results": {
+      "2020": {
+        "original_matched": {
+          "candidate": {
+            "oriented_pairs": 153617,
+            "eligible_novel_event_bins": 3911,
+            "eligible_familiar_event_bins": 33427,
+            "eligible_novel_events": 2305,
+            "eligible_novel_horses": 1966,
+            "eligible_familiar_horses": 5151
+          },
+          "matched_horses": 774,
+          "novel_days": 101,
+          "familiar_days": 102,
+          "mean_gap_days": 46.12532299741602,
+          "mean_eligible_opponents": {
+            "novel": 3.8074935400516794,
+            "familiar": 3.900516795865633
+          },
+          "matched_horse_coverage": 0.3936927772126144,
+          "means": {
+            "novel": {
+              "focal_gain": 0.001185837451190542,
+              "pair_gain": 0.0007358312012463072,
+              "alignment": 0.0021174854843583955,
+              "penalty": 0.0009316480331678529,
+              "full_loss": 0.20617830533652695,
+              "ablated_loss": 0.2073641427877175,
+              "focal_signal_abs": 0.11528545289461319,
+              "focal_signal": 0.046674537816834505
+            },
+            "familiar": {
+              "focal_gain": -0.001409089257938563,
+              "pair_gain": -0.0005322165248817906,
+              "alignment": -0.00036376934266292273,
+              "penalty": 0.0010453199152756412,
+              "full_loss": 0.21964839164366318,
+              "ablated_loss": 0.2182393023857246,
+              "focal_signal_abs": 0.11643927219260759,
+              "focal_signal": 0.04766113498523639
+            }
+          },
+          "novel_minus_familiar": {
+            "focal_gain": 0.002594926709129106,
+            "pair_gain": 0.0012680477261280978,
+            "alignment": 0.0024812548270213195,
+            "penalty": -0.00011367188210778802
+          },
+          "status": "OBSERVED_CONDITIONAL",
+          "conditional_97_5": {
+            "focal": {
+              "focal_gain": [
+                -0.00019431673572280368,
+                0.005473100639539643
+              ],
+              "pair_gain": [
+                -0.0016089849367749403,
+                0.003935913555839978
+              ],
+              "alignment": [
+                -0.0003422674303795252,
+                0.005374572450849756
+              ],
+              "penalty": [
+                -0.0001686689758032981,
+                -0.000057674764023269025
+              ]
+            },
+            "novel_day": {
+              "focal_gain": [
+                -0.00017804038163394346,
+                0.005324895104095557
+              ],
+              "pair_gain": [
+                -0.0013206001477042539,
+                0.003987019331792623
+              ],
+              "alignment": [
+                -0.0003004088584878865,
+                0.005219315463389155
+              ],
+              "penalty": [
+                -0.00016977195401825476,
+                -0.00005598654519292801
+              ]
+            },
+            "familiar_day": {
+              "focal_gain": [
+                -0.000041034602575708915,
+                0.0051482804873670416
+              ],
+              "pair_gain": [
+                -0.0016766112808301818,
+                0.003776331321078996
+              ],
+              "alignment": [
+                -0.00018123465071857343,
+                0.005020181358018321
+              ],
+              "penalty": [
+                -0.00016527254671591977,
+                -0.00006286613832649038
+              ]
+            }
+          }
+        },
+        "decomposition": {
+          "status": "OBSERVED_CONDITIONAL",
+          "matched_horses": 774,
+          "means": {
+            "novel": {
+              "alignment": 0.0021174854843583955,
+              "penalty": 0.0009316480331678529,
+              "focal_gain": 0.001185837451190542,
+              "focal_signal": 0.046674537816834505,
+              "focal_signal_abs": 0.11528545289461319
+            },
+            "familiar": {
+              "alignment": -0.00036376934266292273,
+              "penalty": 0.0010453199152756412,
+              "focal_gain": -0.001409089257938563,
+              "focal_signal": 0.04766113498523639,
+              "focal_signal_abs": 0.11643927219260759
+            }
+          },
+          "carry_novel_means": {
+            "gain": 0.0012241447694186084,
+            "alignment": 0.002188607161419594,
+            "penalty": 0.0009644623920009862
+          },
+          "mean_abs_signed_signal_change": 0.011023456449812504,
+          "mean_change": {
+            "alignment_change": 0.0024812548270213178,
+            "penalty_change": -0.00011367188210778817,
+            "gain_change": 0.0025949267091291053,
+            "carry_gain_change": 0.002633234027357171,
+            "new_signal_increment": -0.000038307318228065967
+          },
+          "conditional_97_5": {
+            "focal": {
+              "alignment_change": [
+                -0.0003422674303795252,
+                0.005374572450849756
+              ],
+              "penalty_change": [
+                -0.0001686689758032981,
+                -0.000057674764023269025
+              ],
+              "gain_change": [
+                -0.00019431673572280368,
+                0.005473100639539643
+              ],
+              "carry_gain_change": [
+                -0.0001454114694206448,
+                0.005524261046180755
+              ],
+              "new_signal_increment": [
+                -0.0002258540103076683,
+                0.00016062097146553894
+              ]
+            },
+            "novel_day": {
+              "alignment_change": [
+                -0.0003004088584878865,
+                0.005219315463389155
+              ],
+              "penalty_change": [
+                -0.00016977195401825476,
+                -0.00005598654519292801
+              ],
+              "gain_change": [
+                -0.00017804038163394346,
+                0.005324895104095557
+              ],
+              "carry_gain_change": [
+                -0.00012601833945939683,
+                0.0053723352932948465
+              ],
+              "new_signal_increment": [
+                -0.00022998706625123978,
+                0.000164726109956626
+              ]
+            },
+            "familiar_day": {
+              "alignment_change": [
+                -0.00018123465071857343,
+                0.005020181358018321
+              ],
+              "penalty_change": [
+                -0.00016527254671591977,
+                -0.00006286613832649038
+              ],
+              "gain_change": [
+                -0.000041034602575708915,
+                0.0051482804873670416
+              ],
+              "carry_gain_change": [
+                -0.000011062994290458344,
+                0.005126025844029588
+              ],
+              "new_signal_increment": [
+                -0.00021870648872234145,
+                0.00015829349795311426
+              ]
+            }
+          }
+        }
+      },
+      "2021": {
+        "original_matched": {
+          "candidate": {
+            "oriented_pairs": 153377,
+            "eligible_novel_event_bins": 3905,
+            "eligible_familiar_event_bins": 33189,
+            "eligible_novel_events": 2315,
+            "eligible_novel_horses": 1924,
+            "eligible_familiar_horses": 5212
+          },
+          "matched_horses": 774,
+          "novel_days": 100,
+          "familiar_days": 98,
+          "mean_gap_days": 45.54780361757106,
+          "mean_eligible_opponents": {
+            "novel": 3.806201550387597,
+            "familiar": 3.958656330749354
+          },
+          "matched_horse_coverage": 0.4022869022869023,
+          "means": {
+            "novel": {
+              "focal_gain": 0.001943213515905436,
+              "pair_gain": 0.0012049190129918158,
+              "alignment": 0.002777348423230602,
+              "penalty": 0.0008341349073251655,
+              "full_loss": 0.2038078551944855,
+              "ablated_loss": 0.20575106871039098,
+              "focal_signal_abs": 0.10953446329919563,
+              "focal_signal": 0.0523265545471938
+            },
+            "familiar": {
+              "focal_gain": -0.00020973056566207684,
+              "pair_gain": -0.0003273884456215772,
+              "alignment": 0.0006946606771230304,
+              "penalty": 0.0009043912427851059,
+              "full_loss": 0.2099836847268351,
+              "ablated_loss": 0.209773954161173,
+              "focal_signal_abs": 0.11039756437721365,
+              "focal_signal": 0.05268526401018209
+            }
+          },
+          "novel_minus_familiar": {
+            "focal_gain": 0.002152944081567516,
+            "pair_gain": 0.0015323074586133937,
+            "alignment": 0.0020826877461075704,
+            "penalty": -0.00007025633545994034
+          },
+          "status": "OBSERVED_CONDITIONAL",
+          "conditional_97_5": {
+            "focal": {
+              "focal_gain": [
+                -0.00008924170157201355,
+                0.004490191600886456
+              ],
+              "pair_gain": [
+                -0.0009135552215376249,
+                0.0037336879233854404
+              ],
+              "alignment": [
+                -0.00015480793709000067,
+                0.004418699293419783
+              ],
+              "penalty": [
+                -0.00011103067500363945,
+                -0.00002716174389170584
+              ]
+            },
+            "novel_day": {
+              "focal_gain": [
+                -0.00012909158856043294,
+                0.004533423956348437
+              ],
+              "pair_gain": [
+                -0.00090329348283328,
+                0.003937296871778633
+              ],
+              "alignment": [
+                -0.00020202081954150315,
+                0.004471448338721468
+              ],
+              "penalty": [
+                -0.00011361971589569727,
+                -0.00002841755040333649
+              ]
+            },
+            "familiar_day": {
+              "focal_gain": [
+                -0.000012085158213658883,
+                0.004332664283770755
+              ],
+              "pair_gain": [
+                -0.0010457657865177452,
+                0.004116093430012074
+              ],
+              "alignment": [
+                -0.00008543278327545766,
+                0.004203557688183275
+              ],
+              "penalty": [
+                -0.00011991280448642421,
+                -0.00002451936567954136
+              ]
+            }
+          }
+        },
+        "decomposition": {
+          "status": "OBSERVED_CONDITIONAL",
+          "matched_horses": 774,
+          "means": {
+            "novel": {
+              "alignment": 0.002777348423230602,
+              "penalty": 0.0008341349073251655,
+              "focal_gain": 0.001943213515905436,
+              "focal_signal": 0.0523265545471938,
+              "focal_signal_abs": 0.10953446329919563
+            },
+            "familiar": {
+              "alignment": 0.0006946606771230304,
+              "penalty": 0.0009043912427851059,
+              "focal_gain": -0.00020973056566207684,
+              "focal_signal": 0.05268526401018209,
+              "focal_signal_abs": 0.11039756437721365
+            }
+          },
+          "carry_novel_means": {
+            "gain": 0.0017617773018607627,
+            "alignment": 0.0025985381491610703,
+            "penalty": 0.0008367608473003075
+          },
+          "mean_abs_signed_signal_change": 0.011019409280003804,
+          "mean_change": {
+            "alignment_change": 0.002082687746107571,
+            "penalty_change": -0.00007025633545994033,
+            "gain_change": 0.002152944081567513,
+            "carry_gain_change": 0.00197150786752284,
+            "new_signal_increment": 0.00018143621404467325
+          },
+          "conditional_97_5": {
+            "focal": {
+              "alignment_change": [
+                -0.00015480793709000067,
+                0.004418699293419783
+              ],
+              "penalty_change": [
+                -0.00011103067500363945,
+                -0.00002716174389170584
+              ],
+              "gain_change": [
+                -0.00008924170157201355,
+                0.004490191600886456
+              ],
+              "carry_gain_change": [
+                -0.00013948399852802934,
+                0.004258682702570235
+              ],
+              "new_signal_increment": [
+                -0.0000182528453370796,
+                0.0003920226735943739
+              ]
+            },
+            "novel_day": {
+              "alignment_change": [
+                -0.00020202081954150315,
+                0.004471448338721468
+              ],
+              "penalty_change": [
+                -0.00011361971589569727,
+                -0.00002841755040333649
+              ],
+              "gain_change": [
+                -0.00012909158856043294,
+                0.004533423956348437
+              ],
+              "carry_gain_change": [
+                -0.0002562318295399647,
+                0.004244876138760845
+              ],
+              "new_signal_increment": [
+                -0.00005813410518025267,
+                0.0004021234972555489
+              ]
+            },
+            "familiar_day": {
+              "alignment_change": [
+                -0.00008543278327545766,
+                0.004203557688183275
+              ],
+              "penalty_change": [
+                -0.00011991280448642421,
+                -0.00002451936567954136
+              ],
+              "gain_change": [
+                -0.000012085158213658883,
+                0.004332664283770755
+              ],
+              "carry_gain_change": [
+                -0.00011519971784105196,
+                0.004192905096012274
+              ],
+              "new_signal_increment": [
+                0.000014683173517677221,
+                0.0003534238720589247
+              ]
+            }
+          }
+        }
+      }
+    },
+    "limits": [
+      "Exact Brier decomposition and carry-forward familiar logit score on fixed V ablation, not refitted model performance or causal genotype effect.",
+      "Selected same-year focal horses with earlier familiar events, common coarse total-depth bins for both focal and opponents. No outcome-based matching.",
+      "Both events use different opponents and contexts, different days; within-focal matching is not a controlled transition experiment.",
+      "Same previously inspected archive. Single-axis conditional resampling omits crossed opponent, race, parent and fit dependence.",
+      "Recorded JRA histories only; no official career, future forecasting or raw exports."
+    ]
+  }
+}
