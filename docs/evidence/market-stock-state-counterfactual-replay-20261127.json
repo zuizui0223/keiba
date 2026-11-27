@@ -1,0 +1,349 @@
+{
+  "status": "COMPACT_REPLAY_VERIFIED",
+  "source_commit": "ce615295b1794ec5ceccad8d155d9818d5df6817",
+  "run_id": 45971343651,
+  "job_id": 140412263558,
+  "artifact_id": 15185276417,
+  "artifact_digest": "sha256:5137a6135886c658b34e67d1e58cd23548ad628aa13c51c36e2751523c7c2bd2",
+  "comparison": {
+    "status": "SYNTHETIC_STOCK_STATE_REPLAY",
+    "parent_numeric_values": 240,
+    "summary_numeric_values": 6934,
+    "max_abs_diff": 0,
+    "rows": 96,
+    "qa": {
+      "stock_rescale": true,
+      "first_arrival_stock_invariance": true,
+      "conservation": true,
+      "exact_decomposition": true,
+      "original_PR123_terminal_parity": true
+    },
+    "counts": {
+      "differential": {
+        "reverse_r": {
+          "total": {
+            "positive": 43,
+            "negative": 0,
+            "unresolved": 5
+          },
+          "stock": {
+            "positive": 39,
+            "negative": 0,
+            "unresolved": 9
+          },
+          "state": {
+            "positive": 27,
+            "negative": 1,
+            "unresolved": 20
+          },
+          "interaction": {
+            "positive": 19,
+            "negative": 0,
+            "unresolved": 29
+          },
+          "state_small": {
+            "positive": 26,
+            "negative": 1,
+            "unresolved": 21
+          },
+          "state_large": {
+            "positive": 27,
+            "negative": 1,
+            "unresolved": 20
+          }
+        },
+        "D": {
+          "total": {
+            "positive": 2,
+            "negative": 3,
+            "unresolved": 43
+          },
+          "stock": {
+            "positive": 3,
+            "negative": 3,
+            "unresolved": 42
+          },
+          "state": {
+            "positive": 4,
+            "negative": 3,
+            "unresolved": 41
+          },
+          "interaction": {
+            "positive": 1,
+            "negative": 1,
+            "unresolved": 46
+          },
+          "state_small": {
+            "positive": 2,
+            "negative": 3,
+            "unresolved": 43
+          },
+          "state_large": {
+            "positive": 4,
+            "negative": 2,
+            "unresolved": 42
+          }
+        },
+        "R": {
+          "total": {
+            "positive": 1,
+            "negative": 8,
+            "unresolved": 39
+          },
+          "stock": {
+            "positive": 0,
+            "negative": 10,
+            "unresolved": 38
+          },
+          "state": {
+            "positive": 1,
+            "negative": 2,
+            "unresolved": 45
+          },
+          "interaction": {
+            "positive": 0,
+            "negative": 2,
+            "unresolved": 46
+          },
+          "state_small": {
+            "positive": 1,
+            "negative": 2,
+            "unresolved": 45
+          },
+          "state_large": {
+            "positive": 2,
+            "negative": 2,
+            "unresolved": 44
+          }
+        },
+        "M": {
+          "total": {
+            "positive": 17,
+            "negative": 1,
+            "unresolved": 30
+          },
+          "stock": {
+            "positive": 19,
+            "negative": 1,
+            "unresolved": 28
+          },
+          "state": {
+            "positive": 10,
+            "negative": 2,
+            "unresolved": 36
+          },
+          "interaction": {
+            "positive": 4,
+            "negative": 2,
+            "unresolved": 42
+          },
+          "state_small": {
+            "positive": 8,
+            "negative": 2,
+            "unresolved": 38
+          },
+          "state_large": {
+            "positive": 11,
+            "negative": 2,
+            "unresolved": 35
+          }
+        },
+        "flow_reverse_difference": {
+          "total": {
+            "positive": 29,
+            "negative": 0,
+            "unresolved": 19
+          },
+          "stock": {
+            "positive": 24,
+            "negative": 6,
+            "unresolved": 18
+          },
+          "state": {
+            "positive": 27,
+            "negative": 6,
+            "unresolved": 15
+          },
+          "interaction": {
+            "positive": 4,
+            "negative": 3,
+            "unresolved": 41
+          },
+          "state_small": {
+            "positive": 25,
+            "negative": 5,
+            "unresolved": 18
+          },
+          "state_large": {
+            "positive": 28,
+            "negative": 7,
+            "unresolved": 13
+          }
+        }
+      },
+      "group": {
+        "reverse_r": {
+          "total": {
+            "positive": 2,
+            "negative": 15,
+            "unresolved": 31
+          },
+          "stock": {
+            "positive": 2,
+            "negative": 9,
+            "unresolved": 37
+          },
+          "state": {
+            "positive": 2,
+            "negative": 16,
+            "unresolved": 30
+          },
+          "interaction": {
+            "positive": 1,
+            "negative": 8,
+            "unresolved": 39
+          },
+          "state_small": {
+            "positive": 0,
+            "negative": 14,
+            "unresolved": 34
+          },
+          "state_large": {
+            "positive": 3,
+            "negative": 13,
+            "unresolved": 32
+          }
+        },
+        "D": {
+          "total": {
+            "positive": 34,
+            "negative": 0,
+            "unresolved": 14
+          },
+          "stock": {
+            "positive": 31,
+            "negative": 0,
+            "unresolved": 17
+          },
+          "state": {
+            "positive": 22,
+            "negative": 1,
+            "unresolved": 25
+          },
+          "interaction": {
+            "positive": 15,
+            "negative": 0,
+            "unresolved": 33
+          },
+          "state_small": {
+            "positive": 22,
+            "negative": 0,
+            "unresolved": 26
+          },
+          "state_large": {
+            "positive": 25,
+            "negative": 2,
+            "unresolved": 21
+          }
+        },
+        "R": {
+          "total": {
+            "positive": 14,
+            "negative": 6,
+            "unresolved": 28
+          },
+          "stock": {
+            "positive": 12,
+            "negative": 8,
+            "unresolved": 28
+          },
+          "state": {
+            "positive": 16,
+            "negative": 2,
+            "unresolved": 30
+          },
+          "interaction": {
+            "positive": 9,
+            "negative": 1,
+            "unresolved": 38
+          },
+          "state_small": {
+            "positive": 15,
+            "negative": 3,
+            "unresolved": 30
+          },
+          "state_large": {
+            "positive": 14,
+            "negative": 1,
+            "unresolved": 33
+          }
+        },
+        "M": {
+          "total": {
+            "positive": 44,
+            "negative": 0,
+            "unresolved": 4
+          },
+          "stock": {
+            "positive": 42,
+            "negative": 0,
+            "unresolved": 6
+          },
+          "state": {
+            "positive": 31,
+            "negative": 0,
+            "unresolved": 17
+          },
+          "interaction": {
+            "positive": 29,
+            "negative": 0,
+            "unresolved": 19
+          },
+          "state_small": {
+            "positive": 30,
+            "negative": 0,
+            "unresolved": 18
+          },
+          "state_large": {
+            "positive": 31,
+            "negative": 1,
+            "unresolved": 16
+          }
+        },
+        "flow_reverse_difference": {
+          "total": {
+            "positive": 1,
+            "negative": 19,
+            "unresolved": 28
+          },
+          "stock": {
+            "positive": 3,
+            "negative": 2,
+            "unresolved": 43
+          },
+          "state": {
+            "positive": 1,
+            "negative": 18,
+            "unresolved": 29
+          },
+          "interaction": {
+            "positive": 3,
+            "negative": 2,
+            "unresolved": 43
+          },
+          "state_small": {
+            "positive": 0,
+            "negative": 16,
+            "unresolved": 32
+          },
+          "state_large": {
+            "positive": 1,
+            "negative": 21,
+            "unresolved": 26
+          }
+        }
+      }
+    }
+  },
+  "verification": "CI verified all compact numeric summary fields and 240 earlier terminal means; full aggregate generated in Actions, ZIP not independently verified."
+}
