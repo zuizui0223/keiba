@@ -1,0 +1,1025 @@
+{
+  "source_commit": "6907eb2a9e750636b7303a434701b8e8ca01a88e",
+  "run_id": 45932214756,
+  "job_id": 140287177607,
+  "artifact_id": 15167884973,
+  "artifact_digest": "sha256:b4e381ad583589fbcc4036d11e2840e4b88722ae83f4d380b32d269c3dbb29ac",
+  "verification": "Aggregate JSON from completed job log; artifact metadata and upload-log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_CONTEXT_NOVELTY_FAMILY_ABILITY",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR111_parity": true,
+    "calibration": {
+      "year": 2019,
+      "pairs": 217613,
+      "fits": {
+        "O": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284
+          ],
+          "beta": [
+            0.4443129306121057,
+            -1.1543816416294344,
+            1.6980829311782153,
+            -0.002547761027781495
+          ],
+          "raw_scale_beta": [
+            1.0130220568999733,
+            -2.580554488913519,
+            2.9695284031516187,
+            -0.003593108603193468
+          ],
+          "max_abs_gradient": 1.5984656239701606e-9
+        },
+        "N": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992
+          ],
+          "beta": [
+            0.44221643809514016,
+            -1.1509390511845252,
+            1.6935770754444177,
+            -0.0006432792857748758,
+            0,
+            0,
+            0.06530721805159029,
+            -0.04036300328709381
+          ],
+          "raw_scale_beta": [
+            1.0082421078697121,
+            -2.5728587738174595,
+            2.961648772341873,
+            -0.0009072170862062843,
+            0,
+            0,
+            0.03600189243498573,
+            -0.043619714673217465
+          ],
+          "max_abs_gradient": 5.834478620381791e-9
+        },
+        "F": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_ability",
+            "dam_ability"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.04818603803939379,
+            0.03315057973942845
+          ],
+          "beta": [
+            0.39112229800654563,
+            -1.0887027503162126,
+            1.656963575739366,
+            0.04426556285384625,
+            0,
+            0,
+            0.006902221945995203,
+            -0.04458331244335443,
+            0.18006918572064545,
+            0.11988458644407649
+          ],
+          "raw_scale_beta": [
+            0.8917487822832224,
+            -2.4337330637512458,
+            2.897620788009273,
+            0.06242774458868791,
+            0,
+            0,
+            0.003804986025676624,
+            -0.04818054182276008,
+            3.7369576966139557,
+            3.616364702711031
+          ],
+          "max_abs_gradient": 5.53499463412855e-9
+        },
+        "U": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_raw_ability",
+            "dam_raw_ability"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.09107933425922382,
+            0.06535285167006159
+          ],
+          "beta": [
+            0.40499150630563463,
+            -1.1214910399350273,
+            1.67531061480312,
+            0.03089636426352033,
+            0,
+            0,
+            0.010291486871491342,
+            -0.04200433061167604,
+            0.15457670914178345,
+            0.09041492607187636
+          ],
+          "raw_scale_beta": [
+            0.9233702205775383,
+            -2.5070294199200753,
+            2.9297052360731537,
+            0.04357315738490646,
+            0,
+            0,
+            0.005673385184633152,
+            -0.04539347340654058,
+            1.6971655579062284,
+            1.383488612376739
+          ],
+          "max_abs_gradient": 8.729623640622207e-8
+        },
+        "C": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "ctx_rank",
+            "ctx_log_n",
+            "ctx_known"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.39554149644716846,
+            1.0049812407695011,
+            0.5195656119208476
+          ],
+          "beta": [
+            0.4335290337944532,
+            -1.0699203036439573,
+            1.626206264454275,
+            -0.021478348928700954,
+            0,
+            0,
+            0.06576134969798648,
+            -0.039475320143245375,
+            -0.03254140614979795,
+            -0.017890642335468568,
+            0.15712968216648282
+          ],
+          "raw_scale_beta": [
+            0.9884350494487933,
+            -2.391745972719157,
+            2.843833833444998,
+            -0.030290925827257505,
+            0,
+            0,
+            0.03625224146488872,
+            -0.04266040832082633,
+            -0.08227052393261203,
+            -0.017801966454388675,
+            0.3024251000476538
+          ],
+          "max_abs_gradient": 2.0000898808462768e-8
+        },
+        "V": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "ctx_rank",
+            "ctx_log_n",
+            "ctx_known",
+            "sire_raw_ability",
+            "dam_raw_ability"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.39554149644716846,
+            1.0049812407695011,
+            0.5195656119208476,
+            0.09107933425922382,
+            0.06535285167006159
+          ],
+          "beta": [
+            0.39718581221086613,
+            -1.0397061951205466,
+            1.6059657241035101,
+            0.006735141479328105,
+            0,
+            0,
+            0.010428124175861435,
+            -0.041029914770060474,
+            -0.03332118707669704,
+            -0.00999810062385381,
+            0.15391704894807204,
+            0.15566113068691978,
+            0.08967347053659122
+          ],
+          "raw_scale_beta": [
+            0.9055734387541489,
+            -2.324204051948005,
+            2.8084381184518383,
+            0.009498573268534384,
+            0,
+            0,
+            0.005748709194463926,
+            -0.04434043628038786,
+            -0.08424195027827547,
+            -0.009948544528252482,
+            0.29624179394597866,
+            1.7090718981749211,
+            1.3721431926079364
+          ],
+          "max_abs_gradient": 6.215177791042733e-8
+        }
+      }
+    },
+    "primary": "2021 standardized novel-minus-familiar V vs C gain",
+    "results": {
+      "2020": {
+        "unmatched": {
+          "novel": {
+            "pairs": 16456,
+            "days": 109,
+            "races": 1457,
+            "gain": {
+              "raw_gain": 0.0010747491957124493,
+              "context_adjusted_gain": 0.0011495854507691664
+            },
+            "Brier": {
+              "N": 0.204094317342734,
+              "U": 0.20301956814702157,
+              "C": 0.2026535329164091,
+              "V": 0.20150394746563996
+            }
+          },
+          "familiar": {
+            "pairs": 68791,
+            "days": 109,
+            "races": 2201,
+            "gain": {
+              "raw_gain": 0.00028583443529964355,
+              "context_adjusted_gain": 0.00026174768602706437
+            },
+            "Brier": {
+              "N": 0.21324597853482485,
+              "U": 0.21296014409952527,
+              "C": 0.21299595846903932,
+              "V": 0.21273421078301225
+            }
+          }
+        },
+        "common_cells": 42,
+        "cells": {
+          "dirt:2|16+|16+": {
+            "novel_pairs": 46,
+            "familiar_pairs": 65,
+            "novel_days": 13,
+            "familiar_days": 26
+          },
+          "dirt:2|4-7|16+": {
+            "novel_pairs": 140,
+            "familiar_pairs": 45,
+            "novel_days": 30,
+            "familiar_days": 16
+          },
+          "dirt:2|4-7|8-15": {
+            "novel_pairs": 171,
+            "familiar_pairs": 52,
+            "novel_days": 41,
+            "familiar_days": 16
+          },
+          "dirt:2|8-15|16+": {
+            "novel_pairs": 205,
+            "familiar_pairs": 120,
+            "novel_days": 33,
+            "familiar_days": 31
+          },
+          "dirt:2|8-15|8-15": {
+            "novel_pairs": 128,
+            "familiar_pairs": 60,
+            "novel_days": 31,
+            "familiar_days": 18
+          },
+          "dirt:3|16+|16+": {
+            "novel_pairs": 477,
+            "familiar_pairs": 3010,
+            "novel_days": 46,
+            "familiar_days": 103
+          },
+          "dirt:3|4-7|16+": {
+            "novel_pairs": 340,
+            "familiar_pairs": 1825,
+            "novel_days": 72,
+            "familiar_days": 97
+          },
+          "dirt:3|4-7|4-7": {
+            "novel_pairs": 575,
+            "familiar_pairs": 1165,
+            "novel_days": 88,
+            "familiar_days": 101
+          },
+          "dirt:3|4-7|8-15": {
+            "novel_pairs": 721,
+            "familiar_pairs": 2327,
+            "novel_days": 89,
+            "familiar_days": 105
+          },
+          "dirt:3|8-15|16+": {
+            "novel_pairs": 872,
+            "familiar_pairs": 5844,
+            "novel_days": 78,
+            "familiar_days": 104
+          },
+          "dirt:3|8-15|8-15": {
+            "novel_pairs": 594,
+            "familiar_pairs": 2913,
+            "novel_days": 64,
+            "familiar_days": 106
+          },
+          "dirt:4|16+|16+": {
+            "novel_pairs": 367,
+            "familiar_pairs": 3020,
+            "novel_days": 51,
+            "familiar_days": 104
+          },
+          "dirt:4|4-7|16+": {
+            "novel_pairs": 345,
+            "familiar_pairs": 2009,
+            "novel_days": 69,
+            "familiar_days": 106
+          },
+          "dirt:4|4-7|4-7": {
+            "novel_pairs": 988,
+            "familiar_pairs": 1608,
+            "novel_days": 96,
+            "familiar_days": 104
+          },
+          "dirt:4|4-7|8-15": {
+            "novel_pairs": 1080,
+            "familiar_pairs": 3267,
+            "novel_days": 101,
+            "familiar_days": 108
+          },
+          "dirt:4|8-15|16+": {
+            "novel_pairs": 848,
+            "familiar_pairs": 6486,
+            "novel_days": 88,
+            "familiar_days": 108
+          },
+          "dirt:4|8-15|8-15": {
+            "novel_pairs": 688,
+            "familiar_pairs": 3570,
+            "novel_days": 80,
+            "familiar_days": 108
+          },
+          "dirt:5|16+|16+": {
+            "novel_pairs": 164,
+            "familiar_pairs": 58,
+            "novel_days": 26,
+            "familiar_days": 21
+          },
+          "dirt:5|8-15|16+": {
+            "novel_pairs": 258,
+            "familiar_pairs": 70,
+            "novel_days": 30,
+            "familiar_days": 18
+          },
+          "turf:3|16+|16+": {
+            "novel_pairs": 164,
+            "familiar_pairs": 2323,
+            "novel_days": 28,
+            "familiar_days": 95
+          },
+          "turf:3|4-7|16+": {
+            "novel_pairs": 238,
+            "familiar_pairs": 996,
+            "novel_days": 47,
+            "familiar_days": 81
+          },
+          "turf:3|4-7|4-7": {
+            "novel_pairs": 506,
+            "familiar_pairs": 941,
+            "novel_days": 67,
+            "familiar_days": 90
+          },
+          "turf:3|4-7|8-15": {
+            "novel_pairs": 594,
+            "familiar_pairs": 1687,
+            "novel_days": 71,
+            "familiar_days": 92
+          },
+          "turf:3|8-15|16+": {
+            "novel_pairs": 560,
+            "familiar_pairs": 4471,
+            "novel_days": 63,
+            "familiar_days": 97
+          },
+          "turf:3|8-15|8-15": {
+            "novel_pairs": 453,
+            "familiar_pairs": 2286,
+            "novel_days": 56,
+            "familiar_days": 100
+          },
+          "turf:4|16+|16+": {
+            "novel_pairs": 62,
+            "familiar_pairs": 1616,
+            "novel_days": 14,
+            "familiar_days": 97
+          },
+          "turf:4|4-7|16+": {
+            "novel_pairs": 136,
+            "familiar_pairs": 1196,
+            "novel_days": 39,
+            "familiar_days": 94
+          },
+          "turf:4|4-7|4-7": {
+            "novel_pairs": 388,
+            "familiar_pairs": 854,
+            "novel_days": 61,
+            "familiar_days": 95
+          },
+          "turf:4|4-7|8-15": {
+            "novel_pairs": 338,
+            "familiar_pairs": 1804,
+            "novel_days": 62,
+            "familiar_days": 100
+          },
+          "turf:4|8-15|16+": {
+            "novel_pairs": 224,
+            "familiar_pairs": 3601,
+            "novel_days": 46,
+            "familiar_days": 103
+          },
+          "turf:4|8-15|8-15": {
+            "novel_pairs": 227,
+            "familiar_pairs": 2074,
+            "novel_days": 42,
+            "familiar_days": 100
+          },
+          "turf:5|16+|16+": {
+            "novel_pairs": 115,
+            "familiar_pairs": 1032,
+            "novel_days": 25,
+            "familiar_days": 85
+          },
+          "turf:5|4-7|16+": {
+            "novel_pairs": 142,
+            "familiar_pairs": 557,
+            "novel_days": 44,
+            "familiar_days": 80
+          },
+          "turf:5|4-7|4-7": {
+            "novel_pairs": 416,
+            "familiar_pairs": 362,
+            "novel_days": 71,
+            "familiar_days": 67
+          },
+          "turf:5|4-7|8-15": {
+            "novel_pairs": 421,
+            "familiar_pairs": 859,
+            "novel_days": 70,
+            "familiar_days": 92
+          },
+          "turf:5|8-15|16+": {
+            "novel_pairs": 299,
+            "familiar_pairs": 2205,
+            "novel_days": 52,
+            "familiar_days": 97
+          },
+          "turf:5|8-15|8-15": {
+            "novel_pairs": 281,
+            "familiar_pairs": 1148,
+            "novel_days": 55,
+            "familiar_days": 99
+          },
+          "turf:6|16+|16+": {
+            "novel_pairs": 116,
+            "familiar_pairs": 345,
+            "novel_days": 28,
+            "familiar_days": 48
+          },
+          "turf:6|4-7|16+": {
+            "novel_pairs": 115,
+            "familiar_pairs": 84,
+            "novel_days": 31,
+            "familiar_days": 21
+          },
+          "turf:6|4-7|8-15": {
+            "novel_pairs": 148,
+            "familiar_pairs": 57,
+            "novel_days": 38,
+            "familiar_days": 23
+          },
+          "turf:6|8-15|16+": {
+            "novel_pairs": 295,
+            "familiar_pairs": 490,
+            "novel_days": 49,
+            "familiar_days": 56
+          },
+          "turf:6|8-15|8-15": {
+            "novel_pairs": 132,
+            "familiar_pairs": 149,
+            "novel_days": 34,
+            "familiar_days": 47
+          }
+        },
+        "matched": {
+          "novel": {
+            "pairs": 15377,
+            "days": 109,
+            "races": 1413,
+            "gain": {
+              "raw_gain": 0.0010285600157540235,
+              "context_adjusted_gain": 0.0011053751561287842
+            },
+            "Brier": {
+              "N": 0.20339918452159086,
+              "U": 0.20237062450583687,
+              "C": 0.20186102211094303,
+              "V": 0.20075564695481424
+            }
+          },
+          "familiar": {
+            "pairs": 68651,
+            "days": 109,
+            "races": 2179,
+            "gain": {
+              "raw_gain": 0.00024659968141338727,
+              "context_adjusted_gain": 0.00022140999650841156
+            },
+            "Brier": {
+              "N": 0.21298278106789792,
+              "U": 0.2127361813864845,
+              "C": 0.2127583621809647,
+              "V": 0.2125369521844563
+            }
+          }
+        },
+        "novel_pair_coverage": 0.9344312105007292,
+        "standardized_gain": {
+          "novel": {
+            "raw_gain": 0.0009774290787800894,
+            "context_adjusted_gain": 0.001089115089855638
+          },
+          "familiar": {
+            "raw_gain": 0.0003881693603255408,
+            "context_adjusted_gain": 0.0003553327255668581
+          }
+        },
+        "novel_minus_familiar": {
+          "raw_gain": 0.0005892597184545486,
+          "context_adjusted_gain": 0.0007337823642887799
+        },
+        "status": "OBSERVED_CONDITIONAL",
+        "conditional_day_97_5_novel_minus_familiar": {
+          "raw_gain": [
+            -0.0004960912066019155,
+            0.0016059263065441565
+          ],
+          "context_adjusted_gain": [
+            -0.0003330081085255724,
+            0.0017367135431399804
+          ]
+        }
+      },
+      "2021": {
+        "unmatched": {
+          "novel": {
+            "pairs": 16271,
+            "days": 106,
+            "races": 1417,
+            "gain": {
+              "raw_gain": 0.0009808060047886973,
+              "context_adjusted_gain": 0.001140799674752282
+            },
+            "Brier": {
+              "N": 0.20038376028203853,
+              "U": 0.19940295427724986,
+              "C": 0.19916662881523356,
+              "V": 0.1980258291404813
+            }
+          },
+          "familiar": {
+            "pairs": 68785,
+            "days": 106,
+            "races": 2236,
+            "gain": {
+              "raw_gain": 0.00044260625973834787,
+              "context_adjusted_gain": 0.0004117650479394212
+            },
+            "Brier": {
+              "N": 0.21593165300611084,
+              "U": 0.21548904674637248,
+              "C": 0.21560524962992692,
+              "V": 0.21519348458198753
+            }
+          }
+        },
+        "common_cells": 44,
+        "cells": {
+          "dirt:2|16+|16+": {
+            "novel_pairs": 42,
+            "familiar_pairs": 84,
+            "novel_days": 12,
+            "familiar_days": 22
+          },
+          "dirt:2|4-7|16+": {
+            "novel_pairs": 88,
+            "familiar_pairs": 31,
+            "novel_days": 19,
+            "familiar_days": 11
+          },
+          "dirt:2|4-7|8-15": {
+            "novel_pairs": 183,
+            "familiar_pairs": 28,
+            "novel_days": 30,
+            "familiar_days": 11
+          },
+          "dirt:2|8-15|16+": {
+            "novel_pairs": 200,
+            "familiar_pairs": 186,
+            "novel_days": 26,
+            "familiar_days": 29
+          },
+          "dirt:2|8-15|8-15": {
+            "novel_pairs": 195,
+            "familiar_pairs": 79,
+            "novel_days": 30,
+            "familiar_days": 28
+          },
+          "dirt:3|16+|16+": {
+            "novel_pairs": 391,
+            "familiar_pairs": 2920,
+            "novel_days": 45,
+            "familiar_days": 93
+          },
+          "dirt:3|4-7|16+": {
+            "novel_pairs": 381,
+            "familiar_pairs": 1711,
+            "novel_days": 65,
+            "familiar_days": 93
+          },
+          "dirt:3|4-7|4-7": {
+            "novel_pairs": 651,
+            "familiar_pairs": 1242,
+            "novel_days": 82,
+            "familiar_days": 96
+          },
+          "dirt:3|4-7|8-15": {
+            "novel_pairs": 841,
+            "familiar_pairs": 2616,
+            "novel_days": 83,
+            "familiar_days": 97
+          },
+          "dirt:3|8-15|16+": {
+            "novel_pairs": 746,
+            "familiar_pairs": 6208,
+            "novel_days": 71,
+            "familiar_days": 96
+          },
+          "dirt:3|8-15|8-15": {
+            "novel_pairs": 615,
+            "familiar_pairs": 3645,
+            "novel_days": 56,
+            "familiar_days": 98
+          },
+          "dirt:4|16+|16+": {
+            "novel_pairs": 362,
+            "familiar_pairs": 2641,
+            "novel_days": 48,
+            "familiar_days": 105
+          },
+          "dirt:4|4-7|16+": {
+            "novel_pairs": 342,
+            "familiar_pairs": 1870,
+            "novel_days": 71,
+            "familiar_days": 103
+          },
+          "dirt:4|4-7|4-7": {
+            "novel_pairs": 951,
+            "familiar_pairs": 1743,
+            "novel_days": 91,
+            "familiar_days": 104
+          },
+          "dirt:4|4-7|8-15": {
+            "novel_pairs": 1046,
+            "familiar_pairs": 3618,
+            "novel_days": 91,
+            "familiar_days": 106
+          },
+          "dirt:4|8-15|16+": {
+            "novel_pairs": 847,
+            "familiar_pairs": 6298,
+            "novel_days": 85,
+            "familiar_days": 105
+          },
+          "dirt:4|8-15|8-15": {
+            "novel_pairs": 691,
+            "familiar_pairs": 4178,
+            "novel_days": 76,
+            "familiar_days": 106
+          },
+          "dirt:5|16+|16+": {
+            "novel_pairs": 104,
+            "familiar_pairs": 102,
+            "novel_days": 20,
+            "familiar_days": 22
+          },
+          "dirt:5|8-15|16+": {
+            "novel_pairs": 296,
+            "familiar_pairs": 92,
+            "novel_days": 31,
+            "familiar_days": 20
+          },
+          "dirt:5|8-15|8-15": {
+            "novel_pairs": 105,
+            "familiar_pairs": 28,
+            "novel_days": 21,
+            "familiar_days": 12
+          },
+          "turf:2|8-15|16+": {
+            "novel_pairs": 178,
+            "familiar_pairs": 30,
+            "novel_days": 16,
+            "familiar_days": 10
+          },
+          "turf:3|16+|16+": {
+            "novel_pairs": 187,
+            "familiar_pairs": 2064,
+            "novel_days": 25,
+            "familiar_days": 101
+          },
+          "turf:3|4-7|16+": {
+            "novel_pairs": 245,
+            "familiar_pairs": 1129,
+            "novel_days": 45,
+            "familiar_days": 84
+          },
+          "turf:3|4-7|4-7": {
+            "novel_pairs": 439,
+            "familiar_pairs": 882,
+            "novel_days": 62,
+            "familiar_days": 90
+          },
+          "turf:3|4-7|8-15": {
+            "novel_pairs": 576,
+            "familiar_pairs": 1785,
+            "novel_days": 72,
+            "familiar_days": 89
+          },
+          "turf:3|8-15|16+": {
+            "novel_pairs": 473,
+            "familiar_pairs": 4206,
+            "novel_days": 63,
+            "familiar_days": 103
+          },
+          "turf:3|8-15|8-15": {
+            "novel_pairs": 463,
+            "familiar_pairs": 2289,
+            "novel_days": 57,
+            "familiar_days": 103
+          },
+          "turf:4|16+|16+": {
+            "novel_pairs": 118,
+            "familiar_pairs": 1335,
+            "novel_days": 19,
+            "familiar_days": 93
+          },
+          "turf:4|4-7|16+": {
+            "novel_pairs": 153,
+            "familiar_pairs": 1168,
+            "novel_days": 35,
+            "familiar_days": 91
+          },
+          "turf:4|4-7|4-7": {
+            "novel_pairs": 346,
+            "familiar_pairs": 908,
+            "novel_days": 63,
+            "familiar_days": 92
+          },
+          "turf:4|4-7|8-15": {
+            "novel_pairs": 374,
+            "familiar_pairs": 1611,
+            "novel_days": 61,
+            "familiar_days": 99
+          },
+          "turf:4|8-15|16+": {
+            "novel_pairs": 224,
+            "familiar_pairs": 3220,
+            "novel_days": 44,
+            "familiar_days": 103
+          },
+          "turf:4|8-15|8-15": {
+            "novel_pairs": 178,
+            "familiar_pairs": 1719,
+            "novel_days": 38,
+            "familiar_days": 104
+          },
+          "turf:5|16+|16+": {
+            "novel_pairs": 108,
+            "familiar_pairs": 936,
+            "novel_days": 25,
+            "familiar_days": 86
+          },
+          "turf:5|4-7|16+": {
+            "novel_pairs": 185,
+            "familiar_pairs": 585,
+            "novel_days": 41,
+            "familiar_days": 78
+          },
+          "turf:5|4-7|4-7": {
+            "novel_pairs": 374,
+            "familiar_pairs": 393,
+            "novel_days": 60,
+            "familiar_days": 72
+          },
+          "turf:5|4-7|8-15": {
+            "novel_pairs": 467,
+            "familiar_pairs": 837,
+            "novel_days": 73,
+            "familiar_days": 93
+          },
+          "turf:5|8-15|16+": {
+            "novel_pairs": 277,
+            "familiar_pairs": 2177,
+            "novel_days": 46,
+            "familiar_days": 94
+          },
+          "turf:5|8-15|8-15": {
+            "novel_pairs": 255,
+            "familiar_pairs": 1189,
+            "novel_days": 42,
+            "familiar_days": 94
+          },
+          "turf:6|16+|16+": {
+            "novel_pairs": 141,
+            "familiar_pairs": 203,
+            "novel_days": 28,
+            "familiar_days": 36
+          },
+          "turf:6|4-7|16+": {
+            "novel_pairs": 75,
+            "familiar_pairs": 42,
+            "novel_days": 24,
+            "familiar_days": 12
+          },
+          "turf:6|4-7|8-15": {
+            "novel_pairs": 162,
+            "familiar_pairs": 36,
+            "novel_days": 35,
+            "familiar_days": 14
+          },
+          "turf:6|8-15|16+": {
+            "novel_pairs": 217,
+            "familiar_pairs": 424,
+            "novel_days": 45,
+            "familiar_days": 51
+          },
+          "turf:6|8-15|8-15": {
+            "novel_pairs": 174,
+            "familiar_pairs": 203,
+            "novel_days": 34,
+            "familiar_days": 46
+          }
+        },
+        "matched": {
+          "novel": {
+            "pairs": 15466,
+            "days": 106,
+            "races": 1374,
+            "gain": {
+              "raw_gain": 0.000795753423821386,
+              "context_adjusted_gain": 0.0009631819348236371
+            },
+            "Brier": {
+              "N": 0.20040047990311338,
+              "U": 0.19960472647929198,
+              "C": 0.19930460474736175,
+              "V": 0.1983414228125381
+            }
+          },
+          "familiar": {
+            "pairs": 68691,
+            "days": 106,
+            "races": 2216,
+            "gain": {
+              "raw_gain": 0.000421022211668792,
+              "context_adjusted_gain": 0.0003886647576184321
+            },
+            "Brier": {
+              "N": 0.2160549726051423,
+              "U": 0.21563395039347355,
+              "C": 0.21572172652244587,
+              "V": 0.21533306176482744
+            }
+          }
+        },
+        "novel_pair_coverage": 0.9505254747710651,
+        "standardized_gain": {
+          "novel": {
+            "raw_gain": 0.0007908063383823645,
+            "context_adjusted_gain": 0.0009590583257538322
+          },
+          "familiar": {
+            "raw_gain": 0.000368776596662766,
+            "context_adjusted_gain": 0.00034315143265755825
+          }
+        },
+        "novel_minus_familiar": {
+          "raw_gain": 0.0004220297417195985,
+          "context_adjusted_gain": 0.0006159068930962739
+        },
+        "status": "OBSERVED_CONDITIONAL",
+        "conditional_day_97_5_novel_minus_familiar": {
+          "raw_gain": [
+            -0.0008287744659907963,
+            0.0015457960887830886
+          ],
+          "context_adjusted_gain": [
+            -0.0005873906929819171,
+            0.0017007738202903806
+          ]
+        }
+      }
+    },
+    "limits": [
+      "Observed earlier JRA surface-distance-band history only; novelty is not official career novelty.",
+      "No imposed own-history or novelty attenuation in V; parent peer shrinkage retained.",
+      "Context-adjusted baseline does not fully control age, class, trainer, management or physical capacity.",
+      "Different pairs in matched coarse total-start/context cells; conditional date intervals omit horse, kin, graph and fitting dependence. Not within-horse or causal.",
+      "Same inspected archive; no prospective or genetic claim or raw data export."
+    ]
+  }
+}
