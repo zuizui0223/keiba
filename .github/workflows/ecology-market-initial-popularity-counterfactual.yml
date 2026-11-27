@@ -1,0 +1,27 @@
+name: "Synthetic initial popularity counterfactual"
+on:
+  push:
+    branches: [analysis/market-initial-popularity-counterfactual-20261127]
+    paths:
+      - "scripts/ecology_market_initial_popularity_counterfactual.mjs"
+      - "docs/research/MARKET_INITIAL_POPULARITY_COUNTERFACTUAL_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-market-initial-popularity-counterfactual.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_initial_popularity_counterfactual.mjs tmp/market-popularity-counterfactual.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-market-counterfactual-aggregate-only
+          path: tmp/market-popularity-counterfactual.json
+          if-no-files-found: error
+          retention-days: 14
