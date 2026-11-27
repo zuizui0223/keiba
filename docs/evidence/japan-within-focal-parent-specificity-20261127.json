@@ -1,0 +1,963 @@
+{
+  "source_commit": "7772d84b457b21befe86f279e9988e8090b027e0",
+  "run_id": 45940344670,
+  "job_id": 140312973676,
+  "artifact_id": 15172293765,
+  "artifact_digest": "sha256:96b6ba6d1875c24fc8785d34fc66bf228b28491485b469bc6755a4746496b35f",
+  "verification": "Aggregate JSON extracted from completed job log; artifact metadata and upload log digest agree; ZIP not independently extracted",
+  "result": {
+    "status": "RETROSPECTIVE_WITHIN_FOCAL_PARENT_SPECIFICITY",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR111_parity": true,
+    "original_PR116_parity": true,
+    "primary": "2021 early-minus-late focal-specific parent advantage on identical model",
+    "seeds": [
+      20261127,
+      20261128,
+      20261129
+    ],
+    "calibration": {
+      "pairs": 217613,
+      "all_pairs": 217613,
+      "coverage": 1,
+      "fits": {
+        "N": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992
+          ],
+          "beta": [
+            0.44221643809514016,
+            -1.1509390511845252,
+            1.6935770754444177,
+            -0.0006432792857748758,
+            0,
+            0,
+            0.06530721805159029,
+            -0.04036300328709381
+          ],
+          "raw_scale_beta": [
+            1.0082421078697121,
+            -2.5728587738174595,
+            2.961648772341873,
+            -0.0009072170862062843,
+            0,
+            0,
+            0.03600189243498573,
+            -0.043619714673217465
+          ],
+          "max_abs_gradient": 5.834478620381791e-9
+        },
+        "U": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_raw_ability",
+            "dam_raw_ability"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.09107933425922382,
+            0.06535285167006159
+          ],
+          "beta": [
+            0.40499150630563463,
+            -1.1214910399350273,
+            1.67531061480312,
+            0.03089636426352033,
+            0,
+            0,
+            0.010291486871491342,
+            -0.04200433061167604,
+            0.15457670914178345,
+            0.09041492607187636
+          ],
+          "raw_scale_beta": [
+            0.9233702205775383,
+            -2.5070294199200753,
+            2.9297052360731537,
+            0.04357315738490646,
+            0,
+            0,
+            0.005673385184633152,
+            -0.04539347340654058,
+            1.6971655579062284,
+            1.383488612376739
+          ],
+          "max_abs_gradient": 8.729623640622207e-8
+        },
+        "P0": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_alt_0",
+            "dam_alt_0"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.03896994059467003,
+            0.05743089443314411
+          ],
+          "beta": [
+            0.4393433361413219,
+            -1.1497445279172174,
+            1.691949587806059,
+            0.0031603873144479826,
+            0,
+            0,
+            0.05686921356139417,
+            -0.042318208523927994,
+            0.051906645304386344,
+            0.04360230111085994
+          ],
+          "raw_scale_beta": [
+            1.0016915092928698,
+            -2.5701884850079355,
+            2.958802697701378,
+            0.0044570957500102105,
+            0,
+            0,
+            0.03135027598147229,
+            -0.045732676732845916,
+            1.3319662414749918,
+            0.7592133387652151
+          ],
+          "max_abs_gradient": 9.983100666093167e-9
+        },
+        "P1": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_alt_1",
+            "dam_alt_1"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.038759367267846186,
+            0.05745196807115473
+          ],
+          "beta": [
+            0.4397710568866249,
+            -1.1501518300374014,
+            1.6913872276668216,
+            0.0030736046898861375,
+            0,
+            0,
+            0.05714689205791248,
+            -0.04107856091963724,
+            0.05559121683475538,
+            0.02407126964823361
+          ],
+          "raw_scale_beta": [
+            1.0026667015939101,
+            -2.5710989857268327,
+            2.9578192684614955,
+            0.004334706172840017,
+            0,
+            0,
+            0.03150335173115839,
+            -0.044393007471619506,
+            1.434265333863499,
+            0.4189807670021181
+          ],
+          "max_abs_gradient": 1.4603114084427908e-8
+        },
+        "P2": {
+          "cols": [
+            "naive",
+            "graph",
+            "context",
+            "log_own",
+            "sire_known",
+            "dam_known",
+            "sire_log_peers",
+            "dam_log_peers",
+            "sire_alt_2",
+            "dam_alt_2"
+          ],
+          "scale": [
+            0.4386014377335296,
+            0.44733860361749594,
+            0.5718358946747256,
+            0.7090687505290284,
+            1,
+            1,
+            1.8139940329394013,
+            0.9253385444970992,
+            0.03860556851893342,
+            0.0571363344336543
+          ],
+          "beta": [
+            0.4391399151790746,
+            -1.149490942739721,
+            1.6910701943114232,
+            0.0035176542476443905,
+            0,
+            0,
+            0.055458001521605245,
+            -0.04241747446859095,
+            0.06461945117629997,
+            0.03135746711695888
+          ],
+          "raw_scale_beta": [
+            1.001227714729636,
+            -2.5696216097697033,
+            2.9572648552839547,
+            0.004960949477776178,
+            0,
+            0,
+            0.03057231750191644,
+            -0.04583995200550507,
+            1.6738375746133232,
+            0.5488183207372292
+          ],
+          "max_abs_gradient": 1.493469207291653e-8
+        }
+      }
+    },
+    "results": {
+      "2020": {
+        "original_groups": {
+          "first_both_one_start_one_win": {
+            "denominator": 291,
+            "matched_pairs": 291,
+            "coverage": 1,
+            "sire_matched_pairs": 291,
+            "dam_matched_pairs": 291,
+            "days": 58,
+            "distinct_pairs": 291,
+            "races": 79,
+            "horses": 231,
+            "Brier": {
+              "N": 0.24819677453853714,
+              "U": 0.24100278021527122,
+              "P0": 0.2471919903629016,
+              "P1": 0.247041160480655,
+              "P2": 0.24493052832440784
+            },
+            "gains": {
+              "actual_vs_count": 0.0071939943232659145,
+              "mean_control_vs_actual": 0.005385112840716933
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.006189210147630379,
+              "P1": 0.006038380265383784,
+              "P2": 0.003927748109136626
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                -0.0026757142183217357,
+                0.016714610184111238
+              ],
+              "mean_control_vs_actual": [
+                -0.00419643540750956,
+                0.014677612628106084
+              ]
+            }
+          },
+          "first_both_one_win": {
+            "denominator": 41617,
+            "matched_pairs": 41617,
+            "coverage": 1,
+            "sire_matched_pairs": 41617,
+            "dam_matched_pairs": 41617,
+            "days": 109,
+            "distinct_pairs": 41617,
+            "races": 1247,
+            "horses": 2939,
+            "Brier": {
+              "N": 0.21990092187435079,
+              "U": 0.21865824076985477,
+              "P0": 0.2198225583624482,
+              "P1": 0.21994997995622323,
+              "P2": 0.21966938552464588
+            },
+            "gains": {
+              "actual_vs_count": 0.0012426811044960737,
+              "mean_control_vs_actual": 0.0011557338445843082
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.0011643175925934678,
+              "P1": 0.001291739186368391,
+              "P2": 0.001011144754791063
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.00023939172953782974,
+                0.002216464820602311
+              ],
+              "mean_control_vs_actual": [
+                0.0003091272461813952,
+                0.002022824359786981
+              ]
+            }
+          },
+          "first_meeting": {
+            "denominator": 224065,
+            "matched_pairs": 224065,
+            "coverage": 1,
+            "sire_matched_pairs": 224065,
+            "dam_matched_pairs": 224065,
+            "days": 109,
+            "distinct_pairs": 224065,
+            "races": 2925,
+            "horses": 9983,
+            "Brier": {
+              "N": 0.21078356746457283,
+              "U": 0.20947659503201957,
+              "P0": 0.2105632546200146,
+              "P1": 0.21051265728178528,
+              "P2": 0.2105329949759158
+            },
+            "gains": {
+              "actual_vs_count": 0.0013069724325532582,
+              "mean_control_vs_actual": 0.0010597072605523336
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.001086659587995022,
+              "P1": 0.001036062249765748,
+              "P2": 0.0010563999438962866
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.000942672779188311,
+                0.0016683324791523036
+              ],
+              "mean_control_vs_actual": [
+                0.0007532656561844949,
+                0.0013754107240934123
+              ]
+            }
+          },
+          "first_both_1_to_3_starts": {
+            "denominator": 44417,
+            "matched_pairs": 44417,
+            "coverage": 1,
+            "sire_matched_pairs": 44417,
+            "dam_matched_pairs": 44417,
+            "days": 109,
+            "distinct_pairs": 44417,
+            "races": 1450,
+            "horses": 5708,
+            "Brier": {
+              "N": 0.2104685578244967,
+              "U": 0.20782133975425812,
+              "P0": 0.20995865082758472,
+              "P1": 0.20977485602661722,
+              "P2": 0.21010721046098987
+            },
+            "gains": {
+              "actual_vs_count": 0.0026472180702385687,
+              "mean_control_vs_actual": 0.0021255660174725245
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.002137311073326661,
+              "P1": 0.0019535162723591645,
+              "P2": 0.0022858707067318195
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.0017172138603883612,
+                0.0036604020466592477
+              ],
+              "mean_control_vs_actual": [
+                0.0012907081280355173,
+                0.003010303106490135
+              ]
+            }
+          },
+          "first_both_4_plus_starts": {
+            "denominator": 129466,
+            "matched_pairs": 129466,
+            "coverage": 1,
+            "sire_matched_pairs": 129466,
+            "dam_matched_pairs": 129466,
+            "days": 109,
+            "distinct_pairs": 129466,
+            "races": 2648,
+            "horses": 6590,
+            "Brier": {
+              "N": 0.2116433371892378,
+              "U": 0.21093501013769192,
+              "P0": 0.2115309824675102,
+              "P1": 0.21147779045549142,
+              "P2": 0.21147322865366242
+            },
+            "gains": {
+              "actual_vs_count": 0.0007083270515459126,
+              "mean_control_vs_actual": 0.0005589903878627291
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.0005959723298182364,
+              "P1": 0.0005427803177994484,
+              "P2": 0.0005382185159704869
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.00018000341958186568,
+                0.0013032790757989286
+              ],
+              "mean_control_vs_actual": [
+                0.00010687663320907344,
+                0.0010170102277534238
+              ]
+            }
+          }
+        },
+        "original_depth_contrast": {
+          "status": "OBSERVED_CONDITIONAL",
+          "low_minus_high": {
+            "actual_vs_count": 0.0019388910186926656,
+            "mean_control_vs_actual": 0.0015665756296098245
+          },
+          "conditional_day_97_5": {
+            "actual_vs_count": [
+              0.0008631229877983392,
+              0.0030993373164203797
+            ],
+            "mean_control_vs_actual": [
+              0.0006459196454035922,
+              0.002569122392474511
+            ]
+          }
+        },
+        "within_focal": {
+          "status": "OBSERVED_CONDITIONAL",
+          "candidate": {
+            "oriented_pairs": 446770,
+            "eligible_early_horses": 5798,
+            "eligible_late_horses": 6604,
+            "eligible_early_event_bins": 21392,
+            "eligible_late_event_bins": 64119
+          },
+          "matched_horses": 1819,
+          "early_days": 105,
+          "late_days": 104,
+          "early_coverage": 0.3137288720248361,
+          "mean_gap_days": 51.80703683342496,
+          "mean_own_starts": {
+            "early": 2.8427707531610773,
+            "late": 4.148982957669049
+          },
+          "mean_eligible_opponents": {
+            "early": 7.1407366684991755,
+            "late": 6.159978009895547
+          },
+          "means": {
+            "early": {
+              "specificity": 0.001117037381695318,
+              "actual_gain": 0.002508066393740794,
+              "alt_gain": 0.0013910290120454762,
+              "fixed_early_gain": 0.002508066393740794,
+              "alignment": 0.0035298340068183895,
+              "penalty": 0.001021767613077596
+            },
+            "late": {
+              "specificity": 0.00011320464775714078,
+              "actual_gain": 0.0008063431842022962,
+              "alt_gain": 0.0006931385364451553,
+              "fixed_early_gain": 0.0007768365754810897,
+              "alignment": 0.0017694184267425881,
+              "penalty": 0.000963075242540292
+            }
+          },
+          "early_minus_late": {
+            "specificity": 0.001003832733938177,
+            "actual_gain": 0.0017017232095384975,
+            "alt_gain": 0.0006978904756003207,
+            "fixed_early_gain": 0.001731229818259704,
+            "alignment": 0.0017604155800758014,
+            "penalty": 0.00005869237053730401
+          },
+          "conditional_97_5": {
+            "focal": {
+              "specificity": [
+                -0.00006902847646113009,
+                0.0020588302957985395
+              ],
+              "actual_gain": [
+                0.0003036524416340987,
+                0.0030314391426384505
+              ],
+              "alt_gain": [
+                0.00007658432533483132,
+                0.001347038226091059
+              ],
+              "fixed_early_gain": [
+                0.0003746078452428348,
+                0.0030793132575457696
+              ],
+              "alignment": [
+                0.00035226847121743024,
+                0.00307818090271204
+              ],
+              "penalty": [
+                0.000026550500548085905,
+                0.00008863874194179843
+              ]
+            },
+            "low_day": {
+              "specificity": [
+                -0.00014825945566797222,
+                0.002233189545667066
+              ],
+              "actual_gain": [
+                0.0003051150708308077,
+                0.0031872655635944796
+              ],
+              "alt_gain": [
+                0.000055637068661310906,
+                0.001310715377612776
+              ],
+              "fixed_early_gain": [
+                0.00033715203048525827,
+                0.0032490938399634376
+              ],
+              "alignment": [
+                0.0003686317097972626,
+                0.003237829954466376
+              ],
+              "penalty": [
+                0.000028216700966177442,
+                0.00008729831412788492
+              ]
+            },
+            "high_day": {
+              "specificity": [
+                -0.00014590853886011946,
+                0.0021099571637592913
+              ],
+              "actual_gain": [
+                0.00045514413020749446,
+                0.003022275875888903
+              ],
+              "alt_gain": [
+                0.00006232155013141201,
+                0.0013116170476756644
+              ],
+              "fixed_early_gain": [
+                0.0004648533380998374,
+                0.0030705009167307567
+              ],
+              "alignment": [
+                0.0005003136984539287,
+                0.0030846459988288833
+              ],
+              "penalty": [
+                0.000029710945621637148,
+                0.00008796582139308921
+              ]
+            }
+          }
+        }
+      },
+      "2021": {
+        "original_groups": {
+          "first_both_one_start_one_win": {
+            "denominator": 280,
+            "matched_pairs": 280,
+            "coverage": 1,
+            "sire_matched_pairs": 280,
+            "dam_matched_pairs": 280,
+            "days": 47,
+            "distinct_pairs": 280,
+            "races": 66,
+            "horses": 209,
+            "Brier": {
+              "N": 0.25099898506966406,
+              "U": 0.24267344822812406,
+              "P0": 0.25053606210240487,
+              "P1": 0.2525836639095846,
+              "P2": 0.25285116638837607
+            },
+            "gains": {
+              "actual_vs_count": 0.008325536841539976,
+              "mean_control_vs_actual": 0.009316849238664462
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.007862613874280827,
+              "P1": 0.009910215681460523,
+              "P2": 0.010177718160252033
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                -0.0002934060278011713,
+                0.01736241748348121
+              ],
+              "mean_control_vs_actual": [
+                0.0005723814329265295,
+                0.018222926149722388
+              ]
+            }
+          },
+          "first_both_one_win": {
+            "denominator": 44446,
+            "matched_pairs": 44446,
+            "coverage": 1,
+            "sire_matched_pairs": 44446,
+            "dam_matched_pairs": 44446,
+            "days": 106,
+            "distinct_pairs": 44446,
+            "races": 1255,
+            "horses": 2977,
+            "Brier": {
+              "N": 0.2187467669614085,
+              "U": 0.21831008817511127,
+              "P0": 0.21885879556146,
+              "P1": 0.21870225176875654,
+              "P2": 0.21871400195287843
+            },
+            "gains": {
+              "actual_vs_count": 0.00043667878629722066,
+              "mean_control_vs_actual": 0.0004482615859203687
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.0005487073863487324,
+              "P1": 0.0003921635936452449,
+              "P2": 0.00040391377776712625
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                -0.0006616277504267348,
+                0.001552132463671382
+              ],
+              "mean_control_vs_actual": [
+                -0.0005062068730415792,
+                0.0013907831172226873
+              ]
+            }
+          },
+          "first_meeting": {
+            "denominator": 223211,
+            "matched_pairs": 223211,
+            "coverage": 1,
+            "sire_matched_pairs": 223211,
+            "dam_matched_pairs": 223211,
+            "days": 106,
+            "distinct_pairs": 223211,
+            "races": 2938,
+            "horses": 9882,
+            "Brier": {
+              "N": 0.20997861569985246,
+              "U": 0.20875881074292457,
+              "P0": 0.20975309207995152,
+              "P1": 0.20977608711710907,
+              "P2": 0.2097572833595684
+            },
+            "gains": {
+              "actual_vs_count": 0.0012198049569278101,
+              "mean_control_vs_actual": 0.0010033434426183973
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.0009942813370269368,
+              "P1": 0.0010172763741844787,
+              "P2": 0.0009984726166437736
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.0008851067394899332,
+                0.001511378757986241
+              ],
+              "mean_control_vs_actual": [
+                0.0007134144490212839,
+                0.0012530051524630458
+              ]
+            }
+          },
+          "first_both_1_to_3_starts": {
+            "denominator": 43339,
+            "matched_pairs": 43339,
+            "coverage": 1,
+            "sire_matched_pairs": 43339,
+            "dam_matched_pairs": 43339,
+            "days": 106,
+            "distinct_pairs": 43339,
+            "races": 1489,
+            "horses": 5697,
+            "Brier": {
+              "N": 0.20802234537242464,
+              "U": 0.20571985105355373,
+              "P0": 0.20784901970571784,
+              "P1": 0.2076846926793261,
+              "P2": 0.20727619835878078
+            },
+            "gains": {
+              "actual_vs_count": 0.00230249431887094,
+              "mean_control_vs_actual": 0.0018834525277211535
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.00212916865216408,
+              "P1": 0.0019648416257723794,
+              "P2": 0.0015563473052270227
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.0013704966238467656,
+                0.0031887884719410246
+              ],
+              "mean_control_vs_actual": [
+                0.001062478000824965,
+                0.0026409858055884256
+              ]
+            }
+          },
+          "first_both_4_plus_starts": {
+            "denominator": 129728,
+            "matched_pairs": 129728,
+            "coverage": 1,
+            "sire_matched_pairs": 129728,
+            "dam_matched_pairs": 129728,
+            "days": 106,
+            "distinct_pairs": 129728,
+            "races": 2629,
+            "horses": 6581,
+            "Brier": {
+              "N": 0.2107857078162994,
+              "U": 0.21011109818603196,
+              "P0": 0.21068385461815897,
+              "P1": 0.21070705373163057,
+              "P2": 0.21073463534306208
+            },
+            "gains": {
+              "actual_vs_count": 0.0006746096302675298,
+              "mean_control_vs_actual": 0.0005974163782519134
+            },
+            "individual_control_minus_actual": {
+              "P0": 0.0005727564321270114,
+              "P1": 0.0005959555455986287,
+              "P2": 0.0006235371570300957
+            },
+            "status": "OBSERVED_CONDITIONAL",
+            "conditional_day_97_5": {
+              "actual_vs_count": [
+                0.00016045349776617189,
+                0.0011765433324793947
+              ],
+              "mean_control_vs_actual": [
+                0.00019604289969107178,
+                0.0010378609330460979
+              ]
+            }
+          }
+        },
+        "original_depth_contrast": {
+          "status": "OBSERVED_CONDITIONAL",
+          "low_minus_high": {
+            "actual_vs_count": 0.0016278846886033918,
+            "mean_control_vs_actual": 0.001286036149469249
+          },
+          "conditional_day_97_5": {
+            "actual_vs_count": [
+              0.0005531439082132303,
+              0.002635124122646167
+            ],
+            "mean_control_vs_actual": [
+              0.00029889131762376233,
+              0.0021425527649839037
+            ]
+          }
+        },
+        "within_focal": {
+          "status": "OBSERVED_CONDITIONAL",
+          "candidate": {
+            "oriented_pairs": 444916,
+            "eligible_early_horses": 5779,
+            "eligible_late_horses": 6618,
+            "eligible_early_event_bins": 21095,
+            "eligible_late_event_bins": 64119
+          },
+          "matched_horses": 1939,
+          "early_days": 101,
+          "late_days": 102,
+          "early_coverage": 0.33552517736632637,
+          "mean_gap_days": 52.282619907168645,
+          "mean_own_starts": {
+            "early": 2.8349664775657555,
+            "late": 4.160907684373388
+          },
+          "mean_eligible_opponents": {
+            "early": 7.085095410005157,
+            "late": 6.011346054667355
+          },
+          "means": {
+            "early": {
+              "specificity": 0.0013675888574728654,
+              "actual_gain": 0.0029405931965876377,
+              "alt_gain": 0.0015730043391147732,
+              "fixed_early_gain": 0.0029405931965876377,
+              "alignment": 0.003881796214173553,
+              "penalty": 0.0009412030175859155
+            },
+            "late": {
+              "specificity": -0.000018383802932639054,
+              "actual_gain": 0.0007212309570479764,
+              "alt_gain": 0.0007396147599806155,
+              "fixed_early_gain": 0.0007691767336133608,
+              "alignment": 0.00159069865229866,
+              "penalty": 0.0008694676952506834
+            }
+          },
+          "early_minus_late": {
+            "specificity": 0.0013859726604055042,
+            "actual_gain": 0.0022193622395396623,
+            "alt_gain": 0.0008333895791341576,
+            "fixed_early_gain": 0.002171416462974277,
+            "alignment": 0.0022910975618748927,
+            "penalty": 0.00007173532233523208
+          },
+          "conditional_97_5": {
+            "focal": {
+              "specificity": [
+                0.00026957229630833506,
+                0.00243664524528745
+              ],
+              "actual_gain": [
+                0.0008224737245021745,
+                0.0036078712430792897
+              ],
+              "alt_gain": [
+                0.00014139988923953694,
+                0.001486124719719984
+              ],
+              "fixed_early_gain": [
+                0.0007298982959844413,
+                0.0035765662302307635
+              ],
+              "alignment": [
+                0.0008928536814725744,
+                0.0036840088886720044
+              ],
+              "penalty": [
+                0.00004534443697959085,
+                0.00010138310334672208
+              ]
+            },
+            "low_day": {
+              "specificity": [
+                0.0003670258691223211,
+                0.002513217264081527
+              ],
+              "actual_gain": [
+                0.0008715996879216451,
+                0.0035361329571060177
+              ],
+              "alt_gain": [
+                0.00012941247447534346,
+                0.001447558428284936
+              ],
+              "fixed_early_gain": [
+                0.0007703278322346796,
+                0.0035060233740234073
+              ],
+              "alignment": [
+                0.0009497736322607027,
+                0.0036003305210659978
+              ],
+              "penalty": [
+                0.00004598654264636953,
+                0.0000959279563582428
+              ]
+            },
+            "high_day": {
+              "specificity": [
+                0.00036843700223937725,
+                0.0024290228996189447
+              ],
+              "actual_gain": [
+                0.0010104259607696593,
+                0.003521151754595883
+              ],
+              "alt_gain": [
+                0.00014839710606173956,
+                0.0015012253041160968
+              ],
+              "fixed_early_gain": [
+                0.000961738230133586,
+                0.003507841578460206
+              ],
+              "alignment": [
+                0.0010899846239602498,
+                0.0035885904867638397
+              ],
+              "penalty": [
+                0.000044822418866985055,
+                0.00009957307110558323
+              ]
+            }
+          }
+        }
+      }
+    },
+    "limits": [
+      "Controls share neither recorded direct parent with focal; deeper relatedness unknown.",
+      "Exact matching within coarse observed start-count and recency bins, same distinct peer count and shrinkage. Control groups randomly assembled, not natural families.",
+      "All models refitted on the same supported 2019 pairs; original full-sample PR111 fits reproduced separately.",
+      "Parent information may proxy management, ancestry, age, selection and shared competition; no causal inheritance inference.",
+      "Within-focal pairing compares same context and rival history bin across different dates and opponents. Fixed-U focal substitution is not the separately fitted PR116 control-model contrast. Conditional separate-axis resampling omits crossed dependence, donor draws and fits. No prospective or official career claims, no raw export."
+    ]
+  }
+}
