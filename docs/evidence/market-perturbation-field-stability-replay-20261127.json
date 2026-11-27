@@ -1,0 +1,63 @@
+{
+  "status": "REPLAY_VERIFIED",
+  "source_commit": "0b58e0416f07e528affa052189b55a0fdc1504f9",
+  "run_id": 45953277700,
+  "job_id": 140353833443,
+  "artifact_id": 15177517703,
+  "artifact_digest": "sha256:ca8ee2307874bf4f50a67d54a2f51c9713e68a29fe0c7e48a819dca8c3f0b3ba",
+  "comparison": {
+    "status": "SYNTHETIC_PERTURBATION_FULL_REPLAY",
+    "max_abs_diff": 8.43769498715119e-15,
+    "numeric_values": 25733,
+    "rows": 288,
+    "qa": {
+      "mass": true,
+      "exact_D_decomposition": true,
+      "zero_feedback_retention": true,
+      "identical_world": true,
+      "reproducible": true,
+      "PR120_bridge": [
+        {
+          "alpha": 0,
+          "tau": 0,
+          "means": {
+            "D": 0.01499999999999996,
+            "R": 0.053435089302075855,
+            "M": 0.2814453125
+          }
+        },
+        {
+          "alpha": 1,
+          "tau": 2,
+          "means": {
+            "D": 0.06219238281250001,
+            "R": 0.20100356443495102,
+            "M": 0.3118505859375001
+          }
+        },
+        {
+          "alpha": 1.5,
+          "tau": 0,
+          "means": {
+            "D": 0.15096191406250004,
+            "R": 0.6844078523461006,
+            "M": 0.21023925781250002
+          }
+        },
+        {
+          "alpha": 1.5,
+          "tau": 6,
+          "means": {
+            "D": 0.03535644531249999,
+            "R": 0.11849123384768172,
+            "M": 0.30050292968749986
+          }
+        }
+      ],
+      "tau0_local_linearization": true,
+      "tiny_perturbation": 0.000001,
+      "max_scaled_linearization_error": 8.881784197001252e-9
+    }
+  },
+  "verification": "Actions executable recursively checked every field of complete committed aggregate; upload-log/metadata digest agreement; ZIP bytes not independently verified. Connector fetch of full aggregate exceeded response limit; rely on original simulation output plus executable recursive comparison, not an independently retrieved full copy."
+}
