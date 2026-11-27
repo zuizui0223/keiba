@@ -1,0 +1,317 @@
+{
+  "source_commit": "00b97481bd2d41c118fbc161d1b9c757f3be58b4",
+  "run_id": 45935048104,
+  "job_id": 140296204975,
+  "artifact_id": 15170273465,
+  "artifact_digest": "sha256:78b42257ed2e7dc03f862ca970dda967ae18046ffaae6f68e9dfdcca9e6056d6",
+  "verification": "Aggregate JSON from completed job log; artifact metadata and upload-log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_CONTEXT_THREE_EVENT_CONTROL",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR112_PR113_parity": true,
+    "primary": "2021 observed_gain_difference (novel transition minus earlier familiar transition)",
+    "parameters": {
+      "max_each_gap_days": 120,
+      "max_gap_difference_days": 30,
+      "min_horses": 100,
+      "min_dates_each_arm": 30
+    },
+    "results": {
+      "2020": {
+        "matched_triplets": 156,
+        "original_matched_horses": 774,
+        "coverage": 0.20155038759689922,
+        "dates": {
+          "early": 75,
+          "middle": 75,
+          "novel": 77
+        },
+        "mean_gaps_days": {
+          "early_middle": 44.6025641025641,
+          "middle_novel": 44.80128205128205,
+          "absolute_gap_difference": 14.634615384615385
+        },
+        "means": {
+          "early": {
+            "observed_gain": 0.0034568014159653826,
+            "fixed_signal_gain": 0.0034568014159653835
+          },
+          "middle": {
+            "observed_gain": 0.0024719427665419705,
+            "fixed_signal_gain": 0.002658762833498962
+          },
+          "novel": {
+            "observed_gain": 0.00021123109917919338,
+            "fixed_signal_gain": -0.00002107085089854321
+          }
+        },
+        "contrasts": {
+          "observed_gain_before": -0.0009848586494234114,
+          "observed_gain_after": -0.0022607116673627778,
+          "observed_gain_difference": -0.0012758530179393652,
+          "fixed_signal_gain_before": -0.0007980385824664202,
+          "fixed_signal_gain_after": -0.002679833684397505,
+          "fixed_signal_gain_difference": -0.0018817951019310846
+        },
+        "status": "OBSERVED_CONDITIONAL",
+        "conditional_97_5": {
+          "focal": {
+            "observed_gain_before": [
+              -0.005644465932271639,
+              0.003838792259259948
+            ],
+            "observed_gain_after": [
+              -0.007727895067638204,
+              0.0029371249272418694
+            ],
+            "observed_gain_difference": [
+              -0.009970337977786401,
+              0.00739940863086016
+            ],
+            "fixed_signal_gain_before": [
+              -0.005589171097683996,
+              0.004050636208892821
+            ],
+            "fixed_signal_gain_after": [
+              -0.00842811930115856,
+              0.0028440239081347404
+            ],
+            "fixed_signal_gain_difference": [
+              -0.010838509379717092,
+              0.006878922450027124
+            ]
+          },
+          "early_day": {
+            "observed_gain_before": [
+              -0.005554483273422456,
+              0.0038550758107013363
+            ],
+            "observed_gain_after": [
+              -0.00807391257903627,
+              0.002956585837638322
+            ],
+            "observed_gain_difference": [
+              -0.010411108690707027,
+              0.006799936522971155
+            ],
+            "fixed_signal_gain_before": [
+              -0.005496798510205941,
+              0.004142437216904446
+            ],
+            "fixed_signal_gain_after": [
+              -0.008516743653928212,
+              0.00272305021384864
+            ],
+            "fixed_signal_gain_difference": [
+              -0.011285863626694087,
+              0.006638138305251833
+            ]
+          },
+          "middle_day": {
+            "observed_gain_before": [
+              -0.006118474950521171,
+              0.003168942351124794
+            ],
+            "observed_gain_after": [
+              -0.008267973139437989,
+              0.0032168811900335974
+            ],
+            "observed_gain_difference": [
+              -0.010028902872909529,
+              0.0073450260646250876
+            ],
+            "fixed_signal_gain_before": [
+              -0.005867970968118372,
+              0.0033319410933176845
+            ],
+            "fixed_signal_gain_after": [
+              -0.008904178202467666,
+              0.0027481506750869026
+            ],
+            "fixed_signal_gain_difference": [
+              -0.010922658666777087,
+              0.006738180622706074
+            ]
+          },
+          "novel_day": {
+            "observed_gain_before": [
+              -0.006596761464972715,
+              0.0034157565190991745
+            ],
+            "observed_gain_after": [
+              -0.00876279635918536,
+              0.004488597336599606
+            ],
+            "observed_gain_difference": [
+              -0.011161000328118464,
+              0.009917845149860565
+            ],
+            "fixed_signal_gain_before": [
+              -0.006506421192619057,
+              0.0037067468234062567
+            ],
+            "fixed_signal_gain_after": [
+              -0.009404042764138348,
+              0.004294765681413511
+            ],
+            "fixed_signal_gain_difference": [
+              -0.012000700519630716,
+              0.009771897607235585
+            ]
+          }
+        }
+      },
+      "2021": {
+        "matched_triplets": 178,
+        "original_matched_horses": 774,
+        "coverage": 0.22997416020671835,
+        "dates": {
+          "early": 76,
+          "middle": 74,
+          "novel": 73
+        },
+        "mean_gaps_days": {
+          "early_middle": 40.90449438202247,
+          "middle_novel": 43.13483146067416,
+          "absolute_gap_difference": 12.05056179775281
+        },
+        "means": {
+          "early": {
+            "observed_gain": 0.002077729449135448,
+            "fixed_signal_gain": 0.0020777294491354484
+          },
+          "middle": {
+            "observed_gain": -0.0012106466033304022,
+            "fixed_signal_gain": -0.0011736954912415169
+          },
+          "novel": {
+            "observed_gain": 0.0014945059228955596,
+            "fixed_signal_gain": 0.0011545553153166361
+          }
+        },
+        "contrasts": {
+          "observed_gain_before": -0.0032883760524658506,
+          "observed_gain_after": 0.0027051525262259614,
+          "observed_gain_difference": 0.005993528578691812,
+          "fixed_signal_gain_before": -0.0032514249403769644,
+          "fixed_signal_gain_after": 0.002328250806558153,
+          "fixed_signal_gain_difference": 0.005579675746935118
+        },
+        "status": "OBSERVED_CONDITIONAL",
+        "conditional_97_5": {
+          "focal": {
+            "observed_gain_before": [
+              -0.00794126315240841,
+              0.0010989800369626255
+            ],
+            "observed_gain_after": [
+              -0.0018410230721209349,
+              0.007029989032418873
+            ],
+            "observed_gain_difference": [
+              -0.0009974837217437051,
+              0.013307398671702324
+            ],
+            "fixed_signal_gain_before": [
+              -0.007910339885478412,
+              0.0009492539745394682
+            ],
+            "fixed_signal_gain_after": [
+              -0.0023440770443825354,
+              0.00678486098138378
+            ],
+            "fixed_signal_gain_difference": [
+              -0.0015443806217949577,
+              0.013137953319247357
+            ]
+          },
+          "early_day": {
+            "observed_gain_before": [
+              -0.007995343073972885,
+              0.0011095264074689553
+            ],
+            "observed_gain_after": [
+              -0.0015196573942317573,
+              0.0074738300461492735
+            ],
+            "observed_gain_difference": [
+              -0.0014209557682022028,
+              0.014176311886398946
+            ],
+            "fixed_signal_gain_before": [
+              -0.00808990877925568,
+              0.0012420079098821324
+            ],
+            "fixed_signal_gain_after": [
+              -0.0019672796881306806,
+              0.007170418739851574
+            ],
+            "fixed_signal_gain_difference": [
+              -0.0017262037871169792,
+              0.013932543193728606
+            ]
+          },
+          "middle_day": {
+            "observed_gain_before": [
+              -0.007594863045695152,
+              0.0011265242902612153
+            ],
+            "observed_gain_after": [
+              -0.0017843326231844374,
+              0.007061460023807508
+            ],
+            "observed_gain_difference": [
+              -0.0007929840550912943,
+              0.013138032758880643
+            ],
+            "fixed_signal_gain_before": [
+              -0.007661022636346165,
+              0.0011755140080167532
+            ],
+            "fixed_signal_gain_after": [
+              -0.002422681900701911,
+              0.006931269423042293
+            ],
+            "fixed_signal_gain_difference": [
+              -0.0015202000778157616,
+              0.012773540881312814
+            ]
+          },
+          "novel_day": {
+            "observed_gain_before": [
+              -0.007602772700444303,
+              0.001288420967983543
+            ],
+            "observed_gain_after": [
+              -0.0015977210352872133,
+              0.007500864493441198
+            ],
+            "observed_gain_difference": [
+              -0.0009464600731899069,
+              0.013364608543972818
+            ],
+            "fixed_signal_gain_before": [
+              -0.007544041730941856,
+              0.0014168426282126923
+            ],
+            "fixed_signal_gain_after": [
+              -0.00226633121382892,
+              0.007315544047909379
+            ],
+            "fixed_signal_gain_difference": [
+              -0.0017087119644776385,
+              0.013200578044020955
+            ]
+          }
+        }
+      }
+    },
+    "limits": [
+      "Post-result diagnostic on selected same-horse triplets, not an independent confirmation or a controlled causal experiment.",
+      "The familiar-to-familiar transition precedes novelty and uses the same middle event. Difference-of-changes can reflect regression to mean, aging, competition, time-varying management and selection.",
+      "Equal focal weight, separate-axis conditional resampling, not simultaneous crossed horse, race, kin and fit uncertainty.",
+      "Fixed-score diagnostic holds the earliest focal parent contribution constant across all three observed events; other terms remain contemporaneous.",
+      "Classified JRA archive only; no official career completeness, prospective or genetic claim, no raw export."
+    ]
+  }
+}
