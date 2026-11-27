@@ -1,0 +1,27 @@
+name: "Synthetic popularity perturbation and field stability"
+on:
+  push:
+    branches: [analysis/market-perturbation-field-stability-20261127]
+    paths:
+      - "scripts/ecology_market_perturbation_field_stability.mjs"
+      - "docs/research/MARKET_PERTURBATION_FIELD_STABILITY_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-market-perturbation-field-stability.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_perturbation_field_stability.mjs tmp/market-perturbation-field-stability.json docs/evidence/market-information-feedback-factorial-20261127.json docs/evidence/market-perturbation-field-stability-20261127.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-popularity-perturbation-aggregate
+          path: tmp/market-perturbation-field-stability.json
+          if-no-files-found: error
+          retention-days: 14
