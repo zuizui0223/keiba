@@ -1,0 +1,47 @@
+name: "Horse fixed-target own-score rollback"
+on:
+  push:
+    branches: [analysis/horse-fixed-target-own-score-rollback-20261127]
+    paths:
+      - "scripts/ecology_japan_fixed_target_own_score_rollback.py"
+      - "docs/research/JAPAN_FIXED_TARGET_OWN_SCORE_ROLLBACK_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-japan-fixed-target-own-score-rollback.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  occupancy-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Synthetic donor exclusion and own-state snapshots
+        run: python scripts/ecology_japan_fixed_target_own_score_rollback.py --self-test
+      - name: Download fixed source A
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          from ecology_japan_archive_forward import download
+          download(Path('tmp/private/old.zip'))
+          PY
+      - name: Reproduce PR111/116/117 and evaluate fixed-target rollback
+        run: python scripts/ecology_japan_fixed_target_own_score_rollback.py --archive tmp/private/old.zip --receipt docs/evidence/japan-family-depth-unconstrained-20261127.json --matched-receipt docs/evidence/japan-parent-specificity-matched-donors-20261127.json --focal-receipt docs/evidence/japan-within-focal-parent-specificity-20261127.json --output tmp/fixed-target-own-score-rollback.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fixed-target-own-score-rollback-aggregate-only
+          path: tmp/fixed-target-own-score-rollback.json
+          if-no-files-found: error
+          retention-days: 14
