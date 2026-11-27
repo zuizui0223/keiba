@@ -1,0 +1,10 @@
+{
+  "status": "REPLAY_VERIFIED",
+  "source_commit": "cbb10f14e65955d875085cc0059f61c0ad278774",
+  "run_id": 45952880053,
+  "job_id": 140352554067,
+  "artifact_id": 15177791043,
+  "artifact_digest": "sha256:abb1fce09a596f4e3dc914d35edf1cbee2dbb5727aa8088c15e4cf91f399eb09",
+  "aggregate_max_absolute_difference": 0,
+  "verification": "Original simulation aggregate and complete Node Actions log JSON parity; artifact ZIP bytes not independently verified"
+}

@@ -1,0 +1,27 @@
+name: "Synthetic market information feedback factorial"
+on:
+  push:
+    branches: [analysis/market-information-feedback-factorial-20261127]
+    paths:
+      - "scripts/ecology_market_information_feedback_factorial.mjs"
+      - "docs/research/MARKET_INFORMATION_FEEDBACK_FACTORIAL_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-market-information-feedback-factorial.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_information_feedback_factorial.mjs tmp/market-information-feedback-factorial.json docs/evidence/market-initial-popularity-counterfactual-simulation-20261127.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-market-factorial-aggregate-only
+          path: tmp/market-information-feedback-factorial.json
+          if-no-files-found: error
+          retention-days: 14
