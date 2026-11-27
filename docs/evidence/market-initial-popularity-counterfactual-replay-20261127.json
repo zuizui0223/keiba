@@ -1,0 +1,9 @@
+{
+  "source_commit": "a13eba311c8ae227122845fb75fbbfc99464f3db",
+  "run_id": 45952240105,
+  "job_id": 140350541287,
+  "artifact_id": 15177112831,
+  "artifact_digest": "sha256:9023e5335b8fc3005f0553f4305ebde79e21ab19e6cb674122633e807e9a5b47",
+  "aggregate_max_absolute_difference": 0,
+  "verification": "Original simulation aggregate and Node Actions log JSON parity; digest metadata/upload log agreement; ZIP bytes not independently verified"
+}
