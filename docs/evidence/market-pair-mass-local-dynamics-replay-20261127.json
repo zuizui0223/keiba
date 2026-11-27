@@ -1,0 +1,35 @@
+{
+  "status": "REPLAY_VERIFIED",
+  "source_commit": "978b7388a26f220b24b416b04c1b9a049681aa46",
+  "run_id": 45957684519,
+  "job_id": 140367869541,
+  "artifact_id": 15179631640,
+  "artifact_digest": "sha256:d6ec7f63831410437faaeff69177af4855d2e903adbb2b3d48fb9269fc4347bc",
+  "comparison": {
+    "status": "SYNTHETIC_PAIR_DYNAMICS_REPLAY",
+    "parent_numeric_values": 3456,
+    "numeric_values": 20112,
+    "max_abs_diff": 8.185452315956354e-12,
+    "rows": 96,
+    "qa": {
+      "zero_feedback": true,
+      "identical_world": true,
+      "conservation": true,
+      "exact_reference_factorization": true,
+      "finite_difference_checked_alpha_1_5": true,
+      "max_step_identity_error": 4.440892098500626e-16,
+      "max_checked_derivative_error": 5.874767339264508e-11
+    },
+    "compare": {
+      "both_conclusive": 82,
+      "both_correct": 80,
+      "D_conclusive": 89,
+      "D_correct": 87,
+      "R_conclusive": 86,
+      "R_correct": 86,
+      "opposite_ABM": 15,
+      "opposite_correct": 15
+    }
+  },
+  "verification": "Full aggregate recursive scaled tolerance 1e-8; 3456 PR121 numeric values within absolute 1e-10; upload-log/metadata digest agree, ZIP not independently verified"
+}
