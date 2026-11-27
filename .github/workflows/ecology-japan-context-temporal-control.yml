@@ -1,0 +1,47 @@
+name: "Horse context novelty temporal control"
+on:
+  push:
+    branches: [analysis/horse-context-temporal-control-20261127]
+    paths:
+      - "scripts/ecology_japan_context_temporal_control.py"
+      - "docs/research/JAPAN_CONTEXT_TEMPORAL_CONTROL_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-japan-context-temporal-control.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  occupancy-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Synthetic three-event match and fixed score
+        run: python scripts/ecology_japan_context_temporal_control.py --self-test
+      - name: Download fixed source A
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          from ecology_japan_archive_forward import download
+          download(Path('tmp/private/old.zip'))
+          PY
+      - name: Reproduce PR112/113 and compare temporal transitions
+        run: python scripts/ecology_japan_context_temporal_control.py --archive tmp/private/old.zip --receipt docs/evidence/japan-context-novelty-family-20261127.json --matched-receipt docs/evidence/japan-within-focal-context-family-20261127.json --output tmp/context-temporal-control.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: context-temporal-control-aggregate-only
+          path: tmp/context-temporal-control.json
+          if-no-files-found: error
+          retention-days: 14
