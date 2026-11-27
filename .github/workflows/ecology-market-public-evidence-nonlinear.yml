@@ -1,0 +1,27 @@
+name: "Synthetic public evidence nonlinear dynamics"
+on:
+  push:
+    branches: [analysis/market-public-evidence-nonlinear-20261127]
+    paths:
+      - "scripts/ecology_market_public_evidence_nonlinear.mjs"
+      - "docs/research/MARKET_PUBLIC_EVIDENCE_NONLINEAR_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-market-public-evidence-nonlinear.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_public_evidence_nonlinear.mjs tmp/market-public-evidence-nonlinear.json docs/evidence/market-perturbation-field-stability-20261127.json docs/evidence/market-public-evidence-nonlinear-summary-20261127.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-public-evidence-aggregate
+          path: tmp/market-public-evidence-nonlinear.json
+          if-no-files-found: error
+          retention-days: 14
