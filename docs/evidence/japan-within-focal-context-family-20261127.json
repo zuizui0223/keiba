@@ -1,0 +1,187 @@
+{
+  "source_commit": "3988fbdd1359e1fb0f8a84be071d6c8524c28bf6",
+  "run_id": 45932609775,
+  "job_id": 140288439973,
+  "artifact_id": 15168364420,
+  "artifact_digest": "sha256:3ab4e8f19f313f7dbe71eacff067806b95c1f344178e25173cebec06c1e19142",
+  "verification": "Aggregate JSON from completed job log; artifact metadata and upload-log digest agree; ZIP bytes not independently verified",
+  "result": {
+    "status": "RETROSPECTIVE_WITHIN_FOCAL_CONTEXT_FAMILY",
+    "source_sha256": "c72d280ce82b583686caca6773fd1a7589917f9b10b96a25f8d4e96f9b7a4a8f",
+    "original_PR112_parity": true,
+    "parent_QA": {
+      "sire": {
+        "known_final": 62199,
+        "conflict_quarantine_final": 0,
+        "no_recorded_label_final": 0,
+        "distinct_source_labels": 1132
+      },
+      "dam": {
+        "known_final": 62199,
+        "conflict_quarantine_final": 0,
+        "no_recorded_label_final": 0,
+        "distinct_source_labels": 19734
+      }
+    },
+    "primary": "2021 focal-score ablation novel-minus-familiar on same focal horse",
+    "parameters": {
+      "max_gap_days": 120,
+      "min_opponents_per_depth_bin": 2,
+      "min_horses": 100,
+      "min_dates_each_arm": 30
+    },
+    "results": {
+      "2020": {
+        "candidate": {
+          "oriented_pairs": 153617,
+          "eligible_novel_event_bins": 3911,
+          "eligible_familiar_event_bins": 33427,
+          "eligible_novel_events": 2305,
+          "eligible_novel_horses": 1966,
+          "eligible_familiar_horses": 5151
+        },
+        "matched_horses": 774,
+        "novel_days": 101,
+        "familiar_days": 102,
+        "mean_gap_days": 46.12532299741602,
+        "mean_eligible_opponents": {
+          "novel": 3.8074935400516794,
+          "familiar": 3.900516795865633
+        },
+        "matched_horse_coverage": 0.3936927772126144,
+        "means": {
+          "novel": {
+            "focal_gain": 0.001185837451190542,
+            "pair_gain": 0.0007358312012463072,
+            "full_loss": 0.20617830533652695,
+            "ablated_loss": 0.2073641427877175,
+            "focal_signal_abs": 0.11528545289461319
+          },
+          "familiar": {
+            "focal_gain": -0.001409089257938563,
+            "pair_gain": -0.0005322165248817906,
+            "full_loss": 0.21964839164366318,
+            "ablated_loss": 0.2182393023857246,
+            "focal_signal_abs": 0.11643927219260759
+          }
+        },
+        "novel_minus_familiar": {
+          "focal_gain": 0.002594926709129106,
+          "pair_gain": 0.0012680477261280978
+        },
+        "status": "OBSERVED_CONDITIONAL",
+        "conditional_97_5": {
+          "focal": {
+            "focal_gain": [
+              -0.00019431673572280368,
+              0.005473100639539643
+            ],
+            "pair_gain": [
+              -0.0016089849367749403,
+              0.003935913555839978
+            ]
+          },
+          "novel_day": {
+            "focal_gain": [
+              -0.00017804038163394346,
+              0.005324895104095557
+            ],
+            "pair_gain": [
+              -0.0013206001477042539,
+              0.003987019331792623
+            ]
+          },
+          "familiar_day": {
+            "focal_gain": [
+              -0.000041034602575708915,
+              0.0051482804873670416
+            ],
+            "pair_gain": [
+              -0.0016766112808301818,
+              0.003776331321078996
+            ]
+          }
+        }
+      },
+      "2021": {
+        "candidate": {
+          "oriented_pairs": 153377,
+          "eligible_novel_event_bins": 3905,
+          "eligible_familiar_event_bins": 33189,
+          "eligible_novel_events": 2315,
+          "eligible_novel_horses": 1924,
+          "eligible_familiar_horses": 5212
+        },
+        "matched_horses": 774,
+        "novel_days": 100,
+        "familiar_days": 98,
+        "mean_gap_days": 45.54780361757106,
+        "mean_eligible_opponents": {
+          "novel": 3.806201550387597,
+          "familiar": 3.958656330749354
+        },
+        "matched_horse_coverage": 0.4022869022869023,
+        "means": {
+          "novel": {
+            "focal_gain": 0.001943213515905436,
+            "pair_gain": 0.0012049190129918158,
+            "full_loss": 0.2038078551944855,
+            "ablated_loss": 0.20575106871039098,
+            "focal_signal_abs": 0.10953446329919563
+          },
+          "familiar": {
+            "focal_gain": -0.00020973056566207684,
+            "pair_gain": -0.0003273884456215772,
+            "full_loss": 0.2099836847268351,
+            "ablated_loss": 0.209773954161173,
+            "focal_signal_abs": 0.11039756437721365
+          }
+        },
+        "novel_minus_familiar": {
+          "focal_gain": 0.002152944081567516,
+          "pair_gain": 0.0015323074586133937
+        },
+        "status": "OBSERVED_CONDITIONAL",
+        "conditional_97_5": {
+          "focal": {
+            "focal_gain": [
+              -0.00008924170157201355,
+              0.004490191600886456
+            ],
+            "pair_gain": [
+              -0.0009135552215376249,
+              0.0037336879233854404
+            ]
+          },
+          "novel_day": {
+            "focal_gain": [
+              -0.00012909158856043294,
+              0.004533423956348437
+            ],
+            "pair_gain": [
+              -0.00090329348283328,
+              0.003937296871778633
+            ]
+          },
+          "familiar_day": {
+            "focal_gain": [
+              -0.000012085158213658883,
+              0.004332664283770755
+            ],
+            "pair_gain": [
+              -0.0010457657865177452,
+              0.004116093430012074
+            ]
+          }
+        }
+      }
+    },
+    "limits": [
+      "Fixed fitted V ablation is conditional contribution, not refitted model performance or causal genotype effect.",
+      "Selected same-year focal horses with earlier familiar events, common coarse total-depth bins for both focal and opponents. No outcome-based matching.",
+      "Both events use different opponents and contexts, different days; within-focal matching is not a controlled transition experiment.",
+      "Same previously inspected archive. Single-axis conditional resampling omits crossed opponent, race, parent and fit dependence.",
+      "Recorded JRA histories only; no official career, future forecasting or raw exports."
+    ]
+  }
+}
