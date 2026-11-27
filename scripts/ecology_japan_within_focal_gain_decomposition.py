@@ -226,7 +226,7 @@ def analyze(archive,receipt,matched_receipt):
             for k in old["means"][arm]:prev.same(r["means"][arm][k],old["means"][arm][k],"PR113_MEAN")
         for k in old["novel_minus_familiar"]:prev.same(r["novel_minus_familiar"][k],old["novel_minus_familiar"][k],"PR113_CONTRAST")
         for axis,b in old["conditional_97_5"].items():
-            for k,v in b.items():prev.same(r["conditional_97_5"][axis][k],v,"PR113_INTERVAL")
+            for k,interval in b.items():prev.same(r["conditional_97_5"][axis][k],interval,"PR113_INTERVAL")
         out[str(yr)]={"original_matched":r,"decomposition":decompose(carry_forward(z,matched))}
     return {"status":"RETROSPECTIVE_WITHIN_FOCAL_GAIN_DECOMPOSITION","source_sha256":prev.SOURCE_SHA,
       "original_PR112_parity":True,"original_PR113_parity":True,"parent_QA":qa,"primary":"2021 matched alignment change and carry-forward gain change, conditional diagnostic",
