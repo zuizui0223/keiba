@@ -1,0 +1,47 @@
+name: "Horse within-focal context novelty and family ablation"
+on:
+  push:
+    branches: [analysis/horse-within-focal-context-family-20261127]
+    paths:
+      - "scripts/ecology_japan_within_focal_context_family.py"
+      - "docs/research/JAPAN_WITHIN_FOCAL_CONTEXT_FAMILY_PROTOCOL_20261127.md"
+      - ".github/workflows/ecology-japan-within-focal-context-family.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  occupancy-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Synthetic focal ablation and chronological matching
+        run: python scripts/ecology_japan_within_focal_context_family.py --self-test
+      - name: Download fixed source A
+        run: |
+          mkdir -p tmp/private
+          chmod 700 tmp/private
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          from ecology_japan_archive_forward import download
+          download(Path('tmp/private/old.zip'))
+          PY
+      - name: Reproduce PR112 and evaluate within-focal contrast
+        run: python scripts/ecology_japan_within_focal_context_family.py --archive tmp/private/old.zip --receipt docs/evidence/japan-context-novelty-family-20261127.json --output tmp/within-focal-context-family.json
+      - if: always()
+        run: rm -rf tmp/private
+      - uses: actions/upload-artifact@v4
+        with:
+          name: within-focal-context-family-aggregate-only
+          path: tmp/within-focal-context-family.json
+          if-no-files-found: error
+          retention-days: 14
