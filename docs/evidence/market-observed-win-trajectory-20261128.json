@@ -1,0 +1,988 @@
+{
+  "source_commit": "ecef1cfc84b60ccbc5c68b7f0767cef9ab921698",
+  "run_id": 46112860899,
+  "job_id": 140880052228,
+  "artifact_id": 15250676487,
+  "artifact_digest": "sha256:083ec207d4408a087c04b7052f428fa4a6ec001a45104e48a0860140c8ba6883",
+  "verification": "Successful CI verified 20 pinned source blob bytes, synthetic interval-bound oracle, chronological/roster gates and exact pair decomposition. Aggregate JSON extracted from job log; metadata and upload-log digest agree; ZIP bytes not independently extracted.",
+  "result": {
+    "status": "OBSERVED_ARCHIVED_WIN_PRICE_PROXY_TRAJECTORY",
+    "qa": {
+      "clock_gates": true,
+      "complete_boards": true,
+      "roster_gate": true,
+      "exact_pair_change_accounting": true,
+      "stale_excluded": true
+    },
+    "source_revision": "dfd0450769abf17bf38bdc17872e3e91b2a286fa",
+    "pinned_blobs": {
+      "data/2026-10-12/kyoto_06.json": "4dd1fd493e2db967ab74e5ac301f9428dbc17250",
+      "data/2026-10-12/kyoto_07.json": "253ba03fcdadc7517ac63eb2587561d12b81cf33",
+      "data/2026-10-12/kyoto_08.json": "40b8626ece484ef6631d4bd97aaf89f26eedec09",
+      "data/2026-10-12/kyoto_09.json": "71f6fd82a3c8f44d99ce66354ae077e998b6a238",
+      "data/2026-10-12/kyoto_10.json": "4b8c098eedb478ebd6a9e3e874aa6b692adcfe9a",
+      "data/2026-10-12/kyoto_11.json": "72180071976ffb9efe81cf6b4a6dfdb2aa458bd0",
+      "data/2026-10-12/kyoto_12.json": "3b9194da50df0ead111d179dac609e3c61d3a1c2",
+      "data/2026-10-12/r7_markets.json": "d61125bc680800221f2064ac84b4b1f332738416",
+      "data/2026-10-12/r8_markets.json": "a01268d94b341e8d9e8b5f600e75579c7d22eb4a",
+      "data/2026-10-12/r8_markets_latest.json": "5e84f3c445249564b2cd7ed358591ed02a8b2d88",
+      "data/2026-10-12/remaining-snapshots/r10_tfw.json": "cdf8f36a073f68d351417d0046f5ab5c1ccc2be3",
+      "data/2026-10-12/remaining-snapshots/r11_tfw.json": "751734355c67149b39cd1ebaf9682aac24f352e5",
+      "data/2026-10-12/remaining-snapshots/r12_tfw.json": "6da13808c7b2a9c716a74b1c41d2c08296318c09",
+      "data/2026-10-12/remaining-snapshots/r8_tfw.json": "65fa640d6a07b7d94eb6e2904f6cc73f07a96448",
+      "data/2026-10-12/remaining-snapshots/r9_tfw.json": "be94d8b01a2b67287958598842cc724029f45e89",
+      "data/2026-10-18/ticket-odds-snapshot.json": "8a7d37f02a40e7c6f93d6ee428089cd5c84e59df",
+      "reports/2026-10-12/monitor-1339-r11-r12.json": "48ae8762a0036339ce31266252cf9ac3d546ff41",
+      "reports/2026-10-12/monitor-1339-r9-r10.json": "fedddc4ef510983059e425adbf10eb8b4a1e0d05",
+      "reports/2026-10-12/r8-latest-fetch.json": "7e4a5b7bda10a573caa68c71ea41c3b063c1d6ef",
+      "reports/2026-10-12/remaining-final-price-check.json": "7acffe0e4bea7961ebd3ce3de1b24905d15f364d"
+    },
+    "races": [
+      {
+        "race": 6,
+        "roster": 12,
+        "primary_states": 1,
+        "source_minutes": [
+          "12:30"
+        ],
+        "has_raw_text_sensitivity": false
+      },
+      {
+        "race": 7,
+        "roster": 16,
+        "primary_states": 2,
+        "source_minutes": [
+          "12:29",
+          "13:03"
+        ],
+        "has_raw_text_sensitivity": false
+      },
+      {
+        "race": 8,
+        "roster": 11,
+        "primary_states": 3,
+        "source_minutes": [
+          "12:21",
+          "13:26",
+          "13:44"
+        ],
+        "has_raw_text_sensitivity": true
+      },
+      {
+        "race": 9,
+        "roster": 12,
+        "primary_states": 2,
+        "source_minutes": [
+          "12:32",
+          "13:26"
+        ],
+        "has_raw_text_sensitivity": false
+      },
+      {
+        "race": 10,
+        "roster": 10,
+        "primary_states": 2,
+        "source_minutes": [
+          "12:18",
+          "13:27"
+        ],
+        "has_raw_text_sensitivity": false
+      },
+      {
+        "race": 11,
+        "roster": 18,
+        "primary_states": 2,
+        "source_minutes": [
+          "12:27",
+          "13:26"
+        ],
+        "has_raw_text_sensitivity": false
+      },
+      {
+        "race": 12,
+        "roster": 16,
+        "primary_states": 2,
+        "source_minutes": [
+          "12:36",
+          "13:27"
+        ],
+        "has_raw_text_sensitivity": false
+      }
+    ],
+    "points": [
+      {
+        "race": 6,
+        "path": "data/2026-10-12/kyoto_06.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:30:00+09:00",
+        "receipt": "2026-10-12T12:35:59+09:00",
+        "n": 12,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 7,
+        "path": "data/2026-10-12/kyoto_07.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:29:00+09:00",
+        "receipt": "2026-10-12T12:35:59+09:00",
+        "n": 16,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 7,
+        "path": "data/2026-10-12/r7_markets.json",
+        "kind": "market_bundle",
+        "update": "2026-10-12T13:03:00+09:00",
+        "receipt": "2026-10-12T04:13:49+00:00",
+        "n": 16,
+        "html_hash": "absent",
+        "name_match": false,
+        "status": "primary"
+      },
+      {
+        "race": 8,
+        "path": "data/2026-10-12/kyoto_08.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:21:00+09:00",
+        "receipt": "2026-10-12T12:35:59+09:00",
+        "n": 11,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 8,
+        "path": "data/2026-10-12/remaining-snapshots/r8_tfw.json",
+        "kind": "full_tfw",
+        "update": "2026-10-12T13:26:00+09:00",
+        "receipt": "2026-10-12T13:27:02.145040+09:00",
+        "n": 11,
+        "html_hash": "recorded_not_raw_verified",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 8,
+        "path": "reports/2026-10-12/r8-latest-fetch.json",
+        "kind": "text_extract_sensitivity",
+        "update": "2026-10-12T13:42:00+09:00",
+        "receipt": "2026-10-12T04:43:02.038724+00:00",
+        "n": 11,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "sensitivity_only"
+      },
+      {
+        "race": 8,
+        "path": "data/2026-10-12/r8_markets_latest.json",
+        "kind": "market_bundle",
+        "update": "2026-10-12T13:44:00+09:00",
+        "receipt": "2026-10-12T04:44:55.575221+00:00",
+        "n": 11,
+        "html_hash": "recorded_not_raw_verified",
+        "name_match": false,
+        "status": "primary"
+      },
+      {
+        "race": 9,
+        "path": "data/2026-10-12/kyoto_09.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:32:00+09:00",
+        "receipt": "2026-10-12T12:38:19+09:00",
+        "n": 12,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 9,
+        "path": "data/2026-10-12/remaining-snapshots/r9_tfw.json",
+        "kind": "full_tfw",
+        "update": "2026-10-12T13:26:00+09:00",
+        "receipt": "2026-10-12T13:27:09.105262+09:00",
+        "n": 12,
+        "html_hash": "recorded_not_raw_verified",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 10,
+        "path": "data/2026-10-12/kyoto_10.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:18:00+09:00",
+        "receipt": "2026-10-12T12:38:19+09:00",
+        "n": 10,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 10,
+        "path": "data/2026-10-12/remaining-snapshots/r10_tfw.json",
+        "kind": "full_tfw",
+        "update": "2026-10-12T13:27:00+09:00",
+        "receipt": "2026-10-12T13:27:17.510185+09:00",
+        "n": 10,
+        "html_hash": "recorded_not_raw_verified",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 11,
+        "path": "data/2026-10-12/kyoto_11.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:27:00+09:00",
+        "receipt": "2026-10-12T12:37:15+09:00",
+        "n": 18,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 11,
+        "path": "data/2026-10-12/remaining-snapshots/r11_tfw.json",
+        "kind": "full_tfw",
+        "update": "2026-10-12T13:26:00+09:00",
+        "receipt": "2026-10-12T13:27:25.990079+09:00",
+        "n": 18,
+        "html_hash": "recorded_not_raw_verified",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 12,
+        "path": "data/2026-10-12/kyoto_12.json",
+        "kind": "card_record",
+        "update": "2026-10-12T12:36:00+09:00",
+        "receipt": "2026-10-12T12:37:15+09:00",
+        "n": 16,
+        "html_hash": "absent",
+        "name_match": true,
+        "status": "primary"
+      },
+      {
+        "race": 12,
+        "path": "data/2026-10-12/remaining-snapshots/r12_tfw.json",
+        "kind": "full_tfw",
+        "update": "2026-10-12T13:27:00+09:00",
+        "receipt": "2026-10-12T13:27:33.414763+09:00",
+        "n": 16,
+        "html_hash": "recorded_not_raw_verified",
+        "name_match": true,
+        "status": "primary"
+      }
+    ],
+    "exclusions": [
+      {
+        "path": "reports/2026-10-12/monitor-1339-r9-r10.json",
+        "race": 9,
+        "reason": "partial_selected_horses",
+        "rows": 3,
+        "expected": 12
+      },
+      {
+        "path": "reports/2026-10-12/monitor-1339-r9-r10.json",
+        "race": 10,
+        "reason": "partial_selected_horses",
+        "rows": 3,
+        "expected": 10
+      },
+      {
+        "path": "reports/2026-10-12/monitor-1339-r11-r12.json",
+        "race": 11,
+        "reason": "partial_selected_horses",
+        "rows": 4,
+        "expected": 18
+      },
+      {
+        "path": "reports/2026-10-12/monitor-1339-r11-r12.json",
+        "race": 12,
+        "reason": "partial_selected_horses",
+        "rows": 3,
+        "expected": 16
+      },
+      {
+        "path": "reports/2026-10-12/remaining-final-price-check.json",
+        "race": 9,
+        "reason": "partial_selected_quotes",
+        "rows": 1,
+        "expected": 12
+      },
+      {
+        "path": "reports/2026-10-12/remaining-final-price-check.json",
+        "race": 10,
+        "reason": "partial_selected_quotes",
+        "rows": 2,
+        "expected": 10
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2608040707",
+        "rows": 9
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2608040708",
+        "rows": 12
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2608040710",
+        "rows": 10
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2608040711",
+        "rows": 17
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2608040712",
+        "rows": 12
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2605040711",
+        "rows": 13
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2605040712",
+        "rows": 16
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2604040210",
+        "rows": 18
+      },
+      {
+        "path": "data/2026-10-18/ticket-odds-snapshot.json",
+        "reason": "upstream_update_time_missing",
+        "race_id": "2604040211",
+        "rows": 10
+      },
+      {
+        "race": 8,
+        "path": "data/2026-10-12/r8_markets.json",
+        "kind": "market_bundle",
+        "update": "2026-10-12T13:22:00+09:00",
+        "receipt": "2026-10-12T04:35:59+00:00",
+        "n": 11,
+        "html_hash": "absent",
+        "name_match": false,
+        "reason": "nonincreasing_source_time_in_receipt_order"
+      }
+    ],
+    "primary_intervals": [
+      {
+        "race": 7,
+        "from": "2026-10-12T12:29:00+09:00",
+        "to": "2026-10-12T13:03:00+09:00",
+        "minutes": 34,
+        "n": 16,
+        "pair_count": 120,
+        "from_kind": "card_record",
+        "to_kind": "market_bundle",
+        "categories": {
+          "center": {
+            "pairs": 120,
+            "both_resolved": 120,
+            "opposite": 13,
+            "Dgrow_rshrink": 3,
+            "Dshrink_rgrow": 10,
+            "M_grow": 61,
+            "M_shrink": 59
+          },
+          "truncation": {
+            "pairs": 120,
+            "both_resolved": 111,
+            "opposite": 9,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 7,
+            "M_grow": 56,
+            "M_shrink": 55
+          },
+          "nearest": {
+            "pairs": 120,
+            "both_resolved": 111,
+            "opposite": 9,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 7,
+            "M_grow": 56,
+            "M_shrink": 53
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.0075453885861959,
+          "within": 0.008870770231403736,
+          "net": 0.015187732194619831
+        },
+        "TV": 0.07476832939911048,
+        "reciprocal_sum": [
+          1.257365622192345,
+          1.2596179947678834
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9927397306637593,
+            "upper": 1.0058924977538761,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9946950605079473,
+            "upper": 1.0076943958143068,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 8,
+        "from": "2026-10-12T12:21:00+09:00",
+        "to": "2026-10-12T13:26:00+09:00",
+        "minutes": 65,
+        "n": 11,
+        "pair_count": 55,
+        "from_kind": "card_record",
+        "to_kind": "full_tfw",
+        "categories": {
+          "center": {
+            "pairs": 55,
+            "both_resolved": 55,
+            "opposite": 3,
+            "Dgrow_rshrink": 1,
+            "Dshrink_rgrow": 2,
+            "M_grow": 29,
+            "M_shrink": 26
+          },
+          "truncation": {
+            "pairs": 55,
+            "both_resolved": 49,
+            "opposite": 2,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 2,
+            "M_grow": 23,
+            "M_shrink": 23
+          },
+          "nearest": {
+            "pairs": 55,
+            "both_resolved": 49,
+            "opposite": 2,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 2,
+            "M_grow": 23,
+            "M_shrink": 23
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.005042488742746937,
+          "within": 0.011504562138897861,
+          "net": 0.014679338865271112
+        },
+        "TV": 0.053686386945685664,
+        "reciprocal_sum": [
+          1.2591835367600457,
+          1.259427613089546
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9922592516458122,
+            "upper": 1.0073468294080365,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9927364488952563,
+            "upper": 1.007542090471637,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 8,
+        "from": "2026-10-12T13:26:00+09:00",
+        "to": "2026-10-12T13:44:00+09:00",
+        "minutes": 18,
+        "n": 11,
+        "pair_count": 55,
+        "from_kind": "full_tfw",
+        "to_kind": "market_bundle",
+        "categories": {
+          "center": {
+            "pairs": 55,
+            "both_resolved": 55,
+            "opposite": 6,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 4,
+            "M_grow": 26,
+            "M_shrink": 29
+          },
+          "truncation": {
+            "pairs": 55,
+            "both_resolved": 50,
+            "opposite": 5,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 3,
+            "M_grow": 25,
+            "M_shrink": 27
+          },
+          "nearest": {
+            "pairs": 55,
+            "both_resolved": 50,
+            "opposite": 5,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 3,
+            "M_grow": 25,
+            "M_shrink": 27
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.009417251912710197,
+          "within": 0.017828893869048665,
+          "net": 0.024613874808713136
+        },
+        "TV": 0.09656362948215287,
+        "reciprocal_sum": [
+          1.259427613089546,
+          1.2639177580961003
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9927364488952563,
+            "upper": 1.007542090471637,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9956154181227295,
+            "upper": 1.0111342064768802,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 9,
+        "from": "2026-10-12T12:32:00+09:00",
+        "to": "2026-10-12T13:26:00+09:00",
+        "minutes": 54,
+        "n": 12,
+        "pair_count": 66,
+        "from_kind": "card_record",
+        "to_kind": "full_tfw",
+        "categories": {
+          "center": {
+            "pairs": 66,
+            "both_resolved": 65,
+            "opposite": 12,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 10,
+            "M_grow": 26,
+            "M_shrink": 40
+          },
+          "truncation": {
+            "pairs": 66,
+            "both_resolved": 39,
+            "opposite": 3,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 3,
+            "M_grow": 13,
+            "M_shrink": 24
+          },
+          "nearest": {
+            "pairs": 66,
+            "both_resolved": 39,
+            "opposite": 3,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 3,
+            "M_grow": 13,
+            "M_shrink": 24
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.0029782367203221934,
+          "within": 0.005085242401703004,
+          "net": 0.0066418109981108584
+        },
+        "TV": 0.02386954415533549,
+        "reciprocal_sum": [
+          1.2538628787442616,
+          1.2609411602708722
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9855686130386584,
+            "upper": 1.0030903029954092,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9908834432076563,
+            "upper": 1.0087529282166978,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 10,
+        "from": "2026-10-12T12:18:00+09:00",
+        "to": "2026-10-12T13:27:00+09:00",
+        "minutes": 69,
+        "n": 10,
+        "pair_count": 45,
+        "from_kind": "card_record",
+        "to_kind": "full_tfw",
+        "categories": {
+          "center": {
+            "pairs": 45,
+            "both_resolved": 44,
+            "opposite": 6,
+            "Dgrow_rshrink": 1,
+            "Dshrink_rgrow": 5,
+            "M_grow": 16,
+            "M_shrink": 29
+          },
+          "truncation": {
+            "pairs": 45,
+            "both_resolved": 28,
+            "opposite": 3,
+            "Dgrow_rshrink": 1,
+            "Dshrink_rgrow": 2,
+            "M_grow": 13,
+            "M_shrink": 17
+          },
+          "nearest": {
+            "pairs": 45,
+            "both_resolved": 28,
+            "opposite": 3,
+            "Dgrow_rshrink": 1,
+            "Dshrink_rgrow": 2,
+            "M_grow": 13,
+            "M_shrink": 17
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.0040762494020786695,
+          "within": 0.007046640799029858,
+          "net": 0.008700762136323799
+        },
+        "TV": 0.025717060980035802,
+        "reciprocal_sum": [
+          1.2669505262223897,
+          1.2648753810496352
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9907140350120137,
+            "upper": 1.0135604209779119,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9887673699345915,
+            "upper": 1.0119003048397082,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 11,
+        "from": "2026-10-12T12:27:00+09:00",
+        "to": "2026-10-12T13:26:00+09:00",
+        "minutes": 59,
+        "n": 18,
+        "pair_count": 153,
+        "from_kind": "card_record",
+        "to_kind": "full_tfw",
+        "categories": {
+          "center": {
+            "pairs": 153,
+            "both_resolved": 150,
+            "opposite": 26,
+            "Dgrow_rshrink": 4,
+            "Dshrink_rgrow": 22,
+            "M_grow": 53,
+            "M_shrink": 100
+          },
+          "truncation": {
+            "pairs": 153,
+            "both_resolved": 67,
+            "opposite": 4,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 4,
+            "M_grow": 16,
+            "M_shrink": 50
+          },
+          "nearest": {
+            "pairs": 153,
+            "both_resolved": 67,
+            "opposite": 4,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 4,
+            "M_grow": 16,
+            "M_shrink": 50
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.0007014808294391956,
+          "within": 0.0011872535301445809,
+          "net": 0.0015771498413171131
+        },
+        "TV": 0.009126434027075716,
+        "reciprocal_sum": [
+          1.25747017665356,
+          1.2545112172477337
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.99441255643654,
+            "upper": 1.005976141322848,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9919673003818553,
+            "upper": 1.003608973798187,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 12,
+        "from": "2026-10-12T12:36:00+09:00",
+        "to": "2026-10-12T13:27:00+09:00",
+        "minutes": 51,
+        "n": 16,
+        "pair_count": 120,
+        "from_kind": "card_record",
+        "to_kind": "full_tfw",
+        "categories": {
+          "center": {
+            "pairs": 120,
+            "both_resolved": 120,
+            "opposite": 25,
+            "Dgrow_rshrink": 13,
+            "Dshrink_rgrow": 12,
+            "M_grow": 65,
+            "M_shrink": 55
+          },
+          "truncation": {
+            "pairs": 120,
+            "both_resolved": 79,
+            "opposite": 9,
+            "Dgrow_rshrink": 4,
+            "Dshrink_rgrow": 5,
+            "M_grow": 30,
+            "M_shrink": 38
+          },
+          "nearest": {
+            "pairs": 120,
+            "both_resolved": 79,
+            "opposite": 9,
+            "Dgrow_rshrink": 4,
+            "Dshrink_rgrow": 5,
+            "M_grow": 30,
+            "M_shrink": 38
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.0012453926540405024,
+          "within": 0.002473470606048389,
+          "net": 0.003055082914100343
+        },
+        "TV": 0.017179521354237982,
+        "reciprocal_sum": [
+          1.255121118722729,
+          1.2578292423852233
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9924795709972806,
+            "upper": 1.0040968949781832,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9944886685547049,
+            "upper": 1.0062633939081786,
+            "contains_unit_sum": true
+          }
+        ]
+      }
+    ],
+    "raw_text_sensitivity_intervals": [
+      {
+        "race": 8,
+        "from": "2026-10-12T13:26:00+09:00",
+        "to": "2026-10-12T13:42:00+09:00",
+        "minutes": 16,
+        "n": 11,
+        "pair_count": 55,
+        "from_kind": "full_tfw",
+        "to_kind": "text_extract_sensitivity",
+        "categories": {
+          "center": {
+            "pairs": 55,
+            "both_resolved": 55,
+            "opposite": 6,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 4,
+            "M_grow": 25,
+            "M_shrink": 30
+          },
+          "truncation": {
+            "pairs": 55,
+            "both_resolved": 49,
+            "opposite": 4,
+            "Dgrow_rshrink": 1,
+            "Dshrink_rgrow": 3,
+            "M_grow": 22,
+            "M_shrink": 26
+          },
+          "nearest": {
+            "pairs": 55,
+            "both_resolved": 49,
+            "opposite": 4,
+            "Dgrow_rshrink": 1,
+            "Dshrink_rgrow": 3,
+            "M_grow": 22,
+            "M_shrink": 26
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.008107925598937072,
+          "within": 0.015481349771590632,
+          "net": 0.021304613952544935
+        },
+        "TV": 0.0818287898089291,
+        "reciprocal_sum": [
+          1.259427613089546,
+          1.2594823078492374
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9927364488952563,
+            "upper": 1.007542090471637,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9922622099455425,
+            "upper": 1.00758584627939,
+            "contains_unit_sum": true
+          }
+        ]
+      },
+      {
+        "race": 8,
+        "from": "2026-10-12T13:42:00+09:00",
+        "to": "2026-10-12T13:44:00+09:00",
+        "minutes": 2,
+        "n": 11,
+        "pair_count": 55,
+        "from_kind": "text_extract_sensitivity",
+        "to_kind": "market_bundle",
+        "categories": {
+          "center": {
+            "pairs": 55,
+            "both_resolved": 55,
+            "opposite": 6,
+            "Dgrow_rshrink": 2,
+            "Dshrink_rgrow": 4,
+            "M_grow": 28,
+            "M_shrink": 27
+          },
+          "truncation": {
+            "pairs": 55,
+            "both_resolved": 28,
+            "opposite": 0,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 0,
+            "M_grow": 9,
+            "M_shrink": 14
+          },
+          "nearest": {
+            "pairs": 55,
+            "both_resolved": 28,
+            "opposite": 0,
+            "Dgrow_rshrink": 0,
+            "Dshrink_rgrow": 0,
+            "M_grow": 9,
+            "M_shrink": 13
+          }
+        },
+        "mean_abs_components": {
+          "mass": 0.0014563796718613687,
+          "within": 0.00370427458819929,
+          "net": 0.004312262214381156
+        },
+        "TV": 0.015860422838548535,
+        "reciprocal_sum": [
+          1.2594823078492374,
+          1.2639177580961003
+        ],
+        "conditional_pool_feasibility": [
+          {
+            "lower": 0.9922622099455425,
+            "upper": 1.00758584627939,
+            "contains_unit_sum": true
+          },
+          {
+            "lower": 0.9956154181227295,
+            "upper": 1.0111342064768802,
+            "contains_unit_sum": true
+          }
+        ]
+      }
+    ],
+    "aggregate": {
+      "center": {
+        "pairs": 614,
+        "both_resolved": 609,
+        "opposite": 91,
+        "Dgrow_rshrink": 26,
+        "Dshrink_rgrow": 65,
+        "M_grow": 276,
+        "M_shrink": 338
+      },
+      "truncation": {
+        "pairs": 614,
+        "both_resolved": 423,
+        "opposite": 35,
+        "Dgrow_rshrink": 9,
+        "Dshrink_rgrow": 26,
+        "M_grow": 176,
+        "M_shrink": 234
+      },
+      "nearest": {
+        "pairs": 614,
+        "both_resolved": 423,
+        "opposite": 35,
+        "Dgrow_rshrink": 9,
+        "Dshrink_rgrow": 26,
+        "M_grow": 176,
+        "M_shrink": 232
+      }
+    },
+    "counts": {
+      "race_count": 7,
+      "multi_state_races": 6,
+      "primary_states": 14,
+      "primary_intervals": 7,
+      "unique_date_count": 1,
+      "actual_stock_observed": 0,
+      "externally_timed_news_observed": 0
+    },
+    "limits": [
+      "Retrospective saved quote records, not actual vote shares or independent receipt/source verification; original HTML hashes when present not rehashed.",
+      "Card provenance weaker than raw archived full page; bundle joins race-local numbers only; raw text extract sensitivity excluded from primary.",
+      "Normalized reciprocal quote proxy, not probability or money flow. Display perturbation intervals are hypothetical, not certified true pool-share bounds.",
+      "Pair rows and repeated race intervals dependent; one date, no causal or population inference, no external information event or cumulative stock.",
+      "Conditional .8/odds feasibility assumes single winner, ordinary payout factor, floor rounding and no exceptional rules; not true-share estimate.",
+      "No outcomes, individual quotes, betting recommendation or prospective scoring."
+    ]
+  }
+}
