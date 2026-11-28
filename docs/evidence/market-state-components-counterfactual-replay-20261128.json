@@ -1,0 +1,248 @@
+{
+  "status": "COMPACT_REPLAY_VERIFIED",
+  "source_commit": "d719df160ec08ad277f893940519a76a3aeff5b1",
+  "run_id": 46109856955,
+  "job_id": 140870752048,
+  "artifact_id": 15249023396,
+  "artifact_digest": "sha256:282a400e13c26eb465cfeac392e3e9a288de9fa87c679383b72ab42cc4c59305",
+  "comparison": {
+    "status": "SYNTHETIC_STATE_COMPONENTS_REPLAY",
+    "parent_numeric_values": 5760,
+    "summary_numeric_values": 6938,
+    "max_abs_diff": 0,
+    "rows": 96,
+    "qa": {
+      "simplex": true,
+      "component_preservation": true,
+      "exact_attribution": true,
+      "PR124_factorial_parity": true
+    },
+    "counts": {
+      "differential": {
+        "reverse_r": {
+          "total": {
+            "positive": 27,
+            "negative": 1,
+            "unresolved": 20
+          },
+          "pair_mass": {
+            "positive": 23,
+            "negative": 2,
+            "unresolved": 23
+          },
+          "internal_balance": {
+            "positive": 15,
+            "negative": 0,
+            "unresolved": 33
+          },
+          "outside_composition": {
+            "positive": 14,
+            "negative": 0,
+            "unresolved": 34
+          }
+        },
+        "D": {
+          "total": {
+            "positive": 4,
+            "negative": 3,
+            "unresolved": 41
+          },
+          "pair_mass": {
+            "positive": 4,
+            "negative": 1,
+            "unresolved": 43
+          },
+          "internal_balance": {
+            "positive": 2,
+            "negative": 2,
+            "unresolved": 44
+          },
+          "outside_composition": {
+            "positive": 0,
+            "negative": 1,
+            "unresolved": 47
+          }
+        },
+        "R": {
+          "total": {
+            "positive": 1,
+            "negative": 2,
+            "unresolved": 45
+          },
+          "pair_mass": {
+            "positive": 3,
+            "negative": 3,
+            "unresolved": 42
+          },
+          "internal_balance": {
+            "positive": 0,
+            "negative": 2,
+            "unresolved": 46
+          },
+          "outside_composition": {
+            "positive": 1,
+            "negative": 1,
+            "unresolved": 46
+          }
+        },
+        "M": {
+          "total": {
+            "positive": 10,
+            "negative": 2,
+            "unresolved": 36
+          },
+          "pair_mass": {
+            "positive": 11,
+            "negative": 1,
+            "unresolved": 36
+          },
+          "internal_balance": {
+            "positive": 2,
+            "negative": 2,
+            "unresolved": 44
+          },
+          "outside_composition": {
+            "positive": 1,
+            "negative": 0,
+            "unresolved": 47
+          }
+        },
+        "flow_reverse_difference": {
+          "total": {
+            "positive": 27,
+            "negative": 6,
+            "unresolved": 15
+          },
+          "pair_mass": {
+            "positive": 26,
+            "negative": 7,
+            "unresolved": 15
+          },
+          "internal_balance": {
+            "positive": 8,
+            "negative": 0,
+            "unresolved": 40
+          },
+          "outside_composition": {
+            "positive": 13,
+            "negative": 0,
+            "unresolved": 35
+          }
+        }
+      },
+      "group": {
+        "reverse_r": {
+          "total": {
+            "positive": 2,
+            "negative": 16,
+            "unresolved": 30
+          },
+          "pair_mass": {
+            "positive": 1,
+            "negative": 14,
+            "unresolved": 33
+          },
+          "internal_balance": {
+            "positive": 1,
+            "negative": 10,
+            "unresolved": 37
+          },
+          "outside_composition": {
+            "positive": 0,
+            "negative": 9,
+            "unresolved": 39
+          }
+        },
+        "D": {
+          "total": {
+            "positive": 22,
+            "negative": 1,
+            "unresolved": 25
+          },
+          "pair_mass": {
+            "positive": 24,
+            "negative": 0,
+            "unresolved": 24
+          },
+          "internal_balance": {
+            "positive": 9,
+            "negative": 10,
+            "unresolved": 29
+          },
+          "outside_composition": {
+            "positive": 12,
+            "negative": 2,
+            "unresolved": 34
+          }
+        },
+        "R": {
+          "total": {
+            "positive": 16,
+            "negative": 2,
+            "unresolved": 30
+          },
+          "pair_mass": {
+            "positive": 15,
+            "negative": 1,
+            "unresolved": 32
+          },
+          "internal_balance": {
+            "positive": 10,
+            "negative": 4,
+            "unresolved": 34
+          },
+          "outside_composition": {
+            "positive": 8,
+            "negative": 2,
+            "unresolved": 38
+          }
+        },
+        "M": {
+          "total": {
+            "positive": 31,
+            "negative": 0,
+            "unresolved": 17
+          },
+          "pair_mass": {
+            "positive": 32,
+            "negative": 1,
+            "unresolved": 15
+          },
+          "internal_balance": {
+            "positive": 2,
+            "negative": 3,
+            "unresolved": 43
+          },
+          "outside_composition": {
+            "positive": 15,
+            "negative": 1,
+            "unresolved": 32
+          }
+        },
+        "flow_reverse_difference": {
+          "total": {
+            "positive": 1,
+            "negative": 18,
+            "unresolved": 29
+          },
+          "pair_mass": {
+            "positive": 0,
+            "negative": 18,
+            "unresolved": 30
+          },
+          "internal_balance": {
+            "positive": 6,
+            "negative": 4,
+            "unresolved": 38
+          },
+          "outside_composition": {
+            "positive": 0,
+            "negative": 10,
+            "unresolved": 38
+          }
+        }
+      }
+    }
+  },
+  "verification": "CI verified all committed compact numerical fields and 5760 previous PR124 means/interval endpoints. Full aggregate generated in Actions; ZIP not independently verified."
+}

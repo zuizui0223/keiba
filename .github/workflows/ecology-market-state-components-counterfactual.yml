@@ -1,0 +1,27 @@
+name: "Synthetic state components counterfactual"
+on:
+  push:
+    branches: [analysis/market-state-components-counterfactual-20261128]
+    paths:
+      - "scripts/ecology_market_state_components_counterfactual.mjs"
+      - "docs/research/MARKET_STATE_COMPONENTS_COUNTERFACTUAL_PROTOCOL_20261128.md"
+      - ".github/workflows/ecology-market-state-components-counterfactual.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_state_components_counterfactual.mjs tmp/market-state-components-counterfactual.json docs/evidence/market-stock-state-counterfactual-summary-20261127.json docs/evidence/market-state-components-counterfactual-summary-20261128.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-state-components-aggregate
+          path: tmp/market-state-components-counterfactual.json
+          if-no-files-found: error
+          retention-days: 14
