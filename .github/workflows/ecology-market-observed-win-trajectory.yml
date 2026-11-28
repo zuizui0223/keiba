@@ -1,0 +1,27 @@
+name: "Observed archived win trajectory research audit"
+on:
+  push:
+    branches: [analysis/market-observed-win-trajectory-20261128]
+    paths:
+      - "scripts/ecology_market_observed_win_trajectory.mjs"
+      - "docs/research/MARKET_OBSERVED_WIN_TRAJECTORY_PROTOCOL_20261128.md"
+      - ".github/workflows/ecology-market-observed-win-trajectory.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_observed_win_trajectory.mjs tmp/market-observed-win-trajectory.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: observed-win-trajectory-aggregate
+          path: tmp/market-observed-win-trajectory.json
+          if-no-files-found: error
+          retention-days: 14
