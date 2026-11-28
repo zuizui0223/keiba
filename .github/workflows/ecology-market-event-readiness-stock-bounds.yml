@@ -1,0 +1,27 @@
+name: "Observed event readiness and conditional stock bounds"
+on:
+  push:
+    branches: [analysis/market-event-readiness-stock-bounds-20261128]
+    paths:
+      - "scripts/ecology_market_event_readiness_stock_bounds.mjs"
+      - "docs/research/MARKET_EVENT_READINESS_STOCK_BOUNDS_PROTOCOL_20261128.md"
+      - ".github/workflows/ecology-market-event-readiness-stock-bounds.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/ecology_market_event_readiness_stock_bounds.mjs tmp/market-event-readiness-stock-bounds.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: observed-event-readiness-stock-bounds
+          path: tmp/market-event-readiness-stock-bounds.json
+          if-no-files-found: error
+          retention-days: 14
